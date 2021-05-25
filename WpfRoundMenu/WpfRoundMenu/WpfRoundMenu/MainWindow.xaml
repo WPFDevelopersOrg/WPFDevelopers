@@ -1,0 +1,95 @@
+﻿<Window x:Class="WpfRoundMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfRoundMenu"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="400" ResizeMode="NoResize" Background="{x:Null}" 
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <Style x:Key="ButtonMenu" TargetType="Button">
+            <Setter Property= "Opacity" Value="0.8"/>
+            <Setter Property="Cursor" Value ="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                OpacityMask="{TemplateBinding OpacityMask}"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value= "False">
+                                <Setter Property="Opacity" Value="0.3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="gMenu" MouseDown="gMenu_MouseDown">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.ColumnSpan="4" Grid.RowSpan="4">
+                <Border.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="White" Offset="0.9"/>
+                        <GradientStop Offset="1"/>
+                        <GradientStop x:Name="ColoCirkle" Color="#7F434343" Offset="0.91"/>
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+            <Button x:Name="btn1" Foreground="{x:Null}" BorderBrush="#FF009AD6" Background="#FF716E6E" Style="{StaticResource ButtonMenu}" Grid.ColumnSpan="2" Margin="68,35,66,0" Grid.Column="1" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="Images/Color.png"/>
+                </Button.OpacityMask>
+            </Button>
+            <Button x:Name="btn2" Foreground="{x:Null}" BorderBrush="#FF007642" Background="#FF6E7170" Style="{StaticResource ButtonMenu}" Margin="0,64,34,67" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="Images/Eraser.png"/>
+                </Button.OpacityMask>
+            </Button>
+            <Button x:Name="btn3" Foreground="{x:Null}" BorderBrush="#FF656097" Background="#FF716E6E" Style="{StaticResource ButtonMenu}" Margin="68,0,66,46" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="Images/Revoke.png"/>
+                </Button.OpacityMask>
+            </Button>
+            <Button x:Name="btn4" Foreground="{x:Null}" BorderBrush="#FFEE73CC" Background="#FF716E6E" Style="{StaticResource ButtonMenu}" Margin="34,64,0,67" Grid.Row="1" Grid.RowSpan="2" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Button.OpacityMask>
+                    <ImageBrush ImageSource="Images/Pen.png"/>
+                </Button.OpacityMask>
+            </Button>
+            <Grid x:Name="gClose" Grid.ColumnSpan="2" Grid.Column="1" Margin="20,21,19,20" Grid.Row="1" Grid.RowSpan="2">
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FFE7E7E7" Offset="0.854"/>
+                            <GradientStop Offset="1"/>
+                            <GradientStop Color="#FFBCBCBC" Offset="0.856"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Button Margin="58,59,59,52" x:Name="btn5" Foreground="{x:Null}" BorderBrush="#FFFF6B6B" Background="#FF716E6E" Style="{StaticResource ButtonMenu}"
+                         MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="btn5_Click">
+                    <Button.OpacityMask>
+                        <ImageBrush ImageSource="Images/Close.png"/>
+                    </Button.OpacityMask>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

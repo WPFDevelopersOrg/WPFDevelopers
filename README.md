@@ -30,6 +30,11 @@
 <img src="/3DAnimationNavigationBar/resources/GIFBar.gif"/>   
 ***
 
+#### WpfRoundMenu（WPF实现圆形菜单）  
+<img src="/WpfRoundMenu/resources/roundMenu.gif"/>  
+***
+
+
 #### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
 
 <img src="/WPFCheckCode/resources/code.gif"/>  
@@ -51,5 +56,5 @@
 
 <img src="/resources/Alipay.png"/>
 
-										~~结束~~
+									~~结束~~
 
