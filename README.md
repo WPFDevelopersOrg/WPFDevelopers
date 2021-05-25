@@ -24,28 +24,34 @@
 #### WpfBingMap（WPF使用MapControl加载高德地图）  
 
 <img src="/WPFBingMap/resources/amap.gif"/>   
-<img src="/WPFBingMap/resources/bingmap.gif"/>   
-***
+<img src="/WPFBingMap/resources/bingmap.gif"/>  
+
+----------  
+
 #### 3DAnimationNavigationBar（WPF实现3D菜单动画）  
 <img src="/3DAnimationNavigationBar/resources/GIFBar.gif"/>   
-***
+
+----------  
 
 #### WpfRoundMenu（WPF实现圆形菜单）  
 <img src="/WpfRoundMenu/resources/roundMenu.gif"/>  
-***
+
+----------  
 
 
 #### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
 
 <img src="/WPFCheckCode/resources/code.gif"/>  
-***
+
+----------  
 
 #### CutImageSolution（WPF实现用户头像裁剪）
 
 <img src="/CutImageSolution/resources/GIFCut.gif"/>
 
 <img src="/CutImageSolution/resources/1.gif"/>  
-***
+
+----------  
 
 #### WpfAnimationWeChat（WPF使用图片实现微信语音播放动画）
 
