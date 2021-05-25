@@ -1,39 +1,50 @@
-## WPFDevelopers
-## [gitee](https://gitee.com/yanjinhua/WPFDevelopers.git)
+## WPFDevelopers   <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=B61RFy2vvpaKLEDxaW6NsDpPZA-eSyFh&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPF开发者" title="WPF开发者"></a>  
 
-## [QQ群交流](https://jq.qq.com/?_wv=1027&k=uN3RMw7N)
+### [码云](https://gitee.com/yanjinhua/WPFDevelopers.git) https://gitee.com/yanjinhua/WPFDevelopers.git  
 
-## 此项目包含了 微信公众号<kbd> WPF开发者</kbd> 日常开发分享，欢迎<kbd>Star</kbd>。
 
-## 运行环境
+### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。  
 
-## Visual Studio 2019，dotNet Framework 4.0 SDK
+### 运行环境  
 
-## 欢迎关注微信公众号
+### Visual Studio 2019，dotNet Framework 4.0 SDK  
 
-<img src="/resources/wxgzh.jpg"/> 
+### 欢迎关注微信公众号  
 
-## __效果图__ 
+<img src="/resources/wxgzh.jpg"/>  
 
-#### WpfBingMap(WPF使用MapControl加载高德地图)
+### 支持者  
 
-<img src="/WPFBingMap/resources/amap.gif"/> 
-<img src="/WPFBingMap/resources/bingmap.gif"/> 
+<a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a> 
 
-#### WPFCheckCode(WPF使用DrawingVisual绘制验证码)
 
-<img src="/WPFCheckCode/resources/code.gif"/>
 
-#### CutImageSolution(WPF实现用户头像裁剪)
+***
+#### WpfBingMap（WPF使用MapControl加载高德地图）  
+
+<img src="/WPFBingMap/resources/amap.gif"/>   
+<img src="/WPFBingMap/resources/bingmap.gif"/>   
+***
+#### 3DAnimationNavigationBar（WPF实现3D菜单动画）  
+<img src="/3DAnimationNavigationBar/resources/GIFBar.gif"/>   
+***
+
+#### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
+
+<img src="/WPFCheckCode/resources/code.gif"/>  
+***
+
+#### CutImageSolution（WPF实现用户头像裁剪）
 
 <img src="/CutImageSolution/resources/GIFCut.gif"/>
 
-<img src="/CutImageSolution/resources/1.gif"/>
+<img src="/CutImageSolution/resources/1.gif"/>  
+***
 
-#### WpfAnimationWeChat(WPF使用图片实现微信语音播放动画)
+#### WpfAnimationWeChat（WPF使用图片实现微信语音播放动画）
 
-<img src="/WpfAnimationWeChat/resources/0.gif"/>
-<img src="/WpfAnimationWeChat/resources/1.gif"/>
+<img src="/WpfAnimationWeChat/resources/0.gif"/>  
+<img src="/WpfAnimationWeChat/resources/1.gif"/>  
 
 * 捐赠支付宝
 
