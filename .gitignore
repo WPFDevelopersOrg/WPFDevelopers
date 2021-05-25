@@ -1,0 +1,15 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/CutImageSolution/CutImage/obj
+/CutImageSolution/.vs
+
+/WpfAnimationWeChat/WpfAnimationWeChat/WpfAnimationWeChat/obj
+/WpfAnimationWeChat/WpfAnimationWeChat/.vs
+
+/WPFBingMap/WpfBingMap/WpfBingMap/obj
+/WPFBingMap/WpfBingMap/.vs
+
+/WPFCheckCode/WpfCodeImage/WpfCodeImage/obj
+/WPFCheckCode/WpfCodeImage/.vs
