@@ -1,13 +1,14 @@
-## WPFDevelopers   <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=B61RFy2vvpaKLEDxaW6NsDpPZA-eSyFh&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPF开发者" title="WPF开发者"></a>  
+ ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg)   <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=B61RFy2vvpaKLEDxaW6NsDpPZA-eSyFh&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPF开发者" title="WPF开发者"></a>
+
+
+## Welcome to WPFDevelopers    
 
 ### [码云](https://gitee.com/yanjinhua/WPFDevelopers.git) https://gitee.com/yanjinhua/WPFDevelopers.git  
 
 
-### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。  
+### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。   
 
-### 运行环境  
-
-### Visual Studio 2019，dotNet Framework 4.0 SDK  
+### 运行环境 Visual Studio 2019，dotNet Framework 4.0 SDK  
 
 ### 欢迎关注微信公众号  
 
