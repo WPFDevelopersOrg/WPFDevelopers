@@ -2,8 +2,9 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/CutImageSolution/CutImage/obj
 /CutImageSolution/.vs
+/CutImageSolution/CutImage/obj
+
 
 /WpfAnimationWeChat/WpfAnimationWeChat/WpfAnimationWeChat/obj
 /WpfAnimationWeChat/WpfAnimationWeChat/.vs
