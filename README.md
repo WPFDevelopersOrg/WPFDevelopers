@@ -35,10 +35,9 @@
 <img src="/WpfAnimationWeChat/resources/0.gif"/>
 <img src="/WpfAnimationWeChat/resources/1.gif"/>
 
-* 捐赠
-|  支付宝   | 微信  |
-|  :----:   | :----:   |
-| <img src="/resources/Alipay.png"/>  | <img src="/resources/WeChatPay.png"/>  |
+* 捐赠支付宝
+
+<img src="/resources/Alipay.png"/>
 
 										~~结束~~
 
