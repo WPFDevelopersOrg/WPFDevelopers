@@ -20,9 +20,16 @@
 
 <a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a> 
 
-
+### 贡献者  
+<a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>   
 
 ***
+### WPFBreatheLight（WPF实现呼吸灯）
+
+<img src="/WPFBreatheLight/resources/breathe.gif"/>  
+
+----------
+
 #### WpfCanvasAdorner（WPF实现旋转控件并修改宽高）  
 
 <img src="/WpfCanvasAdorner/resources/canvas.gif"/>   
