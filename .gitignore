@@ -2,24 +2,34 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
+/CutImageSolution/CutImage/bin
 /CutImageSolution/CutImage/.vs
-/CutImageSolution/CutImage/CutImage/obj
+/CutImageSolution/CutImage/obj
 
-
+/WpfAnimationWeChat/WpfAnimationWeChat/WpfAnimationWeChat/bin
 /WpfAnimationWeChat/WpfAnimationWeChat/WpfAnimationWeChat/obj
 /WpfAnimationWeChat/WpfAnimationWeChat/.vs
 
+/WPFBingMap/WpfBingMap/WpfBingMap/bin
 /WPFBingMap/WpfBingMap/WpfBingMap/obj
 /WPFBingMap/WpfBingMap/.vs
 
+/WPFCheckCode/WpfCodeImage/WpfCodeImage/bin
 /WPFCheckCode/WpfCodeImage/WpfCodeImage/obj
 /WPFCheckCode/WpfCodeImage/.vs
 
+/3DAnimationNavigationBar/3DAnimationNavigationBar/3DAnimationNavigationBar/bin
 /3DAnimationNavigationBar/3DAnimationNavigationBar/3DAnimationNavigationBar/obj
 /3DAnimationNavigationBar/3DAnimationNavigationBar/.vs
 
+/WpfRoundMenu/WpfRoundMenu/WpfRoundMenu/bin
 /WpfRoundMenu/WpfRoundMenu/WpfRoundMenu/obj
 /WpfRoundMenu/WpfRoundMenu/.vs
 
+/WpfCanvasAdorner/WpfCanvasAdorner/WpfCanvasAdorner/bin
 /WpfCanvasAdorner/WpfCanvasAdorner/WpfCanvasAdorner/obj
 /WpfCanvasAdorner/WpfCanvasAdorner/.vs
+
+/WPFBreatheLight/WPFBreatheLight/WPFBreatheLight/bin
+/WPFBreatheLight/WPFBreatheLight/WPFBreatheLight/obj
+/WPFBreatheLight/WPFBreatheLight/.vs
