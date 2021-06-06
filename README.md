@@ -24,6 +24,12 @@
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>   
 
 ***
+### WPFSongWords（WPF实现歌词动画）
+
+<img src="/WPFSongWords/resources/SongWords.gif"/>  
+
+----------
+
 ### WPFBreatheLight（WPF实现呼吸灯）
 
 <img src="/WPFBreatheLight/resources/breathe.gif"/>  

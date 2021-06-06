@@ -1,0 +1,70 @@
+﻿<Window x:Class="WPFSongWords.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell"
+        xmlns:local="clr-namespace:WPFSongWords"
+        mc:Ignorable="d"
+        Title="WPFDevelopers" Height="650" Width="400"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        TextOptions.TextFormattingMode="Display" UseLayoutRounding="True"
+        SnapsToDevicePixels="True" WindowStyle="None" Background="Transparent"
+        Foreground="White" FontSize="14">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="DefaultBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF33B9AD" Offset="0" />
+            <GradientStop Color="#FF007ACC" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Resources>
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome GlassFrameThickness="-1" CaptionHeight="40"/>
+    </shell:WindowChrome.WindowChrome>
+    <Grid>
+        <Border Background="{StaticResource DefaultBackgroundBrush}" 
+            UseLayoutRounding="True" 
+            SnapsToDevicePixels="True"
+            Margin="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1" BlurRadius="6" Direction="270" Opacity="0.75" Color="#FF211613"/>
+            </Border.Effect>
+        </Border>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid Height="40" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="WPF开发者" VerticalAlignment="Center" 
+                           Padding="10,0" FontSize="16"/>
+                <Button Grid.Column="1" Style="{StaticResource CloseButton}" Width="30"
+                        Click="BtnCloseClick">
+                    <Button.Content>
+                        <Path Data="{StaticResource ClosePath}" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"  
+                              Height="12" Width="12" Stretch="Uniform" StrokeThickness="0"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <StackPanel HorizontalAlignment="Center" Grid.Row="1">
+                <TextBlock Text="中华人民共和国国歌" HorizontalAlignment="Center" FontSize="20" Margin="0,10"/>
+                <ItemsControl ItemsSource="{Binding MusicWordArray,RelativeSource={RelativeSource AncestorType=local:MainWindow}}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <local:TextBlockCustomControl Text="{Binding SongWords}"
+                                                      StartDuration="{Binding StarTime}"
+                                                      Duration="{Binding RunTime}"
+                                                      Block.TextAlignment="Center"
+                                                      FontSize="15" Margin="0,4"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
