@@ -24,6 +24,12 @@
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>   
 
 ***
+### WpfChatEmojiText（WPF实现聊天Emoji+文本）
+
+<img src="/WpfChatEmojiText/resources/WpfChatEmojiText.gif"/>  
+
+----------
+
 ### WPFSongWords（WPF实现歌词动画）
 
 <img src="/WPFSongWords/resources/SongWords.gif"/>  
