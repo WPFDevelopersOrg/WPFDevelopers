@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfChatEmojiText">
+    <Style TargetType="local:EmojiAndTextControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:EmojiAndTextControl">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <WrapPanel Grid.Column="0" Name="PART_Left" 
+                                   Visibility="Collapsed">
+                            <Border Width="35" Height="35" 
+                                VerticalAlignment="Top"
+                                Margin="0,10"
+                                CornerRadius="4"
+                                UseLayoutRounding="True">
+                                <Border.Background>
+                                    <ImageBrush x:Name="LeftUser"
+                                        ImageSource="{TemplateBinding LeftImageSource}" RenderOptions.BitmapScalingMode="LowQuality " Stretch="Fill"/>
+                                </Border.Background>
+                            </Border>
+                            <Path Data="M365.714 256v512q0 14.857-10.857 25.714t-25.714 10.857-25.714-10.857l-256-256q-10.857-10.857-10.857-25.714t10.857-25.714l256-256q10.857-10.857 25.714-10.857t25.714 10.857 10.857 25.714z"
+                              Fill="White" Width="10" Height="10" Stretch="Fill"
+                              StrokeThickness="0" Grid.Column="1"
+                              VerticalAlignment="Top" Margin="0,20,-14,0"
+                              
+                              UseLayoutRounding="True" SnapsToDevicePixels="True"/>
+                        </WrapPanel>
+                        
+                        
+                        <Border CornerRadius="4" Background="#9EEA6A"
+                            UseLayoutRounding="True" SnapsToDevicePixels="True"
+                            Grid.Column="1" Margin="10"
+                            Name="PART_Border">
+                            <TextBlock Name="PART_TextBlock" FontSize="15" Text="{TemplateBinding Text}"
+                                   Padding="6" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                        </Border>
+                        <WrapPanel Grid.Column="2" Name="PART_Right">
+                            <Path Data="M329.143 512q0 14.857-10.857 25.714l-256 256q-10.857 10.857-25.714 10.857t-25.714-10.857-10.857-25.714v-512q0-14.857 10.857-25.714t25.714-10.857 25.714 10.857l256 256q10.857 10.857 10.857 25.714z"
+                              Fill="#9EEA6A" Width="10" Height="10" Stretch="Fill"
+                              StrokeThickness="0" 
+                              VerticalAlignment="Top" Margin="-14,20,0,0"
+                              UseLayoutRounding="True" SnapsToDevicePixels="True"/>
+                            <Border Width="35" Height="35"
+                                VerticalAlignment="Top"
+                                Margin="0,10"
+                                CornerRadius="4"
+                                UseLayoutRounding="True">
+                                <Border.Background>
+                                    <ImageBrush x:Name="RightUser"
+                                        ImageSource="{TemplateBinding RightImageSource}" RenderOptions.BitmapScalingMode="LowQuality" Stretch="Fill"/>
+                                </Border.Background>
+                            </Border>
+                        </WrapPanel>
+                       
+                    </Grid>
+                    <!--<ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsRight}" Value="false">
+                            <Setter Property="Visibility" TargetName="PART_Left" Value="Visible"/>
+                            <Setter Property="Background" TargetName="PART_Border" Value="White"/>
+                            <Setter Property="Visibility" TargetName="PART_Right" Value="Collapsed"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
