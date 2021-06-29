@@ -24,6 +24,12 @@
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>      
 
 ***
+### WpfTimeLineControl（WPF实现时间轴（仿Gitee））
+
+<img src="/WpfTimeLineControl/resources/WpfTimeLineControl.gif"/>  
+
+----------
+
 ### WpfCircularProgressBar（WPF实现环（圆）形进度条）
 
 <img src="/WpfCircularProgressBar/resources/WpfCircularProgressBar.gif"/>  
@@ -60,39 +66,39 @@
 
 ----------
 
-#### WpfCanvasAdorner（WPF实现旋转控件并修改宽高）  
+### WpfCanvasAdorner（WPF实现旋转控件并修改宽高）  
 
 <img src="/WpfCanvasAdorner/resources/canvas.gif"/>   
 
 ----------
 
-#### WpfBingMap（WPF使用MapControl加载高德地图）  
+### WpfBingMap（WPF使用MapControl加载高德地图）  
 
 <img src="/WPFBingMap/resources/amap.gif"/>   
 <img src="/WPFBingMap/resources/bingmap.gif"/>  
 
 ----------
 
-#### 3DAnimationNavigationBar（WPF实现3D菜单动画） 
+### 3DAnimationNavigationBar（WPF实现3D菜单动画） 
 
 <img src="/3DAnimationNavigationBar/resources/GIFBar.gif"/>   
 
 ----------
 
-#### WpfRoundMenu（WPF实现圆形菜单）  
+### WpfRoundMenu（WPF实现圆形菜单）  
 
 <img src="/WpfRoundMenu/resources/roundMenu.gif"/>  
 
 ----------
 
 
-#### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
+### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
 
 <img src="/WPFCheckCode/resources/code.gif"/>  
 
 ----------
 
-#### CutImageSolution（WPF实现用户头像裁剪）
+### CutImageSolution（WPF实现用户头像裁剪）
 
 <img src="/CutImageSolution/resources/GIFCut.gif"/>
 
@@ -100,7 +106,7 @@
 
 ----------
 
-#### WpfAnimationWeChat（WPF使用图片实现微信语音播放动画）
+### WpfAnimationWeChat（WPF使用图片实现微信语音播放动画）
 
 <img src="/WpfAnimationWeChat/resources/0.gif"/>  
 <img src="/WpfAnimationWeChat/resources/1.gif"/>  
