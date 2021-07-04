@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfDashboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDashboard"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <local:DashboardControl Value="{Binding ElementName=CirularSlider,Path=Value}"/>
+            <Slider Minimum="0" Maximum="100" Margin="0,10"
+                    x:Name="CirularSlider" IsSnapToTickEnabled="True"
+                    VerticalAlignment="Center" Value="10" Width="220"/>
+        </StackPanel>
+    </Grid>
+</Window>
