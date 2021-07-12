@@ -87,7 +87,6 @@
 ### WpfBingMap（WPF使用MapControl加载高德地图）  
 
 <img src="/WPFBingMap/resources/amap.gif"/>   
-<img src="/WPFBingMap/resources/bingmap.gif"/>  
 
 ----------
 
