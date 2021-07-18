@@ -1,5 +1,5 @@
  [中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README.md) - [English](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-en.md)   
- 
+
  ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg)   <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=B61RFy2vvpaKLEDxaW6NsDpPZA-eSyFh&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPF开发者" title="WPF开发者"></a>
 
 
@@ -95,7 +95,7 @@
 
 ### 3DAnimationNavigationBar
 
-<img src="/3DAnimationNavigationBar/resources/GIFBar.gif"/>   
+<img src="/resources/WPFDevelopersResource/AnimationNavigationBar3D.gif"/>   
 
 ----------
 
@@ -114,9 +114,9 @@
 
 ### CutImageSolution
 
-<img src="/CutImageSolution/resources/GIFCut.gif"/>
+<img src="/resources/WPFDevelopersResource/CutImage.gif"/>  
 
-<img src="/CutImageSolution/resources/1.gif"/>  
+<img src="/resources/WPFDevelopersResource/CutImage1.gif"/>   
 
 ----------
 

@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <CubicEase x:Key="CubicEase" EasingMode="EaseInOut"/>
+    <PowerEase x:Key="PowerEase" EasingMode="EaseInOut"/>
+    <!--<DoubleAnimation x:Key="DoubleAnimation3D" Duration="00:00:1" To="90" EasingFunction="{StaticResource CubicEase}"/>-->
+
+</ResourceDictionary>

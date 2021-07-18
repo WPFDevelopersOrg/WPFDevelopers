@@ -94,7 +94,7 @@
 
 ### 3DAnimationNavigationBar（WPF实现3D菜单动画） 
 
-<img src="/3DAnimationNavigationBar/resources/GIFBar.gif"/>   
+<img src="/resources/WPFDevelopersResource/AnimationNavigationBar3D.gif"/>   
 
 ----------
 
@@ -113,9 +113,9 @@
 
 ### CutImageSolution（WPF实现用户头像裁剪）
 
-<img src="/CutImageSolution/resources/GIFCut.gif"/>
+<img src="/resources/WPFDevelopersResource/CutImage.gif"/>  
 
-<img src="/CutImageSolution/resources/1.gif"/>  
+<img src="/resources/WPFDevelopersResource/CutImage1.gif"/>  
 
 ----------
 

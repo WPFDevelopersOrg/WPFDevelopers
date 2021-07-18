@@ -1,0 +1,124 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:wd="clr-namespace:WPFDevelopers.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="Basic/Animations.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style TargetType="{x:Type wd:AnimationNavigationBar3DItem}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type wd:AnimationNavigationBar3DItem}">
+                    <Viewport3D Height="{TemplateBinding Width}" Width="{TemplateBinding Height}">
+                        <Viewport3D.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetProperty="Angle" Storyboard.TargetName="axis3d">
+                                        <DoubleAnimation Duration="00:00:1" To="90" EasingFunction="{StaticResource CubicEase}"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetProperty="Angle" Storyboard.TargetName="axis3d">
+                                        <DoubleAnimation Duration="00:00:1" To="0" EasingFunction="{StaticResource CubicEase}"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Viewport3D.Triggers>
+                        <Viewport3D.Camera>
+                            <OrthographicCamera LookDirection="0,0,-100" Position="0,0,100" UpDirection="0,1,0"/>
+                        </Viewport3D.Camera>
+                        <Viewport3D.Children>
+                            <ModelVisual3D>
+                                <ModelVisual3D.Content>
+                                    <AmbientLight Color="White"/>
+                                </ModelVisual3D.Content>
+                            </ModelVisual3D>
+                            <ContainerUIElement3D>
+                                <ContainerUIElement3D.Transform>
+                                    <RotateTransform3D>
+                                        <RotateTransform3D.Rotation>
+                                            <AxisAngleRotation3D x:Name="axis3d" Angle="0" Axis="1 0 0"/>
+                                        </RotateTransform3D.Rotation>
+                                    </RotateTransform3D>
+                                </ContainerUIElement3D.Transform>
+
+                                <Viewport2DVisual3D>
+                                    <Viewport2DVisual3D.Material>
+                                        <DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True"/>
+                                    </Viewport2DVisual3D.Material>
+                                    <Viewport2DVisual3D.Geometry>
+                                        <MeshGeometry3D Positions="-1,1,1    -1,-1,1   1,-1,1    1,1,1"
+                                    TextureCoordinates="0,0   0,1     1,1  1,0"
+                                    TriangleIndices="0 1 2 0 2 3"/>
+                                    </Viewport2DVisual3D.Geometry>
+
+                                    <Border Background="{TemplateBinding FileBackground}" Height="110" Width="110" CornerRadius="0,0,0,0">
+                                        <Path Data="{TemplateBinding PathDate}" Fill="#FFFF"
+                                          Stretch="Fill"  Width="40" Height="40"/>
+                                    </Border>
+                                </Viewport2DVisual3D>
+                                <Viewport2DVisual3D>
+                                    <Viewport2DVisual3D.Material>
+                                        <DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True"/>
+                                    </Viewport2DVisual3D.Material>
+                                    <Viewport2DVisual3D.Geometry>
+                                        <MeshGeometry3D Positions="-1,1,1  1,1,1   1,1,-1   -1,1,-1"
+                                    TextureCoordinates="0,0   0,1   1,1  1,0"
+                                    TriangleIndices="0 1 2 0 2 3"/>
+                                    </Viewport2DVisual3D.Geometry>
+
+                                    <Border Background="{TemplateBinding BackFileBackground}" Height="110" Width="110"  CornerRadius="0,0,0,0" 
+                                            RenderTransformOrigin="0.5,0.5">
+                                        <Border.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="90"/>
+                                            </TransformGroup>
+                                        </Border.RenderTransform>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Path Data="{TemplateBinding PathDate}" Fill="#FFFF"
+                                          Stretch="Fill"  Width="40" Height="40"/>
+                                            <TextBlock Text="{TemplateBinding Text}" HorizontalAlignment="Center" FontSize="{TemplateBinding FontSize}" Foreground="White"/>
+                                        </StackPanel>
+                                    </Border>
+                                </Viewport2DVisual3D>
+                            </ContainerUIElement3D>
+                        </Viewport3D.Children>
+                    </Viewport3D>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type wd:AnimationNavigationBar3D}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type wd:AnimationNavigationBar3D}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="{Binding Columns,RelativeSource={RelativeSource AncestorType={x:Type wd:AnimationNavigationBar3D}}}"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

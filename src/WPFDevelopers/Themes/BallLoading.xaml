@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:wd="clr-namespace:WPFDevelopers.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style TargetType="{x:Type wd:BallLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type wd:BallLoading}">
+                    <Viewbox>
+                        <Grid x:Name="Part_BackGrid" Width="400" Height="140">
+                            <Grid.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="5" Color="#ff6a27" Opacity="0.8"/>
+                            </Grid.Effect>
+                            <Canvas>
+                                <Ellipse x:Name="Part_Eillipse"  Canvas.Left="20" Canvas.Top="50" Width="40" Height="40">
+                                    <Ellipse.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#ff9303" Offset="0"/>
+                                            <GradientStop Color="#ff8c09" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Canvas>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid x:Name="Part_EillpseDock1" Grid.Column="1" RenderTransformOrigin="0,0.5">
+                                    <Ellipse x:Name="Part_Eillipse1"  HorizontalAlignment="Center" Width="40" Height="40">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#ff781a" Offset="0"/>
+                                                <GradientStop Color="#ff6a27" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Grid>
+                                <Grid x:Name="Part_EillpseDock2" Grid.Column="2" RenderTransformOrigin="0,0.5">
+                                    <Ellipse x:Name="Part_Eillipse2"  HorizontalAlignment="Center" Width="40" Height="40">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#ff5539" Offset="0"/>
+                                                <GradientStop Color="#ff4845" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Grid>
+                                <Grid x:Name="Part_EillpseDock3" Grid.Column="3" RenderTransformOrigin="0,0.5">
+                                    <Ellipse x:Name="Part_Eillipse3"  HorizontalAlignment="Center" Width="40" Height="40">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#ff3357" Offset="0"/>
+                                                <GradientStop Color="#ff2465" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Grid>
+                                <Grid x:Name="Part_EillpseDock4" Grid.Column="4" RenderTransformOrigin="0,0.5">
+                                    <Ellipse x:Name="Part_Eillipse4"  HorizontalAlignment="Center" Width="40" Height="40">
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#ff097c" Offset="0"/>
+                                                <GradientStop Color="#ff0382" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

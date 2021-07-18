@@ -2,9 +2,7 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/CutImageSolution/CutImage/bin
-/CutImageSolution/CutImage/.vs
-/CutImageSolution/CutImage/obj
+
 
 /WpfAnimationWeChat/WpfAnimationWeChat/WpfAnimationWeChat/bin
 /WpfAnimationWeChat/WpfAnimationWeChat/WpfAnimationWeChat/obj
@@ -18,9 +16,7 @@
 /WPFCheckCode/WpfCodeImage/WpfCodeImage/obj
 /WPFCheckCode/WpfCodeImage/.vs
 
-/3DAnimationNavigationBar/3DAnimationNavigationBar/3DAnimationNavigationBar/bin
-/3DAnimationNavigationBar/3DAnimationNavigationBar/3DAnimationNavigationBar/obj
-/3DAnimationNavigationBar/3DAnimationNavigationBar/.vs
+
 
 /WpfRoundMenu/WpfRoundMenu/WpfRoundMenu/bin
 /WpfRoundMenu/WpfRoundMenu/WpfRoundMenu/obj
@@ -66,3 +62,9 @@
 /WpfPieControl/WpfPieControl/WpfPieControl/bin
 /WpfPieControl/WpfPieControl/WpfPieControl/obj
 /WpfPieControl/WpfPieControl/.vs
+
+/src/WPFDevelopers/bin
+/src/WPFDevelopers/obj
+/src/WPFDevelopers.Samples/bin
+/src/WPFDevelopers.Samples/obj
+/src/.vs

@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:Double x:Key="NormalFontSize">13</sys:Double>
+    <sys:Double x:Key="MediumFontSize">14</sys:Double>
+    <sys:Double x:Key="TitleFontSize">16</sys:Double>
+
+    <FontFamily x:Key="NormalFontFamily">
+        Helvetica Neue For Number, 
+        -apple-system, 
+        BlinkMacSystemFont, 
+        Segoe UI,
+        Roboto, 
+        PingFang SC, 
+        Hiragino Sans GB, 
+        Microsoft YaHei, 
+        Helvetica Neue, 
+        Helvetica, Arial, 
+        sans-serif
+    </FontFamily>
+
+    <FontStretch x:Key="NormalFontStretch">Normal</FontStretch>
+    <FontStyle x:Key="NormalFontStyle">Normal</FontStyle>
+    <FontWeight x:Key="NormalFontWeight">Normal</FontWeight>
+    
+</ResourceDictionary>

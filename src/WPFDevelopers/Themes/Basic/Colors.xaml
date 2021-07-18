@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="NormalColor">#409EFF</Color>
+    <SolidColorBrush x:Key="NormalSolidColorBrush" Color="{StaticResource NormalColor}"></SolidColorBrush>
+
+    <Color x:Key="MouseOverColor">#66B1FF</Color>
+    <SolidColorBrush x:Key="MouseOverSolidColorBrush" Color="{StaticResource NormalColor}"></SolidColorBrush>
+
+    <Color x:Key="PressedColor">#409EFF</Color>
+    <SolidColorBrush x:Key="PressedSolidColorBrush" Color="{StaticResource NormalColor}"></SolidColorBrush>
+    
+</ResourceDictionary>
