@@ -68,3 +68,6 @@
 /src/WPFDevelopers.Samples/bin
 /src/WPFDevelopers.Samples/obj
 /src/.vs
+
+/OutPut/WPFDevelopers.pdb
+/OutPut/WPFDevelopers.Samples.pdb
