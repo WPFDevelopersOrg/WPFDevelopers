@@ -14,7 +14,7 @@
                         <Rectangle x:Name="PART_RectangleSlider" Height="{TemplateBinding Height}"
                                    Fill="#E4E7ED" Width="3" HorizontalAlignment="Right"/>
                         <Rectangle Width="3"
-                                   Height="40" Fill="{StaticResource PressedSolidColorBrush}"
+                                   Height="40" Fill="{StaticResource PrimaryNormalSolidColorBrush}"
                                    VerticalAlignment="Top" HorizontalAlignment="Right">
                             <Rectangle.RenderTransform>
                                 <TranslateTransform x:Name="PART_TranslateTransform"/>
@@ -35,7 +35,7 @@
                                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                                     <Setter Property="Cursor" Value="Hand"/>
                                     <Setter Property="Height" Value="40"/>
-                                    <Setter Property="Foreground" Value="#303133"/>
+                                    <Setter Property="Foreground" Value="{StaticResource PrimaryTextSolidColorBrush}"/>
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -50,10 +50,10 @@
                                                 </Border>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsSelected" Value="True">
-                                                        <Setter Property="Foreground" Value="{StaticResource PressedSolidColorBrush}"/>
+                                                        <Setter Property="Foreground" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
                                                     </Trigger>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="Foreground" Value="{StaticResource PressedSolidColorBrush}"/>
+                                                        <Setter Property="Foreground" Value="{StaticResource PrimaryMouseOverSolidColorBrush}"/>
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
                                             </ControlTemplate>

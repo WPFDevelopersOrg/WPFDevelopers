@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UniformGrid>
-        <wpfdev:BallLoading/>
+        <wpfdev:BallLoading Width="200"/>
         <wpfdev:StreamerLoading/>
         <wpfdev:WaitLoading/>
     </UniformGrid>

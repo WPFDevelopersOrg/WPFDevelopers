@@ -1,13 +1,35 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Color x:Key="NormalColor">#409EFF</Color>
-    <SolidColorBrush x:Key="NormalSolidColorBrush" Color="{StaticResource NormalColor}"></SolidColorBrush>
 
-    <Color x:Key="MouseOverColor">#66B1FF</Color>
-    <SolidColorBrush x:Key="MouseOverSolidColorBrush" Color="{StaticResource NormalColor}"></SolidColorBrush>
+    <Color x:Key="PrimaryTextColor">#303133</Color>
+    <SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}"></SolidColorBrush>
 
-    <Color x:Key="PressedColor">#409EFF</Color>
-    <SolidColorBrush x:Key="PressedSolidColorBrush" Color="{StaticResource NormalColor}"></SolidColorBrush>
-    
+    <Color x:Key="PrimaryNormalColor">#409EFF</Color>
+    <SolidColorBrush x:Key="PrimaryNormalSolidColorBrush" Color="{StaticResource PrimaryNormalColor}"></SolidColorBrush>
+
+    <Color x:Key="PrimaryMouseOverColor">#66B1FF</Color>
+    <SolidColorBrush x:Key="PrimaryMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="PrimaryPressedColor">#3A8EE6</Color>
+    <SolidColorBrush x:Key="PrimaryPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+
+    <Color x:Key="SuccessColor">#67C23A</Color>
+    <SolidColorBrush x:Key="SuccessSolidColorBrush" Color="{StaticResource SuccessColor}"></SolidColorBrush>
+
+    <Color x:Key="WarningColor">#E6A23C</Color>
+    <SolidColorBrush x:Key="WarningSolidColorBrush" Color="{StaticResource WarningColor}"></SolidColorBrush>
+
+    <Color x:Key="DangerColor">#F56C6C</Color>
+    <SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}"></SolidColorBrush>
+
+    <Color x:Key="InfoColor">#909399</Color>
+    <SolidColorBrush x:Key="InfoSolidColorBrush" Color="{StaticResource InfoColor}"></SolidColorBrush>
+
+    <Color x:Key="WhiteColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="WhiteSolidColorBrush" Color="{StaticResource WhiteColor}"></SolidColorBrush>
+
+    <Color x:Key="ExtralightColor">#F2F6FC</Color>
+    <SolidColorBrush x:Key="ExtralightSolidColorBrush" Color="{StaticResource ExtralightColor}"></SolidColorBrush>
+
 </ResourceDictionary>

@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="62"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,7 +19,7 @@
 
         <wpfdev:CutImage x:Name="cutCustoms"
                 Grid.Row="0"
-                Grid.Column="0"/>
+                Grid.Column="0" Width="400" Height="380"/>
         <StackPanel Grid.Column="1" VerticalAlignment="Top"  Margin="58,58,0,0">
             <Border BorderBrush="Gray"  
                 BorderThickness="1" Width="120" Height="120"
@@ -32,8 +32,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnImport" Content="选择图片" Width="100" Margin="0 20 10 20" />
-            <Button x:Name="btnSave" Content="保存图片" Width="100" Margin="0 20 10 20" Visibility="Collapsed"/>
+            <Button x:Name="btnImport" Content="选择图片" Width="100" Margin="0 20 10 20" Style="{StaticResource PrimaryButton}"/>
+            <Button x:Name="btnSave" Content="保存图片" Width="100" Margin="0 20 10 20" IsEnabled="False" Style="{StaticResource PrimaryButton}"/>
         </StackPanel>
     </Grid>
 </UserControl>

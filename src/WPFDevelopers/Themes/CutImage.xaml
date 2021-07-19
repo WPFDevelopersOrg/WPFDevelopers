@@ -13,7 +13,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Thumb">
-                    <Ellipse Height="10" Width="10" Fill="{StaticResource NormalSolidColorBrush}"></Ellipse>
+                    <Ellipse Height="10" Width="10" Fill="{StaticResource PrimaryNormalSolidColorBrush}"></Ellipse>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

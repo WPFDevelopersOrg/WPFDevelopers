@@ -11,7 +11,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:helpers="clr-namespace:WPFDevelopers.Samples.Helpers"
         mc:Ignorable="d"
-        Title="WPFDevelopers" Height="450" Width="800"
+        Title="WPFDevelopers" Height="{x:Static local:App.Height}" Width="{x:Static local:App.Wdith}"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainVM/>
@@ -30,21 +30,46 @@
             <i:InvokeCommandAction Command="{Binding ViewLoaded}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding MenuSelectionChangedCommand}"
+    <Grid Background="{StaticResource ExtralightSolidColorBrush}">
+        <!--<Rectangle Margin="5,0,0,0">
+            <Rectangle.Fill>
+                <VisualBrush Viewport="0,0,95,35" ViewportUnits="Absolute" TileMode="Tile">
+                    <VisualBrush.Visual>
+                        <StackPanel Background="Transparent">
+                            <TextBlock FontSize="{StaticResource TitleFontSize}" Margin="10"
+                                       Foreground="Gray">WPFDevelopers</TextBlock>
+                        </StackPanel>
+                    </VisualBrush.Visual>
+                    <VisualBrush.RelativeTransform>
+                        <RotateTransform Angle="45" CenterX="0.5" CenterY="0.5" />
+                    </VisualBrush.RelativeTransform>
+                </VisualBrush>
+            </Rectangle.Fill>
+        </Rectangle>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10,0,10,10" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Margin="0,0,10,0" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4,0,0,4">
+                <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding MenuSelectionChangedCommand}"
                                            CommandParameter="{Binding ElementName=NavigateMenu,Path=SelectedItem}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </wpfdev:NavigateMenu>
-        <ContentControl Grid.Column="1" Margin="0" Content="{Binding ControlPanel}"/>
-        <!--<example:AnimationNavigationBar3DExample/>-->
-        <!--<example:LoadingExample/>-->
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </wpfdev:NavigateMenu>
+            </Border>
+
+            <Border Grid.Column="1" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4">
+                <ContentControl Content="{Binding ControlPanel}" Margin="10"/>
+            </Border>
+        </Grid>
+
     </Grid>
 </Window>

@@ -3,6 +3,7 @@
     <ResourceDictionary.MergedDictionaries>
         
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Basic/Geometrys.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Styles/Styles.Buttons.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/AnimationNavigationBar3D.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/BallLoading.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CutImage.xaml"/>

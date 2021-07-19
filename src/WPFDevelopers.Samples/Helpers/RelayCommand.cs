@@ -7,7 +7,6 @@ namespace WPFDevelopers.Samples.Helpers
     {
         private Action<object> executeAction;
         private Func<object, bool> canExecuteFunc;
-        public event EventHandler CanExecuteChanged;
         public RelayCommand(Action<object> execute)
             : this(execute, null)
         { }
@@ -20,6 +19,8 @@ namespace WPFDevelopers.Samples.Helpers
             executeAction = execute;
             canExecuteFunc = canExecute;
         }
+
+        public event EventHandler CanExecuteChanged;
         public bool CanExecute(object parameter)
         {
             if (canExecuteFunc == null)

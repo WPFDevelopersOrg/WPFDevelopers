@@ -33,7 +33,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             if (openFileDialog.ShowDialog() == true)
             {
                 cutCustoms.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
-                btnSave.Visibility = Visibility.Visible;
+                btnSave.IsEnabled = true;
             }
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)

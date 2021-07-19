@@ -84,7 +84,8 @@
                                         <StackPanel VerticalAlignment="Center">
                                             <Path Data="{TemplateBinding PathDate}" Fill="#FFFF"
                                           Stretch="Fill"  Width="40" Height="40"/>
-                                            <TextBlock Text="{TemplateBinding Text}" HorizontalAlignment="Center" FontSize="{TemplateBinding FontSize}" Foreground="White"/>
+                                            <TextBlock Text="{TemplateBinding Text}" HorizontalAlignment="Center" FontSize="{TemplateBinding FontSize}" 
+                                                       Foreground="{StaticResource WhiteSolidColorBrush}"/>
                                         </StackPanel>
                                     </Border>
                                 </Viewport2DVisual3D>

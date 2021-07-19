@@ -8,16 +8,18 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type wd:StreamerLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type wd:StreamerLoading}">
-                    <Rectangle x:Name="PART_Rectangle" Width="200" Height="200"
+                    <Rectangle x:Name="PART_Rectangle" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
                                HorizontalAlignment="Center" VerticalAlignment="Center" 
                                StrokeThickness="3">
                         <Rectangle.Stroke>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity=".6">
                                 <GradientStop Color="Transparent" Offset="0"/>
-                                <GradientStop Color="#FF025F20" Offset="1"/>
+                                <GradientStop Color="{StaticResource PrimaryNormalColor}" Offset="1"/>
                             </LinearGradientBrush>
                         </Rectangle.Stroke>
                     </Rectangle>
@@ -56,9 +58,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type wd:WaitLoading}">
                     <Canvas Width="100" Height="20">
-                        <Ellipse x:Name="PART_RedEllipase" Canvas.Left="0" Height="20" Width="20" Fill="Red"/>
-                        <Ellipse x:Name="PART_GreenEllipase" Canvas.Left="50" Height="20" Width="20" Fill="Green"/>
-                        <Ellipse x:Name="PART_OrangeEllipase" Canvas.Left="100" Height="20" Width="20" Fill="Orange"/>
+                        <Ellipse x:Name="PART_RedEllipase" Canvas.Left="0" Height="20" Width="20" Fill="{StaticResource DangerSolidColorBrush}"/>
+                        <Ellipse x:Name="PART_GreenEllipase" Canvas.Left="50" Height="20" Width="20" Fill="{StaticResource SuccessSolidColorBrush}"/>
+                        <Ellipse x:Name="PART_OrangeEllipase" Canvas.Left="100" Height="20" Width="20" Fill="{StaticResource WarningSolidColorBrush}"/>
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="Loaded">

@@ -23,5 +23,4 @@
     <FontStretch x:Key="NormalFontStretch">Normal</FontStretch>
     <FontStyle x:Key="NormalFontStyle">Normal</FontStyle>
     <FontWeight x:Key="NormalFontWeight">Normal</FontWeight>
-    
 </ResourceDictionary>

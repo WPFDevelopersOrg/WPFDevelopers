@@ -52,6 +52,7 @@
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="Controls\CutImage\CutImage.cs" />
     <Compile Include="Controls\CutImage\DragDrop.cs" />
+    <Compile Include="Controls\Helpers\ControlsHelper.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
     <Compile Include="Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="Controls\Loadings\WaitLoading.cs" />
@@ -81,6 +82,10 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Styles.Buttons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
