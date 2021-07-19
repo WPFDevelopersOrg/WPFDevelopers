@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:CircularMenu}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CircularMenu}">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.RenderTransform>
+                            <RotateTransform x:Name="PART_RotateTransform" Angle="{TemplateBinding Angle}" CenterX="200" CenterY="200"></RotateTransform>
+                        </Grid.RenderTransform>
+                        <Path x:Name="PART_Path" Data="M 200,200 0,200 A 200,200 0 0 1 58.6,58.6z" 
+                                  Fill="{TemplateBinding BackgroundColor}" VerticalAlignment="Center"/>
+                        <Image Source="{TemplateBinding IconImage}" RenderTransformOrigin="0.5,0.5"
+                                   Margin="60,100,0,0" 
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Center" 
+                                   Width="40" Height="40" >
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="-70"/>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="PART_Path" Property="Fill" Value="#009AD8"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

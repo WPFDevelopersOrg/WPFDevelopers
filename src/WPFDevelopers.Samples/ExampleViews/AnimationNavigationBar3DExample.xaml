@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/background.png"/>
+            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/AnimationNavigationBar3D/background.png"/>
         </Grid.Background>
         <Border Width="400" Height="235" Background="#F9F7F9"
                 VerticalAlignment="Top" Margin="10,0" SnapsToDevicePixels="True">

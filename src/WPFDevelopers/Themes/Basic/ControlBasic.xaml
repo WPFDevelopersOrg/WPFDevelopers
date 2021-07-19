@@ -30,5 +30,5 @@
     <sys:Double x:Key="EnabledOpacity">0.5</sys:Double>
     <sys:Double x:Key="NormalCornerRadius">4</sys:Double>
 
-
+    <DropShadowEffect x:Key="NormalShadowDepth" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#AA000000" Opacity=".42" RenderingBias="Performance" />
 </ResourceDictionary>

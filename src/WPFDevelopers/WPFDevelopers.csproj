@@ -50,8 +50,13 @@
   <ItemGroup>
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
+    <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />
+    <Compile Include="Controls\CheckCode\CheckCode.cs" />
+    <Compile Include="Controls\CircularMenu\CircularMenu.cs" />
     <Compile Include="Controls\CutImage\CutImage.cs" />
     <Compile Include="Controls\CutImage\DragDrop.cs" />
+    <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
+    <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\Helpers\ControlsHelper.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
     <Compile Include="Controls\Loadings\StreamerLoading.cs" />
@@ -79,7 +84,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\AnimationWeChat\0.png" />
+    <Resource Include="Images\AnimationWeChat\1.png" />
+    <Resource Include="Images\AnimationWeChat\2.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Generic.xaml">
       <SubType>Designer</SubType>
@@ -114,6 +123,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Basic\Font.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\CheckCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\CircularMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

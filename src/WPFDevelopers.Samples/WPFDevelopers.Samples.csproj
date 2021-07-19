@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity">
@@ -56,15 +60,49 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExampleViews\AnimationWeChatExample.xaml.cs">
+      <DependentUpon>AnimationWeChatExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\CheckCodeExample.xaml.cs">
+      <DependentUpon>CheckCodeExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\CircularMenuExample.xaml.cs">
+      <DependentUpon>CircularMenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Map\AMapTitleLayer.cs" />
+    <Compile Include="ExampleViews\Map\BingAMapExample.xaml.cs">
+      <DependentUpon>BingAMapExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\CutImageExample.xaml.cs">
       <DependentUpon>CutImageExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\Map\PushpinModel.cs" />
+    <Compile Include="ExampleViews\ThumbDragAndAngleExample.xaml.cs">
+      <DependentUpon>ThumbDragAndAngleExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\MenuEnum.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\NavigateMenuModel.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Page Include="ExampleViews\AnimationNavigationBar3DExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\AnimationWeChatExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\CheckCodeExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\CircularMenuExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Map\BingAMapExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ExampleViews\ThumbDragAndAngleExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -125,8 +167,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\background.png" />
+    <Resource Include="Images\AnimationNavigationBar3D\background.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\AMap\Car2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CircularMenu\1.png" />
+    <Resource Include="Images\CircularMenu\2.png" />
+    <Resource Include="Images\CircularMenu\3.png" />
+    <Resource Include="Images\CircularMenu\4.png" />
+    <Resource Include="Images\CircularMenu\5.png" />
+    <Resource Include="Images\CircularMenu\6.png" />
+    <Resource Include="Images\CircularMenu\7.png" />
+    <Resource Include="Images\CircularMenu\8.png" />
+    <Resource Include="Images\CircularMenu\gzh.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

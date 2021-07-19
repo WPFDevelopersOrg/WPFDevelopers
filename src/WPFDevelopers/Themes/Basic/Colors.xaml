@@ -2,9 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
+    <!--字体颜色-->
     <Color x:Key="PrimaryTextColor">#303133</Color>
     <SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}"></SolidColorBrush>
 
+    <!--Primary颜色-->
     <Color x:Key="PrimaryNormalColor">#409EFF</Color>
     <SolidColorBrush x:Key="PrimaryNormalSolidColorBrush" Color="{StaticResource PrimaryNormalColor}"></SolidColorBrush>
 
@@ -14,18 +16,48 @@
     <Color x:Key="PrimaryPressedColor">#3A8EE6</Color>
     <SolidColorBrush x:Key="PrimaryPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
 
+    <!--Success颜色-->
     <Color x:Key="SuccessColor">#67C23A</Color>
     <SolidColorBrush x:Key="SuccessSolidColorBrush" Color="{StaticResource SuccessColor}"></SolidColorBrush>
 
+    <Color x:Key="SuccessMouseOverColor">#85CE61</Color>
+    <SolidColorBrush x:Key="SuccessMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="SuccessPressedColor">#5DAF34</Color>
+    <SolidColorBrush x:Key="SuccessPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+
+    <!--Warning颜色-->
     <Color x:Key="WarningColor">#E6A23C</Color>
     <SolidColorBrush x:Key="WarningSolidColorBrush" Color="{StaticResource WarningColor}"></SolidColorBrush>
 
+    <Color x:Key="WarningMouseOverColor">#EBB563</Color>
+    <SolidColorBrush x:Key="WarningMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="WarningPressedColor">#CF9236</Color>
+    <SolidColorBrush x:Key="WarningPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+    
+
+    <!--Danger颜色-->
     <Color x:Key="DangerColor">#F56C6C</Color>
     <SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}"></SolidColorBrush>
 
+    <Color x:Key="DangerMouseOverColor">#EBB563</Color>
+    <SolidColorBrush x:Key="DangerMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="DangerPressedColor">#DD6161</Color>
+    <SolidColorBrush x:Key="DangerPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+
+    <!--Info颜色-->
     <Color x:Key="InfoColor">#909399</Color>
     <SolidColorBrush x:Key="InfoSolidColorBrush" Color="{StaticResource InfoColor}"></SolidColorBrush>
 
+    <Color x:Key="InfoMouseOverColor">#A6A9AD</Color>
+    <SolidColorBrush x:Key="InfoMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="InfoPressedColor">#82848A</Color>
+    <SolidColorBrush x:Key="InfoPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+
+    <!--白色-->
     <Color x:Key="WhiteColor">#FFFFFF</Color>
     <SolidColorBrush x:Key="WhiteSolidColorBrush" Color="{StaticResource WhiteColor}"></SolidColorBrush>
 

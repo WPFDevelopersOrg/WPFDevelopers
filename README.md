@@ -58,7 +58,7 @@
 
 ### WpfCircularMenu（WPF实现环（圆）形菜单）
 
-<img src="/WpfCircularMenu/resources/WpfCircularMenu.gif"/>  
+<img src="/resources/WPFDevelopersResource/CircularMenu.gif"/>   
 
 ----------
 
@@ -88,13 +88,13 @@
 
 ### WpfCanvasAdorner（WPF实现旋转控件并修改宽高）  
 
-<img src="/WpfCanvasAdorner/resources/canvas.gif"/>   
+<img src="/resources/WPFDevelopersResource/ElementAdorner.gif"/>    
 
 ----------
 
 ### WpfBingMap（WPF使用MapControl加载高德地图）  
 
-<img src="/WPFBingMap/resources/amap.gif"/>   
+<img src="/resources/WPFDevelopersResource/BingAMap.gif"/>  
 
 ----------
 
@@ -113,7 +113,7 @@
 
 ### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
 
-<img src="/WPFCheckCode/resources/code.gif"/>  
+<img src="/resources/WPFDevelopersResource/CheckCode.gif"/>   
 
 ----------
 
@@ -127,8 +127,7 @@
 
 ### WpfAnimationWeChat（WPF使用图片实现微信语音播放动画）
 
-<img src="/WpfAnimationWeChat/resources/0.gif"/>  
-<img src="/WpfAnimationWeChat/resources/1.gif"/>  
+<img src="/resources/WPFDevelopersResource/AnimationWeChat.gif"/>   
 
 * 捐赠支付宝
 

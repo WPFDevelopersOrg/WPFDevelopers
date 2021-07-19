@@ -51,7 +51,11 @@ namespace WPFDevelopers.Samples.ViewModels
             NavigateMenuModelList.Add(new NavigateMenuModel { Name = "Navigation3D" });
             NavigateMenuModelList.Add(new NavigateMenuModel { Name = "Loading" });
             NavigateMenuModelList.Add(new NavigateMenuModel { Name = "CutImage" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新" });
+            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "WeChatAudio" });
+            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "AMap" });
+            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "ThumbAngle" });
+            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "CheckCode" });
+            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "CircularMenu" });
             NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新" });
 
         }
@@ -84,6 +88,21 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.CutImage:
                     ControlPanel = new CutImageExample();
+                    break;
+                case MenuEnum.WeChatAudio:
+                    ControlPanel = new AnimationWeChatExample();
+                    break;
+                case MenuEnum.AMap:
+                    ControlPanel = new BingAMapExample();
+                    break;
+                case MenuEnum.ThumbAngle:
+                    ControlPanel = new ThumbDragAndAngleExample();
+                    break;
+                case MenuEnum.CheckCode:
+                    ControlPanel = new CheckCodeExample();
+                    break;
+                case MenuEnum.CircularMenu:
+                    ControlPanel = new CircularMenuExample();
                     break;
                 default:
                     break;

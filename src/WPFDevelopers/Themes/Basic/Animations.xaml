@@ -5,6 +5,5 @@
     <CubicEase x:Key="CubicEase" EasingMode="EaseInOut"/>
     <PowerEase x:Key="PowerEase" EasingMode="EaseInOut"/>
     <ExponentialEase x:Key="ExponentialEase" EasingMode="EaseOut"/>
-    <!--<DoubleAnimation x:Key="DoubleAnimation3D" Duration="00:00:1" To="90" EasingFunction="{StaticResource CubicEase}"/>-->
-
+    <SineEase x:Key="SineEase" EasingMode="EaseOut" />
 </ResourceDictionary>

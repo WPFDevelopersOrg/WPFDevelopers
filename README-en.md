@@ -59,7 +59,7 @@
 
 ### WpfCircularMenu
 
-<img src="/WpfCircularMenu/resources/WpfCircularMenu.gif"/>  
+<img src="/resources/WPFDevelopersResource/CircularMenu.gif"/>   
 
 ----------
 
@@ -89,13 +89,13 @@
 
 ### WpfCanvasAdorner  
 
-<img src="/WpfCanvasAdorner/resources/canvas.gif"/>   
+<img src="/resources/WPFDevelopersResource/ElementAdorner.gif"/>   
 
 ----------
 
 ### WpfBingMap 
 
-<img src="/WPFBingMap/resources/amap.gif"/>   
+<img src="/resources/WPFDevelopersResource/BingAMap.gif"/>     
 
 ----------
 
@@ -114,7 +114,7 @@
 
 ### WPFCheckCode
 
-<img src="/WPFCheckCode/resources/code.gif"/>  
+<img src="/resources/WPFDevelopersResource/CheckCode.gif"/>   
 
 ----------
 
@@ -128,8 +128,7 @@
 
 ### WpfAnimationWeChat
 
-<img src="/WpfAnimationWeChat/resources/0.gif"/>  
-<img src="/WpfAnimationWeChat/resources/1.gif"/>  
+<img src="/resources/WPFDevelopersResource/AnimationWeChat.gif"/>   
 
 * Alipay
 

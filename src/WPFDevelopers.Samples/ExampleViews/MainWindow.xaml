@@ -47,7 +47,7 @@
             </Rectangle.Fill>
         </Rectangle>-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Margin="10,0,10,10" Grid.Row="1">
@@ -55,8 +55,9 @@
                 <ColumnDefinition Width="120" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border Margin="0,0,10,0" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4,0,0,4">
-                <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu">
+            <Border Margin="0,0,10,0" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4,0,0,4" 
+                    Effect="{StaticResource NormalShadowDepth}">
+                <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu" Margin="10,0,0,0">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSelectionChangedCommand}"
@@ -66,7 +67,8 @@
                 </wpfdev:NavigateMenu>
             </Border>
 
-            <Border Grid.Column="1" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4">
+            <Border Grid.Column="1" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4"
+                    Effect="{StaticResource NormalShadowDepth}">
                 <ContentControl Content="{Binding ControlPanel}" Margin="10"/>
             </Border>
         </Grid>

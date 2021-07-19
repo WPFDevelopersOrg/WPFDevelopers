@@ -10,5 +10,10 @@ namespace WPFDevelopers.Samples.Helpers
         Navigation3D,
         Loading,
         CutImage,
+        WeChatAudio,
+        AMap,
+        ThumbAngle,
+        CheckCode,
+        CircularMenu,
     }
 }
