@@ -14,7 +14,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Padding" Value="9 4" />
-        <Setter Property="wd:ControlsHelper.CornerRadius" Value="4"/>
+        <Setter Property="wd:ControlsHelper.CornerRadius" Value="3"/>
         <Setter Property="Height" Value="40"/>
     </Style>
 
@@ -29,14 +29,13 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}">
                             <Border.Background>
-                                <SolidColorBrush x:Name="PART_ButtonBackground" Color="{StaticResource PrimaryNormalColor}"/>
+                                <SolidColorBrush Color="{StaticResource PrimaryNormalColor}"/>
                             </Border.Background>
                         </Border>
 
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           Margin="{TemplateBinding Padding}" 
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          RecognizesAccessKey="True" />
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -48,32 +47,31 @@
                                     <VisualTransition GeneratedDuration="0:0:0.1"
                                                       From="MouseOver" />
                                     <VisualTransition GeneratedDuration="0:0:0.1"
-                                                      To="MouseOver" />
+                                                      To="Normal" />
                                 </VisualStateGroup.Transitions>
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="Color" 
-                                                        Storyboard.TargetName="PART_ButtonBackground"
-                                                        To="{StaticResource PrimaryMouseOverColor}" 
-                                                        EasingFunction="{StaticResource ExponentialEase}"/>
+                                        <ColorAnimation Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
+                                                        Storyboard.TargetName="PART_Border"
+                                                        To="{StaticResource PrimaryMouseOverColor}"/>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="Color" 
-                                                        Storyboard.TargetName="PART_ButtonBackground"
-                                                        To="{StaticResource PrimaryPressedColor}" 
-                                                        EasingFunction="{StaticResource ExponentialEase}"/>
+                                        <ColorAnimation Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" 
+                                                        Storyboard.TargetName="PART_Border"
+                                                        To="{StaticResource PrimaryPressedColor}"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
-                        </Trigger>
+                        <!--<Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" 
+                                    Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+                        </Trigger>-->
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
                         </Trigger>
