@@ -8,79 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" 
              Background="Black">
-    <UserControl.Resources>
-        <Storyboard x:Key="CheckedStoryboard">
-            <DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry"
-                             Storyboard.TargetProperty="RadiusX"
-                             Duration="00:00:0.4" To="200"/>
-            <DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry"
-                             Storyboard.TargetProperty="RadiusY"
-                             Duration="00:00:0.4" To="200"/>
-        </Storyboard>
-        <Storyboard x:Key="UncheckedStoryboard">
-            <DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry"
-                             Storyboard.TargetProperty="RadiusX"
-                             Duration="00:00:0.3" To="0"/>
-            <DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry"
-                             Storyboard.TargetProperty="RadiusY"
-                             Duration="00:00:0.3" To="0"/>
-        </Storyboard>
-    </UserControl.Resources>
-    <Viewbox>
-        <Grid Height="768" Width="1024">
-            <Canvas>
-                <ItemsControl ItemsSource="{Binding MenuArray,RelativeSource={RelativeSource AncestorType=local:CircularMenuExample}}"
-                              Canvas.Left="150" Canvas.Top="150">
-                    <ItemsControl.Clip>
-                        <EllipseGeometry x:Name="PART_EllipseGeometry" RadiusX="0" RadiusY="0" Center="200,200"></EllipseGeometry>
-                    </ItemsControl.Clip>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <wpfdev:CircularMenu Angle="{Binding Angle}" MenuTxt="{Binding Title}" 
-                                                              BackgroundColor="{Binding FillColor}" IconImage="{Binding IconImage}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Grid/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-
-                <ToggleButton Canvas.Left="300" Canvas.Top="300" Cursor="Hand">
-                    <ToggleButton.Template>
-                        <ControlTemplate TargetType="ToggleButton">
-                            <Grid>
-                                <Ellipse x:Name="PART_Ellipse" Width="100" Height="100" Fill="#009AD8" ToolTip="关闭"/>
-                                <Path x:Name="PART_Path" Data="M734.618 760.269c-24.013 24.013-62.925 24.013-86.886 0l-135.731-155.136-135.731 155.085c-24.013 24.013-62.925 24.013-86.886 0-24.013-24.013-24.013-62.925 0-86.886l141.21-161.28-141.261-161.382c-24.013-24.013-24.013-62.874 0-86.886s62.874-24.013 86.886 0l135.782 155.187 135.731-155.187c24.013-24.013 62.874-24.013 86.886 0s24.013 62.925 0 86.886l-141.21 161.382 141.21 161.28c24.013 24.013 24.013 62.925 0 86.938z"
-                                      Fill="White" Stretch="Fill" Width="20" Height="20" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
-                                </Path>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsChecked" Value="false">
-                                    <Setter TargetName="PART_Path" Property="RenderTransform">
-                                        <Setter.Value>
-                                            <RotateTransform Angle="45"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="ToolTip" TargetName="PART_Ellipse" Value="展开"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </ToggleButton.Template>
-                    <ToggleButton.Triggers>
-                        <EventTrigger RoutedEvent="ToggleButton.Checked">
-                            <BeginStoryboard Storyboard="{StaticResource CheckedStoryboard}"/>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                            <BeginStoryboard Storyboard="{StaticResource UncheckedStoryboard}"/>
-                        </EventTrigger>
-                    </ToggleButton.Triggers>
-                </ToggleButton>
-                <TextBlock Text="微信公众号：WPFDevelopers" FontSize="40"
+    <StackPanel>
+        <TextBlock Text="微信公众号：WPFDevelopers" FontSize="40"
                            Foreground="#A9CC32" FontWeight="Bold"
-                           Canvas.Top="50"/>
-            </Canvas>
-        </Grid>
-    </Viewbox>
+                           Margin="50,10,0,0"/>
+        <wpfdev:CircularMenu ItemsSource="{Binding MenuArray,RelativeSource={RelativeSource AncestorType=local:CircularMenuExample}}"/>
+    </StackPanel>
 </UserControl>

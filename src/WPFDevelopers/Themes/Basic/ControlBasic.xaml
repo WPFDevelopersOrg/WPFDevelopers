@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Font.xaml"/>
         <ResourceDictionary Source="Colors.xaml"/>
+        <ResourceDictionary Source="Geometrys.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="ControlBasicStyle" TargetType="Control">
         <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />

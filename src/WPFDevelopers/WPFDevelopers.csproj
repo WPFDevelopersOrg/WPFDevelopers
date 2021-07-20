@@ -53,6 +53,7 @@
     <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />
     <Compile Include="Controls\CheckCode\CheckCode.cs" />
     <Compile Include="Controls\CircularMenu\CircularMenu.cs" />
+    <Compile Include="Controls\CircularMenu\CircularMenuItem.cs" />
     <Compile Include="Controls\CutImage\CutImage.cs" />
     <Compile Include="Controls\CutImage\DragDrop.cs" />
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="Controls\Loadings\WaitLoading.cs" />
     <Compile Include="Controls\NavigateMenu\NavigateMenu.cs" />
+    <Compile Include="Converts\IndexToColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -147,5 +149,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

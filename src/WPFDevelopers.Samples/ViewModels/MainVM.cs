@@ -48,14 +48,10 @@ namespace WPFDevelopers.Samples.ViewModels
         public MainVM()
         {
             NavigateMenuModelList = new ObservableCollection<NavigateMenuModel>();
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "Navigation3D" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "Loading" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "CutImage" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "WeChatAudio" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "AMap" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "ThumbAngle" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "CheckCode" });
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "CircularMenu" });
+            foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
+            {
+                NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
+            }
             NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新" });
 
         }

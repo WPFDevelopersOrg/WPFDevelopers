@@ -64,4 +64,11 @@
     <Color x:Key="ExtralightColor">#F2F6FC</Color>
     <SolidColorBrush x:Key="ExtralightSolidColorBrush" Color="{StaticResource ExtralightColor}"></SolidColorBrush>
 
+    <!--CircularMenu-->
+    <Color x:Key="CircularSingularColor">#BAE766</Color>
+    <SolidColorBrush x:Key="CircularSingularSolidColorBrush" Color="{StaticResource CircularSingularColor}"></SolidColorBrush>
+
+    <Color x:Key="CircularDualColor">#B0D440</Color>
+    <SolidColorBrush x:Key="CircularDualSolidColorBrush" Color="{StaticResource CircularDualColor}"></SolidColorBrush>
+
 </ResourceDictionary>
