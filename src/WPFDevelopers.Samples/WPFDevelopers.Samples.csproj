@@ -63,6 +63,9 @@
     <Compile Include="ExampleViews\AnimationWeChatExample.xaml.cs">
       <DependentUpon>AnimationWeChatExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\BreatheLightExample.xaml.cs">
+      <DependentUpon>BreatheLightExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\CheckCodeExample.xaml.cs">
       <DependentUpon>CheckCodeExample.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\AnimationWeChatExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\BreatheLightExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

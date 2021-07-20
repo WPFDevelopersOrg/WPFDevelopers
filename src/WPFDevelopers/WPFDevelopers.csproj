@@ -51,6 +51,7 @@
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />
+    <Compile Include="Controls\BreatheLight\BreathLamp.cs" />
     <Compile Include="Controls\CheckCode\CheckCode.cs" />
     <Compile Include="Controls\CircularMenu\CircularMenu.cs" />
     <Compile Include="Controls\CircularMenu\CircularMenuItem.cs" />
@@ -125,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Basic\Font.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\BreathLamp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

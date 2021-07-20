@@ -100,6 +100,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.CircularMenu:
                     ControlPanel = new CircularMenuExample();
                     break;
+                case MenuEnum.BreatheLight:
+                    ControlPanel = new BreatheLightExample();
+                    break;
                 default:
                     break;
             }

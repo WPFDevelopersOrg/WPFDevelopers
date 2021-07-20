@@ -15,5 +15,6 @@ namespace WPFDevelopers.Samples.Helpers
         ThumbAngle,
         CheckCode,
         CircularMenu,
+        BreatheLight,
     }
 }
