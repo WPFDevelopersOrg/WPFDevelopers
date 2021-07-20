@@ -83,7 +83,7 @@
 
 ### WPFBreatheLight
 
-<img src="/WPFBreatheLight/resources/breathe.gif"/>  
+<img src="/resources/WPFDevelopersResource/BreatheLight.gif"/>   
 
 ----------
 

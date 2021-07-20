@@ -2,14 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:WPFDevelopers.Controls">
 
-
-
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
-    <SineEase x:Key="SineEaseOut" EasingMode="EaseOut" />
-    <SineEase x:Key="SineEaseInOut" EasingMode="EaseInOut" />
 
     <ControlTemplate x:Key="LampEffect_Eclipse" TargetType="{x:Type controls:BreathLamp}">
         <Grid>

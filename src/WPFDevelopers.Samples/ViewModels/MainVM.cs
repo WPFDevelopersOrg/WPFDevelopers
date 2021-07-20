@@ -52,7 +52,7 @@ namespace WPFDevelopers.Samples.ViewModels
             {
                 NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
             }
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新" });
+            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
 
         }
         public ICommand ViewLoaded => new RelayCommand(obj =>

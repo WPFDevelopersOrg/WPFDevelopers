@@ -189,5 +189,14 @@
     <Resource Include="Images\CircularMenu\7.png" />
     <Resource Include="Images\CircularMenu\8.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Breathe\0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Breathe\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Breathe\2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

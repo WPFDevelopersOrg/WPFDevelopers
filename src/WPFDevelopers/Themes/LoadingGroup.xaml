@@ -67,28 +67,28 @@
                             <BeginStoryboard>
                                 <Storyboard  RepeatBehavior="Forever">
                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="PART_RedEllipase">
-                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" EasingFunction="{StaticResource PowerEase}"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="100" EasingFunction="{StaticResource PowerEase}"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" EasingFunction="{StaticResource PowerEase}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="100" EasingFunction="{StaticResource PowerEaseInOut}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}"/>
                                         <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50"/>
                                         <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0" EasingFunction="{StaticResource PowerEase}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0" EasingFunction="{StaticResource PowerEaseInOut}"/>
                                     </DoubleAnimationUsingKeyFrames>
                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="PART_GreenEllipase">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource PowerEase}"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" EasingFunction="{StaticResource PowerEase}"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" EasingFunction="{StaticResource PowerEase}"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" EasingFunction="{StaticResource PowerEase}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource PowerEaseInOut}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" EasingFunction="{StaticResource PowerEaseInOut}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}"/>
                                         <EasingDoubleKeyFrame KeyTime="0:0:3" Value="50"/>
                                     </DoubleAnimationUsingKeyFrames>
                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="PART_OrangeEllipase">
-                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" EasingFunction="{StaticResource PowerEase}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}"/>
                                         <EasingDoubleKeyFrame KeyTime="0:0:1" Value="50"/>
                                         <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0" EasingFunction="{StaticResource PowerEase}"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" EasingFunction="{StaticResource PowerEase}"/>
-                                        <EasingDoubleKeyFrame KeyTime="0:0:3" Value="100" EasingFunction="{StaticResource PowerEase}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0" EasingFunction="{StaticResource PowerEaseInOut}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:3" Value="100" EasingFunction="{StaticResource PowerEaseInOut}"/>
                                     </DoubleAnimationUsingKeyFrames>
                                 </Storyboard>
                             </BeginStoryboard>

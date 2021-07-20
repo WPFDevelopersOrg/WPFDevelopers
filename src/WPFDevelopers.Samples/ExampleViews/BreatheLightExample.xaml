@@ -7,17 +7,97 @@
              xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <wpfdev:BreathLamp Width="60" Height="60" LampEffect="OuterGlow" Background="LightGray" IsLampStart="true" Margin="75,197,665,193">
-            <TextBlock Text="112323" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </wpfdev:BreathLamp>
+    <UniformGrid Columns="1">
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
+                CornerRadius="3">
+            <Grid Margin="20,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="OuterGlow" Background="Transparent" IsLampStart="true"
+                                   VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/2.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </wpfdev:BreathLamp>
 
-        <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Eclipse" Background="LightGray" IsLampStart="true" Margin="224,197,516,193">
-            <TextBlock Text="112323" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </wpfdev:BreathLamp>
+                <TextBlock Grid.Column="1" 
+                           Margin="10,20"
+                           FontSize="{StaticResource MediumFontSize}">
+                    <Run Foreground="{StaticResource PrimaryTextSolidColorBrush}">
+                        周星星|达叔
+                    </Run>
+                    <Run Foreground="{StaticResource SuccessPressedSolidColorBrush}">正在直播</Run>
+                </TextBlock>
+                <Button Style="{StaticResource PrimaryButton}" Grid.Column="1" 
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
+            </Grid>
+            
+        </Border>
 
-        <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple" Background="LightGray" IsLampStart="true" Margin="395,197,345,193">
-            <TextBlock Text="112323" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </wpfdev:BreathLamp>
-    </Grid>
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
+                CornerRadius="3">
+            <Grid Margin="20,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Eclipse" Background="LightGray" IsLampStart="true"
+                                   VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/1.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </wpfdev:BreathLamp>
+
+                <TextBlock Grid.Column="1" 
+                           Margin="10,20"
+                           FontSize="{StaticResource MediumFontSize}"
+                           TextWrapping="Wrap">
+                    <Run Foreground="{StaticResource PrimaryTextSolidColorBrush}">
+                        大话西游之大圣娶亲&#x000A;
+                    </Run>
+                    <Run Foreground="{StaticResource SuccessPressedSolidColorBrush}">正在直播</Run>
+                </TextBlock>
+                <Button Style="{StaticResource PrimaryButton}" Grid.Column="1" 
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
+            </Grid>
+        </Border>
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
+                CornerRadius="3">
+           
+            <Grid Margin="20,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple" Background="LightGray" IsLampStart="true"
+                                   VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/0.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </wpfdev:BreathLamp>
+
+                <TextBlock Grid.Column="1" 
+                           Margin="10,20"
+                           FontSize="{StaticResource MediumFontSize}">
+                    <Run Foreground="{StaticResource PrimaryTextSolidColorBrush}">
+                        XXXYYY
+                    </Run>
+                    <Run Foreground="{StaticResource SuccessPressedSolidColorBrush}">正在直播</Run>
+                </TextBlock>
+                <Button Style="{StaticResource PrimaryButton}" Grid.Column="1" 
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
+            </Grid>
+        </Border>
+    </UniformGrid>
 </UserControl>

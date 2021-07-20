@@ -1,9 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    
-    <CubicEase x:Key="CubicEase" EasingMode="EaseInOut"/>
-    <PowerEase x:Key="PowerEase" EasingMode="EaseInOut"/>
-    <ExponentialEase x:Key="ExponentialEase" EasingMode="EaseOut"/>
-    <SineEase x:Key="SineEase" EasingMode="EaseOut" />
+
+    <CubicEase x:Key="CubicEaseInOut" EasingMode="EaseInOut"/>
+    <PowerEase x:Key="PowerEaseInOut" EasingMode="EaseInOut"/>
+    <ExponentialEase x:Key="ExponentialEaseOut" EasingMode="EaseOut"/>
+    <SineEase x:Key="SineEaseOut" EasingMode="EaseOut" />
+    <SineEase x:Key="SineEaseInOut" EasingMode="EaseInOut" />
 </ResourceDictionary>

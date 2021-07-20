@@ -11,7 +11,8 @@
     <StackPanel>
         <TextBlock Text="微信公众号：WPFDevelopers" FontSize="40"
                            Foreground="#A9CC32" FontWeight="Bold"
-                           Margin="50,10,0,0"/>
-        <wpfdev:CircularMenu ItemsSource="{Binding MenuArray,RelativeSource={RelativeSource AncestorType=local:CircularMenuExample}}"/>
+                           Margin="50,10,0,20"/>
+        <wpfdev:CircularMenu ItemsSource="{Binding MenuArray,RelativeSource={RelativeSource AncestorType=local:CircularMenuExample}}" 
+                             SelectionChanged="CircularMenu_SelectionChanged"/>
     </StackPanel>
 </UserControl>

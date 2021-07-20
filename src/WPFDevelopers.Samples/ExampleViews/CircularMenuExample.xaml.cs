@@ -52,6 +52,15 @@ namespace WPFDevelopers.Samples.ExampleViews
             }
             MenuArray = menuItemModels;
         }
+
+        private void CircularMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var circularMenu = sender as CircularMenu;
+            MenuItemModel menuItemModel = circularMenu.SelectedItem as MenuItemModel;
+            MessageBox.Show($"点击了{menuItemModel.Title}");
+        }
+
+
         //bool IsOdd(int num)
         //{
         //    return (num % 2) == 1;

@@ -7,22 +7,19 @@
              xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <ControlTemplate x:Key="PART_ControlTemplate" TargetType="wpfdev:AnimationWeChat">
-            <Image Height="20" Width="20" Source="/WPFDevelopers;component/Images/AnimationWeChat/2.png"/>
-        </ControlTemplate>
-    </UserControl.Resources>
+  
     <Grid>
-        <Viewbox>
+        <!--<Viewbox>
             <Grid Width="600" Height="300">
                 <Grid Height="28" Width="100" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
                     <Rectangle RadiusX="4" RadiusY="4" Fill="#9EEA6A" />
                     <StackPanel Orientation="Horizontal" Margin="4,0">
-                        <wpfdev:AnimationWeChat x:Name="AudioPlay" Template="{StaticResource PART_ControlTemplate}" Duration="0:00:10" IsLit="False"/>
+                        <wpfdev:AnimationWeChat x:Name="AudioPlay" Duration="0:00:10" IsLit="False"/>
                         <TextBlock Text="10ms“" VerticalAlignment="Center" FontSize="20"/>
                     </StackPanel>
                  </Grid>
             </Grid>
-        </Viewbox>
+        </Viewbox>-->
+        <wpfdev:AnimationWeChat MouseLeftButtonDown="Grid_MouseLeftButtonDown" x:Name="AudioPlay"/>
     </Grid>
 </UserControl>

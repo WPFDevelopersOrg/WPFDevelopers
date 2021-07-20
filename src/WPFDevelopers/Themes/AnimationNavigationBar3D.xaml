@@ -19,14 +19,14 @@
                             <EventTrigger RoutedEvent="MouseEnter">
                                 <BeginStoryboard>
                                     <Storyboard Storyboard.TargetProperty="Angle" Storyboard.TargetName="axis3d">
-                                        <DoubleAnimation Duration="00:00:1" To="90" EasingFunction="{StaticResource CubicEase}"/>
+                                        <DoubleAnimation Duration="00:00:1" To="90" EasingFunction="{StaticResource CubicEaseInOut}"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
                             <EventTrigger RoutedEvent="MouseLeave">
                                 <BeginStoryboard>
                                     <Storyboard Storyboard.TargetProperty="Angle" Storyboard.TargetName="axis3d">
-                                        <DoubleAnimation Duration="00:00:1" To="0" EasingFunction="{StaticResource CubicEase}"/>
+                                        <DoubleAnimation Duration="00:00:1" To="0" EasingFunction="{StaticResource CubicEaseInOut}"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>

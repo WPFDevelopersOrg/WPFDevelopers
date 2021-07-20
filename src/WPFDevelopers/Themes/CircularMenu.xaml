@@ -30,9 +30,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularMenuItem}">
-                    <Grid VerticalAlignment="Center">
+                    <Grid VerticalAlignment="Top">
                         <Grid.RenderTransform>
-                            <RotateTransform x:Name="PART_RotateTransform" Angle="{TemplateBinding Angle}" CenterX="200" CenterY="200"></RotateTransform>
+                            <RotateTransform x:Name="PART_RotateTransform" 
+                                             Angle="{TemplateBinding Angle}"
+                                             CenterX="200" CenterY="200"></RotateTransform>
                         </Grid.RenderTransform>
                         <Path x:Name="PART_Path" Data="{StaticResource PathCircularItem}" 
                                   Fill="{TemplateBinding BackgroundColor}" VerticalAlignment="Center"/>
@@ -58,74 +60,74 @@
     </Style>
 
     <Style TargetType="{x:Type controls:CircularMenu}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Height" Value="400"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularMenu}">
-                    <Viewbox>
-                        <Grid Height="768" Width="1024">
-                            <Canvas>
-                                <ItemsControl ItemsSource="{TemplateBinding ItemsSource}"
-                                              Canvas.Left="150" Canvas.Top="50"
-                                              AlternationCount="{TemplateBinding AlternationCount}">
-                                    <ItemsControl.Clip>
-                                        <EllipseGeometry x:Name="PART_EllipseGeometry" RadiusX="0" RadiusY="0" Center="200,200"></EllipseGeometry>
-                                    </ItemsControl.Clip>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <!--<controls:CircularMenuItem Angle="{Binding Angle}" MenuTxt="{Binding MenuTxt}"
+                    <Grid>
+                        <ItemsControl x:Name="PART_ItemsControl" ItemsSource="{TemplateBinding ItemsSource}"
+                                      AlternationCount="{TemplateBinding AlternationCount}"
+                                      Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <ItemsControl.Clip>
+                                <EllipseGeometry x:Name="PART_EllipseGeometry" RadiusX="0" RadiusY="0" Center="200,200"></EllipseGeometry>
+                            </ItemsControl.Clip>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <!--<controls:CircularMenuItem Angle="{Binding Angle}" MenuTxt="{Binding MenuTxt}"
                                                                        BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource indexToColor}}" 
                                                                        IconImage="{Binding IconImage}"/>-->
-                                            <controls:CircularMenuItem Angle="{Binding Angle}"
-                                                                       BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource indexToColor}}" 
-                                                                       MenuTxt="{Binding MenuTxt}"
-                                                                       IconImage="{Binding IconImage}">
-                                            </controls:CircularMenuItem>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <Grid/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                </ItemsControl>
+                                    <controls:CircularMenuItem Angle="{Binding Angle}"
+                                                               BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource indexToColor}}" 
+                                                               MenuTxt="{Binding MenuTxt}"
+                                                               IconImage="{Binding IconImage}">
+                                        <!--<controls:CircularMenuItem.InputBindings>
+                                            <MouseBinding MouseAction="LeftClick" Command="{Binding ClickCommand}" CommandParameter="{Binding MenuTxt}"></MouseBinding>
+                                        </controls:CircularMenuItem.InputBindings>-->
+                                    </controls:CircularMenuItem>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
 
-                                <ToggleButton Canvas.Left="300" Canvas.Top="200" Cursor="Hand">
-                                    <ToggleButton.Template>
-                                        <ControlTemplate TargetType="ToggleButton">
-                                            <Grid>
-                                                <Ellipse x:Name="PART_Ellipse" Width="100" Height="100"
+                        <ToggleButton x:Name="PART_ToggleButton" Cursor="Hand">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Grid>
+                                        <Ellipse x:Name="PART_Ellipse" Width="100" Height="100"
                                                          Fill="{StaticResource PrimaryNormalSolidColorBrush}" ToolTip="关闭"/>
-                                                <Path x:Name="PART_Path" Data="{StaticResource PathAdd}"
+                                        <Path x:Name="PART_Path" Data="{StaticResource PathAdd}"
                                                       Fill="{StaticResource WhiteSolidColorBrush}"
                                                       Stretch="Fill" Width="20" Height="20" 
                                                       RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
-                                                </Path>
-                                            </Grid>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsChecked" Value="false">
-                                                    <Setter TargetName="PART_Path" Property="RenderTransform">
-                                                        <Setter.Value>
-                                                            <RotateTransform Angle="45"/>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                    <Setter Property="ToolTip" TargetName="PART_Ellipse" Value="展开"/>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </ToggleButton.Template>
-                                    <ToggleButton.Triggers>
-                                        <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                            <BeginStoryboard Storyboard="{StaticResource CheckedStoryboard}"/>
-                                        </EventTrigger>
-                                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                            <BeginStoryboard Storyboard="{StaticResource UncheckedStoryboard}"/>
-                                        </EventTrigger>
-                                    </ToggleButton.Triggers>
-                                </ToggleButton>
-                                
-                            </Canvas>
-                        </Grid>
-                    </Viewbox>
+                                        </Path>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="false">
+                                            <Setter TargetName="PART_Path" Property="RenderTransform">
+                                                <Setter.Value>
+                                                    <RotateTransform Angle="45"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="ToolTip" TargetName="PART_Ellipse" Value="展开"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                            <!--<ToggleButton.Triggers>
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard Storyboard="{StaticResource CheckedStoryboard}"/>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard Storyboard="{StaticResource UncheckedStoryboard}"/>
+                                </EventTrigger>
+                            </ToggleButton.Triggers>-->
+                        </ToggleButton>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -82,7 +82,7 @@
 
 ### WPFBreatheLight（WPF实现呼吸灯）
 
-<img src="/WPFBreatheLight/resources/breathe.gif"/>  
+<img src="/resources/WPFDevelopersResource/BreatheLight.gif"/>   
 
 ----------
 

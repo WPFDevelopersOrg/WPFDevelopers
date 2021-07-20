@@ -27,13 +27,13 @@
         <Storyboard x:Key="AnimateRound" RepeatBehavior="Forever">
             <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="Scale"
                              Duration="0:0:01" To="2" 
-                             EasingFunction="{StaticResource SineEase}" />
+                             EasingFunction="{StaticResource SineEaseOut}" />
             <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="Scale"
                              Duration="0:0:01" To="2" 
-                             EasingFunction="{StaticResource SineEase}" />
+                             EasingFunction="{StaticResource SineEaseOut}" />
             <DoubleAnimation Storyboard.TargetProperty="Opacity"  
                              Duration="0:0:01" To="0" 
-                             EasingFunction="{StaticResource SineEase}" />
+                             EasingFunction="{StaticResource SineEaseOut}" />
         </Storyboard>
         <Style x:Key="alarmStyle" TargetType="map:Pushpin">
             <Setter Property="PositionOrigin" Value="Center"/>
