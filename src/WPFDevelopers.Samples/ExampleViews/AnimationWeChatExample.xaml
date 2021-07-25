@@ -9,17 +9,6 @@
              d:DesignHeight="450" d:DesignWidth="800">
   
     <Grid>
-        <!--<Viewbox>
-            <Grid Width="600" Height="300">
-                <Grid Height="28" Width="100" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
-                    <Rectangle RadiusX="4" RadiusY="4" Fill="#9EEA6A" />
-                    <StackPanel Orientation="Horizontal" Margin="4,0">
-                        <wpfdev:AnimationWeChat x:Name="AudioPlay" Duration="0:00:10" IsLit="False"/>
-                        <TextBlock Text="10ms“" VerticalAlignment="Center" FontSize="20"/>
-                    </StackPanel>
-                 </Grid>
-            </Grid>
-        </Viewbox>-->
         <wpfdev:AnimationWeChat MouseLeftButtonDown="Grid_MouseLeftButtonDown" x:Name="AudioPlay"/>
     </Grid>
 </UserControl>

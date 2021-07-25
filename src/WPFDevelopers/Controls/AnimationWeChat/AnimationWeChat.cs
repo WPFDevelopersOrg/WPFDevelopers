@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace WPFDevelopers.Controls
 {
-    public class AnimationWeChat : Control
+    public class AnimationWeChat : ContentControl
     {
         private static Storyboard _storyboard;
         private ObjectAnimationUsingKeyFrames _objectAnimationUsingKeyFrames;
@@ -17,7 +17,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty DurationProperty =
              DependencyProperty.Register("Duration", typeof(TimeSpan),
-             typeof(AnimationWeChat), new PropertyMetadata(null));
+             typeof(AnimationWeChat), new PropertyMetadata(TimeSpan.FromSeconds(10)));
 
         /// <summary>
         /// 动画时间
@@ -45,13 +45,13 @@ namespace WPFDevelopers.Controls
         {
             base.OnApplyTemplate();
             _uIElement = GetTemplateChild("PART_Image") as Image;
-            if (_uIElement != null && IsLit)
-                Animate(_uIElement);
+            if (_uIElement == null)
+                return;
             _storyboard = new Storyboard();
             _objectAnimationUsingKeyFrames = new ObjectAnimationUsingKeyFrames();
             _objectAnimationUsingKeyFrames.FillBehavior = FillBehavior.Stop;
             _objectAnimationUsingKeyFrames.RepeatBehavior = RepeatBehavior.Forever;
-
+           
             _storyboard.CurrentTimeInvalidated += (s, e) =>
             {
                 Clock storyboardClock = (Clock)s;
@@ -77,6 +77,9 @@ namespace WPFDevelopers.Controls
                    Value = new BitmapImage(new Uri("pack://application:,,,/WPFDevelopers;component/Images/AnimationWeChat/2.png")),
                    KeyTime = KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.99))
                });
+            Storyboard.SetTarget(_objectAnimationUsingKeyFrames, _uIElement);
+            Storyboard.SetTargetProperty(_objectAnimationUsingKeyFrames, new PropertyPath(Image.SourceProperty));
+            _storyboard.Children.Add(_objectAnimationUsingKeyFrames);
         }
 
         private static void OnIsLitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -86,18 +89,10 @@ namespace WPFDevelopers.Controls
             {
                 AnimationWeChat c = d as AnimationWeChat;
                 if (c != null && c._uIElement != null)
-                    c.Animate(c._uIElement);
+                    _storyboard.Begin();
             }
             else
                 _storyboard.Stop();
-        }
-
-        private void Animate(Image animation)
-        {
-            Storyboard.SetTarget(_objectAnimationUsingKeyFrames, animation);
-            Storyboard.SetTargetProperty(_objectAnimationUsingKeyFrames, new PropertyPath(Image.SourceProperty));
-            _storyboard.Children.Add(_objectAnimationUsingKeyFrames);
-            _storyboard.Begin();
         }
        
 
