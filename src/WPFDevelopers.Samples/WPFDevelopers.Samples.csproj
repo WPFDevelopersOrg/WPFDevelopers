@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>WPFDevelopers.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,6 +83,9 @@
       <DependentUpon>CutImageExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\Map\PushpinModel.cs" />
+    <Compile Include="ExampleViews\TaskbarItemInfoExample.xaml.cs">
+      <DependentUpon>TaskbarItemInfoExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\ThumbDragAndAngleExample.xaml.cs">
       <DependentUpon>ThumbDragAndAngleExample.xaml</DependentUpon>
     </Compile>
@@ -139,6 +145,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ExampleViews\TaskbarItemInfoExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\ThumbDragAndAngleExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -197,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Breathe\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WPFDevelopers.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

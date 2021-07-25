@@ -20,5 +20,9 @@ namespace WPFDevelopers.Samples
         {
             get { return SystemParameters.WorkArea.Height / 1.5; }
         }
+        public static Window CurrentMainWindow
+        {
+            get { return Current.MainWindow; }
+        }
     }
 }

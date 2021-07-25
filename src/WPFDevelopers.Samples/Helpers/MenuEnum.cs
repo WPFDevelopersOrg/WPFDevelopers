@@ -16,5 +16,6 @@ namespace WPFDevelopers.Samples.Helpers
         CheckCode,
         CircularMenu,
         BreatheLight,
+        TaskbarInfo,
     }
 }

@@ -103,6 +103,10 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BreatheLight:
                     ControlPanel = new BreatheLightExample();
                     break;
+                case MenuEnum.TaskbarInfo:
+                    var taskbar = new TaskbarItemInfoExample();
+                    taskbar.ShowDialog();
+                    break;
                 default:
                     break;
             }
