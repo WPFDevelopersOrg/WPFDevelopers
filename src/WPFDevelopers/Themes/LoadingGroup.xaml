@@ -99,4 +99,134 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type controls:CycleLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CycleLoading}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard_LoadRunning" RepeatBehavior="Forever" SpeedRatio="2">
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" Storyboard.TargetName="Part_Cycle_Rotate" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" Storyboard.TargetName="Part_Cycle_Rotate1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Viewbox>
+                            <Grid Width="400" Height="400">
+                                <Grid x:Name="Part_Cycle_Rotate1" RenderTransformOrigin="0.5,0.5">
+                                    <Grid.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Grid.RenderTransform>
+                                    <Ellipse Margin="0,50,0,50" >
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush >
+                                                <GradientStop Color="White" Offset="0" />
+                                                <GradientStop Color="White" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                        <Ellipse.Effect>
+                                            <BlurEffect Radius="40"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+
+                                    <Ellipse Margin="50,0,50,0" >
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                <GradientStop Color="White" Offset="0.4" />
+                                                <GradientStop Color="White" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                        <Ellipse.Effect>
+                                            <BlurEffect Radius="40"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+
+                                </Grid>
+
+                                <Grid x:Name="Part_Cycle_Rotate" RenderTransformOrigin="0.5,0.5">
+                                    <Grid.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Grid.RenderTransform>
+                                    <Ellipse Margin="0,50,0,50" >
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush >
+                                                <GradientStop Color="#d495f1" Offset="0" />
+                                                <GradientStop Color="#87d3f7" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                        <Ellipse.Effect>
+                                            <BlurEffect Radius="15"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+
+                                    <Ellipse Margin="50,0,50,0" >
+                                        <Ellipse.Fill>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                <GradientStop Color="#f173ac" Offset="0" />
+                                                <GradientStop Color="#33a3dc" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Ellipse.Fill>
+                                        <Ellipse.Effect>
+                                            <BlurEffect Radius="15"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+
+                                </Grid>
+
+                                <Ellipse Margin="33" Fill="Black" >
+                                    <Ellipse.Effect>
+                                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="White"/>
+                                    </Ellipse.Effect>
+                                </Ellipse>
+
+                            </Grid>
+                        </Viewbox>
+
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{TemplateBinding LoadTitle}"/>
+                            <ContentPresenter Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                              Content="{TemplateBinding Content}" 
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"/>
+                            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"
+                                       Text="{TemplateBinding ValueDescription}"/>
+                        </Grid>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsStart" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard_LoadRunning}" x:Name="Storyboard_LoadRunning"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="Storyboard_LoadRunning"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>

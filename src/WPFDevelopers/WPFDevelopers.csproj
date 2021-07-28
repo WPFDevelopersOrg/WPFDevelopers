@@ -61,6 +61,7 @@
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\Helpers\ControlsHelper.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
+    <Compile Include="Controls\Loadings\CycleLoading.cs" />
     <Compile Include="Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="Controls\Loadings\WaitLoading.cs" />
     <Compile Include="Controls\NavigateMenu\NavigateMenu.cs" />
