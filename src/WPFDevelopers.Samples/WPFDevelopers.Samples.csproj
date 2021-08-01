@@ -69,11 +69,20 @@
     <Compile Include="ExampleViews\BreatheLightExample.xaml.cs">
       <DependentUpon>BreatheLightExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\ChatEmojiExample.xaml.cs">
+      <DependentUpon>ChatEmojiExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\CheckCodeExample.xaml.cs">
       <DependentUpon>CheckCodeExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\CircularMenuExample.xaml.cs">
       <DependentUpon>CircularMenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\CircularProgressBarExample.xaml.cs">
+      <DependentUpon>CircularProgressBarExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\DashboardExample.xaml.cs">
+      <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\Map\AMapTitleLayer.cs" />
     <Compile Include="ExampleViews\Map\BingAMapExample.xaml.cs">
@@ -83,17 +92,41 @@
       <DependentUpon>CutImageExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\Map\PushpinModel.cs" />
+    <Compile Include="ExampleViews\PaginationExample.xaml.cs">
+      <DependentUpon>PaginationExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Passwrod\ImageRadioButton.cs" />
+    <Compile Include="ExampleViews\Passwrod\PasswordBoxHelper.cs" />
+    <Compile Include="ExampleViews\Passwrod\PasswordExample.xaml.cs">
+      <DependentUpon>PasswordExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs">
+      <DependentUpon>PasswordWithPlainText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\PieControlExample.xaml.cs">
+      <DependentUpon>PieControlExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\RoundMenuExample.xaml.cs">
+      <DependentUpon>RoundMenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\SongWordsExample.xaml.cs">
+      <DependentUpon>SongWordsExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\TaskbarItemInfoExample.xaml.cs">
       <DependentUpon>TaskbarItemInfoExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\ThumbDragAndAngleExample.xaml.cs">
       <DependentUpon>ThumbDragAndAngleExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\TimeLineExample.xaml.cs">
+      <DependentUpon>TimeLineExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\MenuEnum.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\NavigateMenuModel.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
+    <Compile Include="ViewModels\PaginationExampleVM.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Page Include="ExampleViews\AnimationNavigationBar3DExample.xaml">
       <SubType>Designer</SubType>
@@ -107,11 +140,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\ChatEmojiExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\CheckCodeExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\CircularMenuExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\CircularProgressBarExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\DashboardExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,11 +190,39 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ExampleViews\PaginationExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Passwrod\PasswordExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Passwrod\PasswordWithPlainText.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExampleViews\PieControlExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\RoundMenuExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\SongWordsExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\TaskbarItemInfoExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\ThumbDragAndAngleExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\TimeLineExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -210,6 +283,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="WPFDevelopers.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Chat\Left.jpg" />
+    <Resource Include="Images\Chat\Right.jpg" />
+    <Resource Include="Images\Chat\UserImages\jingtao.png" />
+    <Resource Include="Images\Chat\UserImages\yanjinhua.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RoundMenu\Close.png" />
+    <Resource Include="Images\RoundMenu\Color.png" />
+    <Resource Include="Images\RoundMenu\Eraser.png" />
+    <Resource Include="Images\RoundMenu\Pen.png" />
+    <Resource Include="Images\RoundMenu\Revoke.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Passwrod\Eye_50px.png" />
+    <Resource Include="Images\Passwrod\Invisible_50px.png" />
+    <Resource Include="Images\Passwrod\Lock_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

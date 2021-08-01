@@ -5,6 +5,9 @@ using System.Text;
 
 namespace WPFDevelopers.Samples.Helpers
 {
+    /// <summary>
+    /// TaskbarInfo 添加到最后
+    /// </summary>
     public enum MenuEnum
     {
         Navigation3D,
@@ -16,6 +19,16 @@ namespace WPFDevelopers.Samples.Helpers
         CheckCode,
         CircularMenu,
         BreatheLight,
+        ChatEmoji,
+        ProgressBar,
+        Dashboard,
+        PieControl,
+        RoundMenu,
+        Password,
+        SongWords,
+        TimeLine,
+        Pagination,
+
         TaskbarInfo,
     }
 }

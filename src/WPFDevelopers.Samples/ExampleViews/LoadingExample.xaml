@@ -11,7 +11,7 @@
         <wpfdev:BallLoading Width="200"/>
         <wpfdev:StreamerLoading/>
         <wpfdev:WaitLoading/>
-        <wpfdev:CycleLoading  Value="50" LoadTitle="Loading...." >
+        <wpfdev:CycleLoading  Value="50" LoadTitle="Loading...." Width="200">
             <TextBlock Text="正在加载xxxxx"/>
         </wpfdev:CycleLoading>
     </UniformGrid>

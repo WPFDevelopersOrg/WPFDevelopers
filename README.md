@@ -26,6 +26,11 @@
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>      
 
 ***
+### Pagination （分页）
+
+<img src="/resources/WPFDevelopersResource/Pagination.gif"/>  
+
+----------
 ### TaskbarItemInfo （窗体任务栏角徽）
 
 <img src="/resources/WPFDevelopersResource/TaskbarItemInfo.gif"/>  
@@ -40,25 +45,25 @@
 
 ### WpfPieControl（WPF实现统计图（饼图仿LiveCharts））
 
-<img src="/WpfPieControl/resources/WpfPieControl.gif"/>  
+<img src="/resources/WPFDevelopersResource/PieControl.gif"/>  
 
 ----------
 
 ### WpfDashboard（WPF实现仪表盘（刻度跟随进度））
 
-<img src="/WpfDashboard/resources/WpfDashboard.gif"/>  
+<img src="/resources/WPFDevelopersResource/Dashboard.gif"/> 
 
 ----------
 
 ### WpfTimeLineControl（WPF实现时间轴（仿Gitee））
 
-<img src="/WpfTimeLineControl/resources/WpfTimeLineControl.gif"/>  
+<img src="/resources/WPFDevelopersResource/TimeLine.gif"/>  
 
 ----------
 
 ### WpfCircularProgressBar（WPF实现环（圆）形进度条）
 
-<img src="/WpfCircularProgressBar/resources/WpfCircularProgressBar.gif"/>  
+<img src="/resources/WPFDevelopersResource/CircularProgressBar.gif"/>  
 
 ----------
 
@@ -70,19 +75,19 @@
 
 ### WpfPasswrod（WPF实现密文与密文切换）
 
-<img src="/WpfPasswrod/resources/WpfPasswrod.gif"/>  
+<img src="/resources/WPFDevelopersResource/Passwrod.gif"/>  
 
 ----------
 
 ### WpfChatEmojiText（WPF实现聊天Emoji+文本）
 
-<img src="/WpfChatEmojiText/resources/WpfChatEmojiText.gif"/>  
+<img src="/resources/WPFDevelopersResource/ChatEmojiText.gif"/>  
 
 ----------
 
 ### WPFSongWords（WPF实现歌词动画）
 
-<img src="/WPFSongWords/resources/SongWords.gif"/>  
+<img src="/resources/WPFDevelopersResource/SongWords.gif"/>  
 
 ----------
 
@@ -112,7 +117,7 @@
 
 ### WpfRoundMenu（WPF实现圆形菜单）  
 
-<img src="/WpfRoundMenu/resources/roundMenu.gif"/>  
+<img src="/resources/WPFDevelopersResource/RoundMenu.gif"/>   
 
 ----------
 

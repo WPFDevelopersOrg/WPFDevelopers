@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Controls">
+      <HintPath>..\..\Reference\Microsoft.Expression.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing">
+      <HintPath>..\..\Reference\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -52,19 +58,33 @@
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />
     <Compile Include="Controls\BreatheLight\BreathLamp.cs" />
+    <Compile Include="Controls\ChatEmoji\ChatEmoji.cs" />
+    <Compile Include="Controls\ChatEmoji\EmojiHelper.cs" />
     <Compile Include="Controls\CheckCode\CheckCode.cs" />
     <Compile Include="Controls\CircularMenu\CircularMenu.cs" />
     <Compile Include="Controls\CircularMenu\CircularMenuItem.cs" />
+    <Compile Include="Controls\CircularProgressBar\CircularProgressBar.cs" />
     <Compile Include="Controls\CutImage\CutImage.cs" />
     <Compile Include="Controls\CutImage\DragDrop.cs" />
+    <Compile Include="Controls\Dashboard\Dashboard.cs" />
+    <Compile Include="Controls\Dashboard\ScaleItem.cs" />
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\Helpers\ControlsHelper.cs" />
+    <Compile Include="Controls\Helpers\ViewModelBase.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
     <Compile Include="Controls\Loadings\CycleLoading.cs" />
     <Compile Include="Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="Controls\Loadings\WaitLoading.cs" />
     <Compile Include="Controls\NavigateMenu\NavigateMenu.cs" />
+    <Compile Include="Controls\Pagination\Pagination.cs" />
+    <Compile Include="Controls\PieControl\PieControl.cs" />
+    <Compile Include="Controls\PieControl\PieSegmentModel.cs" />
+    <Compile Include="Controls\SongWords\SongWords.cs" />
+    <Compile Include="Controls\TimeLine\TimeLine.cs" />
+    <Compile Include="Controls\TimeLine\TimeLineItem.cs" />
+    <Compile Include="Converts\AngleToIsLargeConverter.cs" />
+    <Compile Include="Converts\AngleToPointConverter.cs" />
     <Compile Include="Converts\IndexToColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -138,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\ChatEmoji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\CheckCode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,7 +170,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\CutImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +187,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\NavigateMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\PieControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\TimeLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

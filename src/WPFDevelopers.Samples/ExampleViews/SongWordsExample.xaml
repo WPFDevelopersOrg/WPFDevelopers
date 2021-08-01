@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.SongWordsExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" 
+             TextOptions.TextFormattingMode="Display" UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+        Foreground="White">
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="DefaultBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF33B9AD" Offset="0" />
+            <GradientStop Color="#FF007ACC" Offset="1" />
+        </LinearGradientBrush>
+    </UserControl.Resources>
+    <Grid Background="{StaticResource DefaultBackgroundBrush}" Height="650" Width="400">
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1">
+            <TextBlock Text="中华人民共和国国歌" HorizontalAlignment="Center" FontSize="20" Margin="0,10"/>
+            <ItemsControl ItemsSource="{Binding MusicWordArray,RelativeSource={RelativeSource AncestorType=local:SongWordsExample}}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <wpfdev:SongWords Text="{Binding SongWords}"
+                                                      StartDuration="{Binding StarTime}"
+                                                      Duration="{Binding RunTime}"
+                                                      Block.TextAlignment="Center"
+                                                      FontSize="15" Margin="0,4"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

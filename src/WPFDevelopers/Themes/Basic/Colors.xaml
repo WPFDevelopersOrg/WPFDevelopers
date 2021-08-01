@@ -21,20 +21,20 @@
     <SolidColorBrush x:Key="SuccessSolidColorBrush" Color="{StaticResource SuccessColor}"></SolidColorBrush>
 
     <Color x:Key="SuccessMouseOverColor">#85CE61</Color>
-    <SolidColorBrush x:Key="SuccessMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="SuccessMouseOverSolidColorBrush" Color="{StaticResource SuccessMouseOverColor}"></SolidColorBrush>
 
     <Color x:Key="SuccessPressedColor">#5DAF34</Color>
-    <SolidColorBrush x:Key="SuccessPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="SuccessPressedSolidColorBrush" Color="{StaticResource SuccessPressedColor}"></SolidColorBrush>
 
     <!--Warning颜色-->
     <Color x:Key="WarningColor">#E6A23C</Color>
     <SolidColorBrush x:Key="WarningSolidColorBrush" Color="{StaticResource WarningColor}"></SolidColorBrush>
 
     <Color x:Key="WarningMouseOverColor">#EBB563</Color>
-    <SolidColorBrush x:Key="WarningMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="WarningMouseOverSolidColorBrush" Color="{StaticResource WarningMouseOverColor}"></SolidColorBrush>
 
     <Color x:Key="WarningPressedColor">#CF9236</Color>
-    <SolidColorBrush x:Key="WarningPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="WarningPressedSolidColorBrush" Color="{StaticResource WarningPressedColor}"></SolidColorBrush>
     
 
     <!--Danger颜色-->
@@ -42,20 +42,20 @@
     <SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}"></SolidColorBrush>
 
     <Color x:Key="DangerMouseOverColor">#EBB563</Color>
-    <SolidColorBrush x:Key="DangerMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="DangerMouseOverSolidColorBrush" Color="{StaticResource DangerMouseOverColor}"></SolidColorBrush>
 
     <Color x:Key="DangerPressedColor">#DD6161</Color>
-    <SolidColorBrush x:Key="DangerPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="DangerPressedSolidColorBrush" Color="{StaticResource DangerPressedColor}"></SolidColorBrush>
 
     <!--Info颜色-->
     <Color x:Key="InfoColor">#909399</Color>
     <SolidColorBrush x:Key="InfoSolidColorBrush" Color="{StaticResource InfoColor}"></SolidColorBrush>
 
     <Color x:Key="InfoMouseOverColor">#A6A9AD</Color>
-    <SolidColorBrush x:Key="InfoMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="InfoMouseOverSolidColorBrush" Color="{StaticResource InfoMouseOverColor}"></SolidColorBrush>
 
     <Color x:Key="InfoPressedColor">#82848A</Color>
-    <SolidColorBrush x:Key="InfoPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="InfoPressedSolidColorBrush" Color="{StaticResource InfoPressedColor}"></SolidColorBrush>
 
     <!--白色-->
     <Color x:Key="WhiteColor">#FFFFFF</Color>

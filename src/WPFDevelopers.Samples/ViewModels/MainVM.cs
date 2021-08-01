@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using WPFDevelopers.Samples.ExampleViews;
+using WPFDevelopers.Samples.ExampleViews.Passwrod;
 using WPFDevelopers.Samples.Helpers;
 using WPFDevelopers.Samples.Models;
 
@@ -106,6 +107,33 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();
                     taskbar.ShowDialog();
+                    break;
+                case MenuEnum.ChatEmoji:
+                    ControlPanel = new ChatEmojiExample();
+                    break;
+                case MenuEnum.ProgressBar:
+                    ControlPanel = new CircularProgressBarExample();
+                    break;
+                case MenuEnum.Dashboard:
+                    ControlPanel = new DashboardExample();
+                    break;
+                case MenuEnum.PieControl:
+                    ControlPanel = new PieControlExample();
+                    break;
+                case MenuEnum.RoundMenu:
+                    ControlPanel = new RoundMenuExample();
+                    break;
+                case MenuEnum.Password:
+                    ControlPanel = new PasswordExample();
+                    break;
+                case MenuEnum.SongWords:
+                    ControlPanel = new SongWordsExample();
+                    break;
+                case MenuEnum.TimeLine:
+                    ControlPanel = new TimeLineExample();
+                    break;
+                case MenuEnum.Pagination:
+                    ControlPanel = new PaginationExample();
                     break;
                 default:
                     break;

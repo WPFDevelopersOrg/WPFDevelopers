@@ -13,6 +13,12 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/NavigateMenu.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CircularMenu.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/AnimationWeChat.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/ChatEmoji.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CircularProgressBar.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Dashboard.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/PieControl.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/TimeLine.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Pagination.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
