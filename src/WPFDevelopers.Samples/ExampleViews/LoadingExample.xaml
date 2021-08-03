@@ -14,6 +14,8 @@
         <wpfdev:CycleLoading  Value="50" LoadTitle="Loading...." Width="200">
             <TextBlock Text="正在加载xxxxx"/>
         </wpfdev:CycleLoading>
-        <wpfdev:RollLoading IsStart="true"/>
+        <wpfdev:RollLoading IsStart="true" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <TextBlock Text="1111"/>
+        </wpfdev:RollLoading>
     </UniformGrid>
 </UserControl>
