@@ -73,6 +73,7 @@
     <Compile Include="Controls\Helpers\ControlsHelper.cs" />
     <Compile Include="Controls\Helpers\ViewModelBase.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
+    <Compile Include="Controls\Loadings\RollLoading.cs" />
     <Compile Include="Controls\Loadings\CycleLoading.cs" />
     <Compile Include="Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="Controls\Loadings\WaitLoading.cs" />

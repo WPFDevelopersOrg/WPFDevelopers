@@ -228,5 +228,201 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="{x:Type controls:RollLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="ForegroundColor" Value="Red"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:RollLoading}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="RollKey"  RepeatBehavior="Forever" >
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="2" Storyboard.TargetName="PART_Border1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="4" Storyboard.TargetName="PART_Border2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="6" Storyboard.TargetName="PART_Border3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="8" Storyboard.TargetName="PART_Border4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="10" Storyboard.TargetName="PART_Border5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="12" Storyboard.TargetName="PART_Border6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="14" Storyboard.TargetName="PART_Border7" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                            <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="16" Storyboard.TargetName="PART_Border8" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Viewbox>
+                            <Grid>
+                                <Border x:Name="PART_Border1" Width="160" Height="160"  BorderThickness="0,5,0,0"  CornerRadius="80" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <Border x:Name="PART_Border2" Width="140" Height="140"  BorderThickness="0,5,0,0"  CornerRadius="70" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <Border x:Name="PART_Border3" Width="120" Height="120"  BorderThickness="0,5,0,0"  CornerRadius="60" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <Border x:Name="PART_Border4" Width="100" Height="100"  BorderThickness="0,5,0,0"  CornerRadius="50" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <Border x:Name="PART_Border5" Width="80" Height="80"  BorderThickness="0,5,0,0"  CornerRadius="40" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <Border x:Name="PART_Border6" Width="60" Height="60"  BorderThickness="0,5,0,0"  CornerRadius="30" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <Border x:Name="PART_Border7" Width="40" Height="40"  BorderThickness="0,5,0,0"  CornerRadius="20" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+
+                                <Border x:Name="PART_Border8" Width="20" Height="20"  BorderThickness="0,5,0,0"  CornerRadius="10" RenderTransformOrigin="0.5,0.5">
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5"/>
+                                                <GradientStop Color="Transparent" Offset="0.5"/>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                    <Border.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Border.RenderTransform>
+                                </Border>
+                            </Grid>
+                        </Viewbox>
+
+                        <ContentPresenter Grid.Row="1"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsStart" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Roll_Storyboard" Storyboard="{StaticResource RollKey}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="Roll_Storyboard"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
 </ResourceDictionary>
