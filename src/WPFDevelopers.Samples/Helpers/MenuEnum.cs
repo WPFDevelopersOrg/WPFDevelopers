@@ -28,7 +28,7 @@ namespace WPFDevelopers.Samples.Helpers
         SongWords,
         TimeLine,
         Pagination,
-
+        ScrollViewer,
         TaskbarInfo,
     }
 }
