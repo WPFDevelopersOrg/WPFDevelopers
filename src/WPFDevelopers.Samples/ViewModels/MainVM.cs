@@ -132,6 +132,10 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.TimeLine:
                     ControlPanel = new TimeLineExample();
                     break;
+                case MenuEnum.ScrollViewer:
+                    ControlPanel = new ScrollViewerAnimationExample();
+                    break;
+                //将Pagination放到最后
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();
                     break;

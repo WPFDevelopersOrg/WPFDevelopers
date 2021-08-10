@@ -1,6 +1,10 @@
  [中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README.md) - [English](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-en.md)   
 
+<<<<<<< HEAD
  ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) [![Github](https://img.shields.io/badge/-%20github-blueviolet)](https://img.shields.io/badge/-%20github-blueviolet) [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)
+=======
+ ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg)   
+>>>>>>> f128e8f962210e74c6f181d5c6d6bd8a849e1ad9
 
 
 ## Welcome to WPFDevelopers    
@@ -9,24 +13,32 @@
 
 ### [码云](https://gitee.com/yanjinhua/WPFDevelopers.git) https://gitee.com/yanjinhua/WPFDevelopers.git  
 
-## 面向中国  
-
-### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。   
-
-### 运行环境 Visual Studio 2019，dotNet Framework 4.0 SDK  
-
-### 欢迎关注微信公众号  
-
-<img src="/resources/wxgzh.jpg"/>  
-
 ### Backers   
 
 <a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%!important" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a> 
 
 ### Contributors  
-<a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>      
+<a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>   <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%!important" width="64px" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>      
 
 ***
+### ScrollViewerAnimation 
+
+<img src="/resources/WPFDevelopersResource/ScrollViewer.gif"/>  
+
+----------
+
+### RollLoading 
+
+<img src="/resources/WPFDevelopersResource/RollLoading.gif"/>  
+
+----------
+
+### CycleLoading 
+
+<img src="/resources/WPFDevelopersResource/CycleLoading.gif"/>  
+
+----------
+
 ### Pagination 
 
 <img src="/resources/WPFDevelopersResource/Pagination.gif"/>  

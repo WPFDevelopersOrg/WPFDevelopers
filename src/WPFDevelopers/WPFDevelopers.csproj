@@ -81,6 +81,8 @@
     <Compile Include="Controls\Pagination\Pagination.cs" />
     <Compile Include="Controls\PieControl\PieControl.cs" />
     <Compile Include="Controls\PieControl\PieSegmentModel.cs" />
+    <Compile Include="Controls\ScrollViewer\ScrollViewerAnimation.cs" />
+    <Compile Include="Controls\ScrollViewer\ScrollViewerBehavior.cs" />
     <Compile Include="Controls\SongWords\SongWords.cs" />
     <Compile Include="Controls\TimeLine\TimeLine.cs" />
     <Compile Include="Controls\TimeLine\TimeLineItem.cs" />
