@@ -1,10 +1,6 @@
  [中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README.md) - [English](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-en.md)   
 
-<<<<<<< HEAD
- ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) [![Github](https://img.shields.io/badge/-%20github-blueviolet)](https://img.shields.io/badge/-%20github-blueviolet) [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)
-=======
- ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg)   
->>>>>>> f128e8f962210e74c6f181d5c6d6bd8a849e1ad9
+ ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)
 
 
 ## Welcome to WPFDevelopers    
