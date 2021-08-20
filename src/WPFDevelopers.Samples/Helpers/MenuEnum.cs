@@ -27,6 +27,7 @@ namespace WPFDevelopers.Samples.Helpers
         Password,
         SongWords,
         TimeLine,
+        Carousel,
         Pagination,
         ScrollViewer,
         TaskbarInfo,

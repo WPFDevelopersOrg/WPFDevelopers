@@ -58,6 +58,7 @@
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />
     <Compile Include="Controls\BreatheLight\BreathLamp.cs" />
+    <Compile Include="Controls\Carousel\MasterCarousel.cs" />
     <Compile Include="Controls\ChatEmoji\ChatEmoji.cs" />
     <Compile Include="Controls\ChatEmoji\EmojiHelper.cs" />
     <Compile Include="Controls\CheckCode\CheckCode.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\Helpers\ControlsHelper.cs" />
+    <Compile Include="Controls\Helpers\EnumerableHelper.cs" />
     <Compile Include="Controls\Helpers\ViewModelBase.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
     <Compile Include="Controls\Loadings\RollLoading.cs" />
@@ -158,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\BreathLamp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Carousel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
