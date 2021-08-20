@@ -316,5 +316,12 @@
     <Resource Include="Images\Passwrod\Invisible_50px.png" />
     <Resource Include="Images\Passwrod\Lock_48px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Craouse\0.jpg" />
+    <Resource Include="Images\Craouse\1.jpg" />
+    <Resource Include="Images\Craouse\2.jpg" />
+    <Resource Include="Images\Craouse\3.jpg" />
+    <Resource Include="Images\Craouse\4.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,6 +27,12 @@
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>  <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%!important" width="64px" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>       
 
 ***
+### Carousel （轮播图）
+
+<img src="/resources/WPFDevelopersResource/Carousel.gif"/>  
+
+----------
+
 ### ScrollViewerAnimation （滚动条带动画）
 
 <img src="/resources/WPFDevelopersResource/ScrollViewer.gif"/>  

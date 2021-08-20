@@ -13,14 +13,22 @@
                 <ControlTemplate TargetType="{x:Type controls:MasterCarousel}">
 
                     <Grid Background="{TemplateBinding Background}" >
-                        <Grid.RowDefinitions>
+                        <!--<Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Viewbox>
                             <Canvas x:Name="PART_ContentDock" Grid.Row="0" Width="900" Height="400"/>
                         </Viewbox>
-                        <StackPanel x:Name="PART_ButtonDock" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                        <StackPanel x:Name="PART_ButtonDock" Grid.Row="1" Orientation="Horizontal" 
+                                    VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+                       
+                        <Viewbox>
+                            <Canvas x:Name="PART_ContentDock" Width="900" Height="400"/>
+                        </Viewbox>
+                        <StackPanel x:Name="PART_ButtonDock" Orientation="Horizontal" 
+                                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                                    Margin="0,210,0,0"/>
                     </Grid>
                    
                 </ControlTemplate>

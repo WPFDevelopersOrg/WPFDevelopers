@@ -319,8 +319,8 @@ namespace WPFDevelopers.Controls
                     {
                         Margin = new Thickness(5),
                         Width = 20,
-                        Height = 20,
-                        CornerRadius = new CornerRadius(20),
+                        Height = 6,
+                        //CornerRadius = new CornerRadius(20),
                         Background = Brushes.Gray,
                         Tag = i,
                     };

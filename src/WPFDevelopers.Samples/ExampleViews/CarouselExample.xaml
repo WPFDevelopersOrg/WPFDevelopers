@@ -10,11 +10,16 @@
     <Grid>
         <wpfdev:MasterCarousel IsStartAinimation="True">
             <wpfdev:MasterCarousel.Children>
-                <Border Background="Red"/>
+                <!--<Border Background="Red"/>
                 <Border Background="Blue"/>
                 <Border Background="Green"/>
                 <Border Background="Yellow"/>
-                <Border Background="Pink"/>
+                <Border Background="Pink"/>-->
+                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/0.jpg"/>
+                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/1.jpg"/>
+                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/2.jpg"/>
+                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/3.jpg"/>
+                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/4.jpg"/>
             </wpfdev:MasterCarousel.Children>
         </wpfdev:MasterCarousel>
     </Grid>
