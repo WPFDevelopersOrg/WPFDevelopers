@@ -28,6 +28,7 @@ namespace WPFDevelopers.Samples.Helpers
         SongWords,
         TimeLine,
         Carousel,
+        CarouselEx,
         Pagination,
         ScrollViewer,
         TaskbarInfo,

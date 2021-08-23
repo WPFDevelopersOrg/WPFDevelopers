@@ -58,6 +58,7 @@
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />
     <Compile Include="Controls\BreatheLight\BreathLamp.cs" />
+    <Compile Include="Controls\Carousel\EmphasizerCarousel.cs" />
     <Compile Include="Controls\Carousel\MasterCarousel.cs" />
     <Compile Include="Controls\ChatEmoji\ChatEmoji.cs" />
     <Compile Include="Controls\ChatEmoji\EmojiHelper.cs" />
