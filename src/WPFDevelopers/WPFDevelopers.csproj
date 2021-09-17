@@ -81,6 +81,7 @@
     <Compile Include="Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="Controls\Loadings\WaitLoading.cs" />
     <Compile Include="Controls\NavigateMenu\NavigateMenu.cs" />
+    <Compile Include="Controls\Others\FireControl.cs" />
     <Compile Include="Controls\Pagination\Pagination.cs" />
     <Compile Include="Controls\PieControl\PieControl.cs" />
     <Compile Include="Controls\PieControl\PieSegmentModel.cs" />
@@ -197,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\NavigateMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\OtherControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

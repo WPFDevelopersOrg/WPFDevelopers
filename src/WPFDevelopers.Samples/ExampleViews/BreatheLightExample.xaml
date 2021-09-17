@@ -99,5 +99,36 @@
                         VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
             </Grid>
         </Border>
+
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource BlackSolidColorBrush}"
+                CornerRadius="3">
+
+            <Grid Margin="20,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer" Background="LightGray" IsLampStart="True"
+                                   VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/1.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </wpfdev:BreathLamp>
+
+                <TextBlock Grid.Column="1" 
+                           Margin="10,20"
+                           FontSize="{StaticResource MediumFontSize}">
+                    <Run Foreground="{StaticResource PrimaryTextSolidColorBrush}">
+                        XXXYYY
+                    </Run>
+                    <Run Foreground="{StaticResource SuccessPressedSolidColorBrush}">正在直播</Run>
+                </TextBlock>
+                <Button Style="{StaticResource PrimaryButton}" Grid.Column="1" 
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
+            </Grid>
+        </Border>
     </UniformGrid>
 </UserControl>

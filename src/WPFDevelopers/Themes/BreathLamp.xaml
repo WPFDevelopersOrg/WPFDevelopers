@@ -131,11 +131,66 @@
                 </Trigger.EnterActions>
             </Trigger>
         </ControlTemplate.Triggers>
-        
-        
+            
     </ControlTemplate>
 
+    <ControlTemplate x:Key="LampEffect_Streamer" TargetType="{x:Type controls:BreathLamp}">
+        <Grid>
+            <Viewbox>
+                <Grid Width="60" Height="60">
+                    <Border x:Name="PART_LampContainer" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}"  Background="Transparent" >
+                        <Border.BorderBrush>
+                            <LinearGradientBrush >
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Color="#FF00cec9" Offset="0"/>
+                                    <GradientStop Color="#2000cec9" Offset="0.3"/>
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                    </Border>
+                </Grid>
+            </Viewbox>
+            <Border Padding="{TemplateBinding BorderThickness}">
+                <ContentPresenter Margin="{TemplateBinding BorderThickness}"/>
+            </Border>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsLampStart" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="PART_LampStoryboard">
+                        <Storyboard RepeatBehavior="Forever">
+                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.StartPoint)"  Storyboard.TargetName="PART_LampContainer">
+                                <EasingPointKeyFrame KeyTime="0:0:0.0" Value="0,1"/>
+                                <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148"/>
+                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855"/>
+                                <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855"/>
+                                <EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149"/>
+                                <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0"/>
+                            </PointAnimationUsingKeyFrames>
+                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.EndPoint)"  Storyboard.TargetName="PART_LampContainer">
+                                <EasingPointKeyFrame KeyTime="0:0:0.0" Value="0,1"/>
+                                <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852"/>
+                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145"/>
+                                <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145"/>
+                                <EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851"/>
+                                <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1"/>
+
+                            </PointAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <StopStoryboard BeginStoryboardName="PART_LampStoryboard"/>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
     <Style TargetType="{x:Type controls:BreathLamp}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="BorderThickness" Value="1"/>
+        
         <Style.Triggers>
             <Trigger Property="LampEffect" Value="Eclipse">
                 <Setter Property="Template" Value="{StaticResource LampEffect_Eclipse}"/>
@@ -147,6 +202,10 @@
 
             <Trigger Property="LampEffect" Value="OuterGlow">
                 <Setter Property="Template" Value="{StaticResource LampEffect_OuterGlow}"/>
+            </Trigger>
+
+            <Trigger Property="LampEffect" Value="Streamer">
+                <Setter Property="Template" Value="{StaticResource LampEffect_Streamer}"/>
             </Trigger>
         </Style.Triggers>
 

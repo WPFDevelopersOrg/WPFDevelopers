@@ -9,7 +9,8 @@ namespace WPFDevelopers.Controls
     {
         OuterGlow,
         Eclipse,
-        Ripple
+        Ripple,
+        Streamer
     }
 
     public class BreathLamp : ContentControl

@@ -12,6 +12,7 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CheckCode.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/LoadingGroup.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/NavigateMenu.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/OtherControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CircularMenu.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/AnimationWeChat.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/ChatEmoji.xaml"/>

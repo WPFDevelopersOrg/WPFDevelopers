@@ -141,6 +141,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.CarouselEx:
                     ControlPanel = new CarouselExampleEx();
                     break;
+                case MenuEnum.OtherControls:
+                    ControlPanel = new OtherControlExample();
+                    break;
                 //将Pagination放到最后
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();

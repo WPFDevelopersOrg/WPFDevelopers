@@ -32,5 +32,6 @@ namespace WPFDevelopers.Samples.Helpers
         Pagination,
         ScrollViewer,
         TaskbarInfo,
+        OtherControls,
     }
 }
