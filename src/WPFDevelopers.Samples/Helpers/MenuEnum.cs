@@ -31,7 +31,7 @@ namespace WPFDevelopers.Samples.Helpers
         CarouselEx,
         Pagination,
         ScrollViewer,
-        TaskbarInfo,
         OtherControls,
+        TaskbarInfo,
     }
 }
