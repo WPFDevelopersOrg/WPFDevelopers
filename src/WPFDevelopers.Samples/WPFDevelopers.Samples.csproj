@@ -118,6 +118,9 @@
     <Compile Include="ExampleViews\RoundMenuExample.xaml.cs">
       <DependentUpon>RoundMenuExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\ScreenCutExample.xaml.cs">
+      <DependentUpon>ScreenCutExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\ScrollViewerAnimationExample.xaml.cs">
       <DependentUpon>ScrollViewerAnimationExample.xaml</DependentUpon>
     </Compile>
@@ -231,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\RoundMenuExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\ScreenCutExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {

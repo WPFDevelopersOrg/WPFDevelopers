@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using WPFDevelopers.Controls.Helpers;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Helpers
 {
     public class ControlsHelper: DependencyObject
     {

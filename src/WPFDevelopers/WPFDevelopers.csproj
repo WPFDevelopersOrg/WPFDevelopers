@@ -72,9 +72,10 @@
     <Compile Include="Controls\Dashboard\ScaleItem.cs" />
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
-    <Compile Include="Controls\Helpers\ControlsHelper.cs" />
-    <Compile Include="Controls\Helpers\EnumerableHelper.cs" />
-    <Compile Include="Controls\Helpers\ViewModelBase.cs" />
+    <Compile Include="Controls\ScreenCut\ScreenCut.cs" />
+    <Compile Include="Helpers\ControlsHelper.cs" />
+    <Compile Include="Helpers\EnumerableHelper.cs" />
+    <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
     <Compile Include="Controls\Loadings\RollLoading.cs" />
     <Compile Include="Controls\Loadings\CycleLoading.cs" />
@@ -210,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\PieControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ScreenCut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

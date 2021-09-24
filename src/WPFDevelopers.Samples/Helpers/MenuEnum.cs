@@ -32,6 +32,7 @@ namespace WPFDevelopers.Samples.Helpers
         Pagination,
         ScrollViewer,
         OtherControls,
+        ScreenCut,
         TaskbarInfo,
     }
 }

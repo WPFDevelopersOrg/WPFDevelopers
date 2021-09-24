@@ -144,6 +144,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.OtherControls:
                     ControlPanel = new OtherControlExample();
                     break;
+                case MenuEnum.ScreenCut:
+                    ControlPanel = new ScreenCutExample();
+                    break;
                 //将Pagination放到最后
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();
