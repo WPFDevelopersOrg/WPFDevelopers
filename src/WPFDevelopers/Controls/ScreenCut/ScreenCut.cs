@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -20,6 +21,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = RectangleBottomTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = WrapPanelTemplateName, Type = typeof(WrapPanel))]
+    [TemplatePart(Name = ButtonSaveTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = ButtonCancelTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = ButtonCompleteTemplateName, Type = typeof(Button))]
 
@@ -32,6 +34,7 @@ namespace WPFDevelopers.Controls
         private const string RectangleBottomTemplateName = "PART_RectangleBottom";
         private const string BorderTemplateName = "PART_Border";
         private const string WrapPanelTemplateName = "PART_WrapPanel";
+        private const string ButtonSaveTemplateName = "PART_ButtonSave";
         private const string ButtonCancelTemplateName = "PART_ButtonCancel";
         private const string ButtonCompleteTemplateName = "PART_ButtonComplete";
 
@@ -39,7 +42,7 @@ namespace WPFDevelopers.Controls
         private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
         private Border _border;
         private WrapPanel _wrapPanel;
-        private Button _buttonCancel, _buttonComplete;
+        private Button _buttonSave,_buttonCancel, _buttonComplete;
         private Rect rect;
         private Point pointStart, pointEnd;
         private bool isMouseUp = false;
@@ -58,6 +61,9 @@ namespace WPFDevelopers.Controls
             _rectangleBottom = GetTemplateChild(RectangleBottomTemplateName) as Rectangle;
             _border = GetTemplateChild(BorderTemplateName) as Border;
             _wrapPanel = GetTemplateChild(WrapPanelTemplateName) as WrapPanel;
+            _buttonSave = GetTemplateChild(ButtonSaveTemplateName) as Button;
+            if (_buttonSave != null)
+                _buttonSave.Click += _buttonSave_Click;
             _buttonCancel = GetTemplateChild(ButtonCancelTemplateName) as Button;
             if (_buttonCancel != null)
                 _buttonCancel.Click += _buttonCancel_Click;
@@ -69,14 +75,39 @@ namespace WPFDevelopers.Controls
             _rectangleLeft.Height = _canvas.Height;
         }
 
+        private void _buttonSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = $"WPFDevelopers{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
+            dlg.DefaultExt = ".jpg";
+            dlg.Filter = "image file|*.jpg";
+
+            if (dlg.ShowDialog() == true)
+            {
+                BitmapEncoder pngEncoder = new PngBitmapEncoder();
+                pngEncoder.Frames.Add(BitmapFrame.Create(CutBitmap()));
+                using (var fs = System.IO.File.OpenWrite(dlg.FileName))
+                {
+                    pngEncoder.Save(fs);
+                    fs.Dispose();
+                    fs.Close();
+                }
+            }
+            Close();
+        }
+
         private void _buttonComplete_Click(object sender, RoutedEventArgs e)
         {
-            var renderTargetBitmap = new RenderTargetBitmap((int)_canvas.Width,
-   (int)_canvas.Height, 96d, 96d, System.Windows.Media.PixelFormats.Default);
-            renderTargetBitmap.Render(_canvas);
-            var croppedBitmap = new CroppedBitmap(renderTargetBitmap, new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
-            Clipboard.SetImage(croppedBitmap);
+           
+            Clipboard.SetImage(CutBitmap());
             Close();
+        }
+        CroppedBitmap CutBitmap()
+        {
+            var renderTargetBitmap = new RenderTargetBitmap((int)_canvas.Width,
+  (int)_canvas.Height, 96d, 96d, System.Windows.Media.PixelFormats.Default);
+            renderTargetBitmap.Render(_canvas);
+            return  new CroppedBitmap(renderTargetBitmap, new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
         }
         private void _buttonCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -114,7 +145,7 @@ namespace WPFDevelopers.Controls
             {
                 _wrapPanel.Visibility = Visibility.Visible;
                 Canvas.SetLeft(this._wrapPanel, rect.X + rect.Width - this._wrapPanel.ActualWidth);
-                Canvas.SetTop(this._wrapPanel, rect.Y + rect.Height);
+                Canvas.SetTop(this._wrapPanel, rect.Y + rect.Height + 4);
                 isMouseUp = true;
             }
         }
@@ -149,22 +180,7 @@ namespace WPFDevelopers.Controls
             Canvas.SetLeft(this._border, rect.X);
             Canvas.SetTop(this._border, rect.Y);
         }
-        //        SaveFileDialog dlg = new SaveFileDialog();
-        //        dlg.FileName = $"{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
-        //            dlg.DefaultExt = ".jpg";
-        //            dlg.Filter = "image file|*.jpg";
-
-        //            if (dlg.ShowDialog() == true)
-        //            {
-        //                BitmapEncoder pngEncoder = new PngBitmapEncoder();
-        //        pngEncoder.Frames.Add(BitmapFrame.Create((BitmapSource) image2.ImageSource));
-        //                using (var fs = System.IO.File.OpenWrite(dlg.FileName))
-        //                {
-        //                    pngEncoder.Save(fs);
-        //                    fs.Dispose();
-        //                    fs.Close();
-        //                }
-        //            }
+       
         System.Drawing.Bitmap CaptureScreen()
         {
             var bmpCaptured = new System.Drawing.Bitmap((int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight, System.Drawing.Imaging.PixelFormat.Format24bppRgb);

@@ -27,9 +27,34 @@
                         <Rectangle x:Name="PART_RectangleBottom" Style="{StaticResource RectangleStyle}"/>
                         <Border x:Name="PART_Border" BorderBrush="{StaticResource SuccessPressedSolidColorBrush}" 
                                 BorderThickness="1"/>
-                        <WrapPanel x:Name="PART_WrapPanel" Visibility="Hidden" Panel.ZIndex="99">
-                            <Button x:Name="PART_ButtonCancel" Style="{StaticResource PrimaryButton}">取消❎</Button>
-                            <Button x:Name="PART_ButtonComplete"  Style="{StaticResource PrimaryButton}">完成√</Button>
+                        <WrapPanel x:Name="PART_WrapPanel" 
+                                   Visibility="Hidden" Panel.ZIndex="99"
+                                   Height="38" Background="{StaticResource WhiteSolidColorBrush}"
+                                   VerticalAlignment="Center">
+                            <Button x:Name="PART_ButtonSave" Style="{StaticResource PathButton}"
+                                    ToolTip="保存" Margin="10,0,0,0">
+                                <Button.Content>
+                                    <Path Fill="{StaticResource InfoPressedSolidColorBrush}" 
+                                          Width="18" Height="18" Stretch="Fill" 
+                                          Data="{StaticResource PathSave}"/>
+                                </Button.Content>
+                            </Button>
+                            <Button x:Name="PART_ButtonCancel" Style="{StaticResource PathButton}"
+                                    ToolTip="取消">
+                                <Button.Content>
+                                    <Path Fill="{StaticResource DangerPressedSolidColorBrush}" 
+                                          Width="14" Height="14" Stretch="Fill" 
+                                          Data="{StaticResource PathCancel}"/>
+                                </Button.Content>
+                            </Button>
+                            <Button x:Name="PART_ButtonComplete"  Style="{StaticResource PathButton}"
+                                    ToolTip="完成" Margin="0,0,10,0">
+                                <Button.Content>
+                                    <Path Fill="{StaticResource SuccessPressedSolidColorBrush}"  
+                                          Width="20" Height="15" Stretch="Fill" 
+                                          Data="{StaticResource PathComplete}"/>
+                                </Button.Content>
+                            </Button>
                         </WrapPanel>
 
                     </Canvas>
