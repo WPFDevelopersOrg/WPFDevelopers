@@ -66,7 +66,6 @@ namespace WPFDevelopers.Controls
 
         const double _ScaleRatio = 0.95;
         const double _ScaleRatioEx = 1;
-        const double _CycleInterval = 2000;
 
         double _ShellWidth = 0;
         double _ShellHeight = 0;
@@ -154,6 +153,35 @@ namespace WPFDevelopers.Controls
             }
         }
 
+
+
+
+        public double PlaySpeed
+        {
+            get { return (double)GetValue(PlaySpeedProperty); }
+            set { SetValue(PlaySpeedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PlaySpeed.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PlaySpeedProperty =
+            DependencyProperty.Register("PlaySpeed", typeof(double), typeof(MasterCarousel), new PropertyMetadata(2000d, OnPlaySpeedPropertyChangedCallBack));
+
+        private static void OnPlaySpeedPropertyChangedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+              if (d == null)
+                return;
+
+            if (!(d is MasterCarousel control))
+                return;
+
+            if (!double.TryParse(e.NewValue?.ToString(), out var vResult))
+                return;
+
+            control.Stop();
+            control.ResetInterval(vResult);
+            control.Start();
+        }
+
         public IEnumerable ItemsSource
         {
             get { return (IEnumerable)GetValue(ItemsSourceProperty); }
@@ -220,8 +248,18 @@ namespace WPFDevelopers.Controls
 
         bool LoadeTimer()
         {
-            _PlayTimer.Interval = _CycleInterval;
+            _PlayTimer.Interval = PlaySpeed;
             _PlayTimer.Elapsed += PlayTimer_Elapsed;
+
+            return true;
+        }
+
+        bool ResetInterval(double interval)
+        {
+            if (interval <= 0)
+                return false;
+
+            _PlayTimer.Interval = interval;
 
             return true;
         }
@@ -1348,7 +1386,7 @@ namespace WPFDevelopers.Controls
 
         void PlayTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Application.Current.Dispatcher.BeginInvoke(new Action(() => PlayCarouselRightToLeft()));
+            Application.Current.Dispatcher.BeginInvoke(new Action(() => PlayCarouselRightToLeft()),System.Windows.Threading.DispatcherPriority.Background);
         }
 
         void Border_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

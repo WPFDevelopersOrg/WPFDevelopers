@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <wpfdev:MasterCarousel IsStartAinimation="True">
+        <wpfdev:MasterCarousel IsStartAinimation="True" PlaySpeed="1000">
             <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/0.jpg"/>
             <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/1.jpg"/>
             <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/2.jpg"/>
