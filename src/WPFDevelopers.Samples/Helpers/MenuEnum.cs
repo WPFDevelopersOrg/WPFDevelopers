@@ -33,6 +33,7 @@ namespace WPFDevelopers.Samples.Helpers
         ScrollViewer,
         OtherControls,
         ScreenCut,
+        TransitionPanel,
         TaskbarInfo,
     }
 }

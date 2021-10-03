@@ -100,7 +100,7 @@
             </Grid>
         </Border>
 
-        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource BlackSolidColorBrush}"
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
                 CornerRadius="3">
 
             <Grid Margin="20,20,0,0">
@@ -110,9 +110,9 @@
                 </Grid.ColumnDefinitions>
                 <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer" Background="LightGray" IsLampStart="True"
                                    VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Ellipse>
+                    <Ellipse Width="53" Height="53">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/1.jpg"/>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Chat/UserImages/yanjinhua.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </wpfdev:BreathLamp>
@@ -121,7 +121,7 @@
                            Margin="10,20"
                            FontSize="{StaticResource MediumFontSize}">
                     <Run Foreground="{StaticResource PrimaryTextSolidColorBrush}">
-                        XXXYYY
+                        WPF开发者
                     </Run>
                     <Run Foreground="{StaticResource SuccessPressedSolidColorBrush}">正在直播</Run>
                 </TextBlock>

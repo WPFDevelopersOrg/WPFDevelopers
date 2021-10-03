@@ -136,6 +136,9 @@
     <Compile Include="ExampleViews\TimeLineExample.xaml.cs">
       <DependentUpon>TimeLineExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\TransitionPanelExample.xaml.cs">
+      <DependentUpon>TransitionPanelExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\MenuEnum.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
@@ -258,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\TimeLineExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\TransitionPanelExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
