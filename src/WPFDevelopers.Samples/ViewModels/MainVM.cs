@@ -150,6 +150,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.TransitionPanel:
                     ControlPanel = new TransitionPanelExample();
                     break;
+                case MenuEnum.SpotLight:
+                    ControlPanel = new SpotLightExample();
+                    break;
                 //将Pagination放到最后
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();

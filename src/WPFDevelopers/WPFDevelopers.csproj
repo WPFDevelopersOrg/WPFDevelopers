@@ -73,6 +73,7 @@
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\ScreenCut\ScreenCut.cs" />
+    <Compile Include="Controls\SpotLight\SpotLight.cs" />
     <Compile Include="Helpers\ControlsHelper.cs" />
     <Compile Include="Helpers\EnumerableHelper.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
@@ -215,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\ScreenCut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\SpotLight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

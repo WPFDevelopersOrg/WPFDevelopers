@@ -34,6 +34,7 @@ namespace WPFDevelopers.Samples.Helpers
         OtherControls,
         ScreenCut,
         TransitionPanel,
+        SpotLight,
         TaskbarInfo,
     }
 }

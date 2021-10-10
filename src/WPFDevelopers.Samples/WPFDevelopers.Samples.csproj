@@ -127,6 +127,9 @@
     <Compile Include="ExampleViews\SongWordsExample.xaml.cs">
       <DependentUpon>SongWordsExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\SpotLightExample.xaml.cs">
+      <DependentUpon>SpotLightExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\TaskbarItemInfoExample.xaml.cs">
       <DependentUpon>TaskbarItemInfoExample.xaml</DependentUpon>
     </Compile>
@@ -249,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\SongWordsExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\SpotLightExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

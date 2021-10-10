@@ -22,6 +22,7 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/TimeLine.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Pagination.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/ScreenCut.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/SpotLight.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
