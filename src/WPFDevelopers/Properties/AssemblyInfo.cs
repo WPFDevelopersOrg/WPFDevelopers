@@ -39,8 +39,9 @@ using System.Windows.Markup;
                                               //、应用程序或任何主题专用资源字典中找到时使用)
 )]
 
+[assembly: XmlnsPrefix("https://github.com/yanjinhuagood/WPFDevelopers", "WPFDevelopers")]
 [assembly: XmlnsDefinition("https://github.com/yanjinhuagood/WPFDevelopers", "WPFDevelopers.Controls")]
-
+[assembly: XmlnsDefinition("https://github.com/yanjinhuagood/WPFDevelopers", "WPFDevelopers.Assists")]
 // 程序集的版本信息由下列四个值组成: 
 //
 //      主版本
@@ -53,3 +54,4 @@ using System.Windows.Markup;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+

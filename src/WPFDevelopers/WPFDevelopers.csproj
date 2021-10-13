@@ -38,6 +38,9 @@
     <Reference Include="Microsoft.Expression.Drawing">
       <HintPath>..\..\Reference\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>..\..\Reference\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -54,6 +57,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assists\WindowAcrylicBlur.cs" />
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />

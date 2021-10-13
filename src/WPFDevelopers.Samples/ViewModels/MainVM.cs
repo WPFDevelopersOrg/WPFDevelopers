@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using WPFDevelopers.Samples.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
@@ -66,6 +67,12 @@ namespace WPFDevelopers.Samples.ViewModels
             if (obj == null) return;
             var model = obj as NavigateMenuModel;
             MenuItemSelection(model.Name);
+        });
+
+        public ICommand CloseCommand => new RelayCommand( obj => 
+        {
+            //Environment.Exit(0);
+            Application.Current.MainWindow.Close();
         });
 
 
@@ -161,6 +168,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
             }
         }
+
 
 
      }
