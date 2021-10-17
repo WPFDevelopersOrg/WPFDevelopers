@@ -32,8 +32,19 @@
         <StackPanel>
             <TextBlock Text="微信号公众号:WPFDevelopers" HorizontalAlignment="Center"
                    VerticalAlignment="Top" Margin="0,20" FontSize="20" FontWeight="Black"/>
-            <TextBlock Text="源码获取关注公众号后输入：3DBar 即可获取" HorizontalAlignment="Center"
-                   VerticalAlignment="Top" Margin="0,20" FontSize="14" FontWeight="Black"/>
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Top" 
+                       Margin="0,20" FontSize="{StaticResource NormalFontSize}" 
+                       FontWeight="Black">
+                <LineBreak/>
+            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.git"
+                       RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源代码</Hyperlink>
+            <Run/>
+            <Run/>
+            <Run/>
+            <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git"
+                       RequestNavigate="GiteeHyperlink_RequestNavigate"> 码云源代码</Hyperlink>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

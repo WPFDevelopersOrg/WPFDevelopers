@@ -78,6 +78,8 @@
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\ScreenCut\ScreenCut.cs" />
     <Compile Include="Controls\SpotLight\SpotLight.cs" />
+    <Compile Include="Controls\Win10Menu\Win10Menu.cs" />
+    <Compile Include="Controls\Win10Menu\Win10MenuItem.cs" />
     <Compile Include="Helpers\ControlsHelper.cs" />
     <Compile Include="Helpers\EnumerableHelper.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
@@ -228,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\TimeLine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Win10Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using WPFDevelopers.Samples.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
+using WPFDevelopers.Samples.ExampleViews.Win10Menu;
 using WPFDevelopers.Samples.Helpers;
 using WPFDevelopers.Samples.Models;
 
@@ -36,7 +37,7 @@ namespace WPFDevelopers.Samples.ViewModels
         }
         private object _controlPanel;
         /// <summary>
-        /// 更换左侧面板
+        /// 更换右侧面板
         /// </summary>
         public object ControlPanel
         {
@@ -159,6 +160,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.SpotLight:
                     ControlPanel = new SpotLightExample();
+                    break;
+                case MenuEnum.Win10Menu:
+                    ControlPanel = new Win10MenuExample();
                     break;
                 //将Pagination放到最后
                 case MenuEnum.Pagination:

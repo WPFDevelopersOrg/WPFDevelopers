@@ -146,6 +146,15 @@
     <Compile Include="ExampleViews\TransitionPanelExample.xaml.cs">
       <DependentUpon>TransitionPanelExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\Win10Menu\EdgePage.xaml.cs">
+      <DependentUpon>EdgePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Win10Menu\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Win10Menu\Win10MenuExample.xaml.cs">
+      <DependentUpon>Win10MenuExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\MenuEnum.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
@@ -276,6 +285,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\TransitionPanelExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Win10Menu\EdgePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Win10Menu\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Win10Menu\Win10MenuExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

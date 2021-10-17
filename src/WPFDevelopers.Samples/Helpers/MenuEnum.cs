@@ -35,6 +35,7 @@ namespace WPFDevelopers.Samples.Helpers
         ScreenCut,
         TransitionPanel,
         SpotLight,
+        Win10Menu,
         TaskbarInfo,
     }
 }
