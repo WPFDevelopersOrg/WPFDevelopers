@@ -134,7 +134,7 @@ namespace WPFDevelopers.Controls
         }
 
 
-        private bool OnSizeChangedCallback()
+      public bool OnSizeChangedCallback()
         {
             if (Part_BackCanvas == null)
                 return false;
@@ -194,15 +194,129 @@ namespace WPFDevelopers.Controls
                 Part_BackCanvas.Children.Add(item);
                 item.Tag = nIndex;
 
+
+
                 if (_DisplayItem == item)
                 {
+                    Storyboard storyboard = new Storyboard();
+                    {
+                        if (_DisplayWidth == double.NaN)
+                        {
+
+                        }
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = _DisplayWidth,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Width"));
+                        storyboard.Children.Add(animation);
+                    }
+                    {
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = _DisplayHeight,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+                        storyboard.Children.Add(animation);
+                    }
+
+                    {
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = 0d,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
+                        storyboard.Children.Add(animation);
+                    }
+                    {
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = 0d,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Top)"));
+                        storyboard.Children.Add(animation);
+                    }
+                    storyboard.Begin();
+
                     item.Width = _DisplayWidth;
                     item.Height = _DisplayHeight;
                     item.SetValue(Canvas.LeftProperty, 0d);
                     item.SetValue(Canvas.TopProperty, 0d);
+                   
                 }
                 else
                 {
+
+                    Storyboard storyboard = new Storyboard();
+
+                    {
+
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = _SimpleWidth,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, item);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Width"));
+                        storyboard.Children.Add(animation);
+                    }
+                    {
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = _SimpleHeight,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, item);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
+                        storyboard.Children.Add(animation);
+                    }
+
+                    {
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = Left,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, item);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
+                        storyboard.Children.Add(animation);
+                    }
+                    {
+                        DoubleAnimation animation = new DoubleAnimation()
+                        {
+                            To = _SimpleTop,
+                            Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
+                            EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut },
+                        };
+
+                        Storyboard.SetTarget(animation, item);
+                        Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Top)"));
+                        storyboard.Children.Add(animation);
+                    }
+                    storyboard.Begin();
+
                     item.Width = _SimpleWidth;
                     item.Height = _SimpleHeight;
                     item.SetValue(Canvas.LeftProperty, Left);
@@ -213,6 +327,8 @@ namespace WPFDevelopers.Controls
 
                     Left += _SimpleWidth;
                     ++nPosIndex;
+
+
                 }
                 ++nIndex;
             }
