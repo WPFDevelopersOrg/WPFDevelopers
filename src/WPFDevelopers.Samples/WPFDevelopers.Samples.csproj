@@ -41,10 +41,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reference\Microsoft.Maps.MapControl.WPF.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Microsoft.Windows.Shell.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity">
@@ -325,6 +321,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.csproj">
+      <Project>{d1e586fa-e269-4f7f-aebb-92aa7f2d8c44}</Project>
+      <Name>Microsoft.Windows.Shell</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WPFDevelopers\WPFDevelopers.csproj">
       <Project>{25475fdd-29c7-466e-861b-4a0b5e010175}</Project>
       <Name>WPFDevelopers</Name>

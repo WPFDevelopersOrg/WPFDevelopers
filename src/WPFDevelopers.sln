@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers", "WPFDevelop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers.Samples", "WPFDevelopers.Samples\WPFDevelopers.Samples.csproj", "{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Expression.Media.Effects", "Microsoft.Expression.Media.Effects\Microsoft.Expression.Media.Effects.csproj", "{7075C0B4-3FBB-4826-B8A4-8ACD4A4A309D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Windows.Shell", "Microsoft.Windows.Shell\Microsoft.Windows.Shell.csproj", "{D1E586FA-E269-4F7F-AEBB-92AA7F2D8C44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7075C0B4-3FBB-4826-B8A4-8ACD4A4A309D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7075C0B4-3FBB-4826-B8A4-8ACD4A4A309D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7075C0B4-3FBB-4826-B8A4-8ACD4A4A309D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7075C0B4-3FBB-4826-B8A4-8ACD4A4A309D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E586FA-E269-4F7F-AEBB-92AA7F2D8C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E586FA-E269-4F7F-AEBB-92AA7F2D8C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E586FA-E269-4F7F-AEBB-92AA7F2D8C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E586FA-E269-4F7F-AEBB-92AA7F2D8C44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

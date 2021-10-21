@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7075C0B4-3FBB-4826-B8A4-8ACD4A4A309D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Expression.Media.Effects</RootNamespace>
+    <AssemblyName>Microsoft.Expression.Media.Effects</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\OutPut\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\OutPut\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlindOrientation.cs" />
+    <Compile Include="BlindsTransitionEffect.cs" />
+    <Compile Include="BloomEffect.cs" />
+    <Compile Include="CircleRevealTransitionEffect.cs" />
+    <Compile Include="CloudRevealTransitionEffect.cs" />
+    <Compile Include="CloudyTransitionEffect.cs" />
+    <Compile Include="ColorToneEffect.cs" />
+    <Compile Include="EmbossedEffect.cs" />
+    <Compile Include="FadeTransitionEffect.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="MagnifyEffect.cs" />
+    <Compile Include="MonochromeEffect.cs" />
+    <Compile Include="PixelateEffect.cs" />
+    <Compile Include="PixelateTransitionEffect.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadialBlurTransitionEffect.cs" />
+    <Compile Include="RandomizedTransitionEffect.cs" />
+    <Compile Include="RippleEffect.cs" />
+    <Compile Include="RippleTransitionEffect.cs" />
+    <Compile Include="SharpenEffect.cs" />
+    <Compile Include="SlideDirection.cs" />
+    <Compile Include="SlideInTransitionEffect.cs" />
+    <Compile Include="SmoothSwirlGridTransitionEffect.cs" />
+    <Compile Include="SunlightEffect.cs" />
+    <Compile Include="SwirlEffect.cs" />
+    <Compile Include="TransitionEffect.cs" />
+    <Compile Include="WaveTransitionEffect.cs" />
+    <Compile Include="WipeDirection.cs" />
+    <Compile Include="WipeTransitionEffect.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Shaders\blindstransitioneffect.ps" />
+    <Resource Include="Shaders\bloom.ps" />
+    <Resource Include="Shaders\circlerevealtransitioneffect.ps" />
+    <Resource Include="Shaders\cloudrevealtransitioneffect.ps" />
+    <Resource Include="Shaders\colortone.ps" />
+    <Resource Include="Shaders\embossed.ps" />
+    <Resource Include="Shaders\fadetransitioneffect.ps" />
+    <Resource Include="Shaders\linerevealtransitioneffect.ps" />
+    <Resource Include="Shaders\magnify.ps" />
+    <Resource Include="Shaders\monochrome.ps" />
+    <Resource Include="Shaders\pixelate.ps" />
+    <Resource Include="Shaders\pixelateintransitioneffect.ps" />
+    <Resource Include="Shaders\pixelateouttransitioneffect.ps" />
+    <Resource Include="Shaders\pixelatetransitioneffect.ps" />
+    <Resource Include="Shaders\radialblurtransitioneffect.ps" />
+    <Resource Include="Shaders\ripple.ps" />
+    <Resource Include="Shaders\rippletransitioneffect.ps" />
+    <Resource Include="Shaders\sharpen.ps" />
+    <Resource Include="Shaders\slideintransitioneffect.ps" />
+    <Resource Include="Shaders\smoothswirlgridtransitioneffect.ps" />
+    <Resource Include="Shaders\sunlighteffect.ps" />
+    <Resource Include="Shaders\swirl.ps" />
+    <Resource Include="Shaders\wavetransitioneffect.ps" />
+    <Resource Include="Shaders\wipetransitioneffect.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Shaders\clouds.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

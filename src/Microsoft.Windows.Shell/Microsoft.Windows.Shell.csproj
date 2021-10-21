@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1E586FA-E269-4F7F-AEBB-92AA7F2D8C44}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Microsoft.Windows.Shell</RootNamespace>
+    <AssemblyName>Microsoft.Windows.Shell</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\OutPut\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\OutPut\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JumpItem.cs" />
+    <Compile Include="JumpItemRejectionReason.cs" />
+    <Compile Include="JumpItemsRejectedEventArgs.cs" />
+    <Compile Include="JumpItemsRemovedEventArgs.cs" />
+    <Compile Include="JumpList.cs" />
+    <Compile Include="JumpPath.cs" />
+    <Compile Include="JumpTask.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Standard\AC.cs" />
+    <Compile Include="Standard\APPDOCLISTTYPE.cs" />
+    <Compile Include="Standard\Assert.cs" />
+    <Compile Include="Standard\BI.cs" />
+    <Compile Include="Standard\BITMAPINFO.cs" />
+    <Compile Include="Standard\BITMAPINFOHEADER.cs" />
+    <Compile Include="Standard\BLENDFUNCTION.cs" />
+    <Compile Include="Standard\CHANGEFILTERSTRUCT.cs" />
+    <Compile Include="Standard\CLSID.cs" />
+    <Compile Include="Standard\CombineRgnResult.cs" />
+    <Compile Include="Standard\CREATESTRUCT.cs" />
+    <Compile Include="Standard\CS.cs" />
+    <Compile Include="Standard\DeviceCap.cs" />
+    <Compile Include="Standard\DOGIF.cs" />
+    <Compile Include="Standard\DoubleUtilities.cs" />
+    <Compile Include="Standard\DpiHelper.cs" />
+    <Compile Include="Standard\DWMFLIP3D.cs" />
+    <Compile Include="Standard\DWMNCRP.cs" />
+    <Compile Include="Standard\DWMWA.cs" />
+    <Compile Include="Standard\DWM_SIT.cs" />
+    <Compile Include="Standard\DWM_TIMING_INFO.cs" />
+    <Compile Include="Standard\ErrorModes.cs" />
+    <Compile Include="Standard\Facility.cs" />
+    <Compile Include="Standard\FO.cs" />
+    <Compile Include="Standard\FOF.cs" />
+    <Compile Include="Standard\GCLP.cs" />
+    <Compile Include="Standard\GPS.cs" />
+    <Compile Include="Standard\GWL.cs" />
+    <Compile Include="Standard\HCF.cs" />
+    <Compile Include="Standard\HIGHCONTRAST.cs" />
+    <Compile Include="Standard\HRESULT.cs" />
+    <Compile Include="Standard\HT.cs" />
+    <Compile Include="Standard\IApplicationDestinations.cs" />
+    <Compile Include="Standard\IApplicationDocumentLists.cs" />
+    <Compile Include="Standard\ICustomDestinationList.cs" />
+    <Compile Include="Standard\IEnumIDList.cs" />
+    <Compile Include="Standard\IEnumObjects.cs" />
+    <Compile Include="Standard\IID.cs" />
+    <Compile Include="Standard\INPUT.cs" />
+    <Compile Include="Standard\INPUT_TYPE.cs" />
+    <Compile Include="Standard\IObjectArray.cs" />
+    <Compile Include="Standard\IObjectCollection.cs" />
+    <Compile Include="Standard\IObjectWithAppUserModelId.cs" />
+    <Compile Include="Standard\IObjectWithProgId.cs" />
+    <Compile Include="Standard\IPropertyStore.cs" />
+    <Compile Include="Standard\IShellFolder.cs" />
+    <Compile Include="Standard\IShellItem.cs" />
+    <Compile Include="Standard\IShellItem2.cs" />
+    <Compile Include="Standard\IShellItemArray.cs" />
+    <Compile Include="Standard\IShellLinkW.cs" />
+    <Compile Include="Standard\ITaskbarList.cs" />
+    <Compile Include="Standard\ITaskbarList2.cs" />
+    <Compile Include="Standard\ITaskbarList3.cs" />
+    <Compile Include="Standard\ITaskbarList4.cs" />
+    <Compile Include="Standard\KDC.cs" />
+    <Compile Include="Standard\LOGFONT.cs" />
+    <Compile Include="Standard\ManagedIStream.cs" />
+    <Compile Include="Standard\MARGINS.cs" />
+    <Compile Include="Standard\MessageHandler.cs" />
+    <Compile Include="Standard\MessageWindow.cs" />
+    <Compile Include="Standard\MF.cs" />
+    <Compile Include="Standard\MINMAXINFO.cs" />
+    <Compile Include="Standard\MONITORINFO.cs" />
+    <Compile Include="Standard\MOUSEEVENTF.cs" />
+    <Compile Include="Standard\MOUSEINPUT.cs" />
+    <Compile Include="Standard\MSGFLT.cs" />
+    <Compile Include="Standard\MSGFLTINFO.cs" />
+    <Compile Include="Standard\NativeMethods.cs" />
+    <Compile Include="Standard\NIF.cs" />
+    <Compile Include="Standard\NIIF.cs" />
+    <Compile Include="Standard\NIM.cs" />
+    <Compile Include="Standard\NONCLIENTMETRICS.cs" />
+    <Compile Include="Standard\NOTIFYICONDATA.cs" />
+    <Compile Include="Standard\OLECMDEXECOPT.cs" />
+    <Compile Include="Standard\OLECMDF.cs" />
+    <Compile Include="Standard\OLECMDID.cs" />
+    <Compile Include="Standard\PKEY.cs" />
+    <Compile Include="Standard\POINT.cs" />
+    <Compile Include="Standard\PROPVARIANT.cs" />
+    <Compile Include="Standard\READYSTATE.cs" />
+    <Compile Include="Standard\RECT.cs" />
+    <Compile Include="Standard\RefPOINT.cs" />
+    <Compile Include="Standard\RefRECT.cs" />
+    <Compile Include="Standard\RGBQUAD.cs" />
+    <Compile Include="Standard\RGN.cs" />
+    <Compile Include="Standard\SafeConnectionPointCookie.cs" />
+    <Compile Include="Standard\SafeDC.cs" />
+    <Compile Include="Standard\SafeFindHandle.cs" />
+    <Compile Include="Standard\SafeGdiplusStartupToken.cs" />
+    <Compile Include="Standard\SafeHBITMAP.cs" />
+    <Compile Include="Standard\SC.cs" />
+    <Compile Include="Standard\SFGAO.cs" />
+    <Compile Include="Standard\SHARD.cs" />
+    <Compile Include="Standard\SHARDAPPIDINFO.cs" />
+    <Compile Include="Standard\SHARDAPPIDINFOIDLIST.cs" />
+    <Compile Include="Standard\SHARDAPPIDINFOLINK.cs" />
+    <Compile Include="Standard\SHCONTF.cs" />
+    <Compile Include="Standard\SHFILEOPSTRUCT.cs" />
+    <Compile Include="Standard\SHGDN.cs" />
+    <Compile Include="Standard\SIATTRIBFLAGS.cs" />
+    <Compile Include="Standard\SICHINT.cs" />
+    <Compile Include="Standard\SIGDN.cs" />
+    <Compile Include="Standard\SIZE.cs" />
+    <Compile Include="Standard\SLGP.cs" />
+    <Compile Include="Standard\SM.cs" />
+    <Compile Include="Standard\SPI.cs" />
+    <Compile Include="Standard\SPIF.cs" />
+    <Compile Include="Standard\StartupInput.cs" />
+    <Compile Include="Standard\StartupOutput.cs" />
+    <Compile Include="Standard\STATE_SYSTEM.cs" />
+    <Compile Include="Standard\Status.cs" />
+    <Compile Include="Standard\StockObject.cs" />
+    <Compile Include="Standard\STPF.cs" />
+    <Compile Include="Standard\STR_GPS.cs" />
+    <Compile Include="Standard\SW.cs" />
+    <Compile Include="Standard\SWP.cs" />
+    <Compile Include="Standard\TBPF.cs" />
+    <Compile Include="Standard\THB.cs" />
+    <Compile Include="Standard\THBF.cs" />
+    <Compile Include="Standard\THUMBBUTTON.cs" />
+    <Compile Include="Standard\TITLEBARINFO.cs" />
+    <Compile Include="Standard\TITLEBARINFOEX.cs" />
+    <Compile Include="Standard\ULW.cs" />
+    <Compile Include="Standard\UNSIGNED_RATIO.cs" />
+    <Compile Include="Standard\Utility.cs" />
+    <Compile Include="Standard\Verify.cs" />
+    <Compile Include="Standard\Win32Error.cs" />
+    <Compile Include="Standard\Win32Value.cs" />
+    <Compile Include="Standard\WIN32_FIND_DATAW.cs" />
+    <Compile Include="Standard\WINDOWPLACEMENT.cs" />
+    <Compile Include="Standard\WINDOWPOS.cs" />
+    <Compile Include="Standard\WINDOWTHEMEATTRIBUTETYPE.cs" />
+    <Compile Include="Standard\WM.cs" />
+    <Compile Include="Standard\WNDCLASSEX.cs" />
+    <Compile Include="Standard\WndProc.cs" />
+    <Compile Include="Standard\WndProcHook.cs" />
+    <Compile Include="Standard\WS.cs" />
+    <Compile Include="Standard\WS_EX.cs" />
+    <Compile Include="Standard\WTA_OPTIONS.cs" />
+    <Compile Include="Standard\WTNCA.cs" />
+    <Compile Include="Standard\WVR.cs" />
+    <Compile Include="SystemCommands.cs" />
+    <Compile Include="SystemParameters2.cs" />
+    <Compile Include="TaskbarItemInfo.cs" />
+    <Compile Include="TaskbarItemProgressState.cs" />
+    <Compile Include="ThumbButtonInfo.cs" />
+    <Compile Include="ThumbButtonInfoCollection.cs" />
+    <Compile Include="WindowChrome.cs" />
+    <Compile Include="WindowChromeWorker.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
