@@ -112,10 +112,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BreatheLight:
                     ControlPanel = new BreatheLightExample();
                     break;
-                case MenuEnum.TaskbarInfo:
-                    var taskbar = new TaskbarItemInfoExample();
-                    taskbar.ShowDialog();
-                    break;
+               
                 case MenuEnum.ChatEmoji:
                     ControlPanel = new ChatEmojiExample();
                     break;
@@ -164,9 +161,20 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Win10Menu:
                     ControlPanel = new Win10MenuExample();
                     break;
-                //将Pagination放到最后
+                case MenuEnum.RadarChart:
+                    ControlPanel = new RadarChartExample();
+                    break;
+                case MenuEnum.LoginWindow:
+                    var loginWindow = new LoginWindow();
+                    loginWindow.ShowDialog();
+                    break;
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();
+                    break;
+                //将TaskbarInfo放到最后
+                case MenuEnum.TaskbarInfo:
+                    var taskbar = new TaskbarItemInfoExample();
+                    taskbar.ShowDialog();
                     break;
                 default:
                     break;

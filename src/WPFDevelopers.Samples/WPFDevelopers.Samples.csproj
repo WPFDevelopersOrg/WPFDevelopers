@@ -90,6 +90,9 @@
     <Compile Include="ExampleViews\DashboardExample.xaml.cs">
       <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\LoginWindow\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\Map\AMapTitleLayer.cs" />
     <Compile Include="ExampleViews\Map\BingAMapExample.xaml.cs">
       <DependentUpon>BingAMapExample.xaml</DependentUpon>
@@ -114,6 +117,9 @@
     </Compile>
     <Compile Include="ExampleViews\PieControlExample.xaml.cs">
       <DependentUpon>PieControlExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\RadarChartExample.xaml.cs">
+      <DependentUpon>RadarChartExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\RoundMenuExample.xaml.cs">
       <DependentUpon>RoundMenuExample.xaml</DependentUpon>
@@ -198,6 +204,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\LoginWindow\CustomStyle\ButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExampleViews\LoginWindow\CustomStyle\PasswordBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExampleViews\LoginWindow\CustomStyle\TextBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExampleViews\LoginWindow\CustomStyle\WindowStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExampleViews\LoginWindow\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\LoginWindow\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\Map\BingAMapExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -245,6 +275,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ExampleViews\PieControlExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\RadarChartExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -382,6 +416,14 @@
     <Resource Include="Images\Craouse\2.jpg" />
     <Resource Include="Images\Craouse\3.jpg" />
     <Resource Include="Images\Craouse\4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExampleViews\LoginWindow\Assets\Lock.png" />
+    <Resource Include="ExampleViews\LoginWindow\Assets\Mail.png" />
+    <Resource Include="ExampleViews\LoginWindow\Assets\User.png" />
+    <Resource Include="ExampleViews\LoginWindow\CustomControl\Image\Clear.png" />
+    <Resource Include="ExampleViews\LoginWindow\CustomStyle\Image\Background.png" />
+    <Resource Include="ExampleViews\LoginWindow\CustomStyle\Image\Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,6 +36,8 @@ namespace WPFDevelopers.Samples.Helpers
         TransitionPanel,
         SpotLight,
         Win10Menu,
+        RadarChart,
+        LoginWindow,
         TaskbarInfo,
     }
 }
