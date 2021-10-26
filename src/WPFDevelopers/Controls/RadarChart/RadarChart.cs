@@ -36,6 +36,12 @@ namespace WPFDevelopers.Controls
        
         protected override void OnRender(DrawingContext drawingContext)
         {
+            //防止延迟加载时，RadarArray为null时报错，防止RadarArray.Count==0时，后续做 被除数（double perangle = 360 / polygonBound） 时溢出错误
+            if (RadarArray == null || RadarArray.Count == 0)
+            {
+                return;
+            }
+
             //base.OnRender(drawingContext);
             DrawPoints(150, drawingContext, true);
             DrawPoints(100, drawingContext);

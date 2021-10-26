@@ -20,8 +20,9 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <WrapPanel>
-                    <Rectangle Width="6" Height="26" Fill="Black"/>
+                    <Rectangle Width="6" Height="26" Fill="Black"/> 
                     <TextBlock Text="能力图" FontWeight="Black" FontSize="24" Padding="10,0"/>
+                    <TextBlock Text="{Binding NowPlayerName,RelativeSource={RelativeSource AncestorType=local:RadarChartExample}}" FontWeight="Black" Foreground="#2B579A" FontSize="18" VerticalAlignment="Center" />
                 </WrapPanel>
                 <wpfdev:RadarChart Grid.Column="0" Grid.Row="1" RadarArray="{Binding RadarModels,RelativeSource={RelativeSource AncestorType=local:RadarChartExample}}"/>
                 <Button Grid.Row="2" Content="刷新" Click="Button_Click" VerticalAlignment="Bottom" Width="200" Style="{StaticResource PrimaryButton}"/>
