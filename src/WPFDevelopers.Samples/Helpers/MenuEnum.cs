@@ -37,6 +37,7 @@ namespace WPFDevelopers.Samples.Helpers
         SpotLight,
         Win10Menu,
         RadarChart,
+        BasicBarChart,
         LoginWindow,
         TaskbarInfo,
     }

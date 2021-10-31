@@ -61,6 +61,7 @@
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="Controls\AnimationWeChat\AnimationWeChat.cs" />
+    <Compile Include="Controls\BasicBarChart\BasicBarChart.cs" />
     <Compile Include="Controls\BreatheLight\BreathLamp.cs" />
     <Compile Include="Controls\Carousel\EmphasizerCarousel.cs" />
     <Compile Include="Controls\Carousel\MasterCarousel.cs" />

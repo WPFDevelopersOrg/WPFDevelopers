@@ -171,6 +171,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();
                     break;
+                case MenuEnum.BasicBarChart:
+                    ControlPanel = new BasicBarChartExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();
