@@ -38,6 +38,7 @@ namespace WPFDevelopers.Samples.Helpers
         Win10Menu,
         RadarChart,
         BasicBarChart,
+        ZooSemy,
         LoginWindow,
         TaskbarInfo,
     }

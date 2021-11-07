@@ -174,6 +174,11 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BasicBarChart:
                     ControlPanel = new BasicBarChartExample();
                     break;
+                case MenuEnum.ZooSemy:
+                    ControlPanel = new ZooSemyExample();
+                    //var zooSemyExample = new ZooSemyExample();
+                    //zooSemyExample.ShowDialog();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

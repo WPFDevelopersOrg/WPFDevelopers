@@ -11,3 +11,10 @@ E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsof
 E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.csproj.CoreCompileInputs.cache
 E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.dll
 E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.pdb
+E:\Code\git\WPFDevelopers\WPFDevelopers\OutPut\Microsoft.Expression.Media.Effects.dll
+E:\Code\git\WPFDevelopers\WPFDevelopers\OutPut\Microsoft.Expression.Media.Effects.pdb
+E:\Code\git\WPFDevelopers\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.csproj.AssemblyReference.cache
+E:\Code\git\WPFDevelopers\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.g.resources
+E:\Code\git\WPFDevelopers\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.csproj.CoreCompileInputs.cache
+E:\Code\git\WPFDevelopers\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.dll
+E:\Code\git\WPFDevelopers\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.pdb

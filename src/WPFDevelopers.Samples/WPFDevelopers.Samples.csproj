@@ -37,6 +37,14 @@
     <ApplicationIcon>WPFDevelopers.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Controls, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Microsoft.Expression.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Reference\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reference\Microsoft.Maps.MapControl.WPF.dll</HintPath>
@@ -159,6 +167,12 @@
     </Compile>
     <Compile Include="ExampleViews\Win10Menu\Win10MenuExample.xaml.cs">
       <DependentUpon>Win10MenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\ZooSemy\VolumeControl.xaml.cs">
+      <DependentUpon>VolumeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\ZooSemy\ZooSemyExample.xaml.cs">
+      <DependentUpon>ZooSemyExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\MenuEnum.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
@@ -337,6 +351,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\ZooSemy\VolumeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\ZooSemy\ZooSemyExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -431,6 +453,11 @@
     <Resource Include="ExampleViews\LoginWindow\CustomControl\Image\Clear.png" />
     <Resource Include="ExampleViews\LoginWindow\CustomStyle\Image\Background.png" />
     <Resource Include="ExampleViews\LoginWindow\CustomStyle\Image\Logo.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\ZooSemy\0.png" />
+    <Resource Include="Images\ZooSemy\1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
