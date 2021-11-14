@@ -39,6 +39,7 @@ namespace WPFDevelopers.Samples.Helpers
         RadarChart,
         BasicBarChart,
         ZooSemy,
+        RulerControl,
         LoginWindow,
         TaskbarInfo,
     }

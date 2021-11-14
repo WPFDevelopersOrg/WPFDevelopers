@@ -38,9 +38,6 @@
     <Reference Include="Microsoft.Expression.Drawing">
       <HintPath>..\..\Reference\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Windows.Shell">
-      <HintPath>..\..\Reference\Microsoft.Windows.Shell.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -79,6 +76,7 @@
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\RadarChart\RadarChart.cs" />
     <Compile Include="Controls\RadarChart\RadarModel.cs" />
+    <Compile Include="Controls\RulerControl\Ruler.cs" />
     <Compile Include="Controls\ScreenCut\ScreenCut.cs" />
     <Compile Include="Controls\SpotLight\SpotLight.cs" />
     <Compile Include="Controls\Win10Menu\Win10Menu.cs" />
@@ -241,6 +239,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.csproj">
+      <Project>{d1e586fa-e269-4f7f-aebb-92aa7f2d8c44}</Project>
+      <Name>Microsoft.Windows.Shell</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,26 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using WPFDevelopers.Samples.ExampleViews.LoginWindow;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
     /// LoginWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindowExample : WindowBase
     {
-        public LoginWindow()
+        public LoginWindowExample()
         {
             InitializeComponent();
+        }
+
+        private void SignUp_Click(object sender, RoutedEventArgs e)
+        {
+            SignUpDialog dialog = new SignUpDialog
+            {
+                Owner = this
+            };
+            dialog.ShowDialog();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            InitWindow();
         }
     }
 }

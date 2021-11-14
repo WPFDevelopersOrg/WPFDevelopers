@@ -1,0 +1,30 @@
+﻿<local:WindowBase x:Class="WPFDevelopers.Samples.ExampleViews.SignUpDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+        xmlns:cc="clr-namespace:WPFDevelopers.Samples.ExampleViews.LoginWindow.CustomControl"
+        mc:Ignorable="d" FontSize="13"
+        Title="注册" Height="432" Width="360" ResizeMode="NoResize" ShowInTaskbar="False"
+        Style="{StaticResource NormalWindow}" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel VerticalAlignment="Top" Margin="40,40,40,0">
+            <!-- 用户名输入框 -->
+            <cc:TextInputBox Height="40" PlaceHolder="用户名" Icon="Assets/User.png"/>
+            <!-- 邮箱输入框 -->
+            <cc:TextInputBox Height="40" PlaceHolder="邮箱" Icon="Assets/Mail.png" Margin="0,20,0,0"/>
+            <!-- 密码输入框 -->
+            <cc:PasswordInputBox Height="40" PlaceHolder="密码" Icon="Assets/Lock.png" Margin="0,20,0,0"/>
+            <!-- 注册按钮 -->
+            <Button Content="注册" Height="40" Margin="0,20,0,0"/>
+            <!-- 可点击文本 -->
+            <Grid Margin="0 20 0 0">
+                <TextBlock FontSize="12" Foreground="#A1A1A1">
+                    点击「注册」即表示您已阅读并同意<Hyperlink Foreground="#4370F5" TextDecorations="None">用户协议</Hyperlink>
+                </TextBlock>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</local:WindowBase>

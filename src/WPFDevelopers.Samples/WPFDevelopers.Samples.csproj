@@ -101,9 +101,20 @@
     <Compile Include="ExampleViews\DashboardExample.xaml.cs">
       <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\LoginWindow\CustomControl\InputBoxBase.cs" />
+    <Compile Include="ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml.cs">
+      <DependentUpon>PasswordInputBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml.cs">
+      <DependentUpon>TextInputBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\LoginWindow\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\LoginWindow\SignUpDialog.xaml.cs">
+      <DependentUpon>SignUpDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\LoginWindow\WindowBase.cs" />
     <Compile Include="ExampleViews\Map\AMapTitleLayer.cs" />
     <Compile Include="ExampleViews\Map\BingAMapExample.xaml.cs">
       <DependentUpon>BingAMapExample.xaml</DependentUpon>
@@ -134,6 +145,9 @@
     </Compile>
     <Compile Include="ExampleViews\RoundMenuExample.xaml.cs">
       <DependentUpon>RoundMenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\RulerControlExample.xaml.cs">
+      <DependentUpon>RulerControlExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\ScreenCutExample.xaml.cs">
       <DependentUpon>ScreenCutExample.xaml</DependentUpon>
@@ -225,6 +239,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ExampleViews\LoginWindow\CustomStyle\ButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -248,6 +270,10 @@
     <Page Include="ExampleViews\LoginWindow\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\LoginWindow\SignUpDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ExampleViews\Map\BingAMapExample.xaml">
       <SubType>Designer</SubType>
@@ -304,6 +330,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\RoundMenuExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\RulerControlExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

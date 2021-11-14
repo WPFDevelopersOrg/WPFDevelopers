@@ -165,7 +165,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     ControlPanel = new RadarChartExample();
                     break;
                 case MenuEnum.LoginWindow:
-                    var loginWindow = new LoginWindow();
+                    var loginWindow = new LoginWindowExample();
                     loginWindow.ShowDialog();
                     break;
                 case MenuEnum.Pagination:
@@ -176,8 +176,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.ZooSemy:
                     ControlPanel = new ZooSemyExample();
-                    //var zooSemyExample = new ZooSemyExample();
-                    //zooSemyExample.ShowDialog();
+                    break;
+                case MenuEnum.RulerControl:
+                    ControlPanel = new RulerControlExample();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
