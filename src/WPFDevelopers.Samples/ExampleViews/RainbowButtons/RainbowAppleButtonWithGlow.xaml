@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.RainbowButtons.RainbowAppleButtonWithGlow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.RainbowButtons"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <FontFamily x:Key="Fixedsys">/WPFDevelopers.Samples;component/Assets/fixedsys.ttf#Fixedsys Excelsior 3.01</FontFamily>
+
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="40" />
+            <Setter Property="FontSize" Value="240" />
+            <Setter Property="FontFamily" Value="{StaticResource Fixedsys}" />
+            <Setter Property="Content" Value="Apple!" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Padding="{TemplateBinding Padding}"
+                                Background="Transparent"
+                                SnapsToDevicePixels="true">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointAnimation Storyboard.TargetName="RainbowBrush"
+                                                            Storyboard.TargetProperty="StartPoint"
+                                                            To="0,0.5"
+                                                            Duration="0:0:0.5">
+                                                <PointAnimation.EasingFunction>
+                                                    <QuarticEase EasingMode="EaseOut" />
+                                                </PointAnimation.EasingFunction>
+                                            </PointAnimation>
+                                            <PointAnimation Storyboard.TargetName="RainbowBrush"
+                                                            Storyboard.TargetProperty="EndPoint"
+                                                            To="1,0.5"
+                                                            Duration="0:0:0.5">
+                                                <PointAnimation.EasingFunction>
+                                                    <QuarticEase EasingMode="EaseOut" />
+                                                </PointAnimation.EasingFunction>
+                                            </PointAnimation>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <PointAnimation Storyboard.TargetName="RainbowBrush"
+                                                            Storyboard.TargetProperty="StartPoint"
+                                                            To="0.5,0"
+                                                            Duration="0:0:0.5">
+                                                <PointAnimation.EasingFunction>
+                                                    <QuarticEase EasingMode="EaseOut" />
+                                                </PointAnimation.EasingFunction>
+                                            </PointAnimation>
+                                            <PointAnimation Storyboard.TargetName="RainbowBrush"
+                                                            Storyboard.TargetProperty="EndPoint"
+                                                            To=".5,1"
+                                                            Duration="0:0:0.5">
+                                                <PointAnimation.EasingFunction>
+                                                    <QuarticEase EasingMode="EaseOut" />
+                                                </PointAnimation.EasingFunction>
+                                            </PointAnimation>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard SpeedRatio="3">
+                                            <PointAnimation Storyboard.TargetName="RainbowBrush"
+                                                            Storyboard.TargetProperty="StartPoint"
+                                                            To="0.5,0" />
+                                            <PointAnimation Storyboard.TargetName="RainbowBrush"
+                                                            Storyboard.TargetProperty="EndPoint"
+                                                            To=".5,1" />
+                                            <DoubleAnimation Storyboard.TargetName="G2"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="G3"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="G4"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="0" />
+
+                                            <DoubleAnimation Storyboard.TargetName="G5"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="G6"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="G7"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="0" />
+
+                                            <DoubleAnimation Storyboard.TargetName="G8"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="G9"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="G10"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="G11"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="G12"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="1" />
+                                            <DoubleAnimation Storyboard.TargetName="G13"
+                                                             Storyboard.TargetProperty="Offset"
+                                                             To="1" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid>
+                                <TextBlock Foreground="{Binding ElementName=textBlock, Path=Foreground}" Text="{TemplateBinding Content}">
+                                    <TextBlock.Effect>
+                                        <BlurEffect Radius="40" RenderingBias="Quality" />
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <TextBlock x:Name="textBlock" Text="{TemplateBinding Content}">
+                                    <TextBlock.Foreground>
+                                        <LinearGradientBrush x:Name="RainbowBrush" StartPoint="0,0.5" EndPoint="1,.5">
+                                            <GradientStop x:Name="G1" Offset="0" Color="#65b849" />
+                                            <GradientStop x:Name="G2" Offset=".166" Color="#65b849" />
+                                            <GradientStop x:Name="G3" Offset=".166" Color="#f7b423" />
+                                            <GradientStop x:Name="G4" Offset=".3333" Color="#f7b423" />
+                                            <GradientStop x:Name="G5" Offset="0.3333" Color="#f58122" />
+                                            <GradientStop x:Name="G6" Offset="0.5" Color="#f58122" />
+                                            <GradientStop x:Name="G7" Offset="0.5" Color=" #f8f8f8" />
+                                            <GradientStop x:Name="G8" Offset="0.5" Color=" #f8f8f8" />
+                                            <GradientStop x:Name="G9" Offset="0.50" Color="#de3a3c" />
+                                            <GradientStop x:Name="G10" Offset="0.666" Color="#de3a3c" />
+                                            <GradientStop x:Name="G11" Offset="0.666" Color="#943f96" />
+                                            <GradientStop x:Name="G12" Offset="0.8633" Color="#943f96" />
+                                            <GradientStop x:Name="G13" Offset="0.8633" Color="#009fd9" />
+                                            <GradientStop x:Name="G14" Offset="01" Color="#009fd9" />
+
+                                        </LinearGradientBrush>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="Storyboard1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DemoPage" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseOut" />
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Button Style="{DynamicResource ButtonStyle1}" />
+    </Grid>
+</UserControl>

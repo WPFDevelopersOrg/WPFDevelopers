@@ -143,6 +143,15 @@
     <Compile Include="ExampleViews\RadarChartExample.xaml.cs">
       <DependentUpon>RadarChartExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\RainbowButtons\RainbowAppleButton.xaml.cs">
+      <DependentUpon>RainbowAppleButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\RainbowButtons\RainbowAppleButtonWithGlow.xaml.cs">
+      <DependentUpon>RainbowAppleButtonWithGlow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\RainbowButtons\RainbowButtonsExample.xaml.cs">
+      <DependentUpon>RainbowButtonsExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\RoundMenuExample.xaml.cs">
       <DependentUpon>RoundMenuExample.xaml</DependentUpon>
     </Compile>
@@ -329,6 +338,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\RainbowButtons\RainbowAppleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\RainbowButtons\RainbowAppleButtonWithGlow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\RainbowButtons\RainbowButtonsExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\RoundMenuExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -408,6 +429,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Assets\fixedsys.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

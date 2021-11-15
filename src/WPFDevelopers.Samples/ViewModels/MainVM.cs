@@ -180,6 +180,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.RulerControl:
                     ControlPanel = new RulerControlExample();
                     break;
+                case MenuEnum.RainbowBtn:
+                    ControlPanel = new RainbowButtonsExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

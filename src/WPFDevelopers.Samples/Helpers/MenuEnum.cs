@@ -40,6 +40,7 @@ namespace WPFDevelopers.Samples.Helpers
         BasicBarChart,
         ZooSemy,
         RulerControl,
+        RainbowBtn,
         LoginWindow,
         TaskbarInfo,
     }
