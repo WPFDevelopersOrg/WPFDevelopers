@@ -80,7 +80,7 @@
     <SolidColorBrush x:Key="DisabledBorderBrush" Color="Transparent" />
 
 
-    <Style TargetType="Button">
+    <Style x:Key="Win10ItemButtonStyle" TargetType="Button">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
@@ -137,7 +137,8 @@
                     <Button x:Name="PART_Button" Height="44"
                             Command="{TemplateBinding SelectionCommand}" 
                             ToolTip="{TemplateBinding Text}"
-                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                            Style="{StaticResource Win10ItemButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5"/>

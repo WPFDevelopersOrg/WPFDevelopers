@@ -29,7 +29,7 @@
     </Style>
 
     <!-- 登录/注册按钮 -->
-    <Style TargetType="Button">
+    <Style x:Key="LoginButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
