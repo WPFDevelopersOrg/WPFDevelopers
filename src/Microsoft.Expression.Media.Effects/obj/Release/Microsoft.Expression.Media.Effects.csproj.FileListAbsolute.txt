@@ -1,7 +1,0 @@
-E:\Git\WPFDevelopers\OutPut\Microsoft.Expression.Media.Effects.dll
-E:\Git\WPFDevelopers\OutPut\Microsoft.Expression.Media.Effects.pdb
-E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.g.resources
-E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.csproj.CoreCompileInputs.cache
-E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.dll
-E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.pdb
-E:\Git\WPFDevelopers\src\Microsoft.Expression.Media.Effects\obj\Release\Microsoft.Expression.Media.Effects.csprojAssemblyReference.cache
