@@ -16,7 +16,7 @@
             <!-- 密码输入框 -->
             <cc:PasswordInputBox Height="40" PlaceHolder="密码" Icon="Assets/Lock.png" Margin="0,20,0,0"/>
             <!-- 登录按钮 -->
-            <Button x:Name="LoginButton" Content="登录" Height="40" Margin="0,20,0,0"/>
+            <Button x:Name="LoginButton" Content="登录" Height="40" Margin="0,20,0,0" Style="{StaticResource LoginButtonStyle}"/>
             <!-- 可点击文本 -->
             <Grid Margin="0 20 0 0">
                 <TextBlock FontSize="12">
