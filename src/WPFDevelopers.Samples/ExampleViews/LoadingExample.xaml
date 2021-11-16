@@ -20,5 +20,6 @@
                             Width="200">
             <TextBlock Text="Loading activity..."/>
         </wpfdev:RollLoading>
+        <wpfdev:RingLoading IsStart="true" Width="100"/>
     </UniformGrid>
 </UserControl>

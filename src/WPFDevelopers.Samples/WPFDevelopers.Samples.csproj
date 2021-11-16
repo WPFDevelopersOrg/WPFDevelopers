@@ -37,14 +37,6 @@
     <ApplicationIcon>WPFDevelopers.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Controls, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Microsoft.Expression.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\Microsoft.Expression.Drawing.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Reference\Microsoft.Maps.MapControl.WPF.dll</HintPath>
@@ -436,6 +428,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Expression.Controls\Microsoft.Expression.Controls.csproj">
+      <Project>{ce0a716e-563e-49f5-9824-9ac371d11a78}</Project>
+      <Name>Microsoft.Expression.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Expression.Drawing\Microsoft.Expression.Drawing.csproj">
+      <Project>{6502328f-fd38-4a5f-b28a-d3e2df2b0e8a}</Project>
+      <Name>Microsoft.Expression.Drawing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.csproj">
       <Project>{d1e586fa-e269-4f7f-aebb-92aa7f2d8c44}</Project>
       <Name>Microsoft.Windows.Shell</Name>
