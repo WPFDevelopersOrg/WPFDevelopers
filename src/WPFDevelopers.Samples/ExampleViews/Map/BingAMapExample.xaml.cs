@@ -109,7 +109,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             Point mousePosition = e.GetPosition(this);
             Location pinLocation = this.map.ViewportPointToLocation(mousePosition);
 
-            Console.WriteLine(pinLocation);
+            //Console.WriteLine(pinLocation);
 
         }
 

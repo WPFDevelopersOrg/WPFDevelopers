@@ -88,8 +88,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Height="50" 
-                                  Background="{TemplateBinding BorderBrush}"
-                                  shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                                  Background="{TemplateBinding BorderBrush}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
@@ -101,7 +100,7 @@
                                 <TextBlock Text="{TemplateBinding Title}"
                                        Foreground="White" Grid.Column="1" 
                                        VerticalAlignment="Center" FontSize="{StaticResource TitleFontSize}"/>
-                                <WrapPanel Grid.Column="2">
+                                <WrapPanel Grid.Column="2" shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" Margin="0,6" 
                                             Style="{StaticResource MetroWindowButtonStyle}" ToolTip="Minimize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}">

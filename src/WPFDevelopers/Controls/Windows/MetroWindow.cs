@@ -31,12 +31,12 @@ namespace WPFDevelopers.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MetroWindow), new FrameworkPropertyMetadata(typeof(MetroWindow)));
         }
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-            if (e.ButtonState == MouseButtonState.Pressed)
-                DragMove();
-        }
+        //protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        //{
+        //    base.OnMouseLeftButtonDown(e);
+        //    if (e.ButtonState == MouseButtonState.Pressed)
+        //        DragMove();
+        //}
 
         protected override void OnContentRendered(EventArgs e)
         {
