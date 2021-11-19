@@ -76,6 +76,7 @@
     <Compile Include="Controls\SpotLight\SpotLight.cs" />
     <Compile Include="Controls\Win10Menu\Win10Menu.cs" />
     <Compile Include="Controls\Win10Menu\Win10MenuItem.cs" />
+    <Compile Include="Controls\Windows\MetroWindow.cs" />
     <Compile Include="Helpers\ControlsHelper.cs" />
     <Compile Include="Helpers\EnumerableHelper.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
@@ -127,7 +128,7 @@
   <ItemGroup>
     <Page Include="Generic.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Styles\Styles.Buttons.xaml">
       <SubType>Designer</SubType>
@@ -194,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

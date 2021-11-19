@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPFDevelopers.Samples.MainWindow"
+﻿<wpfdev:MetroWindow x:Class="WPFDevelopers.Samples.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,16 +11,16 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:helpers="clr-namespace:WPFDevelopers.Samples.Helpers" 
         xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="WPFDevelopers" 
         Height="{x:Static local:App.Height}" Width="{x:Static local:App.Wdith}"
         WindowStartupLocation="CenterScreen">
-    <shell:WindowChrome.WindowChrome>
+    <!--<shell:WindowChrome.WindowChrome>
         <shell:WindowChrome  GlassFrameThickness="0 1 0 0"/>
     </shell:WindowChrome.WindowChrome>
     <wpfdev:WindowAcrylicBlur.WindowAcrylicBlur>
         <wpfdev:WindowAcrylicBlur BlurColor="AliceBlue" Opacity="0.2"/>
-    </wpfdev:WindowAcrylicBlur.WindowAcrylicBlur>
+    </wpfdev:WindowAcrylicBlur.WindowAcrylicBlur>-->
     <Window.DataContext>
         <vm:MainVM/>
     </Window.DataContext>
@@ -57,14 +57,15 @@
                 </VisualBrush>
             </Rectangle.Fill>
         </Rectangle>-->
-        <Grid.RowDefinitions>
+        
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>-->
 
-        <StackPanel HorizontalAlignment="Right"  shell:WindowChrome.IsHitTestVisibleInChrome="True">
+        <!--<StackPanel HorizontalAlignment="Right"  shell:WindowChrome.IsHitTestVisibleInChrome="True">
             <Button Content="Close" Width="50" Height="25" Command="{Binding CloseCommand}"/>
-        </StackPanel>
+        </StackPanel>-->
         
         <Grid Margin="10,0,10,10" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -89,4 +90,4 @@
             </Border>
         </Grid>
     </Grid>
-</Window>
+</wpfdev:MetroWindow>

@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Basic/Geometrys.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Styles/Styles.Buttons.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/AnimationNavigationBar3D.xaml"/>
@@ -24,6 +23,5 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/ScreenCut.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/SpotLight.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Win10Menu.xaml"/>
-
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -9,7 +9,7 @@ using System.Windows.Markup;
 [assembly: AssemblyTitle("WPFDevelopers")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("WPFDevelopers")]
 [assembly: AssemblyProduct("WPFDevelopers")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2021")]
 [assembly: AssemblyTrademark("")]
@@ -40,6 +40,7 @@ using System.Windows.Markup;
 )]
 
 [assembly: XmlnsPrefix("https://github.com/yanjinhuagood/WPFDevelopers", "WPFDevelopers")]
+[assembly: XmlnsDefinition("https://github.com/yanjinhuagood/WPFDevelopers", "WPFDevelopers")]
 [assembly: XmlnsDefinition("https://github.com/yanjinhuagood/WPFDevelopers", "WPFDevelopers.Controls")]
 [assembly: XmlnsDefinition("https://github.com/yanjinhuagood/WPFDevelopers", "WPFDevelopers.Assists")]
 // 程序集的版本信息由下列四个值组成: 
@@ -52,6 +53,6 @@ using System.Windows.Markup;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("5.0.0.0")]
+[assembly: AssemblyFileVersion("5.0.0.0")]
 
