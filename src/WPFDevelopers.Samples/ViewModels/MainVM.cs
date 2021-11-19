@@ -183,6 +183,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.RainbowBtn:
                     ControlPanel = new RainbowButtonsExample();
                     break;
+                case MenuEnum.LineChart:
+                    ControlPanel = new LineChartExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

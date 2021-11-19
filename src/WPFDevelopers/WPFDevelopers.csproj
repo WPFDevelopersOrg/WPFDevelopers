@@ -71,6 +71,8 @@
     <Compile Include="Controls\Loadings\RingLoading.cs" />
     <Compile Include="Controls\RadarChart\RadarChart.cs" />
     <Compile Include="Controls\RadarChart\RadarModel.cs" />
+    <Compile Include="Controls\RainbowButtons\RainbowAppleButton.cs" />
+    <Compile Include="Controls\RainbowButtons\RainbowAppleButtonWithGlow.cs" />
     <Compile Include="Controls\RulerControl\Ruler.cs" />
     <Compile Include="Controls\ScreenCut\ScreenCut.cs" />
     <Compile Include="Controls\SpotLight\SpotLight.cs" />
@@ -119,6 +121,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\fixedsys.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\AnimationWeChat\0.png" />
@@ -219,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\PieControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\RainbowButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

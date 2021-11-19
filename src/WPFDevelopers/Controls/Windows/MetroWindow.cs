@@ -1,23 +1,14 @@
 ﻿using Microsoft.Windows.Shell;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPFDevelopers.Controls
 {
-   
+
     public class MetroWindow : Window
     {
+        //private TextBlock _textBlock;
         public MetroWindow()
         {
             DefaultStyleKey = typeof(MetroWindow);
@@ -37,7 +28,16 @@ namespace WPFDevelopers.Controls
         //    if (e.ButtonState == MouseButtonState.Pressed)
         //        DragMove();
         //}
-
+        //public override void OnApplyTemplate()
+        //{
+        //    base.OnApplyTemplate();
+        //    _textBlock = GetTemplateChild("PART_Title") as TextBlock;
+        //    if (_textBlock != null)
+        //        _textBlock.MouseDown += (s, e) => 
+        //        {
+        //            Process.Start(new ProcessStartInfo("https://github.com/yanjinhuagood/WPFDevelopers.git"));
+        //        };
+        //}
         protected override void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);

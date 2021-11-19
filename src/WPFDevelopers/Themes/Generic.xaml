@@ -97,8 +97,8 @@
                                 <Image Source="{TemplateBinding Icon}" Stretch="Fill"
                                    VerticalAlignment="Center" HorizontalAlignment="Left" Width="23" Height="21" Margin="14,0,0,0"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
-                                <TextBlock Text="{TemplateBinding Title}"
-                                       Foreground="White" Grid.Column="1" 
+                                <TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title"
+                                       Foreground="White" Grid.Column="1"
                                        VerticalAlignment="Center" FontSize="{StaticResource TitleFontSize}"/>
                                 <WrapPanel Grid.Column="2" shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" Margin="0,6" 
