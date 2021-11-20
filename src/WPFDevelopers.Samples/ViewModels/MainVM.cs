@@ -183,8 +183,14 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.RainbowBtn:
                     ControlPanel = new RainbowButtonsExample();
                     break;
+                //case MenuEnum.RoundPicker:
+                //    ControlPanel = new RoundPickerExample();
+                //    break;
                 case MenuEnum.LineChart:
                     ControlPanel = new LineChartExample();
+                    break;
+                case MenuEnum.LogoAnimation:
+                    ControlPanel = new LogoAnimationExample();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:

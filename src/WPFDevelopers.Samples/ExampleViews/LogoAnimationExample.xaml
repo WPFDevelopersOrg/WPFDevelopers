@@ -1,0 +1,161 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.LogoAnimationExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Storyboard x:Key="YourLogoStoryboard" RepeatBehavior="Forever">
+            <!--隐藏所有-->
+            <DoubleAnimation BeginTime="00:00:00" Duration="00:00:0.1" 
+                             Storyboard.TargetName="PART_PathDanger" 
+                             Storyboard.TargetProperty="Opacity"
+                             To="1">
+            </DoubleAnimation>
+
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PART_PathDanger" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="1" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PART_PathDanger" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="1" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:0.6" Storyboard.TargetName="PART_PathDanger" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="0.5" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:0.6" Storyboard.TargetName="PART_PathDanger" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="0.5" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation BeginTime="00:00:1.5" Duration="00:00:0.1" 
+                             Storyboard.TargetName="PART_PathDanger" 
+                             Storyboard.TargetProperty="Opacity"
+                             To="0"></DoubleAnimation>
+            <ColorAnimation BeginTime="00:00:1.5" Duration="00:00:0.1" 
+                            Storyboard.TargetName="PART_Border" 
+                            Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                            To="{StaticResource PrimaryNormalColor}"/>
+            <DoubleAnimation BeginTime="00:00:1.5" Duration="00:00:0.1" 
+                             Storyboard.TargetName="PART_PathLogo" 
+                             Storyboard.TargetProperty="Opacity"
+                             To="1">
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:1.5" Storyboard.TargetName="PART_PathLogo" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.1" Value="2" KeySpline="0.5,0,0.5,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.6" Value="0.5" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:1.5" Storyboard.TargetName="PART_PathLogo" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.1" Value="2" KeySpline="0.5,0,0.5,1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:0.6" Value="0.5" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:2.1" Storyboard.TargetName="PART_PathLogo" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+
+                <SplineDoubleKeyFrame KeyTime="00:00:0.4" Value="1" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:2.1" Storyboard.TargetName="PART_PathLogo" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+
+                <SplineDoubleKeyFrame KeyTime="00:00:0.4" Value="1" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation BeginTime="00:00:2.5" Duration="00:00:0.1" 
+                             Storyboard.TargetName="PART_Text" 
+                             Storyboard.TargetProperty="Opacity"
+                             To="1">
+            </DoubleAnimation>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:2.5" Storyboard.TargetName="PART_Text" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="1" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:2.5" Storyboard.TargetName="PART_Text" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:0.5" Value="1" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:3.5" Storyboard.TargetName="PART_Border" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                <SplineDoubleKeyFrame KeyTime="00:00:1" Value="0" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:3.5" Storyboard.TargetName="PART_Border" 
+                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                <SplineDoubleKeyFrame KeyTime="00:00:1" Value="0" KeySpline="0.5,0,0.5,1"/>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimation BeginTime="00:00:3.5" 
+                             Duration="00:00:0.5" Storyboard.TargetName="PART_PathLogo" 
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"
+                             From="360" To="0" />
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Border x:Name="PART_Border" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="130"
+                    Width="260" Height="260"
+                    RenderTransformOrigin=".5,.5" 
+                    Effect="{StaticResource NormalShadowDepth}" Margin="20">
+            <Border.RenderTransform>
+                <ScaleTransform/>
+            </Border.RenderTransform>
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource YourLogoStoryboard}"></BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+            <Grid>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border>
+                        <Path Width="100" Height="100" Fill="{StaticResource WhiteSolidColorBrush}"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" 
+                              x:Name="PART_PathLogo" RenderTransformOrigin=".5,.5" Opacity="0">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                    <RotateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                            <Path.Data>
+                                <PathGeometry>
+                                    M519.999571 795.112265L239.614595 720.016289c-4.29977-1.099941-6.799636-5.499705-5.699694-9.799475l12.399336-46.397514c1.099941-4.29977 5.499705-6.799636 9.799474-5.699695l280.284982 75.095976c4.29977 1.099941 6.799636 5.499705 5.699694 9.799475l-12.399335 46.397514c-1.099941 4.29977-5.499705 6.89963-9.699481 5.699695z
+                          M783.985426 960.003429H561.697337c-3.699802 0-5.399711-4.499759-2.699855-6.999625 10.199453-8.999518 20.798886-18.898987 31.698301-29.398424 80.595681-78.095815 131.892933-154.591716 152.591824-227.487811 12.399336-43.797653 11.399389-85.395424-2.99984-123.493382-11.399389-30.198382-31.098334-57.696908-58.496865-81.895612-0.399979-0.299984-0.799957-0.699962-1.199936-0.999947-53.397139-46.497508-75.795939-119.293608-57.496919-187.789937l40.997803-153.091797c4.599754-17.099084-5.5997-34.598146-22.598789-39.197899l-28.398478-7.599593c-2.099887-0.599968-3.399818-2.79985-2.79985-4.899738L619.994213 61.051599c1.099941-4.199775 1.699909-8.39955 1.699909-12.599325 0-21.398853-14.299234-40.997803-35.898076-46.797493-25.798618-6.89963-52.397192 8.39955-59.296823 34.298162l-9.69948 36.198061c-0.599968 2.099887-2.79985 3.399818-4.899738 2.79985L487.00134 68.351207c-17.099084-4.599754-34.598146 5.5997-39.1979 22.59879L330.309736 529.82648c-6.89963 25.698623-3.099834 53.097155 10.599432 75.995928l23.798724 39.997856c2.099887 3.599807 5.5997 6.199668 9.599486 7.299609l67.796367 18.199025c3.799796 0.999946 7.899577 0.599968 11.399389-1.199936l23.798725-12.099351c37.298001-18.998982 64.696533-52.897166 75.59595-93.295001 6.599646-24.698677 28.698462-39.397889 51.49724-39.397889 11.999357 0 24.198703 4.09978 34.498152 12.999303 0.299984 0.199989 0.499973 0.499973 0.799957 0.699963 44.097637 38.897916 57.896898 84.595467 42.197739 139.892504-35.198114 123.293393-175.99057 238.087242-224.487971 274.585286-5.5997 4.199775-12.299341 6.499652-19.298966 6.499652H240.014574c-8.799528 0-15.999143 7.199614-15.999143 15.999143v43.997642c0 2.199882 1.799904 3.999786 3.999786 3.999786h567.969566c2.199882 0 3.999786-1.799904 3.999786-3.999786v-43.997642c0-8.799528-7.199614-15.999143-15.999143-15.999143zM591.995714 496.028291c-17.699052 0-31.998285-14.299234-31.998286-31.998286s14.299234-31.998285 31.998286-31.998285 31.998285 14.299234 31.998285 31.998285-14.299234 31.998285-31.998285 31.998286z
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </Border>
+                    <TextBlock x:Name="PART_Text"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" 
+                        FontSize="15" FontWeight="Bold"
+                        FontFamily="Comic Sans MS" Foreground="White"
+                        RenderTransformOrigin=".5,.5"
+                        Text="WPFDevelopers">
+                        <TextBlock.RenderTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border>
+                        <Path Width="100" Height="100"  Fill="{StaticResource PrimaryNormalSolidColorBrush}"
+                                  HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform"
+                                  x:Name="PART_PathDanger" RenderTransformOrigin=".5,.5" Opacity="0">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                            </Path.RenderTransform>
+                            <Path.Data>
+                                <PathGeometry>
+                                    M377.173333 609.28s-49.493333 66.56-68.266666 78.506667c-18.773333 11.946667-23.893333 37.546667-29.013334 51.2-6.826667 13.653333-5.12 30.72-17.066666 32.426666-11.946667 1.706667-37.546667-10.24-51.2-20.48-13.653333-10.24-69.973333-13.653333-52.906667-54.613333 0 0 5.12-23.893333 35.84-1.706667 0 0 17.066667 3.413333 32.426667-5.12 0 0-5.12-30.72 11.946666-37.546666 17.066667-6.826667 46.08-49.493333 51.2-58.026667 6.826667-10.24-3.413333-17.066667 10.24-37.546667 13.653333-20.48 32.426667-44.373333 47.786667-58.026666 13.653333-13.653333 10.24-11.946667 66.56-58.026667 54.613333-46.08 46.08-49.493333 68.266667-58.026667 23.893333-8.533333 32.426667-29.013333 44.373333-35.84 10.24-6.826667 15.36-32.426667 25.6-40.96s10.24-56.32-5.12-69.973333c-15.36-13.653333-61.44-32.426667-59.733333-46.08 0 0-39.253333 5.12-34.133334-23.893333 0 0 11.946667-64.853333 20.48-69.973334 0 0 10.24-3.413333 18.773334-10.24 10.24-8.533333 10.24-8.533333 20.48-10.24 10.24-1.706667 20.48-6.826667 27.306666 1.706667 6.826667 8.533333 1.706667 8.533333 3.413334 17.066667 1.706667 10.24 17.066667 6.826667 1.706666 10.24-15.36 3.413333-6.826667 1.706667-6.826666 1.706666s5.12 10.24-3.413334 10.24l-11.946666 1.706667s-6.826667 3.413333-10.24 3.413333h-5.12s1.706667 11.946667 10.24 13.653334c10.24 1.706667 11.946667-1.706667 30.72-8.533334 18.773333-8.533333 20.48-17.066667 40.96-15.36 20.48 1.706667 59.733333 8.533333 69.973333 18.773334l-3.413333-35.84s-11.946667-34.133333 1.706666-34.133334c0 0-1.706667-58.026667 54.613334-49.493333 0 0 51.2 8.533333 32.426666 68.266667 0 0 1.706667 13.653333-11.946666 25.6l-10.24 30.72s30.72 20.48 54.613333 32.426666c23.893333 11.946667 25.6 10.24 37.546667 18.773334 11.946667 10.24 13.653333 13.653333 20.48 27.306666 6.826667 11.946667 32.426667 51.2 44.373333 64.853334 10.24 11.946667 18.773333 5.12 20.48 23.893333 1.706667 18.773333 8.533333 37.546667 10.24 47.786667 1.706667 10.24 6.826667 46.08 3.413333 54.613333 0 0 10.24 34.133333 0 46.08 0 0-11.946667 10.24-20.48 8.533333 0 0-3.413333-1.706667 8.533334-6.826666 0 0-32.426667-5.12-30.72-20.48 0-1.706667 0-3.413333 1.706666-5.12 0 0 6.826667-6.826667 10.24-1.706667 0 0 30.72-11.946667-1.706666-10.24v18.773333s-17.066667-35.84-3.413334-40.96c0 0 0-17.066667-5.12-29.013333 0 0-15.36-39.253333-15.36-49.493333 0 0-3.413333-15.36-22.186666-13.653334 0 0-54.613333-10.24-69.973334-13.653333 0 0-32.426667 81.92-49.493333 93.866667 0 0 11.946667 49.493333-23.893333 78.506666 0 0-37.546667 35.84-68.266667 30.72 0 0-25.6-10.24-37.546667-1.706666-11.946667 10.24-11.946667 18.773333-22.186666 18.773333-10.24 0-1.706667-15.36-10.24 0s-6.826667 18.773333-13.653334 29.013333c-8.533333 10.24-15.36-1.706667-8.533333 10.24 8.533333 10.24 0 15.36 0 15.36l-22.186667 10.24s-6.826667 37.546667-23.893333 42.666667c0 0-20.48 1.706667-30.72 10.24-1.706667-3.413333-42.666667 27.306667-78.506667-15.36z
+                              M81.92 334.506667h80.213333V1024H81.92z
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

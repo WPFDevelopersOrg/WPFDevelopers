@@ -41,7 +41,9 @@ namespace WPFDevelopers.Samples.Helpers
         ZooSemy,
         RulerControl,
         RainbowBtn,
+        //RoundPicker,
         LineChart,
+        LogoAnimation,
         LoginWindow,
         TaskbarInfo,
     }

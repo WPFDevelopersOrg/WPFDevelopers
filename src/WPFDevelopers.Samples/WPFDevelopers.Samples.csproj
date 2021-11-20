@@ -110,6 +110,9 @@
       <DependentUpon>SignUpDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\LoginWindow\WindowBase.cs" />
+    <Compile Include="ExampleViews\LogoAnimationExample.xaml.cs">
+      <DependentUpon>LogoAnimationExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\Map\AMapTitleLayer.cs" />
     <Compile Include="ExampleViews\Map\BingAMapExample.xaml.cs">
       <DependentUpon>BingAMapExample.xaml</DependentUpon>
@@ -143,6 +146,9 @@
     </Compile>
     <Compile Include="ExampleViews\RoundMenuExample.xaml.cs">
       <DependentUpon>RoundMenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\RoundPickerExample.xaml.cs">
+      <DependentUpon>RoundPickerExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\RulerControlExample.xaml.cs">
       <DependentUpon>RulerControlExample.xaml</DependentUpon>
@@ -277,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ExampleViews\LogoAnimationExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\Map\BingAMapExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -336,6 +346,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\RoundMenuExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\RoundPickerExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
