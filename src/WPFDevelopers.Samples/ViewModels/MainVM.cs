@@ -183,9 +183,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.RainbowBtn:
                     ControlPanel = new RainbowButtonsExample();
                     break;
-                //case MenuEnum.RoundPicker:
-                //    ControlPanel = new RoundPickerExample();
-                //    break;
+                case MenuEnum.RoundPicker:
+                    ControlPanel = new RoundPickerExample();
+                    break;
                 case MenuEnum.LineChart:
                     ControlPanel = new LineChartExample();
                     break;

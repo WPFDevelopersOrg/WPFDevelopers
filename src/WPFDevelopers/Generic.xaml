@@ -24,5 +24,6 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/SpotLight.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Win10Menu.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RainbowButtons.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RoundPicker.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

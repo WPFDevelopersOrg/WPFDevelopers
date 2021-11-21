@@ -68,11 +68,14 @@
         <Setter Property="BorderThickness"  Value="1" />
         <Setter Property="IsTabStop"  Value="False" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
         <Setter Property="WindowStyle"  Value="None" />
         <Setter Property="MaxHeight" Value="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"/>
         <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+        <!--<Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>-->
+        <!--<Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>-->
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
                 <shell:WindowChrome GlassFrameThickness="-1" CaptionHeight="50"/>
