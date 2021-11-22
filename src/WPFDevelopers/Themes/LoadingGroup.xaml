@@ -447,7 +447,7 @@
 
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
@@ -511,7 +511,8 @@
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
                             <TextBlock HorizontalAlignment="Center" Text="Loading..." Margin="0,0,0,15"/>
                             <TextBlock HorizontalAlignment="Center" Text="{TemplateBinding Description}" Margin="0,0,0,15"/>
-                            <TextBlock HorizontalAlignment="Center" Text="{TemplateBinding Progress}" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock HorizontalAlignment="Center" Text="{TemplateBinding Progress}" FontSize="{StaticResource TitleFontSize}" 
+                                       FontWeight="Bold"/>
                         </StackPanel>
                     </Grid>
                     <ControlTemplate.Triggers>
