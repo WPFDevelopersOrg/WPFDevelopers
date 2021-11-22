@@ -1386,7 +1386,7 @@ namespace WPFDevelopers.Controls
 
         void PlayTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Application.Current.Dispatcher.BeginInvoke(new Action(() => PlayCarouselRightToLeft()),System.Windows.Threading.DispatcherPriority.Background);
+            Application.Current.Dispatcher?.BeginInvoke(new Action(() => PlayCarouselRightToLeft()),System.Windows.Threading.DispatcherPriority.Background);
         }
 
         void Border_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

@@ -20,6 +20,6 @@
                             Width="200">
             <TextBlock Text="Loading activity..."/>
         </wpfdev:RollLoading>
-        <wpfdev:RingLoading IsStart="true" Width="100"/>
+        <wpfdev:RingLoading IsStart="true" Width="150" Description="我正在加载新的东西" ProgressValue="50"/>
     </UniformGrid>
 </UserControl>
