@@ -14,8 +14,7 @@
     <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel>
             <TextBlock Text="ScrollViewer" Margin="10"/>
-            <ScrollViewer Width="200" MaxHeight="300"
-                                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer Width="200" MaxHeight="300">
                 <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -38,12 +37,11 @@
 
         <StackPanel Margin="10,0">
             <TextBlock Text="ScrollViewerAnimation" Margin="10"/>
-            <wpfdev:ScrollViewerAnimation Width="200" MaxHeight="300"
-                                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <wpfdev:ScrollViewerAnimation Width="200" MaxHeight="300">
                 <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="{StaticResource SuccessSolidColorBrush}"
+                            <Border Background="{StaticResource DangerSolidColorBrush}"
                                 BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WhiteSolidColorBrush}">
                                 <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource NormalFontSize}"
                                        Foreground="{StaticResource WhiteSolidColorBrush}"/>

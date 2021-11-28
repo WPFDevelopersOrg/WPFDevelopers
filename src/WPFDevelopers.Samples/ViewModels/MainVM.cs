@@ -192,6 +192,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.LogoAnimation:
                     ControlPanel = new LogoAnimationExample();
                     break;
+                case MenuEnum.Thermometer:
+                    ControlPanel = new ThermometerExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

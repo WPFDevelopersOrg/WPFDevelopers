@@ -44,6 +44,7 @@ namespace WPFDevelopers.Samples.Helpers
         RoundPicker,
         LineChart,
         LogoAnimation,
+        Thermometer,
         LoginWindow,
         TaskbarInfo,
     }

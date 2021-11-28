@@ -1,0 +1,383 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <sys:Double x:Key="ThumbWidth">16</sys:Double>
+    <sys:Double x:Key="ThumbCornerRadius">8</sys:Double>
+    <sys:Double x:Key="RepeatButtonSize">5</sys:Double>
+    
+    <ControlTemplate x:Key="SliderThumbHorizontalTop" TargetType="{x:Type Thumb}">
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+                    SnapsToDevicePixels="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="RenderTransform" TargetName="PART_Border">
+                    <Setter.Value>
+                        <ScaleTransform  ScaleX="1.2" ScaleY="1.2"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+                    SnapsToDevicePixels="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="RenderTransform" TargetName="PART_Border">
+                    <Setter.Value>
+                        <ScaleTransform  ScaleX="1.2" ScaleY="1.2"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SliderThumbHorizontal" TargetType="{x:Type Thumb}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="ThumbMouseOut">
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                 To="1" Duration="00:00:0.1"/>
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                 To="1" Duration="00:00:0.1"/>
+            </Storyboard>
+            <Storyboard x:Key="ThumbMouseOver">
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                 To="1.2" Duration="00:00:0.1"/>
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                 To="1.2" Duration="00:00:0.1"/>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+                    SnapsToDevicePixels="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+                <Border.RenderTransform>
+                    <ScaleTransform/>
+                </Border.RenderTransform>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource ThumbMouseOut}" />
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource ThumbMouseOver}" />
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Rectangle Fill="{TemplateBinding Background}" 
+                                   Height="{TemplateBinding Height}" 
+                                   Width="{TemplateBinding Width}"/>
+                    <!--<Border Background="{TemplateBinding Background}"
+                            Height="{TemplateBinding Height}" 
+                            Width="{TemplateBinding Width}"
+                            CornerRadius="4,4,0,0"/>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+                    SnapsToDevicePixels="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="RenderTransform" TargetName="PART_Border">
+                    <Setter.Value>
+                        <ScaleTransform  ScaleX="1.2" ScaleY="1.2"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SliderHorizontal" TargetType="{x:Type Slider}">
+        <Border x:Name="border"
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" 
+                    SnapsToDevicePixels="True"
+                    Padding="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
+                <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
+                <Border x:Name="TrackBackground" 
+                        Height="6.0" 
+                        Margin="5,0" 
+                        Grid.Row="1" 
+                        VerticalAlignment="center">
+                    <Canvas Margin="-6,-1">
+                        <Rectangle x:Name="PART_SelectionRange" 
+                                       Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" 
+                                       Height="4.0" Visibility="Hidden"/>
+                    </Canvas>
+                </Border>
+                <Track x:Name="PART_Track" Grid.Row="1">
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Command="{x:Static Slider.DecreaseLarge}" 
+                                          Style="{StaticResource RepeatButtonTransparent}" 
+                                          Background="{StaticResource PrimaryPressedSolidColorBrush}" 
+                                          Height="{StaticResource RepeatButtonSize}"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Command="{x:Static Slider.IncreaseLarge}" 
+                                      Style="{StaticResource RepeatButtonTransparent}"
+                                      Background="{StaticResource LightSolidColorBrush}" 
+                                      Height="{StaticResource RepeatButtonSize}"/>
+                    </Track.IncreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb x:Name="Thumb" Focusable="False" 
+                                   OverridesDefaultStyle="True" 
+                                   Template="{StaticResource SliderThumbHorizontal}" 
+                                   VerticalAlignment="Center"/>
+                    </Track.Thumb>
+                </Track>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TickPlacement" Value="TopLeft">
+                <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbHorizontal}"/>
+                <Setter Property="Margin" TargetName="TrackBackground" Value="5,2,5,0"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="BottomRight">
+                <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+                <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbHorizontal}"/>
+                <Setter Property="Margin" TargetName="TrackBackground" Value="5,0,5,2"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="Both">
+                <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="IsSelectionRangeEnabled" Value="true">
+                <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter Property="Foreground" TargetName="Thumb" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SliderThumbVerticalLeft" TargetType="{x:Type Thumb}">
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+                    SnapsToDevicePixels="True" UseLayoutRounding="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="RenderTransform" TargetName="PART_Border">
+                    <Setter.Value>
+                        <ScaleTransform  ScaleX="1.2" ScaleY="1.2"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SliderThumbVerticalRight" TargetType="{x:Type Thumb}">
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+                    SnapsToDevicePixels="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="RenderTransform" TargetName="PART_Border">
+                    <Setter.Value>
+                        <ScaleTransform  ScaleX="1.2" ScaleY="1.2"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="SliderThumbVerticalDefault" TargetType="{x:Type Thumb}">
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" 
+                    SnapsToDevicePixels="True" UseLayoutRounding="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="RenderTransform" TargetName="PART_Border">
+                    <Setter.Value>
+                        <ScaleTransform  ScaleX="1.2" ScaleY="1.2"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SliderThumbVertical" TargetType="{x:Type Thumb}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="ThumbMouseOut">
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                 To="1" Duration="00:00:0.1"/>
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                 To="1" Duration="00:00:0.1"/>
+            </Storyboard>
+            <Storyboard x:Key="ThumbMouseOver">
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                 To="1.2" Duration="00:00:0.1"/>
+                <DoubleAnimation Storyboard.TargetName="PART_Border"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                 To="1.2" Duration="00:00:0.1"/>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" 
+                    SnapsToDevicePixels="True" UseLayoutRounding="True"
+                    Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1"
+                    Name="PART_Border" RenderTransformOrigin=".5,.5">
+                <Border.RenderTransform>
+                    <ScaleTransform/>
+                </Border.RenderTransform>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource ThumbMouseOut}" />
+                </Trigger.ExitActions>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource ThumbMouseOver}" />
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    
+    <ControlTemplate x:Key="SliderVertical" TargetType="{x:Type Slider}">
+        <Border x:Name="border" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" 
+                    SnapsToDevicePixels="True"
+                    Padding="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition MinWidth="{TemplateBinding MinWidth}" Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TickBar x:Name="TopTick" Grid.Column="0" Fill="{TemplateBinding Foreground}" Margin="0,0,2,0" Placement="Left" Visibility="Collapsed" Width="4"/>
+                <TickBar x:Name="BottomTick" Grid.Column="2" Fill="{TemplateBinding Foreground}" Margin="2,0,0,0" Placement="Right" Visibility="Collapsed" Width="4"/>
+                <Border x:Name="TrackBackground" 
+                        HorizontalAlignment="center" 
+                        Margin="0,5"
+                        Width="6.0">
+                    <Canvas Margin="-1,-6">
+                        <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Visibility="Hidden" Width="4.0"/>
+                    </Canvas>
+                </Border>
+                <Track x:Name="PART_Track" Grid.Column="1">
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
+                                          Style="{StaticResource RepeatButtonTransparent}"
+                                          Background="{StaticResource PrimaryPressedSolidColorBrush}" 
+                                          Width="{StaticResource RepeatButtonSize}"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Command="{x:Static Slider.IncreaseLarge}" 
+                                          Style="{StaticResource RepeatButtonTransparent}"
+                                          Background="{StaticResource LightSolidColorBrush}" 
+                                          Width="{StaticResource RepeatButtonSize}"/>
+                    </Track.IncreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb x:Name="Thumb" Focusable="False" 
+                                   OverridesDefaultStyle="True" 
+                                   Template="{StaticResource SliderThumbVertical}" 
+                                   VerticalAlignment="Top"/>
+                    </Track.Thumb>
+                </Track>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TickPlacement" Value="TopLeft">
+                <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbVertical}"/>
+                <Setter Property="Margin" TargetName="TrackBackground" Value="2,5,0,5"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="BottomRight">
+                <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+                <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbVertical}"/>
+                <Setter Property="Margin" TargetName="TrackBackground" Value="0,5,2,5"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="Both">
+                <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="IsSelectionRangeEnabled" Value="true">
+                <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Slider}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+        <Setter Property="Template" Value="{StaticResource SliderHorizontal}"/>
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Template" Value="{StaticResource SliderVertical}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

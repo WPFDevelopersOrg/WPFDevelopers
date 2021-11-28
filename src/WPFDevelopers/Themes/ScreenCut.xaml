@@ -25,7 +25,7 @@
                         <Rectangle x:Name="PART_RectangleTop" Style="{StaticResource RectangleStyle}"/>
                         <Rectangle x:Name="PART_RectangleRight" Style="{StaticResource RectangleStyle}"/>
                         <Rectangle x:Name="PART_RectangleBottom" Style="{StaticResource RectangleStyle}"/>
-                        <Border x:Name="PART_Border" BorderBrush="{StaticResource SuccessPressedSolidColorBrush}" 
+                        <Border x:Name="PART_Border" BorderBrush="{StaticResource PrimaryNormalSolidColorBrush}" 
                                 BorderThickness="1"/>
                         <WrapPanel x:Name="PART_WrapPanel" 
                                    Visibility="Hidden" Panel.ZIndex="99"

@@ -8,6 +8,18 @@ namespace WPFDevelopers.Controls
 
     public class MetroWindow : Window
     {
+
+
+        public double TitleHeight
+        {
+            get { return (double)GetValue(TitleHeightProperty); }
+            set { SetValue(TitleHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty TitleHeightProperty =
+            DependencyProperty.Register("TitleHeight", typeof(double), typeof(MetroWindow), new PropertyMetadata(50d));
+
+
         //private TextBlock _textBlock;
         public MetroWindow()
         {

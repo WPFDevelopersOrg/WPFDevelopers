@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.ThermometerExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        
+        <Border Background="White" 
+                CornerRadius="12"
+                Width="400" Height="400"
+                Effect="{StaticResource NormalShadowDepth}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Slider x:Name="PART_Slider" IsSnapToTickEnabled="True"
+                Value="10"
+                Minimum="-10"
+                Maximum="40" 
+                Orientation="Vertical"
+                Height="300"/>
+                <Grid VerticalAlignment="Center"
+                      Margin="160,0,0,0">
+                    <Path Fill="{StaticResource PrimaryMouseOverSolidColorBrush}" 
+                          Stroke="{StaticResource PrimaryMouseOverSolidColorBrush}"
+                          StrokeThickness="1" Opacity=".6"
+                          Data="{Binding ElementName=PART_Thermometer, Path=CurrentGeometry,Mode=TwoWay}"/>
+                    <wpfdev:Thermometer x:Name="PART_Thermometer"
+                                        CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>
+                </Grid>
+                <TextBlock Text="{Binding ElementName=PART_Thermometer,Path=CurrentValue,StringFormat={}{0}℃}" 
+                           FontSize="24" Grid.Column="1"
+                           Foreground="{StaticResource PrimaryPressedSolidColorBrush}" FontFamily="Bahnschrift"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

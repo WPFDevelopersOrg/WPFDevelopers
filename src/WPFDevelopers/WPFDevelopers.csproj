@@ -77,6 +77,7 @@
     <Compile Include="Controls\RulerControl\Ruler.cs" />
     <Compile Include="Controls\ScreenCut\ScreenCut.cs" />
     <Compile Include="Controls\SpotLight\SpotLight.cs" />
+    <Compile Include="Controls\Thermometer\Thermometer.cs" />
     <Compile Include="Controls\Win10Menu\Win10Menu.cs" />
     <Compile Include="Controls\Win10Menu\Win10MenuItem.cs" />
     <Compile Include="Controls\Windows\MetroWindow.cs" />
@@ -134,7 +135,15 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="Styles\Styles.Slider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Styles.Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Styles.ScrollBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

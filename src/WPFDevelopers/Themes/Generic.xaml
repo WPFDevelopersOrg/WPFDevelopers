@@ -78,7 +78,7 @@
         <!--<Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>-->
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
-                <shell:WindowChrome GlassFrameThickness="-1" CaptionHeight="50"/>
+                <shell:WindowChrome GlassFrameThickness="-1" CaptionHeight="{Binding TitleHeight,RelativeSource={RelativeSource AncestorType=controls:MetroWindow}}"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -90,51 +90,55 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Height="50" 
+                            <Grid Grid.Row="0" Height="{TemplateBinding TitleHeight}" 
                                   Background="{TemplateBinding BorderBrush}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" MinWidth="95"/>
+                                    <ColumnDefinition Width="Auto" MinWidth="30"/>
+                                    <!--<ColumnDefinition Width="Auto" MinWidth="95"/>-->
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{TemplateBinding Icon}" Stretch="Fill"
-                                   VerticalAlignment="Center" HorizontalAlignment="Left" Width="23" Height="21" Margin="14,0,0,0"
-                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+                                    VerticalAlignment="Center" HorizontalAlignment="Left" Width="23" Height="21" Margin="14,0,4,0"
+                                    RenderOptions.BitmapScalingMode="HighQuality"/>
                                 <TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title"
                                        Foreground="White" Grid.Column="1"
                                        VerticalAlignment="Center" FontSize="{StaticResource TitleFontSize}"/>
                                 <WrapPanel Grid.Column="2" shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                                    <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" Margin="0,6" 
+                                    <WrapPanel x:Name="PART_MinAndMax">
+                                        <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" Margin="0,6" 
                                             Style="{StaticResource MetroWindowButtonStyle}" ToolTip="Minimize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}">
-                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Rectangle x:Name="MinimizeGlyph"  Width="10"  Height="1"   Margin="0 7 0 0" 
+                                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Rectangle x:Name="MinimizeGlyph"  Width="10"  Height="1"   Margin="0 7 0 0" 
                                                    VerticalAlignment="Bottom" Fill="{StaticResource WhiteSolidColorBrush}" />
-                                        </Grid>
-                                    </Button>
-                                    <Button Name="PART_MaximizeButton" IsTabStop="False"  Padding="0"
+                                            </Grid>
+                                        </Button>
+                                        <Button Name="PART_MaximizeButton" IsTabStop="False"  Padding="0"
                                             Style="{StaticResource MetroWindowButtonStyle}" Margin="0,6"
                                             ToolTip="Maximize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}">
-                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Path Width="10" Height="10"
+                                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Path Width="10" Height="10"
                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
                                               Data="{StaticResource PathMetroWindowMaximize}" Fill="{StaticResource WhiteSolidColorBrush}"
                                               Stretch="Fill" UseLayoutRounding="False" />
-                                        </Grid>
-                                    </Button>
-                                    <Button Name="PART_RestoreButton" IsTabStop="False"  Padding="0"
+                                            </Grid>
+                                        </Button>
+                                        <Button Name="PART_RestoreButton" IsTabStop="False"  Padding="0"
                                             Style="{StaticResource MetroWindowButtonStyle}" Margin="0,6"
                                             ToolTip="Restore"
                                             Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
                                             Visibility="Collapsed">
-                                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Path Width="10" Height="10"
+                                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Path Width="10" Height="10"
                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
                                               Data="{StaticResource PathMetroWindowRestore}" Fill="{StaticResource WhiteSolidColorBrush}"
                                               Stretch="Fill" UseLayoutRounding="False" />
-                                        </Grid>
-                                    </Button>
+                                            </Grid>
+                                        </Button>
+                                    </WrapPanel>
+                                    
                                     <Button Name="PART_CloseButton" Margin="0,6" 
                                             ToolTip="Close"
                                             IsTabStop="False" Style="{StaticResource MetroWindowButtonStyle}"
@@ -163,15 +167,22 @@
                             <Setter Property="Visibility" Value="Visible" TargetName="PART_RestoreButton"/>
                             <Setter Property="Visibility" Value="Collapsed" TargetName="PART_MaximizeButton"/>
                         </Trigger>
-                        <Trigger Property="IsActive"  Value="False">
-                            <Setter Property="BorderBrush"  Value="#FF6F7785" />
-                        </Trigger>
+                        <!--<Trigger Property="IsActive"  Value="False">
+                            <Setter Property="BorderBrush"  Value="{StaticResource BlackSolidColorBrush}" />
+                        </Trigger>-->
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="ResizeMode"  Value="CanResizeWithGrip" />
                                 <Condition Property="WindowState"  Value="Normal" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode"  Value="NoResize" />
+                                <Condition Property="WindowStyle"  Value="ToolWindow" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -41,7 +41,7 @@
     <Color x:Key="DangerColor">#F56C6C</Color>
     <SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}"></SolidColorBrush>
 
-    <Color x:Key="DangerMouseOverColor">#EBB563</Color>
+    <Color x:Key="DangerMouseOverColor">#F78989</Color>
     <SolidColorBrush x:Key="DangerMouseOverSolidColorBrush" Color="{StaticResource DangerMouseOverColor}"></SolidColorBrush>
 
     <Color x:Key="DangerPressedColor">#DD6161</Color>
@@ -63,7 +63,16 @@
 
     <Color x:Key="ExtralightColor">#F2F6FC</Color>
     <SolidColorBrush x:Key="ExtralightSolidColorBrush" Color="{StaticResource ExtralightColor}"></SolidColorBrush>
+    
+    <Color x:Key="LighterColor">#EBEEF5</Color>
+    <SolidColorBrush x:Key="LighterSolidColorBrush" Color="{StaticResource LighterColor}"></SolidColorBrush>
 
+    <Color x:Key="LightColor">#E4E7ED</Color>
+    <SolidColorBrush x:Key="LightSolidColorBrush" Color="{StaticResource LightColor}"></SolidColorBrush>
+
+    <Color x:Key="BaseColor">#DCDFE6</Color>
+    <SolidColorBrush x:Key="BaseSolidColorBrush" Color="{StaticResource BaseColor}"></SolidColorBrush>
+    
     <Color x:Key="BlackColor">#000000</Color>
     <SolidColorBrush x:Key="BlackSolidColorBrush" Color="{StaticResource BlackColor}"></SolidColorBrush>
 

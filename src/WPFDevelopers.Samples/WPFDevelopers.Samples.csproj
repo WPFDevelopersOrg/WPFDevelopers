@@ -168,6 +168,9 @@
     <Compile Include="ExampleViews\TaskbarItemInfoExample.xaml.cs">
       <DependentUpon>TaskbarItemInfoExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\ThermometerExample.xaml.cs">
+      <DependentUpon>ThermometerExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\ThumbDragAndAngleExample.xaml.cs">
       <DependentUpon>ThumbDragAndAngleExample.xaml</DependentUpon>
     </Compile>
@@ -374,6 +377,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\TaskbarItemInfoExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\ThermometerExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
