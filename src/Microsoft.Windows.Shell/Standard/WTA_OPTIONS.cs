@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Explicit)]
-    internal struct WTA_OPTIONS
+    public struct WTA_OPTIONS
     {
         public const uint Size = 8U;
 

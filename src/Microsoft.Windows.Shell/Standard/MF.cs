@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum MF : uint
+    public enum MF : uint
     {
         DOES_NOT_EXIST = 4294967295U,
         ENABLED = 0U,

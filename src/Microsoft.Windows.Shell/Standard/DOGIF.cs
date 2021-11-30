@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum DOGIF
+    public enum DOGIF
     {
         DEFAULT,
         TRAVERSE_LINK,

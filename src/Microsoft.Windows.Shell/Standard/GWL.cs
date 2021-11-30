@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum GWL
+    public enum GWL
     {
         WNDPROC = -4,
         HINSTANCE = -6,

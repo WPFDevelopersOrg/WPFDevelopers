@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum DWMNCRP
+    public enum DWMNCRP
     {
         USEWINDOWSTYLE,
         DISABLED,

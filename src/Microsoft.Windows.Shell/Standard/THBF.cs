@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum THBF : uint
+    public enum THBF : uint
     {
         ENABLED = 0U,
         DISABLED = 1U,

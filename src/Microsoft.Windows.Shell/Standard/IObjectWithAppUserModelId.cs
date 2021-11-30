@@ -6,7 +6,7 @@ namespace Standard
     [Guid("36db0196-9665-46d1-9ba7-d3709eecf9ed")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [ComImport]
-    internal interface IObjectWithAppUserModelId
+    public interface IObjectWithAppUserModelId
     {
         void SetAppID([MarshalAs(UnmanagedType.LPWStr)] string pszAppID);
 

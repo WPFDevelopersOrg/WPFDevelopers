@@ -7,7 +7,7 @@ namespace Standard
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("7e9fb0d3-919f-4307-ab2e-9b1860310c93")]
     [ComImport]
-    internal interface IShellItem2 : IShellItem
+    public interface IShellItem2 : IShellItem
     {
         [return: MarshalAs(UnmanagedType.Interface)]
         object GetPropertyStore(GPS flags, [In] ref Guid riid);

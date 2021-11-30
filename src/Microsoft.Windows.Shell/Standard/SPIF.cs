@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum SPIF
+    public enum SPIF
     {
         None = 0,
         UPDATEINIFILE = 1,

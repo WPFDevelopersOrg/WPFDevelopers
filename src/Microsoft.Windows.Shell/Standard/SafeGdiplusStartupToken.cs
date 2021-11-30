@@ -5,7 +5,7 @@ using System.Runtime.ConstrainedExecution;
 
 namespace Standard
 {
-    internal sealed class SafeGdiplusStartupToken : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class SafeGdiplusStartupToken : SafeHandleZeroOrMinusOneIsInvalid
     {
         private SafeGdiplusStartupToken() : base(true)
         {

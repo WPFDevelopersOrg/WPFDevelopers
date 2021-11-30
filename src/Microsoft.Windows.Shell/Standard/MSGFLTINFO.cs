@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum MSGFLTINFO
+    public enum MSGFLTINFO
     {
         NONE,
         ALREADYALLOWED_FORWND,

@@ -3,7 +3,7 @@
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-    internal struct LOGFONT
+    public struct LOGFONT
     {
         public int lfHeight;
 

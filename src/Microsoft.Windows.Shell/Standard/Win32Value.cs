@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal static class Win32Value
+    public static class Win32Value
     {
         public const uint MAX_PATH = 260U;
 

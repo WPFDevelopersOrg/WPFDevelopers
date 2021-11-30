@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct UNSIGNED_RATIO
+    public struct UNSIGNED_RATIO
     {
         public uint uiNumerator;
 

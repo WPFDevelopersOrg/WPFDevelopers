@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class StartupInput
+    public class StartupInput
     {
         public int GdiplusVersion = 1;
 

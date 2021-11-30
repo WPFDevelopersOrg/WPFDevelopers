@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace Standard
 {
-    internal static class DpiHelper
+    public static class DpiHelper
     {
         [SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
         static DpiHelper()

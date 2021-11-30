@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.DrawingExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers" 
+             xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:DrawingExampleVM/>
+    </UserControl.DataContext>
+    <UniformGrid Columns="3" Rows="2">
+        <wpfdev:DrawingControl>
+            <ListBoxItem Content="111"/>
+            <ListBoxItem Content="111"/>
+            <ListBoxItem Content="111"/>
+            <ListBoxItem Content="111"/>
+            <ListBoxItem Content="111"/>
+        </wpfdev:DrawingControl>
+
+
+        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
+                               Content="试试看"
+                               PanelBorderThinckness="0" 
+                               PanelBackground="#FFF2F2F2" 
+                               InnerBorderThickness="0" 
+                               InnerBackground="White" 
+                               PanelDrawingMode="Top">
+            <wpfdev:DrawingControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
+                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
+                    </Border>
+                </DataTemplate>
+            </wpfdev:DrawingControl.ItemTemplate>
+
+        </wpfdev:DrawingControl>
+
+
+        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
+                               Content="试试看"
+                               PanelBorderThinckness="0" 
+                               PanelBackground="#FFF2F2F2" 
+                               InnerBorderThickness="0" 
+                               InnerBackground="White" 
+                               PanelDrawingMode="Right"
+                               PanelMultipleSpace="10"
+                               PanelMultipleDescription="5">
+            <wpfdev:DrawingControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
+                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
+                    </Border>
+                </DataTemplate>
+            </wpfdev:DrawingControl.ItemTemplate>
+
+        </wpfdev:DrawingControl>
+
+
+        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
+                               Content="试试看"
+                               PanelBorderThinckness="0" 
+                               PanelBackground="#FFF2F2F2" 
+                               InnerBorderThickness="0" 
+                               InnerBackground="White" 
+                               PanelDrawingMode="Bottom"
+                               PanelMultipleSpace="2"
+                               PanelMultipleDescription="2,3">
+            <wpfdev:DrawingControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
+                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
+                    </Border>
+                </DataTemplate>
+            </wpfdev:DrawingControl.ItemTemplate>
+
+        </wpfdev:DrawingControl>
+
+
+
+        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
+                               Content="试试看"
+                               PanelBorderThinckness="0" 
+                               PanelBackground="#FFF2F2F2" 
+                               InnerBorderThickness="0" 
+                               InnerBackground="White" 
+                               PanelDrawingMode="Left"
+                               PanelMultipleSpace="0"
+                               PanelMultipleDescription="3,3">
+            <wpfdev:DrawingControl.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
+                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
+                    </Border>
+                </DataTemplate>
+            </wpfdev:DrawingControl.ItemTemplate>
+
+        </wpfdev:DrawingControl>
+
+
+    </UniformGrid>
+</UserControl>

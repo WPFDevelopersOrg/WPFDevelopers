@@ -3,7 +3,7 @@
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal class WINDOWPLACEMENT
+    public class WINDOWPLACEMENT
     {
         public int length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
 

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum RGN
+    public enum RGN
     {
         AND = 1,
         OR,

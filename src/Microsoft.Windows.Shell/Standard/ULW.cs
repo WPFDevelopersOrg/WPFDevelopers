@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum ULW
+    public enum ULW
     {
         ALPHA = 2,
         COLORKEY = 1,

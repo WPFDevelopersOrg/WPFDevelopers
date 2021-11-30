@@ -5,7 +5,7 @@ namespace Standard
 {
     [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
     [StructLayout(LayoutKind.Sequential)]
-    internal class RefRECT
+    public class RefRECT
     {
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public RefRECT(int left, int top, int right, int bottom)

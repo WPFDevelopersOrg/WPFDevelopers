@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum CS : uint
+    public enum CS : uint
     {
         VREDRAW = 1U,
         HREDRAW = 2U,

@@ -3,7 +3,7 @@ using System.Runtime.ConstrainedExecution;
 
 namespace Standard
 {
-    internal sealed class SafeHBITMAP : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class SafeHBITMAP : SafeHandleZeroOrMinusOneIsInvalid
     {
         private SafeHBITMAP() : base(true)
         {

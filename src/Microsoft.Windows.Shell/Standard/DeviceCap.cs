@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum DeviceCap
+    public enum DeviceCap
     {
         BITSPIXEL = 12,
         PLANES = 14,

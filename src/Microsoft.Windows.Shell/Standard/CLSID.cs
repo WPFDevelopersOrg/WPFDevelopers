@@ -2,7 +2,7 @@
 
 namespace Standard
 {
-    internal static class CLSID
+    public static class CLSID
     {
         public static T CoCreateInstance<T>(string clsid)
         {

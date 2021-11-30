@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Standard
 {
-    internal static class NativeMethods
+    public static class NativeMethods
     {
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         [DllImport("user32.dll", EntryPoint = "AdjustWindowRectEx", SetLastError = true)]

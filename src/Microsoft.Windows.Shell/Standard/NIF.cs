@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum NIF : uint
+    public enum NIF : uint
     {
         MESSAGE = 1U,
         ICON = 2U,

@@ -2,7 +2,7 @@
 {
     // CS0649.cs  
     // compile with: /W:4  
-    internal struct TITLEBARINFO
+    public struct TITLEBARINFO
     {
         public int cbSize;
 

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SHARD
+    public enum SHARD
     {
         PIDL = 1,
         PATHA,

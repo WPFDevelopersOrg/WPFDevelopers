@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum DWM_SIT
+    public enum DWM_SIT
     {
         None,
         DISPLAYFRAME

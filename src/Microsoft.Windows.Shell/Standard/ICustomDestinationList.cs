@@ -6,7 +6,7 @@ namespace Standard
     [Guid("6332debf-87b5-4670-90c0-5e57b408a49e")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [ComImport]
-    internal interface ICustomDestinationList
+    public interface ICustomDestinationList
     {
         void SetAppID([MarshalAs(UnmanagedType.LPWStr)][In] string pszAppID);
 

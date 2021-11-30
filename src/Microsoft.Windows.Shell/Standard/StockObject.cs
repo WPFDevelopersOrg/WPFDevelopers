@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum StockObject
+    public enum StockObject
     {
         WHITE_BRUSH,
         LTGRAY_BRUSH,

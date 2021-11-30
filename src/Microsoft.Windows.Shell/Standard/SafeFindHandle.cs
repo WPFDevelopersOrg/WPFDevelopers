@@ -3,7 +3,7 @@ using System.Security.Permissions;
 
 namespace Standard
 {
-    internal sealed class SafeFindHandle : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class SafeFindHandle : SafeHandleZeroOrMinusOneIsInvalid
     {
 #pragma warning disable SYSLIB0003 // Type or member is obsolete
         [SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode = true)]

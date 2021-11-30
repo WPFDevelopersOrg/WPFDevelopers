@@ -7,7 +7,7 @@ namespace Standard
     [Guid("000214F9-0000-0000-C000-000000000046")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [ComImport]
-    internal interface IShellLinkW
+    public interface IShellLinkW
     {
         void GetPath([MarshalAs(UnmanagedType.LPWStr)][Out] StringBuilder pszFile, int cchMaxPath, [In][Out] WIN32_FIND_DATAW pfd, SLGP fFlags);
 

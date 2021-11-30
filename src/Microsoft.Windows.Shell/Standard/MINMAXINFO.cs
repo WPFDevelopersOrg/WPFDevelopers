@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct MINMAXINFO
+    public struct MINMAXINFO
     {
         //public MINMAXINFO(POINT ptReserved, POINT ptMaxSize, POINT ptMaxPosition, POINT ptMinTrackSize, POINT ptMaxTrackSize)
         //{

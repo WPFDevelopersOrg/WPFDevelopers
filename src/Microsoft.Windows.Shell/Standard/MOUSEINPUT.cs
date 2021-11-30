@@ -2,7 +2,7 @@
 
 namespace Standard
 {
-    internal struct MOUSEINPUT
+    public struct MOUSEINPUT
     {
 #pragma warning disable 0649
 

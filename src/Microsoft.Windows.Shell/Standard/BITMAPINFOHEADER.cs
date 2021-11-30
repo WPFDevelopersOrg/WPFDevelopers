@@ -3,7 +3,7 @@
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential, Pack = 2)]
-    internal struct BITMAPINFOHEADER
+    public struct BITMAPINFOHEADER
     {
         public int biSize;
 

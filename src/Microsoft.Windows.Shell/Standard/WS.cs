@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum WS : uint
+    public enum WS : uint
     {
         OVERLAPPED = 0U,
         POPUP = 2147483648U,

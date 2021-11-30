@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum BI
+    public enum BI
     {
         RGB
     }

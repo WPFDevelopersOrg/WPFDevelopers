@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct BLENDFUNCTION
+    public struct BLENDFUNCTION
     {
         public AC BlendOp;
 

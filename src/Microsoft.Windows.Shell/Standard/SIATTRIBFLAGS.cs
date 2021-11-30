@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SIATTRIBFLAGS
+    public enum SIATTRIBFLAGS
     {
         AND = 1,
         OR,

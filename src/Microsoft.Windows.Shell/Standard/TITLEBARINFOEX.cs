@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct TITLEBARINFOEX
+    public struct TITLEBARINFOEX
     {
         public int cbSize;
 

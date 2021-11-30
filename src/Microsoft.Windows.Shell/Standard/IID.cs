@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal static class IID
+    public static class IID
     {
         public const string EnumIdList = "000214F2-0000-0000-C000-000000000046";
 

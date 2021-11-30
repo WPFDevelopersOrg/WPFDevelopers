@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum MOUSEEVENTF
+    public enum MOUSEEVENTF
     {
         LEFTDOWN = 2,
         LEFTUP = 4

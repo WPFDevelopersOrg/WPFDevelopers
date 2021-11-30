@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct INPUT
+    public struct INPUT
     {
         public uint type;
 

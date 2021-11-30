@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum STATE_SYSTEM
+    public enum STATE_SYSTEM
     {
         UNAVAILABLE = 1,
         SELECTED = 2,

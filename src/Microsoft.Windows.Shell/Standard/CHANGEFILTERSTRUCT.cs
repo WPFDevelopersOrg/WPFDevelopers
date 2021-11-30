@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct CHANGEFILTERSTRUCT
+    public struct CHANGEFILTERSTRUCT
     {
         public uint cbSize;
         public MSGFLTINFO ExtStatus;

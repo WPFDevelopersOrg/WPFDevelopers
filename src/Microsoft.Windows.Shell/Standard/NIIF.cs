@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum NIIF
+    public enum NIIF
     {
         NONE,
         INFO,

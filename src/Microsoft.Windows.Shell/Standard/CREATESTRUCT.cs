@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-    internal struct CREATESTRUCT
+    public struct CREATESTRUCT
     {
         public IntPtr lpCreateParams;
 

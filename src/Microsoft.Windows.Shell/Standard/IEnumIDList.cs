@@ -6,7 +6,7 @@ namespace Standard
     [Guid("000214F2-0000-0000-C000-000000000046")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [ComImport]
-    internal interface IEnumIDList
+    public interface IEnumIDList
     {
         [PreserveSig]
         HRESULT Next(uint celt, out IntPtr rgelt, out int pceltFetched);

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum HT
+    public enum HT
     {
         ERROR = -2,
         TRANSPARENT,

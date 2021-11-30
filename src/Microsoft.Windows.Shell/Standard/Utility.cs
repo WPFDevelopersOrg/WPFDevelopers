@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 
 namespace Standard
 {
-    internal static class Utility
+    public static class Utility
     {
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         private static bool _MemCmp(IntPtr left, IntPtr right, long cb)

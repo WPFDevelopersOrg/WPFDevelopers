@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Standard
 {
-    internal struct NONCLIENTMETRICS
+    public struct NONCLIENTMETRICS
     {
         [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands")]
         public static NONCLIENTMETRICS VistaMetricsStruct

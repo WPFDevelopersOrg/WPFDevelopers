@@ -7,7 +7,7 @@ namespace Standard
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("000214E6-0000-0000-C000-000000000046")]
     [ComImport]
-    internal interface IShellFolder
+    public interface IShellFolder
     {
         void ParseDisplayName([In] IntPtr hwnd, [In] IBindCtx pbc, [MarshalAs(UnmanagedType.LPWStr)][In] string pszDisplayName, [In][Out] ref int pchEaten, out IntPtr ppidl, [In][Out] ref uint pdwAttributes);
 

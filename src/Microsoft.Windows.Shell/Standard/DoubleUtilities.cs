@@ -2,7 +2,7 @@
 
 namespace Standard
 {
-    internal static class DoubleUtilities
+    public static class DoubleUtilities
     {
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public static bool AreClose(double value1, double value2)

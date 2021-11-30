@@ -2,7 +2,7 @@
 
 namespace Standard
 {
-    internal struct WINDOWPOS
+    public struct WINDOWPOS
     {
         public IntPtr hwnd;
 

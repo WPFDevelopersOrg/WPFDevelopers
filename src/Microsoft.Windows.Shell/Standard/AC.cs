@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum AC : byte
+    public enum AC : byte
     {
         SRC_OVER,
         SRC_ALPHA

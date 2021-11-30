@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SIGDN : uint
+    public enum SIGDN : uint
     {
         NORMALDISPLAY,
         PARENTRELATIVEPARSING = 2147581953U,

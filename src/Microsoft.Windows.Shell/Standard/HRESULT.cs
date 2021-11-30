@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Explicit)]
-    internal struct HRESULT
+    public struct HRESULT
     {
         public HRESULT(uint i)
         {

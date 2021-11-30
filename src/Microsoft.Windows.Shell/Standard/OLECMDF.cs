@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum OLECMDF
+    public enum OLECMDF
     {
         SUPPORTED = 1,
         ENABLED,

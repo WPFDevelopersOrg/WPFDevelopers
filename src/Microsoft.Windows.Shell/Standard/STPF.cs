@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum STPF
+    public enum STPF
     {
         NONE = 0,
         USEAPPTHUMBNAILALWAYS = 1,

@@ -19,6 +19,7 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/ChatEmoji.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CircularProgressBar.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Dashboard.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Drawing.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/PieControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/TimeLine.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Pagination.xaml"/>

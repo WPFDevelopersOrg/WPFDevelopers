@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum Facility
+    public enum Facility
     {
         Null,
         Rpc,

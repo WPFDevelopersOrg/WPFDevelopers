@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum WVR
+    public enum WVR
     {
         ALIGNTOP = 16,
         ALIGNLEFT = 32,

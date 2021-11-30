@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace Standard
 {
-    internal static class Assert
+    public static class Assert
     {
         private static void _Break()
         {

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum FO
+    public enum FO
     {
         MOVE = 1,
         COPY,

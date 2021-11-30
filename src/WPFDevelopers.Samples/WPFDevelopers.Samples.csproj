@@ -93,6 +93,9 @@
     <Compile Include="ExampleViews\DashboardExample.xaml.cs">
       <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\DrawingExample.xaml.cs">
+      <DependentUpon>DrawingExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\LineChartExample.xaml.cs">
       <DependentUpon>LineChartExample.xaml</DependentUpon>
     </Compile>
@@ -199,6 +202,7 @@
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\NavigateMenuModel.cs" />
+    <Compile Include="ViewModels\DrawingExampleVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="ViewModels\PaginationExampleVM.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -243,6 +247,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\DashboardExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\DrawingExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

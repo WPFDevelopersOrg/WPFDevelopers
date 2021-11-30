@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SM
+    public enum SM
     {
         CXSCREEN,
         CYSCREEN,

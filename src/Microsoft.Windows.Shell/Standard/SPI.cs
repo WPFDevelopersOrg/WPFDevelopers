@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SPI
+    public enum SPI
     {
         GETBEEP = 1,
         SETBEEP,

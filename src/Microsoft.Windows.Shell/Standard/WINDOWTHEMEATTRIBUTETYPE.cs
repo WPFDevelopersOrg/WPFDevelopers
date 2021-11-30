@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum WINDOWTHEMEATTRIBUTETYPE : uint
+    public enum WINDOWTHEMEATTRIBUTETYPE : uint
     {
         WTA_NONCLIENT = 1U
     }

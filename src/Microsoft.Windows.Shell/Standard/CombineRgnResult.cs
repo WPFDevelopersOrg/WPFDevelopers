@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum CombineRgnResult
+    public enum CombineRgnResult
     {
         ERROR,
         NULLREGION,

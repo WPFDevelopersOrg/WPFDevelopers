@@ -2,7 +2,7 @@
 
 namespace Standard
 {
-    internal struct HIGHCONTRAST
+    public struct HIGHCONTRAST
     {
         public int cbSize;
 

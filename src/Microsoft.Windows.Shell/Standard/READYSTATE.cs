@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum READYSTATE
+    public enum READYSTATE
     {
         UNINITIALIZED,
         LOADING,

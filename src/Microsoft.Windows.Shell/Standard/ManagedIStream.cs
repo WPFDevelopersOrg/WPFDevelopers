@@ -6,7 +6,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace Standard
 {
-    internal sealed class ManagedIStream : IStream, IDisposable
+    public sealed class ManagedIStream : IStream, IDisposable
     {
         public ManagedIStream(Stream source)
         {

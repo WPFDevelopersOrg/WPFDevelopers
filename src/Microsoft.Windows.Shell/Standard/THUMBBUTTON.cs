@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 8)]
-    internal struct THUMBBUTTON
+    public struct THUMBBUTTON
     {
         public const int THBN_CLICKED = 6144;
 

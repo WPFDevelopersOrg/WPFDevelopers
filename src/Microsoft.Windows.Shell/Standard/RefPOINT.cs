@@ -5,7 +5,7 @@ namespace Standard
 {
     [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
     [StructLayout(LayoutKind.Sequential)]
-    internal class RefPOINT
+    public class RefPOINT
     {
         public int x;
 

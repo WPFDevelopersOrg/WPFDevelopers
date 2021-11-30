@@ -7,7 +7,7 @@ namespace Standard
     [Guid("43826d1e-e718-42ee-bc55-a1e261c37bfe")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [ComImport]
-    internal interface IShellItem
+    public interface IShellItem
     {
         [return: MarshalAs(UnmanagedType.Interface)]
         object BindToHandler(IBindCtx pbc, [In] ref Guid bhid, [In] ref Guid riid);

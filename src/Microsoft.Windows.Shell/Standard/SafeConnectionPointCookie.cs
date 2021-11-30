@@ -6,7 +6,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace Standard
 {
-    internal sealed class SafeConnectionPointCookie : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class SafeConnectionPointCookie : SafeHandleZeroOrMinusOneIsInvalid
     {
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "IConnectionPoint")]
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]

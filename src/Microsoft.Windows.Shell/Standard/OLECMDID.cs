@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum OLECMDID
+    public enum OLECMDID
     {
         OPEN = 1,
         NEW,

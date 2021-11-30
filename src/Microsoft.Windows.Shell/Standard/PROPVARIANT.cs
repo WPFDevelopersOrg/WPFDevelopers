@@ -6,7 +6,7 @@ namespace Standard
 {
     [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
     [StructLayout(LayoutKind.Explicit)]
-    internal class PROPVARIANT : IDisposable
+    public class PROPVARIANT : IDisposable
     {
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public VarEnum VarType

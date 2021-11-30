@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct POINT
+    public struct POINT
     {
         public int x;
 

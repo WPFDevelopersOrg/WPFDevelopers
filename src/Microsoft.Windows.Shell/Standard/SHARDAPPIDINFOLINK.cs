@@ -6,7 +6,7 @@ namespace Standard
 {
     [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
-    internal class SHARDAPPIDINFOLINK
+    public class SHARDAPPIDINFOLINK
     {
         private IntPtr psl;
 

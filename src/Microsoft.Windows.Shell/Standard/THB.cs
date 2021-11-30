@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum THB : uint
+    public enum THB : uint
     {
         BITMAP = 1U,
         ICON = 2U,

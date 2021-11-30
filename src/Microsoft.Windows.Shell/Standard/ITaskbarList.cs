@@ -6,7 +6,7 @@ namespace Standard
     [Guid("56FDF342-FD6D-11d0-958A-006097C9A090")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [ComImport]
-    internal interface ITaskbarList
+    public interface ITaskbarList
     {
         void HrInit();
 

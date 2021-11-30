@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum MSGFLT
+    public enum MSGFLT
     {
         RESET,
         ALLOW,

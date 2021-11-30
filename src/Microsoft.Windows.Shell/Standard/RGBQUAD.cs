@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct RGBQUAD
+    public struct RGBQUAD
     {
         public byte rgbBlue;
 

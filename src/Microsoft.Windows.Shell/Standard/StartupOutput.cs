@@ -2,7 +2,7 @@
 
 namespace Standard
 {
-    internal struct StartupOutput
+    public struct StartupOutput
     {
         public IntPtr hook;
 

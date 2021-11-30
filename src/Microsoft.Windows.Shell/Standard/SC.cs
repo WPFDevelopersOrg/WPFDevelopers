@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SC
+    public enum SC
     {
         SIZE = 61440,
         MOVE = 61456,

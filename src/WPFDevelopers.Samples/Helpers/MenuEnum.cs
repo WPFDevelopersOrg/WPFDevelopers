@@ -46,6 +46,7 @@ namespace WPFDevelopers.Samples.Helpers
         LogoAnimation,
         Thermometer,
         LoginWindow,
+        Drawing,
         TaskbarInfo,
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum DWMWA
+    public enum DWMWA
     {
         NCRENDERING_ENABLED = 1,
         NCRENDERING_POLICY,

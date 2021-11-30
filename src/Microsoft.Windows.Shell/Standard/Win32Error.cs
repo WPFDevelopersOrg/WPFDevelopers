@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Explicit)]
-    internal struct Win32Error
+    public struct Win32Error
     {
         public Win32Error(int i)
         {

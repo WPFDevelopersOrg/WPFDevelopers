@@ -6,7 +6,7 @@ namespace Standard
 {
     [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
     [StructLayout(LayoutKind.Sequential)]
-    internal class NOTIFYICONDATA
+    public class NOTIFYICONDATA
     {
         public int cbSize;
 

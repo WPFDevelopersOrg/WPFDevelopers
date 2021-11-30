@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum DWMFLIP3D
+    public enum DWMFLIP3D
     {
         DEFAULT,
         EXCLUDEBELOW,

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum INPUT_TYPE : uint
+    public enum INPUT_TYPE : uint
     {
         MOUSE
     }

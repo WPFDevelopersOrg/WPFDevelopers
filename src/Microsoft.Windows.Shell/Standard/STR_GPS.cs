@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal static class STR_GPS
+    public static class STR_GPS
     {
         public const string HANDLERPROPERTIESONLY = "GPS_HANDLERPROPERTIESONLY";
 

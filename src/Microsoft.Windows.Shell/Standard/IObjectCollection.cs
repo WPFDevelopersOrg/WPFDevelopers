@@ -6,7 +6,7 @@ namespace Standard
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("92CA9DCD-5622-4bba-A805-5E9F541BD8C9")]
     [ComImport]
-    internal interface IObjectCollection : IObjectArray
+    public interface IObjectCollection : IObjectArray
     {
         //new uint GetCount();
 

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SW
+    public enum SW
     {
         HIDE,
         SHOWNORMAL,

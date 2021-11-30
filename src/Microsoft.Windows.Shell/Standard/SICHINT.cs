@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SICHINT : uint
+    public enum SICHINT : uint
     {
         DISPLAY,
         ALLFIELDS = 2147483648U,

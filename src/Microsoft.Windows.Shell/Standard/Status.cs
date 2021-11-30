@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum Status
+    public enum Status
     {
         Ok,
         GenericError,

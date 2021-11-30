@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum FOF : ushort
+    public enum FOF : ushort
     {
         MULTIDESTFILES = 1,
         CONFIRMMOUSE,

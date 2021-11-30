@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum ErrorModes
+    public enum ErrorModes
     {
         Default = 0,
         FailCriticalErrors = 1,

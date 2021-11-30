@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct SIZE
+    public struct SIZE
     {
         public int cx;
 

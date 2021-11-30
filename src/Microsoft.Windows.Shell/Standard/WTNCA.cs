@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum WTNCA : uint
+    public enum WTNCA : uint
     {
         NODRAWCAPTION = 1U,
         NODRAWICON = 2U,

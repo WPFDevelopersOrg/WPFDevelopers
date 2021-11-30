@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum NIM : uint
+    public enum NIM : uint
     {
         ADD,
         MODIFY,

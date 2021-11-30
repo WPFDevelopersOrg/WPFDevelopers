@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum WM
+    public enum WM
     {
         NULL,
         CREATE,

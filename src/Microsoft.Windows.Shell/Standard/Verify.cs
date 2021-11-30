@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Standard
 {
-    internal static class Verify
+    public static class Verify
     {
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         [DebuggerStepThrough]

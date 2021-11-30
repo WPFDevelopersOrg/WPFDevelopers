@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum HCF
+    public enum HCF
     {
         HIGHCONTRASTON = 1,
         AVAILABLE = 2,

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum APPDOCLISTTYPE
+    public enum APPDOCLISTTYPE
     {
         ADLT_RECENT,
         ADLT_FREQUENT

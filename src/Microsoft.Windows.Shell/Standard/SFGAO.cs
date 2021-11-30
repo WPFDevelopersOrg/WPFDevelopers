@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum SFGAO : uint
+    public enum SFGAO : uint
     {
         CANCOPY = 1U,
         CANMOVE = 2U,

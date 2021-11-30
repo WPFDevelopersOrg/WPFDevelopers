@@ -7,7 +7,7 @@ using System.Windows.Threading;
 
 namespace Standard
 {
-    internal sealed class MessageWindow : DispatcherObject, IDisposable
+    public sealed class MessageWindow : DispatcherObject, IDisposable
     {
         public IntPtr Handle { get; private set; }
 

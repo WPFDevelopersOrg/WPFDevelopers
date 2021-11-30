@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace Standard
 {
-    internal sealed class SafeDC : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class SafeDC : SafeHandleZeroOrMinusOneIsInvalid
     {
         public IntPtr Hwnd
         {

@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum TBPF
+    public enum TBPF
     {
         NOPROGRESS,
         INDETERMINATE,

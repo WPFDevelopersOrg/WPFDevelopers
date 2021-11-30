@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum WS_EX : uint
+    public enum WS_EX : uint
     {
         None = 0U,
         DLGMODALFRAME = 1U,

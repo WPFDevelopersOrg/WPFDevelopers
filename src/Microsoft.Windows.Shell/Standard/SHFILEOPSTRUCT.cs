@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
-    internal struct SHFILEOPSTRUCT
+    public struct SHFILEOPSTRUCT
     {
         public IntPtr hwnd;
 

@@ -3,7 +3,7 @@
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal struct DWM_TIMING_INFO
+    public struct DWM_TIMING_INFO
     {
         public int cbSize;
 

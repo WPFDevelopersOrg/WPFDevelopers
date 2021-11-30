@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Standard
 {
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
-    internal struct PKEY
+    public struct PKEY
     {
         public PKEY(Guid fmtid, uint pid)
         {

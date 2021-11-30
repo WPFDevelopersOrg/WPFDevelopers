@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum KDC
+    public enum KDC
     {
         FREQUENT = 1,
         RECENT

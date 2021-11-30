@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum SWP
+    public enum SWP
     {
         ASYNCWINDOWPOS = 16384,
         DEFERERASE = 8192,

@@ -7,7 +7,7 @@ namespace Standard
     [BestFitMapping(false)]
     [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-    internal class WIN32_FIND_DATAW
+    public class WIN32_FIND_DATAW
     {
         public FileAttributes dwFileAttributes;
 

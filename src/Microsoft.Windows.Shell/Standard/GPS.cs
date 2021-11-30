@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum GPS
+    public enum GPS
     {
         DEFAULT,
         HANDLERPROPERTIESONLY,

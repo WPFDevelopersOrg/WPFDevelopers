@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal enum SHCONTF
+    public enum SHCONTF
     {
         CHECKING_FOR_CHILDREN = 16,
         FOLDERS = 32,

@@ -48,6 +48,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assists\ThincknessAssert.cs" />
     <Compile Include="Assists\WindowAcrylicBlur.cs" />
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
     <Compile Include="Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
@@ -66,6 +67,8 @@
     <Compile Include="Controls\CutImage\DragDrop.cs" />
     <Compile Include="Controls\Dashboard\Dashboard.cs" />
     <Compile Include="Controls\Dashboard\ScaleItem.cs" />
+    <Compile Include="Controls\Drawing\DrawingControl.cs" />
+    <Compile Include="Controls\Drawing\DrawingPanel.cs" />
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\Loadings\RingLoading.cs" />
@@ -115,6 +118,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utilities\DoubleUtil.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -208,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Drawing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

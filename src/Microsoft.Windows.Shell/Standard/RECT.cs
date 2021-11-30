@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Standard
 {
-    internal struct RECT
+    public struct RECT
     {
         [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public void Offset(int dx, int dy)

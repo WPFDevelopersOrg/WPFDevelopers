@@ -1,6 +1,6 @@
 ﻿namespace Standard
 {
-    internal struct MARGINS
+    public struct MARGINS
     {
         public int cxLeftWidth;
 

@@ -3,7 +3,7 @@
 namespace Standard
 {
     [Flags]
-    internal enum SHGDN
+    public enum SHGDN
     {
         SHGDN_NORMAL = 0,
         SHGDN_INFOLDER = 1,
