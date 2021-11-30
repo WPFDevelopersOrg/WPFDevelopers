@@ -50,7 +50,7 @@
                                PanelMultipleDescription="5">
             <wpfdev:DrawingControl.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
+                    <Border CornerRadius="30" Width="30" Height="30" BorderThickness="1" BorderBrush="Green" Background="Red">
                         <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
                     </Border>
                 </DataTemplate>
