@@ -35,7 +35,8 @@
                                 <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                                     <Setter Property="Cursor" Value="Hand"/>
-                                    <Setter Property="Height" Value="40"/>
+                                    <!--<Setter Property="Height" Value="40"/>-->
+                                    <Setter Property="Padding" Value="10,8"/>
                                     <Setter Property="Foreground" Value="{StaticResource PrimaryTextSolidColorBrush}"/>
                                     <Setter Property="Template">
                                         <Setter.Value>

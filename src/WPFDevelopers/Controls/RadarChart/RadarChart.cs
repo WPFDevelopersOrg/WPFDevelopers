@@ -105,18 +105,8 @@ namespace WPFDevelopers.Controls
                 Point p2 = new Point(r * Math.Cos(g * pi / 180) + center.X, r * Math.Sin(g * pi / 180) + center.Y);
                 if(drawingContext != null)
                 {
-                    FormattedText formattedText = new FormattedText(
-                   RadarArray[i].Text,
-                   CultureInfo.CurrentCulture,
-                   FlowDirection.LeftToRight,
-                   new Typeface(new FontFamily("Arial"), FontStyles.Normal, FontWeights.Thin, FontStretches.Normal),
-                   20.001D, Brushes.Black)
-                    {
-                        MaxLineCount = 1,
-                        TextAlignment = TextAlignment.Justify,
-                        Trimming = TextTrimming.CharacterEllipsis
-                    };
-                    RadarArray[i].PointValue = p2;
+                    var formattedText = DrawingContextHelper.GetFormattedText(RadarArray[i].Text,flowDirection:FlowDirection.LeftToRight,textSize:20.001D);
+                     RadarArray[i].PointValue = p2;
                     if (p2.Y > center.Y && p2.X < center.X)
                         drawingContext.DrawText(formattedText, new Point(p2.X - formattedText.Width - 5, p2.Y - formattedText.Height / 2));
                     else if (p2.Y < center.Y && p2.X > center.X)

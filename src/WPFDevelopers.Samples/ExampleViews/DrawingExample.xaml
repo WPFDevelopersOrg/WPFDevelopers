@@ -19,8 +19,6 @@
             <ListBoxItem Content="111"/>
             <ListBoxItem Content="111"/>
         </wpfdev:DrawingControl>
-
-
         <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
                                Content="试试看"
                                PanelBorderThinckness="0" 
@@ -30,9 +28,16 @@
                                PanelDrawingMode="Top">
             <wpfdev:DrawingControl.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
-                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>
+                    <!--<Border CornerRadius="5"
+                            Width="28" Height="45" 
+                            BorderThickness="1" 
+                            BorderBrush="Green"
+                            Background="Red">
+                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
+                    </Border>-->
+                    <Button Style="{StaticResource DefaultButton}"
+                            Content="{Binding Number}"/>
                 </DataTemplate>
             </wpfdev:DrawingControl.ItemTemplate>
 

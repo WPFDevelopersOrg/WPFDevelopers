@@ -104,8 +104,9 @@ namespace WPFDevelopers.Controls
 
             for (int i = 0; i <= ((EndValue - StartValue) / Interval); i++) 
             {
-                var numberText = new FormattedText((StartValue + (i * Interval)).ToString(),
-                    CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Microsoft YaHei"), 10, Brushes.White);
+                //var numberText = new FormattedText((StartValue + (i * Interval)).ToString(),
+                //    CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Microsoft YaHei"), 10, Brushes.White);
+                var numberText = DrawingContextHelper.GetFormattedText((StartValue + (i * Interval)).ToString(),"#FFFFFF",FlowDirection.LeftToRight,textSize:10);
                 drawingContext.DrawText(numberText, new Point(i * one_Width - 8, 0));
                 drawingContext.DrawLine(new Pen(new SolidColorBrush(Colors.White), 1), new Point(i * one_Width, 25), new Point(i * one_Width, ActualHeight - 2));
                 var cnt = Interval / SpanInterval;

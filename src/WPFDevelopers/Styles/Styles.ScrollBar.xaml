@@ -5,7 +5,7 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Background" Value="Transparent" />
@@ -63,24 +63,30 @@
     <Style TargetType="{x:Type ScrollBar}">
         <Style.Resources>
             <Storyboard x:Key="ScrollMouseOut">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.2">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
+                </DoubleAnimationUsingKeyFrames>-->
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
+                </DoubleAnimationUsingKeyFrames>-->
+                <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
+                                 Storyboard.TargetProperty="Width"
+                                 To="2"/>
             </Storyboard>
             <Storyboard x:Key="ScrollMouseOver">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
+                </DoubleAnimationUsingKeyFrames>-->
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="12">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
+                </DoubleAnimationUsingKeyFrames>-->
+                <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
+                                 Storyboard.TargetProperty="Width"
+                                 To="12"/>
             </Storyboard>
         </Style.Resources>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
@@ -97,8 +103,7 @@
                         <Track
                             x:Name="PART_Track" Margin="0,0,1,0"
                             IsDirectionReversed="True" Width="2" HorizontalAlignment="Right"
-                            IsEnabled="{TemplateBinding IsMouseOver}"
-                            Opacity="0.2">
+                            IsEnabled="{TemplateBinding IsMouseOver}">
                             <Track.DecreaseRepeatButton>
                                 <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource RepeatButtonTransparent}" />
                             </Track.DecreaseRepeatButton>
@@ -134,24 +139,30 @@
                         <ControlTemplate TargetType="{x:Type ScrollBar}">
                             <ControlTemplate.Resources>
                                 <Storyboard x:Key="ScrollMouseOutHeight">
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.2">
                                         </EasingDoubleKeyFrame>
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Height">
+                                    </DoubleAnimationUsingKeyFrames>-->
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Height">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2">
                                         </EasingDoubleKeyFrame>
-                                    </DoubleAnimationUsingKeyFrames>
+                                    </DoubleAnimationUsingKeyFrames>-->
+                                    <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
+                                                     Storyboard.TargetProperty="Width"
+                                                     To="2"/>
                                 </Storyboard>
                                 <Storyboard x:Key="ScrollMouseOverHeight">
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
                                         </EasingDoubleKeyFrame>
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Height">
+                                    </DoubleAnimationUsingKeyFrames>-->
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Height">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="12">
                                         </EasingDoubleKeyFrame>
-                                    </DoubleAnimationUsingKeyFrames>
+                                    </DoubleAnimationUsingKeyFrames>-->
+                                    <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
+                                                     Storyboard.TargetProperty="Width"
+                                                     To="12"/>
                                 </Storyboard>
                             </ControlTemplate.Resources>
                             <Grid Height="{TemplateBinding Height}" 
@@ -160,7 +171,7 @@
                                 <Track
                                     x:Name="PART_Track" Margin="0,0,0,1"
                                     IsEnabled="{TemplateBinding IsMouseOver}"
-                                    Opacity="0.2" Height="2" VerticalAlignment="Bottom"
+                                    Height="2" VerticalAlignment="Bottom"
                                     Visibility="Hidden">
                                     <Track.DecreaseRepeatButton>
                                         <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{StaticResource RepeatButtonTransparent}" />
@@ -192,24 +203,30 @@
     <Style x:Key="ScrollBarHideStyle" TargetType="{x:Type ScrollBar}">
         <Style.Resources>
             <Storyboard x:Key="ScrollMouseOut">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
+                </DoubleAnimationUsingKeyFrames>-->
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
+                </DoubleAnimationUsingKeyFrames>-->
+                <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
+                                 Storyboard.TargetProperty="Width"
+                                 To="2"/>
             </Storyboard>
             <Storyboard x:Key="ScrollMouseOver">
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
+                </DoubleAnimationUsingKeyFrames>-->
+                <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Width">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="12">
                     </EasingDoubleKeyFrame>
-                </DoubleAnimationUsingKeyFrames>
+                </DoubleAnimationUsingKeyFrames>-->
+                <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
+                                 Storyboard.TargetProperty="Width"
+                                 To="12"/>
             </Storyboard>
         </Style.Resources>
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
@@ -225,8 +242,7 @@
                         <Track
                             x:Name="PART_Track" Margin="0,0,1,0"
                             IsDirectionReversed="True" Width="2" HorizontalAlignment="Right"
-                            IsEnabled="{TemplateBinding IsMouseOver}"
-                            Opacity="0.2">
+                            IsEnabled="{TemplateBinding IsMouseOver}">
                             <Track.DecreaseRepeatButton>
                                 <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource RepeatButtonTransparent}" />
                             </Track.DecreaseRepeatButton>
@@ -262,24 +278,22 @@
                         <ControlTemplate TargetType="{x:Type ScrollBar}">
                             <ControlTemplate.Resources>
                                 <Storyboard x:Key="ScrollMouseOutHeight">
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0">
                                         </EasingDoubleKeyFrame>
-                                    </DoubleAnimationUsingKeyFrames>
+                                    </DoubleAnimationUsingKeyFrames>-->
                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Height">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2">
-
                                         </EasingDoubleKeyFrame>
                                     </DoubleAnimationUsingKeyFrames>
                                 </Storyboard>
                                 <Storyboard x:Key="ScrollMouseOverHeight">
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="(UIElement.Opacity)">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.9">
                                         </EasingDoubleKeyFrame>
-                                    </DoubleAnimationUsingKeyFrames>
+                                    </DoubleAnimationUsingKeyFrames>-->
                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Track" Storyboard.TargetProperty="Height">
                                         <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="12">
-
                                         </EasingDoubleKeyFrame>
                                     </DoubleAnimationUsingKeyFrames>
                                 </Storyboard>
@@ -290,7 +304,7 @@
                                 <Track
                                     x:Name="PART_Track" Margin="0,0,0,1"
                                     IsEnabled="{TemplateBinding IsMouseOver}"
-                                    Opacity="0.2" Height="2" VerticalAlignment="Bottom"
+                                    Height="2" VerticalAlignment="Bottom"
                                     Visibility="Hidden">
                                     <Track.DecreaseRepeatButton>
                                         <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{StaticResource RepeatButtonTransparent}" />

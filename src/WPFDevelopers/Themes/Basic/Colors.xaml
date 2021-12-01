@@ -5,7 +5,20 @@
     <!--字体颜色-->
     <Color x:Key="PrimaryTextColor">#303133</Color>
     <SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}"></SolidColorBrush>
+    <Color x:Key="RegularTextColor">#606266</Color>
+    <SolidColorBrush x:Key="RegularTextSolidColorBrush" Color="{StaticResource RegularTextColor}"></SolidColorBrush>
+    <Color x:Key="SecondaryTextColor">#909399</Color>
+    <SolidColorBrush x:Key="SecondaryTextSolidColorBrush" Color="{StaticResource SecondaryTextColor}"></SolidColorBrush>
+    <Color x:Key="PlaceholderTextColor">#C0C4CC</Color>
+    <SolidColorBrush x:Key="PlaceholderTextSolidColorBrush" Color="{StaticResource PlaceholderTextColor}"></SolidColorBrush>
 
+    <!--Default颜色-->
+    <Color x:Key="DefaultBorderBrushColor">#FFC6E2FF</Color>
+    <SolidColorBrush x:Key="DefaultBorderBrushSolidColorBrush" Color="{StaticResource DefaultBorderBrushColor}"></SolidColorBrush>
+    <Color x:Key="DefaultBackgroundColor">#FFEBF4FF</Color>
+    <SolidColorBrush x:Key="DefaultBackgroundSolidColorBrush" Color="{StaticResource DefaultBackgroundColor}"></SolidColorBrush>
+    <Color x:Key="DefaultBackgroundPressedColor">#FF398DE6</Color>
+    <SolidColorBrush x:Key="DefaultBackgroundPressedSolidColorBrush" Color="{StaticResource DefaultBackgroundPressedColor}"></SolidColorBrush>
     <!--Primary颜色-->
     <Color x:Key="PrimaryNormalColor">#409EFF</Color>
     <SolidColorBrush x:Key="PrimaryNormalSolidColorBrush" Color="{StaticResource PrimaryNormalColor}"></SolidColorBrush>

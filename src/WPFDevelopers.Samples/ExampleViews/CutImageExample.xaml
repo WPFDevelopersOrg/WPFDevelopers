@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -32,8 +32,8 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="btnImport" Content="选择图片" Width="100" Margin="0 20 10 20" Style="{StaticResource PrimaryButton}"/>
-            <Button x:Name="btnSave" Content="保存图片" Width="100" Margin="0 20 10 20" IsEnabled="False" Style="{StaticResource PrimaryButton}"/>
+            <Button x:Name="btnImport" Content="选择图片" Margin="0 20 10 20" Style="{StaticResource DefaultButton}"/>
+            <Button x:Name="btnSave" Content="保存图片" Margin="0 20 10 20" IsEnabled="False" Style="{StaticResource PrimaryButton}"/>
         </StackPanel>
     </Grid>
 </UserControl>

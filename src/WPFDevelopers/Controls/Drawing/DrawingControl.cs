@@ -64,7 +64,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(ItemOffsetProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemOffset.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemOffsetProperty =
             DependencyProperty.Register("ItemOffset", typeof(double), typeof(DrawingControl), new PropertyMetadata(10d));
 
@@ -74,7 +73,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelBackgroundProperty =
             DependencyProperty.Register("PanelBackground", typeof(Brush), typeof(DrawingControl), new PropertyMetadata(default));
 
@@ -84,7 +82,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelBorderBrushProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelBorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelBorderBrushProperty =
             DependencyProperty.Register("PanelBorderBrush", typeof(Brush), typeof(DrawingControl), new PropertyMetadata(Brushes.Gray));
 
@@ -94,7 +91,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelBorderThincknessProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelBorderThinckness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelBorderThincknessProperty =
             DependencyProperty.Register("PanelBorderThinckness", typeof(Thickness), typeof(DrawingControl), new PropertyMetadata(new Thickness(1d)));
 
@@ -104,7 +100,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelCornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelCornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelCornerRadiusProperty =
             DependencyProperty.Register("PanelCornerRadius", typeof(CornerRadius), typeof(DrawingControl), new PropertyMetadata(new CornerRadius(1d)));
 
@@ -114,7 +109,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelDrawingModeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelDrawingMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelDrawingModeProperty =
             DependencyProperty.Register("PanelDrawingMode", typeof(DrawingMode), typeof(DrawingControl), new PropertyMetadata(default(DrawingMode)));
 
@@ -124,7 +118,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelStartAngleOffsetProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for StartAngleOffset.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelStartAngleOffsetProperty =
             DependencyProperty.Register("PanelStartAngleOffset", typeof(double), typeof(DrawingControl), new PropertyMetadata(0d));
 
@@ -136,7 +129,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelMultipleDescriptionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelMultipleDescription.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelMultipleDescriptionProperty =
             DependencyProperty.Register("PanelMultipleDescription", typeof(string), typeof(DrawingControl), new PropertyMetadata(default));
 
@@ -148,7 +140,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(PanelMultipleSpaceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PanelMultipleSpace.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PanelMultipleSpaceProperty =
             DependencyProperty.Register("PanelMultipleSpace", typeof(double), typeof(DrawingControl), new PropertyMetadata(0d));
 
@@ -161,7 +152,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(InnerMarginProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for InnerMargin.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InnerMarginProperty =
             DependencyProperty.Register("InnerMargin", typeof(Thickness), typeof(DrawingControl), new PropertyMetadata(new Thickness(50d)));
 
@@ -171,7 +161,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(InnerBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for InnerBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InnerBackgroundProperty =
             DependencyProperty.Register("InnerBackground", typeof(Brush), typeof(DrawingControl), new PropertyMetadata(Brushes.Transparent));
 
@@ -181,7 +170,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(InnerCornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for InnerCornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InnerCornerRadiusProperty =
             DependencyProperty.Register("InnerCornerRadius", typeof(CornerRadius), typeof(DrawingControl), new PropertyMetadata(default));
 
@@ -191,7 +179,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(InnerBorderThicknessProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for InnerBorderThickness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InnerBorderThicknessProperty =
             DependencyProperty.Register("InnerBorderThickness", typeof(Thickness), typeof(DrawingControl), new PropertyMetadata(new Thickness(1d)));
 
@@ -201,7 +188,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(InnerBorderBrushProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for InnerBorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InnerBorderBrushProperty =
             DependencyProperty.Register("InnerBorderBrush", typeof(Brush), typeof(DrawingControl), new PropertyMetadata(Brushes.Gray));
 
@@ -211,7 +197,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(ScaleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Scale.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ScaleProperty =
             DependencyProperty.Register("Scale", typeof(double), typeof(DrawingControl), new PropertyMetadata(0.4d, OnScalePropertyChangedCallBack));
 
@@ -223,7 +208,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(ContentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentProperty =
             DependencyProperty.Register("Content", typeof(object), typeof(DrawingControl), new PropertyMetadata(default));
 
@@ -235,7 +219,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(ContentTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ContentTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentTemplateProperty =
             DependencyProperty.Register("ContentTemplate", typeof(DataTemplate), typeof(DrawingControl), new PropertyMetadata(default));
 
@@ -247,7 +230,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(ContentTemplateSelectorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ContentTemplateSelector.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentTemplateSelectorProperty =
             DependencyProperty.Register("ContentTemplateSelector", typeof(DataTemplateSelector), typeof(DrawingControl), new PropertyMetadata(default));
 
@@ -259,7 +241,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(ContentStringFormatProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ContentStringFormat.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentStringFormatProperty =
             DependencyProperty.Register("ContentStringFormat", typeof(string), typeof(DrawingControl), new PropertyMetadata(default));
 
@@ -272,14 +253,8 @@ namespace WPFDevelopers.Controls
             set { SetValue(ContentSourceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ContentSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentSourceProperty =
             DependencyProperty.Register("ContentSource", typeof(string), typeof(DrawingControl), new PropertyMetadata("Content"));
-
-
-
-
-
 
         private static void OnScalePropertyChangedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

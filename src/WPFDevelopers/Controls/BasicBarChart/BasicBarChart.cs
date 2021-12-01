@@ -56,8 +56,8 @@ namespace WPFDevelopers.Controls
             //drawingContext.DrawLine(myPen, new Point(startX, h), new Point(width, h));
             var stratNum = 0;
 
-            SnapDrawingExtensions.DrawSnappedLinesBetweenPoints(drawingContext,myPen,myPen.Thickness, new Point(startX, h), new Point(width, h));
-            var formattedText = GetFormattedText(stratNum.ToString());
+            DrawingContextHelper.DrawSnappedLinesBetweenPoints(drawingContext,myPen,myPen.Thickness, new Point(startX, h), new Point(width, h));
+            var formattedText = DrawingContextHelper.GetFormattedText(stratNum.ToString(), "#6E7079", FlowDirection.LeftToRight);
             drawingContext.DrawText(formattedText, new Point(startX - formattedText.Width * 2 - 10, h - formattedText.Height / 2));
             var x = startX;
             //var y = h + d;
@@ -71,7 +71,7 @@ namespace WPFDevelopers.Controls
                 points.Add(new Point(x, y + 4));
                 x = x + 120;
             }
-            SnapDrawingExtensions.DrawSnappedLinesBetweenPoints(drawingContext, myPen, myPen.Thickness, points.ToArray());
+            DrawingContextHelper.DrawSnappedLinesBetweenPoints(drawingContext, myPen, myPen.Thickness, points.ToArray());
 
             var xAxisPen = new Pen
             {
@@ -90,18 +90,18 @@ namespace WPFDevelopers.Controls
                 points.Add(new Point(startX, xAxis));
                 points.Add(new Point(width, xAxis));
                 stratNum += 50;
-                formattedText = GetFormattedText(stratNum.ToString());
+                formattedText = DrawingContextHelper.GetFormattedText(stratNum.ToString(), "#6E7079", FlowDirection.LeftToRight);
                 drawingContext.DrawText(formattedText, new Point(startX - formattedText.Width - 10, xAxis - formattedText.Height / 2));
                 xAxis = xAxis - 80;
             }
-            SnapDrawingExtensions.DrawSnappedLinesBetweenPoints(drawingContext, xAxisPen, xAxisPen.Thickness, points.ToArray());
+            DrawingContextHelper.DrawSnappedLinesBetweenPoints(drawingContext, xAxisPen, xAxisPen.Thickness, points.ToArray());
 
             x = startX;
             var rectWidth = 85;
             var rectHeight = 0D;
             for (int i = 0; i < SeriesArray.Count(); i++)
             {
-                formattedText = GetFormattedText(SeriesArray.ToList()[i].Key);
+                formattedText = DrawingContextHelper.GetFormattedText(SeriesArray.ToList()[i].Key, "#6E7079", FlowDirection.LeftToRight);
                 drawingContext.DrawText(formattedText, new Point(x + 120 / 2 - formattedText.Width / 2, y + 4));
                 var _value = SeriesArray.ToList()[i].Value;
                 //rectHeight = _value * 200;
@@ -111,41 +111,6 @@ namespace WPFDevelopers.Controls
                 x = x + 120;
             }
         }
-        FormattedText GetFormattedText(string text)
-        {
-            var brushConverter = new BrushConverter();
-            return new FormattedText(
-                 text,
-                 CultureInfo.CurrentCulture,
-                 FlowDirection.LeftToRight,
-                 new Typeface(new FontFamily("Microsoft YaHei"), FontStyles.Normal, FontWeights.UltraLight, FontStretches.Normal),
-                 12, (Brush)brushConverter.ConvertFromString("#6E7079"))
-            {
-                MaxLineCount = 1,
-                TextAlignment = TextAlignment.Justify,
-                Trimming = TextTrimming.CharacterEllipsis
-            };
-        }
-    }
-    public static class SnapDrawingExtensions
-    {
-        public static void DrawSnappedLinesBetweenPoints(this DrawingContext dc,
-            Pen pen, double lineThickness, params Point[] points)
-        {
-            var guidelineSet = new GuidelineSet();
-            foreach (var point in points)
-            {
-                guidelineSet.GuidelinesX.Add(point.X);
-                guidelineSet.GuidelinesY.Add(point.Y);
-            }
-            var half = lineThickness / 2;
-            points = points.Select(p => new Point(p.X + half, p.Y + half)).ToArray();
-            dc.PushGuidelineSet(guidelineSet);
-            for (var i = 0; i < points.Length - 1; i = i + 2)
-            {
-                dc.DrawLine(pen, points[i], points[i + 1]);
-            }
-            dc.Pop();
-        }
-    }
+      
+    } 
 }

@@ -69,12 +69,12 @@
         
         <Grid Margin="10" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Border Margin="0,0,10,0" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4,0,0,4" 
                     Effect="{StaticResource NormalShadowDepth}">
-                <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu" Margin="10,0,0,0">
+                <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSelectionChangedCommand}"

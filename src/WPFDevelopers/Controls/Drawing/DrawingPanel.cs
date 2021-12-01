@@ -79,7 +79,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(MultipleArrayDescriptionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MultipleArray.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MultipleArrayDescriptionProperty =
             DependencyProperty.Register("MultipleArrayDescription", typeof(string), typeof(DrawingPanel), new PropertyMetadata(default, OnRenderPropertyChangedCallBack));
 
@@ -89,7 +88,6 @@ namespace WPFDevelopers.Controls
             set { SetValue(LayerSpaceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LayerSpace.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LayerSpaceProperty =
             DependencyProperty.Register("LayerSpace", typeof(double), typeof(DrawingPanel), new PropertyMetadata(5d, OnRenderPropertyChangedCallBack));
 

@@ -25,9 +25,8 @@
         </DataTemplate>
     </Window.Resources>
     <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button Content="增加" Style="{StaticResource PrimaryButton}" 
-                Height="30" Width="120" Click="Button_Click" Tag="add"/>
-        <Button Content="移除" Style="{StaticResource PrimaryButton}" 
-                Height="30" Width="120" Click="Button_Click" Tag="remove"/>
+        <Button Content="增加" Click="Button_Click" Tag="add"
+                Style="{StaticResource DefaultButton}" />
+        <Button Content="移除" Click="Button_Click" Tag="remove"/>
     </WrapPanel>
 </wpfdev:MetroWindow>

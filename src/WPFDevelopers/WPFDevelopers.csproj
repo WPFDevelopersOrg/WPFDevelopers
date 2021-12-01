@@ -85,6 +85,7 @@
     <Compile Include="Controls\Win10Menu\Win10MenuItem.cs" />
     <Compile Include="Controls\Windows\MetroWindow.cs" />
     <Compile Include="Helpers\ControlsHelper.cs" />
+    <Compile Include="Helpers\DrawingContextHelper.cs" />
     <Compile Include="Helpers\EnumerableHelper.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />

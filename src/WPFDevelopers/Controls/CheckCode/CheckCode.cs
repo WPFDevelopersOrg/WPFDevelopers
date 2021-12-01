@@ -97,7 +97,7 @@ namespace WPFDevelopers.Controls
             using (DrawingContext dc = drawingVisual.RenderOpen())
             {
                 dc.DrawRectangle(Brushes.White, new Pen(Brushes.Silver, 1D), new Rect(new Size(70, 23)));
-                FormattedText formattedText = new FormattedText(
+                var formattedText = new FormattedText(
                     checkCode,
                     System.Globalization.CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,

@@ -6,9 +6,9 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class Thermometer: Control
+    public class Thermometer : Control
     {
-        public static readonly DependencyProperty MaxValueProperty = 
+        public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(40.0));
 
         public double MaxValue
@@ -18,7 +18,7 @@ namespace WPFDevelopers.Controls
             set { SetValue(MaxValueProperty, value); }
         }
 
-        public static readonly DependencyProperty MinValueProperty = 
+        public static readonly DependencyProperty MinValueProperty =
             DependencyProperty.Register("MinValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(-10.0));
 
         public double MinValue
@@ -31,7 +31,7 @@ namespace WPFDevelopers.Controls
         /// <summary>
         /// 当前值
         /// </summary>
-        public static readonly DependencyProperty CurrentValueProperty = 
+        public static readonly DependencyProperty CurrentValueProperty =
             DependencyProperty.Register("CurrentValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(OnCurrentValueChanged));
 
         private static void OnCurrentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -55,7 +55,7 @@ namespace WPFDevelopers.Controls
         /// <summary>
         /// 步长
         /// </summary>
-        public static readonly DependencyProperty IntervalProperty = 
+        public static readonly DependencyProperty IntervalProperty =
             DependencyProperty.Register("Interval", typeof(double), typeof(Thermometer), new UIPropertyMetadata(10.0));
 
         public double Interval
@@ -68,7 +68,7 @@ namespace WPFDevelopers.Controls
         /// <summary>
         /// 当前值的图形坐标点
         /// </summary>
-        public static readonly DependencyProperty CurrentGeometryProperty = 
+        public static readonly DependencyProperty CurrentGeometryProperty =
             DependencyProperty.Register("CurrentGeometry", typeof(Geometry), typeof(Thermometer), new PropertyMetadata(Geometry.Parse(@"M 2 132.8
                               a 4 4 0 0 1 4 -4
                               h 18
@@ -112,32 +112,32 @@ namespace WPFDevelopers.Controls
 
             #region 华氏温度
 
-            drawingContext.DrawText(GetFormattedText("华"), new Point(-49, 115));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("华", color: "#82848A", textSize: 14D), new Point(-49, 115));
 
 
-            drawingContext.DrawText(GetFormattedText("氏"), new Point(-49, 115 + 14));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", color: "#82848A", textSize: 14D), new Point(-49, 115 + 14));
 
 
-            drawingContext.DrawText(GetFormattedText("温"), new Point(-49, 115 + 28));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", color: "#82848A", textSize: 14D), new Point(-49, 115 + 28));
 
 
-            drawingContext.DrawText(GetFormattedText("度"), new Point(-49, 115 + 42));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", color: "#82848A", textSize: 14D), new Point(-49, 115 + 42));
 
             #endregion
 
             #region 摄氏温度
 
 
-            drawingContext.DrawText(GetFormattedText("摄", FlowDirection.LeftToRight), new Point(75, 115));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("摄", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115));
 
 
-            drawingContext.DrawText(GetFormattedText("氏", FlowDirection.LeftToRight), new Point(75, 115 + 14));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 14));
 
 
-            drawingContext.DrawText(GetFormattedText("温", FlowDirection.LeftToRight), new Point(75, 115 + 28));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 28));
 
 
-            drawingContext.DrawText(GetFormattedText("度", FlowDirection.LeftToRight), new Point(75, 115 + 42));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 42));
 
             #endregion
 
@@ -151,11 +151,11 @@ namespace WPFDevelopers.Controls
 
             for (int i = 0; i <= cnt; i++)
             {
-                var formattedText = GetFormattedText($"{MaxValue - (i * Interval)}", FlowDirection.LeftToRight);
+                var formattedText = DrawingContextHelper.GetFormattedText($"{MaxValue - (i * Interval)}", "#82848A", FlowDirection.LeftToRight,14D);
 
                 drawingContext.DrawText(formattedText, new Point(43, i * one_value - (formattedText.Height / 2d)));//减去字体高度的一半
 
-                formattedText = GetFormattedText($"{(MaxValue - (i * Interval)) * 1.8d + 32d}");
+                formattedText = DrawingContextHelper.GetFormattedText($"{(MaxValue - (i * Interval)) * 1.8d + 32d}", color: "#82848A", textSize: 14D);
 
                 drawingContext.DrawText(formattedText, new Point(-13, i * one_value - (formattedText.Height / 2d)));
 
@@ -170,16 +170,6 @@ namespace WPFDevelopers.Controls
             }
 
             #endregion
-        }
-
-        private FormattedText GetFormattedText(string text, FlowDirection flowDirection = FlowDirection.RightToLeft)
-        {
-            return new FormattedText(text,
-               CultureInfo.CurrentUICulture,
-               flowDirection,
-               new Typeface("Microsoft YaHei"),
-               14d,
-               new SolidColorBrush((Color)ColorConverter.ConvertFromString("#82848A")));
         }
 
         /// <summary>
@@ -197,7 +187,7 @@ namespace WPFDevelopers.Controls
 
             var y = 169d - (169d - (MaxValue - CurrentValue) * (one_value / Interval));
 
-            
+
             CurrentGeometry = Geometry.Parse($@"M 2 {y + 4}
                               a 4 4 0 0 1 4 -4
                               h {width - 8}
