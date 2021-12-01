@@ -64,7 +64,7 @@
     <Style TargetType="{x:Type controls:MetroWindow}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
         <Setter Property="Background"  Value="{StaticResource WhiteSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryPressedSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryNormalSolidColorBrush}" />
         <Setter Property="BorderThickness"  Value="1" />
         <Setter Property="IsTabStop"  Value="False" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
@@ -99,7 +99,7 @@
                                     <!--<ColumnDefinition Width="Auto" MinWidth="95"/>-->
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{TemplateBinding Icon}" Stretch="Fill"
-                                    VerticalAlignment="Center" HorizontalAlignment="Left" Width="23" Height="21" Margin="14,0,4,0"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left" Width="30" Height="30" Margin="14,0,4,0"
                                     RenderOptions.BitmapScalingMode="HighQuality"/>
                                 <TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title"
                                        Foreground="White" Grid.Column="1"

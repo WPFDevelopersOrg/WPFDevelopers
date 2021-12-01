@@ -7,7 +7,7 @@
              xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UniformGrid Columns="1">
+    <UniformGrid Columns="2">
         <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
                 CornerRadius="3">
             <Grid Margin="20,20,0,0">
@@ -33,8 +33,8 @@
                     <Run Foreground="{StaticResource SuccessPressedSolidColorBrush}">正在直播</Run>
                 </TextBlock>
                 <Button Style="{StaticResource PrimaryButton}" Grid.Column="1" 
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Bottom" Content="进入直播"/>
             </Grid>
             
         </Border>
@@ -126,8 +126,8 @@
                     <Run Foreground="{StaticResource SuccessPressedSolidColorBrush}">正在直播</Run>
                 </TextBlock>
                 <Button Style="{StaticResource PrimaryButton}" Grid.Column="1" 
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Bottom" Content="进入直播" />
             </Grid>
         </Border>
     </UniformGrid>

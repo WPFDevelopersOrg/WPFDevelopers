@@ -492,9 +492,6 @@
     <Resource Include="Images\Breathe\2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WPFDevelopers.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Chat\Left.jpg" />
     <Resource Include="Images\Chat\Right.jpg" />
     <Resource Include="Images\Chat\UserImages\jingtao.png" />
@@ -527,7 +524,9 @@
     <Resource Include="ExampleViews\LoginWindow\CustomStyle\Image\Background.png" />
     <Resource Include="ExampleViews\LoginWindow\CustomStyle\Image\Logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="WPFDevelopers.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ZooSemy\0.png" />
     <Resource Include="Images\ZooSemy\1.png" />

@@ -12,7 +12,7 @@
         xmlns:helpers="clr-namespace:WPFDevelopers.Samples.Helpers" 
         xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
         mc:Ignorable="d"
-        Title="WPFDevelopers"
+        Title="WPFDevelopers" Icon="/WPFDevelopers.ico"
         Height="{x:Static local:App.Height}" Width="{x:Static local:App.Wdith}"
         WindowStartupLocation="CenterScreen">
     <!--<shell:WindowChrome.WindowChrome>
