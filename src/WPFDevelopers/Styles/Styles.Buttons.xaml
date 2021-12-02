@@ -82,7 +82,6 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource PrimaryButton}" />
 
     <Style x:Key="DefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
         <Setter Property="Background" Value="{StaticResource WhiteSolidColorBrush}"/>
@@ -170,8 +169,10 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}" />
 
     <Style x:Key="PathButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Padding" Value="8"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
