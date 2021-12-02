@@ -11,6 +11,7 @@ namespace WPFDevelopers.Samples.Helpers
     public enum MenuEnum
     {
         Navigation3D,
+        BaseControl,
         Loading,
         CutImage,
         WeChatAudio,

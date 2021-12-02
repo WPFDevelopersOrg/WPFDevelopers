@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.BaseControlExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="{StaticResource PrimaryTextSolidColorBrush}" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Margin="20,40">
+            <VirtualizingStackPanel>
+                <TextBlock Text="Button" FontSize="20"/>
+                <WrapPanel Margin="0,10">
+                    <Button Content="Default"/>
+                    <Button Content="Primary" Style="{StaticResource PrimaryButton}" Margin="10,0"/>
+                </WrapPanel>
+                <TextBlock Text="Radio" FontSize="20"/>
+                <WrapPanel Margin="0,10">
+                    <RadioButton Content="Option A"/>
+                    <RadioButton Content="Option B" Margin="10,0"/>
+                    
+                </WrapPanel>
+            </VirtualizingStackPanel>
+        </Grid>
+       
+    </ScrollViewer>
+</UserControl>

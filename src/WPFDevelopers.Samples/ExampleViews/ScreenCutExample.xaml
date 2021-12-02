@@ -7,10 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <UniformGrid>
-            <Button Content="截屏" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Button_Click"/>
-            <RadioButton Content="选项01"/>
-            <RadioButton Content="选项02"/>
-        </UniformGrid>
+        <Button Content="截屏" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Button_Click"/>
     </Grid>
 </UserControl>
