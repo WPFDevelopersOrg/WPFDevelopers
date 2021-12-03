@@ -367,7 +367,6 @@
                             Cursor="Arrow"
                             Maximum="{TemplateBinding ScrollableHeight}"
                             Minimum="0"
-                            Style="{StaticResource AyScrollBarStyle}"
                             ViewportSize="{TemplateBinding ViewportHeight}"
                             Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                             Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -381,7 +380,6 @@
                             Maximum="{TemplateBinding ScrollableWidth}"
                             Minimum="0"
                             Orientation="Horizontal"
-                            Style="{StaticResource AyScrollBarStyle}"
                             ViewportSize="{TemplateBinding ViewportWidth}"
                             Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
                             Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
