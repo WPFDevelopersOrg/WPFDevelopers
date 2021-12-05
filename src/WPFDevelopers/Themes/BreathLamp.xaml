@@ -208,7 +208,5 @@
                 <Setter Property="Template" Value="{StaticResource LampEffect_Streamer}"/>
             </Trigger>
         </Style.Triggers>
-
     </Style>
-
 </ResourceDictionary>

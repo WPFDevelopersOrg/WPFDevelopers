@@ -11,7 +11,8 @@ namespace WPFDevelopers.Samples.Helpers
     public enum MenuEnum
     {
         Navigation3D,
-        BaseControl,
+        //BaseControl,
+        BreatheLight,
         Loading,
         CutImage,
         WeChatAudio,
@@ -19,7 +20,6 @@ namespace WPFDevelopers.Samples.Helpers
         ThumbAngle,
         CheckCode,
         CircularMenu,
-        BreatheLight,
         ChatEmoji,
         ProgressBar,
         Dashboard,
