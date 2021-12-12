@@ -165,6 +165,10 @@
     <Compile Include="ExampleViews\ScrollViewerAnimationExample.xaml.cs">
       <DependentUpon>ScrollViewerAnimationExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\SnowCanvasExample.xaml.cs">
+      <DependentUpon>SnowCanvasExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ExampleViews\SongWordsExample.xaml.cs">
       <DependentUpon>SongWordsExample.xaml</DependentUpon>
     </Compile>
@@ -383,6 +387,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\SnowCanvasExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
     <Page Include="ExampleViews\SongWordsExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -537,6 +545,9 @@
   <ItemGroup>
     <Resource Include="Images\ZooSemy\0.png" />
     <Resource Include="Images\ZooSemy\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Snow\SnowTree.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

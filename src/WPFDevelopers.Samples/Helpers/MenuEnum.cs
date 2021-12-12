@@ -46,6 +46,7 @@ namespace WPFDevelopers.Samples.Helpers
         LineChart,
         LogoAnimation,
         Thermometer,
+        SnowCanvas,
         LoginWindow,
         Drawing,
         TaskbarInfo,

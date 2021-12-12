@@ -29,5 +29,6 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Win10Menu.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RainbowButtons.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RoundPicker.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/SnowCanvas.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

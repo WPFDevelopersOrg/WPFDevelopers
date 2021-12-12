@@ -79,6 +79,8 @@
     <Compile Include="Controls\RoundPicker\RoundPicker.cs" />
     <Compile Include="Controls\RulerControl\Ruler.cs" />
     <Compile Include="Controls\ScreenCut\ScreenCut.cs" />
+    <Compile Include="Controls\SnowCanvas\SnowCanvas.cs" />
+    <Compile Include="Controls\SnowCanvas\Snowflake.cs" />
     <Compile Include="Controls\SpotLight\SpotLight.cs" />
     <Compile Include="Controls\Thermometer\Thermometer.cs" />
     <Compile Include="Controls\Win10Menu\Win10Menu.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Helpers\ControlsHelper.cs" />
     <Compile Include="Helpers\DrawingContextHelper.cs" />
     <Compile Include="Helpers\EnumerableHelper.cs" />
+    <Compile Include="Helpers\SnowCanvasHelper.cs" />
     <Compile Include="Helpers\ViewModelBase.cs" />
     <Compile Include="Controls\Loadings\BallLoading.cs" />
     <Compile Include="Controls\Loadings\RollLoading.cs" />
@@ -264,6 +267,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\SnowCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\SpotLight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -291,6 +298,5 @@
       <Name>Microsoft.Windows.Shell</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:SnowCanvas}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Width" Value="672"/>
+        <Setter Property="Height" Value="376"/>
+        <Setter Property="Background" Value="#FFAD2B28"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:SnowCanvas}">
+                    <Grid  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                            Background="{TemplateBinding Background}">
+                        <Canvas x:Name="PART_Canvas" Height="246" Width="246"
+                                Background="#FF0C1935">
+                            <Canvas.Clip>
+                                <EllipseGeometry Center="123,123" RadiusX="120" RadiusY="120"/>
+                            </Canvas.Clip>
+                            <Image Source="{TemplateBinding Icon}"
+                                   Canvas.Left="25" Canvas.Top="30"/>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<Style TargetType="{x:Type controls:Snowflake}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Width" Value="96"/>
+        <Setter Property="Height" Value="96"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Snowflake}">
+                    <Grid>
+                        <Grid.Resources>
+                            <Storyboard x:Name="Storyboard_Movement">
+                                <DoubleAnimation x:Name="animationX"  
+                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                 Storyboard.TargetName="PART_Ellipse"/>
+                                <DoubleAnimation x:Name="animationY"  
+                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                 Storyboard.TargetName="PART_Ellipse"/>
+                            </Storyboard>
+                        </Grid.Resources>
+                        <Ellipse x:Name="PART_Ellipse" Width="{TemplateBinding Width}" 
+                                 Height="{TemplateBinding Height}"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="White" Offset="0" />
+                                    <GradientStop x:Name="PART_GradientStop" Color="White" Offset="0" />
+                                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                            <Ellipse.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <Style TargetType="{x:Type controls:Snowflake}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Snowflake}">
+                    <Ellipse Fill="{StaticResource WhiteSolidColorBrush}"
+                             Width="{TemplateBinding Width}"
+                             Height="{TemplateBinding Height}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

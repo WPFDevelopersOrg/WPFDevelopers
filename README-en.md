@@ -1,4 +1,4 @@
-<div align="center"><img src="https://gitee.com/yanjinhua/WPFDevelopers/raw/master/resources/Logo.png"/></div>   
+<div align="center"><img src="https://github.com/yanjinhuagood/WPFDevelopers/raw/master/resources/Logo.png"/></div>   
 
 [中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README.md) - [English](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-en.md)   
 
@@ -19,6 +19,12 @@
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>   <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%!important" width="64px" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>  <a href="https://github.com/githowe" target="_blank"><img style="border-radius:50%!important" width="64px" alt="githowe" src="https://avatars.githubusercontent.com/u/31241366?v=4"></a>  <a href="https://github.com/LuGuangguang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="LuGuangguang" src="https://avatars.githubusercontent.com/u/34500722?v=4"></a> <a href="https://github.com/DinoChan" target="_blank"><img style="border-radius:50%!important" width="64px" alt="DinoChan" src="https://avatars.githubusercontent.com/u/6076257?v=4"></a> <a href="https://github.com/mingyaodagege" target="_blank"><img style="border-radius:50%!important" width="64px" alt="mingyaodagege" src="https://avatars.githubusercontent.com/u/48346030?v=4"></a>   <a href="https://github.com/PettyHandSome" target="_blank"><img style="border-radius:50%!important" width="64px" alt="PettyHandSome" src="https://avatars.githubusercontent.com/u/16127328?v=4"></a>     
 
 ***
+### SnowCanvas
+
+<img src="/resources/WPFDevelopersResource/SnowCanvas.gif"/>   
+
+----------
+
 ### WPFBreatheLight
 
 <img src="/resources/WPFDevelopersResource/BreatheLight.gif"/>   

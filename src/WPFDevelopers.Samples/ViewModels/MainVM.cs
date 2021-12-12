@@ -198,6 +198,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Thermometer:
                     ControlPanel = new ThermometerExample();
                     break;
+                case MenuEnum.SnowCanvas:
+                    ControlPanel = new SnowCanvasExample();
+                    break;
                 case MenuEnum.Drawing:
                     ControlPanel = new DrawingExample();
                     break;
