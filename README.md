@@ -1,4 +1,4 @@
-<div align="center"><img src="https://gitee.com/WPFDevelopersOrg/WPFDevelopers/master/master/resources/Logo.png"/></div>   
+<div align="center"><img src="https://gitee.com/WPFDevelopersOrg/WPFDevelopers/raw/master/resources/Logo.png"/></div>   
 
 [中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README.md) - [English](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-en.md)  
 
