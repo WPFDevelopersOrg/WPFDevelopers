@@ -12,18 +12,21 @@
         <vm:DrawingExampleVM/>
     </UserControl.DataContext>
     <UniformGrid Columns="3" Rows="2">
-        <wpfdev:DrawingControl>
-            <ListBoxItem Content="111"/>
-            <ListBoxItem Content="111"/>
-            <ListBoxItem Content="111"/>
-            <ListBoxItem Content="111"/>
-            <ListBoxItem Content="111"/>
+        <wpfdev:DrawingControl 
+            InnerBackground="{StaticResource SuccessSolidColorBrush}"
+            Content="反应盘">
+            <ListBoxItem Content="盘1"/>
+            <ListBoxItem Content="盘2"/>
+            <ListBoxItem Content="盘3"/>
+            <ListBoxItem Content="盘4"/>
+            <ListBoxItem Content="盘5"/>
         </wpfdev:DrawingControl>
         <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试试看"
+                               Content="试剂仓"
                                PanelBorderThinckness="0" 
                                PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="0" 
+                               InnerBorderThickness="1" 
+                               InnerBorderBrush="{StaticResource DangerSolidColorBrush}"
                                InnerBackground="White" 
                                PanelDrawingMode="Top">
             <wpfdev:DrawingControl.ItemTemplate>
@@ -45,19 +48,20 @@
 
 
         <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试试看"
+                               Content="试剂仓"
                                PanelBorderThinckness="0" 
                                PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="0" 
-                               InnerBackground="White" 
+                               InnerBorderThickness="1" 
+                               InnerBackground="{StaticResource WarningSolidColorBrush}" 
                                PanelDrawingMode="Right"
                                PanelMultipleSpace="10"
                                PanelMultipleDescription="5">
             <wpfdev:DrawingControl.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="30" Width="30" Height="30" BorderThickness="1" BorderBrush="Green" Background="Red">
+                    <!--<Border CornerRadius="30" Width="30" Height="30" BorderThickness="1" BorderBrush="Green" Background="Red">
                         <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>
+                    </Border>-->
+                    <CheckBox Content="{Binding Number}"/>
                 </DataTemplate>
             </wpfdev:DrawingControl.ItemTemplate>
 
@@ -65,19 +69,20 @@
 
 
         <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试试看"
+                               Content="试剂仓"
                                PanelBorderThinckness="0" 
                                PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="0" 
+                               InnerBorderThickness="1" 
                                InnerBackground="White" 
                                PanelDrawingMode="Bottom"
                                PanelMultipleSpace="2"
                                PanelMultipleDescription="2,3">
             <wpfdev:DrawingControl.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
+                    <!--<Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
                         <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>
+                    </Border>-->
+                    <RadioButton Content="{Binding Number}"/>
                 </DataTemplate>
             </wpfdev:DrawingControl.ItemTemplate>
 
@@ -86,19 +91,20 @@
 
 
         <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试试看"
+                               Content="试剂仓"
                                PanelBorderThinckness="0" 
                                PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="0" 
+                               InnerBorderThickness="1" 
                                InnerBackground="White" 
                                PanelDrawingMode="Left"
                                PanelMultipleSpace="0"
                                PanelMultipleDescription="3,3">
             <wpfdev:DrawingControl.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
+                    <!--<Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
                         <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>
+                    </Border>-->
+                    <Button Style="{StaticResource PrimaryButton}" Content="{Binding Number}"/>
                 </DataTemplate>
             </wpfdev:DrawingControl.ItemTemplate>
 

@@ -34,7 +34,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 DrawingModel drawingModel = new DrawingModel()
                 {
                     Index = i,
-                    Number = (i + 1).ToString(),
+                    Number =$"仓{(i + 1).ToString()}" ,
                 };
 
                 Drawings.Add(drawingModel);
