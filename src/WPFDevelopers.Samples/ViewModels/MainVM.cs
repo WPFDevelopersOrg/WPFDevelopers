@@ -204,6 +204,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Drawing:
                     ControlPanel = new DrawingExample();
                     break;
+                case MenuEnum.SpeedRockets:
+                    ControlPanel = new SpeedRocketsExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

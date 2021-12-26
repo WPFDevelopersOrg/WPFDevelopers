@@ -172,6 +172,12 @@
     <Compile Include="ExampleViews\SongWordsExample.xaml.cs">
       <DependentUpon>SongWordsExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\SpeedRockets\SpeedRocketsExample.xaml.cs">
+      <DependentUpon>SpeedRocketsExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\SpeedRockets\SpeedRocketsMini.xaml.cs">
+      <DependentUpon>SpeedRocketsMini.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\SpotLightExample.xaml.cs">
       <DependentUpon>SpotLightExample.xaml</DependentUpon>
     </Compile>
@@ -395,6 +401,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\SpeedRockets\SpeedRocketsExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\SpeedRockets\SpeedRocketsMini.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\SpotLightExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -568,6 +582,9 @@
     <None Include="emoji\破涕为笑.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SpeedRockets\飞机.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -7,4 +7,5 @@
     <ExponentialEase x:Key="ExponentialEaseOut" EasingMode="EaseOut"/>
     <SineEase x:Key="SineEaseOut" EasingMode="EaseOut" />
     <SineEase x:Key="SineEaseInOut" EasingMode="EaseInOut" />
+    <BackEase x:Key="BackEaseEaseInOut" EasingMode="EaseInOut"/>
 </ResourceDictionary>

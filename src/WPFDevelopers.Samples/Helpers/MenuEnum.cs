@@ -49,6 +49,7 @@ namespace WPFDevelopers.Samples.Helpers
         SnowCanvas,
         LoginWindow,
         Drawing,
+        SpeedRockets,
         TaskbarInfo,
     }
 }
