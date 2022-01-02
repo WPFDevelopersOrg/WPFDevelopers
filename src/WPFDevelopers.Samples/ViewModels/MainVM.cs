@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDevelopers.Samples.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
@@ -15,13 +16,22 @@ namespace WPFDevelopers.Samples.ViewModels
 {
     public class MainVM:ViewModelBase
     {
-        private ObservableCollection<NavigateMenuModel> _navigateMenuModelList;
+        //private ObservableCollection<NavigateMenuModel> _navigateMenuModelList;
 
-        public ObservableCollection<NavigateMenuModel> NavigateMenuModelList
+        //public ObservableCollection<NavigateMenuModel> NavigateMenuModelList
+        //{
+        //    get { return _navigateMenuModelList; }
+        //    set { _navigateMenuModelList = value; }
+        //}
+
+        private ObservableCollection<ListBoxItem> _navigateMenuModelList;
+
+        public ObservableCollection<ListBoxItem> NavigateMenuModelList
         {
             get { return _navigateMenuModelList; }
             set { _navigateMenuModelList = value; }
         }
+
         private NavigateMenuModel _navigateMenuItem;
         /// <summary>
         /// 当前选中
@@ -50,12 +60,19 @@ namespace WPFDevelopers.Samples.ViewModels
         }
         public MainVM()
         {
-            NavigateMenuModelList = new ObservableCollection<NavigateMenuModel>();
+            //NavigateMenuModelList = new ObservableCollection<NavigateMenuModel>();
+            //foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
+            //{
+            //    NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
+            //}
+            //NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
+
+            NavigateMenuModelList = new ObservableCollection<ListBoxItem>();
             foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
             {
-                NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
+                NavigateMenuModelList.Add(new ListBoxItem { Content = menuEnum.ToString() });
             }
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
+            NavigateMenuModelList.Add(new ListBoxItem { Content = "持续更新中" });
 
         }
         public ICommand ViewLoaded => new RelayCommand(obj =>
@@ -66,8 +83,10 @@ namespace WPFDevelopers.Samples.ViewModels
         public ICommand MenuSelectionChangedCommand => new RelayCommand(obj =>
         {
             if (obj == null) return;
-            var model = obj as NavigateMenuModel;
-            MenuItemSelection(model.Name);
+            //var model = obj as NavigateMenuModel;
+            //MenuItemSelection(model.Name);
+            var model = obj as ListBoxItem;
+            MenuItemSelection(model.Content.ToString());
         });
 
         public ICommand CloseCommand => new RelayCommand( obj => 
@@ -206,6 +225,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.SpeedRockets:
                     ControlPanel = new SpeedRocketsExample();
+                    break;
+                case MenuEnum.CountdownTimer:
+                    ControlPanel = new CountdownTimerExample();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:

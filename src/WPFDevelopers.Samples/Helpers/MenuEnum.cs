@@ -50,6 +50,7 @@ namespace WPFDevelopers.Samples.Helpers
         LoginWindow,
         Drawing,
         SpeedRockets,
+        CountdownTimer,
         TaskbarInfo,
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="Controls\CircularMenu\CircularMenu.cs" />
     <Compile Include="Controls\CircularMenu\CircularMenuItem.cs" />
     <Compile Include="Controls\CircularProgressBar\CircularProgressBar.cs" />
+    <Compile Include="Controls\CountdownTimer\CountdownTimer.cs" />
     <Compile Include="Controls\CutImage\CutImage.cs" />
     <Compile Include="Controls\CutImage\DragDrop.cs" />
     <Compile Include="Controls\Dashboard\Dashboard.cs" />

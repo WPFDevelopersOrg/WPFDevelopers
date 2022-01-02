@@ -11,7 +11,7 @@ namespace WPFDevelopers
         /// <summary>
         /// 字体资源
         /// </summary>
-        private static FontFamily fontFamily = Application.Current.Resources["NormalFontFamily"] as FontFamily;
+        public static FontFamily FontFamily = Application.Current.Resources["NormalFontFamily"] as FontFamily;
         /// <summary>
         /// 颜色转换
         /// </summary>
@@ -55,7 +55,7 @@ namespace WPFDevelopers
                   text,
                   CultureInfo.CurrentCulture,
                   flowDirection,
-                  new Typeface(fontFamily, FontStyles.Normal, FontWeights.Thin, FontStretches.Normal),
+                  new Typeface(FontFamily, FontStyles.Normal, FontWeights.Thin, FontStretches.Normal),
                   textSize, color == null ? Brushes.Black : (Brush)brushConverter.ConvertFromString(color))
             {
                 MaxLineCount = 1,

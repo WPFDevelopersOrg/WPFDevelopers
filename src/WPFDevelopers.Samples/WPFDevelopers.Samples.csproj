@@ -91,6 +91,9 @@
     <Compile Include="ExampleViews\CircularProgressBarExample.xaml.cs">
       <DependentUpon>CircularProgressBarExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\CountdownTimerExample.xaml.cs">
+      <DependentUpon>CountdownTimerExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\DashboardExample.xaml.cs">
       <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\CircularProgressBarExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\CountdownTimerExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

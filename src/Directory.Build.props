@@ -1,7 +1,7 @@
 <Project>
 	<PropertyGroup>
 		<BaseIntermediateOutputPath>$(MSBuildThisFileDirectory).vs\$(SolutionName)\Intermediate\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-		<OutputPath>$(MSBuildThisFileDirectory)..\Binary\</OutputPath>
+		<OutputPath>$(MSBuildThisFileDirectory)..\OutPut\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
 </Project>
