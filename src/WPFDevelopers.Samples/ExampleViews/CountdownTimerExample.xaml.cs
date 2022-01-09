@@ -20,7 +20,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             switch (item.Content.ToString())
             {
                 case "Default":
-                    if(CountdownTimer1.Visibility != Visibility.Visible)
+                    if (CountdownTimer1.Visibility != Visibility.Visible)
                     {
                         CountdownTimer1.Visibility = Visibility.Visible;
                         CountdownTimerGroup.Visibility = Visibility.Collapsed;

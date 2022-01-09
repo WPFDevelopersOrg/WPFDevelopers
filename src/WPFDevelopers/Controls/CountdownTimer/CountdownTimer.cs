@@ -17,7 +17,7 @@ namespace WPFDevelopers.Controls
     public class CountdownTimer : ContentControl
     {
         private Storyboard storyboard;
-        private const double seconds = 800;
+        private const double seconds = 1000;
         private double currentSeconds = seconds;
         private Grid myGrid;
         public int Number

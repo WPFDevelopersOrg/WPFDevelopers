@@ -128,6 +128,12 @@
       <DependentUpon>CutImageExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\Map\PushpinModel.cs" />
+    <Compile Include="ExampleViews\NumberCard\NumberCardControl.xaml.cs">
+      <DependentUpon>NumberCardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\NumberCard\NumberCardExample.xaml.cs">
+      <DependentUpon>NumberCardExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\OtherControlExample.xaml.cs">
       <DependentUpon>OtherControlExample.xaml</DependentUpon>
     </Compile>
@@ -350,6 +356,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ExampleViews\NumberCard\NumberCardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\NumberCard\NumberCardExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\OtherControlExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

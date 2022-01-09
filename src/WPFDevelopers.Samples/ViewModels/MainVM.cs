@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDevelopers.Samples.ExampleViews;
+using WPFDevelopers.Samples.ExampleViews.NumberCard;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
 using WPFDevelopers.Samples.ExampleViews.Win10Menu;
 using WPFDevelopers.Samples.Helpers;
@@ -228,6 +229,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.CountdownTimer:
                     ControlPanel = new CountdownTimerExample();
+                    break;
+                case MenuEnum.NumberCard:
+                    ControlPanel = new NumberCardExample();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
