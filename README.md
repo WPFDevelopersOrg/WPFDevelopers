@@ -1,15 +1,15 @@
 <div align="center"><img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png"/></div>   
 
-[中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README.md) - [English](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-en.md)   
+[中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-zh.md)   
 
  ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers) [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)
 
 
 ## Welcome to WPFDevelopers    
 
-### [Github](https://github.com/yanjinhuagood/WPFDevelopers.git) https://github.com/yanjinhuagood/WPFDevelopers.git  
+### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg  
 
-### [码云](https://gitee.com/yanjinhua/WPFDevelopers.git) https://gitee.com/yanjinhua/WPFDevelopers.git  
+### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
 ### Backers   
 
