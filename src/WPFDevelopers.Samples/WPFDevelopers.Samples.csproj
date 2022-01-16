@@ -94,6 +94,9 @@
     <Compile Include="ExampleViews\CountdownTimerExample.xaml.cs">
       <DependentUpon>CountdownTimerExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\CropControlExample.xaml.cs">
+      <DependentUpon>CropControlExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\DashboardExample.xaml.cs">
       <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
@@ -271,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\CountdownTimerExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\CropControlExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -604,6 +611,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\SpeedRockets\飞机.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Crop\0.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

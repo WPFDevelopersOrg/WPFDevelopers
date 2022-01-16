@@ -62,6 +62,7 @@
     <Compile Include="Controls\CircularMenu\CircularMenuItem.cs" />
     <Compile Include="Controls\CircularProgressBar\CircularProgressBar.cs" />
     <Compile Include="Controls\CountdownTimer\CountdownTimer.cs" />
+    <Compile Include="Controls\CropControl\CropControl.cs" />
     <Compile Include="Controls\CutImage\CutImage.cs" />
     <Compile Include="Controls\CutImage\DragDrop.cs" />
     <Compile Include="Controls\Dashboard\Dashboard.cs" />
@@ -215,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\CropControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

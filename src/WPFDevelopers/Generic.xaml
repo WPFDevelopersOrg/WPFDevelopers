@@ -30,5 +30,6 @@
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RainbowButtons.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RoundPicker.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/SnowCanvas.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CropControl.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -52,6 +52,7 @@ namespace WPFDevelopers.Samples.Helpers
         SpeedRockets,
         CountdownTimer,
         NumberCard,
+        CropControl,
         TaskbarInfo,
     }
 }

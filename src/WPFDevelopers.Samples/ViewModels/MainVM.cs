@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -232,6 +229,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.NumberCard:
                     ControlPanel = new NumberCardExample();
+                    break;
+                case MenuEnum.CropControl:
+                    ControlPanel = new CropControlExample();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
