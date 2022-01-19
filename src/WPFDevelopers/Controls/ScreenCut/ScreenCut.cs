@@ -183,7 +183,12 @@ namespace WPFDevelopers.Controls
        
         System.Drawing.Bitmap CaptureScreen()
         {
-            var bmpCaptured = new System.Drawing.Bitmap((int)SystemParameters.PrimaryScreenWidth, (int)SystemParameters.PrimaryScreenHeight, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            //修复缩放比例不等于100%（DPI不等于96）时，不能显示全屏的问题
+            var source = PresentationSource.FromVisual(_canvas);
+            double dpiX = source.CompositionTarget.TransformToDevice.M11; //96.0 * 
+            double dpiY = source.CompositionTarget.TransformToDevice.M22; //96.0 * 
+
+            var bmpCaptured = new System.Drawing.Bitmap((int)(SystemParameters.PrimaryScreenWidth * dpiX), (int)(SystemParameters.PrimaryScreenHeight * dpiY), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmpCaptured))
             {
                 g.SmoothingMode = SmoothingMode.AntiAlias;
