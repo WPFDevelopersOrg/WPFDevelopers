@@ -100,6 +100,9 @@
     <Compile Include="ExampleViews\DashboardExample.xaml.cs">
       <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\Desktop\DesktopPlayVideo.xaml.cs">
+      <DependentUpon>DesktopPlayVideo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\DrawingExample.xaml.cs">
       <DependentUpon>DrawingExample.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,9 @@
     <Compile Include="ExampleViews\Win10Menu\Win10MenuExample.xaml.cs">
       <DependentUpon>Win10MenuExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\Desktop\DesktopBackground.xaml.cs">
+      <DependentUpon>DesktopBackground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\ZooSemy\VolumeControl.xaml.cs">
       <DependentUpon>VolumeControl.xaml</DependentUpon>
     </Compile>
@@ -282,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\DashboardExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Desktop\DesktopPlayVideo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -468,6 +478,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\Win10Menu\Win10MenuExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Desktop\DesktopBackground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

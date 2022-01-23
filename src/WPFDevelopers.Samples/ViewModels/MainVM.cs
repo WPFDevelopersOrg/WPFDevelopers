@@ -233,6 +233,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.CropControl:
                     ControlPanel = new CropControlExample();
                     break;
+                case MenuEnum.Desktop:
+                    ControlPanel = new DesktopBackground();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

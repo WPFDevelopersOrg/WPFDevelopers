@@ -53,6 +53,7 @@ namespace WPFDevelopers.Samples.Helpers
         CountdownTimer,
         NumberCard,
         CropControl,
+        Desktop,
         TaskbarInfo,
     }
 }

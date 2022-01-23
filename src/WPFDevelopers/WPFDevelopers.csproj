@@ -109,6 +109,7 @@
     <Compile Include="Converts\AngleToIsLargeConverter.cs" />
     <Compile Include="Converts\AngleToPointConverter.cs" />
     <Compile Include="Converts\IndexToColor.cs" />
+    <Compile Include="Helpers\Win32ApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
