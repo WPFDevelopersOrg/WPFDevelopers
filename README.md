@@ -11,6 +11,8 @@
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
+### [BasicControl](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal) https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal  
+
 ### Backers   
 
 <a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%!important" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%!important" width="64px" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a> 
