@@ -54,6 +54,7 @@ namespace WPFDevelopers.Samples.Helpers
         NumberCard,
         CropControl,
         Desktop,
+        DrawPrize,
         TaskbarInfo,
     }
 }

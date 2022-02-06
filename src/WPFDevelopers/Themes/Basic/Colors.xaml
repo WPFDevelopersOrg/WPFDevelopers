@@ -96,4 +96,12 @@
     <Color x:Key="CircularDualColor">#B0D440</Color>
     <SolidColorBrush x:Key="CircularDualSolidColorBrush" Color="{StaticResource CircularDualColor}"></SolidColorBrush>
 
+
+    <!--DrawPrize-->
+    <Color x:Key="DrawPrizeSingularColor">#F63C3D</Color>
+    <SolidColorBrush x:Key="DrawPrizeSingularSolidColorBrush" Color="{StaticResource DrawPrizeSingularColor}"></SolidColorBrush>
+
+    <Color x:Key="DrawPrizeDualColor">#E5292A</Color>
+    <SolidColorBrush x:Key="DrawPrizeDualSolidColorBrush" Color="{StaticResource DrawPrizeDualColor}"></SolidColorBrush>
+
 </ResourceDictionary>

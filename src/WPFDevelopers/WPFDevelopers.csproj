@@ -72,6 +72,8 @@
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\Loadings\RingLoading.cs" />
+    <Compile Include="Controls\Prize\DrawPrize.cs" />
+    <Compile Include="Controls\Prize\PrizeItemControl.cs" />
     <Compile Include="Controls\RadarChart\RadarChart.cs" />
     <Compile Include="Controls\RadarChart\RadarModel.cs" />
     <Compile Include="Controls\RainbowButtons\RainbowAppleButton.cs" />
@@ -257,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\PieControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\PrizeItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
