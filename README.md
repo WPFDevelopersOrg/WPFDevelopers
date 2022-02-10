@@ -20,13 +20,6 @@
 ### Contributors  
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>   <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%!important" width="64px" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>  <a href="https://github.com/githowe" target="_blank"><img style="border-radius:50%!important" width="64px" alt="githowe" src="https://avatars.githubusercontent.com/u/31241366?v=4"></a>  <a href="https://github.com/LuGuangguang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="LuGuangguang" src="https://avatars.githubusercontent.com/u/34500722?v=4"></a> <a href="https://github.com/DinoChan" target="_blank"><img style="border-radius:50%!important" width="64px" alt="DinoChan" src="https://avatars.githubusercontent.com/u/6076257?v=4"></a> <a href="https://github.com/mingyaodagege" target="_blank"><img style="border-radius:50%!important" width="64px" alt="mingyaodagege" src="https://avatars.githubusercontent.com/u/48346030?v=4"></a>   <a href="https://github.com/PettyHandSome" target="_blank"><img style="border-radius:50%!important" width="64px" alt="PettyHandSome" src="https://avatars.githubusercontent.com/u/16127328?v=4"></a>  <a href="https://github.com/choumengqizhigou" target="_blank"><img style="border-radius:50%!important" width="64px" alt="丑萌气质狗" src="https://avatars.githubusercontent.com/u/19163316?v=4"></a>   
 
-### 捐助
-如果您觉得我们的开源软件对你有所帮助，请扫下方二维码打赏我们一杯咖啡。
-| 支付宝 | 微信 |
-|----|-----|
-|  <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Alipay.png"/>   |   <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WeChatPay.png"/>   |
-
-
 ***
 ### DrawPrize  
 
