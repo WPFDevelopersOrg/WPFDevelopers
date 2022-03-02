@@ -21,7 +21,7 @@
                             <Border Background="{StaticResource SuccessSolidColorBrush}"
                                 BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WhiteSolidColorBrush}">
                                 <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource NormalFontSize}"
-                                       Foreground="{StaticResource WhiteSolidColorBrush}"/>
+                                       Foreground="{StaticResource BlackSolidColorBrush}"/>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

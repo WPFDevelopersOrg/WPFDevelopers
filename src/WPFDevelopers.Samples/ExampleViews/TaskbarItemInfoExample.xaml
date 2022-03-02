@@ -1,9 +1,10 @@
-﻿<wpfdev:MetroWindow x:Class="WPFDevelopers.Samples.ExampleViews.TaskbarItemInfoExample"
+﻿<ws:Window  x:Class="WPFDevelopers.Samples.ExampleViews.TaskbarItemInfoExample"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:WPFDevelopers.Samples"
+        xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"           
         xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
         Owner="{x:Static local:App.CurrentMainWindow}"
         WindowStartupLocation="CenterOwner" Icon="/WPFDevelopers.ico"
@@ -29,4 +30,4 @@
                 Style="{StaticResource DefaultButton}" />
         <Button Content="移除" Click="Button_Click" Tag="remove"/>
     </WrapPanel>
-</wpfdev:MetroWindow>
+</ws:Window>

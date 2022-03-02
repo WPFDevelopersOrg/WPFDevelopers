@@ -29,7 +29,8 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
                 <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                        <!--<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">-->
+                    <Style TargetType="ListBoxItem" BasedOn="{x:Null}">
                             <Setter Property="VerticalContentAlignment" Value="Center"/>
                             <Setter Property="Cursor" Value="Hand"/>
                             <!--<Setter Property="Height" Value="40"/>-->

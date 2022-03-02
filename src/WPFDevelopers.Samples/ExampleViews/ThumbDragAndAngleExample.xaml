@@ -10,8 +10,11 @@
     <Canvas x:Name="_CanvasMain" Background="ForestGreen">
 
         <TextBlock Text="QQ群：340500857" Foreground="White" FontSize="20"
-                        Canvas.Left="505"
-                      Canvas.Top="165" />
+                        Canvas.Left="296"
+                      Canvas.Top="48" />
+        <TextBlock Text="QQ群：458041663" Foreground="White" FontSize="20"
+                        Canvas.Left="292"
+                      Canvas.Top="110" />
         <Border BorderThickness="2" BorderBrush="White"
                         x:Name="_border" Width="280"
                       Height="100"

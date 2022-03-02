@@ -1,4 +1,4 @@
-﻿<wpfdev:MetroWindow x:Class="WPFDevelopers.Samples.MainWindow"
+﻿<ws:Window x:Class="WPFDevelopers.Samples.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WPFDevelopers.Samples"
         xmlns:example="clr-namespace:WPFDevelopers.Samples.ExampleViews"
         xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
+        xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
         xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
@@ -90,4 +91,4 @@
             </Border>
         </Grid>
     </Grid>
-</wpfdev:MetroWindow>
+</ws:Window>

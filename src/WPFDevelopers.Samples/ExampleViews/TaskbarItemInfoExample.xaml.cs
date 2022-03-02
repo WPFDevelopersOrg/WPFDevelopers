@@ -9,7 +9,7 @@ namespace WPFDevelopers.Samples.ExampleViews
     /// <summary>
     /// TaskbarItemInfoExample.xaml 的交互逻辑
     /// </summary>
-    public partial class TaskbarItemInfoExample : MetroWindow
+    public partial class TaskbarItemInfoExample
     {
         int iconWidth = 20;
         int iconHeight = 20;
