@@ -112,6 +112,9 @@
     <Compile Include="ExampleViews\DrawPrizeExample.xaml.cs">
       <DependentUpon>DrawPrizeExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\EdgeLightExample.xaml.cs">
+      <DependentUpon>EdgeLightExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\LineChartExample.xaml.cs">
       <DependentUpon>LineChartExample.xaml</DependentUpon>
     </Compile>
@@ -306,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\DrawPrizeExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\EdgeLightExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

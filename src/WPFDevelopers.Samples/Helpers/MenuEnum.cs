@@ -55,6 +55,7 @@ namespace WPFDevelopers.Samples.Helpers
         CropControl,
         Desktop,
         DrawPrize,
+        EdgeLight,
         TaskbarInfo,
     }
 }

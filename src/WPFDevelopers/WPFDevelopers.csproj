@@ -69,6 +69,7 @@
     <Compile Include="Controls\Dashboard\ScaleItem.cs" />
     <Compile Include="Controls\Drawing\DrawingControl.cs" />
     <Compile Include="Controls\Drawing\DrawingPanel.cs" />
+    <Compile Include="Controls\EdgeLight\EdgeLight.cs" />
     <Compile Include="Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="Controls\Loadings\RingLoading.cs" />
@@ -235,6 +236,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Drawing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\EdgeLight.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

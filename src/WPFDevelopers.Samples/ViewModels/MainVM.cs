@@ -239,6 +239,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.DrawPrize:
                     ControlPanel = new DrawPrizeExample();
                     break;
+                case MenuEnum.EdgeLight:
+                    ControlPanel = new EdgeLightExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();
