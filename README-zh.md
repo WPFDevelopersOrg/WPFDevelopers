@@ -39,7 +39,7 @@
 
 
 ***
-### EdgeLight （WPF 实现边框走马灯动画） 
+### EdgeLight （WPF 实现边框跑马灯） 
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>
 
