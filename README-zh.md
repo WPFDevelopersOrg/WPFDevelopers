@@ -39,6 +39,10 @@
 
 
 ***
+### EdgeLight （WPF 实现边框走马灯动画） 
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>
+
 ### DrawPrize（WPF 实现大转盘抽奖）  
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawPrize.gif"/>
