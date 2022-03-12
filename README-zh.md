@@ -39,6 +39,12 @@
 
 
 ***
+
+### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>   
+
+----------
 ### EdgeLight （WPF 实现边框跑马灯） 
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>
@@ -304,13 +310,6 @@
 ### WpfRoundMenu（WPF实现圆形菜单）  
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RoundMenu.gif"/>   
-
-----------
-
-
-### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
-
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>   
 
 ----------
 
