@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -87,7 +84,7 @@ namespace WPFDevelopers.Controls
             bool newValue = (bool)e.NewValue;
             if (newValue)
             {
-                AnimationWeChat c = d as AnimationWeChat;
+                var c = d as AnimationWeChat;
                 if (c != null && c._uIElement != null)
                     _storyboard.Begin();
             }

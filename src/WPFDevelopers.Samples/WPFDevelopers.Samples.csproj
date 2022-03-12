@@ -55,6 +55,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFDevelopers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.1.0.0\lib\net40\WPFDevelopers.dll</HintPath>
+    </Reference>
     <Reference Include="WPFDevelopers.Minimal, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFDevelopers.Minimal.3.2.0\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
     </Reference>
@@ -534,24 +537,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Microsoft.Expression.Controls\Microsoft.Expression.Controls.csproj">
-      <Project>{ce0a716e-563e-49f5-9824-9ac371d11a78}</Project>
-      <Name>Microsoft.Expression.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Microsoft.Expression.Drawing\Microsoft.Expression.Drawing.csproj">
-      <Project>{6502328f-fd38-4a5f-b28a-d3e2df2b0e8a}</Project>
-      <Name>Microsoft.Expression.Drawing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.csproj">
-      <Project>{d1e586fa-e269-4f7f-aebb-92aa7f2d8c44}</Project>
-      <Name>Microsoft.Windows.Shell</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WPFDevelopers\WPFDevelopers.csproj">
-      <Project>{25475fdd-29c7-466e-861b-4a0b5e010175}</Project>
-      <Name>WPFDevelopers</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\AnimationNavigationBar3D\background.png" />

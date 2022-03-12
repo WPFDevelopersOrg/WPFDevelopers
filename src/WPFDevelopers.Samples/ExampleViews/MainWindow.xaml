@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDevelopers.Samples"
         xmlns:example="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-        xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
+        xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
         xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
         xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"

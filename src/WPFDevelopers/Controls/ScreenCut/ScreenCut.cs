@@ -1,10 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -180,7 +177,7 @@ namespace WPFDevelopers.Controls
             Canvas.SetLeft(this._border, rect.X);
             Canvas.SetTop(this._border, rect.Y);
         }
-       
+
         System.Drawing.Bitmap CaptureScreen()
         {
             //修复缩放比例不等于100%（DPI不等于96）时，不能显示全屏的问题
@@ -201,7 +198,6 @@ namespace WPFDevelopers.Controls
             }
             return bmpCaptured;
         }
-
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         public static extern bool DeleteObject(IntPtr hObject);
         ImageSource ChangeBitmapToImageSource(System.Drawing.Bitmap bitmap)
@@ -219,5 +215,6 @@ namespace WPFDevelopers.Controls
             }
             return wpfBitmap;
         }
+
     }
 }

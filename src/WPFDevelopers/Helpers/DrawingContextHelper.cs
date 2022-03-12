@@ -13,9 +13,13 @@ namespace WPFDevelopers
         /// </summary>
         public static FontFamily FontFamily = Application.Current.Resources["NormalFontFamily"] as FontFamily;
         /// <summary>
+        /// 默认颜色
+        /// </summary>
+        public static Brush Brush = Application.Current.Resources["PrimaryNormalSolidColorBrush"] as Brush;
+        /// <summary>
         /// 颜色转换
         /// </summary>
-        private static BrushConverter brushConverter = new BrushConverter();
+        public static BrushConverter BrushConverter = new BrushConverter();
 
         /// <summary>
         /// 绘制Line
@@ -49,19 +53,22 @@ namespace WPFDevelopers
         /// <param name="color"></param>
         /// <param name="flowDirection"></param>
         /// <returns></returns>
-        public static FormattedText GetFormattedText(string text,string color = null, FlowDirection flowDirection = FlowDirection.RightToLeft,double textSize = 12.0D)
+        public static FormattedText GetFormattedText(string text, Brush color = null, FlowDirection flowDirection = FlowDirection.RightToLeft,double textSize = 12.0D,FontWeight fontWeight = default)
         {
+            if (fontWeight == default)
+                fontWeight = FontWeights.Thin;
             return new FormattedText(
                   text,
                   CultureInfo.CurrentCulture,
                   flowDirection,
-                  new Typeface(FontFamily, FontStyles.Normal, FontWeights.Thin, FontStretches.Normal),
-                  textSize, color == null ? Brushes.Black : (Brush)brushConverter.ConvertFromString(color))
+                  new Typeface(FontFamily, FontStyles.Normal, fontWeight, FontStretches.Normal),
+                  textSize, color == null ? Brush : color)
             {
                 MaxLineCount = 1,
                 TextAlignment = TextAlignment.Justify,
                 Trimming = TextTrimming.CharacterEllipsis
             };
+            //textSize, color == null ? Brush : (Brush)brushConverter.ConvertFromString(color))
         }
     }
 }

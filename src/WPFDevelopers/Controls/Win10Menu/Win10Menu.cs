@@ -40,14 +40,14 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(Win10Menu), new PropertyMetadata(true));
 
 
-        public System.Windows.Media.Brush MenuIconColor
+        public Brush MenuIconColor
         {
-            get { return (System.Windows.Media.Brush)GetValue(MenuIconColorProperty); }
+            get { return (Brush)GetValue(MenuIconColorProperty); }
             set { SetValue(MenuIconColorProperty, value); }
         }
 
         public static readonly DependencyProperty MenuIconColorProperty =
-            DependencyProperty.Register("MenuIconColor", typeof(System.Windows.Media.Brush), typeof(Win10Menu), new PropertyMetadata(Brushes.White));
+            DependencyProperty.Register("MenuIconColor", typeof(Brush), typeof(Win10Menu), new PropertyMetadata(Brushes.White));
 
 
         public Brush SelectionIndicatorColor

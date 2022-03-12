@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:WPFDevelopers.Samples"
         xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"           
-        xmlns:wpfdev="https://github.com/yanjinhuagood/WPFDevelopers"
+        xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
         Owner="{x:Static local:App.CurrentMainWindow}"
         WindowStartupLocation="CenterOwner" Icon="/WPFDevelopers.ico"
         Title="TaskbarItemInfoExample" TitleHeight="40"

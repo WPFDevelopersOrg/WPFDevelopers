@@ -4,7 +4,7 @@
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
-        <ResourceDictionary Source="../Styles/Styles.Buttons.xaml"/>
+        <ResourceDictionary Source="ButtonsStyles.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="RectangleStyle" TargetType="{x:Type Rectangle}">

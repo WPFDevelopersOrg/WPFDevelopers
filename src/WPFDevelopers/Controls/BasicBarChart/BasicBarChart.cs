@@ -57,7 +57,7 @@ namespace WPFDevelopers.Controls
             var stratNum = 0;
 
             DrawingContextHelper.DrawSnappedLinesBetweenPoints(drawingContext,myPen,myPen.Thickness, new Point(startX, h), new Point(width, h));
-            var formattedText = DrawingContextHelper.GetFormattedText(stratNum.ToString(), "#6E7079", FlowDirection.LeftToRight);
+            var formattedText = DrawingContextHelper.GetFormattedText(stratNum.ToString(), (Brush)brushConverter.ConvertFromString("#6E7079"), FlowDirection.LeftToRight);
             drawingContext.DrawText(formattedText, new Point(startX - formattedText.Width * 2 - 10, h - formattedText.Height / 2));
             var x = startX;
             //var y = h + d;
@@ -90,7 +90,7 @@ namespace WPFDevelopers.Controls
                 points.Add(new Point(startX, xAxis));
                 points.Add(new Point(width, xAxis));
                 stratNum += 50;
-                formattedText = DrawingContextHelper.GetFormattedText(stratNum.ToString(), "#6E7079", FlowDirection.LeftToRight);
+                formattedText = DrawingContextHelper.GetFormattedText(stratNum.ToString(), (Brush)brushConverter.ConvertFromString("#6E7079"), FlowDirection.LeftToRight);
                 drawingContext.DrawText(formattedText, new Point(startX - formattedText.Width - 10, xAxis - formattedText.Height / 2));
                 xAxis = xAxis - 80;
             }
@@ -101,7 +101,7 @@ namespace WPFDevelopers.Controls
             var rectHeight = 0D;
             for (int i = 0; i < SeriesArray.Count(); i++)
             {
-                formattedText = DrawingContextHelper.GetFormattedText(SeriesArray.ToList()[i].Key, "#6E7079", FlowDirection.LeftToRight);
+                formattedText = DrawingContextHelper.GetFormattedText(SeriesArray.ToList()[i].Key, (Brush)brushConverter.ConvertFromString("#6E7079"), FlowDirection.LeftToRight);
                 drawingContext.DrawText(formattedText, new Point(x + 120 / 2 - formattedText.Width / 2, y + 4));
                 var _value = SeriesArray.ToList()[i].Value;
                 //rectHeight = _value * 200;

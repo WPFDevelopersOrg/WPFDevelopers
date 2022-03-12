@@ -112,32 +112,32 @@ namespace WPFDevelopers.Controls
 
             #region 华氏温度
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("华", color: "#82848A", textSize: 14D), new Point(-49, 115));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("华", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", color: "#82848A", textSize: 14D), new Point(-49, 115 + 14));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115 + 14));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", color: "#82848A", textSize: 14D), new Point(-49, 115 + 28));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115 + 28));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", color: "#82848A", textSize: 14D), new Point(-49, 115 + 42));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115 + 42));
 
             #endregion
 
             #region 摄氏温度
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("摄", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("摄", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 14));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 14));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 28));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 28));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", "#82848A", FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 42));
+            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 42));
 
             #endregion
 
@@ -151,11 +151,11 @@ namespace WPFDevelopers.Controls
 
             for (int i = 0; i <= cnt; i++)
             {
-                var formattedText = DrawingContextHelper.GetFormattedText($"{MaxValue - (i * Interval)}", "#82848A", FlowDirection.LeftToRight,14D);
+                var formattedText = DrawingContextHelper.GetFormattedText($"{MaxValue - (i * Interval)}", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,14D);
 
                 drawingContext.DrawText(formattedText, new Point(43, i * one_value - (formattedText.Height / 2d)));//减去字体高度的一半
 
-                formattedText = DrawingContextHelper.GetFormattedText($"{(MaxValue - (i * Interval)) * 1.8d + 32d}", color: "#82848A", textSize: 14D);
+                formattedText = DrawingContextHelper.GetFormattedText($"{(MaxValue - (i * Interval)) * 1.8d + 32d}", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D);
 
                 drawingContext.DrawText(formattedText, new Point(-13, i * one_value - (formattedText.Height / 2d)));
 

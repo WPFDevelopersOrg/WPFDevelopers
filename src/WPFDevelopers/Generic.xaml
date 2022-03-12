@@ -1,37 +1,2477 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Basic/Geometrys.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Styles/Styles.Buttons.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Styles/Styles.ScrollBar.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Styles/Styles.Slider.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Styles/Styles.RadioButton.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/AnimationNavigationBar3D.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/BallLoading.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/BreathLamp.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Carousel.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CutImage.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CheckCode.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/LoadingGroup.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/NavigateMenu.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/OtherControl.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CircularMenu.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/AnimationWeChat.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/ChatEmoji.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CircularProgressBar.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Dashboard.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Drawing.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/PieControl.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/TimeLine.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Pagination.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/ScreenCut.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/SpotLight.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Win10Menu.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RainbowButtons.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/RoundPicker.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/SnowCanvas.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/CropControl.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/PrizeItemControl.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/EdgeLight.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:controls="clr-namespace:WPFDevelopers.Controls" xmlns:convert="clr-namespace:WPFDevelopers.Converts" xmlns:ec="clr-namespace:Microsoft.Expression.Controls" xmlns:ed="clr-namespace:Microsoft.Expression.Shapes">
+	<Color x:Key="PrimaryTextColor" po:Freeze="True">#303133</Color>
+	<Color x:Key="RegularTextColor" po:Freeze="True">#606266</Color>
+	<Color x:Key="SecondaryTextColor" po:Freeze="True">#909399</Color>
+	<Color x:Key="PlaceholderTextColor" po:Freeze="True">#C0C4CC</Color>
+	<Color x:Key="DefaultBorderBrushColor" po:Freeze="True">#FFC6E2FF</Color>
+	<Color x:Key="DefaultBackgroundColor" po:Freeze="True">#FFEBF4FF</Color>
+	<Color x:Key="DefaultBackgroundPressedColor" po:Freeze="True">#FF398DE6</Color>
+	<Color x:Key="PrimaryNormalColor" po:Freeze="True">#409EFF</Color>
+	<Color x:Key="PrimaryMouseOverColor" po:Freeze="True">#66B1FF</Color>
+	<Color x:Key="PrimaryPressedColor" po:Freeze="True">#3A8EE6</Color>
+	<Color x:Key="SuccessColor" po:Freeze="True">#67C23A</Color>
+	<Color x:Key="SuccessMouseOverColor" po:Freeze="True">#85CE61</Color>
+	<Color x:Key="SuccessPressedColor" po:Freeze="True">#5DAF34</Color>
+	<Color x:Key="WarningColor" po:Freeze="True">#E6A23C</Color>
+	<Color x:Key="WarningMouseOverColor" po:Freeze="True">#EBB563</Color>
+	<Color x:Key="WarningPressedColor" po:Freeze="True">#CF9236</Color>
+	<Color x:Key="DangerColor" po:Freeze="True">#F56C6C</Color>
+	<Color x:Key="DangerMouseOverColor" po:Freeze="True">#F78989</Color>
+	<Color x:Key="DangerPressedColor" po:Freeze="True">#DD6161</Color>
+	<Color x:Key="InfoColor" po:Freeze="True">#909399</Color>
+	<Color x:Key="InfoMouseOverColor" po:Freeze="True">#A6A9AD</Color>
+	<Color x:Key="InfoPressedColor" po:Freeze="True">#82848A</Color>
+	<Color x:Key="WhiteColor" po:Freeze="True">#FFFFFF</Color>
+	<Color x:Key="ExtralightColor" po:Freeze="True">#F2F6FC</Color>
+	<Color x:Key="LighterColor" po:Freeze="True">#EBEEF5</Color>
+	<Color x:Key="LightColor" po:Freeze="True">#E4E7ED</Color>
+	<Color x:Key="BaseColor" po:Freeze="True">#DCDFE6</Color>
+	<Color x:Key="BlackColor" po:Freeze="True">#000000</Color>
+	<Color x:Key="CircularSingularColor" po:Freeze="True">#BAE766</Color>
+	<Color x:Key="CircularDualColor" po:Freeze="True">#B0D440</Color>
+	<Color x:Key="DrawPrizeSingularColor" po:Freeze="True">#F63C3D</Color>
+	<Color x:Key="DrawPrizeDualColor" po:Freeze="True">#E5292A</Color>
+	<sys:Double x:Key="NormalFontSize">13</sys:Double>
+	<sys:Double x:Key="MediumFontSize">14</sys:Double>
+	<sys:Double x:Key="TitleFontSize">16</sys:Double>
+	<FontFamily x:Key="NormalFontFamily">
+        Helvetica Neue For Number, 
+        -apple-system, 
+        BlinkMacSystemFont, 
+        Segoe UI,
+        Roboto, 
+        PingFang SC, 
+        Hiragino Sans GB, 
+        Microsoft YaHei, 
+        Helvetica Neue, 
+        Helvetica, Arial, 
+        sans-serif
+    </FontFamily>
+	<FontFamily x:Key="Fixedsys">/WPFDevelopers;component/Resources/Fonts/fixedsys.ttf#Fixedsys Excelsior 3.01</FontFamily>
+	<FontStretch x:Key="NormalFontStretch">Normal</FontStretch>
+	<FontStyle x:Key="NormalFontStyle">Normal</FontStyle>
+	<FontWeight x:Key="NormalFontWeight">Normal</FontWeight>
+	<Geometry x:Key="PathSmileyOutline" po:Freeze="True">M14.36,14.23a3.76,3.76,0,0,1-4.72,0,1,1,0,0,0-1.28,1.54,5.68,5.68,0,0,0,7.28,0,1,1,0,1,0-1.28-1.54ZM9,11a1,1,0,1,0-1-1A1,1,0,0,0,9,11Zm6-2a1,1,0,1,0,1,1A1,1,0,0,0,15,9ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z</Geometry>
+	<Geometry x:Key="PathBus" po:Freeze="True">M18,11H6V6H18M16.5,17A1.5,1.5 0 0,1 15,15.5A1.5,1.5 0 0,1 16.5,14A1.5,1.5 0 0,1 18,15.5A1.5,1.5 0 0,1 16.5,17M7.5,17A1.5,1.5 0 0,1 6,15.5A1.5,1.5 0 0,1 7.5,14A1.5,1.5 0 0,1 9,15.5A1.5,1.5 0 0,1 7.5,17M4,16C4,16.88 4.39,17.67 5,18.22V20A1,1 0 0,0 6,21H7A1,1 0 0,0 8,20V19H16V20A1,1 0 0,0 17,21H18A1,1 0 0,0 19,20V18.22C19.61,17.67 20,16.88 20,16V6C20,2.5 16.42,2 12,2C7.58,2 4,2.5 4,6V16Z</Geometry>
+	<Geometry x:Key="PathFriend" po:Freeze="True">M12.3,12.22A4.92,4.92,0,0,0,14,8.5a5,5,0,0,0-10,0,4.92,4.92,0,0,0,1.7,3.72A8,8,0,0,0,1,19.5a1,1,0,0,0,2,0,6,6,0,0,1,12,0,1,1,0,0,0,2,0A8,8,0,0,0,12.3,12.22ZM9,11.5a3,3,0,1,1,3-3A3,3,0,0,1,9,11.5Zm9.74.32A5,5,0,0,0,15,3.5a1,1,0,0,0,0,2,3,3,0,0,1,3,3,3,3,0,0,1-1.5,2.59,1,1,0,0,0-.5.84,1,1,0,0,0,.45.86l.39.26.13.07a7,7,0,0,1,4,6.38,1,1,0,0,0,2,0A9,9,0,0,0,18.74,11.82Z</Geometry>
+	<Geometry x:Key="PathBuildingRegular" po:Freeze="True">M128 148v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12zm140 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-128 96h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm128 0h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm-76 84v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm76 12h40c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12zm180 124v36H0v-36c0-6.6 5.4-12 12-12h19.5V24c0-13.3 10.7-24 24-24h337c13.3 0 24 10.7 24 24v440H436c6.6 0 12 5.4 12 12zM79.5 463H192v-67c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v67h112.5V49L80 48l-.5 415z</Geometry>
+	<Geometry x:Key="PathAlarmClock" po:Freeze="True">M470 124.837l-98.443-81.78-27.814 32.931 98.442 81.769L470 124.837zM167.192 74.919L139.366 42 42 124.837l27.814 32.919 97.378-82.837zm99.509 97.709H234.6v127.446l101.649 60.539L352.3 334.06l-85.6-49.917V172.628zM256 87.665c-107 0-192.601 86.021-192.601 191.166C63.399 383.98 149 470 256 470c105.936 0 192.601-86.02 192.601-191.169 0-105.144-86.665-191.166-192.601-191.166zm0 339.855c-82.393 0-149.8-66.906-149.8-148.688 0-81.777 67.407-148.684 149.8-148.684 82.394 0 149.8 66.906 149.8 148.684 0 82.839-67.406 148.688-149.8 148.688z</Geometry>
+	<Geometry x:Key="PathFlag" po:Freeze="True">M687.5 125C500 125 375 13.7 187.5 62.5V31.3C187.5 31.3 187.5 0 156.3 0C125 0 125 31.3 125 31.3V1000H187.5V625C375 562.5 500 687.5 687.5 687.5C875 687.5 937.5 625 937.5 625V62.5C937.5 62.5 875 125 687.5 125Z</Geometry>
+	<Geometry x:Key="PathCircularItem" po:Freeze="True">M 200,200 0,200 A 200,200 0 0 1 58.6,58.6z</Geometry>
+	<Geometry x:Key="PathAdd" po:Freeze="True">M734.618 760.269c-24.013 24.013-62.925 24.013-86.886 0l-135.731-155.136-135.731 155.085c-24.013 24.013-62.925 24.013-86.886 0-24.013-24.013-24.013-62.925 0-86.886l141.21-161.28-141.261-161.382c-24.013-24.013-24.013-62.874 0-86.886s62.874-24.013 86.886 0l135.782 155.187 135.731-155.187c24.013-24.013 62.874-24.013 86.886 0s24.013 62.925 0 86.886l-141.21 161.382 141.21 161.28c24.013 24.013 24.013 62.925 0 86.938z</Geometry>
+	<Geometry x:Key="PathChatLeft" po:Freeze="True">M365.714 256v512q0 14.857-10.857 25.714t-25.714 10.857-25.714-10.857l-256-256q-10.857-10.857-10.857-25.714t10.857-25.714l256-256q10.857-10.857 25.714-10.857t25.714 10.857 10.857 25.714z</Geometry>
+	<Geometry x:Key="PathChatRight" po:Freeze="True">M329.143 512q0 14.857-10.857 25.714l-256 256q-10.857 10.857-25.714 10.857t-25.714-10.857-10.857-25.714v-512q0-14.857 10.857-25.714t25.714-10.857 25.714 10.857l256 256q10.857 10.857 10.857 25.714z</Geometry>
+	<Geometry x:Key="PathStar" po:Freeze="True">M649.714 573.714l174.857-169.714-241.143-35.429-108-218.286-108 218.286-241.143 35.429 174.857 169.714-41.714 240.571 216-113.714 215.429 113.714zM950.857 369.714q0 12.571-14.857 27.429l-207.429 202.286 49.143 285.714q0.571 4 0.571 11.429 0 28.571-23.429 28.571-10.857 0-22.857-6.857l-256.571-134.857-256.571 134.857q-12.571 6.857-22.857 6.857-12 0-18-8.286t-6-20.286q0-3.429 1.143-11.429l49.143-285.714-208-202.286q-14.286-15.429-14.286-27.429 0-21.143 32-26.286l286.857-41.714 128.571-260q10.857-23.429 28-23.429t28 23.429l128.571 260 286.857 41.714q32 5.143 32 26.286z</Geometry>
+	<Geometry x:Key="PathComplete" po:Freeze="True">M384 690l452-452 60 60-512 512-238-238 60-60z</Geometry>
+	<Geometry x:Key="PathCancel" po:Freeze="True">M810.667 170.667q18.333 0 30.5 12.167t12.167 30.5q0 18-12.333 30.333l-268.667 268.333 268.667 268.333q12.333 12.333 12.333 30.333 0 18.333-12.167 30.5t-30.5 12.167q-18 0-30.333-12.333l-268.333-268.667-268.333 268.667q-12.333 12.333-30.333 12.333-18.333 0-30.5-12.167t-12.167-30.5q0-18 12.333-30.333l268.667-268.333-268.667-268.333q-12.333-12.333-12.333-30.333 0-18.333 12.167-30.5t30.5-12.167q18 0 30.333 12.333l268.333 268.667 268.333-268.667q12.333-12.333 30.333-12.333z</Geometry>
+	<Geometry x:Key="PathSave" po:Freeze="True">M512 42.667q17.667 0 30.167 12.5t12.5 30.167v494.333l140.333-140.667q12.333-12.333 30.333-12.333 18.333 0 30.5 12.167t12.167 30.5q0 18-12.333 30.333l-213.333 213.333q-12.333 12.333-30.333 12.333t-30.333-12.333l-213.333-213.333q-12.333-13-12.333-30.333 0-17.667 12.5-30.167t30.167-12.5q18 0 30.333 12.333l140.333 140.667v-494.333q0-17.667 12.5-30.167t30.167-12.5zM938.667 640q17.667 0 30.167 12.5t12.5 30.167v170.667q0 53.333-37 90.333-37.667 37.667-90 37.667h-683.667q-52.333 0-90.667-37.333-37.333-38.333-37.333-90.667v-170.667q0-17.667 12.5-30.167t30.167-12.5 30.167 12.5 12.5 30.167v170.667q0 17.667 12.5 30.167t30.167 12.5h683.667q17.333 0 29.5-12.5t12.167-30.167v-170.667q0-17.667 12.5-30.167t30.167-12.5z</Geometry>
+	<Geometry x:Key="PathMenu" po:Freeze="True">M2,15.5L22,15.5 22,17.5 2,17.5 2,15.5z M2,10.5L22,10.5 22,12.5 2,12.5 2,10.5z M2,5.5L22,5.5 22,7.5 2,7.5 2,5.5z</Geometry>
+	<Geometry x:Key="PathSector" po:Freeze="True">M 200,200 0,200 A 200,200 0 0 1 58.6,58.6z</Geometry>
+	<Geometry x:Key="PathMetroWindowMaximize" po:Freeze="True">M0.99999994,0.99999994 L0.99999994,9 9,9 9,0.99999994 z M0,0 L10,0 10,10 0,10 z</Geometry>
+	<Geometry x:Key="PathMetroWindowRestore" po:Freeze="True">M1,3 L1,9 7,9 7,3 z M3,0.99999994 L3,2 8,2 8,7 9,7 9,0.99999994 z M2,0 L10,0 10,8 8,8 8,10 0,10 0,2 2,2 z</Geometry>
+	<Geometry x:Key="PathMetroWindowClose" po:Freeze="True">M 1301 69.6875 L 1305.3049 74 L 1300.9375 78.5313 L 1301.6324 79.2263 L 1306 74.735 L 1310.4263 79.2613 L 1311.1563 78.5313 L 1306.7 74 L 1310.9375 69.6875 L 1310.2075 68.9575 L 1306 73.265 L 1301.6949 68.9925 L 1301 69.6875 Z</Geometry>
+	<CubicEase x:Key="CubicEaseInOut" EasingMode="EaseInOut" />
+	<PowerEase x:Key="PowerEaseInOut" EasingMode="EaseInOut" />
+	<ExponentialEase x:Key="ExponentialEaseOut" EasingMode="EaseOut" />
+	<SineEase x:Key="SineEaseOut" EasingMode="EaseOut" />
+	<SineEase x:Key="SineEaseInOut" EasingMode="EaseInOut" />
+	<BackEase x:Key="BackEaseEaseInOut" EasingMode="EaseInOut" />
+	<sys:Double x:Key="EnabledOpacity">0.5</sys:Double>
+	<sys:Double x:Key="NormalCornerRadius">4</sys:Double>
+	<DropShadowEffect x:Key="NormalShadowDepth" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#AA000000" Opacity=".42" RenderingBias="Performance" />
+	<ControlTemplate x:Key="LampEffect_Streamer" TargetType="{x:Type controls:BreathLamp}">
+		<Grid>
+			<Viewbox>
+				<Grid Width="60" Height="60">
+					<Border x:Name="PART_LampContainer" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent">
+						<Border.BorderBrush>
+							<LinearGradientBrush>
+								<LinearGradientBrush.GradientStops>
+									<GradientStop Color="#FF00cec9" Offset="0" />
+									<GradientStop Color="#2000cec9" Offset="0.3" />
+									<GradientStop Color="Transparent" Offset="1" />
+								</LinearGradientBrush.GradientStops>
+							</LinearGradientBrush>
+						</Border.BorderBrush>
+					</Border>
+				</Grid>
+			</Viewbox>
+			<Border Padding="{TemplateBinding BorderThickness}">
+				<ContentPresenter Margin="{TemplateBinding BorderThickness}" />
+			</Border>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsLampStart" Value="True">
+				<Trigger.EnterActions>
+					<BeginStoryboard x:Name="PART_LampStoryboard">
+						<Storyboard RepeatBehavior="Forever">
+							<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.StartPoint)" Storyboard.TargetName="PART_LampContainer">
+								<EasingPointKeyFrame KeyTime="0:0:0.0" Value="0,1" />
+								<EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148" />
+								<EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855" />
+								<EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855" />
+								<EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149" />
+								<EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0" />
+							</PointAnimationUsingKeyFrames>
+							<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.EndPoint)" Storyboard.TargetName="PART_LampContainer">
+								<EasingPointKeyFrame KeyTime="0:0:0.0" Value="0,1" />
+								<EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852" />
+								<EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145" />
+								<EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145" />
+								<EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851" />
+								<EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1" />
+							</PointAnimationUsingKeyFrames>
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.EnterActions>
+				<Trigger.ExitActions>
+					<StopStoryboard BeginStoryboardName="PART_LampStoryboard" />
+				</Trigger.ExitActions>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<Storyboard x:Key="CheckedStoryboard">
+		<DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry" Storyboard.TargetProperty="RadiusX" Duration="00:00:0.4" To="200" />
+		<DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry" Storyboard.TargetProperty="RadiusY" Duration="00:00:0.4" To="200" />
+	</Storyboard>
+	<Storyboard x:Key="UncheckedStoryboard">
+		<DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry" Storyboard.TargetProperty="RadiusX" Duration="00:00:0.3" To="0" />
+		<DoubleAnimation Storyboard.TargetName="PART_EllipseGeometry" Storyboard.TargetProperty="RadiusY" Duration="00:00:0.3" To="0" />
+	</Storyboard>
+	<convert:IndexToColor x:Key="indexToColor" />
+	<convert:AngleToPointConverter x:Key="prConverter" />
+	<convert:AngleToIsLargeConverter x:Key="isLargeConverter" />
+	<LinearGradientBrush x:Key="NormalBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+		<GradientStop Color="#FF164DA7" />
+		<GradientStop Color="#FF19DCF0" Offset="1" />
+	</LinearGradientBrush>
+	<Style x:Key="PageButtonStyleKey" TargetType="{x:Type Button}">
+		<Setter Property="FontSize" Value="13" />
+		<Setter Property="Background" Value="#323E4E" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="BorderBrush" Value="#3E4756" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="UseLayoutRounding" Value="True" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border CornerRadius="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid Background="#00000000">
+							<ContentPresenter Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsEnabled" Value="false">
+				<Setter Property="Opacity" Value="1" />
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="false">
+				<Setter Property="Background" Value="#55323E4E" />
+				<Setter Property="BorderBrush" Value="Transparent" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<convert:DrawPrizeIndexToColor x:Key="drawPrizeIndexToColor" />
+	<Style x:Key="Win10ToggleButton" TargetType="ToggleButton">
+		<Setter Property="IsChecked" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
+					<Grid Background="{TemplateBinding Background}">
+						<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Opacity" Value="0.8" />
+				<Setter Property="Cursor" Value="Hand" />
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ToggleButton}">
+							<Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+								<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+							</Border>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style TargetType="ListBox">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<ScrollViewer>
+						<ItemsPresenter Margin="0" />
+					</ScrollViewer>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="ButtonFocusVisual">
+		<Setter Property="Control.Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border>
+						<Rectangle Margin="2" StrokeThickness="1" Stroke="#60000000" StrokeDashArray="1 2" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<SolidColorBrush x:Key="DarkBrush" Color="#ddd" />
+	<SolidColorBrush x:Key="PressedBrush" Color="#80FFFFFF" />
+	<SolidColorBrush x:Key="DisabledForegroundBrush" Color="Transparent" />
+	<SolidColorBrush x:Key="DisabledBackgroundBrush" Color="Transparent" />
+	<SolidColorBrush x:Key="NormalBorderBrush" Color="Transparent" />
+	<SolidColorBrush x:Key="PressedBorderBrush" Color="Transparent" />
+	<SolidColorBrush x:Key="DefaultedBorderBrush" Color="Transparent" />
+	<SolidColorBrush x:Key="DisabledBorderBrush" Color="Transparent" />
+	<SolidColorBrush x:Key="BorderBrushItem">#fe7708</SolidColorBrush>
+	<DataTemplate x:Key="NameContent">
+		<Grid>
+			<Ellipse Fill="{Binding BackgroundColor, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" Width="30" Height="30" />
+			<TextBlock Text="{Binding Head, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
+		</Grid>
+	</DataTemplate>
+	<DataTemplate x:Key="TextTime">
+		<TextBlock Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" VerticalAlignment="Top" FontWeight="Black" Foreground="Black" FontSize="16" />
+	</DataTemplate>
+	<DataTemplate x:Key="TextName">
+		<TextBlock Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" VerticalAlignment="Center" FontWeight="Black" Foreground="#005980" FontSize="16" />
+	</DataTemplate>
+	<SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="RegularTextSolidColorBrush" Color="{StaticResource RegularTextColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="SecondaryTextSolidColorBrush" Color="{StaticResource SecondaryTextColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="PlaceholderTextSolidColorBrush" Color="{StaticResource PlaceholderTextColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DefaultBorderBrushSolidColorBrush" Color="{StaticResource DefaultBorderBrushColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DefaultBackgroundSolidColorBrush" Color="{StaticResource DefaultBackgroundColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DefaultBackgroundPressedSolidColorBrush" Color="{StaticResource DefaultBackgroundPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="PrimaryNormalSolidColorBrush" Color="{StaticResource PrimaryNormalColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="PrimaryMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="PrimaryPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="SuccessSolidColorBrush" Color="{StaticResource SuccessColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="SuccessMouseOverSolidColorBrush" Color="{StaticResource SuccessMouseOverColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="SuccessPressedSolidColorBrush" Color="{StaticResource SuccessPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="WarningSolidColorBrush" Color="{StaticResource WarningColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="WarningMouseOverSolidColorBrush" Color="{StaticResource WarningMouseOverColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="WarningPressedSolidColorBrush" Color="{StaticResource WarningPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DangerMouseOverSolidColorBrush" Color="{StaticResource DangerMouseOverColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DangerPressedSolidColorBrush" Color="{StaticResource DangerPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="InfoSolidColorBrush" Color="{StaticResource InfoColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="InfoMouseOverSolidColorBrush" Color="{StaticResource InfoMouseOverColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="InfoPressedSolidColorBrush" Color="{StaticResource InfoPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="WhiteSolidColorBrush" Color="{StaticResource WhiteColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="ExtralightSolidColorBrush" Color="{StaticResource ExtralightColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="LighterSolidColorBrush" Color="{StaticResource LighterColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="LightSolidColorBrush" Color="{StaticResource LightColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="BaseSolidColorBrush" Color="{StaticResource BaseColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="BlackSolidColorBrush" Color="{StaticResource BlackColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="CircularSingularSolidColorBrush" Color="{StaticResource CircularSingularColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="CircularDualSolidColorBrush" Color="{StaticResource CircularDualColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DrawPrizeSingularSolidColorBrush" Color="{StaticResource DrawPrizeSingularColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DrawPrizeDualSolidColorBrush" Color="{StaticResource DrawPrizeDualColor}" po:Freeze="True" />
+	<Style x:Key="ControlBasicStyle" TargetType="Control">
+		<Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+		<Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
+		<Setter Property="FontWeight" Value="{DynamicResource NormalFontWeight}" />
+		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
+		<Setter Property="TextElement.FontSize" Value="{DynamicResource NormalFontSize}" />
+		<Setter Property="TextElement.FontFamily" Value="{DynamicResource NormalFontFamily}" />
+		<Setter Property="TextElement.FontStyle" Value="{DynamicResource NormalFontStyle}" />
+		<Setter Property="TextElement.FontWeight" Value="{DynamicResource NormalFontWeight}" />
+		<Setter Property="TextElement.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+		<Setter Property="TextBlock.FontSize" Value="{DynamicResource NormalFontSize}" />
+		<Setter Property="TextBlock.FontFamily" Value="{DynamicResource NormalFontFamily}" />
+		<Setter Property="TextBlock.FontStyle" Value="{DynamicResource NormalFontStyle}" />
+		<Setter Property="TextBlock.FontWeight" Value="{DynamicResource NormalFontWeight}" />
+		<Setter Property="TextBlock.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="UseLayoutRounding" Value="True" />
+		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+	</Style>
+	<Style x:Key="BaseButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Padding" Value="20,10" />
+		<Setter Property="Cursor" Value="Hand" />
+	</Style>
+	<Style x:Key="PathButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
+		<Setter Property="Padding" Value="8" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border Background="Transparent">
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentPresenter" Opacity=".8" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="1" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:AnimationNavigationBar3DItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Width" Value="80" />
+		<Setter Property="Height" Value="80" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
+					<Viewport3D Height="{TemplateBinding Width}" Width="{TemplateBinding Height}">
+						<Viewport3D.Triggers>
+							<EventTrigger RoutedEvent="MouseEnter">
+								<BeginStoryboard>
+									<Storyboard Storyboard.TargetProperty="Angle" Storyboard.TargetName="axis3d">
+										<DoubleAnimation Duration="00:00:1" To="90" EasingFunction="{StaticResource CubicEaseInOut}" />
+									</Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+							<EventTrigger RoutedEvent="MouseLeave">
+								<BeginStoryboard>
+									<Storyboard Storyboard.TargetProperty="Angle" Storyboard.TargetName="axis3d">
+										<DoubleAnimation Duration="00:00:1" To="0" EasingFunction="{StaticResource CubicEaseInOut}" />
+									</Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+						</Viewport3D.Triggers>
+						<Viewport3D.Camera>
+							<OrthographicCamera LookDirection="0,0,-100" Position="0,0,100" UpDirection="0,1,0" />
+						</Viewport3D.Camera>
+						<Viewport3D.Children>
+							<ModelVisual3D>
+								<ModelVisual3D.Content>
+									<AmbientLight Color="White" />
+								</ModelVisual3D.Content>
+							</ModelVisual3D>
+							<ContainerUIElement3D>
+								<ContainerUIElement3D.Transform>
+									<RotateTransform3D>
+										<RotateTransform3D.Rotation>
+											<AxisAngleRotation3D x:Name="axis3d" Angle="0" Axis="1 0 0" />
+										</RotateTransform3D.Rotation>
+									</RotateTransform3D>
+								</ContainerUIElement3D.Transform>
+								<Viewport2DVisual3D>
+									<Viewport2DVisual3D.Material>
+										<DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True" />
+									</Viewport2DVisual3D.Material>
+									<Viewport2DVisual3D.Geometry>
+										<MeshGeometry3D Positions="-1,1,1    -1,-1,1   1,-1,1    1,1,1" TextureCoordinates="0,0   0,1     1,1  1,0" TriangleIndices="0 1 2 0 2 3" />
+									</Viewport2DVisual3D.Geometry>
+									<Border Background="{TemplateBinding FileBackground}" Height="110" Width="110" CornerRadius="0,0,0,0">
+										<Path Data="{TemplateBinding PathDate}" Fill="#FFFF" Stretch="Fill" Width="40" Height="40" />
+									</Border>
+								</Viewport2DVisual3D>
+								<Viewport2DVisual3D>
+									<Viewport2DVisual3D.Material>
+										<DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True" />
+									</Viewport2DVisual3D.Material>
+									<Viewport2DVisual3D.Geometry>
+										<MeshGeometry3D Positions="-1,1,1  1,1,1   1,1,-1   -1,1,-1" TextureCoordinates="0,0   0,1   1,1  1,0" TriangleIndices="0 1 2 0 2 3" />
+									</Viewport2DVisual3D.Geometry>
+									<Border Background="{TemplateBinding BackFileBackground}" Height="110" Width="110" CornerRadius="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+										<Border.RenderTransform>
+											<TransformGroup>
+												<RotateTransform Angle="90" />
+											</TransformGroup>
+										</Border.RenderTransform>
+										<StackPanel VerticalAlignment="Center">
+											<Path Data="{TemplateBinding PathDate}" Fill="#FFFF" Stretch="Fill" Width="40" Height="40" />
+											<TextBlock Text="{TemplateBinding Text}" HorizontalAlignment="Center" FontSize="{TemplateBinding FontSize}" Foreground="{StaticResource WhiteSolidColorBrush}" />
+										</StackPanel>
+									</Border>
+								</Viewport2DVisual3D>
+							</ContainerUIElement3D>
+						</Viewport3D.Children>
+					</Viewport3D>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:AnimationNavigationBar3D}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3D}">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+						<ScrollViewer VerticalScrollBarVisibility="Auto">
+							<ItemsPresenter />
+						</ScrollViewer>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<UniformGrid Columns="{Binding Columns,RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3D}}}" />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:AnimationWeChat}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:AnimationWeChat}">
+					<Grid Height="35" Width="100">
+						<Rectangle RadiusX="4" RadiusY="4" Fill="{DynamicResource SuccessSolidColorBrush}" />
+						<StackPanel Orientation="Horizontal" Margin="4,0">
+							<Image Height="20" Width="20" x:Name="PART_Image" Source="/WPFDevelopers;component/Images/AnimationWeChat/2.png" />
+							<TextBlock Text="10ms“" VerticalAlignment="Center" FontSize="20" />
+						</StackPanel>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:BallLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:BallLoading}">
+					<Viewbox>
+						<Grid x:Name="Part_BackGrid" Width="400" Height="140">
+							<Grid.Effect>
+								<DropShadowEffect BlurRadius="10" ShadowDepth="5" Color="#ff6a27" Opacity="0.8" />
+							</Grid.Effect>
+							<Canvas>
+								<Ellipse x:Name="Part_Eillipse" Canvas.Left="20" Canvas.Top="50" Width="40" Height="40">
+									<Ellipse.Fill>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<GradientStop Color="#ff9303" Offset="0" />
+											<GradientStop Color="#ff8c09" Offset="1" />
+										</LinearGradientBrush>
+									</Ellipse.Fill>
+								</Ellipse>
+							</Canvas>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition />
+									<ColumnDefinition />
+									<ColumnDefinition />
+									<ColumnDefinition />
+									<ColumnDefinition />
+								</Grid.ColumnDefinitions>
+								<Grid x:Name="Part_EillpseDock1" Grid.Column="1" RenderTransformOrigin="0,0.5">
+									<Ellipse x:Name="Part_Eillipse1" HorizontalAlignment="Center" Width="40" Height="40">
+										<Ellipse.Fill>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+												<GradientStop Color="#ff781a" Offset="0" />
+												<GradientStop Color="#ff6a27" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+									</Ellipse>
+								</Grid>
+								<Grid x:Name="Part_EillpseDock2" Grid.Column="2" RenderTransformOrigin="0,0.5">
+									<Ellipse x:Name="Part_Eillipse2" HorizontalAlignment="Center" Width="40" Height="40">
+										<Ellipse.Fill>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+												<GradientStop Color="#ff5539" Offset="0" />
+												<GradientStop Color="#ff4845" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+									</Ellipse>
+								</Grid>
+								<Grid x:Name="Part_EillpseDock3" Grid.Column="3" RenderTransformOrigin="0,0.5">
+									<Ellipse x:Name="Part_Eillipse3" HorizontalAlignment="Center" Width="40" Height="40">
+										<Ellipse.Fill>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+												<GradientStop Color="#ff3357" Offset="0" />
+												<GradientStop Color="#ff2465" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+									</Ellipse>
+								</Grid>
+								<Grid x:Name="Part_EillpseDock4" Grid.Column="4" RenderTransformOrigin="0,0.5">
+									<Ellipse x:Name="Part_Eillipse4" HorizontalAlignment="Center" Width="40" Height="40">
+										<Ellipse.Fill>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+												<GradientStop Color="#ff097c" Offset="0" />
+												<GradientStop Color="#ff0382" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+									</Ellipse>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Viewbox>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ControlTemplate x:Key="LampEffect_Eclipse" TargetType="{x:Type controls:BreathLamp}">
+		<Grid>
+			<Viewbox>
+				<Grid Width="60" Height="60">
+					<Border x:Name="PART_LampEclipse" BorderThickness="0" BorderBrush="Transparent" CornerRadius="{TemplateBinding CornerRadius}" Background="{DynamicResource DangerSolidColorBrush}" RenderTransformOrigin="0.5,0.5">
+						<!--<Border.Effect>
+                            <DropShadowEffect BlurRadius="25" ShadowDepth="0" Color="{DynamicResource DangerColor}"/>
+                        </Border.Effect>-->
+						<Border.RenderTransform>
+							<ScaleTransform CenterX="0" CenterY="0" ScaleX="0.8" ScaleY="0.8" />
+						</Border.RenderTransform>
+					</Border>
+					<Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+				</Grid>
+			</Viewbox>
+			<ContentPresenter />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsLampStart" Value="True">
+				<Setter Property="Effect" TargetName="PART_LampEclipse">
+					<Setter.Value>
+						<DropShadowEffect BlurRadius="25" ShadowDepth="0" Color="{DynamicResource DangerColor}" />
+					</Setter.Value>
+				</Setter>
+				<Trigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard RepeatBehavior="Forever" AutoReverse="True">
+							<DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.1" Storyboard.TargetName="PART_LampEclipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" EasingFunction="{StaticResource SineEaseOut}" />
+							<DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.1" Storyboard.TargetName="PART_LampEclipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" EasingFunction="{StaticResource SineEaseOut}" />
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.EnterActions>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<ControlTemplate x:Key="LampEffect_Ripple" TargetType="{x:Type controls:BreathLamp}">
+		<Grid>
+			<Viewbox>
+				<Grid Width="60" Height="60">
+					<Border x:Name="PART_LampRipple_1" RenderTransformOrigin="0.5,0.5" Background="Transparent" BorderThickness="1" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource DangerSolidColorBrush}">
+						<Border.RenderTransform>
+							<ScaleTransform CenterX="0" CenterY="0" ScaleX="0.8" ScaleY="0.8" />
+						</Border.RenderTransform>
+					</Border>
+					<Border x:Name="PART_LampRipple_2" RenderTransformOrigin="0.5,0.5" Background="Transparent" BorderThickness="1" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource DangerSolidColorBrush}">
+						<Border.RenderTransform>
+							<ScaleTransform ScaleX="0.8" ScaleY="0.8" />
+						</Border.RenderTransform>
+					</Border>
+					<Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+				</Grid>
+			</Viewbox>
+			<ContentPresenter />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsLampStart" Value="True">
+				<Trigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard RepeatBehavior="Forever" AutoReverse="True">
+							<DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" EasingFunction="{StaticResource SineEaseOut}" />
+							<DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" EasingFunction="{StaticResource SineEaseOut}" />
+							<DoubleAnimation Duration="0:0:1" BeginTime="0:0:0.4" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_2" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" EasingFunction="{StaticResource SineEaseOut}" />
+							<DoubleAnimation Duration="0:0:1" BeginTime="0:0:0.4" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_2" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" EasingFunction="{StaticResource SineEaseOut}" />
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.EnterActions>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<ControlTemplate x:Key="LampEffect_OuterGlow" TargetType="{x:Type controls:BreathLamp}">
+		<Grid>
+			<Viewbox>
+				<Grid Width="60" Height="60">
+					<Border x:Name="PART_LampOuterGlow" Margin="1" BorderThickness="0" BorderBrush="Transparent" CornerRadius="{TemplateBinding CornerRadius}" Background="{DynamicResource DangerSolidColorBrush}" RenderTransformOrigin="0.5,0.5">
+						<Border.Effect>
+							<DropShadowEffect x:Name="PART_LampOuterGlow_Effect" BlurRadius="0" ShadowDepth="0" Color="{DynamicResource DangerColor}" />
+						</Border.Effect>
+					</Border>
+					<Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+				</Grid>
+			</Viewbox>
+			<ContentPresenter />
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsLampStart" Value="True">
+				<Trigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard RepeatBehavior="Forever">
+							<DoubleAnimation Duration="0:0:0.6" AutoReverse="True" BeginTime="0" From="0" To="40" Storyboard.TargetName="PART_LampOuterGlow_Effect" Storyboard.TargetProperty="BlurRadius" EasingFunction="{StaticResource SineEaseInOut}" />
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.EnterActions>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<Style TargetType="{x:Type controls:BreathLamp}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="BorderThickness" Value="1" />
+		<Style.Triggers>
+			<Trigger Property="LampEffect" Value="Eclipse">
+				<Setter Property="Template" Value="{StaticResource LampEffect_Eclipse}" />
+			</Trigger>
+			<Trigger Property="LampEffect" Value="Ripple">
+				<Setter Property="Template" Value="{StaticResource LampEffect_Ripple}" />
+			</Trigger>
+			<Trigger Property="LampEffect" Value="OuterGlow">
+				<Setter Property="Template" Value="{StaticResource LampEffect_OuterGlow}" />
+			</Trigger>
+			<Trigger Property="LampEffect" Value="Streamer">
+				<Setter Property="Template" Value="{StaticResource LampEffect_Streamer}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style TargetType="{x:Type controls:MasterCarousel}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MasterCarousel}">
+					<Grid Background="{TemplateBinding Background}">
+						<!--<Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Viewbox>
+                            <Canvas x:Name="PART_ContentDock" Grid.Row="0" Width="900" Height="400"/>
+                        </Viewbox>
+                        <StackPanel x:Name="PART_ButtonDock" Grid.Row="1" Orientation="Horizontal" 
+                                    VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+						<Viewbox>
+							<Canvas x:Name="PART_ContentDock" Width="900" Height="400" />
+						</Viewbox>
+						<StackPanel x:Name="PART_ButtonDock" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,210,0,0" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:EmphasizerCarousel}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:EmphasizerCarousel}">
+					<Grid Background="{TemplateBinding Background}">
+						<Canvas x:Name="PART_BackCanvas" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:ChatEmoji}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:ChatEmoji}">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+						<WrapPanel Grid.Column="0" Name="PART_Left" Visibility="Collapsed">
+							<Border Width="35" Height="35" VerticalAlignment="Top" Margin="0,10" CornerRadius="4" UseLayoutRounding="True">
+								<Border.Background>
+									<ImageBrush x:Name="LeftUser" ImageSource="{TemplateBinding LeftImageSource}" RenderOptions.BitmapScalingMode="LowQuality " Stretch="Fill" />
+								</Border.Background>
+							</Border>
+							<Path Data="{StaticResource PathChatLeft}" Fill="White" Width="10" Height="10" Stretch="Fill" StrokeThickness="0" Grid.Column="1" VerticalAlignment="Top" Margin="0,20,-14,0" UseLayoutRounding="True" SnapsToDevicePixels="True" />
+						</WrapPanel>
+						<Border CornerRadius="4" Background="#9EEA6A" UseLayoutRounding="True" SnapsToDevicePixels="True" Grid.Column="1" Margin="10" Name="PART_Border">
+							<TextBlock Name="PART_TextBlock" FontSize="15" Text="{TemplateBinding Text}" Padding="6" TextWrapping="Wrap" VerticalAlignment="Center" />
+						</Border>
+						<WrapPanel Grid.Column="2" Name="PART_Right">
+							<Path Data="{StaticResource PathChatRight}" Fill="#9EEA6A" Width="10" Height="10" Stretch="Fill" StrokeThickness="0" VerticalAlignment="Top" Margin="-14,20,0,0" UseLayoutRounding="True" SnapsToDevicePixels="True" />
+							<Border Width="35" Height="35" VerticalAlignment="Top" Margin="0,10" CornerRadius="4" UseLayoutRounding="True">
+								<Border.Background>
+									<ImageBrush x:Name="RightUser" ImageSource="{TemplateBinding RightImageSource}" RenderOptions.BitmapScalingMode="LowQuality" Stretch="Fill" />
+								</Border.Background>
+							</Border>
+						</WrapPanel>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:CheckCode}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="{x:Null}" />
+		<Setter Property="Width" Value="100" />
+		<Setter Property="Height" Value="40" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CheckCode}">
+					<Image x:Name="PART_Image" Stretch="Fill" Source="{TemplateBinding ImageSource}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:CircularMenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CircularMenuItem}">
+					<Grid VerticalAlignment="Top">
+						<Grid.RenderTransform>
+							<RotateTransform x:Name="PART_RotateTransform" Angle="{TemplateBinding Angle}" CenterX="200" CenterY="200" />
+						</Grid.RenderTransform>
+						<Path x:Name="PART_Path" Data="{StaticResource PathCircularItem}" Fill="{TemplateBinding BackgroundColor}" VerticalAlignment="Center" />
+						<Image Source="{TemplateBinding IconImage}" RenderTransformOrigin="0.5,0.5" Margin="60,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="40" Height="40">
+							<Image.RenderTransform>
+								<RotateTransform Angle="-70" />
+							</Image.RenderTransform>
+						</Image>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource PrimaryNormalSolidColorBrush}" />
+							<Setter Property="Cursor" Value="Hand" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:CircularMenu}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Width" Value="400" />
+		<Setter Property="Height" Value="400" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CircularMenu}">
+					<Grid>
+						<ItemsControl x:Name="PART_ItemsControl" ItemsSource="{TemplateBinding ItemsSource}" AlternationCount="{TemplateBinding AlternationCount}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+							<ItemsControl.Clip>
+								<EllipseGeometry x:Name="PART_EllipseGeometry" RadiusX="0" RadiusY="0" Center="200,200" />
+							</ItemsControl.Clip>
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<!--<controls:CircularMenuItem Angle="{Binding Angle}" MenuTxt="{Binding MenuTxt}"
+                                                                       BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource indexToColor}}" 
+                                                                       IconImage="{Binding IconImage}"/>-->
+									<controls:CircularMenuItem Angle="{Binding Angle}" BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource indexToColor}}" MenuTxt="{Binding MenuTxt}" IconImage="{Binding IconImage}">
+										<!--<controls:CircularMenuItem.InputBindings>
+                                            <MouseBinding MouseAction="LeftClick" Command="{Binding ClickCommand}" CommandParameter="{Binding MenuTxt}"></MouseBinding>
+                                        </controls:CircularMenuItem.InputBindings>-->
+									</controls:CircularMenuItem>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<Grid />
+								</ItemsPanelTemplate>
+							</ItemsControl.ItemsPanel>
+						</ItemsControl>
+						<ToggleButton x:Name="PART_ToggleButton" Cursor="Hand">
+							<ToggleButton.Template>
+								<ControlTemplate TargetType="ToggleButton">
+									<Grid>
+										<Ellipse x:Name="PART_Ellipse" Width="100" Height="100" Fill="{StaticResource PrimaryNormalSolidColorBrush}" ToolTip="关闭" />
+										<Path x:Name="PART_Path" Data="{StaticResource PathAdd}" Fill="{StaticResource WhiteSolidColorBrush}" Stretch="Fill" Width="20" Height="20" RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False" />
+									</Grid>
+									<ControlTemplate.Triggers>
+										<Trigger Property="IsChecked" Value="false">
+											<Setter TargetName="PART_Path" Property="RenderTransform">
+												<Setter.Value>
+													<RotateTransform Angle="45" />
+												</Setter.Value>
+											</Setter>
+											<Setter Property="ToolTip" TargetName="PART_Ellipse" Value="展开" />
+										</Trigger>
+									</ControlTemplate.Triggers>
+								</ControlTemplate>
+							</ToggleButton.Template>
+							<!--<ToggleButton.Triggers>
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard Storyboard="{StaticResource CheckedStoryboard}"/>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard Storyboard="{StaticResource UncheckedStoryboard}"/>
+                                </EventTrigger>
+                            </ToggleButton.Triggers>-->
+						</ToggleButton>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:CircularProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Maximum" Value="100" />
+		<Setter Property="StrokeThickness" Value="10" />
+		<Setter Property="Foreground" Value="{StaticResource InfoSolidColorBrush}" />
+		<Setter Property="Background" Value="{StaticResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="Width" Value="100" />
+		<Setter Property="Height" Value="100" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CircularProgressBar}">
+					<Viewbox>
+						<Canvas Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+							<Path Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BrushStrokeThickness}">
+								<Path.Data>
+									<PathGeometry>
+										<PathFigure StartPoint="50,0">
+											<ArcSegment SweepDirection="Clockwise" Size="50,50" Point="49.999127335374,7.61543361704753E-09" IsLargeArc="True" />
+										</PathFigure>
+									</PathGeometry>
+								</Path.Data>
+							</Path>
+							<Path Stroke="{TemplateBinding Background}" StrokeThickness="{TemplateBinding StrokeThickness}">
+								<Path.Data>
+									<PathGeometry>
+										<PathFigure StartPoint="50,0">
+											<ArcSegment SweepDirection="Clockwise" Size="50,50" Point="{Binding Path=Angle, Converter={StaticResource prConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}" IsLargeArc="{Binding Path=Angle, Converter={StaticResource isLargeConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}" />
+										</PathFigure>
+									</PathGeometry>
+								</Path.Data>
+							</Path>
+							<Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+								<TextBlock Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Value, StringFormat={}{0}%, &#xD;&#xA;                                RelativeSource={RelativeSource TemplatedParent}}" FontSize="{TemplateBinding FontSize}" />
+							</Border>
+						</Canvas>
+					</Viewbox>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:CropControl}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CropControl}">
+					<UniformGrid Rows="{TemplateBinding RowColumn}" Columns="{TemplateBinding RowColumn}" x:Name="PART_UniformGrid" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="BottomThumbStyle" TargetType="Thumb" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="SnapsToDevicePixels" Value="true" />
+		<Setter Property="OverridesDefaultStyle" Value="true" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Thumb">
+					<Ellipse Height="10" Width="10" Fill="{StaticResource PrimaryNormalSolidColorBrush}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:DragDrop}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:DragDrop}">
+					<DockPanel>
+						<Canvas DockPanel.Dock="Bottom">
+							<Thumb x:Name="PART_RectRightBottom" Width="20" Height="20" Style="{StaticResource BottomThumbStyle}" Canvas.Right="-10" Canvas.Bottom="-10" Cursor="SizeNWSE" />
+						</Canvas>
+						<Thumb x:Name="PART_Rect" Opacity=".4" Background="#45000000" Cursor="SizeAll" />
+					</DockPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:CutImage}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CutImage}">
+					<Grid>
+						<Border x:Name="PART_BorderPanel">
+							<Canvas x:Name="DrawCanvas" VerticalAlignment="Center" Background="Transparent" Width="{Binding ElementName=PART_BorderPanel,Path=ActualWidth}" Height="{Binding ElementName=PART_BorderPanel,Path=ActualHeight}">
+								<Rectangle x:Name="PART_RectImage" VerticalAlignment="Center" HorizontalAlignment="Center" Width="{Binding ElementName=PART_BorderPanel,Path=ActualWidth}" Height="{Binding ElementName=PART_BorderPanel,Path=ActualHeight}">
+									<Rectangle.Fill>
+										<ImageBrush ImageSource="{Binding ImageSource,RelativeSource={RelativeSource AncestorType={x:Type controls:CutImage}}}" />
+									</Rectangle.Fill>
+								</Rectangle>
+								<Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="{Binding ElementName=PART_RectImage,Path=ActualWidth}" Height="{Binding ElementName=PART_RectImage,Path=ActualHeight}" Fill="#99000000" />
+								<Rectangle VerticalAlignment="Center" HorizontalAlignment="Center" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+									<Rectangle.Fill>
+										<ImageBrush ImageSource="{Binding ImageSource,RelativeSource={RelativeSource AncestorType={x:Type controls:CutImage}}}" />
+									</Rectangle.Fill>
+									<Rectangle.Clip>
+										<RectangleGeometry x:Name="PART_RectangleGeometry" Rect="{TemplateBinding CutRect}" />
+									</Rectangle.Clip>
+								</Rectangle>
+								<controls:DragDrop x:Name="PART_DragDrop" Width="{Binding CutRect.Width,RelativeSource={RelativeSource AncestorType={x:Type controls:CutImage}}}" Height="{Binding CutRect.Height,RelativeSource={RelativeSource AncestorType={x:Type controls:CutImage}}}" Canvas.Left="{Binding CutRect.X,RelativeSource={RelativeSource AncestorType={x:Type controls:CutImage}}}" Canvas.Top="{Binding CutRect.Y,RelativeSource={RelativeSource AncestorType={x:Type controls:CutImage}}}" ParentMaxHeight="{Binding ElementName=DrawCanvas,Path=ActualHeight}" ParentMaxWidth="{Binding ElementName=DrawCanvas,Path=ActualWidth}" Visibility="Collapsed" />
+							</Canvas>
+						</Border>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:Dashboard}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Maximum" Value="100" />
+		<Setter Property="Background" Value="#252525" />
+		<Setter Property="Width" Value="200" />
+		<Setter Property="Height" Value="200" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:Dashboard}">
+					<Viewbox>
+						<Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
+							<Grid.RenderTransform>
+								<TransformGroup>
+									<RotateTransform Angle="-90" />
+								</TransformGroup>
+							</Grid.RenderTransform>
+							<ed:Arc ArcThickness="8" ArcThicknessUnit="Pixel" Fill="White" RenderTransformOrigin="0.5,0.5" StartAngle="0" EndAngle="180" Stretch="None" Margin="10" />
+							<ed:Arc x:Name="PART_PathBackground" Margin="24" ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="180" StartAngle="0" Stretch="None" />
+							<ed:Arc ArcThickness="8" ArcThicknessUnit="Pixel" Fill="{StaticResource NormalBrush}" StartAngle="0" EndAngle="{Binding Angle, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}" Stretch="None" Margin="10" />
+							<ec:PathListBox IsHitTestVisible="False" ItemsSource="{Binding ScaleArray,RelativeSource={RelativeSource FindAncestor,AncestorType=ProgressBar}}">
+								<ec:PathListBox.ItemTemplate>
+									<DataTemplate>
+										<Border Width="2" Height="8" Background="{Binding Background}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+									</DataTemplate>
+								</ec:PathListBox.ItemTemplate>
+								<ec:PathListBox.LayoutPaths>
+									<ec:LayoutPath Distribution="Even" Orientation="OrientToPath" SourceElement="{Binding ElementName=PART_PathBackground}" />
+								</ec:PathListBox.LayoutPaths>
+							</ec:PathListBox>
+							<Border RenderTransformOrigin="0.5,0.5" Margin="30,0,0,0">
+								<Border.RenderTransform>
+									<TransformGroup>
+										<RotateTransform Angle="90" />
+									</TransformGroup>
+								</Border.RenderTransform>
+								<TextBlock Foreground="{StaticResource NormalBrush}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Value, StringFormat={}{0}%, &#xD;&#xA;                                                    RelativeSource={RelativeSource TemplatedParent}}" FontWeight="Bold" FontFamily="Agency FB" />
+							</Border>
+						</Grid>
+					</Viewbox>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="DrawingControlItem" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ListBoxItem">
+					<Border SnapsToDevicePixels="True">
+						<ContentPresenter />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsSelected" Value="true">
+							<Setter Property="Background" Value="{x:Null}" />
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Foreground" Value="{x:Null}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="controls:DrawingControl" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderBrush" Value="{x:Null}" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Foreground" Value="{StaticResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+		<Setter Property="ScrollViewer.PanningMode" Value="Both" />
+		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="ItemContainerStyle" Value="{StaticResource DrawingControlItem}" />
+		<Setter Property="Margin" Value="0" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<controls:DrawingPanel x:Name="PART_DrawingPanel" Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelBackground, Mode=TwoWay}" CornerRadius="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelCornerRadius, Mode=TwoWay}" BorderThickness="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelBorderThinckness, Mode=TwoWay}" BorderBrush="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelBorderBrush, Mode=TwoWay}" Offset="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=ItemOffset, Mode=TwoWay}" Mode="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelDrawingMode, Mode=TwoWay}" StartOffsetAngle="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelStartAngleOffset, Mode=TwoWay}" MultipleArrayDescription="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelMultipleDescription, Mode=TwoWay}" LayerSpace="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=controls:DrawingControl}, Path=PanelMultipleSpace, Mode=TwoWay}" />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+		<!--<Setter Property="ItemContainerStyle" Value="{StaticResource DrawingElementStyle}"/>-->
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:DrawingControl}">
+					<Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="0" SnapsToDevicePixels="true">
+						<Grid>
+							<ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+								<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+							</ScrollViewer>
+							<Border x:Name="PART_InnerBorder" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{TemplateBinding InnerBackground}" BorderBrush="{TemplateBinding InnerBorderBrush}" BorderThickness="{TemplateBinding InnerBorderThickness}" CornerRadius="{TemplateBinding InnerCornerRadius}" Padding="3">
+								<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+							</Border>
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Opacity" Value="0.4" />
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsGrouping" Value="true" />
+							</MultiTrigger.Conditions>
+							<Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+						</MultiTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:EdgeLight}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Padding" Value="20" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:EdgeLight}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="EdgeLightStoryboard">
+							<DoubleAnimation Duration="00:00:0.5" To="1" Storyboard.TargetName="PART_Top" Storyboard.TargetProperty="ScaleX" />
+							<DoubleAnimation Duration="00:00:0.5" BeginTime="00:00:0.5" To="1" Storyboard.TargetName="PART_Right" Storyboard.TargetProperty="ScaleY" />
+							<DoubleAnimation Duration="00:00:.5" BeginTime="00:00:01" To="1" Storyboard.TargetName="PART_Bottom" Storyboard.TargetProperty="ScaleX" />
+							<DoubleAnimation Duration="00:00:.5" BeginTime="00:00:01.5" To="1" Storyboard.TargetName="PART_Left" Storyboard.TargetProperty="ScaleY" />
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Grid>
+						<DockPanel LastChildFill="False">
+							<Rectangle DockPanel.Dock="Top" Height="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}">
+								<Rectangle.RenderTransform>
+									<ScaleTransform x:Name="PART_Top" ScaleX="0" />
+								</Rectangle.RenderTransform>
+							</Rectangle>
+							<Rectangle DockPanel.Dock="Right" Width="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}">
+								<Rectangle.RenderTransform>
+									<ScaleTransform x:Name="PART_Right" ScaleY="0" />
+								</Rectangle.RenderTransform>
+							</Rectangle>
+							<Rectangle DockPanel.Dock="Bottom" Height="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}" RenderTransformOrigin="1,1">
+								<Rectangle.RenderTransform>
+									<ScaleTransform x:Name="PART_Bottom" ScaleX="0" />
+								</Rectangle.RenderTransform>
+							</Rectangle>
+							<Rectangle DockPanel.Dock="Left" Width="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}" RenderTransformOrigin="1,1">
+								<Rectangle.RenderTransform>
+									<ScaleTransform x:Name="PART_Left" ScaleY="0" />
+								</Rectangle.RenderTransform>
+							</Rectangle>
+						</DockPanel>
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsAnimation" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="beginAnimation" Storyboard="{StaticResource EdgeLightStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="beginAnimation" />
+							</Trigger.ExitActions>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:StreamerLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Width" Value="100" />
+		<Setter Property="Height" Value="100" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
+					<Rectangle x:Name="PART_Rectangle" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="Center" VerticalAlignment="Center" StrokeThickness="3">
+						<Rectangle.Stroke>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity=".6">
+								<GradientStop Color="Transparent" Offset="0" />
+								<GradientStop Color="{StaticResource PrimaryNormalColor}" Offset="1" />
+							</LinearGradientBrush>
+						</Rectangle.Stroke>
+					</Rectangle>
+					<ControlTemplate.Triggers>
+						<EventTrigger RoutedEvent="Loaded">
+							<BeginStoryboard>
+								<Storyboard RepeatBehavior="Forever">
+									<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)" Storyboard.TargetName="PART_Rectangle">
+										<EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148" />
+										<EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855" />
+										<EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855" />
+										<EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149" />
+										<EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0" />
+									</PointAnimationUsingKeyFrames>
+									<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.EndPoint)" Storyboard.TargetName="PART_Rectangle">
+										<EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852" />
+										<EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145" />
+										<EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145" />
+										<EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851" />
+										<EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1" />
+									</PointAnimationUsingKeyFrames>
+								</Storyboard>
+							</BeginStoryboard>
+						</EventTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:WaitLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:WaitLoading}">
+					<Canvas Width="100" Height="20">
+						<Ellipse x:Name="PART_RedEllipase" Canvas.Left="0" Height="20" Width="20" Fill="{StaticResource DangerSolidColorBrush}" />
+						<Ellipse x:Name="PART_GreenEllipase" Canvas.Left="50" Height="20" Width="20" Fill="{StaticResource SuccessSolidColorBrush}" />
+						<Ellipse x:Name="PART_OrangeEllipase" Canvas.Left="100" Height="20" Width="20" Fill="{StaticResource WarningSolidColorBrush}" />
+					</Canvas>
+					<ControlTemplate.Triggers>
+						<EventTrigger RoutedEvent="Loaded">
+							<BeginStoryboard>
+								<Storyboard RepeatBehavior="Forever">
+									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="PART_RedEllipase">
+										<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:1" Value="100" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
+										<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
+										<EasingDoubleKeyFrame KeyTime="0:0:3" Value="0" EasingFunction="{StaticResource PowerEaseInOut}" />
+									</DoubleAnimationUsingKeyFrames>
+									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="PART_GreenEllipase">
+										<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" />
+										<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:3" Value="50" />
+									</DoubleAnimationUsingKeyFrames>
+									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="PART_OrangeEllipase">
+										<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:1" Value="50" />
+										<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" />
+										<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" EasingFunction="{StaticResource PowerEaseInOut}" />
+										<EasingDoubleKeyFrame KeyTime="0:0:3" Value="100" EasingFunction="{StaticResource PowerEaseInOut}" />
+									</DoubleAnimationUsingKeyFrames>
+								</Storyboard>
+							</BeginStoryboard>
+						</EventTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:CycleLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="30" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CycleLoading}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="Storyboard_LoadRunning" RepeatBehavior="Forever" SpeedRatio="2">
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" Storyboard.TargetName="Part_Cycle_Rotate" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" Storyboard.TargetName="Part_Cycle_Rotate1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Grid>
+						<Viewbox>
+							<Grid Width="400" Height="400">
+								<Grid x:Name="Part_Cycle_Rotate1" RenderTransformOrigin="0.5,0.5">
+									<Grid.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Grid.RenderTransform>
+									<Ellipse Margin="0,50,0,50">
+										<Ellipse.Fill>
+											<LinearGradientBrush>
+												<GradientStop Color="White" Offset="0" />
+												<GradientStop Color="White" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+										<Ellipse.Effect>
+											<BlurEffect Radius="40" />
+										</Ellipse.Effect>
+									</Ellipse>
+									<Ellipse Margin="50,0,50,0">
+										<Ellipse.Fill>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+												<GradientStop Color="White" Offset="0.4" />
+												<GradientStop Color="White" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+										<Ellipse.Effect>
+											<BlurEffect Radius="40" />
+										</Ellipse.Effect>
+									</Ellipse>
+								</Grid>
+								<Grid x:Name="Part_Cycle_Rotate" RenderTransformOrigin="0.5,0.5">
+									<Grid.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Grid.RenderTransform>
+									<Ellipse Margin="0,50,0,50">
+										<Ellipse.Fill>
+											<LinearGradientBrush>
+												<GradientStop Color="#d495f1" Offset="0" />
+												<GradientStop Color="#87d3f7" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+										<Ellipse.Effect>
+											<BlurEffect Radius="15" />
+										</Ellipse.Effect>
+									</Ellipse>
+									<Ellipse Margin="50,0,50,0">
+										<Ellipse.Fill>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+												<GradientStop Color="#f173ac" Offset="0" />
+												<GradientStop Color="#33a3dc" Offset="1" />
+											</LinearGradientBrush>
+										</Ellipse.Fill>
+										<Ellipse.Effect>
+											<BlurEffect Radius="15" />
+										</Ellipse.Effect>
+									</Ellipse>
+								</Grid>
+								<Ellipse Margin="33" Fill="Black">
+									<Ellipse.Effect>
+										<DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="White" />
+									</Ellipse.Effect>
+								</Ellipse>
+							</Grid>
+						</Viewbox>
+						<Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{TemplateBinding LoadTitle}" />
+							<ContentPresenter Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+							<TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Text="{TemplateBinding ValueDescription}" />
+						</Grid>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsStart" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource Storyboard_LoadRunning}" x:Name="Storyboard_LoadRunning" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="Storyboard_LoadRunning" />
+							</Trigger.ExitActions>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:RollLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="ForegroundColor" Value="{StaticResource DangerColor}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:RollLoading}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="RollKey" RepeatBehavior="Forever">
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="2" Storyboard.TargetName="PART_Border1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="4" Storyboard.TargetName="PART_Border2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="6" Storyboard.TargetName="PART_Border3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="8" Storyboard.TargetName="PART_Border4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="10" Storyboard.TargetName="PART_Border5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="12" Storyboard.TargetName="PART_Border6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="14" Storyboard.TargetName="PART_Border7" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="16" Storyboard.TargetName="PART_Border8" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<ColorAnimationUsingKeyFrames Duration="0:0:5" Storyboard.TargetProperty="ForegroundColor" RepeatBehavior="Forever">
+								<EasingColorKeyFrame KeyTime="0:0:0" Value="Red" EasingFunction="{StaticResource PowerEaseInOut}" />
+								<EasingColorKeyFrame KeyTime="0:0:1" Value="Blue" EasingFunction="{StaticResource PowerEaseInOut}" />
+								<EasingColorKeyFrame KeyTime="0:0:2" Value="Yellow" EasingFunction="{StaticResource PowerEaseInOut}" />
+								<EasingColorKeyFrame KeyTime="0:0:3" Value="Green" EasingFunction="{StaticResource PowerEaseInOut}" />
+								<EasingColorKeyFrame KeyTime="0:0:4" Value="Aqua" EasingFunction="{StaticResource PowerEaseInOut}" />
+								<EasingColorKeyFrame KeyTime="0:0:5" Value="Red" EasingFunction="{StaticResource PowerEaseInOut}" />
+							</ColorAnimationUsingKeyFrames>
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Viewbox>
+							<Grid>
+								<Border x:Name="PART_Border1" Width="160" Height="160" BorderThickness="0,5,0,0" CornerRadius="80" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+								<Border x:Name="PART_Border2" Width="140" Height="140" BorderThickness="0,5,0,0" CornerRadius="70" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+								<Border x:Name="PART_Border3" Width="120" Height="120" BorderThickness="0,5,0,0" CornerRadius="60" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+								<Border x:Name="PART_Border4" Width="100" Height="100" BorderThickness="0,5,0,0" CornerRadius="50" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+								<Border x:Name="PART_Border5" Width="80" Height="80" BorderThickness="0,5,0,0" CornerRadius="40" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+								<Border x:Name="PART_Border6" Width="60" Height="60" BorderThickness="0,5,0,0" CornerRadius="30" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+								<Border x:Name="PART_Border7" Width="40" Height="40" BorderThickness="0,5,0,0" CornerRadius="20" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+								<Border x:Name="PART_Border8" Width="20" Height="20" BorderThickness="0,5,0,0" CornerRadius="10" RenderTransformOrigin="0.5,0.5">
+									<Border.BorderBrush>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+											<LinearGradientBrush.GradientStops>
+												<GradientStop Color="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundColor}" Offset="0.5" />
+												<GradientStop Color="Transparent" Offset="0.5" />
+											</LinearGradientBrush.GradientStops>
+										</LinearGradientBrush>
+									</Border.BorderBrush>
+									<Border.RenderTransform>
+										<TransformGroup>
+											<ScaleTransform />
+											<SkewTransform />
+											<RotateTransform />
+											<TranslateTransform />
+										</TransformGroup>
+									</Border.RenderTransform>
+								</Border>
+							</Grid>
+						</Viewbox>
+						<ContentPresenter Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsStart" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="Roll_Storyboard" Storyboard="{StaticResource RollKey}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="Roll_Storyboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="controls:RingLoading" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:RingLoading">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="PART_Resource_Storyboard" RepeatBehavior="Forever">
+							<DoubleAnimation To="-495" Duration="0:0:1.5" Storyboard.TargetName="PART_Ring1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation To="585" Duration="0:0:1.5" Storyboard.TargetName="PART_Ring2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+							<DoubleAnimation To="-315" Duration="0:0:1.5" Storyboard.TargetName="PART_Ring3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Border Padding="10" Width="100" Height="100">
+								<Grid>
+									<Grid x:Name="PART_Ring1" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+										<Grid.RenderTransform>
+											<TransformGroup>
+												<ScaleTransform />
+												<SkewTransform />
+												<RotateTransform Angle="-135" />
+												<TranslateTransform />
+											</TransformGroup>
+										</Grid.RenderTransform>
+										<Ellipse Stroke="Red" StrokeThickness="2" StrokeDashArray="23 100" RenderTransformOrigin="0.5,0.5" />
+										<Border Width="10" Height="10" CornerRadius="10" Background="Red" HorizontalAlignment="Right" Margin="0,0,-4,0">
+											<Border.Effect>
+												<DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="Red" />
+											</Border.Effect>
+										</Border>
+									</Grid>
+									<Grid x:Name="PART_Ring2" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+										<Grid.RenderTransform>
+											<TransformGroup>
+												<ScaleTransform />
+												<SkewTransform />
+												<RotateTransform Angle="225" />
+												<TranslateTransform />
+											</TransformGroup>
+										</Grid.RenderTransform>
+										<Ellipse Stroke="Purple" StrokeThickness="2" StrokeDashArray="23 100" />
+										<Border Width="10" Height="10" CornerRadius="10" Background="Purple" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,-4">
+											<Border.Effect>
+												<DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="Purple" />
+											</Border.Effect>
+										</Border>
+									</Grid>
+									<Grid x:Name="PART_Ring3" Width="60" Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+										<Grid.RenderTransform>
+											<TransformGroup>
+												<ScaleTransform />
+												<SkewTransform />
+												<RotateTransform Angle="45" />
+												<TranslateTransform />
+											</TransformGroup>
+										</Grid.RenderTransform>
+										<Ellipse Stroke="#0fb8b2" StrokeThickness="2" StrokeDashArray="23 100" />
+										<Border Width="10" Height="10" CornerRadius="10" Background="#0fb8b2" HorizontalAlignment="Right" Margin="0,0,-4,0">
+											<Border.Effect>
+												<DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#0fb8b2" />
+											</Border.Effect>
+										</Border>
+									</Grid>
+								</Grid>
+							</Border>
+						</Viewbox>
+						<StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
+							<TextBlock HorizontalAlignment="Center" Text="Loading..." Margin="0,0,0,15" />
+							<TextBlock HorizontalAlignment="Center" Text="{TemplateBinding Description}" Margin="0,0,0,15" />
+							<TextBlock HorizontalAlignment="Center" Text="{TemplateBinding Progress}" FontSize="{StaticResource TitleFontSize}" FontWeight="Bold" />
+						</StackPanel>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsStart" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource PART_Resource_Storyboard}" x:Name="PART_BeginStoryboard" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="PART_BeginStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ControlTemplate x:Key="NavigateMenuLeft" TargetType="{x:Type controls:NavigateMenu}">
+		<Grid>
+			<Rectangle x:Name="PART_RectangleSlider" Height="{TemplateBinding Height}" Fill="{DynamicResource LighterSolidColorBrush}" Width="3" HorizontalAlignment="Right" />
+			<Rectangle Width="3" Height="40" Fill="{DynamicResource PrimaryNormalSolidColorBrush}" VerticalAlignment="Top" HorizontalAlignment="Right">
+				<Rectangle.RenderTransform>
+					<TranslateTransform x:Name="PART_TranslateTransform" />
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<ListBox ItemsSource="{TemplateBinding ItemsSource}" x:Name="PART_ListBox" Background="Transparent" BorderThickness="0" SelectedItem="{Binding SelectedItem,RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}" SelectedIndex="{Binding SelectedIndex,RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Content}" TextTrimming="CharacterEllipsis" />
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+				<ListBox.ItemContainerStyle>
+					<!--<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">-->
+					<Style TargetType="ListBoxItem" BasedOn="{x:Null}">
+						<Setter Property="VerticalContentAlignment" Value="Center" />
+						<Setter Property="Cursor" Value="Hand" />
+						<!--<Setter Property="Height" Value="40"/>-->
+						<Setter Property="Padding" Value="10,8" />
+						<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="{x:Type ListBoxItem}">
+									<Border x:Name="PART_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+										<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+									</Border>
+									<ControlTemplate.Triggers>
+										<Trigger Property="IsSelected" Value="True">
+											<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+										</Trigger>
+										<Trigger Property="IsMouseOver" Value="True">
+											<Setter Property="Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
+										</Trigger>
+									</ControlTemplate.Triggers>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</ListBox.ItemContainerStyle>
+			</ListBox>
+		</Grid>
+	</ControlTemplate>
+	<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Padding" Value="10,8" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ListBoxItem}">
+					<Border x:Name="PART_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ControlTemplate x:Key="NavigateMenuTop" TargetType="{x:Type controls:NavigateMenu}">
+		<Grid>
+			<Rectangle x:Name="PART_RectangleSlider" Width="{TemplateBinding Width}" Fill="{DynamicResource LighterSolidColorBrush}" Height="3" VerticalAlignment="Bottom" />
+			<Rectangle Width="{TemplateBinding RectangleSelectWidth}" Height="3" Fill="{DynamicResource PrimaryNormalSolidColorBrush}" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+				<Rectangle.RenderTransform>
+					<TranslateTransform x:Name="PART_TranslateTransform" />
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<ItemsPresenter />
+			<!--<ListBox ItemsSource="{TemplateBinding ItemsSource}" 
+                                 x:Name="PART_ListBox"
+                                 Background="Transparent" BorderThickness="0"
+                                 SelectedItem="{Binding SelectedItem,RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}"
+                                 SelectedIndex="{Binding SelectedIndex,RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}"
+                                 ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Content}" TextTrimming="CharacterEllipsis"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Padding" Value="10,8"/>
+                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border x:Name="PART_Border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}" 
+                                        SnapsToDevicePixels="true">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>-->
+		</Grid>
+	</ControlTemplate>
+	<Style TargetType="{x:Type controls:NavigateMenu}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Style.Triggers>
+			<Trigger Property="TabStripPlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource NavigateMenuLeft}" />
+			</Trigger>
+			<Trigger Property="TabStripPlacement" Value="Top">
+				<Setter Property="ItemsPanel">
+					<Setter.Value>
+						<ItemsPanelTemplate>
+							<VirtualizingStackPanel Orientation="Horizontal" />
+						</ItemsPanelTemplate>
+					</Setter.Value>
+				</Setter>
+				<Setter Property="Template" Value="{StaticResource NavigateMenuTop}" />
+			</Trigger>
+			<!--<Trigger Property="LampEffect" Value="OuterGlow">
+                <Setter Property="Template" Value="{StaticResource LampEffect_OuterGlow}"/>
+            </Trigger>
+
+            <Trigger Property="LampEffect" Value="Streamer">
+                <Setter Property="Template" Value="{StaticResource LampEffect_Streamer}"/>
+            </Trigger>-->
+		</Style.Triggers>
+	</Style>
+	<Style TargetType="controls:FireControl">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:FireControl">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="PART_Fire_Storyboard" RepeatBehavior="Forever" Duration="0:0:0.1">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Container" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
+								<LinearDoubleKeyFrame Value="-1" KeyTime="0:0:0" />
+								<LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.2" />
+								<LinearDoubleKeyFrame Value="-1" KeyTime="0:0:0.4" />
+								<LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.6" />
+								<LinearDoubleKeyFrame Value="-1" KeyTime="0:0:0.8" />
+								<LinearDoubleKeyFrame Value="1" KeyTime="0:0:1" />
+							</DoubleAnimationUsingKeyFrames>
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Container" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)">
+								<LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.0" />
+								<LinearDoubleKeyFrame Value="1.3" KeyTime="0:0:0.2" />
+								<LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.4" />
+								<LinearDoubleKeyFrame Value="1.3" KeyTime="0:0:0.5" />
+								<LinearDoubleKeyFrame Value="1" KeyTime="0:0:0.8" />
+								<LinearDoubleKeyFrame Value="1.3" KeyTime="0:0:1" />
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Viewbox>
+						<Grid x:Name="PART_Container" Width="50" Height="50" RenderTransformOrigin="0,1">
+							<Grid.RenderTransform>
+								<TransformGroup>
+									<RotateTransform CenterX="25" CenterY="25" />
+									<ScaleTransform />
+								</TransformGroup>
+							</Grid.RenderTransform>
+							<Grid VerticalAlignment="Bottom">
+								<Path HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="Uniform" Height="50" Fill="OrangeRed" Data="M563.308448 313.43188C495.439988 103.734035 591.338282 0 591.338282 0S276.514483 151.316058 183.199572 559.143951c-39.235011-56.442559-73.469923-87.328305-69.571197-77.222249 42.108942 109.060717-53.057357 157.906279-51.793818 272.879275 1.281557 114.954978 199.722422 246.534159 199.722422 246.53416l0.054055-0.164418a291.39766 291.39766 0 0 0 24.716706 16.349423 384.906268 384.906268 0 0 1-20.761672-26.948732c-21.511687-30.70331-36.61559-63.089087-36.964696-94.303668-0.677941-61.589057 26.252772-104.20927 44.982872-147.2867 16.23906-37.311549 26.345116-74.972205 6.810946-125.592576-3.076637-7.964122 17.63098 9.630821 45.750906 45.111254 54.850185-148.770963 108.878281-277.676668 108.878281-277.676668s1.391919 202.504009 70.028413 332.270091c64.424699 121.801961 60.56201 184.361758 60.56201 184.361757 117.189257-112.026992 156.385979-290.053039 156.385979-290.053039 42.602195 37.568311 67.098175 85.314752 80.884484 133.263899 29.036611 100.932178-30.95782 202.375628-32.295685 212.188885-0.567579 4.083414-1.610392 7.889796-2.488788 11.790774-4.101433 18.417031-11.479957 34.876817-21.640068 49.359086 11.00247-6.993382 21.439614-14.700741 31.489362-22.8473l0.054055 0.164418s182.895512-131.579181 184.159051-246.552178c1.263539-114.954978-93.900507-163.80054-51.793818-272.879275 3.644216-9.446133-24.185163 16.842676-57.724115 66.440504-33.210117-102.432208-54.485313-185.222135-165.46724-283.113712 0 0 20.522929 222.680084-97.434361 383.917509 0.020271 0.047298 41.451271-125.984476-26.435208-335.702591z">
+									<Path.Effect>
+										<DropShadowEffect BlurRadius="6" Color="OrangeRed" ShadowDepth="0" />
+									</Path.Effect>
+								</Path>
+								<Path HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="Uniform" Margin="0,0,3,0" Height="44" Fill="Orange" Data="M563.308448 313.43188C495.439988 103.734035 591.338282 0 591.338282 0S276.514483 151.316058 183.199572 559.143951c-39.235011-56.442559-73.469923-87.328305-69.571197-77.222249 42.108942 109.060717-53.057357 157.906279-51.793818 272.879275 1.281557 114.954978 199.722422 246.534159 199.722422 246.53416l0.054055-0.164418a291.39766 291.39766 0 0 0 24.716706 16.349423 384.906268 384.906268 0 0 1-20.761672-26.948732c-21.511687-30.70331-36.61559-63.089087-36.964696-94.303668-0.677941-61.589057 26.252772-104.20927 44.982872-147.2867 16.23906-37.311549 26.345116-74.972205 6.810946-125.592576-3.076637-7.964122 17.63098 9.630821 45.750906 45.111254 54.850185-148.770963 108.878281-277.676668 108.878281-277.676668s1.391919 202.504009 70.028413 332.270091c64.424699 121.801961 60.56201 184.361758 60.56201 184.361757 117.189257-112.026992 156.385979-290.053039 156.385979-290.053039 42.602195 37.568311 67.098175 85.314752 80.884484 133.263899 29.036611 100.932178-30.95782 202.375628-32.295685 212.188885-0.567579 4.083414-1.610392 7.889796-2.488788 11.790774-4.101433 18.417031-11.479957 34.876817-21.640068 49.359086 11.00247-6.993382 21.439614-14.700741 31.489362-22.8473l0.054055 0.164418s182.895512-131.579181 184.159051-246.552178c1.263539-114.954978-93.900507-163.80054-51.793818-272.879275 3.644216-9.446133-24.185163 16.842676-57.724115 66.440504-33.210117-102.432208-54.485313-185.222135-165.46724-283.113712 0 0 20.522929 222.680084-97.434361 383.917509 0.020271 0.047298 41.451271-125.984476-26.435208-335.702591z">
+									<Path.Effect>
+										<DropShadowEffect BlurRadius="10" Color="Orange" ShadowDepth="0" />
+									</Path.Effect>
+								</Path>
+								<Path HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="Uniform" Margin="0,0,3,0" Height="38" Fill="Gold" Data="M563.308448 313.43188C495.439988 103.734035 591.338282 0 591.338282 0S276.514483 151.316058 183.199572 559.143951c-39.235011-56.442559-73.469923-87.328305-69.571197-77.222249 42.108942 109.060717-53.057357 157.906279-51.793818 272.879275 1.281557 114.954978 199.722422 246.534159 199.722422 246.53416l0.054055-0.164418a291.39766 291.39766 0 0 0 24.716706 16.349423 384.906268 384.906268 0 0 1-20.761672-26.948732c-21.511687-30.70331-36.61559-63.089087-36.964696-94.303668-0.677941-61.589057 26.252772-104.20927 44.982872-147.2867 16.23906-37.311549 26.345116-74.972205 6.810946-125.592576-3.076637-7.964122 17.63098 9.630821 45.750906 45.111254 54.850185-148.770963 108.878281-277.676668 108.878281-277.676668s1.391919 202.504009 70.028413 332.270091c64.424699 121.801961 60.56201 184.361758 60.56201 184.361757 117.189257-112.026992 156.385979-290.053039 156.385979-290.053039 42.602195 37.568311 67.098175 85.314752 80.884484 133.263899 29.036611 100.932178-30.95782 202.375628-32.295685 212.188885-0.567579 4.083414-1.610392 7.889796-2.488788 11.790774-4.101433 18.417031-11.479957 34.876817-21.640068 49.359086 11.00247-6.993382 21.439614-14.700741 31.489362-22.8473l0.054055 0.164418s182.895512-131.579181 184.159051-246.552178c1.263539-114.954978-93.900507-163.80054-51.793818-272.879275 3.644216-9.446133-24.185163 16.842676-57.724115 66.440504-33.210117-102.432208-54.485313-185.222135-165.46724-283.113712 0 0 20.522929 222.680084-97.434361 383.917509 0.020271 0.047298 41.451271-125.984476-26.435208-335.702591z">
+									<Path.Effect>
+										<DropShadowEffect BlurRadius="10" Color="Gold" ShadowDepth="0" />
+									</Path.Effect>
+								</Path>
+								<Path HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="Uniform" Height="32" Margin="0,0,3,0" Fill="LightYellow" Data="M563.308448 313.43188C495.439988 103.734035 591.338282 0 591.338282 0S276.514483 151.316058 183.199572 559.143951c-39.235011-56.442559-73.469923-87.328305-69.571197-77.222249 42.108942 109.060717-53.057357 157.906279-51.793818 272.879275 1.281557 114.954978 199.722422 246.534159 199.722422 246.53416l0.054055-0.164418a291.39766 291.39766 0 0 0 24.716706 16.349423 384.906268 384.906268 0 0 1-20.761672-26.948732c-21.511687-30.70331-36.61559-63.089087-36.964696-94.303668-0.677941-61.589057 26.252772-104.20927 44.982872-147.2867 16.23906-37.311549 26.345116-74.972205 6.810946-125.592576-3.076637-7.964122 17.63098 9.630821 45.750906 45.111254 54.850185-148.770963 108.878281-277.676668 108.878281-277.676668s1.391919 202.504009 70.028413 332.270091c64.424699 121.801961 60.56201 184.361758 60.56201 184.361757 117.189257-112.026992 156.385979-290.053039 156.385979-290.053039 42.602195 37.568311 67.098175 85.314752 80.884484 133.263899 29.036611 100.932178-30.95782 202.375628-32.295685 212.188885-0.567579 4.083414-1.610392 7.889796-2.488788 11.790774-4.101433 18.417031-11.479957 34.876817-21.640068 49.359086 11.00247-6.993382 21.439614-14.700741 31.489362-22.8473l0.054055 0.164418s182.895512-131.579181 184.159051-246.552178c1.263539-114.954978-93.900507-163.80054-51.793818-272.879275 3.644216-9.446133-24.185163 16.842676-57.724115 66.440504-33.210117-102.432208-54.485313-185.222135-165.46724-283.113712 0 0 20.522929 222.680084-97.434361 383.917509 0.020271 0.047298 41.451271-125.984476-26.435208-335.702591z">
+									<Path.Effect>
+										<DropShadowEffect BlurRadius="10" Color="LightYellow" ShadowDepth="0" />
+									</Path.Effect>
+								</Path>
+							</Grid>
+						</Grid>
+					</Viewbox>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsStart" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource PART_Fire_Storyboard}" x:Name="part_fire_storyboard" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="part_fire_storyboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="PageListBoxStyleKey" TargetType="{x:Type ListBox}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Padding" Value="0" />
+		<Setter Property="BorderBrush" Value="#007ACC" />
+		<Setter Property="Foreground" Value="#141414" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ListBox}">
+					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+						<ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+							<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</ScrollViewer>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsGrouping" Value="true">
+							<Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="PageListBoxItemStyleKey" TargetType="{x:Type ListBoxItem}">
+		<Setter Property="MinWidth" Value="32" />
+		<Setter Property="Background" Value="#323E4E" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="#3E4756" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="Padding" Value="5,0" />
+		<Setter Property="Margin" Value="3,0" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ListBoxItem}">
+					<Border SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}">
+						<ContentPresenter x:Name="contentPresenter" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<DataTrigger Binding="{Binding .}" Value="···">
+				<Setter Property="IsEnabled" Value="False" />
+				<Setter Property="FontWeight" Value="Bold" />
+			</DataTrigger>
+			<Trigger Property="IsSelected" Value="true">
+				<Setter Property="Background" Value="{StaticResource PrimaryPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="false">
+				<Setter Property="Opacity" Value="0.4" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<ControlTemplate x:Key="LitePagerControlTemplate" TargetType="{x:Type controls:Pagination}">
+		<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto" />
+					<ColumnDefinition Width="10" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="auto" />
+					<ColumnDefinition Width="10" />
+					<ColumnDefinition Width="auto" />
+					<ColumnDefinition Width="5" />
+					<ColumnDefinition />
+					<ColumnDefinition Width="5" />
+					<ColumnDefinition Width="auto" />
+				</Grid.ColumnDefinitions>
+				<TextBlock VerticalAlignment="Center" Text="{Binding Count,StringFormat=共 {0} 条,RelativeSource={RelativeSource TemplatedParent}}" />
+				<TextBox Grid.Column="2" x:Name="PART_CountPerPageTextBox" TextAlignment="Center" VerticalContentAlignment="Center" Padding="3,0" MinWidth="0" Background="#00000000" FontSize="{TemplateBinding FontSize}" />
+				<TextBlock Grid.Column="3" Text=" 条 / 页" VerticalAlignment="Center" />
+				<Button Grid.Column="5" Width="32" Command="{x:Static controls:Pagination.PrevCommand}" Style="{StaticResource PageButtonStyleKey}">
+					<Path Width="7" Height="10" Stretch="Fill" Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" Data="M242.9 512l448 448 90.2-90.3L423.4 512l357.7-357.7L690.9 64z" />
+				</Button>
+				<TextBox Grid.Column="7" x:Name="PART_JumpPageTextBox" TextAlignment="Center" VerticalContentAlignment="Center" Padding="3,0" MinWidth="0" Background="#00000000" FontSize="{TemplateBinding FontSize}">
+					<TextBox.ToolTip>
+						<TextBlock>
+							<TextBlock.Text>
+								<MultiBinding StringFormat="{}{0}/{1}">
+									<Binding Path="Current" RelativeSource="{RelativeSource TemplatedParent}" />
+									<Binding Path="PageCount" RelativeSource="{RelativeSource TemplatedParent}" />
+								</MultiBinding>
+							</TextBlock.Text>
+						</TextBlock>
+					</TextBox.ToolTip>
+				</TextBox>
+				<Button Grid.Column="9" Width="32" Command="{x:Static controls:Pagination.NextCommand}" Style="{StaticResource PageButtonStyleKey}">
+					<Path Width="7" Height="10" Stretch="Fill" Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" Data="M377.3568 102.40000001l335.122286 335.12045699L786.94582899 512l-74.46674299 74.468571L377.3568 921.59999999l-74.475886-74.46857099L638.005029 512l-335.124115-335.1296L377.3568 102.40000001z" />
+				</Button>
+			</Grid>
+		</Border>
+	</ControlTemplate>
+	<Style TargetType="{x:Type controls:Pagination}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="FontSize" Value="13" />
+		<!--<Setter Property="Foreground" Value="#BEC1C6"/>-->
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:Pagination}">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="auto" />
+								<ColumnDefinition Width="auto" />
+							</Grid.ColumnDefinitions>
+							<TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="{Binding Count,StringFormat=共 {0} 条,RelativeSource={RelativeSource TemplatedParent}}" />
+							<StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,15,0">
+								<TextBlock Text="每页 " VerticalAlignment="Center" />
+								<TextBox x:Name="PART_CountPerPageTextBox" TextAlignment="Center" Width="60" VerticalContentAlignment="Center" Padding="3,0" MinWidth="0" Background="#00000000" FontSize="{TemplateBinding FontSize}" />
+								<TextBlock Text=" 条" VerticalAlignment="Center" />
+							</StackPanel>
+							<Button Grid.Column="2" Width="30" Margin="0,0,3,0" Command="{x:Static controls:Pagination.PrevCommand}" Style="{StaticResource PageButtonStyleKey}">
+								<Path Width="7" Height="10" Stretch="Fill" Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" Data="M242.9 512l448 448 90.2-90.3L423.4 512l357.7-357.7L690.9 64z" />
+							</Button>
+							<ListBox x:Name="PART_ListBox" Grid.Column="3" SelectedIndex="0" ItemsSource="{TemplateBinding Pages}" ItemContainerStyle="{StaticResource PageListBoxItemStyleKey}" Style="{StaticResource PageListBoxStyleKey}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+								<ListBox.ItemsPanel>
+									<ItemsPanelTemplate>
+										<UniformGrid Rows="1" />
+									</ItemsPanelTemplate>
+								</ListBox.ItemsPanel>
+							</ListBox>
+							<Button Grid.Column="4" Width="30" Margin="0,0,15,0" Command="{x:Static controls:Pagination.NextCommand}" Style="{StaticResource PageButtonStyleKey}">
+								<Path Width="7" Height="10" Stretch="Fill" Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}" Data="M377.3568 102.40000001l335.122286 335.12045699L786.94582899 512l-74.46674299 74.468571L377.3568 921.59999999l-74.475886-74.46857099L638.005029 512l-335.124115-335.1296L377.3568 102.40000001z" />
+							</Button>
+							<StackPanel Grid.Column="5" Orientation="Horizontal">
+								<TextBlock Text="前往 " VerticalAlignment="Center" />
+								<TextBox x:Name="PART_JumpPageTextBox" TextAlignment="Center" Width="60" VerticalContentAlignment="Center" Padding="3,0" MinWidth="0" Background="#00000000" FontSize="{TemplateBinding FontSize}" />
+								<TextBlock Text=" 页" VerticalAlignment="Center" />
+							</StackPanel>
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsLite" Value="true">
+				<Setter Property="Template" Value="{StaticResource LitePagerControlTemplate}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style TargetType="{x:Type controls:PieControl}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="Width" Value="250" />
+		<Setter Property="Height" Value="250" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:PieControl}">
+					<ItemsControl Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ItemsSource="{TemplateBinding PieSegmentModels}" Background="{TemplateBinding Background}">
+						<ItemsControl.ItemsPanel>
+							<ItemsPanelTemplate>
+								<Grid IsItemsHost="True" />
+							</ItemsPanelTemplate>
+						</ItemsControl.ItemsPanel>
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<ed:Arc Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ArcThickness="{Binding ArcThickness,RelativeSource={RelativeSource FindAncestor,AncestorType=controls:PieControl}}" ArcThicknessUnit="Percent" EndAngle="{Binding EndAngle}" StartAngle="{Binding StartAngle}" Stretch="None" ToolTip="{Binding Name}" Stroke="{Binding ColorStroke}" StrokeThickness="2" Fill="{Binding Color}" />
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:PrizeItemControl}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:PrizeItemControl">
+					<Grid VerticalAlignment="Top">
+						<Grid.RenderTransform>
+							<RotateTransform x:Name="PART_RotateTransform" Angle="{TemplateBinding Angle}" CenterX="200" CenterY="200" />
+						</Grid.RenderTransform>
+						<Path x:Name="PART_Path" Data="{StaticResource PathSector}" Fill="{TemplateBinding BackgroundColor}" VerticalAlignment="Center" />
+						<TextBlock Text="{TemplateBinding Title}" RenderTransformOrigin="0.5,0.5" Margin="50,100,0,0" Foreground="{DynamicResource WhiteSolidColorBrush}" FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center">
+							<TextBlock.RenderTransform>
+								<RotateTransform Angle="-70" />
+							</TextBlock.RenderTransform>
+						</TextBlock>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:DrawPrize}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Width" Value="400" />
+		<Setter Property="Height" Value="400" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:DrawPrize}">
+					<Grid>
+						<ItemsControl x:Name="PART_ItemsControl" ItemsSource="{TemplateBinding ItemsSource}" AlternationCount="{TemplateBinding AlternationCount}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" RenderTransformOrigin=".5,.5">
+							<ItemsControl.RenderTransform>
+								<RotateTransform x:Name="PART_ItemsControlAngle" Angle="0" />
+							</ItemsControl.RenderTransform>
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<controls:PrizeItemControl Angle="{Binding Angle}" BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource drawPrizeIndexToColor}}" Title="{Binding Title}" />
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<Grid />
+								</ItemsPanelTemplate>
+							</ItemsControl.ItemsPanel>
+						</ItemsControl>
+						<Path Data="M562.8 77.6c-31.4-18.1-70.1-18.1-101.5 0C215.4 219.5 64 481.8 64 765.6c0 36.3 19.4 69.8 50.8 87.9 245.8 141.9 548.7 141.9 794.5 0 31.4-18.1 50.8-51.7 50.8-87.9-0.1-283.8-151.5-546.1-397.3-688z" Stretch="Fill" Fill="#fbb845" Width="40" Height="120" Margin="0,0,0,50" />
+						<Border Background="#fbb845" x:Name="PART_Border" Width="100" Height="100" CornerRadius="50" Cursor="Hand">
+							<TextBlock Text="GO" Foreground="{DynamicResource WhiteSolidColorBrush}" FontSize="40" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+						</Border>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:RainbowAppleButton}">
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Padding" Value="10" />
+		<Setter Property="FontSize" Value="200" />
+		<Setter Property="FontFamily" Value="{StaticResource Fixedsys}" />
+		<Setter Property="Content" Value="Apple!" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:RainbowAppleButton}">
+					<Border x:Name="border" Padding="{TemplateBinding Padding}" Background="Transparent" SnapsToDevicePixels="true">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextBlock.Foreground).(Brush.RelativeTransform).(RotateTransform.Angle)" To="0" Duration="0:0:0.5">
+											<DoubleAnimation.EasingFunction>
+												<QuarticEase EasingMode="EaseOut" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="MouseOver">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextBlock.Foreground).(Brush.RelativeTransform).(RotateTransform.Angle)" To="90" Duration="0:0:0.5">
+											<DoubleAnimation.EasingFunction>
+												<QuarticEase EasingMode="EaseOut" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Pressed">
+									<Storyboard SpeedRatio="3">
+										<DoubleAnimation Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextBlock.Foreground).(Brush.RelativeTransform).(RotateTransform.Angle)" To="90" Duration="0:0:0.5">
+											<DoubleAnimation.EasingFunction>
+												<QuarticEase EasingMode="EaseOut" />
+											</DoubleAnimation.EasingFunction>
+										</DoubleAnimation>
+										<DoubleAnimation Storyboard.TargetName="G2" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G3" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G4" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G5" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G6" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G7" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G8" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G9" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G10" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G11" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G12" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G13" Storyboard.TargetProperty="Offset" To="1" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disabled" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<TextBlock x:Name="textBlock" Text="{TemplateBinding Content}">
+							<TextBlock.Foreground>
+								<LinearGradientBrush x:Name="RainbowBrush" StartPoint="0,0.5" EndPoint="1,.5">
+									<LinearGradientBrush.RelativeTransform>
+										<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5" />
+									</LinearGradientBrush.RelativeTransform>
+									<GradientStop x:Name="G1" Offset="0" Color="#65b849" />
+									<GradientStop x:Name="G2" Offset=".166" Color="#65b849" />
+									<GradientStop x:Name="G3" Offset=".166" Color="#f7b423" />
+									<GradientStop x:Name="G4" Offset=".3333" Color="#f7b423" />
+									<GradientStop x:Name="G5" Offset="0.3333" Color="#f58122" />
+									<GradientStop x:Name="G6" Offset="0.5" Color="#f58122" />
+									<GradientStop x:Name="G7" Offset="0.5" Color=" #f8f8f8" />
+									<GradientStop x:Name="G8" Offset="0.5" Color=" #f8f8f8" />
+									<GradientStop x:Name="G9" Offset="0.50" Color="#de3a3c" />
+									<GradientStop x:Name="G10" Offset="0.666" Color="#de3a3c" />
+									<GradientStop x:Name="G11" Offset="0.666" Color="#943f96" />
+									<GradientStop x:Name="G12" Offset="0.8633" Color="#943f96" />
+									<GradientStop x:Name="G13" Offset="0.8633" Color="#009fd9" />
+									<GradientStop x:Name="G14" Offset="01" Color="#009fd9" />
+								</LinearGradientBrush>
+							</TextBlock.Foreground>
+						</TextBlock>
+					</Border>
+					<ControlTemplate.Triggers />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:RainbowAppleButtonWithGlow}">
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Padding" Value="10" />
+		<Setter Property="FontSize" Value="200" />
+		<Setter Property="FontFamily" Value="{StaticResource Fixedsys}" />
+		<Setter Property="Content" Value="Apple!" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:RainbowAppleButtonWithGlow}">
+					<Border x:Name="border" Padding="{TemplateBinding Padding}" Background="Transparent" SnapsToDevicePixels="true">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal">
+									<Storyboard>
+										<PointAnimation Storyboard.TargetName="RainbowBrush" Storyboard.TargetProperty="StartPoint" To="0,0.5" Duration="0:0:0.5">
+											<PointAnimation.EasingFunction>
+												<QuarticEase EasingMode="EaseOut" />
+											</PointAnimation.EasingFunction>
+										</PointAnimation>
+										<PointAnimation Storyboard.TargetName="RainbowBrush" Storyboard.TargetProperty="EndPoint" To="1,0.5" Duration="0:0:0.5">
+											<PointAnimation.EasingFunction>
+												<QuarticEase EasingMode="EaseOut" />
+											</PointAnimation.EasingFunction>
+										</PointAnimation>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="MouseOver">
+									<Storyboard>
+										<PointAnimation Storyboard.TargetName="RainbowBrush" Storyboard.TargetProperty="StartPoint" To="0.5,0" Duration="0:0:0.5">
+											<PointAnimation.EasingFunction>
+												<QuarticEase EasingMode="EaseOut" />
+											</PointAnimation.EasingFunction>
+										</PointAnimation>
+										<PointAnimation Storyboard.TargetName="RainbowBrush" Storyboard.TargetProperty="EndPoint" To=".5,1" Duration="0:0:0.5">
+											<PointAnimation.EasingFunction>
+												<QuarticEase EasingMode="EaseOut" />
+											</PointAnimation.EasingFunction>
+										</PointAnimation>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Pressed">
+									<Storyboard SpeedRatio="3">
+										<PointAnimation Storyboard.TargetName="RainbowBrush" Storyboard.TargetProperty="StartPoint" To="0.5,0" />
+										<PointAnimation Storyboard.TargetName="RainbowBrush" Storyboard.TargetProperty="EndPoint" To=".5,1" />
+										<DoubleAnimation Storyboard.TargetName="G2" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G3" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G4" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G5" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G6" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G7" Storyboard.TargetProperty="Offset" To="0" />
+										<DoubleAnimation Storyboard.TargetName="G8" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G9" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G10" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G11" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G12" Storyboard.TargetProperty="Offset" To="1" />
+										<DoubleAnimation Storyboard.TargetName="G13" Storyboard.TargetProperty="Offset" To="1" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disabled" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid>
+							<TextBlock Foreground="{Binding ElementName=textBlock, Path=Foreground}" Text="{TemplateBinding Content}">
+								<TextBlock.Effect>
+									<BlurEffect Radius="40" RenderingBias="Quality" />
+								</TextBlock.Effect>
+							</TextBlock>
+							<TextBlock x:Name="textBlock" Text="{TemplateBinding Content}">
+								<TextBlock.Foreground>
+									<LinearGradientBrush x:Name="RainbowBrush" StartPoint="0,0.5" EndPoint="1,.5">
+										<GradientStop x:Name="G1" Offset="0" Color="#65b849" />
+										<GradientStop x:Name="G2" Offset=".166" Color="#65b849" />
+										<GradientStop x:Name="G3" Offset=".166" Color="#f7b423" />
+										<GradientStop x:Name="G4" Offset=".3333" Color="#f7b423" />
+										<GradientStop x:Name="G5" Offset="0.3333" Color="#f58122" />
+										<GradientStop x:Name="G6" Offset="0.5" Color="#f58122" />
+										<GradientStop x:Name="G7" Offset="0.5" Color=" #f8f8f8" />
+										<GradientStop x:Name="G8" Offset="0.5" Color=" #f8f8f8" />
+										<GradientStop x:Name="G9" Offset="0.50" Color="#de3a3c" />
+										<GradientStop x:Name="G10" Offset="0.666" Color="#de3a3c" />
+										<GradientStop x:Name="G11" Offset="0.666" Color="#943f96" />
+										<GradientStop x:Name="G12" Offset="0.8633" Color="#943f96" />
+										<GradientStop x:Name="G13" Offset="0.8633" Color="#009fd9" />
+										<GradientStop x:Name="G14" Offset="01" Color="#009fd9" />
+									</LinearGradientBrush>
+								</TextBlock.Foreground>
+							</TextBlock>
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:RoundPicker}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:RoundPicker}">
+					<Canvas x:Name="PART_Canvas" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="RectangleStyle" TargetType="{x:Type Rectangle}">
+		<Setter Property="Fill" Value="{StaticResource BlackSolidColorBrush}" />
+		<Setter Property="Opacity" Value=".5" />
+	</Style>
+	<Style TargetType="{x:Type controls:ScreenCut}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="WindowState" Value="Maximized" />
+		<Setter Property="WindowStyle" Value="None" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:ScreenCut}">
+					<Canvas x:Name="PART_Canvas" Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}">
+						<Rectangle x:Name="PART_RectangleLeft" Style="{StaticResource RectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleTop" Style="{StaticResource RectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleRight" Style="{StaticResource RectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleBottom" Style="{StaticResource RectangleStyle}" />
+						<Border x:Name="PART_Border" BorderBrush="{StaticResource PrimaryNormalSolidColorBrush}" BorderThickness="1" />
+						<WrapPanel x:Name="PART_WrapPanel" Visibility="Hidden" Panel.ZIndex="99" Height="38" Background="{StaticResource WhiteSolidColorBrush}" VerticalAlignment="Center">
+							<Button x:Name="PART_ButtonSave" Style="{StaticResource PathButton}" ToolTip="保存" Margin="10,0,0,0">
+								<Button.Content>
+									<Path Fill="{StaticResource InfoPressedSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathSave}" />
+								</Button.Content>
+							</Button>
+							<Button x:Name="PART_ButtonCancel" Style="{StaticResource PathButton}" ToolTip="取消">
+								<Button.Content>
+									<Path Fill="{StaticResource DangerPressedSolidColorBrush}" Width="14" Height="14" Stretch="Fill" Data="{StaticResource PathCancel}" />
+								</Button.Content>
+							</Button>
+							<Button x:Name="PART_ButtonComplete" Style="{StaticResource PathButton}" ToolTip="完成" Margin="0,0,10,0">
+								<Button.Content>
+									<Path Fill="{StaticResource SuccessPressedSolidColorBrush}" Width="20" Height="15" Stretch="Fill" Data="{StaticResource PathComplete}" />
+								</Button.Content>
+							</Button>
+						</WrapPanel>
+					</Canvas>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:SnowCanvas}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Width" Value="672" />
+		<Setter Property="Height" Value="376" />
+		<Setter Property="Background" Value="#FFAD2B28" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:SnowCanvas}">
+					<Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+						<Canvas x:Name="PART_Canvas" Height="246" Width="246" Background="#FF0C1935">
+							<Canvas.Clip>
+								<EllipseGeometry Center="123,123" RadiusX="120" RadiusY="120" />
+							</Canvas.Clip>
+							<Image Source="{TemplateBinding Icon}" Canvas.Left="25" Canvas.Top="30" />
+						</Canvas>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:Snowflake}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:Snowflake}">
+					<Ellipse Fill="{StaticResource WhiteSolidColorBrush}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:SpotLight}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="#222222" />
+		<Setter Property="FontSize" Value="60" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:SpotLight}">
+					<Canvas x:Name="PART_Canvas" Background="{TemplateBinding Background}">
+						<TextBlock x:Name="PART_TextBlockBottom" Text="{TemplateBinding Text}" FontSize="{TemplateBinding FontSize}" FontFamily="Arial Black" FontWeight="Bold" Foreground="#323232" />
+						<TextBlock x:Name="PART_TextBlockTop" Text="{TemplateBinding Text}" FontSize="{TemplateBinding FontSize}" FontFamily="Arial Black" FontWeight="Bold">
+							<TextBlock.Foreground>
+								<LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+									<GradientStop Color="#FF9C1031" Offset="0.1" />
+									<GradientStop Color="#FFBE0E20" Offset="0.2" />
+									<GradientStop Color="#FF9C12AC" Offset="0.7" />
+									<GradientStop Color="#FF0A8DC3" Offset="0.8" />
+									<GradientStop Color="#FF1AEBCC" Offset="1" />
+								</LinearGradientBrush>
+							</TextBlock.Foreground>
+							<TextBlock.Clip>
+								<EllipseGeometry x:Name="PART_EllipseGeometry">
+									<EllipseGeometry.Transform>
+										<TranslateTransform />
+									</EllipseGeometry.Transform>
+								</EllipseGeometry>
+							</TextBlock.Clip>
+						</TextBlock>
+					</Canvas>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="Win10ItemButtonStyle" TargetType="Button">
+		<Setter Property="SnapsToDevicePixels" Value="true" />
+		<Setter Property="OverridesDefaultStyle" Value="true" />
+		<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
+		<Setter Property="MinHeight" Value="23" />
+		<Setter Property="MinWidth" Value="75" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border x:Name="Border" CornerRadius="0" BorderThickness="0" Background="{StaticResource NormalBrush}" BorderBrush="{StaticResource NormalBorderBrush}">
+						<ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RecognizesAccessKey="True" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsKeyboardFocused" Value="true">
+							<Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DefaultedBorderBrush}" />
+						</Trigger>
+						<Trigger Property="IsDefaulted" Value="true">
+							<Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DefaultedBorderBrush}" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter TargetName="Border" Property="Background" Value="{StaticResource DarkBrush}" />
+						</Trigger>
+						<Trigger Property="IsPressed" Value="true">
+							<Setter TargetName="Border" Property="Background" Value="{StaticResource PressedBrush}" />
+							<Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource PressedBorderBrush}" />
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+							<Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+							<Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="controls:Win10MenuItem">
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Win10Menu}}, Path=MenuItemForeground}" />
+		<Setter Property="SelectionIndicatorColor" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Win10Menu}}, Path=SelectionIndicatorColor}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:Win10MenuItem">
+					<Button x:Name="PART_Button" Height="44" Command="{TemplateBinding SelectionCommand}" ToolTip="{TemplateBinding Text}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Style="{StaticResource Win10ItemButtonStyle}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="5" />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Grid Grid.ColumnSpan="2">
+								<Grid Margin="0" Width="300">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="45" />
+										<ColumnDefinition />
+									</Grid.ColumnDefinitions>
+									<Image Grid.Column="0" Source="{TemplateBinding Icon}" Margin="10,5,5,5" />
+									<TextBlock Text="{TemplateBinding Text}" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="{StaticResource TitleFontSize}" Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap" />
+								</Grid>
+							</Grid>
+							<Grid Name="PART_ItemSelectedIndicator" Grid.Column="0" Background="{TemplateBinding SelectionIndicatorColor}" Visibility="Collapsed" />
+						</Grid>
+					</Button>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter TargetName="PART_ItemSelectedIndicator" Property="Visibility" Value="Visible" />
+						</Trigger>
+						<Trigger SourceName="PART_Button" Property="IsPressed" Value="True">
+							<Trigger.ExitActions>
+								<BeginStoryboard>
+									<Storyboard>
+										<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsSelected">
+											<DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="True" />
+										</BooleanAnimationUsingKeyFrames>
+									</Storyboard>
+								</BeginStoryboard>
+							</Trigger.ExitActions>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="controls:Win10Menu">
+		<Setter Property="Width" Value="50" />
+		<Setter Property="Visibility" Value="Visible" />
+		<Setter Property="IsOpen" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:Win10Menu">
+					<Grid Background="{TemplateBinding Background}">
+						<ToggleButton HorizontalAlignment="Left" Background="#333" VerticalAlignment="Top" Height="40" Width="50" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Win10Menu}}, Path=IsOpen}" Style="{StaticResource Win10ToggleButton}">
+							<Path HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="20" Fill="{TemplateBinding MenuIconColor}" Data="{StaticResource PathMenu}" />
+						</ToggleButton>
+						<ListBox ItemsSource="{TemplateBinding Content}" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedIndex="0" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsOpen" Value="False">
+				<Trigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<DoubleAnimation Storyboard.TargetProperty="Width" To="180" Duration="0:0:0.2" />
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.EnterActions>
+				<Trigger.ExitActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<DoubleAnimation Storyboard.TargetProperty="Width" To="50" Duration="0:0:0.2" />
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.ExitActions>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<DataTemplate x:Key="TimeContent">
+		<Ellipse Stroke="{StaticResource BorderBrushItem}" Fill="White" VerticalAlignment="Top" StrokeThickness="2" Width="10" Height="10" />
+	</DataTemplate>
+	<DataTemplate x:Key="TextStar">
+		<WrapPanel Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}">
+			<Path Data="{StaticResource PathStar}" Height="15" Width="15" Fill="Gray" Stretch="Fill" />
+			<TextBlock Margin="4,0" Text="Star 了" FontSize="12" VerticalAlignment="Center" />
+			<TextBlock Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" VerticalAlignment="Center" Foreground="#005980" FontSize="12" />
+		</WrapPanel>
+	</DataTemplate>
+	<Style TargetType="{x:Type controls:TimeLineItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
+		<Setter Property="Padding" Value="15,0,15,0" />
+		<Setter Property="MinHeight" Value="50" />
+		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
+		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="UseLayoutRounding" Value="True" />
+		<Setter Property="CommonTemplate" Value="{StaticResource TimeContent}" />
+		<Setter Property="TextTemplate" Value="{StaticResource TextTime}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:TimeLineItem}">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Rectangle x:Name="PART_Rectangle" Grid.RowSpan="2" Width="1" Fill="{TemplateBinding BorderBrush}" />
+						<ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding CommonTemplate}" Content="{TemplateBinding Head}" Width="30" Height="30" />
+						<ContentPresenter x:Name="PART_ContentPresenterText" ContentTemplate="{TemplateBinding TextTemplate}" Content="{TemplateBinding Text}" Grid.Row="0" Grid.Column="1" />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="ItemType" Value="{x:Static controls:ItemTypeEnum.Name}">
+							<Setter Property="CommonTemplate" Value="{StaticResource NameContent}" />
+							<Setter Property="TextTemplate" Value="{StaticResource TextName}" />
+						</Trigger>
+						<Trigger Property="ItemType" Value="{x:Static controls:ItemTypeEnum.Star}">
+							<Setter Property="CommonTemplate" Value="{x:Null}" />
+							<Setter Property="TextTemplate" Value="{StaticResource TextStar}" />
+						</Trigger>
+						<Trigger Property="IsBottom" Value="true">
+							<Setter Property="Visibility" TargetName="PART_Rectangle" Value="Collapsed" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:TimeLine}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderBrush" Value="Gray" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Foreground" Value="Black" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Top" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="UseLayoutRounding" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:TimeLine}">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+						<ScrollViewer VerticalScrollBarVisibility="Auto">
+							<ItemsPresenter />
+						</ScrollViewer>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

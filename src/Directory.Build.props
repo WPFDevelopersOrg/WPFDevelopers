@@ -2,6 +2,6 @@
 	<PropertyGroup>
 		<BaseIntermediateOutputPath>$(MSBuildThisFileDirectory).vs\$(SolutionName)\Intermediate\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
 		<OutputPath>$(MSBuildThisFileDirectory)..\OutPut\</OutputPath>
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendTargetFrameworkToOutputPath>True</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
 </Project>

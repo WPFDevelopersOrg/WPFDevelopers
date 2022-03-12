@@ -5,11 +5,12 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type controls:AnimationWeChat}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:AnimationWeChat}">
                     <Grid Height="35" Width="100">
-                        <Rectangle RadiusX="4" RadiusY="4" Fill="#9EEA6A"/>
+                        <Rectangle RadiusX="4" RadiusY="4" Fill="{DynamicResource SuccessSolidColorBrush}"/>
                         <StackPanel Orientation="Horizontal" Margin="4,0">
                             <Image Height="20" Width="20"  x:Name="PART_Image"
                                    Source="/WPFDevelopers;component/Images/AnimationWeChat/2.png"/>

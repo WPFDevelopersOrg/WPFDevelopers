@@ -5,7 +5,7 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="ToggleButton">
+    <Style x:Key="Win10ToggleButton" TargetType="ToggleButton">
         <Setter Property="IsChecked" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -196,7 +196,8 @@
                     <Grid Background="{TemplateBinding Background}">
                         <ToggleButton HorizontalAlignment="Left" Background="#333"
                                       VerticalAlignment="Top" Height="40" Width="50"
-                                      IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Win10Menu}}, Path=IsOpen}">
+                                      IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:Win10Menu}}, Path=IsOpen}"
+                                      Style="{StaticResource Win10ToggleButton}">
                             <Path HorizontalAlignment="Center" 
                                   VerticalAlignment="Center" 
                                   Stretch="Uniform" Width="20" 

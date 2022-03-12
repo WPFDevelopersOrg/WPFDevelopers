@@ -19,7 +19,7 @@
             <Run Text="微信公众号 WPFDevelopers" FontSize="40"
                            Foreground="#A9CC32" FontWeight="Bold"></Run>
             <LineBreak/>
-            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.git"
+            <Hyperlink NavigateUri="https://github.com/WPFDevelopersOrg/WPFDevelopers.git"
                        RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源代码</Hyperlink>
             <Run/>
             <Run/>
