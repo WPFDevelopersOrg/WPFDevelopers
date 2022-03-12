@@ -2,7 +2,9 @@
 
 [中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-zh.md)   
 
- ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers) [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)
+ ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers)   <a href="https://www.nuget.org/packages/WPFDevelopers.Minimal/">
+        <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
+    </a>   [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  
 
 
 ## Welcome to WPFDevelopers    
@@ -20,7 +22,33 @@
 ### Contributors  
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>   <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%!important" width="64px" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>  <a href="https://github.com/githowe" target="_blank"><img style="border-radius:50%!important" width="64px" alt="githowe" src="https://avatars.githubusercontent.com/u/31241366?v=4"></a>  <a href="https://github.com/LuGuangguang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="LuGuangguang" src="https://avatars.githubusercontent.com/u/34500722?v=4"></a> <a href="https://github.com/DinoChan" target="_blank"><img style="border-radius:50%!important" width="64px" alt="DinoChan" src="https://avatars.githubusercontent.com/u/6076257?v=4"></a> <a href="https://github.com/mingyaodagege" target="_blank"><img style="border-radius:50%!important" width="64px" alt="mingyaodagege" src="https://avatars.githubusercontent.com/u/48346030?v=4"></a>   <a href="https://github.com/PettyHandSome" target="_blank"><img style="border-radius:50%!important" width="64px" alt="PettyHandSome" src="https://avatars.githubusercontent.com/u/16127328?v=4"></a>  <a href="https://github.com/choumengqizhigou" target="_blank"><img style="border-radius:50%!important" width="64px" alt="丑萌气质狗" src="https://avatars.githubusercontent.com/u/19163316?v=4"></a>   
 
-***
+###  This is a UI library for WPF developers based on WPF custom advanced controls. Welcome to use..
+
+###  how to use：
+
+###  Step 1: Add nuget;
+```
+Install-Package WPFDevelopers
+```
+###  Step 2: Add nodes to App.xaml;
+
+      <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>  
+       
+###  Step 3: Add the namespace;
+
+`xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
+
+
+
+----------
+
 ### WPFCheckCode
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>   
@@ -29,11 +57,15 @@
 
 ### EdgeLight  
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>   
+
+----------
 
 ### DrawPrize  
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawPrize.gif"/>
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawPrize.gif"/>  
+
+----------
 
 ### DesktopPlayVideo  
 
