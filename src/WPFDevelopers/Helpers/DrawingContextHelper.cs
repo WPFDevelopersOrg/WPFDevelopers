@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace WPFDevelopers
 {
-    public static class DrawingContextHelper
+    public static partial class DrawingContextHelper
     {
         /// <summary>
         /// 字体资源

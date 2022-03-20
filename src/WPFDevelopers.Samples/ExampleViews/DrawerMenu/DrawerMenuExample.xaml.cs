@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using WPFDevelopers.Samples.Helpers;
 
-namespace WPFDevelopers.Samples.ExampleViews.Win10Menu
+namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
 {
     /// <summary>
     /// Win10MenuExample.xaml 的交互逻辑
     /// </summary>
-    public partial class Win10MenuExample : UserControl
+    public partial class DrawerMenuExample : UserControl
     {
         private List<Uri> _uriList = new List<Uri>()
         {
-            new Uri("ExampleViews/Win10Menu/HomePage.xaml",UriKind.Relative),
-            new Uri("ExampleViews/Win10Menu/EdgePage.xaml",UriKind.Relative),
+            new Uri("ExampleViews/DrawerMenu/HomePage.xaml",UriKind.Relative),
+            new Uri("ExampleViews/DrawerMenu/EdgePage.xaml",UriKind.Relative),
         };
-        public Win10MenuExample()
+        public DrawerMenuExample()
         {
             InitializeComponent();
             myFrame.Navigate(_uriList[0]);
@@ -33,15 +35,15 @@ namespace WPFDevelopers.Samples.ExampleViews.Win10Menu
         });
         public ICommand CloudCommand => new RelayCommand(obj =>
         {
-            MessageBox.Show("点击了云盘");
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("点击了云盘","提示");
         });
         public ICommand MailCommand => new RelayCommand(obj =>
         {
-            MessageBox.Show("点击了邮件");
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("点击了邮件","提示");
         });
         public ICommand VideoCommand => new RelayCommand(obj =>
         {
-            MessageBox.Show("点击了视频");
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("点击了视频","提示");
         });
     }
 }

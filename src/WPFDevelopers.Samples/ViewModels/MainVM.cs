@@ -4,9 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDevelopers.Samples.ExampleViews;
+using WPFDevelopers.Samples.ExampleViews.DrawerMenu;
 using WPFDevelopers.Samples.ExampleViews.NumberCard;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
-using WPFDevelopers.Samples.ExampleViews.Win10Menu;
 using WPFDevelopers.Samples.Helpers;
 using WPFDevelopers.Samples.Models;
 
@@ -71,11 +71,11 @@ namespace WPFDevelopers.Samples.ViewModels
                 NavigateMenuModelList.Add(new ListBoxItem { Content = menuEnum.ToString() });
             }
             NavigateMenuModelList.Add(new ListBoxItem { Content = "持续更新中" });
-
+            ControlPanel = new AnimationNavigationBar3DExample();
         }
         public ICommand ViewLoaded => new RelayCommand(obj =>
         {
-            ControlPanel = new AnimationNavigationBar3DExample();
+           
 
         });
         public ICommand MenuSelectionChangedCommand => new RelayCommand(obj =>
@@ -114,8 +114,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.CutImage:
                     ControlPanel = new CutImageExample();
                     break;
-                case MenuEnum.WeChatAudio:
-                    ControlPanel = new AnimationWeChatExample();
+                case MenuEnum.AnimationAudio:
+                    ControlPanel = new AnimationAudioExample();
                     break;
                 case MenuEnum.AMap:
                     ControlPanel = new BingAMapExample();
@@ -123,8 +123,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ThumbAngle:
                     ControlPanel = new ThumbDragAndAngleExample();
                     break;
-                case MenuEnum.CheckCode:
-                    ControlPanel = new CheckCodeExample();
+                case MenuEnum.VerifyCode:
+                    ControlPanel = new VerifyCodeExample();
                     break;
                 case MenuEnum.CircularMenu:
                     ControlPanel = new CircularMenuExample();
@@ -178,8 +178,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.SpotLight:
                     ControlPanel = new SpotLightExample();
                     break;
-                case MenuEnum.Win10Menu:
-                    ControlPanel = new Win10MenuExample();
+                case MenuEnum.DrawerMenu:
+                    ControlPanel = new DrawerMenuExample();
                     break;
                 case MenuEnum.RadarChart:
                     ControlPanel = new RadarChartExample();

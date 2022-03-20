@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -24,12 +24,12 @@
         <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection}" Margin="20,0,0,0"/>
         <ListBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding LitePaginationViewModel.PaginationCollection}" Margin="0,0,20,0"/>
 
-        <wpfdev:Pagination Grid.Row="2" Grid.Column="0" IsLite="False" Height="25" Margin="20,0,0,0"
+        <wpfdev:Pagination Grid.Row="2" Grid.Column="0" IsLite="False"  Margin="20,0,0,0"
                              Count="{Binding NormalPaginationViewModel.Count,Mode=TwoWay}"
                              CountPerPage="{Binding NormalPaginationViewModel.CountPerPage,Mode=TwoWay}"
                              Current="{Binding NormalPaginationViewModel.Current,Mode=TwoWay}"/>
 
-        <wpfdev:Pagination Grid.Row="2" Grid.Column="2" IsLite="true" Height="25" Margin="0,0,20,0"
+        <wpfdev:Pagination Grid.Row="2" Grid.Column="2" IsLite="true"  Margin="0,0,20,0"
                              Count="{Binding LitePaginationViewModel.Count,Mode=TwoWay}"
                              CountPerPage="{Binding LitePaginationViewModel.CountPerPage,Mode=TwoWay}"
                              Current="{Binding LitePaginationViewModel.Current,Mode=TwoWay}"/>

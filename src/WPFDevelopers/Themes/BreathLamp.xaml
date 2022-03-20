@@ -10,7 +10,7 @@
     <ControlTemplate x:Key="LampEffect_Eclipse" TargetType="{x:Type controls:BreathLamp}">
         <Grid>
             <Viewbox>
-                <Grid Width="60" Height="60">
+                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampEclipse"  
                             BorderThickness="0" 
                             BorderBrush="Transparent" 
@@ -53,7 +53,7 @@
     <ControlTemplate x:Key="LampEffect_Ripple" TargetType="{x:Type controls:BreathLamp}">
         <Grid>
             <Viewbox>
-                <Grid Width="60" Height="60">
+                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampRipple_1" 
                             RenderTransformOrigin="0.5,0.5"
                             Background="Transparent" 
@@ -102,7 +102,7 @@
     <ControlTemplate x:Key="LampEffect_OuterGlow" TargetType="{x:Type controls:BreathLamp}">
         <Grid>
             <Viewbox>
-                <Grid Width="60" Height="60">
+                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampOuterGlow"
                             Margin="1"
                             BorderThickness="0" 
@@ -137,7 +137,7 @@
     <ControlTemplate x:Key="LampEffect_Streamer" TargetType="{x:Type controls:BreathLamp}">
         <Grid>
             <Viewbox>
-                <Grid Width="60" Height="60">
+                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampContainer" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}"  Background="Transparent" >
                         <Border.BorderBrush>
                             <LinearGradientBrush >
@@ -190,7 +190,8 @@
     
     <Style TargetType="{x:Type controls:BreathLamp}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="BorderThickness" Value="1"/>
-        
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="60"/>
         <Style.Triggers>
             <Trigger Property="LampEffect" Value="Eclipse">
                 <Setter Property="Template" Value="{StaticResource LampEffect_Eclipse}"/>

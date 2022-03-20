@@ -6,8 +6,7 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="PageButtonStyleKey" TargetType="{x:Type Button}">
-        <Setter Property="FontSize" Value="13"/>
+    <Style x:Key="PageButtonStyleKey" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Background" Value="#323E4E"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="0"/>
@@ -15,8 +14,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="UseLayoutRounding" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -52,6 +50,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderBrush" Value="#007ACC"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Foreground" Value="#141414"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -75,7 +74,7 @@
     </Style>
 
     <Style x:Key="PageListBoxItemStyleKey" 
-           TargetType="{x:Type ListBoxItem}">
+           TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="MinWidth" Value="32"/>
         <Setter Property="Background" Value="#323E4E"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -107,7 +106,7 @@
                 <Setter Property="FontWeight" Value="Bold"/>
             </DataTrigger>
             <Trigger Property="IsSelected" Value="true">
-                <Setter Property="Background" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value="0.4"/>
@@ -137,8 +136,9 @@
                            Text="{Binding Count,StringFormat=共 {0} 条,RelativeSource={RelativeSource TemplatedParent}}"/>
 
                
-                <TextBox Grid.Column="2" x:Name="PART_CountPerPageTextBox" TextAlignment="Center" VerticalContentAlignment="Center"
-                         Padding="3,0" MinWidth="0" Background="#00000000"
+                <TextBox Grid.Column="2" x:Name="PART_CountPerPageTextBox" 
+                         TextAlignment="Center" VerticalContentAlignment="Center"
+                         MinWidth="0"
                          FontSize="{TemplateBinding FontSize}" />
                 <TextBlock Grid.Column="3" Text=" 条 / 页" VerticalAlignment="Center"/>
 
@@ -147,12 +147,13 @@
                         Style="{StaticResource PageButtonStyleKey}">
                     <Path Width="7" Height="10" Stretch="Fill" 
                           Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
-                          Data="M242.9 512l448 448 90.2-90.3L423.4 512l357.7-357.7L690.9 64z"/>
+                          Data="{StaticResource PathPrevious}"/>
                 </Button>
 
                 
-                <TextBox Grid.Column="7" x:Name="PART_JumpPageTextBox" TextAlignment="Center" VerticalContentAlignment="Center"
-                         Padding="3,0" MinWidth="0" Background="#00000000"
+                <TextBox Grid.Column="7" x:Name="PART_JumpPageTextBox" 
+                         TextAlignment="Center" VerticalContentAlignment="Center"
+                         MinWidth="0" 
                          FontSize="{TemplateBinding FontSize}">
                     <TextBox.ToolTip>
                         <TextBlock>
@@ -171,16 +172,14 @@
                         Style="{StaticResource PageButtonStyleKey}">
                     <Path Width="7" Height="10" Stretch="Fill" 
                           Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
-                          Data="M377.3568 102.40000001l335.122286 335.12045699L786.94582899 512l-74.46674299 74.468571L377.3568 921.59999999l-74.475886-74.46857099L638.005029 512l-335.124115-335.1296L377.3568 102.40000001z"/>
+                          Data="{StaticResource PathNext}"/>
                 </Button>
             </Grid>
         </Border>
     </ControlTemplate>
 
-    <Style TargetType="{x:Type controls:Pagination}">
+    <Style TargetType="{x:Type controls:Pagination}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontSize" Value="13"/>
-        <!--<Setter Property="Foreground" Value="#BEC1C6"/>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Pagination}">
@@ -202,9 +201,9 @@
 
                             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,15,0" >
                                 <TextBlock Text="每页 " VerticalAlignment="Center"/>
-                               
-                                <TextBox x:Name="PART_CountPerPageTextBox" TextAlignment="Center" Width="60" VerticalContentAlignment="Center"
-                                         Padding="3,0" MinWidth="0" Background="#00000000"
+                                <TextBox x:Name="PART_CountPerPageTextBox" 
+                                         TextAlignment="Center" Width="60"
+                                         MinWidth="0" VerticalContentAlignment="Center"
                                          FontSize="{TemplateBinding FontSize}" />
                                 <TextBlock Text=" 条" VerticalAlignment="Center"/>
                             </StackPanel>
@@ -214,7 +213,7 @@
                                     Style="{StaticResource PageButtonStyleKey}">
                                 <Path Width="7" Height="10" Stretch="Fill" 
                                       Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
-                                      Data="M242.9 512l448 448 90.2-90.3L423.4 512l357.7-357.7L690.9 64z"/>
+                                      Data="{StaticResource PathPrevious}"/>
                             </Button>
 
                             <ListBox x:Name="PART_ListBox" Grid.Column="3"
@@ -236,14 +235,15 @@
                                     Style="{StaticResource PageButtonStyleKey}">
                                 <Path Width="7" Height="10" Stretch="Fill" 
                                       Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
-                                      Data="M377.3568 102.40000001l335.122286 335.12045699L786.94582899 512l-74.46674299 74.468571L377.3568 921.59999999l-74.475886-74.46857099L638.005029 512l-335.124115-335.1296L377.3568 102.40000001z"/>
+                                      Data="{StaticResource PathNext}"/>
                             </Button>
 
                             <StackPanel Grid.Column="5" Orientation="Horizontal">
                                 <TextBlock Text="前往 " VerticalAlignment="Center"/>
                                
-                                <TextBox x:Name="PART_JumpPageTextBox" TextAlignment="Center" Width="60" VerticalContentAlignment="Center"
-                                         Padding="3,0" MinWidth="0" Background="#00000000"
+                                <TextBox x:Name="PART_JumpPageTextBox" TextAlignment="Center" 
+                                         Width="60" VerticalContentAlignment="Center"
+                                         MinWidth="0"
                                          FontSize="{TemplateBinding FontSize}" />
                                 <TextBlock Text=" 页" VerticalAlignment="Center"/>
                             </StackPanel>

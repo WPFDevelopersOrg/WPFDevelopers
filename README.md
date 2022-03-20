@@ -39,7 +39,7 @@ Install-Package WPFDevelopers
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>  
-       
+
 ###  Step 3: Add the namespace;
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
@@ -48,8 +48,13 @@ Install-Package WPFDevelopers
 
 
 ----------
+### AnimationAudio
 
-### WPFCheckCode
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationAudio.gif"/>   
+
+----------
+
+### VerifyCode
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>   
 
@@ -140,11 +145,6 @@ Install-Package WPFDevelopers
 
 ----------
 
-### MetroWindow  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MetroWindow.gif"/>  
-
-----------
 
 ### RainbowButtons  
 
@@ -176,7 +176,7 @@ Install-Package WPFDevelopers
 
 ----------
 
-### Win10Menu  
+### DrawerMenu  
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Win10Menu.gif"/>  
 
@@ -334,10 +334,6 @@ Install-Package WPFDevelopers
 
 ----------
 
-### WpfAnimationWeChat
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationWeChat.gif"/>   
-
-
-									~~end~~
+							~~end~~
 

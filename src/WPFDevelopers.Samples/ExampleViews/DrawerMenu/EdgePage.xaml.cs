@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFDevelopers.Samples.ExampleViews
+namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
 {
     /// <summary>
-    /// CheckCodeExample.xaml 的交互逻辑
+    /// EdgePage.xaml 的交互逻辑
     /// </summary>
-    public partial class CheckCodeExample : UserControl
+    public partial class EdgePage : Page
     {
-        public CheckCodeExample()
+        public EdgePage()
         {
             InitializeComponent();
         }

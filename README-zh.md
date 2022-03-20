@@ -63,8 +63,13 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### AnimationAudio （WPF实现音频播放动画）
 
-### WPFCheckCode（WPF使用DrawingVisual绘制验证码）
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationAudio.gif"/>   
+
+----------
+
+### VerifyCode（WPF使用DrawingVisual绘制验证码）
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>   
 
@@ -188,7 +193,7 @@ Install-Package WPFDevelopers
 
 ----------
 
-### Win10Menu（Win10菜单）  
+### DrawerMenu（抽屉菜单）  
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Win10Menu.gif"/>  
 
@@ -345,10 +350,6 @@ Install-Package WPFDevelopers
 
 ----------
 
-### WpfAnimationWeChat（WPF使用图片实现微信语音播放动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationWeChat.gif"/>   
-
-
-									~~结束~~
+										~~底线~~
 

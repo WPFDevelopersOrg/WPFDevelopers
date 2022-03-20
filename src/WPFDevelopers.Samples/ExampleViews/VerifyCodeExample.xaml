@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.AnimationWeChatExample"
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.VerifyCodeExample"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,8 +7,10 @@
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-  
-    <Grid>
-        <wpfdev:AnimationWeChat MouseLeftButtonDown="Grid_MouseLeftButtonDown" x:Name="AudioPlay"/>
-    </Grid>
+    <UniformGrid Rows="2" Columns="2">
+        <wpfdev:VerifyCode Foreground="LimeGreen"/>
+        <wpfdev:VerifyCode Foreground="Red"/>
+        <wpfdev:VerifyCode Foreground="DodgerBlue"/>
+        <wpfdev:VerifyCode Foreground="HotPink"/>
+    </UniformGrid>
 </UserControl>

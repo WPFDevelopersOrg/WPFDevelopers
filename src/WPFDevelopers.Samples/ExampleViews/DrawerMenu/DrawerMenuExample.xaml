@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.DrawerMenu.DrawerMenuExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.DrawerMenu"
+             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="#FF7B7BFF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <wpfdev:DrawerMenu Background="#eee"
+                          SelectionIndicatorColor="{StaticResource PrimaryPressedSolidColorBrush}" 
+                          MenuItemForeground="{StaticResource BlackSolidColorBrush}" HorizontalAlignment="Left">
+            <wpfdev:DrawerMenu.Content>
+                <wpfdev:DrawerMenuItem Icon="pack://application:,,,/Images/CircularMenu/2.png" Text="主页"
+                                      SelectionCommand="{Binding HomeCommand,RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"/>
+                <wpfdev:DrawerMenuItem Icon="pack://application:,,,/Images/CircularMenu/4.png" Text="Edge"
+                                      SelectionCommand="{Binding EdgeCommand,RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"/>
+                <wpfdev:DrawerMenuItem Icon="pack://application:,,,/Images/CircularMenu/1.png" Text="云盘"
+                                      SelectionCommand="{Binding CloudCommand,RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"/>
+                <wpfdev:DrawerMenuItem Icon="pack://application:,,,/Images/CircularMenu/8.png" Text="邮件"
+                                      SelectionCommand="{Binding MailCommand,RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"/>
+                <wpfdev:DrawerMenuItem Icon="pack://application:,,,/Images/CircularMenu/6.png" Text="视频"
+                                      SelectionCommand="{Binding VideoCommand,RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"/>
+            </wpfdev:DrawerMenu.Content>
+        </wpfdev:DrawerMenu>
+        <Frame Name="myFrame" Grid.Column="1" Margin="0,40,0,0"
+               NavigationUIVisibility="Hidden"></Frame>
+    </Grid>
+</UserControl>

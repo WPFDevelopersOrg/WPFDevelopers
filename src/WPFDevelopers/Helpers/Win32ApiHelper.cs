@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace WPFDevelopers.Helpers
 {
-    public class Win32ApiHelper
+    public static partial class Win32ApiHelper
     {
         [DllImport("user32.dll")]
         public static extern IntPtr FindWindow(string className, string winName);
@@ -24,5 +25,9 @@ namespace WPFDevelopers.Helpers
 
         [DllImport("user32.dll")]
         public static extern IntPtr SetParent(IntPtr hwnd, IntPtr parentHwnd);
+
+        [DllImport("winmm.dll")]
+        public static extern long mciSendString(string strCommand, StringBuilder strReturn,
+                                         int iReturnLength, IntPtr hwndCallback);
     }
 }

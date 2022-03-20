@@ -2,7 +2,7 @@
 
 namespace WPFDevelopers.Helpers
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public partial class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChange(string propertyName)

@@ -55,8 +55,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.1.0.0\lib\net40\WPFDevelopers.dll</HintPath>
+    <Reference Include="WPFDevelopers, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.1.0.1\lib\net40\WPFDevelopers.dll</HintPath>
     </Reference>
     <Reference Include="WPFDevelopers.Minimal, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFDevelopers.Minimal.3.2.0\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
@@ -67,8 +67,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ExampleViews\AnimationWeChatExample.xaml.cs">
-      <DependentUpon>AnimationWeChatExample.xaml</DependentUpon>
+    <Compile Include="ExampleViews\AnimationAudioExample.xaml.cs">
+      <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\BaseControlExample.xaml.cs">
       <DependentUpon>BaseControlExample.xaml</DependentUpon>
@@ -88,8 +88,8 @@
     <Compile Include="ExampleViews\ChatEmojiExample.xaml.cs">
       <DependentUpon>ChatEmojiExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExampleViews\CheckCodeExample.xaml.cs">
-      <DependentUpon>CheckCodeExample.xaml</DependentUpon>
+    <Compile Include="ExampleViews\VerifyCodeExample.xaml.cs">
+      <DependentUpon>VerifyCodeExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\CircularMenuExample.xaml.cs">
       <DependentUpon>CircularMenuExample.xaml</DependentUpon>
@@ -221,14 +221,14 @@
     <Compile Include="ExampleViews\TransitionPanelExample.xaml.cs">
       <DependentUpon>TransitionPanelExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExampleViews\Win10Menu\EdgePage.xaml.cs">
+    <Compile Include="ExampleViews\DrawerMenu\EdgePage.xaml.cs">
       <DependentUpon>EdgePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExampleViews\Win10Menu\HomePage.xaml.cs">
+    <Compile Include="ExampleViews\DrawerMenu\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExampleViews\Win10Menu\Win10MenuExample.xaml.cs">
-      <DependentUpon>Win10MenuExample.xaml</DependentUpon>
+    <Compile Include="ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs">
+      <DependentUpon>DrawerMenuExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\Desktop\DesktopBackground.xaml.cs">
       <DependentUpon>DesktopBackground.xaml</DependentUpon>
@@ -239,6 +239,7 @@
     <Compile Include="ExampleViews\ZooSemy\ZooSemyExample.xaml.cs">
       <DependentUpon>ZooSemyExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ElementVisualTreeHelper.cs" />
     <Compile Include="Helpers\MenuEnum.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
@@ -251,7 +252,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExampleViews\AnimationWeChatExample.xaml">
+    <Page Include="ExampleViews\AnimationAudioExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -279,7 +280,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExampleViews\CheckCodeExample.xaml">
+    <Page Include="ExampleViews\VerifyCodeExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -489,15 +490,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExampleViews\Win10Menu\EdgePage.xaml">
+    <Page Include="ExampleViews\DrawerMenu\EdgePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExampleViews\Win10Menu\HomePage.xaml">
+    <Page Include="ExampleViews\DrawerMenu\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExampleViews\Win10Menu\Win10MenuExample.xaml">
+    <Page Include="ExampleViews\DrawerMenu\DrawerMenuExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -631,6 +632,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Crop\0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Audio\HelloWPFDevelopes_en.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Audio\HelloWPFDevelopes_zh.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

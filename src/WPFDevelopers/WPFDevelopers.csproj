@@ -37,27 +37,19 @@ xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Copyright>Copyright © WPFDevelopersOrg 2022</Copyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1.0</Version>
     <RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Images\AnimationWeChat\0.png" />
-    <None Remove="Images\AnimationWeChat\1.png" />
-    <None Remove="Images\AnimationWeChat\2.png" />
     <None Remove="Resources\Fonts\fixedsys.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\AnimationWeChat\1.png" />
-    <Resource Include="Images\AnimationWeChat\2.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Microsoft.Expression.Drawing\" />
     <Folder Include="Microsoft.Expression.Media.Effects\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\AnimationWeChat\0.png" />
     <Resource Include="Resources\Fonts\fixedsys.ttf" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

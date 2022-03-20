@@ -5,15 +5,15 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
-    <Style TargetType="{x:Type controls:CheckCode}" BasedOn="{StaticResource ControlBasicStyle}">
+
+    <Style TargetType="{x:Type controls:VerifyCode}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:CheckCode}">
+                <ControlTemplate TargetType="{x:Type controls:VerifyCode}">
                     <Image x:Name="PART_Image" Stretch="Fill" Source="{TemplateBinding ImageSource}"/>
                 </ControlTemplate>
             </Setter.Value>

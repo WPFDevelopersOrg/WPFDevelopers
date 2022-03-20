@@ -61,10 +61,10 @@ namespace WPFDevelopers.Controls
         }
         public NavigateMenu()
         {
-            this.Loaded += (s, e) =>
-            {
-                SelectedIndex = 0;
-            };
+            //this.Loaded += (s, e) =>
+            //{
+            //    SelectedIndex = 0;
+            //};
         }
       
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)

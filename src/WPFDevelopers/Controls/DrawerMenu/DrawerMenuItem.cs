@@ -5,11 +5,11 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class Win10MenuItem : ListBoxItem
+    public class DrawerMenuItem : ListBoxItem
     {
-        static Win10MenuItem()
+        static DrawerMenuItem()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Win10MenuItem), new FrameworkPropertyMetadata(typeof(Win10MenuItem)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DrawerMenuItem), new FrameworkPropertyMetadata(typeof(DrawerMenuItem)));
         }
         public string Text
         {
@@ -18,7 +18,7 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(Win10MenuItem), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("Text", typeof(string), typeof(DrawerMenuItem), new PropertyMetadata(string.Empty));
 
 
         public ImageSource Icon
@@ -28,7 +28,7 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(ImageSource), typeof(Win10MenuItem), new PropertyMetadata(null));
+            DependencyProperty.Register("Icon", typeof(ImageSource), typeof(DrawerMenuItem), new PropertyMetadata(null));
 
         public Brush SelectionIndicatorColor
         {
@@ -37,7 +37,7 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty SelectionIndicatorColorProperty =
-            DependencyProperty.Register("SelectionIndicatorColor", typeof(Brush), typeof(Win10MenuItem), new PropertyMetadata(Brushes.Blue));
+            DependencyProperty.Register("SelectionIndicatorColor", typeof(Brush), typeof(DrawerMenuItem), new PropertyMetadata(DrawingContextHelper.Brush));
 
         public ICommand SelectionCommand
         {
@@ -46,6 +46,6 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty SelectionCommandProperty =
-            DependencyProperty.Register("SelectionCommand", typeof(ICommand), typeof(Win10MenuItem), new PropertyMetadata(null));
+            DependencyProperty.Register("SelectionCommand", typeof(ICommand), typeof(DrawerMenuItem), new PropertyMetadata(null));
     }
 }

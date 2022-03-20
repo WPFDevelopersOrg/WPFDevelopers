@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WPFDevelopers.Helpers
 {
-    public static class EnumerableHelper
+    public static partial class EnumerableHelper
     {
         public static int Count(this IEnumerable eunmerable)
         {

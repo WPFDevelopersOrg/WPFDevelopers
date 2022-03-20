@@ -2,7 +2,7 @@
 
 namespace WPFDevelopers.Helpers
 {
-    public class ControlsHelper: DependencyObject
+    public partial class ControlsHelper: DependencyObject
     {
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {

@@ -5,25 +5,25 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class Win10Menu : ContentControl
+    public class DrawerMenu : ContentControl
     {
-        public new List<Win10MenuItem> Content
+        public new List<DrawerMenuItem> Content
         {
-            get { return (List<Win10MenuItem>)GetValue(ContentProperty); }
+            get { return (List<DrawerMenuItem>)GetValue(ContentProperty); }
             set { SetValue(ContentProperty, value); }
         }
 
         public new static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(List<Win10MenuItem>), typeof(Win10Menu),new FrameworkPropertyMetadata(null));
+            DependencyProperty.Register("Content", typeof(List<DrawerMenuItem>), typeof(DrawerMenu),new FrameworkPropertyMetadata(null));
 
-        static Win10Menu()
+        static DrawerMenu()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Win10Menu), new FrameworkPropertyMetadata(typeof(Win10Menu)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DrawerMenu), new FrameworkPropertyMetadata(typeof(DrawerMenu)));
         }
 
         public override void BeginInit()
         {
-            Content = new List<Win10MenuItem>();
+            Content = new List<DrawerMenuItem>();
             base.BeginInit();
         }
 
@@ -37,7 +37,7 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(Win10Menu), new PropertyMetadata(true));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(DrawerMenu), new PropertyMetadata(true));
 
 
         public Brush MenuIconColor
@@ -47,7 +47,7 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty MenuIconColorProperty =
-            DependencyProperty.Register("MenuIconColor", typeof(Brush), typeof(Win10Menu), new PropertyMetadata(Brushes.White));
+            DependencyProperty.Register("MenuIconColor", typeof(Brush), typeof(DrawerMenu), new PropertyMetadata(Brushes.White));
 
 
         public Brush SelectionIndicatorColor
@@ -57,7 +57,7 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty SelectionIndicatorColorProperty =
-            DependencyProperty.Register("SelectionIndicatorColor", typeof(Brush), typeof(Win10Menu), new PropertyMetadata(Brushes.Red));
+            DependencyProperty.Register("SelectionIndicatorColor", typeof(Brush), typeof(DrawerMenu), new PropertyMetadata(DrawingContextHelper.Brush));
 
         public Brush MenuItemForeground
         {
@@ -66,6 +66,6 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty MenuItemForegroundProperty =
-            DependencyProperty.Register("MenuItemForeground", typeof(Brush), typeof(Win10Menu), new PropertyMetadata(Brushes.Transparent));
+            DependencyProperty.Register("MenuItemForeground", typeof(Brush), typeof(DrawerMenu), new PropertyMetadata(Brushes.Transparent));
     }
 }

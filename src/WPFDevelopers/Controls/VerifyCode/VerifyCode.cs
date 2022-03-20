@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 namespace WPFDevelopers.Controls
 {
     [TemplatePart(Name = ImageTemplateName, Type = typeof(Image))]
-    public class CheckCode : Control
+    public class VerifyCode : Control
     {
 
         private const string ImageTemplateName = "PART_Image";
@@ -17,7 +17,7 @@ namespace WPFDevelopers.Controls
         private const string strCode = "abcdefhkmnprstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"; 
 
         public static readonly DependencyProperty ImageSourceProperty = 
-            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(CheckCode),new PropertyMetadata(null));
+            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(VerifyCode),new PropertyMetadata(null));
         /// <summary>
         /// 随机生成的验证码
         /// </summary>
@@ -27,20 +27,9 @@ namespace WPFDevelopers.Controls
             set { SetValue(ImageSourceProperty, value); }
         }
 
-        /// <summary>
-        /// 字体颜色
-        /// </summary>
-        public Brush SizeColor
+        public VerifyCode()
         {
-            get { return (Brush)GetValue(SizeColorProperty); }
-            set { SetValue(SizeColorProperty, value); }
-        }
-
-        public static readonly DependencyProperty SizeColorProperty =
-            DependencyProperty.Register("SizeColor", typeof(Brush), typeof(CheckCode), new PropertyMetadata(DrawingContextHelper.Brush));
-
-        public CheckCode()
-        {
+            Foreground = DrawingContextHelper.Brush;
             this.Loaded += CheckCode_Loaded;
         }
 
@@ -101,8 +90,8 @@ namespace WPFDevelopers.Controls
             var random = new Random(Guid.NewGuid().GetHashCode());
             using (DrawingContext dc = drawingVisual.RenderOpen())
             {
-                dc.DrawRectangle(Brushes.White, new Pen(SizeColor, 1), new Rect(_size));
-                var formattedText = DrawingContextHelper.GetFormattedText(checkCode,color:SizeColor, flowDirection: FlowDirection.LeftToRight,textSize:20, fontWeight: FontWeights.Bold);
+                dc.DrawRectangle(Brushes.White, new Pen(Foreground, 1), new Rect(_size));
+                var formattedText = DrawingContextHelper.GetFormattedText(checkCode,color: Foreground, flowDirection: FlowDirection.LeftToRight,textSize:20, fontWeight: FontWeights.Bold);
                 dc.DrawText(formattedText, new Point((_size.Width - formattedText.Width) / 2, (_size.Height - formattedText.Height) / 2));
 
                 for (int i = 0; i < 10; i++)
