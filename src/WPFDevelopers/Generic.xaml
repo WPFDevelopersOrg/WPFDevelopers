@@ -2405,7 +2405,7 @@
 		</Setter>
 	</Style>
 	<Style x:Key="RectangleStyle" TargetType="{x:Type Rectangle}">
-		<Setter Property="Fill" Value="{StaticResource BlackSolidColorBrush}" />
+		<Setter Property="Fill" Value="{DynamicResource BlackSolidColorBrush}" />
 		<Setter Property="Opacity" Value=".5" />
 	</Style>
 	<Style TargetType="{x:Type controls:ScreenCut}" BasedOn="{StaticResource ControlBasicStyle}">
@@ -2415,25 +2415,25 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:ScreenCut}">
 					<Canvas x:Name="PART_Canvas" Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}">
-						<Rectangle x:Name="PART_RectangleLeft" Style="{StaticResource RectangleStyle}" />
-						<Rectangle x:Name="PART_RectangleTop" Style="{StaticResource RectangleStyle}" />
-						<Rectangle x:Name="PART_RectangleRight" Style="{StaticResource RectangleStyle}" />
-						<Rectangle x:Name="PART_RectangleBottom" Style="{StaticResource RectangleStyle}" />
-						<Border x:Name="PART_Border" BorderBrush="{StaticResource PrimaryNormalSolidColorBrush}" BorderThickness="1" />
-						<WrapPanel x:Name="PART_WrapPanel" Visibility="Hidden" Panel.ZIndex="99" Height="38" Background="{StaticResource WhiteSolidColorBrush}" VerticalAlignment="Center">
-							<Button x:Name="PART_ButtonSave" Style="{StaticResource PathButton}" ToolTip="保存" Margin="10,0,0,0">
+						<Rectangle x:Name="PART_RectangleLeft" Style="{DynamicResource RectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleTop" Style="{DynamicResource RectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleRight" Style="{DynamicResource RectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource RectangleStyle}" />
+						<Border x:Name="PART_Border" BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="1" Background="Transparent" Cursor="SizeAll" />
+						<WrapPanel x:Name="PART_WrapPanel" Visibility="Hidden" Panel.ZIndex="99" Height="38" Background="{DynamicResource WhiteSolidColorBrush}" VerticalAlignment="Center">
+							<Button x:Name="PART_ButtonSave" Style="{DynamicResource PathButton}" ToolTip="保存" Margin="10,0,0,0">
 								<Button.Content>
-									<Path Fill="{StaticResource InfoPressedSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathSave}" />
+									<Path Fill="{DynamicResource InfoPressedSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathSave}" />
 								</Button.Content>
 							</Button>
-							<Button x:Name="PART_ButtonCancel" Style="{StaticResource PathButton}" ToolTip="取消">
+							<Button x:Name="PART_ButtonCancel" Style="{DynamicResource PathButton}" ToolTip="取消">
 								<Button.Content>
-									<Path Fill="{StaticResource DangerPressedSolidColorBrush}" Width="14" Height="14" Stretch="Fill" Data="{StaticResource PathCancel}" />
+									<Path Fill="{DynamicResource DangerPressedSolidColorBrush}" Width="14" Height="14" Stretch="Fill" Data="{StaticResource PathCancel}" />
 								</Button.Content>
 							</Button>
-							<Button x:Name="PART_ButtonComplete" Style="{StaticResource PathButton}" ToolTip="完成" Margin="0,0,10,0">
+							<Button x:Name="PART_ButtonComplete" Style="{DynamicResource PathButton}" ToolTip="完成" Margin="0,0,10,0">
 								<Button.Content>
-									<Path Fill="{StaticResource SuccessPressedSolidColorBrush}" Width="20" Height="15" Stretch="Fill" Data="{StaticResource PathComplete}" />
+									<Path Fill="{DynamicResource SuccessPressedSolidColorBrush}" Width="20" Height="15" Stretch="Fill" Data="{StaticResource PathComplete}" />
 								</Button.Content>
 							</Button>
 						</WrapPanel>

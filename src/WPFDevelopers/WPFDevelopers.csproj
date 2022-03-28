@@ -2,7 +2,7 @@
   <PropertyGroup>
   <AssemblyName>WPFDevelopers</AssemblyName>
   <RootNamespace>WPFDevelopers</RootNamespace>
-    <TargetFrameworks>net40;net45;net46</TargetFrameworks>
+    <TargetFrameworks>net40;net45;net46;net47;net48;net5.0-windows;netcoreapp3.0</TargetFrameworks>
     <UseWPF>true</UseWPF>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageId>WPFDevelopers</PackageId>

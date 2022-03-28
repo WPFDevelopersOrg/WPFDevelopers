@@ -1,13 +1,13 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -39,10 +39,11 @@ namespace WPFDevelopers.Controls
         private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
         private Border _border;
         private WrapPanel _wrapPanel;
-        private Button _buttonSave,_buttonCancel, _buttonComplete;
+        private Button _buttonSave, _buttonCancel, _buttonComplete;
         private Rect rect;
         private Point pointStart, pointEnd;
         private bool isMouseUp = false;
+        private Win32ApiHelper.DeskTopSize size;
 
         static ScreenCut()
         {
@@ -57,6 +58,7 @@ namespace WPFDevelopers.Controls
             _rectangleRight = GetTemplateChild(RectangleRightTemplateName) as Rectangle;
             _rectangleBottom = GetTemplateChild(RectangleBottomTemplateName) as Rectangle;
             _border = GetTemplateChild(BorderTemplateName) as Border;
+          
             _wrapPanel = GetTemplateChild(WrapPanelTemplateName) as WrapPanel;
             _buttonSave = GetTemplateChild(ButtonSaveTemplateName) as Button;
             if (_buttonSave != null)
@@ -67,10 +69,11 @@ namespace WPFDevelopers.Controls
             _buttonComplete = GetTemplateChild(ButtonCompleteTemplateName) as Button;
             if (_buttonComplete != null)
                 _buttonComplete.Click += _buttonComplete_Click;
-            this._canvas.Background = new ImageBrush(ChangeBitmapToImageSource(CaptureScreen()));
+            _canvas.Background = new ImageBrush(Capture());
             _rectangleLeft.Width = _canvas.Width;
             _rectangleLeft.Height = _canvas.Height;
         }
+
 
         private void _buttonSave_Click(object sender, RoutedEventArgs e)
         {
@@ -95,16 +98,21 @@ namespace WPFDevelopers.Controls
 
         private void _buttonComplete_Click(object sender, RoutedEventArgs e)
         {
-           
+
             Clipboard.SetImage(CutBitmap());
             Close();
         }
         CroppedBitmap CutBitmap()
         {
+            _border.Visibility = Visibility.Collapsed;
+            _rectangleLeft.Visibility = Visibility.Collapsed;
+            _rectangleTop.Visibility = Visibility.Collapsed;
+            _rectangleRight.Visibility = Visibility.Collapsed;
+            _rectangleBottom.Visibility = Visibility.Collapsed;
             var renderTargetBitmap = new RenderTargetBitmap((int)_canvas.Width,
   (int)_canvas.Height, 96d, 96d, System.Windows.Media.PixelFormats.Default);
             renderTargetBitmap.Render(_canvas);
-            return  new CroppedBitmap(renderTargetBitmap, new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
+            return new CroppedBitmap(renderTargetBitmap, new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
         }
         private void _buttonCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -119,101 +127,134 @@ namespace WPFDevelopers.Controls
 
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
+            pointStart = e.GetPosition(_canvas);
             if (!isMouseUp)
             {
                 _wrapPanel.Visibility = Visibility.Hidden;
-                pointStart = e.GetPosition(_canvas);
                 pointEnd = pointStart;
                 rect = new Rect(pointStart, pointEnd);
             }
-
         }
         protected override void OnPreviewMouseMove(MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed && !isMouseUp)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 var current = e.GetPosition(_canvas);
-                MoveAllRectangle(current);
+                if (!isMouseUp)
+                {
+                    MoveAllRectangle(current);
+                }
+
+                else
+                {
+                    if (current != pointStart)
+                    {
+                        var vector = Point.Subtract(current, pointStart);
+                        var left = Canvas.GetLeft(_border) + vector.X;
+                        var top = Canvas.GetTop(_border) + vector.Y;
+                        if (left <= 0)
+                            left = 0;
+                        if (top <= 0)
+                            top = 0;
+                        if (left + _border.Width >= _canvas.ActualWidth)
+                            left = _canvas.ActualWidth - _border.ActualWidth;
+                        if (top + _border.Height >= _canvas.ActualHeight)
+                            top = _canvas.ActualHeight - _border.ActualHeight;
+                        pointStart = current;
+
+                        Canvas.SetLeft(_border, left);
+                        Canvas.SetTop(_border, top);
+                        rect = new Rect(new Point(left, top), new Point(left + _border.Width, top + _border.Height));
+                        _rectangleLeft.Width = left <= 0 ? 0 : left >= _canvas.ActualWidth ? _canvas.ActualWidth : left;
+                        _rectangleLeft.Height = _canvas.ActualHeight;
+
+                        Canvas.SetLeft(_rectangleTop, _rectangleLeft.Width);
+                        _rectangleTop.Height = top <= 0 ? 0 : top >= _canvas.ActualHeight ? _canvas.ActualHeight : top;
+
+                        Canvas.SetLeft(_rectangleRight, left + _border.Width);
+                        var wRight = _canvas.ActualWidth - (_border.Width + _rectangleLeft.Width);
+                        _rectangleRight.Width = wRight <= 0 ? 0 : wRight;
+                        _rectangleRight.Height = _canvas.ActualHeight;
+
+                        Canvas.SetLeft(_rectangleBottom, _rectangleLeft.Width);
+                        Canvas.SetTop(_rectangleBottom, top + _border.Height);
+                        _rectangleBottom.Width = _border.Width;
+                        var hBottom = _canvas.ActualHeight - (top + _border.Height);
+                        _rectangleBottom.Height = hBottom <= 0 ? 0 : hBottom;
+                    }
+
+                }
+
             }
         }
+
+
         protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
         {
-            if (!isMouseUp)
-            {
-                _wrapPanel.Visibility = Visibility.Visible;
-                Canvas.SetLeft(this._wrapPanel, rect.X + rect.Width - this._wrapPanel.ActualWidth);
-                Canvas.SetTop(this._wrapPanel, rect.Y + rect.Height + 4);
-                isMouseUp = true;
-            }
+            _wrapPanel.Visibility = Visibility.Visible;
+            Canvas.SetLeft(_wrapPanel, rect.X + rect.Width - _wrapPanel.ActualWidth);
+            var y = Canvas.GetTop(_border) + _border.ActualHeight + _wrapPanel.ActualHeight;
+            if (y > _canvas.ActualHeight)
+                y = Canvas.GetTop(_border) - _wrapPanel.ActualHeight - 4;
+            else
+                y = Canvas.GetTop(_border) + _border.ActualHeight + 4;
+            Canvas.SetTop(_wrapPanel, y);
+            isMouseUp = true;
         }
 
         void MoveAllRectangle(Point current)
         {
             pointEnd = current;
             rect = new Rect(pointStart, pointEnd);
-            this._rectangleLeft.Width = rect.X;
-            this._rectangleLeft.Height = _canvas.Height;
+            _rectangleLeft.Width = rect.X;
+            _rectangleLeft.Height = _canvas.Height;
 
-            Canvas.SetLeft(this._rectangleTop, this._rectangleLeft.Width);
-            this._rectangleTop.Width = rect.Width;
+            Canvas.SetLeft(_rectangleTop, _rectangleLeft.Width);
+            _rectangleTop.Width = rect.Width;
             double h = 0.0;
             if (current.Y < pointStart.Y)
                 h = current.Y;
             else
                 h = current.Y - rect.Height;
-            this._rectangleTop.Height = h;
 
-            Canvas.SetLeft(this._rectangleRight, this._rectangleLeft.Width + rect.Width);
-            this._rectangleRight.Width = _canvas.Width - (rect.Width + this._rectangleLeft.Width);
-            this._rectangleRight.Height = _canvas.Height;
+            _rectangleTop.Height = h;
 
-            Canvas.SetLeft(this._rectangleBottom, this._rectangleLeft.Width);
-            Canvas.SetTop(this._rectangleBottom, rect.Height + this._rectangleTop.Height);
-            this._rectangleBottom.Width = rect.Width;
-            this._rectangleBottom.Height = _canvas.Height - (rect.Height + this._rectangleTop.Height);
+            Canvas.SetLeft(_rectangleRight, _rectangleLeft.Width + rect.Width);
+            _rectangleRight.Width = _canvas.Width - (rect.Width + _rectangleLeft.Width);
+            _rectangleRight.Height = _canvas.Height;
 
-            this._border.Height = rect.Height;
-            this._border.Width = rect.Width;
-            Canvas.SetLeft(this._border, rect.X);
-            Canvas.SetTop(this._border, rect.Y);
+            Canvas.SetLeft(_rectangleBottom, _rectangleLeft.Width);
+            Canvas.SetTop(_rectangleBottom, rect.Height + _rectangleTop.Height);
+            _rectangleBottom.Width = rect.Width;
+            _rectangleBottom.Height = _canvas.Height - (rect.Height + _rectangleTop.Height);
+
+            _border.Height = rect.Height;
+            _border.Width = rect.Width;
+            Canvas.SetLeft(_border, rect.X);
+            Canvas.SetTop(_border, rect.Y);
         }
-
-        System.Drawing.Bitmap CaptureScreen()
+        BitmapSource Capture()
         {
-            //修复缩放比例不等于100%（DPI不等于96）时，不能显示全屏的问题
-            var source = PresentationSource.FromVisual(_canvas);
-            double dpiX = source.CompositionTarget.TransformToDevice.M11; //96.0 * 
-            double dpiY = source.CompositionTarget.TransformToDevice.M22; //96.0 * 
 
-            var bmpCaptured = new System.Drawing.Bitmap((int)(SystemParameters.PrimaryScreenWidth * dpiX), (int)(SystemParameters.PrimaryScreenHeight * dpiY), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmpCaptured))
+            IntPtr hBitmap;
+            IntPtr hDC = Win32ApiHelper.GetDC(Win32ApiHelper.GetDesktopWindow());
+            IntPtr hMemDC = Win32ApiHelper.CreateCompatibleDC(hDC);
+            size.cx = Win32ApiHelper.GetSystemMetrics(0);
+            size.cy = Win32ApiHelper.GetSystemMetrics(1);
+            hBitmap = Win32ApiHelper.CreateCompatibleBitmap(hDC, size.cx, size.cy);
+            if (hBitmap != IntPtr.Zero)
             {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-                g.CopyFromScreen(0, 0, 0, 0, bmpCaptured.Size, System.Drawing.CopyPixelOperation.SourceCopy);
+                IntPtr hOld = (IntPtr)Win32ApiHelper.SelectObject(hMemDC, hBitmap);
+                Win32ApiHelper.BitBlt(hMemDC, 0, 0, size.cx, size.cy, hDC, 0, 0, Win32ApiHelper.TernaryRasterOperations.SRCCOPY);
+                Win32ApiHelper.SelectObject(hMemDC, hOld);
+                Win32ApiHelper.DeleteDC(hMemDC);
+                Win32ApiHelper.ReleaseDC(Win32ApiHelper.GetDesktopWindow(), hDC);
+                var bsource = Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                Win32ApiHelper.DeleteObject(hBitmap);
+                GC.Collect();
+                return bsource;
             }
-            return bmpCaptured;
-        }
-        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
-        public static extern bool DeleteObject(IntPtr hObject);
-        ImageSource ChangeBitmapToImageSource(System.Drawing.Bitmap bitmap)
-        {
-            IntPtr hBitmap = bitmap.GetHbitmap();
-            ImageSource wpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                hBitmap,
-                IntPtr.Zero,
-                Int32Rect.Empty,
-                BitmapSizeOptions.FromEmptyOptions());
-
-            if (!DeleteObject(hBitmap))
-            {
-                throw new System.ComponentModel.Win32Exception();
-            }
-            return wpfBitmap;
+            return null;
         }
 
     }
