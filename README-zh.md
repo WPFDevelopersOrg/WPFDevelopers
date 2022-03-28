@@ -63,6 +63,14 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+
+
+### ScreenCut （截屏）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NewScreenCut.gif"/>  
+
+----------
+
 ### AnimationAudio （WPF实现音频播放动画）
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationAudio.gif"/>   
@@ -208,12 +216,6 @@ Install-Package WPFDevelopers
 ### TransitionPanel（过渡面板）  
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransitionPanel.gif"/>  
-
-----------
-
-### ScreenCut （截屏）
-
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCut.gif"/>  
 
 ----------
 
