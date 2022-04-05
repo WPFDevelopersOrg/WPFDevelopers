@@ -15,16 +15,12 @@
                             BorderThickness="0" 
                             BorderBrush="Transparent" 
                             CornerRadius="{TemplateBinding CornerRadius}" 
-                            Background="{DynamicResource DangerSolidColorBrush}"
+                            Background="{TemplateBinding Background}"
                             RenderTransformOrigin="0.5,0.5">
-                        <!--<Border.Effect>
-                            <DropShadowEffect BlurRadius="25" ShadowDepth="0" Color="{DynamicResource DangerColor}"/>
-                        </Border.Effect>-->
                         <Border.RenderTransform>
                             <ScaleTransform CenterX="0" CenterY="0" ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
                         </Border.RenderTransform>
                     </Border>
-                    <Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"/>
                 </Grid>
             </Viewbox>
             <ContentPresenter/>
@@ -34,14 +30,23 @@
             <Trigger Property="IsLampStart" Value="True">
                 <Setter Property="Effect" TargetName="PART_LampEclipse">
                     <Setter.Value>
-                        <DropShadowEffect BlurRadius="25" ShadowDepth="0" Color="{DynamicResource DangerColor}"/>
+                        <DropShadowEffect 
+                            BlurRadius="25" 
+                            ShadowDepth="0" 
+                            Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EffectColor}"/>
                     </Setter.Value>
                 </Setter>
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-                            <DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.1" Storyboard.TargetName="PART_LampEclipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" EasingFunction="{StaticResource SineEaseOut}"/>
-                            <DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.1" Storyboard.TargetName="PART_LampEclipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" EasingFunction="{StaticResource SineEaseOut}"/>
+                            <DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.1" 
+                                             Storyboard.TargetName="PART_LampEclipse" 
+                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" 
+                                             EasingFunction="{StaticResource SineEaseOut}"/>
+                            <DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.1" 
+                                             Storyboard.TargetName="PART_LampEclipse" 
+                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" 
+                                             EasingFunction="{StaticResource SineEaseOut}"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
@@ -59,7 +64,7 @@
                             Background="Transparent" 
                             BorderThickness="1"
                             CornerRadius="{TemplateBinding CornerRadius}" 
-                            BorderBrush="{DynamicResource DangerSolidColorBrush}">
+                            BorderBrush="{TemplateBinding Background}">
                         <Border.RenderTransform>
                             <ScaleTransform CenterX="0" CenterY="0" ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
                         </Border.RenderTransform>
@@ -69,12 +74,15 @@
                             Background="Transparent" 
                             BorderThickness="1"
                             CornerRadius="{TemplateBinding CornerRadius}" 
-                            BorderBrush="{DynamicResource DangerSolidColorBrush}">
+                            BorderBrush="{TemplateBinding Background}">
                         <Border.RenderTransform>
                             <ScaleTransform ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
                         </Border.RenderTransform>
                     </Border>
-                    <Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"/>
+                    <Border CornerRadius="{TemplateBinding CornerRadius}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            Background="{TemplateBinding Background}"/>
                 </Grid>
             </Viewbox>
             <ContentPresenter/>
@@ -85,11 +93,27 @@
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard RepeatBehavior="Forever" AutoReverse="True">
-                            <DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" EasingFunction="{StaticResource SineEaseOut}"/>
-                            <DoubleAnimation Duration="0:0:1" BeginTime="0" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_1" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" EasingFunction="{StaticResource SineEaseOut}"/>
+                            <DoubleAnimation Duration="0:0:1" 
+                                             BeginTime="0" From="0.8" To="1.3" 
+                                             Storyboard.TargetName="PART_LampRipple_1" 
+                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" 
+                                             EasingFunction="{StaticResource SineEaseOut}"/>
+                            <DoubleAnimation Duration="0:0:1" 
+                                             BeginTime="0" From="0.8" To="1.3" 
+                                             Storyboard.TargetName="PART_LampRipple_1" 
+                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" 
+                                             EasingFunction="{StaticResource SineEaseOut}"/>
 
-                            <DoubleAnimation Duration="0:0:1" BeginTime="0:0:0.4" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_2" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" EasingFunction="{StaticResource SineEaseOut}"/>
-                            <DoubleAnimation Duration="0:0:1" BeginTime="0:0:0.4" From="0.8" To="1.3" Storyboard.TargetName="PART_LampRipple_2" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" EasingFunction="{StaticResource SineEaseOut}"/>
+                            <DoubleAnimation Duration="0:0:1" 
+                                             BeginTime="0:0:0.4" From="0.8" To="1.3" 
+                                             Storyboard.TargetName="PART_LampRipple_2" 
+                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" 
+                                             EasingFunction="{StaticResource SineEaseOut}"/>
+                            <DoubleAnimation Duration="0:0:1" 
+                                             BeginTime="0:0:0.4" From="0.8" To="1.3" 
+                                             Storyboard.TargetName="PART_LampRipple_2" 
+                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" 
+                                             EasingFunction="{StaticResource SineEaseOut}"/>
 
                         </Storyboard>
                     </BeginStoryboard>
@@ -108,13 +132,19 @@
                             BorderThickness="0" 
                             BorderBrush="Transparent" 
                             CornerRadius="{TemplateBinding CornerRadius}" 
-                            Background="{DynamicResource DangerSolidColorBrush}"
+                            Background="{TemplateBinding Background}"
                             RenderTransformOrigin="0.5,0.5">
                         <Border.Effect>
-                            <DropShadowEffect x:Name="PART_LampOuterGlow_Effect" BlurRadius="0" ShadowDepth="0" Color="{DynamicResource DangerColor}"/>
+                            <DropShadowEffect x:Name="PART_LampOuterGlow_Effect" 
+                                              BlurRadius="0" 
+                                              ShadowDepth="0" 
+                                              Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EffectColor}"/>
                         </Border.Effect>
                     </Border>
-                    <Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"/>
+                    <Border CornerRadius="{TemplateBinding CornerRadius}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            Background="{TemplateBinding Background}"/>
                 </Grid>
             </Viewbox>
             <ContentPresenter/>
@@ -125,7 +155,12 @@
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard RepeatBehavior="Forever" >
-                            <DoubleAnimation Duration="0:0:0.6" AutoReverse="True" BeginTime="0" From="0" To="40" Storyboard.TargetName="PART_LampOuterGlow_Effect" Storyboard.TargetProperty="BlurRadius" EasingFunction="{StaticResource SineEaseInOut}"/>
+                            <DoubleAnimation Duration="0:0:0.6" 
+                                             AutoReverse="True" 
+                                             BeginTime="0" From="0" To="40" 
+                                             Storyboard.TargetName="PART_LampOuterGlow_Effect"
+                                             Storyboard.TargetProperty="BlurRadius" 
+                                             EasingFunction="{StaticResource SineEaseInOut}"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
@@ -142,8 +177,8 @@
                         <Border.BorderBrush>
                             <LinearGradientBrush >
                                 <LinearGradientBrush.GradientStops>
-                                    <GradientStop Color="#FF00cec9" Offset="0"/>
-                                    <GradientStop Color="#2000cec9" Offset="0.3"/>
+                                    <GradientStop Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=GradientStopColor1}" Offset="0"/>
+                                    <GradientStop Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=GradientStopColor2}" Offset="0.3"/>
                                     <GradientStop Color="Transparent" Offset="1" />
                                 </LinearGradientBrush.GradientStops>
                             </LinearGradientBrush>
@@ -192,6 +227,9 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height" Value="60"/>
         <Setter Property="Width" Value="60"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="EffectColor" Value="{StaticResource PrimaryNormalColor}"/>
         <Style.Triggers>
             <Trigger Property="LampEffect" Value="Eclipse">
                 <Setter Property="Template" Value="{StaticResource LampEffect_Eclipse}"/>

@@ -217,8 +217,8 @@
 						<Border.BorderBrush>
 							<LinearGradientBrush>
 								<LinearGradientBrush.GradientStops>
-									<GradientStop Color="#FF00cec9" Offset="0" />
-									<GradientStop Color="#2000cec9" Offset="0.3" />
+									<GradientStop Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=GradientStopColor1}" Offset="0" />
+									<GradientStop Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=GradientStopColor2}" Offset="0.3" />
 									<GradientStop Color="Transparent" Offset="1" />
 								</LinearGradientBrush.GradientStops>
 							</LinearGradientBrush>
@@ -711,15 +711,11 @@
 		<Grid>
 			<Viewbox>
 				<Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-					<Border x:Name="PART_LampEclipse" BorderThickness="0" BorderBrush="Transparent" CornerRadius="{TemplateBinding CornerRadius}" Background="{DynamicResource DangerSolidColorBrush}" RenderTransformOrigin="0.5,0.5">
-						<!--<Border.Effect>
-                            <DropShadowEffect BlurRadius="25" ShadowDepth="0" Color="{DynamicResource DangerColor}"/>
-                        </Border.Effect>-->
+					<Border x:Name="PART_LampEclipse" BorderThickness="0" BorderBrush="Transparent" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
 						<Border.RenderTransform>
 							<ScaleTransform CenterX="0" CenterY="0" ScaleX="0.8" ScaleY="0.8" />
 						</Border.RenderTransform>
 					</Border>
-					<Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
 				</Grid>
 			</Viewbox>
 			<ContentPresenter />
@@ -728,7 +724,7 @@
 			<Trigger Property="IsLampStart" Value="True">
 				<Setter Property="Effect" TargetName="PART_LampEclipse">
 					<Setter.Value>
-						<DropShadowEffect BlurRadius="25" ShadowDepth="0" Color="{DynamicResource DangerColor}" />
+						<DropShadowEffect BlurRadius="25" ShadowDepth="0" Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EffectColor}" />
 					</Setter.Value>
 				</Setter>
 				<Trigger.EnterActions>
@@ -746,12 +742,12 @@
 		<Grid>
 			<Viewbox>
 				<Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-					<Border x:Name="PART_LampRipple_1" RenderTransformOrigin="0.5,0.5" Background="Transparent" BorderThickness="1" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource DangerSolidColorBrush}">
+					<Border x:Name="PART_LampRipple_1" RenderTransformOrigin="0.5,0.5" Background="Transparent" BorderThickness="1" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding Background}">
 						<Border.RenderTransform>
 							<ScaleTransform CenterX="0" CenterY="0" ScaleX="0.8" ScaleY="0.8" />
 						</Border.RenderTransform>
 					</Border>
-					<Border x:Name="PART_LampRipple_2" RenderTransformOrigin="0.5,0.5" Background="Transparent" BorderThickness="1" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{DynamicResource DangerSolidColorBrush}">
+					<Border x:Name="PART_LampRipple_2" RenderTransformOrigin="0.5,0.5" Background="Transparent" BorderThickness="1" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding Background}">
 						<Border.RenderTransform>
 							<ScaleTransform ScaleX="0.8" ScaleY="0.8" />
 						</Border.RenderTransform>
@@ -780,9 +776,9 @@
 		<Grid>
 			<Viewbox>
 				<Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-					<Border x:Name="PART_LampOuterGlow" Margin="1" BorderThickness="0" BorderBrush="Transparent" CornerRadius="{TemplateBinding CornerRadius}" Background="{DynamicResource DangerSolidColorBrush}" RenderTransformOrigin="0.5,0.5">
+					<Border x:Name="PART_LampOuterGlow" Margin="1" BorderThickness="0" BorderBrush="Transparent" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5">
 						<Border.Effect>
-							<DropShadowEffect x:Name="PART_LampOuterGlow_Effect" BlurRadius="0" ShadowDepth="0" Color="{DynamicResource DangerColor}" />
+							<DropShadowEffect x:Name="PART_LampOuterGlow_Effect" BlurRadius="0" ShadowDepth="0" Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EffectColor}" />
 						</Border.Effect>
 					</Border>
 					<Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
@@ -806,6 +802,9 @@
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Height" Value="60" />
 		<Setter Property="Width" Value="60" />
+		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="EffectColor" Value="{StaticResource PrimaryNormalColor}" />
 		<Style.Triggers>
 			<Trigger Property="LampEffect" Value="Eclipse">
 				<Setter Property="Template" Value="{StaticResource LampEffect_Eclipse}" />
@@ -2404,9 +2403,16 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="RectangleStyle" TargetType="{x:Type Rectangle}">
+	<Style x:Key="ScreenCutRectangleStyle" TargetType="{x:Type Rectangle}">
 		<Setter Property="Fill" Value="{DynamicResource BlackSolidColorBrush}" />
 		<Setter Property="Opacity" Value=".5" />
+	</Style>
+	<Style x:Key="ScreenCutEllipseStyle" TargetType="{x:Type Ellipse}">
+		<Setter Property="Width" Value="15" />
+		<Setter Property="Height" Value="15" />
+		<Setter Property="Fill" Value="{DynamicResource WhiteSolidColorBrush}" />
+		<Setter Property="Stroke" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="StrokeThickness" Value="2" />
 	</Style>
 	<Style TargetType="{x:Type controls:ScreenCut}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="WindowState" Value="Maximized" />
@@ -2414,30 +2420,34 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:ScreenCut}">
-					<Canvas x:Name="PART_Canvas" Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}">
-						<Rectangle x:Name="PART_RectangleLeft" Style="{DynamicResource RectangleStyle}" />
-						<Rectangle x:Name="PART_RectangleTop" Style="{DynamicResource RectangleStyle}" />
-						<Rectangle x:Name="PART_RectangleRight" Style="{DynamicResource RectangleStyle}" />
-						<Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource RectangleStyle}" />
-						<Border x:Name="PART_Border" BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="1" Background="Transparent" Cursor="SizeAll" />
-						<WrapPanel x:Name="PART_WrapPanel" Visibility="Hidden" Panel.ZIndex="99" Height="38" Background="{DynamicResource WhiteSolidColorBrush}" VerticalAlignment="Center">
-							<Button x:Name="PART_ButtonSave" Style="{DynamicResource PathButton}" ToolTip="保存" Margin="10,0,0,0">
-								<Button.Content>
-									<Path Fill="{DynamicResource InfoPressedSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathSave}" />
-								</Button.Content>
-							</Button>
-							<Button x:Name="PART_ButtonCancel" Style="{DynamicResource PathButton}" ToolTip="取消">
-								<Button.Content>
-									<Path Fill="{DynamicResource DangerPressedSolidColorBrush}" Width="14" Height="14" Stretch="Fill" Data="{StaticResource PathCancel}" />
-								</Button.Content>
-							</Button>
-							<Button x:Name="PART_ButtonComplete" Style="{DynamicResource PathButton}" ToolTip="完成" Margin="0,0,10,0">
-								<Button.Content>
-									<Path Fill="{DynamicResource SuccessPressedSolidColorBrush}" Width="20" Height="15" Stretch="Fill" Data="{StaticResource PathComplete}" />
-								</Button.Content>
-							</Button>
-						</WrapPanel>
-					</Canvas>
+					<AdornerDecorator>
+						<Canvas x:Name="PART_Canvas" Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}">
+							<Rectangle x:Name="PART_RectangleLeft" Style="{DynamicResource ScreenCutRectangleStyle}" />
+							<Rectangle x:Name="PART_RectangleTop" Style="{DynamicResource ScreenCutRectangleStyle}" />
+							<Rectangle x:Name="PART_RectangleRight" Style="{DynamicResource ScreenCutRectangleStyle}" />
+							<Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource ScreenCutRectangleStyle}" />
+							<Border x:Name="PART_Border" BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="Transparent" Cursor="SizeAll" />
+							<Border x:Name="PART_EditBar" Visibility="Hidden" Effect="{DynamicResource PopupShadowDepth}" Panel.ZIndex="99" Background="{DynamicResource WhiteSolidColorBrush}">
+								<WrapPanel Height="38" VerticalAlignment="Center">
+									<Button x:Name="PART_ButtonSave" Style="{DynamicResource PathButton}" ToolTip="保存" Margin="10,0,0,0">
+										<Button.Content>
+											<Path Fill="{DynamicResource InfoPressedSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathSave}" />
+										</Button.Content>
+									</Button>
+									<Button x:Name="PART_ButtonCancel" Style="{DynamicResource PathButton}" ToolTip="取消">
+										<Button.Content>
+											<Path Fill="{DynamicResource DangerPressedSolidColorBrush}" Width="14" Height="14" Stretch="Fill" Data="{StaticResource PathCancel}" />
+										</Button.Content>
+									</Button>
+									<Button x:Name="PART_ButtonComplete" Style="{DynamicResource PathButton}" ToolTip="完成" Margin="0,0,10,0">
+										<Button.Content>
+											<Path Fill="{DynamicResource SuccessPressedSolidColorBrush}" Width="20" Height="15" Stretch="Fill" Data="{StaticResource PathComplete}" />
+										</Button.Content>
+									</Button>
+								</WrapPanel>
+							</Border>
+						</Canvas>
+					</AdornerDecorator>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

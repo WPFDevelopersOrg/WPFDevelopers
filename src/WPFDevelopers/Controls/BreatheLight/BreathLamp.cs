@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
@@ -22,6 +23,33 @@ namespace WPFDevelopers.Controls
         {
             base.OnApplyTemplate();
         }
+
+
+        public Color EffectColor
+        {
+            get { return (Color)GetValue(EffectColorProperty); }
+            set { SetValue(EffectColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty EffectColorProperty =
+            DependencyProperty.Register("EffectColor", typeof(Color), typeof(BreathLamp), new PropertyMetadata(Application.Current.Resources["DangerColor"]));
+
+
+        public Color GradientStopColor1
+        {
+            get { return (Color)GetValue(GradientStopColor1Property); }
+            set { SetValue(GradientStopColor1Property, value); }
+        }
+        public static readonly DependencyProperty GradientStopColor1Property =
+            DependencyProperty.Register("GradientStopColor1", typeof(Color), typeof(BreathLamp), new PropertyMetadata(null));
+
+        public Color GradientStopColor2
+        {
+            get { return (Color)GetValue(GradientStopColor2Property); }
+            set { SetValue(GradientStopColor2Property, value); }
+        }
+        public static readonly DependencyProperty GradientStopColor2Property =
+            DependencyProperty.Register("GradientStopColor2", typeof(Color), typeof(BreathLamp), new PropertyMetadata(null));
 
 
         public static readonly DependencyProperty CornerRadiusProperty =

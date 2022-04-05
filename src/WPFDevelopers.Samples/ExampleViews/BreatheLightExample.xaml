@@ -15,8 +15,10 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="OuterGlow" Background="Transparent" IsLampStart="true"
-                                   VerticalAlignment="Top" HorizontalAlignment="Left">
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="OuterGlow" IsLampStart="true"
+                                   VerticalAlignment="Top" HorizontalAlignment="Left"
+                                   Background="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" 
+                                   EffectColor="{DynamicResource DefaultBackgroundPressedColor}">
                     <Ellipse>
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/2.jpg"/>
@@ -46,8 +48,9 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Eclipse" Background="LightGray" IsLampStart="true"
-                                   VerticalAlignment="Top" HorizontalAlignment="Left">
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Eclipse"  IsLampStart="true"
+                                   VerticalAlignment="Top" HorizontalAlignment="Left"
+                                   Background="LightGreen" EffectColor="LightGreen">
                     <Ellipse>
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/1.jpg"/>
@@ -77,7 +80,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple" Background="LightGray" IsLampStart="true"
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
                                    VerticalAlignment="Top" HorizontalAlignment="Left">
                     <Ellipse>
                         <Ellipse.Fill>
@@ -108,8 +111,9 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer" Background="LightGray" IsLampStart="True"
-                                   VerticalAlignment="Top" HorizontalAlignment="Left">
+                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"
+                                   VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                   GradientStopColor1="#FF00cec9" GradientStopColor2="#2000cec9">
                     <Ellipse Width="53" Height="53">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Chat/UserImages/yanjinhua.png"/>

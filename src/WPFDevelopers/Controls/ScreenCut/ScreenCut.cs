@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -11,17 +12,23 @@ using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
+    public enum ScreenCutMouseType
+    {
+        Default,
+        DrawMouse,
+        MoveMouse,
+
+    }
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
     [TemplatePart(Name = RectangleLeftTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = RectangleTopTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = RectangleRightTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = RectangleBottomTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
-    [TemplatePart(Name = WrapPanelTemplateName, Type = typeof(WrapPanel))]
+    [TemplatePart(Name = EditBarTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = ButtonSaveTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = ButtonCancelTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = ButtonCompleteTemplateName, Type = typeof(Button))]
-
     public class ScreenCut : Window
     {
         private const string CanvasTemplateName = "PART_Canvas";
@@ -30,20 +37,22 @@ namespace WPFDevelopers.Controls
         private const string RectangleRightTemplateName = "PART_RectangleRight";
         private const string RectangleBottomTemplateName = "PART_RectangleBottom";
         private const string BorderTemplateName = "PART_Border";
-        private const string WrapPanelTemplateName = "PART_WrapPanel";
+        private const string EditBarTemplateName = "PART_EditBar";
         private const string ButtonSaveTemplateName = "PART_ButtonSave";
         private const string ButtonCancelTemplateName = "PART_ButtonCancel";
         private const string ButtonCompleteTemplateName = "PART_ButtonComplete";
 
         private Canvas _canvas;
         private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
-        private Border _border;
-        private WrapPanel _wrapPanel;
+        private Border _border, _editBar;
         private Button _buttonSave, _buttonCancel, _buttonComplete;
         private Rect rect;
         private Point pointStart, pointEnd;
         private bool isMouseUp = false;
         private Win32ApiHelper.DeskTopSize size;
+        private ScreenCutMouseType screenCutMouseType = ScreenCutMouseType.Default;
+        private AdornerLayer adornerLayer;
+        private ScreenCutAdorner screenCutAdorner;
 
         static ScreenCut()
         {
@@ -58,8 +67,9 @@ namespace WPFDevelopers.Controls
             _rectangleRight = GetTemplateChild(RectangleRightTemplateName) as Rectangle;
             _rectangleBottom = GetTemplateChild(RectangleBottomTemplateName) as Rectangle;
             _border = GetTemplateChild(BorderTemplateName) as Border;
-          
-            _wrapPanel = GetTemplateChild(WrapPanelTemplateName) as WrapPanel;
+            _border.MouseLeftButtonDown += _border_MouseLeftButtonDown;
+
+            _editBar = GetTemplateChild(EditBarTemplateName) as Border;
             _buttonSave = GetTemplateChild(ButtonSaveTemplateName) as Button;
             if (_buttonSave != null)
                 _buttonSave.Click += _buttonSave_Click;
@@ -72,8 +82,37 @@ namespace WPFDevelopers.Controls
             _canvas.Background = new ImageBrush(Capture());
             _rectangleLeft.Width = _canvas.Width;
             _rectangleLeft.Height = _canvas.Height;
+            
         }
 
+        public ScreenCut()
+        {
+            Loaded += (s,e)=> 
+            {
+                adornerLayer = AdornerLayer.GetAdornerLayer(_border);
+                screenCutAdorner = new ScreenCutAdorner(_border);
+                adornerLayer.Add(screenCutAdorner);
+                _border.SizeChanged += _border_SizeChanged;
+            };
+        }
+        private void _border_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var left = Canvas.GetLeft(_border);
+            var top = Canvas.GetTop(_border);
+            var beignPoint = new Point(left, top);
+            var endPoint = new Point(left + _border.ActualWidth, top + _border.ActualHeight);
+            rect = new Rect(beignPoint, endPoint);
+            pointStart = beignPoint;
+            MoveAllRectangle(endPoint);
+            EditBarPosition();
+        }
+
+        private void _border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(screenCutMouseType == ScreenCutMouseType.Default)
+                screenCutMouseType = ScreenCutMouseType.MoveMouse;
+                
+        }
 
         private void _buttonSave_Click(object sender, RoutedEventArgs e)
         {
@@ -130,7 +169,8 @@ namespace WPFDevelopers.Controls
             pointStart = e.GetPosition(_canvas);
             if (!isMouseUp)
             {
-                _wrapPanel.Visibility = Visibility.Hidden;
+                screenCutMouseType = ScreenCutMouseType.DrawMouse;
+                _editBar.Visibility = Visibility.Hidden;
                 pointEnd = pointStart;
                 rect = new Rect(pointStart, pointEnd);
             }
@@ -140,68 +180,82 @@ namespace WPFDevelopers.Controls
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 var current = e.GetPosition(_canvas);
-                if (!isMouseUp)
+                switch (screenCutMouseType)
                 {
-                    MoveAllRectangle(current);
-                }
-
-                else
-                {
-                    if (current != pointStart)
-                    {
-                        var vector = Point.Subtract(current, pointStart);
-                        var left = Canvas.GetLeft(_border) + vector.X;
-                        var top = Canvas.GetTop(_border) + vector.Y;
-                        if (left <= 0)
-                            left = 0;
-                        if (top <= 0)
-                            top = 0;
-                        if (left + _border.Width >= _canvas.ActualWidth)
-                            left = _canvas.ActualWidth - _border.ActualWidth;
-                        if (top + _border.Height >= _canvas.ActualHeight)
-                            top = _canvas.ActualHeight - _border.ActualHeight;
-                        pointStart = current;
-
-                        Canvas.SetLeft(_border, left);
-                        Canvas.SetTop(_border, top);
-                        rect = new Rect(new Point(left, top), new Point(left + _border.Width, top + _border.Height));
-                        _rectangleLeft.Width = left <= 0 ? 0 : left >= _canvas.ActualWidth ? _canvas.ActualWidth : left;
-                        _rectangleLeft.Height = _canvas.ActualHeight;
-
-                        Canvas.SetLeft(_rectangleTop, _rectangleLeft.Width);
-                        _rectangleTop.Height = top <= 0 ? 0 : top >= _canvas.ActualHeight ? _canvas.ActualHeight : top;
-
-                        Canvas.SetLeft(_rectangleRight, left + _border.Width);
-                        var wRight = _canvas.ActualWidth - (_border.Width + _rectangleLeft.Width);
-                        _rectangleRight.Width = wRight <= 0 ? 0 : wRight;
-                        _rectangleRight.Height = _canvas.ActualHeight;
-
-                        Canvas.SetLeft(_rectangleBottom, _rectangleLeft.Width);
-                        Canvas.SetTop(_rectangleBottom, top + _border.Height);
-                        _rectangleBottom.Width = _border.Width;
-                        var hBottom = _canvas.ActualHeight - (top + _border.Height);
-                        _rectangleBottom.Height = hBottom <= 0 ? 0 : hBottom;
-                    }
-
+                    case ScreenCutMouseType.DrawMouse:
+                        MoveAllRectangle(current);
+                        break;
+                  
+                    case ScreenCutMouseType.MoveMouse:
+                        MoveRect(current);
+                        break;
+                    default:
+                        break;
                 }
 
             }
         }
+        void MoveRect(Point current)
+        {
+            if (current != pointStart)
+            {
+                Console.WriteLine($"current:{current}");
+                Console.WriteLine($"pointStart:{pointStart}");
+                var vector = Point.Subtract(current, pointStart);
+                var left = Canvas.GetLeft(_border) + vector.X;
+                var top = Canvas.GetTop(_border) + vector.Y;
+                Console.WriteLine($"left:{left}");
+                if (left <= 0)
+                    left = 0;
+                if (top <= 0)
+                    top = 0;
+                if (left + _border.Width >= _canvas.ActualWidth)
+                    left = _canvas.ActualWidth - _border.ActualWidth;
+                if (top + _border.Height >= _canvas.ActualHeight)
+                    top = _canvas.ActualHeight - _border.ActualHeight;
+                pointStart = current;
 
+                Canvas.SetLeft(_border, left);
+                Canvas.SetTop(_border, top);
+                rect = new Rect(new Point(left, top), new Point(left + _border.Width, top + _border.Height));
+                _rectangleLeft.Height = _canvas.ActualHeight;
+                _rectangleLeft.Width = left <= 0 ? 0 : left >= _canvas.ActualWidth ? _canvas.ActualWidth : left;
+
+
+                Canvas.SetLeft(_rectangleTop, _rectangleLeft.Width);
+                _rectangleTop.Height = top <= 0 ? 0 : top >= _canvas.ActualHeight ? _canvas.ActualHeight : top;
+
+                Canvas.SetLeft(_rectangleRight, left + _border.Width);
+                var wRight = _canvas.ActualWidth - (_border.Width + _rectangleLeft.Width);
+                _rectangleRight.Width = wRight <= 0 ? 0 : wRight;
+                _rectangleRight.Height = _canvas.ActualHeight;
+
+                Canvas.SetLeft(_rectangleBottom, _rectangleLeft.Width);
+                Canvas.SetTop(_rectangleBottom, top + _border.Height);
+                _rectangleBottom.Width = _border.Width;
+                var hBottom = _canvas.ActualHeight - (top + _border.Height);
+                _rectangleBottom.Height = hBottom <= 0 ? 0 : hBottom;
+            }
+        }
 
         protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
         {
-            _wrapPanel.Visibility = Visibility.Visible;
-            Canvas.SetLeft(_wrapPanel, rect.X + rect.Width - _wrapPanel.ActualWidth);
-            var y = Canvas.GetTop(_border) + _border.ActualHeight + _wrapPanel.ActualHeight;
-            if (y > _canvas.ActualHeight)
-                y = Canvas.GetTop(_border) - _wrapPanel.ActualHeight - 4;
-            else
-                y = Canvas.GetTop(_border) + _border.ActualHeight + 4;
-            Canvas.SetTop(_wrapPanel, y);
+            EditBarPosition();
             isMouseUp = true;
+            if (screenCutMouseType != ScreenCutMouseType.Default)
+                screenCutMouseType = ScreenCutMouseType.Default;
         }
-
+        void EditBarPosition()
+        {
+            _editBar.Visibility = Visibility.Visible;
+            Canvas.SetLeft(_editBar, rect.X + rect.Width - _editBar.ActualWidth);
+            var y = Canvas.GetTop(_border) + _border.ActualHeight + _editBar.ActualHeight;
+            if (y > _canvas.ActualHeight)
+                y = Canvas.GetTop(_border) - _editBar.ActualHeight - 8;
+            else
+                y = Canvas.GetTop(_border) + _border.ActualHeight + 8;
+            Canvas.SetTop(_editBar, y);
+        }
         void MoveAllRectangle(Point current)
         {
             pointEnd = current;
@@ -232,7 +286,9 @@ namespace WPFDevelopers.Controls
             _border.Width = rect.Width;
             Canvas.SetLeft(_border, rect.X);
             Canvas.SetTop(_border, rect.Y);
+            
         }
+       
         BitmapSource Capture()
         {
 
