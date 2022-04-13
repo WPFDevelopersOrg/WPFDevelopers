@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -20,6 +9,16 @@ namespace WPFDevelopers.Samples.ExampleViews
     /// </summary>
     public partial class ScreenCutExample : UserControl
     {
+        public bool IsChecked
+        {
+            get { return (bool)GetValue(IsCheckedProperty); }
+            set { SetValue(IsCheckedProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsCheckedProperty =
+            DependencyProperty.Register("IsChecked", typeof(bool), typeof(ScreenCutExample), new PropertyMetadata(false));
+
+
         public ScreenCutExample()
         {
             InitializeComponent();
@@ -28,7 +27,14 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var screenCut = new ScreenCut();
-            screenCut.ShowDialog();
+            if (IsChecked)
+            {
+                App.CurrentMainWindow.WindowState = WindowState.Minimized;
+                screenCut.Show();
+                screenCut.Activate();
+            }
+            else
+                screenCut.ShowDialog();
         }
     }
 }

@@ -6,6 +6,7 @@ Basic\ControlBasic.xaml
 ..\Microsoft.Expression.Controls\Themes\Generic.xaml
 ..\Microsoft.Expression.Drawing\Themes\Generic.xaml
 ButtonsStyles.xaml
+RadioButtonStyles.xaml
 AnimationAudio.xaml
 AnimationNavigationBar3D.xaml
 BallLoading.xaml

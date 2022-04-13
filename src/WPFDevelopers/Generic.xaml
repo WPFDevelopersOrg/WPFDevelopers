@@ -72,6 +72,9 @@
 	<Geometry x:Key="PathAudioOne" po:Freeze="True">M344.96 362.647l-146.526 150.83L347.89 664.314c79.122-82.808 79.122-218.856-2.93-301.667z</Geometry>
 	<Geometry x:Key="PathAudioTwo" po:Freeze="True">M494.413 214.765l-73.263 73.941c123.083 124.215 123.083 325.328 0 449.546l73.263 73.938c164.11-165.625 164.11-431.797 0-597.425z</Geometry>
 	<Geometry x:Key="PathAudioThree" po:Freeze="True">M640.944 63.934l-73.266 73.941c205.138 207.023 205.138 541.221 0 748.256l73.266 73.935c246.163-245.478 246.163-647.699 0-896.132z</Geometry>
+	<Geometry x:Key="PathRectangle" po:Freeze="True">M640 146.286h-475.429q-37.714 0-64.571 26.857t-26.857 64.571v475.429q0 37.714 26.857 64.571t64.571 26.857h475.429q37.714 0 64.571-26.857t26.857-64.571v-475.429q0-37.714-26.857-64.571t-64.571-26.857zM804.571 237.714v475.429q0 68-48.286 116.286t-116.286 48.286h-475.429q-68 0-116.286-48.286t-48.286-116.286v-475.429q0-68 48.286-116.286t116.286-48.286h475.429q68 0 116.286 48.286t48.286 116.286z</Geometry>
+	<Geometry x:Key="PathEllipse" po:Freeze="True">M438.857 201.143q-84.571 0-156 41.714t-113.143 113.143-41.714 156 41.714 156 113.143 113.143 156 41.714 156-41.714 113.143-113.143 41.714-156-41.714-156-113.143-113.143-156-41.714zM877.714 512q0 119.429-58.857 220.286t-159.714 159.714-220.286 58.857-220.286-58.857-159.714-159.714-58.857-220.286 58.857-220.286 159.714-159.714 220.286-58.857 220.286 58.857 159.714 159.714 58.857 220.286z</Geometry>
+	<Geometry x:Key="PathUpperTriangle" po:Freeze="True">M768 716.8h-512l256-460.8 256 460.8z</Geometry>
 	<CubicEase x:Key="CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="ExponentialEaseOut" EasingMode="EaseOut" />
@@ -461,6 +464,69 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsMouseOver" Value="True">
 							<Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="1" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="PathRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Padding" Value="8" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type RadioButton}">
+					<Border Background="Transparent">
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentPresenter" Opacity=".8" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="1" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="1" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="ColorRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="8" />
+		<Setter Property="Width" Value="15" />
+		<Setter Property="Height" Value="15" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type RadioButton}">
+					<Border Background="{TemplateBinding Background}" BorderThickness="0" x:Name="PART_Border" CornerRadius="7" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CheckStates">
+								<VisualState x:Name="Checked">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_Ellipse">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unchecked" />
+								<VisualState x:Name="Indeterminate" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Ellipse x:Name="PART_Ellipse" Width="7" Height="7" Fill="{DynamicResource WhiteSolidColorBrush}" Visibility="Collapsed" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Opacity" Value=".8" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2405,7 +2471,7 @@
 	</Style>
 	<Style x:Key="ScreenCutRectangleStyle" TargetType="{x:Type Rectangle}">
 		<Setter Property="Fill" Value="{DynamicResource BlackSolidColorBrush}" />
-		<Setter Property="Opacity" Value=".5" />
+		<Setter Property="Opacity" Value=".3" />
 	</Style>
 	<Style x:Key="ScreenCutEllipseStyle" TargetType="{x:Type Ellipse}">
 		<Setter Property="Width" Value="15" />
@@ -2428,24 +2494,48 @@
 							<Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource ScreenCutRectangleStyle}" />
 							<Border x:Name="PART_Border" BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="Transparent" Cursor="SizeAll" />
 							<Border x:Name="PART_EditBar" Visibility="Hidden" Effect="{DynamicResource PopupShadowDepth}" Panel.ZIndex="99" Background="{DynamicResource WhiteSolidColorBrush}">
-								<WrapPanel Height="38" VerticalAlignment="Center">
-									<Button x:Name="PART_ButtonSave" Style="{DynamicResource PathButton}" ToolTip="保存" Margin="10,0,0,0">
+								<WrapPanel Margin="10,5" VerticalAlignment="Center">
+									<RadioButton x:Name="PART_RadioButtonRectangle" Style="{DynamicResource PathRadioButton}" ToolTip="方框" Margin="4,0">
+										<RadioButton.Content>
+											<Path Fill="{DynamicResource RegularTextSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathRectangle}" />
+										</RadioButton.Content>
+									</RadioButton>
+									<RadioButton x:Name="PART_RadioButtonEllipse" Style="{DynamicResource PathRadioButton}" ToolTip="椭圆" Margin="4,0">
+										<ToggleButton.Content>
+											<Ellipse Width="19" Height="19" StrokeThickness="1.5" SnapsToDevicePixels="True" UseLayoutRounding="True" Stroke="{DynamicResource RegularTextSolidColorBrush}" />
+										</ToggleButton.Content>
+									</RadioButton>
+									<Rectangle Stroke="{DynamicResource SecondaryTextSolidColorBrush}" Height="18" Width="1" Margin="4,0" />
+									<Button x:Name="PART_ButtonSave" Style="{DynamicResource PathButton}" ToolTip="保存" Margin="4,0">
 										<Button.Content>
-											<Path Fill="{DynamicResource InfoPressedSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathSave}" />
+											<Path Fill="{DynamicResource RegularTextSolidColorBrush}" Width="18" Height="18" Stretch="Fill" Data="{StaticResource PathSave}" />
 										</Button.Content>
 									</Button>
-									<Button x:Name="PART_ButtonCancel" Style="{DynamicResource PathButton}" ToolTip="取消">
+									<Button x:Name="PART_ButtonCancel" Style="{DynamicResource PathButton}" ToolTip="取消" Margin="4,0">
 										<Button.Content>
-											<Path Fill="{DynamicResource DangerPressedSolidColorBrush}" Width="14" Height="14" Stretch="Fill" Data="{StaticResource PathCancel}" />
+											<Path Fill="{DynamicResource DrawPrizeDualSolidColorBrush}" Width="14" Height="14" Stretch="Fill" Data="{StaticResource PathCancel}" />
 										</Button.Content>
 									</Button>
-									<Button x:Name="PART_ButtonComplete" Style="{DynamicResource PathButton}" ToolTip="完成" Margin="0,0,10,0">
+									<Button x:Name="PART_ButtonComplete" Style="{DynamicResource PathButton}" ToolTip="完成" Margin="4,0">
 										<Button.Content>
-											<Path Fill="{DynamicResource SuccessPressedSolidColorBrush}" Width="20" Height="15" Stretch="Fill" Data="{StaticResource PathComplete}" />
+											<Path Fill="{DynamicResource SuccessSolidColorBrush}" Width="20" Height="15" Stretch="Fill" Data="{StaticResource PathComplete}" />
 										</Button.Content>
 									</Button>
 								</WrapPanel>
 							</Border>
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" Placement="Bottom" VerticalOffset="13">
+								<Border Effect="{DynamicResource PopupShadowDepth}" Background="{DynamicResource WhiteSolidColorBrush}" Margin="10,30,10,10" CornerRadius="{Binding Path=(helpers:ControlsHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="PART_PopupBorder">
+									<Grid>
+										<Path Data="{StaticResource PathUpperTriangle}" Fill="{DynamicResource WhiteSolidColorBrush}" Stretch="Uniform" Width="10" VerticalAlignment="Top" Margin="0,-8,0,0" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+										<WrapPanel Margin="10" VerticalAlignment="Center" x:Name="PART_WrapPanelColor">
+											<RadioButton Style="{DynamicResource ColorRadioButton}" Margin="4,0" Background="Red" IsChecked="True" />
+											<RadioButton Style="{DynamicResource ColorRadioButton}" Margin="4,0" Background="DodgerBlue" />
+											<RadioButton Style="{DynamicResource ColorRadioButton}" Margin="4,0" Background="LimeGreen" />
+											<RadioButton Style="{DynamicResource ColorRadioButton}" Margin="4,0" Background="Yellow" />
+										</WrapPanel>
+									</Grid>
+								</Border>
+							</Popup>
 						</Canvas>
 					</AdornerDecorator>
 				</ControlTemplate>

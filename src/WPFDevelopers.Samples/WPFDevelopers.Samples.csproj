@@ -61,11 +61,11 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.1.0.2\lib\net40\WPFDevelopers.dll</HintPath>
+    <Reference Include="WPFDevelopers, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.1.0.3\lib\net40\WPFDevelopers.dll</HintPath>
     </Reference>
-    <Reference Include="WPFDevelopers.Minimal, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.Minimal.3.2.1\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
+    <Reference Include="WPFDevelopers.Minimal, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.Minimal.3.2.2\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

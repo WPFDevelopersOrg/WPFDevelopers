@@ -19,7 +19,19 @@
 
 ### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。   
 
-### 运行环境 Visual Studio 2019，dotNet Framework 4.0 SDK  
+### 运行环境 Visual Studio 2022  
+
+### .Net Version
+|  .Net Version   | Status  |
+|  ----  | ----  |
+| Net40  | ✅ |
+| net45  | ✅ |
+| net46  | ✅ |
+| net47  | ✅ |
+| net48  | ✅ |
+| netcoreapp3.0  | ✅ |
+| net5.0-windows  | ✅ |
+| net6.0-windows  | ✅ |
 
 ### 欢迎关注微信公众号  
 
@@ -66,7 +78,7 @@ Install-Package WPFDevelopers
 
 
 ### ScreenCut （截屏）
-
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/screencut4.gif"/>  
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NewScreenCut.gif"/>  
 
 ----------

@@ -11,5 +11,8 @@
     <Page Update="Themes\ButtonsStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\RadioButtonStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>
