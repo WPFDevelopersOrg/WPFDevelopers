@@ -75,6 +75,9 @@
 	<Geometry x:Key="PathRectangle" po:Freeze="True">M640 146.286h-475.429q-37.714 0-64.571 26.857t-26.857 64.571v475.429q0 37.714 26.857 64.571t64.571 26.857h475.429q37.714 0 64.571-26.857t26.857-64.571v-475.429q0-37.714-26.857-64.571t-64.571-26.857zM804.571 237.714v475.429q0 68-48.286 116.286t-116.286 48.286h-475.429q-68 0-116.286-48.286t-48.286-116.286v-475.429q0-68 48.286-116.286t116.286-48.286h475.429q68 0 116.286 48.286t48.286 116.286z</Geometry>
 	<Geometry x:Key="PathEllipse" po:Freeze="True">M438.857 201.143q-84.571 0-156 41.714t-113.143 113.143-41.714 156 41.714 156 113.143 113.143 156 41.714 156-41.714 113.143-113.143 41.714-156-41.714-156-113.143-113.143-156-41.714zM877.714 512q0 119.429-58.857 220.286t-159.714 159.714-220.286 58.857-220.286-58.857-159.714-159.714-58.857-220.286 58.857-220.286 159.714-159.714 220.286-58.857 220.286 58.857 159.714 159.714 58.857 220.286z</Geometry>
 	<Geometry x:Key="PathUpperTriangle" po:Freeze="True">M768 716.8h-512l256-460.8 256 460.8z</Geometry>
+	<Geometry x:Key="PathArrow" po:Freeze="True">M2.8421711E-14,30 L30,15 2.8421711E-14,3.5527137E-15 5.3751788,15 z</Geometry>
+	<Geometry x:Key="PathArrowRightTop" po:Freeze="True">M384 214h426v426h-84v-282l-496 496-60-60 496-496h-282v-84z</Geometry>
+	<Geometry x:Key="PathArrowBranches" po:Freeze="True">M458.361,207.01328 L574.12778,224.42874 574,184 458.361,204.52536</Geometry>
 	<CubicEase x:Key="CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="ExponentialEaseOut" EasingMode="EaseOut" />
@@ -2469,6 +2472,16 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<ControlTemplate x:Key="PART_DrawArrow" TargetType="{x:Type Control}">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="15" />
+			</Grid.ColumnDefinitions>
+			<Path Data="{StaticResource PathArrowBranches}" Fill="{TemplateBinding Background}" Height="8" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,-7,0" />
+			<Path Data="{StaticResource PathArrow}" Fill="{TemplateBinding Background}" Width="15" Height="15" Stretch="Fill" Grid.Column="1" />
+		</Grid>
+	</ControlTemplate>
 	<Style x:Key="ScreenCutRectangleStyle" TargetType="{x:Type Rectangle}">
 		<Setter Property="Fill" Value="{DynamicResource BlackSolidColorBrush}" />
 		<Setter Property="Opacity" Value=".3" />
@@ -2504,6 +2517,11 @@
 										<ToggleButton.Content>
 											<Ellipse Width="19" Height="19" StrokeThickness="1.5" SnapsToDevicePixels="True" UseLayoutRounding="True" Stroke="{DynamicResource RegularTextSolidColorBrush}" />
 										</ToggleButton.Content>
+									</RadioButton>
+									<RadioButton x:Name="PART_RadioButtonArrow" Style="{DynamicResource PathRadioButton}" ToolTip="箭头" Margin="4,0">
+										<RadioButton.Content>
+											<Path Fill="{DynamicResource RegularTextSolidColorBrush}" Width="18" Height="18" Stretch="Fill" StrokeThickness="3" Stroke="Transparent" Data="{StaticResource PathArrowRightTop}" />
+										</RadioButton.Content>
 									</RadioButton>
 									<Rectangle Stroke="{DynamicResource SecondaryTextSolidColorBrush}" Height="18" Width="1" Margin="4,0" />
 									<Button x:Name="PART_ButtonSave" Style="{DynamicResource PathButton}" ToolTip="保存" Margin="4,0">

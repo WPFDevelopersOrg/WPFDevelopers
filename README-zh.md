@@ -78,6 +78,7 @@ Install-Package WPFDevelopers
 
 
 ### ScreenCut （截屏）
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawArrow.gif"/>  
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/screencut4.gif"/>  
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NewScreenCut.gif"/>  
 

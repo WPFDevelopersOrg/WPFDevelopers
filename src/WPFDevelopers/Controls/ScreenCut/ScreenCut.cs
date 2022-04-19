@@ -19,7 +19,8 @@ namespace WPFDevelopers.Controls
         DrawMouse,
         MoveMouse,
         DrawRectangle,
-        DrawEllipse
+        DrawEllipse,
+        DrawArrow
     }
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
     [TemplatePart(Name = RectangleLeftTemplateName, Type = typeof(Rectangle))]
@@ -33,6 +34,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = ButtonCompleteTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = RadioButtonRectangleTemplateName, Type = typeof(RadioButton))]
     [TemplatePart(Name = RadioButtonEllipseTemplateName, Type = typeof(RadioButton))]
+    [TemplatePart(Name = RadioButtonArrowTemplateName, Type = typeof(RadioButton))]
     [TemplatePart(Name = PopupTemplateName, Type = typeof(Popup))]
     [TemplatePart(Name = PopupBorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = WrapPanelColorTemplateName, Type = typeof(WrapPanel))]
@@ -50,6 +52,7 @@ namespace WPFDevelopers.Controls
         private const string ButtonCompleteTemplateName = "PART_ButtonComplete";
         private const string RadioButtonRectangleTemplateName = "PART_RadioButtonRectangle";
         private const string RadioButtonEllipseTemplateName = "PART_RadioButtonEllipse";
+        private const string RadioButtonArrowTemplateName = "PART_RadioButtonArrow";
         private const string PopupTemplateName = "PART_Popup";
         private const string PopupBorderTemplateName = "PART_PopupBorder";
         private const string WrapPanelColorTemplateName = "PART_WrapPanelColor";
@@ -58,7 +61,7 @@ namespace WPFDevelopers.Controls
         private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
         private Border _border, _editBar, _popupBorder;
         private Button _buttonSave, _buttonCancel, _buttonComplete;
-        private RadioButton _radioButtonRectangle, _radioButtonEllipse;
+        private RadioButton _radioButtonRectangle, _radioButtonEllipse, _radioButtonArrow;
         private Popup _popup;
         private WrapPanel _wrapPanel;
         private Rect rect;
@@ -80,6 +83,11 @@ namespace WPFDevelopers.Controls
         /// 当前选择颜色
         /// </summary>
         private Brush _currentBrush;
+        /// <summary>
+        /// 箭头
+        /// </summary>
+        private Control controlArrow;
+        private ControlTemplate controlTemplate;
 
         static ScreenCut()
         {
@@ -112,6 +120,9 @@ namespace WPFDevelopers.Controls
             _radioButtonEllipse = GetTemplateChild(RadioButtonEllipseTemplateName) as RadioButton;
             if (_radioButtonEllipse != null)
                 _radioButtonEllipse.Click += _radioButtonEllipse_Click;
+            _radioButtonArrow = GetTemplateChild(RadioButtonArrowTemplateName) as RadioButton;
+            if(_radioButtonArrow != null)
+                _radioButtonArrow.Click += _radioButtonArrow_Click;
             _canvas.Background = new ImageBrush(Capture());
             _rectangleLeft.Width = _canvas.Width;
             _rectangleLeft.Height = _canvas.Height;
@@ -124,9 +135,15 @@ namespace WPFDevelopers.Controls
             };
             _wrapPanel = GetTemplateChild(WrapPanelColorTemplateName) as WrapPanel;
             _wrapPanel.PreviewMouseDown += _wrapPanel_PreviewMouseDown;
+
+            controlTemplate = (ControlTemplate)FindResource("PART_DrawArrow");
         }
 
-       
+        private void _radioButtonArrow_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButtonChecked(_radioButtonArrow, ScreenCutMouseType.DrawArrow);
+        }
+
         private void _wrapPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.Source is RadioButton)
@@ -271,21 +288,116 @@ namespace WPFDevelopers.Controls
                     case ScreenCutMouseType.DrawEllipse:
                         DrawMultipleControl(current);
                         break;
+                    case ScreenCutMouseType.DrawArrow:
+                        DrawArrowControl(current);
+                        break;
                     default:
                         break;
                 }
 
             }
         }
-        
-        void DrawMultipleControl(Point current)
+        void CheckPoint(Point current)
         {
             if (current == pointStart) return;
-           
+
             if (current.X > rect.BottomRight.X
                 ||
                 current.Y > rect.BottomRight.Y)
                 return;
+        }
+        void DrawArrowControl(Point current)
+        {
+            CheckPoint(current);
+            if (screenCutMouseType != ScreenCutMouseType.DrawArrow)
+                return;
+
+            var drawArrow = new Rect(pointStart, current);
+
+            if (controlArrow == null)
+            {
+                controlArrow = new Control();
+                controlArrow.Background = _currentBrush == null ? Brushes.Red : _currentBrush;
+                controlArrow.Template = controlTemplate;
+                _canvas.Children.Add(controlArrow);
+                Canvas.SetLeft(controlArrow, drawArrow.Left);
+                Canvas.SetTop(controlArrow, drawArrow.Top - 7.5);
+            }
+            var rotate = new RotateTransform();
+            var renderOrigin = new Point(0, .5);
+            controlArrow.RenderTransformOrigin = renderOrigin;
+            controlArrow.RenderTransform = rotate;
+            rotate.Angle = ControlsHelper.CalculeAngle(pointStart, current);
+           
+            if (drawArrow.Left <= rect.Left)
+            {
+                var a = rect.Left - pointStart.X;
+                var d = current.X - rect.Left;
+                var bc = current.Y - pointStart.Y;
+                var c = bc / (a / d + 1);
+                var b = a / d * c;
+
+                if (current.Y > pointStart.Y)
+                    current.Y = pointStart.Y + b;
+                else
+                    current.Y = pointStart.Y - b;
+                current.X = pointStart.X + a;
+            }
+            else if (drawArrow.Right >= rect.Right)
+            {
+                var a = rect.Right - pointStart.X;
+                var d = current.X - rect.Right;
+                var bc = current.Y - pointStart.Y;
+                var c = bc / (a / d + 1);
+                var b = a / d * c;
+                if (current.Y > pointStart.Y)
+                    current.Y = pointStart.Y + b;
+                else
+                    current.Y = pointStart.Y - b;
+                current.X = pointStart.X + a;
+            }
+            else if (drawArrow.Top <= rect.Top)
+            {
+                var a = rect.Top - pointStart.Y;
+                var d = current.Y - rect.Top;
+                var bc = current.X - pointStart.X;
+                var c = bc / (a / d + 1);
+                var b = a / d * c;
+
+                if (current.X > pointStart.X)
+                    current.X = pointStart.X + b;
+                else
+                    current.X = pointStart.X - b;
+                current.Y = pointStart.Y + a;
+            }
+            else if(drawArrow.Bottom >= rect.Bottom)
+            {
+                var a = rect.Bottom - pointStart.Y;
+                var d = current.Y - rect.Bottom;
+                var bc = current.X - pointStart.X;
+                var c = bc / (a / d + 1);
+                var b = a / d * c;
+                if (current.X > pointStart.X)
+                    current.X = pointStart.X + b;
+                else
+                    current.X = pointStart.X - b;
+                current.Y = pointStart.Y + a;
+            }
+            var x = current.X - pointStart.X;
+            var y = current.Y - pointStart.Y;
+
+
+
+            var width = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+
+            
+
+            controlArrow.Width = width;
+        }
+        
+        void DrawMultipleControl(Point current)
+        {
+            CheckPoint(current);
             var drawRect = new Rect(pointStart, current);
             switch (screenCutMouseType)
             {
@@ -414,12 +526,15 @@ namespace WPFDevelopers.Controls
 
                 if (_radioButtonRectangle.IsChecked != true
                     &&
-                    _radioButtonEllipse.IsChecked != true)
+                    _radioButtonEllipse.IsChecked != true
+                    &&
+                    _radioButtonArrow.IsChecked != true)
                     screenCutMouseType = ScreenCutMouseType.Default;
                 else
                 {
                     borderRectangle = null;
                     drawEllipse = null;
+                    controlArrow = null;
                 }
                    
             }

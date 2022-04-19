@@ -64,6 +64,7 @@ Install-Package WPFDevelopers
 ----------
 
 ### ScreenCut 
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawArrow.gif"/>  
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/screencut4.gif"/>  
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NewScreenCut.gif"/>  
 

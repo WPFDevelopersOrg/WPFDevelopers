@@ -9,6 +9,26 @@
         <ResourceDictionary Source="RadioButtonStyles.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+    <ControlTemplate x:Key="PART_DrawArrow" TargetType="{x:Type Control}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Path Data="{StaticResource PathArrowBranches}" 
+                  Fill="{TemplateBinding Background}" Height="8"
+                  Stretch="Fill" 
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center"
+                  Margin="0,0,-7,0"/>
+            <Path Data="{StaticResource PathArrow}" 
+                  Fill="{TemplateBinding Background}" 
+                  Width="15" Height="15"
+                  Stretch="Fill"
+                  Grid.Column="1"/>
+        </Grid>
+    </ControlTemplate>
+
     <Style x:Key="ScreenCutRectangleStyle" TargetType="{x:Type Rectangle}">
         <Setter Property="Fill" Value="{DynamicResource BlackSolidColorBrush}"/>
         <Setter Property="Opacity" Value=".3"/>
@@ -66,6 +86,18 @@
                                                      UseLayoutRounding="True"
                                                      Stroke="{DynamicResource RegularTextSolidColorBrush}"/>
                                         </ToggleButton.Content>
+                                    </RadioButton>
+                                    <RadioButton x:Name="PART_RadioButtonArrow" 
+                                                  Style="{DynamicResource PathRadioButton}"
+                                                  ToolTip="箭头"
+                                                 Margin="4,0">
+                                        <RadioButton.Content>
+                                            <Path Fill="{DynamicResource RegularTextSolidColorBrush}" 
+                                          Width="18" Height="18" Stretch="Fill" 
+                                                  StrokeThickness="3" Stroke="Transparent"
+                                          Data="{StaticResource PathArrowRightTop}"/>
+
+                                        </RadioButton.Content>
                                     </RadioButton>
                                     <Rectangle Stroke="{DynamicResource SecondaryTextSolidColorBrush}" 
                                                Height="18"
