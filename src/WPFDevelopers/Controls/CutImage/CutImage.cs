@@ -19,7 +19,9 @@ namespace WPFDevelopers.Controls
         public ImageSource ImageSource
         {
             get { return (ImageSource)GetValue(ImageSourceProperty); }
-            set { SetValue(ImageSourceProperty, value); }
+            set { SetValue(ImageSourceProperty, value); 
+                   DragDropItem_UpdateImageEvent();
+            }
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
