@@ -13,7 +13,8 @@
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
-### [BasicControl](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal) https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal  
+### [BasicControl👇👇👇](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal) https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal  
+![Blue](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Blue.png)  
 
 ###  Visual Studio 2022  
 
