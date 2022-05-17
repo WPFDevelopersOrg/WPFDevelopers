@@ -26,8 +26,9 @@ namespace WPFDevelopers.Controls
             visCollec.Add(br = GetResizeThumb(Cursors.SizeNWSE, HorizontalAlignment.Right, VerticalAlignment.Bottom));
             visCollec.Add(bc = GetResizeThumb(Cursors.SizeNS, HorizontalAlignment.Center, VerticalAlignment.Bottom));
             visCollec.Add(bl = GetResizeThumb(Cursors.SizeNESW, HorizontalAlignment.Left, VerticalAlignment.Bottom));
+          
         }
-
+       
         protected override Size ArrangeOverride(Size finalSize)
         {
             double offset = THUMB_SIZE / 2;
@@ -42,14 +43,14 @@ namespace WPFDevelopers.Controls
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             return finalSize;
         }
-        void Resize(FrameworkElement ff)
+        void Resize(FrameworkElement frameworkElement)
         {
-            if (Double.IsNaN(ff.Width))
-                ff.Width = ff.RenderSize.Width;
-            if (Double.IsNaN(ff.Height))
-                ff.Height = ff.RenderSize.Height;
+            if (Double.IsNaN(frameworkElement.Width))
+                frameworkElement.Width = frameworkElement.RenderSize.Width;
+            if (Double.IsNaN(frameworkElement.Height))
+                frameworkElement.Height = frameworkElement.RenderSize.Height;
         }
-
+        
         Thumb GetResizeThumb(Cursor cur, HorizontalAlignment hor, VerticalAlignment ver)
         {
             var thumb = new Thumb()

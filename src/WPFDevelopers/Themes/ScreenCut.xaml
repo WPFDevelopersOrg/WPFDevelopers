@@ -99,6 +99,26 @@
 
                                         </RadioButton.Content>
                                     </RadioButton>
+                                    <RadioButton x:Name="PART_RadioButtonInk" 
+                                                  Style="{DynamicResource PathRadioButton}"
+                                                  ToolTip="画笔"
+                                                 Margin="4,0">
+                                        <RadioButton.Content>
+                                            <Path Fill="{DynamicResource RegularTextSolidColorBrush}" 
+                                          Width="18" Height="18"  Stretch="Fill" 
+                                          Data="{StaticResource PathInk}"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
+                                    <RadioButton x:Name="PART_RadioButtonText" 
+                                                  Style="{DynamicResource PathRadioButton}"
+                                                  ToolTip="文字"
+                                                 Margin="4,0">
+                                        <RadioButton.Content>
+                                            <Path Fill="{DynamicResource RegularTextSolidColorBrush}" 
+                                          Width="18" Height="18"  Stretch="Fill" 
+                                          Data="{StaticResource PathText}"/>
+                                        </RadioButton.Content>
+                                    </RadioButton>
                                     <Rectangle Stroke="{DynamicResource SecondaryTextSolidColorBrush}" 
                                                Height="18"
                                                Width="1"
@@ -175,7 +195,7 @@
                             </Popup>
                         </Canvas>
                     </AdornerDecorator>
-                    
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
