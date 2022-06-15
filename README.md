@@ -60,6 +60,11 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 
+----------
+
+### CropAvatar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropAvatar.gif"/>   
 
 
 ----------
