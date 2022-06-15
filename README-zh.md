@@ -77,6 +77,12 @@ Install-Package WPFDevelopers
 ***
 
 
+### CropAvatar （WPF头像选择器）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropAvatar.gif"/>   
+
+----------
+
 ### ScreenCut （截屏）
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawInk.gif"/>
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawArrow.gif"/>
