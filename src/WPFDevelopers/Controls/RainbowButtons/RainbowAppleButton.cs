@@ -7,7 +7,8 @@ namespace WPFDevelopers.Controls
     {
         static RainbowAppleButton()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(RainbowAppleButton), new FrameworkPropertyMetadata(typeof(RainbowAppleButton)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(RainbowAppleButton),
+                new FrameworkPropertyMetadata(typeof(RainbowAppleButton)));
         }
     }
 }

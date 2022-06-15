@@ -3,7 +3,7 @@ using System.Windows.Controls.Primitives;
 
 namespace WPFDevelopers.Controls
 {
-    public class TimeLine:Selector
+    public class TimeLine : Selector
     {
         static TimeLine()
         {

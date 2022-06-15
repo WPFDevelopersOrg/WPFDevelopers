@@ -10,11 +10,10 @@
 
     <UniformGrid Columns="2" x:Name="MyUniformGrid">
         <StackPanel Orientation="Horizontal">
-            <wpfdev:BreathLamp Width="60" Height="60" 
-                               LampEffect="Ripple"
-                               IsLampStart="true"
+            <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
+                                   VerticalAlignment="Center" HorizontalAlignment="Left"
                                Margin="10,0">
-                <Ellipse Width="50" Height="50">
+                <Ellipse>
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Breathe/0.jpg"/>
                     </Ellipse.Fill>
@@ -28,12 +27,11 @@
                                Background="{DynamicResource SuccessSolidColorBrush}"
                                Foreground="Black"
                                MouseDown="AnimationAudioLeft_MouseDown"/>
-            <wpfdev:BreathLamp Width="50" Height="50" 
-                               LampEffect="Streamer"
-                               Background="LightGray"
-                               IsLampStart="True"
+            <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"
+                               VerticalAlignment="Center" HorizontalAlignment="Left" 
+                               GradientStopColor1="#FF00cec9" GradientStopColor2="#2000cec9"
                                Margin="10,0">
-                <Ellipse Width="43" Height="43">
+                <Ellipse>
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Chat/UserImages/yanjinhua.png"/>
                     </Ellipse.Fill>

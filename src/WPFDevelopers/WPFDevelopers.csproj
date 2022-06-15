@@ -37,9 +37,9 @@ xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Copyright>Copyright © WPFDevelopersOrg 2022</Copyright>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
-    <Version>1.0.3.0</Version>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <Version>1.0.4.0</Version>
     <RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>

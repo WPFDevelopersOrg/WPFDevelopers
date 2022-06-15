@@ -4,21 +4,24 @@ using System.Text;
 
 namespace WPFDevelopers.Helpers
 {
-    public static partial class Win32ApiHelper
+    public static class Win32ApiHelper
     {
+        //查找窗口的委托 查找逻辑
+        public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
+
         [DllImport("user32.dll")]
         public static extern IntPtr FindWindow(string className, string winName);
 
         [DllImport("user32.dll")]
-        public static extern IntPtr SendMessageTimeout(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam, uint fuFlage, uint timeout, IntPtr result);
+        public static extern IntPtr SendMessageTimeout(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam,
+            uint fuFlage, uint timeout, IntPtr result);
 
-        //查找窗口的委托 查找逻辑
-        public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
         [DllImport("user32.dll")]
         public static extern bool EnumWindows(EnumWindowsProc proc, IntPtr lParam);
 
         [DllImport("user32.dll")]
-        public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string className, string winName);
+        public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string className,
+            string winName);
 
         [DllImport("user32.dll")]
         public static extern bool ShowWindow(IntPtr hwnd, int nCmdShow);
@@ -28,7 +31,7 @@ namespace WPFDevelopers.Helpers
 
         [DllImport("winmm.dll")]
         public static extern long mciSendString(string strCommand, StringBuilder strReturn,
-                                         int iReturnLength, IntPtr hwndCallback);
+            int iReturnLength, IntPtr hwndCallback);
 
         #region WINAPI DLL Imports
 
@@ -45,7 +48,8 @@ namespace WPFDevelopers.Helpers
         public static extern bool DeleteObject(IntPtr hObject);
 
         [DllImport("gdi32.dll")]
-        public static extern IntPtr CreateBitmap(int nWidth, int nHeight, uint cPlanes, uint cBitsPerPel, IntPtr lpvBits);
+        public static extern IntPtr CreateBitmap(int nWidth, int nHeight, uint cPlanes, uint cBitsPerPel,
+            IntPtr lpvBits);
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetDC(IntPtr hWnd);
@@ -69,7 +73,7 @@ namespace WPFDevelopers.Helpers
         public static extern int GetSystemMetrics(int abc);
 
         [DllImport("user32.dll", EntryPoint = "GetWindowDC")]
-        public static extern IntPtr GetWindowDC(Int32 ptr);
+        public static extern IntPtr GetWindowDC(int ptr);
 
         public struct DeskTopSize
         {
@@ -81,38 +85,53 @@ namespace WPFDevelopers.Helpers
         {
             /// <summary>dest = source</summary>
             SRCCOPY = 0x00CC0020,
+
             /// <summary>dest = source OR dest</summary>
             SRCPAINT = 0x00EE0086,
+
             /// <summary>dest = source AND dest</summary>
             SRCAND = 0x008800C6,
+
             /// <summary>dest = source XOR dest</summary>
             SRCINVERT = 0x00660046,
+
             /// <summary>dest = source AND (NOT dest)</summary>
             SRCERASE = 0x00440328,
+
             /// <summary>dest = (NOT source)</summary>
             NOTSRCCOPY = 0x00330008,
+
             /// <summary>dest = (NOT src) AND (NOT dest)</summary>
             NOTSRCERASE = 0x001100A6,
+
             /// <summary>dest = (source AND pattern)</summary>
             MERGECOPY = 0x00C000CA,
+
             /// <summary>dest = (NOT source) OR dest</summary>
             MERGEPAINT = 0x00BB0226,
+
             /// <summary>dest = pattern</summary>
             PATCOPY = 0x00F00021,
+
             /// <summary>dest = DPSnoo</summary>
             PATPAINT = 0x00FB0A09,
+
             /// <summary>dest = pattern XOR dest</summary>
             PATINVERT = 0x005A0049,
+
             /// <summary>dest = (NOT dest)</summary>
             DSTINVERT = 0x00550009,
+
             /// <summary>dest = BLACK</summary>
             BLACKNESS = 0x00000042,
+
             /// <summary>dest = WHITE</summary>
             WHITENESS = 0x00FF0062
         }
 
         [DllImport("gdi32.dll")]
-        public static extern bool BitBlt(IntPtr hdc, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, TernaryRasterOperations dwRop);
+        public static extern bool BitBlt(IntPtr hdc, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc,
+            int nXSrc, int nYSrc, TernaryRasterOperations dwRop);
 
         #endregion
     }

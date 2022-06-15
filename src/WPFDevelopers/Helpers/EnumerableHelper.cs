@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WPFDevelopers.Helpers
 {
-    public static partial class EnumerableHelper
+    public static class EnumerableHelper
     {
         public static int Count(this IEnumerable eunmerable)
         {
             if (eunmerable == null)
                 return 0;
 
-            int nSize = 0;
+            var nSize = 0;
             foreach (var item in eunmerable)
                 nSize++;
 
@@ -23,39 +20,35 @@ namespace WPFDevelopers.Helpers
         public static T FirstOrDefault<T>(this IEnumerable<T> eunmerable)
         {
             if (eunmerable == null)
-                return default(T);
+                return default;
 
             var vEnumerator = eunmerable.GetEnumerator();
             if (vEnumerator.MoveNext())
                 return vEnumerator.Current;
-            else
-                return default(T);
+            return default;
         }
 
         public static T LastOrDefault<T>(this IEnumerable<T> eunmerable)
         {
             if (eunmerable == null)
-                return default(T);
+                return default;
             var vEnumerator = eunmerable.GetEnumerator();
-            for (; ; )
-            {
+            for (;;)
                 if (!vEnumerator.MoveNext())
-                    break;   
-            }
+                    break;
 
             return vEnumerator.Current;
         }
 
-        public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue = default(TValue)) 
+        public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key,
+            TValue defaultValue = default)
         {
             if (dictionary == null)
                 return defaultValue;
 
-            if (dictionary.TryGetValue(key, out TValue value))
+            if (dictionary.TryGetValue(key, out var value))
                 return value;
-            else
-                return defaultValue;
+            return defaultValue;
         }
-
     }
 }

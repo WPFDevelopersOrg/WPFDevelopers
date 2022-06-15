@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
@@ -11,11 +10,19 @@ namespace WPFDevelopers.Controls
 {
     public class ScreenCutAdorner : Adorner
     {
-        const double THUMB_SIZE = 15;
-        const double MINIMAL_SIZE = 20;
-        Thumb lc, tl, tc, tr, rc, br, bc, bl;
-        VisualCollection visCollec;
-        public ScreenCutAdorner(UIElement adorned): base(adorned)
+        private const double THUMB_SIZE = 15;
+        private const double MINIMAL_SIZE = 20;
+        private readonly Thumb lc;
+        private readonly Thumb tl;
+        private readonly Thumb tc;
+        private readonly Thumb tr;
+        private readonly Thumb rc;
+        private readonly Thumb br;
+        private readonly Thumb bc;
+        private readonly Thumb bl;
+        private readonly VisualCollection visCollec;
+
+        public ScreenCutAdorner(UIElement adorned) : base(adorned)
         {
             visCollec = new VisualCollection(this);
             visCollec.Add(lc = GetResizeThumb(Cursors.SizeWE, HorizontalAlignment.Left, VerticalAlignment.Center));
@@ -26,34 +33,41 @@ namespace WPFDevelopers.Controls
             visCollec.Add(br = GetResizeThumb(Cursors.SizeNWSE, HorizontalAlignment.Right, VerticalAlignment.Bottom));
             visCollec.Add(bc = GetResizeThumb(Cursors.SizeNS, HorizontalAlignment.Center, VerticalAlignment.Bottom));
             visCollec.Add(bl = GetResizeThumb(Cursors.SizeNESW, HorizontalAlignment.Left, VerticalAlignment.Bottom));
-          
         }
-       
+
+        protected override int VisualChildrenCount => visCollec.Count;
+
         protected override Size ArrangeOverride(Size finalSize)
         {
-            double offset = THUMB_SIZE / 2;
-            Size sz = new Size(THUMB_SIZE, THUMB_SIZE);
+            var offset = THUMB_SIZE / 2;
+            var sz = new Size(THUMB_SIZE, THUMB_SIZE);
             lc.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height / 2 - offset), sz));
             tl.Arrange(new Rect(new Point(-offset, -offset), sz));
             tc.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - offset, -offset), sz));
             tr.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, -offset), sz));
-            rc.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height / 2 - offset), sz));
-            br.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
-            bc.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - offset, AdornedElement.RenderSize.Height - offset), sz));
+            rc.Arrange(new Rect(
+                new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height / 2 - offset),
+                sz));
+            br.Arrange(new Rect(
+                new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
+            bc.Arrange(new Rect(
+                new Point(AdornedElement.RenderSize.Width / 2 - offset, AdornedElement.RenderSize.Height - offset),
+                sz));
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             return finalSize;
         }
-        void Resize(FrameworkElement frameworkElement)
+
+        private void Resize(FrameworkElement frameworkElement)
         {
-            if (Double.IsNaN(frameworkElement.Width))
+            if (double.IsNaN(frameworkElement.Width))
                 frameworkElement.Width = frameworkElement.RenderSize.Width;
-            if (Double.IsNaN(frameworkElement.Height))
+            if (double.IsNaN(frameworkElement.Height))
                 frameworkElement.Height = frameworkElement.RenderSize.Height;
         }
-        
-        Thumb GetResizeThumb(Cursor cur, HorizontalAlignment hor, VerticalAlignment ver)
+
+        private Thumb GetResizeThumb(Cursor cur, HorizontalAlignment hor, VerticalAlignment ver)
         {
-            var thumb = new Thumb()
+            var thumb = new Thumb
             {
                 Width = THUMB_SIZE,
                 Height = THUMB_SIZE,
@@ -85,8 +99,10 @@ namespace WPFDevelopers.Controls
                             element.Height -= e.VerticalChange;
                             Canvas.SetTop(element, Canvas.GetTop(element) + e.VerticalChange);
                         }
+
                         break;
                 }
+
                 switch (thumb.HorizontalAlignment)
                 {
                     case HorizontalAlignment.Left:
@@ -95,40 +111,31 @@ namespace WPFDevelopers.Controls
                             element.Width -= e.HorizontalChange;
                             Canvas.SetLeft(element, Canvas.GetLeft(element) + e.HorizontalChange);
                         }
+
                         break;
                     case HorizontalAlignment.Right:
                         if (element.Width + e.HorizontalChange > MINIMAL_SIZE)
                             element.Width += e.HorizontalChange;
                         break;
-
                 }
-                e.Handled = true;
 
+                e.Handled = true;
             };
             return thumb;
-
         }
 
-        FrameworkElementFactory GetFactory(Brush back)
+        private FrameworkElementFactory GetFactory(Brush back)
         {
             var fef = new FrameworkElementFactory(typeof(Ellipse));
-            fef.SetValue(Ellipse.FillProperty, back);
-            fef.SetValue(Ellipse.StrokeProperty, DrawingContextHelper.Brush);
-            fef.SetValue(Ellipse.StrokeThicknessProperty, (double)2);
+            fef.SetValue(Shape.FillProperty, back);
+            fef.SetValue(Shape.StrokeProperty, DrawingContextHelper.Brush);
+            fef.SetValue(Shape.StrokeThicknessProperty, (double)2);
             return fef;
         }
+
         protected override Visual GetVisualChild(int index)
         {
             return visCollec[index];
         }
-
-        protected override int VisualChildrenCount
-        {
-            get
-            {
-                return visCollec.Count;
-            }
-        }
-
     }
 }

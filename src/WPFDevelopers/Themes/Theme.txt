@@ -34,3 +34,4 @@ SnowCanvas.xaml
 SpotLight.xaml
 DrawerMenu.xaml
 TimeLine.xaml
+CropAvatar.xaml

@@ -19,6 +19,5 @@ namespace WPFDevelopers.Assists
                    && DoubleUtil.AreClose(thickness.Left, thickness.Right)
                    && DoubleUtil.AreClose(thickness.Left, thickness.Bottom);
         }
-
     }
 }

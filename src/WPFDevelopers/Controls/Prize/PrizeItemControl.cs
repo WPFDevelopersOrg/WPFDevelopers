@@ -8,50 +8,58 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = RotateTransformTemplateName, Type = typeof(RotateTransform))]
     public class PrizeItemControl : Control
     {
-        private static readonly Type _typeofSelf = typeof(PrizeItemControl);
         private const string RotateTransformTemplateName = "PART_RotateTransform";
-        private RotateTransform _angleRotateTransform;
-        public double Angle
-        {
-            get { return (double)GetValue(AngleProperty); }
-            set { SetValue(AngleProperty, value); }
-        }
+        private static readonly Type _typeofSelf = typeof(PrizeItemControl);
 
         public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.Register("Angle", typeof(double), typeof(PrizeItemControl), new UIPropertyMetadata(OnAngleChanged));
-
-        private static void OnAngleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            PrizeItemControl control = (PrizeItemControl)d;
-            control.UpdateAngle();
-        }
-        void UpdateAngle()
-        {
-            if (_angleRotateTransform == null) return;
-            _angleRotateTransform.Angle = Angle;
-        }
-        public string Title
-        {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
-        }
+            DependencyProperty.Register("Angle", typeof(double), typeof(PrizeItemControl),
+                new UIPropertyMetadata(OnAngleChanged));
 
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(PrizeItemControl), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("Title", typeof(string), typeof(PrizeItemControl),
+                new PropertyMetadata(string.Empty));
 
-
-        public Brush BackgroundColor
-        {
-            get { return (Brush)GetValue(BackgroundColorProperty); }
-            set { SetValue(BackgroundColorProperty, value); }
-        }
         public static readonly DependencyProperty BackgroundColorProperty =
-           DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(PrizeItemControl), new PropertyMetadata(null));
+            DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(PrizeItemControl),
+                new PropertyMetadata(null));
+
+        private RotateTransform _angleRotateTransform;
 
 
         static PrizeItemControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
+        }
+
+        public double Angle
+        {
+            get => (double)GetValue(AngleProperty);
+            set => SetValue(AngleProperty, value);
+        }
+
+        public string Title
+        {
+            get => (string)GetValue(TitleProperty);
+            set => SetValue(TitleProperty, value);
+        }
+
+
+        public Brush BackgroundColor
+        {
+            get => (Brush)GetValue(BackgroundColorProperty);
+            set => SetValue(BackgroundColorProperty, value);
+        }
+
+        private static void OnAngleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (PrizeItemControl)d;
+            control.UpdateAngle();
+        }
+
+        private void UpdateAngle()
+        {
+            if (_angleRotateTransform == null) return;
+            _angleRotateTransform.Angle = Angle;
         }
 
         public override void OnApplyTemplate()
@@ -60,7 +68,5 @@ namespace WPFDevelopers.Controls
             _angleRotateTransform = GetTemplateChild(RotateTransformTemplateName) as RotateTransform;
             UpdateAngle();
         }
-
-
     }
 }

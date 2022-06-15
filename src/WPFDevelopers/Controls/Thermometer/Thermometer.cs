@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,38 +10,62 @@ namespace WPFDevelopers.Controls
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(40.0));
 
-        public double MaxValue
-        {
-            get { return (double)GetValue(MaxValueProperty); }
-
-            set { SetValue(MaxValueProperty, value); }
-        }
-
         public static readonly DependencyProperty MinValueProperty =
             DependencyProperty.Register("MinValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(-10.0));
 
-        public double MinValue
-        {
-            get { return (double)GetValue(MinValueProperty); }
-
-            set { SetValue(MinValueProperty, value); }
-        }
-
         /// <summary>
-        /// 当前值
+        ///     当前值
         /// </summary>
         public static readonly DependencyProperty CurrentValueProperty =
-            DependencyProperty.Register("CurrentValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(OnCurrentValueChanged));
+            DependencyProperty.Register("CurrentValue", typeof(double), typeof(Thermometer),
+                new UIPropertyMetadata(OnCurrentValueChanged));
 
-        private static void OnCurrentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        /// <summary>
+        ///     步长
+        /// </summary>
+        public static readonly DependencyProperty IntervalProperty =
+            DependencyProperty.Register("Interval", typeof(double), typeof(Thermometer), new UIPropertyMetadata(10.0));
+
+        /// <summary>
+        ///     当前值的图形坐标点
+        /// </summary>
+        public static readonly DependencyProperty CurrentGeometryProperty =
+            DependencyProperty.Register("CurrentGeometry", typeof(Geometry), typeof(Thermometer), new PropertyMetadata(
+                Geometry.Parse(@"M 2 132.8
+                              a 4 4 0 0 1 4 -4
+                              h 18
+                              a 4 4 0 0 1 4 4
+                              v 32.2
+                              a 4 4 0 0 1 -4 4
+                              h -18
+                              a 4 4 0 0 1 -4 -4 z")));
+
+        /// <summary>
+        ///     构造函数
+        /// </summary>
+        static Thermometer()
         {
-            Thermometer thermometer = d as Thermometer;
-            thermometer.CurrentValue = Convert.ToDouble(e.NewValue);
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Thermometer),
+                new FrameworkPropertyMetadata(typeof(Thermometer)));
+        }
+
+        public double MaxValue
+        {
+            get => (double)GetValue(MaxValueProperty);
+
+            set => SetValue(MaxValueProperty, value);
+        }
+
+        public double MinValue
+        {
+            get => (double)GetValue(MinValueProperty);
+
+            set => SetValue(MinValueProperty, value);
         }
 
         public double CurrentValue
         {
-            get { return (double)GetValue(CurrentValueProperty); }
+            get => (double)GetValue(CurrentValueProperty);
 
             set
             {
@@ -52,45 +75,24 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        /// <summary>
-        /// 步长
-        /// </summary>
-        public static readonly DependencyProperty IntervalProperty =
-            DependencyProperty.Register("Interval", typeof(double), typeof(Thermometer), new UIPropertyMetadata(10.0));
-
         public double Interval
         {
-            get { return (double)GetValue(IntervalProperty); }
+            get => (double)GetValue(IntervalProperty);
 
-            set { SetValue(IntervalProperty, value); }
+            set => SetValue(IntervalProperty, value);
         }
-
-        /// <summary>
-        /// 当前值的图形坐标点
-        /// </summary>
-        public static readonly DependencyProperty CurrentGeometryProperty =
-            DependencyProperty.Register("CurrentGeometry", typeof(Geometry), typeof(Thermometer), new PropertyMetadata(Geometry.Parse(@"M 2 132.8
-                              a 4 4 0 0 1 4 -4
-                              h 18
-                              a 4 4 0 0 1 4 4
-                              v 32.2
-                              a 4 4 0 0 1 -4 4
-                              h -18
-                              a 4 4 0 0 1 -4 -4 z")));
 
         public Geometry CurrentGeometry
         {
-            get { return (Geometry)GetValue(CurrentGeometryProperty); }
+            get => (Geometry)GetValue(CurrentGeometryProperty);
 
-            set { SetValue(CurrentGeometryProperty, value); }
+            set => SetValue(CurrentGeometryProperty, value);
         }
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        static Thermometer()
+        private static void OnCurrentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Thermometer), new FrameworkPropertyMetadata(typeof(Thermometer)));
+            var thermometer = d as Thermometer;
+            thermometer.CurrentValue = Convert.ToDouble(e.NewValue);
         }
 
         public override void OnApplyTemplate()
@@ -102,8 +104,8 @@ namespace WPFDevelopers.Controls
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            SolidColorBrush brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#82848A"));
-            Rect rect = new Rect();
+            var brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#82848A"));
+            var rect = new Rect();
             rect.Width = 30;
             rect.Height = 169;
             drawingContext.DrawRoundedRectangle(Brushes.Transparent,
@@ -112,32 +114,55 @@ namespace WPFDevelopers.Controls
 
             #region 华氏温度
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("华", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115));
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("华",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D),
+                new Point(-49, 115));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115 + 14));
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("氏",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D),
+                new Point(-49, 115 + 14));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115 + 28));
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("温",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D),
+                new Point(-49, 115 + 28));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D), new Point(-49, 115 + 42));
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("度",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D),
+                new Point(-49, 115 + 42));
 
             #endregion
 
             #region 摄氏温度
 
-
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("摄", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115));
-
-
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("氏", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 14));
-
-
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("温", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 28));
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("摄",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,
+                    14D), new Point(75, 115));
 
 
-            drawingContext.DrawText(DrawingContextHelper.GetFormattedText("度", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight, textSize: 14D), new Point(75, 115 + 42));
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("氏",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,
+                    14D), new Point(75, 115 + 14));
+
+
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("温",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,
+                    14D), new Point(75, 115 + 28));
+
+
+            drawingContext.DrawText(
+                DrawingContextHelper.GetFormattedText("度",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,
+                    14D), new Point(75, 115 + 42));
 
             #endregion
 
@@ -149,15 +174,19 @@ namespace WPFDevelopers.Controls
 
             var one_value = 161d / cnt;
 
-            for (int i = 0; i <= cnt; i++)
+            for (var i = 0; i <= cnt; i++)
             {
-                var formattedText = DrawingContextHelper.GetFormattedText($"{MaxValue - (i * Interval)}", (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,14D);
+                var formattedText = DrawingContextHelper.GetFormattedText($"{MaxValue - i * Interval}",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,
+                    14D);
 
-                drawingContext.DrawText(formattedText, new Point(43, i * one_value - (formattedText.Height / 2d)));//减去字体高度的一半
+                drawingContext.DrawText(formattedText,
+                    new Point(43, i * one_value - formattedText.Height / 2d)); //减去字体高度的一半
 
-                formattedText = DrawingContextHelper.GetFormattedText($"{(MaxValue - (i * Interval)) * 1.8d + 32d}", color: (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D);
+                formattedText = DrawingContextHelper.GetFormattedText($"{(MaxValue - i * Interval) * 1.8d + 32d}",
+                    (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D);
 
-                drawingContext.DrawText(formattedText, new Point(-13, i * one_value - (formattedText.Height / 2d)));
+                drawingContext.DrawText(formattedText, new Point(-13, i * one_value - formattedText.Height / 2d));
 
                 if (i != 0 && i != 5)
                 {
@@ -173,7 +202,7 @@ namespace WPFDevelopers.Controls
         }
 
         /// <summary>
-        /// 动态计算当前值图形坐标点
+        ///     动态计算当前值图形坐标点
         /// </summary>
         private void PaintPath()
         {

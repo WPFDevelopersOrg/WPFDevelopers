@@ -114,6 +114,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.CutImage:
                     ControlPanel = new CutImageExample();
                     break;
+                case MenuEnum.CropAvatar:
+                    ControlPanel = new CropAvatarExample();
+                    break;
                 case MenuEnum.AnimationAudio:
                     ControlPanel = new AnimationAudioExample();
                     break;

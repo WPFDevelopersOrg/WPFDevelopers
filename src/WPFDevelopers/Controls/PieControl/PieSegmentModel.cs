@@ -3,51 +3,51 @@ using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
-    public class PieSegmentModel:ViewModelBase
+    public class PieSegmentModel : ViewModelBase
     {
+        private Brush _color;
         private Brush _colorStroke = Brushes.White;
+        private double _endAngle;
+
+        private string _name;
+
+
+        private double _startAngle;
+        private double _value;
 
         public Brush ColorStroke
         {
-            get { return _colorStroke; }
+            get => _colorStroke;
             set
             {
                 _colorStroke = value;
                 NotifyPropertyChange("ColorStroke");
             }
         }
-        private Brush _color;
 
         public Brush Color
         {
-            get { return _color; }
+            get => _color;
             set
             {
                 _color = value;
                 NotifyPropertyChange("Color");
             }
         }
-        private double _value;
+
         public double Value
         {
-            get
-            {
-                return _value;
-            }
+            get => _value;
             set
             {
                 _value = value;
-                NotifyPropertyChange( "Value");
+                NotifyPropertyChange("Value");
             }
         }
 
-        private string _name;
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get => _name;
             set
             {
                 _name = value;
@@ -55,27 +55,19 @@ namespace WPFDevelopers.Controls
             }
         }
 
-
-        private double _startAngle;
         public double StartAngle
         {
-            get
-            {
-                return _startAngle;
-            }
+            get => _startAngle;
             set
             {
                 _startAngle = value;
                 NotifyPropertyChange("StartAngle");
             }
         }
-        private double _endAngle;
+
         public double EndAngle
         {
-            get
-            {
-                return _endAngle;
-            }
+            get => _endAngle;
             set
             {
                 _endAngle = value;

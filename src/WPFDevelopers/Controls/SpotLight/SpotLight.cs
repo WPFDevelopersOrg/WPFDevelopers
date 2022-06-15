@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -17,23 +14,29 @@ namespace WPFDevelopers.Controls
         private const string TextBlockBottomTemplateName = "PART_TextBlockBottom";
         private const string TextBlockTopTemplateName = "PART_TextBlockTop";
         private const string EllipseGeometryTemplateName = "PART_EllipseGeometry";
-        private TextBlock _textBlockBottom, _textBlockTop;
-        private EllipseGeometry _ellipseGeometry;
-        public string Text
-        {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(SpotLight), new PropertyMetadata("WPFDevelopers"));
+            DependencyProperty.Register("Text", typeof(string), typeof(SpotLight),
+                new PropertyMetadata("WPFDevelopers"));
+
+        private EllipseGeometry _ellipseGeometry;
+        private TextBlock _textBlockBottom, _textBlockTop;
+
         static SpotLight()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(SpotLight), new FrameworkPropertyMetadata(typeof(SpotLight)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(SpotLight),
+                new FrameworkPropertyMetadata(typeof(SpotLight)));
         }
+
         public SpotLight()
         {
-            this.Loaded += SpotLight_Loaded;
+            Loaded += SpotLight_Loaded;
+        }
+
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
         }
 
         private void SpotLight_Loaded(object sender, RoutedEventArgs e)
@@ -49,9 +52,9 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
             _textBlockBottom = GetTemplateChild(TextBlockBottomTemplateName) as TextBlock;
             _textBlockTop = GetTemplateChild(TextBlockTopTemplateName) as TextBlock;
-           
+
             _ellipseGeometry = GetTemplateChild(EllipseGeometryTemplateName) as EllipseGeometry;
-            var center = new Point(FontSize/2, FontSize/2); 
+            var center = new Point(FontSize / 2, FontSize / 2);
             _ellipseGeometry.RadiusX = FontSize;
             _ellipseGeometry.RadiusY = FontSize;
             _ellipseGeometry.Center = center;
@@ -67,19 +70,17 @@ namespace WPFDevelopers.Controls
                 To = _textBlockTop.ActualWidth,
                 Duration = TimeSpan.FromSeconds(3)
             };
-           
+
             Storyboard.SetTarget(doubleAnimation, _textBlockTop);
-            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("(UIElement.Clip).(EllipseGeometry.Transform).(TranslateTransform.X)"));
+            Storyboard.SetTargetProperty(doubleAnimation,
+                new PropertyPath("(UIElement.Clip).(EllipseGeometry.Transform).(TranslateTransform.X)"));
             var storyboard = new Storyboard
             {
                 RepeatBehavior = RepeatBehavior.Forever,
                 AutoReverse = true
             };
             storyboard.Children.Add(doubleAnimation);
-            storyboard.Completed += (s, q) => 
-            {
-
-            };
+            storyboard.Completed += (s, q) => { };
             storyboard.Begin();
         }
     }

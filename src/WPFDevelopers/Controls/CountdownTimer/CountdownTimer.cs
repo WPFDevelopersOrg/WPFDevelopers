@@ -14,45 +14,48 @@ namespace WPFDevelopers.Controls
         Default,
         MultiColor
     }
+
     public class CountdownTimer : ContentControl
     {
-        private Storyboard storyboard;
         private const double seconds = 1000;
-        private double currentSeconds = seconds;
-        private Grid myGrid;
-        public int Number
-        {
-            get { return (int)GetValue(NumberProperty); }
-            set { SetValue(NumberProperty, value); }
-        }
 
         public static readonly DependencyProperty NumberProperty =
-        DependencyProperty.Register("Number", typeof(int), typeof(CountdownTimer), new PropertyMetadata(3));
+            DependencyProperty.Register("Number", typeof(int), typeof(CountdownTimer), new PropertyMetadata(3));
+
+        public static readonly DependencyProperty IsFinishStartProperty =
+            DependencyProperty.Register("IsFinishStart", typeof(bool), typeof(CountdownTimer),
+                new PropertyMetadata(false));
+
+        public static readonly DependencyProperty CountdownTimerEffectProperty =
+            DependencyProperty.Register("ExhibitionEnum", typeof(CountdownTimerEffect), typeof(CountdownTimer),
+                new PropertyMetadata(CountdownTimerEffect.Default));
+
+        private double currentSeconds = seconds;
+        private Grid myGrid;
+        private Storyboard storyboard;
+
+        public int Number
+        {
+            get => (int)GetValue(NumberProperty);
+            set => SetValue(NumberProperty, value);
+        }
 
 
         /// <summary>
-        /// 完成后回到开始
+        ///     完成后回到开始
         /// </summary>
         public bool IsFinishStart
         {
-            get { return (bool)GetValue(IsFinishStartProperty); }
-            set { SetValue(IsFinishStartProperty, value); }
+            get => (bool)GetValue(IsFinishStartProperty);
+            set => SetValue(IsFinishStartProperty, value);
         }
-
-        public static readonly DependencyProperty IsFinishStartProperty =
-            DependencyProperty.Register("IsFinishStart", typeof(bool), typeof(CountdownTimer), new PropertyMetadata(false));
-
 
 
         public CountdownTimerEffect CountdownTimerEffect
         {
-            get { return (CountdownTimerEffect)GetValue(CountdownTimerEffectProperty); }
-            set { SetValue(CountdownTimerEffectProperty, value); }
+            get => (CountdownTimerEffect)GetValue(CountdownTimerEffectProperty);
+            set => SetValue(CountdownTimerEffectProperty, value);
         }
-
-        public static readonly DependencyProperty CountdownTimerEffectProperty =
-            DependencyProperty.Register("ExhibitionEnum", typeof(CountdownTimerEffect), typeof(CountdownTimer), new PropertyMetadata(CountdownTimerEffect.Default));
-
 
 
         public override void OnApplyTemplate()
@@ -71,12 +74,12 @@ namespace WPFDevelopers.Controls
             {
                 GradientStops = new GradientStopCollection
                 {
-                   new GradientStop{ Color = Colors.Red, Offset = 1 },
-                   new GradientStop{ Color = Colors.White, Offset = 1 },
-                   new GradientStop{ Color = Colors.White, Offset = .5 },
-                   new GradientStop{ Color = Colors.Red, Offset = .5 },
-                   new GradientStop{ Color = Colors.Red, Offset = 0 },
-                   new GradientStop{ Color = Colors.White, Offset = 0 },
+                    new GradientStop { Color = Colors.Red, Offset = 1 },
+                    new GradientStop { Color = Colors.White, Offset = 1 },
+                    new GradientStop { Color = Colors.White, Offset = .5 },
+                    new GradientStop { Color = Colors.Red, Offset = .5 },
+                    new GradientStop { Color = Colors.Red, Offset = 0 },
+                    new GradientStop { Color = Colors.White, Offset = 0 }
                 },
                 StartPoint = new Point(0.5, 0),
                 EndPoint = new Point(10, 10),
@@ -84,7 +87,7 @@ namespace WPFDevelopers.Controls
                 MappingMode = BrushMappingMode.Absolute
             };
             SolidColorBrush solidColor;
-            this.RegisterName(myGrid.Name, myGrid);
+            RegisterName(myGrid.Name, myGrid);
             var num = 0;
             //switch (CountdownTimerEffect)
             //{
@@ -92,7 +95,7 @@ namespace WPFDevelopers.Controls
             //        num = 1;
             //        break;
             //}
-            for (int i = Number; i >= num; i--)
+            for (var i = Number; i >= num; i--)
             {
                 var textBlock = new TextBlock();
                 switch (CountdownTimerEffect)
@@ -107,7 +110,6 @@ namespace WPFDevelopers.Controls
                     case CountdownTimerEffect.MultiColor:
                         textBlock.Foreground = linearGradient;
                         break;
-
                 }
 
                 textBlock.Text = i.ToString();
@@ -128,28 +130,30 @@ namespace WPFDevelopers.Controls
                 textBlock.RenderTransform = new ScaleTransform
                 {
                     ScaleX = 2,
-                    ScaleY = 2,
+                    ScaleY = 2
                 };
-                this.RegisterName(textBlock.Name, textBlock);
+                RegisterName(textBlock.Name, textBlock);
 
-                TimeSpan beginTime = TimeSpan.Zero;
+                var beginTime = TimeSpan.Zero;
                 if (storyboard.Children.Count > 0)
                 {
                     beginTime = TimeSpan.FromMilliseconds(currentSeconds);
                     currentSeconds += seconds;
                 }
+
                 var cubicEase = new CubicEase
                 {
-                    EasingMode = EasingMode.EaseIn,
+                    EasingMode = EasingMode.EaseIn
                 };
-                DoubleAnimation doubleAnimationScaleX = new DoubleAnimation();
+                var doubleAnimationScaleX = new DoubleAnimation();
                 doubleAnimationScaleX.From = 2;
                 doubleAnimationScaleX.To = 0;
                 doubleAnimationScaleX.EasingFunction = cubicEase;
 
 
                 Storyboard.SetTargetName(doubleAnimationScaleX, textBlock.Name);
-                Storyboard.SetTargetProperty(doubleAnimationScaleX, new PropertyPath("(TextBlock.RenderTransform).(ScaleTransform.ScaleX)"));
+                Storyboard.SetTargetProperty(doubleAnimationScaleX,
+                    new PropertyPath("(TextBlock.RenderTransform).(ScaleTransform.ScaleX)"));
 
                 var doubleAnimationScaleY = new DoubleAnimation
                 {
@@ -158,9 +162,8 @@ namespace WPFDevelopers.Controls
                     EasingFunction = cubicEase
                 };
                 Storyboard.SetTargetName(doubleAnimationScaleY, textBlock.Name);
-                Storyboard.SetTargetProperty(doubleAnimationScaleY, new PropertyPath("(TextBlock.RenderTransform).(ScaleTransform.ScaleY)"));
-
-
+                Storyboard.SetTargetProperty(doubleAnimationScaleY,
+                    new PropertyPath("(TextBlock.RenderTransform).(ScaleTransform.ScaleY)"));
 
 
                 doubleAnimationScaleX.BeginTime = beginTime;
@@ -177,7 +180,7 @@ namespace WPFDevelopers.Controls
                         To = 1
                     };
                     Storyboard.SetTargetName(doubleAnimationOpacity, textBlock.Name);
-                    Storyboard.SetTargetProperty(doubleAnimationOpacity, new PropertyPath(TextBlock.OpacityProperty));
+                    Storyboard.SetTargetProperty(doubleAnimationOpacity, new PropertyPath(OpacityProperty));
                     storyboard.Children.Add(doubleAnimationOpacity);
                 }
 
@@ -192,7 +195,8 @@ namespace WPFDevelopers.Controls
                         To = Colors.Black
                     };
                     Storyboard.SetTargetName(colorAnimation, myGrid.Name);
-                    Storyboard.SetTargetProperty(colorAnimation, new PropertyPath("(Panel.Background).(SolidColorBrush.Color)"));
+                    Storyboard.SetTargetProperty(colorAnimation,
+                        new PropertyPath("(Panel.Background).(SolidColorBrush.Color)"));
                     storyboard.Children.Add(colorAnimation);
                 }
                 else
@@ -207,7 +211,8 @@ namespace WPFDevelopers.Controls
                             To = Colors.White
                         };
                         Storyboard.SetTargetName(colorAnimation, myGrid.Name);
-                        Storyboard.SetTargetProperty(colorAnimation, new PropertyPath("(Panel.Background).(SolidColorBrush.Color)"));
+                        Storyboard.SetTargetProperty(colorAnimation,
+                            new PropertyPath("(Panel.Background).(SolidColorBrush.Color)"));
                         storyboard.Children.Add(colorAnimation);
                     }
                 }
@@ -219,8 +224,8 @@ namespace WPFDevelopers.Controls
 
                 myGrid.Children.Add(textBlock);
             }
-            this.Content = myGrid;
 
+            Content = myGrid;
         }
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
@@ -244,9 +249,7 @@ namespace WPFDevelopers.Controls
                     }
                 };
                 storyboard.Begin(this);
-
             }
-
         }
     }
 }

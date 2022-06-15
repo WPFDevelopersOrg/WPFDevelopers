@@ -5,17 +5,16 @@ namespace WPFDevelopers.Controls
 {
     public class ScaleItem : ViewModelBase
     {
-        public int Index { get; set; }
-
         private Brush _background;
+        public int Index { get; set; }
 
         public Brush Background
         {
-            get { return _background; }
+            get => _background;
             set
             {
                 _background = value;
-                this.NotifyPropertyChange("Background");
+                NotifyPropertyChange("Background");
             }
         }
     }

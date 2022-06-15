@@ -1,18 +1,18 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Data;
 
 namespace WPFDevelopers.Converts
 {
-    class AngleToIsLargeConverter : IValueConverter
+    internal class AngleToIsLargeConverter : IValueConverter
     {
-
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double angle = (double)value;
+            var angle = (double)value;
             return angle > 180;
         }
 
-        public object ConvertBack(object value, Type targetTypes, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

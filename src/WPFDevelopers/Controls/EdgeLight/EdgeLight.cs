@@ -8,41 +8,24 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = RightScaleTransformTemplateName, Type = typeof(ScaleTransform))]
     [TemplatePart(Name = BottomScaleTransformTemplateName, Type = typeof(ScaleTransform))]
     [TemplatePart(Name = LeftScaleTransformTemplateName, Type = typeof(ScaleTransform))]
-    public class EdgeLight:ContentControl
+    public class EdgeLight : ContentControl
     {
         private const string TopScaleTransformTemplateName = "PART_Top";
         private const string RightScaleTransformTemplateName = "PART_Right";
         private const string BottomScaleTransformTemplateName = "PART_Bottom";
         private const string LeftScaleTransformTemplateName = "PART_Left";
 
-        private ScaleTransform _TopScaleTransform;
-        private ScaleTransform _RightScaleTransform;
-        private ScaleTransform _BottomScaleTransform;
-        private ScaleTransform _LeftScaleTransform;
-
-
-
-
-        public bool IsAnimation
-        {
-            get { return (bool)GetValue(IsAnimationProperty); }
-            set { SetValue(IsAnimationProperty, value); }
-        }
-
         public static readonly DependencyProperty IsAnimationProperty =
             DependencyProperty.Register("IsAnimation", typeof(bool), typeof(EdgeLight), new PropertyMetadata(false));
-
-
-
-        public double LineSize
-        {
-            get { return (double)GetValue(LineSizeProperty); }
-            set { SetValue(LineSizeProperty, value); }
-        }
 
         public static readonly DependencyProperty LineSizeProperty =
             DependencyProperty.Register("LineSize", typeof(double), typeof(EdgeLight), new PropertyMetadata(1.0d));
 
+        private ScaleTransform _BottomScaleTransform;
+        private ScaleTransform _LeftScaleTransform;
+        private ScaleTransform _RightScaleTransform;
+
+        private ScaleTransform _TopScaleTransform;
 
 
         //private Storyboard storyboard;
@@ -50,7 +33,22 @@ namespace WPFDevelopers.Controls
 
         static EdgeLight()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(EdgeLight), new FrameworkPropertyMetadata(typeof(EdgeLight)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(EdgeLight),
+                new FrameworkPropertyMetadata(typeof(EdgeLight)));
+        }
+
+
+        public bool IsAnimation
+        {
+            get => (bool)GetValue(IsAnimationProperty);
+            set => SetValue(IsAnimationProperty, value);
+        }
+
+
+        public double LineSize
+        {
+            get => (double)GetValue(LineSizeProperty);
+            set => SetValue(LineSizeProperty, value);
         }
 
         public override void OnApplyTemplate()
@@ -68,7 +66,7 @@ namespace WPFDevelopers.Controls
             //Storyboard.SetTargetProperty(doubleAnimationScaleXTop, new PropertyPath(ScaleTransform.ScaleXProperty));
             //storyboard.Children.Add(doubleAnimationScaleXTop);
             //TimeSpan beginTime = TimeSpan.Zero;
-           
+
             //var doubleAnimationScaleYRight = new DoubleAnimation();
             //doubleAnimationScaleYRight.To = 1;
             //doubleAnimationScaleYRight.Duration = TimeSpan.FromMilliseconds(seconds);
@@ -99,6 +97,5 @@ namespace WPFDevelopers.Controls
         //    if (storyboard == null) return;
         //    storyboard.Begin(this, true);
         //}
-
     }
 }

@@ -4,23 +4,21 @@ using System.Windows.Interop;
 
 namespace WPFDevelopers.Controls
 {
-    public class AudioWindow:Window
+    public class AudioWindow : Window
     {
-        const int MM_MCINOTIFY = 0x3B9;
         public delegate void StopDelegate();
+
+        private const int MM_MCINOTIFY = 0x3B9;
         public event StopDelegate StopDelegateEvent;
-        
+
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-            HwndSource hwndSource = PresentationSource.FromVisual(this) as HwndSource;
-            if (hwndSource != null)
-            {
-                hwndSource.AddHook(new HwndSourceHook(this.WndProc));
-            }
+            var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
+            if (hwndSource != null) hwndSource.AddHook(WndProc);
         }
-        
-        IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch (msg)
             {
@@ -28,6 +26,7 @@ namespace WPFDevelopers.Controls
                     StopDelegateEvent?.Invoke();
                     break;
             }
+
             return IntPtr.Zero;
         }
     }

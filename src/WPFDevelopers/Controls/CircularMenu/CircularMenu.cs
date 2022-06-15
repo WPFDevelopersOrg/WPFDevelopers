@@ -16,27 +16,26 @@ namespace WPFDevelopers.Controls
         private const string ItemsControlTemplateName = "PART_ItemsControl";
         private const string EllipseGeometryTemplateName = "PART_EllipseGeometry";
         private const string ToggleButtonTemplateName = "PART_ToggleButton";
+        private EllipseGeometry _ellipseGeometry;
 
         private ItemsControl _itemsControl;
-        private EllipseGeometry _ellipseGeometry;
         private ToggleButton _toggleButton;
+
         static CircularMenu()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularMenu), new FrameworkPropertyMetadata(typeof(CircularMenu)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularMenu),
+                new FrameworkPropertyMetadata(typeof(CircularMenu)));
         }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             AlternationCount = 8;
             _itemsControl = GetTemplateChild(ItemsControlTemplateName) as ItemsControl;
-            if (_itemsControl != null)
-            {
-                _itemsControl.MouseLeftButtonDown += _itemsControl_MouseLeftButtonDown;
-
-            }
+            if (_itemsControl != null) _itemsControl.MouseLeftButtonDown += _itemsControl_MouseLeftButtonDown;
             _ellipseGeometry = GetTemplateChild(EllipseGeometryTemplateName) as EllipseGeometry;
             if (_ellipseGeometry != null)
-                _ellipseGeometry.Center = new Point(this.Width / 2, this.Height / 2);
+                _ellipseGeometry.Center = new Point(Width / 2, Height / 2);
             _toggleButton = GetTemplateChild(ToggleButtonTemplateName) as ToggleButton;
             if (_toggleButton != null)
             {
@@ -50,7 +49,7 @@ namespace WPFDevelopers.Controls
 
         private void _itemsControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            object item = (e.OriginalSource as FrameworkElement).DataContext;
+            var item = (e.OriginalSource as FrameworkElement).DataContext;
             SelectedItem = item;
         }
 
@@ -59,35 +58,14 @@ namespace WPFDevelopers.Controls
             var radiusXAnimation = new DoubleAnimation
             {
                 To = Width,
-                Duration = new Duration(TimeSpan.FromSeconds(0.4)),
+                Duration = new Duration(TimeSpan.FromSeconds(0.4))
             };
             Storyboard.SetTarget(radiusXAnimation, _itemsControl);
             Storyboard.SetTargetProperty(radiusXAnimation, new PropertyPath("Clip.RadiusX"));
             var radiusYAnimation = new DoubleAnimation
             {
                 To = Height,
-                Duration = new Duration(TimeSpan.FromSeconds(0.4)),
-            };
-            Storyboard.SetTarget(radiusYAnimation, _itemsControl);
-            Storyboard.SetTargetProperty(radiusYAnimation, new PropertyPath("Clip.RadiusY"));
-            var storyboard = new Storyboard();
-            storyboard.Children.Add(radiusXAnimation);
-            storyboard.Children.Add(radiusYAnimation);
-            storyboard.Begin();
-        }
-        private void _toggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            var radiusXAnimation = new DoubleAnimation
-            {
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(0.3)),
-            };
-            Storyboard.SetTarget(radiusXAnimation, _itemsControl);
-            Storyboard.SetTargetProperty(radiusXAnimation, new PropertyPath("Clip.RadiusX"));
-            var radiusYAnimation = new DoubleAnimation
-            {
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(0.3)),
+                Duration = new Duration(TimeSpan.FromSeconds(0.4))
             };
             Storyboard.SetTarget(radiusYAnimation, _itemsControl);
             Storyboard.SetTargetProperty(radiusYAnimation, new PropertyPath("Clip.RadiusY"));
@@ -97,6 +75,26 @@ namespace WPFDevelopers.Controls
             storyboard.Begin();
         }
 
-        
+        private void _toggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var radiusXAnimation = new DoubleAnimation
+            {
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(0.3))
+            };
+            Storyboard.SetTarget(radiusXAnimation, _itemsControl);
+            Storyboard.SetTargetProperty(radiusXAnimation, new PropertyPath("Clip.RadiusX"));
+            var radiusYAnimation = new DoubleAnimation
+            {
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(0.3))
+            };
+            Storyboard.SetTarget(radiusYAnimation, _itemsControl);
+            Storyboard.SetTargetProperty(radiusYAnimation, new PropertyPath("Clip.RadiusY"));
+            var storyboard = new Storyboard();
+            storyboard.Children.Add(radiusXAnimation);
+            storyboard.Children.Add(radiusYAnimation);
+            storyboard.Begin();
+        }
     }
 }

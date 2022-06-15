@@ -8,27 +8,23 @@ using System.Windows.Input;
 namespace WPFDevelopers.Controls
 {
     /// <summary>
-    /// TextBox 控件最好替换成可以设置最值且只能输入数字的输入框
+    ///     TextBox 控件最好替换成可以设置最值且只能输入数字的输入框
     /// </summary>
     [TemplatePart(Name = CountPerPageTextBoxTemplateName, Type = typeof(TextBox))]
     [TemplatePart(Name = JustPageTextBoxTemplateName, Type = typeof(TextBox))]
     [TemplatePart(Name = ListBoxTemplateName, Type = typeof(ListBox))]
     public class Pagination : Control
     {
-        private static readonly Type _typeofSelf = typeof(Pagination);
-
         private const string CountPerPageTextBoxTemplateName = "PART_CountPerPageTextBox";
         private const string JustPageTextBoxTemplateName = "PART_JumpPageTextBox";
         private const string ListBoxTemplateName = "PART_ListBox";
 
         private const string Ellipsis = "···";
+        private static readonly Type _typeofSelf = typeof(Pagination);
 
         private TextBox _countPerPageTextBox;
         private TextBox _jumpPageTextBox;
         private ListBox _listBox;
-
-        private static RoutedCommand _prevCommand = null;
-        private static RoutedCommand _nextCommand = null;
 
         static Pagination()
         {
@@ -37,26 +33,41 @@ namespace WPFDevelopers.Controls
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
 
+        #region Override
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            UnsubscribeEvents();
+
+            _countPerPageTextBox = GetTemplateChild(CountPerPageTextBoxTemplateName) as TextBox;
+            _jumpPageTextBox = GetTemplateChild(JustPageTextBoxTemplateName) as TextBox;
+            _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
+
+            Init();
+
+            SubscribeEvents();
+        }
+
+        #endregion
+
         #region Command
 
         private static void InitializeCommands()
         {
-            _prevCommand = new RoutedCommand("Prev", _typeofSelf);
-            _nextCommand = new RoutedCommand("Next", _typeofSelf);
+            PrevCommand = new RoutedCommand("Prev", _typeofSelf);
+            NextCommand = new RoutedCommand("Next", _typeofSelf);
 
-            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_prevCommand, OnPrevCommand, OnCanPrevCommand));
-            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_nextCommand, OnNextCommand, OnCanNextCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf,
+                new CommandBinding(PrevCommand, OnPrevCommand, OnCanPrevCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf,
+                new CommandBinding(NextCommand, OnNextCommand, OnCanNextCommand));
         }
 
-        public static RoutedCommand PrevCommand
-        {
-            get { return _prevCommand; }
-        }
+        public static RoutedCommand PrevCommand { get; private set; }
 
-        public static RoutedCommand NextCommand
-        {
-            get { return _nextCommand; }
-        }
+        public static RoutedCommand NextCommand { get; private set; }
 
         private static void OnPrevCommand(object sender, RoutedEventArgs e)
         {
@@ -87,20 +98,20 @@ namespace WPFDevelopers.Controls
         #region Properties
 
         private static readonly DependencyPropertyKey PagesPropertyKey =
-           DependencyProperty.RegisterReadOnly("Pages", typeof(IEnumerable<string>), _typeofSelf, new PropertyMetadata(null));
+            DependencyProperty.RegisterReadOnly("Pages", typeof(IEnumerable<string>), _typeofSelf,
+                new PropertyMetadata(null));
+
         public static readonly DependencyProperty PagesProperty = PagesPropertyKey.DependencyProperty;
-        public IEnumerable<string> Pages
-        {
-            get { return (IEnumerable<string>)GetValue(PagesProperty); }
-        }
+
+        public IEnumerable<string> Pages => (IEnumerable<string>)GetValue(PagesProperty);
 
         private static readonly DependencyPropertyKey PageCountPropertyKey =
-           DependencyProperty.RegisterReadOnly("PageCount", typeof(int), _typeofSelf, new PropertyMetadata(1, OnPageCountPropertyChanged));
+            DependencyProperty.RegisterReadOnly("PageCount", typeof(int), _typeofSelf,
+                new PropertyMetadata(1, OnPageCountPropertyChanged));
+
         public static readonly DependencyProperty PageCountProperty = PageCountPropertyKey.DependencyProperty;
-        public int PageCount
-        {
-            get { return (int)GetValue(PageCountProperty); }
-        }
+
+        public int PageCount => (int)GetValue(PageCountProperty);
 
         private static void OnPageCountPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -113,18 +124,22 @@ namespace WPFDevelopers.Controls
             */
         }
 
-        public static readonly DependencyProperty IsLiteProperty = DependencyProperty.Register("IsLite", typeof(bool), _typeofSelf, new PropertyMetadata(false));
+        public static readonly DependencyProperty IsLiteProperty =
+            DependencyProperty.Register("IsLite", typeof(bool), _typeofSelf, new PropertyMetadata(false));
+
         public bool IsLite
         {
-            get { return (bool)GetValue(IsLiteProperty); }
-            set { SetValue(IsLiteProperty, value); }
+            get => (bool)GetValue(IsLiteProperty);
+            set => SetValue(IsLiteProperty, value);
         }
 
-        public static readonly DependencyProperty CountProperty = DependencyProperty.Register("Count", typeof(int), _typeofSelf, new PropertyMetadata(0, OnCountPropertyChanged, CoerceCount));
+        public static readonly DependencyProperty CountProperty = DependencyProperty.Register("Count", typeof(int),
+            _typeofSelf, new PropertyMetadata(0, OnCountPropertyChanged, CoerceCount));
+
         public int Count
         {
-            get { return (int)GetValue(CountProperty); }
-            set { SetValue(CountProperty, value); }
+            get => (int)GetValue(CountProperty);
+            set => SetValue(CountProperty, value);
         }
 
         private static object CoerceCount(DependencyObject d, object value)
@@ -142,11 +157,13 @@ namespace WPFDevelopers.Controls
             ctrl.UpdatePages();
         }
 
-        public static readonly DependencyProperty CountPerPageProperty = DependencyProperty.Register("CountPerPage", typeof(int), _typeofSelf, new PropertyMetadata(50, OnCountPerPagePropertyChanged, CoerceCountPerPage));
+        public static readonly DependencyProperty CountPerPageProperty = DependencyProperty.Register("CountPerPage",
+            typeof(int), _typeofSelf, new PropertyMetadata(50, OnCountPerPagePropertyChanged, CoerceCountPerPage));
+
         public int CountPerPage
         {
-            get { return (int)GetValue(CountPerPageProperty); }
-            set { SetValue(CountPerPageProperty, value); }
+            get => (int)GetValue(CountPerPageProperty);
+            set => SetValue(CountPerPageProperty, value);
         }
 
         private static object CoerceCountPerPage(DependencyObject d, object value)
@@ -171,11 +188,13 @@ namespace WPFDevelopers.Controls
                 ctrl.UpdatePages();
         }
 
-        public static readonly DependencyProperty CurrentProperty = DependencyProperty.Register("Current", typeof(int), _typeofSelf, new PropertyMetadata(1, OnCurrentPropertyChanged, CoerceCurrent));
+        public static readonly DependencyProperty CurrentProperty = DependencyProperty.Register("Current", typeof(int),
+            _typeofSelf, new PropertyMetadata(1, OnCurrentPropertyChanged, CoerceCurrent));
+
         public int Current
         {
-            get { return (int)GetValue(CurrentProperty); }
-            set { SetValue(CurrentProperty, value); }
+            get => (int)GetValue(CurrentProperty);
+            set => SetValue(CurrentProperty, value);
         }
 
         private static object CoerceCurrent(DependencyObject d, object value)
@@ -202,47 +221,28 @@ namespace WPFDevelopers.Controls
 
         #endregion
 
-        #region Override
-
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            UnsubscribeEvents();
-
-            _countPerPageTextBox = GetTemplateChild(CountPerPageTextBoxTemplateName) as TextBox;
-            _jumpPageTextBox = GetTemplateChild(JustPageTextBoxTemplateName) as TextBox;
-            _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
-
-            Init();
-
-            SubscribeEvents();
-        }
-
-        #endregion
-
         #region Event
 
         /// <summary>
-        /// 分页
+        ///     分页
         /// </summary>
         private void OnCountPerPageTextBoxChanged(object sender, TextChangedEventArgs e)
         {
-            if (int.TryParse(_countPerPageTextBox.Text, out int _ountPerPage))
+            if (int.TryParse(_countPerPageTextBox.Text, out var _ountPerPage))
                 CountPerPage = _ountPerPage;
         }
 
         /// <summary>
-        /// 跳转页
+        ///     跳转页
         /// </summary>
         private void OnJumpPageTextBoxChanged(object sender, TextChangedEventArgs e)
         {
-            if (int.TryParse(_jumpPageTextBox.Text, out int _current))
+            if (int.TryParse(_jumpPageTextBox.Text, out var _current))
                 Current = _current;
         }
 
         /// <summary>
-        /// 选择页
+        ///     选择页
         /// </summary>
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -310,15 +310,22 @@ namespace WPFDevelopers.Controls
                 return Enumerable.Range(1, PageCount).Select(p => p.ToString()).ToArray();
 
             if (current <= 4)
-                return new string[] { "1", "2", "3", "4", "5", Ellipsis, PageCount.ToString() };
+                return new[] { "1", "2", "3", "4", "5", Ellipsis, PageCount.ToString() };
 
             if (current >= PageCount - 3)
-                return new string[] { "1", Ellipsis, (PageCount - 4).ToString(), (PageCount - 3).ToString(), (PageCount - 2).ToString(), (PageCount - 1).ToString(), PageCount.ToString() };
+                return new[]
+                {
+                    "1", Ellipsis, (PageCount - 4).ToString(), (PageCount - 3).ToString(), (PageCount - 2).ToString(),
+                    (PageCount - 1).ToString(), PageCount.ToString()
+                };
 
-            return new string[] { "1", Ellipsis, (current - 1).ToString(), current.ToString(), (current + 1).ToString(), Ellipsis, PageCount.ToString() };
+            return new[]
+            {
+                "1", Ellipsis, (current - 1).ToString(), current.ToString(), (current + 1).ToString(), Ellipsis,
+                PageCount.ToString()
+            };
         }
 
         #endregion
     }
 }
-

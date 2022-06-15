@@ -11,8 +11,8 @@ namespace WPFDevelopers.Converts
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var num = System.Convert.ToInt32(value);
-            var brush = Application.Current.Resources["CircularSingularSolidColorBrush"] as SolidColorBrush; 
-            if ((num % 2) == 1)
+            var brush = Application.Current.Resources["CircularSingularSolidColorBrush"] as SolidColorBrush;
+            if (num % 2 == 1)
                 brush = Application.Current.Resources["CircularDualSolidColorBrush"] as SolidColorBrush;
             return brush;
         }
@@ -22,13 +22,14 @@ namespace WPFDevelopers.Converts
             throw new NotImplementedException();
         }
     }
+
     public class DrawPrizeIndexToColor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var num = System.Convert.ToInt32(value);
             var brush = Application.Current.Resources["DrawPrizeSingularSolidColorBrush"] as SolidColorBrush;
-            if ((num % 2) == 1)
+            if (num % 2 == 1)
                 brush = Application.Current.Resources["DrawPrizeDualSolidColorBrush"] as SolidColorBrush;
             return brush;
         }

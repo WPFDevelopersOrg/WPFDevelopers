@@ -18,22 +18,62 @@ namespace WPFDevelopers.Controls
         private const string WrapPanelRightTemplateName = "PART_Right";
         private const string ImageBrushLeftTemplateName = "LeftUser";
         private const string ImageBrushRightTemplateName = "RightUser";
-        private TextBlock m_textBlock;
-        private WrapPanel leftWrapPanel;
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(ChatEmoji),
+                new UIPropertyMetadata(string.Empty, OnTextChanged));
+
+        public static readonly DependencyProperty IsRightProperty =
+            DependencyProperty.Register("IsRight", typeof(bool), typeof(ChatEmoji),
+                new UIPropertyMetadata(OnIsRightChanged));
+
+        public static readonly DependencyProperty LeftImageSourceProperty =
+            DependencyProperty.Register("LeftImageSource", typeof(ImageSource), typeof(ChatEmoji),
+                new UIPropertyMetadata(OnLeftImageSourceChanged));
+
+        public static readonly DependencyProperty RightImageSourceProperty =
+            DependencyProperty.Register("RightImageSource", typeof(ImageSource), typeof(ChatEmoji),
+                new UIPropertyMetadata(OnRightImageSourceChanged));
+
         private Border border;
-        private WrapPanel rightWrapPanel;
         private ImageBrush leftImageBrush;
+        private WrapPanel leftWrapPanel;
+        private bool m_IgnoreChanges;
+        private TextBlock m_textBlock;
         private ImageBrush rightImageBrush;
-        private bool m_IgnoreChanges = false;
-        public string Text
-        {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
+        private WrapPanel rightWrapPanel;
+
         static ChatEmoji()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ChatEmoji), new FrameworkPropertyMetadata(typeof(ChatEmoji)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ChatEmoji),
+                new FrameworkPropertyMetadata(typeof(ChatEmoji)));
         }
+
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
+        }
+
+
+        public bool IsRight
+        {
+            get => (bool)GetValue(IsRightProperty);
+            set => SetValue(IsRightProperty, value);
+        }
+
+        public ImageSource LeftImageSource
+        {
+            get => (ImageSource)GetValue(LeftImageSourceProperty);
+            set => SetValue(LeftImageSourceProperty, value);
+        }
+
+        public ImageSource RightImageSource
+        {
+            get => (ImageSource)GetValue(RightImageSourceProperty);
+            set => SetValue(RightImageSourceProperty, value);
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -49,17 +89,13 @@ namespace WPFDevelopers.Controls
             UpdateLeftImageSource();
         }
 
-        public static readonly DependencyProperty TextProperty =
-          DependencyProperty.Register("Text", typeof(string), typeof(ChatEmoji),
-            new UIPropertyMetadata(string.Empty, OnTextChanged));
-
-        static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ChatEmoji emoji = (ChatEmoji)d;
+            var emoji = (ChatEmoji)d;
             emoji.UpdateEmoji();
         }
 
-        void UpdateEmoji()
+        private void UpdateEmoji()
         {
             if (m_textBlock == null) return;
             if (!m_IgnoreChanges)
@@ -70,23 +106,13 @@ namespace WPFDevelopers.Controls
             }
         }
 
-
-        public bool IsRight
+        private static void OnIsRightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            get { return (bool)GetValue(IsRightProperty); }
-            set { SetValue(IsRightProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsRightProperty =
-            DependencyProperty.Register("IsRight", typeof(bool), typeof(ChatEmoji), new UIPropertyMetadata(OnIsRightChanged));
-
-        static void OnIsRightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ChatEmoji control = (ChatEmoji)d;
+            var control = (ChatEmoji)d;
             control.UpdateIsRight();
         }
 
-        void UpdateIsRight()
+        private void UpdateIsRight()
         {
             if (leftWrapPanel == null
                 ||
@@ -101,45 +127,28 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        public ImageSource LeftImageSource
-        {
-            get { return (ImageSource)GetValue(LeftImageSourceProperty); }
-            set { SetValue(LeftImageSourceProperty, value); }
-        }
-
-        public static readonly DependencyProperty LeftImageSourceProperty =
-            DependencyProperty.Register("LeftImageSource", typeof(ImageSource), typeof(ChatEmoji), new UIPropertyMetadata(OnLeftImageSourceChanged));
         private static void OnLeftImageSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ChatEmoji control = (ChatEmoji)d;
+            var control = (ChatEmoji)d;
             control.UpdateLeftImageSource();
         }
 
-        void UpdateLeftImageSource()
+        private void UpdateLeftImageSource()
         {
             if (leftImageBrush == null) return;
             leftImageBrush.ImageSource = LeftImageSource;
         }
-        public ImageSource RightImageSource
-        {
-            get { return (ImageSource)GetValue(RightImageSourceProperty); }
-            set { SetValue(RightImageSourceProperty, value); }
-        }
-
-        public static readonly DependencyProperty RightImageSourceProperty =
-            DependencyProperty.Register("RightImageSource", typeof(ImageSource), typeof(ChatEmoji), new UIPropertyMetadata(OnRightImageSourceChanged));
 
         private static void OnRightImageSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ChatEmoji control = (ChatEmoji)d;
+            var control = (ChatEmoji)d;
             control.UpdateRightImageSource();
         }
 
-        void UpdateRightImageSource()
+        private void UpdateRightImageSource()
         {
             if (rightImageBrush == null) return;
             rightImageBrush.ImageSource = RightImageSource;
         }
-
     }
 }

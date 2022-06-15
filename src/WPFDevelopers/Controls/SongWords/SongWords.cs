@@ -8,25 +8,13 @@ namespace WPFDevelopers.Controls
 {
     public class SongWords : TextBlock
     {
-
         public static readonly DependencyProperty DurationProperty =
-             DependencyProperty.Register("Duration", typeof(TimeSpan),
-             typeof(SongWords), new PropertyMetadata(TimeSpan.FromSeconds(1)));
-
-        public TimeSpan Duration
-        {
-            get { return (TimeSpan)GetValue(DurationProperty); }
-            set { SetValue(DurationProperty, value); }
-        }
-
-        public TimeSpan StartDuration
-        {
-            get { return (TimeSpan)GetValue(StartDurationProperty); }
-            set { SetValue(StartDurationProperty, value); }
-        }
+            DependencyProperty.Register("Duration", typeof(TimeSpan),
+                typeof(SongWords), new PropertyMetadata(TimeSpan.FromSeconds(1)));
 
         public static readonly DependencyProperty StartDurationProperty =
-            DependencyProperty.Register("StartDuration", typeof(TimeSpan), typeof(SongWords), new PropertyMetadata(TimeSpan.FromSeconds(1)));
+            DependencyProperty.Register("StartDuration", typeof(TimeSpan), typeof(SongWords),
+                new PropertyMetadata(TimeSpan.FromSeconds(1)));
 
 
         public SongWords()
@@ -38,24 +26,31 @@ namespace WPFDevelopers.Controls
             var stop1 = new GradientStop(Colors.White, 0);
             var stop2 = new GradientStop(Colors.White, 1);
             var stop3 = new GradientStop(Colors.Gray, 1);
-            this.RegisterName("GradientStop1", stop1);
-            this.RegisterName("GradientStop2", stop2);
-            this.RegisterName("GradientStop3", stop3);
+            RegisterName("GradientStop1", stop1);
+            RegisterName("GradientStop2", stop2);
+            RegisterName("GradientStop3", stop3);
             gradientBrush.GradientStops.Add(stop1);
             gradientBrush.GradientStops.Add(stop2);
             gradientBrush.GradientStops.Add(stop3);
-            this.Foreground = gradientBrush;
-            this.Loaded += (s, e) =>
-            {
-                Animate();
-            };
+            Foreground = gradientBrush;
+            Loaded += (s, e) => { Animate(); };
+        }
+
+        public TimeSpan Duration
+        {
+            get => (TimeSpan)GetValue(DurationProperty);
+            set => SetValue(DurationProperty, value);
+        }
+
+        public TimeSpan StartDuration
+        {
+            get => (TimeSpan)GetValue(StartDurationProperty);
+            set => SetValue(StartDurationProperty, value);
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
-
         }
 
         private void Animate()
@@ -82,7 +77,6 @@ namespace WPFDevelopers.Controls
             storyboard.Children.Add(animation1);
             storyboard.Children.Add(animation2);
             storyboard.Begin(this);
-
         }
     }
 }

@@ -7,7 +7,8 @@ namespace WPFDevelopers.Controls
     {
         static StreamerLoading()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(StreamerLoading), new FrameworkPropertyMetadata(typeof(StreamerLoading)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(StreamerLoading),
+                new FrameworkPropertyMetadata(typeof(StreamerLoading)));
         }
     }
 }

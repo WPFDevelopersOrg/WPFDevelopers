@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace WPFDevelopers.Samples.Helpers
+﻿namespace WPFDevelopers.Samples.Helpers
 {
     /// <summary>
-    /// TaskbarInfo 添加到最后
+    ///     TaskbarInfo 添加到最后
     /// </summary>
     public enum MenuEnum
     {
         Navigation3D,
+
         //BaseControl,
         BreatheLight,
         Loading,
         CutImage,
+        CropAvatar,
         AnimationAudio,
         AMap,
         ThumbAngle,
@@ -56,6 +53,6 @@ namespace WPFDevelopers.Samples.Helpers
         Desktop,
         DrawPrize,
         EdgeLight,
-        TaskbarInfo,
+        TaskbarInfo
     }
 }

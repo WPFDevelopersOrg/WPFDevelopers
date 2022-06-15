@@ -13,86 +13,94 @@ namespace WPFDevelopers.Controls
         Left,
         Right,
         Top,
-        Bottom,
+        Bottom
     }
 
     public class DrawingPanel : Panel
     {
         public static readonly DependencyProperty BorderBrushProperty =
-                               DependencyProperty.Register("BorderBrush", typeof(Brush), typeof(DrawingPanel), new PropertyMetadata(default, OnRenderPropertyChangedCallBack));
+            DependencyProperty.Register("BorderBrush", typeof(Brush), typeof(DrawingPanel),
+                new PropertyMetadata(default, OnRenderPropertyChangedCallBack));
 
         public static readonly DependencyProperty BorderThicknessProperty =
-                               DependencyProperty.Register("BorderThickness", typeof(Thickness), typeof(DrawingPanel), new PropertyMetadata(new Thickness(), OnRenderPropertyChangedCallBack));
+            DependencyProperty.Register("BorderThickness", typeof(Thickness), typeof(DrawingPanel),
+                new PropertyMetadata(new Thickness(), OnRenderPropertyChangedCallBack));
 
         public static readonly DependencyProperty CornerRadiusProperty =
-                               DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(DrawingPanel), new PropertyMetadata(new CornerRadius(), OnRenderPropertyChangedCallBack));
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(DrawingPanel),
+                new PropertyMetadata(new CornerRadius(), OnRenderPropertyChangedCallBack));
 
         public static readonly DependencyProperty OffsetProperty =
-                               DependencyProperty.Register("Offset", typeof(double), typeof(DrawingPanel), new PropertyMetadata(0d, OnRenderPropertyChangedCallBack));
+            DependencyProperty.Register("Offset", typeof(double), typeof(DrawingPanel),
+                new PropertyMetadata(0d, OnRenderPropertyChangedCallBack));
 
         public static readonly DependencyProperty ModeProperty =
-                               DependencyProperty.Register("Mode", typeof(DrawingMode), typeof(DrawingPanel), new PropertyMetadata(default(DrawingMode), OnRenderPropertyChangedCallBack));
+            DependencyProperty.Register("Mode", typeof(DrawingMode), typeof(DrawingPanel),
+                new PropertyMetadata(default(DrawingMode), OnRenderPropertyChangedCallBack));
 
         public static readonly DependencyProperty StartOffsetAngleProperty =
-                               DependencyProperty.Register("StartOffsetAngle", typeof(double), typeof(DrawingPanel), new PropertyMetadata(0d, OnRenderPropertyChangedCallBack));
+            DependencyProperty.Register("StartOffsetAngle", typeof(double), typeof(DrawingPanel),
+                new PropertyMetadata(0d, OnRenderPropertyChangedCallBack));
+
+        public static readonly DependencyProperty MultipleArrayDescriptionProperty =
+            DependencyProperty.Register("MultipleArrayDescription", typeof(string), typeof(DrawingPanel),
+                new PropertyMetadata(default, OnRenderPropertyChangedCallBack));
+
+        public static readonly DependencyProperty LayerSpaceProperty =
+            DependencyProperty.Register("LayerSpace", typeof(double), typeof(DrawingPanel),
+                new PropertyMetadata(5d, OnRenderPropertyChangedCallBack));
+
+
+        private List<int> _MultipleArray;
 
 
         public Brush BorderBrush
         {
-            get { return (Brush)GetValue(BorderBrushProperty); }
-            set { SetValue(BorderBrushProperty, value); }
+            get => (Brush)GetValue(BorderBrushProperty);
+            set => SetValue(BorderBrushProperty, value);
         }
 
         public Thickness BorderThickness
         {
-            get { return (Thickness)GetValue(BorderThicknessProperty); }
-            set { SetValue(BorderThicknessProperty, value); }
+            get => (Thickness)GetValue(BorderThicknessProperty);
+            set => SetValue(BorderThicknessProperty, value);
         }
 
         public CornerRadius CornerRadius
         {
-            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
         }
 
         public double Offset
         {
-            get { return (double)GetValue(OffsetProperty); }
-            set { SetValue(OffsetProperty, value); }
+            get => (double)GetValue(OffsetProperty);
+            set => SetValue(OffsetProperty, value);
         }
 
         public DrawingMode Mode
         {
-            get { return (DrawingMode)GetValue(ModeProperty); }
-            set { SetValue(ModeProperty, value); }
+            get => (DrawingMode)GetValue(ModeProperty);
+            set => SetValue(ModeProperty, value);
         }
 
         public double StartOffsetAngle
         {
-            get { return (double)GetValue(StartOffsetAngleProperty); }
-            set { SetValue(StartOffsetAngleProperty, value); }
+            get => (double)GetValue(StartOffsetAngleProperty);
+            set => SetValue(StartOffsetAngleProperty, value);
         }
 
         public string MultipleArrayDescription
         {
-            get { return (string)GetValue(MultipleArrayDescriptionProperty); }
-            set { SetValue(MultipleArrayDescriptionProperty, value); }
+            get => (string)GetValue(MultipleArrayDescriptionProperty);
+            set => SetValue(MultipleArrayDescriptionProperty, value);
         }
-
-        public static readonly DependencyProperty MultipleArrayDescriptionProperty =
-            DependencyProperty.Register("MultipleArrayDescription", typeof(string), typeof(DrawingPanel), new PropertyMetadata(default, OnRenderPropertyChangedCallBack));
 
         public double LayerSpace
         {
-            get { return (double)GetValue(LayerSpaceProperty); }
-            set { SetValue(LayerSpaceProperty, value); }
+            get => (double)GetValue(LayerSpaceProperty);
+            set => SetValue(LayerSpaceProperty, value);
         }
-
-        public static readonly DependencyProperty LayerSpaceProperty =
-            DependencyProperty.Register("LayerSpace", typeof(double), typeof(DrawingPanel), new PropertyMetadata(5d, OnRenderPropertyChangedCallBack));
-
-
-        private List<int> _MultipleArray = default;
 
         private static void OnRenderPropertyChangedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -137,8 +145,8 @@ namespace WPFDevelopers.Controls
                 || double.IsNegativeInfinity(finalSize.Width)
                 || double.IsNegativeInfinity(finalSize.Height))
                 return finalSize;
-            double realValue = Math.Min(finalSize.Width, finalSize.Height);
-            Size desiredSzie = new Size(realValue, realValue);
+            var realValue = Math.Min(finalSize.Width, finalSize.Height);
+            var desiredSzie = new Size(realValue, realValue);
 
             MultipleArrangeOverride();
 
@@ -157,17 +165,17 @@ namespace WPFDevelopers.Controls
 
         private bool OnRenderBackground(DrawingContext dc)
         {
-            Thickness border = BorderThickness;
-            Brush borderBrush = BorderBrush;
-            Brush backGround = Background;
+            var border = BorderThickness;
+            var borderBrush = BorderBrush;
+            var backGround = Background;
 
-            CornerRadius cornerRadius = CornerRadius;
-            double outerCornerRadius = cornerRadius.TopLeft; // Already validated that all corners have the same radius
-            bool roundedCorners = !DoubleUtil.IsZero(outerCornerRadius);
+            var cornerRadius = CornerRadius;
+            var outerCornerRadius = cornerRadius.TopLeft; // Already validated that all corners have the same radius
+            var roundedCorners = !DoubleUtil.IsZero(outerCornerRadius);
 
             if (!border.IsZero() && borderBrush != null)
             {
-                Pen pen = new Pen();
+                var pen = new Pen();
                 pen.Brush = borderBrush;
                 pen.Thickness = border.Left;
 
@@ -178,24 +186,21 @@ namespace WPFDevelopers.Controls
                 if (border.IsUniform())
                 {
                     halfThickness = pen.Thickness * 0.5;
-                    Rect rect = new Rect(new Point(halfThickness, halfThickness), new Point(RenderSize.Width - halfThickness, RenderSize.Height - halfThickness));
+                    var rect = new Rect(new Point(halfThickness, halfThickness),
+                        new Point(RenderSize.Width - halfThickness, RenderSize.Height - halfThickness));
 
                     if (roundedCorners)
-                    {
                         dc.DrawRoundedRectangle(
                             backGround,
                             pen,
                             rect,
                             outerCornerRadius,
                             outerCornerRadius);
-                    }
                     else
-                    {
                         dc.DrawRectangle(
                             backGround,
                             pen,
                             rect);
-                    }
                 }
                 else
                 {
@@ -238,24 +243,20 @@ namespace WPFDevelopers.Controls
             }
             else
             {
-                Rect rect = new Rect(new Point(0, 0), new Point(RenderSize.Width, RenderSize.Height));
+                var rect = new Rect(new Point(0, 0), new Point(RenderSize.Width, RenderSize.Height));
 
                 if (roundedCorners)
-                {
                     dc.DrawRoundedRectangle(
                         backGround,
                         null,
                         rect,
                         outerCornerRadius,
                         outerCornerRadius);
-                }
                 else
-                {
                     dc.DrawRectangle(
                         backGround,
                         null,
                         rect);
-                }
             }
 
             return true;
@@ -289,7 +290,7 @@ namespace WPFDevelopers.Controls
                 _MultipleArray.Add(vResult);
             }
 
-            int nCount = 0;
+            var nCount = 0;
             foreach (var item in _MultipleArray)
                 nCount += item;
 
@@ -302,7 +303,7 @@ namespace WPFDevelopers.Controls
         private bool ArrangeOverrideSingle(double realValue)
         {
             var vInternalChildren = InternalChildren;
-            double angle = 360d / vInternalChildren.Count;
+            var angle = 360d / vInternalChildren.Count;
 
             switch (Mode)
             {
@@ -334,7 +335,7 @@ namespace WPFDevelopers.Controls
             if (realValue <= 0 || angle <= 0)
                 return false;
 
-            int index = 0;
+            var index = 0;
             foreach (var child in internalChildren)
             {
                 index++;
@@ -347,13 +348,13 @@ namespace WPFDevelopers.Controls
                 if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                     continue;
 
-                Point size = new Point(Offset, (realValue - uiElement.DesiredSize.Height) / 2d);
+                var size = new Point(Offset, (realValue - uiElement.DesiredSize.Height) / 2d);
 
                 uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
 
-                var vRotateTransform = new RotateTransform()
+                var vRotateTransform = new RotateTransform
                 {
-                    Angle = angle * (index - 1) + StartOffsetAngle,
+                    Angle = angle * (index - 1) + StartOffsetAngle
                 };
 
                 var vRealValue = realValue - 2 * Offset;
@@ -377,7 +378,7 @@ namespace WPFDevelopers.Controls
             if (realValue <= 0 || angle <= 0)
                 return false;
 
-            int index = 0;
+            var index = 0;
             foreach (var child in internalChildren)
             {
                 index++;
@@ -390,13 +391,14 @@ namespace WPFDevelopers.Controls
                 if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                     continue;
 
-                Point size = new Point(realValue - Offset - uiElement.DesiredSize.Width, (realValue - uiElement.DesiredSize.Height) / 2d);
+                var size = new Point(realValue - Offset - uiElement.DesiredSize.Width,
+                    (realValue - uiElement.DesiredSize.Height) / 2d);
 
                 uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
 
-                var vRotateTransform = new RotateTransform()
+                var vRotateTransform = new RotateTransform
                 {
-                    Angle = angle * (index - 1) + StartOffsetAngle,
+                    Angle = angle * (index - 1) + StartOffsetAngle
                 };
 
                 var vRealValue = realValue - 2 * Offset;
@@ -420,7 +422,7 @@ namespace WPFDevelopers.Controls
             if (realValue <= 0 || angle <= 0)
                 return false;
 
-            int index = 0;
+            var index = 0;
             foreach (var child in internalChildren)
             {
                 index++;
@@ -433,13 +435,13 @@ namespace WPFDevelopers.Controls
                 if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                     continue;
 
-                Point size = new Point((realValue - uiElement.DesiredSize.Width) / 2d, Offset);
+                var size = new Point((realValue - uiElement.DesiredSize.Width) / 2d, Offset);
 
                 uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
 
-                var vRotateTransform = new RotateTransform()
+                var vRotateTransform = new RotateTransform
                 {
-                    Angle = angle * (index - 1) + StartOffsetAngle,
+                    Angle = angle * (index - 1) + StartOffsetAngle
                 };
 
                 var vRealValue = realValue - 2 * Offset;
@@ -463,7 +465,7 @@ namespace WPFDevelopers.Controls
             if (realValue <= 0 || angle <= 0)
                 return false;
 
-            int index = 0;
+            var index = 0;
             foreach (var child in internalChildren)
             {
                 index++;
@@ -476,13 +478,14 @@ namespace WPFDevelopers.Controls
                 if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                     continue;
 
-                Point size = new Point((realValue - uiElement.DesiredSize.Width) / 2d, realValue - Offset - uiElement.DesiredSize.Height);
+                var size = new Point((realValue - uiElement.DesiredSize.Width) / 2d,
+                    realValue - Offset - uiElement.DesiredSize.Height);
 
                 uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
 
-                var vRotateTransform = new RotateTransform()
+                var vRotateTransform = new RotateTransform
                 {
-                    Angle = angle * (index - 1) + StartOffsetAngle,
+                    Angle = angle * (index - 1) + StartOffsetAngle
                 };
 
                 var vRealValue = realValue - 2 * Offset;
@@ -502,7 +505,7 @@ namespace WPFDevelopers.Controls
         {
             if (_MultipleArray?.Count > 0)
             {
-                int nCount = 0;
+                var nCount = 0;
                 foreach (var item in _MultipleArray)
                     nCount += item;
 
@@ -517,58 +520,58 @@ namespace WPFDevelopers.Controls
 
         private bool ArrangeOverrideMultiple(double realValue)
         {
-            double offset = Offset;
+            var offset = Offset;
             var vInternalChildren = InternalChildren;
 
-            int nStartIndex = 0;
+            var nStartIndex = 0;
 
             double lastMaxWidth = 0;
             double lastMaxHeight = 0;
 
-            int nLoopIndex = 0;
+            var nLoopIndex = 0;
             foreach (var item in _MultipleArray)
             {
-                double angle = 360d / item;
+                var angle = 360d / item;
 
-                int nIndex = 0;
+                var nIndex = 0;
                 double maxWidth = 0;
                 double maxHeight = 0;
-                for (int i = nStartIndex; i < nStartIndex + item; ++i)
+                for (var i = nStartIndex; i < nStartIndex + item; ++i)
                 {
                     var child = vInternalChildren[i];
 
-                    Size vSize = Size.Empty;
+                    var vSize = Size.Empty;
                     switch (Mode)
                     {
                         case DrawingMode.Left:
-                            {
-                                var vOffset = offset + lastMaxWidth + LayerSpace * nLoopIndex;
-                                ArrangeOverride_Left(child, nIndex, vOffset, realValue, angle, out vSize);
-                            }
+                        {
+                            var vOffset = offset + lastMaxWidth + LayerSpace * nLoopIndex;
+                            ArrangeOverride_Left(child, nIndex, vOffset, realValue, angle, out vSize);
+                        }
                             break;
                         case DrawingMode.Right:
-                            {
-                                var vOffset = offset + lastMaxWidth + LayerSpace * nLoopIndex;
-                                ArrangeOverride_Right(child, nIndex, vOffset, realValue, angle, out vSize);
-                            }
+                        {
+                            var vOffset = offset + lastMaxWidth + LayerSpace * nLoopIndex;
+                            ArrangeOverride_Right(child, nIndex, vOffset, realValue, angle, out vSize);
+                        }
                             break;
                         case DrawingMode.Top:
-                            {
-                                var vOffset = offset + lastMaxHeight + LayerSpace * nLoopIndex;
-                                ArrangeOverride_Top(child, nIndex, vOffset, realValue, angle, out vSize);
-                            }
+                        {
+                            var vOffset = offset + lastMaxHeight + LayerSpace * nLoopIndex;
+                            ArrangeOverride_Top(child, nIndex, vOffset, realValue, angle, out vSize);
+                        }
                             break;
                         case DrawingMode.Bottom:
-                            {
-                                var vOffset = offset + lastMaxHeight + LayerSpace * nLoopIndex;
-                                ArrangeOverride_Bottom(child, nIndex, vOffset, realValue, angle, out vSize);
-                            }
+                        {
+                            var vOffset = offset + lastMaxHeight + LayerSpace * nLoopIndex;
+                            ArrangeOverride_Bottom(child, nIndex, vOffset, realValue, angle, out vSize);
+                        }
                             break;
                         default:
-                            {
-                                var vOffset = offset + lastMaxWidth + LayerSpace * nLoopIndex;
-                                ArrangeOverride_Left(child, nIndex, vOffset, realValue, angle, out vSize);
-                            }
+                        {
+                            var vOffset = offset + lastMaxWidth + LayerSpace * nLoopIndex;
+                            ArrangeOverride_Left(child, nIndex, vOffset, realValue, angle, out vSize);
+                        }
                             break;
                     }
 
@@ -588,7 +591,8 @@ namespace WPFDevelopers.Controls
             return true;
         }
 
-        private bool ArrangeOverride_Left(UIElement uiElement, int index, double offset, double realValue, double angle, out Size desiredSize)
+        private bool ArrangeOverride_Left(UIElement uiElement, int index, double offset, double realValue, double angle,
+            out Size desiredSize)
         {
             desiredSize = Size.Empty;
             if (realValue <= 0 || angle <= 0)
@@ -600,14 +604,14 @@ namespace WPFDevelopers.Controls
             if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                 return false;
 
-            Point size = new Point(offset, (realValue - uiElement.DesiredSize.Height) / 2d);
+            var size = new Point(offset, (realValue - uiElement.DesiredSize.Height) / 2d);
 
             uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
             desiredSize = uiElement.DesiredSize;
 
-            var vRotateTransform = new RotateTransform()
+            var vRotateTransform = new RotateTransform
             {
-                Angle = angle * index + StartOffsetAngle,
+                Angle = angle * index + StartOffsetAngle
             };
 
             var vRealValue = realValue - 2 * offset;
@@ -622,7 +626,8 @@ namespace WPFDevelopers.Controls
             return true;
         }
 
-        private bool ArrangeOverride_Right(UIElement uiElement, int index, double offset, double realValue, double angle, out Size desiredSize)
+        private bool ArrangeOverride_Right(UIElement uiElement, int index, double offset, double realValue,
+            double angle, out Size desiredSize)
         {
             desiredSize = Size.Empty;
             if (realValue <= 0 || angle <= 0)
@@ -634,14 +639,15 @@ namespace WPFDevelopers.Controls
             if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                 return false;
 
-            Point size = new Point(realValue - offset - uiElement.DesiredSize.Width, (realValue - uiElement.DesiredSize.Height) / 2d);
+            var size = new Point(realValue - offset - uiElement.DesiredSize.Width,
+                (realValue - uiElement.DesiredSize.Height) / 2d);
 
             uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
             desiredSize = uiElement.DesiredSize;
 
-            var vRotateTransform = new RotateTransform()
+            var vRotateTransform = new RotateTransform
             {
-                Angle = angle * index + StartOffsetAngle,
+                Angle = angle * index + StartOffsetAngle
             };
 
             var vRealValue = realValue - 2 * offset;
@@ -656,7 +662,8 @@ namespace WPFDevelopers.Controls
             return true;
         }
 
-        private bool ArrangeOverride_Top(UIElement uiElement, int index, double offset, double realValue, double angle, out Size desiredSize)
+        private bool ArrangeOverride_Top(UIElement uiElement, int index, double offset, double realValue, double angle,
+            out Size desiredSize)
         {
             desiredSize = Size.Empty;
             if (realValue <= 0 || angle <= 0)
@@ -668,14 +675,14 @@ namespace WPFDevelopers.Controls
             if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                 return false;
 
-            Point size = new Point((realValue - uiElement.DesiredSize.Width) / 2d, offset);
+            var size = new Point((realValue - uiElement.DesiredSize.Width) / 2d, offset);
 
             uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
             desiredSize = uiElement.DesiredSize;
 
-            var vRotateTransform = new RotateTransform()
+            var vRotateTransform = new RotateTransform
             {
-                Angle = angle * index + StartOffsetAngle,
+                Angle = angle * index + StartOffsetAngle
             };
 
             var vRealValue = realValue - 2 * offset;
@@ -690,7 +697,8 @@ namespace WPFDevelopers.Controls
             return true;
         }
 
-        private bool ArrangeOverride_Bottom(UIElement uiElement, int index, double offset, double realValue, double angle, out Size desiredSize)
+        private bool ArrangeOverride_Bottom(UIElement uiElement, int index, double offset, double realValue,
+            double angle, out Size desiredSize)
         {
             desiredSize = Size.Empty;
             if (realValue <= 0 || angle <= 0)
@@ -702,14 +710,15 @@ namespace WPFDevelopers.Controls
             if (DoubleUtil.IsZero(uiElement.DesiredSize.Width) || DoubleUtil.IsZero(uiElement.DesiredSize.Height))
                 return false;
 
-            Point size = new Point((realValue - uiElement.DesiredSize.Width) / 2d, realValue - offset - uiElement.DesiredSize.Height);
+            var size = new Point((realValue - uiElement.DesiredSize.Width) / 2d,
+                realValue - offset - uiElement.DesiredSize.Height);
 
             uiElement.Arrange(new Rect(size, uiElement.DesiredSize));
             desiredSize = uiElement.DesiredSize;
 
-            var vRotateTransform = new RotateTransform()
+            var vRotateTransform = new RotateTransform
             {
-                Angle = angle * index + StartOffsetAngle,
+                Angle = angle * index + StartOffsetAngle
             };
 
             var vRealValue = realValue - 2 * offset;
@@ -722,6 +731,5 @@ namespace WPFDevelopers.Controls
             uiElement.RenderTransform = vRotateTransform;
             return true;
         }
-
     }
 }

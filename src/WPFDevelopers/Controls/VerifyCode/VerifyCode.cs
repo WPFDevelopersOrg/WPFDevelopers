@@ -10,32 +10,34 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = ImageTemplateName, Type = typeof(Image))]
     public class VerifyCode : Control
     {
-
         private const string ImageTemplateName = "PART_Image";
+        private const string strCode = "abcdefhkmnprstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+        public static readonly DependencyProperty ImageSourceProperty =
+            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(VerifyCode),
+                new PropertyMetadata(null));
+
         private Image _image;
         private Size _size = new Size(70, 23);
-        private const string strCode = "abcdefhkmnprstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"; 
-
-        public static readonly DependencyProperty ImageSourceProperty = 
-            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(VerifyCode),new PropertyMetadata(null));
-        /// <summary>
-        /// 随机生成的验证码
-        /// </summary>
-        public ImageSource ImageSource
-        {
-            get { return (ImageSource)GetValue(ImageSourceProperty); }
-            set { SetValue(ImageSourceProperty, value); }
-        }
 
         public VerifyCode()
         {
             Foreground = DrawingContextHelper.Brush;
-            this.Loaded += CheckCode_Loaded;
+            Loaded += CheckCode_Loaded;
+        }
+
+        /// <summary>
+        ///     随机生成的验证码
+        /// </summary>
+        public ImageSource ImageSource
+        {
+            get => (ImageSource)GetValue(ImageSourceProperty);
+            set => SetValue(ImageSourceProperty, value);
         }
 
         private void CheckCode_Loaded(object sender, RoutedEventArgs e)
         {
-            ImageSource = CreateCheckCodeImage(CreateCode(4), (int)this.ActualWidth, (int)this.ActualHeight);
+            ImageSource = CreateCheckCodeImage(CreateCode(4), (int)ActualWidth, (int)ActualHeight);
         }
 
         public override void OnApplyTemplate()
@@ -44,8 +46,6 @@ namespace WPFDevelopers.Controls
             _image = GetTemplateChild(ImageTemplateName) as Image;
             if (_image != null)
                 _image.PreviewMouseDown += _image_PreviewMouseDown;
-
-
         }
 
         private void _image_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -53,33 +53,33 @@ namespace WPFDevelopers.Controls
             if (!IsLoaded)
                 return;
 
-            ImageSource = CreateCheckCodeImage(CreateCode(4), (int)this.ActualWidth, (int)this.ActualHeight);
+            ImageSource = CreateCheckCodeImage(CreateCode(4), (int)ActualWidth, (int)ActualHeight);
         }
 
         private string CreateCode(int strLength)
         {
             var _charArray = strCode.ToCharArray();
             var randomCode = "";
-            int temp = -1;
-            Random rand = new Random(Guid.NewGuid().GetHashCode());
-            for (int i = 0; i < strLength; i++)
+            var temp = -1;
+            var rand = new Random(Guid.NewGuid().GetHashCode());
+            for (var i = 0; i < strLength; i++)
             {
                 if (temp != -1)
-                    rand = new Random(i * temp * ((int)DateTime.Now.Ticks));
-                int t = rand.Next(strCode.Length - 1);
+                    rand = new Random(i * temp * (int)DateTime.Now.Ticks);
+                var t = rand.Next(strCode.Length - 1);
                 if (!string.IsNullOrWhiteSpace(randomCode))
-                {
                     while (randomCode.ToLower().Contains(_charArray[t].ToString().ToLower()))
                         t = rand.Next(strCode.Length - 1);
-                }
                 if (temp == t)
                     return CreateCode(strLength);
                 temp = t;
 
                 randomCode += _charArray[t];
             }
+
             return randomCode;
         }
+
         private ImageSource CreateCheckCodeImage(string checkCode, int width, int height)
         {
             if (string.IsNullOrWhiteSpace(checkCode))
@@ -88,28 +88,33 @@ namespace WPFDevelopers.Controls
                 return null;
             var drawingVisual = new DrawingVisual();
             var random = new Random(Guid.NewGuid().GetHashCode());
-            using (DrawingContext dc = drawingVisual.RenderOpen())
+            using (var dc = drawingVisual.RenderOpen())
             {
                 dc.DrawRectangle(Brushes.White, new Pen(Foreground, 1), new Rect(_size));
-                var formattedText = DrawingContextHelper.GetFormattedText(checkCode,color: Foreground, flowDirection: FlowDirection.LeftToRight,textSize:20, fontWeight: FontWeights.Bold);
-                dc.DrawText(formattedText, new Point((_size.Width - formattedText.Width) / 2, (_size.Height - formattedText.Height) / 2));
+                var formattedText = DrawingContextHelper.GetFormattedText(checkCode, Foreground,
+                    FlowDirection.LeftToRight, 20, FontWeights.Bold);
+                dc.DrawText(formattedText,
+                    new Point((_size.Width - formattedText.Width) / 2, (_size.Height - formattedText.Height) / 2));
 
-                for (int i = 0; i < 10; i++)
+                for (var i = 0; i < 10; i++)
                 {
-                    int x1 = random.Next(width - 1);
-                    int y1 = random.Next(height - 1);
-                    int x2 = random.Next(width - 1);
-                    int y2 = random.Next(height - 1);
+                    var x1 = random.Next(width - 1);
+                    var y1 = random.Next(height - 1);
+                    var x2 = random.Next(width - 1);
+                    var y2 = random.Next(height - 1);
 
-                    dc.DrawGeometry(Brushes.Silver, new Pen(Brushes.Silver, 0.5D), new LineGeometry(new Point(x1, y1), new Point(x2, y2)));
+                    dc.DrawGeometry(Brushes.Silver, new Pen(Brushes.Silver, 0.5D),
+                        new LineGeometry(new Point(x1, y1), new Point(x2, y2)));
                 }
 
-                for (int i = 0; i < 100; i++)
+                for (var i = 0; i < 100; i++)
                 {
-                    int x = random.Next(width - 1);
-                    int y = random.Next(height - 1);
-                    SolidColorBrush c = new SolidColorBrush(Color.FromRgb((byte)random.Next(0, 255), (byte)random.Next(0, 255), (byte)random.Next(0, 255)));
-                    dc.DrawGeometry(c, new Pen(c, 1D), new LineGeometry(new Point(x - 0.5, y - 0.5), new Point(x + 0.5, y + 0.5)));
+                    var x = random.Next(width - 1);
+                    var y = random.Next(height - 1);
+                    var c = new SolidColorBrush(Color.FromRgb((byte)random.Next(0, 255), (byte)random.Next(0, 255),
+                        (byte)random.Next(0, 255)));
+                    dc.DrawGeometry(c, new Pen(c, 1D),
+                        new LineGeometry(new Point(x - 0.5, y - 0.5), new Point(x + 0.5, y + 0.5)));
                 }
 
                 dc.Close();

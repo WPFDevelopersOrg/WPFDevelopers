@@ -5,28 +5,28 @@ namespace WPFDevelopers.Controls
 {
     public class RadarModel : ViewModelBase
     {
-        public string Text { get; set; }
+        private Point _pointValue;
 
         private int _valueMax;
+        public string Text { get; set; }
 
         public int ValueMax
         {
-            get { return _valueMax; }
+            get => _valueMax;
             set
             {
                 _valueMax = value;
-                this.NotifyPropertyChange("ValueMax");
+                NotifyPropertyChange("ValueMax");
             }
         }
-        private Point _pointValue;
 
         public Point PointValue
         {
-            get { return _pointValue; }
+            get => _pointValue;
             set
             {
                 _pointValue = value;
-                this.NotifyPropertyChange("PointValue");
+                NotifyPropertyChange("PointValue");
             }
         }
     }
