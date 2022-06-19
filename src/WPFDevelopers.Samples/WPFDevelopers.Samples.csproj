@@ -61,9 +61,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.1.0.4\lib\net40\WPFDevelopers.dll</HintPath>
-    </Reference>
     <Reference Include="WPFDevelopers.Minimal, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFDevelopers.Minimal.3.2.2\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
     </Reference>
@@ -99,6 +96,12 @@
     </Compile>
     <Compile Include="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs">
       <DependentUpon>CropAvatarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\ShakeExample.xaml.cs">
+      <DependentUpon>ShakeExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\StarrySkyExample.xaml.cs">
+      <DependentUpon>StarrySkyExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\VerifyCodeExample.xaml.cs">
       <DependentUpon>VerifyCodeExample.xaml</DependentUpon>
@@ -297,6 +300,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\CropAvatar\CropAvatarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\ShakeExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\StarrySkyExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -662,6 +673,12 @@
     <Content Include="Resources\Audio\HelloWPFDevelopes_zh.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPFDevelopers\WPFDevelopers.csproj">
+      <Project>{25475fdd-29c7-466e-861b-4a0b5e010175}</Project>
+      <Name>WPFDevelopers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

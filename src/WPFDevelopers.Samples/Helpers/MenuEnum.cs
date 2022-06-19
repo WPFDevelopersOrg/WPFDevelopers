@@ -53,6 +53,8 @@
         Desktop,
         DrawPrize,
         EdgeLight,
+        StarrySky,
+        Shake,
         TaskbarInfo
     }
 }

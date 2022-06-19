@@ -245,6 +245,12 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.EdgeLight:
                     ControlPanel = new EdgeLightExample();
                     break;
+                case MenuEnum.StarrySky:
+                    ControlPanel = new StarrySkyExample();
+                    break;
+                case MenuEnum.Shake:
+                    ControlPanel = new ShakeExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

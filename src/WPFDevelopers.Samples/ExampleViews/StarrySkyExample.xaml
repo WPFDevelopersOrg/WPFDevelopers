@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.StarrySkyExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
+             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}">
+            <Setter Property="Margin" Value="2"></Setter>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="ws:ElementHelper.Watermark" Value="输入内容"></Setter>
+            <Setter Property="Margin" Value="-30,0"></Setter>
+            <Setter Property="Width" Value="100"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+       
+        <wpfdev:StarrySky Name="myStarrySky">
+
+        </wpfdev:StarrySky>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="星星个数:"></TextBlock>
+                <TextBox x:Name="tbx_starCount" Text="{Binding ElementName=myStarrySky,Path=StarCount}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="最小尺寸:"></TextBlock>
+                <TextBox Name="tbx_starSizeMin"  Text="{Binding ElementName=myStarrySky,Path=StarSizeMin}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="最大尺寸:"></TextBlock>
+                <TextBox Name="tbx_starSizeMax" Text="{Binding ElementName=myStarrySky,Path=StarSizeMax}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="最小速度:"></TextBlock>
+                <TextBox Name="tbx_starVMin" Text="{Binding ElementName=myStarrySky,Path=StarVMin}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="最大速度:"></TextBlock>
+                <TextBox Name="tbx_starVMax" Text="{Binding ElementName=myStarrySky,Path=StarVMax}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="最小转速:"></TextBlock>
+                <TextBox Name="tbx_starRVMin" Text="{Binding ElementName=myStarrySky,Path=StarRVMin}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="最大转速:"></TextBlock>
+                <TextBox Name="tbx_starRVMax" Text="{Binding ElementName=myStarrySky,Path=StarRVMax}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="连线倍率:"></TextBlock>
+                <TextBox Name="tbx_lineRate" Text="{Binding ElementName=myStarrySky,Path=LineRate}"></TextBox>
+            </StackPanel>
+            <Button Name="btn_render" Content="生成" Click="btn_render_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

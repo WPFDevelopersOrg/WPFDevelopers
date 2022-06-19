@@ -43,6 +43,7 @@ xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     <RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Resources\Audio\shake.wav" />
     <None Remove="Resources\Fonts\fixedsys.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,7 @@ xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     <Folder Include="Microsoft.Expression.Media.Effects\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Audio\shake.wav" />
     <Resource Include="Resources\Fonts\fixedsys.ttf" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

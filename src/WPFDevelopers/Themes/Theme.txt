@@ -35,3 +35,4 @@ SpotLight.xaml
 DrawerMenu.xaml
 TimeLine.xaml
 CropAvatar.xaml
+StarrySky.xaml

@@ -1,8 +1,15 @@
 ﻿using System;
+using System.Linq;
+using System.Media;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Resources;
 using Microsoft.Win32;
+using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Helpers
 {
@@ -35,6 +42,28 @@ namespace WPFDevelopers.Helpers
             obj.SetValue(CornerRadiusProperty, value);
         }
 
+        public static void WindowShake(Window window = null)
+        {
+            if (window == null)
+                if (Application.Current.Windows.Count > 0)
+                    window = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
+            
+            var doubleAnimation = new DoubleAnimation
+            {
+                From = window.Left,
+                To = window.Left + 15,
+                Duration = TimeSpan.FromMilliseconds(50),
+                AutoReverse = true,
+                RepeatBehavior = new RepeatBehavior(3),
+                FillBehavior = FillBehavior.Stop
+            };
+            window.BeginAnimation(Window.LeftProperty, doubleAnimation);
+            var wavUri = new Uri(@"pack://application:,,,/WPFDevelopers;component/Resources/Audio/shake.wav");
+            var streamResource = Application.GetResourceStream(wavUri);
+            var player1 = new SoundPlayer(streamResource.Stream);
+            player1.Play();
+           
+        }
 
         public static Uri ImageUri()
         {
