@@ -76,6 +76,18 @@ Install-Package WPFDevelopers
 
 ***
 
+### Shake（WPF窗体抖动）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Shake.gif"/>   
+
+
+----------
+### StarrySky（WPF星空动画）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/StarrySky.gif"/>   
+
+
+----------
 
 ### CropAvatar （WPF头像选择器）
 
