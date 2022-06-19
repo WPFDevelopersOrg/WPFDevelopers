@@ -61,7 +61,18 @@ Install-Package WPFDevelopers
 
 
 ----------
+### Shake
 
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Shake.gif"/>   
+
+
+----------
+### StarrySky
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/StarrySky.gif"/>   
+
+
+----------
 ### CropAvatar
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropAvatar.gif"/>   
