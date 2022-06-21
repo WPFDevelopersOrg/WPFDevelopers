@@ -288,6 +288,7 @@ namespace WPFDevelopers.Controls
                     pngEncoder.Save(fs);
                     fs.Dispose();
                     fs.Close();
+                    Close();
                 }
             }
         }

@@ -62,7 +62,6 @@ namespace WPFDevelopers.Helpers
             var streamResource = Application.GetResourceStream(wavUri);
             var player1 = new SoundPlayer(streamResource.Stream);
             player1.Play();
-           
         }
 
         public static Uri ImageUri()
