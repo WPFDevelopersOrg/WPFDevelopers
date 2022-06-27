@@ -1,7 +1,7 @@
 ﻿using Microsoft.Expression.Media;
 using System.Windows;
 
-namespace Microsoft.Expression.Controls
+namespace Microsoft.Expression.Drawing.Controls
 {
     public sealed class Callout : CompositeContentShape, ICalloutGeometrySourceParameters, IGeometrySourceParameters
     {

@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace Microsoft.Expression.Controls
+namespace Microsoft.Expression.Drawing.Controls
 {
     public abstract class CompositeShape : Control, IGeometrySourceParameters, IShape
     {

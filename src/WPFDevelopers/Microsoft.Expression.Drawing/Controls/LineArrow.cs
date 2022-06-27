@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Microsoft.Expression.Controls
+namespace Microsoft.Expression.Drawing.Controls
 {
 	public sealed class LineArrow : CompositeShape, ILineArrowGeometrySourceParameters, IGeometrySourceParameters
 	{
