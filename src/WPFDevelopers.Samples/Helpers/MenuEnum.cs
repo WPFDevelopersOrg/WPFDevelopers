@@ -6,7 +6,7 @@
     public enum MenuEnum
     {
         Navigation3D,
-
+        PanningItems,
         //BaseControl,
         BreatheLight,
         Loading,

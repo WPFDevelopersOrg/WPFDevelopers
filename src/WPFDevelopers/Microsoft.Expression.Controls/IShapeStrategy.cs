@@ -1,9 +1,9 @@
 ﻿using Microsoft.Expression.Drawing.Core;
-using Microsoft.Expression.Media;
 using System;
 using System.Collections.Generic;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Microsoft.Expression.Drawing.Media;
 
 namespace Microsoft.Expression.Controls
 {

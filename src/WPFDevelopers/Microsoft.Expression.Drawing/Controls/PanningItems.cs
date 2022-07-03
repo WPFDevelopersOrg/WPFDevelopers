@@ -6,12 +6,15 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
+using WPFDevelopers.Helpers;
 
 
 namespace Microsoft.Expression.Drawing.Controls
 {
     public class PanningItems : Selector
     {
+        private DispatcherTimer timer;
         static PanningItems()
         {
             SelectedItemProperty.OverrideMetadata(typeof(PanningItems), new FrameworkPropertyMetadata(new PropertyChangedCallback(selectedItemChanged)));
@@ -64,11 +67,11 @@ namespace Microsoft.Expression.Drawing.Controls
             SelectedIndex = 0;
         }
 
-        public System.Windows.Controls.Orientation ScrollDirection
+        public Orientation ScrollDirection
         {
             get
             {
-                return (System.Windows.Controls.Orientation)GetValue(ScrollDirectionProperty);
+                return (Orientation)GetValue(ScrollDirectionProperty);
             }
             set
             {
@@ -135,10 +138,19 @@ namespace Microsoft.Expression.Drawing.Controls
                 SetValue(SliderValueProperty, value);
             }
         }
+        public int Seconds
+        {
+            get
+            {
+                return (int)GetValue(SecondsProperty);
+            }
+            set
+            {
+                SetValue(SecondsProperty, value);
+            }
+        }
 
 
-
-        
 
         public override void OnApplyTemplate()
         {
@@ -163,8 +175,58 @@ namespace Microsoft.Expression.Drawing.Controls
                 next.Opacity = 0.0;
                 next.RenderTransform = nextTransform;
             }
+            timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(Seconds) };
+           
+            timer.Tick += delegate
+            {
+                StartAnimateSliderValueTo();
+            };
+            timer.Start();
         }
 
+        void StartAnimateSliderValueTo()
+        {
+            var w = SystemParameters.WorkArea.Width;
+            var h = SystemParameters.WorkArea.Height;
+           
+            Vector vector;
+            if (ScrollDirection == Orientation.Horizontal)
+            {
+                var point = new Point(w, 0);
+                var point1 = new Point(w / 5, 0);
+                vector = point - point1;
+                SliderValue = vector.X / current.ActualWidth;
+            }
+            else
+            {
+                var point = new Point(0, h);
+                var point1 = new Point(0, h/3);
+                vector = point - point1;
+                SliderValue = vector.Y / current.ActualHeight;
+            }
+            if (Math.Abs(SliderValue) >= FlickTolerance)
+            {
+                isDragging = false;
+                int num = SelectedIndex;
+                if (num != -1)
+                {
+                    if (SliderValue > 0.0)
+                    {
+                        num--;
+                        SliderValue -= 1.0;
+                    }
+                    else
+                    {
+                        num++;
+                        SliderValue += 1.0;
+                    }
+                    num += Items.Count;
+                    num %= Items.Count;
+                    SelectedIndex = num;
+                }
+                AnimateSliderValueTo(0.0);
+            }
+        }
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             CaptureMouse();
@@ -216,7 +278,19 @@ namespace Microsoft.Expression.Drawing.Controls
             OnGestureUp();
             base.OnLostTouchCapture(e);
         }
+        private static void SecondsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var panningItems = (PanningItems)d;
+            if (panningItems == null)return;
+            if (panningItems.timer != null)
+            {
+                panningItems.timer.Stop();
+                panningItems.timer.Interval = TimeSpan.FromSeconds(panningItems.Seconds);
+                panningItems.timer.Start();
+            }
 
+
+        }
         private static void flickToleranceChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
         }
@@ -234,7 +308,7 @@ namespace Microsoft.Expression.Drawing.Controls
             {
                 panningItems.previous.Opacity = 1.0;
                 panningItems.next.Opacity = 1.0;
-                if (panningItems.ScrollDirection == System.Windows.Controls.Orientation.Horizontal)
+                if (panningItems.ScrollDirection == Orientation.Horizontal)
                 {
                     panningItems.previousTransform.X = panningItems.current.ActualWidth * (panningItems.SliderValue - 1.0);
                     panningItems.currentTransform.X = panningItems.current.ActualWidth * panningItems.SliderValue;
@@ -311,7 +385,7 @@ namespace Microsoft.Expression.Drawing.Controls
             if (isDragging)
             {
                 Vector vector = point - touchDown;
-                if (ScrollDirection == System.Windows.Controls.Orientation.Horizontal)
+                if (ScrollDirection == Orientation.Horizontal)
                 {
                     SliderValue = vector.X / current.ActualWidth;
                 }
@@ -355,7 +429,7 @@ namespace Microsoft.Expression.Drawing.Controls
             BeginAnimation(SliderValueProperty, doubleAnimation);
         }
 
-        public static readonly DependencyProperty ScrollDirectionProperty = DependencyProperty.Register("ScrollDirection", typeof(Orientation), typeof(PanningItems), new PropertyMetadata(System.Windows.Controls.Orientation.Horizontal));
+        public static readonly DependencyProperty ScrollDirectionProperty = DependencyProperty.Register("ScrollDirection", typeof(Orientation), typeof(PanningItems), new PropertyMetadata(Orientation.Horizontal));
 
         public static readonly DependencyProperty FlickToleranceProperty = DependencyProperty.Register("FlickTolerance", typeof(double), typeof(PanningItems), new PropertyMetadata(0.25, new PropertyChangedCallback(flickToleranceChanged), new CoerceValueCallback(coerceFlickTolerance)));
 
@@ -366,6 +440,10 @@ namespace Microsoft.Expression.Drawing.Controls
         public static readonly DependencyProperty LoopContentsProperty = DependencyProperty.Register("LoopContents", typeof(bool), typeof(PanningItems), new PropertyMetadata(true));
 
         public static readonly DependencyProperty SliderValueProperty = DependencyProperty.Register("SliderValue", typeof(double), typeof(PanningItems), new PropertyMetadata(0.0, new PropertyChangedCallback(sliderValueChanged)));
+
+        public static readonly DependencyProperty SecondsProperty = DependencyProperty.Register("Seconds", typeof(int), typeof(PanningItems), new PropertyMetadata(5, new PropertyChangedCallback(SecondsChanged)));
+
+       
 
         private Point touchDown;
 

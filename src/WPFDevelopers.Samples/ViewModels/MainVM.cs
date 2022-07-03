@@ -256,6 +256,10 @@ namespace WPFDevelopers.Samples.ViewModels
                     var taskbar = new TaskbarItemInfoExample();
                     taskbar.ShowDialog();
                     break;
+                case MenuEnum.PanningItems:
+                    ControlPanel = new PanningItemsExample();
+                    break;
+                    
                 default:
                     break;
             }

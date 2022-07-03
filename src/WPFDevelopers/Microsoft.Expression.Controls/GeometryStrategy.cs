@@ -1,5 +1,5 @@
 ﻿using Microsoft.Expression.Drawing.Core;
-using Microsoft.Expression.Media;
+using Microsoft.Expression.Drawing.Media;
 using System;
 using System.Collections.Generic;
 using System.Windows;

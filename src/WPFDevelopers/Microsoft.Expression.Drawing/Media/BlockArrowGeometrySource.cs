@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     internal class BlockArrowGeometrySource : GeometrySource<IBlockArrowGeometrySourceParameters>
     {

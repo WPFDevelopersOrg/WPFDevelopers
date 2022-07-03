@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     public abstract class GeometrySource<TParameters> : IGeometrySource where TParameters : IGeometrySourceParameters
     {

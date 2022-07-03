@@ -61,8 +61,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.1.0.5-preview\lib\net40\WPFDevelopers.dll</HintPath>
+    <Reference Include="WPFDevelopers, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.1.0.6-preview\lib\net40\WPFDevelopers.dll</HintPath>
     </Reference>
     <Reference Include="WPFDevelopers.Minimal, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFDevelopers.Minimal.3.2.2\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
@@ -99,6 +99,9 @@
     </Compile>
     <Compile Include="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs">
       <DependentUpon>CropAvatarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\PanningItemsExample.xaml.cs">
+      <DependentUpon>PanningItemsExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\ShakeExample.xaml.cs">
       <DependentUpon>ShakeExample.xaml</DependentUpon>
@@ -303,6 +306,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\CropAvatar\CropAvatarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\PanningItemsExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

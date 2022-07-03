@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     public sealed class GeometryEffectConverter : TypeConverter
     {

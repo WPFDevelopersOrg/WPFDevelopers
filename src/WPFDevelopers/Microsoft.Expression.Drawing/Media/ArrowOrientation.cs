@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Expression.Media
+﻿namespace Microsoft.Expression.Drawing.Media
 {
     public enum ArrowOrientation
     {

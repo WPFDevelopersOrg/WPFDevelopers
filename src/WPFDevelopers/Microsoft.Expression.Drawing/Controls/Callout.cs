@@ -1,5 +1,5 @@
-﻿using Microsoft.Expression.Media;
-using System.Windows;
+﻿using System.Windows;
+using Microsoft.Expression.Drawing.Media;
 
 namespace Microsoft.Expression.Drawing.Controls
 {

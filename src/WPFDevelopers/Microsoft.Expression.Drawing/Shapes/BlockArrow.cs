@@ -1,7 +1,7 @@
-﻿using Microsoft.Expression.Media;
-using System.Windows;
+﻿using System.Windows;
+using Microsoft.Expression.Drawing.Media;
 
-namespace Microsoft.Expression.Shapes
+namespace Microsoft.Expression.Drawing.Shapes
 {
     public sealed class BlockArrow : PrimitiveShape, IBlockArrowGeometrySourceParameters, IGeometrySourceParameters
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     internal class LineArrowGeometrySource : GeometrySource<ILineArrowGeometrySourceParameters>
     {

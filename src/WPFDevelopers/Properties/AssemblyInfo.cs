@@ -18,7 +18,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://www.microsoft.net/controls", "Microsoft.Expression.Controls")]
 
 [assembly: XmlnsPrefix("http://www.microsoft.net/drawing", "Microsoft.Expression.Drawing")]
-[assembly: XmlnsDefinition("http://www.microsoft.net/drawing", "Microsoft.Expression.Controls")]
-[assembly: XmlnsDefinition("http://www.microsoft.net/drawing", "Microsoft.Expression.Media")]
-[assembly: XmlnsDefinition("http://www.microsoft.net/drawing", "Microsoft.Expression.Shapes")]
+[assembly: XmlnsDefinition("http://www.microsoft.net/drawing", "Microsoft.Expression.Drawing.Controls")]
+[assembly: XmlnsDefinition("http://www.microsoft.net/drawing", "Microsoft.Expression.Drawing.Media")]
+[assembly: XmlnsDefinition("http://www.microsoft.net/drawing", "Microsoft.Expression.Drawing.Shapes")]
 

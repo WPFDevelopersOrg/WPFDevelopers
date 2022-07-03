@@ -1,11 +1,12 @@
 ﻿using Microsoft.Expression.Drawing.Core;
-using Microsoft.Expression.Media;
+
 using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Microsoft.Expression.Drawing.Media;
 
-namespace Microsoft.Expression.Shapes
+namespace Microsoft.Expression.Drawing.Shapes
 {
 	public abstract class PrimitiveShape : Shape, IGeometrySourceParameters, IShape
 	{

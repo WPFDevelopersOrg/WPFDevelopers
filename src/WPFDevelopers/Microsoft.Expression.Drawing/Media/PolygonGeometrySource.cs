@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     internal class PolygonGeometrySource : GeometrySource<IPolygonGeometrySourceParameters>
     {

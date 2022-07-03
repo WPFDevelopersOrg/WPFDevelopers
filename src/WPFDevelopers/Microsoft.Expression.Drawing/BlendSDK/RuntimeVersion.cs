@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Expression.BlendSDK
+﻿namespace Microsoft.Expression.Drawing.BlendSDK
 {
     internal static class RuntimeVersion
     {

@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     [TypeConverter(typeof(GeometryEffectConverter))]
     public abstract class GeometryEffect : Freezable

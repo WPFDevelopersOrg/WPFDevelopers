@@ -40,7 +40,7 @@ namespace WPFDevelopers.Controls
             Loaded += (s, e) =>
             {
                 var timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(300) };
-                timer.Tick += (s1, arg) => AddSnowflake();
+                timer.Tick += delegate { AddSnowflake();};
                 timer.Start();
             };
         }

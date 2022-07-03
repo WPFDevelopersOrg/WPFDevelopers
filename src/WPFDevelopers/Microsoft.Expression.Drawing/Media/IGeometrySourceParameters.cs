@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     public interface IGeometrySourceParameters
     {

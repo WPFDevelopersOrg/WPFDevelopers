@@ -1,7 +1,8 @@
-﻿using Microsoft.Expression.Media;
+﻿
 using System.Windows;
+using Microsoft.Expression.Drawing.Media;
 
-namespace Microsoft.Expression.Shapes
+namespace Microsoft.Expression.Drawing.Shapes
 {
     public sealed class Arc : PrimitiveShape, IArcGeometrySourceParameters, IGeometrySourceParameters
     {

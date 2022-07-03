@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     [Flags]
     internal enum DrawingPropertyMetadataOptions

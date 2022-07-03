@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Microsoft.Expression.Media
+namespace Microsoft.Expression.Drawing.Media
 {
     public sealed class SketchGeometryEffect : GeometryEffect
     {

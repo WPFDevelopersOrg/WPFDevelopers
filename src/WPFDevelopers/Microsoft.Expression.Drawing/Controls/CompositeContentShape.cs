@@ -1,11 +1,11 @@
 ﻿using Microsoft.Expression.Drawing.Core;
-using Microsoft.Expression.Media;
 using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Microsoft.Expression.Drawing.Media;
 
 namespace Microsoft.Expression.Drawing.Controls
 {

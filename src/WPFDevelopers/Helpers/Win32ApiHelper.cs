@@ -134,5 +134,14 @@ namespace WPFDevelopers.Helpers
             int nXSrc, int nYSrc, TernaryRasterOperations dwRop);
 
         #endregion
+
+        /// <summary>   
+        /// 设置鼠标的坐标   
+        /// </summary>   
+        /// <param name="x">横坐标</param>   
+        /// <param name="y">纵坐标</param>   
+        [DllImport("User32")]
+        public extern static void SetCursorPos(int x, int y);
+       
     }
 }

@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:ed="clr-namespace:Microsoft.Expression.Shapes"
+                    xmlns:ed="clr-namespace:Microsoft.Expression.Drawing.Shapes"
                     xmlns:controls="clr-namespace:WPFDevelopers.Controls">
 
     <ResourceDictionary.MergedDictionaries>
