@@ -62,6 +62,12 @@ Install-Package WPFDevelopers
 
 
 ----------
+### PanningItems
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PanningItems.gif"/>   
+
+
+----------
 ### Shake
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Shake.gif"/>   
