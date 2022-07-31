@@ -60,6 +60,11 @@ Install-Package WPFDevelopers
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
+----------
+### Bubblle
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Bubblle.gif"/>   
+
 
 ----------
 ### PanningItems
