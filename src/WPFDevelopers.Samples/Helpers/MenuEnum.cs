@@ -55,6 +55,7 @@
         EdgeLight,
         StarrySky,
         Shake,
+        BubblleControl,
         TaskbarInfo
     }
 }

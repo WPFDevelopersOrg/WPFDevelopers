@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace WPFDevelopers.Utilities
 {
@@ -25,5 +26,23 @@ namespace WPFDevelopers.Utilities
         public static bool LessThanOrClose(double value1, double value2) => (value1 < value2) || AreClose(value1, value2);
 
         public static bool GreaterThanOrClose(double value1, double value2) => (value1 > value2) || AreClose(value1, value2);
+        [StructLayout(LayoutKind.Explicit)]
+        private struct NanUnion
+        {
+            [FieldOffset(0)]
+            internal double DoubleValue;
+            [FieldOffset(0)]
+            internal UInt64 UintValue;
+        }
+        public static bool IsNaN(double value)
+        {
+            NanUnion t = new NanUnion();
+            t.DoubleValue = value;
+
+            UInt64 exp = t.UintValue & 0xfff0000000000000;
+            UInt64 man = t.UintValue & 0x000fffffffffffff;
+
+            return (exp == 0x7ff0000000000000 || exp == 0xfff0000000000000) && (man != 0);
+        }
     }
 }

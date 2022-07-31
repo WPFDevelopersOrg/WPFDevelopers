@@ -2923,4 +2923,59 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style TargetType="controls:BubblleControl" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Width" Value="400" />
+		<Setter Property="Height" Value="400" />
+		<Setter Property="Background" Value="{StaticResource WhiteSolidColorBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{StaticResource SecondaryTextSolidColorBrush}" />
+		<Setter Property="BorderBackground" Value="{StaticResource BaseSolidColorBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="controls:BubblleControl">
+					<Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+						<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding BorderBackground}" Margin="45" CornerRadius="400" x:Name="PART_Border">
+							<Ellipse Fill="{TemplateBinding Background}" Margin="20" />
+						</Border>
+						<Ellipse Fill="{TemplateBinding EarthBackground}" Width="26" Height="26" RenderTransformOrigin=".5,.5" x:Name="PART_Ellipse" VerticalAlignment="Top" Margin="0,35,0,0">
+							<Ellipse.RenderTransform>
+								<RotateTransform x:Name="PART_EllipseRotateTransform" />
+							</Ellipse.RenderTransform>
+							<Ellipse.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetProperty="(Ellipse.RenderTransform).(RotateTransform.Angle)" RepeatBehavior="Forever" From="0" To="360" Duration="00:00:13" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Ellipse.Triggers>
+						</Ellipse>
+						<ItemsControl x:Name="PART_ListBox" ItemsSource="{TemplateBinding ItemsSource}">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<Grid>
+										<Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+											<Ellipse Fill="{Binding Bg}" Opacity=".4" />
+											<Ellipse Stroke="{Binding Bg}" StrokeThickness=".8" />
+										</Grid>
+										<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Padding="10,0">
+											<Hyperlink Foreground="{Binding Bg}" Command="{x:Static controls:BubblleControl.ClickCommand}" CommandParameter="{Binding Text}" FontWeight="Normal">
+												<TextBlock Text="{Binding Text}" TextAlignment="Center" TextTrimming="CharacterEllipsis" ToolTip="{Binding Text}" />
+											</Hyperlink>
+										</TextBlock>
+									</Grid>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<controls:BubblleCanvas />
+								</ItemsPanelTemplate>
+							</ItemsControl.ItemsPanel>
+						</ItemsControl>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

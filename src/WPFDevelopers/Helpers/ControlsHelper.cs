@@ -94,5 +94,28 @@ namespace WPFDevelopers.Helpers
             resizedImage.Render(drawingVisual);
             return BitmapFrame.Create(resizedImage);
         }
+        private static long _tick = DateTime.Now.Ticks;
+        public static Random GetRandom = new Random((int)(_tick & 0xffffffffL) | (int)(_tick >> 32));
+
+        public static double NextDouble(double miniDouble, double maxiDouble)
+        {
+            if (GetRandom != null)
+            {
+                return GetRandom.NextDouble() * (maxiDouble - miniDouble) + miniDouble;
+            }
+            else
+            {
+                return 0.0d;
+            }
+        }
+        public static Brush RandomBrush()
+        {
+            var R = GetRandom.Next(255);
+            var G = GetRandom.Next(255);
+            var B = GetRandom.Next(255);
+            var color = Color.FromRgb((byte)R, (byte)G, (byte)B);
+            var solidColorBrush = new SolidColorBrush(color);
+            return solidColorBrush;
+        }
     }
 }

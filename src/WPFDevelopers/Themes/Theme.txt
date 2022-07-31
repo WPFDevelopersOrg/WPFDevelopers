@@ -36,3 +36,4 @@ DrawerMenu.xaml
 TimeLine.xaml
 CropAvatar.xaml
 StarrySky.xaml
+BubblleControl.xaml

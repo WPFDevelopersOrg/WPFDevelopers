@@ -8,6 +8,9 @@
     <Page Update="Themes\AnimationAudio.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\BubblleControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\ButtonsStyles.xaml">
       <SubType>Designer</SubType>
     </Page>

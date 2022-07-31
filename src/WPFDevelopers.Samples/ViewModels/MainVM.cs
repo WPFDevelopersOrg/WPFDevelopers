@@ -251,15 +251,17 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Shake:
                     ControlPanel = new ShakeExample();
                     break;
+                case MenuEnum.PanningItems:
+                    ControlPanel = new PanningItemsExample();
+                    break;
+                case MenuEnum.BubblleControl:
+                    ControlPanel = new BubblleControlExample();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();
                     taskbar.ShowDialog();
                     break;
-                case MenuEnum.PanningItems:
-                    ControlPanel = new PanningItemsExample();
-                    break;
-                    
                 default:
                     break;
             }

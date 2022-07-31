@@ -85,6 +85,9 @@
     <Compile Include="ExampleViews\BreatheLightExample.xaml.cs">
       <DependentUpon>BreatheLightExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\BubblleControlExample.xaml.cs">
+      <DependentUpon>BubblleControlExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\CarouselExample.xaml.cs">
       <DependentUpon>CarouselExample.xaml</DependentUpon>
     </Compile>
@@ -286,6 +289,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\BreatheLightExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\BubblleControlExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -684,6 +691,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
