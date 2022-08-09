@@ -1,14 +1,18 @@
 ﻿<Application x:Class="WPFDevelopers.Samples.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
              xmlns:local="clr-namespace:WPFDevelopers.Samples"
              StartupUri="ExampleViews\MainWindow.xaml" ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Generic.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
+                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Generic.xaml"/>
+                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                    <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤 -->
+                    <ws:Resources Theme="Light"/>
+                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
+                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

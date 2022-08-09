@@ -31,7 +31,8 @@
         </Border>
         <StackPanel>
             <TextBlock Text="微信号公众号:WPFDevelopers" HorizontalAlignment="Center"
-                   VerticalAlignment="Top" Margin="0,20" FontSize="20" FontWeight="Black"/>
+                   VerticalAlignment="Top" Margin="0,20" FontSize="20" FontWeight="Black"
+                       Foreground="Black"/>
             <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Top" 
                        Margin="0,20" FontSize="{StaticResource NormalFontSize}" 

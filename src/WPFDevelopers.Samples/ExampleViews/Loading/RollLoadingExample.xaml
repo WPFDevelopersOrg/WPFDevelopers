@@ -1,26 +1,17 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.LoadingExample"
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.RollLoadingExample"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UniformGrid>
-        <wpfdev:BallLoading Width="200"/>
-        <wpfdev:StreamerLoading/>
-        <wpfdev:WaitLoading/>
-        <wpfdev:CycleLoading  Value="50" LoadTitle="Loading...." Width="200">
-            <TextBlock Text="activity"/>
-        </wpfdev:CycleLoading>
+    <Grid>
         <wpfdev:RollLoading IsStart="true" 
                             HorizontalContentAlignment="Center" 
                             VerticalContentAlignment="Center"
                             Width="200">
             <TextBlock Text="Loading activity..."/>
         </wpfdev:RollLoading>
-        <wpfdev:RingLoading IsStart="true" 
-                            Description="WPFDevelopers" ProgressValue="50"/>
-    </UniformGrid>
+    </Grid>
 </UserControl>

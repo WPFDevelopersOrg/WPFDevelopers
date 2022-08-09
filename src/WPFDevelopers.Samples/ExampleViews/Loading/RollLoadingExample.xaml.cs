@@ -3,11 +3,11 @@
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// LoadingExample.xaml 的交互逻辑
+    /// RollLoadingExample.xaml 的交互逻辑
     /// </summary>
-    public partial class LoadingExample : UserControl
+    public partial class RollLoadingExample : UserControl
     {
-        public LoadingExample()
+        public RollLoadingExample()
         {
             InitializeComponent();
         }

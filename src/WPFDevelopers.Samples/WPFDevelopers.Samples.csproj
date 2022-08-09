@@ -64,8 +64,8 @@
     <Reference Include="WPFDevelopers, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFDevelopers.1.0.6-preview\lib\net40\WPFDevelopers.dll</HintPath>
     </Reference>
-    <Reference Include="WPFDevelopers.Minimal, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.Minimal.3.2.2\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
+    <Reference Include="WPFDevelopers.Minimal, Version=3.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.Minimal.3.2.6-preview\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -103,8 +103,26 @@
     <Compile Include="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs">
       <DependentUpon>CropAvatarWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\Loading\BallLoadingExample.xaml.cs">
+      <DependentUpon>BallLoadingExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Loading\CycleLoadingExample.xaml.cs">
+      <DependentUpon>CycleLoadingExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Loading\RollLoadingExample.xaml.cs">
+      <DependentUpon>RollLoadingExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Loading\StreamerLoadingExample.xaml.cs">
+      <DependentUpon>StreamerLoadingExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Loading\WaitLoadingExample.xaml.cs">
+      <DependentUpon>WaitLoadingExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\PanningItemsExample.xaml.cs">
       <DependentUpon>PanningItemsExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\Loading\RingLoadingExample.xaml.cs">
+      <DependentUpon>RingLoadingExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\ShakeExample.xaml.cs">
       <DependentUpon>ShakeExample.xaml</DependentUpon>
@@ -316,7 +334,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\Loading\BallLoadingExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Loading\CycleLoadingExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Loading\RollLoadingExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Loading\StreamerLoadingExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Loading\WaitLoadingExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\PanningItemsExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\Loading\RingLoadingExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -420,10 +462,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExampleViews\LoadingExample.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ExampleViews\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -434,9 +472,6 @@
     </Compile>
     <Compile Include="ExampleViews\AnimationNavigationBar3DExample.xaml.cs">
       <DependentUpon>AnimationNavigationBar3DExample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ExampleViews\LoadingExample.xaml.cs">
-      <DependentUpon>LoadingExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -691,7 +726,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

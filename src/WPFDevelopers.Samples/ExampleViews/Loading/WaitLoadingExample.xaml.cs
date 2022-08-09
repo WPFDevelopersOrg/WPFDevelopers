@@ -3,11 +3,11 @@
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// Interaction logic for BreatheLightExample.xaml
+    /// WaitLoadingExample.xaml 的交互逻辑
     /// </summary>
-    public partial class BreatheLightExample : UserControl
+    public partial class WaitLoadingExample : UserControl
     {
-        public BreatheLightExample()
+        public WaitLoadingExample()
         {
             InitializeComponent();
         }

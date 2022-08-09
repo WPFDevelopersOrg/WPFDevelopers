@@ -108,8 +108,23 @@ namespace WPFDevelopers.Samples.ViewModels
                 //case MenuEnum.BaseControl:
                 //    ControlPanel = new BaseControlExample();
                 //    break;
-                case MenuEnum.Loading:
-                    ControlPanel = new LoadingExample();
+                case MenuEnum.RingLoading:
+                    ControlPanel = new RingLoadingExample();
+                    break;
+                case MenuEnum.BallLoading:
+                    ControlPanel = new BallLoadingExample();
+                    break;
+                case MenuEnum.StreamerLoading:
+                    ControlPanel = new StreamerLoadingExample();
+                    break;
+                case MenuEnum.WaitLoading:
+                    ControlPanel = new WaitLoadingExample();
+                    break;
+                case MenuEnum.CycleLoading:
+                    ControlPanel = new CycleLoadingExample();
+                    break;
+                case MenuEnum.RollLoading:
+                    ControlPanel = new RollLoadingExample();
                     break;
                 case MenuEnum.CutImage:
                     ControlPanel = new CutImageExample();
