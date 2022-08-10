@@ -361,7 +361,7 @@ Install-Package WPFDevelopers
 
 ----------
 
-### WpfCanvasAdorner（WPF实现旋转控件并修改宽高）  
+### 例子文件：ThumbDragAndAngleExample.xaml  （WPF实现旋转控件并修改宽高）  
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ElementAdorner.gif"/>    
 
