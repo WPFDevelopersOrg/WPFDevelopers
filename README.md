@@ -346,7 +346,7 @@ Install-Package WPFDevelopers
 
 ----------
 
-### WpfCanvasAdorner  
+### ThumbDragAndAngleExample.xaml  
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ElementAdorner.gif"/>   
 
