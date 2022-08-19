@@ -19,6 +19,16 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("Text", typeof(string), typeof(SpotLight),
                 new PropertyMetadata("WPFDevelopers"));
 
+        public static readonly DependencyProperty DefaultForegroundProperty =
+            DependencyProperty.Register("DefaultForeground", typeof(Brush), typeof(SpotLight),
+                new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#323232"))));
+
+
+        public static readonly DependencyProperty DurationProperty =
+            DependencyProperty.Register("Duration", typeof(TimeSpan), typeof(SpotLight),
+                new PropertyMetadata(TimeSpan.FromSeconds(3)));
+
+
         private EllipseGeometry _ellipseGeometry;
         private TextBlock _textBlockBottom, _textBlockTop;
 
@@ -28,9 +38,16 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(SpotLight)));
         }
 
-        public SpotLight()
+       
+        public TimeSpan Duration
         {
-            Loaded += SpotLight_Loaded;
+            get => (TimeSpan)GetValue(DurationProperty);
+            set => SetValue(DurationProperty, value);
+        }
+        public Brush DefaultForeground
+        {
+            get => (Brush)GetValue(DefaultForegroundProperty);
+            set => SetValue(DefaultForegroundProperty, value);
         }
 
         public string Text
@@ -38,15 +55,7 @@ namespace WPFDevelopers.Controls
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
-
-        private void SpotLight_Loaded(object sender, RoutedEventArgs e)
-        {
-            Canvas.SetLeft(_textBlockBottom, ActualWidth / 3);
-            Canvas.SetTop(_textBlockBottom, ActualHeight / 3);
-            Canvas.SetLeft(_textBlockTop, ActualWidth / 3);
-            Canvas.SetTop(_textBlockTop, ActualHeight / 3);
-        }
-
+        
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -67,8 +76,9 @@ namespace WPFDevelopers.Controls
         {
             var doubleAnimation = new DoubleAnimation
             {
+                From = 0,
                 To = _textBlockTop.ActualWidth,
-                Duration = TimeSpan.FromSeconds(3)
+                Duration = Duration
             };
 
             Storyboard.SetTarget(doubleAnimation, _textBlockTop);
@@ -80,7 +90,6 @@ namespace WPFDevelopers.Controls
                 AutoReverse = true
             };
             storyboard.Children.Add(doubleAnimation);
-            storyboard.Completed += (s, q) => { };
             storyboard.Begin();
         }
     }

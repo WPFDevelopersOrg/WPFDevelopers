@@ -28,44 +28,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <!--<Style TargetType="{x:Type controls:Snowflake}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Width" Value="96"/>
-        <Setter Property="Height" Value="96"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:Snowflake}">
-                    <Grid>
-                        <Grid.Resources>
-                            <Storyboard x:Name="Storyboard_Movement">
-                                <DoubleAnimation x:Name="animationX"  
-                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
-                                                 Storyboard.TargetName="PART_Ellipse"/>
-                                <DoubleAnimation x:Name="animationY"  
-                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                                 Storyboard.TargetName="PART_Ellipse"/>
-                            </Storyboard>
-                        </Grid.Resources>
-                        <Ellipse x:Name="PART_Ellipse" Width="{TemplateBinding Width}" 
-                                 Height="{TemplateBinding Height}"
-                                 RenderTransformOrigin="0.5,0.5">
-                            <Ellipse.Fill>
-                                <RadialGradientBrush>
-                                    <GradientStop Color="White" Offset="0" />
-                                    <GradientStop x:Name="PART_GradientStop" Color="White" Offset="0" />
-                                    <GradientStop Color="#00FFFFFF" Offset="1" />
-                                </RadialGradientBrush>
-                            </Ellipse.Fill>
-                            <Ellipse.RenderTransform>
-                                <ScaleTransform ScaleX="1" ScaleY="1"/>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-
     <Style TargetType="{x:Type controls:Snowflake}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Template">
             <Setter.Value>

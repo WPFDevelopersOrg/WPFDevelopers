@@ -5,29 +5,35 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
+    <LinearGradientBrush x:Key="RainbowBrush" EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+        <GradientStop Color="#FF9C1031" Offset="0.1"/>
+        <GradientStop Color="#FFBE0E20" Offset="0.2"/>
+        <GradientStop Color="#FF9C12AC" Offset="0.7"/>
+        <GradientStop Color="#FF0A8DC3" Offset="0.8"/>
+        <GradientStop Color="#FF1AEBCC" Offset="1"/>
+    </LinearGradientBrush>
     <Style TargetType="{x:Type controls:SpotLight}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Background" Value="#222222"/>
         <Setter Property="FontSize" Value="60"/>
+        <Setter Property="FontFamily" Value="Arial Black"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource RainbowBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:SpotLight}">
-                    <Canvas x:Name="PART_Canvas" Background="{TemplateBinding Background}">
+                    <Grid x:Name="PART_Canvas" Background="{TemplateBinding Background}">
                         <TextBlock x:Name="PART_TextBlockBottom" Text="{TemplateBinding Text}"
-                                   FontSize="{TemplateBinding FontSize}" FontFamily="Arial Black"
-                                   FontWeight="Bold" Foreground="#323232"/>
+                                   FontSize="{TemplateBinding FontSize}" 
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontWeight="{TemplateBinding FontWeight}" 
+                                   Foreground="{TemplateBinding DefaultForeground}"/>
                         <TextBlock x:Name="PART_TextBlockTop" Text="{TemplateBinding Text}"
-                                   FontSize="{TemplateBinding FontSize}" FontFamily="Arial Black"
-                                   FontWeight="Bold">
-                            <TextBlock.Foreground>
-                                <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
-                                    <GradientStop Color="#FF9C1031" Offset="0.1"/>
-                                    <GradientStop Color="#FFBE0E20" Offset="0.2"/>
-                                    <GradientStop Color="#FF9C12AC" Offset="0.7"/>
-                                    <GradientStop Color="#FF0A8DC3" Offset="0.8"/>
-                                    <GradientStop Color="#FF1AEBCC" Offset="1"/>
-                                </LinearGradientBrush>
-                            </TextBlock.Foreground>
+                                   FontSize="{TemplateBinding FontSize}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   Foreground="{TemplateBinding Foreground}">
                             <TextBlock.Clip>
                                 <EllipseGeometry x:Name="PART_EllipseGeometry">
                                     <EllipseGeometry.Transform>
@@ -36,7 +42,7 @@
                                 </EllipseGeometry>
                             </TextBlock.Clip>
                         </TextBlock>
-                    </Canvas>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
