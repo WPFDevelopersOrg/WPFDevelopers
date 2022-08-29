@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UniformGrid Columns="2">
-        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource BackgroundSolidColorBrush}"
                 CornerRadius="3">
             <Grid Margin="20,20,0,0">
                 <Grid.ColumnDefinitions>
@@ -41,7 +41,7 @@
             
         </Border>
 
-        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource BackgroundSolidColorBrush}"
                 CornerRadius="3">
             <Grid Margin="20,20,0,0">
                 <Grid.ColumnDefinitions>
@@ -72,7 +72,7 @@
                         VerticalAlignment="Bottom" Content="进入直播" Width="100"/>
             </Grid>
         </Border>
-        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource BackgroundSolidColorBrush}"
                 CornerRadius="3">
            
             <Grid Margin="20,20,0,0">
@@ -103,7 +103,7 @@
             </Grid>
         </Border>
 
-        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource WhiteSolidColorBrush}"
+        <Border Effect="{StaticResource NormalShadowDepth}" Width="400" Height="140" Background="{StaticResource BackgroundSolidColorBrush}"
                 CornerRadius="3">
 
             <Grid Margin="20,20,0,0">

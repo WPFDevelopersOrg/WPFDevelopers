@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers", "WPFDevelopers\WPFDevelopers.csproj", "{25475FDD-29C7-466E-861B-4A0B5E010175}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers.Samples", "WPFDevelopers.Samples\WPFDevelopers.Samples.csproj", "{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E1D5153C-CEA6-484B-BDDD-D7CB49FCDE94}"
@@ -12,20 +10,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers.Net40", "WPFDevelopers.Net40\WPFDevelopers.Net40.csproj", "{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Net45x", "WPFDevelopers.Net45x\WPFDevelopers.Net45x.csproj", "{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Microsoft.Windows.Shell", "Microsoft.Windows.Shell\Microsoft.Windows.Shell.shproj", "{572D11B9-7EA8-4A04-849A-BB2B0371786F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPFDevelopers.Shared", "WPFDevelopers.Shared\WPFDevelopers.Shared.shproj", "{F424A42D-ED95-4C4A-8B74-50A7C59658DE}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{572d11b9-7ea8-4a04-849a-bb2b0371786f}*SharedItemsImports = 13
+		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 4
+		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 4
+		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{ad525acc-1df1-4ff6-8cc8-412b866e748a}*SharedItemsImports = 5
+		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{f424a42d-ed95-4c4a-8b74-50a7c59658de}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{25475FDD-29C7-466E-861B-4A0B5E010175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25475FDD-29C7-466E-861B-4A0B5E010175}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25475FDD-29C7-466E-861B-4A0B5E010175}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25475FDD-29C7-466E-861B-4A0B5E010175}.Release|Any CPU.Build.0 = Release|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

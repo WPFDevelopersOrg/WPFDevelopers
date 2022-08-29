@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
-using MessageBox = WPFDevelopers.Minimal.Controls.MessageBox;
+using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 namespace WPFDevelopers.Samples.Helpers
 {

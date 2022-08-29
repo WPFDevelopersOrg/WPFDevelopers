@@ -1,0 +1,482 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--<ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
+        <Border x:Name="Border" Background="Transparent">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver"/>
+                    <VisualState x:Name="Pressed"/>
+                    <VisualState x:Name="Disabled"/>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="CheckStates">
+                    <VisualState x:Name="Checked">
+                        <Storyboard>
+                            <DoubleAnimation Duration="00:00:.2" To="90"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Unchecked">
+                        <Storyboard>
+                            <DoubleAnimation Duration="00:00:.2" To="0"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Indeterminate" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Path x:Name="ExpandededArrow"
+                  Stretch="Fill" Height="10" Width="6"
+                  Data="{StaticResource PathNext}"
+                  RenderTransformOrigin=".5,.5">
+                <Path.Fill>
+                    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+                </Path.Fill>
+                <Path.RenderTransform>
+                    <RotateTransform/>
+                </Path.RenderTransform>
+            </Path>
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Expander}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition x:Name="ContentRow"
+Height="0" />
+                        </Grid.RowDefinitions>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="Border" Grid.Row="0" BorderThickness="1">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{DynamicResource BaseColor}"/>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource LighterColor}"/>
+                            </Border.Background>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ToggleButton OverridesDefaultStyle="True"
+                                              Template="{StaticResource ExpanderToggleButton}"
+                                              IsChecked="{Binding IsExpanded, Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}">
+
+                                </ToggleButton>
+                                <ContentPresenter Grid.Column="1"
+                                                  Margin="0,10" 
+                                                  ContentSource="Header"
+                                                  RecognizesAccessKey="True" />
+                            </Grid>
+                        </Border>
+                        <Border x:Name="Content" Grid.Row="1"
+                                BorderBrush="{DynamicResource BaseSolidColorBrush}" 
+                                BorderThickness="0" SnapsToDevicePixels="True">
+                            <Border.Background>
+                                <SolidColorBrush Color="{DynamicResource BackgroundColor}"/>
+                            </Border.Background>
+                            <ContentPresenter Margin="4" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter TargetName="ContentRow"
+                                    Property="Height"
+                                    Value="{Binding Height, ElementName=Content}" />
+                            <Setter TargetName="Content"
+                                    Property="BorderThickness"
+                                    Value="1,0,1,1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <Style x:Key="DefaultExpander" TargetType="{x:Type Expander}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource LighterSolidColorBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Expander}">
+                    <Border Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="True">
+                        <DockPanel>
+                            <ToggleButton x:Name="HeaderSite" 
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              Content="{TemplateBinding Header}" 
+                                              DockPanel.Dock="Top" 
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                                              MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" 
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <ToggleButton.Style>
+                                    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                    <Border Padding="2,10"
+                                                                BorderThickness="1"
+                                                                BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                                                                Background="{DynamicResource LighterSolidColorBrush}">
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CheckStates">
+                                                                <VisualState x:Name="Checked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="90"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Unchecked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="0"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Indeterminate" />
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                        <Grid Background="Transparent" SnapsToDevicePixels="False"
+                                                                  Margin="{TemplateBinding Padding}">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="19"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path x:Name="ExpandededArrow"
+                                                                      Stretch="Fill" Height="10" Width="6"
+                                                                      Data="{StaticResource PathNext}"
+                                                                      RenderTransformOrigin=".5,.5">
+                                                                <Path.Fill>
+                                                                    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+                                                                </Path.Fill>
+                                                                <Path.RenderTransform>
+                                                                    <RotateTransform/>
+                                                                </Path.RenderTransform>
+                                                            </Path>
+                                                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                                  Content="{TemplateBinding Content}" 
+                                                                                  Grid.Column="1" 
+                                                                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                                                  HorizontalAlignment="Left" Margin="4,0,0,0"
+                                                                                  RecognizesAccessKey="True" 
+                                                                                  SnapsToDevicePixels="True" 
+                                                                                  VerticalAlignment="Center"/>
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
+                            <Border x:Name="PART_Content"
+                                        DockPanel.Dock="Bottom"
+                                        BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                                        BorderThickness="0"
+                                        SnapsToDevicePixels="True">
+                                <ContentPresenter x:Name="ExpandSite" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                  Content="{TemplateBinding Content}" 
+                                                  ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                  Focusable="False" 
+                                                  Margin="{TemplateBinding Padding}" 
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Visibility="Collapsed" 
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="True">
+                                <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Right">
+                            <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Right"/>
+                            <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Left"/>
+                            <Setter Property="Style" TargetName="HeaderSite">
+                                <Setter.Value>
+                                    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                    <Border Padding="10,2"
+                                                                BorderThickness="1"
+                                                                BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                                                                Background="{DynamicResource LighterSolidColorBrush}">
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CheckStates">
+                                                                <VisualState x:Name="Checked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="-90"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Unchecked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="0"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Indeterminate" />
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                        <Grid Background="Transparent" SnapsToDevicePixels="False"
+                                                                  Margin="{TemplateBinding Padding}">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="19"/>
+                                                                <RowDefinition Height="*"/>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid>
+                                                                <Grid.LayoutTransform>
+                                                                    <TransformGroup>
+                                                                        <RotateTransform Angle="90"/>
+                                                                    </TransformGroup>
+                                                                </Grid.LayoutTransform>
+                                                                <Path x:Name="ExpandededArrow"
+                                                                      Stretch="Fill" Height="10" Width="6"
+                                                                      Data="{StaticResource PathNext}"
+                                                                      RenderTransformOrigin=".5,.5">
+                                                                    <Path.Fill>
+                                                                        <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+                                                                    </Path.Fill>
+                                                                    <Path.RenderTransform>
+                                                                        <RotateTransform/>
+                                                                    </Path.RenderTransform>
+                                                                </Path>
+                                                            </Grid>
+                                                            <ContentPresenter 
+                                                                    ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                                    Content="{TemplateBinding Content}" 
+                                                                    ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                                                    HorizontalAlignment="Center"
+                                                                    Margin="0,4,0,0" 
+                                                                    Grid.Row="1"
+                                                                    RecognizesAccessKey="True" 
+                                                                    SnapsToDevicePixels="True" 
+                                                                    VerticalAlignment="Top"/>
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Up">
+                            <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Top"/>
+                            <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Bottom"/>
+                            <Setter Property="Style" TargetName="HeaderSite">
+                                <Setter.Value>
+                                    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                    <Border Padding="2,10"
+                                                                BorderThickness="1"
+                                                                BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                                                                Background="{DynamicResource LighterSolidColorBrush}">
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CheckStates">
+                                                                <VisualState x:Name="Checked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="-90"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Unchecked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="0"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Indeterminate" />
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                        <Grid Background="Transparent" SnapsToDevicePixels="False"
+                                                                  Margin="{TemplateBinding Padding}">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="19"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid>
+                                                                <Path x:Name="ExpandededArrow"
+                                                                      Stretch="Fill" Height="10" Width="6"
+                                                                      Data="{StaticResource PathNext}"
+                                                                      RenderTransformOrigin=".5,.5">
+                                                                    <Path.Fill>
+                                                                        <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+                                                                    </Path.Fill>
+                                                                    <Path.RenderTransform>
+                                                                        <RotateTransform/>
+                                                                    </Path.RenderTransform>
+                                                                </Path>
+                                                            </Grid>
+                                                            <ContentPresenter 
+                                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                    Content="{TemplateBinding Content}" 
+                                                                    Grid.Column="1" 
+                                                                    ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                                                    HorizontalAlignment="Left"
+                                                                    Margin="4,0,0,0" 
+                                                                    RecognizesAccessKey="True" 
+                                                                    SnapsToDevicePixels="True" 
+                                                                    VerticalAlignment="Center"/>
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Left">
+                            <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Left"/>
+                            <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Right"/>
+                            <Setter Property="Style" TargetName="HeaderSite">
+                                <Setter.Value>
+                                    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                    <Border Padding="10,2"
+                                                                BorderThickness="1"
+                                                                BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                                                                Background="{DynamicResource LighterSolidColorBrush}">
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CheckStates">
+                                                                <VisualState x:Name="Checked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="90"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Unchecked">
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Duration="00:00:.2" To="0"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="ExpandededArrow"/>
+                                                                    </Storyboard>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Indeterminate" />
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                        <Grid Background="Transparent" SnapsToDevicePixels="False"
+                                                                  Margin="{TemplateBinding Padding}">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="19"/>
+                                                                <RowDefinition Height="*"/>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid>
+                                                                <Grid.LayoutTransform>
+                                                                    <TransformGroup>
+                                                                        <RotateTransform Angle="90"/>
+                                                                    </TransformGroup>
+                                                                </Grid.LayoutTransform>
+                                                                <Path x:Name="ExpandededArrow"
+                                                                      Stretch="Fill" Height="10" Width="6"
+                                                                      Data="{StaticResource PathNext}"
+                                                                      RenderTransformOrigin=".5,.5">
+                                                                    <Path.Fill>
+                                                                        <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+                                                                    </Path.Fill>
+                                                                    <Path.RenderTransform>
+                                                                        <RotateTransform/>
+                                                                    </Path.RenderTransform>
+                                                                </Path>
+                                                            </Grid>
+                                                            <ContentPresenter 
+                                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                    Content="{TemplateBinding Content}" 
+                                                                    ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                                                    HorizontalAlignment="Center" 
+                                                                    Margin="0,4,0,0" 
+                                                                    Grid.Row="1" 
+                                                                    RecognizesAccessKey="True" 
+                                                                    SnapsToDevicePixels="True" 
+                                                                    VerticalAlignment="Top"/>
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True"/>
+                                <Condition Property="ExpandDirection" Value="Down"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content"
+                                    Property="BorderThickness"
+                                    Value="1,0,1,1" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True"/>
+                                <Condition Property="ExpandDirection" Value="Right"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content"
+                                    Property="BorderThickness"
+                                    Value="0,1,1,1" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True"/>
+                                <Condition Property="ExpandDirection" Value="Up"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content"
+                                    Property="BorderThickness"
+                                    Value="1,1,1,0" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True"/>
+                                <Condition Property="ExpandDirection" Value="Left"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content"
+                                    Property="BorderThickness"
+                                    Value="1,1,0,1" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource DefaultExpander}" />
+</ResourceDictionary>

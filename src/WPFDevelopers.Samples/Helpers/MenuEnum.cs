@@ -6,8 +6,8 @@
     public enum MenuEnum
     {
         Navigation3D,
+        BasicControls,
         PanningItems,
-        //BaseControl,
         BreatheLight,
         RingLoading,
         BallLoading,
@@ -61,6 +61,7 @@
         StarrySky,
         Shake,
         BubblleControl,
+        VirtualizingWrapPanel,
         TaskbarInfo
     }
 }

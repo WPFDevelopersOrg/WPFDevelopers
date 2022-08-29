@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True">
+
+    <!--字体颜色-->
+    <Color x:Key="PrimaryTextColor" po:Freeze="True">#FFFFFF</Color>
+    <SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}" po:Freeze="True"></SolidColorBrush>
+    <SolidColorBrush x:Key="WindowForegroundColorBrush" Color="{StaticResource PrimaryTextColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="RegularTextColor" po:Freeze="True">#FFFFFF</Color>
+    <SolidColorBrush x:Key="RegularTextSolidColorBrush" Color="{StaticResource RegularTextColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="DefaultBackgroundColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="DefaultBackgroundSolidColorBrush" Color="{StaticResource DefaultBackgroundColor}" po:Freeze="True"></SolidColorBrush>
+    
+    <!--背景色-->
+    <Color x:Key="BackgroundColor" po:Freeze="True">#323232</Color>
+    <SolidColorBrush x:Key="BackgroundSolidColorBrush" Color="{StaticResource BackgroundColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="WindowBorderBrushColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="WindowBorderBrushSolidColorBrush" Color="{StaticResource WindowBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="BaseColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="BaseSolidColorBrush" Color="{StaticResource BaseColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="BaseMoveColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="BaseMoveColorSolidColorBrush" Color="{StaticResource BaseMoveColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="LighterColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="LighterSolidColorBrush" Color="{StaticResource LighterColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="LightColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="LightSolidColorBrush" Color="{StaticResource LightColor}" po:Freeze="True"></SolidColorBrush>
+
+</ResourceDictionary>

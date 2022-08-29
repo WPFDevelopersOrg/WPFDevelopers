@@ -16,7 +16,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         public ICommand ClickCommand => new RelayCommand(delegate
         {
-           WPFDevelopers.Minimal.Controls.MessageBox.Show("点击完成。");
+           WPFDevelopers.Controls.MessageBox.Show("点击完成。");
         });
 
         private void BubblleControl_Click(object sender, System.Windows.RoutedEventArgs e)

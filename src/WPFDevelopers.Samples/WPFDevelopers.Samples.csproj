@@ -61,11 +61,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.1.0.6-preview\lib\net40\WPFDevelopers.dll</HintPath>
-    </Reference>
-    <Reference Include="WPFDevelopers.Minimal, Version=3.2.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.Minimal.3.2.6-preview\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
+    <Reference Include="WPFDevelopers, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.1.0.7-preview\lib\net40\WPFDevelopers.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converts\StateConvert.cs" />
     <Compile Include="ExampleViews\AnimationAudioExample.xaml.cs">
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
@@ -81,6 +79,9 @@
     </Compile>
     <Compile Include="ExampleViews\BasicBarChartExample.xaml.cs">
       <DependentUpon>BasicBarChartExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\BasicControlsExample.xaml.cs">
+      <DependentUpon>BasicControlsExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\BreatheLightExample.xaml.cs">
       <DependentUpon>BreatheLightExample.xaml</DependentUpon>
@@ -275,6 +276,9 @@
     <Compile Include="ExampleViews\Desktop\DesktopBackground.xaml.cs">
       <DependentUpon>DesktopBackground.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\VirtualizingWrapPanelExample.xaml.cs">
+      <DependentUpon>VirtualizingWrapPanelExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\ZooSemy\VolumeControl.xaml.cs">
       <DependentUpon>VolumeControl.xaml</DependentUpon>
     </Compile>
@@ -284,8 +288,10 @@
     <Compile Include="Helpers\ElementVisualTreeHelper.cs" />
     <Compile Include="Helpers\MenuEnum.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Models\HospitalList.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\NavigateMenuModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\DrawingExampleVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="ViewModels\PaginationExampleVM.cs" />
@@ -303,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\BasicBarChartExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\BasicControlsExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -589,6 +599,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\VirtualizingWrapPanelExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ExampleViews\ZooSemy\VolumeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -596,6 +610,10 @@
     <Page Include="ExampleViews\ZooSemy\ZooSemyExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Light.Carmine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -683,9 +701,6 @@
     <Resource Include="ExampleViews\LoginWindow\CustomStyle\Image\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WPFDevelopers.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\ZooSemy\0.png" />
     <Resource Include="Images\ZooSemy\1.png" />
   </ItemGroup>
@@ -719,13 +734,16 @@
     <Resource Include="Images\Crop\0.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="WPFDevelopers.ico" />
     <Content Include="Resources\Audio\HelloWPFDevelopes_en.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Audio\HelloWPFDevelopes_zh.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\WPFDevelopers.Minimal.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

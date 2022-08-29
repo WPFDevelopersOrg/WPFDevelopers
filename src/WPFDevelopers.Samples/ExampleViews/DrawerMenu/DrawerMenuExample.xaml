@@ -7,14 +7,15 @@
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#FF7B7BFF">
+    <Grid Background="{DynamicResource WindowBorderBrushSolidColorBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <wpfdev:DrawerMenu Background="#eee"
-                          SelectionIndicatorColor="{StaticResource PrimaryPressedSolidColorBrush}" 
-                          MenuItemForeground="{StaticResource BlackSolidColorBrush}" HorizontalAlignment="Left">
+        <wpfdev:DrawerMenu Background="{DynamicResource LighterSolidColorBrush}"
+                          SelectionIndicatorColor="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                          MenuItemForeground="{DynamicResource PrimaryTextSolidColorBrush}" 
+                          HorizontalAlignment="Left">
             <wpfdev:DrawerMenu.Content>
                 <wpfdev:DrawerMenuItem Icon="pack://application:,,,/Images/CircularMenu/2.png" Text="主页"
                                       SelectionCommand="{Binding HomeCommand,RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"/>

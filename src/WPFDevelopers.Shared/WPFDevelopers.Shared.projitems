@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>f424a42d-ed95-4c4a-8b74-50a7c59658de</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>WPFDevelopers</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Assists\ThincknessAssert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AnimationAudio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AudioWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BasicBarChart\BasicBarChart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\EmojiHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularProgressBar\CircularProgressBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CountdownTimer\CountdownTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CropAvatar\CropAvatar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CropControl\CropControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\CutImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\DragDrop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\Dashboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\ScaleItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\EdgeLight\EdgeLight.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ElementAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ThumbAngle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\BallLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\CycleLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RingLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RollLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\WaitLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\Loading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\WPFLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WPFMessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\FireControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination\Pagination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieSegmentModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\DrawPrize.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\PrizeItemControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RadarChart\RadarChart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RadarChart\RadarModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowAppleButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowAppleButtonWithGlow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RoundPicker\RoundPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RulerControl\Ruler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCut.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCutAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\SnowCanvas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\Snowflake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SongWords\SongWords.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SpotLight\SpotLight.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StarrySky\StarrySky.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLineItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToIsLargeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToPointConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\IndexToColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\ObjectNullToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AudioPlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ControlsHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DrawingContextHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\EnumerableHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SnowCanvasHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThemeType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Win32ApiHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ChangedPathLayoutProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Distribution.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\DistributionStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\EllipseStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\EvenDistributionStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\FillBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\FrameworkElementStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\GeometryStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\IPathLayoutItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\IsArrangedToScaleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\IShapeStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\LayoutPath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\LayoutPathCapacityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\LayoutPathCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\LineStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Orientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PaddedDistributionStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PathLayoutData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PathLayoutUpdatedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PathListBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PathListBoxItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PathPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PathStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PolygonStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\PolylineStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\RectangleStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ShapeStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Utilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\BlendSDK\RuntimeVersion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\BlendSDK\VersionConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Controls\Callout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Controls\CompositeContentShape.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Controls\CompositeShape.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Controls\LineArrow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Controls\PanningItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\BezierCurveFlattener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\CommonExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\GeometryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\MarchLocation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\MarchStopReason.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\MathHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\PathFigureHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\PathGeometryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\PathSegmentData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\PathSegmentHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\PolylineData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\PolylineHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\RandomEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\SimpleSegment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Core\TransformExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\ArcGeometrySource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\ArrowOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\ArrowType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\BlockArrowGeometrySource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\CalloutGeometrySource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\CalloutStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\CornerType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\DrawingPropertyChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\DrawingPropertyMetadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\DrawingPropertyMetadataOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\GeometryEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\GeometryEffectConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\GeometrySource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\IArcGeometrySourceParameters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\IBlockArrowGeometrySourceParameters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\ICalloutGeometrySourceParameters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\IGeometrySource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\IGeometrySourceExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\IGeometrySourceParameters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\ILineArrowGeometrySourceParameters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\InvalidateGeometryReasons.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\IPolygonGeometrySourceParameters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\IShape.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\LineArrowGeometrySource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\PolygonGeometrySource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\SketchGeometryEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Media\UnitType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Shapes\Arc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Shapes\BlockArrow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Shapes\PrimitiveShape.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Shapes\RegularPolygon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\BlindOrientation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\BlindsTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\BloomEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\CircleRevealTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\CloudRevealTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\CloudyTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\ColorToneEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\EmbossedEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\FadeTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Global.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\MagnifyEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\MonochromeEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\PixelateEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\PixelateTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\RadialBlurTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\RandomizedTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\RippleEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\RippleTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\SharpenEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\SlideDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\SlideInTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\SmoothSwirlGridTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\SunlightEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\SwirlEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\TransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\WaveTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\WipeDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\WipeTransitionEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\DoubleUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Drawing\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.DatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.GroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Hyperlink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Loading.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.MessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.PasswordBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Slider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ThemeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ToggleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\AnimationAudio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\AnimationNavigationBar3D.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\BallLoading.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Animations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\ColorsOld.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\ControlBasic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Dark.Color.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Font.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Geometrys.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Light.Color.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\BreathLamp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\BubblleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Carousel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ChatEmoji.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CircularMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CircularProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CropAvatar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CropControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CutImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Dark.Blue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\DrawerMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Drawing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\EdgeLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Blue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Green.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Orange.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Pink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Purple.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Red.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\LoadingGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\NavigateMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\OtherControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Pagination.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\PieControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\PrizeItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\RainbowButtons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\RoundPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ScreenCut.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\SnowCanvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\SpotLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\StarrySky.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\TimeLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\VerifyCode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\blindstransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\bloom.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\circlerevealtransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\cloudrevealtransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\colortone.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\embossed.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\fadetransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\linerevealtransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\magnify.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\monochrome.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\pixelate.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\pixelateintransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\pixelateouttransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\pixelatetransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\radialblurtransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\ripple.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\rippletransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\sharpen.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\slideintransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\smoothswirlgridtransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\sunlighteffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\swirl.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\wavetransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\wipetransitioneffect.ps" />
+    <None Include="$(MSBuildThisFileDirectory)Themes\XamlCombine.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\clouds.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Themes\Theme45x.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)Themes\Theme40.txt" />
+  </ItemGroup>
+</Project>

@@ -7,10 +7,10 @@
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Gainsboro">
+    <Grid Background="{DynamicResource BackgroundSolidColorBrush}">
         <Border
             Height="500"
-            Background="White"
+            Background="{DynamicResource BackgroundSolidColorBrush}"
             Margin="30,0">
             <Grid Margin="20,10">
                 

@@ -16,7 +16,7 @@
             <Setter Property="FontSize" Value="150"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Effect" Value="{StaticResource NumberCardDropShadowEffect}"/>
-            <Setter Property="Foreground" Value="{DynamicResource WhiteSolidColorBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         </Style>
         <RadialGradientBrush x:Key="BorderRadialGradientBrush" 
                          GradientOrigin="0.5,0.7" RadiusX="0.7" RadiusY="0.7">

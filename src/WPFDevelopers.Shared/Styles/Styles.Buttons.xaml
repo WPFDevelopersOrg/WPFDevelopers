@@ -1,0 +1,248 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="BaseButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="helpers:ElementHelper.CornerRadius" Value="3"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    
+    <Style x:Key="PrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="00:00:0.3"
+                                                      From="Normal"
+                                                      To="MouseOver" />
+                                    <VisualTransition GeneratedDuration="00:00:0.3"
+                                                      From="Pressed" />
+                                    <VisualTransition GeneratedDuration="00:00:0.3"
+                                                      From="MouseOver" />
+                                    <VisualTransition GeneratedDuration="00:00:0.3"
+                                                      To="Normal" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="PART_Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource PrimaryMouseOverColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="PART_Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource PrimaryPressedColor}"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border Name="PART_Border" 
+                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}">
+                        </Border>
+
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" 
+                                    Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="DefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition
+                                    GeneratedDuration="0:0:0.1"
+                                    From="Normal"
+                                    To="MouseOver" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1" From="Pressed" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1" From="MouseOver" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="PART_Border" 
+                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource DefaultBorderBrushColor}"/>
+
+                                        <ColorAnimation Storyboard.TargetName="PART_Border" 
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource DefaultBackgroundColor}"/>
+
+                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource PrimaryNormalColor}"/>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="PART_Border" 
+                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource DefaultBackgroundPressedColor}"/>
+
+                                        <ColorAnimation Storyboard.TargetName="PART_Border" 
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource DefaultBackgroundColor}"/>
+
+                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource DefaultBackgroundPressedColor}"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="PART_Border" 
+                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"/>
+
+                        <ContentPresenter x:Name="PART_ContentPresenter" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          Margin="{TemplateBinding Padding}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True" 
+                                          TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}"/>
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                        </Trigger>
+                        <!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}" />
+
+    <Style x:Key="PathButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Transparent">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          x:Name="PART_ContentPresenter" Opacity=".8"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="1"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="MinWidth" Value="30"/>
+        <Setter Property="MinHeight" Value="28"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="Transparent">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" 
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         Storyboard.TargetName="PART_ContentPresenter" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" 
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)" 
+                                                         Storyboard.TargetName="PART_ContentPresenter" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0.3" 
+                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                         Storyboard.TargetName="PART_ContentPresenter"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused"/>
+                                <VisualState x:Name="Unfocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Rectangle Fill="Transparent"/>
+                        <ContentPresenter x:Name="PART_ContentPresenter" Opacity="0.7" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                          Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

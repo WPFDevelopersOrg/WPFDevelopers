@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True">
+    <!--Default颜色-->
+    <Color x:Key="DefaultBorderBrushColor" po:Freeze="True">#8CF4BB</Color>
+    <SolidColorBrush x:Key="DefaultBorderBrushSolidColorBrush" Color="{StaticResource DefaultBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
+    
+    <Color x:Key="DefaultBackgroundColor" po:Freeze="True">#DEFAEB</Color>
+    <SolidColorBrush x:Key="DefaultBackgroundSolidColorBrush" Color="{StaticResource DefaultBackgroundColor}" po:Freeze="True"></SolidColorBrush>
+    
+    <Color x:Key="DefaultBackgroundPressedColor" po:Freeze="True">#03C25A</Color>
+    <SolidColorBrush x:Key="DefaultBackgroundPressedSolidColorBrush" Color="{StaticResource DefaultBackgroundPressedColor}" po:Freeze="True"></SolidColorBrush>
+    <!--Primary颜色-->
+    <Color x:Key="PrimaryNormalColor" po:Freeze="True">#00B050</Color>
+    <SolidColorBrush x:Key="PrimaryNormalSolidColorBrush" Color="{StaticResource PrimaryNormalColor}" po:Freeze="True"></SolidColorBrush>
+    <SolidColorBrush x:Key="WindowBorderBrushSolidColorBrush" Color="{StaticResource PrimaryNormalColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="PrimaryMouseOverColor" po:Freeze="True">#6DE0A1</Color>
+    <SolidColorBrush x:Key="PrimaryMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="PrimaryPressedColor" po:Freeze="True">#01A74C</Color>
+    <SolidColorBrush x:Key="PrimaryPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}" po:Freeze="True"></SolidColorBrush>
+
+</ResourceDictionary>

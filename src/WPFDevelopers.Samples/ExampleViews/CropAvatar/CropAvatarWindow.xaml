@@ -1,13 +1,12 @@
-﻿<ws:Window x:Class="WPFDevelopers.Samples.ExampleViews.CropAvatarWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-        xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
-        mc:Ignorable="d"  WindowStyle="ToolWindow" ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        Title="WPF 开发者-头像选择器" Height="450" Width="800">
+﻿<wpfdev:Window x:Class="WPFDevelopers.Samples.ExampleViews.CropAvatarWindow"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+               mc:Ignorable="d"  WindowStyle="ToolWindow" ResizeMode="NoResize"
+               WindowStartupLocation="CenterScreen"
+               Title="WPF 开发者-头像选择器" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -31,4 +30,4 @@
             <Button  Content="关闭" Click="btnClose_Click" Margin="4,0"/>
         </UniformGrid>
     </Grid>
-</ws:Window>
+</wpfdev:Window>

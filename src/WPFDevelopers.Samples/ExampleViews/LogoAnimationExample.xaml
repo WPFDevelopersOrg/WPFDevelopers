@@ -94,7 +94,7 @@
         </Storyboard>
     </UserControl.Resources>
     <Grid>
-        <Border x:Name="PART_Border" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="130"
+        <Border x:Name="PART_Border" Background="{StaticResource BackgroundSolidColorBrush}" CornerRadius="130"
                     Width="260" Height="260"
                     RenderTransformOrigin=".5,.5" 
                     Effect="{StaticResource NormalShadowDepth}" Margin="20">
@@ -109,7 +109,7 @@
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Border>
-                        <Path Width="100" Height="100" Fill="{StaticResource WhiteSolidColorBrush}"
+                        <Path Width="100" Height="100" Fill="{StaticResource BackgroundSolidColorBrush}"
                               HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" 
                               x:Name="PART_PathLogo" RenderTransformOrigin=".5,.5" Opacity="0">
                             <Path.RenderTransform>

@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Font.xaml"/>
+        <ResourceDictionary Source="Colors.xaml"/>
+        <ResourceDictionary Source="Geometrys.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="ControlBasicStyle" TargetType="Control">
+        <Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+        <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+        <Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
+        <Setter Property="FontWeight" Value="{DynamicResource NormalFontWeight}" />
+        <Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
+        <Setter Property="TextElement.FontSize" Value="{DynamicResource NormalFontSize}" />
+        <Setter Property="TextElement.FontFamily" Value="{DynamicResource NormalFontFamily}" />
+        <Setter Property="TextElement.FontStyle" Value="{DynamicResource NormalFontStyle}" />
+        <Setter Property="TextElement.FontWeight" Value="{DynamicResource NormalFontWeight}" />
+        <Setter Property="TextElement.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+        <Setter Property="TextBlock.FontSize" Value="{DynamicResource NormalFontSize}" />
+        <Setter Property="TextBlock.FontFamily" Value="{DynamicResource NormalFontFamily}"  />
+        <Setter Property="TextBlock.FontStyle" Value="{DynamicResource NormalFontStyle}" />
+        <Setter Property="TextBlock.FontWeight" Value="{DynamicResource NormalFontWeight}" />
+        <Setter Property="TextBlock.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <sys:Double x:Key="EnabledOpacity">0.7</sys:Double>
+    <sys:Double x:Key="NormalCornerRadius">4</sys:Double>
+    <sys:Double x:Key="MinHeight">40</sys:Double>
+
+    <sys:Double x:Key="MinDataGridRowHeight">48</sys:Double>
+
+    <DropShadowEffect x:Key="NormalShadowDepth" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#AA000000" Opacity=".42" RenderingBias="Performance" />
+    <DropShadowEffect x:Key="PopupShadowDepth" BlurRadius="12" ShadowDepth="2" Color="{StaticResource BlackColor}" Opacity="0.1" />
+    <BooleanToVisibilityConverter x:Key="bool2VisibilityConverter" />
+</ResourceDictionary>

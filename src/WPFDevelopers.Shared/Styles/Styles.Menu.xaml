@@ -1,0 +1,310 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
+        <ResourceDictionary Source="Styles.ScrollBar.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="DefaultMenu" TargetType="{x:Type Menu}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Menu}">
+                    <Border Background="{DynamicResource BackgroundSolidColorBrush}"
+                                SnapsToDevicePixels="True">
+                        <!--<StackPanel ClipToBounds="True"
+                      Orientation="Horizontal"
+                      IsItemsHost="True" />-->
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}" />
+
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}"
+       TargetType="{x:Type Separator}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Margin" Value="0,2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource BaseSolidColorBrush}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- TopLevelHeader -->
+    <ControlTemplate x:Key="TopLevelHeaderTemplateKey"
+                 TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" SnapsToDevicePixels="True"
+                 Background="{TemplateBinding Background}"
+                 BorderThickness="1,1,1,0" BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid Margin="{TemplateBinding Padding}">
+                <ContentPresenter Margin="6,3,6,3"
+                                  VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" 
+                                  x:Name="PART_ContentPresenter"/>
+                <Popup x:Name="Popup"
+             Placement="Bottom"
+             IsOpen="{TemplateBinding IsSubmenuOpen}"
+             PlacementTarget="{Binding ElementName=Border}"
+             AllowsTransparency="True"
+             Focusable="False">
+                    <Grid Margin="10,0,10,10" >
+                        <Border x:Name="SubmenuBorder"
+                            SnapsToDevicePixels="True"
+                            BorderThickness="1"
+                            Background="{DynamicResource BackgroundSolidColorBrush}"
+                            Effect="{DynamicResource PopupShadowDepth}"
+                            BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                            CornerRadius="0,0,3,3">
+
+                            <ScrollViewer CanContentScroll="True" Margin="0,4">
+                                <StackPanel IsItemsHost="True"
+                        KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                            </ScrollViewer>
+                        </Border>
+                        <Border Height="1.2" Background="{DynamicResource BackgroundSolidColorBrush}" 
+                                       VerticalAlignment="Top" HorizontalAlignment="Left"
+                                       BorderThickness="1,0,0,0" 
+                                       Width="{Binding ElementName=Border,Path=ActualWidth}"/>
+                    </Grid>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsSuspendingPopupAnimation"
+             Value="True">
+                <Setter TargetName="Popup"
+              Property="PopupAnimation"
+              Value="None" />
+            </Trigger>
+            <Trigger Property="IsHighlighted"
+             Value="True">
+                <Setter Property="Background"  Value="{DynamicResource BaseSolidColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsSubmenuOpen" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- TopLevelItem -->
+    <ControlTemplate x:Key="TopLevelItemTemplateKey"
+                 TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}">
+            <Grid Margin="{TemplateBinding Padding}">
+                <ContentPresenter Margin="6,3,6,3"
+                                  VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" x:Name="PART_ContentPresenter"/>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted"
+             Value="True">
+                <Setter Property="Background"  Value="{DynamicResource BaseSolidColorBrush}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SubmenuItemTemplateKey"
+                 TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}">
+            <Grid Margin="{TemplateBinding Padding}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"
+                          SharedSizeGroup="Icon" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto"
+                          SharedSizeGroup="Shortcut" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <ContentPresenter x:Name="Icon"
+                        Margin="6,0,6,0"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon" />
+                <Border x:Name="Check"
+              Width="13"
+              Height="13"
+              Visibility="Collapsed"
+              Margin="6,0,6,0"
+                        Background="Transparent">
+
+                    <Path x:Name="CheckMark"
+              Width="7"
+              Height="7"
+              Visibility="Hidden"
+              SnapsToDevicePixels="False"
+              StrokeThickness="2"
+              Data="{StaticResource PathMenuItem}"
+                          Stroke="{TemplateBinding Foreground}">
+
+                    </Path>
+                </Border>
+                <ContentPresenter x:Name="HeaderHost"
+                        Grid.Column="1"
+                        ContentSource="Header"
+                                  VerticalAlignment="Center"
+                        RecognizesAccessKey="True" />
+                <TextBlock x:Name="InputGestureText"
+                 Grid.Column="2"
+                 Text="{TemplateBinding InputGestureText}"
+                 Margin="5,2,0,2"
+                 DockPanel.Dock="Right" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ButtonBase.Command"
+             Value="{x:Null}" />
+            <Trigger Property="Icon"
+             Value="{x:Null}">
+                <Setter TargetName="Icon"
+              Property="Visibility"
+              Value="Hidden" />
+            </Trigger>
+            <Trigger Property="IsChecked"
+             Value="True">
+                <Setter TargetName="CheckMark"
+              Property="Visibility"
+              Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsCheckable"
+             Value="True">
+                <Setter TargetName="Check"
+              Property="Visibility"
+              Value="Visible" />
+                <Setter TargetName="Icon"
+              Property="Visibility"
+              Value="Hidden" />
+            </Trigger>
+            <Trigger Property="IsHighlighted"
+             Value="True">
+                <Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}"/>
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SubmenuHeaderTemplateKey"
+                 TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" SnapsToDevicePixels="True"
+                Background="{TemplateBinding Background}">
+            <Grid Margin="{TemplateBinding Padding}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"
+                          SharedSizeGroup="Icon" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto"
+                          SharedSizeGroup="Shortcut" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <ContentPresenter x:Name="Icon"
+                        Margin="6,0,6,0"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon" />
+                <ContentPresenter x:Name="HeaderHost"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                <TextBlock x:Name="InputGestureText"
+                 Grid.Column="2"
+                 Text="{TemplateBinding InputGestureText}"
+                 Margin="5,2,2,2"
+                 DockPanel.Dock="Right" />
+                <Path Grid.Column="3"
+                      x:Name="PART_Path"
+                      Stretch="Fill"
+                      Height="12" Width="10"
+                      VerticalAlignment="Center"
+                      Data="{StaticResource PathMenuItem}"
+                      Fill="{TemplateBinding Foreground}">
+                </Path>
+                <Popup x:Name="Popup"
+             Placement="Right"
+             HorizontalOffset="10"
+             VerticalOffset="-4"
+             IsOpen="{TemplateBinding IsSubmenuOpen}"
+             AllowsTransparency="True"
+             Focusable="False"
+             PopupAnimation="Fade">
+                    <Border x:Name="SubmenuBorder"
+                SnapsToDevicePixels="True"
+                Background="Transparent"
+                            Effect="{DynamicResource PopupShadowDepth}"
+                            BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                            BorderThickness="1" Margin="10,0,10,10"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+                        <ScrollViewer CanContentScroll="True" Margin="0,4">
+                            <StackPanel IsItemsHost="True"
+                        KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        </ScrollViewer>
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Icon"
+             Value="{x:Null}">
+                <Setter TargetName="Icon"
+              Property="Visibility"
+              Value="Hidden" />
+            </Trigger>
+            <Trigger Property="IsHighlighted"
+             Value="True">
+                <Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}"/>
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="DefaultMenuItem" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Height" Value="34" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Style.Triggers>
+            <Trigger Property="Role"
+             Value="TopLevelHeader">
+                <Setter Property="MinWidth" Value="44"/>
+                <Setter Property="Template"
+              Value="{StaticResource TopLevelHeaderTemplateKey}" />
+                <Setter Property="Grid.IsSharedSizeScope"
+              Value="True" />
+            </Trigger>
+            <Trigger Property="Role"
+             Value="TopLevelItem">
+                <Setter Property="Template"
+              Value="{StaticResource TopLevelItemTemplateKey}" />
+            </Trigger>
+            <Trigger Property="Role"
+             Value="SubmenuHeader">
+                <Setter Property="MinWidth" Value="240"/>
+                <Setter Property="Template"
+              Value="{StaticResource SubmenuHeaderTemplateKey}" />
+            </Trigger>
+            <Trigger Property="Role"
+             Value="SubmenuItem">
+                <Setter Property="MinWidth" Value="240"/>
+                <Setter Property="Template"
+              Value="{StaticResource SubmenuItemTemplateKey}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}" />
+</ResourceDictionary>

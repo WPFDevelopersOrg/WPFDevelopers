@@ -30,25 +30,26 @@ namespace WPFDevelopers.Samples.ExampleViews
         public ChatEmojiExample()
         {
             InitializeComponent();
-
-            var emojiModels = new List<EmojiModel>();
-
-            EmojiHelper.Instance._emojiHeight = 30;
-            EmojiHelper.Instance._emojiWidth = 30;
-
-            var m_Emojis = new Dictionary<string, string>();
-            var emojiPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "emoji");
-            var directory = new DirectoryInfo(emojiPath);
-            foreach (var item in directory.GetFiles())
+            Loaded += delegate
             {
-                var _key = $"[{Path.GetFileNameWithoutExtension(item.Name)}]";
-                m_Emojis.Add(_key, item.FullName);
-                emojiModels.Add(new EmojiModel { Name = Path.GetFileNameWithoutExtension(item.Name), Key = _key, Value = item.FullName });
-            }
-            EmojiHelper.Instance.m_Emojis = m_Emojis;
+                var emojiModels = new List<EmojiModel>();
 
-            EmojiArray = emojiModels;
+                EmojiHelper.Instance._emojiHeight = 30;
+                EmojiHelper.Instance._emojiWidth = 30;
 
+                var m_Emojis = new Dictionary<string, string>();
+                var emojiPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "emoji");
+                var directory = new DirectoryInfo(emojiPath);
+                foreach (var item in directory.GetFiles())
+                {
+                    var _key = $"[{Path.GetFileNameWithoutExtension(item.Name)}]";
+                    m_Emojis.Add(_key, item.FullName);
+                    emojiModels.Add(new EmojiModel { Name = Path.GetFileNameWithoutExtension(item.Name), Key = _key, Value = item.FullName });
+                }
+                EmojiHelper.Instance.m_Emojis = m_Emojis;
+
+                EmojiArray = emojiModels;
+            };
         }
 
         private void PART_Border_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -1,0 +1,141 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="DefaultCheckBox"  TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}">
+                                <Border x:Name="PART_Border" 
+                                            Width="16" Height="16"
+                                            CornerRadius="3"
+                                            BorderThickness="1"
+                                            BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                                            Background="{DynamicResource WindowForegroundColorBrush}">
+                                    <Grid>
+                                        <Path x:Name="PART_CheckMark" SnapsToDevicePixels="False" 
+                                              VerticalAlignment="Center" HorizontalAlignment="Center"
+                                              Data="{StaticResource PathCheckMark}"
+                                              RenderTransformOrigin=".5,.5"
+                                              Stretch="Fill" Fill="{DynamicResource WindowForegroundColorBrush}">
+                                            <Path.RenderTransform>
+                                                <ScaleTransform ScaleX="0" ScaleY="0"/>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                        <Rectangle Width="6" Height="2" 
+                                                       VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Center"
+                                                       x:Name="PART_InderminateMark"
+                                                       RenderTransformOrigin=".5,.5"
+                                                       Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
+                                            <Rectangle.RenderTransform>
+                                                <ScaleTransform ScaleX="0"/>
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                    </Grid>
+                                </Border>
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          Margin="2,0,0,0" RecognizesAccessKey="True" 
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}">
+                        </ContentPresenter>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        
+                                        <!--<ColorAnimation Storyboard.TargetName="PART_Border"
+                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                        To="{DynamicResource PrimaryPressedColor}"
+                                                        Duration="00:00:.1"/>-->
+
+                                        <!--<ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        To="{DynamicResource PrimaryPressedColor}"
+                                                        Duration="00:00:.1"/>-->
+                                        
+
+                                        <DoubleAnimation Storyboard.TargetName="PART_CheckMark"
+                                                         Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleX)" 
+                                                         To=".7" Duration="00:00:.2"
+                                                         EasingFunction="{StaticResource ExponentialEaseOut}"/>
+
+                                        <DoubleAnimation Storyboard.TargetName="PART_CheckMark"
+                                                         Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleY)" 
+                                                         To=".5" Duration="00:00:.2"
+                                                         EasingFunction="{StaticResource ExponentialEaseOut}"/>
+
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_BeginStoryboardIsCheckedNull">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_InderminateMark"
+                                                         Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleX)" 
+                                                         To="1" Duration="00:00:.2"
+                                                         EasingFunction="{StaticResource ExponentialEaseOut}"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboardIsCheckedNull"></RemoveStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <!--本来使用动画，但是动画会导致无法修改主题颜色-->
+                            <!--<MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_BeginStoryboard">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                        Storyboard.TargetName="PART_Border"
+                                                        To="{StaticResource PrimaryNormalColor}" 
+                                                        Duration="00:00:.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
+                            </MultiTrigger.ExitActions>-->
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource DefaultCheckBox}" />
+</ResourceDictionary>

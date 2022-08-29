@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Samples
 {
@@ -19,5 +20,7 @@ namespace WPFDevelopers.Samples
         {
             get { return Current.MainWindow; }
         }
+        public static ThemeType Theme { get; set; }
+
     }
 }

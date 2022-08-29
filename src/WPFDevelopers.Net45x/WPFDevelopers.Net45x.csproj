@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<PropertyGroup>
+		<AssemblyName>WPFDevelopers</AssemblyName>
+		<RootNamespace>WPFDevelopers</RootNamespace>
+		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+		<PackageId>WPFDevelopers</PackageId>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Copyright>Copyright © WPFDevelopersOrg 2022</Copyright>
+		<AssemblyVersion>1.0.7.0</AssemblyVersion>
+		<FileVersion>1.0.7.0</FileVersion>
+		<Version>1.0.7.0</Version>
+		<RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers</RepositoryUrl>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+		<OutputPath></OutputPath>
+	</PropertyGroup>
+	<Import Project="..\WPFDevelopers.Shared\WPFDevelopers.Shared.projitems" Label="Shared" />
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="$(SolutionDir)WPFDevelopers.Shared\Themes\XamlCombine.exe $(SolutionDir)WPFDevelopers.Shared\Themes\Theme45x.txt $(ProjectDir)Themes\Theme.xaml" />
+	</Target>
+	<ItemGroup>
+	  <None Remove="Resources\Audio\shake.wav" />
+	  <None Remove="Resources\Fonts\fixedsys.ttf" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Resources\Audio\shake.wav" />
+	  <Resource Include="Resources\Fonts\fixedsys.ttf" />
+	</ItemGroup>
+</Project>

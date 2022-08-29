@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4,4,0,0">
+        <Border Background="{StaticResource BackgroundSolidColorBrush}" CornerRadius="4,4,0,0">
             <wpfdev:NavigateMenu TabStripPlacement="Top" SelectionChanged="NavigateMenu_SelectionChanged">
                 <!--<wpfdev:NavigateMenu.ItemsSource>
                 <CompositeCollection>

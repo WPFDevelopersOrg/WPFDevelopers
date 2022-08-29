@@ -1,20 +1,19 @@
-﻿<ws:Window x:Class="WPFDevelopers.Samples.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFDevelopers.Samples"
-        xmlns:example="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-        xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-        xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
-        xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:System="clr-namespace:System;assembly=mscorlib"
-        xmlns:helpers="clr-namespace:WPFDevelopers.Samples.Helpers" 
-        mc:Ignorable="d"
-        Title="WPFDevelopers" Icon="/WPFDevelopers.ico"
-        Height="{x:Static local:App.Height}" Width="{x:Static local:App.Wdith}"
-        WindowStartupLocation="CenterScreen">
+﻿<wpfdev:Window x:Class="WPFDevelopers.Samples.MainWindow"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:local="clr-namespace:WPFDevelopers.Samples"
+               xmlns:example="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+               xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+               xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
+               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+               xmlns:System="clr-namespace:System;assembly=mscorlib"
+               xmlns:helpers="clr-namespace:WPFDevelopers.Samples.Helpers" 
+               mc:Ignorable="d"
+               Title="WPFDevelopers" Icon="/WPFDevelopers.ico"
+               Height="{x:Static local:App.Height}" Width="{x:Static local:App.Wdith}"
+               WindowStartupLocation="CenterScreen">
     <!--<shell:WindowChrome.WindowChrome>
         <shell:WindowChrome  GlassFrameThickness="0 1 0 0"/>
     </shell:WindowChrome.WindowChrome>
@@ -72,7 +71,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border Margin="0,0,10,0" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4,0,0,4" 
+            <Border Margin="0,0,10,0" Background="{DynamicResource BackgroundSolidColorBrush}" 
+                    CornerRadius="4,0,0,4" 
                     Effect="{StaticResource NormalShadowDepth}">
                 <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu">
                     <i:Interaction.Triggers>
@@ -84,10 +84,10 @@
                 </wpfdev:NavigateMenu>
             </Border>
 
-            <Border Grid.Column="1" Background="{StaticResource WhiteSolidColorBrush}" CornerRadius="4"
+            <Border Grid.Column="1" Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="4"
                     Effect="{StaticResource NormalShadowDepth}">
                 <ContentControl Content="{Binding ControlPanel}" Margin="10"/>
             </Border>
         </Grid>
     </Grid>
-</ws:Window>
+</wpfdev:Window>

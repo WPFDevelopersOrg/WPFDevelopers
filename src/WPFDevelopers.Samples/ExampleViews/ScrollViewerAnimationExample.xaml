@@ -19,7 +19,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border Background="{StaticResource SuccessSolidColorBrush}"
-                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WhiteSolidColorBrush}">
+                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource BackgroundSolidColorBrush}">
                                 <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource NormalFontSize}"
                                        Foreground="{StaticResource BlackSolidColorBrush}"/>
                             </Border>
@@ -42,9 +42,9 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border Background="{StaticResource DangerSolidColorBrush}"
-                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WhiteSolidColorBrush}">
+                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource BackgroundSolidColorBrush}">
                                 <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource NormalFontSize}"
-                                       Foreground="{StaticResource WhiteSolidColorBrush}"/>
+                                       Foreground="{StaticResource BackgroundSolidColorBrush}"/>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

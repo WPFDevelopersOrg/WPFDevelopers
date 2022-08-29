@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type controls:WPFMessageBox}">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+        <Setter Property="Background"  Value="{DynamicResource BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+        <Setter Property="SizeToContent"  Value="WidthAndHeight" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <Setter Property="WindowStyle"  Value="None" />
+        <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:WPFMessageBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <DockPanel Margin="20,0,0,0">
+                                    <TextBlock x:Name="PART_Title"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center" 
+                                           FontSize="{DynamicResource TitleFontSize}"
+                                           Foreground="{DynamicResource PrimaryTextSolidColorBrush}"/>
+                                    <Button Name="PART_CloseButton" Margin="0,6" 
+                                            ToolTip="Close" HorizontalAlignment="Right"
+                                            IsTabStop="False" Style="{DynamicResource WindowButtonStyle}">
+                                        <Path Width="10" Height="10"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Data="{DynamicResource PathMetroWindowClose}"
+                              Fill="{DynamicResource PrimaryTextSolidColorBrush}"
+                              Stretch="Fill" />
+                                    </Button>
+                                </DockPanel>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="20">
+                                <DockPanel>
+                                    <Path x:Name="PART_Path" Data="{DynamicResource PathInformation}"
+                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                                      Height="25" Width="25" Stretch="Fill"></Path>
+                                    <TextBox x:Name="PART_Message" 
+                                             TextWrapping="Wrap" 
+                                             MaxWidth="500" Width="Auto" 
+                                             VerticalAlignment="Center"
+                                             FontSize="{DynamicResource NormalFontSize}"
+                                             Padding="10,0" 
+                                             IsReadOnly="True"
+                                             BorderThickness="0"
+                                             Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
+                                </DockPanel>
+                            </Grid>
+                            <Grid Grid.Row="2" Margin="140,20,10,10">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="PART_ButtonCancel" Content="取消" Visibility="Collapsed"/>
+                                    <Button x:Name="PART_ButtonOK" Style="{DynamicResource PrimaryButton}" 
+                                        Margin="10,0,0,0" Content="确认"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

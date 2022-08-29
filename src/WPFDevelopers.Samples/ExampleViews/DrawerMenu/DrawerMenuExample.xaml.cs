@@ -35,15 +35,15 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
         });
         public ICommand CloudCommand => new RelayCommand(obj =>
         {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("点击了云盘","提示");
+            WPFDevelopers.Controls.MessageBox.Show("点击了云盘","提示");
         });
         public ICommand MailCommand => new RelayCommand(obj =>
         {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("点击了邮件","提示");
+            WPFDevelopers.Controls.MessageBox.Show("点击了邮件","提示");
         });
         public ICommand VideoCommand => new RelayCommand(obj =>
         {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("点击了视频","提示");
+            WPFDevelopers.Controls.MessageBox.Show("点击了视频","提示");
         });
     }
 }

@@ -20,7 +20,7 @@
                Placement="Relative"
                StaysOpen="True">
                 <Border Effect="{StaticResource NormalShadowDepth}"
-                    Background="{StaticResource WhiteSolidColorBrush}"
+                    Background="{StaticResource BackgroundSolidColorBrush}"
                     Margin="10">
                     <Grid x:Name="gV"
                   Width="200"

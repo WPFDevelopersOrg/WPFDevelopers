@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews.DrawerMenu;
 using WPFDevelopers.Samples.ExampleViews.NumberCard;
@@ -105,9 +106,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Navigation3D:
                     ControlPanel = new AnimationNavigationBar3DExample();
                     break;
-                //case MenuEnum.BaseControl:
-                //    ControlPanel = new BaseControlExample();
-                //    break;
+                case MenuEnum.BasicControls:
+                    ControlPanel = new BasicControlsExample();
+                    break;
                 case MenuEnum.RingLoading:
                     ControlPanel = new RingLoadingExample();
                     break;
@@ -271,6 +272,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.BubblleControl:
                     ControlPanel = new BubblleControlExample();
+                    break;
+                case MenuEnum.VirtualizingWrapPanel:
+                     new VirtualizingWrapPanelExample().ShowDialog();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:

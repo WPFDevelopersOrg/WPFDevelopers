@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -12,7 +13,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <RichTextBox x:Name="_LeftChat" IsReadOnly="True">
+            <RichTextBox x:Name="_LeftChat">
                 <RichTextBox.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Images/Chat/Left.jpg" Stretch="Fill"/>
                 </RichTextBox.Background>
@@ -26,7 +27,7 @@
                 <Popup Placement="Top" PlacementTarget="{Binding ElementName=LeftButtonEmoji}" 
                        IsOpen="{Binding ElementName=LeftButtonEmoji,Path=IsChecked}" AllowsTransparency="True" 
                        VerticalOffset="-4">
-                    <Border Margin="10" Background="White" CornerRadius="4"
+                    <Border Margin="10" Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="4"
                             Width="76">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" Color="#80000000"/>
@@ -61,7 +62,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="LeftInput"/>
+                    <TextBox x:Name="LeftInput" wpfdev:ElementHelper.IsWatermark="True" wpfdev:ElementHelper.Watermark="请输入内容"/>
                     <Button Grid.Column="1" Content="发送" x:Name="LeftSend" Click="LeftSend_Click" Style="{StaticResource PrimaryButton}"></Button>
                 </Grid>
             </Grid>
@@ -71,7 +72,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <RichTextBox x:Name="_RightChat" IsReadOnly="True">
+            <RichTextBox x:Name="_RightChat">
                 <RichTextBox.Background>
                     <ImageBrush ImageSource="pack://application:,,,/Images/Chat/Right.jpg" Stretch="Fill"/>
                 </RichTextBox.Background>
@@ -86,7 +87,7 @@
                 <Popup Placement="Top" PlacementTarget="{Binding ElementName=RightButtonEmoji}" 
                        IsOpen="{Binding ElementName=RightButtonEmoji,Path=IsChecked}" AllowsTransparency="True" 
                        VerticalOffset="-4">
-                    <Border Margin="10" Background="White" CornerRadius="4"
+                    <Border Margin="10" Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="4"
                             Width="76">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" Color="#80000000"/>
@@ -121,7 +122,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="RightInput"/>
+                    <TextBox x:Name="RightInput"  wpfdev:ElementHelper.IsWatermark="True" wpfdev:ElementHelper.Watermark="请输入内容"/>
                     <Button Grid.Column="1" Content="发送" x:Name="RightSend" Click="RightSend_Click" Style="{StaticResource PrimaryButton}"></Button>
                 </Grid>
             </Grid>
