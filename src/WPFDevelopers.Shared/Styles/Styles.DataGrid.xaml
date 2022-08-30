@@ -404,7 +404,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontWeight" Value="ExtraBlack"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>

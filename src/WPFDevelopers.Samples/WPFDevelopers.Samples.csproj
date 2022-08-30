@@ -743,7 +743,6 @@
     </Content>
     <Resource Include="Resources\WPFDevelopers.Minimal.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

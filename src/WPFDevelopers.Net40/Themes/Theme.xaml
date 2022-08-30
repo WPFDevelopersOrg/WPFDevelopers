@@ -2638,7 +2638,7 @@
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
@@ -3342,7 +3342,7 @@ RenderTransformOrigin=".5,.5">
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultGridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
@@ -3404,7 +3404,7 @@ RenderTransformOrigin=".5,.5">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListViewItem}">
 					<Border x:Name="Border" Padding="2" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						<GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Columns="{TemplateBinding GridView.ColumnCollection}" />
 					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
