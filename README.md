@@ -2,9 +2,11 @@
 
 [中文](https://github.com/yanjinhuagood/WPFDevelopers/blob/master/README-zh.md)   
 
- ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers)   <a href="https://www.nuget.org/packages/WPFDevelopers.Minimal/">
+ ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers)   <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
-    </a>   [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  
+    </a>   <a href="https://www.nuget.org/packages/WPFDevelopers/">
+        <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers?color=%2323409EF"></img>
+    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  
 
 
 ## Welcome to WPFDevelopers    
