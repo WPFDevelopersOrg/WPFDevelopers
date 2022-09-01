@@ -51,6 +51,24 @@ Install-Package WPFDevelopers
 ```
 ###  Step 2: Add nodes to App.xaml;
 
+### Nuget Version >= 1.0.8-preview 
+
+```
+<Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
+                    <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
+                    <ws:Resources Theme="Light"/>
+                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
+                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+```
+### Nuget Version < 1.0.8-preview 
+
+```
       <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -58,7 +76,7 @@ Install-Package WPFDevelopers
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>  
-
+```
 ###  Step 3: Add the namespace;
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
