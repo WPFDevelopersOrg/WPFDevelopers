@@ -61,6 +61,7 @@
         StarrySky,
         Shake,
         BubblleControl,
+        CanvasHandWriting,
         VirtualizingWrapPanel,
         TaskbarInfo
     }

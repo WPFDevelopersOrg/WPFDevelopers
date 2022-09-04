@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
+using WPFDevelopers.Samples.ExampleViews.CanvasHandWriting;
 using WPFDevelopers.Samples.ExampleViews.DrawerMenu;
 using WPFDevelopers.Samples.ExampleViews.NumberCard;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
@@ -272,6 +273,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.BubblleControl:
                     ControlPanel = new BubblleControlExample();
+                    break;
+                case MenuEnum.CanvasHandWriting:
+                    ControlPanel = new CanvasHandWritingExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                      new VirtualizingWrapPanelExample().ShowDialog();

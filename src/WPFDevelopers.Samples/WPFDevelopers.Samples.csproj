@@ -89,6 +89,12 @@
     <Compile Include="ExampleViews\BubblleControlExample.xaml.cs">
       <DependentUpon>BubblleControlExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs">
+      <DependentUpon>CanvasHandWritingExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
+    <Compile Include="ExampleViews\CanvasHandWriting\LineB.cs" />
+    <Compile Include="ExampleViews\CanvasHandWriting\Vector2D.cs" />
     <Compile Include="ExampleViews\CarouselExample.xaml.cs">
       <DependentUpon>CarouselExample.xaml</DependentUpon>
     </Compile>
@@ -321,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\BubblleControlExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -743,6 +753,7 @@
     </Content>
     <Resource Include="Resources\WPFDevelopers.Minimal.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
