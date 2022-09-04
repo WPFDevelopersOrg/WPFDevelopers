@@ -94,6 +94,11 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### CanvasHandWriting（WPF Canvas平滑笔迹）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CanvasHandWriting.gif"/>   
+
+----------
 
 ### Bubblle（WPF泡泡控件）
 
