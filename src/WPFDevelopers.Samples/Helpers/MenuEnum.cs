@@ -62,6 +62,7 @@
         Shake,
         BubblleControl,
         CanvasHandWriting,
+        Barrage,
         VirtualizingWrapPanel,
         TaskbarInfo
     }

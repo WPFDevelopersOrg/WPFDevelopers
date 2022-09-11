@@ -277,6 +277,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.CanvasHandWriting:
                     ControlPanel = new CanvasHandWritingExample();
                     break;
+                case MenuEnum.Barrage:
+                    ControlPanel = new BarrageExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                      new VirtualizingWrapPanelExample().ShowDialog();
                     break;

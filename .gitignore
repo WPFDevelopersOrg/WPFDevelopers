@@ -14,3 +14,5 @@
 /src/Microsoft.Windows.Shell/obj
 /OutPut/*.pdb
 /src/packages
+*.dll
+*.pdb
