@@ -82,6 +82,12 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### Barrage
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Barrage.gif"/>   
+
+
+----------
 ### CanvasHandWriting
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CanvasHandWriting.gif"/>   
