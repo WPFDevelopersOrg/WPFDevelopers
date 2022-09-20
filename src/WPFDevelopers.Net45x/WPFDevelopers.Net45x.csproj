@@ -22,10 +22,8 @@
 	</Target>
 	<ItemGroup>
 	  <None Remove="Resources\Audio\shake.wav" />
-	  <None Remove="Resources\Fonts\fixedsys.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Resource Include="Resources\Audio\shake.wav" />
-	  <Resource Include="Resources\Fonts\fixedsys.ttf" />
 	</ItemGroup>
 </Project>

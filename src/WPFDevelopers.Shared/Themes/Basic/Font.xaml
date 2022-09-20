@@ -20,8 +20,6 @@
         sans-serif
     </FontFamily>
 
-    <FontFamily x:Key="Fixedsys">/WPFDevelopers;component/Resources/Fonts/fixedsys.ttf#Fixedsys Excelsior 3.01</FontFamily>
-    
     <FontStretch x:Key="NormalFontStretch">Normal</FontStretch>
     <FontStyle x:Key="NormalFontStyle">Normal</FontStyle>
     <FontWeight x:Key="NormalFontWeight">Normal</FontWeight>

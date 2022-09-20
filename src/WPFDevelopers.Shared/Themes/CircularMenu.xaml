@@ -74,16 +74,10 @@
                             </ItemsControl.Clip>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <!--<controls:CircularMenuItem Angle="{Binding Angle}" MenuTxt="{Binding MenuTxt}"
-                                                                       BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource indexToColor}}" 
-                                                                       IconImage="{Binding IconImage}"/>-->
                                     <controls:CircularMenuItem Angle="{Binding Angle}"
                                                                BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource indexToColor}}" 
                                                                MenuTxt="{Binding MenuTxt}"
                                                                IconImage="{Binding IconImage}">
-                                        <!--<controls:CircularMenuItem.InputBindings>
-                                            <MouseBinding MouseAction="LeftClick" Command="{Binding ClickCommand}" CommandParameter="{Binding MenuTxt}"></MouseBinding>
-                                        </controls:CircularMenuItem.InputBindings>-->
                                     </controls:CircularMenuItem>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -118,14 +112,6 @@
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </ToggleButton.Template>
-                            <!--<ToggleButton.Triggers>
-                                <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                    <BeginStoryboard Storyboard="{StaticResource CheckedStoryboard}"/>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                    <BeginStoryboard Storyboard="{StaticResource UncheckedStoryboard}"/>
-                                </EventTrigger>
-                            </ToggleButton.Triggers>-->
                         </ToggleButton>
                     </Grid>
                 </ControlTemplate>

@@ -13,6 +13,11 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Canvas Name="MyCanvas" Background="Transparent">
+            <Canvas.CacheMode>
+                <BitmapCache EnableClearType="False" 
+                             RenderAtScale="1" 
+                             SnapsToDevicePixels="False"  />
+            </Canvas.CacheMode>
         </Canvas>
         <Grid Grid.Row="1" Name="MyGrid">
             <Grid.ColumnDefinitions>

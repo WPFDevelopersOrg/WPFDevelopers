@@ -14,7 +14,6 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="FontSize" Value="200" />
-        <Setter Property="FontFamily" Value="{StaticResource Fixedsys}" />
         <Setter Property="Content" Value="Apple!" />
         <Setter Property="Template">
             <Setter.Value>
@@ -142,7 +141,6 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="FontSize" Value="200" />
-        <Setter Property="FontFamily" Value="{StaticResource Fixedsys}" />
         <Setter Property="Content" Value="Apple!" />
         <Setter Property="Template">
             <Setter.Value>

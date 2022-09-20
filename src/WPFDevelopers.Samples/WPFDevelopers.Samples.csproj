@@ -654,6 +654,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\fixedsys.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\AnimationNavigationBar3D\background.png" />

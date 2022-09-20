@@ -69,7 +69,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\Fonts\fixedsys.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\Generic.xaml">

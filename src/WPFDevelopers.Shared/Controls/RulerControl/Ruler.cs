@@ -109,8 +109,6 @@ namespace WPFDevelopers.Controls
 
             for (var i = 0; i <= (EndValue - StartValue) / Interval; i++)
             {
-                //var numberText = new FormattedText((StartValue + (i * Interval)).ToString(),
-                //    CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Microsoft YaHei"), 10, Brushes.White);
                 var numberText = DrawingContextHelper.GetFormattedText((StartValue + i * Interval).ToString(),
                     (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#FFFFFF"), FlowDirection.LeftToRight,
                     10);

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -91,29 +92,27 @@ namespace WPFDevelopers.Controls
         private void Image_MouseLeave(object sender, MouseEventArgs e)
         {
             isDown = false;
-            if (isLeft)
-                _StartX = Canvas.GetLeft(image);
-            else
-                _StartY = Canvas.GetTop(image);
+            SettingPoint();
         }
 
+        void SettingPoint()
+        {
+            if (isLeft)
+            {
+                _StartX = Canvas.GetLeft(image);
+                initialX = voffsetX;
+            }
+
+            else
+            {
+                _StartY = Canvas.GetTop(image);
+                initialY = voffsetY;
+            }
+        }
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (isDown)
-            {
-                var vPoint = e.GetPosition(this);
-                if (isLeft)
-                {
-                    _StartX = Canvas.GetLeft(image);
-                    initialX = voffsetX;
-                }
-
-                else
-                {
-                    _StartY = Canvas.GetTop(image);
-                    initialY = voffsetY;
-                }
-            }
+                SettingPoint();
         }
 
         private void Image_MouseMove(object sender, MouseEventArgs e)
@@ -129,7 +128,7 @@ namespace WPFDevelopers.Controls
                     if (vNewStartX <= xPath && vNewStartX >= -(bitmapFrame.Width - 200 - xPath))
                     {
                         Canvas.SetLeft(image, vNewStartX);
-                        voffsetX = initialX - (int)voffset;
+                        voffsetX = initialX - (int)Math.Round(voffset);
                         voffsetX = voffsetX < 0 ? 0 : voffsetX;
                         crop = new CroppedBitmap(bitmapFrame, new Int32Rect(voffsetX, 0, _size, _size));
                     }
@@ -142,7 +141,7 @@ namespace WPFDevelopers.Controls
                     if (vNewStartY <= yPath && vNewStartY >= -(bitmapFrame.Height - 200 - yPath))
                     {
                         Canvas.SetTop(image, vNewStartY);
-                        voffsetY = initialY - (int)voffset;
+                        voffsetY = initialY - (int)Math.Round(voffset);
                         voffsetY = voffsetY < 0 ? 0 : voffsetY;
                         crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, voffsetY, _size, _size));
                     }

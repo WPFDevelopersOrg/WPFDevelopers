@@ -6,8 +6,11 @@
              mc:Ignorable="d"  Background="{StaticResource BlackSolidColorBrush}"
               xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <FontFamily x:Key="Fixedsys">/WPFDevelopers.Samples;component/Resources/Fonts/fixedsys.ttf#Fixedsys Excelsior 3.01</FontFamily>
+    </UserControl.Resources>
     <UniformGrid Rows="2">
-        <wpfdev:RainbowAppleButton Content="Apple!"/>
-        <wpfdev:RainbowAppleButtonWithGlow/>
+        <wpfdev:RainbowAppleButton Content="Apple!" FontFamily="{StaticResource Fixedsys}"/>
+        <wpfdev:RainbowAppleButtonWithGlow  FontFamily="{StaticResource Fixedsys}"/>
     </UniformGrid>
 </UserControl>
