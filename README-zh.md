@@ -94,6 +94,12 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### Barrage（WPF 弹幕）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Barrage.gif"/>   
+
+
+----------
 ### CanvasHandWriting（WPF Canvas平滑笔迹）
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CanvasHandWriting.gif"/>   
