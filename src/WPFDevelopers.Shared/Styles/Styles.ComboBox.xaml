@@ -68,9 +68,15 @@
 
     <ControlTemplate x:Key="ComboBoxTextBox"
                  TargetType="{x:Type TextBox}">
-        <Border x:Name="PART_ContentHost"
+        <Border 
           Focusable="False"
-          Background="{TemplateBinding Background}" />
+          Background="{TemplateBinding Background}" >
+            <ScrollViewer x:Name="PART_ContentHost"
+                                  Focusable="False"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  Background="Transparent"/>
+        </Border>
     </ControlTemplate>
 
     <Style x:Key="DefaultComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ControlBasicStyle}">
@@ -81,6 +87,7 @@
         <Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -98,7 +105,7 @@
                                                          EasingFunction="{StaticResource ExponentialEaseOut}"/>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <Grid Width="{TemplateBinding Width}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -133,17 +140,18 @@
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Margin="4,3,30,3">
+                            Margin="14.5,3,30,3">
                         </ContentPresenter>
                         <TextBox x:Name="PART_EditableTextBox" 
                                  Style="{x:Null}"
                                  Template="{StaticResource ComboBoxTextBox}"
                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                 Margin="3,3,30,3"
+                                 Margin="14.5,3,30,3"
                                  Focusable="True"
-                                 Background="Transparent"
+                                 Background="{TemplateBinding Background}"
                                  Visibility="Hidden"
+                                 SelectionBrush ="{DynamicResource WindowBorderBrushSolidColorBrush}"
                                  IsReadOnly="{TemplateBinding IsReadOnly}" />
                         <Popup x:Name="PART_Popup" 
                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
@@ -233,34 +241,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                     <Grid>
-                        <!--<VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource RegularTextColor}"
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Selected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="PART_RectangleSelected" 
-                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource BaseColor}"
-                                                        Duration="00:00:.3"/>
-                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource PrimaryPressedColor}"
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="SelectedUnfocused"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>-->
                         <Rectangle x:Name="PART_RectangleMouseOver" 
                                    Fill="{DynamicResource BackgroundSolidColorBrush}"
                                    SnapsToDevicePixels="True" UseLayoutRounding="True"/>
@@ -302,9 +282,7 @@
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
                         </Trigger>
-                        <!--<Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}"/>
-                        </Trigger>-->
+                       
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

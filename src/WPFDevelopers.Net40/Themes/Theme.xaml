@@ -36,7 +36,6 @@
         Helvetica, Arial, 
         sans-serif
     </FontFamily>
-	<FontFamily x:Key="Fixedsys">/WPFDevelopers;component/Resources/Fonts/fixedsys.ttf#Fixedsys Excelsior 3.01</FontFamily>
 	<FontStretch x:Key="NormalFontStretch">Normal</FontStretch>
 	<FontStyle x:Key="NormalFontStyle">Normal</FontStyle>
 	<FontWeight x:Key="NormalFontWeight">Normal</FontWeight>
@@ -130,7 +129,9 @@
 	<sys:Double x:Key="ThumbCornerRadius">8</sys:Double>
 	<sys:Double x:Key="RepeatButtonSize">5</sys:Double>
 	<ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
-		<Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+		<Border Focusable="False" Background="{TemplateBinding Background}">
+			<ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Background="Transparent" />
+		</Border>
 	</ControlTemplate>
 	<converts:DoubleMinConverter x:Key="DoubleMinConverter" />
 	<Thickness x:Key="BorderThickness">0,0,0,2</Thickness>
@@ -1737,6 +1738,7 @@
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBox}">
@@ -1748,7 +1750,7 @@
 							<DoubleAnimation Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="0" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Grid>
+					<Grid Width="{TemplateBinding Width}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />
@@ -1765,8 +1767,8 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Grid.Column="2" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
-						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="4,3,30,3" />
-						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3,3,30,3" Focusable="True" Background="Transparent" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}" />
+						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="14.5,3,30,3" />
+						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="14.5,3,30,3" Focusable="True" Background="{TemplateBinding Background}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<Grid.RenderTransform>
@@ -5564,7 +5566,6 @@ RenderTransformOrigin=".5,.5">
 		<Setter Property="VerticalAlignment" Value="Center" />
 		<Setter Property="Padding" Value="10" />
 		<Setter Property="FontSize" Value="200" />
-		<Setter Property="FontFamily" Value="{StaticResource Fixedsys}" />
 		<Setter Property="Content" Value="Apple!" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -5649,7 +5650,6 @@ RenderTransformOrigin=".5,.5">
 		<Setter Property="VerticalAlignment" Value="Center" />
 		<Setter Property="Padding" Value="10" />
 		<Setter Property="FontSize" Value="200" />
-		<Setter Property="FontFamily" Value="{StaticResource Fixedsys}" />
 		<Setter Property="Content" Value="Apple!" />
 		<Setter Property="Template">
 			<Setter.Value>
