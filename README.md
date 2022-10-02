@@ -80,6 +80,10 @@ Install-Package WPFDevelopers
 ###  Step 3: Add the namespace;
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+----------
+### WindowAcrylicBlur
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowAcrylicBlur.gif"/>   
 
 ----------
 ### Barrage
