@@ -68,6 +68,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converts\StateConvert.cs" />
+    <Compile Include="ExampleViews\AcrylicBlurWindowExample.xaml.cs">
+      <DependentUpon>AcrylicBlurWindowExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExampleViews\AnimationAudioExample.xaml.cs">
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
@@ -302,6 +305,10 @@
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="ViewModels\PaginationExampleVM.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Page Include="ExampleViews\AcrylicBlurWindowExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\AnimationNavigationBar3DExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

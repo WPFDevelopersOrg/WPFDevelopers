@@ -78,6 +78,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLineItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Windows\WindowAcrylicBlur.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToIsLargeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToPointConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />

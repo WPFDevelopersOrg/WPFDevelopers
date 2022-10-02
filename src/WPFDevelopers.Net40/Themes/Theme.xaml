@@ -1833,34 +1833,6 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBoxItem}">
 					<Grid>
-						<!--<VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource RegularTextColor}"
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Selected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="PART_RectangleSelected" 
-                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource BaseColor}"
-                                                        Duration="00:00:.3"/>
-                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource PrimaryPressedColor}"
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="SelectedUnfocused"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>-->
 						<Rectangle x:Name="PART_RectangleMouseOver" Fill="{DynamicResource BackgroundSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 						<Rectangle x:Name="PART_RectangleSelected" Fill="{DynamicResource BaseSolidColorBrush}" Visibility="Collapsed" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentPresenter" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
@@ -1890,9 +1862,6 @@
 						<Trigger Property="IsFocused" Value="True">
 							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 						</Trigger>
-						<!--<Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}"/>
-                        </Trigger>-->
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
