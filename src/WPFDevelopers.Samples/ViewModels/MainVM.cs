@@ -283,6 +283,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.VirtualizingWrapPanel:
                      new VirtualizingWrapPanelExample().ShowDialog();
                     break;
+                case MenuEnum.AcrylicBlur:
+                    new AcrylicBlurWindowExample().ShowDialog();
+                    break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     var taskbar = new TaskbarItemInfoExample();

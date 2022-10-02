@@ -64,6 +64,7 @@
         CanvasHandWriting,
         Barrage,
         VirtualizingWrapPanel,
+        AcrylicBlur,
         TaskbarInfo
     }
 }
