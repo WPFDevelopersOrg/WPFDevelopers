@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Media;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -11,6 +12,7 @@ namespace WPFDevelopers.Helpers
 {
     public class ControlsHelper : DependencyObject
     {
+        private static readonly Regex _regexNumber = new Regex("[^0-9]+");
         public static Brush Brush = Application.Current.Resources["BackgroundSolidColorBrush"] as Brush;
 
         public static Brush WindowForegroundBrush =
@@ -177,6 +179,11 @@ namespace WPFDevelopers.Helpers
             var color = Color.FromRgb((byte)R, (byte)G, (byte)B);
             var solidColorBrush = new SolidColorBrush(color);
             return solidColorBrush;
+        }
+
+        public static bool IsNumber(string text)
+        {
+            return _regexNumber.IsMatch(text);
         }
     }
 }

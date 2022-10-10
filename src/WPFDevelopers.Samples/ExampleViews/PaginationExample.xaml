@@ -7,6 +7,13 @@
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+            <Setter Property="FontSize" Value="{StaticResource NormalFontSize}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

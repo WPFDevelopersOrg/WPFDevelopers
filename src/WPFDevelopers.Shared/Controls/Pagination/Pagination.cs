@@ -4,12 +4,10 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
-    /// <summary>
-    ///     TextBox 控件最好替换成可以设置最值且只能输入数字的输入框
-    /// </summary>
     [TemplatePart(Name = CountPerPageTextBoxTemplateName, Type = typeof(TextBox))]
     [TemplatePart(Name = JustPageTextBoxTemplateName, Type = typeof(TextBox))]
     [TemplatePart(Name = ListBoxTemplateName, Type = typeof(ListBox))]
@@ -42,12 +40,40 @@ namespace WPFDevelopers.Controls
             UnsubscribeEvents();
 
             _countPerPageTextBox = GetTemplateChild(CountPerPageTextBoxTemplateName) as TextBox;
+            if (_countPerPageTextBox != null)
+            {
+                _countPerPageTextBox.ContextMenu = null;
+                _countPerPageTextBox.PreviewTextInput += _countPerPageTextBox_PreviewTextInput;
+                _countPerPageTextBox.PreviewKeyDown += _countPerPageTextBox_PreviewKeyDown;
+            }
+
             _jumpPageTextBox = GetTemplateChild(JustPageTextBoxTemplateName) as TextBox;
+            if (_jumpPageTextBox != null)
+            {
+                _jumpPageTextBox.ContextMenu = null;
+                _jumpPageTextBox.PreviewTextInput += _countPerPageTextBox_PreviewTextInput;
+                _jumpPageTextBox.PreviewKeyDown += _countPerPageTextBox_PreviewKeyDown;
+            }
+
             _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
 
             Init();
 
             SubscribeEvents();
+        }
+
+        private void _countPerPageTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (Key.Space == e.Key
+                ||
+                Key.V == e.Key
+                && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+                e.Handled = true;
+        }
+
+        private void _countPerPageTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = ControlsHelper.IsNumber(e.Text);
         }
 
         #endregion
@@ -103,7 +129,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty PagesProperty = PagesPropertyKey.DependencyProperty;
 
-        public IEnumerable<string> Pages => (IEnumerable<string>)GetValue(PagesProperty);
+        public IEnumerable<string> Pages => (IEnumerable<string>) GetValue(PagesProperty);
 
         private static readonly DependencyPropertyKey PageCountPropertyKey =
             DependencyProperty.RegisterReadOnly("PageCount", typeof(int), _typeofSelf,
@@ -111,12 +137,12 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty PageCountProperty = PageCountPropertyKey.DependencyProperty;
 
-        public int PageCount => (int)GetValue(PageCountProperty);
+        public int PageCount => (int) GetValue(PageCountProperty);
 
         private static void OnPageCountPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var pageCount = (int)e.NewValue;
+            var pageCount = (int) e.NewValue;
 
             /*
             if (ctrl._jumpPageTextBox != null)
@@ -129,7 +155,7 @@ namespace WPFDevelopers.Controls
 
         public bool IsLite
         {
-            get => (bool)GetValue(IsLiteProperty);
+            get => (bool) GetValue(IsLiteProperty);
             set => SetValue(IsLiteProperty, value);
         }
 
@@ -138,22 +164,22 @@ namespace WPFDevelopers.Controls
 
         public int Count
         {
-            get => (int)GetValue(CountProperty);
+            get => (int) GetValue(CountProperty);
             set => SetValue(CountProperty, value);
         }
 
         private static object CoerceCount(DependencyObject d, object value)
         {
-            var count = (int)value;
+            var count = (int) value;
             return Math.Max(count, 0);
         }
 
         private static void OnCountPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var count = (int)e.NewValue;
+            var count = (int) e.NewValue;
 
-            ctrl.SetValue(PageCountPropertyKey, (int)Math.Ceiling(count * 1.0 / ctrl.CountPerPage));
+            ctrl.SetValue(PageCountPropertyKey, (int) Math.Ceiling(count * 1.0 / ctrl.CountPerPage));
             ctrl.UpdatePages();
         }
 
@@ -162,25 +188,25 @@ namespace WPFDevelopers.Controls
 
         public int CountPerPage
         {
-            get => (int)GetValue(CountPerPageProperty);
+            get => (int) GetValue(CountPerPageProperty);
             set => SetValue(CountPerPageProperty, value);
         }
 
         private static object CoerceCountPerPage(DependencyObject d, object value)
         {
-            var countPerPage = (int)value;
+            var countPerPage = (int) value;
             return Math.Max(countPerPage, 1);
         }
 
         private static void OnCountPerPagePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var countPerPage = (int)e.NewValue;
+            var countPerPage = (int) e.NewValue;
 
             if (ctrl._countPerPageTextBox != null)
                 ctrl._countPerPageTextBox.Text = countPerPage.ToString();
 
-            ctrl.SetValue(PageCountPropertyKey, (int)Math.Ceiling(ctrl.Count * 1.0 / countPerPage));
+            ctrl.SetValue(PageCountPropertyKey, (int) Math.Ceiling(ctrl.Count * 1.0 / countPerPage));
 
             if (ctrl.Current != 1)
                 ctrl.Current = 1;
@@ -193,13 +219,13 @@ namespace WPFDevelopers.Controls
 
         public int Current
         {
-            get => (int)GetValue(CurrentProperty);
+            get => (int) GetValue(CurrentProperty);
             set => SetValue(CurrentProperty, value);
         }
 
         private static object CoerceCurrent(DependencyObject d, object value)
         {
-            var current = (int)value;
+            var current = (int) value;
             var ctrl = d as Pagination;
 
             return Math.Max(current, 1);
@@ -208,7 +234,7 @@ namespace WPFDevelopers.Controls
         private static void OnCurrentPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var current = (int)e.NewValue;
+            var current = (int) e.NewValue;
 
             if (ctrl._listBox != null)
                 ctrl._listBox.SelectedItem = current.ToString();
@@ -258,7 +284,7 @@ namespace WPFDevelopers.Controls
 
         private void Init()
         {
-            SetValue(PageCountPropertyKey, (int)Math.Ceiling(Count * 1.0 / CountPerPage));
+            SetValue(PageCountPropertyKey, (int) Math.Ceiling(Count * 1.0 / CountPerPage));
 
             _jumpPageTextBox.Text = Current.ToString();
             //_jumpPageTextBox.Maximum = PageCount;
@@ -310,7 +336,7 @@ namespace WPFDevelopers.Controls
                 return Enumerable.Range(1, PageCount).Select(p => p.ToString()).ToArray();
 
             if (current <= 4)
-                return new[] { "1", "2", "3", "4", "5", Ellipsis, PageCount.ToString() };
+                return new[] {"1", "2", "3", "4", "5", Ellipsis, PageCount.ToString()};
 
             if (current >= PageCount - 3)
                 return new[]
