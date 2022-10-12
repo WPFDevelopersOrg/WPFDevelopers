@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers.Samples", "WPFDevelopers.Samples\WPFDevelopers.Samples.csproj", "{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}"
 EndProject
@@ -19,13 +19,6 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPFDevelopers.Shared", "WPFDevelopers.Shared\WPFDevelopers.Shared.shproj", "{F424A42D-ED95-4C4A-8B74-50A7C59658DE}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{572d11b9-7ea8-4a04-849a-bb2b0371786f}*SharedItemsImports = 13
-		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 4
-		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 4
-		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{ad525acc-1df1-4ff6-8cc8-412b866e748a}*SharedItemsImports = 5
-		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{f424a42d-ed95-4c4a-8b74-50a7c59658de}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -49,5 +42,12 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {641F8D5D-5514-4C9A-9FAB-7FAF38D9C008}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{572d11b9-7ea8-4a04-849a-bb2b0371786f}*SharedItemsImports = 13
+		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 5
+		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 5
+		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{ad525acc-1df1-4ff6-8cc8-412b866e748a}*SharedItemsImports = 5
+		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{f424a42d-ed95-4c4a-8b74-50a7c59658de}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

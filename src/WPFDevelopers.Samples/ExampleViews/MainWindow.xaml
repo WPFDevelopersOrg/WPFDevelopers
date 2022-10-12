@@ -41,6 +41,14 @@
     <!--<Grid Background="{StaticResource ExtralightSolidColorBrush}">-->
 
     <Grid>
+        <wpfdev:NotifyIcon Title="WPF开发者">
+            <wpfdev:NotifyIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="关于" Click="About_Click"/>
+                    <MenuItem Header="退出" Click="Quit_Click"/>
+                </ContextMenu>
+            </wpfdev:NotifyIcon.ContextMenu>
+        </wpfdev:NotifyIcon>
         <!--<Rectangle Margin="5,0,0,0">
             <Rectangle.Fill>
                 <VisualBrush Viewport="0,0,95,35" ViewportUnits="Absolute" TileMode="Tile">

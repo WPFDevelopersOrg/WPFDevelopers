@@ -53,7 +53,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!--Style and template for the DataGrid.-->
     <Style x:Key="DefaultDataGrid" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
@@ -79,7 +79,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}">
-                       
+
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Disabled"/>
@@ -108,7 +108,7 @@
                       Converter={x:Static DataGrid.HeadersVisibilityConverter}, 
                       RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                          Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource DoubleMinConverter}}"/>
-                                       
+
                                         <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter"
                                                   Grid.Column="1" 
                                                   Visibility="{Binding HeadersVisibility, 
@@ -167,7 +167,7 @@
     <!--Style and template for the DataGridCell.-->
     <Style x:Key="DefaultDataGridCell" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -323,7 +323,7 @@
         <Setter Property="FontWeight" Value="ExtraBlack"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
@@ -404,7 +404,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontWeight" Value="ExtraBlack"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
@@ -449,7 +449,7 @@
                                     </Path.RenderTransform>
                                 </Path>
                             </Grid>
-                            
+
                         </Border>
 
                         <Thumb x:Name="PART_LeftHeaderGripper"
@@ -500,12 +500,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style TargetType="{x:Type DataGridColumnHeadersPresenter}" BasedOn="{StaticResource DefaultDataGridColumnHeadersPresenter}" />
     <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource DefaultDataGridColumnHeader}" />
     <Style TargetType="{x:Type DataGridRowHeader}" BasedOn="{StaticResource DefaultDataGridRowHeader}" />
     <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DefaultDataGridRow}" />
     <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource DefaultDataGridCell}" />
     <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DefaultDataGrid}" />
-    
+
 </ResourceDictionary>

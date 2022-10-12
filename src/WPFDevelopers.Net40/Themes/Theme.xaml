@@ -714,7 +714,7 @@
 	</Style>
 	<ControlTemplate x:Key="TopLevelHeaderTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" BorderThickness="1,1,1,0" BorderBrush="{TemplateBinding BorderBrush}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<ContentPresenter Margin="6,3,6,3" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" x:Name="PART_ContentPresenter" />
 				<Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsSubmenuOpen}" PlacementTarget="{Binding ElementName=Border}" AllowsTransparency="True" Focusable="False">
 					<Grid Margin="10,0,10,10">
@@ -743,7 +743,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="TopLevelItemTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<ContentPresenter Margin="6,3,6,3" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" x:Name="PART_ContentPresenter" />
 			</Grid>
 		</Border>
@@ -755,7 +755,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SubmenuItemTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
 					<ColumnDefinition Width="*" />
@@ -789,7 +789,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SubmenuHeaderTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
 					<ColumnDefinition Width="*" />
@@ -819,7 +819,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="DefaultMenuItem" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Height" Value="34" />
+		<Setter Property="MinHeight" Value="34" />
 		<Setter Property="Padding" Value="10,0" />
 		<Setter Property="Cursor" Value="Hand" />
 		<Style.Triggers>
@@ -2426,7 +2426,7 @@
 	</Style>
 	<Style x:Key="DefaultDataGridCell" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -2540,7 +2540,7 @@
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRowHeader}">
@@ -2599,7 +2599,7 @@
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
@@ -3303,7 +3303,7 @@ RenderTransformOrigin=".5,.5">
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultGridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
@@ -3365,7 +3365,7 @@ RenderTransformOrigin=".5,.5">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListViewItem}">
 					<Border x:Name="Border" Padding="2" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Columns="{TemplateBinding GridView.ColumnCollection}" />
+						<GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">

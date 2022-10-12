@@ -4,7 +4,12 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using Microsoft.Win32;
+#if NET40
 using Microsoft.Windows.Shell;
+#else
+using System.Windows.Shell;
+#endif
+
 
 namespace WPFDevelopers.Controls
 {
@@ -47,6 +52,7 @@ namespace WPFDevelopers.Controls
         public bool AllowsTransparency;
         public Brush Background;
         public WindowChrome WindowChrome;
+
         public WindowStyle WindowStyle = WindowStyle.SingleBorderWindow;
     }
 
@@ -166,6 +172,7 @@ namespace WPFDevelopers.Controls
             };
 
             var vWindowChrome = WindowChrome.GetWindowChrome(window);
+
             if (vWindowChrome == null)
             {
                 window.WindowStyle = WindowStyle.None; //一定要将窗口的背景色改为透明才行

@@ -48,7 +48,7 @@
         <Border x:Name="Border" SnapsToDevicePixels="True"
                  Background="{TemplateBinding Background}"
                  BorderThickness="1,1,1,0" BorderBrush="{TemplateBinding BorderBrush}">
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid Background="Transparent">
                 <ContentPresenter Margin="6,3,6,3"
                                   VerticalAlignment="Center"
                         ContentSource="Header"
@@ -106,7 +106,7 @@
                  TargetType="{x:Type MenuItem}">
         <Border x:Name="Border" SnapsToDevicePixels="True"
                 Background="{TemplateBinding Background}">
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid Background="Transparent">
                 <ContentPresenter Margin="6,3,6,3"
                                   VerticalAlignment="Center"
                         ContentSource="Header"
@@ -125,7 +125,7 @@
                  TargetType="{x:Type MenuItem}">
         <Border x:Name="Border" SnapsToDevicePixels="True"
                 Background="{TemplateBinding Background}">
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid Background="Transparent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"
                           SharedSizeGroup="Icon" />
@@ -204,7 +204,7 @@
                  TargetType="{x:Type MenuItem}">
         <Border x:Name="Border" SnapsToDevicePixels="True"
                 Background="{TemplateBinding Background}">
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid Background="Transparent">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"
                           SharedSizeGroup="Icon" />
@@ -274,7 +274,7 @@
     </ControlTemplate>
 
     <Style x:Key="DefaultMenuItem" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Height" Value="34" />
+        <Setter Property="MinHeight" Value="34" />
         <Setter Property="Padding" Value="10,0" />
         <Setter Property="Cursor" Value="Hand" />
         <Style.Triggers>
