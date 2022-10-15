@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -80,16 +81,43 @@ namespace WPFDevelopers.Controls
             _TrayWndClassName = $"WPFDevelopers_{Guid.NewGuid()}";
             _TrayWndProc = WndProc_CallBack;
             _TrayWndMessage = "TrayWndMessageName";
-            _TrayMouseMessage = (int) WM.USER + 1024;
+            _TrayMouseMessage = (int)WM.USER + 1024;
             Start();
             if (Application.Current != null)
             {
-                Application.Current.MainWindow.Closed += (s, e) => Dispose();
+                //Application.Current.MainWindow.Closed += (s, e) => Dispose();
                 Application.Current.Exit += (s, e) => Dispose();
             }
             NotifyIconCache = this;
         }
+        static NotifyIcon()
+        {
+            DataContextProperty.OverrideMetadata(typeof(NotifyIcon), new FrameworkPropertyMetadata(DataContextPropertyChanged));
+            ContextMenuProperty.OverrideMetadata(typeof(NotifyIcon), new FrameworkPropertyMetadata(ContextMenuPropertyChanged));
+        }
+        private static void DataContextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) =>
+            ((NotifyIcon)d).OnDataContextPropertyChanged(e);
+        private void OnDataContextPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            UpdateDataContext(_contextContent, e.OldValue, e.NewValue);
+            UpdateDataContext(ContextMenu, e.OldValue, e.NewValue);
+        }
+        private void UpdateDataContext(FrameworkElement target, object oldValue, object newValue)
+        {
+            if (target == null || BindingOperations.GetBindingExpression(target, DataContextProperty) != null) return;
+            if (ReferenceEquals(this, target.DataContext) || Equals(oldValue, target.DataContext))
+            {
+                target.DataContext = newValue ?? this;
+            }
+        }
+        private static void ContextMenuPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctl = (NotifyIcon)d;
+            ctl.OnContextMenuPropertyChanged(e);
+        }
 
+        private void OnContextMenuPropertyChanged(DependencyPropertyChangedEventArgs e) =>
+            UpdateDataContext((ContextMenu)e.NewValue, null, DataContext);
         public object ContextContent
         {
             get => GetValue(ContextContentProperty);
@@ -98,14 +126,14 @@ namespace WPFDevelopers.Controls
 
         public ImageSource Icon
         {
-            get => (ImageSource) GetValue(IconProperty);
+            get => (ImageSource)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
 
 
         public string Title
         {
-            get => (string) GetValue(TitleProperty);
+            get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
         }
 
@@ -125,8 +153,8 @@ namespace WPFDevelopers.Controls
         {
             if (d is NotifyIcon trayService)
             {
-                var notifyIcon = (NotifyIcon) d;
-                notifyIcon._icon = (ImageSource) e.NewValue;
+                var notifyIcon = (NotifyIcon)d;
+                notifyIcon._icon = (ImageSource)e.NewValue;
                 trayService.ChangeIcon();
             }
         }
@@ -225,9 +253,9 @@ namespace WPFDevelopers.Controls
                 _NOTIFYICONDATA = NOTIFYICONDATA.GetDefaultNotifyData(_TrayWindowHandle);
 
                 if (_TrayMouseMessage != 0)
-                    _NOTIFYICONDATA.uCallbackMessage = (uint) _TrayMouseMessage;
+                    _NOTIFYICONDATA.uCallbackMessage = (uint)_TrayMouseMessage;
                 else
-                    _TrayMouseMessage = (int) _NOTIFYICONDATA.uCallbackMessage;
+                    _TrayMouseMessage = (int)_NOTIFYICONDATA.uCallbackMessage;
 
                 if (_iconHandle == IntPtr.Zero)
                 {
@@ -265,7 +293,7 @@ namespace WPFDevelopers.Controls
         internal static int AlignToBytes(double original, int nBytesCount)
         {
             var nBitsCount = 8 << (nBytesCount - 1);
-            return ((int) Math.Ceiling(original) + (nBitsCount - 1)) / nBitsCount * nBitsCount;
+            return ((int)Math.Ceiling(original) + (nBitsCount - 1)) / nBitsCount * nBitsCount;
         }
 
         private static byte[] GenerateMaskArray(int width, int height, byte[] colorArray)
@@ -279,12 +307,12 @@ namespace WPFDevelopers.Controls
                 var hPos = i % width;
                 var vPos = i / width;
                 var byteIndex = hPos / 8;
-                var offsetBit = (byte) (0x80 >> (hPos % 8));
+                var offsetBit = (byte)(0x80 >> (hPos % 8));
 
                 if (colorArray[i * 4 + 3] == 0x00)
                     bitsMask[byteIndex + bytesPerScanLine * vPos] |= offsetBit;
                 else
-                    bitsMask[byteIndex + bytesPerScanLine * vPos] &= (byte) ~offsetBit;
+                    bitsMask[byteIndex + bytesPerScanLine * vPos] &= (byte)~offsetBit;
 
                 if (hPos == width - 1 && width == 8) bitsMask[1 + bytesPerScanLine * vPos] = 0xff;
             }
@@ -304,7 +332,7 @@ namespace WPFDevelopers.Controls
                     smarket.Position = 0;
                     using (var br = new BinaryReader(smarket))
                     {
-                        bytearray = br.ReadBytes((int) smarket.Length);
+                        bytearray = br.ReadBytes((int)smarket.Length);
                     }
                 }
             }
@@ -372,28 +400,28 @@ namespace WPFDevelopers.Controls
             return User32Interop.CreateIconIndirect(iconInfo);
         }
 
-      
+
         private bool ChangeIcon()
         {
             var bitmapFrame = _icon as BitmapFrame;
             if (bitmapFrame != null && bitmapFrame.Decoder != null)
                 if (bitmapFrame.Decoder is IconBitmapDecoder)
                 {
-                    var iconBitmapDecoder = new Rect(0, 0, _icon.Width, _icon.Height);
-                    var dv = new DrawingVisual();
-                    var dc = dv.RenderOpen();
-                    dc.DrawImage(_icon, iconBitmapDecoder);
-                    dc.Close();
+                    //var iconBitmapDecoder = new Rect(0, 0, _icon.Width, _icon.Height);
+                    //var dv = new DrawingVisual();
+                    //var dc = dv.RenderOpen();
+                    //dc.DrawImage(_icon, iconBitmapDecoder);
+                    //dc.Close();
 
-                    var bmp = new RenderTargetBitmap((int) _icon.Width, (int) _icon.Height, 96, 96,
-                        PixelFormats.Pbgra32);
-                    bmp.Render(dv);
+                    //var bmp = new RenderTargetBitmap((int)_icon.Width, (int)_icon.Height, 96, 96,
+                    //    PixelFormats.Pbgra32);
+                    //bmp.Render(dv);
 
 
-                    BitmapSource bitmapSource = bmp;
+                    //BitmapSource bitmapSource = bmp;
 
-                    if (bitmapSource.Format != PixelFormats.Bgra32 && bitmapSource.Format != PixelFormats.Pbgra32)
-                        bitmapSource = new FormatConvertedBitmap(bitmapSource, PixelFormats.Bgra32, null, 0.0);
+                    //if (bitmapSource.Format != PixelFormats.Bgra32 && bitmapSource.Format != PixelFormats.Pbgra32)
+                    //    bitmapSource = new FormatConvertedBitmap(bitmapSource, PixelFormats.Bgra32, null, 0.0);
                     var w = bitmapFrame.PixelWidth;
                     var h = bitmapFrame.PixelHeight;
                     var bpp = bitmapFrame.Format.BitsPerPixel;
@@ -496,12 +524,12 @@ namespace WPFDevelopers.Controls
         private IntPtr WndProc_CallBack(IntPtr hwnd, WM msg, IntPtr wParam, IntPtr lParam)
         {
             //这是窗口相关的消息
-            if ((int) msg == _WmTrayWindowMessage)
+            if ((int)msg == _WmTrayWindowMessage)
             {
             }
-            else if ((int) msg == _TrayMouseMessage) //这是托盘上鼠标相关的消息
+            else if ((int)msg == _TrayMouseMessage) //这是托盘上鼠标相关的消息
             {
-                switch ((WM) (long) lParam)
+                switch ((WM)(long)lParam)
                 {
                     case WM.LBUTTONDOWN:
                         break;
@@ -573,6 +601,7 @@ namespace WPFDevelopers.Controls
                 {
                     Content = ContextContent
                 };
+                UpdateDataContext(_contextContent, null, DataContext);
                 _contextContent.IsOpen = true;
                 User32Interop.SetForegroundWindow(_contextContent.Child.GetHandle());
             }
@@ -591,7 +620,6 @@ namespace WPFDevelopers.Controls
                         var container = ContextMenu.ItemContainerGenerator.ContainerFromItem(item) as MenuItem;
                         container?.InvalidateProperty(StyleProperty);
                     }
-
                 ContextMenu.Placement = PlacementMode.Mouse;
                 ContextMenu.IsOpen = true;
 

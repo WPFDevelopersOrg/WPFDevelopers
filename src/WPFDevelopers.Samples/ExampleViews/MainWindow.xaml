@@ -44,6 +44,7 @@
         <wpfdev:NotifyIcon Title="WPF开发者">
             <wpfdev:NotifyIcon.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="托盘消息" Click="SendMessage_Click"/>
                     <MenuItem Header="关于" Click="About_Click"/>
                     <MenuItem Header="退出" Click="Quit_Click"/>
                 </ContextMenu>
