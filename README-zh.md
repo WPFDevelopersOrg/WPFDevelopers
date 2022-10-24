@@ -72,7 +72,6 @@ Install-Package WPFDevelopers
                     <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
                     <ws:Resources Theme="Light"/>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -94,11 +93,16 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### NotifyIcon（托盘）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
+----------  
 
 ### WindowAcrylicBlur（亚克力窗体）
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowAcrylicBlur.gif"/>   
-----------
+----------  
+
 ### Barrage（WPF 弹幕）
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Barrage.gif"/>   
