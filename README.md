@@ -61,7 +61,6 @@ Install-Package WPFDevelopers
                     <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
                     <ws:Resources Theme="Light"/>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -80,6 +79,11 @@ Install-Package WPFDevelopers
 ###  Step 3: Add the namespace;
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+----------
+### NotifyIcon 
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon .gif"/>   
+
 ----------
 ### WindowAcrylicBlur
 
