@@ -102,6 +102,7 @@
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Padding" Value="10"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
@@ -116,7 +117,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="HeaderBorder"
                                 Background="{TemplateBinding Background}"
-                                Padding="10"
+                                Padding="{TemplateBinding Padding}"
                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                 BorderBrush="{TemplateBinding BorderBrush}">
                             <ContentPresenter 

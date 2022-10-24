@@ -12,6 +12,7 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="4"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
@@ -20,7 +21,7 @@
                             Background="{DynamicResource BackgroundSolidColorBrush}">
                         <ScrollViewer Focusable="False"
                                       CanContentScroll="False" 
-                                      Padding="4">
+                                      Padding="{TemplateBinding Padding}">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>

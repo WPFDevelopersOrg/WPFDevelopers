@@ -758,30 +758,27 @@
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
 			<Grid Background="Transparent">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
+					<ColumnDefinition MinWidth="24" Width="Auto" SharedSizeGroup="Icon" />
+					<ColumnDefinition Width="4" />
 					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="37" />
 					<ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
 					<ColumnDefinition Width="20" />
 				</Grid.ColumnDefinitions>
-				<ContentPresenter x:Name="Icon" Margin="6,0,6,0" VerticalAlignment="Center" ContentSource="Icon" />
-				<Border x:Name="Check" Width="13" Height="13" Visibility="Collapsed" Margin="6,0,6,0" Background="Transparent">
-					<Path x:Name="CheckMark" Width="7" Height="7" Visibility="Hidden" SnapsToDevicePixels="False" StrokeThickness="2" Data="{StaticResource PathMenuItem}" Stroke="{TemplateBinding Foreground}" />
-				</Border>
-				<ContentPresenter x:Name="HeaderHost" Grid.Column="1" ContentSource="Header" VerticalAlignment="Center" RecognizesAccessKey="True" />
-				<TextBlock x:Name="InputGestureText" Grid.Column="2" Text="{TemplateBinding InputGestureText}" Margin="5,2,0,2" DockPanel.Dock="Right" />
+				<ContentPresenter x:Name="Icon" VerticalAlignment="Center" ContentSource="Icon" Margin="1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+				<Path x:Name="CheckMark" Width="12" Height="10" Visibility="Hidden" FlowDirection="LeftToRight" Data="{StaticResource PathCheckMark}" Fill="{TemplateBinding Foreground}" Stretch="Fill" />
+				<ContentPresenter x:Name="HeaderHost" Grid.Column="2" ContentSource="Header" VerticalAlignment="Center" RecognizesAccessKey="True" />
+				<TextBlock x:Name="InputGestureText" Grid.Column="4" Text="{TemplateBinding InputGestureText}" Margin="5,2,0,2" DockPanel.Dock="Right" />
 			</Grid>
 		</Border>
 		<ControlTemplate.Triggers>
 			<Trigger Property="ButtonBase.Command" Value="{x:Null}" />
 			<Trigger Property="Icon" Value="{x:Null}">
-				<Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
+				<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
 			</Trigger>
 			<Trigger Property="IsChecked" Value="True">
 				<Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
-			</Trigger>
-			<Trigger Property="IsCheckable" Value="True">
-				<Setter TargetName="Check" Property="Visibility" Value="Visible" />
-				<Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
+				<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
 			</Trigger>
 			<Trigger Property="IsHighlighted" Value="True">
 				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
@@ -792,17 +789,18 @@
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
 			<Grid Background="Transparent">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
+					<ColumnDefinition MinWidth="24" Width="Auto" SharedSizeGroup="Icon" />
+					<ColumnDefinition Width="4" />
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
 					<ColumnDefinition Width="20" />
 				</Grid.ColumnDefinitions>
 				<ContentPresenter x:Name="Icon" Margin="6,0,6,0" VerticalAlignment="Center" ContentSource="Icon" />
-				<ContentPresenter x:Name="HeaderHost" Grid.Column="1" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" />
-				<TextBlock x:Name="InputGestureText" Grid.Column="2" Text="{TemplateBinding InputGestureText}" Margin="5,2,2,2" DockPanel.Dock="Right" />
-				<Path Grid.Column="3" x:Name="PART_Path" Stretch="Fill" Height="12" Width="10" VerticalAlignment="Center" Data="{StaticResource PathMenuItem}" Fill="{TemplateBinding Foreground}" />
-				<Popup x:Name="Popup" Placement="Right" HorizontalOffset="10" VerticalOffset="-4" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
-					<Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="Transparent" Effect="{DynamicResource PopupShadowDepth}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" Margin="10,0,10,10" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+				<ContentPresenter x:Name="HeaderHost" Grid.Column="2" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" />
+				<TextBlock x:Name="InputGestureText" Grid.Column="3" Text="{TemplateBinding InputGestureText}" Margin="5,2,2,2" DockPanel.Dock="Right" />
+				<Path Grid.Column="4" x:Name="PART_Path" Stretch="Fill" FlowDirection="LeftToRight" Height="12" Width="10" VerticalAlignment="Center" Data="{StaticResource PathMenuItem}" Fill="{TemplateBinding Foreground}" />
+				<Popup x:Name="Popup" Placement="Right" HorizontalOffset="2" VerticalOffset="-4" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
+					<Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="{DynamicResource BackgroundSolidColorBrush}" Effect="{DynamicResource PopupShadowDepth}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" Margin="10,0,10,10" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
 						<ScrollViewer CanContentScroll="True" Margin="0,4">
 							<StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
 						</ScrollViewer>
@@ -812,7 +810,7 @@
 		</Border>
 		<ControlTemplate.Triggers>
 			<Trigger Property="Icon" Value="{x:Null}">
-				<Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
+				<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
 			</Trigger>
 			<Trigger Property="IsHighlighted" Value="True">
 				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
@@ -1541,7 +1539,8 @@
 	</Style>
 	<Style TargetType="{x:Type Hyperlink}" BasedOn="{StaticResource DefaultHyperlink}" />
 	<Style x:Key="DefaultCheckBox" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<!--<Setter Property="FocusVisualStyle" Value="{x:Null}" />-->
+		<Setter Property="Padding" Value="2,0,0,0" />
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -1565,19 +1564,11 @@
 								</Border>
 							</Border>
 						</BulletDecorator.Bullet>
-						<ContentPresenter x:Name="PART_ContentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}" />
+						<ContentPresenter x:Name="PART_ContentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}" />
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<!--<ColorAnimation Storyboard.TargetName="PART_Border"
-                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                        To="{DynamicResource PrimaryPressedColor}"
-                                                        Duration="00:00:.1"/>-->
-										<!--<ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        To="{DynamicResource PrimaryPressedColor}"
-                                                        Duration="00:00:.1"/>-->
 										<DoubleAnimation Storyboard.TargetName="PART_CheckMark" Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleX)" To=".7" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 										<DoubleAnimation Storyboard.TargetName="PART_CheckMark" Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleY)" To=".5" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 									</Storyboard>
@@ -1588,9 +1579,6 @@
 						</VisualStateManager.VisualStateGroups>
 					</BulletDecorator>
 					<ControlTemplate.Triggers>
-						<!--<Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>-->
 						<Trigger Property="IsChecked" Value="True">
 							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
@@ -1740,6 +1728,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
+		<Setter Property="Padding" Value="14.5,3,30,3" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBox}">
@@ -1768,7 +1757,7 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Grid.Column="2" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
-						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="14.5,3,30,3" />
+						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" />
 						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="14.5,3,30,3" Focusable="True" Background="{TemplateBinding Background}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
@@ -2785,14 +2774,14 @@
 	</Style>
 	<Style x:Key="DefaultTabControl" TargetType="{x:Type TabControl}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="TabStripPlacement" Value="Top" />
-		<!--<Setter Property="Margin" Value="2" />-->
-		<!--<Setter Property="Padding" Value="2"/>-->
+		<Setter Property="Margin" Value="0" />
+		<Setter Property="Padding" Value="2" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="ItemContainerStyle" Value="{StaticResource TopTabItem}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabControl}">
-					<Grid ClipToBounds="True" SnapsToDevicePixels="True" KeyboardNavigation.TabNavigation="Local">
+					<Grid ClipToBounds="True" SnapsToDevicePixels="True" KeyboardNavigation.TabNavigation="Local" Margin="{TemplateBinding Margin}">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Name="ColumnDefinition0" />
 							<ColumnDefinition Width="0" Name="ColumnDefinition1" />
@@ -2805,9 +2794,7 @@
 							<TabPanel IsItemsHost="True" Name="HeaderPanel" Panel.ZIndex="1" KeyboardNavigation.TabIndex="1" />
 						</Border>
 						<Grid Name="ContentPanel" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Column="0" Grid.Row="1">
-							<Border>
-								<ContentPresenter Content="{TemplateBinding SelectedContent}" ContentTemplate="{TemplateBinding SelectedContentTemplate}" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentSource="SelectedContent" Name="PART_SelectedContentHost" Margin="2" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
-							</Border>
+							<ContentPresenter Content="{TemplateBinding SelectedContent}" ContentTemplate="{TemplateBinding SelectedContentTemplate}" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentSource="SelectedContent" Name="PART_SelectedContentHost" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
 						</Grid>
 					</Grid>
 					<ControlTemplate.Triggers>
@@ -3159,6 +3146,7 @@
 	</Style>
 	<Style TargetType="{x:Type Expander}" BasedOn="{StaticResource DefaultExpander}" />
 	<Style x:Key="DefaultGroupBox" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Padding" Value="4" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type GroupBox}">
@@ -3177,7 +3165,7 @@
 							<Border.Background>
 								<SolidColorBrush Color="{DynamicResource BackgroundColor}" />
 							</Border.Background>
-							<ContentPresenter Margin="4" />
+							<ContentPresenter Margin="{TemplateBinding Padding}" />
 						</Border>
 					</Grid>
 				</ControlTemplate>
@@ -3214,6 +3202,7 @@
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="MinHeight" Value="48" />
 		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Padding" Value="2" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ListBoxItem">
@@ -3221,29 +3210,16 @@
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="SelectionStates">
 								<VisualState x:Name="Unselected" />
-								<VisualState x:Name="Selected">
-									<!--<Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="PART_Rectangle" Duration="0:0:0.5"
-Storyboard.TargetProperty="(Rectangle.RenderTransform).(ScaleTransform.ScaleX)" To="1"
-FillBehavior="Stop"/>
-                                    </Storyboard>-->
-								</VisualState>
+								<VisualState x:Name="Selected" />
 								<VisualState x:Name="SelectedUnfocused" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Border x:Name="PART_Border" Padding="2" SnapsToDevicePixels="True" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+						<Border x:Name="PART_Border" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
 							<Border.Background>
 								<SolidColorBrush Color="{DynamicResource WhiteColor}" />
 							</Border.Background>
 							<ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
 						</Border>
-						<!--<Rectangle x:Name="PART_Rectangle" Height="2" VerticalAlignment="Bottom"
-Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
-RenderTransformOrigin=".5,.5">
-                            <Rectangle.RenderTransform>
-                                <ScaleTransform ScaleX="0" ScaleY="1"/>
-                            </Rectangle.RenderTransform>
-                        </Rectangle>-->
 					</Grid>
 					<ControlTemplate.Triggers>
 						<MultiTrigger>
@@ -3310,6 +3286,7 @@ RenderTransformOrigin=".5,.5">
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="Padding" Value="10" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
@@ -3322,7 +3299,7 @@ RenderTransformOrigin=".5,.5">
 								<VisualState x:Name="Disabled" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Border x:Name="HeaderBorder" Background="{TemplateBinding Background}" Padding="10" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+						<Border x:Name="HeaderBorder" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
 							<ContentPresenter x:Name="HeaderContent" Margin="0,0,0,1" TextElement.FontWeight="{TemplateBinding FontWeight}" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 						</Border>
 						<Thumb x:Name="PART_HeaderGripper" HorizontalAlignment="Right" Margin="0,0,-9,0" Style="{StaticResource GridViewColumnHeaderGripper}" />
@@ -3478,11 +3455,12 @@ RenderTransformOrigin=".5,.5">
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
 		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Padding" Value="4" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="TreeView">
 					<Border Name="Border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource BackgroundSolidColorBrush}">
-						<ScrollViewer Focusable="False" CanContentScroll="False" Padding="4">
+						<ScrollViewer Focusable="False" CanContentScroll="False" Padding="{TemplateBinding Padding}">
 							<ItemsPresenter />
 						</ScrollViewer>
 					</Border>

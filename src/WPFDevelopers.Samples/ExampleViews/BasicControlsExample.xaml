@@ -67,7 +67,15 @@
                     <Menu>
                         <MenuItem Header="MenuItem 1">
                             <MenuItem Header="MenuItem 1.1">
-                                <MenuItem Header="MenuItem 1.1.1"/>
+                                <MenuItem.Icon>
+                                    <Path Data="{StaticResource PathWarning}" 
+                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                                      Stretch="Uniform" Height="20" Width="20"/>
+                                </MenuItem.Icon>
+                                <MenuItem Header="MenuItem 1.1.1">
+                                    <MenuItem Header="MenuItem 1.1.1.1"/>
+                                    <MenuItem Header="MenuItem 1.1.1.2"/>
+                                </MenuItem>
                                 <MenuItem Header="MenuItem 1.1.2"/>
                             </MenuItem>
                             <Separator/>

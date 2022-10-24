@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Media;
 using System.Text.RegularExpressions;
@@ -186,4 +187,23 @@ namespace WPFDevelopers.Helpers
             return _regexNumber.IsMatch(text);
         }
     }
+    #region 是否设计时模式
+    public class DesignerHelper
+    {
+        private static bool? _isInDesignMode;
+
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                if (!_isInDesignMode.HasValue)
+                {
+                    _isInDesignMode = (bool)DependencyPropertyDescriptor.FromProperty(DesignerProperties.IsInDesignModeProperty,
+                        typeof(FrameworkElement)).Metadata.DefaultValue;
+                }
+                return _isInDesignMode.Value;
+            }
+        }
+    }
+    #endregion
 }

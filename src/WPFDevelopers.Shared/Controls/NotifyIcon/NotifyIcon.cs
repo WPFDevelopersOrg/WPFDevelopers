@@ -9,10 +9,12 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using WPFDevelopers.Controls.Runtimes;
 using WPFDevelopers.Controls.Runtimes.Interop;
 using WPFDevelopers.Controls.Runtimes.Shell32;
 using WPFDevelopers.Controls.Runtimes.User32;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -38,6 +40,18 @@ namespace WPFDevelopers.Controls
         public static readonly RoutedEvent MouseDoubleClickEvent =
             EventManager.RegisterRoutedEvent("MouseDoubleClick", RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler), typeof(NotifyIcon));
+        /// <summary>
+        /// 托盘图标闪烁间隔
+        /// </summary>
+        public static readonly DependencyProperty TwinkIntervalProperty =
+            DependencyProperty.Register("TwinkInterval",
+                typeof(TimeSpan), typeof(NotifyIcon), new PropertyMetadata(TimeSpan.FromMilliseconds(500), OnTwinkIntervalChanged));
+        /// <summary>
+        /// 托盘图标是否开启闪烁
+        /// </summary>
+        public static readonly DependencyProperty IsTwinkProperty =
+            DependencyProperty.Register("IsTwink",
+                typeof(bool), typeof(NotifyIcon), new PropertyMetadata(false, OnIsTwinkChanged));
 
         private static bool s_Loaded = false;
 
@@ -75,6 +89,10 @@ namespace WPFDevelopers.Controls
         private int _WmTrayWindowMessage;
 
         private bool disposedValue;
+
+        private IntPtr _tempIconHandle;
+        //闪烁定时器
+        private DispatcherTimer _dispatcherTimerTwink;
 
         public NotifyIcon()
         {
@@ -136,13 +154,66 @@ namespace WPFDevelopers.Controls
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
         }
-
+        /// <summary>
+        /// 托盘图标闪烁间隔
+        /// </summary>
+        public TimeSpan TwinkInterval
+        {
+            get => (TimeSpan)GetValue(TwinkIntervalProperty);
+            set => SetValue(TwinkIntervalProperty, value);
+        }
+        /// <summary>
+        /// 托盘图标是否开启闪烁
+        /// </summary>
+        public bool IsTwink
+        {
+            get => (bool)GetValue(IsTwinkProperty);
+            set => SetValue(IsTwinkProperty, value);
+        }
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        private static void OnTwinkIntervalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is NotifyIcon trayService)
+            {
+                var notifyIcon = (NotifyIcon)d;
+                notifyIcon._dispatcherTimerTwink.Interval = (TimeSpan)e.NewValue;
+            }
+        }
+        private static void OnIsTwinkChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is NotifyIcon trayService)
+            {
+                var notifyIcon = (NotifyIcon)d;
+                if (notifyIcon.Visibility != Visibility.Visible) return;
+                if ((bool)e.NewValue)
+                {
+                    if (notifyIcon._dispatcherTimerTwink == null)
+                    {
+                        notifyIcon._dispatcherTimerTwink = new DispatcherTimer
+                        {
+                            Interval = notifyIcon.TwinkInterval
+                        };
+                        notifyIcon._dispatcherTimerTwink.Tick += notifyIcon.DispatcherTimerTwinkTick;
+                    }
+                    notifyIcon._tempIconHandle = notifyIcon._hIcon;
+                    notifyIcon._dispatcherTimerTwink.Start();
+                }
+                else
+                {
+                    notifyIcon._dispatcherTimerTwink?.Stop();
+                    notifyIcon._dispatcherTimerTwink.Tick -= notifyIcon.DispatcherTimerTwinkTick;
+                    notifyIcon._dispatcherTimerTwink = null;
+                    notifyIcon._iconHandle = notifyIcon._tempIconHandle;
+                    notifyIcon.ChangeIcon(false, notifyIcon._iconHandle);
+                    notifyIcon._tempIconHandle = IntPtr.Zero;
+                }
+            }
 
+        }
         private static void OnTitlePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is NotifyIcon trayService)
@@ -171,6 +242,12 @@ namespace WPFDevelopers.Controls
             remove => RemoveHandler(MouseDoubleClickEvent, value);
         }
 
+        private void DispatcherTimerTwinkTick(object sender, EventArgs e)
+        {
+            if (Visibility != Visibility.Visible) return;
+            _iconHandle = _iconHandle != IntPtr.Zero ? IntPtr.Zero : _tempIconHandle;
+            ChangeIcon(false, _iconHandle);
+        }
         private static void Current_Exit(object sender, ExitEventArgs e)
         {
             s_NotifyIcon?.Dispose();
@@ -180,6 +257,7 @@ namespace WPFDevelopers.Controls
 
         public bool Start()
         {
+            if (DesignerHelper.IsInDesignMode == true) return false;
             RegisterClass(_TrayWndClassName, _TrayWndProc, _TrayWndMessage);
             LoadNotifyIconData(string.Empty);
             Show();
@@ -400,28 +478,13 @@ namespace WPFDevelopers.Controls
             return User32Interop.CreateIconIndirect(iconInfo);
         }
 
-
-        private bool ChangeIcon()
+        private bool ChangeIcon(bool destroyOldIcon = false, IntPtr? newIntprt = null)
         {
+            if (DesignerHelper.IsInDesignMode == true) return false;
             var bitmapFrame = _icon as BitmapFrame;
             if (bitmapFrame != null && bitmapFrame.Decoder != null)
                 if (bitmapFrame.Decoder is IconBitmapDecoder)
                 {
-                    //var iconBitmapDecoder = new Rect(0, 0, _icon.Width, _icon.Height);
-                    //var dv = new DrawingVisual();
-                    //var dc = dv.RenderOpen();
-                    //dc.DrawImage(_icon, iconBitmapDecoder);
-                    //dc.Close();
-
-                    //var bmp = new RenderTargetBitmap((int)_icon.Width, (int)_icon.Height, 96, 96,
-                    //    PixelFormats.Pbgra32);
-                    //bmp.Render(dv);
-
-
-                    //BitmapSource bitmapSource = bmp;
-
-                    //if (bitmapSource.Format != PixelFormats.Bgra32 && bitmapSource.Format != PixelFormats.Pbgra32)
-                    //    bitmapSource = new FormatConvertedBitmap(bitmapSource, PixelFormats.Bgra32, null, 0.0);
                     var w = bitmapFrame.PixelWidth;
                     var h = bitmapFrame.PixelHeight;
                     var bpp = bitmapFrame.Format.BitsPerPixel;
@@ -434,16 +497,14 @@ namespace WPFDevelopers.Controls
                     _iconHandle = iconHandle.CriticalGetHandle();
                 }
 
-
             if (Thread.VolatileRead(ref _IsShowIn) != 1)
                 return false;
 
-            if (_hIcon != IntPtr.Zero)
+            if (destroyOldIcon && _hIcon != IntPtr.Zero)
             {
                 User32Interop.DestroyIcon(_hIcon);
                 _hIcon = IntPtr.Zero;
             }
-
             lock (this)
             {
                 if (_iconHandle != IntPtr.Zero)
@@ -456,10 +517,69 @@ namespace WPFDevelopers.Controls
                 {
                     _NOTIFYICONDATA.hIcon = IntPtr.Zero;
                 }
-
                 return Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref _NOTIFYICONDATA);
             }
         }
+        //private bool ChangeIcon()
+        //{
+        //    if (DesignerHelper.IsInDesignMode == true) return false;
+        //    var bitmapFrame = _icon as BitmapFrame;
+        //    if (bitmapFrame != null && bitmapFrame.Decoder != null)
+        //        if (bitmapFrame.Decoder is IconBitmapDecoder)
+        //        {
+        //            //var iconBitmapDecoder = new Rect(0, 0, _icon.Width, _icon.Height);
+        //            //var dv = new DrawingVisual();
+        //            //var dc = dv.RenderOpen();
+        //            //dc.DrawImage(_icon, iconBitmapDecoder);
+        //            //dc.Close();
+
+        //            //var bmp = new RenderTargetBitmap((int)_icon.Width, (int)_icon.Height, 96, 96,
+        //            //    PixelFormats.Pbgra32);
+        //            //bmp.Render(dv);
+
+
+        //            //BitmapSource bitmapSource = bmp;
+
+        //            //if (bitmapSource.Format != PixelFormats.Bgra32 && bitmapSource.Format != PixelFormats.Pbgra32)
+        //            //    bitmapSource = new FormatConvertedBitmap(bitmapSource, PixelFormats.Bgra32, null, 0.0);
+        //            var w = bitmapFrame.PixelWidth;
+        //            var h = bitmapFrame.PixelHeight;
+        //            var bpp = bitmapFrame.Format.BitsPerPixel;
+        //            var stride = (bpp * w + 31) / 32 * 4;
+        //            var sizeCopyPixels = stride * h;
+        //            var xor = new byte[sizeCopyPixels];
+        //            bitmapFrame.CopyPixels(xor, stride, 0);
+
+        //            var iconHandle = CreateIconCursor(xor, w, h, 0, 0, true);
+        //            _iconHandle = iconHandle.CriticalGetHandle();
+        //        }
+
+
+        //    if (Thread.VolatileRead(ref _IsShowIn) != 1)
+        //        return false;
+
+        //    if (_hIcon != IntPtr.Zero)
+        //    {
+        //        User32Interop.DestroyIcon(_hIcon);
+        //        _hIcon = IntPtr.Zero;
+        //    }
+
+        //    lock (this)
+        //    {
+        //        if (_iconHandle != IntPtr.Zero)
+        //        {
+        //            var hIcon = _iconHandle;
+        //            _NOTIFYICONDATA.hIcon = hIcon;
+        //            _hIcon = hIcon;
+        //        }
+        //        else
+        //        {
+        //            _NOTIFYICONDATA.hIcon = IntPtr.Zero;
+        //        }
+
+        //        return Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref _NOTIFYICONDATA);
+        //    }
+        //}
 
         private bool ChangeTitle(string title)
         {

@@ -88,6 +88,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        <Setter Property="Padding" Value="14.5,3,30,3"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -140,7 +141,7 @@
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Margin="14.5,3,30,3">
+                            Margin="{TemplateBinding Padding}">
                         </ContentPresenter>
                         <TextBox x:Name="PART_EditableTextBox" 
                                  Style="{x:Null}"

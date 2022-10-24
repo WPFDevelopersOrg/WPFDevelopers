@@ -37,7 +37,12 @@ namespace WPFDevelopers.Samples
         }
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
-            NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers.Minimal ", NotifyIconInfoType.None);
+            NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers ", NotifyIconInfoType.None);
+        }
+        private void Twink_Click(object sender, RoutedEventArgs e)
+        {
+            WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;
+            menuItemTwink.IsChecked = WpfNotifyIcon.IsTwink;
         }
     }
 }

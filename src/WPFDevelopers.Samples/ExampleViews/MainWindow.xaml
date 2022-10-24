@@ -41,11 +41,18 @@
     <!--<Grid Background="{StaticResource ExtralightSolidColorBrush}">-->
 
     <Grid>
-        <wpfdev:NotifyIcon Title="WPF开发者">
+        <wpfdev:NotifyIcon Title="WPF开发者" Name="WpfNotifyIcon">
             <wpfdev:NotifyIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="托盘消息" Click="SendMessage_Click"/>
-                    <MenuItem Header="关于" Click="About_Click"/>
+                    <MenuItem Header="闪烁" Name="menuItemTwink"  Click="Twink_Click"/>
+                    <MenuItem Header="关于" Click="About_Click">
+                        <MenuItem.Icon>
+                            <Path Data="{StaticResource PathWarning}" 
+                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                                      Stretch="Uniform" Height="20" Width="20"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <MenuItem Header="退出" Click="Quit_Click"/>
                 </ContextMenu>
             </wpfdev:NotifyIcon.ContextMenu>

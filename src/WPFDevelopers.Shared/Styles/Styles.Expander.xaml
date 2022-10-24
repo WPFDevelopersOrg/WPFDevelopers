@@ -7,111 +7,6 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <!--<ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
-        <Border x:Name="Border" Background="Transparent">
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal" />
-                    <VisualState x:Name="MouseOver"/>
-                    <VisualState x:Name="Pressed"/>
-                    <VisualState x:Name="Disabled"/>
-                </VisualStateGroup>
-                <VisualStateGroup x:Name="CheckStates">
-                    <VisualState x:Name="Checked">
-                        <Storyboard>
-                            <DoubleAnimation Duration="00:00:.2" To="90"
-                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                             Storyboard.TargetName="ExpandededArrow"/>
-                        </Storyboard>
-                    </VisualState>
-                    <VisualState x:Name="Unchecked">
-                        <Storyboard>
-                            <DoubleAnimation Duration="00:00:.2" To="0"
-                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                             Storyboard.TargetName="ExpandededArrow"/>
-                        </Storyboard>
-                    </VisualState>
-                    <VisualState x:Name="Indeterminate" />
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-            <Path x:Name="ExpandededArrow"
-                  Stretch="Fill" Height="10" Width="6"
-                  Data="{StaticResource PathNext}"
-                  RenderTransformOrigin=".5,.5">
-                <Path.Fill>
-                    <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
-                </Path.Fill>
-                <Path.RenderTransform>
-                    <RotateTransform/>
-                </Path.RenderTransform>
-            </Path>
-        </Border>
-    </ControlTemplate>
-
-    <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Expander}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition x:Name="ContentRow"
-Height="0" />
-                        </Grid.RowDefinitions>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver" />
-                                <VisualState x:Name="Disabled"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Border x:Name="Border" Grid.Row="0" BorderThickness="1">
-                            <Border.BorderBrush>
-                                <SolidColorBrush Color="{DynamicResource BaseColor}"/>
-                            </Border.BorderBrush>
-                            <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource LighterColor}"/>
-                            </Border.Background>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="20" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <ToggleButton OverridesDefaultStyle="True"
-                                              Template="{StaticResource ExpanderToggleButton}"
-                                              IsChecked="{Binding IsExpanded, Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}">
-
-                                </ToggleButton>
-                                <ContentPresenter Grid.Column="1"
-                                                  Margin="0,10" 
-                                                  ContentSource="Header"
-                                                  RecognizesAccessKey="True" />
-                            </Grid>
-                        </Border>
-                        <Border x:Name="Content" Grid.Row="1"
-                                BorderBrush="{DynamicResource BaseSolidColorBrush}" 
-                                BorderThickness="0" SnapsToDevicePixels="True">
-                            <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource BackgroundColor}"/>
-                            </Border.Background>
-                            <ContentPresenter Margin="4" />
-                        </Border>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsExpanded" Value="True">
-                            <Setter TargetName="ContentRow"
-                                    Property="Height"
-                                    Value="{Binding Height, ElementName=Content}" />
-                            <Setter TargetName="Content"
-                                    Property="BorderThickness"
-                                    Value="1,0,1,1" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-
     <Style x:Key="DefaultExpander" TargetType="{x:Type Expander}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
@@ -182,7 +77,8 @@ Height="0" />
                                                                                   Content="{TemplateBinding Content}" 
                                                                                   Grid.Column="1" 
                                                                                   ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                                                                  HorizontalAlignment="Left" Margin="4,0,0,0"
+                                                                                  HorizontalAlignment="Left" 
+                                                                              Margin="4,0,0,0"
                                                                                   RecognizesAccessKey="True" 
                                                                                   SnapsToDevicePixels="True" 
                                                                                   VerticalAlignment="Center"/>
