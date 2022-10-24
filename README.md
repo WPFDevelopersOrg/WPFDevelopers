@@ -82,7 +82,7 @@ Install-Package WPFDevelopers
 ----------
 ### NotifyIcon 
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon .gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
 
 ----------
 ### WindowAcrylicBlur
