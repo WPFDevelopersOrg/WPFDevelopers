@@ -185,6 +185,10 @@ namespace WPFDevelopers.Controls
 
             controlTemplate = (ControlTemplate)FindResource("PART_DrawArrow");
         }
+        protected override void OnPreviewMouseRightButtonDown(MouseButtonEventArgs e)
+        {
+            Close();
+        }
 
         private void _radioButtonInk_Click(object sender, RoutedEventArgs e)
         {
@@ -256,13 +260,16 @@ namespace WPFDevelopers.Controls
 
         private void _border_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var left = Canvas.GetLeft(_border);
-            var top = Canvas.GetTop(_border);
-            var beignPoint = new Point(left, top);
-            var endPoint = new Point(left + _border.ActualWidth, top + _border.ActualHeight);
-            rect = new Rect(beignPoint, endPoint);
-            pointStart = beignPoint;
-            MoveAllRectangle(endPoint);
+            if (isMouseUp)
+            {
+                var left = Canvas.GetLeft(_border);
+                var top = Canvas.GetTop(_border);
+                var beignPoint = new Point(left, top);
+                var endPoint = new Point(left + _border.ActualWidth, top + _border.ActualHeight);
+                rect = new Rect(beignPoint, endPoint);
+                pointStart = beignPoint;
+                MoveAllRectangle(endPoint);
+            }
             EditBarPosition();
         }
 
@@ -823,6 +830,10 @@ namespace WPFDevelopers.Controls
         {
             if (e.Source is ToggleButton)
                 return;
+            if (pointStart == pointEnd)
+            {
+                return;
+            }
             var fElement = e.Source as FrameworkElement;
             if (fElement != null && fElement.Tag == null)
                 SelectElement();
