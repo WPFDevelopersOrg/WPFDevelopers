@@ -4,6 +4,8 @@
 
 /src/WPFDevelopers/bin
 /src/WPFDevelopers/obj
+/src/WPFDevelopers.Samples/publish
+/src/WPFDevelopers.Samples/WPFDevelopers.Samples_TemporaryKey.pfx
 /src/WPFDevelopers.Samples/bin
 /src/WPFDevelopers.Samples/obj
 /src/.vs

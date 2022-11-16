@@ -69,7 +69,7 @@ namespace WPFDevelopers.Helpers
 
         public static void ThemeRefresh()
         {
-            var themePath = "pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml";
+            var themePath = "pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml";
             var themeResourceDictionary =
                 Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
                     x.Source != null && x.Source.Equals(themePath));
