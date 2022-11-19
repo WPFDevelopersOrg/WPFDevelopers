@@ -4,11 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <controls:CodeViewer>
         <wpfdev:CycleLoading  Value="50" LoadTitle="Loading...." Width="200">
             <TextBlock Text="activity"/>
         </wpfdev:CycleLoading>
-    </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Loading/CycleLoadingExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Loading/CycleLoadingExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

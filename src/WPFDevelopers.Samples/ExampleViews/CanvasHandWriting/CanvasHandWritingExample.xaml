@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.CanvasHandWriting"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{StaticResource PrimaryTextSolidColorBrush}" />
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
+    <controls:CodeViewer>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -44,4 +46,22 @@
                 PreviewMouseLeftButtonUp="DrawingCanvas_PreviewMouseLeftButtonUp"/>
           
     </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml.cs" 
+                CodeType="CSharp"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CanvasHandWriting/ComputingHelper.cs" 
+                CodeType="CSharp" Haader="Computing"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CanvasHandWriting/LineB.cs" 
+                CodeType="CSharp" Haader="LineB"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CanvasHandWriting/Vector2D.cs" 
+                CodeType="CSharp" Haader="Vector2D"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
-    <UniformGrid Columns="2" x:Name="MyUniformGrid">
+    <controls:CodeViewer>
+        <UniformGrid Columns="2" x:Name="MyUniformGrid">
         <StackPanel Orientation="Horizontal">
             <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
                                    VerticalAlignment="Center" HorizontalAlignment="Left"
@@ -38,6 +39,14 @@
                 </Ellipse>
             </wpfdev:BreathLamp>
         </StackPanel>
-       
-    </UniformGrid>
+        </UniformGrid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationAudioExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationAudioExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

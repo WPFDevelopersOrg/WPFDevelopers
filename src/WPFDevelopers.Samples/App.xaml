@@ -2,17 +2,22 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:local="clr-namespace:WPFDevelopers.Samples"
+             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
              StartupUri="ExampleViews\MainWindow.xaml" ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
-                    <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
-                    <ws:Resources Theme="Light"/>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
+                <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
+                <ws:Resources Theme="Light"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CodeViewer/CodeViewer.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="avalonedit:TextEditor">
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

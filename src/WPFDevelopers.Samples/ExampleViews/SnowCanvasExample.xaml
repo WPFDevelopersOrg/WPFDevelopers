@@ -5,30 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <controls:CodeViewer>
         <wpfdev:SnowCanvas  Icon="pack://application:,,,/Images/Snow/SnowTree.png"/>
-        <!--<Grid Width="200" Height="200">
-            <Path Data="M405.7 760.9h211.2v135.3H405.7z" Fill="#6B6458" Stretch="Fill" Width="40" Height="40"
-                  VerticalAlignment="Bottom"></Path>
-            <Path Data="M616.9 902.2H405.7c-3.3 0-6-2.7-6-6V760.9c0-3.3 2.7-6 6-6h211.2c3.3 0 6 2.7 6 6v135.3c0 3.3-2.7 6-6 6z m-205.2-12h199.2V766.9H411.7v123.3z" Fill="#232323"  Stretch="Fill"
-                  Width="40" Height="40"
-                  VerticalAlignment="Bottom"></Path>
-            <Path Data="M194.5 787.3l316.8-389.4 316.8 389.4z" Fill="#279152"  Stretch="Fill" Height="60" Width="120" Margin="45.333,38.666,34.666,101.333"></Path>
-            <Path Data="M828.1 793.3H194.5c-2.3 0-4.4-1.3-5.4-3.4-1-2.1-0.7-4.6 0.8-6.4l316.8-389.4c1.1-1.4 2.8-2.2 4.7-2.2 1.8 0 3.5 0.8 4.7 2.2l316.8 389.4c1.5 1.8 1.8 4.3 0.8 6.4-1.1 2-3.2 3.4-5.6 3.4z m-621-12h608.4L511.3 407.4 207.1 781.3z" Fill="#232323"  Stretch="Fill"
-                  Height="60" Width="120" Margin="45.333,38.666,34.666,101.333"></Path>
-            <Path Data="M244 596.7l267.3-311.1 267.3 311.1z" Fill="#279152"  Stretch="Fill" Height="60" Width="120" Margin="43.333,68.333,36.666,71.666"></Path>
-            <Path Data="M778.6 602.7H244c-2.3 0-4.5-1.4-5.5-3.5s-0.6-4.6 0.9-6.4l267.3-311.1c1.1-1.3 2.8-2.1 4.6-2.1 1.7 0 3.4 0.8 4.6 2.1l267.3 311.1c1.5 1.8 1.9 4.3 0.9 6.4-1 2.1-3.1 3.5-5.5 3.5z m-521.5-12h508.5L511.3 294.8 257.1 590.7z" Fill="#232323"  Stretch="Fill"
-                  Height="60" Width="130" Margin="38,69.666,32,70.333"></Path>
-            <Path Data="M313.1 415.4l198.2-288 198.3 288z" Fill="#279152"  Stretch="Fill"
-                  Height="60" Width="140" Margin="31.5,101.5,28.5,38.5"></Path>
-            <Path Data="M709.6 421.4H313.1c-2.2 0-4.3-1.2-5.3-3.2s-0.9-4.4 0.4-6.2l198.2-288c1.1-1.6 3-2.6 4.9-2.6 2 0 3.8 1 4.9 2.6l198.2 288c1.3 1.8 1.4 4.2 0.4 6.2-1 1.9-3 3.2-5.2 3.2z m-385.1-12h373.6L511.3 138 324.5 409.4z" Fill="#232323"  Stretch="Fill"
-                  Height="60" Width="140" Margin="30,104.5,30,35.5"></Path>
-            --><!--<Path Data="M733.5 217.2l16 35 29.1 19.2-29.1 19.2-16 35-16-35-29.1-19.2 29.1-19.2z" Fill="#F4AE3D"
-                  Stretch="Fill" Width="40" Height="40" Margin="119,53,41,107"></Path>
-            <Path Data="M733.5 330.1c-1.8 0-3.4-1-4.1-2.6L714 293.6l-28.1-18.5c-1.3-0.8-2-2.2-2-3.8s0.8-2.9 2-3.8L714 249l15.4-33.9c0.7-1.6 2.3-2.6 4.1-2.6 1.8 0 3.4 1 4.1 2.6L753 249l28.1 18.5c1.3 0.8 2 2.2 2 3.8s-0.8 2.9-2 3.8L753 293.6l-15.4 33.9c-0.7 1.6-2.3 2.6-4.1 2.6z m-36.9-58.7l23.5 15.4c0.7 0.5 1.3 1.1 1.6 1.9l11.9 26.1 11.9-26.1c0.4-0.8 0.9-1.4 1.6-1.9l23.5-15.4L747 256c-0.7-0.5-1.3-1.1-1.6-1.9L733.5 228l-11.9 26.1c-0.4 0.8-0.9 1.4-1.6 1.9l-23.4 15.4z"
-                  Fill="#232323"  Stretch="Fill" Width="40" Height="40" Margin="119,53,41,107"></Path>--><!--
-        </Grid>-->
-    </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SnowCanvasExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SnowCanvasExample.xaml.cs" 
+                CodeType="CSharp"/>
+            </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

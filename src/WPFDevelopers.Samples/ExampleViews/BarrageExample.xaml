@@ -5,31 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Canvas Name="MyCanvas" Background="Transparent">
-            <Canvas.CacheMode>
-                <BitmapCache EnableClearType="False" 
+    <controls:CodeViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Canvas Name="MyCanvas" Background="Transparent">
+                <Canvas.CacheMode>
+                    <BitmapCache EnableClearType="False" 
                              RenderAtScale="1" 
                              SnapsToDevicePixels="False"  />
-            </Canvas.CacheMode>
-        </Canvas>
-        <Grid Grid.Row="1" Name="MyGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBox wpfdev:ElementHelper.IsWatermark="True"
+                </Canvas.CacheMode>
+            </Canvas>
+            <Grid Grid.Row="1" Name="MyGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox wpfdev:ElementHelper.IsWatermark="True"
                      x:Name="tbBarrage"
                      wpfdev:ElementHelper.Watermark="请弹幕内容"/>
-            <Button Grid.Column="1" Style="{StaticResource PrimaryButton}"
+                <Button Grid.Column="1" Style="{StaticResource PrimaryButton}"
                     Content="发射弹幕" Margin="4,0,0,0" 
                     Click="ButtonBase_OnClick"/>
+            </Grid>
         </Grid>
-    </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BarrageExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BarrageExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

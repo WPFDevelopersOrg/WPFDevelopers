@@ -1,61 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- 关闭按钮 -->
-    <Style x:Key="CloseButtonStyle" TargetType="Button">
-        <Setter Property="Opacity" Value="0.5"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Name="Border" Background="Transparent">
-                        <Canvas Width="10" Height="10" ClipToBounds="True">
-                            <Line x:Name="Line01" Stroke="White" X1="0" Y1="0" X2="10" Y2="10"/>
-                            <Line x:Name="Line02" Stroke="White" X1="10" Y1="0" X2="0" Y2="10"/>
-                        </Canvas>
-                    </Border>
-                    <!-- 触发器 -->
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="0.75"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Opacity" Value="1"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!-- 登录/注册按钮 -->
-    <Style x:Key="LoginButtonStyle" TargetType="Button">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="Border" Background="#4370F5">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                    <!-- 触发器 -->
-                    <ControlTemplate.Triggers>
-                        <!-- 鼠标悬停时 -->
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="#5B84FE"/>
-                        </Trigger>
-                        <!-- 鼠标按下时 -->
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="#3761DF"/>
-                        </Trigger>
-                        <!-- 禁用时 -->
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.3"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+   
 
 </ResourceDictionary>

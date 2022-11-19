@@ -1517,15 +1517,13 @@
 		<Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
 		<Setter Property="FontWeight" Value="{DynamicResource NormalFontWeight}" />
 		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>-->
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 		<Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
 		<Style.Triggers>
 			<Trigger Property="IsMouseOver" Value="True">
-				<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
-				<!--<Setter Property="FontWeight" Value="Normal" />-->
 				<Setter Property="TextBlock.TextDecorations">
 					<Setter.Value>
 						<TextDecorationCollection>
@@ -4558,6 +4556,11 @@
 	<Style TargetType="{x:Type controls:StreamerLoading}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="100" />
 		<Setter Property="Height" Value="100" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
+			</Setter.Value>
+		</Setter>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
@@ -4565,7 +4568,7 @@
 						<Rectangle.Stroke>
 							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity=".6">
 								<GradientStop Color="Transparent" Offset="0" />
-								<GradientStop Color="{StaticResource PrimaryNormalColor}" Offset="1" />
+								<GradientStop Color="{Binding Path=Background.Color, RelativeSource={RelativeSource TemplatedParent}}" Offset="1" />
 							</LinearGradientBrush>
 						</Rectangle.Stroke>
 					</Rectangle>

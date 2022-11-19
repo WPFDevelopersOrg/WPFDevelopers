@@ -7,59 +7,6 @@
         <ResourceDictionary Source="TextBoxStyle.xaml"/>
         <ResourceDictionary Source="PasswordBoxStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="NormalWindow" TargetType="Window">
-        <Setter Property="Background" Value="#80222324"/>
-        <Setter Property="FontFamily" Value="NSimSun"/>
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="shell:WindowChrome.WindowChrome">
-            <Setter.Value>
-                <shell:WindowChrome  GlassFrameThickness="1"  CaptionHeight="100" />
-            </Setter.Value>
-        </Setter>
-        <!-- 模板 -->
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Window">
-                    <!-- 外观 -->
-                    <Grid>
-                        <!-- 分区 -->
-                        <Grid.RowDefinitions>
-                            <!-- 标题栏 -->
-                            <RowDefinition Height="100"/>
-                            <!-- 客户区 -->
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <!-- 第一块：标题栏 -->
-                        <Grid>
-                            <!-- 背景色 -->
-                            <Grid Height="200" VerticalAlignment="Center" Opacity="0.9">
-                                <Grid.Background>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Offset="0" Color="#4370F5"/>
-                                        <GradientStop Offset="1" Color="#AE088D"/>
-                                    </LinearGradientBrush>
-                                </Grid.Background>
-                            </Grid>
-                            <!-- 背景图 -->
-                            <Image Source="Image/Background.png" Width="360" VerticalAlignment="Bottom"/>
-                            <!-- 标识 -->
-                            <Image Source="Image/Logo.png" Width="114" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
-                            <!-- 关闭按钮 -->
-                            <Button x:Name="CloseButton" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top"
-                                        Style="{StaticResource CloseButtonStyle}" shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
-                        </Grid>
-                        <!-- 第二块：客户区 -->
-                        <Grid Grid.Row="1" Background="White">
-                            <AdornerDecorator>
-                                <ContentPresenter/>
-                            </AdornerDecorator>
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    
 
 </ResourceDictionary>

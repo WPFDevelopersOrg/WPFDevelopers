@@ -4,10 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <controls:CodeViewer>
 
         <Border Background="{DynamicResource BackgroundSolidColorBrush}" 
                 CornerRadius="12"
@@ -26,8 +27,8 @@
                 Height="300"/>
                 <Grid VerticalAlignment="Center"
                       Margin="160,0,0,0">
-                    <Path Fill="{StaticResource PrimaryMouseOverSolidColorBrush}" 
-                          Stroke="{StaticResource PrimaryMouseOverSolidColorBrush}"
+                    <Path Fill="{DynamicResource PrimaryMouseOverSolidColorBrush}" 
+                          Stroke="{DynamicResource PrimaryMouseOverSolidColorBrush}"
                           StrokeThickness="1" Opacity=".6"
                           Data="{Binding ElementName=PART_Thermometer, Path=CurrentGeometry,Mode=TwoWay}"/>
                     <wpfdev:Thermometer x:Name="PART_Thermometer"
@@ -35,9 +36,17 @@
                 </Grid>
                 <TextBlock Text="{Binding ElementName=PART_Thermometer,Path=CurrentValue,StringFormat={}{0}℃}" 
                            FontSize="24" Grid.Column="1"
-                           Foreground="{StaticResource PrimaryPressedSolidColorBrush}" FontFamily="Bahnschrift"
+                           Foreground="{DynamicResource PrimaryPressedSolidColorBrush}" FontFamily="Bahnschrift"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Border>
-    </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ThermometerExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ThermometerExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

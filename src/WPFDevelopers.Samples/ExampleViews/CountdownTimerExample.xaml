@@ -5,34 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-   
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Border Background="{StaticResource BackgroundSolidColorBrush}" CornerRadius="4,4,0,0">
-            <wpfdev:NavigateMenu TabStripPlacement="Top" SelectionChanged="NavigateMenu_SelectionChanged">
-                <!--<wpfdev:NavigateMenu.ItemsSource>
-                <CompositeCollection>
-                    <ListBoxItem Content="Default"/>
-                    <ListBoxItem Content="MultiColor"/>
-                </CompositeCollection>
-            </wpfdev:NavigateMenu.ItemsSource>-->
-                <ListBoxItem Content="Default"/>
-                <ListBoxItem Content="MultiColor"/>
-            </wpfdev:NavigateMenu>
-        </Border>
-        <Grid Margin="10" Grid.Row="1">
-            <wpfdev:CountdownTimer Number="3" x:Name="CountdownTimer1"/>
-            <UniformGrid Columns="4" Visibility="Collapsed" x:Name="CountdownTimerGroup">
-                <wpfdev:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
-                <wpfdev:CountdownTimer Number="0" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
-                <wpfdev:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
-                <wpfdev:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
-            </UniformGrid>
-        </Grid>
-    </Grid>
+    <controls:CodeViewer>
+        <TabControl TabStripPlacement="Bottom">
+            <TabItem Header="Default">
+                <wpfdev:CountdownTimer Number="3" x:Name="CountdownTimer1" FontSize="120"/>
+            </TabItem>
+            <TabItem Header="MultiColor">
+                <UniformGrid Columns="4" Visibility="Collapsed" x:Name="CountdownTimerGroup">
+                    <wpfdev:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
+                    <wpfdev:CountdownTimer Number="0" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
+                    <wpfdev:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
+                    <wpfdev:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
+                </UniformGrid>
+            </TabItem>
+        </TabControl>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CountdownTimerExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CountdownTimerExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

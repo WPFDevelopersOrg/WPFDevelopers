@@ -6,11 +6,13 @@
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <vm:MainVM/>
     </UserControl.DataContext>
+    <controls:CodeViewer>
     <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel>
             <TextBlock Text="ScrollViewer" Margin="10"/>
@@ -57,4 +59,13 @@
             </wpfdev:ScrollViewerAnimation>
         </StackPanel>
     </WrapPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

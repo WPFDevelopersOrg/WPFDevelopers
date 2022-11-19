@@ -1497,21 +1497,6 @@
 		</Style.Triggers>
 	</Style>
 	<Style TargetType="{x:Type Slider}" BasedOn="{StaticResource DefaultSlider}" />
-	<Style x:Key="DefaultTextBlock" TargetType="{x:Type TextBlock}">
-		<Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
-		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
-		<Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
-		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
-		<Setter Property="TextElement.FontSize" Value="{DynamicResource NormalFontSize}" />
-		<Setter Property="TextElement.FontFamily" Value="{DynamicResource NormalFontFamily}" />
-		<Setter Property="TextElement.FontStyle" Value="{DynamicResource NormalFontStyle}" />
-		<Setter Property="TextElement.FontStretch" Value="{DynamicResource NormalFontStretch}" />
-		<Setter Property="TextBlock.FontSize" Value="{DynamicResource NormalFontSize}" />
-		<Setter Property="TextBlock.FontFamily" Value="{DynamicResource NormalFontFamily}" />
-		<Setter Property="TextBlock.FontStyle" Value="{DynamicResource NormalFontStyle}" />
-		<Setter Property="TextBlock.FontStretch" Value="{DynamicResource NormalFontStretch}" />
-	</Style>
-	<Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource DefaultTextBlock}" />
 	<Style x:Key="DefaultHyperlink" TargetType="{x:Type Hyperlink}">
 		<Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
 		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
@@ -4559,6 +4544,11 @@
 	<Style TargetType="{x:Type controls:StreamerLoading}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="100" />
 		<Setter Property="Height" Value="100" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
+			</Setter.Value>
+		</Setter>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
@@ -4566,7 +4556,7 @@
 						<Rectangle.Stroke>
 							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity=".6">
 								<GradientStop Color="Transparent" Offset="0" />
-								<GradientStop Color="{StaticResource PrimaryNormalColor}" Offset="1" />
+								<GradientStop Color="{Binding Path=Background.Color, RelativeSource={RelativeSource TemplatedParent}}" Offset="1" />
 							</LinearGradientBrush>
 						</Rectangle.Stroke>
 					</Rectangle>
@@ -6159,6 +6149,22 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style x:Key="DefaultTextBlock" TargetType="{x:Type TextBlock}">
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+		<Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
+		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
+		<Setter Property="TextElement.FontSize" Value="{DynamicResource NormalFontSize}" />
+		<Setter Property="TextElement.FontFamily" Value="{DynamicResource NormalFontFamily}" />
+		<Setter Property="TextElement.FontStyle" Value="{DynamicResource NormalFontStyle}" />
+		<Setter Property="TextElement.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+		<Setter Property="TextBlock.FontSize" Value="{DynamicResource NormalFontSize}" />
+		<Setter Property="TextBlock.FontFamily" Value="{DynamicResource NormalFontFamily}" />
+		<Setter Property="TextBlock.FontStyle" Value="{DynamicResource NormalFontStyle}" />
+		<Setter Property="TextBlock.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+	</Style>
+	<Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource DefaultTextBlock}" />
 	<Style x:Key="DatePickerCalendarStyle" TargetType="{x:Type Calendar}" BasedOn="{StaticResource {x:Type Calendar}}" />
 	<Style x:Key="DefaultDatePicker" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="IsTodayHighlighted" Value="True" />

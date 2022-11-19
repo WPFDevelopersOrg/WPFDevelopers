@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:map="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:mapOverlays="clr-namespace:Microsoft.Maps.MapControl.WPF.Overlays;assembly=Microsoft.Maps.MapControl.WPF"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -72,8 +73,9 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <map:Map x:Name="map" ZoomLevel="5" Center="39.9132801985722,116.392009995601"
+    <controls:CodeViewer>
+        <Grid>
+            <map:Map x:Name="map" ZoomLevel="5" Center="39.9132801985722,116.392009995601"
                   CredentialsProvider="AgXB7m7fVYxKpjEZV9rGdrRPvLgawYhi4Wvw99kk4RDspoalC3B_vQ8GKJAoxrve">
             <map:Map.Mode>
                 <map:MercatorMode/>
@@ -158,5 +160,20 @@
                 <Button Content="物资轨迹" Click="BtnCar_Click" Grid.Row="2" Height="40" Style="{StaticResource PrimaryButton}"/>
             </Grid>
         </DockPanel>
-    </Grid>
+        </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Map/BingAMapExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Map/BingAMapExample.xaml.cs" 
+                CodeType="CSharp"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Map/AMapTitleLayer.cs" 
+                CodeType="CSharp" Haader="TitleLayer"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Map/PushpinModel.cs" 
+                CodeType="CSharp" Haader="Pushpin"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

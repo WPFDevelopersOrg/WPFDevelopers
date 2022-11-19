@@ -3,7 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Font.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 

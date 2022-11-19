@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\AcrylicBlurWindowExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\AnimationAudioExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\AnimationNavigationBar3DExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\BarrageExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\BasicBarChartExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\BasicControlsExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\BreatheLightExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\BubblleControlExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CarouselExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CarouselExampleEx.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ChatEmojiExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CircularMenuExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CircularProgressBarExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CountdownTimerExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CropControlExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\CutImageExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\DashboardExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopBackground.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopPlayVideo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\DrawerMenuExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\EdgePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\HomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\DrawingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\DrawPrizeExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\EdgeLightExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LineChartExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Loading\BallLoadingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Loading\CycleLoadingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Loading\RingLoadingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Loading\RollLoadingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Loading\StreamerLoadingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Loading\WaitLoadingExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\PasswordBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\SignUpDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\LogoAnimationExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Map\BingAMapExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\OtherControlExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\PaginationExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\PanningItemsExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordWithPlainText.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\PieControlExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\RadarChartExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\RainbowButtonsExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\RoundMenuExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\RoundPickerExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\RulerControlExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ScreenCutExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ScrollViewerAnimationExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ShakeExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\SnowCanvasExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\SongWordsExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsMini.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\SpotLightExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\StarrySkyExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\TaskbarItemInfoExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ThermometerExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ThumbDragAndAngleExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\TimeLineExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\TransitionPanelExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\VerifyCodeExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\VirtualizingWrapPanelExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\VolumeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\ZooSemyExample.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

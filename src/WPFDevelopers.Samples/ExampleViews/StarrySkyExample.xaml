@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -23,8 +24,8 @@
             <Setter Property="Width" Value="100"></Setter>
         </Style>
     </UserControl.Resources>
+    <controls:CodeViewer>
     <Grid>
-       
         <wpfdev:StarrySky Name="myStarrySky">
 
         </wpfdev:StarrySky>
@@ -64,4 +65,13 @@
             <Button Name="btn_render" Content="生成" Click="btn_render_Click"/>
         </StackPanel>
     </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/StarrySkyExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/StarrySkyExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

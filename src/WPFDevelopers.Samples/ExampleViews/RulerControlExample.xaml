@@ -5,34 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Slider x:Name="PART_Slider" IsSnapToTickEnabled="True"
+    <controls:CodeViewer>
+        <Grid>
+            <Slider x:Name="PART_Slider" IsSnapToTickEnabled="True"
                 Value="40"
                 Minimum="10"
                 Maximum="210"/>
-        <UniformGrid Rows="3">
-            <Grid Background="{StaticResource CircularDualSolidColorBrush}" Height="51" Margin="40,0">
-                <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
+            <UniformGrid Rows="3">
+                <Grid Background="{StaticResource CircularDualSolidColorBrush}" Height="51" Margin="40,0">
+                    <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
                   Data="{Binding ElementName=PART_Ruler, Path=CurrentGeometry,Mode=TwoWay}" />
-                <wpfdev:Ruler x:Name="PART_Ruler" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
+                    <wpfdev:Ruler x:Name="PART_Ruler" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
                           CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>
-            </Grid>
-            <Grid Background="{StaticResource DangerPressedSolidColorBrush}" Height="51" Margin="40,0">
-                <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
+                </Grid>
+                <Grid Background="{StaticResource DangerPressedSolidColorBrush}" Height="51" Margin="40,0">
+                    <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
                   Data="{Binding ElementName=PART_Ruler1, Path=CurrentGeometry,Mode=TwoWay}" />
-                <wpfdev:Ruler x:Name="PART_Ruler1" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
+                    <wpfdev:Ruler x:Name="PART_Ruler1" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
                           CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>
-            </Grid>
-            <Grid Background="{StaticResource WarningPressedSolidColorBrush}" Height="51" Margin="40,0">
-                <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
+                </Grid>
+                <Grid Background="{StaticResource WarningPressedSolidColorBrush}" Height="51" Margin="40,0">
+                    <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
                   Data="{Binding ElementName=PART_Ruler2, Path=CurrentGeometry,Mode=TwoWay}" />
-                <wpfdev:Ruler x:Name="PART_Ruler2" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
+                    <wpfdev:Ruler x:Name="PART_Ruler2" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
                           CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>
-            </Grid>
-        </UniformGrid>
-        
-        
-    </Grid>
+                </Grid>
+            </UniformGrid>
+        </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RulerControlExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RulerControlExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

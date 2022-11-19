@@ -48,7 +48,7 @@
 	<!-- 启用 Windows 公共控件和对话框的主题(Windows XP 和更高版本) -->
   
   <dependency>
-    <dependentAssembly>
+    <!--<dependentAssembly>
       <assemblyIdentity
           type="win32"
           name="Microsoft.Windows.Common-Controls"
@@ -57,7 +57,7 @@
           publicKeyToken="6595b64144ccf1df"
           language="*"
         />
-    </dependentAssembly>
+    </dependentAssembly>-->
   </dependency>
   
 

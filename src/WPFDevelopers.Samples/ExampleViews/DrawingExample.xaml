@@ -6,11 +6,13 @@
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers" 
              xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <vm:DrawingExampleVM/>
     </UserControl.DataContext>
+    <controls:CodeViewer>
     <UniformGrid Columns="3" Rows="2">
         <wpfdev:DrawingControl 
             InnerBackground="{StaticResource SuccessSolidColorBrush}"
@@ -109,7 +111,14 @@
             </wpfdev:DrawingControl.ItemTemplate>
 
         </wpfdev:DrawingControl>
-
-
     </UniformGrid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DrawingExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DrawingExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

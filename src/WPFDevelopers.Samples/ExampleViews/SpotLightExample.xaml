@@ -5,13 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UniformGrid Rows="2" Background="#222222">
-        <wpfdev:SpotLight FontSize="50" Text="YanJinHua" 
+    <controls:CodeViewer>
+        <UniformGrid Rows="2" Background="#222222">
+            <wpfdev:SpotLight FontSize="50" Text="YanJinHua" 
                           DefaultForeground="Crimson" 
                           Foreground="Fuchsia" 
                           Duration="00:00:05" />
-        <wpfdev:SpotLight/>
-    </UniformGrid>
+            <wpfdev:SpotLight/>
+        </UniformGrid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SpotLightExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SpotLightExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

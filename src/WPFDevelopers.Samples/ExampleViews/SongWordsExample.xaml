@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" 
              TextOptions.TextFormattingMode="Display" UseLayoutRounding="True"
@@ -16,7 +17,8 @@
             <GradientStop Color="#FF007ACC" Offset="1" />
         </LinearGradientBrush>
     </UserControl.Resources>
-    <Grid Background="{StaticResource DefaultBackgroundBrush}" Height="650" Width="400">
+    <controls:CodeViewer>
+        <Grid Background="{StaticResource DefaultBackgroundBrush}" Height="650" Width="400">
         <StackPanel HorizontalAlignment="Center" Grid.Row="1">
             <TextBlock Text="中华人民共和国国歌" HorizontalAlignment="Center" FontSize="20" Margin="0,10"/>
             <ItemsControl ItemsSource="{Binding MusicWordArray,RelativeSource={RelativeSource AncestorType=local:SongWordsExample}}">
@@ -32,4 +34,13 @@
             </ItemsControl>
         </StackPanel>
     </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SongWordsExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SongWordsExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

@@ -6,10 +6,12 @@
              xmlns:draw="http://www.microsoft.net/drawing"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:controls="clr-namespace:Microsoft.Expression.Drawing.Controls;assembly=WPFDevelopers"
+             xmlns:controls1="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TabControl>
+    <controls1:CodeViewer>
+        <Grid>
+        <TabControl TabStripPlacement="Bottom">
             <TabItem Header="Horizontal">
                 <controls:PanningItems>
                     <Image Source="../../Images/Craouse/0.jpg"></Image>
@@ -31,4 +33,13 @@
         </TabControl>
         
     </Grid>
+        <controls1:CodeViewer.SourceCodes>
+            <controls1:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PanningItemsExample.xaml" 
+                CodeType="Xaml"/>
+            <controls1:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PanningItemsExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls1:CodeViewer.SourceCodes>
+        </controls1:CodeViewer>
 </UserControl>

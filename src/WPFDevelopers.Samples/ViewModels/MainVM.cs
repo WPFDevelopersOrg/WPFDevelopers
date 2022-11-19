@@ -7,6 +7,7 @@ using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews.CanvasHandWriting;
 using WPFDevelopers.Samples.ExampleViews.DrawerMenu;
+using WPFDevelopers.Samples.ExampleViews.LoginWindow;
 using WPFDevelopers.Samples.ExampleViews.NumberCard;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
 using WPFDevelopers.Samples.Helpers;
@@ -205,6 +206,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     ControlPanel = new RadarChartExample();
                     break;
                 case MenuEnum.LoginWindow:
+                    ControlPanel = new LoginExample();
                     var loginWindow = new LoginWindowExample();
                     loginWindow.ShowDialog();
                     break;
@@ -281,13 +283,16 @@ namespace WPFDevelopers.Samples.ViewModels
                     ControlPanel = new BarrageExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
-                     new VirtualizingWrapPanelExample().ShowDialog();
+                    ControlPanel = new VirtualizingWrapPanel();
+                    new VirtualizingWrapPanelExample().ShowDialog();
                     break;
                 case MenuEnum.AcrylicBlur:
+                    ControlPanel = new AcrylicBlurExample();
                     new AcrylicBlurWindowExample().ShowDialog();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
+                    ControlPanel = new TaskbarItemInfo();
                     var taskbar = new TaskbarItemInfoExample();
                     taskbar.ShowDialog();
                     break;

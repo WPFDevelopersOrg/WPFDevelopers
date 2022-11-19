@@ -100,9 +100,11 @@
                 </wpfdev:NavigateMenu>
             </Border>
 
-            <Border Grid.Column="1" Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="4"
+            <Border Grid.Column="1" 
+                    Background="{DynamicResource BackgroundSolidColorBrush}" 
+                    CornerRadius="4"
                     Effect="{StaticResource NormalShadowDepth}">
-                <ContentControl Content="{Binding ControlPanel}" Margin="10"/>
+                <ContentControl Content="{Binding ControlPanel}"/>
             </Border>
         </Grid>
     </Grid>

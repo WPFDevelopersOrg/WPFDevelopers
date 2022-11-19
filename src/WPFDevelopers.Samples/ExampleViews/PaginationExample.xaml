@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -14,6 +15,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
+    <controls:CodeViewer>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -41,4 +43,16 @@
                              CountPerPage="{Binding LitePaginationViewModel.CountPerPage,Mode=TwoWay}"
                              Current="{Binding LitePaginationViewModel.Current,Mode=TwoWay}"/>
     </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml.cs" 
+                CodeType="CSharp"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ViewModels/PaginationExampleVM.cs" 
+                CodeType="CSharp" Haader="VM"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

@@ -6,11 +6,12 @@
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    <Grid>
-        <TabControl>
+
+    <controls:CodeViewer>
+        <TabControl TabStripPlacement="Bottom">
             <TabItem Header="随机">
                 <wpfdev:BubblleControl x:Name="MyBubblleControl"  Click="BubblleControl_Click">
                     <wpfdev:BubblleControl.ItemsSource>
@@ -96,6 +97,13 @@
                 </wpfdev:BubblleCanvas>
             </TabItem>
         </TabControl>
-        
-    </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BubblleControlExample.xaml" 
+                CodeType="Xaml"/>
+            <controls:SourceCodeModel 
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BubblleControlExample.xaml.cs" 
+                CodeType="CSharp"/>
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
 </UserControl>

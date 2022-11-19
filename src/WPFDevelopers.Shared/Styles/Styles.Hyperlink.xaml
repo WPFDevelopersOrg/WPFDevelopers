@@ -3,7 +3,8 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Font.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/Colors.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
@@ -13,15 +14,13 @@
         <Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
         <Setter Property="FontWeight" Value="{DynamicResource NormalFontWeight}" />
         <Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
+        <!--<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>-->
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
         <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
         <Setter Property="TextBlock.TextDecorations" Value="{x:Null}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True" >
-                <!--<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
-                <!--<Setter Property="FontWeight" Value="Normal" />-->
                 <Setter Property="TextBlock.TextDecorations">
                     <Setter.Value >
                         <TextDecorationCollection>

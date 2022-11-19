@@ -10,6 +10,11 @@
     <Style TargetType="{x:Type controls:StreamerLoading}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="100"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource PrimaryNormalColor}"/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
@@ -19,7 +24,7 @@
                         <Rectangle.Stroke>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity=".6">
                                 <GradientStop Color="Transparent" Offset="0"/>
-                                <GradientStop Color="{StaticResource PrimaryNormalColor}" Offset="1"/>
+                                <GradientStop Color="{Binding Path=Background.Color, RelativeSource={RelativeSource TemplatedParent}}" Offset="1"/>
                             </LinearGradientBrush>
                         </Rectangle.Stroke>
                     </Rectangle>
