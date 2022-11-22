@@ -96,6 +96,11 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### CodeViewer（代码查看器） 
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CodeViewer.gif"/>   
+
+----------
 ### NotifyIcon（托盘）
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
