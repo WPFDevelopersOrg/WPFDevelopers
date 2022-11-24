@@ -83,6 +83,11 @@ Install-Package WPFDevelopers
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 ----------
+### CodeViewer 
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CodeViewer.gif"/>   
+
+----------
 ### NotifyIcon 
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
