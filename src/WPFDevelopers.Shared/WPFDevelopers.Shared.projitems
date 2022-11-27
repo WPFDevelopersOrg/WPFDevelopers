@@ -77,6 +77,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\User32\WS_EX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\FireControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination\Pagination.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SmallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieSegmentModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\DrawPrize.cs" />

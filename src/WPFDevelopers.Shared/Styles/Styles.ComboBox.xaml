@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
 
@@ -32,7 +33,6 @@
                         <RotateTransform Angle="0"/>
                     </Path.RenderTransform>
                 </Path>
-
             </Grid>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
@@ -106,7 +106,7 @@
                                                          EasingFunction="{StaticResource ExponentialEaseOut}"/>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid Width="{TemplateBinding Width}">
+                    <controls:SmallPanel Width="{TemplateBinding Width}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -190,7 +190,7 @@
                                 BorderBrush="{DynamicResource BaseSolidColorBrush}"
                                 BorderThickness="1"  SnapsToDevicePixels="True"/>
 
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
@@ -241,7 +241,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Grid>
+                    <controls:SmallPanel>
                         <Rectangle x:Name="PART_RectangleMouseOver" 
                                    Fill="{DynamicResource BackgroundSolidColorBrush}"
                                    SnapsToDevicePixels="True" UseLayoutRounding="True"/>
@@ -256,7 +256,7 @@
                                           x:Name="PART_ContentPresenter" 
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>

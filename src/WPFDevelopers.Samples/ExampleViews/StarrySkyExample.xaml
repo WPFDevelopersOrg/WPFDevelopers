@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="Margin" Value="2"></Setter>

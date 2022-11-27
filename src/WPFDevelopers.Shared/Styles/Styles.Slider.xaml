@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     
     <ResourceDictionary.MergedDictionaries>
@@ -12,14 +13,14 @@
     <sys:Double x:Key="RepeatButtonSize">5</sys:Double>
     
     <ControlTemplate x:Key="SliderThumbHorizontalTop" TargetType="{x:Type Thumb}">
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource BackgroundSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="RenderTransform" TargetName="PART_Border">
@@ -31,14 +32,14 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource BackgroundSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="RenderTransform" TargetName="PART_Border">
@@ -71,7 +72,7 @@
                                  To="1.2" Duration="00:00:0.1"/>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource WindowForegroundColorBrush}"
                     SnapsToDevicePixels="True"
@@ -81,7 +82,7 @@
                     <ScaleTransform/>
                 </Border.RenderTransform>
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Trigger.EnterActions>
@@ -115,14 +116,14 @@
         </Setter>
     </Style>
     <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource BackgroundSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="RenderTransform" TargetName="PART_Border">
@@ -205,14 +206,14 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbVerticalLeft" TargetType="{x:Type Thumb}">
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource BackgroundSolidColorBrush}"
                     SnapsToDevicePixels="True" UseLayoutRounding="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="RenderTransform" TargetName="PART_Border">
@@ -224,14 +225,14 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbVerticalRight" TargetType="{x:Type Thumb}">
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource BackgroundSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="RenderTransform" TargetName="PART_Border">
@@ -243,14 +244,14 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbVerticalDefault" TargetType="{x:Type Thumb}">
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource BackgroundSolidColorBrush}" 
                     SnapsToDevicePixels="True" UseLayoutRounding="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="RenderTransform" TargetName="PART_Border">
@@ -283,7 +284,7 @@
                                  To="1.2" Duration="00:00:0.1"/>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+        <controls:SmallPanel HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
             <Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" 
                     BorderThickness="2" Background="{DynamicResource BackgroundSolidColorBrush}" 
                     SnapsToDevicePixels="True" UseLayoutRounding="True"
@@ -293,7 +294,7 @@
                     <ScaleTransform/>
                 </Border.RenderTransform>
             </Border>
-        </Grid>
+        </controls:SmallPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Trigger.EnterActions>

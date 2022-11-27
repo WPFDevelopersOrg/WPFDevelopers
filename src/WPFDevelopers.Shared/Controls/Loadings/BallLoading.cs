@@ -8,15 +8,15 @@ using System.Windows.Shapes;
 
 namespace WPFDevelopers.Controls
 {
-    [TemplatePart(Name = Part_BackGridTemplateName, Type = typeof(Grid))]
+    [TemplatePart(Name = Part_BackGridTemplateName, Type = typeof(SmallPanel))]
     [TemplatePart(Name = Part_EillipseTemplateName, Type = typeof(Ellipse))]
-    [TemplatePart(Name = Part_EillpseDock1TemplateName, Type = typeof(Grid))]
+    [TemplatePart(Name = Part_EillpseDock1TemplateName, Type = typeof(SmallPanel))]
     [TemplatePart(Name = Part_Eillipse1TemplateName, Type = typeof(Ellipse))]
-    [TemplatePart(Name = Part_EillpseDock2TemplateName, Type = typeof(Grid))]
+    [TemplatePart(Name = Part_EillpseDock2TemplateName, Type = typeof(SmallPanel))]
     [TemplatePart(Name = Part_Eillipse2TemplateName, Type = typeof(Ellipse))]
-    [TemplatePart(Name = Part_EillpseDock3TemplateName, Type = typeof(Grid))]
+    [TemplatePart(Name = Part_EillpseDock3TemplateName, Type = typeof(SmallPanel))]
     [TemplatePart(Name = Part_Eillipse3TemplateName, Type = typeof(Ellipse))]
-    [TemplatePart(Name = Part_EillpseDock4TemplateName, Type = typeof(Grid))]
+    [TemplatePart(Name = Part_EillpseDock4TemplateName, Type = typeof(SmallPanel))]
     [TemplatePart(Name = Part_Eillipse4TemplateName, Type = typeof(Ellipse))]
     public class BallLoading : Control
     {
@@ -61,16 +61,16 @@ namespace WPFDevelopers.Controls
 
         private Storyboard _Storyboard1;
 
-        private Grid Part_BackGrid;
+        private SmallPanel Part_BackGrid;
         private Ellipse Part_Eillipse;
         private Ellipse Part_Eillipse1;
         private Ellipse Part_Eillipse2;
         private Ellipse Part_Eillipse3;
         private Ellipse Part_Eillipse4;
-        private Grid Part_EillpseDock1;
-        private Grid Part_EillpseDock2;
-        private Grid Part_EillpseDock3;
-        private Grid Part_EillpseDock4;
+        private SmallPanel Part_EillpseDock1;
+        private SmallPanel Part_EillpseDock2;
+        private SmallPanel Part_EillpseDock3;
+        private SmallPanel Part_EillpseDock4;
 
         static BallLoading()
         {
@@ -94,15 +94,15 @@ namespace WPFDevelopers.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Part_BackGrid = GetTemplateChild(Part_BackGridTemplateName) as Grid;
+            Part_BackGrid = GetTemplateChild(Part_BackGridTemplateName) as SmallPanel;
             Part_Eillipse = GetTemplateChild(Part_EillipseTemplateName) as Ellipse;
-            Part_EillpseDock1 = GetTemplateChild(Part_EillpseDock1TemplateName) as Grid;
+            Part_EillpseDock1 = GetTemplateChild(Part_EillpseDock1TemplateName) as SmallPanel;
             Part_Eillipse1 = GetTemplateChild(Part_Eillipse1TemplateName) as Ellipse;
-            Part_EillpseDock2 = GetTemplateChild(Part_EillpseDock2TemplateName) as Grid;
+            Part_EillpseDock2 = GetTemplateChild(Part_EillpseDock2TemplateName) as SmallPanel;
             Part_Eillipse2 = GetTemplateChild(Part_Eillipse2TemplateName) as Ellipse;
-            Part_EillpseDock3 = GetTemplateChild(Part_EillpseDock3TemplateName) as Grid;
+            Part_EillpseDock3 = GetTemplateChild(Part_EillpseDock3TemplateName) as SmallPanel;
             Part_Eillipse3 = GetTemplateChild(Part_Eillipse3TemplateName) as Ellipse;
-            Part_EillpseDock4 = GetTemplateChild(Part_EillpseDock4TemplateName) as Grid;
+            Part_EillpseDock4 = GetTemplateChild(Part_EillpseDock4TemplateName) as SmallPanel;
             Part_Eillipse4 = GetTemplateChild(Part_Eillipse4TemplateName) as Ellipse;
         }
 

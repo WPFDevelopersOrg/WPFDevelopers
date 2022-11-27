@@ -12,7 +12,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MasterCarousel}">
 
-                    <Grid Background="{TemplateBinding Background}" >
+                    <controls:SmallPanel Background="{TemplateBinding Background}" >
                         <!--<Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
@@ -29,7 +29,7 @@
                         <StackPanel x:Name="PART_ButtonDock" Orientation="Horizontal" 
                                     VerticalAlignment="Center" HorizontalAlignment="Center"
                                     Margin="0,210,0,0"/>
-                    </Grid>
+                    </controls:SmallPanel>
                    
                 </ControlTemplate>
             </Setter.Value>
@@ -42,10 +42,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:EmphasizerCarousel}">
 
-                    <Grid Background="{TemplateBinding Background}" >
+                    <controls:SmallPanel Background="{TemplateBinding Background}" >
                         <Canvas x:Name="PART_BackCanvas">
                         </Canvas>
-                    </Grid>
+                    </controls:SmallPanel>
 
                 </ControlTemplate>
             </Setter.Value>

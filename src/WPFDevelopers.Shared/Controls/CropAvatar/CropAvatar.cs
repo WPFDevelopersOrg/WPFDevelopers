@@ -12,7 +12,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
     [TemplatePart(Name = ImageTemplateName, Type = typeof(Image))]
     [TemplatePart(Name = PathTemplateName, Type = typeof(Path))]
-    [TemplatePart(Name = GridTemplateName, Type = typeof(Grid))]
+    [TemplatePart(Name = GridTemplateName, Type = typeof(SmallPanel))]
     [TemplatePart(Name = ReplaceButtonTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = AddButtonTemplateName, Type = typeof(Button))]
     public class CropAvatar : Control
@@ -32,7 +32,7 @@ namespace WPFDevelopers.Controls
         private BitmapFrame bitmapFrame;
         private Canvas canvas;
         private CroppedBitmap crop;
-        private Grid grid;
+        private SmallPanel grid;
         private Image image;
         private int initialX, initialY, voffsetX, voffsetY;
         private bool isDown;
@@ -60,7 +60,7 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
             canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
             canvas.Loaded += Canvas_Loaded;
-            grid = GetTemplateChild(GridTemplateName) as Grid;
+            grid = GetTemplateChild(GridTemplateName) as SmallPanel;
             image = GetTemplateChild(ImageTemplateName) as Image;
             image.MouseDown += Image_MouseDown;
             image.MouseMove += Image_MouseMove;

@@ -11,10 +11,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:BallLoading}">
                     <Viewbox>
-                        <Grid x:Name="Part_BackGrid" Width="400" Height="140">
-                            <Grid.Effect>
+                        <controls:SmallPanel x:Name="Part_BackGrid" Width="400" Height="140">
+                            <controls:SmallPanel.Effect>
                                 <DropShadowEffect BlurRadius="10" ShadowDepth="5" Color="#ff6a27" Opacity="0.8"/>
-                            </Grid.Effect>
+                            </controls:SmallPanel.Effect>
                             <Canvas>
                                 <Ellipse x:Name="Part_Eillipse"  Canvas.Left="20" Canvas.Top="50" Width="40" Height="40">
                                     <Ellipse.Fill>
@@ -33,7 +33,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Grid x:Name="Part_EillpseDock1" Grid.Column="1" RenderTransformOrigin="0,0.5">
+                                <controls:SmallPanel x:Name="Part_EillpseDock1" Grid.Column="1" RenderTransformOrigin="0,0.5">
                                     <Ellipse x:Name="Part_Eillipse1"  HorizontalAlignment="Center" Width="40" Height="40">
                                         <Ellipse.Fill>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -42,8 +42,8 @@
                                             </LinearGradientBrush>
                                         </Ellipse.Fill>
                                     </Ellipse>
-                                </Grid>
-                                <Grid x:Name="Part_EillpseDock2" Grid.Column="2" RenderTransformOrigin="0,0.5">
+                                </controls:SmallPanel>
+                                <controls:SmallPanel x:Name="Part_EillpseDock2" Grid.Column="2" RenderTransformOrigin="0,0.5">
                                     <Ellipse x:Name="Part_Eillipse2"  HorizontalAlignment="Center" Width="40" Height="40">
                                         <Ellipse.Fill>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -52,8 +52,8 @@
                                             </LinearGradientBrush>
                                         </Ellipse.Fill>
                                     </Ellipse>
-                                </Grid>
-                                <Grid x:Name="Part_EillpseDock3" Grid.Column="3" RenderTransformOrigin="0,0.5">
+                                </controls:SmallPanel>
+                                <controls:SmallPanel x:Name="Part_EillpseDock3" Grid.Column="3" RenderTransformOrigin="0,0.5">
                                     <Ellipse x:Name="Part_Eillipse3"  HorizontalAlignment="Center" Width="40" Height="40">
                                         <Ellipse.Fill>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -62,8 +62,8 @@
                                             </LinearGradientBrush>
                                         </Ellipse.Fill>
                                     </Ellipse>
-                                </Grid>
-                                <Grid x:Name="Part_EillpseDock4" Grid.Column="4" RenderTransformOrigin="0,0.5">
+                                </controls:SmallPanel>
+                                <controls:SmallPanel x:Name="Part_EillpseDock4" Grid.Column="4" RenderTransformOrigin="0,0.5">
                                     <Ellipse x:Name="Part_Eillipse4"  HorizontalAlignment="Center" Width="40" Height="40">
                                         <Ellipse.Fill>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -72,9 +72,9 @@
                                             </LinearGradientBrush>
                                         </Ellipse.Fill>
                                     </Ellipse>
-                                </Grid>
+                                </controls:SmallPanel>
                             </Grid>
-                        </Grid>
+                        </controls:SmallPanel>
                     </Viewbox>
                 </ControlTemplate>
             </Setter.Value>

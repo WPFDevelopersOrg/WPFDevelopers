@@ -39,7 +39,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CutImage}">
-                    <Grid>
+                    <controls:SmallPanel>
                         <Border x:Name="PART_BorderPanel">
                             <Canvas x:Name="DrawCanvas"
                                 VerticalAlignment="Center"
@@ -77,7 +77,7 @@
                            ParentMaxWidth="{Binding ElementName=DrawCanvas,Path=ActualWidth}" Visibility="Collapsed"/>
                             </Canvas>
                         </Border>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -242,7 +242,7 @@
                                 <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Grid>
+                        <controls:SmallPanel>
                             <TextBlock Foreground="{Binding ElementName=textBlock, Path=Foreground}" 
                                        Text="{TemplateBinding Content}"
                                        FontFamily="{TemplateBinding FontFamily}">
@@ -274,7 +274,7 @@
                                     </LinearGradientBrush>
                                 </TextBlock.Foreground>
                             </TextBlock>
-                        </Grid>
+                        </controls:SmallPanel>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

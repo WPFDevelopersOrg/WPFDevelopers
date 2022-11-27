@@ -33,7 +33,7 @@
                                 <RowDefinition />
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
+                            <controls:SmallPanel Grid.Row="0">
                                 <DockPanel Margin="20,0,0,0">
                                     <TextBlock x:Name="PART_Title"
                                            HorizontalAlignment="Left"
@@ -51,8 +51,8 @@
                               Stretch="Fill" />
                                     </Button>
                                 </DockPanel>
-                            </Grid>
-                            <Grid Grid.Row="1" Margin="20">
+                            </controls:SmallPanel>
+                            <controls:SmallPanel Grid.Row="1" Margin="20">
                                 <DockPanel>
                                     <Path x:Name="PART_Path" Data="{DynamicResource PathInformation}"
                                       Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
@@ -67,14 +67,14 @@
                                              BorderThickness="0"
                                              Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
                                 </DockPanel>
-                            </Grid>
-                            <Grid Grid.Row="2" Margin="140,20,10,10">
+                            </controls:SmallPanel>
+                            <controls:SmallPanel Grid.Row="2" Margin="140,20,10,10">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <Button x:Name="PART_ButtonCancel" Content="取消" Visibility="Collapsed"/>
                                     <Button x:Name="PART_ButtonOK" Style="{DynamicResource PrimaryButton}" 
                                         Margin="10,0,0,0" Content="确认"/>
                                 </StackPanel>
-                            </Grid>
+                            </controls:SmallPanel>
                         </Grid>
                     </Border>
                 </ControlTemplate>

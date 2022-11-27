@@ -23,7 +23,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:SpotLight}">
-                    <Grid x:Name="PART_Canvas" Background="{TemplateBinding Background}">
+                    <controls:SmallPanel x:Name="PART_Canvas" Background="{TemplateBinding Background}">
                         <TextBlock x:Name="PART_TextBlockBottom" Text="{TemplateBinding Text}"
                                    FontSize="{TemplateBinding FontSize}" 
                                    FontFamily="{TemplateBinding FontFamily}"
@@ -42,7 +42,7 @@
                                 </EllipseGeometry>
                             </TextBlock.Clip>
                         </TextBlock>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

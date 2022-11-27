@@ -1497,21 +1497,26 @@
 		</Style.Triggers>
 	</Style>
 	<Style TargetType="{x:Type Slider}" BasedOn="{StaticResource DefaultSlider}" />
+	<Style x:Key="DefaultTextBlock" TargetType="{x:Type TextBlock}">
+		<Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
+		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+		<Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
+		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
+	</Style>
+	<Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource DefaultTextBlock}" />
 	<Style x:Key="DefaultHyperlink" TargetType="{x:Type Hyperlink}">
 		<Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
 		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
 		<Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
 		<Setter Property="FontWeight" Value="{DynamicResource NormalFontWeight}" />
 		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>-->
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
 		<Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
 		<Style.Triggers>
 			<Trigger Property="IsMouseOver" Value="True">
-				<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
-				<!--<Setter Property="FontWeight" Value="Normal" />-->
 				<Setter Property="TextBlock.TextDecorations">
 					<Setter.Value>
 						<TextDecorationCollection>
@@ -5030,12 +5035,6 @@
 	</Style>
 	<ControlTemplate x:Key="NavigateMenuLeft" TargetType="{x:Type controls:NavigateMenu}">
 		<Grid>
-			<Rectangle x:Name="PART_RectangleSlider" Height="{TemplateBinding Height}" Fill="{DynamicResource LighterSolidColorBrush}" Width="3" HorizontalAlignment="Right" />
-			<Rectangle Width="3" Height="40" Fill="{DynamicResource PrimaryNormalSolidColorBrush}" VerticalAlignment="Top" HorizontalAlignment="Right">
-				<Rectangle.RenderTransform>
-					<TranslateTransform x:Name="PART_TranslateTransform" />
-				</Rectangle.RenderTransform>
-			</Rectangle>
 			<ListBox ItemsSource="{TemplateBinding ItemsSource}" x:Name="PART_ListBox" Background="Transparent" BorderThickness="0" SelectedItem="{Binding SelectedItem,RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}" SelectedIndex="{Binding SelectedIndex,RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
@@ -5043,11 +5042,9 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 				<ListBox.ItemContainerStyle>
-					<!--<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">-->
 					<Style TargetType="ListBoxItem" BasedOn="{x:Null}">
 						<Setter Property="VerticalContentAlignment" Value="Center" />
 						<Setter Property="Cursor" Value="Hand" />
-						<!--<Setter Property="Height" Value="40"/>-->
 						<Setter Property="Padding" Value="10,8" />
 						<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 						<Setter Property="Template">
@@ -5058,6 +5055,7 @@
 									</Border>
 									<ControlTemplate.Triggers>
 										<Trigger Property="IsSelected" Value="True">
+											<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 											<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 										</Trigger>
 										<Trigger Property="IsMouseOver" Value="True">
@@ -5070,6 +5068,12 @@
 					</Style>
 				</ListBox.ItemContainerStyle>
 			</ListBox>
+			<Rectangle x:Name="PART_RectangleSlider" Height="{TemplateBinding Height}" Fill="{DynamicResource LighterSolidColorBrush}" Width="3" HorizontalAlignment="Right" />
+			<Rectangle Width="3" Height="35" Fill="{DynamicResource PrimaryNormalSolidColorBrush}" VerticalAlignment="Top" HorizontalAlignment="Right">
+				<Rectangle.RenderTransform>
+					<TranslateTransform x:Name="PART_TranslateTransform" />
+				</Rectangle.RenderTransform>
+			</Rectangle>
 		</Grid>
 	</ControlTemplate>
 	<Style x:Key="NavigateMenuItem" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
@@ -6149,22 +6153,6 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="DefaultTextBlock" TargetType="{x:Type TextBlock}">
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
-		<Setter Property="FontSize" Value="{DynamicResource NormalFontSize}" />
-		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
-		<Setter Property="FontStyle" Value="{DynamicResource NormalFontStyle}" />
-		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
-		<Setter Property="TextElement.FontSize" Value="{DynamicResource NormalFontSize}" />
-		<Setter Property="TextElement.FontFamily" Value="{DynamicResource NormalFontFamily}" />
-		<Setter Property="TextElement.FontStyle" Value="{DynamicResource NormalFontStyle}" />
-		<Setter Property="TextElement.FontStretch" Value="{DynamicResource NormalFontStretch}" />
-		<Setter Property="TextBlock.FontSize" Value="{DynamicResource NormalFontSize}" />
-		<Setter Property="TextBlock.FontFamily" Value="{DynamicResource NormalFontFamily}" />
-		<Setter Property="TextBlock.FontStyle" Value="{DynamicResource NormalFontStyle}" />
-		<Setter Property="TextBlock.FontStretch" Value="{DynamicResource NormalFontStretch}" />
-	</Style>
-	<Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource DefaultTextBlock}" />
 	<Style x:Key="DatePickerCalendarStyle" TargetType="{x:Type Calendar}" BasedOn="{StaticResource {x:Type Calendar}}" />
 	<Style x:Key="DefaultDatePicker" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="IsTodayHighlighted" Value="True" />

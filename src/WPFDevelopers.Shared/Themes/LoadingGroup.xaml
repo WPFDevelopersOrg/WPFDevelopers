@@ -118,18 +118,18 @@
                             <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" Storyboard.TargetName="Part_Cycle_Rotate1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <controls:SmallPanel>
                         <Viewbox>
-                            <Grid Width="400" Height="400">
-                                <Grid x:Name="Part_Cycle_Rotate1" RenderTransformOrigin="0.5,0.5">
-                                    <Grid.RenderTransform>
+                            <controls:SmallPanel Width="400" Height="400">
+                                <controls:SmallPanel x:Name="Part_Cycle_Rotate1" RenderTransformOrigin="0.5,0.5">
+                                    <controls:SmallPanel.RenderTransform>
                                         <TransformGroup>
                                             <ScaleTransform/>
                                             <SkewTransform/>
                                             <RotateTransform/>
                                             <TranslateTransform/>
                                         </TransformGroup>
-                                    </Grid.RenderTransform>
+                                    </controls:SmallPanel.RenderTransform>
                                     <Ellipse Margin="0,50,0,50" >
                                         <Ellipse.Fill>
                                             <LinearGradientBrush >
@@ -154,17 +154,17 @@
                                         </Ellipse.Effect>
                                     </Ellipse>
 
-                                </Grid>
+                                </controls:SmallPanel>
 
-                                <Grid x:Name="Part_Cycle_Rotate" RenderTransformOrigin="0.5,0.5">
-                                    <Grid.RenderTransform>
+                                <controls:SmallPanel x:Name="Part_Cycle_Rotate" RenderTransformOrigin="0.5,0.5">
+                                    <controls:SmallPanel.RenderTransform>
                                         <TransformGroup>
                                             <ScaleTransform/>
                                             <SkewTransform/>
                                             <RotateTransform/>
                                             <TranslateTransform/>
                                         </TransformGroup>
-                                    </Grid.RenderTransform>
+                                    </controls:SmallPanel.RenderTransform>
                                     <Ellipse Margin="0,50,0,50" >
                                         <Ellipse.Fill>
                                             <LinearGradientBrush >
@@ -189,7 +189,7 @@
                                         </Ellipse.Effect>
                                     </Ellipse>
 
-                                </Grid>
+                                </controls:SmallPanel>
 
                                 <Ellipse Margin="33" Fill="Black" >
                                     <Ellipse.Effect>
@@ -197,7 +197,7 @@
                                     </Ellipse.Effect>
                                 </Ellipse>
 
-                            </Grid>
+                            </controls:SmallPanel>
                         </Viewbox>
 
                         <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
@@ -218,7 +218,7 @@
                                        Text="{TemplateBinding ValueDescription}"/>
                         </Grid>
 
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsStart" Value="True">
                             <Trigger.EnterActions>
@@ -240,7 +240,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:RollLoading}">
                     <ControlTemplate.Resources>
-                        <Storyboard x:Key="RollKey"  RepeatBehavior="Forever" >
+                        <Storyboard x:Key="RollKey" RepeatBehavior="Forever" >
                             <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="2" Storyboard.TargetName="PART_Border1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
                             <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="4" Storyboard.TargetName="PART_Border2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
                             <DoubleAnimation Duration="0:0:5" BeginTime="0" From="0" To="360" RepeatBehavior="Forever" SpeedRatio="6" Storyboard.TargetName="PART_Border3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" />
@@ -266,7 +266,7 @@
                         </Grid.RowDefinitions>
 
                         <Viewbox>
-                            <Grid>
+                            <controls:SmallPanel>
                                 <Border x:Name="PART_Border1" Width="160" Height="160"  BorderThickness="0,5,0,0"  CornerRadius="80" RenderTransformOrigin="0.5,0.5">
                                     <Border.BorderBrush>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -418,7 +418,7 @@
                                         </TransformGroup>
                                     </Border.RenderTransform>
                                 </Border>
-                            </Grid>
+                            </controls:SmallPanel>
                         </Viewbox>
 
                         <ContentPresenter Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -458,58 +458,58 @@
 
                         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" >
                             <Border Padding="10" Width="100" Height="100" >
-                                <Grid>
-                                    <Grid x:Name="PART_Ring1" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-                                        <Grid.RenderTransform>
+                                <controls:SmallPanel>
+                                    <controls:SmallPanel x:Name="PART_Ring1" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                                        <controls:SmallPanel.RenderTransform>
                                             <TransformGroup>
                                                 <ScaleTransform/>
                                                 <SkewTransform/>
                                                 <RotateTransform Angle="-135"/>
                                                 <TranslateTransform/>
                                             </TransformGroup>
-                                        </Grid.RenderTransform>
+                                        </controls:SmallPanel.RenderTransform>
                                         <Ellipse Stroke="Red" StrokeThickness="2" StrokeDashArray="23 100" RenderTransformOrigin="0.5,0.5"/>
                                         <Border Width="10" Height="10" CornerRadius="10" Background="Red" HorizontalAlignment="Right" Margin="0,0,-4,0">
                                             <Border.Effect>
                                                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="Red"/>
                                             </Border.Effect>
                                         </Border>
-                                    </Grid>
+                                    </controls:SmallPanel>
 
-                                    <Grid x:Name="PART_Ring2" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-                                        <Grid.RenderTransform>
+                                    <controls:SmallPanel x:Name="PART_Ring2" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+                                        <controls:SmallPanel.RenderTransform>
                                             <TransformGroup>
                                                 <ScaleTransform/>
                                                 <SkewTransform/>
                                                 <RotateTransform Angle="225"/>
                                                 <TranslateTransform/>
                                             </TransformGroup>
-                                        </Grid.RenderTransform>
+                                        </controls:SmallPanel.RenderTransform>
                                         <Ellipse Stroke="Purple" StrokeThickness="2" StrokeDashArray="23 100"/>
                                         <Border Width="10" Height="10" CornerRadius="10" Background="Purple" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,-4">
                                             <Border.Effect>
                                                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="Purple"/>
                                             </Border.Effect>
                                         </Border>
-                                    </Grid>
+                                    </controls:SmallPanel>
 
-                                    <Grid x:Name="PART_Ring3" Width="60" Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-                                        <Grid.RenderTransform>
+                                    <controls:SmallPanel x:Name="PART_Ring3" Width="60" Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+                                        <controls:SmallPanel.RenderTransform>
                                             <TransformGroup>
                                                 <ScaleTransform/>
                                                 <SkewTransform/>
                                                 <RotateTransform Angle="45"/>
                                                 <TranslateTransform/>
                                             </TransformGroup>
-                                        </Grid.RenderTransform>
+                                        </controls:SmallPanel.RenderTransform>
                                         <Ellipse Stroke="#0fb8b2" StrokeThickness="2" StrokeDashArray="23 100"/>
                                         <Border Width="10" Height="10" CornerRadius="10" Background="#0fb8b2" HorizontalAlignment="Right" Margin="0,0,-4,0">
                                             <Border.Effect>
                                                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="#0fb8b2"/>
                                             </Border.Effect>
                                         </Border>
-                                    </Grid>
-                                </Grid>
+                                    </controls:SmallPanel>
+                                </controls:SmallPanel>
                             </Border>
                         </Viewbox>
 

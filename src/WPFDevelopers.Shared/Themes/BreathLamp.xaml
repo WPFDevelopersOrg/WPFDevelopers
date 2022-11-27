@@ -8,9 +8,9 @@
     </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="LampEffect_Eclipse" TargetType="{x:Type controls:BreathLamp}">
-        <Grid>
+        <controls:SmallPanel>
             <Viewbox>
-                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampEclipse"  
                             BorderThickness="0" 
                             BorderBrush="Transparent" 
@@ -21,10 +21,10 @@
                             <ScaleTransform CenterX="0" CenterY="0" ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
                         </Border.RenderTransform>
                     </Border>
-                </Grid>
+                </controls:SmallPanel>
             </Viewbox>
             <ContentPresenter/>
-        </Grid>
+        </controls:SmallPanel>
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsLampStart" Value="True">
@@ -56,9 +56,9 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="LampEffect_Ripple" TargetType="{x:Type controls:BreathLamp}">
-        <Grid>
+        <controls:SmallPanel>
             <Viewbox>
-                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampRipple_1" 
                             RenderTransformOrigin="0.5,0.5"
                             Background="Transparent" 
@@ -83,10 +83,10 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             Background="{TemplateBinding Background}"/>
-                </Grid>
+                </controls:SmallPanel>
             </Viewbox>
             <ContentPresenter/>
-        </Grid>
+        </controls:SmallPanel>
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsLampStart" Value="True">
@@ -124,9 +124,9 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="LampEffect_OuterGlow" TargetType="{x:Type controls:BreathLamp}">
-        <Grid>
+        <controls:SmallPanel>
             <Viewbox>
-                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampOuterGlow"
                             Margin="1"
                             BorderThickness="0" 
@@ -145,10 +145,10 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             Background="{TemplateBinding Background}"/>
-                </Grid>
+                </controls:SmallPanel>
             </Viewbox>
             <ContentPresenter/>
-        </Grid>
+        </controls:SmallPanel>
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsLampStart" Value="True">
@@ -170,9 +170,9 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="LampEffect_Streamer" TargetType="{x:Type controls:BreathLamp}">
-        <Grid>
+        <controls:SmallPanel>
             <Viewbox>
-                <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                     <Border x:Name="PART_LampContainer" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderThickness}"  Background="Transparent" >
                         <Border.BorderBrush>
                             <LinearGradientBrush >
@@ -184,12 +184,12 @@
                             </LinearGradientBrush>
                         </Border.BorderBrush>
                     </Border>
-                </Grid>
+                </controls:SmallPanel>
             </Viewbox>
             <Border Padding="{TemplateBinding BorderThickness}">
                 <ContentPresenter Margin="{TemplateBinding BorderThickness}"/>
             </Border>
-        </Grid>
+        </controls:SmallPanel>
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsLampStart" Value="True">

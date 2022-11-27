@@ -17,7 +17,7 @@
         <!--<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>-->
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <!--<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
         <Setter Property="TextBlock.TextDecorations" Value="{x:Null}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True" >

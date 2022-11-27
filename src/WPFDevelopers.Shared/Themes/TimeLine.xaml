@@ -16,12 +16,12 @@
     </DataTemplate>
 
     <DataTemplate x:Key="NameContent">
-        <Grid>
+        <controls:SmallPanel>
             <Ellipse Fill="{Binding BackgroundColor, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" Width="30" Height="30"/>
             <TextBlock Text="{Binding Head, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
                            FontSize="16"
                            HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-        </Grid>
+        </controls:SmallPanel>
     </DataTemplate>
 
 

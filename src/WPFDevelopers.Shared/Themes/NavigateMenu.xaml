@@ -8,15 +8,6 @@
 
     <ControlTemplate x:Key="NavigateMenuLeft" TargetType="{x:Type controls:NavigateMenu}">
         <Grid>
-                <Rectangle x:Name="PART_RectangleSlider" Height="{TemplateBinding Height}"
-                                   Fill="{DynamicResource LighterSolidColorBrush}" Width="3" HorizontalAlignment="Right"/>
-                <Rectangle Width="3"
-                                   Height="40" Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
-                                   VerticalAlignment="Top" HorizontalAlignment="Right">
-                    <Rectangle.RenderTransform>
-                        <TranslateTransform x:Name="PART_TranslateTransform"/>
-                    </Rectangle.RenderTransform>
-                </Rectangle>
                 <ListBox ItemsSource="{TemplateBinding ItemsSource}" 
                                  x:Name="PART_ListBox"
                                  Background="Transparent" BorderThickness="0"
@@ -29,11 +20,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
                 <ListBox.ItemContainerStyle>
-                        <!--<Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">-->
                     <Style TargetType="ListBoxItem" BasedOn="{x:Null}">
                             <Setter Property="VerticalContentAlignment" Value="Center"/>
                             <Setter Property="Cursor" Value="Hand"/>
-                            <!--<Setter Property="Height" Value="40"/>-->
                             <Setter Property="Padding" Value="10,8"/>
                             <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
                             <Setter Property="Template">
@@ -50,7 +39,8 @@
                                         </Border>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                                            <Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
                                             </Trigger>
                                             <Trigger Property="IsMouseOver" Value="True">
                                                 <Setter Property="Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
@@ -62,7 +52,19 @@
                         </Style>
                     </ListBox.ItemContainerStyle>
                 </ListBox>
-            </Grid>
+            <Rectangle x:Name="PART_RectangleSlider" 
+                       Height="{TemplateBinding Height}"
+                       Fill="{DynamicResource LighterSolidColorBrush}" 
+                       Width="3" HorizontalAlignment="Right"/>
+            <Rectangle Width="3"
+                       Height="35" 
+                       Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                       VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Rectangle.RenderTransform>
+                    <TranslateTransform x:Name="PART_TranslateTransform"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Grid>
     </ControlTemplate>
     
     <!--还未完成-->

@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
     
@@ -18,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
-                    <Grid>
+                    <controls:SmallPanel>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -89,7 +90,7 @@
                         <Path x:Name="Blackout" Opacity="0"  Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                               Fill="{DynamicResource WindowForegroundColorBrush}" Stretch="Fill"
                               Data="{StaticResource PathBlackout}" />
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -128,7 +129,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
-                    <Grid>
+                    <controls:SmallPanel>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -193,7 +194,7 @@
                                 <SolidColorBrush Color="{DynamicResource RegularTextColor}" />
                             </TextElement.Foreground>
                         </ContentPresenter>
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsInactive" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource BaseSolidColorBrush}"/>
@@ -228,7 +229,7 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Grid  Background="Transparent">
+            <controls:SmallPanel Background="Transparent">
                 <Path x:Name="PART_Path"
             Margin="14,-6,0,0"
             Stretch="Fill"
@@ -241,13 +242,13 @@
                         <SolidColorBrush Color="{DynamicResource RegularTextColor}" />
                     </Path.Fill>
                 </Path>
-            </Grid>
+            </controls:SmallPanel>
         </Grid>
     </ControlTemplate>
 
     
     <ControlTemplate x:Key="NextButtonTemplate" TargetType="{x:Type Button}">
-        <Grid Cursor="Hand">
+        <controls:SmallPanel Cursor="Hand">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
@@ -269,7 +270,7 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Grid Background="Transparent">
+            <controls:SmallPanel Background="Transparent">
                 <Path x:Name="PART_Path" Data="{StaticResource PathNext}" 
                       HorizontalAlignment="Right" Height="10" Margin="0,-6,14,0"
                       Stretch="Fill" VerticalAlignment="Center" Width="6">
@@ -277,13 +278,13 @@
                         <SolidColorBrush Color="{DynamicResource RegularTextColor}" />
                     </Path.Fill>
                 </Path>
-            </Grid>
-        </Grid>
+            </controls:SmallPanel>
+        </controls:SmallPanel>
     </ControlTemplate>
 
     <ControlTemplate x:Key="HeaderButtonTemplate"
                  TargetType="{x:Type Button}">
-        <Grid Cursor="Hand">
+        <controls:SmallPanel Cursor="Hand">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
@@ -305,7 +306,7 @@
                       TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}"
                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-        </Grid>
+        </controls:SmallPanel>
     </ControlTemplate>
 
     <Style x:Key="CalendarItemStyle" TargetType="{x:Type CalendarItem}" BasedOn="{StaticResource ControlBasicStyle}">

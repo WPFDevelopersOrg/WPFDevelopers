@@ -30,12 +30,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularMenuItem}">
-                    <Grid VerticalAlignment="Top">
-                        <Grid.RenderTransform>
+                    <controls:SmallPanel VerticalAlignment="Top">
+                        <controls:SmallPanel.RenderTransform>
                             <RotateTransform x:Name="PART_RotateTransform" 
                                              Angle="{TemplateBinding Angle}"
                                              CenterX="200" CenterY="200"></RotateTransform>
-                        </Grid.RenderTransform>
+                        </controls:SmallPanel.RenderTransform>
                         <Path x:Name="PART_Path" Data="{StaticResource PathCircularItem}" 
                                   Fill="{TemplateBinding BackgroundColor}" VerticalAlignment="Center"/>
                         <Image Source="{TemplateBinding IconImage}" RenderTransformOrigin="0.5,0.5"
@@ -47,7 +47,7 @@
                                 <RotateTransform Angle="-70"/>
                             </Image.RenderTransform>
                         </Image>
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource PrimaryNormalSolidColorBrush}"/>
@@ -65,7 +65,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularMenu}">
-                    <Grid>
+                    <controls:SmallPanel>
                         <ItemsControl x:Name="PART_ItemsControl" ItemsSource="{TemplateBinding ItemsSource}"
                                       AlternationCount="{TemplateBinding AlternationCount}"
                                       Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
@@ -83,7 +83,7 @@
                             </ItemsControl.ItemTemplate>
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <Grid/>
+                                    <controls:SmallPanel/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
@@ -91,7 +91,7 @@
                         <ToggleButton x:Name="PART_ToggleButton" Cursor="Hand">
                             <ToggleButton.Template>
                                 <ControlTemplate TargetType="ToggleButton">
-                                    <Grid>
+                                    <controls:SmallPanel>
                                         <Ellipse x:Name="PART_Ellipse" Width="100" Height="100"
                                                          Fill="{StaticResource PrimaryNormalSolidColorBrush}" ToolTip="关闭"/>
                                         <Path x:Name="PART_Path" Data="{StaticResource PathAdd}"
@@ -99,7 +99,7 @@
                                                       Stretch="Fill" Width="20" Height="20" 
                                                       RenderTransformOrigin="0.5,0.5" IsHitTestVisible="False">
                                         </Path>
-                                    </Grid>
+                                    </controls:SmallPanel>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked" Value="false">
                                             <Setter TargetName="PART_Path" Property="RenderTransform">
@@ -113,7 +113,7 @@
                                 </ControlTemplate>
                             </ToggleButton.Template>
                         </ToggleButton>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

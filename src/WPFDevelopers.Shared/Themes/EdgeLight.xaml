@@ -38,7 +38,7 @@
                                              Storyboard.TargetProperty="ScaleY"/>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <controls:SmallPanel>
                         <DockPanel LastChildFill="False">
                             <Rectangle DockPanel.Dock="Top" Height="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}">
                                 <Rectangle.RenderTransform>
@@ -66,7 +66,7 @@
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Grid>
+                    </controls:SmallPanel>
                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsAnimation" Value="True">

@@ -17,7 +17,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:BubblleControl">
-                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                    <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <Border BorderBrush="{TemplateBinding BorderBrush}"
                                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                                 Background="{TemplateBinding BorderBackground}" 
@@ -51,15 +51,15 @@
                                       ItemsSource="{TemplateBinding ItemsSource}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
-                                        <Grid Width="{TemplateBinding Width}" 
+                                    <controls:SmallPanel>
+                                        <controls:SmallPanel Width="{TemplateBinding Width}" 
                                               Height="{TemplateBinding Height}">
 
                                             <Ellipse Fill="{Binding Bg}"
                                                                  Opacity=".4"/>
                                             <Ellipse Stroke="{Binding Bg}" 
                                                                  StrokeThickness=".8"/>
-                                        </Grid>
+                                        </controls:SmallPanel>
 
                                         <TextBlock VerticalAlignment="Center" 
                                                                HorizontalAlignment="Center"
@@ -75,7 +75,7 @@
                                                                        ToolTip="{Binding Text}"/>
                                                         </Hyperlink>
                                                     </TextBlock>
-                                    </Grid>
+                                    </controls:SmallPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                             <ItemsControl.ItemsPanel>
@@ -84,7 +84,7 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

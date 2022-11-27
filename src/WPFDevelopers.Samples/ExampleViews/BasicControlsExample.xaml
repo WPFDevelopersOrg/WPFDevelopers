@@ -8,13 +8,13 @@
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d"  Background="{DynamicResource BackgroundSolidColorBrush}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
             <Setter Property="FontSize" Value="{StaticResource NormalFontSize}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
     <controls:CodeViewer>
         <ScrollViewer>
         <Grid Margin="20,10">

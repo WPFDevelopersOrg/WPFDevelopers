@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
     
@@ -36,7 +37,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Grid Width="15" Height="13" Background="Transparent">
+                    <controls:SmallPanel Width="15" Height="13" Background="Transparent">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
@@ -68,7 +69,7 @@
                                 <RotateTransform/>
                             </Path.RenderTransform>
                         </Path>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

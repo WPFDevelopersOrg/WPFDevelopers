@@ -162,7 +162,7 @@
                                         Margin="10,30,10,10"
                                         CornerRadius="{Binding Path=(helpers:ControlsHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                         x:Name="PART_PopupBorder">
-                                    <Grid>
+                                    <controls:SmallPanel>
                                         <Path Data="{StaticResource PathUpperTriangle}"
                                           Fill="{DynamicResource BackgroundSolidColorBrush}" 
                                           Stretch="Uniform"
@@ -190,7 +190,7 @@
                                                          Background="Yellow">
                                             </RadioButton>
                                         </WrapPanel>
-                                    </Grid>
+                                    </controls:SmallPanel>
                                 </Border>
                             </Popup>
                         </Canvas>

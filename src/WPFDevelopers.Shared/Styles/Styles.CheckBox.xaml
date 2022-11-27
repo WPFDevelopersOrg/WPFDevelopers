@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     
     <ResourceDictionary.MergedDictionaries>
@@ -23,7 +24,7 @@
                                             BorderThickness="1"
                                             BorderBrush="{DynamicResource BaseSolidColorBrush}"
                                             Background="{DynamicResource WindowForegroundColorBrush}">
-                                    <Grid>
+                                    <controls:SmallPanel>
                                         <Path x:Name="PART_CheckMark" SnapsToDevicePixels="False" 
                                               VerticalAlignment="Center" HorizontalAlignment="Center"
                                               Data="{StaticResource PathCheckMark}"
@@ -43,7 +44,7 @@
                                                 <ScaleTransform ScaleX="0"/>
                                             </Rectangle.RenderTransform>
                                         </Rectangle>
-                                    </Grid>
+                                    </controls:SmallPanel>
                                 </Border>
                             </Border>
                         </BulletDecorator.Bullet>

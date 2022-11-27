@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 namespace WPFDevelopers.Controls
 {
 
-    [TemplatePart(Name = GridTemplateName, Type = typeof(Grid))]
+    [TemplatePart(Name = GridTemplateName, Type = typeof(SmallPanel))]
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
     public class StarrySky : Control
     {
@@ -17,7 +17,7 @@ namespace WPFDevelopers.Controls
 
         private const string CanvasTemplateName = "PART_CanvasStarContainer";
 
-        private Grid _grid;
+        private SmallPanel _grid;
         private Canvas _canvas;
 
         public static readonly DependencyProperty StarCountProperty =
@@ -69,7 +69,7 @@ namespace WPFDevelopers.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _grid = GetTemplateChild(GridTemplateName) as Grid;
+            _grid = GetTemplateChild(GridTemplateName) as SmallPanel;
             _canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
         }
 

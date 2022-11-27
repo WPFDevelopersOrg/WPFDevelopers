@@ -13,12 +13,12 @@
     <ws:WindowChrome.WindowChrome>
         <ws:WindowChrome  GlassFrameThickness="1"  CaptionHeight="160" />
     </ws:WindowChrome.WindowChrome>
-    <Window.Resources>
+    <!--<Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
             <Setter Property="FontSize" Value="{StaticResource NormalFontSize}"/>
         </Style>
-    </Window.Resources>
+    </Window.Resources>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>

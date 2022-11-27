@@ -22,14 +22,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Dashboard}">
                     <Viewbox>
-                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                        <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
                                     Background="{TemplateBinding Background}"
                                   RenderTransformOrigin="0.5,0.5">
-                            <Grid.RenderTransform>
+                            <controls:SmallPanel.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="-90"/>
                                 </TransformGroup>
-                            </Grid.RenderTransform>
+                            </controls:SmallPanel.RenderTransform>
                             <ed:Arc  ArcThickness="8" ArcThicknessUnit="Pixel" Fill="White"
                                          RenderTransformOrigin="0.5,0.5" 
                                          StartAngle="0"
@@ -74,8 +74,7 @@
                                                     RelativeSource={RelativeSource TemplatedParent}}"
                                                FontWeight="Bold" FontFamily="Agency FB"/>
                             </Border>
-
-                        </Grid>
+                        </controls:SmallPanel>
                     </Viewbox>
                 </ControlTemplate>
             </Setter.Value>

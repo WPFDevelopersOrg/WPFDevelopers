@@ -11,12 +11,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:PrizeItemControl">
-                    <Grid VerticalAlignment="Top">
-                        <Grid.RenderTransform>
+                    <controls:SmallPanel VerticalAlignment="Top">
+                        <controls:SmallPanel.RenderTransform>
                             <RotateTransform x:Name="PART_RotateTransform" 
                                              Angle="{TemplateBinding Angle}" 
                                              CenterX="200" CenterY="200"></RotateTransform>
-                        </Grid.RenderTransform>
+                        </controls:SmallPanel.RenderTransform>
                         <Path x:Name="PART_Path" Data="{StaticResource PathSector}" 
                                   Fill="{TemplateBinding BackgroundColor}" VerticalAlignment="Center"/>
                         <TextBlock Text="{TemplateBinding Title}" 
@@ -31,7 +31,7 @@
                                 <RotateTransform Angle="-70"/>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -44,7 +44,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:DrawPrize}">
-                    <Grid>
+                    <controls:SmallPanel>
                         <ItemsControl x:Name="PART_ItemsControl" ItemsSource="{TemplateBinding ItemsSource}"
                                       AlternationCount="{TemplateBinding AlternationCount}"
                                       Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
@@ -87,7 +87,7 @@
                            HorizontalAlignment="Center"/>
                         </Border>
 
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

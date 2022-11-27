@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
 
@@ -68,7 +69,7 @@
                     <Border x:Name="PART_Border" 
                             Background="{DynamicResource BaseSolidColorBrush}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
-                        <Grid ClipToBounds="True">
+                        <controls:SmallPanel ClipToBounds="True">
                             <Border x:Name="PART_Track"/>
                             <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
                                 <Border x:Name="Indicator" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}"/>
@@ -79,7 +80,7 @@
                                     <ScaleTransform/>
                                 </Rectangle.RenderTransform>
                             </Rectangle>
-                        </Grid>
+                        </controls:SmallPanel>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">

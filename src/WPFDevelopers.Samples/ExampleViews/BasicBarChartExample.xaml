@@ -33,7 +33,7 @@
                         Text="{Binding KeyBarChart, RelativeSource={RelativeSource AncestorType=local:BasicBarChartExample}}" />
                 </WrapPanel>
                 <wpfdev:BasicBarChart
-                     Grid.Row="1"
+                     Grid.Row="1" 
                     SeriesArray="{Binding SeriesModels, RelativeSource={RelativeSource AncestorType=local:BasicBarChartExample}}"/>
                 <Button
                     Grid.Row="2"

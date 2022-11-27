@@ -58,6 +58,8 @@ namespace WPFDevelopers.Controls
             _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
             _rectangle = GetTemplateChild(RectangleTemplateName) as Rectangle;
             _translateTransform = GetTemplateChild(TranslateTransformTemplateName) as TranslateTransform;
+            SelectedIndex = 0;
+
         }
         public NavigateMenu()
         {

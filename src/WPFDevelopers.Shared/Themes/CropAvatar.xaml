@@ -26,7 +26,7 @@
                                 </CombinedGeometry>
                             </Path.Data>
                         </Path>
-                        <Grid x:Name="PART_Grid" Width="200" Height="200">
+                        <controls:SmallPanel x:Name="PART_Grid" Width="200" Height="200">
                             <Button x:Name="PART_ReplaceButton" Style="{StaticResource PathButton}"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
@@ -55,7 +55,7 @@
                                     </Path>
                                 </Button.Content>
                             </Button>
-                        </Grid>
+                        </controls:SmallPanel>
                     </Canvas>
                 </ControlTemplate>
             </Setter.Value>

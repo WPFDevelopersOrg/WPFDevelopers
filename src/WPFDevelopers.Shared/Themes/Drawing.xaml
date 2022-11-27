@@ -70,7 +70,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             Padding="0" SnapsToDevicePixels="true">
-                        <Grid>
+                        <controls:SmallPanel>
                             <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </ScrollViewer>
@@ -84,7 +84,7 @@
                                     Padding="3" >
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
-                        </Grid>
+                        </controls:SmallPanel>
 
                     </Border>
                     <ControlTemplate.Triggers>
