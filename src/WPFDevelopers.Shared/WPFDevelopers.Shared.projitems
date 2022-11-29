@@ -50,6 +50,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WPFMessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NineGridView\NineGridView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\NotifyIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\Gdi32Interop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\Interop\BitmapHandle.cs" />

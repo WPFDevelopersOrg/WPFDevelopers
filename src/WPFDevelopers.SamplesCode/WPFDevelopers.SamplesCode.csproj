@@ -95,6 +95,7 @@
 	  <Resource Include="..\WPFDevelopers.Samples\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
 	  <Resource Include="..\WPFDevelopers.Samples\Models\HospitalList.cs" Link="Models\HospitalList.cs" />
 	  <Resource Include="..\WPFDevelopers.Samples\Converts\StateConvert.cs" Link="Converts\StateConvert.cs" />
+	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NineGridViewExample.xaml.cs" Link="ExampleViews\NineGridViewExample.xaml.cs" DependentUpon="NineGridViewExample.xaml"/>
 	</ItemGroup>
 	<ItemGroup>
 	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
@@ -339,6 +340,9 @@
 	  </Resource>
 	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\ZooSemyExample.xaml">
 	    <Link>ExampleViews\ZooSemy\ZooSemyExample.xaml</Link>
+	  </Resource>
+	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NineGridViewExample.xaml">
+		<Link>ExampleViews\NineGridViewExample.xaml</Link>
 	  </Resource>
 	  
 	</ItemGroup>
