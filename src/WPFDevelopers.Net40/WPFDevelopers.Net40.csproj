@@ -8,9 +8,9 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<Copyright>Copyright © WPFDevelopersOrg 2022</Copyright>
-		<AssemblyVersion>1.0.9.4</AssemblyVersion>
-		<FileVersion>1.0.9.4</FileVersion>
-		<Version>1.0.9.4</Version>
+		<AssemblyVersion>1.0.9.5</AssemblyVersion>
+		<FileVersion>1.0.9.5</FileVersion>
+		<Version>1.0.9.5</Version>
 		<RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers</RepositoryUrl>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
@@ -22,6 +22,10 @@
 		<Exec Command="$(SolutionDir)WPFDevelopers.Shared\Themes\XamlCombine.exe $(SolutionDir)WPFDevelopers.Shared\Themes\Theme40.txt $(ProjectDir)Themes\Theme.xaml" />
 	</Target>
 	<ItemGroup>
+	  <None Remove="Effects\GrayscaleEffect.ps" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Effects\GrayscaleEffect.ps" />
 		<Resource Include="Resources\Audio\shake.wav" />
 	</ItemGroup>
 </Project>

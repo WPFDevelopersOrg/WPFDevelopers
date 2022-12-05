@@ -14,6 +14,9 @@
                Title="WPFDevelopers" Icon="/WPFDevelopers.ico"
                Height="{x:Static local:App.Height}" Width="{x:Static local:App.Wdith}"
                WindowStartupLocation="CenterScreen">
+    <wpfdev:Window.Effect>
+        <wpfdev:GrayscaleEffect x:Name="grayscaleEffect" Factor="1"/>
+    </wpfdev:Window.Effect>
     <!--<shell:WindowChrome.WindowChrome>
         <shell:WindowChrome  GlassFrameThickness="0 1 0 0"/>
     </shell:WindowChrome.WindowChrome>
@@ -44,6 +47,7 @@
         <wpfdev:NotifyIcon Title="WPF开发者" Name="WpfNotifyIcon">
             <wpfdev:NotifyIcon.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="开启灰度" Name="menuItemGrayscale" Click="Grayscale_Click"/>
                     <MenuItem Header="托盘消息" Click="SendMessage_Click"/>
                     <MenuItem Header="闪烁" Name="menuItemTwink"  Click="Twink_Click"/>
                     <MenuItem Header="关于" Click="About_Click">

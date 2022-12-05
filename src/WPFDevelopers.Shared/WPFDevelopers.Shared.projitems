@@ -111,6 +111,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\IndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ObjectNullToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AudioPlayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ControlsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DrawingContextHelper.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Media.Animation;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Samples.ExampleViews;
 using MessageBox = WPFDevelopers.Controls.MessageBox;
@@ -43,6 +44,32 @@ namespace WPFDevelopers.Samples
         {
             WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;
             menuItemTwink.IsChecked = WpfNotifyIcon.IsTwink;
+        }
+        private void Grayscale_Click(object sender, RoutedEventArgs e)
+        {
+            if(grayscaleEffect.Factor == 1)
+            {
+                menuItemGrayscale.Header = "关闭灰度";
+                Create(0);
+            }
+               
+            else
+            {
+                menuItemGrayscale.Header = "开启灰度";
+                Create(1);
+
+            }
+        }
+        void Create(double to)
+        {
+            var sineEase = new SineEase() { EasingMode = EasingMode.EaseOut };
+            var doubleAnimation = new DoubleAnimation
+            {
+                To = to,
+                Duration = TimeSpan.FromMilliseconds(1000),
+                EasingFunction = sineEase
+            };
+            grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, doubleAnimation);
         }
     }
 }
