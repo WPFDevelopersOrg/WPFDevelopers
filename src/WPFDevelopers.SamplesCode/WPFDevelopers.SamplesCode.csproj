@@ -95,7 +95,7 @@
 	  <Resource Include="..\WPFDevelopers.Samples\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
 	  <Resource Include="..\WPFDevelopers.Samples\Models\HospitalList.cs" Link="Models\HospitalList.cs" />
 	  <Resource Include="..\WPFDevelopers.Samples\Converts\StateConvert.cs" Link="Converts\StateConvert.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NineGridViewExample.xaml.cs" Link="ExampleViews\NineGridViewExample.xaml.cs" DependentUpon="NineGridViewExample.xaml"/>
+	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml.cs" Link="ExampleViews\SixGirdViewExample.xaml.cs" DependentUpon="SixGirdViewExample.xaml"/>
 	</ItemGroup>
 	<ItemGroup>
 	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
@@ -341,8 +341,8 @@
 	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\ZooSemyExample.xaml">
 	    <Link>ExampleViews\ZooSemy\ZooSemyExample.xaml</Link>
 	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NineGridViewExample.xaml">
-		<Link>ExampleViews\NineGridViewExample.xaml</Link>
+	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml">
+		<Link>ExampleViews\SixGirdViewExample.xaml</Link>
 	  </Resource>
 	  
 	</ItemGroup>

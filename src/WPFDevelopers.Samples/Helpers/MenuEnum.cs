@@ -63,7 +63,7 @@
         BubblleControl,
         CanvasHandWriting,
         Barrage,
-        NineGridView,
+        SixGridView,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

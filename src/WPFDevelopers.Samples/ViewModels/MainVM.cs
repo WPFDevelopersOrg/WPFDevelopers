@@ -282,8 +282,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Barrage:
                     ControlPanel = new BarrageExample();
                     break;
-                case MenuEnum.NineGridView:
-                    ControlPanel = new NineGridViewExample();
+                case MenuEnum.SixGridView:
+                    ControlPanel = new SixGirdViewExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

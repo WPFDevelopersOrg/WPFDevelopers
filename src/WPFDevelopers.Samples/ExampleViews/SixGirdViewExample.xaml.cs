@@ -8,9 +8,9 @@ namespace WPFDevelopers.Samples.ExampleViews
     /// <summary>
     /// NineGridViewExample.xaml 的交互逻辑
     /// </summary>
-    public partial class NineGridViewExample : UserControl
+    public partial class SixGirdViewExample : UserControl
     {
-        public NineGridViewExample()
+        public SixGirdViewExample()
         {
             InitializeComponent();
         }
