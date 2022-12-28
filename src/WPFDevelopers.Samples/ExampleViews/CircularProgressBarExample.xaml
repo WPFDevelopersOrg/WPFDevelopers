@@ -9,28 +9,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
-    <UniformGrid>
-        <wpfdev:CircularProgressBar Background="#21BA9D"
+        <UniformGrid>
+            <wpfdev:CircularProgressBar Background="#21BA9D"
                                        Value="{Binding ElementName=CirularSlider,Path=Value}"
                                        BrushStrokeThickness="2"
+                                       StrokeThickness="3"
+                                       Size="20,30"
                                        BorderBrush="LightGray"/>
 
-        <wpfdev:CircularProgressBar Background="#E14D5F" 
-                                       BorderBrush="#42ABAC" 
-                                       Value="{Binding ElementName=CirularSlider,Path=Value}"
-                                       BrushStrokeThickness="4"/>
-        <wpfdev:CircularProgressBar Background="#1FA7FC" 
+            <wpfdev:CircularProgressBar Background="#E14D5F" 
+                                        Value="{Binding ElementName=CirularSlider,Path=Value}"
+                                       BrushStrokeThickness="4"
+                                       StrokeThickness="5"
+                                       Size="15,15"
+                                        BorderBrush="#42ABAC" />
+            <wpfdev:CircularProgressBar Background="#1FA7FC" 
                                        BorderBrush="#D6D6D6" 
                                        Value="{Binding ElementName=CirularSlider,Path=Value}"
                                        BrushStrokeThickness="10"
                                        StrokeThickness="10"
                                        Foreground="Black"/>
-        <wpfdev:CircularProgressBar Value="{Binding ElementName=CirularSlider,Path=Value}"/>
+            <wpfdev:CircularProgressBar Value="{Binding ElementName=CirularSlider,Path=Value}"/>
 
-        <Slider Minimum="0" Maximum="100" 
+            <Slider Minimum="0" Maximum="100" 
                     x:Name="CirularSlider" IsSnapToTickEnabled="True"
                     VerticalAlignment="Center" Value="10"/>
-    </UniformGrid>
+        </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 
                 CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CircularProgressBarExample.xaml" 

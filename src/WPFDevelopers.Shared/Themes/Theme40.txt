@@ -67,3 +67,4 @@ TimeLine.xaml
 CropAvatar.xaml
 StarrySky.xaml
 BubblleControl.xaml
+Magnifier.xaml

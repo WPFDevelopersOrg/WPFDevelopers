@@ -7,348 +7,351 @@
 		<BaseOutputPath></BaseOutputPath>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml.cs" Link="ExampleViews\AboutWindow.xaml.cs" DependentUpon="AboutWindow.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AcrylicBlurWindowExample.xaml.cs" Link="ExampleViews\AcrylicBlurWindowExample.xaml.cs" DependentUpon="AcrylicBlurWindowExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationAudioExample.xaml.cs" Link="ExampleViews\AnimationAudioExample.xaml.cs" DependentUpon="AnimationAudioExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationNavigationBar3DExample.xaml.cs" Link="ExampleViews\AnimationNavigationBar3DExample.xaml.cs" DependentUpon="AnimationNavigationBar3DExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BarrageExample.xaml.cs" Link="ExampleViews\BarrageExample.xaml.cs" DependentUpon="BarrageExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicBarChartExample.xaml.cs" Link="ExampleViews\BasicBarChartExample.xaml.cs" DependentUpon="BasicBarChartExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicControlsExample.xaml.cs" Link="ExampleViews\BasicControlsExample.xaml.cs" DependentUpon="BasicControlsExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BreatheLightExample.xaml.cs" Link="ExampleViews\BreatheLightExample.xaml.cs" DependentUpon="BreatheLightExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BubblleControlExample.xaml.cs" Link="ExampleViews\BubblleControlExample.xaml.cs" DependentUpon="BubblleControlExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs" Link="ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs" DependentUpon="CanvasHandWritingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\ComputingHelper.cs" Link="ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\LineB.cs" Link="ExampleViews\CanvasHandWriting\LineB.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\Vector2D.cs" Link="ExampleViews\CanvasHandWriting\Vector2D.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExampleEx.xaml.cs" Link="ExampleViews\CarouselExampleEx.xaml.cs" DependentUpon="CarouselExampleEx.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ChatEmojiExample.xaml.cs" Link="ExampleViews\ChatEmojiExample.xaml.cs" DependentUpon="ChatEmojiExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularMenuExample.xaml.cs" Link="ExampleViews\CircularMenuExample.xaml.cs" DependentUpon="CircularMenuExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularProgressBarExample.xaml.cs" Link="ExampleViews\CircularProgressBarExample.xaml.cs" DependentUpon="CircularProgressBarExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CountdownTimerExample.xaml.cs" Link="ExampleViews\CountdownTimerExample.xaml.cs" DependentUpon="CountdownTimerExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" DependentUpon="CropAvatarExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" DependentUpon="CropAvatarWindow.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropControlExample.xaml.cs" Link="ExampleViews\CropControlExample.xaml.cs" DependentUpon="CropControlExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CutImageExample.xaml.cs" Link="ExampleViews\CutImageExample.xaml.cs" DependentUpon="CutImageExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DashboardExample.xaml.cs" Link="ExampleViews\DashboardExample.xaml.cs" DependentUpon="DashboardExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopBackground.xaml.cs" Link="ExampleViews\Desktop\DesktopBackground.xaml.cs" DependentUpon="DesktopBackground.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopPlayVideo.xaml.cs" Link="ExampleViews\Desktop\DesktopPlayVideo.xaml.cs" DependentUpon="DrawerMenuExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs" Link="ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs" DependentUpon="DrawerMenuExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\EdgePage.xaml.cs" Link="ExampleViews\DrawerMenu\EdgePage.xaml.cs" DependentUpon="EdgePage.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\HomePage.xaml.cs" Link="ExampleViews\DrawerMenu\HomePage.xaml.cs" DependentUpon="HomePage.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawingExample.xaml.cs" Link="ExampleViews\DrawingExample.xaml.cs" DependentUpon="DrawingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawPrizeExample.xaml.cs" Link="ExampleViews\DrawPrizeExample.xaml.cs" DependentUpon="DrawPrizeExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\EdgeLightExample.xaml.cs" Link="ExampleViews\EdgeLightExample.xaml.cs" DependentUpon="EdgeLightExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LineChartExample.xaml.cs" Link="ExampleViews\LineChartExample.xaml.cs" DependentUpon="LineChartExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\BallLoadingExample.xaml.cs" Link="ExampleViews\Loading\BallLoadingExample.xaml.cs" DependentUpon="BallLoadingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\CycleLoadingExample.xaml.cs" Link="ExampleViews\Loading\CycleLoadingExample.xaml.cs" DependentUpon="CycleLoadingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RingLoadingExample.xaml.cs" Link="ExampleViews\Loading\RingLoadingExample.xaml.cs" DependentUpon="RingLoadingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RollLoadingExample.xaml.cs" Link="ExampleViews\Loading\RollLoadingExample.xaml.cs" DependentUpon="RollLoadingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\StreamerLoadingExample.xaml.cs" Link="ExampleViews\Loading\StreamerLoadingExample.xaml.cs" DependentUpon="StreamerLoadingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\WaitLoadingExample.xaml.cs" Link="ExampleViews\Loading\WaitLoadingExample.xaml.cs" DependentUpon="WaitLoadingExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\InputBoxBase.cs" Link="ExampleViews\LoginWindow\CustomControl\InputBoxBase.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml.cs" Link="ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml.cs" DependentUpon="PasswordInputBox.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml.cs" Link="ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml.cs" DependentUpon="TextInputBox.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\LoginWindow.xaml.cs" Link="ExampleViews\LoginWindow\LoginWindow.xaml.cs" DependentUpon="LoginWindow.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\SignUpDialog.xaml.cs" Link="ExampleViews\LoginWindow\SignUpDialog.xaml.cs" DependentUpon="SignUpDialog.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\WindowBase.cs" Link="ExampleViews\LoginWindow\WindowBase.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LogoAnimationExample.xaml.cs" Link="ExampleViews\LogoAnimationExample.xaml.cs" DependentUpon="LogoAnimationExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\MainWindow.xaml.cs" Link="ExampleViews\MainWindow.xaml.cs" DependentUpon="MainWindow.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\AMapTitleLayer.cs" Link="ExampleViews\Map\AMapTitleLayer.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\BingAMapExample.xaml.cs" Link="ExampleViews\Map\BingAMapExample.xaml.cs" DependentUpon="BingAMapExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\PushpinModel.cs" Link="ExampleViews\Map\PushpinModel.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardControl.xaml.cs" Link="ExampleViews\NumberCard\NumberCardControl.xaml.cs" DependentUpon="NumberCardControl.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardExample.xaml.cs" Link="ExampleViews\NumberCard\NumberCardExample.xaml.cs" DependentUpon="NumberCardExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\OtherControlExample.xaml.cs" Link="ExampleViews\OtherControlExample.xaml.cs" DependentUpon="OtherControlExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\PaginationExample.xaml.cs" Link="ExampleViews\PaginationExample.xaml.cs" DependentUpon="PaginationExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\PanningItemsExample.xaml.cs" Link="ExampleViews\PanningItemsExample.xaml.cs" DependentUpon="PanningItemsExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\ImageRadioButton.cs" Link="ExampleViews\Passwrod\ImageRadioButton.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordBoxHelper.cs" Link="ExampleViews\Passwrod\PasswordBoxHelper.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordExample.xaml.cs" Link="ExampleViews\Passwrod\PasswordExample.xaml.cs" DependentUpon="PasswordExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" Link="ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" DependentUpon="PasswordWithPlainText.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\PieControlExample.xaml.cs" Link="ExampleViews\PieControlExample.xaml.cs" DependentUpon="PieControlExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RadarChartExample.xaml.cs" Link="ExampleViews\RadarChartExample.xaml.cs" DependentUpon="RadarChartExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RainbowButtonsExample.xaml.cs" Link="ExampleViews\RainbowButtonsExample.xaml.cs" DependentUpon="RainbowButtonsExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundMenuExample.xaml.cs" Link="ExampleViews\RoundMenuExample.xaml.cs" DependentUpon="RoundMenuExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundPickerExample.xaml.cs" Link="ExampleViews\RoundPickerExample.xaml.cs" DependentUpon="RoundPickerExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RulerControlExample.xaml.cs" Link="ExampleViews\RulerControlExample.xaml.cs" DependentUpon="RulerControlExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScreenCutExample.xaml.cs" Link="ExampleViews\ScreenCutExample.xaml.cs" DependentUpon="ScreenCutExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScrollViewerAnimationExample.xaml.cs" Link="ExampleViews\ScrollViewerAnimationExample.xaml.cs" DependentUpon="ScrollViewerAnimationExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ShakeExample.xaml.cs" Link="ExampleViews\ShakeExample.xaml.cs" DependentUpon="ShakeExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SnowCanvasExample.xaml.cs" Link="ExampleViews\SnowCanvasExample.xaml.cs" DependentUpon="SnowCanvasExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SongWordsExample.xaml.cs" Link="ExampleViews\SongWordsExample.xaml.cs" DependentUpon="SongWordsExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsExample.xaml.cs" Link="ExampleViews\SpeedRockets\SpeedRocketsExample.xaml.cs" DependentUpon="SpeedRocketsExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsMini.xaml.cs" Link="ExampleViews\SpeedRockets\SpeedRocketsMini.xaml.cs" DependentUpon="SpeedRocketsMini.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpotLightExample.xaml.cs" Link="ExampleViews\SpotLightExample.xaml.cs" DependentUpon="SpotLightExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\StarrySkyExample.xaml.cs" Link="ExampleViews\StarrySkyExample.xaml.cs" DependentUpon="StarrySkyExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\TaskbarItemInfoExample.xaml.cs" Link="ExampleViews\TaskbarItemInfoExample.xaml.cs" DependentUpon="TaskbarItemInfoExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThermometerExample.xaml.cs" Link="ExampleViews\ThermometerExample.xaml.cs" DependentUpon="ThermometerExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThumbDragAndAngleExample.xaml.cs" Link="ExampleViews\ThumbDragAndAngleExample.xaml.cs" DependentUpon="ThumbDragAndAngleExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\TimeLineExample.xaml.cs" Link="ExampleViews\TimeLineExample.xaml.cs" DependentUpon="TimeLineExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\TransitionPanelExample.xaml.cs" Link="ExampleViews\TransitionPanelExample.xaml.cs" DependentUpon="TransitionPanelExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\VerifyCodeExample.xaml.cs" Link="ExampleViews\VerifyCodeExample.xaml.cs" DependentUpon="VerifyCodeExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\VirtualizingWrapPanelExample.xaml.cs" Link="ExampleViews\VirtualizingWrapPanelExample.xaml.cs" DependentUpon="VirtualizingWrapPanelExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\VolumeControl.xaml.cs" Link="ExampleViews\ZooSemy\VolumeControl.xaml.cs" DependentUpon="VolumeControl.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" Link="ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" DependentUpon="ZooSemyExample.xaml" />
-	  <Resource Include="..\WPFDevelopers.Samples\ViewModels\PaginationExampleVM.cs" Link="ViewModels\PaginationExampleVM.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ViewModels\DrawingExampleVM.cs" Link="ViewModels\DrawingExampleVM.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\Models\HospitalList.cs" Link="Models\HospitalList.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\Converts\StateConvert.cs" Link="Converts\StateConvert.cs" />
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml.cs" Link="ExampleViews\SixGirdViewExample.xaml.cs" DependentUpon="SixGirdViewExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml.cs" Link="ExampleViews\AboutWindow.xaml.cs" DependentUpon="AboutWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AcrylicBlurWindowExample.xaml.cs" Link="ExampleViews\AcrylicBlurWindowExample.xaml.cs" DependentUpon="AcrylicBlurWindowExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationAudioExample.xaml.cs" Link="ExampleViews\AnimationAudioExample.xaml.cs" DependentUpon="AnimationAudioExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationNavigationBar3DExample.xaml.cs" Link="ExampleViews\AnimationNavigationBar3DExample.xaml.cs" DependentUpon="AnimationNavigationBar3DExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BarrageExample.xaml.cs" Link="ExampleViews\BarrageExample.xaml.cs" DependentUpon="BarrageExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicBarChartExample.xaml.cs" Link="ExampleViews\BasicBarChartExample.xaml.cs" DependentUpon="BasicBarChartExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicControlsExample.xaml.cs" Link="ExampleViews\BasicControlsExample.xaml.cs" DependentUpon="BasicControlsExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BreatheLightExample.xaml.cs" Link="ExampleViews\BreatheLightExample.xaml.cs" DependentUpon="BreatheLightExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BubblleControlExample.xaml.cs" Link="ExampleViews\BubblleControlExample.xaml.cs" DependentUpon="BubblleControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs" Link="ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs" DependentUpon="CanvasHandWritingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\ComputingHelper.cs" Link="ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\LineB.cs" Link="ExampleViews\CanvasHandWriting\LineB.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\Vector2D.cs" Link="ExampleViews\CanvasHandWriting\Vector2D.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExampleEx.xaml.cs" Link="ExampleViews\CarouselExampleEx.xaml.cs" DependentUpon="CarouselExampleEx.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ChatEmojiExample.xaml.cs" Link="ExampleViews\ChatEmojiExample.xaml.cs" DependentUpon="ChatEmojiExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularMenuExample.xaml.cs" Link="ExampleViews\CircularMenuExample.xaml.cs" DependentUpon="CircularMenuExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularProgressBarExample.xaml.cs" Link="ExampleViews\CircularProgressBarExample.xaml.cs" DependentUpon="CircularProgressBarExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CountdownTimerExample.xaml.cs" Link="ExampleViews\CountdownTimerExample.xaml.cs" DependentUpon="CountdownTimerExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" DependentUpon="CropAvatarExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" DependentUpon="CropAvatarWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropControlExample.xaml.cs" Link="ExampleViews\CropControlExample.xaml.cs" DependentUpon="CropControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CutImageExample.xaml.cs" Link="ExampleViews\CutImageExample.xaml.cs" DependentUpon="CutImageExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DashboardExample.xaml.cs" Link="ExampleViews\DashboardExample.xaml.cs" DependentUpon="DashboardExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopBackground.xaml.cs" Link="ExampleViews\Desktop\DesktopBackground.xaml.cs" DependentUpon="DesktopBackground.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopPlayVideo.xaml.cs" Link="ExampleViews\Desktop\DesktopPlayVideo.xaml.cs" DependentUpon="DrawerMenuExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs" Link="ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs" DependentUpon="DrawerMenuExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\EdgePage.xaml.cs" Link="ExampleViews\DrawerMenu\EdgePage.xaml.cs" DependentUpon="EdgePage.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\HomePage.xaml.cs" Link="ExampleViews\DrawerMenu\HomePage.xaml.cs" DependentUpon="HomePage.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawingExample.xaml.cs" Link="ExampleViews\DrawingExample.xaml.cs" DependentUpon="DrawingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawPrizeExample.xaml.cs" Link="ExampleViews\DrawPrizeExample.xaml.cs" DependentUpon="DrawPrizeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\EdgeLightExample.xaml.cs" Link="ExampleViews\EdgeLightExample.xaml.cs" DependentUpon="EdgeLightExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LineChartExample.xaml.cs" Link="ExampleViews\LineChartExample.xaml.cs" DependentUpon="LineChartExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\BallLoadingExample.xaml.cs" Link="ExampleViews\Loading\BallLoadingExample.xaml.cs" DependentUpon="BallLoadingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\CycleLoadingExample.xaml.cs" Link="ExampleViews\Loading\CycleLoadingExample.xaml.cs" DependentUpon="CycleLoadingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RingLoadingExample.xaml.cs" Link="ExampleViews\Loading\RingLoadingExample.xaml.cs" DependentUpon="RingLoadingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RollLoadingExample.xaml.cs" Link="ExampleViews\Loading\RollLoadingExample.xaml.cs" DependentUpon="RollLoadingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\StreamerLoadingExample.xaml.cs" Link="ExampleViews\Loading\StreamerLoadingExample.xaml.cs" DependentUpon="StreamerLoadingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\WaitLoadingExample.xaml.cs" Link="ExampleViews\Loading\WaitLoadingExample.xaml.cs" DependentUpon="WaitLoadingExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\InputBoxBase.cs" Link="ExampleViews\LoginWindow\CustomControl\InputBoxBase.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml.cs" Link="ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml.cs" DependentUpon="PasswordInputBox.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml.cs" Link="ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml.cs" DependentUpon="TextInputBox.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\LoginWindow.xaml.cs" Link="ExampleViews\LoginWindow\LoginWindow.xaml.cs" DependentUpon="LoginWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\SignUpDialog.xaml.cs" Link="ExampleViews\LoginWindow\SignUpDialog.xaml.cs" DependentUpon="SignUpDialog.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\WindowBase.cs" Link="ExampleViews\LoginWindow\WindowBase.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LogoAnimationExample.xaml.cs" Link="ExampleViews\LogoAnimationExample.xaml.cs" DependentUpon="LogoAnimationExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MainWindow.xaml.cs" Link="ExampleViews\MainWindow.xaml.cs" DependentUpon="MainWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\AMapTitleLayer.cs" Link="ExampleViews\Map\AMapTitleLayer.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\BingAMapExample.xaml.cs" Link="ExampleViews\Map\BingAMapExample.xaml.cs" DependentUpon="BingAMapExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\PushpinModel.cs" Link="ExampleViews\Map\PushpinModel.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardControl.xaml.cs" Link="ExampleViews\NumberCard\NumberCardControl.xaml.cs" DependentUpon="NumberCardControl.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardExample.xaml.cs" Link="ExampleViews\NumberCard\NumberCardExample.xaml.cs" DependentUpon="NumberCardExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\OtherControlExample.xaml.cs" Link="ExampleViews\OtherControlExample.xaml.cs" DependentUpon="OtherControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\PaginationExample.xaml.cs" Link="ExampleViews\PaginationExample.xaml.cs" DependentUpon="PaginationExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\PanningItemsExample.xaml.cs" Link="ExampleViews\PanningItemsExample.xaml.cs" DependentUpon="PanningItemsExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\ImageRadioButton.cs" Link="ExampleViews\Passwrod\ImageRadioButton.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordBoxHelper.cs" Link="ExampleViews\Passwrod\PasswordBoxHelper.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordExample.xaml.cs" Link="ExampleViews\Passwrod\PasswordExample.xaml.cs" DependentUpon="PasswordExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" Link="ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" DependentUpon="PasswordWithPlainText.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\PieControlExample.xaml.cs" Link="ExampleViews\PieControlExample.xaml.cs" DependentUpon="PieControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RadarChartExample.xaml.cs" Link="ExampleViews\RadarChartExample.xaml.cs" DependentUpon="RadarChartExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RainbowButtonsExample.xaml.cs" Link="ExampleViews\RainbowButtonsExample.xaml.cs" DependentUpon="RainbowButtonsExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundMenuExample.xaml.cs" Link="ExampleViews\RoundMenuExample.xaml.cs" DependentUpon="RoundMenuExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundPickerExample.xaml.cs" Link="ExampleViews\RoundPickerExample.xaml.cs" DependentUpon="RoundPickerExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RulerControlExample.xaml.cs" Link="ExampleViews\RulerControlExample.xaml.cs" DependentUpon="RulerControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScreenCutExample.xaml.cs" Link="ExampleViews\ScreenCutExample.xaml.cs" DependentUpon="ScreenCutExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScrollViewerAnimationExample.xaml.cs" Link="ExampleViews\ScrollViewerAnimationExample.xaml.cs" DependentUpon="ScrollViewerAnimationExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ShakeExample.xaml.cs" Link="ExampleViews\ShakeExample.xaml.cs" DependentUpon="ShakeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SnowCanvasExample.xaml.cs" Link="ExampleViews\SnowCanvasExample.xaml.cs" DependentUpon="SnowCanvasExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SongWordsExample.xaml.cs" Link="ExampleViews\SongWordsExample.xaml.cs" DependentUpon="SongWordsExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsExample.xaml.cs" Link="ExampleViews\SpeedRockets\SpeedRocketsExample.xaml.cs" DependentUpon="SpeedRocketsExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsMini.xaml.cs" Link="ExampleViews\SpeedRockets\SpeedRocketsMini.xaml.cs" DependentUpon="SpeedRocketsMini.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpotLightExample.xaml.cs" Link="ExampleViews\SpotLightExample.xaml.cs" DependentUpon="SpotLightExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\StarrySkyExample.xaml.cs" Link="ExampleViews\StarrySkyExample.xaml.cs" DependentUpon="StarrySkyExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\TaskbarItemInfoExample.xaml.cs" Link="ExampleViews\TaskbarItemInfoExample.xaml.cs" DependentUpon="TaskbarItemInfoExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThermometerExample.xaml.cs" Link="ExampleViews\ThermometerExample.xaml.cs" DependentUpon="ThermometerExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThumbDragAndAngleExample.xaml.cs" Link="ExampleViews\ThumbDragAndAngleExample.xaml.cs" DependentUpon="ThumbDragAndAngleExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\TimeLineExample.xaml.cs" Link="ExampleViews\TimeLineExample.xaml.cs" DependentUpon="TimeLineExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\TransitionPanelExample.xaml.cs" Link="ExampleViews\TransitionPanelExample.xaml.cs" DependentUpon="TransitionPanelExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\VerifyCodeExample.xaml.cs" Link="ExampleViews\VerifyCodeExample.xaml.cs" DependentUpon="VerifyCodeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\VirtualizingWrapPanelExample.xaml.cs" Link="ExampleViews\VirtualizingWrapPanelExample.xaml.cs" DependentUpon="VirtualizingWrapPanelExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\VolumeControl.xaml.cs" Link="ExampleViews\ZooSemy\VolumeControl.xaml.cs" DependentUpon="VolumeControl.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" Link="ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" DependentUpon="ZooSemyExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples\ViewModels\PaginationExampleVM.cs" Link="ViewModels\PaginationExampleVM.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ViewModels\DrawingExampleVM.cs" Link="ViewModels\DrawingExampleVM.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\Models\HospitalList.cs" Link="Models\HospitalList.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\Converts\StateConvert.cs" Link="Converts\StateConvert.cs" />
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml.cs" Link="ExampleViews\SixGirdViewExample.xaml.cs" DependentUpon="SixGirdViewExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MagnifierExample.xaml.cs" Link="ExampleViews\MagnifierExample.xaml.cs" DependentUpon="MagnifierExample.xaml"/>
 	</ItemGroup>
 	<ItemGroup>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
-		  <Link>ExampleViews\AboutWindow.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AcrylicBlurWindowExample.xaml">
-		  <Link>ExampleViews\AcrylicBlurWindowExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationAudioExample.xaml">
-		  <Link>ExampleViews\AnimationAudioExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationNavigationBar3DExample.xaml">
-		  <Link>ExampleViews\AnimationNavigationBar3DExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BarrageExample.xaml">
-		  <Link>ExampleViews\BarrageExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicBarChartExample.xaml">
-		  <Link>ExampleViews\BasicBarChartExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicControlsExample.xaml">
-		  <Link>ExampleViews\BasicControlsExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BreatheLightExample.xaml">
-		  <Link>ExampleViews\BreatheLightExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\BubblleControlExample.xaml">
-		  <Link>ExampleViews\BubblleControlExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml">
-		  <Link>ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExample.xaml">
-		   <Link>ExampleViews\CarouselExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExampleEx.xaml">
-		  <Link>ExampleViews\CarouselExampleEx.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ChatEmojiExample.xaml">
-		  <Link>ExampleViews\ChatEmojiExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularMenuExample.xaml">
-		  <Link>ExampleViews\CircularMenuExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularProgressBarExample.xaml">
-	    <Link>ExampleViews\CircularProgressBarExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CountdownTimerExample.xaml">
-	    <Link>ExampleViews\CountdownTimerExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarExample.xaml">
-	    <Link>ExampleViews\CropAvatar\CropAvatarExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarWindow.xaml">
-	    <Link>ExampleViews\CropAvatar\CropAvatarWindow.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropControlExample.xaml">
-	    <Link>ExampleViews\CropControlExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\CutImageExample.xaml">
-	    <Link>ExampleViews\CutImageExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DashboardExample.xaml">
-	    <Link>ExampleViews\DashboardExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopBackground.xaml">
-	    <Link>ExampleViews\Desktop\DesktopBackground.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopPlayVideo.xaml">
-	    <Link>ExampleViews\Desktop\DesktopPlayVideo.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\DrawerMenuExample.xaml">
-	    <Link>ExampleViews\DrawerMenu\DrawerMenuExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\EdgePage.xaml">
-	    <Link>ExampleViews\DrawerMenu\EdgePage.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\HomePage.xaml">
-	    <Link>ExampleViews\DrawerMenu\HomePage.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawingExample.xaml">
-	    <Link>ExampleViews\DrawingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawPrizeExample.xaml">
-	    <Link>ExampleViews\DrawPrizeExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\EdgeLightExample.xaml">
-	    <Link>ExampleViews\EdgeLightExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LineChartExample.xaml">
-	    <Link>ExampleViews\LineChartExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\BallLoadingExample.xaml">
-	    <Link>ExampleViews\Loading\BallLoadingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\CycleLoadingExample.xaml">
-	    <Link>ExampleViews\Loading\CycleLoadingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RingLoadingExample.xaml">
-	    <Link>ExampleViews\Loading\RingLoadingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RollLoadingExample.xaml">
-	    <Link>ExampleViews\Loading\RollLoadingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\StreamerLoadingExample.xaml">
-	    <Link>ExampleViews\Loading\StreamerLoadingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\WaitLoadingExample.xaml">
-	    <Link>ExampleViews\Loading\WaitLoadingExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml">
-	    <Link>ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml">
-	    <Link>ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\ButtonStyle.xaml">
-	    <Link>ExampleViews\LoginWindow\CustomStyle\ButtonStyle.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\PasswordBoxStyle.xaml">
-	    <Link>ExampleViews\LoginWindow\CustomStyle\PasswordBoxStyle.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\TextBoxStyle.xaml">
-	    <Link>ExampleViews\LoginWindow\CustomStyle\TextBoxStyle.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\WindowStyle.xaml">
-	    <Link>ExampleViews\LoginWindow\CustomStyle\WindowStyle.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\Generic.xaml">
-	    <Link>ExampleViews\LoginWindow\Generic.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\LoginWindow.xaml">
-	    <Link>ExampleViews\LoginWindow\LoginWindow.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\SignUpDialog.xaml">
-	    <Link>ExampleViews\LoginWindow\SignUpDialog.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\LogoAnimationExample.xaml">
-	    <Link>ExampleViews\LogoAnimationExample.xaml</Link>
-	  </Resource>
-	  
-	  
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\MainWindow.xaml">
-	    <Link>ExampleViews\MainWindow.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\BingAMapExample.xaml">
-	    <Link>ExampleViews\Map\BingAMapExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardControl.xaml">
-	    <Link>ExampleViews\NumberCard\NumberCardControl.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardExample.xaml">
-	    <Link>ExampleViews\NumberCard\NumberCardExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\OtherControlExample.xaml">
-	    <Link>ExampleViews\OtherControlExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\PaginationExample.xaml">
-	    <Link>ExampleViews\PaginationExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\PanningItemsExample.xaml">
-	    <Link>ExampleViews\PanningItemsExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordExample.xaml">
-	    <Link>ExampleViews\Passwrod\PasswordExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordWithPlainText.xaml">
-	    <Link>ExampleViews\Passwrod\PasswordWithPlainText.xaml</Link>
-	  </Resource>
-	  
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\PieControlExample.xaml">
-	    <Link>ExampleViews\PieControlExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RadarChartExample.xaml">
-	    <Link>ExampleViews\RadarChartExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RainbowButtonsExample.xaml">
-	    <Link>ExampleViews\RainbowButtonsExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundMenuExample.xaml">
-	    <Link>ExampleViews\RoundMenuExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundPickerExample.xaml">
-	    <Link>ExampleViews\RoundPickerExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\RulerControlExample.xaml">
-	    <Link>ExampleViews\RulerControlExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScreenCutExample.xaml">
-	    <Link>ExampleViews\ScreenCutExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScrollViewerAnimationExample.xaml">
-	    <Link>ExampleViews\ScrollViewerAnimationExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ShakeExample.xaml">
-	    <Link>ExampleViews\ShakeExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SnowCanvasExample.xaml">
-	    <Link>ExampleViews\SnowCanvasExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SongWordsExample.xaml">
-	    <Link>ExampleViews\SongWordsExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsExample.xaml">
-	    <Link>ExampleViews\SpeedRockets\SpeedRocketsExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsMini.xaml">
-	    <Link>ExampleViews\SpeedRockets\SpeedRocketsMini.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpotLightExample.xaml">
-	    <Link>ExampleViews\SpotLightExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\StarrySkyExample.xaml">
-	    <Link>ExampleViews\StarrySkyExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\TaskbarItemInfoExample.xaml">
-	    <Link>ExampleViews\TaskbarItemInfoExample.xaml</Link>
-	  </Resource>
-	  
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThermometerExample.xaml">
-	    <Link>ExampleViews\ThermometerExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThumbDragAndAngleExample.xaml">
-	    <Link>ExampleViews\ThumbDragAndAngleExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\TimeLineExample.xaml">
-	    <Link>ExampleViews\TimeLineExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\TransitionPanelExample.xaml">
-	    <Link>ExampleViews\TransitionPanelExample.xaml</Link>
-	  </Resource>
-	  
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\VerifyCodeExample.xaml">
-	    <Link>ExampleViews\VerifyCodeExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\VirtualizingWrapPanelExample.xaml">
-	    <Link>ExampleViews\VirtualizingWrapPanelExample.xaml</Link>
-	  </Resource>
-	  
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\VolumeControl.xaml">
-	    <Link>ExampleViews\ZooSemy\VolumeControl.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\ZooSemyExample.xaml">
-	    <Link>ExampleViews\ZooSemy\ZooSemyExample.xaml</Link>
-	  </Resource>
-	  <Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml">
-		<Link>ExampleViews\SixGirdViewExample.xaml</Link>
-	  </Resource>
-	  
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
+			<Link>ExampleViews\AboutWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AcrylicBlurWindowExample.xaml">
+			<Link>ExampleViews\AcrylicBlurWindowExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationAudioExample.xaml">
+			<Link>ExampleViews\AnimationAudioExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AnimationNavigationBar3DExample.xaml">
+			<Link>ExampleViews\AnimationNavigationBar3DExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BarrageExample.xaml">
+			<Link>ExampleViews\BarrageExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicBarChartExample.xaml">
+			<Link>ExampleViews\BasicBarChartExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BasicControlsExample.xaml">
+			<Link>ExampleViews\BasicControlsExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BreatheLightExample.xaml">
+			<Link>ExampleViews\BreatheLightExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\BubblleControlExample.xaml">
+			<Link>ExampleViews\BubblleControlExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml">
+			<Link>ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExample.xaml">
+			<Link>ExampleViews\CarouselExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CarouselExampleEx.xaml">
+			<Link>ExampleViews\CarouselExampleEx.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ChatEmojiExample.xaml">
+			<Link>ExampleViews\ChatEmojiExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularMenuExample.xaml">
+			<Link>ExampleViews\CircularMenuExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CircularProgressBarExample.xaml">
+			<Link>ExampleViews\CircularProgressBarExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CountdownTimerExample.xaml">
+			<Link>ExampleViews\CountdownTimerExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarExample.xaml">
+			<Link>ExampleViews\CropAvatar\CropAvatarExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropAvatar\CropAvatarWindow.xaml">
+			<Link>ExampleViews\CropAvatar\CropAvatarWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CropControlExample.xaml">
+			<Link>ExampleViews\CropControlExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\CutImageExample.xaml">
+			<Link>ExampleViews\CutImageExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DashboardExample.xaml">
+			<Link>ExampleViews\DashboardExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopBackground.xaml">
+			<Link>ExampleViews\Desktop\DesktopBackground.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Desktop\DesktopPlayVideo.xaml">
+			<Link>ExampleViews\Desktop\DesktopPlayVideo.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\DrawerMenuExample.xaml">
+			<Link>ExampleViews\DrawerMenu\DrawerMenuExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\EdgePage.xaml">
+			<Link>ExampleViews\DrawerMenu\EdgePage.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawerMenu\HomePage.xaml">
+			<Link>ExampleViews\DrawerMenu\HomePage.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawingExample.xaml">
+			<Link>ExampleViews\DrawingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\DrawPrizeExample.xaml">
+			<Link>ExampleViews\DrawPrizeExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\EdgeLightExample.xaml">
+			<Link>ExampleViews\EdgeLightExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LineChartExample.xaml">
+			<Link>ExampleViews\LineChartExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\BallLoadingExample.xaml">
+			<Link>ExampleViews\Loading\BallLoadingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\CycleLoadingExample.xaml">
+			<Link>ExampleViews\Loading\CycleLoadingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RingLoadingExample.xaml">
+			<Link>ExampleViews\Loading\RingLoadingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\RollLoadingExample.xaml">
+			<Link>ExampleViews\Loading\RollLoadingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\StreamerLoadingExample.xaml">
+			<Link>ExampleViews\Loading\StreamerLoadingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Loading\WaitLoadingExample.xaml">
+			<Link>ExampleViews\Loading\WaitLoadingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml">
+			<Link>ExampleViews\LoginWindow\CustomControl\PasswordInputBox.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml">
+			<Link>ExampleViews\LoginWindow\CustomControl\TextInputBox.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\ButtonStyle.xaml">
+			<Link>ExampleViews\LoginWindow\CustomStyle\ButtonStyle.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\PasswordBoxStyle.xaml">
+			<Link>ExampleViews\LoginWindow\CustomStyle\PasswordBoxStyle.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\TextBoxStyle.xaml">
+			<Link>ExampleViews\LoginWindow\CustomStyle\TextBoxStyle.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\CustomStyle\WindowStyle.xaml">
+			<Link>ExampleViews\LoginWindow\CustomStyle\WindowStyle.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\Generic.xaml">
+			<Link>ExampleViews\LoginWindow\Generic.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\LoginWindow.xaml">
+			<Link>ExampleViews\LoginWindow\LoginWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoginWindow\SignUpDialog.xaml">
+			<Link>ExampleViews\LoginWindow\SignUpDialog.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LogoAnimationExample.xaml">
+			<Link>ExampleViews\LogoAnimationExample.xaml</Link>
+		</Resource>
+
+
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MainWindow.xaml">
+			<Link>ExampleViews\MainWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Map\BingAMapExample.xaml">
+			<Link>ExampleViews\Map\BingAMapExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardControl.xaml">
+			<Link>ExampleViews\NumberCard\NumberCardControl.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\NumberCard\NumberCardExample.xaml">
+			<Link>ExampleViews\NumberCard\NumberCardExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\OtherControlExample.xaml">
+			<Link>ExampleViews\OtherControlExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\PaginationExample.xaml">
+			<Link>ExampleViews\PaginationExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\PanningItemsExample.xaml">
+			<Link>ExampleViews\PanningItemsExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordExample.xaml">
+			<Link>ExampleViews\Passwrod\PasswordExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\Passwrod\PasswordWithPlainText.xaml">
+			<Link>ExampleViews\Passwrod\PasswordWithPlainText.xaml</Link>
+		</Resource>
+
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\PieControlExample.xaml">
+			<Link>ExampleViews\PieControlExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RadarChartExample.xaml">
+			<Link>ExampleViews\RadarChartExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RainbowButtonsExample.xaml">
+			<Link>ExampleViews\RainbowButtonsExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundMenuExample.xaml">
+			<Link>ExampleViews\RoundMenuExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RoundPickerExample.xaml">
+			<Link>ExampleViews\RoundPickerExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\RulerControlExample.xaml">
+			<Link>ExampleViews\RulerControlExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScreenCutExample.xaml">
+			<Link>ExampleViews\ScreenCutExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ScrollViewerAnimationExample.xaml">
+			<Link>ExampleViews\ScrollViewerAnimationExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ShakeExample.xaml">
+			<Link>ExampleViews\ShakeExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SnowCanvasExample.xaml">
+			<Link>ExampleViews\SnowCanvasExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SongWordsExample.xaml">
+			<Link>ExampleViews\SongWordsExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsExample.xaml">
+			<Link>ExampleViews\SpeedRockets\SpeedRocketsExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpeedRockets\SpeedRocketsMini.xaml">
+			<Link>ExampleViews\SpeedRockets\SpeedRocketsMini.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SpotLightExample.xaml">
+			<Link>ExampleViews\SpotLightExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\StarrySkyExample.xaml">
+			<Link>ExampleViews\StarrySkyExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\TaskbarItemInfoExample.xaml">
+			<Link>ExampleViews\TaskbarItemInfoExample.xaml</Link>
+		</Resource>
+
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThermometerExample.xaml">
+			<Link>ExampleViews\ThermometerExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ThumbDragAndAngleExample.xaml">
+			<Link>ExampleViews\ThumbDragAndAngleExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\TimeLineExample.xaml">
+			<Link>ExampleViews\TimeLineExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\TransitionPanelExample.xaml">
+			<Link>ExampleViews\TransitionPanelExample.xaml</Link>
+		</Resource>
+
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\VerifyCodeExample.xaml">
+			<Link>ExampleViews\VerifyCodeExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\VirtualizingWrapPanelExample.xaml">
+			<Link>ExampleViews\VirtualizingWrapPanelExample.xaml</Link>
+		</Resource>
+
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\VolumeControl.xaml">
+			<Link>ExampleViews\ZooSemy\VolumeControl.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\ZooSemy\ZooSemyExample.xaml">
+			<Link>ExampleViews\ZooSemy\ZooSemyExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml">
+			<Link>ExampleViews\SixGirdViewExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MagnifierExample.xaml">
+			<Link>ExampleViews\MagnifierExample.xaml</Link>
+		</Resource>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="Copy &quot;$(TargetDir)WPFDevelopers.SamplesCode.dll&quot; &quot;$(TargetDir)../&quot;" />
+		<Exec Command="Copy &quot;$(TargetDir)WPFDevelopers.SamplesCode.dll&quot; &quot;$(TargetDir)../&quot;" />
 	</Target>
-	
+
 
 </Project>

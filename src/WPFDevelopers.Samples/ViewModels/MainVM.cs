@@ -285,6 +285,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.SixGridView:
                     ControlPanel = new SixGirdViewExample();
                     break;
+                case MenuEnum.Magnifier:
+                    ControlPanel = new MagnifierExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().ShowDialog();

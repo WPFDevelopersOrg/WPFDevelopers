@@ -666,6 +666,9 @@
 							<Setter Property="Visibility" Value="Collapsed" TargetName="PART_MaximizeButton" />
 							<Setter Property="Margin" TargetName="LayoutRoot" Value="7" />
 						</Trigger>
+						<Trigger Property="WindowStyle" Value="ToolWindow">
+							<Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
+						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="ResizeMode" Value="CanResizeWithGrip" />
@@ -673,13 +676,13 @@
 							</MultiTrigger.Conditions>
 							<Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
 						</MultiTrigger>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="ResizeMode" Value="NoResize" />
-								<Condition Property="WindowStyle" Value="ToolWindow" />
-							</MultiTrigger.Conditions>
-							<Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
-						</MultiTrigger>
+						<!--<MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode"  Value="NoResize" />
+                                <Condition Property="WindowStyle"  Value="ToolWindow" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>-->
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -4278,20 +4281,22 @@
 	<Style TargetType="{x:Type controls:CircularProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Maximum" Value="100" />
 		<Setter Property="StrokeThickness" Value="10" />
-		<Setter Property="Foreground" Value="{StaticResource InfoSolidColorBrush}" />
-		<Setter Property="Background" Value="{StaticResource PrimaryNormalSolidColorBrush}" />
-		<Setter Property="Width" Value="100" />
-		<Setter Property="Height" Value="100" />
+		<Setter Property="Foreground" Value="{DynamicResource InfoSolidColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<!--<Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>-->
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:CircularProgressBar}">
-					<Viewbox>
-						<Canvas Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-							<Path Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BrushStrokeThickness}">
+					<controls:SmallPanel Width="{Binding ElementName=PART_Path,Path=ActualWidth}" Height="{Binding ElementName=PART_Path,Path=ActualHeight}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+						<Canvas>
+							<Path Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BrushStrokeThickness}" x:Name="PART_Path">
 								<Path.Data>
 									<PathGeometry>
-										<PathFigure StartPoint="50,0">
-											<ArcSegment SweepDirection="Clockwise" Size="50,50" Point="49.999127335374,7.61543361704753E-09" IsLargeArc="True" />
+										<PathFigure x:Name="PART_PathFigure">
+											<ArcSegment SweepDirection="Clockwise" IsLargeArc="True" x:Name="PART_ArcSegment" />
 										</PathFigure>
 									</PathGeometry>
 								</Path.Data>
@@ -4299,17 +4304,22 @@
 							<Path Stroke="{TemplateBinding Background}" StrokeThickness="{TemplateBinding StrokeThickness}">
 								<Path.Data>
 									<PathGeometry>
-										<PathFigure StartPoint="50,0">
-											<ArcSegment SweepDirection="Clockwise" Size="50,50" Point="{Binding Path=Angle, Converter={StaticResource prConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}" IsLargeArc="{Binding Path=Angle, Converter={StaticResource isLargeConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}" />
+										<PathFigure x:Name="PART_PathFigureAngle">
+											<ArcSegment SweepDirection="Clockwise" IsLargeArc="{Binding Path=Angle, Converter={StaticResource isLargeConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}" x:Name="PART_ArcSegmentAngle">
+												<ArcSegment.Point>
+													<MultiBinding Converter="{StaticResource prConverter}">
+														<Binding Path="Angle" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}" />
+														<Binding Path="Size" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}" />
+													</MultiBinding>
+												</ArcSegment.Point>
+											</ArcSegment>
 										</PathFigure>
 									</PathGeometry>
 								</Path.Data>
 							</Path>
-							<Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-								<TextBlock Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Value, StringFormat={}{0}%, &#xD;&#xA;                                RelativeSource={RelativeSource TemplatedParent}}" FontSize="{TemplateBinding FontSize}" />
-							</Border>
 						</Canvas>
-					</Viewbox>
+						<TextBlock Foreground="{TemplateBinding Foreground}" Text="{Binding Path=Value, StringFormat={}{0}%, &#xD;&#xA;                                RelativeSource={RelativeSource TemplatedParent}}" FontSize="{TemplateBinding FontSize}" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="PART_TextBlock" />
+					</controls:SmallPanel>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -6148,6 +6158,43 @@
 							</ItemsControl.ItemsPanel>
 						</ItemsControl>
 					</controls:SmallPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:Magnifier}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="IsHitTestVisible" Value="False" />
+		<Setter Property="Width" Value="200" />
+		<Setter Property="Height" Value="200" />
+		<Setter Property="BorderThickness" Value="8" />
+		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:Magnifier}">
+					<Canvas Name="PART_Canvas">
+						<Border x:Name="PART_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Height}" CornerRadius="{TemplateBinding CornerRadius}">
+							<Ellipse>
+								<Ellipse.Fill>
+									<VisualBrush x:Name="PART_VisualBrush" Visual="{Binding ParentTarget,RelativeSource={RelativeSource TemplatedParent}}" ViewboxUnits="Absolute" />
+								</Ellipse.Fill>
+							</Ellipse>
+						</Border>
+					</Canvas>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:MagnifierDesktop}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="WindowState" Value="Maximized" />
+		<Setter Property="WindowStyle" Value="None" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MagnifierDesktop}">
+					<AdornerDecorator>
+						<Border x:Name="PART_Border" controls:Magnifier.Add="{x:Static controls:Magnifier.Default}" />
+					</AdornerDecorator>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

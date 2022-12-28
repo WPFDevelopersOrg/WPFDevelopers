@@ -113,7 +113,9 @@
                             <!--<Setter Property="BorderThickness" Value="{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowResizeBorderThickness}"/>-->
                             <Setter Property="Margin" TargetName="LayoutRoot" Value="7"/>
                         </Trigger>
-                        
+                        <Trigger Property="WindowStyle" Value="ToolWindow">
+                            <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="ResizeMode"  Value="CanResizeWithGrip" />
@@ -121,13 +123,13 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
                         </MultiTrigger>
-                        <MultiTrigger>
+                        <!--<MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="ResizeMode"  Value="NoResize" />
                                 <Condition Property="WindowStyle"  Value="ToolWindow" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
-                        </MultiTrigger>
+                        </MultiTrigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

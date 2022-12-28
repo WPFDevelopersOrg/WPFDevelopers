@@ -64,6 +64,7 @@
         CanvasHandWriting,
         Barrage,
         SixGridView,
+        Magnifier,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

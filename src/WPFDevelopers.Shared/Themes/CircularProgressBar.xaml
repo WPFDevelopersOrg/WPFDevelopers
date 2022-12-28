@@ -11,51 +11,62 @@
     <Style TargetType="{x:Type controls:CircularProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Maximum" Value="100"/>
         <Setter Property="StrokeThickness" Value="10"/>
-        <Setter Property="Foreground" Value="{StaticResource InfoSolidColorBrush}"/>
-        <Setter Property="Background" Value="{StaticResource PrimaryNormalSolidColorBrush}"/>
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Height" Value="100"/>
+        <Setter Property="Foreground" Value="{DynamicResource InfoSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <!--<Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularProgressBar}">
-                    <Viewbox>
-                        <Canvas Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                    <controls:SmallPanel Width="{Binding ElementName=PART_Path,Path=ActualWidth}" 
+                            Height="{Binding ElementName=PART_Path,Path=ActualHeight}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <Canvas>
                             <Path Stroke="{TemplateBinding BorderBrush}"
-                                  StrokeThickness="{TemplateBinding BrushStrokeThickness}">
+                              StrokeThickness="{TemplateBinding BrushStrokeThickness}"
+                                  x:Name="PART_Path">
                                 <Path.Data>
                                     <PathGeometry>
-                                        <PathFigure StartPoint="50,0">
+                                        <PathFigure x:Name="PART_PathFigure">
                                             <ArcSegment SweepDirection="Clockwise"
-                                                        Size="50,50"
-                                                        Point="49.999127335374,7.61543361704753E-09"
-                                                        IsLargeArc="True">
+                                                    IsLargeArc="True"
+                                                    x:Name="PART_ArcSegment">
                                             </ArcSegment>
                                         </PathFigure>
                                     </PathGeometry>
                                 </Path.Data>
                             </Path>
                             <Path Stroke="{TemplateBinding Background}" 
-                                  StrokeThickness="{TemplateBinding StrokeThickness}">
+                              StrokeThickness="{TemplateBinding StrokeThickness}">
                                 <Path.Data>
                                     <PathGeometry>
-                                        <PathFigure StartPoint="50,0">
+                                        <PathFigure x:Name="PART_PathFigureAngle">
                                             <ArcSegment SweepDirection="Clockwise"
-                                                        Size="50,50"
-                                                        Point="{Binding Path=Angle, Converter={StaticResource prConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}"
-                                                        IsLargeArc="{Binding Path=Angle, Converter={StaticResource isLargeConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}">
+                                                    IsLargeArc="{Binding Path=Angle, Converter={StaticResource isLargeConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}"
+                                                    x:Name="PART_ArcSegmentAngle">
+                                                <ArcSegment.Point>
+                                                    <MultiBinding Converter="{StaticResource prConverter}">
+                                                        <Binding Path="Angle" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
+                                                        <Binding Path="Size" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
+                                                    </MultiBinding>
+                                                </ArcSegment.Point>
                                             </ArcSegment>
                                         </PathFigure>
                                     </PathGeometry>
                                 </Path.Data>
                             </Path>
-                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-                                <TextBlock Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                       Text="{Binding Path=Value, StringFormat={}{0}%, 
-                                RelativeSource={RelativeSource TemplatedParent}}"
-                                           FontSize="{TemplateBinding FontSize}"/>
-                            </Border>
                         </Canvas>
-                    </Viewbox>
+                        <TextBlock Foreground="{TemplateBinding Foreground}" 
+                                   Text="{Binding Path=Value, StringFormat={}{0}%, 
+                                RelativeSource={RelativeSource TemplatedParent}}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   x:Name="PART_TextBlock"/>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

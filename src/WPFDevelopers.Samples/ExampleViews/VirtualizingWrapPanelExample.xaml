@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:WPFDevelopers.Sample.ExampleViews"
         xmlns:model="clr-namespace:WPFDevelopers.Sample.Models"
         xmlns:converts="clr-namespace:WPFDevelopers.Sample.Converts"
+        WindowStyle="ToolWindow"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="System V1.0" Height="450" Width="900">
     <Window.Resources>

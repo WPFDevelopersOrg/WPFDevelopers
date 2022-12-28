@@ -5,6 +5,7 @@ using System.Linq;
 using System.Media;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
@@ -13,6 +14,7 @@ namespace WPFDevelopers.Helpers
 {
     public class ControlsHelper : DependencyObject
     {
+        private static Win32ApiHelper.DeskTopSize size;
         private static readonly Regex _regexNumber = new Regex("[^0-9]+");
         public static Brush Brush = Application.Current.Resources["BackgroundSolidColorBrush"] as Brush;
 
@@ -111,7 +113,7 @@ namespace WPFDevelopers.Helpers
             if (window == null)
                 if (Application.Current.Windows.Count > 0)
                     window = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
-            
+
             var doubleAnimation = new DoubleAnimation
             {
                 From = window.Left,
@@ -185,6 +187,32 @@ namespace WPFDevelopers.Helpers
         public static bool IsNumber(string text)
         {
             return _regexNumber.IsMatch(text);
+        }
+
+        public static BitmapSource Capture()
+        {
+
+            IntPtr hBitmap;
+            var hDC = Win32ApiHelper.GetDC(Win32ApiHelper.GetDesktopWindow());
+            var hMemDC = Win32ApiHelper.CreateCompatibleDC(hDC);
+            size.cx = Win32ApiHelper.GetSystemMetrics(0);
+            size.cy = Win32ApiHelper.GetSystemMetrics(1);
+            hBitmap = Win32ApiHelper.CreateCompatibleBitmap(hDC, size.cx, size.cy);
+            if (hBitmap != IntPtr.Zero)
+            {
+                var hOld = Win32ApiHelper.SelectObject(hMemDC, hBitmap);
+                Win32ApiHelper.BitBlt(hMemDC, 0, 0, size.cx, size.cy, hDC, 0, 0,
+                    Win32ApiHelper.TernaryRasterOperations.SRCCOPY);
+                Win32ApiHelper.SelectObject(hMemDC, hOld);
+                Win32ApiHelper.DeleteDC(hMemDC);
+                Win32ApiHelper.ReleaseDC(Win32ApiHelper.GetDesktopWindow(), hDC);
+                var bsource = Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty,
+                    BitmapSizeOptions.FromEmptyOptions());
+                Win32ApiHelper.DeleteObject(hBitmap);
+                GC.Collect();
+                return bsource;
+            }
+            return null;
         }
     }
     #region 是否设计时模式

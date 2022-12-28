@@ -117,7 +117,6 @@ namespace WPFDevelopers.Controls
         private Rect rect;
         private ScreenCutAdorner screenCutAdorner;
         private ScreenCutMouseType screenCutMouseType = ScreenCutMouseType.Default;
-        private Win32ApiHelper.DeskTopSize size;
 
         /// <summary>
         ///     当前文本
@@ -173,7 +172,7 @@ namespace WPFDevelopers.Controls
             _radioButtonText = GetTemplateChild(RadioButtonTextTemplateName) as RadioButton;
             if (_radioButtonText != null)
                 _radioButtonText.Click += _radioButtonText_Click;
-            _canvas.Background = new ImageBrush(Capture());
+            _canvas.Background = new ImageBrush(ControlsHelper.Capture());
             _rectangleLeft.Width = _canvas.Width;
             _rectangleLeft.Height = _canvas.Height;
             _border.Opacity = 0;
@@ -943,30 +942,6 @@ namespace WPFDevelopers.Controls
             _border.SizeChanged += _border_SizeChanged;
         }
 
-        private BitmapSource Capture()
-        {
-            IntPtr hBitmap;
-            var hDC = Win32ApiHelper.GetDC(Win32ApiHelper.GetDesktopWindow());
-            var hMemDC = Win32ApiHelper.CreateCompatibleDC(hDC);
-            size.cx = Win32ApiHelper.GetSystemMetrics(0);
-            size.cy = Win32ApiHelper.GetSystemMetrics(1);
-            hBitmap = Win32ApiHelper.CreateCompatibleBitmap(hDC, size.cx, size.cy);
-            if (hBitmap != IntPtr.Zero)
-            {
-                var hOld = Win32ApiHelper.SelectObject(hMemDC, hBitmap);
-                Win32ApiHelper.BitBlt(hMemDC, 0, 0, size.cx, size.cy, hDC, 0, 0,
-                    Win32ApiHelper.TernaryRasterOperations.SRCCOPY);
-                Win32ApiHelper.SelectObject(hMemDC, hOld);
-                Win32ApiHelper.DeleteDC(hMemDC);
-                Win32ApiHelper.ReleaseDC(Win32ApiHelper.GetDesktopWindow(), hDC);
-                var bsource = Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty,
-                    BitmapSizeOptions.FromEmptyOptions());
-                Win32ApiHelper.DeleteObject(hBitmap);
-                GC.Collect();
-                return bsource;
-            }
-
-            return null;
-        }
+        
     }
 }
