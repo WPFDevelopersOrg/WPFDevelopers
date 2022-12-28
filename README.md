@@ -83,6 +83,11 @@ Install-Package WPFDevelopers
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 ----------
+### Magnifier
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Magnifier.gif"/>   
+
+----------
 ### GrayscaleEffect
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
