@@ -35,6 +35,12 @@
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 
+### Donate
+If you think our open source software is helpful to you, please scan the QR code below and give us a cup of coffee.
+| Alipay | WeChat pay |
+|----|-----|
+|  <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Alipay.png"/>   |   <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WeChatPay.png"/>   |
+
 ### Backers   
 
 <a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%!important" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%!important" width="64px" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>    <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%!important" width="64px" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%!important" width="64px" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>   <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%!important" width="64px" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a> 
@@ -82,6 +88,11 @@ Install-Package WPFDevelopers
 ###  Step 3: Add the namespace;
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+----------
+### Magnifier
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Magnifier.gif"/>   
+
 ----------
 ### GrayscaleEffect
 

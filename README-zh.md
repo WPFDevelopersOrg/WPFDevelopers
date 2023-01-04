@@ -12,7 +12,7 @@
 
 ## Welcome to WPFDevelopers    
 
-# __最新请使用预览版Nuget包__
+# __最新请使用 Nuget 预览版包__
 
 
 ### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg  
@@ -96,6 +96,11 @@ Install-Package WPFDevelopers
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### Magnifier（放大镜）
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Magnifier.gif"/>   
+
+----------
 ### GrayscaleEffect（灰度）
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
