@@ -39,7 +39,7 @@
 If you think our open source software is helpful to you, please scan the QR code below and give us a cup of coffee.
 | Alipay | WeChat pay |
 |----|-----|
-|  <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Alipay.png"/>   |   <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WeChatPay.png"/>   |
+|  <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Alipay.png"/>   |   <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WeChatPay.png"/>   |
 
 ### Backers   
 
