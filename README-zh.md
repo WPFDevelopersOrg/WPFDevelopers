@@ -14,6 +14,8 @@
 
 # __最新请使用 Nuget 预览版包__
 
+# [下载完 WPFDevelopers 项目如何编译通过 👀](https://b23.tv/RTijGF8  )
+
 
 ### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg  
 
