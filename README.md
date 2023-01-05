@@ -13,6 +13,8 @@
 
 # __Please use the preview Nuget package for the latest__
 
+# [How to compile 👀](https://b23.tv/RTijGF8  )
+
 
 ### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg  
 
