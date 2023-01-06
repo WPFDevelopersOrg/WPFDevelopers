@@ -309,7 +309,10 @@ namespace WPFDevelopers.Controls
 
         private void _buttonComplete_Click(object sender, RoutedEventArgs e)
         {
-            this.SnapCompleted(CutBitmap());
+            var bitmap = CutBitmap();
+            if (SnapCompleted != null)
+                SnapCompleted(bitmap);
+            Clipboard.SetImage(bitmap);
             Close();
         }
 
