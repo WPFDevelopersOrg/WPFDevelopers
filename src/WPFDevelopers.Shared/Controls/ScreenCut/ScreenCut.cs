@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -11,6 +12,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using WPFDevelopers.Helpers;
+using RadioButton = System.Windows.Controls.RadioButton;
+using Button = System.Windows.Controls.Button;
+using Cursors = System.Windows.Input.Cursors;
+using Control = System.Windows.Controls.Control;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
+using TextBox = System.Windows.Controls.TextBox;
+using System.Collections.Generic;
+using System.Drawing;
+using Point = System.Windows.Point;
+using Brush = System.Windows.Media.Brush;
+using Rectangle = System.Windows.Shapes.Rectangle;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace WPFDevelopers.Controls
 {
@@ -25,7 +40,6 @@ namespace WPFDevelopers.Controls
         DrawText,
         DrawInk
     }
-
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
     [TemplatePart(Name = RectangleLeftTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = RectangleTopTemplateName, Type = typeof(Rectangle))]
@@ -123,8 +137,30 @@ namespace WPFDevelopers.Controls
         /// </summary>
         private Border textBorder;
 
+        /// <summary>
+        /// 截图完成委托
+        /// </summary>
+        public delegate void ScreenShotDone(CroppedBitmap bitmap);
+        /// <summary>
+        /// 截图完成事件
+        /// </summary>
+        public event ScreenShotDone CutCompleted;
+        /// <summary>
+        /// 截图取消委托
+        /// </summary>
+        public delegate void ScreenShotCanceled();
+        /// <summary>
+        /// 截图取消事件
+        /// </summary>
+        public event ScreenShotCanceled CutCanceled;
         private double y1;
-
+        private int ScreenIndex;
+        public static int CaptureScreenID = -1;
+        public ScreenCut(int index)
+        {
+            ScreenIndex = index;
+            this.Left = Screen.AllScreens[ScreenIndex].WorkingArea.X;
+        }
         static ScreenCut()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ScreenCut),
@@ -135,7 +171,10 @@ namespace WPFDevelopers.Controls
         {
             GC.SuppressFinalize(this);
         }
-
+        public static void ClearCaptureScreenID()
+        {
+            CaptureScreenID = -1;
+        }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -172,7 +211,10 @@ namespace WPFDevelopers.Controls
             _radioButtonText = GetTemplateChild(RadioButtonTextTemplateName) as RadioButton;
             if (_radioButtonText != null)
                 _radioButtonText.Click += _radioButtonText_Click;
-            _canvas.Background = new ImageBrush(ControlsHelper.Capture());
+            _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width;
+            _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height;
+            //_canvas.Background = new ImageBrush(ControlsHelper.Capture());
+            _canvas.Background = new ImageBrush(ConvertBitmap(CopyScreen()));
             _rectangleLeft.Width = _canvas.Width;
             _rectangleLeft.Height = _canvas.Height;
             _border.Opacity = 0;
@@ -181,8 +223,57 @@ namespace WPFDevelopers.Controls
             _popupBorder.Loaded += (s, e) => { _popup.HorizontalOffset = -_popupBorder.ActualWidth / 3; };
             _wrapPanel = GetTemplateChild(WrapPanelColorTemplateName) as WrapPanel;
             _wrapPanel.PreviewMouseDown += _wrapPanel_PreviewMouseDown;
-
+            Loaded += ScreenCut_Loaded;
             controlTemplate = (ControlTemplate)FindResource("PART_DrawArrow");
+        }
+        public static BitmapSource BitmapSourceFromBrush(Brush drawingBrush, int x = 32, int y = 32, int dpi = 96)
+        {
+            // RenderTargetBitmap = builds a bitmap rendering of a visual
+            var pixelFormat = PixelFormats.Pbgra32;
+            RenderTargetBitmap rtb = new RenderTargetBitmap(x, y, dpi, dpi, pixelFormat);
+
+            // Drawing visual allows us to compose graphic drawing parts into a visual to render
+            var drawingVisual = new DrawingVisual();
+            using (DrawingContext context = drawingVisual.RenderOpen())
+            {
+                // Declaring drawing a rectangle using the input brush to fill up the visual
+                context.DrawRectangle(drawingBrush, null, new Rect(0, 0, x, y));
+            }
+
+            // Actually rendering the bitmap
+            rtb.Render(drawingVisual);
+            return rtb;
+        }
+        private void ScreenCut_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private BitmapSource ConvertBitmap(Bitmap bitmap)
+        {
+            BitmapSource img;
+            IntPtr hBitmap;
+            hBitmap = bitmap.GetHbitmap();
+            img = Imaging.CreateBitmapSourceFromHBitmap(
+                hBitmap,
+                IntPtr.Zero,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
+            return img;
+        }
+        private Bitmap CopyScreen()
+        {
+            this.Left = Screen.AllScreens[ScreenIndex].WorkingArea.Left;
+            this.Top = Screen.AllScreens[ScreenIndex].WorkingArea.Top;
+            this.Width = Screen.AllScreens[ScreenIndex].WorkingArea.Width;
+            this.Height = Screen.AllScreens[ScreenIndex].WorkingArea.Height;
+            _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width;
+            _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height;
+            Bitmap ScreenCapture = new Bitmap(Screen.AllScreens[ScreenIndex].Bounds.Width, Screen.AllScreens[ScreenIndex].Bounds.Height);
+            using (Graphics g = Graphics.FromImage(ScreenCapture))
+            {
+                g.CopyFromScreen(Screen.AllScreens[ScreenIndex].WorkingArea.Left, Screen.AllScreens[ScreenIndex].WorkingArea.Top, 0, 0, Screen.AllScreens[ScreenIndex].Bounds.Size);
+            }
+            return ScreenCapture;
         }
         protected override void OnPreviewMouseRightButtonDown(MouseButtonEventArgs e)
         {
@@ -301,7 +392,9 @@ namespace WPFDevelopers.Controls
 
         private void _buttonComplete_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetImage(CutBitmap());
+            var bitmap = CutBitmap();
+            if (CutCompleted != null)
+                CutCompleted(bitmap);
             Close();
         }
 
@@ -323,6 +416,8 @@ namespace WPFDevelopers.Controls
         private void _buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+            if (CutCanceled != null)
+                CutCanceled();
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
@@ -347,6 +442,17 @@ namespace WPFDevelopers.Controls
         {
             if (e.Source is RadioButton)
                 return;
+
+            // if is multi-screen, only one screen is allowed.
+            if (CaptureScreenID == -1)
+            {
+                CaptureScreenID = ScreenIndex;
+            }
+            if (CaptureScreenID != -1 && CaptureScreenID != ScreenIndex)
+            {
+                e.Handled = true;
+                return;
+            }
 
             var vPoint = e.GetPosition(_canvas);
             if (!isMouseUp)
@@ -942,6 +1048,6 @@ namespace WPFDevelopers.Controls
             _border.SizeChanged += _border_SizeChanged;
         }
 
-        
+
     }
 }
