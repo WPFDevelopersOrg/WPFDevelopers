@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -123,6 +123,14 @@ namespace WPFDevelopers.Controls
         /// </summary>
         private Border textBorder;
 
+        /// <summary>
+        /// 截图完成委托
+        /// </summary>
+        public delegate void ScreenShotDone(CroppedBitmap bitmap);
+        /// <summary>
+        /// 截图完成事件
+        /// </summary>
+        public event ScreenShotDone SnapCompleted;
         private double y1;
 
         static ScreenCut()
@@ -301,7 +309,7 @@ namespace WPFDevelopers.Controls
 
         private void _buttonComplete_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetImage(CutBitmap());
+            this.SnapCompleted(CutBitmap());
             Close();
         }
 
@@ -942,6 +950,6 @@ namespace WPFDevelopers.Controls
             _border.SizeChanged += _border_SizeChanged;
         }
 
-        
+
     }
 }
