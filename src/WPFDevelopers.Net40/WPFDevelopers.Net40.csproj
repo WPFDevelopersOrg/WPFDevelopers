@@ -25,6 +25,9 @@
 	  <None Remove="Effects\GrayscaleEffect.ps" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Reference Include="System.Windows.Forms" />
+	</ItemGroup>
+	<ItemGroup>
 		<Resource Include="Effects\GrayscaleEffect.ps" />
 		<Resource Include="Resources\Audio\shake.wav" />
 	</ItemGroup>

@@ -4,6 +4,7 @@
 		<RootNamespace>WPFDevelopers</RootNamespace>
 		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
 		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
 		<PackageId>WPFDevelopers</PackageId>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -27,5 +28,30 @@
 	<ItemGroup>
 	  <Resource Include="Effects\GrayscaleEffect.ps" />
 	  <Resource Include="Resources\Audio\shake.wav" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net47'">
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>7.0.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>7.0.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>7.0.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>7.0.0</Version>
+	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
+	  <PackageReference Include="System.Drawing.Common">
+	    <Version>7.0.0</Version>
+	  </PackageReference>
 	</ItemGroup>
 </Project>
