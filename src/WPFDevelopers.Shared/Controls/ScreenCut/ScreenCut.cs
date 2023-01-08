@@ -26,9 +26,36 @@ using Point = System.Windows.Point;
 using Brush = System.Windows.Media.Brush;
 using Rectangle = System.Windows.Shapes.Rectangle;
 using Brushes = System.Windows.Media.Brushes;
+using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 
 namespace WPFDevelopers.Controls
 {
+    public static class ScreenExtensions
+    {
+        public static void GetDpi(this Screen screen, DpiType dpiType, out uint dpiX, out uint dpiY)
+        {
+            var pnt = new System.Drawing.Point(screen.Bounds.Left + 1, screen.Bounds.Top + 1);
+            var mon = MonitorFromPoint(pnt, 2);
+            GetDpiForMonitor(mon, dpiType, out dpiX, out dpiY);
+        }
+        [DllImport("User32.dll")]
+        private static extern IntPtr MonitorFromPoint([In] System.Drawing.Point pt, [In] uint dwFlags);
+        [DllImport("Shcore.dll")]
+        private static extern IntPtr GetDpiForMonitor([In] IntPtr hmonitor, [In] DpiType dpiType, [Out] out uint dpiX, [Out] out uint dpiY);
+    }
+    public struct ScreenDPI {
+        public uint dpiX;
+        public uint dpiY;
+        public float scaleX;
+        public float scaleY;
+    }
+    public enum DpiType
+    {
+        Effective = 0,
+        Angular = 1,
+        Raw = 2,
+    }
     public enum ScreenCutMouseType
     {
         Default,
@@ -58,6 +85,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = PopupTemplateName, Type = typeof(Popup))]
     [TemplatePart(Name = PopupBorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = WrapPanelColorTemplateName, Type = typeof(WrapPanel))]
+
     public class ScreenCut : Window, IDisposable
     {
         private const string CanvasTemplateName = "PART_Canvas";
@@ -156,10 +184,14 @@ namespace WPFDevelopers.Controls
         private double y1;
         private int ScreenIndex;
         public static int CaptureScreenID = -1;
+        private Bitmap ScreenCapture;
+        private ScreenDPI screenDPI;
         public ScreenCut(int index)
         {
             ScreenIndex = index;
-            this.Left = Screen.AllScreens[ScreenIndex].WorkingArea.X;
+            this.Left = Screen.AllScreens[ScreenIndex].WorkingArea.Left;
+            ShowInTaskbar = false;
+            screenDPI = GetScreenDPI(ScreenIndex);
         }
         static ScreenCut()
         {
@@ -246,7 +278,7 @@ namespace WPFDevelopers.Controls
         }
         private void ScreenCut_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
         private BitmapSource ConvertBitmap(Bitmap bitmap)
         {
@@ -260,18 +292,28 @@ namespace WPFDevelopers.Controls
                 BitmapSizeOptions.FromEmptyOptions());
             return img;
         }
+        private ScreenDPI GetScreenDPI(int screenIndex)
+        {
+            ScreenDPI dpi = new ScreenDPI();
+            Screen.AllScreens[screenIndex].GetDpi(DpiType.Effective, out dpi.dpiX, out dpi.dpiY);
+            dpi.scaleX = (dpi.dpiX / 0.96f) / 100;
+            dpi.scaleY = (dpi.dpiY / 0.96f) / 100;
+            return dpi;
+        }
         private Bitmap CopyScreen()
         {
-            this.Left = Screen.AllScreens[ScreenIndex].WorkingArea.Left;
-            this.Top = Screen.AllScreens[ScreenIndex].WorkingArea.Top;
-            this.Width = Screen.AllScreens[ScreenIndex].WorkingArea.Width;
-            this.Height = Screen.AllScreens[ScreenIndex].WorkingArea.Height;
-            _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width;
-            _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height;
+            this.Left = Screen.AllScreens[ScreenIndex].Bounds.Left / screenDPI.scaleX;
+            this.Top = Screen.AllScreens[ScreenIndex].Bounds.Top / screenDPI.scaleY;
+            this.Width = Screen.AllScreens[ScreenIndex].Bounds.Width / screenDPI.scaleX;
+            this.Height = Screen.AllScreens[ScreenIndex].Bounds.Height / screenDPI.scaleY;
+            _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width / screenDPI.scaleX;
+            _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height / screenDPI.scaleY;
+            _canvas.SetValue(LeftProperty, this.Left);
+            _canvas.SetValue(TopProperty, this.Top);
             Bitmap ScreenCapture = new Bitmap(Screen.AllScreens[ScreenIndex].Bounds.Width, Screen.AllScreens[ScreenIndex].Bounds.Height);
-            using (Graphics g = Graphics.FromImage(ScreenCapture))
+            using (Graphics g = Graphics.FromImage(ScreenCapture)) 
             {
-                g.CopyFromScreen(Screen.AllScreens[ScreenIndex].WorkingArea.Left, Screen.AllScreens[ScreenIndex].WorkingArea.Top, 0, 0, Screen.AllScreens[ScreenIndex].Bounds.Size);
+                g.CopyFromScreen(Screen.AllScreens[ScreenIndex].Bounds.Left, Screen.AllScreens[ScreenIndex].Bounds.Top, 0, 0, Screen.AllScreens[ScreenIndex].Bounds.Size);
             }
             return ScreenCapture;
         }
@@ -362,20 +404,20 @@ namespace WPFDevelopers.Controls
             }
             EditBarPosition();
         }
-
+        
         private void _border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (screenCutMouseType == ScreenCutMouseType.Default)
                 screenCutMouseType = ScreenCutMouseType.MoveMouse;
         }
-
+        
         private void _buttonSave_Click(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog();
             dlg.FileName = $"WPFDevelopers{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
             dlg.DefaultExt = ".jpg";
             dlg.Filter = "image file|*.jpg";
-
+            
             if (dlg.ShowDialog() == true)
             {
                 BitmapEncoder pngEncoder = new PngBitmapEncoder();
@@ -389,7 +431,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-
+        
         private void _buttonComplete_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = CutBitmap();
@@ -397,7 +439,7 @@ namespace WPFDevelopers.Controls
                 CutCompleted(bitmap);
             Close();
         }
-
+        
         private CroppedBitmap CutBitmap()
         {
             _border.Visibility = Visibility.Collapsed;
@@ -412,14 +454,14 @@ namespace WPFDevelopers.Controls
             return new CroppedBitmap(renderTargetBitmap,
                 new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
         }
-
+        
         private void _buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
             if (CutCanceled != null)
                 CutCanceled();
         }
-
+        
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
@@ -437,7 +479,7 @@ namespace WPFDevelopers.Controls
                     _canvas.Children.Remove(_canvas.Children[_canvas.Children.Count - 1]);
             }
         }
-
+        
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             if (e.Source is RadioButton)
@@ -486,7 +528,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-
+        
         private void DrawText()
         {
             if (pointStart.Value.X < rect.Right
@@ -567,8 +609,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-
-
+        
         protected override void OnPreviewMouseMove(MouseEventArgs e)
         {
             if (e.Source is RadioButton)
@@ -611,7 +652,7 @@ namespace WPFDevelopers.Controls
                 current.Y > rect.BottomRight.Y)
                 return;
         }
-
+        
         private void DrwaInkControl(Point current)
         {
             CheckPoint(current);
@@ -646,8 +687,7 @@ namespace WPFDevelopers.Controls
                 polyLine.Points.Add(current);
             }
         }
-
-
+        
         private void DrawArrowControl(Point current)
         {
             CheckPoint(current);
@@ -772,7 +812,7 @@ namespace WPFDevelopers.Controls
             width = width < 15 ? 15 : width;
             controlArrow.Width = width;
         }
-
+        
         private void DrawMultipleControl(Point current)
         {
             CheckPoint(current);
@@ -874,7 +914,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-
+        
         private void SelectElement()
         {
             for (var i = 0; i < VisualTreeHelper.GetChildrenCount(_canvas); i++)
@@ -885,7 +925,7 @@ namespace WPFDevelopers.Controls
                         frameworkElement.Opacity = 1;
             }
         }
-
+        
         private void MoveRect(Point current)
         {
             if (pointStart is null)
@@ -930,7 +970,7 @@ namespace WPFDevelopers.Controls
                 _rectangleBottom.Height = hBottom <= 0 ? 0 : hBottom;
             }
         }
-
+        
         protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             if (e.Source is ToggleButton)
@@ -962,7 +1002,7 @@ namespace WPFDevelopers.Controls
                     DisposeControl();
             }
         }
-
+        
         private void DisposeControl()
         {
             polyLine = null;
@@ -973,7 +1013,7 @@ namespace WPFDevelopers.Controls
             pointStart = null;
             pointEnd = null;
         }
-
+        
         private void EditBarPosition()
         {
             _editBar.Visibility = Visibility.Visible;
@@ -993,7 +1033,7 @@ namespace WPFDevelopers.Controls
                 _popup.IsOpen = true;
             }
         }
-
+        
         private void MoveAllRectangle(Point current)
         {
             if (pointStart is null)
@@ -1047,7 +1087,6 @@ namespace WPFDevelopers.Controls
             adornerLayer.Add(screenCutAdorner);
             _border.SizeChanged += _border_SizeChanged;
         }
-
-
+        
     }
 }
