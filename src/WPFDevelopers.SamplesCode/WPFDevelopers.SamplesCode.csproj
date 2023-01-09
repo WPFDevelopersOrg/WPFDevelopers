@@ -97,6 +97,7 @@
 		<Resource Include="..\WPFDevelopers.Samples\Converts\StateConvert.cs" Link="Converts\StateConvert.cs" />
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml.cs" Link="ExampleViews\SixGirdViewExample.xaml.cs" DependentUpon="SixGirdViewExample.xaml"/>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MagnifierExample.xaml.cs" Link="ExampleViews\MagnifierExample.xaml.cs" DependentUpon="MagnifierExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\StepExample.xaml.cs" Link="ExampleViews\StepExample.xaml.cs" DependentUpon="StepExample.xaml"/>
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
@@ -347,6 +348,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MagnifierExample.xaml">
 			<Link>ExampleViews\MagnifierExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\StepExample.xaml">
+			<Link>ExampleViews\StepExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

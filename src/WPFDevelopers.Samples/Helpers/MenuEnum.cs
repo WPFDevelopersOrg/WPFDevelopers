@@ -65,6 +65,7 @@
         Barrage,
         SixGridView,
         Magnifier,
+        Step,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

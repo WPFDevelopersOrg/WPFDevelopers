@@ -288,6 +288,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Magnifier:
                     ControlPanel = new MagnifierExample();
                     break;
+                case MenuEnum.Step:
+                    ControlPanel = new StepExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().ShowDialog();

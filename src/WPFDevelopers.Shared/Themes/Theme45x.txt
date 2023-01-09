@@ -68,3 +68,4 @@ CropAvatar.xaml
 StarrySky.xaml
 BubblleControl.xaml
 Magnifier.xaml
+Step.xaml

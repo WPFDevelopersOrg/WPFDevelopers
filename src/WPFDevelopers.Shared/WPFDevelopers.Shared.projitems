@@ -101,6 +101,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SongWords\SongWords.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SpotLight\SpotLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StarrySky\StarrySky.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Status.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\Step.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\StepItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
@@ -112,6 +115,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToIsLargeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToPointConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\IndexConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\IndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
@@ -434,6 +438,10 @@
     <Page Include="$(MSBuildThisFileDirectory)Themes\Dashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Step.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\DrawerMenu.xaml">
       <Generator>MSBuild:Compile</Generator>

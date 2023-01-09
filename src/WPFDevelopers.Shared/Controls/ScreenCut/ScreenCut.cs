@@ -302,14 +302,14 @@ namespace WPFDevelopers.Controls
         }
         private Bitmap CopyScreen()
         {
-            this.Left = Screen.AllScreens[ScreenIndex].Bounds.Left / screenDPI.scaleX;
-            this.Top = Screen.AllScreens[ScreenIndex].Bounds.Top / screenDPI.scaleY;
-            this.Width = Screen.AllScreens[ScreenIndex].Bounds.Width / screenDPI.scaleX;
-            this.Height = Screen.AllScreens[ScreenIndex].Bounds.Height / screenDPI.scaleY;
+            Left = Screen.AllScreens[ScreenIndex].Bounds.Left / screenDPI.scaleX;
+            Top = Screen.AllScreens[ScreenIndex].Bounds.Top / screenDPI.scaleY;
+            Width = Screen.AllScreens[ScreenIndex].Bounds.Width / screenDPI.scaleX;
+            Height = Screen.AllScreens[ScreenIndex].Bounds.Height / screenDPI.scaleY;
             _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width / screenDPI.scaleX;
             _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height / screenDPI.scaleY;
-            _canvas.SetValue(LeftProperty, this.Left);
-            _canvas.SetValue(TopProperty, this.Top);
+            _canvas.SetValue(LeftProperty, Left);
+            _canvas.SetValue(TopProperty, Top);
             Bitmap ScreenCapture = new Bitmap(Screen.AllScreens[ScreenIndex].Bounds.Width, Screen.AllScreens[ScreenIndex].Bounds.Height);
             using (Graphics g = Graphics.FromImage(ScreenCapture)) 
             {

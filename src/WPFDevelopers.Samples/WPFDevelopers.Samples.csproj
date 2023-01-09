@@ -100,6 +100,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFDevelopers, Version=1.0.9.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.1.0.9.9-preview\lib\net40\WPFDevelopers.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -192,6 +195,9 @@
     </Compile>
     <Compile Include="ExampleViews\StarrySkyExample.xaml.cs">
       <DependentUpon>StarrySkyExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\StepExample.xaml.cs">
+      <DependentUpon>StepExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\TaskbarItemInfo.xaml.cs">
       <DependentUpon>TaskbarItemInfo.xaml</DependentUpon>
@@ -480,6 +486,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ExampleViews\StepExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExampleViews\TaskbarItemInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -744,6 +754,7 @@
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
