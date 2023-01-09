@@ -9,79 +9,46 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-
     <Style x:Key="DefaultProgressBar" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <DrawingBrush Viewport="0,0,20,6" TileMode="Tile" ViewportUnits="Absolute" Stretch="None">
-                    <DrawingBrush.Transform>
-                        <TransformGroup>
-                            <RotateTransform Angle="20"/>
-                            <TranslateTransform X="0"/>
-                        </TransformGroup>
-                    </DrawingBrush.Transform>
-                    <DrawingBrush.Drawing>
-                        <GeometryDrawing>
-                            <GeometryDrawing.Brush>
-                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                    <GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0"/>
-                                    <GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0.5"/>
-                                    <GradientStop Color="Transparent" Offset="0.5"/>
-                                    <GradientStop Color="Transparent" Offset="1"/>
-                                </LinearGradientBrush>
-                            </GeometryDrawing.Brush>
-                            <GeometryDrawing.Geometry>
-                                <RectangleGeometry Rect="0,0,20,6"/>
-                            </GeometryDrawing.Geometry>
-                        </GeometryDrawing>
-                    </DrawingBrush.Drawing>
-                </DrawingBrush>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
         <Setter Property="Height" Value="6"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ProgressBar}">
                     <ControlTemplate.Resources>
-                        <Storyboard x:Key="LoadedStoryboard" RepeatBehavior="Forever">
-                           
-                            <DoubleAnimation Storyboard.TargetProperty="(Border.Background).(Brush.Transform).(TransformGroup.Children)[1].(TranslateTransform.X)" 
-                                             Storyboard.TargetName="Indicator"
-                                             From="0"
-                                             To="21"
-                                             Duration="00:00:0.45"/>
-                            
-                        </Storyboard>
                         <Storyboard x:Key="IsIndeterminate" RepeatBehavior="Forever">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" 
-                                                           Storyboard.TargetName="ScaleXBorder">
+                                                           Storyboard.TargetName="PART_Rectangle">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0.3"/>
                                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.3"/>
                                 <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.3"/>
                             </DoubleAnimationUsingKeyFrames>
-                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="ScaleXBorder">
+                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)"
+                                                          Storyboard.TargetName="PART_Rectangle">
                                 <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" EasingFunction="{StaticResource SineEaseOut}"/>
                                 <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
                                 <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" EasingFunction="{StaticResource SineEaseOut}"/>
                             </PointAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Border x:Name="PART_Border" 
+                    <controls:SmallPanel ClipToBounds="True"
+                                         SnapsToDevicePixels="True">
+                        <Border x:Name="PART_Border" 
                             Background="{DynamicResource BaseSolidColorBrush}"
-                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
-                        <controls:SmallPanel ClipToBounds="True">
-                            <Border x:Name="PART_Track"/>
-                            <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
-                                <Border x:Name="Indicator" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}"/>
-                            </Decorator>
-                            <Rectangle x:Name="ScaleXBorder" Visibility="Collapsed"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <Rectangle x:Name="PART_Track"/>
+                        <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+                            <Border x:Name="Indicator" 
+                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
+                                        Background="{TemplateBinding Foreground}"/>
+                        </Decorator>
+                        <Rectangle x:Name="PART_Rectangle" Visibility="Collapsed"
                                        Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
                                 <Rectangle.RenderTransform>
                                     <ScaleTransform/>
                                 </Rectangle.RenderTransform>
                             </Rectangle>
-                        </controls:SmallPanel>
-                    </Border>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">
                             <Setter Property="Height" Value="{x:Static sys:Double.NaN}"/>
@@ -93,21 +60,59 @@
                         </Trigger>
                         <Trigger Property="IsIndeterminate" Value="True">
                             <Trigger.EnterActions>
-                                <BeginStoryboard Storyboard="{StaticResource IsIndeterminate}"/>
+                                <BeginStoryboard x:Name="IndeterminateStoryboard" Storyboard="{StaticResource IsIndeterminate}"/>
                             </Trigger.EnterActions>
                             <Setter Property="Visibility" TargetName="PART_Indicator" Value="Collapsed"/>
-                            <Setter Property="Visibility" TargetName="ScaleXBorder" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="PART_Rectangle" Value="Visible"/>
                             <Setter Property="CornerRadius" TargetName="PART_Border" Value="0"/>
                             <Trigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
+                                <StopStoryboard BeginStoryboardName="IndeterminateStoryboard" />
                             </Trigger.ExitActions>
                         </Trigger>
-                        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Indicator">
-                            <BeginStoryboard x:Name="LoadedBeginStoryboard" Storyboard="{StaticResource LoadedStoryboard}"/>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="FrameworkElement.Unloaded" SourceName="Indicator">
-                            <StopStoryboard BeginStoryboardName="LoadedBeginStoryboard"/>
-                        </EventTrigger>
+                        <Trigger Property="helpers:ElementHelper.IsStripe" Value="True">
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <DrawingBrush Viewport="0,0,20,6" TileMode="Tile" ViewportUnits="Absolute" Stretch="None">
+                                        <DrawingBrush.Transform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="20"/>
+                                                <TranslateTransform X="0"/>
+                                            </TransformGroup>
+                                        </DrawingBrush.Transform>
+                                        <DrawingBrush.Drawing>
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Brush>
+                                                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                                        <GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0"/>
+                                                        <GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0.5"/>
+                                                        <GradientStop Color="Transparent" Offset="0.5"/>
+                                                        <GradientStop Color="Transparent" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </GeometryDrawing.Brush>
+                                                <GeometryDrawing.Geometry>
+                                                    <RectangleGeometry Rect="0,0,20,6"/>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="LoadedBeginStoryboard">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetProperty="(Border.Background).(Brush.Transform).(TransformGroup.Children)[1].(TranslateTransform.X)" 
+                                             Storyboard.TargetName="Indicator"
+                                             From="0"
+                                             To="21"
+                                             Duration="00:00:0.45"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="LoadedBeginStoryboard"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

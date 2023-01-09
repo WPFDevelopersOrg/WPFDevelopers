@@ -15,6 +15,10 @@ namespace WPFDevelopers.Helpers
             DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ElementHelper),
                 new PropertyMetadata("Please input"));
 
+        public static readonly DependencyProperty IsStripeProperty =
+           DependencyProperty.RegisterAttached("IsStripe", typeof(bool), typeof(ElementHelper),
+               new PropertyMetadata(false));
+
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
             return (CornerRadius)obj.GetValue(CornerRadiusProperty);
@@ -42,6 +46,15 @@ namespace WPFDevelopers.Helpers
         public static void SetWatermark(DependencyObject obj, string value)
         {
             obj.SetValue(WatermarkProperty, value);
+        }
+        public static bool GetIsStripe(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsStripeProperty);
+        }
+
+        public static void SetIsStripe(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsStripeProperty, value);
         }
     }
 }
