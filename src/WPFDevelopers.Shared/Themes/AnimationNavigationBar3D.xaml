@@ -60,7 +60,7 @@
                                     </Viewport2DVisual3D.Geometry>
 
                                     <Border Background="{TemplateBinding FileBackground}" Height="110" Width="110" CornerRadius="0,0,0,0">
-                                        <Path Data="{TemplateBinding PathDate}" Fill="#FFFF"
+                                        <Path Data="{TemplateBinding PathDate}" Fill="{DynamicResource WindowForegroundColorBrush}"
                                           Stretch="Fill"  Width="40" Height="40"/>
                                     </Border>
                                 </Viewport2DVisual3D>
@@ -82,7 +82,7 @@
                                             </TransformGroup>
                                         </Border.RenderTransform>
                                         <StackPanel VerticalAlignment="Center">
-                                            <Path Data="{TemplateBinding PathDate}" Fill="#FFFF"
+                                            <Path Data="{TemplateBinding PathDate}" Fill="{DynamicResource WindowForegroundColorBrush}"
                                           Stretch="Fill"  Width="40" Height="40"/>
                                             <TextBlock Text="{TemplateBinding Text}" HorizontalAlignment="Center" FontSize="{TemplateBinding FontSize}" 
                                                        Foreground="{StaticResource BackgroundSolidColorBrush}"/>

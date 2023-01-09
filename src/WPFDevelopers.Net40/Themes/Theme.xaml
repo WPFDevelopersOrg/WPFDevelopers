@@ -1759,7 +1759,7 @@
 									<ScaleTransform ScaleY="0" />
 								</controls:SmallPanel.RenderTransform>
 								<Border Name="PART_DropDownBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
-								<ScrollViewer Padding="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
+								<ScrollViewer Margin="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
 									<ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
 								</ScrollViewer>
 							</controls:SmallPanel>
@@ -3888,7 +3888,7 @@
 										<MeshGeometry3D Positions="-1,1,1    -1,-1,1   1,-1,1    1,1,1" TextureCoordinates="0,0   0,1     1,1  1,0" TriangleIndices="0 1 2 0 2 3" />
 									</Viewport2DVisual3D.Geometry>
 									<Border Background="{TemplateBinding FileBackground}" Height="110" Width="110" CornerRadius="0,0,0,0">
-										<Path Data="{TemplateBinding PathDate}" Fill="#FFFF" Stretch="Fill" Width="40" Height="40" />
+										<Path Data="{TemplateBinding PathDate}" Fill="{DynamicResource WindowForegroundColorBrush}" Stretch="Fill" Width="40" Height="40" />
 									</Border>
 								</Viewport2DVisual3D>
 								<Viewport2DVisual3D>
@@ -3905,7 +3905,7 @@
 											</TransformGroup>
 										</Border.RenderTransform>
 										<StackPanel VerticalAlignment="Center">
-											<Path Data="{TemplateBinding PathDate}" Fill="#FFFF" Stretch="Fill" Width="40" Height="40" />
+											<Path Data="{TemplateBinding PathDate}" Fill="{DynamicResource WindowForegroundColorBrush}" Stretch="Fill" Width="40" Height="40" />
 											<TextBlock Text="{TemplateBinding Text}" HorizontalAlignment="Center" FontSize="{TemplateBinding FontSize}" Foreground="{StaticResource BackgroundSolidColorBrush}" />
 										</StackPanel>
 									</Border>

@@ -182,7 +182,7 @@
                                          BorderThickness="{TemplateBinding BorderThickness}" 
                                          CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                          SnapsToDevicePixels="True" UseLayoutRounding="True" />
-                                <ScrollViewer Padding="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer Margin="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                     <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
 
