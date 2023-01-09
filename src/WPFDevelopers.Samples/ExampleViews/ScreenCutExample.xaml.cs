@@ -1,6 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Controls.ScreenCapturer;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
@@ -26,15 +29,31 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var screenCut = new ScreenCut();
-            if (IsChecked)
+
+            Dispatcher.Invoke(new Action(delegate
             {
-                App.CurrentMainWindow.WindowState = WindowState.Minimized;
-                screenCut.Show();
-                screenCut.Activate();
-            }
-            else
-                screenCut.ShowDialog();
+                ScreenCapture screenCapturer;
+                if (IsChecked)
+                {
+                    App.CurrentMainWindow.WindowState = WindowState.Minimized;
+                    //Thread.Sleep(1000);
+                }
+                screenCapturer = new ScreenCapture();
+                screenCapturer.SnapCompleted += ScreenCapturer_SnapCompleted;
+                screenCapturer.SnapCanceled += ScreenCapturer_SnapCanceled;
+                screenCapturer.Capture();
+            }));
+
+        }
+
+        private void ScreenCapturer_SnapCanceled()
+        {
+            App.CurrentMainWindow.WindowState = WindowState.Normal;
+        }
+
+        private void ScreenCapturer_SnapCompleted(System.Windows.Media.Imaging.CroppedBitmap bitmap)
+        {
+            App.CurrentMainWindow.WindowState = WindowState.Normal;
         }
     }
 }
