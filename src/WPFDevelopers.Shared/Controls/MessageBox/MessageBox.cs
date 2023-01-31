@@ -41,29 +41,36 @@ namespace WPFDevelopers.Controls
 
         private static MessageBoxResult GetWindow(WPFMessageBox msg)
         {
-            msg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            Window win = null;
-            if (Application.Current.Windows.Count > 0)
-                win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
-            if (win != null)
+            try
             {
-                var layer = new Grid();
-                layer.Children.Add(new Rectangle { Fill = ControlsHelper.WindowForegroundBrush, Opacity = .7 });
-                var original = win.Content as UIElement;
-                win.Content = null;
-                var container = new Grid();
-                container.Children.Add(original);
-                container.Children.Add(layer);
-                win.Content = container;
-                msg.Owner = win;
-                msg.ShowDialog();
-            }
-            else
-            {
-                msg.Show();
-            }
+                msg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                Window win = null;
+                if (Application.Current.Windows.Count > 0)
+                    win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
+                if (win != null)
+                {
+                    var layer = new Grid();
+                    layer.Children.Add(new Rectangle { Fill = ControlsHelper.WindowForegroundBrush, Opacity = .7 });
+                    var original = win.Content as UIElement;
+                    win.Content = null;
+                    var container = new Grid();
+                    container.Children.Add(original);
+                    container.Children.Add(layer);
+                    win.Content = container;
+                    msg.Owner = win;
+                    msg.ShowDialog();
+                }
+                else
+                {
+                    msg.Show();
+                }
 
-            return msg.Result;
+                return msg.Result;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
     }
 }

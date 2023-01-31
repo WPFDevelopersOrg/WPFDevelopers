@@ -98,6 +98,7 @@
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SixGirdViewExample.xaml.cs" Link="ExampleViews\SixGirdViewExample.xaml.cs" DependentUpon="SixGirdViewExample.xaml"/>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MagnifierExample.xaml.cs" Link="ExampleViews\MagnifierExample.xaml.cs" DependentUpon="MagnifierExample.xaml"/>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\StepExample.xaml.cs" Link="ExampleViews\StepExample.xaml.cs" DependentUpon="StepExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MultiSelectComboBoxExample.xaml.cs" Link="ExampleViews\MultiSelectComboBoxExample.xaml.cs" DependentUpon="MultiSelectComboBoxExample.xaml"/>
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
@@ -351,6 +352,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\StepExample.xaml">
 			<Link>ExampleViews\StepExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MultiSelectComboBoxExample.xaml">
+			<Link>ExampleViews\MultiSelectComboBoxExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

@@ -69,3 +69,4 @@ StarrySky.xaml
 BubblleControl.xaml
 Magnifier.xaml
 Step.xaml
+MultiSelectComboBox.xaml

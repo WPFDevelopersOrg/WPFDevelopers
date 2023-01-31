@@ -66,6 +66,7 @@
         SixGridView,
         Magnifier,
         Step,
+        MultiSelectComboBox,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

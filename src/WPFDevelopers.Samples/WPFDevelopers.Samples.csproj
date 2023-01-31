@@ -101,7 +101,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFDevelopers, Version=1.0.9.7, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.1.0.9.9-preview\lib\net40\WPFDevelopers.dll</HintPath>
+      <HintPath>..\packages\WPFDevelopers.1.1.0-preview\lib\net40\WPFDevelopers.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +180,9 @@
     </Compile>
     <Compile Include="ExampleViews\MagnifierExample.xaml.cs">
       <DependentUpon>MagnifierExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExampleViews\MultiSelectComboBoxExample.xaml.cs">
+      <DependentUpon>MultiSelectComboBoxExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExampleViews\SixGirdViewExample.xaml.cs">
       <DependentUpon>SixGirdViewExample.xaml</DependentUpon>
@@ -463,6 +466,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExampleViews\MagnifierExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExampleViews\MultiSelectComboBoxExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

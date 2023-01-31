@@ -178,9 +178,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.TimeLine:
                     ControlPanel = new TimeLineExample();
                     break;
-                case MenuEnum.ScrollViewer:
-                    ControlPanel = new ScrollViewerAnimationExample();
-                    break;
+                //case MenuEnum.ScrollViewer:
+                //    ControlPanel = new ScrollViewerAnimationExample();
+                //    break;
                 case MenuEnum.Carousel:
                     ControlPanel = new CarouselExample();
                     break;
@@ -290,6 +290,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Step:
                     ControlPanel = new StepExample();
+                    break;
+                case MenuEnum.MultiSelectComboBox:
+                    ControlPanel = new MultiSelectComboBoxExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

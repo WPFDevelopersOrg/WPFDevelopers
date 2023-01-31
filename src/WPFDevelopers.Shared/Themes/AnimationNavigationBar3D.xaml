@@ -37,7 +37,7 @@
                         <Viewport3D.Children>
                             <ModelVisual3D>
                                 <ModelVisual3D.Content>
-                                    <AmbientLight Color="White"/>
+                                    <AmbientLight Color="{DynamicResource BackgroundColor}"/>
                                 </ModelVisual3D.Content>
                             </ModelVisual3D>
                             <ContainerUIElement3D>
@@ -85,7 +85,7 @@
                                             <Path Data="{TemplateBinding PathDate}" Fill="{DynamicResource WindowForegroundColorBrush}"
                                           Stretch="Fill"  Width="40" Height="40"/>
                                             <TextBlock Text="{TemplateBinding Text}" HorizontalAlignment="Center" FontSize="{TemplateBinding FontSize}" 
-                                                       Foreground="{StaticResource BackgroundSolidColorBrush}"/>
+                                                       Foreground="{DynamicResource BackgroundSolidColorBrush}"/>
                                         </StackPanel>
                                     </Border>
                                 </Viewport2DVisual3D>

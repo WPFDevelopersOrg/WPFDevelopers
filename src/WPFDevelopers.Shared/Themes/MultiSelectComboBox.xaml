@@ -1,0 +1,184 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+                    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+	<Style x:Key="DefaultMultiSelectComboBoxItem" TargetType="{x:Type controls:MultiSelectComboBoxItem}">
+		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="Foreground" Value="{DynamicResource RegularTextSolidColorBrush}"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Height" Value="34" />
+		<Setter Property="Margin" Value="1,0" />
+		<Setter Property="Padding" Value="6,0"/>
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
+
+					<Border x:Name="PART_Border"
+							BorderBrush="{TemplateBinding BorderBrush}"
+							BorderThickness="{TemplateBinding BorderThickness}"
+							Background="{TemplateBinding Background}"
+							SnapsToDevicePixels="true"
+							Padding="{TemplateBinding Padding}">
+						<CheckBox Foreground="{TemplateBinding Foreground}"
+								  HorizontalAlignment="Stretch"
+								  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+								  MinHeight="{TemplateBinding MinHeight}"
+								  Padding="{TemplateBinding Padding}"
+								  IsChecked="{Binding IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}">
+
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+								  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+								  x:Name="PART_ContentPresenter"
+								  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+								  TextElement.Foreground="{TemplateBinding Foreground}"/>
+						</CheckBox>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="{x:Type controls:MultiSelectComboBox}">
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+		<Setter Property="SelectionMode" Value="Multiple"/>
+		<Setter Property="MinWidth" Value="120" />
+		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
+        <Setter Property="Height" Value="{StaticResource MinHeight}" />
+		<Setter Property="ItemContainerStyle" Value="{StaticResource DefaultMultiSelectComboBoxItem}"/>
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+		<Setter Property="Padding" Value="14.5,3,30,3"/>
+		<Setter Property="Template">
+			<Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MultiSelectComboBox}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="OpenStoryboard">
+							<DoubleAnimation Storyboard.TargetName="PART_DropDown"
+												 Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)"
+												 To="1" Duration="00:00:.2"
+												 EasingFunction="{StaticResource ExponentialEaseOut}"/>
+						</Storyboard>
+						<Storyboard x:Key="CloseStoryboard">
+							<DoubleAnimation Storyboard.TargetName="PART_DropDown"
+												 Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)"
+												 To="0" Duration="00:00:.2"
+												 EasingFunction="{StaticResource ExponentialEaseOut}"/>
+						</Storyboard>
+					</ControlTemplate.Resources>
+                    <controls:SmallPanel SnapsToDevicePixels="True">
+						<Border Name="PART_Border"
+								Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								SnapsToDevicePixels="True"
+								CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+
+
+						<ToggleButton x:Name="PART_ToggleButton"
+									  Template="{StaticResource ComboBoxToggleButton}"
+									  Style="{x:Null}"
+									  Focusable="False"
+									  ClickMode="Release"
+									  IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+						<TextBox Name="PART_EditableTextBox"
+								 Template="{StaticResource ComboBoxTextBox}"
+								 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+								 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+								 Margin="{TemplateBinding Padding}"
+								 Focusable="True"
+								 Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+								 Background="{TemplateBinding Background}"
+								 SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}"
+								 IsReadOnly="True" Style="{x:Null}" />
+						
+						<Popup x:Name="PART_Popup"
+					   AllowsTransparency="True"
+					   PlacementTarget="{Binding ElementName=PART_ToggleButton}"
+					   IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
+					   Placement="Bottom" StaysOpen="False">
+                            <controls:SmallPanel x:Name="PART_DropDown"
+								  MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+						  Margin="24,2,24,24"
+						  MaxHeight="{TemplateBinding MaxDropDownHeight}"
+						  RenderTransformOrigin=".5,0"
+						  SnapsToDevicePixels="True">
+                                <controls:SmallPanel.RenderTransform>
+									<ScaleTransform ScaleY="0"/>
+								</controls:SmallPanel.RenderTransform>
+								<Border
+									Name="PART_DropDownBorder"
+								 Background="{TemplateBinding Background}"
+								 BorderBrush="{TemplateBinding BorderBrush}"
+								 BorderThickness="{TemplateBinding BorderThickness}"
+								 SnapsToDevicePixels="True"
+                                 CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
+								 UseLayoutRounding="True"
+								 Effect="{StaticResource PopupShadowDepth}"/>
+								<Grid ClipToBounds="False"
+									  Margin="0,8" >
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto"/>
+										<RowDefinition/>
+									</Grid.RowDefinitions>
+									<controls:MultiSelectComboBoxItem x:Name="PART_CheckBoxAll"
+																			 Visibility="{TemplateBinding IsSelectAllActive,Converter={StaticResource bool2VisibilityConverter}}"
+																			 Style="{TemplateBinding ItemContainerStyle}"
+																			 Content="{TemplateBinding SelectAllContent}"/>
+									<ScrollViewer x:Name="DropDownScrollViewer" Grid.Row="1"
+													  ScrollViewer.VerticalScrollBarVisibility="Auto">
+										<ItemsPresenter x:Name="ItemsPresenter"
+															KeyboardNavigation.DirectionalNavigation="Contained"
+															SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+									</ScrollViewer>
+								</Grid>
+							</controls:SmallPanel>
+						</Popup>
+					</controls:SmallPanel>
+					<ControlTemplate.Triggers>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardOpenStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="False">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardCloseStoryboard" Storyboard="{StaticResource CloseStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardCloseStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+						</Trigger>
+						<Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
+							<Setter TargetName="PART_DropDownBorder"  Property="Margin" Value="0,2,0,0" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
