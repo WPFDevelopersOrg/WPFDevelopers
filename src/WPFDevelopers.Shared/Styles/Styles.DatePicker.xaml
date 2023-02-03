@@ -596,15 +596,28 @@
     </Style>
 
     <Style x:Key="DefaultDatePickerTextBox" TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-        <!--<Setter Property="SelectionBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DatePickerTextBox">
-                    <Grid>
+                    <controls:SmallPanel>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="WatermarkStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState Name="Unwatermarked" />
+                                <VisualState Name="Watermarked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Watermark"
+                                                         Storyboard.TargetProperty="Opacity" 
+                                                         To="1" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
                         <Border x:Name="Border" 
                             Background="{TemplateBinding Background}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
@@ -616,13 +629,18 @@
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                   Background="{x:Null}">
+                                <ContentControl x:Name="PART_Watermark"
+                                                        Opacity="0"
+                                                        Focusable="False"
+                                                        IsHitTestVisible="True"
+                                                        Padding="2"/>
                                 <ScrollViewer x:Name="PART_ContentHost" 
                                           Margin="0"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
                             </Grid>
                         </Border>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -668,22 +686,23 @@
                     Focusable="False"
                     Margin="3,0,3,0"
                     Style="{StaticResource DropDownButtonStyle}"
-                    VerticalAlignment="Top" />
-                            
+                    VerticalAlignment="Center" />
+
                             <DatePickerTextBox x:Name="PART_TextBox"
                                Grid.Column="1"
                                Foreground="{TemplateBinding Foreground}"
                                Focusable="True"
-                              Width="Auto" 
-                              HorizontalAlignment="Left"
-                              VerticalAlignment="Bottom"
+                               Width="Auto" 
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"
                                Margin="34,2,2,2"
-                               Background="Transparent" />
+                               SelectionBrush ="{DynamicResource WindowBorderBrushSolidColorBrush}"
+                               Background="Transparent"/>
                             <Popup x:Name="PART_Popup" 
                                        MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                        AllowsTransparency="True" Focusable="False" HorizontalOffset="-50"
                                        Placement="Bottom" StaysOpen="False" VerticalOffset="10">
-                                
+
                             </Popup>
 
                         </Grid>
