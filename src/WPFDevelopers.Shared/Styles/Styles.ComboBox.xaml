@@ -158,6 +158,7 @@
                                  Margin="{TemplateBinding Padding}"
                                  Focusable="True"
                                  Background="{TemplateBinding Background}"
+                                 Foreground="{DynamicResource PrimaryTextSolidColorBrush}"
                                  Visibility="Hidden"
                                  SelectionBrush ="{DynamicResource WindowBorderBrushSolidColorBrush}"
                                  IsReadOnly="{TemplateBinding IsReadOnly}" />
