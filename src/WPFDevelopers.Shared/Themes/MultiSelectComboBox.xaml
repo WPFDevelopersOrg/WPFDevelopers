@@ -105,6 +105,7 @@
 								 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
 								 Margin="{TemplateBinding Padding}"
 								 Focusable="True"
+                                 Foreground="{DynamicResource PrimaryTextSolidColorBrush}"
 								 Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
 								 Background="{TemplateBinding Background}"
 								 SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}"
