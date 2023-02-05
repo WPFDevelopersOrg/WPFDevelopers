@@ -91,6 +91,11 @@ Install-Package WPFDevelopers
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 ----------
+### MultiSelectComboBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.gif"/>   
+
+----------
 ### Step
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/step.gif"/>   
