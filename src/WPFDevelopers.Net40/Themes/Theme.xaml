@@ -2702,7 +2702,7 @@
 								<ScaleTransform ScaleX="0" ScaleY="1" />
 							</Border.RenderTransform>
 						</Border>
-						<ContentPresenter ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+						<ContentPresenter Margin="{TemplateBinding Padding}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
@@ -2753,7 +2753,7 @@
 								<ScaleTransform ScaleX="1" ScaleY="0" />
 							</Border.RenderTransform>
 						</Border>
-						<ContentPresenter ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+						<ContentPresenter Margin="{TemplateBinding Padding}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
