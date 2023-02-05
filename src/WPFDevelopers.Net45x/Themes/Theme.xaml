@@ -1754,7 +1754,7 @@
 						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" />
 						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
 						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" />
-						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Background="{TemplateBinding Background}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
+						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Background="{TemplateBinding Background}" Foreground="{DynamicResource PrimaryTextSolidColorBrush}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<controls:SmallPanel.RenderTransform>
@@ -2290,21 +2290,32 @@
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultDatePickerTextBox" TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
-		<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-		<!--<Setter Property="SelectionBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="DatePickerTextBox">
-					<Grid>
+					<controls:SmallPanel>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup Name="WatermarkStates">
+								<VisualStateGroup.Transitions>
+									<VisualTransition GeneratedDuration="0" />
+								</VisualStateGroup.Transitions>
+								<VisualState Name="Unwatermarked" />
+								<VisualState Name="Watermarked">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="PART_Watermark" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
 						<Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="1" Opacity="1">
 							<Grid x:Name="WatermarkContent" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{x:Null}">
+								<ContentControl x:Name="PART_Watermark" Opacity="0" Focusable="False" IsHitTestVisible="True" Padding="2" />
 								<ScrollViewer x:Name="PART_ContentHost" Margin="0" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
 							</Grid>
 						</Border>
-					</Grid>
+					</controls:SmallPanel>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -2666,6 +2677,7 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="MinHeight" Value="48" />
 		<Setter Property="MinWidth" Value="100" />
+		<Setter Property="Padding" Value="12,2,12,2" />
 		<Setter Property="BorderThickness" Value="{StaticResource BorderThickness}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -2691,7 +2703,7 @@
 								<ScaleTransform ScaleX="0" ScaleY="1" />
 							</Border.RenderTransform>
 						</Border>
-						<ContentPresenter ContentSource="Header" VerticalAlignment="Center" HorizontalAlignment="Center" />
+						<ContentPresenter Margin="{TemplateBinding Padding}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
@@ -2714,7 +2726,10 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="MinHeight" Value="48" />
 		<Setter Property="MinWidth" Value="100" />
+		<Setter Property="Padding" Value="12,2,12,2" />
 		<Setter Property="BorderThickness" Value="{StaticResource BorderThickness}" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabItem}">
@@ -2739,7 +2754,7 @@
 								<ScaleTransform ScaleX="1" ScaleY="0" />
 							</Border.RenderTransform>
 						</Border>
-						<ContentPresenter ContentSource="Header" VerticalAlignment="Center" HorizontalAlignment="Center" />
+						<ContentPresenter Margin="{TemplateBinding Padding}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
@@ -2773,6 +2788,8 @@
 		<Setter Property="Padding" Value="2" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="ItemContainerStyle" Value="{StaticResource TopTabItem}" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabControl}">
@@ -2786,7 +2803,7 @@
 							<RowDefinition Height="*" Name="RowDefinition1" />
 						</Grid.RowDefinitions>
 						<Border x:Name="HeaderBorder" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="0,0,0,1" Grid.Row="0" Background="{DynamicResource BackgroundSolidColorBrush}">
-							<TabPanel IsItemsHost="True" Name="HeaderPanel" Panel.ZIndex="1" KeyboardNavigation.TabIndex="1" />
+							<TabPanel IsItemsHost="True" Name="HeaderPanel" Panel.ZIndex="1" Margin="2,2,2,0" KeyboardNavigation.TabIndex="1" />
 						</Border>
 						<controls:SmallPanel Name="ContentPanel" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Column="0" Grid.Row="1">
 							<ContentPresenter Content="{TemplateBinding SelectedContent}" ContentTemplate="{TemplateBinding SelectedContentTemplate}" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentSource="SelectedContent" Name="PART_SelectedContentHost" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
@@ -3695,6 +3712,42 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style x:Key="GridSplitterPreviewStyle">
+		<Setter Property="Control.Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Rectangle Fill="{DynamicResource WindowBorderBrushSolidColorBrush}" Opacity=".6" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="DefaultGridSplitter" TargetType="{x:Type GridSplitter}">
+		<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Setter Property="PreviewStyle" Value="{StaticResource GridSplitterPreviewStyle}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type GridSplitter}">
+					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type GridSplitter}" BasedOn="{StaticResource DefaultGridSplitter}" />
+	<Style x:Key="DefaultLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Top" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Label}">
+					<Border>
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type Label}" BasedOn="{StaticResource DefaultLabel}" />
 	<Style TargetType="{x:Type ec:PathListBox}" x:Key="{x:Type ec:PathListBox}">
 		<Setter Property="IsTabStop" Value="False" />
 		<Setter Property="FrameworkElement.UseLayoutRounding" Value="False" />
@@ -6329,7 +6382,7 @@
 					<controls:SmallPanel SnapsToDevicePixels="True">
 						<Border Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
 						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Focusable="False" ClickMode="Release" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
-						<TextBox Name="PART_EditableTextBox" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Background="{TemplateBinding Background}" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="True" Style="{x:Null}" />
+						<TextBox Name="PART_EditableTextBox" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Foreground="{DynamicResource PrimaryTextSolidColorBrush}" Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Background="{TemplateBinding Background}" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="True" Style="{x:Null}" />
 						<Popup x:Name="PART_Popup" AllowsTransparency="True" PlacementTarget="{Binding ElementName=PART_ToggleButton}" IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Placement="Bottom" StaysOpen="False">
 							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<controls:SmallPanel.RenderTransform>
@@ -6394,8 +6447,8 @@
 				<ControlTemplate TargetType="{x:Type DatePicker}">
 					<Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="PART_Border" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource BackgroundSolidColorBrush}">
 						<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-							<Button x:Name="PART_Button" Foreground="{TemplateBinding Foreground}" Focusable="False" Margin="3,0,3,0" Style="{StaticResource DropDownButtonStyle}" VerticalAlignment="Top" />
-							<DatePickerTextBox x:Name="PART_TextBox" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Focusable="True" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="34,2,2,2" Background="Transparent" />
+							<Button x:Name="PART_Button" Foreground="{TemplateBinding Foreground}" Focusable="False" Margin="3,0,3,0" Style="{StaticResource DropDownButtonStyle}" VerticalAlignment="Center" />
+							<DatePickerTextBox x:Name="PART_TextBox" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Focusable="True" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="34,2,2,2" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" Background="Transparent" />
 							<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" AllowsTransparency="True" Focusable="False" HorizontalOffset="-50" Placement="Bottom" StaysOpen="False" VerticalOffset="10" />
 						</Grid>
 					</Border>

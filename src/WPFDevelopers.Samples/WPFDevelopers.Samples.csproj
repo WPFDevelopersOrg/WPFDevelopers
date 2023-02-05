@@ -100,9 +100,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers, Version=1.0.9.7, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.1.1.0-preview\lib\net40\WPFDevelopers.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -761,7 +758,6 @@
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="app.manifest" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -877,6 +873,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WPFDevelopers.Net40\WPFDevelopers.Net40.csproj">
+      <Project>{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}</Project>
+      <Name>WPFDevelopers.Net40</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj">
       <Project>{359b3ca8-6b8e-4318-b7a7-ed2531e7f2f6}</Project>
       <Name>WPFDevelopers.SamplesCode</Name>

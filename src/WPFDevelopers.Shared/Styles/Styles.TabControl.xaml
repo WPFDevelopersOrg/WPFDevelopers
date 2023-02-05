@@ -18,6 +18,8 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
         <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="Padding"
+                Value="12,2,12,2"/>
         <Setter Property="BorderThickness" Value="{StaticResource BorderThickness}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -47,8 +49,11 @@
                                 <ScaleTransform ScaleX="0" ScaleY="1"/>
                             </Border.RenderTransform>
                         </Border>
-                        <ContentPresenter ContentSource="Header"
-                                              VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <ContentPresenter  Margin="{TemplateBinding Padding}" 
+                                           ContentSource="Header"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                              VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
@@ -72,7 +77,13 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
         <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="Padding"
+                Value="12,2,12,2"/>
         <Setter Property="BorderThickness" Value="{StaticResource BorderThickness}"/>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center"/>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
@@ -101,8 +112,11 @@
                                 <ScaleTransform ScaleX="1" ScaleY="0"/>
                             </Border.RenderTransform>
                         </Border>
-                        <ContentPresenter ContentSource="Header"
-                                              VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <ContentPresenter Margin="{TemplateBinding Padding}" 
+                                          ContentSource="Header"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              HorizontalAlignment="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                              VerticalAlignment="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
@@ -140,6 +154,10 @@
         <Setter Property="Padding" Value="2"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource TopTabItem}"/>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center"/>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -162,9 +180,10 @@
                             Grid.Row="0"
                             Background="{DynamicResource BackgroundSolidColorBrush}">
                             <TabPanel IsItemsHost="True"
-                                  Name="HeaderPanel" 
-                                  Panel.ZIndex="1"
-                                  KeyboardNavigation.TabIndex="1"/>
+                                      Name="HeaderPanel" 
+                                      Panel.ZIndex="1"
+                                      Margin="2,2,2,0"
+                                      KeyboardNavigation.TabIndex="1"/>
                         </Border>
 
                         <controls:SmallPanel Name="ContentPanel"
