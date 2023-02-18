@@ -319,7 +319,7 @@ namespace WPFDevelopers.Controls
         }
         protected override void OnPreviewMouseRightButtonDown(MouseButtonEventArgs e)
         {
-            Close();
+            OnCanceled();
         }
 
         private void _radioButtonInk_Click(object sender, RoutedEventArgs e)
@@ -457,16 +457,19 @@ namespace WPFDevelopers.Controls
         
         private void _buttonCancel_Click(object sender, RoutedEventArgs e)
         {
+            OnCanceled();
+        }
+        void OnCanceled()
+        {
             Close();
             if (CutCanceled != null)
                 CutCanceled();
         }
-        
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
-                Close();
+                OnCanceled();
             }
             else if (e.Key == Key.Delete)
             {
