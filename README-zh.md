@@ -6,13 +6,15 @@
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
     </a>  <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers"></img>
-    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  
+    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  <a href="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WPFDevelopers.vsix">
+        <img alt=".NET6VSIX" src="https://img.shields.io/badge/.NET6-VSIX-ff69b4"></img>
+    </a>  
 
 
 
 ## Welcome to WPFDevelopers    
 
-# __最新请使用 Nuget 预览版包__  [下载可执行程序EXE](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/releases/download/WPFDevelopers1.1.0.1-preview1/WPFDevelopersSample.zip)
+# __最新请使用 Nuget 预览版包__  |[下载可执行程序EXE](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/releases/download/WPFDevelopers1.1.0.1-preview1/WPFDevelopersSample.zip) |[项目模板下载VSIX](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WPFDevelopers.vsix)
 
 # [下载完 WPFDevelopers 项目如何编译通过 👀](https://b23.tv/RTijGF8  )
 
