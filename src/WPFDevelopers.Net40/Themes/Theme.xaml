@@ -2458,7 +2458,7 @@
 		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
-		<Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="ValidationErrorTemplate">
 			<Setter.Value>
@@ -2536,10 +2536,11 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRowHeader}">
-					<Grid HorizontalAlignment="Center">
+					<controls:SmallPanel HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />
@@ -2568,7 +2569,7 @@
 						</Border>
 						<Thumb x:Name="PART_TopHeaderGripper" Style="{StaticResource RowHeaderGripperStyle}" VerticalAlignment="Top" />
 						<Thumb x:Name="PART_BottomHeaderGripper" Style="{StaticResource RowHeaderGripperStyle}" VerticalAlignment="Bottom" />
-					</Grid>
+					</controls:SmallPanel>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -2609,7 +2610,7 @@
 							<DoubleAnimation Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="SortArrow" Duration="00:00:.2" To="0" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Grid>
+					<controls:SmallPanel>
 						<Border x:Name="columnHeaderBorder" Background="{TemplateBinding Background}" Padding="10" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
 							<Grid Name="HedearGrid">
 								<Grid.ColumnDefinitions>
@@ -2626,7 +2627,7 @@
 						</Border>
 						<Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ColumnHeaderGripperStyle}" />
 						<Thumb x:Name="PART_RightHeaderGripper" HorizontalAlignment="Right" Style="{StaticResource ColumnHeaderGripperStyle}" />
-					</Grid>
+					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="SortDirection" Value="Ascending">
 							<Setter TargetName="SortArrow" Property="Visibility" Value="Visible" />
