@@ -67,8 +67,24 @@ namespace WPFDevelopers.Controls
                 var element = AdornedElement as FrameworkElement;
                 if (element == null)
                     return;
-                Canvas.SetLeft(element, Canvas.GetLeft(element) + e.HorizontalChange);
-                Canvas.SetTop(element, Canvas.GetTop(element) + e.VerticalChange);
+
+                var transform = element.RenderTransform;
+                if (transform != null)
+                {
+                    if (transform as RotateTransform != null)
+                    {
+                        var rotateTransform = transform as RotateTransform;
+
+                        Point ptChange = rotateTransform.Transform(new Point(e.HorizontalChange, e.VerticalChange));
+
+                        SetPositon(element, Canvas.GetLeft(element) + ptChange.X, Canvas.GetTop(element) + ptChange.Y);
+                    }
+                    else
+                    {
+                        SetPositon(element, Canvas.GetLeft(element) + e.HorizontalChange, Canvas.GetTop(element) + e.VerticalChange);
+                    }
+                }
+               
             };
             return thumb;
         }
@@ -159,6 +175,33 @@ namespace WPFDevelopers.Controls
         protected override Visual GetVisualChild(int index)
         {
             return visualCollection[index];
+        }
+
+        private void SetPositon(FrameworkElement element,double left, double top)
+        {
+            var parent = VisualTreeHelper.GetParent(element) as Canvas;
+
+            if (left <= 0)
+            {
+                left = 0;
+            }
+
+            if (top <= 0)
+            {
+                top = 0;
+            }
+
+            if (left + element.Width > parent.ActualWidth)
+            {
+                left = parent.ActualWidth - element.Width;
+            }
+            if (top + element.Height > parent.ActualHeight)
+            {
+                top = parent.ActualHeight - element.Height;
+            }
+
+            Canvas.SetLeft(element, left);
+            Canvas.SetTop(element, top);
         }
     }
 }
