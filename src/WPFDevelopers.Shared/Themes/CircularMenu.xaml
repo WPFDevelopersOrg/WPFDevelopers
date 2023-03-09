@@ -51,7 +51,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource PrimaryNormalSolidColorBrush}"/>
-                            <Setter Property="Cursor" Value="Hand"/>
+                            
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
