@@ -442,7 +442,7 @@
 		<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="20,10" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 	</Style>
 	<Style x:Key="PrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
@@ -561,7 +561,7 @@
 		<Setter Property="MinWidth" Value="30" />
 		<Setter Property="MinHeight" Value="28" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
@@ -823,7 +823,7 @@
 	<Style x:Key="DefaultMenuItem" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="MinHeight" Value="34" />
 		<Setter Property="Padding" Value="10,0" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Style.Triggers>
 			<Trigger Property="Role" Value="TopLevelHeader">
 				<Setter Property="MinWidth" Value="44" />
@@ -865,7 +865,7 @@
 		<Setter Property="Background" Value="{DynamicResource WindowForegroundColorBrush}" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="2,1" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
@@ -935,7 +935,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="8" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
@@ -962,7 +962,7 @@
 		<Setter Property="Padding" Value="8" />
 		<Setter Property="Width" Value="15" />
 		<Setter Property="Height" Value="15" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
@@ -1487,7 +1487,7 @@
 		<Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="Transparent" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Template" Value="{StaticResource SliderHorizontal}" />
 		<Style.Triggers>
@@ -1514,7 +1514,7 @@
 		<Setter Property="FontWeight" Value="{DynamicResource NormalFontWeight}" />
 		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
 		<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>-->
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
 		<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
 		<Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
@@ -1534,7 +1534,7 @@
 	<Style x:Key="DefaultCheckBox" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
 		<!--<Setter Property="FocusVisualStyle" Value="{x:Null}" />-->
 		<Setter Property="Padding" Value="2,0,0,0" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type CheckBox}">
@@ -1625,7 +1625,7 @@
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="MinWidth" Value="180" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="SelectionBrush" Value="{DynamicResource WindowBorderBrushSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -1808,7 +1808,7 @@
 		<Setter Property="Padding" Value="20,0" />
 		<Setter Property="Height" Value="34" />
 		<Setter Property="Margin" Value="1,0" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -1855,7 +1855,7 @@
 	<Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultComboBox}" />
 	<Style x:Key="DefaultToggleButton" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Focusable" Value="False" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -1907,7 +1907,7 @@
 		<Setter Property="FontSize" Value="12" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="CalendarDayButton">
@@ -2009,7 +2009,7 @@
 		<Setter Property="FontSize" Value="12" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="CalendarButton">
@@ -2323,7 +2323,7 @@
 	<Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource DefaultCalendar}" />
 	<Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource DefaultDatePickerTextBox}" />
 	<Style x:Key="DefaultDataGridSelectAllButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
@@ -2460,7 +2460,7 @@
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="ValidationErrorTemplate">
 			<Setter.Value>
 				<ControlTemplate>
@@ -2593,7 +2593,7 @@
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultDataGridColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -2674,7 +2674,7 @@
 	<Style x:Key="BaseTAndBTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="VerticalContentAlignment" Value="Stretch" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="MinHeight" Value="48" />
 		<Setter Property="MinWidth" Value="100" />
@@ -2723,7 +2723,7 @@
 	<Style x:Key="BaseLAndRTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="VerticalContentAlignment" Value="Stretch" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="MinHeight" Value="48" />
 		<Setter Property="MinWidth" Value="100" />
@@ -2854,7 +2854,7 @@
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="MinWidth" Value="180" />
 		<Setter Property="AllowDrop" Value="True" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Padding" Value="6,0" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="helpers:PasswordBoxHelper.IsMonitoring" Value="True" />
@@ -2910,7 +2910,7 @@
 							<ToggleButton x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
 								<ToggleButton.Style>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
+										
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -2967,7 +2967,7 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
+										
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -3023,7 +3023,7 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
+										
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -3074,7 +3074,7 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
+										
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -3214,7 +3214,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="MinHeight" Value="48" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Padding" Value="2" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3351,7 +3351,7 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListViewItem}">
@@ -3523,7 +3523,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Padding" Value="10" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3833,7 +3833,7 @@
 	<Style TargetType="{x:Type controls:AnimationAudio}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="80" />
 		<Setter Property="Height" Value="35" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Foreground" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Template">
@@ -3901,7 +3901,7 @@
 	<Style TargetType="{x:Type controls:AnimationNavigationBar3DItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="80" />
 		<Setter Property="Height" Value="80" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
@@ -4257,7 +4257,7 @@
 		<Setter Property="Background" Value="{x:Null}" />
 		<Setter Property="Width" Value="100" />
 		<Setter Property="Height" Value="40" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:VerifyCode}">
@@ -4284,7 +4284,7 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsMouseOver" Value="true">
 							<Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource PrimaryNormalSolidColorBrush}" />
-							<Setter Property="Cursor" Value="Hand" />
+							
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -5113,7 +5113,7 @@
 				<ListBox.ItemContainerStyle>
 					<Style TargetType="ListBoxItem" BasedOn="{x:Null}">
 						<Setter Property="VerticalContentAlignment" Value="Center" />
-						<Setter Property="Cursor" Value="Hand" />
+						
 						<Setter Property="Padding" Value="10,8" />
 						<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 						<Setter Property="Template">
@@ -5147,7 +5147,7 @@
 	</ControlTemplate>
 	<Style x:Key="NavigateMenuItem" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Padding" Value="10,8" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="Template">
@@ -5196,7 +5196,7 @@
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="Cursor" Value="Hand"/>
+                        
                         <Setter Property="Padding" Value="10,8"/>
                         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
                         <Setter Property="Template">
@@ -5345,7 +5345,7 @@
 	</Style>
 	<Style x:Key="PageListBoxItemStyleKey" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="MinWidth" Value="32" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
@@ -5895,7 +5895,7 @@
 		<Style.Triggers>
 			<Trigger Property="IsMouseOver" Value="True">
 				<Setter Property="Opacity" Value="0.8" />
-				<Setter Property="Cursor" Value="Hand" />
+				
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -5926,7 +5926,7 @@
 		<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
 		<Setter Property="MinHeight" Value="23" />
 		<Setter Property="MinWidth" Value="75" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
@@ -6336,7 +6336,7 @@
 		<Setter Property="Height" Value="34" />
 		<Setter Property="Margin" Value="1,0" />
 		<Setter Property="Padding" Value="6,0" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
@@ -6441,7 +6441,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="MinWidth" Value="140" />
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
-		<Setter Property="Cursor" Value="Hand" />
+		
 		<Setter Property="CalendarStyle" Value="{DynamicResource DatePickerCalendarStyle}" />
 		<Setter Property="Template">
 			<Setter.Value>
