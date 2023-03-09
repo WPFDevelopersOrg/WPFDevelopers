@@ -15,7 +15,7 @@
         <Setter Property="FontSize"  Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
@@ -125,7 +125,7 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
@@ -664,7 +664,7 @@
           Value="Center" />
         <Setter Property="MinWidth" Value="140"/>
         <Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="CalendarStyle"
           Value="{DynamicResource DatePickerCalendarStyle}" />
         <Setter Property="Template">
