@@ -186,7 +186,6 @@
                                 <ScrollViewer Margin="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                     <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
-
                             </controls:SmallPanel>
                         </Popup>
                     </controls:SmallPanel>
@@ -222,6 +221,10 @@
                             <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
                             <Setter TargetName="ContentSite" Property="UIElement.Visibility" Value="Hidden" />
                         </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -232,7 +235,7 @@
         <Setter Property="Padding" Value="20,0"/>
         <Setter Property="Height" Value="34" />
         <Setter Property="Margin" Value="1,0" />
-        <Setter Property="Cursor" Value="Hand" />
+        
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
@@ -279,11 +282,9 @@
                             <Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold"/>
                         </MultiTrigger>
-                        
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
                         </Trigger>
-                       
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
