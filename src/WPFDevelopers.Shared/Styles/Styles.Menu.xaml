@@ -273,7 +273,7 @@
     <Style x:Key="DefaultMenuItem" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="MinHeight" Value="34" />
         <Setter Property="Padding" Value="10,0" />
-        <Setter Property="Cursor" Value="Hand" />
+        
         <Style.Triggers>
             <Trigger Property="Role"
              Value="TopLevelHeader">
