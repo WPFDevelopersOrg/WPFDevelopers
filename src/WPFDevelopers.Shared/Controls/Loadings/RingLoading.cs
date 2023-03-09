@@ -5,25 +5,20 @@ namespace WPFDevelopers.Controls
 {
     public class RingLoading : Control
     {
-        // Using a DependencyProperty as the backing store for IsStart.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsStartProperty =
             DependencyProperty.Register("IsStart", typeof(bool), typeof(RingLoading), new PropertyMetadata(default));
 
-        // Using a DependencyProperty as the backing store for ProgressValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ProgressValueProperty =
             DependencyProperty.Register("ProgressValue", typeof(double), typeof(RingLoading),
                 new PropertyMetadata(0d, OnProgressValueChangedCallBack));
 
-        // Using a DependencyProperty as the backing store for Progress.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty ProgressProperty =
             DependencyProperty.Register("Progress", typeof(string), typeof(RingLoading), new PropertyMetadata(default));
 
-        // Using a DependencyProperty as the backing store for Maximum.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaximumProperty =
             DependencyProperty.Register("Maximum", typeof(double), typeof(RingLoading),
                 new PropertyMetadata(100d, OnMaximumPropertyChangedCallBack));
 
-        // Using a DependencyProperty as the backing store for Description.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(RingLoading),
                 new PropertyMetadata(default));
