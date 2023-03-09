@@ -38,7 +38,7 @@
            TargetType="{x:Type ListBoxItem}"
            BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="MinWidth" Value="32"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="helpers:ElementHelper.CornerRadius" Value="3"/>
