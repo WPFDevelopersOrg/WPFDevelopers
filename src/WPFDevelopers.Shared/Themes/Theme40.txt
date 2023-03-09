@@ -72,3 +72,4 @@ BubblleControl.xaml
 Magnifier.xaml
 Step.xaml
 MultiSelectComboBox.xaml
+Mask.xaml
