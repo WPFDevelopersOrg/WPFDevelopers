@@ -18,7 +18,9 @@
         <Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
         <Setter Property="MinWidth" Value="180"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        
         <Setter Property="SelectionBrush" Value="{DynamicResource WindowBorderBrushSolidColorBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -28,25 +30,8 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}"
-                            BorderBrush="{DynamicResource BaseSolidColorBrush}">
-                        <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource BackgroundColor}" />
-                        </Border.Background>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Disabled"/>
-                                <VisualState x:Name="ReadOnly"/>
-                                <VisualState x:Name="MouseOver" >
-                                    <Storyboard>
-                                        <ColorAnimation Duration="00:00:0.3"
-                                                        Storyboard.TargetName="PART_Border"
-                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                        To="{DynamicResource PrimaryNormalColor}"/>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}">
                         <controls:SmallPanel Margin="{TemplateBinding Padding}">
                             <TextBlock x:Name="PART_TextBlockWatermark"
                                 Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}"
@@ -72,6 +57,10 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible"/>
                         </MultiTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
