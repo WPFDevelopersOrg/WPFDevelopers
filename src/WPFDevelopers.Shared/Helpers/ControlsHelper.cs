@@ -5,10 +5,14 @@ using System.Linq;
 using System.Media;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using WPFDevelopers.Controls;
+using WPFDevelopers.Utilities;
 
 namespace WPFDevelopers.Helpers
 {
@@ -22,7 +26,6 @@ namespace WPFDevelopers.Helpers
             Application.Current.Resources["PrimaryTextSolidColorBrush"] as Brush;
 
         private static bool _IsCurrentDark;
-
 
         public static void OnSubThemeChanged()
         {
@@ -71,13 +74,13 @@ namespace WPFDevelopers.Helpers
 
         public static void ThemeRefresh()
         {
-            var themePath = "pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml";
-            var themeResourceDictionary =
-                Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
-                    x.Source != null && x.Source.Equals(themePath));
-            if (themeResourceDictionary == null) return;
-            Application.Current.Resources.MergedDictionaries.Remove(themeResourceDictionary);
-            Application.Current.Resources.MergedDictionaries.Add(themeResourceDictionary);
+            //var themePath = "pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml";
+            //var themeResourceDictionary =
+            //    Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
+            //        x.Source != null && x.Source.Equals(themePath));
+            //if (themeResourceDictionary == null) return;
+            //Application.Current.Resources.MergedDictionaries.Remove(themeResourceDictionary);
+            //Application.Current.Resources.MergedDictionaries.Add(themeResourceDictionary);
             OnSubThemeChanged();
         }
 
