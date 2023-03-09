@@ -442,7 +442,6 @@
 		<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="20,10" />
-		<Setter Property="Cursor" Value="Hand" />
 	</Style>
 	<Style x:Key="PrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
@@ -451,36 +450,18 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
 					<controls:SmallPanel>
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualStateGroup.Transitions>
-									<VisualTransition GeneratedDuration="00:00:0.3" From="Normal" To="MouseOver" />
-									<VisualTransition GeneratedDuration="00:00:0.3" From="Pressed" />
-									<VisualTransition GeneratedDuration="00:00:0.3" From="MouseOver" />
-									<VisualTransition GeneratedDuration="00:00:0.3" To="Normal" />
-								</VisualStateGroup.Transitions>
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="MouseOver">
-									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource PrimaryMouseOverColor}" />
-									</Storyboard>
-								</VisualState>
-								<VisualState x:Name="Pressed">
-									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource PrimaryPressedColor}" />
-									</Storyboard>
-								</VisualState>
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
 						<Border Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
-						<!--<Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>-->
+						<Trigger Property="IsPressed" Value="True">
+							<Setter Property="Background" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+						</Trigger>
 						<Trigger Property="IsFocused" Value="True">
-							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="Background" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -494,31 +475,6 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
 					<controls:SmallPanel>
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualStateGroup.Transitions>
-									<VisualTransition GeneratedDuration="0:0:0.1" From="Normal" To="MouseOver" />
-									<VisualTransition GeneratedDuration="0:0:0.1" From="Pressed" />
-									<VisualTransition GeneratedDuration="0:0:0.1" From="MouseOver" />
-									<VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver" />
-								</VisualStateGroup.Transitions>
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="MouseOver">
-									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBorderBrushColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource PrimaryNormalColor}" />
-									</Storyboard>
-								</VisualState>
-								<VisualState x:Name="Pressed">
-									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundPressedColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundPressedColor}" />
-									</Storyboard>
-								</VisualState>
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
 						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
 						<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
 					</controls:SmallPanel>
@@ -528,9 +484,16 @@
 							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
-						<!--<Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>-->
+						<Trigger Property="IsPressed" Value="True">
+							<Setter Property="BorderBrush" Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" />
+							<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}" />
+							<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -561,7 +524,6 @@
 		<Setter Property="MinWidth" Value="30" />
 		<Setter Property="MinHeight" Value="28" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
@@ -822,7 +784,6 @@
 	<Style x:Key="DefaultMenuItem" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="MinHeight" Value="34" />
 		<Setter Property="Padding" Value="10,0" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Style.Triggers>
 			<Trigger Property="Role" Value="TopLevelHeader">
 				<Setter Property="MinWidth" Value="44" />
@@ -864,7 +825,6 @@
 		<Setter Property="Background" Value="{DynamicResource WindowForegroundColorBrush}" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="2,1" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
@@ -934,7 +894,6 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="8" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
@@ -961,7 +920,6 @@
 		<Setter Property="Padding" Value="8" />
 		<Setter Property="Width" Value="15" />
 		<Setter Property="Height" Value="15" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
@@ -1486,7 +1444,6 @@
 		<Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="Transparent" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Template" Value="{StaticResource SliderHorizontal}" />
 		<Style.Triggers>
@@ -1513,7 +1470,6 @@
 		<Setter Property="FontWeight" Value="{DynamicResource NormalFontWeight}" />
 		<Setter Property="FontStretch" Value="{DynamicResource NormalFontStretch}" />
 		<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>-->
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
 		<!--<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
 		<Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
@@ -1533,7 +1489,6 @@
 	<Style x:Key="DefaultCheckBox" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
 		<!--<Setter Property="FocusVisualStyle" Value="{x:Null}" />-->
 		<Setter Property="Padding" Value="2,0,0,0" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type CheckBox}">
@@ -1624,27 +1579,13 @@
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="MinWidth" Value="180" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="SelectionBrush" Value="{DynamicResource WindowBorderBrushSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TextBox}">
-					<Border Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
-						<Border.Background>
-							<SolidColorBrush Color="{DynamicResource BackgroundColor}" />
-						</Border.Background>
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="Disabled" />
-								<VisualState x:Name="ReadOnly" />
-								<VisualState x:Name="MouseOver">
-									<Storyboard>
-										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{DynamicResource PrimaryNormalColor}" />
-									</Storyboard>
-								</VisualState>
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
+					<Border Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
 						<controls:SmallPanel Margin="{TemplateBinding Padding}">
 							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
 							<ScrollViewer x:Name="PART_ContentHost" />
@@ -1665,6 +1606,9 @@
 							</MultiTrigger.Conditions>
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
 						</MultiTrigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -1798,6 +1742,9 @@
 							<Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
 							<Setter TargetName="ContentSite" Property="UIElement.Visibility" Value="Hidden" />
 						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -1807,7 +1754,6 @@
 		<Setter Property="Padding" Value="20,0" />
 		<Setter Property="Height" Value="34" />
 		<Setter Property="Margin" Value="1,0" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -1854,7 +1800,6 @@
 	<Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultComboBox}" />
 	<Style x:Key="DefaultToggleButton" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Focusable" Value="False" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -1906,7 +1851,6 @@
 		<Setter Property="FontSize" Value="12" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="CalendarDayButton">
@@ -2008,7 +1952,6 @@
 		<Setter Property="FontSize" Value="12" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="CalendarButton">
@@ -2322,7 +2265,6 @@
 	<Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource DefaultCalendar}" />
 	<Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource DefaultDatePickerTextBox}" />
 	<Style x:Key="DefaultDataGridSelectAllButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
@@ -2459,7 +2401,6 @@
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="ValidationErrorTemplate">
 			<Setter.Value>
 				<ControlTemplate>
@@ -2592,7 +2533,6 @@
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultDataGridColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -2673,7 +2613,6 @@
 	<Style x:Key="BaseTAndBTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="VerticalContentAlignment" Value="Stretch" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="MinHeight" Value="48" />
 		<Setter Property="MinWidth" Value="100" />
@@ -2722,7 +2661,6 @@
 	<Style x:Key="BaseLAndRTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="VerticalContentAlignment" Value="Stretch" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="MinHeight" Value="48" />
 		<Setter Property="MinWidth" Value="100" />
@@ -2853,29 +2791,16 @@
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="MinWidth" Value="180" />
 		<Setter Property="AllowDrop" Value="True" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Padding" Value="6,0" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="helpers:PasswordBoxHelper.IsMonitoring" Value="True" />
 		<Setter Property="SelectionBrush" Value="{DynamicResource WindowBorderBrushSolidColorBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type PasswordBox}">
-					<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
-						<Border.Background>
-							<SolidColorBrush Color="{DynamicResource BackgroundColor}" />
-						</Border.Background>
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="Disabled" />
-								<VisualState x:Name="MouseOver">
-									<Storyboard>
-										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{DynamicResource PrimaryNormalColor}" />
-									</Storyboard>
-								</VisualState>
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
+					<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
 						<controls:SmallPanel Margin="{TemplateBinding Padding}">
 							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
 							<ScrollViewer x:Name="PART_ContentHost" />
@@ -2889,6 +2814,9 @@
 							</MultiTrigger.Conditions>
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
 						</MultiTrigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -2909,7 +2837,6 @@
 							<ToggleButton x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
 								<ToggleButton.Style>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -2966,7 +2893,6 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -3022,7 +2948,6 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -3073,7 +2998,6 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -3213,7 +3137,6 @@
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="MinHeight" Value="48" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Padding" Value="2" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3350,7 +3273,6 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListViewItem}">
@@ -3522,7 +3444,6 @@
 		<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Padding" Value="10" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3631,7 +3552,7 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="{x:Type controls:WPFLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+	<Style TargetType="{x:Type controls:NormalLoading}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Background" Value="{x:Null}" />
 		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
@@ -3639,16 +3560,16 @@
 		<Setter Property="Height" Value="40" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:WPFLoading}">
+				<ControlTemplate TargetType="{x:Type controls:NormalLoading}">
 					<ControlTemplate.Resources>
 						<Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
-							<DoubleAnimation Duration="0:0:1.5" To="360" Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" />
+							<DoubleAnimation Duration="0:0:1.0" From="0" To="360" Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" />
 						</Storyboard>
 					</ControlTemplate.Resources>
 					<controls:SmallPanel Background="{TemplateBinding Background}">
 						<Ellipse Stroke="{TemplateBinding BorderBrush}" x:Name="PART_Ellipse" StrokeThickness="2" StrokeDashArray="{TemplateBinding StrokeArray}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" RenderTransformOrigin=".5,.5">
 							<Ellipse.RenderTransform>
-								<RotateTransform Angle="-90" />
+								<RotateTransform Angle="0" />
 							</Ellipse.RenderTransform>
 						</Ellipse>
 					</controls:SmallPanel>
@@ -3662,6 +3583,36 @@
 							</Trigger.ExitActions>
 						</Trigger>
 					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type controls:DefaultLoading}">
+		<Setter Property="Width" Value="40" />
+		<Setter Property="Height" Value="40" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:DefaultLoading}">
+					<Viewbox Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+						<controls:SmallPanel>
+							<controls:SmallPanel.Resources>
+								<Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
+									<DoubleAnimation Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" To="360" Duration="0:0:1.0" />
+								</Storyboard>
+							</controls:SmallPanel.Resources>
+							<Ellipse Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Stroke="{DynamicResource BaseSolidColorBrush}" StrokeDashArray="100,100" StrokeThickness="2" />
+							<Ellipse x:Name="PART_Ellipse" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Stretch="Uniform" RenderTransformOrigin=".5,.5" Stroke="{DynamicResource PrimaryPressedSolidColorBrush}" StrokeDashArray="{TemplateBinding StrokeArray}" StrokeThickness="2">
+								<Ellipse.RenderTransform>
+									<RotateTransform Angle="0" />
+								</Ellipse.RenderTransform>
+								<Ellipse.Triggers>
+									<EventTrigger RoutedEvent="Loaded">
+										<BeginStoryboard Storyboard="{StaticResource StarStoryboard}" />
+									</EventTrigger>
+								</Ellipse.Triggers>
+							</Ellipse>
+						</controls:SmallPanel>
+					</Viewbox>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -3832,7 +3783,6 @@
 	<Style TargetType="{x:Type controls:AnimationAudio}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="80" />
 		<Setter Property="Height" Value="35" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Foreground" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Template">
@@ -3900,7 +3850,6 @@
 	<Style TargetType="{x:Type controls:AnimationNavigationBar3DItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="80" />
 		<Setter Property="Height" Value="80" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
@@ -4256,7 +4205,6 @@
 		<Setter Property="Background" Value="{x:Null}" />
 		<Setter Property="Width" Value="100" />
 		<Setter Property="Height" Value="40" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:VerifyCode}">
@@ -4283,7 +4231,6 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsMouseOver" Value="true">
 							<Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource PrimaryNormalSolidColorBrush}" />
-							<Setter Property="Cursor" Value="Hand" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -5112,7 +5059,6 @@
 				<ListBox.ItemContainerStyle>
 					<Style TargetType="ListBoxItem" BasedOn="{x:Null}">
 						<Setter Property="VerticalContentAlignment" Value="Center" />
-						<Setter Property="Cursor" Value="Hand" />
 						<Setter Property="Padding" Value="10,8" />
 						<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 						<Setter Property="Template">
@@ -5146,7 +5092,6 @@
 	</ControlTemplate>
 	<Style x:Key="NavigateMenuItem" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Padding" Value="10,8" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="Template">
@@ -5195,7 +5140,7 @@
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="Cursor" Value="Hand"/>
+                        
                         <Setter Property="Padding" Value="10,8"/>
                         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
                         <Setter Property="Template">
@@ -5344,7 +5289,6 @@
 	</Style>
 	<Style x:Key="PageListBoxItemStyleKey" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="MinWidth" Value="32" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
@@ -5894,7 +5838,6 @@
 		<Style.Triggers>
 			<Trigger Property="IsMouseOver" Value="True">
 				<Setter Property="Opacity" Value="0.8" />
-				<Setter Property="Cursor" Value="Hand" />
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -5925,7 +5868,6 @@
 		<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
 		<Setter Property="MinHeight" Value="23" />
 		<Setter Property="MinWidth" Value="75" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
@@ -6335,7 +6277,6 @@
 		<Setter Property="Height" Value="34" />
 		<Setter Property="Margin" Value="1,0" />
 		<Setter Property="Padding" Value="6,0" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
@@ -6430,6 +6371,21 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style TargetType="{x:Type controls:MaskControl}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Background" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MaskControl}">
+					<controls:SmallPanel>
+						<Border x:Name="PART_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Height}" CornerRadius="{TemplateBinding CornerRadius}" Opacity=".7" />
+						<ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+					</controls:SmallPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<Style x:Key="DatePickerCalendarStyle" TargetType="{x:Type Calendar}" BasedOn="{StaticResource {x:Type Calendar}}" />
 	<Style x:Key="DefaultDatePicker" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="IsTodayHighlighted" Value="True" />
@@ -6440,7 +6396,6 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="MinWidth" Value="140" />
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
-		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="CalendarStyle" Value="{DynamicResource DatePickerCalendarStyle}" />
 		<Setter Property="Template">
 			<Setter.Value>
