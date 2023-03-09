@@ -10,7 +10,7 @@
 
     <Style x:Key="DefaultToggleButton" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
