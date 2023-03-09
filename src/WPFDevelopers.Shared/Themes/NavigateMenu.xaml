@@ -22,7 +22,7 @@
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem" BasedOn="{x:Null}">
                             <Setter Property="VerticalContentAlignment" Value="Center"/>
-                            <Setter Property="Cursor" Value="Hand"/>
+                            
                             <Setter Property="Padding" Value="10,8"/>
                             <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
                             <Setter Property="Template">
@@ -70,7 +70,7 @@
     <!--还未完成-->
     <Style x:Key="NavigateMenuItem" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="Padding" Value="10,8"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
         <Setter Property="Template">
@@ -129,7 +129,7 @@
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="Cursor" Value="Hand"/>
+                        
                         <Setter Property="Padding" Value="10,8"/>
                         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
                         <Setter Property="Template">
@@ -216,7 +216,7 @@
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                     <Setter Property="VerticalContentAlignment" Value="Center"/>
-                                    <Setter Property="Cursor" Value="Hand"/>
+                                    
                                     -->
     <!--<Setter Property="Height" Value="40"/>--><!--
                                     <Setter Property="Padding" Value="10,8"/>
