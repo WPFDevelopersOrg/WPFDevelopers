@@ -7,7 +7,7 @@
             <!-- 关闭按钮 -->
             <Style x:Key="CloseButtonStyle" TargetType="Button">
                 <Setter Property="Opacity" Value="0.5"/>
-                <Setter Property="Cursor" Value="Hand"/>
+                
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -34,7 +34,7 @@
             <!-- 登录/注册按钮 -->
             <Style x:Key="LoginButtonStyle" TargetType="Button">
                 <Setter Property="Foreground" Value="White"/>
-                <Setter Property="Cursor" Value="Hand"/>
+                
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
