@@ -40,7 +40,7 @@ Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
         <Setter Property="MinHeight" Value="48"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="Padding" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
