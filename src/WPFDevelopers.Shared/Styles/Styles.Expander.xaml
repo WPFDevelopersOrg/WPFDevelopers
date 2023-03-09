@@ -30,7 +30,7 @@
                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <ToggleButton.Style>
                                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-                                        <Setter Property="Cursor" Value="Hand"/>
+                                        
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -117,7 +117,7 @@
                             <Setter Property="Style" TargetName="HeaderSite">
                                 <Setter.Value>
                                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-                                        <Setter Property="Cursor" Value="Hand"/>
+                                        
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -193,7 +193,7 @@
                             <Setter Property="Style" TargetName="HeaderSite">
                                 <Setter.Value>
                                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-                                        <Setter Property="Cursor" Value="Hand"/>
+                                        
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -264,7 +264,7 @@
                             <Setter Property="Style" TargetName="HeaderSite">
                                 <Setter.Value>
                                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
-                                        <Setter Property="Cursor" Value="Hand"/>
+                                        
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
