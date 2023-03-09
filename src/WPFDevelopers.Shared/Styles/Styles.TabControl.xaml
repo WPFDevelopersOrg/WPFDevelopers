@@ -14,7 +14,7 @@
     <Style x:Key="BaseTAndBTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="Cursor" Value="Hand" />
+        
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
         <Setter Property="MinWidth" Value="100"/>
@@ -73,7 +73,7 @@
     <Style x:Key="BaseLAndRTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="Cursor" Value="Hand" />
+        
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
         <Setter Property="MinWidth" Value="100"/>
