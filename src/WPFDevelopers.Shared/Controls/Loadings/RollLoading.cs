@@ -6,12 +6,10 @@ namespace WPFDevelopers.Controls
 {
     public class RollLoading : ContentControl
     {
-        // Using a DependencyProperty as the backing store for ForegroundColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ForegroundColorProperty =
             DependencyProperty.Register("ForegroundColor", typeof(Color), typeof(RollLoading),
                 new PropertyMetadata(Colors.Red));
 
-        // Using a DependencyProperty as the backing store for IsStart.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsStartProperty =
             DependencyProperty.Register("IsStart", typeof(bool), typeof(RollLoading), new PropertyMetadata(true));
 
