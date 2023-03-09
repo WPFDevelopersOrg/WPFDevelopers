@@ -5,25 +5,20 @@ namespace WPFDevelopers.Controls
 {
     public class CycleLoading : ContentControl
     {
-        // Using a DependencyProperty as the backing store for MaxValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(double), typeof(CycleLoading), new PropertyMetadata(100d));
 
-        // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(CycleLoading),
                 new PropertyMetadata(0d, OnValuePropertyChangedCallBack));
 
-        // Using a DependencyProperty as the backing store for ValueDescription.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty ValueDescriptionProperty =
             DependencyProperty.Register("ValueDescription", typeof(string), typeof(CycleLoading),
                 new PropertyMetadata(default(string)));
 
-        // Using a DependencyProperty as the backing store for IsStart.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsStartProperty =
             DependencyProperty.Register("IsStart", typeof(bool), typeof(CycleLoading), new PropertyMetadata(true));
 
-        // Using a DependencyProperty as the backing store for LoadTitle.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LoadTitleProperty =
             DependencyProperty.Register("LoadTitle", typeof(string), typeof(CycleLoading),
                 new PropertyMetadata(default(string)));
