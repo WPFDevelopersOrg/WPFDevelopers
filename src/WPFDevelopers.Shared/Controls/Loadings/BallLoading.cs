@@ -33,7 +33,6 @@ namespace WPFDevelopers.Controls
 
         private const int _nBallCount = 5;
 
-        // Using a DependencyProperty as the backing store for IsStartAnimation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsStartAnimationProperty =
             DependencyProperty.Register("IsStartAnimation", typeof(bool), typeof(BallLoading),
                 new PropertyMetadata(true, OnPropertyChangedCallback));
@@ -56,7 +55,6 @@ namespace WPFDevelopers.Controls
 
         private readonly int _SingleAnimationTime = 4;
 
-        //
         private Storyboard _Storyboard;
 
         private Storyboard _Storyboard1;
