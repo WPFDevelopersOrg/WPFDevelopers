@@ -14,7 +14,7 @@
     <Style x:Key="DefaultDataGridSelectAllButtonStyle"
            TargetType="{x:Type Button}" 
            BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
@@ -215,7 +215,7 @@
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="ValidationErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
@@ -404,7 +404,7 @@
     <Style x:Key="DefaultDataGridColumnHeader" 
            TargetType="{x:Type DataGridColumnHeader}" 
            BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="FontWeight" Value="ExtraBlack"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
