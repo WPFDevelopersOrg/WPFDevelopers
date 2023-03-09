@@ -94,7 +94,7 @@
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Padding" Value="10" />
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
