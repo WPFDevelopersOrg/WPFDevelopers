@@ -10,7 +10,7 @@
     <Style TargetType="{x:Type controls:AnimationNavigationBar3DItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Width" Value="80"/>
         <Setter Property="Height" Value="80"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
