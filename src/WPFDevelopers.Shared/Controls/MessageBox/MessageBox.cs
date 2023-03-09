@@ -1,8 +1,13 @@
 ﻿using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using WPFDevelopers.Helpers;
+using WPFDevelopers.Utilities;
 
 namespace WPFDevelopers.Controls
 {
@@ -49,22 +54,12 @@ namespace WPFDevelopers.Controls
                     win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
                 if (win != null)
                 {
-                    var layer = new Grid();
-                    layer.Children.Add(new Rectangle { Fill = ControlsHelper.WindowForegroundBrush, Opacity = .7 });
-                    var original = win.Content as UIElement;
-                    win.Content = null;
-                    var container = new Grid();
-                    container.Children.Add(original);
-                    container.Children.Add(layer);
-                    win.Content = container;
+                    msg.CreateMask();
                     msg.Owner = win;
                     msg.ShowDialog();
                 }
                 else
-                {
                     msg.Show();
-                }
-
                 return msg.Result;
             }
             catch (System.Exception)

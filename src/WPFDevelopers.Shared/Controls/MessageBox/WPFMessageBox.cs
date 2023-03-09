@@ -135,18 +135,6 @@ namespace WPFDevelopers.Controls
         {
             Close();
         }
-
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-            if (Owner == null)
-                return;
-            var grid = Owner.Content as Grid;
-            var original = VisualTreeHelper.GetChild(grid, 0) as UIElement;
-            grid.Children.Remove(original);
-            Owner.Content = original;
-        }
-
         private void DisplayButtons(MessageBoxButton button)
         {
             switch (button)
