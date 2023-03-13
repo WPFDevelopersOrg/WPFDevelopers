@@ -12,12 +12,12 @@ namespace WPFDevelopers.Controls
                 new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(ImageSource), typeof(DrawerMenuItem),
+            DependencyProperty.Register("Icon", typeof(object), typeof(DrawerMenuItem),
                 new PropertyMetadata(null));
 
         public static readonly DependencyProperty SelectionIndicatorColorProperty =
             DependencyProperty.Register("SelectionIndicatorColor", typeof(Brush), typeof(DrawerMenuItem),
-                new PropertyMetadata(DrawingContextHelper.Brush));
+                new PropertyMetadata(null));
 
         public static readonly DependencyProperty SelectionCommandProperty =
             DependencyProperty.Register("SelectionCommand", typeof(ICommand), typeof(DrawerMenuItem),
@@ -36,9 +36,9 @@ namespace WPFDevelopers.Controls
         }
 
 
-        public ImageSource Icon
+        public object Icon
         {
-            get => (ImageSource)GetValue(IconProperty);
+            get => (object)GetValue(IconProperty);
             set => SetValue(IconProperty, value);
         }
 

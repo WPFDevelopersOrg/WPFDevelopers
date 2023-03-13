@@ -21,7 +21,6 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Opacity" Value="0.8" />
-                
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -37,20 +36,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="DrawerMenuListBox" TargetType="ListBox" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <ScrollViewer>
-                        <ItemsPresenter Margin="0" />
-                    </ScrollViewer>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -86,8 +72,9 @@
     <Style x:Key="DrawerMenuItemButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
         <Setter Property="MinHeight" Value="23"/>
+        <Setter Property="Height" Value="44"/>
         <Setter Property="MinWidth" Value="75"/>
-        
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -95,28 +82,25 @@
           x:Name="Border"  
           CornerRadius="0" 
           BorderThickness="0"
-          Background="Transparent"
-          BorderBrush="Transparent">
+          Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter 
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             RecognizesAccessKey="True"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsKeyboardFocused" Value="true">
+                        <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" />
                         </Trigger>
-                        <Trigger Property="IsDefaulted" Value="true">
+                        <Trigger Property="IsDefaulted" Value="True">
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource DarkBrush}" />
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource PressedBrush}" />
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
@@ -127,22 +111,24 @@
         </Setter>
     </Style>
 
-
-    <Style TargetType="controls:DrawerMenuItem">
+    <Style TargetType="controls:DrawerMenuItem" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=MenuItemForeground}"/>
-        <Setter Property="SelectionIndicatorColor" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=SelectionIndicatorColor}"/>
+        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:DrawerMenuItem">
-                    <Button x:Name="PART_Button" Height="44"
-                            Command="{TemplateBinding SelectionCommand}" 
-                            ToolTip="{TemplateBinding Text}"
-                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                    <Button x:Name="PART_Button"
+                            Command="{TemplateBinding SelectionCommand}"
+                            HorizontalContentAlignment="Stretch" 
+                            VerticalContentAlignment="Stretch"
                             Style="{StaticResource DrawerMenuItemButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="3"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.ColumnSpan="2">
@@ -151,7 +137,10 @@
                                         <ColumnDefinition Width="45"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Source="{TemplateBinding Icon}" Margin="10,5,5,5"/>
+                                    <ContentPresenter
+                                        Grid.Column="0"
+                                        Margin="10,5,5,5"
+                                        ContentSource="Icon" />
                                     <TextBlock Text="{TemplateBinding Text}" Grid.Column="1"
                                                    Margin="10,0,0,0" HorizontalAlignment="Left" 
                                                    VerticalAlignment="Center" 
@@ -160,15 +149,19 @@
                                                    TextWrapping="Wrap"/>
                                 </Grid>
                             </Grid>
-                            <controls:SmallPanel x:Name="PART_ItemSelectedIndicator" 
+                            <Rectangle x:Name="PART_ItemSelectedIndicator" 
                                   Grid.Column="0" 
-                                  Background="{TemplateBinding SelectionIndicatorColor}" 
+                                  Fill="{TemplateBinding SelectionIndicatorColor}" 
                                   Visibility="Collapsed" />
                         </Grid>
                     </Button>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Button" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
                             <Setter TargetName="PART_ItemSelectedIndicator" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button" Property="IsPressed" Value="True">
                             <Trigger.ExitActions>
@@ -187,31 +180,44 @@
         </Setter>
     </Style>
 
-    <Style TargetType="controls:DrawerMenu">
+    <Style TargetType="controls:DrawerMenu" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Width" Value="50"/>
-        <Setter Property="Visibility" Value="Visible"/>
         <Setter Property="IsOpen" Value="True"/>
+        <Setter Property="MenuIconColor" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
+        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="MenuItemForeground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
+        <Setter Property="SelectedIndex" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:DrawerMenu">
                     <Grid Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
                         <ToggleButton HorizontalAlignment="Left" Background="#333"
                                       VerticalAlignment="Top" Height="40" Width="50"
                                       IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsOpen}"
-                                      Style="{StaticResource DrawerMenuToggleButton}">
+                                      Style="{StaticResource DrawerMenuToggleButton}"
+                                      x:Name="PART_ToggleButton">
                             <Path HorizontalAlignment="Center" 
                                   VerticalAlignment="Center" 
                                   Stretch="Uniform" Width="20" 
                                   Fill="{TemplateBinding MenuIconColor}"
-                                  Data="{StaticResource PathMenu}"/>
+                                  Data="{StaticResource PathMenu}"
+                                  x:Name="PART_Path"/>
                         </ToggleButton>
-                        <ListBox ItemsSource="{TemplateBinding Content}" 
-                                 HorizontalAlignment="Left" Margin="0,40,0,0" 
-                                 VerticalAlignment="Top" 
-                                 Style="{StaticResource DrawerMenuListBox}"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                 SelectedIndex="0"/>
+                        <ItemsPresenter x:Name="ItemsPresenter"
+                                        Grid.Row="1"
+                                        KeyboardNavigation.DirectionalNavigation="Contained"
+										SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsOpen" Value="False">
+                            <Setter Property="Data" TargetName="PART_Path" Value="{StaticResource PathReturn}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

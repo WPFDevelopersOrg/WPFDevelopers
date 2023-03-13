@@ -5,26 +5,22 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class DrawerMenu : ContentControl
+    public class DrawerMenu : ListBox
     {
-        public new static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(List<DrawerMenuItem>), typeof(DrawerMenu),
-                new FrameworkPropertyMetadata(null));
-
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(DrawerMenu), new PropertyMetadata(true));
 
         public static readonly DependencyProperty MenuIconColorProperty =
             DependencyProperty.Register("MenuIconColor", typeof(Brush), typeof(DrawerMenu),
-                new PropertyMetadata(Brushes.White));
+                new PropertyMetadata(null));
 
         public static readonly DependencyProperty SelectionIndicatorColorProperty =
             DependencyProperty.Register("SelectionIndicatorColor", typeof(Brush), typeof(DrawerMenu),
-                new PropertyMetadata(DrawingContextHelper.Brush));
+                new PropertyMetadata(null));
 
         public static readonly DependencyProperty MenuItemForegroundProperty =
             DependencyProperty.Register("MenuItemForeground", typeof(Brush), typeof(DrawerMenu),
-                new PropertyMetadata(Brushes.Transparent));
+                new PropertyMetadata(null));
 
         static DrawerMenu()
         {
@@ -32,12 +28,16 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(DrawerMenu)));
         }
 
-        public new List<DrawerMenuItem> Content
+        protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            get => (List<DrawerMenuItem>)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            return item is DrawerMenuItem;
+        }
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            return new DrawerMenu();
         }
 
+        
         public bool IsOpen
         {
             get => (bool)GetValue(IsOpenProperty);
@@ -62,12 +62,6 @@ namespace WPFDevelopers.Controls
         {
             get => (Brush)GetValue(MenuItemForegroundProperty);
             set => SetValue(MenuItemForegroundProperty, value);
-        }
-
-        public override void BeginInit()
-        {
-            Content = new List<DrawerMenuItem>();
-            base.BeginInit();
         }
     }
 }
