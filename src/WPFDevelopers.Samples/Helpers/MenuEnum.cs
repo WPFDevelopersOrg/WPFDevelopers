@@ -67,6 +67,8 @@
         Magnifier,
         Step,
         MultiSelectComboBox,
+        Mask,
+        Loading,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo
