@@ -13,6 +13,13 @@
     <Color x:Key="NormalColor" po:Freeze="True">#409EFF</Color>
     <SolidColorBrush x:Key="NormalSolidColorBrush" Color="{StaticResource NormalColor}" po:Freeze="True"></SolidColorBrush>
     <!--Success颜色-->
+
+    <Color x:Key="SuccessBorderBrushColor" po:Freeze="True">#99FA68</Color>
+    <SolidColorBrush x:Key="SuccessBorderBrushSolidColorBrush" Color="{StaticResource SuccessBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="SuccessBackgroundColor" po:Freeze="True">#EFFCE9</Color>
+    <SolidColorBrush x:Key="SuccessBackgroundSolidColorBrush" Color="{StaticResource SuccessBackgroundColor}" po:Freeze="True"></SolidColorBrush>
+
     <Color x:Key="SuccessColor" po:Freeze="True">#67C23A</Color>
     <SolidColorBrush x:Key="SuccessSolidColorBrush" Color="{StaticResource SuccessColor}" po:Freeze="True"></SolidColorBrush>
 
@@ -23,6 +30,12 @@
     <SolidColorBrush x:Key="SuccessPressedSolidColorBrush" Color="{StaticResource SuccessPressedColor}" po:Freeze="True"></SolidColorBrush>
 
     <!--Warning颜色-->
+    <Color x:Key="WarningBorderBrushColor" po:Freeze="True">#F8DBAF</Color>
+    <SolidColorBrush x:Key="WarningBorderBrushSolidColorBrush" Color="{StaticResource WarningBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="WarningBackgroundColor" po:Freeze="True">#FAF2E5</Color>
+    <SolidColorBrush x:Key="WarningBackgroundSolidColorBrush" Color="{StaticResource WarningBackgroundColor}" po:Freeze="True"></SolidColorBrush>
+    
     <Color x:Key="WarningColor" po:Freeze="True">#E6A23C</Color>
     <SolidColorBrush x:Key="WarningSolidColorBrush" Color="{StaticResource WarningColor}" po:Freeze="True"></SolidColorBrush>
 
@@ -34,6 +47,12 @@
     
 
     <!--Danger颜色-->
+    <Color x:Key="DangerBorderBrushColor" po:Freeze="True">#F88C8C</Color>
+    <SolidColorBrush x:Key="DangerBorderBrushSolidColorBrush" Color="{StaticResource DangerBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
+
+    <Color x:Key="DangerBackgroundColor" po:Freeze="True">#FCE5E5</Color>
+    <SolidColorBrush x:Key="DangerBackgroundSolidColorBrush" Color="{StaticResource DangerBackgroundColor}" po:Freeze="True"></SolidColorBrush>
+    
     <Color x:Key="DangerColor" po:Freeze="True">#F56C6C</Color>
     <SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}" po:Freeze="True"></SolidColorBrush>
 
