@@ -16,7 +16,7 @@ namespace WPFDevelopers.Controls
     {
         public static readonly DependencyProperty EffectColorProperty =
             DependencyProperty.Register("EffectColor", typeof(Color), typeof(BreathLamp),
-                new PropertyMetadata(Application.Current.Resources["DangerColor"]));
+                new PropertyMetadata(Application.Current.TryFindResource("DangerColor")));
 
         public static readonly DependencyProperty GradientStopColor1Property =
             DependencyProperty.Register("GradientStopColor1", typeof(Color), typeof(BreathLamp),

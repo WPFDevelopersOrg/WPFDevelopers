@@ -20,10 +20,10 @@ namespace WPFDevelopers.Helpers
     {
         private static Win32ApiHelper.DeskTopSize size;
         private static readonly Regex _regexNumber = new Regex("[^0-9]+");
-        public static Brush Brush = Application.Current.Resources["BackgroundSolidColorBrush"] as Brush;
+        public static Brush Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
 
         public static Brush WindowForegroundBrush =
-            Application.Current.Resources["PrimaryTextSolidColorBrush"] as Brush;
+            (Brush)Application.Current.TryFindResource("PrimaryTextSolidColorBrush");
 
         private static bool _IsCurrentDark;
 
@@ -31,7 +31,7 @@ namespace WPFDevelopers.Helpers
         {
             if (!_IsCurrentDark)
             {
-                var vBrush = Application.Current.Resources["PrimaryNormalSolidColorBrush"] as Brush;
+                var vBrush = (Brush)Application.Current.TryFindResource("PrimaryNormalSolidColorBrush");
                 Application.Current.Resources["WindowBorderBrushSolidColorBrush"] = vBrush;
             }
         }
@@ -41,32 +41,32 @@ namespace WPFDevelopers.Helpers
             var type = isDark ? ThemeType.Dark : ThemeType.Light;
 
             var existingResourceDictionary =
-                Application.Current.Resources.MergedDictionaries.FirstOrDefault(x => x is Resources) as Resources;
+                (Resources)Application.Current.Resources.MergedDictionaries.FirstOrDefault(x => x is Resources);
             if (existingResourceDictionary != null)
             {
                 existingResourceDictionary.Theme = type;
                 if (type == ThemeType.Light)
                 {
-                    var vBrush = Application.Current.Resources["PrimaryNormalSolidColorBrush"] as Brush;
+                    var vBrush = (Brush)Application.Current.TryFindResource("PrimaryNormalSolidColorBrush");
                     Application.Current.Resources["WindowBorderBrushSolidColorBrush"] = vBrush;
-                    WindowForegroundBrush = Application.Current.Resources["PrimaryTextSolidColorBrush"] as Brush;
-                    if (Application.Current.Resources["DefaultBackgroundColor"] is Color color)
+                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("PrimaryTextSolidColorBrush");
+                    if (Application.Current.TryFindResource("DefaultBackgroundColor") is Color color)
                         Application.Current.Resources["DefaultBackgroundSolidColorBrush"] = new SolidColorBrush(color);
                 }
                 else
                 {
-                    if (Application.Current.Resources["WindowBorderBrushColor"] is Color color)
+                    if (Application.Current.TryFindResource("WindowBorderBrushColor") is Color color)
                     {
                         var colorBrush = new SolidColorBrush(color);
                         Application.Current.Resources["WindowBorderBrushSolidColorBrush"] = colorBrush;
                         Application.Current.Resources["DefaultBackgroundSolidColorBrush"] = colorBrush;
                     }
 
-                    WindowForegroundBrush = Application.Current.Resources["DefaultBackgroundSolidColorBrush"] as Brush;
+                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("DefaultBackgroundSolidColorBrush");
                 }
 
-                Brush = Application.Current.Resources["BackgroundSolidColorBrush"] as Brush;
-                //WindowForegroundBrush = Application.Current.Resources["PrimaryTextSolidColorBrush"] as Brush;
+                Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
+                //WindowForegroundBrush = Application.Current.TryFindResource["PrimaryTextSolidColorBrush"] as Brush;
                 _IsCurrentDark = isDark;
                 ThemeRefresh();
             }
@@ -76,11 +76,11 @@ namespace WPFDevelopers.Helpers
         {
             //var themePath = "pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml";
             //var themeResourceDictionary =
-            //    Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
+            //    Application.Current.TryFindResource.MergedDictionaries.FirstOrDefault(x =>
             //        x.Source != null && x.Source.Equals(themePath));
             //if (themeResourceDictionary == null) return;
-            //Application.Current.Resources.MergedDictionaries.Remove(themeResourceDictionary);
-            //Application.Current.Resources.MergedDictionaries.Add(themeResourceDictionary);
+            //Application.Current.TryFindResource.MergedDictionaries.Remove(themeResourceDictionary);
+            //Application.Current.TryFindResource.MergedDictionaries.Add(themeResourceDictionary);
             OnSubThemeChanged();
         }
 

@@ -11,9 +11,9 @@ namespace WPFDevelopers.Converts
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var num = System.Convert.ToInt32(value);
-            var brush = Application.Current.Resources["CircularSingularSolidColorBrush"] as SolidColorBrush;
+            var brush = (SolidColorBrush)Application.Current.TryFindResource("CircularSingularSolidColorBrush");
             if (num % 2 == 1)
-                brush = Application.Current.Resources["CircularDualSolidColorBrush"] as SolidColorBrush;
+                brush = (SolidColorBrush)Application.Current.TryFindResource("CircularDualSolidColorBrush");
             return brush;
         }
 
@@ -28,9 +28,9 @@ namespace WPFDevelopers.Converts
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var num = System.Convert.ToInt32(value);
-            var brush = Application.Current.Resources["DrawPrizeSingularSolidColorBrush"] as SolidColorBrush;
+            var brush = (SolidColorBrush)Application.Current.TryFindResource("DrawPrizeSingularSolidColorBrush");
             if (num % 2 == 1)
-                brush = Application.Current.Resources["DrawPrizeDualSolidColorBrush"] as SolidColorBrush;
+                brush = (SolidColorBrush)Application.Current.TryFindResource("DrawPrizeDualSolidColorBrush");
             return brush;
         }
 
