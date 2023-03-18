@@ -91,6 +91,26 @@ Install-Package WPFDevelopers
 
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 ----------
+### ControlLoading
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlLoading.gif"/>   
+
+----------
+### BasicControlLoading
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BasicControlLoading.gif"/>   
+
+----------
+### WindowMask
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowMask.gif"/>   
+
+----------
+### ControlMask
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlMask.gif"/>   
+
+----------
 ### MultiSelectComboBox
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.gif"/>   
