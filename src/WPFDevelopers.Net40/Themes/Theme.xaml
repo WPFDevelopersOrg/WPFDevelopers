@@ -2,12 +2,18 @@
 	<Color x:Key="SecondaryTextColor" po:Freeze="True">#909399</Color>
 	<Color x:Key="PlaceholderTextColor" po:Freeze="True">#C0C4CC</Color>
 	<Color x:Key="NormalColor" po:Freeze="True">#409EFF</Color>
+	<Color x:Key="SuccessBorderBrushColor" po:Freeze="True">#99FA68</Color>
+	<Color x:Key="SuccessBackgroundColor" po:Freeze="True">#EFFCE9</Color>
 	<Color x:Key="SuccessColor" po:Freeze="True">#67C23A</Color>
 	<Color x:Key="SuccessMouseOverColor" po:Freeze="True">#85CE61</Color>
 	<Color x:Key="SuccessPressedColor" po:Freeze="True">#5DAF34</Color>
+	<Color x:Key="WarningBorderBrushColor" po:Freeze="True">#F8DBAF</Color>
+	<Color x:Key="WarningBackgroundColor" po:Freeze="True">#FAF2E5</Color>
 	<Color x:Key="WarningColor" po:Freeze="True">#E6A23C</Color>
 	<Color x:Key="WarningMouseOverColor" po:Freeze="True">#EBB563</Color>
 	<Color x:Key="WarningPressedColor" po:Freeze="True">#CF9236</Color>
+	<Color x:Key="DangerBorderBrushColor" po:Freeze="True">#F88C8C</Color>
+	<Color x:Key="DangerBackgroundColor" po:Freeze="True">#FCE5E5</Color>
 	<Color x:Key="DangerColor" po:Freeze="True">#F56C6C</Color>
 	<Color x:Key="DangerMouseOverColor" po:Freeze="True">#F78989</Color>
 	<Color x:Key="DangerPressedColor" po:Freeze="True">#DD6161</Color>
@@ -112,6 +118,7 @@
 	<Geometry x:Key="PathText" po:Freeze="True">M8.394,7.3850001 L18,7.3850001 18,8.9495381 14.071471,8.9495381 14.071471,21 12.304952,21 12.304952,8.9495381 8.394,8.9495381 z M5.2364039,2.4000326 C4.4364113,2.4000326 3.7515685,2.6937805 3.1818757,3.2812766 2.612183,3.8687721 2.3273365,4.5750159 2.3273365,5.4000081 L2.3273365,20.999992 C2.3273365,21.824983 2.612183,22.531227 3.1818757,23.118723 3.7515685,23.706219 4.4364113,23.999966 5.2364039,23.999966 L20.363661,23.999966 C21.163652,23.999966 21.848495,23.706219 22.418188,23.118723 22.987883,22.531227 23.272728,21.824983 23.272728,20.999992 L23.272728,5.4000081 C23.272728,4.5750159 22.987883,3.8687721 22.418188,3.2812766 21.848495,2.6937805 21.163652,2.4000326 20.363661,2.4000326 z M5.2363719,0 L20.36363,0 C21.806051,0 23.039387,0.52812719 24.063631,1.5843812 25.087877,2.6406356 25.6,3.912511 25.6,5.4000081 L25.6,20.999992 C25.6,22.487488 25.087877,23.759365 24.063631,24.815618 23.039387,25.871874 21.806051,26.399999 20.36363,26.399999 L5.2363719,26.399999 C3.7939503,26.399999 2.5606164,25.871874 1.5363699,24.815618 0.51212323,23.759365 -5.3697355E-08,22.487488 3.5527137E-15,20.999992 L3.5527137E-15,5.4000081 C-5.3697355E-08,3.912511 0.51212323,2.6406356 1.5363699,1.5843812 2.5606164,0.52812719 3.7939503,0 5.2363719,0 z</Geometry>
 	<Geometry x:Key="PathInk" po:Freeze="True">M986.466 37.502c-49.982-49.982-131.004-49.982-180.986 0l-483.984 484.144c43.262 11.264 83.262 32.99 115.74 65.502 32.99 32.99 54.014 73.246 65.246 115.484l483.984-484.144c50.014-49.982 50.014-131.002 0-180.986zM346.742 858.63c49.982-49.982 49.982-131.004 0-180.986s-131.004-49.982-180.986 0l-165.756 346.356 346.742-165.37z</Geometry>
 	<Geometry x:Key="PathStarrySky" po:Freeze="True">M16.001007,0L20.944,10.533997 32,12.223022 23.998993,20.421997 25.889008,32 16.001007,26.533997 6.1109924,32 8,20.421997 0,12.223022 11.057007,10.533997z</Geometry>
+	<Geometry x:Key="PathReturn" po:Freeze="True">M356.667 155q17.333 0 30 12.5t12.667 30.167-12.667 30.333l-198.667 198.667h409.333q78 0 149.167 30.333t122.5 81.833 81.833 122.5 30.5 149.333v42.667q0 17.667-12.5 30.167t-30.167 12.5q-17.333 0-30-12.667t-12.667-30v-42.667q0-60.667-23.667-116t-63.667-95.333-95.333-63.667-116-23.667h-409.333l198.667 199q12.667 12.667 12.667 30 0 17.667-12.5 30.333t-30.167 12.667-30.333-12.667l-271.333-271.667q-12.333-12.333-12.333-30.333 0-17.667 12.333-30l271.333-271.667q12.667-12.667 30.333-12.667z</Geometry>
 	<CubicEase x:Key="CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="ExponentialEaseOut" EasingMode="EaseOut" />
@@ -388,12 +395,18 @@
 	<SolidColorBrush x:Key="SecondaryTextSolidColorBrush" Color="{StaticResource SecondaryTextColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="PlaceholderTextSolidColorBrush" Color="{StaticResource PlaceholderTextColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="NormalSolidColorBrush" Color="{StaticResource NormalColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="SuccessBorderBrushSolidColorBrush" Color="{StaticResource SuccessBorderBrushColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="SuccessBackgroundSolidColorBrush" Color="{StaticResource SuccessBackgroundColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="SuccessSolidColorBrush" Color="{StaticResource SuccessColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="SuccessMouseOverSolidColorBrush" Color="{StaticResource SuccessMouseOverColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="SuccessPressedSolidColorBrush" Color="{StaticResource SuccessPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="WarningBorderBrushSolidColorBrush" Color="{StaticResource WarningBorderBrushColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="WarningBackgroundSolidColorBrush" Color="{StaticResource WarningBackgroundColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="WarningSolidColorBrush" Color="{StaticResource WarningColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="WarningMouseOverSolidColorBrush" Color="{StaticResource WarningMouseOverColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="WarningPressedSolidColorBrush" Color="{StaticResource WarningPressedColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DangerBorderBrushSolidColorBrush" Color="{StaticResource DangerBorderBrushColor}" po:Freeze="True" />
+	<SolidColorBrush x:Key="DangerBackgroundSolidColorBrush" Color="{StaticResource DangerBackgroundColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="DangerMouseOverSolidColorBrush" Color="{StaticResource DangerMouseOverColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="DangerPressedSolidColorBrush" Color="{StaticResource DangerPressedColor}" po:Freeze="True" />
@@ -471,28 +484,29 @@
 	<Style x:Key="DefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource RegularTextSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
 					<controls:SmallPanel>
 						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
-						<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
+						<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" TextElement.Foreground="{TemplateBinding Foreground}" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsFocused" Value="True">
-							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}" />
-							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
-							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+							<Setter Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}" />
+							<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsPressed" Value="True">
 							<Setter Property="BorderBrush" Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" />
 							<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
-							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" />
+							<Setter Property="Foreground" Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
 							<Setter Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}" />
 							<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
-							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -500,6 +514,114 @@
 		</Setter>
 	</Style>
 	<Style TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}" />
+	<Style x:Key="SuccessPrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource PrimaryButton}">
+		<Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource SuccessSolidColorBrush}" />
+		<Style.Triggers>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="Background" Value="{DynamicResource SuccessPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsFocused" Value="True">
+				<Setter Property="Background" Value="{DynamicResource SuccessPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{DynamicResource SuccessMouseOverSolidColorBrush}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="SuccessDefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Style.Triggers>
+			<Trigger Property="IsFocused" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource SuccessBorderBrushSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource SuccessBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource SuccessSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource SuccessPressedSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource SuccessBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource SuccessPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource SuccessBorderBrushSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource SuccessBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource SuccessSolidColorBrush}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="WarningPrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource PrimaryButton}">
+		<Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource WarningSolidColorBrush}" />
+		<Style.Triggers>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="Background" Value="{DynamicResource WarningPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsFocused" Value="True">
+				<Setter Property="Background" Value="{DynamicResource WarningPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{DynamicResource WarningMouseOverSolidColorBrush}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="WarningDefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Style.Triggers>
+			<Trigger Property="IsFocused" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource WarningBorderBrushSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource WarningBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource WarningSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource WarningPressedSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource WarningBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource WarningPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource WarningBorderBrushSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource WarningBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource WarningSolidColorBrush}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="DangerPrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource PrimaryButton}">
+		<Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource DangerSolidColorBrush}" />
+		<Style.Triggers>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="Background" Value="{DynamicResource DangerPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsFocused" Value="True">
+				<Setter Property="Background" Value="{DynamicResource DangerPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{DynamicResource DangerMouseOverSolidColorBrush}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="DangerDefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Style.Triggers>
+			<Trigger Property="IsFocused" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource DangerBorderBrushSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource DangerBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource DangerSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource DangerPressedSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource DangerBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource DangerPressedSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="BorderBrush" Value="{DynamicResource DangerBorderBrushSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource DangerBackgroundSolidColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource DangerSolidColorBrush}" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 	<Style x:Key="PathButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
 		<Setter Property="Padding" Value="8" />
 		<Setter Property="Template">
@@ -3561,28 +3683,23 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:NormalLoading}">
-					<ControlTemplate.Resources>
-						<Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
-							<DoubleAnimation Duration="0:0:1.0" From="0" To="360" Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" />
-						</Storyboard>
-					</ControlTemplate.Resources>
 					<controls:SmallPanel Background="{TemplateBinding Background}">
+						<controls:SmallPanel.Resources>
+							<Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
+								<DoubleAnimation Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" Duration="0:0:1.0" From="0" To="360" />
+							</Storyboard>
+						</controls:SmallPanel.Resources>
 						<Ellipse Stroke="{TemplateBinding BorderBrush}" x:Name="PART_Ellipse" StrokeThickness="2" StrokeDashArray="{TemplateBinding StrokeArray}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" RenderTransformOrigin=".5,.5">
 							<Ellipse.RenderTransform>
 								<RotateTransform Angle="0" />
 							</Ellipse.RenderTransform>
+							<Ellipse.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard Storyboard="{StaticResource StarStoryboard}" />
+								</EventTrigger>
+							</Ellipse.Triggers>
 						</Ellipse>
 					</controls:SmallPanel>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsAnimation" Value="True">
-							<Trigger.EnterActions>
-								<BeginStoryboard x:Name="StarBeginStoryboard" Storyboard="{StaticResource StarStoryboard}" />
-							</Trigger.EnterActions>
-							<Trigger.ExitActions>
-								<StopStoryboard BeginStoryboardName="StarBeginStoryboard" />
-							</Trigger.ExitActions>
-						</Trigger>
-					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -5850,45 +5967,30 @@
 			</Trigger>
 		</Style.Triggers>
 	</Style>
-	<Style x:Key="DrawerMenuListBox" TargetType="ListBox" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="BorderBrush" Value="Transparent" />
-		<Setter Property="BorderThickness" Value="0" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate>
-					<ScrollViewer>
-						<ItemsPresenter Margin="0" />
-					</ScrollViewer>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
 	<Style x:Key="DrawerMenuItemButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
 		<Setter Property="MinHeight" Value="23" />
+		<Setter Property="Height" Value="44" />
 		<Setter Property="MinWidth" Value="75" />
+		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
-					<Border x:Name="Border" CornerRadius="0" BorderThickness="0" Background="Transparent" BorderBrush="Transparent">
+					<Border x:Name="Border" CornerRadius="0" BorderThickness="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
 						<ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RecognizesAccessKey="True" />
 					</Border>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsKeyboardFocused" Value="true">
+						<Trigger Property="IsKeyboardFocused" Value="True">
 							<Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" />
 						</Trigger>
-						<Trigger Property="IsDefaulted" Value="true">
+						<Trigger Property="IsDefaulted" Value="True">
 							<Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" />
 						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter TargetName="Border" Property="Background" Value="{DynamicResource DarkBrush}" />
+						<Trigger Property="IsPressed" Value="True">
+							<Setter TargetName="Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+							<Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
-						<Trigger Property="IsPressed" Value="true">
-							<Setter TargetName="Border" Property="Background" Value="{DynamicResource PressedBrush}" />
-							<Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource PressedBorderBrush}" />
-						</Trigger>
-						<Trigger Property="IsEnabled" Value="false">
+						<Trigger Property="IsEnabled" Value="False">
 							<Setter TargetName="Border" Property="Background" Value="{DynamicResource DisabledBackgroundBrush}" />
 							<Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
 							<Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
@@ -5898,17 +6000,20 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="controls:DrawerMenuItem">
+	<Style TargetType="controls:DrawerMenuItem" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=MenuItemForeground}" />
-		<Setter Property="SelectionIndicatorColor" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=SelectionIndicatorColor}" />
+		<Setter Property="SelectionIndicatorColor" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="controls:DrawerMenuItem">
-					<Button x:Name="PART_Button" Height="44" Command="{TemplateBinding SelectionCommand}" ToolTip="{TemplateBinding Text}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Style="{StaticResource DrawerMenuItemButtonStyle}">
+					<Button x:Name="PART_Button" Command="{TemplateBinding SelectionCommand}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Style="{StaticResource DrawerMenuItemButtonStyle}">
 						<Grid>
 							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="5" />
+								<ColumnDefinition Width="3" />
 								<ColumnDefinition />
 							</Grid.ColumnDefinitions>
 							<Grid Grid.ColumnSpan="2">
@@ -5917,16 +6022,20 @@
 										<ColumnDefinition Width="45" />
 										<ColumnDefinition />
 									</Grid.ColumnDefinitions>
-									<Image Grid.Column="0" Source="{TemplateBinding Icon}" Margin="10,5,5,5" />
+									<ContentPresenter Grid.Column="0" Margin="10,5,5,5" ContentSource="Icon" />
 									<TextBlock Text="{TemplateBinding Text}" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="{StaticResource TitleFontSize}" Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap" />
 								</Grid>
 							</Grid>
-							<controls:SmallPanel x:Name="PART_ItemSelectedIndicator" Grid.Column="0" Background="{TemplateBinding SelectionIndicatorColor}" Visibility="Collapsed" />
+							<Rectangle x:Name="PART_ItemSelectedIndicator" Grid.Column="0" Fill="{TemplateBinding SelectionIndicatorColor}" Visibility="Collapsed" />
 						</Grid>
 					</Button>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
+							<Setter TargetName="PART_Button" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 							<Setter TargetName="PART_ItemSelectedIndicator" Property="Visibility" Value="Visible" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
 						</Trigger>
 						<Trigger SourceName="PART_Button" Property="IsPressed" Value="True">
 							<Trigger.ExitActions>
@@ -5944,19 +6053,32 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="controls:DrawerMenu">
+	<Style TargetType="controls:DrawerMenu" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="50" />
-		<Setter Property="Visibility" Value="Visible" />
 		<Setter Property="IsOpen" Value="True" />
+		<Setter Property="MenuIconColor" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+		<Setter Property="SelectionIndicatorColor" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+		<Setter Property="MenuItemForeground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="SelectedIndex" Value="0" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="controls:DrawerMenu">
 					<Grid Background="{TemplateBinding Background}">
-						<ToggleButton HorizontalAlignment="Left" Background="#333" VerticalAlignment="Top" Height="40" Width="50" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsOpen}" Style="{StaticResource DrawerMenuToggleButton}">
-							<Path HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="20" Fill="{TemplateBinding MenuIconColor}" Data="{StaticResource PathMenu}" />
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<ToggleButton HorizontalAlignment="Left" Background="#333" VerticalAlignment="Top" Height="40" Width="50" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsOpen}" Style="{StaticResource DrawerMenuToggleButton}" x:Name="PART_ToggleButton">
+							<Path HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="20" Fill="{TemplateBinding MenuIconColor}" Data="{StaticResource PathMenu}" x:Name="PART_Path" />
 						</ToggleButton>
-						<ListBox ItemsSource="{TemplateBinding Content}" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Style="{StaticResource DrawerMenuListBox}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedIndex="0" />
+						<ItemsPresenter x:Name="ItemsPresenter" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsOpen" Value="False">
+							<Setter Property="Data" TargetName="PART_Path" Value="{StaticResource PathReturn}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
