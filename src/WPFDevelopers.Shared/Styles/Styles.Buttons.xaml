@@ -56,10 +56,10 @@
         </Setter>
     </Style>
 
-
     <Style x:Key="DefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource RegularTextSolidColorBrush}"/>
         <Setter Property="Template" >
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -75,20 +75,20 @@
                                           Margin="{TemplateBinding Padding}" 
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True" 
-                                          TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}"/>
-                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="BorderBrush" 
                                     Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" />
                             <Setter Property="Background" 
                                     Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter"
+                            <Setter Property="Foreground" 
                                     Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -96,7 +96,7 @@
                                     Value="{DynamicResource DefaultBorderBrushSolidColorBrush}" />
                             <Setter Property="Background" 
                                     Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter"
+                            <Setter Property="Foreground" 
                                     Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -107,6 +107,147 @@
 
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}" />
 
+    <Style x:Key="SuccessPrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SuccessSolidColorBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource SuccessPressedSolidColorBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource SuccessPressedSolidColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource SuccessMouseOverSolidColorBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SuccessDefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource SuccessBorderBrushSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource SuccessBackgroundSolidColorBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource SuccessSolidColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource SuccessPressedSolidColorBrush}" />
+                <Setter Property="Background" 
+                                    Value="{DynamicResource SuccessBackgroundSolidColorBrush}" />
+                <Setter Property="Foreground" 
+                                    Value="{DynamicResource SuccessPressedSolidColorBrush}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource SuccessBorderBrushSolidColorBrush}" />
+                <Setter Property="Background" 
+                                    Value="{DynamicResource SuccessBackgroundSolidColorBrush}" />
+                <Setter Property="Foreground" 
+                                    Value="{DynamicResource SuccessSolidColorBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="WarningPrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WarningSolidColorBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource WarningPressedSolidColorBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource WarningPressedSolidColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource WarningMouseOverSolidColorBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="WarningDefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WarningBorderBrushSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource WarningBackgroundSolidColorBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource WarningSolidColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource WarningPressedSolidColorBrush}" />
+                <Setter Property="Background" 
+                                    Value="{DynamicResource WarningBackgroundSolidColorBrush}" />
+                <Setter Property="Foreground" 
+                                    Value="{DynamicResource WarningPressedSolidColorBrush}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource WarningBorderBrushSolidColorBrush}" />
+                <Setter Property="Background" 
+                                    Value="{DynamicResource WarningBackgroundSolidColorBrush}" />
+                <Setter Property="Foreground" 
+                                    Value="{DynamicResource WarningSolidColorBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="DangerPrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource DangerSolidColorBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource DangerPressedSolidColorBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource DangerPressedSolidColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" 
+                                    Value="{DynamicResource DangerMouseOverSolidColorBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="DangerDefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource DangerBorderBrushSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource DangerBackgroundSolidColorBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource DangerSolidColorBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource DangerPressedSolidColorBrush}" />
+                <Setter Property="Background" 
+                                    Value="{DynamicResource DangerBackgroundSolidColorBrush}" />
+                <Setter Property="Foreground" 
+                                    Value="{DynamicResource DangerPressedSolidColorBrush}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" 
+                                    Value="{DynamicResource DangerBorderBrushSolidColorBrush}" />
+                <Setter Property="Background" 
+                                    Value="{DynamicResource DangerBackgroundSolidColorBrush}" />
+                <Setter Property="Foreground" 
+                                    Value="{DynamicResource DangerSolidColorBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style x:Key="PathButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
         <Setter Property="Padding" Value="8"/>
         <Setter Property="Template">
