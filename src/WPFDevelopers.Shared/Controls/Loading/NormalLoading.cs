@@ -3,13 +3,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
 namespace WPFDevelopers.Controls
 {
+    [TemplatePart(Name = PART_EillipseTemplateName, Type = typeof(Ellipse))]
     public class NormalLoading : Control
     {
-        public static readonly DependencyProperty IsAnimationProperty =
-            DependencyProperty.Register("IsAnimation", typeof(bool), typeof(NormalLoading), new PropertyMetadata(true));
+        private const string PART_EillipseTemplateName = "PART_Ellipse";
 
         public static readonly DependencyProperty StrokeValueProperty =
             DependencyProperty.Register("StrokeValue", typeof(double), typeof(NormalLoading)
@@ -21,21 +22,12 @@ namespace WPFDevelopers.Controls
 
         private Storyboard _storyboard;
 
-
+        public static NormalLoading Default = new NormalLoading();
+        private Ellipse _ellipse;
         public NormalLoading()
         {
             Loaded += LoadingNew_Loaded;
             Unloaded += LoadingNew_Unloaded;
-        }
-
-        /// <summary>
-        ///     true :动画开始
-        ///     false：动画停止
-        /// </summary>
-        public bool IsAnimation
-        {
-            get => (bool)GetValue(IsAnimationProperty);
-            set => SetValue(IsAnimationProperty, value);
         }
 
         public double StrokeValue
@@ -67,13 +59,41 @@ namespace WPFDevelopers.Controls
             Storyboard.SetTarget(animation, this);
             Storyboard.SetTargetProperty(animation, new PropertyPath(StrokeValueProperty));
             _storyboard.Begin();
+
+
+            //_storyboard = new Storyboard();
+            //_storyboard.RepeatBehavior = RepeatBehavior.Forever;
+            //var doubleAnimation1 = new DoubleAnimation
+            //{
+            //    Duration = TimeSpan.FromMilliseconds(1500),
+            //    From = 55,
+            //    //To = 24 //W,H = 25
+            //    To = 0 // W,H = 40
+            //};
+            //Storyboard.SetTargetProperty(doubleAnimation1, new PropertyPath("StrokeDashOffset"));
+            //Storyboard.SetTarget(doubleAnimation1, _ellipse);
+            //_storyboard.Children.Add(doubleAnimation1);
+            //var doubleAnimation2 = new DoubleAnimation
+            //{
+            //    Duration = TimeSpan.FromMilliseconds(1500),
+            //    To = 360
+            //};
+            //Storyboard.SetTargetProperty(doubleAnimation2, new PropertyPath("(Ellipse.RenderTransform).(RotateTransform.Angle)"));
+            //Storyboard.SetTarget(doubleAnimation2, _ellipse);
+            //_storyboard.Children.Add(doubleAnimation2);
+            //_storyboard.Begin();
+
         }
 
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            //_ellipse = GetTemplateChild(PART_EillipseTemplateName) as Ellipse;
+        }
         private void LoadingNew_Unloaded(object sender, RoutedEventArgs e)
         {
             if (_storyboard != null)
                 _storyboard.Stop();
-            IsAnimation = false;
         }
     }
 }

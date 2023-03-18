@@ -8,7 +8,7 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type controls:WPFLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style TargetType="{x:Type controls:NormalLoading}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Background"  Value="{x:Null}" />
         <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
@@ -16,16 +16,18 @@
         <Setter Property="Height" Value="40"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:WPFLoading}">
-                    <ControlTemplate.Resources>
-                        <Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
-                            <DoubleAnimation Duration="0:0:1.5" 
-                                             To="360"
-                                             Storyboard.TargetName="PART_Ellipse" 
-                                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"/>
-                        </Storyboard>
-                    </ControlTemplate.Resources>
+                <ControlTemplate TargetType="{x:Type controls:NormalLoading}">
                     <controls:SmallPanel Background="{TemplateBinding Background}">
+                        <controls:SmallPanel.Resources>
+                            <Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
+                                <DoubleAnimation 
+                                Storyboard.TargetName="PART_Ellipse" 
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                Duration="0:0:1.0" 
+                                From="0"
+                                To="360"/>
+                            </Storyboard>
+                        </controls:SmallPanel.Resources>
                         <Ellipse Stroke="{TemplateBinding BorderBrush}"
                                  x:Name="PART_Ellipse" 
                                  StrokeThickness="2" 
@@ -34,18 +36,107 @@
                                  Width="{TemplateBinding Width}"
                                  RenderTransformOrigin=".5,.5">
                             <Ellipse.RenderTransform>
-                                <RotateTransform Angle="-90"/>
+                                <RotateTransform Angle="0"/>
                             </Ellipse.RenderTransform>
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard Storyboard="{StaticResource StarStoryboard}" />
+                                </EventTrigger>
+                            </Ellipse.Triggers>
                         </Ellipse>
                     </controls:SmallPanel>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsAnimation" Value="True">                            <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="StarBeginStoryboard" Storyboard="{StaticResource StarStoryboard}"/>
-                            </Trigger.EnterActions>                            <Trigger.ExitActions>                                <StopStoryboard BeginStoryboardName="StarBeginStoryboard"/>                            </Trigger.ExitActions>                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <!--<Style TargetType="{x:Type controls:NormalLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Background"  Value="{x:Null}" />
+        <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NormalLoading}">
+                    <Ellipse
+                        Height="{TemplateBinding Height}" 
+                        Width="{TemplateBinding Width}"
+                        StrokeThickness="2"
+                        Stroke="{TemplateBinding BorderBrush}" 
+                        StrokeDashArray="76,76" 
+                        StrokeDashCap="Round"
+                        StrokeDashOffset="252"
+                        RenderTransformOrigin=".5,.5">
+                        <Ellipse.RenderTransform>
+                            <RotateTransform Angle="0"/>
+                        </Ellipse.RenderTransform>
+                        <Ellipse.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation 
+                                                Storyboard.TargetProperty="StrokeDashOffset" 
+                                                From="252" To="100" Duration="0:0:1.5"
+                                                EasingFunction="{StaticResource SineEaseInOut}"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                             From="0" To="360"
+                                             Duration="0:0:2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Ellipse.Triggers>
+                    </Ellipse>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
 
+    <Style TargetType="{x:Type controls:DefaultLoading}">
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:DefaultLoading}">
+                    <Viewbox Width="{TemplateBinding Width}" 
+                             Height="{TemplateBinding Height}">
+                        <controls:SmallPanel>
+                            <controls:SmallPanel.Resources>
+                                <Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
+                                    <DoubleAnimation
+                                                Storyboard.TargetName="PART_Ellipse"
+                                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                                To="360"
+                                                Duration="0:0:1.0" />
+                                </Storyboard>
+                            </controls:SmallPanel.Resources>
+                            <Ellipse
+                                        Width="{TemplateBinding Width}"
+                                        Height="{TemplateBinding Height}"
+                                        Stroke="{DynamicResource BaseSolidColorBrush}"
+                                        StrokeDashArray="100,100"
+                                        StrokeThickness="2" />
+                            <Ellipse
+                                        x:Name="PART_Ellipse"
+                                        Width="{TemplateBinding Width}"
+                                        Height="{TemplateBinding Height}"
+                                        Stretch="Uniform"
+                                        RenderTransformOrigin=".5,.5"
+                                        Stroke="{DynamicResource PrimaryPressedSolidColorBrush}"
+                                        StrokeDashArray="{TemplateBinding StrokeArray}"
+                                        StrokeThickness="2">
+                                <Ellipse.RenderTransform>
+                                    <RotateTransform Angle="0" />
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Triggers>
+                                    <EventTrigger RoutedEvent="Loaded">
+                                        <BeginStoryboard Storyboard="{StaticResource StarStoryboard}" />
+                                    </EventTrigger>
+                                </Ellipse.Triggers>
+                            </Ellipse>
+                        </controls:SmallPanel>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
