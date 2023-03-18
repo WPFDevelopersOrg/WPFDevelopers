@@ -18,12 +18,13 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty StrokeArrayProperty =
             DependencyProperty.Register("StrokeArray", typeof(DoubleCollection), typeof(NormalLoading)
-                , new PropertyMetadata(new DoubleCollection { 10, 100 }));
-
-        private Storyboard _storyboard;
+                , new PropertyMetadata(new DoubleCollection {10, 100}));
 
         public static NormalLoading Default = new NormalLoading();
         private Ellipse _ellipse;
+
+        private Storyboard _storyboard;
+
         public NormalLoading()
         {
             Loaded += LoadingNew_Loaded;
@@ -32,20 +33,20 @@ namespace WPFDevelopers.Controls
 
         public double StrokeValue
         {
-            get => (double)GetValue(StrokeValueProperty);
+            get => (double) GetValue(StrokeValueProperty);
             set => SetValue(StrokeValueProperty, value);
         }
 
 
         public DoubleCollection StrokeArray
         {
-            get => (DoubleCollection)GetValue(StrokeArrayProperty);
+            get => (DoubleCollection) GetValue(StrokeArrayProperty);
             set => SetValue(StrokeArrayProperty, value);
         }
 
         private static void OnStrokeValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as NormalLoading).StrokeArray = new DoubleCollection { (double)e.NewValue, 100 };
+            (d as NormalLoading).StrokeArray = new DoubleCollection {(double) e.NewValue, 100};
         }
 
         private void LoadingNew_Loaded(object sender, RoutedEventArgs e)
@@ -82,7 +83,6 @@ namespace WPFDevelopers.Controls
             //Storyboard.SetTarget(doubleAnimation2, _ellipse);
             //_storyboard.Children.Add(doubleAnimation2);
             //_storyboard.Begin();
-
         }
 
         public override void OnApplyTemplate()
@@ -90,6 +90,7 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
             //_ellipse = GetTemplateChild(PART_EillipseTemplateName) as Ellipse;
         }
+
         private void LoadingNew_Unloaded(object sender, RoutedEventArgs e)
         {
             if (_storyboard != null)
