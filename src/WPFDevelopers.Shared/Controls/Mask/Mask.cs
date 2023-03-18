@@ -7,8 +7,8 @@ namespace WPFDevelopers.Controls
     public class Mask : BaseControl
     {
         public static readonly DependencyProperty IsShowProperty =
-         DependencyProperty.RegisterAttached("IsShow", typeof(bool), typeof(Mask),
-             new PropertyMetadata(false, OnIsShowChanged));
+            DependencyProperty.RegisterAttached("IsShow", typeof(bool), typeof(Mask),
+                new PropertyMetadata(false, OnIsShowChanged));
 
 
         private static void OnIsShowChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -29,14 +29,14 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-        
+
         private static void Parent_Loaded(object sender, RoutedEventArgs e)
         {
             if (sender is UIElement element)
                 CreateMask(element);
         }
 
-        static void CreateMask(UIElement uIElement, bool isRemove = false)
+        private static void CreateMask(UIElement uIElement, bool isRemove = false)
         {
             var layer = AdornerLayer.GetAdornerLayer(uIElement);
             if (layer == null) return;
@@ -44,28 +44,24 @@ namespace WPFDevelopers.Controls
             {
                 var adorners = layer.GetAdorners(uIElement);
                 if (adorners != null)
-                {
                     foreach (var item in adorners)
-                    {
                         if (item is AdornerContainer container)
                             layer.Remove(container);
-                    }
-                }
                 return;
             }
 
             var adornerContainer = new AdornerContainer(uIElement);
-            var value = Mask.GetChild(uIElement);
+            var value = GetChild(uIElement);
             if (value != null)
-                adornerContainer.Child = new MaskControl(uIElement) { Content = value};
+                adornerContainer.Child = new MaskControl(uIElement) {Content = value};
             else
                 adornerContainer.Child = new MaskControl(uIElement);
             layer.Add(adornerContainer);
-
         }
+
         public static bool GetIsShow(DependencyObject obj)
         {
-            return (bool)obj.GetValue(IsShowProperty);
+            return (bool) obj.GetValue(IsShowProperty);
         }
 
         public static void SetIsShow(DependencyObject obj, bool value)
