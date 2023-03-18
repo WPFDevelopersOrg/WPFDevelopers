@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WPFDevelopers.Controls;
+using WPFDevelopers.Helpers;
 using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews.CanvasHandWriting;
@@ -12,6 +14,7 @@ using WPFDevelopers.Samples.ExampleViews.NumberCard;
 using WPFDevelopers.Samples.ExampleViews.Passwrod;
 using WPFDevelopers.Samples.Helpers;
 using WPFDevelopers.Samples.Models;
+using VirtualizingWrapPanel = WPFDevelopers.Samples.ExampleViews.VirtualizingWrapPanel;
 
 namespace WPFDevelopers.Samples.ViewModels
 {
@@ -208,7 +211,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.LoginWindow:
                     ControlPanel = new LoginExample();
                     var loginWindow = new LoginWindowExample();
-                    loginWindow.ShowDialog();
+                    loginWindow.MaskShowDialog();
                     break;
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();
@@ -294,19 +297,25 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.MultiSelectComboBox:
                     ControlPanel = new MultiSelectComboBoxExample();
                     break;
+                case MenuEnum.Mask:
+                    ControlPanel = new MaskExample();
+                    break;
+                case MenuEnum.Loading:
+                    ControlPanel = new LoadingExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
-                    new VirtualizingWrapPanelExample().ShowDialog();
+                    new VirtualizingWrapPanelExample().MaskShowDialog();
                     break;
                 case MenuEnum.AcrylicBlur:
                     ControlPanel = new AcrylicBlurExample();
-                    new AcrylicBlurWindowExample().ShowDialog();
+                    new AcrylicBlurWindowExample().MaskShowDialog();
                     break;
                 //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     ControlPanel = new TaskbarItemInfo();
                     var taskbar = new TaskbarItemInfoExample();
-                    taskbar.ShowDialog();
+                    taskbar.MaskShowDialog();
                     break;
                 default:
                     break;
