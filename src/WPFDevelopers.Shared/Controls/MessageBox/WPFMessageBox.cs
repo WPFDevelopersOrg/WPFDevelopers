@@ -157,20 +157,20 @@ namespace WPFDevelopers.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = Application.Current.Resources["PathWarning"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["WarningSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("PathWarning");
+                    _solidColorBrush = (SolidColorBrush)Application.Current.TryFindResource("WarningSolidColorBrush");
                     break;
                 case MessageBoxImage.Error:
-                    _geometry = Application.Current.Resources["PathError"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["DangerSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("PathError");
+                    _solidColorBrush = (SolidColorBrush)Application.Current.TryFindResource("DangerSolidColorBrush");
                     break;
                 case MessageBoxImage.Information:
-                    _geometry = Application.Current.Resources["PathWarning"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["SuccessSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("PathWarning");
+                    _solidColorBrush = (SolidColorBrush)Application.Current.TryFindResource("SuccessSolidColorBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = Application.Current.Resources["PathQuestion"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["NormalSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("PathQuestion");
+                    _solidColorBrush = (SolidColorBrush)Application.Current.TryFindResource("NormalSolidColorBrush");
                     break;
             }
         }
