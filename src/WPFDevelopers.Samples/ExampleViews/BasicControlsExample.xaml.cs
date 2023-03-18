@@ -131,31 +131,39 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void Loading_Click(object sender, RoutedEventArgs e)
         {
             var task = new Task(() => { Thread.Sleep(5000); });
-            task.ContinueWith(previousTask => { Loading.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
-            Loading.Show();
+            task.ContinueWith(previousTask => 
+            {
+                Loading.SetIsShow(MyBasicControls, false);
+            }, 
+            TaskScheduler.FromCurrentSynchronizationContext());
+            Loading.SetIsShow(MyBasicControls, true);
             task.Start();
         }
-        private void LoadingOff_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 停止任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnOffTask_Click(object sender, RoutedEventArgs e)
         {
-            var task = new Task(() => { Thread.Sleep(5000); });
-            task.ContinueWith(previousTask => { Loading.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
-            Loading.Show(true);
-            task.Start();
+            if (tokenSource == null) return;
+            tokenSource.Cancel();
+            Loading.SetIsShow(btnLoadingTask, false);
         }
-
+        private CancellationTokenSource tokenSource;
         /// <summary>
         /// 此处演示关闭loading停止任务
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LoadingOffTask_Click(object sender, RoutedEventArgs e)
+        private void LoadingTask_Click(object sender, RoutedEventArgs e)
         {
-            var tokenSource = new CancellationTokenSource();
+            tokenSource = new CancellationTokenSource();
             var cancellationToken = tokenSource.Token;
 
             var task = new Task(() =>
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     //这里做自己的事情
                     if (tokenSource.IsCancellationRequested)
@@ -167,31 +175,20 @@ namespace WPFDevelopers.Samples.ExampleViews
             {
                 if (tokenSource.IsCancellationRequested)
                     return;
-                Loading.Close();
+                Loading.SetIsShow(btnLoadingTask, false);
             }, TaskScheduler.FromCurrentSynchronizationContext());
-            Loading.Show(true);
-            Loading.LoadingQuitEvent += delegate
-            {
-                tokenSource.Cancel();
-            };
+            Loading.SetIsShow(btnLoadingTask, true);
             task.Start();
         }
         private void BtnLoading_Click(object sender, RoutedEventArgs e)
         {
             var task = new Task(() => { Thread.Sleep(5000); });
-            task.ContinueWith(previousTask => { Loading.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
-            Loading.Show(btnLoading, 18.0d, System.Windows.Media.Brushes.White);
+            task.ContinueWith(previousTask => { Loading.SetIsShow(btnLoading, false); }, TaskScheduler.FromCurrentSynchronizationContext());
+            Loading.SetIsShow(btnLoading, true);
             task.Start();
         }
         private void LightDark_Checked(object sender, RoutedEventArgs e)
         {
-            //var existingResourceDictionary = Application.Current.Resources.MergedDictionaries.FirstOrDefault(x => x.Source == null);
-            //if (existingResourceDictionary != null)
-            //    Application.Current.Resources.MergedDictionaries.Remove(existingResourceDictionary);
-
-            //var r = new WPFDevelopers.Minimal.Resources();
-            //r.Theme = Helpers.ThemeType.Light;
-            //Application.Current.Resources.MergedDictionaries.Add(r);
             var lightDark = sender as ToggleButton;
             if (lightDark == null) return;
             var theme = lightDark.IsChecked.Value ? ThemeType.Dark : ThemeType.Light;
@@ -225,6 +222,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             else
                 view.UserCollection.ToList().ForEach(y => y.IsChecked = isChecked);
         }
+
 
 
 
