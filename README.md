@@ -21,8 +21,8 @@
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
 ### [ Use only the base control to jump →](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal) https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal  
-![Blue](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Blue.png)  
-
+<!-- ![Blue](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Blue.png)  -->
+### [ Wiki → Quick update in progress](https://github.com/WPFDevelopersOrg/WPFDevelopers/wiki)   
 ###  Visual Studio 2022  
 
 ### .Net Version
