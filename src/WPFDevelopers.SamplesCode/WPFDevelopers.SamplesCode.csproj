@@ -99,6 +99,8 @@
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MagnifierExample.xaml.cs" Link="ExampleViews\MagnifierExample.xaml.cs" DependentUpon="MagnifierExample.xaml"/>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\StepExample.xaml.cs" Link="ExampleViews\StepExample.xaml.cs" DependentUpon="StepExample.xaml"/>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MultiSelectComboBoxExample.xaml.cs" Link="ExampleViews\MultiSelectComboBoxExample.xaml.cs" DependentUpon="MultiSelectComboBoxExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MaskExample.xaml.cs" Link="ExampleViews\MaskExample.xaml.cs" DependentUpon="MaskExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoadingExample.xaml.cs" Link="ExampleViews\LoadingExample.xaml.cs" DependentUpon="LoadingExample.xaml"/>
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
@@ -355,6 +357,12 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MultiSelectComboBoxExample.xaml">
 			<Link>ExampleViews\MultiSelectComboBoxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MaskExample.xaml">
+			<Link>ExampleViews\MaskExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoadingExample.xaml">
+			<Link>ExampleViews\LoadingExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
