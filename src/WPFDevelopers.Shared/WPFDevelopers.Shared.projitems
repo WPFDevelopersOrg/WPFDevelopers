@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AudioWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\BaseControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BasicBarChart\BasicBarChart.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
@@ -41,14 +42,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\BallLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\CycleLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\DefaultLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RingLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RollLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\WaitLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\Loading.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\WPFLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\NormalLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\Magnifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\MagnifierDesktop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\Mask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\MaskControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WPFMessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelectComboBox.cs" />
@@ -131,6 +135,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThemeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Win32ApiHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ChangedPathLayoutProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Distribution.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\DistributionStrategy.cs" />
@@ -446,6 +451,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Mask.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
