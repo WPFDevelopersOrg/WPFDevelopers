@@ -9,12 +9,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
-        <UniformGrid Rows="2" Columns="2">
-            <wpfdev:VerifyCode Foreground="LimeGreen"/>
-            <wpfdev:VerifyCode Foreground="Red"/>
-            <wpfdev:VerifyCode Foreground="DodgerBlue"/>
-            <wpfdev:VerifyCode Foreground="HotPink"/>
-        </UniformGrid>
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource SuccessPrimaryButton}" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Click="Button_Click"
+                    Content="获取"/>
+            <UniformGrid Rows="2" Columns="2" Grid.Row="1">
+                <wpfdev:VerifyCode Foreground="LimeGreen" Name="VerifyCode1"/>
+                <wpfdev:VerifyCode Foreground="Red" Name="VerifyCode2"/>
+                <wpfdev:VerifyCode Foreground="DodgerBlue" Name="VerifyCode3"/>
+                <wpfdev:VerifyCode Foreground="HotPink" Name="VerifyCode4"/>
+            </UniformGrid>
+        </Grid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 
                 CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/VerifyCodeExample.xaml" 

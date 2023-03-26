@@ -17,12 +17,26 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(VerifyCode),
                 new PropertyMetadata(null));
 
+
+        public string VerifyCodeText
+        {
+            get { return (string)GetValue(VerifyCodeTextProperty); }
+            private set { SetValue(VerifyCodeTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty VerifyCodeTextProperty =
+            DependencyProperty.Register("VerifyCodeText", typeof(string), 
+                typeof(VerifyCode), new PropertyMetadata(string.Empty));
+
+
+
         private Image _image;
-        private Size _size = new Size(70, 23);
+        private Size _size;
 
         public VerifyCode()
         {
             Foreground = DrawingContextHelper.Brush;
+            _size = new Size(70, 23);
             Loaded += CheckCode_Loaded;
         }
 
@@ -76,7 +90,7 @@ namespace WPFDevelopers.Controls
 
                 randomCode += _charArray[t];
             }
-
+            VerifyCodeText = randomCode;
             return randomCode;
         }
 
