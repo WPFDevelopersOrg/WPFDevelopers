@@ -69,6 +69,7 @@
         MultiSelectComboBox,
         Mask,
         Loading,
+        Selector,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

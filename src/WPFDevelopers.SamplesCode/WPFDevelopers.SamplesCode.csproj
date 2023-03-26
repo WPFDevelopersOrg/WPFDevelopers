@@ -101,6 +101,7 @@
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MultiSelectComboBoxExample.xaml.cs" Link="ExampleViews\MultiSelectComboBoxExample.xaml.cs" DependentUpon="MultiSelectComboBoxExample.xaml"/>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\MaskExample.xaml.cs" Link="ExampleViews\MaskExample.xaml.cs" DependentUpon="MaskExample.xaml"/>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoadingExample.xaml.cs" Link="ExampleViews\LoadingExample.xaml.cs" DependentUpon="LoadingExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SelectorExample.xaml.cs" Link="ExampleViews\SelectorExample.xaml.cs" DependentUpon="SelectorExample.xaml"/>
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\AboutWindow.xaml">
@@ -363,6 +364,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\LoadingExample.xaml">
 			<Link>ExampleViews\LoadingExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples\ExampleViews\SelectorExample.xaml">
+			<Link>ExampleViews\SelectorExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
