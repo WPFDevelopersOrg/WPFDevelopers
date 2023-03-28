@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers.Samples", "WPFDevelopers.Samples\WPFDevelopers.Samples.csproj", "{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Samples40", "WPFDevelopers.Samples40\WPFDevelopers.Samples40.csproj", "{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E1D5153C-CEA6-484B-BDDD-D7CB49FCDE94}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Builds", "Builds", "{E1D5153C-CEA6-484B-BDDD-D7CB49FCDE94}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
@@ -20,37 +20,70 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPFDevelopers.Shared", "WPF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.SamplesCode", "WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj", "{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{2C729CA5-1110-40DA-8EF4-2A7549072C53}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPFDevelopers.Samples.Shared", "WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.shproj", "{A0A4E0F8-745E-401A-A654-D4962CA9CC64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Samples45x", "WPFDevelopers.Samples45x\WPFDevelopers.Samples45x.csproj", "{88DD2697-4DF1-40DC-B33B-DE1FD9846800}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug-.NET40|Any CPU = Debug-.NET40|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		Release-.NET40|Any CPU = Release-.NET40|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Debug-.NET40|Any CPU.ActiveCfg = Debug-.NET40|Any CPU
+		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Debug-.NET40|Any CPU.Build.0 = Debug-.NET40|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release-.NET40|Any CPU.ActiveCfg = Release-.NET40|Any CPU
+		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release-.NET40|Any CPU.Build.0 = Release-.NET40|Any CPU
 		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Debug-.NET40|Any CPU.ActiveCfg = Debug-.NET40|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Debug-.NET40|Any CPU.Build.0 = Debug-.NET40|Any CPU
 		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Release-.NET40|Any CPU.ActiveCfg = Release-.NET40|Any CPU
+		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Release-.NET40|Any CPU.Build.0 = Release-.NET40|Any CPU
 		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Debug-.NET40|Any CPU.ActiveCfg = Debug-.NET40|Any CPU
 		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Release-.NET40|Any CPU.ActiveCfg = Release-.NET40|Any CPU
 		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD525ACC-1DF1-4FF6-8CC8-412B866E748A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Debug-.NET40|Any CPU.ActiveCfg = Debug-.NET40|Any CPU
+		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Debug-.NET40|Any CPU.Build.0 = Debug-.NET40|Any CPU
 		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Release-.NET40|Any CPU.ActiveCfg = Release-.NET40|Any CPU
+		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Release-.NET40|Any CPU.Build.0 = Release-.NET40|Any CPU
 		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DD2697-4DF1-40DC-B33B-DE1FD9846800}.Debug-.NET40|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DD2697-4DF1-40DC-B33B-DE1FD9846800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DD2697-4DF1-40DC-B33B-DE1FD9846800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DD2697-4DF1-40DC-B33B-DE1FD9846800}.Release-.NET40|Any CPU.ActiveCfg = Release-.NET40|Any CPU
+		{88DD2697-4DF1-40DC-B33B-DE1FD9846800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DD2697-4DF1-40DC-B33B-DE1FD9846800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31F881A8-9DDF-4FC2-999B-D47BC25CB47D} = {2C729CA5-1110-40DA-8EF4-2A7549072C53}
+		{359B3CA8-6B8E-4318-B7A7-ED2531E7F2F6} = {2C729CA5-1110-40DA-8EF4-2A7549072C53}
+		{A0A4E0F8-745E-401A-A654-D4962CA9CC64} = {2C729CA5-1110-40DA-8EF4-2A7549072C53}
+		{88DD2697-4DF1-40DC-B33B-DE1FD9846800} = {2C729CA5-1110-40DA-8EF4-2A7549072C53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {641F8D5D-5514-4C9A-9FAB-7FAF38D9C008}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems*{31f881a8-9ddf-4fc2-999b-d47bc25cb47d}*SharedItemsImports = 5
 		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{572d11b9-7ea8-4a04-849a-bb2b0371786f}*SharedItemsImports = 13
+		WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems*{88dd2697-4df1-40dc-b33b-de1fd9846800}*SharedItemsImports = 5
+		WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems*{a0a4e0f8-745e-401a-a654-d4962ca9cc64}*SharedItemsImports = 13
 		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 5
 		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 5
 		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{ad525acc-1df1-4ff6-8cc8-412b866e748a}*SharedItemsImports = 5

@@ -1,0 +1,176 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyName>WPFDevelopers.Samples</AssemblyName>
+		<RootNamespace>WPFDevelopers.Samples</RootNamespace>
+		<OutputType>WinExe</OutputType>
+		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
+		<!--<Nullable>enable</Nullable>-->
+		<UseWPF>true</UseWPF>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<Configurations>Debug;Release;Debug-.NET40;Release-.NET40</Configurations>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ApplicationIcon>..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico</ApplicationIcon>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview4" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="ICSharpCode.AvalonEdit, Version=6.1.3.50, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+			<SpecificVersion>False</SpecificVersion>
+			<HintPath>..\..\Reference\ICSharpCode.AvalonEdit.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<SpecificVersion>False</SpecificVersion>
+			<HintPath>..\..\Reference\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Windows.Interactivity">
+			<HintPath>..\..\Reference\System.Windows.Interactivity.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico">
+			<Link>WPFDevelopers.ico</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\emoji\发烧.png">
+			<Link>Resources\emoji\发烧.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\emoji\大笑.png">
+			<Link>Resources\emoji\大笑.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\emoji\得意.png">
+			<Link>Resources\emoji\得意.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\emoji\思考.png">
+			<Link>Resources\emoji\思考.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\emoji\生病.png">
+			<Link>Resources\emoji\生病.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\emoji\破涕为笑.png">
+			<Link>Resources\emoji\破涕为笑.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Assets\Lock.png">
+			<Link>Resources\Assets\Lock.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Assets\Mail.png">
+			<Link>Resources\Assets\Mail.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Assets\User.png">
+			<Link>Resources\Assets\User.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Assets\Clear.png">
+			<Link>Resources\Assets\Clear.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Assets\Background.png">
+			<Link>Resources\Assets\Background.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Assets\Logo.png">
+			<Link>Resources\Assets\Logo.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Fonts\fixedsys.ttf">
+			<Link>Resources\Fonts\fixedsys.ttf</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\AMap\Car2.png">
+			<Link>Resources\Images\AMap\Car2.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\AnimationNavigationBar3D\background.png">
+			<Link>Resources\Images\AnimationNavigationBar3D\background.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Breathe\0.jpg">
+			<Link>Resources\Images\Breathe\0.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Breathe\1.jpg">
+			<Link>Resources\Images\Breathe\1.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Breathe\2.jpg">
+			<Link>Resources\Images\Breathe\2.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Chat\Left.jpg">
+			<Link>Resources\Images\Chat\Left.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Chat\Right.jpg">
+			<Link>Resources\Images\Chat\Right.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Chat\UserImages\jingtao.png">
+			<Link>Resources\Images\Chat\UserImages\jingtao.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Chat\UserImages\yanjinhua.png">
+			<Link>Resources\Images\Chat\UserImages\yanjinhua.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\1.png">
+			<Link>Resources\Images\CircularMenu\1.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\2.png">
+			<Link>Resources\Images\CircularMenu\2.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\3.png">
+			<Link>Resources\Images\CircularMenu\3.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\4.png">
+			<Link>Resources\Images\CircularMenu\4.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\5.png">
+			<Link>Resources\Images\CircularMenu\5.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\6.png">
+			<Link>Resources\Images\CircularMenu\6.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\7.png">
+			<Link>Resources\Images\CircularMenu\7.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircularMenu\8.png">
+			<Link>Resources\Images\CircularMenu\8.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\0.jpg">
+			<Link>Resources\Images\Craouse\0.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\1.jpg">
+			<Link>Resources\Images\Craouse\1.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\2.jpg">
+			<Link>Resources\Images\Craouse\2.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\3.jpg">
+			<Link>Resources\Images\Craouse\3.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\4.jpg">
+			<Link>Resources\Images\Craouse\4.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Crop\0.jpg">
+			<Link>Resources\Images\Crop\0.jpg</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Passwrod\Eye_50px.png">
+			<Link>Resources\Images\Passwrod\Eye_50px.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Passwrod\Invisible_50px.png">
+			<Link>Resources\Images\Passwrod\Invisible_50px.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Passwrod\Lock_48px.png">
+			<Link>Resources\Images\Passwrod\Lock_48px.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Snow\SnowTree.png">
+			<Link>Resources\Images\Snow\SnowTree.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\SpeedRockets\飞机.png">
+			<Link>Resources\Images\SpeedRockets\飞机.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\ZooSemy\0.png">
+			<Link>Resources\Images\ZooSemy\0.png</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\ZooSemy\1.png">
+			<Link>Resources\Images\ZooSemy\1.png</Link>
+		</Resource>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
+	</ItemGroup>
+	<PropertyGroup>
+		<RootNamespace>WPFDevelopers.Samples</RootNamespace>
+		<AssemblyName>WPFDevelopers.Samples</AssemblyName>
+	</PropertyGroup>
+	<Import Project="..\WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems" Label="Shared" />
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="if not exist &quot;$(OutDir)emoji&quot; mkdir &quot;$(OutDir)emoji&quot; Copy /Y &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/emoji&quot; &quot;$(OutDir)emoji\&quot;" />
+	</Target>
+</Project>
