@@ -14,8 +14,8 @@ namespace WPFDevelopers.Samples.ExampleViews
         public AnimationAudioExample()
         {
             InitializeComponent();
-            AnimationAudioLeft.AudioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Audio", "HelloWPFDevelopes_en.mp3");
-            AnimationAudioRight.AudioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Audio", "HelloWPFDevelopes_zh.mp3");
+            AnimationAudioLeft.AudioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,  "Audio", "HelloWPFDevelopes_en.mp3");
+            AnimationAudioRight.AudioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,  "Audio", "HelloWPFDevelopes_zh.mp3");
         }
 
         private void AnimationAudioLeft_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
