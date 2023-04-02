@@ -1,13 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Media3D;
-using System.Xml.Linq;
-using WPFDevelopers.Controls;
-using WPFDevelopers.Utilities;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+﻿using System.Windows;
 
 namespace WPFDevelopers.Helpers
 {

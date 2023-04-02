@@ -12,7 +12,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Background" Value="{DynamicResource WindowForegroundColorBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="2,1"/>
+        <Setter Property="Padding" Value="4,0"/>
         
         <Setter Property="Template">
             <Setter.Value>
@@ -36,7 +36,7 @@
                         </BulletDecorator.Bullet>
                         <ContentPresenter x:Name="PART_ContentPresenter" 
                                           ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                          Content="{TemplateBinding Content}" Grid.Column="1" 
+                                          Content="{TemplateBinding Content}"
                                           ContentStringFormat="{TemplateBinding ContentStringFormat}" 
                                           Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                           Margin="{TemplateBinding Padding}"

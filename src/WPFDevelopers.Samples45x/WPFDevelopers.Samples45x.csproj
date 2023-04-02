@@ -161,6 +161,12 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\ZooSemy\1.png">
 			<Link>Resources\Images\ZooSemy\1.png</Link>
 		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Audio\HelloWPFDevelopes_en.mp3">
+			<Link>Resources\Audio\HelloWPFDevelopes_en.mp3</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Audio\HelloWPFDevelopes_zh.mp3">
+			<Link>Resources\Audio\HelloWPFDevelopes_zh.mp3</Link>
+		</Resource>
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
@@ -171,6 +177,10 @@
 	</PropertyGroup>
 	<Import Project="..\WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems" Label="Shared" />
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="if not exist &quot;$(OutDir)emoji&quot; mkdir &quot;$(OutDir)emoji&quot; Copy /Y &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/emoji&quot; &quot;$(OutDir)emoji\&quot;" />
+	  <!--<Exec Command="if not exist &quot;$(OutDir)emoji&quot; mkdir &quot;$(OutDir)emoji&quot; Copy /Y &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/emoji&quot; &quot;$(OutDir)emoji\&quot;" />-->
+
+	</Target>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command=" if not exist &quot;$(OutDir)emoji&quot; mkdir &quot;$(OutDir)emoji&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/emoji&quot; &quot;$(OutDir)emoji\&quot;&#xD;&#xA;&#xD;&#xA; if not exist &quot;$(OutDir)Audio&quot; mkdir &quot;$(OutDir)Audio&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/Audio&quot; &quot;$(OutDir)Audio\&quot;" />
 	</Target>
 </Project>
