@@ -1,0 +1,19 @@
+﻿<Window x:Class="WPFDevelopers.Samples.ExampleViews.Desktop.DesktopPlayVideo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.Desktop"
+        mc:Ignorable="d" 
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}">
+    
+    <Grid>
+        <MediaElement Name="PART_MediaElement"/>
+    </Grid>
+</Window>

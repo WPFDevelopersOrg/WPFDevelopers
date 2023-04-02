@@ -1,20 +1,0 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.TransitionPanelExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             mc:Ignorable="d" x:Name="_user"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <controls:CodeViewer>
-        <StackPanel>            <Canvas ClipToBounds="True" x:Name="PART_Canvas"            VerticalAlignment="Top">                <Canvas.Background>                    <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Images/Craouse/0.jpg"/>                </Canvas.Background>            </Canvas>            <Button x:Name="btnContent" Content="下一步" Click="Button_Click" Style="{StaticResource PrimaryButton}" Width="80"/>        </StackPanel>        <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransitionPanelExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransitionPanelExample.xaml.cs" 
-                CodeType="CSharp"/>
-        </controls:CodeViewer.SourceCodes>
-    </controls:CodeViewer>
-</UserControl>
