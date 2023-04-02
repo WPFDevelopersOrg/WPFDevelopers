@@ -171,11 +171,10 @@
 			<Link>Resources\Audio\HelloWPFDevelopes_zh.mp3</Link>
 		</Resource>
 	</ItemGroup>
-	<!--<ItemGroup>
-		<PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview4" />
-	</ItemGroup>-->
 	<ItemGroup>
-		<ProjectReference Include="..\WPFDevelopers.Net40\WPFDevelopers.Net40.csproj" />
+		<PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview4" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
