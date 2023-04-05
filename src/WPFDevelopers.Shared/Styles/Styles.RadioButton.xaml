@@ -13,26 +13,31 @@
         <Setter Property="Background" Value="{DynamicResource WindowForegroundColorBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="4,0"/>
-        
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <BulletDecorator Background="Transparent">
+                    <BulletDecorator Background="Transparent"
+                                     Margin="{TemplateBinding Margin}">
                         <BulletDecorator.Bullet>
-                            <controls:SmallPanel MinWidth="16" MinHeight="16" >
-                                <Ellipse x:Name="PART_Border" 
+                            <Border VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+                                <controls:SmallPanel MinWidth="16" MinHeight="16" >
+                                    <Ellipse x:Name="PART_Border" 
                                          StrokeThickness="{TemplateBinding BorderThickness}"
                                          Fill="{TemplateBinding Background}" 
                                          Stroke="{DynamicResource BaseSolidColorBrush}">
-                                </Ellipse>
-                                <Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WindowForegroundColorBrush}" 
+                                    </Ellipse>
+                                    <Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WindowForegroundColorBrush}" 
                                          MinWidth="6" MinHeight="6"
                                          RenderTransformOrigin=".5,.5">
-                                    <Ellipse.RenderTransform>
-                                        <ScaleTransform ScaleX="0" ScaleY="0"/>
-                                    </Ellipse.RenderTransform>
-                                </Ellipse>
-                            </controls:SmallPanel>
+                                        <Ellipse.RenderTransform>
+                                            <ScaleTransform ScaleX="0" ScaleY="0"/>
+                                        </Ellipse.RenderTransform>
+                                    </Ellipse>
+                                </controls:SmallPanel>
+                            </Border>
                         </BulletDecorator.Bullet>
                         <ContentPresenter x:Name="PART_ContentPresenter" 
                                           ContentTemplate="{TemplateBinding ContentTemplate}" 
