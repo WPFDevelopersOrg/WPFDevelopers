@@ -14,10 +14,11 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="MinWidth" Value="120" />
         <Setter Property="MinHeight" Value="95" />
+        <Setter Property="BorderThickness" Value="0,1,0,0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border Name="Border"  BorderThickness="0,1,0,0" 
+                    <Border Name="Border"  BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{DynamicResource BaseSolidColorBrush}">
                         <ScrollViewer Focusable="False">
                             <VirtualizingStackPanel IsItemsHost="True" />
