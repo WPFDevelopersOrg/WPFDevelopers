@@ -16,9 +16,8 @@
 		<Setter Property="BorderThickness" Value="0"/>
 		<Setter Property="Height" Value="34" />
 		<Setter Property="Margin" Value="1,0" />
-		<Setter Property="Padding" Value="6,0"/>
-		
-		<Setter Property="Template">
+        <Setter Property="Padding" Value="6,0"/>
+        <Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
 
@@ -91,8 +90,6 @@
 								BorderThickness="{TemplateBinding BorderThickness}"
 								SnapsToDevicePixels="True"
 								CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-
-
 						<ToggleButton x:Name="PART_ToggleButton"
 									  Template="{StaticResource ComboBoxToggleButton}"
 									  Style="{x:Null}"
@@ -110,8 +107,19 @@
 								 Background="{TemplateBinding Background}"
 								 SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}"
 								 IsReadOnly="True" Style="{x:Null}" />
-						
-						<Popup x:Name="PART_Popup"
+                        <TextBlock x:Name="PART_Watermark"
+                                   Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}"
+                                   Foreground="{DynamicResource RegularTextSolidColorBrush}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   FontSize="{StaticResource NormalFontSize}"
+                                   Margin="{TemplateBinding Padding}" 
+                                   Background="Transparent"
+                                   TextTrimming="CharacterEllipsis"
+                                   IsHitTestVisible="False"
+                                   Padding="1,0" 
+                                   Visibility="Collapsed"/>
+                        <Popup x:Name="PART_Popup"
 					   AllowsTransparency="True"
 					   PlacementTarget="{Binding ElementName=PART_ToggleButton}"
 					   IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"
@@ -177,7 +185,13 @@
 						<Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
 							<Setter TargetName="PART_DropDownBorder"  Property="Margin" Value="0,2,0,0" />
 						</Trigger>
-					</ControlTemplate.Triggers>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
