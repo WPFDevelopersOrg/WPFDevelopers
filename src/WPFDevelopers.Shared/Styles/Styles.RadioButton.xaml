@@ -72,8 +72,6 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <!--<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
                             <Setter Property="Fill" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                             <Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                             <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
@@ -84,20 +82,6 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                            <!--<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
-                            <!--<MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_BeginStoryboard">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryNormalColor}" 
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
-                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
