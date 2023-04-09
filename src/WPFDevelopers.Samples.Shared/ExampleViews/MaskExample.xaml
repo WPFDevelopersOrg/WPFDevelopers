@@ -16,8 +16,7 @@
                     Margin="10">
                 <wd:Mask.Child>
                     <Border>
-                        <TextBox wd:ElementHelper.IsWatermark="True"
-                                 wd:ElementHelper.Watermark="我是蒙板输入框"/>
+                        <TextBox wd:ElementHelper.Watermark="我是蒙板输入框"/>
                     </Border>
                 </wd:Mask.Child>
                 <Button Content="Mask" 
