@@ -2,12 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:convert="clr-namespace:WPFDevelopers.Converts"
                     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
-    
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+
+    <convert:DatePickerToCurrentConverter x:Key="DatePickerToCurrentConverter"/>
 
     <Style TargetType="{x:Type CalendarDayButton}" x:Key="CalendarDayButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Width"  Value="32" />
@@ -15,7 +18,6 @@
         <Setter Property="FontSize"  Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
@@ -74,8 +76,13 @@
                         <Border Background="{TemplateBinding Background}"
                   BorderThickness="{TemplateBinding BorderThickness}"
                   BorderBrush="{TemplateBinding BorderBrush}" />
-                        <Ellipse x:Name="DayButtonFocusVisual" Visibility="Collapsed"
-                     IsHitTestVisible="False">
+                        <Ellipse x:Name="DayButtonFocusVisual" 
+                                 Visibility="Collapsed"
+                                 IsHitTestVisible="False" 
+                                 Width="5"
+                                 Height="5"
+                                 VerticalAlignment="Bottom"
+                                 HorizontalAlignment="Center">
                             <Ellipse.Fill>
                                 <SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
                             </Ellipse.Fill>
@@ -87,31 +94,55 @@
                                 <SolidColorBrush Color="{DynamicResource RegularTextColor}" />
                             </TextElement.Foreground>
                         </ContentPresenter>
-                        <Path x:Name="Blackout" Opacity="0"  Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                              Fill="{DynamicResource WindowForegroundColorBrush}" Stretch="Fill"
-                              Data="{StaticResource PathBlackout}" />
+                        <Line X1="0" Y1="0" 
+                              X2="{TemplateBinding Width}" Y2="0" 
+                              x:Name="Blackout" 
+                              Visibility="Collapsed"
+                              Opacity=".4"
+                              Margin="8,3,8,0" 
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              Stroke="{DynamicResource PrimaryTextSolidColorBrush}" 
+                              StrokeThickness="1.5"/>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="False"/>
                                 <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsBlackedOut" Value="False"/>
                             </MultiTrigger.Conditions>
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
+                            <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Collapsed"/>
                         </MultiTrigger>
                         <Trigger Property="IsToday" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.FontWeight" Value="Bold"/>
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WindowForegroundColorBrush}"/>
                             <Setter TargetName="SelectedBackground" Property="Opacity" Value="1"/>
+                            <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
-                        <Trigger Property="IsInactive" Value="True">
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsInactive" Value="True"/>
+                                <Condition Property="IsBlackedOut" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="False"/>
+                                <Condition Property="IsInactive" Value="True"/>
+                                <Condition Property="IsBlackedOut" Value="False"/>
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource BaseSolidColorBrush}"/>
-                        </Trigger>
+                        </MultiTrigger>
                         <Trigger Property="IsBlackedOut" Value="True">
-                            <Setter TargetName="Blackout" Property="Opacity" Value=".2"/>
+                            <Setter TargetName="Blackout" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -125,7 +156,6 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
@@ -185,7 +215,6 @@
                                 <VisualState Name="CalendarButtonUnfocused" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        
                         <ContentPresenter x:Name="NormalText"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -194,6 +223,23 @@
                                 <SolidColorBrush Color="{DynamicResource RegularTextColor}" />
                             </TextElement.Foreground>
                         </ContentPresenter>
+                        <Ellipse x:Name="ButtonFocusVisual" 
+                                 IsHitTestVisible="False" 
+                                 Width="5"
+                                 Height="5"
+                                 VerticalAlignment="Bottom"
+                                 HorizontalAlignment="Center">
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
+                            </Ellipse.Fill>
+                            <Ellipse.Visibility>
+                                <MultiBinding Converter="{StaticResource DatePickerToCurrentConverter}">
+                                    <Binding ElementName="NormalText" Path="Content"/>
+                                    <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type CalendarButton},AncestorLevel=1}"/>
+                                    <Binding RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type CalendarButton},AncestorLevel=1}" Path="DataContext"/>
+                                </MultiBinding>
+                            </Ellipse.Visibility>
+                        </Ellipse>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsInactive" Value="True">
@@ -203,11 +249,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
     </Style>
 
     <ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
-        <Grid Cursor="Hand">
+        <controls:SmallPanel>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
@@ -243,12 +289,12 @@
                     </Path.Fill>
                 </Path>
             </controls:SmallPanel>
-        </Grid>
+        </controls:SmallPanel>
     </ControlTemplate>
 
-    
+
     <ControlTemplate x:Key="NextButtonTemplate" TargetType="{x:Type Button}">
-        <controls:SmallPanel Cursor="Hand">
+        <controls:SmallPanel>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
@@ -284,7 +330,7 @@
 
     <ControlTemplate x:Key="HeaderButtonTemplate"
                  TargetType="{x:Type Button}">
-        <controls:SmallPanel Cursor="Hand">
+        <controls:SmallPanel>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
@@ -329,18 +375,11 @@
                             </StackPanel>
                         </DataTemplate>
                     </ControlTemplate.Resources>
-                    <Grid x:Name="PART_Root" Margin="{TemplateBinding Margin}">
+                    <controls:SmallPanel x:Name="PART_Root" Margin="{TemplateBinding Margin}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" 
-                                                         To="1"
-                                                         Storyboard.TargetProperty="Opacity"
-                                                         Storyboard.TargetName="PART_DisabledVisual" />
-                                    </Storyboard>
-                                </VisualState>
+                                <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Border Background="{DynamicResource BackgroundSolidColorBrush}" 
@@ -384,7 +423,7 @@
                         Template="{StaticResource NextButtonTemplate}"
                         Height="20"
                         Width="28" />
-                               
+
                                 <Grid x:Name="PART_MonthView"
                       Visibility="Visible"
                       Grid.ColumnSpan="3"
@@ -432,8 +471,7 @@
                                 </Grid>
                             </Grid>
                         </Border>
-
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding DisplayMode, 
               RelativeSource={RelativeSource FindAncestor, 
@@ -472,12 +510,14 @@
           Value="{StaticResource CalendarItemStyle}" />
         <Setter Property="Foreground"
           Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">
                     <StackPanel x:Name="PART_Root"
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                         <CalendarItem x:Name="PART_CalendarItem"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
@@ -490,12 +530,12 @@
         </Setter>
     </Style>
 
-  
+
     <Style x:Key="DatePickerCalendarStyle"
        TargetType="{x:Type Calendar}"
        BasedOn="{StaticResource {x:Type Calendar}}" />
 
-  
+
     <Style x:Key="DropDownButtonStyle" TargetType="Button" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Template">
             <Setter.Value>
@@ -507,7 +547,6 @@
                         </Grid.ColumnDefinitions>
                         <Border x:Name="Border" 
                         Grid.ColumnSpan="2" 
-                        BorderThickness="1" 
                         Background="{DynamicResource BackgroundSolidColorBrush}" >
                         </Border>
                         <Grid FlowDirection="LeftToRight"
@@ -556,7 +595,7 @@
                                     Grid.Row="1"
                                     Grid.RowSpan="3"
                                     Background="{DynamicResource BackgroundSolidColorBrush}">
-                                
+
                             </Border>
                             <Rectangle Grid.ColumnSpan="4" 
                                        Grid.RowSpan="1" StrokeThickness="1"
@@ -595,7 +634,9 @@
         </Setter>
     </Style>
 
-    <Style x:Key="DefaultDatePickerTextBox" TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDatePickerTextBox" 
+           TargetType="{x:Type DatePickerTextBox}" 
+           BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Template">
@@ -625,20 +666,23 @@
                             Padding="{TemplateBinding Padding}"
                             CornerRadius="1" 
                             Opacity="1">
-                            <Grid x:Name="WatermarkContent"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  Background="{x:Null}">
+                            <controls:SmallPanel x:Name="WatermarkContent">
                                 <ContentControl x:Name="PART_Watermark"
-                                                        Opacity="0"
-                                                        Focusable="False"
-                                                        IsHitTestVisible="True"
-                                                        Padding="2"/>
+                                                Opacity="0"
+                                                Padding="2"
+                                                Background="Transparent"
+                                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Foreground="{DynamicResource RegularTextSolidColorBrush}"
+                                                IsHitTestVisible="False"
+                                                helpers:DatePickerHelper.TextTrimming="WordEllipsis"/>
                                 <ScrollViewer x:Name="PART_ContentHost" 
-                                          Margin="0"
-                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            </Grid>
+                                              Focusable="False"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Hidden"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </controls:SmallPanel>
                         </Border>
                     </controls:SmallPanel>
                 </ControlTemplate>
@@ -655,7 +699,7 @@
         <Setter Property="SelectedDateFormat"
           Value="Short" />
         <Setter Property="Padding"
-          Value="2" />
+          Value="34,2,2,2" />
         <Setter Property="BorderThickness"
           Value="1" />
         <Setter Property="HorizontalContentAlignment"
@@ -664,18 +708,18 @@
           Value="Center" />
         <Setter Property="MinWidth" Value="140"/>
         <Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
-        
         <Setter Property="CalendarStyle"
           Value="{DynamicResource DatePickerCalendarStyle}" />
+        <!--<Setter Property="helpers:DatePickerHelper.IsMonthYear" Value="True"/>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePicker}">
                     <Border BorderThickness="{TemplateBinding BorderThickness}"
-                Padding="{TemplateBinding Padding}" 
+                            Margin="{TemplateBinding Margin}" 
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
-                                x:Name="PART_Border"
-                                BorderBrush="{DynamicResource BaseSolidColorBrush}"
-                                Background="{DynamicResource BackgroundSolidColorBrush}">
+                            x:Name="PART_Border"
+                            BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                            Background="{DynamicResource BackgroundSolidColorBrush}">
 
                         <Grid x:Name="PART_Root"
                 HorizontalAlignment="Stretch"
@@ -685,23 +729,22 @@
                     Foreground="{TemplateBinding Foreground}"
                     Focusable="False"
                     Margin="3,0,3,0"
-                    Style="{StaticResource DropDownButtonStyle}"
-                    VerticalAlignment="Center" />
+                    Style="{StaticResource DropDownButtonStyle}"/>
 
                             <DatePickerTextBox x:Name="PART_TextBox"
                                Grid.Column="1"
                                Foreground="{TemplateBinding Foreground}"
                                Focusable="True"
                                Width="Auto" 
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Bottom"
-                               Margin="34,2,2,2"
+                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                               Margin="{TemplateBinding Padding}"
                                SelectionBrush ="{DynamicResource WindowBorderBrushSolidColorBrush}"
                                Background="Transparent"/>
                             <Popup x:Name="PART_Popup" 
                                        MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                        AllowsTransparency="True" Focusable="False" HorizontalOffset="-50"
-                                       Placement="Bottom" StaysOpen="False" VerticalOffset="10">
+                                       Placement="Bottom" StaysOpen="False" VerticalOffset="2">
 
                             </Popup>
 
