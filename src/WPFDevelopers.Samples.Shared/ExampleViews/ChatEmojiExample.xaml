@@ -64,7 +64,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="LeftInput" wpfdev:ElementHelper.IsWatermark="True" wpfdev:ElementHelper.Watermark="请输入内容"/>
+                    <TextBox x:Name="LeftInput" wpfdev:ElementHelper.Watermark="请输入内容"/>
                     <Button Grid.Column="1" Content="发送" x:Name="LeftSend" Click="LeftSend_Click" Style="{StaticResource PrimaryButton}"></Button>
                 </Grid>
             </Grid>
@@ -124,7 +124,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="RightInput"  wpfdev:ElementHelper.IsWatermark="True" wpfdev:ElementHelper.Watermark="请输入内容"/>
+                    <TextBox x:Name="RightInput" wpfdev:ElementHelper.Watermark="请输入内容"/>
                     <Button Grid.Column="1" Content="发送" x:Name="RightSend" Click="RightSend_Click" Style="{StaticResource PrimaryButton}"></Button>
                 </Grid>
             </Grid>
