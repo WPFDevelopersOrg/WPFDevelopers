@@ -9,7 +9,6 @@
     </ResourceDictionary.MergedDictionaries>
     
     <Style x:Key="DefaultCheckBox"  TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
-        <!--<Setter Property="FocusVisualStyle" Value="{x:Null}" />-->
         <Setter Property="Padding" Value="4,0"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -108,20 +107,6 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                            <!--本来使用动画，但是动画会导致无法修改主题颜色-->
-                            <!--<MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_BeginStoryboard">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryNormalColor}" 
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
-                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
