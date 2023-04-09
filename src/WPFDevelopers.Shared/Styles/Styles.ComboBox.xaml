@@ -20,10 +20,10 @@
                     <ColumnDefinition Width="30"/>
                 </Grid.ColumnDefinitions>
                 <Rectangle Grid.Column="1"
-                           Cursor="Hand" Fill="Transparent" Height="Auto" Width="30"/>
+                           Fill="Transparent" Height="Auto" Width="30"/>
                 <Path x:Name="PART_Arrow" Grid.Column="1" Stretch="Fill" 
                   Height="6" Width="10"  HorizontalAlignment="Center" 
-                  VerticalAlignment="Center" Cursor="Hand"
+                  VerticalAlignment="Center" 
                   Data="{StaticResource PathComboBoxToggleButton}" 
                   RenderTransformOrigin=".5,.5">
                     <Path.Fill>
@@ -162,6 +162,17 @@
                                  Visibility="Hidden"
                                  SelectionBrush ="{DynamicResource WindowBorderBrushSolidColorBrush}"
                                  IsReadOnly="{TemplateBinding IsReadOnly}" />
+                        <TextBlock x:Name="PART_Watermark"
+                                   Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}"
+                                   Foreground="{DynamicResource RegularTextSolidColorBrush}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   FontSize="{StaticResource NormalFontSize}"
+                                   Margin="{TemplateBinding Padding}" 
+                                   Background="Transparent"
+                                   TextTrimming="CharacterEllipsis"
+                                   Padding="1,0" 
+                                   Visibility="Collapsed"/>
                         <Popup x:Name="PART_Popup" 
                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}"
@@ -225,6 +236,27 @@
                             <Setter Property="BorderBrush" 
                                     Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="PART_EditableTextBox" Property="Text" Value="" />
+                                <Condition Property="ComboBox.IsEditable" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="SelectionBoxItem" Value="" />
+                                <Condition Property="ComboBox.IsEditable" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="SelectionBoxItem" Value="{x:Null}" />
+                                <Condition Property="ComboBox.IsEditable" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
