@@ -366,9 +366,4 @@
 			<Link>ExampleViews\SelectorExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="Copy &quot;$(TargetDir)WPFDevelopers.SamplesCode.dll&quot; &quot;$(TargetDir)../&quot;" />
-	</Target>
-
-
 </Project>
