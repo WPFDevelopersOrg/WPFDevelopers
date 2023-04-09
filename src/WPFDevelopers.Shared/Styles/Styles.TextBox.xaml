@@ -33,30 +33,25 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}">
                         <controls:SmallPanel Margin="{TemplateBinding Padding}">
-                            <TextBlock x:Name="PART_TextBlockWatermark"
-                                Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}"
-                                Foreground="{DynamicResource RegularTextSolidColorBrush}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                FontSize="{StaticResource NormalFontSize}"
-                                Margin="7.5,0" Visibility="Collapsed"/>
+                            <TextBlock x:Name="PART_Watermark"
+                                       Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}"
+                                       Foreground="{DynamicResource RegularTextSolidColorBrush}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       FontSize="{StaticResource NormalFontSize}"
+                                       Margin="{TemplateBinding Padding}" 
+                                       Padding="1,0" 
+                                       Visibility="Collapsed"/>
                             <ScrollViewer x:Name="PART_ContentHost" />
                         </controls:SmallPanel>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Text" Value="" />
-                                <Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible"/>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Text" Value="{x:Null}" />
-                                <Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible"/>
-                        </MultiTrigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" 
                                     Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
