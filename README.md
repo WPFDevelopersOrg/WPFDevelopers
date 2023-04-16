@@ -69,8 +69,8 @@ Install-Package WPFDevelopers
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
-                    <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
-                    <ws:Resources Theme="Light"/>
+                    <!--需要注意 wd:Resources 必须在配色主题后，Theme="Dark" 为黑色皮肤-->
+                    <wd:Resources Theme="Light"/>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -89,7 +89,7 @@ Install-Package WPFDevelopers
 ```
 ###  Step 3: Add the namespace;
 
-`xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+`xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 ----------
 ### ScrollIntoView.IsPosition
 
