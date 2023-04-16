@@ -303,6 +303,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Selector:
                     ControlPanel = new SelectorExample();
                     break;
+                case MenuEnum.MultiSelectSearchComboBox:
+                    ControlPanel = new MultiSelectSearchComboBoxExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
