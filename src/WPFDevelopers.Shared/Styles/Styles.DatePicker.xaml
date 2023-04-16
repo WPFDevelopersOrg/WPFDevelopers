@@ -18,6 +18,7 @@
         <Setter Property="FontSize"  Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
@@ -37,7 +38,14 @@
                                     <VisualTransition GeneratedDuration="0" />
                                 </VisualStateGroup.Transitions>
                                 <VisualState Name="Unselected" />
-                                <VisualState Name="Selected"/>
+                                <VisualState Name="Selected">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0"
+                                  Storyboard.TargetName="SelectionBackground"
+                                  Storyboard.TargetProperty="Opacity"
+                                  To=".3" />
+                                    </Storyboard>
+                                </VisualState>
                             </VisualStateGroup>
                             <VisualStateGroup Name="CalendarButtonFocusStates">
                                 <VisualStateGroup.Transitions>
@@ -68,9 +76,14 @@
                                 <VisualState Name="BlackoutDay"/>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Ellipse x:Name="SelectedBackground" Opacity="0">
+                        <Ellipse x:Name="SelectedBackground" Opacity="0" Margin="{TemplateBinding Padding}">
                             <Ellipse.Fill>
                                 <SolidColorBrush Color="{DynamicResource PrimaryMouseOverColor}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse x:Name="SelectionBackground" Opacity="0" Margin="{TemplateBinding Padding}">
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="{DynamicResource PrimaryMouseOverColor}"/>
                             </Ellipse.Fill>
                         </Ellipse>
                         <Border Background="{TemplateBinding Background}"
@@ -106,15 +119,6 @@
                               StrokeThickness="1.5"/>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="False"/>
-                                <Condition Property="IsMouseOver" Value="True"/>
-                                <Condition Property="IsBlackedOut" Value="False"/>
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
-                            <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Collapsed"/>
-                        </MultiTrigger>
                         <Trigger Property="IsToday" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.FontWeight" Value="Bold"/>
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
@@ -122,9 +126,35 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WindowForegroundColorBrush}"/>
-                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="1"/>
-                            <Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsBlackedOut" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
+                            <!--<Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Collapsed"/>-->
+                            <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource RegularTextSolidColorBrush}"/>
+                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="0"/>
+                            <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3"/>
+                        </MultiTrigger>
+                       
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="1"/>
+                            <Setter TargetName="SelectionBackground" Property="Opacity" Value="0"/>
+                        </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True"/>
@@ -156,6 +186,7 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="4,10"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
@@ -215,6 +246,13 @@
                                 <VisualState Name="CalendarButtonUnfocused" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Ellipse x:Name="SelectionBackground" Opacity=".3" 
+                                 Margin="{TemplateBinding Padding}"
+                                 Visibility="Collapsed">
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="{DynamicResource PrimaryMouseOverColor}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
                         <ContentPresenter x:Name="NormalText"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -244,6 +282,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsInactive" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource BaseSolidColorBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="SelectionBackground" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
