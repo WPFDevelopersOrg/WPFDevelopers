@@ -140,6 +140,7 @@
 			<ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Background="Transparent" />
 		</Border>
 	</ControlTemplate>
+	<converts:DatePickerToCurrentConverter x:Key="DatePickerToCurrentConverter" />
 	<converts:DoubleMinConverter x:Key="DoubleMinConverter" />
 	<Thickness x:Key="BorderThickness">0,0,0,2</Thickness>
 	<Style x:Key="TreeViewItemFocusVisual">
@@ -947,19 +948,23 @@
 		<Setter Property="Background" Value="{DynamicResource WindowForegroundColorBrush}" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="4,0" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RadioButton}">
-					<BulletDecorator Background="Transparent">
+					<BulletDecorator Background="Transparent" Margin="{TemplateBinding Margin}">
 						<BulletDecorator.Bullet>
-							<controls:SmallPanel MinWidth="16" MinHeight="16">
-								<Ellipse x:Name="PART_Border" StrokeThickness="{TemplateBinding BorderThickness}" Fill="{TemplateBinding Background}" Stroke="{DynamicResource BaseSolidColorBrush}" />
-								<Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WindowForegroundColorBrush}" MinWidth="6" MinHeight="6" RenderTransformOrigin=".5,.5">
-									<Ellipse.RenderTransform>
-										<ScaleTransform ScaleX="0" ScaleY="0" />
-									</Ellipse.RenderTransform>
-								</Ellipse>
-							</controls:SmallPanel>
+							<Border VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+								<controls:SmallPanel MinWidth="16" MinHeight="16">
+									<Ellipse x:Name="PART_Border" StrokeThickness="{TemplateBinding BorderThickness}" Fill="{TemplateBinding Background}" Stroke="{DynamicResource BaseSolidColorBrush}" />
+									<Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WindowForegroundColorBrush}" MinWidth="6" MinHeight="6" RenderTransformOrigin=".5,.5">
+										<Ellipse.RenderTransform>
+											<ScaleTransform ScaleX="0" ScaleY="0" />
+										</Ellipse.RenderTransform>
+									</Ellipse>
+								</controls:SmallPanel>
+							</Border>
 						</BulletDecorator.Bullet>
 						<ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}" />
 						<VisualStateManager.VisualStateGroups>
@@ -977,8 +982,6 @@
 					</BulletDecorator>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsChecked" Value="True">
-							<!--<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
 							<Setter Property="Fill" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 							<Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
@@ -989,20 +992,6 @@
 								<Condition Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
 							<Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
-							<!--<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
-							<!--<MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_BeginStoryboard">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryNormalColor}" 
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
-                            </MultiTrigger.ExitActions>-->
 						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -1609,14 +1598,15 @@
 	</Style>
 	<Style TargetType="{x:Type Hyperlink}" BasedOn="{StaticResource DefaultHyperlink}" />
 	<Style x:Key="DefaultCheckBox" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
-		<!--<Setter Property="FocusVisualStyle" Value="{x:Null}" />-->
 		<Setter Property="Padding" Value="4,0" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type CheckBox}">
-					<BulletDecorator Background="Transparent">
+					<BulletDecorator Background="Transparent" Margin="{TemplateBinding Margin}">
 						<BulletDecorator.Bullet>
-							<Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}">
+							<Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}" VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
 								<Border x:Name="PART_Border" Width="16" Height="16" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource WindowForegroundColorBrush}">
 									<controls:SmallPanel>
 										<Path x:Name="PART_CheckMark" SnapsToDevicePixels="False" VerticalAlignment="Center" HorizontalAlignment="Center" Data="{StaticResource PathCheckMark}" RenderTransformOrigin=".5,.5" Stretch="Fill" Fill="{DynamicResource WindowForegroundColorBrush}">
@@ -1671,20 +1661,6 @@
 								<Condition Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
 							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
-							<!--本来使用动画，但是动画会导致无法修改主题颜色-->
-							<!--<MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_BeginStoryboard">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryNormalColor}" 
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
-                            </MultiTrigger.ExitActions>-->
 						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -1709,25 +1685,17 @@
 				<ControlTemplate TargetType="{x:Type TextBox}">
 					<Border Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
 						<controls:SmallPanel Margin="{TemplateBinding Padding}">
-							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
+							<TextBlock x:Name="PART_Watermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="{TemplateBinding Padding}" Padding="1,0" Visibility="Collapsed" />
 							<ScrollViewer x:Name="PART_ContentHost" />
 						</controls:SmallPanel>
 					</Border>
 					<ControlTemplate.Triggers>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="Text" Value="" />
-								<Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
-							</MultiTrigger.Conditions>
-							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
-						</MultiTrigger>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="Text" Value="{x:Null}" />
-								<Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
-							</MultiTrigger.Conditions>
-							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
-						</MultiTrigger>
+						<Trigger Property="Text" Value="">
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</Trigger>
+						<Trigger Property="Text" Value="{x:Null}">
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
 							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
@@ -1744,8 +1712,8 @@
 					<ColumnDefinition />
 					<ColumnDefinition Width="30" />
 				</Grid.ColumnDefinitions>
-				<Rectangle Grid.Column="1" Cursor="Hand" Fill="Transparent" Height="Auto" Width="30" />
-				<Path x:Name="PART_Arrow" Grid.Column="1" Stretch="Fill" Height="6" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Data="{StaticResource PathComboBoxToggleButton}" RenderTransformOrigin=".5,.5">
+				<Rectangle Grid.Column="1" Fill="Transparent" Height="Auto" Width="30" />
+				<Path x:Name="PART_Arrow" Grid.Column="1" Stretch="Fill" Height="6" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{StaticResource PathComboBoxToggleButton}" RenderTransformOrigin=".5,.5">
 					<Path.Fill>
 						<SolidColorBrush Color="{DynamicResource PlaceholderTextColor}" />
 					</Path.Fill>
@@ -1820,6 +1788,7 @@
 						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
 						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" />
 						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Background="{TemplateBinding Background}" Foreground="{DynamicResource PrimaryTextSolidColorBrush}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
+						<TextBlock x:Name="PART_Watermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="{TemplateBinding Padding}" Background="Transparent" TextTrimming="CharacterEllipsis" Padding="1,0" Visibility="Collapsed" />
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<controls:SmallPanel.RenderTransform>
@@ -1867,6 +1836,27 @@
 						<Trigger Property="IsMouseOver" Value="True">
 							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition SourceName="PART_EditableTextBox" Property="Text" Value="" />
+								<Condition Property="ComboBox.IsEditable" Value="True" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="SelectionBoxItem" Value="" />
+								<Condition Property="ComboBox.IsEditable" Value="False" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="SelectionBoxItem" Value="{x:Null}" />
+								<Condition Property="ComboBox.IsEditable" Value="False" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -1969,6 +1959,7 @@
 		<Setter Property="FontSize" Value="12" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="1" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="CalendarDayButton">
@@ -1988,7 +1979,11 @@
 									<VisualTransition GeneratedDuration="0" />
 								</VisualStateGroup.Transitions>
 								<VisualState Name="Unselected" />
-								<VisualState Name="Selected" />
+								<VisualState Name="Selected">
+									<Storyboard>
+										<DoubleAnimation Duration="0" Storyboard.TargetName="SelectionBackground" Storyboard.TargetProperty="Opacity" To=".3" />
+									</Storyboard>
+								</VisualState>
 							</VisualStateGroup>
 							<VisualStateGroup Name="CalendarButtonFocusStates">
 								<VisualStateGroup.Transitions>
@@ -2019,13 +2014,18 @@
 								<VisualState Name="BlackoutDay" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Ellipse x:Name="SelectedBackground" Opacity="0">
+						<Ellipse x:Name="SelectedBackground" Opacity="0" Margin="{TemplateBinding Padding}">
+							<Ellipse.Fill>
+								<SolidColorBrush Color="{DynamicResource PrimaryMouseOverColor}" />
+							</Ellipse.Fill>
+						</Ellipse>
+						<Ellipse x:Name="SelectionBackground" Opacity="0" Margin="{TemplateBinding Padding}">
 							<Ellipse.Fill>
 								<SolidColorBrush Color="{DynamicResource PrimaryMouseOverColor}" />
 							</Ellipse.Fill>
 						</Ellipse>
 						<Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" />
-						<Ellipse x:Name="DayButtonFocusVisual" Visibility="Collapsed" IsHitTestVisible="False">
+						<Ellipse x:Name="DayButtonFocusVisual" Visibility="Collapsed" IsHitTestVisible="False" Width="5" Height="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
 							<Ellipse.Fill>
 								<SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
 							</Ellipse.Fill>
@@ -2035,29 +2035,62 @@
 								<SolidColorBrush Color="{DynamicResource RegularTextColor}" />
 							</TextElement.Foreground>
 						</ContentPresenter>
-						<Path x:Name="Blackout" Opacity="0" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="{DynamicResource WindowForegroundColorBrush}" Stretch="Fill" Data="{StaticResource PathBlackout}" />
+						<Line X1="0" Y1="0" X2="{TemplateBinding Width}" Y2="0" x:Name="Blackout" Visibility="Collapsed" Opacity=".4" Margin="8,3,8,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Stroke="{DynamicResource PrimaryTextSolidColorBrush}" StrokeThickness="1.5" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
+						<Trigger Property="IsToday" Value="True">
+							<Setter TargetName="NormalText" Property="TextElement.FontWeight" Value="Bold" />
+							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+							<Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Visible" />
+						</Trigger>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="IsSelected" Value="False" />
 								<Condition Property="IsMouseOver" Value="True" />
+								<Condition Property="IsBlackedOut" Value="False" />
 							</MultiTrigger.Conditions>
 							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
+							<!--<Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Collapsed"/>-->
+							<Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
 						</MultiTrigger>
-						<Trigger Property="IsToday" Value="True">
-							<Setter TargetName="NormalText" Property="TextElement.FontWeight" Value="Bold" />
-							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
-						</Trigger>
-						<Trigger Property="IsSelected" Value="True">
-							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="True" />
+								<Condition Property="IsMouseOver" Value="True" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource RegularTextSolidColorBrush}" />
+							<Setter TargetName="SelectedBackground" Property="Opacity" Value="0" />
+							<Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="True" />
+								<Condition Property="IsMouseOver" Value="False" />
+							</MultiTrigger.Conditions>
 							<Setter TargetName="SelectedBackground" Property="Opacity" Value="1" />
-						</Trigger>
-						<Trigger Property="IsInactive" Value="True">
+							<Setter TargetName="SelectionBackground" Property="Opacity" Value="0" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsMouseOver" Value="True" />
+								<Condition Property="IsInactive" Value="True" />
+								<Condition Property="IsBlackedOut" Value="False" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsMouseOver" Value="False" />
+								<Condition Property="IsInactive" Value="True" />
+								<Condition Property="IsBlackedOut" Value="False" />
+							</MultiTrigger.Conditions>
 							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource BaseSolidColorBrush}" />
-						</Trigger>
+						</MultiTrigger>
 						<Trigger Property="IsBlackedOut" Value="True">
-							<Setter TargetName="Blackout" Property="Opacity" Value=".2" />
+							<Setter TargetName="Blackout" Property="Visibility" Value="Visible" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2070,6 +2103,7 @@
 		<Setter Property="FontSize" Value="12" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="4,10" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="CalendarButton">
@@ -2123,15 +2157,35 @@
 								<VisualState Name="CalendarButtonUnfocused" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
+						<Ellipse x:Name="SelectionBackground" Opacity=".3" Margin="{TemplateBinding Padding}" Visibility="Collapsed">
+							<Ellipse.Fill>
+								<SolidColorBrush Color="{DynamicResource PrimaryMouseOverColor}" />
+							</Ellipse.Fill>
+						</Ellipse>
 						<ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3,20">
 							<TextElement.Foreground>
 								<SolidColorBrush Color="{DynamicResource RegularTextColor}" />
 							</TextElement.Foreground>
 						</ContentPresenter>
+						<Ellipse x:Name="ButtonFocusVisual" IsHitTestVisible="False" Width="5" Height="5" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+							<Ellipse.Fill>
+								<SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
+							</Ellipse.Fill>
+							<Ellipse.Visibility>
+								<MultiBinding Converter="{StaticResource DatePickerToCurrentConverter}">
+									<Binding ElementName="NormalText" Path="Content" />
+									<Binding RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type CalendarButton},AncestorLevel=1}" />
+									<Binding RelativeSource="{RelativeSource FindAncestor,AncestorType={x:Type CalendarButton},AncestorLevel=1}" Path="DataContext" />
+								</MultiBinding>
+							</Ellipse.Visibility>
+						</Ellipse>
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsInactive" Value="True">
 							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource BaseSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="SelectionBackground" Property="Visibility" Value="Visible" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2139,7 +2193,7 @@
 		</Setter>
 	</Style>
 	<ControlTemplate x:Key="PreviousButtonTemplate" TargetType="{x:Type Button}">
-		<Grid Cursor="Hand">
+		<controls:SmallPanel>
 			<VisualStateManager.VisualStateGroups>
 				<VisualStateGroup x:Name="CommonStates">
 					<VisualState x:Name="Normal" />
@@ -2162,10 +2216,10 @@
 					</Path.Fill>
 				</Path>
 			</controls:SmallPanel>
-		</Grid>
+		</controls:SmallPanel>
 	</ControlTemplate>
 	<ControlTemplate x:Key="NextButtonTemplate" TargetType="{x:Type Button}">
-		<controls:SmallPanel Cursor="Hand">
+		<controls:SmallPanel>
 			<VisualStateManager.VisualStateGroups>
 				<VisualStateGroup x:Name="CommonStates">
 					<VisualState x:Name="Normal" />
@@ -2191,7 +2245,7 @@
 		</controls:SmallPanel>
 	</ControlTemplate>
 	<ControlTemplate x:Key="HeaderButtonTemplate" TargetType="{x:Type Button}">
-		<controls:SmallPanel Cursor="Hand">
+		<controls:SmallPanel>
 			<VisualStateManager.VisualStateGroups>
 				<VisualStateGroup x:Name="CommonStates">
 					<VisualState x:Name="Normal" />
@@ -2219,15 +2273,11 @@
 							</StackPanel>
 						</DataTemplate>
 					</ControlTemplate.Resources>
-					<Grid x:Name="PART_Root" Margin="{TemplateBinding Margin}">
+					<controls:SmallPanel x:Name="PART_Root" Margin="{TemplateBinding Margin}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />
-								<VisualState x:Name="Disabled">
-									<Storyboard>
-										<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_DisabledVisual" />
-									</Storyboard>
-								</VisualState>
+								<VisualState x:Name="Disabled" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Border Background="{DynamicResource BackgroundSolidColorBrush}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" CornerRadius="3" SnapsToDevicePixels="True" UseLayoutRounding="True">
@@ -2282,13 +2332,13 @@
 								</Grid>
 							</Grid>
 						</Border>
-					</Grid>
+					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
-						<DataTrigger Binding="{Binding DisplayMode, &#xA;              RelativeSource={RelativeSource FindAncestor, &#xA;              AncestorType={x:Type Calendar}}}" Value="Year">
+						<DataTrigger Binding="{Binding DisplayMode, &#xD;&#xA;              RelativeSource={RelativeSource FindAncestor, &#xD;&#xA;              AncestorType={x:Type Calendar}}}" Value="Year">
 							<Setter Property="Visibility" TargetName="PART_MonthView" Value="Collapsed" />
 							<Setter Property="Visibility" TargetName="PART_YearView" Value="Visible" />
 						</DataTrigger>
-						<DataTrigger Binding="{Binding DisplayMode, &#xA;              RelativeSource={RelativeSource FindAncestor, &#xA;              AncestorType={x:Type Calendar}}}" Value="Decade">
+						<DataTrigger Binding="{Binding DisplayMode, &#xD;&#xA;              RelativeSource={RelativeSource FindAncestor, &#xD;&#xA;              AncestorType={x:Type Calendar}}}" Value="Decade">
 							<Setter Property="Visibility" TargetName="PART_MonthView" Value="Collapsed" />
 							<Setter Property="Visibility" TargetName="PART_YearView" Value="Visible" />
 						</DataTrigger>
@@ -2302,11 +2352,13 @@
 		<Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
 		<Setter Property="CalendarItemStyle" Value="{StaticResource CalendarItemStyle}" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Calendar}">
-					<StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
+					<StackPanel x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
 						<CalendarItem x:Name="PART_CalendarItem" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Style="{TemplateBinding CalendarItemStyle}" />
 					</StackPanel>
 				</ControlTemplate>
@@ -2322,7 +2374,7 @@
 							<ColumnDefinition Width="30" />
 							<ColumnDefinition />
 						</Grid.ColumnDefinitions>
-						<Border x:Name="Border" Grid.ColumnSpan="2" BorderThickness="1" Background="{DynamicResource BackgroundSolidColorBrush}" />
+						<Border x:Name="Border" Grid.ColumnSpan="2" Background="{DynamicResource BackgroundSolidColorBrush}" />
 						<Grid FlowDirection="LeftToRight" HorizontalAlignment="Center" Height="18" VerticalAlignment="Center" Width="19">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="20*" />
@@ -2370,10 +2422,10 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="1" Opacity="1">
-							<Grid x:Name="WatermarkContent" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{x:Null}">
-								<ContentControl x:Name="PART_Watermark" Opacity="0" Focusable="False" IsHitTestVisible="True" Padding="2" />
-								<ScrollViewer x:Name="PART_ContentHost" Margin="0" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-							</Grid>
+							<controls:SmallPanel x:Name="WatermarkContent">
+								<ContentControl x:Name="PART_Watermark" Opacity="0" Padding="2" Background="Transparent" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="{DynamicResource RegularTextSolidColorBrush}" IsHitTestVisible="False" helpers:DatePickerHelper.TextTrimming="WordEllipsis" />
+								<ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+							</controls:SmallPanel>
 						</Border>
 					</controls:SmallPanel>
 				</ControlTemplate>
@@ -2453,16 +2505,16 @@
 											<RowDefinition Height="*" />
 											<RowDefinition Height="Auto" />
 										</Grid.RowDefinitions>
-										<Button Focusable="False" Command="{x:Static DataGrid.SelectAllCommand}" Style="{StaticResource DefaultDataGridSelectAllButtonStyle}" Visibility="{Binding HeadersVisibility, &#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.All}, &#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource DoubleMinConverter}}" />
-										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, &#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.Column}, &#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+										<Button Focusable="False" Command="{x:Static DataGrid.SelectAllCommand}" Style="{StaticResource DefaultDataGridSelectAllButtonStyle}" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.All}, &#xD;&#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource DoubleMinConverter}}" />
+										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.Column}, &#xD;&#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 										<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2" Grid.Row="1" CanContentScroll="{TemplateBinding CanContentScroll}" />
-										<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, &#xA;                      RelativeSource={RelativeSource TemplatedParent}}" />
+										<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, &#xD;&#xA;                      RelativeSource={RelativeSource TemplatedParent}}" />
 										<Grid Grid.Column="1" Grid.Row="2">
 											<Grid.ColumnDefinitions>
-												<ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, &#xA;                          RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+												<ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, &#xD;&#xA;                          RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 												<ColumnDefinition Width="*" />
 											</Grid.ColumnDefinitions>
-											<ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Maximum="{TemplateBinding ScrollableWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, &#xA;                        RelativeSource={RelativeSource TemplatedParent}}" />
+											<ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Maximum="{TemplateBinding ScrollableWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, &#xD;&#xA;                        RelativeSource={RelativeSource TemplatedParent}}" />
 										</Grid>
 									</Grid>
 								</ControlTemplate>
@@ -2486,7 +2538,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridCell}">
-					<Border x:Name="PART_Border" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Background="{x:Null}" SnapsToDevicePixels="True">
+					<Border x:Name="PART_Border" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" SnapsToDevicePixels="True">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="FocusStates">
 								<VisualState x:Name="Unfocused" />
@@ -2511,6 +2563,10 @@
 				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
 			</MultiTrigger>
+			<Trigger Property="IsSelected" Value="True">
+				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
+			</Trigger>
 		</Style.Triggers>
 	</Style>
 	<Style x:Key="DefaultDataGridRow" TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource ControlBasicStyle}">
@@ -2570,8 +2626,8 @@
 								<RowDefinition Height="Auto" />
 							</SelectiveScrollingGrid.RowDefinitions>
 							<DataGridCellsPresenter Grid.Column="1" ItemsPanel="{TemplateBinding ItemsPanel}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-							<DataGridDetailsPresenter Grid.Column="1" Grid.Row="1" Visibility="{TemplateBinding DetailsVisibility}" SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, &#xA;                ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical},&#xA;                Converter={x:Static DataGrid.RowDetailsScrollingConverter}, &#xA;                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-							<DataGridRowHeader Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Visibility="{Binding HeadersVisibility, &#xA;                ConverterParameter={x:Static DataGridHeadersVisibility.Row}, &#xA;                Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xA;                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+							<DataGridDetailsPresenter Grid.Column="1" Grid.Row="1" Visibility="{TemplateBinding DetailsVisibility}" SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, &#xD;&#xA;                ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical},&#xD;&#xA;                Converter={x:Static DataGrid.RowDetailsScrollingConverter}, &#xD;&#xA;                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+							<DataGridRowHeader Grid.RowSpan="2" SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                ConverterParameter={x:Static DataGridHeadersVisibility.Row}, &#xD;&#xA;                Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 						</SelectiveScrollingGrid>
 					</Border>
 				</ControlTemplate>
@@ -2623,7 +2679,7 @@
 						<Border x:Name="rowHeaderBorder" Background="{TemplateBinding Background}">
 							<StackPanel Orientation="Horizontal">
 								<ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.FontWeight="{TemplateBinding FontWeight}" />
-								<Control SnapsToDevicePixels="false" Template="{Binding ValidationErrorTemplate, &#xA;                  RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" Visibility="{Binding (Validation.HasError), &#xA;                  Converter={StaticResource bool2VisibilityConverter}, &#xA;                  RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
+								<Control SnapsToDevicePixels="false" Template="{Binding ValidationErrorTemplate, &#xD;&#xA;                  RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" Visibility="{Binding (Validation.HasError), &#xD;&#xA;                  Converter={StaticResource bool2VisibilityConverter}, &#xD;&#xA;                  RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
 							</StackPanel>
 						</Border>
 						<Thumb x:Name="PART_TopHeaderGripper" Style="{StaticResource RowHeaderGripperStyle}" VerticalAlignment="Top" />
@@ -2920,18 +2976,14 @@
 				<ControlTemplate TargetType="{x:Type PasswordBox}">
 					<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
 						<controls:SmallPanel Margin="{TemplateBinding Padding}">
-							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
+							<TextBlock x:Name="PART_Watermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="{TemplateBinding Padding}" TextTrimming="CharacterEllipsis" Padding="1,0" Visibility="Collapsed" />
 							<ScrollViewer x:Name="PART_ContentHost" />
 						</controls:SmallPanel>
 					</Border>
 					<ControlTemplate.Triggers>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="helpers:PasswordBoxHelper.PasswordLength" Value="0" />
-								<Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
-							</MultiTrigger.Conditions>
-							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
-						</MultiTrigger>
+						<Trigger Property="helpers:PasswordBoxHelper.PasswordLength" Value="0">
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
 							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
@@ -3233,10 +3285,11 @@
 		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
 		<Setter Property="MinWidth" Value="120" />
 		<Setter Property="MinHeight" Value="95" />
+		<Setter Property="BorderThickness" Value="0,1,0,0" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListBox}">
-					<Border Name="Border" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+					<Border Name="Border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
 						<ScrollViewer Focusable="False">
 							<VirtualizingStackPanel IsItemsHost="True" />
 						</ScrollViewer>
@@ -6442,6 +6495,7 @@
 						<Border Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
 						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Focusable="False" ClickMode="Release" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
 						<TextBox Name="PART_EditableTextBox" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Foreground="{DynamicResource PrimaryTextSolidColorBrush}" Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Background="{TemplateBinding Background}" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="True" Style="{x:Null}" />
+						<TextBlock x:Name="PART_Watermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="{TemplateBinding Padding}" Background="Transparent" TextTrimming="CharacterEllipsis" IsHitTestVisible="False" Padding="1,0" Visibility="Collapsed" />
 						<Popup x:Name="PART_Popup" AllowsTransparency="True" PlacementTarget="{Binding ElementName=PART_ToggleButton}" IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Placement="Bottom" StaysOpen="False">
 							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<controls:SmallPanel.RenderTransform>
@@ -6484,6 +6538,12 @@
 						<Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
 							<Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />
 						</Trigger>
+						<Trigger Property="Text" Value="">
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</Trigger>
+						<Trigger Property="Text" Value="{x:Null}">
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -6504,25 +6564,109 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style TargetType="{x:Type controls:MultiSelectionSearchComboBox}">
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+		<Setter Property="MinWidth" Value="120" />
+		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
+		<Setter Property="Height" Value="{StaticResource MinHeight}" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
+		<Setter Property="Padding" Value="14.5,3,30,3" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MultiSelectionSearchComboBox}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="OpenStoryboard">
+							<DoubleAnimation Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
+						</Storyboard>
+						<Storyboard x:Key="CloseStoryboard">
+							<DoubleAnimation Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="0" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<controls:SmallPanel SnapsToDevicePixels="True">
+						<Border Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Focusable="False" ClickMode="Release" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+						<TextBox Name="PART_EditableTextBox" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Foreground="{DynamicResource PrimaryTextSolidColorBrush}" Text="{Binding Text,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Background="{TemplateBinding Background}" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="True" Style="{x:Null}" />
+						<TextBlock x:Name="PART_Watermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="{TemplateBinding Padding}" Background="Transparent" TextTrimming="CharacterEllipsis" IsHitTestVisible="False" Padding="1,0" Visibility="Collapsed" />
+						<Popup x:Name="PART_Popup" AllowsTransparency="True" PlacementTarget="{Binding ElementName=PART_ToggleButton}" IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Placement="Bottom" StaysOpen="False">
+							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
+								<controls:SmallPanel.RenderTransform>
+									<ScaleTransform ScaleY="0" />
+								</controls:SmallPanel.RenderTransform>
+								<Border Name="PART_DropDownBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" UseLayoutRounding="True" Effect="{StaticResource PopupShadowDepth}" />
+								<Grid ClipToBounds="False" Margin="0,8">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="Auto" />
+										<RowDefinition Height="Auto" />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<TextBox x:Name="PART_TextBox" Margin="6,0" helpers:ElementHelper.Watermark="{Binding SearchWatermark,RelativeSource={RelativeSource TemplatedParent}}" />
+									<CheckBox x:Name="PART_SelectAll" Grid.Row="1" Margin="5,4" Visibility="{TemplateBinding IsSelectAllActive,Converter={StaticResource bool2VisibilityConverter}}" Content="{TemplateBinding SelectAllContent}" />
+									<controls:MultiSelectListBox x:Name="PART_Selector" Grid.Row="2" BorderThickness="1,0,1,0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" SelectedValuePath="{TemplateBinding SelectedValuePath}" MinHeight="{TemplateBinding MinHeight}" ItemsSource="{TemplateBinding ItemsSource}" SelectionMode="Multiple" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" ItemContainerStyle="{StaticResource DefaultMultiSelectComboBoxItem}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" />
+									<controls:MultiSelectListBox x:Name="PART_SearchSelector" Grid.Row="2" BorderThickness="1,0,1,0" BorderBrush="{TemplateBinding BorderBrush}" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" SelectedValuePath="{TemplateBinding SelectedValuePath}" MinHeight="{TemplateBinding MinHeight}" ItemsSource="{TemplateBinding ItemsSourceSearch}" SelectionMode="Multiple" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" ItemContainerStyle="{StaticResource DefaultMultiSelectComboBoxItem}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
+								</Grid>
+							</controls:SmallPanel>
+						</Popup>
+					</controls:SmallPanel>
+					<ControlTemplate.Triggers>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardOpenStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="False">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardCloseStoryboard" Storyboard="{StaticResource CloseStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardCloseStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+						</Trigger>
+						<Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
+							<Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />
+						</Trigger>
+						<Trigger Property="Text" Value="">
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</Trigger>
+						<Trigger Property="Text" Value="{x:Null}">
+							<Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<Style x:Key="DatePickerCalendarStyle" TargetType="{x:Type Calendar}" BasedOn="{StaticResource {x:Type Calendar}}" />
 	<Style x:Key="DefaultDatePicker" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="IsTodayHighlighted" Value="True" />
 		<Setter Property="SelectedDateFormat" Value="Short" />
-		<Setter Property="Padding" Value="2" />
+		<Setter Property="Padding" Value="34,2,2,2" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="MinWidth" Value="140" />
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="CalendarStyle" Value="{DynamicResource DatePickerCalendarStyle}" />
+		<!--<Setter Property="helpers:DatePickerHelper.IsMonthYear" Value="True"/>-->
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DatePicker}">
-					<Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="PART_Border" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource BackgroundSolidColorBrush}">
+					<Border BorderThickness="{TemplateBinding BorderThickness}" Margin="{TemplateBinding Margin}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="PART_Border" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource BackgroundSolidColorBrush}">
 						<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-							<Button x:Name="PART_Button" Foreground="{TemplateBinding Foreground}" Focusable="False" Margin="3,0,3,0" Style="{StaticResource DropDownButtonStyle}" VerticalAlignment="Center" />
-							<DatePickerTextBox x:Name="PART_TextBox" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Focusable="True" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="34,2,2,2" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" Background="Transparent" />
-							<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" AllowsTransparency="True" Focusable="False" HorizontalOffset="-50" Placement="Bottom" StaysOpen="False" VerticalOffset="10" />
+							<Button x:Name="PART_Button" Foreground="{TemplateBinding Foreground}" Focusable="False" Margin="3,0,3,0" Style="{StaticResource DropDownButtonStyle}" />
+							<DatePickerTextBox x:Name="PART_TextBox" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Focusable="True" Width="Auto" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" Background="Transparent" />
+							<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" AllowsTransparency="True" Focusable="False" HorizontalOffset="-50" Placement="Bottom" StaysOpen="False" VerticalOffset="2" />
 						</Grid>
 					</Border>
 					<ControlTemplate.Triggers>

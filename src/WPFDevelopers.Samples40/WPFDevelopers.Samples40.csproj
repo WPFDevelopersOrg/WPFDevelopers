@@ -32,8 +32,11 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview5" />
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview6" />
 	</ItemGroup>
+	<!--<ItemGroup>
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview5" />
+	</ItemGroup>-->
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico">
 			<Link>WPFDevelopers.ico</Link>
@@ -174,9 +177,6 @@
 			<Link>Resources\Audio\HelloWPFDevelopes_zh.mp3</Link>
 		</Resource>
 	</ItemGroup>
-	<!--<ItemGroup>
-		<PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview4" />
-	</ItemGroup>-->
 	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
 	</ItemGroup>
