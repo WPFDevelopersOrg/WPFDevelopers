@@ -69,30 +69,20 @@ Install-Package WPFDevelopers
 
 
 ###  第二步：  App.xaml中增加节点;
-
-### Nuget 版本 >= 1.0.8-preview 
-
+``` XML
+xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+```
 ``` XML
 <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
-                    <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
-                    <ws:Resources Theme="Light"/>
+                    <!--需要注意 wd:Resources 必须在配色主题后，Theme="Dark" 为黑色皮肤-->
+                    <wd:Resources Theme="Light"/>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-```
-### Nuget 版本 < 1.0.8-preview 
-``` XML
- <Application.Resources>
-    <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Generic.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-</Application.Resources>  
 ```
 
 ###  第三步：添加命名空间;
