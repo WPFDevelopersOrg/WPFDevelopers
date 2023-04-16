@@ -126,10 +126,20 @@
                     </WrapPanel>
                     <TextBlock Text="MessageBox" FontSize="20" Margin="0,20,0,0"/>
                     <WrapPanel Margin="0,10">
-                        <Button x:Name="btnInformation" Content="Info" Click="btnInformation_Click"/>
-                        <Button x:Name="btnWarning" Content="Warning" Margin="10,0" Click="btnWarning_Click"/>
-                        <Button x:Name="btnError" Content="Error" Click="btnError_Click"/>
-                        <Button x:Name="btnQuestion" Content="Question" Margin="10,0" Click="btnQuestion_Click"/>
+                        <Button x:Name="btnInformation" Content="Info" 
+                                Style="{StaticResource SuccessPrimaryButton}" 
+                                Click="btnInformation_Click"/>
+                        <Button x:Name="btnWarning" Content="Warning"
+                                Style="{StaticResource WarningPrimaryButton}"
+                                Margin="10,0" Click="btnWarning_Click"/>
+                        <Button x:Name="btnError" Content="Error"
+                                Click="btnError_Click"
+                                Style="{StaticResource DangerPrimaryButton}"/>
+                        <Button x:Name="btnQuestion" 
+                                Content="Question" 
+                                Style="{StaticResource PrimaryButton}"
+                                Margin="10,0" 
+                                Click="btnQuestion_Click"/>
                     </WrapPanel>
                     <TextBlock Text="RadioButton" FontSize="20" Margin="0,20,0,0"/>
                     <WrapPanel Margin="0,10">
