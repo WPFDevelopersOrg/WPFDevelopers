@@ -174,9 +174,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
                     <Border x:Name="PART_Border"
-                BorderBrush="{x:Null}"
+                BorderBrush="Transparent"
                 BorderThickness="{TemplateBinding BorderThickness}" 
-                Background="{x:Null}"
+                Background="Transparent"
                 SnapsToDevicePixels="True">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="FocusStates">
@@ -204,7 +204,10 @@
                 <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
                 <Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
             </MultiTrigger>
-
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -215,7 +218,6 @@
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
-        
         <Setter Property="ValidationErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>

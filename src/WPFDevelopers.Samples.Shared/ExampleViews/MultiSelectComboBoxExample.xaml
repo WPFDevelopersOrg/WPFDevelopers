@@ -7,32 +7,51 @@
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              xmlns:model="clr-namespace:WPFDevelopers.Sample.Models"
+             xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <model:HospitalList x:Key="myHospitalList"/>
     </UserControl.Resources>
     <controls:CodeViewer>
-        <UniformGrid Columns="2">
-            <wpfdev:MultiSelectComboBox
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Content="获取选中" 
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Click="Button_Click"
+                    Margin="0,20,0,0"
+                    Style="{StaticResource WarningPrimaryButton}"/>
+            <UniformGrid Columns="2" Rows="2" Grid.Row="1">
+                <wpfdev:MultiSelectComboBox
                 VerticalContentAlignment="Center" 
                 IsSelectAllActive="True"
                 HorizontalAlignment="Center"
                 Delimiter="^" Width="200">
-                <wpfdev:MultiSelectComboBoxItem>Option 1</wpfdev:MultiSelectComboBoxItem>
-                <wpfdev:MultiSelectComboBoxItem>Option 2</wpfdev:MultiSelectComboBoxItem>
-                <wpfdev:MultiSelectComboBoxItem>Option 3</wpfdev:MultiSelectComboBoxItem>
-                <wpfdev:MultiSelectComboBoxItem>Option 4</wpfdev:MultiSelectComboBoxItem>
-                <wpfdev:MultiSelectComboBoxItem>Option 5</wpfdev:MultiSelectComboBoxItem>
-            </wpfdev:MultiSelectComboBox>
-            <wpfdev:MultiSelectComboBox VerticalContentAlignment="Center" 
-                                         HorizontalAlignment="Center"
-                             ItemsSource="{Binding Source={StaticResource myHospitalList}}"
-                             DisplayMemberPath="DoctorName"
-                             SelectedValuePath="ID" Width="200">
-
-            </wpfdev:MultiSelectComboBox>
-        </UniformGrid>
+                    <wpfdev:MultiSelectComboBoxItem>Option 1</wpfdev:MultiSelectComboBoxItem>
+                    <wpfdev:MultiSelectComboBoxItem>Option 2</wpfdev:MultiSelectComboBoxItem>
+                    <wpfdev:MultiSelectComboBoxItem>Option 3</wpfdev:MultiSelectComboBoxItem>
+                    <wpfdev:MultiSelectComboBoxItem>Option 4</wpfdev:MultiSelectComboBoxItem>
+                    <wpfdev:MultiSelectComboBoxItem>Option 5</wpfdev:MultiSelectComboBoxItem>
+                </wpfdev:MultiSelectComboBox>
+                <wpfdev:MultiSelectComboBox Name="MyMultiSelectComboBox"
+                    VerticalContentAlignment="Center" 
+                                        HorizontalAlignment="Center"
+                                        ItemsSource="{Binding Drawings}" 
+                                        DisplayMemberPath="Number"
+                                        SelectedValuePath="Index"
+                                        Width="200"
+                                        IsSelectAllActive="True"
+                                        wpfdev:ElementHelper.Watermark="MultiSelectComboBox">
+                    <wpfdev:MultiSelectComboBox.DataContext>
+                        <vm:DrawingExampleVM/>
+                    </wpfdev:MultiSelectComboBox.DataContext>
+                </wpfdev:MultiSelectComboBox>
+            </UniformGrid>
+        </Grid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 
                 CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectComboBoxExample.xaml" 

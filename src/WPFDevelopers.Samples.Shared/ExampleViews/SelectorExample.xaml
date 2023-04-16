@@ -18,8 +18,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="0,4"
                     HorizontalAlignment="Center">
-            <TextBox wd:ElementHelper.IsWatermark="True"
-                     wd:ElementHelper.Watermark="输入数字0~199"
+            <TextBox wd:ElementHelper.Watermark="输入数字0~199"
                      x:Name="MyTextBox"/>
             <Button 
                 Style="{StaticResource DangerPrimaryButton}"

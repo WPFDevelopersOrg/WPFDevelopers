@@ -219,6 +219,10 @@
       <SubType>Code</SubType>
       <DependentUpon>MultiSelectComboBoxExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MultiSelectSearchComboBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NumberCard\NumberCardControl.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>NumberCardControl.xaml</DependentUpon>
@@ -592,6 +596,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MultiSelectComboBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MultiSelectSearchComboBoxExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

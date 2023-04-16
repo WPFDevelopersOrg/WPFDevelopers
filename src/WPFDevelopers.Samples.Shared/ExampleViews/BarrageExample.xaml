@@ -26,7 +26,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBox wpfdev:ElementHelper.IsWatermark="True"
+                <TextBox 
                      x:Name="tbBarrage"
                      wpfdev:ElementHelper.Watermark="请弹幕内容"/>
                 <Button Grid.Column="1" Style="{StaticResource PrimaryButton}"

@@ -5,70 +5,25 @@
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="MultiSelectionComboBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-	<Style x:Key="DefaultMultiSelectComboBoxItem" TargetType="{x:Type controls:MultiSelectComboBoxItem}">
-		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-		<Setter Property="SnapsToDevicePixels" Value="True"/>
-		<Setter Property="Background" Value="Transparent"/>
-		<Setter Property="BorderBrush" Value="Transparent"/>
-		<Setter Property="Foreground" Value="{DynamicResource RegularTextSolidColorBrush}"/>
-		<Setter Property="BorderThickness" Value="0"/>
-		<Setter Property="Height" Value="34" />
-		<Setter Property="Margin" Value="1,0" />
-        <Setter Property="Padding" Value="6,0"/>
-        <Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
-
-					<Border x:Name="PART_Border"
-							BorderBrush="{TemplateBinding BorderBrush}"
-							BorderThickness="{TemplateBinding BorderThickness}"
-							Background="{TemplateBinding Background}"
-							SnapsToDevicePixels="true"
-							Padding="{TemplateBinding Padding}">
-						<CheckBox Foreground="{TemplateBinding Foreground}"
-								  HorizontalAlignment="Stretch"
-								  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-								  MinHeight="{TemplateBinding MinHeight}"
-								  Padding="{TemplateBinding Padding}"
-								  IsChecked="{Binding IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}">
-
-							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-								  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-								  x:Name="PART_ContentPresenter"
-								  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-								  TextElement.Foreground="{TemplateBinding Foreground}"/>
-						</CheckBox>
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsMouseOver" Value="True">
-							<Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-
-	<Style TargetType="{x:Type controls:MultiSelectComboBox}">
+    
+    <Style TargetType="{x:Type controls:MultiSelectionSearchComboBox}">
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
 		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-		<Setter Property="SelectionMode" Value="Multiple"/>
 		<Setter Property="MinWidth" Value="120" />
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
         <Setter Property="Height" Value="{StaticResource MinHeight}" />
-		<Setter Property="ItemContainerStyle" Value="{StaticResource DefaultMultiSelectComboBoxItem}"/>
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
 		<Setter Property="Padding" Value="14.5,3,30,3"/>
-		<Setter Property="Template">
+        <Setter Property="Template">
 			<Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:MultiSelectComboBox}">
+                <ControlTemplate TargetType="{x:Type controls:MultiSelectionSearchComboBox}">
 					<ControlTemplate.Resources>
 						<Storyboard x:Key="OpenStoryboard">
 							<DoubleAnimation Storyboard.TargetName="PART_DropDown"
@@ -146,19 +101,49 @@
 									  Margin="0,8" >
 									<Grid.RowDefinitions>
 										<RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
 										<RowDefinition/>
 									</Grid.RowDefinitions>
-									<controls:MultiSelectComboBoxItem x:Name="PART_CheckBoxAll"
-																			 Visibility="{TemplateBinding IsSelectAllActive,Converter={StaticResource bool2VisibilityConverter}}"
-																			 Style="{TemplateBinding ItemContainerStyle}"
-																			 Content="{TemplateBinding SelectAllContent}"/>
-									<ScrollViewer x:Name="DropDownScrollViewer" Grid.Row="1"
-													  ScrollViewer.VerticalScrollBarVisibility="Auto">
-										<ItemsPresenter x:Name="ItemsPresenter"
-															KeyboardNavigation.DirectionalNavigation="Contained"
-															SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-									</ScrollViewer>
-								</Grid>
+                                    <TextBox x:Name="PART_TextBox"
+                                             Margin="6,0"
+                                             helpers:ElementHelper.Watermark="{Binding SearchWatermark,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <CheckBox x:Name="PART_SelectAll"
+                                              Grid.Row="1"
+                                              Margin="5,4"
+                                              Visibility="{TemplateBinding IsSelectAllActive,Converter={StaticResource bool2VisibilityConverter}}"
+                                              Content="{TemplateBinding SelectAllContent}"/>
+                                    <controls:MultiSelectListBox x:Name="PART_Selector"
+                                             Grid.Row="2"
+                                             BorderThickness="1,0,1,0"
+                                             DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                             SelectedValuePath="{TemplateBinding SelectedValuePath}"
+                                             MinHeight="{TemplateBinding MinHeight}"
+											 ItemsSource="{TemplateBinding ItemsSource}"
+                                             SelectionMode="Multiple"
+                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                             ItemContainerStyle="{StaticResource DefaultMultiSelectComboBoxItem}"
+                                             ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}"
+                                             ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}"
+                                             BorderBrush="{TemplateBinding BorderBrush}">
+                                    </controls:MultiSelectListBox>
+                                    <controls:MultiSelectListBox x:Name="PART_SearchSelector"
+                                             Grid.Row="2"
+                                             BorderThickness="1,0,1,0"
+                                             BorderBrush="{TemplateBinding BorderBrush}"
+                                             DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                             SelectedValuePath="{TemplateBinding SelectedValuePath}"
+                                             MinHeight="{TemplateBinding MinHeight}"
+											 ItemsSource="{TemplateBinding ItemsSourceSearch}"
+                                             SelectionMode="Multiple"
+                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                             ItemContainerStyle="{StaticResource DefaultMultiSelectComboBoxItem}"
+                                             ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}"
+                                             ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}"
+                                             Visibility="Collapsed">
+                                    </controls:MultiSelectListBox>
+                                </Grid>
 							</controls:SmallPanel>
 						</Popup>
 					</controls:SmallPanel>
@@ -191,7 +176,7 @@
                         <Trigger Property="Text" Value="{x:Null}">
                             <Setter Property="Visibility" TargetName="PART_Watermark" Value="Visible"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>

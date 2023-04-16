@@ -10,6 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Assists\ThincknessAssert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\DatePickerToCurrentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DatePickerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollIntoView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AnimationAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AudioWindow.cs" />
@@ -460,6 +464,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\MultiSelectComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\MultiSelectSearchComboBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
