@@ -7,30 +7,6 @@ using System.Windows.Data;
 
 namespace WPFDevelopers.Converts
 {
-    //public class DatePickerToCurrentConverter : IValueConverter
-    //{
-
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        if (value == null)
-    //            return Visibility.Collapsed;
-    //        if (value is CalendarButton calendar)
-    //        {
-    //            var current = calendar.DataContext;
-
-    //        }
-
-    //        var time = DateTime.Now.Date.Month;
-    //        return false;
-    //    }
-
-
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
     public class DatePickerToCurrentConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -61,7 +37,6 @@ namespace WPFDevelopers.Converts
             return Visibility.Collapsed;
         }
         
-
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
