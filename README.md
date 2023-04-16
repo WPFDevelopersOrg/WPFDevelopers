@@ -61,9 +61,9 @@ If you think our open source software is helpful to you, please scan the QR code
 Install-Package WPFDevelopers
 ```
 ###  Step 2: Add nodes to App.xaml;
-
-### Nuget Version >= 1.0.8-preview 
-
+``` XML
+xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+```
 ``` XML
 <Application.Resources>
         <ResourceDictionary>
@@ -76,17 +76,7 @@ Install-Package WPFDevelopers
         </ResourceDictionary>
     </Application.Resources>
 ```
-### Nuget Version < 1.0.8-preview 
 
-``` XML
-      <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Generic.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>  
-```
 ###  Step 3: Add the namespace;
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
