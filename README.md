@@ -81,6 +81,11 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 ----------
+### MultiSelectionSearchComboBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectionSearchComboBox.gif"/>   
+
+----------
 ### ScrollIntoView.IsPosition
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollIntoViewPosition.gif"/>   
