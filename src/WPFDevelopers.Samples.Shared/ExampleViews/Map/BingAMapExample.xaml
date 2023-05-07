@@ -28,13 +28,13 @@
         <Storyboard x:Key="AnimateRound" RepeatBehavior="Forever">
             <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="Scale"
                              Duration="0:0:01" To="2" 
-                             EasingFunction="{StaticResource SineEaseOut}" />
+                             EasingFunction="{StaticResource WD.SineEaseOut}" />
             <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="Scale"
                              Duration="0:0:01" To="2" 
-                             EasingFunction="{StaticResource SineEaseOut}" />
+                             EasingFunction="{StaticResource WD.SineEaseOut}" />
             <DoubleAnimation Storyboard.TargetProperty="Opacity"  
                              Duration="0:0:01" To="0" 
-                             EasingFunction="{StaticResource SineEaseOut}" />
+                             EasingFunction="{StaticResource WD.SineEaseOut}" />
         </Storyboard>
         <Style x:Key="alarmStyle" TargetType="map:Pushpin">
             <Setter Property="PositionOrigin" Value="Center"/>
@@ -65,7 +65,7 @@
                                      VerticalAlignment="Top" 
                                      HorizontalAlignment="Center"
                                      Margin="20,0,0,0">
-                                <Path Data="{StaticResource PathFlag}" Fill="Orange"/>
+                                <Path Data="{StaticResource WD.FlagGeometry}" Fill="Orange"/>
                             </Viewbox>
                         </Grid>
                     </ControlTemplate>
@@ -157,7 +157,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <Button Content="物资轨迹" Click="BtnCar_Click" Grid.Row="2" Height="40" Style="{StaticResource PrimaryButton}"/>
+                <Button Content="物资轨迹" Click="BtnCar_Click" Grid.Row="2" Height="40" Style="{StaticResource WD.PrimaryButton}"/>
             </Grid>
         </DockPanel>
         </Grid>

@@ -10,7 +10,7 @@
     <controls:CodeViewer>
         <wpfdev:StreamerLoading>
             <wpfdev:StreamerLoading.Background>
-                <SolidColorBrush Color="{DynamicResource PrimaryNormalColor}"/>
+                <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}"/>
             </wpfdev:StreamerLoading.Background>
         </wpfdev:StreamerLoading>
         <controls:CodeViewer.SourceCodes>

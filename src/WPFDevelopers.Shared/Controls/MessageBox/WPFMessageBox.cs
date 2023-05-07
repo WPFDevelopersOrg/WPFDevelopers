@@ -158,20 +158,20 @@ namespace WPFDevelopers.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = (Geometry) Application.Current.TryFindResource("PathWarning");
-                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("WarningSolidColorBrush");
+                    _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
+                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("WD.WarningSolidColorBrush");
                     break;
                 case MessageBoxImage.Error:
-                    _geometry = (Geometry) Application.Current.TryFindResource("PathError");
-                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("DangerSolidColorBrush");
+                    _geometry = (Geometry) Application.Current.TryFindResource("WD.ErrorGeometry");
+                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("WD.DangerSolidColorBrush");
                     break;
                 case MessageBoxImage.Information:
-                    _geometry = (Geometry) Application.Current.TryFindResource("PathWarning");
-                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("SuccessSolidColorBrush");
+                    _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
+                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("WD.SuccessSolidColorBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = (Geometry) Application.Current.TryFindResource("PathQuestion");
-                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("NormalSolidColorBrush");
+                    _geometry = (Geometry) Application.Current.TryFindResource("WD.QuestionGeometry");
+                    _solidColorBrush = (SolidColorBrush) Application.Current.TryFindResource("WD.NormalSolidColorBrush");
                     break;
             }
         }

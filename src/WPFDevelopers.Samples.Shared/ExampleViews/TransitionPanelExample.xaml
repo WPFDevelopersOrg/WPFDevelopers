@@ -15,7 +15,7 @@
                     <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/0.jpg"/>
                 </Canvas.Background>
             </Canvas>
-            <Button x:Name="btnContent" Content="下一步" Click="Button_Click" Style="{StaticResource PrimaryButton}" Width="80"/>
+            <Button x:Name="btnContent" Content="下一步" Click="Button_Click" Style="{StaticResource WD.PrimaryButton}" Width="80"/>
         </StackPanel>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 

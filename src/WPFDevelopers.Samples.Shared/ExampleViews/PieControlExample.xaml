@@ -18,7 +18,7 @@
             <wpfdev:PieControl PieSegmentModels="{Binding PieSegmentModels,RelativeSource={RelativeSource AncestorType=local:PieControlExample}}" ArcThickness="0.65"/>
         </WrapPanel>
         <Slider Maximum="0.9" Minimum="0.1" x:Name="PRAT_Slider" Margin="10" Width="200"/>
-        <Button Content="更新" Click="Button_Click" VerticalAlignment="Bottom" Width="200" Style="{StaticResource PrimaryButton}"/>
+        <Button Content="更新" Click="Button_Click" VerticalAlignment="Bottom" Width="200" Style="{StaticResource WD.PrimaryButton}"/>
     </StackPanel>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 

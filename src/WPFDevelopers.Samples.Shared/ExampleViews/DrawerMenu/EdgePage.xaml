@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.DrawerMenu"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EdgePage"  Background="{DynamicResource PrimaryPressedSolidColorBrush}">
+      Title="EdgePage"  Background="{DynamicResource WD.PrimaryPressedSolidColorBrush}">
 
     <Grid>
         <StackPanel VerticalAlignment="Center"
@@ -18,7 +18,7 @@
                    TextAlignment="Center"
                    Foreground="White"
                    Text="即将跳转至Edge浏览器"
-                   FontSize="{StaticResource TitleFontSize}"
+                   FontSize="{StaticResource WD.TitleFontSize}"
                    Padding="0,10">
             </TextBlock>
         </StackPanel>

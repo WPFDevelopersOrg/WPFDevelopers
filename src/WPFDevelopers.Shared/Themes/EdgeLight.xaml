@@ -1,78 +1,97 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <Style TargetType="{x:Type controls:EdgeLight}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="20"/>
+    <Style
+        x:Key="WD.EdgeLight"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:EdgeLight}">
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Padding" Value="20" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:EdgeLight}">
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="EdgeLightStoryboard">
-                            <DoubleAnimation Duration="00:00:0.5"
-                                             To="1"
-                                             Storyboard.TargetName="PART_Top"
-                                             Storyboard.TargetProperty="ScaleX"/>
-                            <DoubleAnimation Duration="00:00:0.5"
-                                             BeginTime="00:00:0.5"
-                                             To="1"
-                                             Storyboard.TargetName="PART_Right"
-                                             Storyboard.TargetProperty="ScaleY"/>
-                            <DoubleAnimation Duration="00:00:.5"
-                                             BeginTime="00:00:01"
-                                             To="1"
-                                             Storyboard.TargetName="PART_Bottom"
-                                             Storyboard.TargetProperty="ScaleX"/>
-                            <DoubleAnimation Duration="00:00:.5"
-                                             BeginTime="00:00:01.5"
-                                             To="1"
-                                             Storyboard.TargetName="PART_Left"
-                                             Storyboard.TargetProperty="ScaleY"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="PART_Top"
+                                Storyboard.TargetProperty="ScaleX"
+                                To="1"
+                                Duration="00:00:0.5" />
+                            <DoubleAnimation
+                                BeginTime="00:00:0.5"
+                                Storyboard.TargetName="PART_Right"
+                                Storyboard.TargetProperty="ScaleY"
+                                To="1"
+                                Duration="00:00:0.5" />
+                            <DoubleAnimation
+                                BeginTime="00:00:01"
+                                Storyboard.TargetName="PART_Bottom"
+                                Storyboard.TargetProperty="ScaleX"
+                                To="1"
+                                Duration="00:00:.5" />
+                            <DoubleAnimation
+                                BeginTime="00:00:01.5"
+                                Storyboard.TargetName="PART_Left"
+                                Storyboard.TargetProperty="ScaleY"
+                                To="1"
+                                Duration="00:00:.5" />
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <controls:SmallPanel>
                         <DockPanel LastChildFill="False">
-                            <Rectangle DockPanel.Dock="Top" Height="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}">
+                            <Rectangle
+                                Height="{TemplateBinding LineSize}"
+                                DockPanel.Dock="Top"
+                                Fill="{TemplateBinding BorderBrush}">
                                 <Rectangle.RenderTransform>
-                                    <ScaleTransform x:Name="PART_Top" ScaleX="0"/>
+                                    <ScaleTransform x:Name="PART_Top" ScaleX="0" />
                                 </Rectangle.RenderTransform>
                             </Rectangle>
-                            <Rectangle DockPanel.Dock="Right" Width="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}">
+                            <Rectangle
+                                Width="{TemplateBinding LineSize}"
+                                DockPanel.Dock="Right"
+                                Fill="{TemplateBinding BorderBrush}">
                                 <Rectangle.RenderTransform>
-                                    <ScaleTransform x:Name="PART_Right" ScaleY="0"/>
+                                    <ScaleTransform x:Name="PART_Right" ScaleY="0" />
                                 </Rectangle.RenderTransform>
                             </Rectangle>
-                            <Rectangle DockPanel.Dock="Bottom" Height="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}"
-                                   RenderTransformOrigin="1,1">
+                            <Rectangle
+                                Height="{TemplateBinding LineSize}"
+                                DockPanel.Dock="Bottom"
+                                Fill="{TemplateBinding BorderBrush}"
+                                RenderTransformOrigin="1,1">
                                 <Rectangle.RenderTransform>
-                                    <ScaleTransform x:Name="PART_Bottom" ScaleX="0"/>
+                                    <ScaleTransform x:Name="PART_Bottom" ScaleX="0" />
                                 </Rectangle.RenderTransform>
                             </Rectangle>
-                            <Rectangle DockPanel.Dock="Left" Width="{TemplateBinding LineSize}" Fill="{TemplateBinding BorderBrush}"
-                                   RenderTransformOrigin="1,1">
+                            <Rectangle
+                                Width="{TemplateBinding LineSize}"
+                                DockPanel.Dock="Left"
+                                Fill="{TemplateBinding BorderBrush}"
+                                RenderTransformOrigin="1,1">
                                 <Rectangle.RenderTransform>
-                                    <ScaleTransform x:Name="PART_Left" ScaleY="0"/>
+                                    <ScaleTransform x:Name="PART_Left" ScaleY="0" />
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                         </DockPanel>
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          Margin="{TemplateBinding Padding}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </controls:SmallPanel>
-                   
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsAnimation" Value="True">
                             <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="beginAnimation"
-                                                 Storyboard="{StaticResource EdgeLightStoryboard}" />
+                                <BeginStoryboard x:Name="beginAnimation" Storyboard="{StaticResource EdgeLightStoryboard}" />
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="beginAnimation" />
@@ -83,5 +102,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style BasedOn="{StaticResource WD.EdgeLight}" TargetType="{x:Type controls:EdgeLight}" />
 </ResourceDictionary>

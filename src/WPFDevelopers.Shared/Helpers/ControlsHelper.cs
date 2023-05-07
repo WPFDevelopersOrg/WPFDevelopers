@@ -23,7 +23,7 @@ namespace WPFDevelopers.Helpers
         public static Brush Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
 
         public static Brush WindowForegroundBrush =
-            (Brush)Application.Current.TryFindResource("PrimaryTextSolidColorBrush");
+            (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
 
         private static bool _IsCurrentDark;
 
@@ -31,8 +31,8 @@ namespace WPFDevelopers.Helpers
         {
             if (!_IsCurrentDark)
             {
-                var vBrush = (Brush)Application.Current.TryFindResource("PrimaryNormalSolidColorBrush");
-                Application.Current.Resources["WindowBorderBrushSolidColorBrush"] = vBrush;
+                var vBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
+                Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = vBrush;
             }
         }
 
@@ -47,26 +47,26 @@ namespace WPFDevelopers.Helpers
                 existingResourceDictionary.Theme = type;
                 if (type == ThemeType.Light)
                 {
-                    var vBrush = (Brush)Application.Current.TryFindResource("PrimaryNormalSolidColorBrush");
-                    Application.Current.Resources["WindowBorderBrushSolidColorBrush"] = vBrush;
-                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("PrimaryTextSolidColorBrush");
-                    if (Application.Current.TryFindResource("DefaultBackgroundColor") is Color color)
-                        Application.Current.Resources["DefaultBackgroundSolidColorBrush"] = new SolidColorBrush(color);
+                    var vBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
+                    Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = vBrush;
+                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
+                    if (Application.Current.TryFindResource("WD.DefaultBackgroundColor") is Color color)
+                        Application.Current.Resources["WD.DefaultBackgroundSolidColorBrush"] = new SolidColorBrush(color);
                 }
                 else
                 {
                     if (Application.Current.TryFindResource("WindowBorderBrushColor") is Color color)
                     {
                         var colorBrush = new SolidColorBrush(color);
-                        Application.Current.Resources["WindowBorderBrushSolidColorBrush"] = colorBrush;
-                        Application.Current.Resources["DefaultBackgroundSolidColorBrush"] = colorBrush;
+                        Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = colorBrush;
+                        Application.Current.Resources["WD.DefaultBackgroundSolidColorBrush"] = colorBrush;
                     }
 
-                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("DefaultBackgroundSolidColorBrush");
+                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.DefaultBackgroundSolidColorBrush");
                 }
 
                 Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
-                //WindowForegroundBrush = Application.Current.TryFindResource["PrimaryTextSolidColorBrush"] as Brush;
+                //WindowForegroundBrush = Application.Current.TryFindResource["WD.PrimaryTextSolidColorBrush"] as Brush;
                 _IsCurrentDark = isDark;
                 ThemeRefresh();
             }

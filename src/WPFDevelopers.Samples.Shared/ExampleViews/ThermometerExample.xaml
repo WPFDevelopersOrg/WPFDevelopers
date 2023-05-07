@@ -10,10 +10,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
 
-        <Border Background="{DynamicResource BackgroundSolidColorBrush}" 
+        <Border Background="{DynamicResource WD.BackgroundSolidColorBrush}" 
                 CornerRadius="12"
                 Width="400" Height="400"
-                Effect="{StaticResource NormalShadowDepth}">
+                Effect="{StaticResource WD.NormalShadowDepth}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -27,8 +27,8 @@
                 Height="300"/>
                 <Grid VerticalAlignment="Center"
                       Margin="160,0,0,0">
-                    <Path Fill="{DynamicResource PrimaryMouseOverSolidColorBrush}" 
-                          Stroke="{DynamicResource PrimaryMouseOverSolidColorBrush}"
+                    <Path Fill="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" 
+                          Stroke="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}"
                           StrokeThickness="1" Opacity=".6"
                           Data="{Binding ElementName=PART_Thermometer, Path=CurrentGeometry,Mode=TwoWay}"/>
                     <wpfdev:Thermometer x:Name="PART_Thermometer"
@@ -36,7 +36,7 @@
                 </Grid>
                 <TextBlock Text="{Binding ElementName=PART_Thermometer,Path=CurrentValue,StringFormat={}{0}℃}" 
                            FontSize="24" Grid.Column="1"
-                           Foreground="{DynamicResource PrimaryPressedSolidColorBrush}" FontFamily="Bahnschrift"
+                           Foreground="{DynamicResource WD.PrimaryPressedSolidColorBrush}" FontFamily="Bahnschrift"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Border>

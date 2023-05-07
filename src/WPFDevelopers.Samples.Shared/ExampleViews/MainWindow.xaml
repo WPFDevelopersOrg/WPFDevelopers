@@ -41,7 +41,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <!--<Grid Background="{StaticResource ExtralightSolidColorBrush}">-->
+    <!--<Grid Background="{StaticResource WD.ExtralightSolidColorBrush}">-->
 
     <Grid>
         <wpfdev:NotifyIcon Title="WPF开发者" Name="WpfNotifyIcon">
@@ -52,8 +52,8 @@
                     <MenuItem Header="闪烁" Name="menuItemTwink"  Click="Twink_Click"/>
                     <MenuItem Header="关于" Click="About_Click">
                         <MenuItem.Icon>
-                            <Path Data="{StaticResource PathWarning}" 
-                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                            <Path Data="{StaticResource WD.WarningGeometry}" 
+                                      Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                                       Stretch="Uniform" Height="20" Width="20"/>
                         </MenuItem.Icon>
                     </MenuItem>
@@ -66,7 +66,7 @@
                 <VisualBrush Viewport="0,0,95,35" ViewportUnits="Absolute" TileMode="Tile">
                     <VisualBrush.Visual>
                         <StackPanel Background="Transparent">
-                            <TextBlock FontSize="{StaticResource TitleFontSize}" Margin="10"
+                            <TextBlock FontSize="{StaticResource WD.TitleFontSize}" Margin="10"
                                        Foreground="Gray">WPFDevelopers</TextBlock>
                         </StackPanel>
                     </VisualBrush.Visual>
@@ -92,9 +92,9 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Margin="0,0,5,0" Background="{DynamicResource BackgroundSolidColorBrush}" 
+            <Border Margin="0,0,5,0" Background="{DynamicResource WD.BackgroundSolidColorBrush}" 
                     CornerRadius="4,0,0,4" 
-                    Effect="{StaticResource NormalShadowDepth}">
+                    Effect="{StaticResource WD.NormalShadowDepth}">
                 <wpfdev:NavigateMenu ItemsSource="{Binding NavigateMenuModelList}" x:Name="NavigateMenu">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
@@ -112,9 +112,9 @@
               />
             <Border Grid.Column="2" 
                     Margin="5,0,0,0"
-                    Background="{DynamicResource BackgroundSolidColorBrush}" 
+                    Background="{DynamicResource WD.BackgroundSolidColorBrush}" 
                     CornerRadius="4"
-                    Effect="{StaticResource NormalShadowDepth}">
+                    Effect="{StaticResource WD.NormalShadowDepth}">
                 <ContentControl Content="{Binding ControlPanel}"/>
             </Border>
         </Grid>

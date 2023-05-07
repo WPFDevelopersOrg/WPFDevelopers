@@ -16,11 +16,11 @@
             <Border Width="400" Height="235" Background="#F9F7F9"
                 VerticalAlignment="Top" Margin="10,0" SnapsToDevicePixels="True">
                 <wpfdev:AnimationNavigationBar3D VerticalAlignment="Bottom">
-                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#FD3574" BackFileBackground="#E21854" PathDate="{StaticResource PathSmileyOutline}" Text="Emoji"/>
-                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#5EECA6" BackFileBackground="#41A545" PathDate="{StaticResource PathBus}" Text="Bus"/>
-                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#3A7DFE" BackFileBackground="#0A58F0" PathDate="{StaticResource PathFriend}" Text="Friend"/>
-                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#8E1FA4" BackFileBackground="#5F0574" PathDate="{StaticResource PathAlarmClock}" Text="Clock"/>
-                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#5B31AD" BackFileBackground="#1F0355" PathDate="{StaticResource PathBuildingRegular}" Text="Regular"/>
+                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#FD3574" BackFileBackground="#E21854" PathDate="{StaticResource WD.SmileyOutlineGeometry}" Text="Emoji"/>
+                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#5EECA6" BackFileBackground="#41A545" PathDate="{StaticResource WD.BusGeometry}" Text="Bus"/>
+                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#3A7DFE" BackFileBackground="#0A58F0" PathDate="{StaticResource WD.FriendGeometry}" Text="Friend"/>
+                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#8E1FA4" BackFileBackground="#5F0574" PathDate="{StaticResource WD.AlarmClockGeometry}" Text="Clock"/>
+                    <wpfdev:AnimationNavigationBar3DItem FileBackground="#5B31AD" BackFileBackground="#1F0355" PathDate="{StaticResource WD.BuildingRegularGeometry}" Text="Regular"/>
                 </wpfdev:AnimationNavigationBar3D>
             </Border>
             <Border Width="450" BorderBrush="#181618" 
@@ -37,7 +37,7 @@
                        Foreground="Black"/>
                 <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Top" 
-                       Margin="0,20" FontSize="{StaticResource NormalFontSize}" 
+                       Margin="0,20" FontSize="{StaticResource WD.NormalFontSize}" 
                        FontWeight="Black">
                 <LineBreak/>
             <Hyperlink NavigateUri="https://github.com/WPFDevelopersOrg/WPFDevelopers.git"

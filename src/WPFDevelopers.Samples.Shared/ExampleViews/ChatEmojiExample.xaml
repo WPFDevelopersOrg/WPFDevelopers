@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
     <UniformGrid Columns="2" Width="800">
-        <Grid Margin="10,0" Background="{StaticResource WarningSolidColorBrush}">
+        <Grid Margin="10,0" Background="{StaticResource WD.WarningSolidColorBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
@@ -29,7 +29,7 @@
                 <Popup Placement="Top" PlacementTarget="{Binding ElementName=LeftButtonEmoji}" 
                        IsOpen="{Binding ElementName=LeftButtonEmoji,Path=IsChecked}" AllowsTransparency="True" 
                        VerticalOffset="-4">
-                    <Border Margin="10" Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="4"
+                    <Border Margin="10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" CornerRadius="4"
                             Width="76">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" Color="#80000000"/>
@@ -65,11 +65,11 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="LeftInput" wpfdev:ElementHelper.Watermark="请输入内容"/>
-                    <Button Grid.Column="1" Content="发送" x:Name="LeftSend" Click="LeftSend_Click" Style="{StaticResource PrimaryButton}"></Button>
+                    <Button Grid.Column="1" Content="发送" x:Name="LeftSend" Click="LeftSend_Click" Style="{StaticResource WD.PrimaryButton}"></Button>
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Margin="10,0" Background="{StaticResource SuccessSolidColorBrush}">
+        <Grid Margin="10,0" Background="{StaticResource WD.SuccessSolidColorBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
@@ -89,7 +89,7 @@
                 <Popup Placement="Top" PlacementTarget="{Binding ElementName=RightButtonEmoji}" 
                        IsOpen="{Binding ElementName=RightButtonEmoji,Path=IsChecked}" AllowsTransparency="True" 
                        VerticalOffset="-4">
-                    <Border Margin="10" Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="4"
+                    <Border Margin="10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" CornerRadius="4"
                             Width="76">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" Color="#80000000"/>
@@ -125,7 +125,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="RightInput" wpfdev:ElementHelper.Watermark="请输入内容"/>
-                    <Button Grid.Column="1" Content="发送" x:Name="RightSend" Click="RightSend_Click" Style="{StaticResource PrimaryButton}"></Button>
+                    <Button Grid.Column="1" Content="发送" x:Name="RightSend" Click="RightSend_Click" Style="{StaticResource WD.PrimaryButton}"></Button>
                 </Grid>
             </Grid>
         </Grid>

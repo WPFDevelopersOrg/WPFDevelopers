@@ -30,7 +30,7 @@
                     VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10"/>
                     <Button Content="提交" wd:Loading.IsShow="{Binding ElementName=MyCheckBox,Path=IsChecked}" 
                     VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource WD.PrimaryButton}"/>
                 </UniformGrid>
             </StackPanel>
         </Grid>

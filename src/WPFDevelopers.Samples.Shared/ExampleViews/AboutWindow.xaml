@@ -8,16 +8,16 @@
         SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display"
         ResizeMode="NoResize" 
         Height="400" Width="300" 
-        Background="{DynamicResource BackgroundSolidColorBrush}"
+        Background="{DynamicResource WD.BackgroundSolidColorBrush}"
         Title="关于" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Rectangle Fill="{DynamicResource WindowBorderBrushSolidColorBrush}"/>
+        <Rectangle Fill="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"/>
         <TextBlock Text="关于" 
-                   Foreground="{DynamicResource WindowForegroundColorBrush}"
+                   Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
                    Margin="10,4"/>
 
         <Rectangle Width="120">
@@ -28,11 +28,11 @@
         <Button x:Name="CloseButton" Width="30" Height="30" 
                 HorizontalAlignment="Right" 
                 VerticalAlignment="Top"
-                Style="{StaticResource WindowButtonStyle}" 
+                Style="{StaticResource WD.WindowButtonStyle}" 
                 ToolTip="关闭"
                 Click="CloseButton_Click">
-            <Path Data="{StaticResource PathMetroWindowClose}"
-                  Fill="{DynamicResource WindowForegroundColorBrush}"
+            <Path Data="{StaticResource WD.WindowCloseGeometry}"
+                  Fill="{DynamicResource WD.WindowForegroundColorBrush}"
                   Height="10"
                   Width="10"
                   Stretch="UniformToFill"/>
@@ -57,7 +57,7 @@
             <TextBlock FontSize="11" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Bottom"
-                       Foreground="{DynamicResource PrimaryNormalSolidColorBrush}"
+                       Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                        Grid.Row="2">
             <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.git"
                        RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源码</Hyperlink>

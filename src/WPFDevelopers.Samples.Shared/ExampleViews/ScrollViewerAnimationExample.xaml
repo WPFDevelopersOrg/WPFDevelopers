@@ -20,10 +20,10 @@
                 <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="{StaticResource SuccessSolidColorBrush}"
-                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource BackgroundSolidColorBrush}">
-                                <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource NormalFontSize}"
-                                       Foreground="{StaticResource BlackSolidColorBrush}"/>
+                            <Border Background="{StaticResource WD.SuccessSolidColorBrush}"
+                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}">
+                                <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource WD.NormalFontSize}"
+                                       Foreground="{StaticResource WD.BlackSolidColorBrush}"/>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -43,10 +43,10 @@
                 <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Background="{StaticResource DangerSolidColorBrush}"
-                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource BackgroundSolidColorBrush}">
-                                <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource NormalFontSize}"
-                                       Foreground="{StaticResource BackgroundSolidColorBrush}"/>
+                            <Border Background="{StaticResource WD.DangerSolidColorBrush}"
+                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}">
+                                <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource WD.NormalFontSize}"
+                                       Foreground="{StaticResource WD.BackgroundSolidColorBrush}"/>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

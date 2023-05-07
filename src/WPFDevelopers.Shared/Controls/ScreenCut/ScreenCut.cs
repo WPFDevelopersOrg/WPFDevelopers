@@ -256,7 +256,7 @@ namespace WPFDevelopers.Controls
             _wrapPanel = GetTemplateChild(WrapPanelColorTemplateName) as WrapPanel;
             _wrapPanel.PreviewMouseDown += _wrapPanel_PreviewMouseDown;
             Loaded += ScreenCut_Loaded;
-            controlTemplate = (ControlTemplate)FindResource("PART_DrawArrow");
+            controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
         }
         public static BitmapSource BitmapSourceFromBrush(Brush drawingBrush, int x = 32, int y = 32, int dpi = 96)
         {

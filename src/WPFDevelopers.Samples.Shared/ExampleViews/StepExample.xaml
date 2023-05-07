@@ -26,10 +26,10 @@
                         Margin="10">
                 <Button Content="上一步"  Command="{Binding PreviousCommand}" 
                     CommandParameter="{Binding ElementName=PART_UniformGrid}"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource WD.PrimaryButton}"/>
                 <Button Content="下一步"   Command="{Binding NextCommand}" 
                     CommandParameter="{Binding ElementName=PART_UniformGrid}"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource WD.PrimaryButton}"/>
                
             </StackPanel>
             

@@ -1,59 +1,75 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
-    
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-
-    <SolidColorBrush x:Key="BorderBrushItem">#fe7708</SolidColorBrush>
-
-    <DataTemplate x:Key="TimeContent">
-        <Ellipse Stroke="{StaticResource BorderBrushItem}" Fill="White" 
-                     VerticalAlignment="Top"
-                     StrokeThickness="2" Width="10" Height="10"/>
+    <DataTemplate x:Key="WD.TimeContent">
+        <Ellipse
+            Width="10"
+            Height="10"
+            VerticalAlignment="Top"
+            Fill="White"
+            Stroke="{StaticResource WD.WarningSolidColorBrush}"
+            StrokeThickness="2" />
     </DataTemplate>
-
-    <DataTemplate x:Key="NameContent">
+    <DataTemplate x:Key="WD.NameContent">
         <controls:SmallPanel>
-            <Ellipse Fill="{Binding BackgroundColor, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" Width="30" Height="30"/>
-            <TextBlock Text="{Binding Head, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
-                           FontSize="16"
-                           HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <Ellipse
+                Width="30"
+                Height="30"
+                Fill="{Binding BackgroundColor, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                Foreground="White"
+                Text="{Binding Head, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
         </controls:SmallPanel>
     </DataTemplate>
-
-
-
-    <DataTemplate x:Key="TextTime">
-        <TextBlock Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" 
-                       Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
-                       VerticalAlignment="Top"
-                       FontWeight="Black" Foreground="Black"
-                       FontSize="16"/>
+    <DataTemplate x:Key="WD.TextTime">
+        <TextBlock
+            Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
+            VerticalAlignment="Top"
+            FontSize="16"
+            FontWeight="Black"
+            Foreground="Black"
+            Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
     </DataTemplate>
-
-    <DataTemplate x:Key="TextName">
-        <TextBlock Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" 
-                       Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
-                       VerticalAlignment="Center"
-                       FontWeight="Black" Foreground="#005980"
-                       FontSize="16"/>
+    <DataTemplate x:Key="WD.TextName">
+        <TextBlock
+            Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
+            VerticalAlignment="Center"
+            FontSize="16"
+            FontWeight="Black"
+            Foreground="{StaticResource WD.TimeLineForeground}"
+            Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
     </DataTemplate>
-
-    <DataTemplate x:Key="TextStar">
+    <DataTemplate x:Key="WD.TextStar">
         <WrapPanel Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}">
-            <Path Data="{StaticResource PathStar}" Height="15" Width="15" Fill="Gray" Stretch="Fill"/>
-            <TextBlock Margin="4,0" Text="Star 了" FontSize="12" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
-                       VerticalAlignment="Center" Foreground="#005980"
-                       FontSize="12"/>
+            <Path
+                Width="15"
+                Height="15"
+                Data="{StaticResource WD.StarGeometry}"
+                Fill="Gray"
+                Stretch="Fill" />
+            <TextBlock
+                Margin="4,0"
+                VerticalAlignment="Center"
+                FontSize="12"
+                Text="Star 了" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="12"
+                Foreground="{StaticResource WD.TimeLineForeground}"
+                Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
         </WrapPanel>
-
     </DataTemplate>
-
-    <Style TargetType="{x:Type controls:TimeLineItem}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style
+        x:Key="WD.TimeLineItem"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:TimeLineItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
         <Setter Property="BorderThickness" Value="0" />
@@ -64,8 +80,8 @@
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="CommonTemplate" Value="{StaticResource TimeContent}"/>
-        <Setter Property="TextTemplate" Value="{StaticResource TextTime}"/>
+        <Setter Property="CommonTemplate" Value="{StaticResource WD.TimeContent}" />
+        <Setter Property="TextTemplate" Value="{StaticResource WD.TextTime}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:TimeLineItem}">
@@ -78,41 +94,49 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <Rectangle x:Name="PART_Rectangle" Grid.RowSpan="2" Width="1"
-                                   Fill="{TemplateBinding BorderBrush}"/>
-
-                        <ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding CommonTemplate}"
-                                              Content="{TemplateBinding Head}" Width="30" Height="30"/>
-
-
-                        <ContentPresenter x:Name="PART_ContentPresenterText" ContentTemplate="{TemplateBinding TextTemplate}"
-                                              Content="{TemplateBinding Text}" Grid.Row="0" Grid.Column="1"/>
+                        <Rectangle
+                            x:Name="PART_Rectangle"
+                            Grid.RowSpan="2"
+                            Width="1"
+                            Fill="{TemplateBinding BorderBrush}" />
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            Width="30"
+                            Height="30"
+                            Content="{TemplateBinding Head}"
+                            ContentTemplate="{TemplateBinding CommonTemplate}" />
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenterText"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Content="{TemplateBinding Text}"
+                            ContentTemplate="{TemplateBinding TextTemplate}" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="ItemType" Value="{x:Static controls:ItemTypeEnum.Name}">
-                            <Setter Property="CommonTemplate" Value="{StaticResource NameContent}"/>
-                            <Setter Property="TextTemplate" Value="{StaticResource TextName}"/>
+                            <Setter Property="CommonTemplate" Value="{StaticResource WD.NameContent}" />
+                            <Setter Property="TextTemplate" Value="{StaticResource WD.TextName}" />
 
                         </Trigger>
                         <Trigger Property="ItemType" Value="{x:Static controls:ItemTypeEnum.Star}">
-                            <Setter Property="CommonTemplate" Value="{x:Null}"/>
-                            <Setter Property="TextTemplate" Value="{StaticResource TextStar}"/>
-
+                            <Setter Property="CommonTemplate" Value="{x:Null}" />
+                            <Setter Property="TextTemplate" Value="{StaticResource WD.TextStar}" />
                         </Trigger>
                         <Trigger Property="IsBottom" Value="true">
-                            <Setter Property="Visibility" TargetName="PART_Rectangle" Value="Collapsed"/>
+                            <Setter TargetName="PART_Rectangle" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type controls:TimeLine}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style
+        x:Key="WD.TimeLine"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:TimeLine}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Gray" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="Black" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -120,11 +144,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:TimeLine}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ItemsPresenter />
                         </ScrollViewer>
@@ -133,5 +158,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style BasedOn="{StaticResource WD.TimeLineItem}" TargetType="{x:Type controls:TimeLineItem}" />
+    <Style BasedOn="{StaticResource WD.TimeLine}" TargetType="{x:Type controls:TimeLine}" />
 </ResourceDictionary>

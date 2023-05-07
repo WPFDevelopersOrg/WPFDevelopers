@@ -17,8 +17,8 @@
     <Window.Resources>
         <DataTemplate x:Key="TaskbarIcon">
             <Border Width="20" Height="20"
-                    Background="{StaticResource PrimaryPressedSolidColorBrush}"
-                    BorderBrush="{StaticResource BackgroundSolidColorBrush}" BorderThickness="2">
+                    Background="{StaticResource WD.PrimaryPressedSolidColorBrush}"
+                    BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}" BorderThickness="2">
                 <TextBlock Text="{Binding}" TextAlignment="Center" Foreground="White" 
                            VerticalAlignment="Center"/>
             </Border>
@@ -26,7 +26,7 @@
     </Window.Resources>
     <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <Button Content="增加" Click="Button_Click" Tag="add"
-                Style="{StaticResource DefaultButton}" />
+                Style="{StaticResource WD.DefaultButton}" />
         <Button Content="移除" Click="Button_Click" Tag="remove"/>
     </WrapPanel>
 </wpfdev:Window>

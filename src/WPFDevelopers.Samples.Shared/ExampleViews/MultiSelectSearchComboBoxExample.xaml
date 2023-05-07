@@ -24,7 +24,7 @@
                     HorizontalAlignment="Center"
                     Click="Button_Click"
                     Margin="0,20,0,0"
-                    Style="{StaticResource SuccessPrimaryButton}"/>
+                    Style="{StaticResource WD.SuccessPrimaryButton}"/>
             <UniformGrid Columns="2" Rows="2" Grid.Row="1">
                 <wd:MultiSelectionSearchComboBox
                 VerticalContentAlignment="Center" 

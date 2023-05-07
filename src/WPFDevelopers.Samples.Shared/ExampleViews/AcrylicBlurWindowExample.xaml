@@ -19,12 +19,12 @@
         <StackPanel HorizontalAlignment="Right" 
                         Orientation="Horizontal"
                     x:Name="myStackPanel">
-            <Button Style="{DynamicResource WindowButtonStyle}"
+            <Button Style="{DynamicResource WD.WindowButtonStyle}"
                     Command="{Binding CloseCommand,RelativeSource={RelativeSource AncestorType=local:AcrylicBlurWindowExample}}" Cursor="Hand">
                 <Path Width="10" Height="10"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
-                      Data="{DynamicResource PathMetroWindowClose}"
+                      Data="{DynamicResource WD.WindowCloseGeometry}"
                       Fill="Red"
                       Stretch="Fill" />
             </Button>
@@ -38,7 +38,7 @@
             <Button x:Name="LoginButton" 
                     Content="登 录" 
                     Margin="0,20,0,0"
-                    Style="{StaticResource PrimaryButton}"/>
+                    Style="{StaticResource WD.PrimaryButton}"/>
             <Grid Margin="0 20 0 0">
                 <TextBlock FontSize="12">
                     <Hyperlink Foreground="Black" TextDecorations="None">忘记密码</Hyperlink>

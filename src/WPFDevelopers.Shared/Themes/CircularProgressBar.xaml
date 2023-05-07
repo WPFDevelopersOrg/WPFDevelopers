@@ -1,56 +1,59 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
-                    xmlns:convert="clr-namespace:WPFDevelopers.Converts">
-    
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:convert="clr-namespace:WPFDevelopers.Converts">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Basic/ControlBasic.xaml"/>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <convert:AngleToPointConverter x:Key="prConverter"/>
-    <convert:AngleToIsLargeConverter x:Key="isLargeConverter"/>
-    <Style TargetType="{x:Type controls:CircularProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Maximum" Value="100"/>
-        <Setter Property="StrokeThickness" Value="10"/>
-        <Setter Property="Foreground" Value="{DynamicResource InfoSolidColorBrush}"/>
-        <Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <!--<Setter Property="Width" Value="100"/>
-        <Setter Property="Height" Value="100"/>-->
+    <convert:AngleToPointConverter x:Key="WD.PrConverter" />
+    <convert:AngleToIsLargeConverter x:Key="WD.IsLargeConverter" />
+    <Style
+        x:Key="WD.CircularProgressBar"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:CircularProgressBar}">
+        <Setter Property="Maximum" Value="100" />
+        <Setter Property="StrokeThickness" Value="10" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.InfoSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircularProgressBar}">
-                    <controls:SmallPanel Width="{Binding ElementName=PART_Path,Path=ActualWidth}" 
-                            Height="{Binding ElementName=PART_Path,Path=ActualHeight}"
-                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <controls:SmallPanel
+                        Width="{Binding ElementName=PART_Path, Path=ActualWidth}"
+                        Height="{Binding ElementName=PART_Path, Path=ActualHeight}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}">
                         <Canvas>
-                            <Path Stroke="{TemplateBinding BorderBrush}"
-                              StrokeThickness="{TemplateBinding BrushStrokeThickness}"
-                                  x:Name="PART_Path">
+                            <Path
+                                x:Name="PART_Path"
+                                Stroke="{TemplateBinding BorderBrush}"
+                                StrokeThickness="{TemplateBinding BrushStrokeThickness}">
                                 <Path.Data>
                                     <PathGeometry>
                                         <PathFigure x:Name="PART_PathFigure">
-                                            <ArcSegment SweepDirection="Clockwise"
-                                                    IsLargeArc="True"
-                                                    x:Name="PART_ArcSegment">
-                                            </ArcSegment>
+                                            <ArcSegment
+                                                x:Name="PART_ArcSegment"
+                                                IsLargeArc="True"
+                                                SweepDirection="Clockwise" />
                                         </PathFigure>
                                     </PathGeometry>
                                 </Path.Data>
                             </Path>
-                            <Path Stroke="{TemplateBinding Background}" 
-                              StrokeThickness="{TemplateBinding StrokeThickness}">
+                            <Path Stroke="{TemplateBinding Background}" StrokeThickness="{TemplateBinding StrokeThickness}">
                                 <Path.Data>
                                     <PathGeometry>
                                         <PathFigure x:Name="PART_PathFigureAngle">
-                                            <ArcSegment SweepDirection="Clockwise"
-                                                    IsLargeArc="{Binding Path=Angle, Converter={StaticResource isLargeConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}"
-                                                    x:Name="PART_ArcSegmentAngle">
+                                            <ArcSegment
+                                                x:Name="PART_ArcSegmentAngle"
+                                                IsLargeArc="{Binding Path=Angle, Converter={StaticResource WD.IsLargeConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=ProgressBar}}"
+                                                SweepDirection="Clockwise">
                                                 <ArcSegment.Point>
-                                                    <MultiBinding Converter="{StaticResource prConverter}">
-                                                        <Binding Path="Angle" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
-                                                        <Binding Path="Size" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}"/>
+                                                    <MultiBinding Converter="{StaticResource WD.PrConverter}">
+                                                        <Binding Path="Angle" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}" />
+                                                        <Binding Path="Size" RelativeSource="{RelativeSource FindAncestor, AncestorType=ProgressBar}" />
                                                     </MultiBinding>
                                                 </ArcSegment.Point>
                                             </ArcSegment>
@@ -59,16 +62,17 @@
                                 </Path.Data>
                             </Path>
                         </Canvas>
-                        <TextBlock Foreground="{TemplateBinding Foreground}" 
-                                   Text="{Binding Path=Value, StringFormat={}{0}%, 
-                                RelativeSource={RelativeSource TemplatedParent}}"
-                                   FontSize="{TemplateBinding FontSize}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   x:Name="PART_TextBlock"/>
+                        <TextBlock
+                            x:Name="PART_TextBlock"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Text="{Binding Path=Value, StringFormat={}{0}%, RelativeSource={RelativeSource TemplatedParent}}" />
                     </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource WD.CircularProgressBar}" TargetType="{x:Type controls:CircularProgressBar}" />
 </ResourceDictionary>

@@ -15,8 +15,8 @@
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CodeViewer/CodeViewer.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="avalonedit:TextEditor">
-                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
-                <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
