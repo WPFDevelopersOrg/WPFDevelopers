@@ -10,8 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Assists\ThincknessAssert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBarItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\BreadCrumbBarConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DatePickerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollIntoView.cs" />
@@ -126,7 +129,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToIsLargeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToPointConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\IndexConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\StepIndexConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\IndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
@@ -408,6 +411,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Light.Color.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\BreadCrumbBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

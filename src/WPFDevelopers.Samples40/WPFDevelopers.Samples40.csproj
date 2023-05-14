@@ -32,11 +32,8 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview6" />
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview7" />
 	</ItemGroup>
-	<!--<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview5" />
-	</ItemGroup>-->
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico">
 			<Link>WPFDevelopers.ico</Link>
@@ -183,6 +180,18 @@
 	<PropertyGroup>
 		<RootNamespace>WPFDevelopers.Samples</RootNamespace>
 		<AssemblyName>WPFDevelopers.Samples</AssemblyName>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;CS0067</NoWarn>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1701;1702;CS0067</NoWarn>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-.NET40|AnyCPU'">
+	  <NoWarn>1701;1702;CS0067</NoWarn>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-.NET40|AnyCPU'">
+	  <NoWarn>1701;1702;CS0067</NoWarn>
 	</PropertyGroup>
 	<Import Project="..\WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems" Label="Shared" />
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

@@ -74,3 +74,4 @@ Step.xaml
 MultiSelectComboBox.xaml
 Mask.xaml
 MultiSelectSearchComboBox.xaml
+BreadCrumbBar.xaml

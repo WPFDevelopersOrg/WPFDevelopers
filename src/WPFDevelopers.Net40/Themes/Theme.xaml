@@ -61,39 +61,43 @@
 	<FontWeight x:Key="WD.NormalFontWeight">Normal</FontWeight>
 	<Geometry x:Key="WD.CheckMarkGeometry" po:Freeze="True">M384 690l452-452 60 60-512 512-238-238 60-60z</Geometry>
 	<Geometry x:Key="WD.ComboBoxToggleButtonGeometry" po:Freeze="True">M998 352c0 -8 -4 -17 -10 -23l-50 -50c-6 -6 -14 -10 -23 -10c-8 0 -17 4 -23 10l-393 393l-393 -393c-6 -6 -15 -10 -23 -10s-17 4 -23 10l-50 50c-6 6 -10 15 -10 23s4 17 10 23l466 466c6 6 15 10 23 10s17 -4 23 -10l466 -466c6 -6 10 -15 10 -23z</Geometry>
-	<Geometry x:Key="WD.BlackoutGeometry" po:Freeze="True">M8.1772461,11.029181 L10.433105,
-                  11.029181 L11.700684,12.801641 L12.973633,
-                  11.029181 L15.191895,11.029181 L12.844727,
-                  13.999395 L15.21875,17.060919 L12.962891,
-                  17.060919 L11.673828,15.256231 L10.352539,
-                  17.060919 L8.1396484,17.060919 L10.519043,
-                  14.042364 z</Geometry>
+	<Geometry x:Key="WD.BlackoutGeometry" po:Freeze="True">
+        M8.1772461,11.029181 L10.433105,
+        11.029181 L11.700684,12.801641 L12.973633,
+        11.029181 L15.191895,11.029181 L12.844727,
+        13.999395 L15.21875,17.060919 L12.962891,
+        17.060919 L11.673828,15.256231 L10.352539,
+        17.060919 L8.1396484,17.060919 L10.519043,
+        14.042364 z
+    </Geometry>
 	<Geometry x:Key="WD.PreviousGeometry" po:Freeze="True">M658 316l-196 196 196 196-60 60-256-256 256-256z</Geometry>
 	<Geometry x:Key="WD.NextGeometry" po:Freeze="True">M426 256l256 256-256 256-60-60 196-196-196-196z</Geometry>
-	<Geometry x:Key="WD.DatePickerDropDownGeometry" po:Freeze="True">M11.426758,8.4305077 L11.749023,8.4305077 
-                    L11.749023,16.331387 L10.674805,16.331387 
-                    L10.674805,10.299648 L9.0742188,11.298672
-                    L9.0742188,10.294277 C9.4788408,10.090176 
-                    9.9094238,9.8090878 10.365967,9.4510155 
-                    C10.82251,9.0929432 11.176106,8.7527733 
-                    11.426758,8.4305077 z M14.65086,8.4305077 
-                    L18.566387,8.4305077 L18.566387,9.3435936 
-                    L15.671368,9.3435936 L15.671368,11.255703 
-                    C15.936341,11.058764 16.27293,10.960293 
-                    16.681133,10.960293 C17.411602,10.960293 
-                    17.969301,11.178717 18.354229,11.615566 
-                    C18.739157,12.052416 18.931622,12.673672
-                    18.931622,13.479336 C18.931622,15.452317 
-                    18.052553,16.438808 16.294415,16.438808
-                    C15.560365,16.438808 14.951641,16.234707 
-                    14.468243,15.826504 L14.881817,14.929531
-                    C15.368796,15.326992 15.837872,15.525723 
-                    16.289043,15.525723 C17.298809,15.525723 
-                    17.803692,14.895514 17.803692,13.635098 
-                    C17.803692,12.460618 17.305971,11.873379 
-                    16.310528,11.873379 C15.83071,11.873379 
-                    15.399232,12.079271 15.016094,12.491055
-                    L14.65086,12.238613 z</Geometry>
+	<Geometry x:Key="WD.DatePickerDropDownGeometry" po:Freeze="True">
+        M11.426758,8.4305077 L11.749023,8.4305077
+        L11.749023,16.331387 L10.674805,16.331387
+        L10.674805,10.299648 L9.0742188,11.298672
+        L9.0742188,10.294277 C9.4788408,10.090176
+        9.9094238,9.8090878 10.365967,9.4510155
+        C10.82251,9.0929432 11.176106,8.7527733
+        11.426758,8.4305077 z M14.65086,8.4305077
+        L18.566387,8.4305077 L18.566387,9.3435936
+        L15.671368,9.3435936 L15.671368,11.255703
+        C15.936341,11.058764 16.27293,10.960293
+        16.681133,10.960293 C17.411602,10.960293
+        17.969301,11.178717 18.354229,11.615566
+        C18.739157,12.052416 18.931622,12.673672
+        18.931622,13.479336 C18.931622,15.452317
+        18.052553,16.438808 16.294415,16.438808
+        C15.560365,16.438808 14.951641,16.234707
+        14.468243,15.826504 L14.881817,14.929531
+        C15.368796,15.326992 15.837872,15.525723
+        16.289043,15.525723 C17.298809,15.525723
+        17.803692,14.895514 17.803692,13.635098
+        C17.803692,12.460618 17.305971,11.873379
+        16.310528,11.873379 C15.83071,11.873379
+        15.399232,12.079271 15.016094,12.491055
+        L14.65086,12.238613 z
+    </Geometry>
 	<Geometry x:Key="WD.MenuItemGeometry" po:Freeze="True">M678.4 512l-365.619-379.904c-13.722-13.824-13.722-36.198 0-50.125 13.722-13.824 35.891-13.824 49.613 0l400.896 404.89c13.722 13.875 13.722 36.301 0 50.125l-400.896 404.89c-13.722 13.875-35.891 13.824-49.613 0-13.722-13.773-13.722-36.198 0-50.125l365.619-379.75z</Geometry>
 	<Geometry x:Key="WD.SortArrowGeometry" po:Freeze="True">M854 512l-342 342-342-342 62-60 238 238v-520h84v520l240-238z</Geometry>
 	<Geometry x:Key="WD.WindowMaximizeGeometry" po:Freeze="True">M0.99999994,0.99999994 L0.99999994,9 9,9 9,0.99999994 z M0,0 L10,0 10,10 0,10 z</Geometry>
@@ -131,8 +135,10 @@
 	<Geometry x:Key="WD.ArrowBranchesGeometry" po:Freeze="True">M458.361,207.01328 L574.12778,224.42874 574,184 458.361,204.52536</Geometry>
 	<Geometry x:Key="WD.TextGeometry" po:Freeze="True">M8.394,7.3850001 L18,7.3850001 18,8.9495381 14.071471,8.9495381 14.071471,21 12.304952,21 12.304952,8.9495381 8.394,8.9495381 z M5.2364039,2.4000326 C4.4364113,2.4000326 3.7515685,2.6937805 3.1818757,3.2812766 2.612183,3.8687721 2.3273365,4.5750159 2.3273365,5.4000081 L2.3273365,20.999992 C2.3273365,21.824983 2.612183,22.531227 3.1818757,23.118723 3.7515685,23.706219 4.4364113,23.999966 5.2364039,23.999966 L20.363661,23.999966 C21.163652,23.999966 21.848495,23.706219 22.418188,23.118723 22.987883,22.531227 23.272728,21.824983 23.272728,20.999992 L23.272728,5.4000081 C23.272728,4.5750159 22.987883,3.8687721 22.418188,3.2812766 21.848495,2.6937805 21.163652,2.4000326 20.363661,2.4000326 z M5.2363719,0 L20.36363,0 C21.806051,0 23.039387,0.52812719 24.063631,1.5843812 25.087877,2.6406356 25.6,3.912511 25.6,5.4000081 L25.6,20.999992 C25.6,22.487488 25.087877,23.759365 24.063631,24.815618 23.039387,25.871874 21.806051,26.399999 20.36363,26.399999 L5.2363719,26.399999 C3.7939503,26.399999 2.5606164,25.871874 1.5363699,24.815618 0.51212323,23.759365 -5.3697355E-08,22.487488 3.5527137E-15,20.999992 L3.5527137E-15,5.4000081 C-5.3697355E-08,3.912511 0.51212323,2.6406356 1.5363699,1.5843812 2.5606164,0.52812719 3.7939503,0 5.2363719,0 z</Geometry>
 	<Geometry x:Key="WD.InkGeometry" po:Freeze="True">M986.466 37.502c-49.982-49.982-131.004-49.982-180.986 0l-483.984 484.144c43.262 11.264 83.262 32.99 115.74 65.502 32.99 32.99 54.014 73.246 65.246 115.484l483.984-484.144c50.014-49.982 50.014-131.002 0-180.986zM346.742 858.63c49.982-49.982 49.982-131.004 0-180.986s-131.004-49.982-180.986 0l-165.756 346.356 346.742-165.37z</Geometry>
-	<Geometry x:Key="WD.StarSkyGeometryry" po:Freeze="True">M16.001007,0L20.944,10.533997 32,12.223022 23.998993,20.421997 25.889008,32 16.001007,26.533997 6.1109924,32 8,20.421997 0,12.223022 11.057007,10.533997z</Geometry>
-	<Geometry x:Key="WD.ReturnGeometryry" po:Freeze="True">M356.667 155q17.333 0 30 12.5t12.667 30.167-12.667 30.333l-198.667 198.667h409.333q78 0 149.167 30.333t122.5 81.833 81.833 122.5 30.5 149.333v42.667q0 17.667-12.5 30.167t-30.167 12.5q-17.333 0-30-12.667t-12.667-30v-42.667q0-60.667-23.667-116t-63.667-95.333-95.333-63.667-116-23.667h-409.333l198.667 199q12.667 12.667 12.667 30 0 17.667-12.5 30.333t-30.167 12.667-30.333-12.667l-271.333-271.667q-12.333-12.333-12.333-30.333 0-17.667 12.333-30l271.333-271.667q12.667-12.667 30.333-12.667z</Geometry>
+	<Geometry x:Key="WD.StarSkyGeometry" po:Freeze="True">M16.001007,0L20.944,10.533997 32,12.223022 23.998993,20.421997 25.889008,32 16.001007,26.533997 6.1109924,32 8,20.421997 0,12.223022 11.057007,10.533997z</Geometry>
+	<Geometry x:Key="WD.ReturnGeometry" po:Freeze="True">M356.667 155q17.333 0 30 12.5t12.667 30.167-12.667 30.333l-198.667 198.667h409.333q78 0 149.167 30.333t122.5 81.833 81.833 122.5 30.5 149.333v42.667q0 17.667-12.5 30.167t-30.167 12.5q-17.333 0-30-12.667t-12.667-30v-42.667q0-60.667-23.667-116t-63.667-95.333-95.333-63.667-116-23.667h-409.333l198.667 199q12.667 12.667 12.667 30 0 17.667-12.5 30.333t-30.167 12.667-30.333-12.667l-271.333-271.667q-12.333-12.333-12.333-30.333 0-17.667 12.333-30l271.333-271.667q12.667-12.667 30.333-12.667z</Geometry>
+	<Geometry x:Key="WD.HomeGeometry" po:Freeze="True">M804.571 566.857v274.286q0 14.857-10.857 25.714t-25.714 10.857h-219.429v-219.429h-146.286v219.429h-219.429q-14.857 0-25.714-10.857t-10.857-25.714v-274.286q0-0.571 0.286-1.714t0.286-1.714l328.571-270.857 328.571 270.857q0.571 1.143 0.571 3.429zM932 527.429l-35.429 42.286q-4.571 5.143-12 6.286h-1.714q-7.429 0-12-4l-395.429-329.714-395.429 329.714q-6.857 4.571-13.714 4-7.429-1.143-12-6.286l-35.429-42.286q-4.571-5.714-4-13.429t6.286-12.286l410.857-342.286q18.286-14.857 43.429-14.857t43.429 14.857l139.429 116.571v-111.429q0-8 5.143-13.143t13.143-5.143h109.714q8 0 13.143 5.143t5.143 13.143v233.143l125.143 104q5.714 4.571 6.286 12.286t-4 13.429z</Geometry>
+	<Geometry x:Key="WD.BreadCrumbBarGeometry" po:Freeze="True">M678.4 512l-365.619-379.904c-13.722-13.824-13.722-36.198 0-50.125 13.722-13.824 35.891-13.824 49.613 0l400.896 404.89c13.722 13.875 13.722 36.301 0 50.125l-400.896 404.89c-13.722 13.875-35.891 13.824-49.613 0-13.722-13.773-13.722-36.198 0-50.125l365.619-379.75z</Geometry>
 	<CubicEase x:Key="WD.CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="WD.PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="WD.ExponentialEaseOut" EasingMode="EaseOut" />
@@ -365,7 +371,8 @@
 	<DataTemplate x:Key="WD.TextTime">
 		<TextBlock Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" VerticalAlignment="Top" FontSize="16" FontWeight="Black" Foreground="Black" Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
 	</DataTemplate>
-	<converts:IndexConverter x:Key="WD.IndexConverter" />
+	<converts:StepIndexConverter x:Key="WD.StepIndexConverter" />
+	<converts:BreadCrumbBarConvertr x:Key="WD.BreadCrumbBarConvertr" />
 	<SolidColorBrush x:Key="WD.SecondaryTextSolidColorBrush" po:Freeze="True" Color="{StaticResource WD.PrimaryTextColor}" />
 	<SolidColorBrush x:Key="WD.PlaceholderTextSolidColorBrush" po:Freeze="True" Color="{StaticResource WD.PlaceholderTextColor}" />
 	<SolidColorBrush x:Key="WD.NormalSolidColorBrush" po:Freeze="True" Color="{StaticResource WD.NormalColor}" />
@@ -394,22 +401,22 @@
 	<SolidColorBrush x:Key="WD.DrawPrizeSingularSolidColorBrush" po:Freeze="True" Color="{StaticResource WD.DrawPrizeSingularColor}" />
 	<SolidColorBrush x:Key="WD.DrawPrizeDualSolidColorBrush" po:Freeze="True" Color="{StaticResource WD.DrawPrizeDualColor}" />
 	<Style x:Key="WD.ControlBasicStyle" TargetType="Control">
-		<Setter Property="FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-		<Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-		<Setter Property="FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-		<Setter Property="FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-		<Setter Property="FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
-		<Setter Property="TextElement.FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-		<Setter Property="TextElement.FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-		<Setter Property="TextElement.FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-		<Setter Property="TextElement.FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-		<Setter Property="TextElement.FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
+		<Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}" />
+		<Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+		<Setter Property="FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+		<Setter Property="FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+		<Setter Property="FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
+		<Setter Property="TextElement.FontSize" Value="{StaticResource WD.NormalFontSize}" />
+		<Setter Property="TextElement.FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+		<Setter Property="TextElement.FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+		<Setter Property="TextElement.FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+		<Setter Property="TextElement.FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
 		<Setter Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-		<Setter Property="TextBlock.FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-		<Setter Property="TextBlock.FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-		<Setter Property="TextBlock.FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-		<Setter Property="TextBlock.FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-		<Setter Property="TextBlock.FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
+		<Setter Property="TextBlock.FontSize" Value="{StaticResource WD.NormalFontSize}" />
+		<Setter Property="TextBlock.FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+		<Setter Property="TextBlock.FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+		<Setter Property="TextBlock.FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+		<Setter Property="TextBlock.FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
 		<Setter Property="TextBlock.Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
 		<Setter Property="UseLayoutRounding" Value="True" />
@@ -776,7 +783,7 @@
 				<ContentPresenter x:Name="PART_ContentPresenter" Margin="6,3,6,3" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" />
 				<Popup x:Name="Popup" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsSubmenuOpen}" Placement="Bottom" PlacementTarget="{Binding ElementName=Border}">
 					<Grid Margin="10,0,10,10">
-						<Border x:Name="SubmenuBorder" Background="{DynamicResource WD.BackgroundSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1" CornerRadius="0,0,3,3" Effect="{DynamicResource WD.PopupShadowDepth}" SnapsToDevicePixels="True">
+						<Border x:Name="SubmenuBorder" Background="{DynamicResource WD.BackgroundSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1" CornerRadius="0,0,3,3" Effect="{StaticResource WD.PopupShadowDepth}" SnapsToDevicePixels="True">
 							<ScrollViewer Margin="0,4" CanContentScroll="True">
 								<StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
 							</ScrollViewer>
@@ -857,7 +864,7 @@
 				<TextBlock x:Name="InputGestureText" Grid.Column="3" Margin="5,2,2,2" DockPanel.Dock="Right" IsHitTestVisible="False" Text="{TemplateBinding InputGestureText}" />
 				<Path x:Name="PART_Path" Grid.Column="4" Width="10" Height="12" VerticalAlignment="Center" Data="{StaticResource WD.MenuItemGeometry}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Stretch="Fill" />
 				<Popup x:Name="Popup" AllowsTransparency="True" Focusable="False" HorizontalOffset="2" IsOpen="{TemplateBinding IsSubmenuOpen}" Placement="Right" PopupAnimation="Fade" VerticalOffset="-4">
-					<Border x:Name="SubmenuBorder" Margin="10,0,10,10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{DynamicResource WD.PopupShadowDepth}" SnapsToDevicePixels="True">
+					<Border x:Name="SubmenuBorder" Margin="10,0,10,10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{StaticResource WD.PopupShadowDepth}" SnapsToDevicePixels="True">
 						<ScrollViewer Margin="0,4" CanContentScroll="True">
 							<StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
 						</ScrollViewer>
@@ -1518,18 +1525,18 @@
 	</Style>
 	<Style BasedOn="{StaticResource DefaultSlider}" TargetType="{x:Type Slider}" />
 	<Style x:Key="WD.DefaultTextBlock" TargetType="{x:Type TextBlock}">
-		<Setter Property="FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-		<Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-		<Setter Property="FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-		<Setter Property="FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
+		<Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}" />
+		<Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+		<Setter Property="FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+		<Setter Property="FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
 	</Style>
 	<Style BasedOn="{StaticResource WD.DefaultTextBlock}" TargetType="{x:Type TextBlock}" />
 	<Style x:Key="WD.DefaultHyperlink" TargetType="{x:Type Hyperlink}">
-		<Setter Property="FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-		<Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-		<Setter Property="FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-		<Setter Property="FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-		<Setter Property="FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
+		<Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}" />
+		<Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+		<Setter Property="FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+		<Setter Property="FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+		<Setter Property="FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
 		<Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
 		<Style.Triggers>
@@ -2427,7 +2434,7 @@
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="HorizontalGridLinesBrush" Value="{x:Null}" />
 		<Setter Property="VerticalGridLinesBrush" Value="{x:Null}" />
-		<Setter Property="MinRowHeight" Value="{DynamicResource WD.MinDataGridRowHeight}" />
+		<Setter Property="MinRowHeight" Value="{StaticResource WD.MinDataGridRowHeight}" />
 		<Setter Property="CanUserAddRows" Value="False" />
 		<Setter Property="AutoGenerateColumns" Value="False" />
 		<Setter Property="RowHeaderWidth" Value="0" />
@@ -3646,7 +3653,7 @@
 		<Setter Property="TextOptions.TextFormattingMode" Value="Display" />
 		<Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
 		<Setter Property="WindowStyle" Value="None" />
-		<Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
+		<Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:WPFMessageBox}">
@@ -3659,15 +3666,15 @@
 							</Grid.RowDefinitions>
 							<controls:SmallPanel Grid.Row="0">
 								<DockPanel Margin="20,0,0,0">
-									<TextBlock x:Name="PART_Title" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="{DynamicResource WD.TitleFontSize}" Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+									<TextBlock x:Name="PART_Title" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="{StaticResource WD.TitleFontSize}" Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
 									<Button Name="PART_CloseButton" Margin="0,6" HorizontalAlignment="Right" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="Close">
-										<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowCloseGeometry}" Fill="{DynamicResource WD.PrimaryTextSolidColorBrush}" Stretch="Fill" />
+										<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{StaticResource WD.WindowCloseGeometry}" Fill="{DynamicResource WD.PrimaryTextSolidColorBrush}" Stretch="Fill" />
 									</Button>
 								</DockPanel>
 							</controls:SmallPanel>
 							<controls:SmallPanel Grid.Row="1" Margin="20">
 								<DockPanel>
-									<Path x:Name="PART_Path" Width="25" Height="25" Data="{DynamicResource WD.InformationGeometry}" Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Stretch="Fill" />
+									<Path x:Name="PART_Path" Width="25" Height="25" Data="{StaticResource WD.InformationGeometry}" Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Stretch="Fill" />
 									<TextBox x:Name="PART_Message" Width="Auto" MaxWidth="500" Padding="10,0" VerticalAlignment="Center" BorderThickness="0" FontSize="{DynamicResource WD.NormalFontSize}" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" IsReadOnly="True" TextWrapping="Wrap" />
 								</DockPanel>
 							</controls:SmallPanel>
@@ -3686,7 +3693,7 @@
 	<Style BasedOn="{StaticResource WD.WPFMessageBox}" TargetType="{x:Type controls:WPFMessageBox}" />
 	<Style x:Key="WD.NormalLoading" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:NormalLoading}">
 		<Setter Property="Background" Value="{x:Null}" />
-		<Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
+		<Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Width" Value="40" />
 		<Setter Property="Height" Value="40" />
@@ -5800,7 +5807,7 @@
 							<Rectangle x:Name="PART_RectangleRight" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
 							<Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
 							<Border x:Name="PART_Border" Background="Transparent" BorderBrush="{DynamicResource WD.PrimaryNormalSolidColorBrush}" BorderThickness="2" Cursor="SizeAll" />
-							<Border x:Name="PART_EditBar" Panel.ZIndex="99" Background="{DynamicResource WD.BackgroundSolidColorBrush}" Effect="{DynamicResource WD.PopupShadowDepth}" Visibility="Hidden">
+							<Border x:Name="PART_EditBar" Panel.ZIndex="99" Background="{DynamicResource WD.BackgroundSolidColorBrush}" Effect="{StaticResource WD.PopupShadowDepth}" Visibility="Hidden">
 								<WrapPanel Margin="10,5" VerticalAlignment="Center">
 									<RadioButton x:Name="PART_RadioButtonRectangle" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="方框">
 										<RadioButton.Content>
@@ -5846,7 +5853,7 @@
 								</WrapPanel>
 							</Border>
 							<Popup x:Name="PART_Popup" AllowsTransparency="True" Placement="Bottom" VerticalOffset="13">
-								<Border x:Name="PART_PopupBorder" Margin="10,30,10,10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ControlsHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{DynamicResource WD.PopupShadowDepth}">
+								<Border x:Name="PART_PopupBorder" Margin="10,30,10,10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ControlsHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{StaticResource WD.PopupShadowDepth}">
 									<controls:SmallPanel>
 										<Path Width="10" Margin="0,-8,0,0" VerticalAlignment="Top" Data="{StaticResource WD.UpperTriangleGeometry}" Fill="{DynamicResource WD.BackgroundSolidColorBrush}" SnapsToDevicePixels="True" Stretch="Uniform" UseLayoutRounding="True" />
 										<WrapPanel x:Name="PART_WrapPanelColor" Margin="10" VerticalAlignment="Center">
@@ -6069,7 +6076,7 @@
 					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsOpen" Value="False">
-							<Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.ReturnGeometryry}" />
+							<Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.ReturnGeometry}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -6336,7 +6343,7 @@
 							<Ellipse Width="45" Height="30" HorizontalAlignment="Center" Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
 							<Border Width="30" Height="30" HorizontalAlignment="Center" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15">
 								<controls:SmallPanel>
-									<TextBlock Name="PART_Index" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:StepItem}}, Converter={StaticResource WD.IndexConverter}}" />
+									<TextBlock Name="PART_Index" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:StepItem}}, Converter={StaticResource WD.StepIndexConverter}}" />
 									<Path Name="PART_PathComplete" Width="12" Height="12" Data="{StaticResource WD.CompleteGeometry}" Fill="{TemplateBinding Foreground}" Stretch="Uniform" Visibility="Collapsed" />
 								</controls:SmallPanel>
 							</Border>
@@ -6564,8 +6571,8 @@
 									</Grid.RowDefinitions>
 									<TextBox x:Name="PART_TextBox" Margin="6,0" helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}}" />
 									<CheckBox x:Name="PART_SelectAll" Grid.Row="1" Margin="5,4" Content="{TemplateBinding SelectAllContent}" Visibility="{TemplateBinding IsSelectAllActive,&#xD;&#xA;                                                                     Converter={StaticResource WD.Bool2VisibilityConverter}}" />
-									<controls:MultiSelectListBox x:Name="PART_Selector" Grid.Row="2" MinHeight="{TemplateBinding MinHeight}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,0,1,0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" />
-									<controls:MultiSelectListBox x:Name="PART_SearchSelector" Grid.Row="2" MinHeight="{TemplateBinding MinHeight}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,0,1,0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSourceSearch}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Visibility="Collapsed" />
+									<controls:MultiSelectListBox x:Name="PART_Selector" Grid.Row="2" MinHeight="{TemplateBinding MinHeight}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,0,1,0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" />
+									<controls:MultiSelectListBox x:Name="PART_SearchSelector" Grid.Row="2" MinHeight="{TemplateBinding MinHeight}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,0,1,0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSourceSearch}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Visibility="Collapsed" />
 								</Grid>
 							</controls:SmallPanel>
 						</Popup>
@@ -6605,6 +6612,59 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.MultiSelectionSearchComboBox}" TargetType="{x:Type controls:MultiSelectionSearchComboBox}" />
+	<Style x:Key="WD.BreadCrumbBarItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:BreadCrumbBarItem}">
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="6,0" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="FontSize" Value="{StaticResource WD.TitleFontSize}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:BreadCrumbBarItem}">
+					<StackPanel Orientation="Horizontal">
+						<Path Name="PART_PathSymbol" Width="9" Height="9" Data="{StaticResource WD.BreadCrumbBarGeometry}" Fill="{DynamicResource WD.PlaceholderTextSolidColorBrush}" IsHitTestVisible="False" Stretch="Uniform">
+							<Path.Visibility>
+								<!--  Visibility="{Binding Converter={StaticResource WD.BreadCrumbBarConvertr}, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" /  -->
+								<MultiBinding Converter="{StaticResource WD.BreadCrumbBarConvertr}">
+									<Binding RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
+									<Binding Path="SelectedIndex" RelativeSource="{RelativeSource AncestorType=ListBox}" />
+								</MultiBinding>
+							</Path.Visibility>
+						</Path>
+						<ContentPresenter x:Name="PART_ContentPresenter" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.Foreground="{TemplateBinding Foreground}" />
+					</StackPanel>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="WD.BreadCrumbBar" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:BreadCrumbBar}">
+		<Setter Property="Height" Value="40" />
+		<Setter Property="Margin" Value="5" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel Orientation="Horizontal" />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ItemContainerStyle" Value="{StaticResource WD.BreadCrumbBarItem}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:BreadCrumbBar}">
+					<Border Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto">
+							<ItemsPresenter x:Name="ItemsHost" />
+						</ScrollViewer>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.BreadCrumbBar}" TargetType="{x:Type controls:BreadCrumbBar}" />
 	<Style x:Key="WD.DatePickerCalendarStyle" BasedOn="{StaticResource {x:Type Calendar}}" TargetType="{x:Type Calendar}" />
 	<Style x:Key="WD.DefaultDatePicker" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type DatePicker}">
 		<Setter Property="IsTodayHighlighted" Value="True" />

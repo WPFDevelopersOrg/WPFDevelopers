@@ -1,0 +1,172 @@
+<Project>
+  <PropertyGroup>
+    <AssemblyName>WPFDevelopers.Samples</AssemblyName>
+    <IntermediateOutputPath>E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\</BaseIntermediateOutputPath>
+    <MSBuildProjectExtensionsPath>E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\</MSBuildProjectExtensionsPath>
+    <_TargetAssemblyProjectName>WPFDevelopers.Samples40</_TargetAssemblyProjectName>
+  </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <PropertyGroup>
+    <AssemblyName>WPFDevelopers.Samples</AssemblyName>
+    <RootNamespace>WPFDevelopers.Samples</RootNamespace>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net40</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Configurations>Debug;Release;Debug-.NET40;Release-.NET40</Configurations>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPFDevelopers.Net40\WPFDevelopers.Net40.csproj" />
+    <ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
+  </ItemGroup>
+  <PropertyGroup>
+    <RootNamespace>WPFDevelopers.Samples</RootNamespace>
+    <AssemblyName>WPFDevelopers.Samples</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CS0067</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;CS0067</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-.NET40|AnyCPU'">
+    <NoWarn>1701;1702;CS0067</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-.NET40|AnyCPU'">
+    <NoWarn>1701;1702;CS0067</NoWarn>
+  </PropertyGroup>
+  <Import Project="..\WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems" Label="Shared" />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command=" if not exist &quot;$(OutDir)emoji&quot; mkdir &quot;$(OutDir)emoji&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/emoji&quot; &quot;$(OutDir)emoji\&quot;&#xD;&#xA;&#xD;&#xA; if not exist &quot;$(OutDir)Audio&quot; mkdir &quot;$(OutDir)Audio&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/Audio&quot; &quot;$(OutDir)Audio\&quot;" />
+  </Target>
+  <ItemGroup>
+    <ReferencePath Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\Reference\ICSharpCode.AvalonEdit.dll" />
+    <ReferencePath Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\Reference\Microsoft.Maps.MapControl.WPF.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Numerics.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.dll" />
+    <ReferencePath Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\Reference\System.Windows.Interactivity.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\UIAutomationClient.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\UIAutomationClientsideProviders.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\UIAutomationProvider.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\UIAutomationTypes.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\WindowsBase.dll" />
+    <ReferencePath Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\OutPut\net40\WPFDevelopers.dll" />
+    <ReferencePath Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\OutPut\net40\WPFDevelopers.SamplesCode.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\AboutWindow.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\AcrylicBlurExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\AcrylicBlurWindowExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\AnimationAudioExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\AnimationNavigationBar3DExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BarrageExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BasicBarChartExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BasicControlsExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BreadCrumbBarExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BreatheLightExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BubblleControlExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CanvasHandWritingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CarouselExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CarouselExampleEx.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\ChatEmojiExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CircularMenuExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CircularProgressBarExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CountdownTimerExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CropAvatarExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CropAvatarWindow.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CropControlExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CutImageExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\DashboardExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\DesktopBackground.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\DesktopPlayVideo.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\DrawerMenuExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\EdgePage.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\HomePage.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\DrawingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\DrawPrizeExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\EdgeLightExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\LineChartExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\LoadingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BallLoadingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\CycleLoadingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\RingLoadingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\RollLoadingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\StreamerLoadingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\WaitLoadingExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\PasswordInputBox.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\TextInputBox.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\LoginExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\LoginWindow.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SignUpDialog.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\LogoAnimationExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\MagnifierExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\MainWindow.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\BingAMapExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\MaskExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\MultiSelectComboBoxExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\MultiSelectSearchComboBoxExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\NumberCardControl.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\NumberCardExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\OtherControlExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\PaginationExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\PanningItemsExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\PasswordExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\PasswordWithPlainText.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\PieControlExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\RadarChartExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\RainbowButtonsExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\RoundPickerExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\RulerControlExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\ScreenCutExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\ScrollViewerAnimationExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SelectorExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\ShakeExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SixGirdViewExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SnowCanvasExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SongWordsExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SpeedRocketsExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SpeedRocketsMini.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\SpotLightExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\StarrySkyExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\StepExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\TaskbarItemInfo.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\TaskbarItemInfoExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\ThermometerExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\ThumbDragAndAngleExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\TimeLineExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\TransitionPanelExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\VerifyCodeExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\VirtualizingWrapPanel.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\VirtualizingWrapPanelExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\VolumeControl.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\ZooSemyExample.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\App.g.cs" />
+    <Compile Include="E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers\src\.vs\WPFDevelopers\Intermediate\WPFDevelopers.Samples40\Debug-.NET40\net40\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+</Project>
