@@ -14,7 +14,7 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:NormalLoading}">
         <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
+        <Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
         <Setter Property="Width" Value="40" />
         <Setter Property="Height" Value="40" />
