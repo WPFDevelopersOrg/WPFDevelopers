@@ -20,7 +20,7 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         <Setter Property="WindowStyle" Value="None" />
-        <Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
+        <Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WPFMessageBox}">
@@ -40,7 +40,7 @@
                                         x:Name="PART_Title"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
-                                        FontSize="{DynamicResource WD.TitleFontSize}"
+                                        FontSize="{StaticResource WD.TitleFontSize}"
                                         Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
                                     <Button
                                         Name="PART_CloseButton"
@@ -54,7 +54,7 @@
                                             Height="10"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Data="{DynamicResource WD.WindowCloseGeometry}"
+                                            Data="{StaticResource WD.WindowCloseGeometry}"
                                             Fill="{DynamicResource WD.PrimaryTextSolidColorBrush}"
                                             Stretch="Fill" />
                                     </Button>
@@ -66,7 +66,7 @@
                                         x:Name="PART_Path"
                                         Width="25"
                                         Height="25"
-                                        Data="{DynamicResource WD.InformationGeometry}"
+                                        Data="{StaticResource WD.InformationGeometry}"
                                         Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                                         Stretch="Fill" />
                                     <TextBox
