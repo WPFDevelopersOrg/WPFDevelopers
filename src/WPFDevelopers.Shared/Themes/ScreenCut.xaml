@@ -70,7 +70,7 @@
                                 x:Name="PART_EditBar"
                                 Panel.ZIndex="99"
                                 Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-                                Effect="{DynamicResource WD.PopupShadowDepth}"
+                                Effect="{StaticResource WD.PopupShadowDepth}"
                                 Visibility="Hidden">
                                 <WrapPanel Margin="10,5" VerticalAlignment="Center">
                                     <RadioButton
@@ -205,7 +205,7 @@
                                     Margin="10,30,10,10"
                                     Background="{DynamicResource WD.BackgroundSolidColorBrush}"
                                     CornerRadius="{Binding Path=(helpers:ControlsHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                    Effect="{DynamicResource WD.PopupShadowDepth}">
+                                    Effect="{StaticResource WD.PopupShadowDepth}">
                                     <controls:SmallPanel>
                                         <Path
                                             Width="10"
