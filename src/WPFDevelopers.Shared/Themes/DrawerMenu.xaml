@@ -220,7 +220,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOpen" Value="False">
-                            <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.ReturnGeometryry}" />
+                            <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.ReturnGeometry}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
