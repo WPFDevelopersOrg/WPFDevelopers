@@ -42,7 +42,7 @@ namespace WPFDevelopers.Samples.Controls
             partTextEditor.SetResourceReference(TextArea.SelectionBrushProperty, "WD.WindowBorderBrushSolidColorBrush");
             partTextEditor.TextArea.SelectionBorder = null;
             partTextEditor.TextArea.SelectionForeground = null;
-            partTextEditor.IsReadOnly = false;
+            partTextEditor.IsReadOnly = true;
             partTextEditor.ShowLineNumbers = true;
             partTextEditor.FontFamily = DrawingContextHelper.FontFamily;
             partTextEditor.Text = GetCodeText(codeModel.CodeSource);
