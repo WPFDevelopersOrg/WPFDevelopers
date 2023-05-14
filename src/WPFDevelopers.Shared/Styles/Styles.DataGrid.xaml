@@ -71,7 +71,7 @@
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="HorizontalGridLinesBrush" Value="{x:Null}" />
         <Setter Property="VerticalGridLinesBrush" Value="{x:Null}" />
-        <Setter Property="MinRowHeight" Value="{DynamicResource WD.MinDataGridRowHeight}" />
+        <Setter Property="MinRowHeight" Value="{StaticResource WD.MinDataGridRowHeight}" />
         <Setter Property="CanUserAddRows" Value="False" />
         <Setter Property="AutoGenerateColumns" Value="False" />
         <Setter Property="RowHeaderWidth" Value="0" />
