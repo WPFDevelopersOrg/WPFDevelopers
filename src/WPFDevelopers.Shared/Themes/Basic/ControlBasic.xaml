@@ -8,22 +8,22 @@
         <ResourceDictionary Source="Geometrys.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="WD.ControlBasicStyle" TargetType="Control">
-        <Setter Property="FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-        <Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-        <Setter Property="FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-        <Setter Property="FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-        <Setter Property="FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
-        <Setter Property="TextElement.FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-        <Setter Property="TextElement.FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-        <Setter Property="TextElement.FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-        <Setter Property="TextElement.FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-        <Setter Property="TextElement.FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
+        <Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+        <Setter Property="FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+        <Setter Property="FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+        <Setter Property="FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
+        <Setter Property="TextElement.FontSize" Value="{StaticResource WD.NormalFontSize}" />
+        <Setter Property="TextElement.FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+        <Setter Property="TextElement.FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+        <Setter Property="TextElement.FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+        <Setter Property="TextElement.FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
         <Setter Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-        <Setter Property="TextBlock.FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-        <Setter Property="TextBlock.FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-        <Setter Property="TextBlock.FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-        <Setter Property="TextBlock.FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-        <Setter Property="TextBlock.FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
+        <Setter Property="TextBlock.FontSize" Value="{StaticResource WD.NormalFontSize}" />
+        <Setter Property="TextBlock.FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+        <Setter Property="TextBlock.FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+        <Setter Property="TextBlock.FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+        <Setter Property="TextBlock.FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
         <Setter Property="TextBlock.Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
