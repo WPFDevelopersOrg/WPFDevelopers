@@ -146,7 +146,7 @@ namespace WPFDevelopers.Controls
                 };
                 var star = new Path
                 {
-                    Data = (Geometry)Application.Current.TryFindResource("WD.StarSkyGeometryry"),
+                    Data = (Geometry)Application.Current.TryFindResource("WD.StarSkyGeometry"),
                     Width = size,
                     Height = size,
                     Stretch = Stretch.Fill,
