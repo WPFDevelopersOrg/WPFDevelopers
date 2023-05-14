@@ -63,9 +63,8 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
                 case "云盘":
                 case "邮件":
                 case "视频":
-                    WPFDevelopers.Controls.MessageBox.Show($"点击了{item.Text}", "提示");
-                    break;
                 case "Bus":
+                    WPFDevelopers.Controls.MessageBox.Show($"点击了{item.Text}", "提示");
                     break;
             }
         }
