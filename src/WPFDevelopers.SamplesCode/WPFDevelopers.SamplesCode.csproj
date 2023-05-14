@@ -103,6 +103,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\LoadingExample.xaml.cs" Link="ExampleViews\LoadingExample.xaml.cs" DependentUpon="LoadingExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SelectorExample.xaml.cs" Link="ExampleViews\SelectorExample.xaml.cs" DependentUpon="SelectorExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs" Link="ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs" DependentUpon="MultiSelectSearchComboBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreadCrumbBarExample.xaml.cs" Link="ExampleViews\BreadCrumbBarExample.xaml.cs" DependentUpon="BreadCrumbBarExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -368,6 +369,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MultiSelectSearchComboBoxExample.xaml">
 			<Link>ExampleViews\MultiSelectSearchComboBoxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreadCrumbBarExample.xaml">
+			<Link>ExampleViews\BreadCrumbBarExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

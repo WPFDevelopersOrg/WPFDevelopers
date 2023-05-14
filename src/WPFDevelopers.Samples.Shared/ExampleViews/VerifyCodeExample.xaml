@@ -14,7 +14,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource SuccessPrimaryButton}" 
+            <Button Style="{StaticResource WD.SuccessPrimaryButton}" 
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Click="Button_Click"

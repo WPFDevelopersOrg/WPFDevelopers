@@ -10,8 +10,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <!--<UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
-            <Setter Property="FontSize" Value="{StaticResource NormalFontSize}"/>
+            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+            <Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>-->

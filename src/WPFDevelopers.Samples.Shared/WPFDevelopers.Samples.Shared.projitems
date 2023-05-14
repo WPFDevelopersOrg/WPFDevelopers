@@ -48,6 +48,9 @@
       <SubType>Code</SubType>
       <DependentUpon>BasicControlsExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BreadCrumbBarExample.xaml.cs">
+      <DependentUpon>BreadCrumbBarExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BreatheLightExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>BreatheLightExample.xaml</DependentUpon>
@@ -118,6 +121,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>DrawerMenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\EmailPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>EmailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\EdgePage.xaml.cs">
       <SubType>Code</SubType>
@@ -414,6 +421,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BreadCrumbBarExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BreatheLightExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -481,6 +492,10 @@
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\DrawerMenuExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\EmailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\EdgePage.xaml">
       <Generator>MSBuild:Compile</Generator>

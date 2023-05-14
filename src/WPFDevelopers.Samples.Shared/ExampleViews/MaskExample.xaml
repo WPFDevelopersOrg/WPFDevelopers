@@ -25,7 +25,7 @@
             </Border>
             <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">
-                <Button Content="MaskShowDialog" Style="{StaticResource DangerPrimaryButton}" 
+                <Button Content="MaskShowDialog" Style="{StaticResource WD.DangerPrimaryButton}" 
                         Click="Button_Click"/>
                 <Button Content="MaskShow" Margin="10,0" Click="Button_Click_1"/>
             </StackPanel>

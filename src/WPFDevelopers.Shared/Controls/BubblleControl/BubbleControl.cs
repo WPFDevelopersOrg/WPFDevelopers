@@ -97,11 +97,11 @@ namespace WPFDevelopers.Controls
         {
             get { return (string)GetValue(SelectedTextProperty); }
         }
-        public new static readonly DependencyProperty BorderBackgroundProperty =
+        public static readonly DependencyProperty BorderBackgroundProperty =
             DependencyProperty.Register("BorderBackground", typeof(Brush), typeof(BubblleControl),
                 new PropertyMetadata(null));
 
-        public new static readonly DependencyProperty EarthBackgroundProperty =
+        public static readonly DependencyProperty EarthBackgroundProperty =
             DependencyProperty.Register("EarthBackground", typeof(Brush), typeof(BubblleControl),
                 new PropertyMetadata(Brushes.DarkOrchid));
         public Brush BorderBackground

@@ -9,10 +9,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
-    <Grid Background="{DynamicResource BackgroundSolidColorBrush}">
+    <Grid Background="{DynamicResource WD.BackgroundSolidColorBrush}">
         <Border
             Height="500"
-            Background="{DynamicResource BackgroundSolidColorBrush}"
+            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
             Margin="30,0">
             <Grid Margin="20,10">
                 
@@ -41,7 +41,7 @@
                     VerticalAlignment="Bottom"
                     Click="Button_Click"
                     Content="刷新"
-                    Style="{StaticResource PrimaryButton}" />
+                    Style="{StaticResource WD.PrimaryButton}" />
             </Grid>
         </Border>
     </Grid>

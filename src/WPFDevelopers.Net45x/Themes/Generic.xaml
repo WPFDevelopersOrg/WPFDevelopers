@@ -6,9 +6,9 @@
 
     <converts:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter"/>
     <Style x:Key="WPFDevelopersWindow" TargetType="{x:Type wpfdev:Window}" BasedOn="{x:Null}">
-        <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
-        <Setter Property="Background"  Value="{DynamicResource BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrushSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="Background"  Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="IsTabStop"  Value="False" />
         <!--<Setter Property="ResizeMode" Value="CanResizeWithGrip" />-->
@@ -18,7 +18,7 @@
         <Setter Property="WindowStyle"  Value="None" />
         <Setter Property="MaxHeight" Value="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"/>
         <Setter Property="MaxWidth" Value="{x:Static SystemParameters.MaximizedPrimaryScreenWidth}"/>
-        <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+        <Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome  GlassFrameThickness="0,0,0,.1" 
@@ -51,12 +51,12 @@
                                        Visibility="{TemplateBinding Icon,Converter={StaticResource ObjectNullToVisibilityConverter}}"/>
                                 <TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title" Margin="6,0"
                                       Foreground="{TemplateBinding Foreground}" Grid.Column="1"
-                                       VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}"/>
+                                       VerticalAlignment="Center" FontSize="{DynamicResource WD.TitleFontSize}"/>
                                 <WrapPanel Grid.Column="2" WindowChrome.IsHitTestVisibleInChrome="True"
                                            Margin="0,6">
                                     <WrapPanel x:Name="PART_MinAndMax">
                                         <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" 
-                                            Style="{DynamicResource WindowButtonStyle}" 
+                                            Style="{DynamicResource WD.WindowButtonStyle}" 
                                             Command="SystemCommands.MinimizeWindowCommand">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Rectangle x:Name="MinimizeGlyph"  Width="10"  Height="1"   Margin="0 7 0 0" 
@@ -64,35 +64,35 @@
                                             </Grid>
                                         </Button>
                                         <Button Name="PART_MaximizeButton" IsTabStop="False"  Padding="0"
-                                            Style="{DynamicResource WindowButtonStyle}"
+                                            Style="{DynamicResource WD.WindowButtonStyle}"
                                             Command="SystemCommands.MaximizeWindowCommand">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Width="10" Height="10"
                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                              Data="{DynamicResource PathMetroWindowMaximize}" Fill="{TemplateBinding Foreground}"
+                                              Data="{DynamicResource WD.WindowMaximizeGeometry}" Fill="{TemplateBinding Foreground}"
                                               Stretch="Fill" UseLayoutRounding="False" />
                                             </Grid>
                                         </Button>
                                         <Button Name="PART_RestoreButton" IsTabStop="False"  Padding="0"
-                                            Style="{DynamicResource WindowButtonStyle}"
+                                            Style="{DynamicResource WD.WindowButtonStyle}"
                                             Command="SystemCommands.RestoreWindowCommand"
                                             Visibility="Collapsed">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Width="10" Height="10"
                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                              Data="{DynamicResource PathMetroWindowRestore}" Fill="{TemplateBinding Foreground}"
+                                              Data="{DynamicResource WD.WindowRestoreGeometry}" Fill="{TemplateBinding Foreground}"
                                               Stretch="Fill" UseLayoutRounding="False" />
                                             </Grid>
                                         </Button>
                                     </WrapPanel>
 
                                     <Button Name="PART_CloseButton"
-                                            IsTabStop="False" Style="{DynamicResource WindowButtonStyle}"
+                                            IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}"
                                             Command="SystemCommands.CloseWindowCommand">
                                         <Path Width="10" Height="10"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Data="{DynamicResource PathMetroWindowClose}"
+                              Data="{DynamicResource WD.WindowCloseGeometry}"
                               Fill="{TemplateBinding Foreground}"
                               Stretch="Fill" />
                                     </Button>

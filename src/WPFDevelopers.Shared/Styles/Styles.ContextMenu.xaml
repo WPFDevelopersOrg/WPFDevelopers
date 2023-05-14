@@ -1,33 +1,36 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
-
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
-        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
-        <ResourceDictionary Source="Styles.ScrollBar.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
+        <ResourceDictionary Source="Styles.ScrollBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="DefaultContextMenu" TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style
+        x:Key="WD.DefaultContextMenu"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type ContextMenu}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContextMenu">
-                    <Border Effect="{StaticResource PopupShadowDepth}" 
-                            Margin="10" 
-                            Background="{TemplateBinding Background}" 
-                            CornerRadius="3"
-                            BorderThickness="1"
-                            BorderBrush="{DynamicResource BaseSolidColorBrush}">
+                    <Border
+                        Margin="10"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                        BorderThickness="1"
+                        CornerRadius="3"
+                        Effect="{StaticResource WD.PopupShadowDepth}">
                         <ScrollViewer Padding="0,6">
-                            <ItemsPresenter/>
+                            <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource DefaultContextMenu}" />
-
+    <Style BasedOn="{StaticResource WD.DefaultContextMenu}" TargetType="{x:Type ContextMenu}" />
 </ResourceDictionary>

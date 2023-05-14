@@ -8,9 +8,8 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
-    <Style x:Key="DefaultProgressBar" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+    <Style x:Key="WD.DefaultProgressBar" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource WD.ControlBasicStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}"/>
         <Setter Property="Height" Value="6"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -25,16 +24,16 @@
                             </DoubleAnimationUsingKeyFrames>
                             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)"
                                                           Storyboard.TargetName="PART_Rectangle">
-                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" EasingFunction="{StaticResource SineEaseOut}"/>
+                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" EasingFunction="{StaticResource WD.SineEaseOut}"/>
                                 <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
-                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" EasingFunction="{StaticResource SineEaseOut}"/>
+                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" EasingFunction="{StaticResource WD.SineEaseOut}"/>
                             </PointAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <controls:SmallPanel ClipToBounds="True"
                                          SnapsToDevicePixels="True">
                         <Border x:Name="PART_Border" 
-                            Background="{DynamicResource BaseSolidColorBrush}"
+                            Background="{DynamicResource WD.BaseSolidColorBrush}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"/>
                         <Rectangle x:Name="PART_Track"/>
                         <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
@@ -43,7 +42,7 @@
                                         Background="{TemplateBinding Foreground}"/>
                         </Decorator>
                         <Rectangle x:Name="PART_Rectangle" Visibility="Collapsed"
-                                       Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
+                                       Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
                                 <Rectangle.RenderTransform>
                                     <ScaleTransform/>
                                 </Rectangle.RenderTransform>
@@ -83,8 +82,8 @@
                                             <GeometryDrawing>
                                                 <GeometryDrawing.Brush>
                                                     <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                                        <GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0"/>
-                                                        <GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0.5"/>
+                                                        <GradientStop Color="{DynamicResource WD.PrimaryNormalColor}" Offset="0"/>
+                                                        <GradientStop Color="{DynamicResource WD.PrimaryNormalColor}" Offset="0.5"/>
                                                         <GradientStop Color="Transparent" Offset="0.5"/>
                                                         <GradientStop Color="Transparent" Offset="1"/>
                                                     </LinearGradientBrush>
@@ -118,5 +117,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource DefaultProgressBar}" />
+    <Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource WD.DefaultProgressBar}" />
 </ResourceDictionary>

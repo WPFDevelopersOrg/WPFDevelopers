@@ -15,20 +15,20 @@
                 Minimum="10"
                 Maximum="210"/>
             <UniformGrid Rows="3">
-                <Grid Background="{StaticResource CircularDualSolidColorBrush}" Height="51" Margin="40,0">
-                    <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
+                <Grid Background="{StaticResource WD.CircularDualSolidColorBrush}" Height="51" Margin="40,0">
+                    <Path Stroke="{StaticResource WD.SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource WD.SuccessPressedSolidColorBrush}"
                   Data="{Binding ElementName=PART_Ruler, Path=CurrentGeometry,Mode=TwoWay}" />
                     <wpfdev:Ruler x:Name="PART_Ruler" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
                           CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>
                 </Grid>
-                <Grid Background="{StaticResource DangerPressedSolidColorBrush}" Height="51" Margin="40,0">
-                    <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
+                <Grid Background="{StaticResource WD.DangerPressedSolidColorBrush}" Height="51" Margin="40,0">
+                    <Path Stroke="{StaticResource WD.SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource WD.SuccessPressedSolidColorBrush}"
                   Data="{Binding ElementName=PART_Ruler1, Path=CurrentGeometry,Mode=TwoWay}" />
                     <wpfdev:Ruler x:Name="PART_Ruler1" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
                           CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>
                 </Grid>
-                <Grid Background="{StaticResource WarningPressedSolidColorBrush}" Height="51" Margin="40,0">
-                    <Path Stroke="{StaticResource SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource SuccessPressedSolidColorBrush}"
+                <Grid Background="{StaticResource WD.WarningPressedSolidColorBrush}" Height="51" Margin="40,0">
+                    <Path Stroke="{StaticResource WD.SuccessPressedSolidColorBrush}" StrokeThickness="1" Fill="{StaticResource WD.SuccessPressedSolidColorBrush}"
                   Data="{Binding ElementName=PART_Ruler2, Path=CurrentGeometry,Mode=TwoWay}" />
                     <wpfdev:Ruler x:Name="PART_Ruler2" Margin="40,0" Interval="20" StartValue="10" EndValue="210"
                           CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>

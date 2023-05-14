@@ -26,7 +26,7 @@
         <UniformGrid Grid.Row="1" Grid.ColumnSpan="2" 
                      HorizontalAlignment="Center" 
                      VerticalAlignment="Center">
-            <Button  Content="保存" Click="btnSave_Click" Style="{StaticResource PrimaryButton}" Margin="4,0"/>
+            <Button  Content="保存" Click="btnSave_Click" Style="{StaticResource WD.PrimaryButton}" Margin="4,0"/>
             <Button  Content="关闭" Click="btnClose_Click" Margin="4,0"/>
         </UniformGrid>
     </Grid>

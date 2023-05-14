@@ -1,70 +1,80 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
-                    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
-        <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
+        <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
+        <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <Style x:Key="DefaultRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="{DynamicResource WindowForegroundColorBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="4,0"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Style
+        x:Key="WD.DefaultRadioButton"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type RadioButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="4,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <BulletDecorator Background="Transparent"
-                                     Margin="{TemplateBinding Margin}">
+                    <BulletDecorator Margin="{TemplateBinding Margin}" Background="Transparent">
                         <BulletDecorator.Bullet>
-                            <Border VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
-                                <controls:SmallPanel MinWidth="16" MinHeight="16" >
-                                    <Ellipse x:Name="PART_Border" 
-                                         StrokeThickness="{TemplateBinding BorderThickness}"
-                                         Fill="{TemplateBinding Background}" 
-                                         Stroke="{DynamicResource BaseSolidColorBrush}">
-                                    </Ellipse>
-                                    <Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WindowForegroundColorBrush}" 
-                                         MinWidth="6" MinHeight="6"
-                                         RenderTransformOrigin=".5,.5">
+                            <Border HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                                <controls:SmallPanel MinWidth="16" MinHeight="16">
+                                    <Ellipse
+                                        x:Name="PART_Border"
+                                        Fill="{TemplateBinding Background}"
+                                        Stroke="{DynamicResource WD.BaseSolidColorBrush}"
+                                        StrokeThickness="{TemplateBinding BorderThickness}" />
+                                    <Ellipse
+                                        x:Name="PART_Ellipse"
+                                        MinWidth="6"
+                                        MinHeight="6"
+                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                        RenderTransformOrigin=".5,.5">
                                         <Ellipse.RenderTransform>
-                                            <ScaleTransform ScaleX="0" ScaleY="0"/>
+                                            <ScaleTransform ScaleX="0" ScaleY="0" />
                                         </Ellipse.RenderTransform>
                                     </Ellipse>
                                 </controls:SmallPanel>
                             </Border>
                         </BulletDecorator.Bullet>
-                        <ContentPresenter x:Name="PART_ContentPresenter" 
-                                          ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                          Content="{TemplateBinding Content}"
-                                          ContentStringFormat="{TemplateBinding ContentStringFormat}" 
-                                          Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                          Margin="{TemplateBinding Padding}"
-                                          RecognizesAccessKey="True" 
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}"/>
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            TextElement.Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
-                                <VisualState x:Name="Unchecked"/>
-                                <VisualState x:Name="Indeterminate"/>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate" />
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                      
-                                        <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
-                                                         Storyboard.TargetProperty="(Ellipse.RenderTransform).(ScaleTransform.ScaleX)" 
-                                                         To=".4" Duration="00:00:.3"
-                                                         EasingFunction="{StaticResource ExponentialEaseOut}"/>
 
-                                        <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
-                                                         Storyboard.TargetProperty="(Ellipse.RenderTransform).(ScaleTransform.ScaleY)" 
-                                                         To=".4" Duration="00:00:.3"
-                                                         EasingFunction="{StaticResource ExponentialEaseOut}"/>
+                                        <DoubleAnimation
+                                            EasingFunction="{StaticResource WD.ExponentialEaseOut}"
+                                            Storyboard.TargetName="PART_Ellipse"
+                                            Storyboard.TargetProperty="(Ellipse.RenderTransform).(ScaleTransform.ScaleX)"
+                                            To=".4"
+                                            Duration="00:00:.3" />
+
+                                        <DoubleAnimation
+                                            EasingFunction="{StaticResource WD.ExponentialEaseOut}"
+                                            Storyboard.TargetName="PART_Ellipse"
+                                            Storyboard.TargetProperty="(Ellipse.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To=".4"
+                                            Duration="00:00:.3" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -72,78 +82,88 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Fill" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                            <Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter TargetName="PART_Border" Property="Fill" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="PathRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Style
+        x:Key="WD.PathRadioButton"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type RadioButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="8" />
-        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
                     <Border Background="Transparent">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          Margin="{TemplateBinding Padding}" 
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          x:Name="PART_ContentPresenter" Opacity=".8"/>
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Opacity=".8" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="1"/>
+                            <Setter TargetName="PART_ContentPresenter" Property="Opacity" Value="1" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" TargetName="PART_ContentPresenter" Value="1"/>
+                            <Setter TargetName="PART_ContentPresenter" Property="Opacity" Value="1" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
-    <Style x:Key="ColorRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Style
+        x:Key="WD.ColorRadioButton"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type RadioButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="8" />
-        <Setter Property="Width" Value="15"/>
-        <Setter Property="Height" Value="15"/>
-        
+        <Setter Property="Width" Value="15" />
+        <Setter Property="Height" Value="15" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <Border Background="{TemplateBinding Background}" 
-                            BorderThickness="0"
-                            x:Name="PART_Border"
-                            CornerRadius="7"
-                            Width="{TemplateBinding Width}"
-                            Height="{TemplateBinding Height}">
+                    <Border
+                        x:Name="PART_Border"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="0"
+                        CornerRadius="7">
+                        <Ellipse
+                            x:Name="PART_Ellipse"
+                            Width="7"
+                            Height="7"
+                            Fill="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            Visibility="Collapsed" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
-                                                 Storyboard.TargetName="PART_Ellipse">
-                                            <DiscreteObjectKeyFrame KeyTime="0"
-                                            Value="{x:Static Visibility.Visible}" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -151,20 +171,15 @@
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Ellipse x:Name="PART_Ellipse"
-                                 Width="7"
-                                 Height="7"
-                                 Fill="{DynamicResource BackgroundSolidColorBrush}"
-                                 Visibility="Collapsed"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value=".8"/>
+                            <Setter Property="Opacity" Value=".8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource DefaultRadioButton}" />
+    <Style BasedOn="{StaticResource WD.DefaultRadioButton}" TargetType="{x:Type RadioButton}" />
 </ResourceDictionary>

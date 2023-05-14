@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:Double x:Key="NormalFontSize">13</sys:Double>
-    <sys:Double x:Key="MediumFontSize">14</sys:Double>
-    <sys:Double x:Key="TitleFontSize">16</sys:Double>
+    <sys:Double x:Key="WD.NormalFontSize">13</sys:Double>
+    <sys:Double x:Key="WD.MediumFontSize">14</sys:Double>
+    <sys:Double x:Key="WD.TitleFontSize">16</sys:Double>
 
-    <FontFamily x:Key="NormalFontFamily">
+    <FontFamily x:Key="WD.NormalFontFamily">
         Helvetica Neue For Number, 
         -apple-system, 
         BlinkMacSystemFont, 
@@ -20,7 +20,7 @@
         sans-serif
     </FontFamily>
 
-    <FontStretch x:Key="NormalFontStretch">Normal</FontStretch>
-    <FontStyle x:Key="NormalFontStyle">Normal</FontStyle>
-    <FontWeight x:Key="NormalFontWeight">Normal</FontWeight>
+    <FontStretch x:Key="WD.NormalFontStretch">Normal</FontStretch>
+    <FontStyle x:Key="WD.NormalFontStyle">Normal</FontStyle>
+    <FontWeight x:Key="WD.NormalFontWeight">Normal</FontWeight>
 </ResourceDictionary>

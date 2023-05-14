@@ -1,0 +1,86 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:converts="clr-namespace:WPFDevelopers.Converts">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <converts:BreadCrumbBarConvertr x:Key="WD.BreadCrumbBarConvertr" />
+    <Style
+        x:Key="WD.BreadCrumbBarItem"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:BreadCrumbBarItem}">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="6,0" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="{StaticResource WD.TitleFontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:BreadCrumbBarItem}">
+                    <StackPanel Orientation="Horizontal">
+                        <Path
+                            Name="PART_PathSymbol"
+                            Width="9"
+                            Height="9"
+                            Data="{StaticResource WD.BreadCrumbBarGeometry}"
+                            Fill="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
+                            IsHitTestVisible="False"
+                            Stretch="Uniform">
+                            <Path.Visibility>
+                                <!--  Visibility="{Binding Converter={StaticResource WD.BreadCrumbBarConvertr}, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" /  -->
+                                <MultiBinding Converter="{StaticResource WD.BreadCrumbBarConvertr}">
+                                    <Binding RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
+                                    <Binding Path="SelectedIndex" RelativeSource="{RelativeSource AncestorType=ListBox}" />
+                                </MultiBinding>
+                            </Path.Visibility>
+                        </Path>
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            TextElement.Foreground="{TemplateBinding Foreground}" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="WD.BreadCrumbBar"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:BreadCrumbBar}">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource WD.BreadCrumbBarItem}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:BreadCrumbBar}">
+                    <Border
+                        Margin="{TemplateBinding Margin}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto">
+                            <ItemsPresenter x:Name="ItemsHost" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource WD.BreadCrumbBar}" TargetType="{x:Type controls:BreadCrumbBar}" />
+</ResourceDictionary>

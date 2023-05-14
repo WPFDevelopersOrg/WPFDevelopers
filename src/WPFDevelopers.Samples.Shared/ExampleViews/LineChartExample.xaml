@@ -13,7 +13,7 @@
     <Viewbox>
         <Grid Width="800" Height="600">
             <Grid x:Name="gArea"
-              Background="{StaticResource ExtralightSolidColorBrush}"
+              Background="{StaticResource WD.ExtralightSolidColorBrush}"
               Margin="50,20,20,20">
             </Grid>
             <Popup Name="pop1"
@@ -21,8 +21,8 @@
                IsOpen="False"
                Placement="Relative"
                StaysOpen="True">
-                <Border Effect="{StaticResource NormalShadowDepth}"
-                    Background="{StaticResource BackgroundSolidColorBrush}"
+                <Border Effect="{StaticResource WD.NormalShadowDepth}"
+                    Background="{StaticResource WD.BackgroundSolidColorBrush}"
                     Margin="10">
                     <Grid x:Name="gV"
                   Width="200"

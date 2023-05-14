@@ -3,33 +3,33 @@
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True">
 
     <!--字体颜色-->
-    <Color x:Key="PrimaryTextColor" po:Freeze="True">#FFFFFF</Color>
-    <SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}" po:Freeze="True"></SolidColorBrush>
-    <SolidColorBrush x:Key="WindowForegroundColorBrush" Color="{StaticResource PrimaryTextColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.PrimaryTextColor" po:Freeze="True">#FFFFFF</Color>
+    <SolidColorBrush x:Key="WD.PrimaryTextSolidColorBrush" Color="{StaticResource WD.PrimaryTextColor}" po:Freeze="True"></SolidColorBrush>
+    <SolidColorBrush x:Key="WD.WindowForegroundColorBrush" Color="{StaticResource WD.PrimaryTextColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="RegularTextColor" po:Freeze="True">#FFFFFF</Color>
-    <SolidColorBrush x:Key="RegularTextSolidColorBrush" Color="{StaticResource RegularTextColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.RegularTextColor" po:Freeze="True">#FFFFFF</Color>
+    <SolidColorBrush x:Key="WD.RegularTextSolidColorBrush" Color="{StaticResource WD.RegularTextColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="DefaultBackgroundColor" po:Freeze="True">#202020</Color>
-    <SolidColorBrush x:Key="DefaultBackgroundSolidColorBrush" Color="{StaticResource DefaultBackgroundColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.DefaultBackgroundColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="WD.DefaultBackgroundSolidColorBrush" Color="{StaticResource WD.DefaultBackgroundColor}" po:Freeze="True"></SolidColorBrush>
     
     <!--背景色-->
-    <Color x:Key="BackgroundColor" po:Freeze="True">#323232</Color>
-    <SolidColorBrush x:Key="BackgroundSolidColorBrush" Color="{StaticResource BackgroundColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.BackgroundColor" po:Freeze="True">#323232</Color>
+    <SolidColorBrush x:Key="WD.BackgroundSolidColorBrush" Color="{StaticResource WD.BackgroundColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="WindowBorderBrushColor" po:Freeze="True">#202020</Color>
-    <SolidColorBrush x:Key="WindowBorderBrushSolidColorBrush" Color="{StaticResource WindowBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.WindowBorderBrushColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="WD.WindowBorderBrushSolidColorBrush" Color="{StaticResource WD.WindowBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="BaseColor" po:Freeze="True">#202020</Color>
-    <SolidColorBrush x:Key="BaseSolidColorBrush" Color="{StaticResource BaseColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.BaseColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="WD.BaseSolidColorBrush" Color="{StaticResource WD.BaseColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="BaseMoveColor" po:Freeze="True">#202020</Color>
-    <SolidColorBrush x:Key="BaseMoveColorSolidColorBrush" Color="{StaticResource BaseMoveColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.BaseMoveColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key=" WD.BaseMoveSolidColorBrush" Color="{StaticResource WD.BaseMoveColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="LighterColor" po:Freeze="True">#202020</Color>
-    <SolidColorBrush x:Key="LighterSolidColorBrush" Color="{StaticResource LighterColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.LighterColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="WD.LighterSolidColorBrush" Color="{StaticResource WD.LighterColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="LightColor" po:Freeze="True">#202020</Color>
-    <SolidColorBrush x:Key="LightSolidColorBrush" Color="{StaticResource LightColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.LightColor" po:Freeze="True">#202020</Color>
+    <SolidColorBrush x:Key="WD.LightSolidColorBrush" Color="{StaticResource WD.LightColor}" po:Freeze="True"></SolidColorBrush>
 
 </ResourceDictionary>

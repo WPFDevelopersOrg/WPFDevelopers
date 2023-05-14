@@ -70,6 +70,7 @@
         Loading,
         Selector,
         MultiSelectSearchComboBox,
+        BreadCrumbBar,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

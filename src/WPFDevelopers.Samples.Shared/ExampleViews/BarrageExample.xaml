@@ -29,7 +29,7 @@
                 <TextBox 
                      x:Name="tbBarrage"
                      wpfdev:ElementHelper.Watermark="请弹幕内容"/>
-                <Button Grid.Column="1" Style="{StaticResource PrimaryButton}"
+                <Button Grid.Column="1" Style="{StaticResource WD.PrimaryButton}"
                     Content="发射弹幕" Margin="4,0,0,0" 
                     Click="ButtonBase_OnClick"/>
             </Grid>

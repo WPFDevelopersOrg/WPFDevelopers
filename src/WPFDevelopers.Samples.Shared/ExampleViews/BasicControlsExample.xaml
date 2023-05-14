@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d"  Background="{DynamicResource BackgroundSolidColorBrush}"
+             mc:Ignorable="d"  Background="{DynamicResource WD.BackgroundSolidColorBrush}"
              d:DesignHeight="450" d:DesignWidth="800" Name="MyBasicControls">
     <controls:CodeViewer>
         <ScrollViewer>
@@ -20,13 +20,13 @@
                             <TextBlock Text="WPFDevelopers" FontSize="20" 
                                    HorizontalAlignment="Center"
                                    Padding="0,4"
-                               Foreground="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                               Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"/>
                             <TextBlock Text="微信号公众号:WPFDevelopers" 
                                    HorizontalAlignment="Center"
                                    Padding="0,4"
-                                   FontSize="20" Foreground="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                                   FontSize="20" Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"/>
                             <TextBlock FontSize="20" Padding="0,10"
-                       Foreground="{DynamicResource PrimaryNormalSolidColorBrush}">
+                       Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
             <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.Minimal.git"
                        RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源码</Hyperlink>
             <Run/>
@@ -63,8 +63,8 @@
                             <MenuItem Header="MenuItem 1">
                                 <MenuItem Header="MenuItem 1.1">
                                     <MenuItem.Icon>
-                                        <Path Data="{DynamicResource PathWarning}" 
-                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                                        <Path Data="{DynamicResource WD.WarningGeometry}" 
+                                      Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                                       Stretch="Uniform" Height="20" Width="20"/>
                                     </MenuItem.Icon>
                                     <MenuItem Header="MenuItem 1.1.1">
@@ -89,55 +89,55 @@
                     <TextBlock Text="Loading" FontSize="20" Margin="0,20,0,0"/>
                     <WrapPanel Margin="0,10">
                         <Button Content="Loading" Click="Loading_Click" 
-                            Style="{DynamicResource PrimaryButton}"/>
+                            Style="{DynamicResource WD.PrimaryButton}"/>
                         <Button Name="btnLoadingTask" Content="LoadingTask" Click="LoadingTask_Click" 
-                                Style="{DynamicResource SuccessPrimaryButton}" Margin="10,0"/>
+                                Style="{DynamicResource WD.SuccessPrimaryButton}" Margin="10,0"/>
                         <Button Name="btnLoading" Click="BtnLoading_Click" Content="AddLoading"
                                 wpfdev:Loading.Child="{x:Static wpfdev:NormalLoading.Default}"
-                                Style="{DynamicResource WarningPrimaryButton}"/>
+                                Style="{DynamicResource WD.WarningPrimaryButton}"/>
                         <Button Name="btnOffTask" Click="BtnOffTask_Click" 
                                 Margin="10,0" Content="Off Task"
-                                Style="{DynamicResource DangerPrimaryButton}"/>
+                                Style="{DynamicResource WD.DangerPrimaryButton}"/>
                     </WrapPanel>
                     <TextBlock Text="Button" FontSize="20" Margin="0,20,0,0"/>
                     <WrapPanel Margin="0,10">
                         <Button Content="Default"/>
                         <Button Content="Default" Margin="10,0" IsEnabled="False"/>
-                        <Button Content="Default" Style="{DynamicResource PrimaryButton}"/>
-                        <Button Content="Default" Style="{DynamicResource PrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Default" Style="{DynamicResource WD.PrimaryButton}"/>
+                        <Button Content="Default" Style="{DynamicResource WD.PrimaryButton}" Margin="10,0" IsEnabled="False"/>
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Success" Style="{DynamicResource SuccessDefaultButton}"/>
-                        <Button Content="Success" Margin="10,0" IsEnabled="False" Style="{DynamicResource SuccessDefaultButton}"/>
-                        <Button Content="Success" Style="{DynamicResource SuccessPrimaryButton}"/>
-                        <Button Content="Success" Style="{DynamicResource SuccessPrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Success" Style="{DynamicResource WD.SuccessDefaultButton}"/>
+                        <Button Content="Success" Margin="10,0" IsEnabled="False" Style="{DynamicResource WD.SuccessDefaultButton}"/>
+                        <Button Content="Success" Style="{DynamicResource WD.SuccessPrimaryButton}"/>
+                        <Button Content="Success" Style="{DynamicResource WD.SuccessPrimaryButton}" Margin="10,0" IsEnabled="False"/>
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Warning" Style="{DynamicResource WarningDefaultButton}"/>
-                        <Button Content="Warning" Margin="10,0" IsEnabled="False" Style="{DynamicResource WarningDefaultButton}"/>
-                        <Button Content="Warning" Style="{DynamicResource WarningPrimaryButton}"/>
-                        <Button Content="Warning" Style="{DynamicResource WarningPrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Warning" Style="{DynamicResource WD.WarningDefaultButton}"/>
+                        <Button Content="Warning" Margin="10,0" IsEnabled="False" Style="{DynamicResource WD.WarningDefaultButton}"/>
+                        <Button Content="Warning" Style="{DynamicResource WD.WarningPrimaryButton}"/>
+                        <Button Content="Warning" Style="{DynamicResource WD.WarningPrimaryButton}" Margin="10,0" IsEnabled="False"/>
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Danger" Style="{DynamicResource DangerDefaultButton}"/>
-                        <Button Content="Danger" Margin="10,0" IsEnabled="False" Style="{DynamicResource DangerDefaultButton}"/>
-                        <Button Content="Danger" Style="{DynamicResource DangerPrimaryButton}"/>
-                        <Button Content="Danger" Style="{DynamicResource DangerPrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Danger" Style="{DynamicResource WD.DangerDefaultButton}"/>
+                        <Button Content="Danger" Margin="10,0" IsEnabled="False" Style="{DynamicResource WD.DangerDefaultButton}"/>
+                        <Button Content="Danger" Style="{DynamicResource WD.DangerPrimaryButton}"/>
+                        <Button Content="Danger" Style="{DynamicResource WD.DangerPrimaryButton}" Margin="10,0" IsEnabled="False"/>
                     </WrapPanel>
                     <TextBlock Text="MessageBox" FontSize="20" Margin="0,20,0,0"/>
                     <WrapPanel Margin="0,10">
                         <Button x:Name="btnInformation" Content="Info" 
-                                Style="{StaticResource SuccessPrimaryButton}" 
+                                Style="{StaticResource WD.SuccessPrimaryButton}" 
                                 Click="btnInformation_Click"/>
                         <Button x:Name="btnWarning" Content="Warning"
-                                Style="{StaticResource WarningPrimaryButton}"
+                                Style="{StaticResource WD.WarningPrimaryButton}"
                                 Margin="10,0" Click="btnWarning_Click"/>
                         <Button x:Name="btnError" Content="Error"
                                 Click="btnError_Click"
-                                Style="{StaticResource DangerPrimaryButton}"/>
+                                Style="{StaticResource WD.DangerPrimaryButton}"/>
                         <Button x:Name="btnQuestion" 
                                 Content="Question" 
-                                Style="{StaticResource PrimaryButton}"
+                                Style="{StaticResource WD.PrimaryButton}"
                                 Margin="10,0" 
                                 Click="btnQuestion_Click"/>
                     </WrapPanel>
@@ -384,11 +384,11 @@
                     <TextBlock Text="Expander" FontSize="20" Margin="0,20,0,0"/>
                     <UniformGrid Margin="0,10" Columns="2">
                         <Expander Header="Expander1">
-                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
+                            <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"
                                    Width="400" Height="300"/>
                         </Expander>
                         <Expander Header="Expander1" ExpandDirection="Up" Margin="10,0" FlowDirection="RightToLeft" IsExpanded="True">
-                            <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
+                            <Rectangle Fill="{DynamicResource WD.LightSolidColorBrush}"
                                    Width="400" Height="300"/>
                         </Expander>
                         <Expander ExpandDirection="Right" Margin="0,10">
@@ -399,7 +399,7 @@
                                     </TextBlock.LayoutTransform>
                                 </TextBlock>
                             </Expander.Header>
-                            <Rectangle Fill="{DynamicResource CircularSingularSolidColorBrush}"
+                            <Rectangle Fill="{DynamicResource WD.CircularSingularSolidColorBrush}"
                                    Width="400" Height="300"/>
                         </Expander>
                         <Expander ExpandDirection="Left" Margin="10" IsExpanded="True">
@@ -410,18 +410,18 @@
                                     </TextBlock.LayoutTransform>
                                 </TextBlock>
                             </Expander.Header>
-                            <Rectangle Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                            <Rectangle Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                                    Width="400" Height="300"/>
                         </Expander>
                     </UniformGrid>
                     <TextBlock Text="GroupBox" FontSize="20" Margin="0,20,0,0"/>
                     <UniformGrid Margin="0,10" Columns="2">
                         <GroupBox Header="GroupBox1">
-                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
+                            <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"
                                    Width="400" Height="300"/>
                         </GroupBox>
                         <GroupBox Header="GroupBox1" Margin="10,0" IsEnabled="False">
-                            <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
+                            <Rectangle Fill="{DynamicResource WD.LightSolidColorBrush}"
                                    Width="400" Height="300"/>
                         </GroupBox>
                     </UniformGrid>
@@ -437,46 +437,46 @@
                         </UniformGrid.Resources>
                         <TabControl>
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
                             </TabItem>
                         </TabControl>
                         <TabControl TabStripPlacement="Bottom">
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
                             </TabItem>
                         </TabControl>
                         <TabControl TabStripPlacement="Left">
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"/>
                             </TabItem>
                         </TabControl>
                         <TabControl TabStripPlacement="Right" IsEnabled="False">
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource SuccessSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.SuccessSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
                             </TabItem>
                             <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
                             </TabItem>
                         </TabControl>
                     </UniformGrid>

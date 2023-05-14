@@ -14,7 +14,7 @@
         <Border
             Width="700"
             Height="500"
-            Background="{DynamicResource BackgroundSolidColorBrush}">
+            Background="{DynamicResource WD.BackgroundSolidColorBrush}">
             <Grid Margin="20,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -52,7 +52,7 @@
                     VerticalAlignment="Bottom"
                     Click="Button_Click"
                     Content="刷新"
-                    Style="{StaticResource PrimaryButton}" />
+                    Style="{StaticResource WD.PrimaryButton}" />
             </Grid>
         </Border>
         <controls:CodeViewer.SourceCodes>

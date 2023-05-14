@@ -25,7 +25,7 @@
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <wpfdev:AnimationAudio x:Name="AnimationAudioRight" IsRight ="true" 
-                               Background="{DynamicResource SuccessSolidColorBrush}"
+                               Background="{DynamicResource WD.SuccessSolidColorBrush}"
                                Foreground="Black"
                                MouseDown="AnimationAudioLeft_MouseDown"/>
             <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"

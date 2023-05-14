@@ -15,7 +15,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <wpfdev:TimeLine x:Name="TimeLine" Margin="10"/>
-        <Button Content="add" Grid.Column="1" Click="AddButton_Click" Height="40" Width="100" Style="{StaticResource PrimaryButton}"/>
+        <Button Content="add" Grid.Column="1" Click="AddButton_Click" Height="40" Width="100" Style="{StaticResource WD.PrimaryButton}"/>
     </Grid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 

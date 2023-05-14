@@ -15,7 +15,7 @@
     <controls:CodeViewer>
     <UniformGrid Columns="3" Rows="2">
         <wpfdev:DrawingControl 
-            InnerBackground="{StaticResource SuccessSolidColorBrush}"
+            InnerBackground="{StaticResource WD.SuccessSolidColorBrush}"
             Content="反应盘">
             <ListBoxItem Content="盘1"/>
             <ListBoxItem Content="盘2"/>
@@ -28,7 +28,7 @@
                                PanelBorderThinckness="0" 
                                PanelBackground="#FFF2F2F2" 
                                InnerBorderThickness="1" 
-                               InnerBorderBrush="{StaticResource DangerSolidColorBrush}"
+                               InnerBorderBrush="{StaticResource WD.DangerSolidColorBrush}"
                                InnerBackground="White" 
                                PanelDrawingMode="Top">
             <wpfdev:DrawingControl.ItemTemplate>
@@ -41,7 +41,7 @@
                         <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" 
                                    VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
                     </Border>-->
-                    <Button Style="{StaticResource DefaultButton}"
+                    <Button Style="{StaticResource WD.DefaultButton}"
                             Content="{Binding Number}"/>
                 </DataTemplate>
             </wpfdev:DrawingControl.ItemTemplate>
@@ -54,7 +54,7 @@
                                PanelBorderThinckness="0" 
                                PanelBackground="#FFF2F2F2" 
                                InnerBorderThickness="1" 
-                               InnerBackground="{StaticResource WarningSolidColorBrush}" 
+                               InnerBackground="{StaticResource WD.WarningSolidColorBrush}" 
                                PanelDrawingMode="Right"
                                PanelMultipleSpace="10"
                                PanelMultipleDescription="5">
@@ -106,7 +106,7 @@
                     <!--<Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
                         <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
                     </Border>-->
-                    <Button Style="{StaticResource PrimaryButton}" Content="{Binding Number}"/>
+                    <Button Style="{StaticResource WD.PrimaryButton}" Content="{Binding Number}"/>
                 </DataTemplate>
             </wpfdev:DrawingControl.ItemTemplate>
 

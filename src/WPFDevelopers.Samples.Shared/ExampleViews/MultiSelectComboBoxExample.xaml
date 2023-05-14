@@ -24,7 +24,7 @@
                     HorizontalAlignment="Center"
                     Click="Button_Click"
                     Margin="0,20,0,0"
-                    Style="{StaticResource WarningPrimaryButton}"/>
+                    Style="{StaticResource WD.WarningPrimaryButton}"/>
             <UniformGrid Columns="2" Rows="2" Grid.Row="1">
                 <wpfdev:MultiSelectComboBox
                 VerticalContentAlignment="Center" 

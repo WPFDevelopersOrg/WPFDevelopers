@@ -25,7 +25,7 @@
             <Border Background="#282C34">
                 <wpfdev:SmallPanel>
                     <TextBlock Text="信号源1"/>
-                    <Border Background="{DynamicResource PrimaryNormalSolidColorBrush}"
+                    <Border Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Right"
                             Padding="10,4"

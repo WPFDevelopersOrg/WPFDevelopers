@@ -6,11 +6,9 @@ using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Converts
 {
-    /// <summary>
-    /// 自动列表序号
-    /// </summary>
+
     [ValueConversion(typeof(Int32), typeof(StepItem))]
-    public class IndexConverter : IValueConverter
+    public class StepIndexConverter : IValueConverter
     {
         public object Convert(object value, Type TargetType, object parameter, CultureInfo culture)
         {

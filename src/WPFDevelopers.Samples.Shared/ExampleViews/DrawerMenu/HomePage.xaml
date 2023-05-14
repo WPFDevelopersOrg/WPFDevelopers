@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.DrawerMenu"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="HomePage" Background="{StaticResource PrimaryTextSolidColorBrush}">
+      Title="HomePage" Background="{StaticResource WD.PrimaryTextSolidColorBrush}">
 
     <Grid>
         <TextBlock VerticalAlignment="Center"
@@ -14,7 +14,7 @@
                    Width="400" TextAlignment="Center"
                    TextWrapping="Wrap"
                    Margin="0,0,0,40"
-                   FontSize="{StaticResource NormalFontSize}">
+                   FontSize="{StaticResource WD.NormalFontSize}">
             <Run Foreground="White">Home</Run>
             <Run Text="微信公众号 WPFDevelopers" FontSize="40"
                            Foreground="#A9CC32" FontWeight="Bold"></Run>

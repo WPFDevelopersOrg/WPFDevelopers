@@ -10,12 +10,12 @@ namespace WPFDevelopers
         /// <summary>
         ///     字体资源
         /// </summary>
-        public static FontFamily FontFamily = Application.Current.TryFindResource("NormalFontFamily") as FontFamily;
+        public static FontFamily FontFamily = Application.Current.TryFindResource("WD.NormalFontFamily") as FontFamily;
 
         /// <summary>
         ///     默认颜色
         /// </summary>
-        public static Brush Brush = Application.Current.TryFindResource("PrimaryNormalSolidColorBrush") as Brush;
+        public static Brush Brush = Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush") as Brush;
 
         /// <summary>
         ///     颜色转换
