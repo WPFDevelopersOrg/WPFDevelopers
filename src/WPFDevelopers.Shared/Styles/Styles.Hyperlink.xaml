@@ -8,11 +8,11 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="WD.DefaultHyperlink" TargetType="{x:Type Hyperlink}">
-        <Setter Property="FontSize" Value="{DynamicResource WD.NormalFontSize}" />
-        <Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
-        <Setter Property="FontStyle" Value="{DynamicResource WD.NormalFontStyle}" />
-        <Setter Property="FontWeight" Value="{DynamicResource WD.NormalFontWeight}" />
-        <Setter Property="FontStretch" Value="{DynamicResource WD.NormalFontStretch}" />
+        <Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
+        <Setter Property="FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
+        <Setter Property="FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
+        <Setter Property="FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
         <Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
         <Style.Triggers>
