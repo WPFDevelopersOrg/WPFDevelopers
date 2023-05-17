@@ -28,7 +28,6 @@
                             IsHitTestVisible="False"
                             Stretch="Uniform">
                             <Path.Visibility>
-                                <!--  Visibility="{Binding Converter={StaticResource WD.BreadCrumbBarConvertr}, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" /  -->
                                 <MultiBinding Converter="{StaticResource WD.BreadCrumbBarConvertr}">
                                     <Binding RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
                                     <Binding Path="SelectedIndex" RelativeSource="{RelativeSource AncestorType=ListBox}" />
