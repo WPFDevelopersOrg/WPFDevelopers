@@ -20,7 +20,7 @@ namespace WPFDevelopers.Helpers
     {
         private static Win32ApiHelper.DeskTopSize size;
         private static readonly Regex _regexNumber = new Regex("[^0-9]+");
-        public static Brush Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
+        public static Brush Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
 
         public static Brush WindowForegroundBrush =
             (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
@@ -55,7 +55,7 @@ namespace WPFDevelopers.Helpers
                 }
                 else
                 {
-                    if (Application.Current.TryFindResource("WindowBorderBrushColor") is Color color)
+                    if (Application.Current.TryFindResource("WD.WindowBorderBrushColor") is Color color)
                     {
                         var colorBrush = new SolidColorBrush(color);
                         Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = colorBrush;
@@ -65,7 +65,7 @@ namespace WPFDevelopers.Helpers
                     WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.DefaultBackgroundSolidColorBrush");
                 }
 
-                Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
+                Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
                 //WindowForegroundBrush = Application.Current.TryFindResource["WD.PrimaryTextSolidColorBrush"] as Brush;
                 _IsCurrentDark = isDark;
                 ThemeRefresh();
