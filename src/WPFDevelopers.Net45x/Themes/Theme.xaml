@@ -6624,7 +6624,6 @@
 					<StackPanel Orientation="Horizontal">
 						<Path Name="PART_PathSymbol" Width="9" Height="9" Data="{StaticResource WD.BreadCrumbBarGeometry}" Fill="{DynamicResource WD.PlaceholderTextSolidColorBrush}" IsHitTestVisible="False" Stretch="Uniform">
 							<Path.Visibility>
-								<!--  Visibility="{Binding Converter={StaticResource WD.BreadCrumbBarConvertr}, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" /  -->
 								<MultiBinding Converter="{StaticResource WD.BreadCrumbBarConvertr}">
 									<Binding RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
 									<Binding Path="SelectedIndex" RelativeSource="{RelativeSource AncestorType=ListBox}" />
