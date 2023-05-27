@@ -6,6 +6,7 @@ using System.Windows.Media;
 using Microsoft.Win32;
 #if NET40
 using Microsoft.Windows.Shell;
+using WPFDevelopers.Helpers;
 #else
 using System.Windows.Shell;
 #endif
@@ -99,7 +100,7 @@ namespace WPFDevelopers.Controls
     {
         private static readonly Color _BackgtoundColor = Color.FromArgb(0x01, 0, 0, 0); //设置透明色 防止穿透
 
-        [DllImport("user32.dll")]
+        [DllImport(Win32.User32)]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
 
         private static bool EnableAcrylicBlur(Window window, Color color, double opacity, bool enable)
