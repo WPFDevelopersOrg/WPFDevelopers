@@ -45,7 +45,7 @@
         RainbowBtn,
         RoundPicker,
         LineChart,
-        LogoAnimation,
+        //LogoAnimation,
         Thermometer,
         SnowCanvas,
         LoginWindow,

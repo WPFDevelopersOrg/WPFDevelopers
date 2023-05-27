@@ -1,27 +1,37 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.RainbowButtonsExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d"  Background="{StaticResource WD.BlackSolidColorBrush}"
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.RainbowButtonsExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="{StaticResource WD.BlackSolidColorBrush}"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <FontFamily x:Key="Fixedsys">/WPFDevelopers.Samples;component/Resources/Fonts/fixedsys.ttf#Fixedsys Excelsior 3.01</FontFamily>
     </UserControl.Resources>
     <controls:CodeViewer>
         <UniformGrid Rows="2">
-            <wpfdev:RainbowAppleButton Content="Apple!" FontFamily="{StaticResource Fixedsys}"/>
-            <wpfdev:RainbowAppleButtonWithGlow  FontFamily="{StaticResource Fixedsys}"/>
+            <controls:RainbowAppleButton Content="Apple!" FontFamily="{StaticResource Fixedsys}" />
+            <controls:RainbowAppleButtonWithGlow FontFamily="{StaticResource Fixedsys}" />
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RainbowButtonsExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RainbowButtonsExample.xaml.cs" 
-                CodeType="CSharp"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RainbowButtonsExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RainbowButtonsExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/RainbowButtons/RainbowButtons.xaml"
+                CodeType="Xaml"
+                Haader="RainbowButtons" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/RainbowButtons/RainbowAppleButton.cs"
+                CodeType="CSharp"
+                Haader="RainbowAppleButton.cs" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/RainbowButtons/RainbowAppleButtonWithGlow.cs"
+                CodeType="CSharp"
+                Haader="RainbowAppleButtonWithGlow.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

@@ -172,7 +172,7 @@
                                     <!-- 背景图 -->
                                     <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/Background.png" Width="360" VerticalAlignment="Bottom"/>
                                     <!-- 标识 -->
-                                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets//Logo.png" Width="114" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
+                                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/Logo.png" Width="114" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
                                     <!-- 关闭按钮 -->
                                     <Button x:Name="CloseButton" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top"
                                         Style="{StaticResource CloseButtonStyle}"/>

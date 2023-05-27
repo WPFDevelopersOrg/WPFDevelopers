@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
         xmlns:cc="clr-namespace:WPFDevelopers.Samples.ExampleViews.LoginWindow.CustomControl"
         mc:Ignorable="d"
-        Title="登录" Height="372" Width="360" ResizeMode="NoResize"
+        Title="登录" Height="372" Width="360" ResizeMode="NoResize" WindowStyle="None"
         FontFamily="NSimSun" FontSize="13px" WindowStartupLocation="CenterScreen"
         Style="{StaticResource NormalWindow}" Loaded="Window_Loaded">
     <Grid>

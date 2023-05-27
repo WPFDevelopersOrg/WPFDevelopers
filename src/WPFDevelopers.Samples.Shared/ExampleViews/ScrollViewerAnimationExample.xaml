@@ -1,71 +1,86 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.ScrollViewerAnimationExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.ScrollViewerAnimationExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <UserControl.DataContext>
-        <vm:MainVM/>
+        <vm:MainVM />
     </UserControl.DataContext>
     <controls:CodeViewer>
-    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <StackPanel>
-            <TextBlock Text="ScrollViewer" Margin="10"/>
-            <ScrollViewer Width="200" MaxHeight="300">
-                <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border Background="{StaticResource WD.SuccessSolidColorBrush}"
-                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}">
-                                <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource WD.NormalFontSize}"
-                                       Foreground="{StaticResource WD.BlackSolidColorBrush}"/>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </ScrollViewer>
-        </StackPanel>
-        
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock Margin="10" Text="ScrollViewer" />
+                <ScrollViewer Width="200" MaxHeight="300">
+                    <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Background="{StaticResource WD.SuccessSolidColorBrush}"
+                                    BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}"
+                                    BorderThickness="0,0,0,.3">
+                                    <TextBlock
+                                        Padding="10"
+                                        FontSize="{StaticResource WD.NormalFontSize}"
+                                        Foreground="{StaticResource WD.BlackSolidColorBrush}"
+                                        Text="{Binding Name}" />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </StackPanel>
 
-        <StackPanel Margin="10,0">
-            <TextBlock Text="ScrollViewerAnimation" Margin="10"/>
-            <wpfdev:ScrollViewerAnimation Width="200" MaxHeight="300">
-                <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border Background="{StaticResource WD.DangerSolidColorBrush}"
-                                BorderThickness="0,0,0,.3" BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}">
-                                <TextBlock Text="{Binding Name}" Padding="10" FontSize="{StaticResource WD.NormalFontSize}"
-                                       Foreground="{StaticResource WD.BackgroundSolidColorBrush}"/>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-            </wpfdev:ScrollViewerAnimation>
-        </StackPanel>
-    </WrapPanel>
+
+            <StackPanel Margin="10,0">
+                <TextBlock Margin="10" Text="ScrollViewerAnimation" />
+                <controls:ScrollViewerAnimation Width="200" MaxHeight="300">
+                    <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Background="{StaticResource WD.DangerSolidColorBrush}"
+                                    BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}"
+                                    BorderThickness="0,0,0,.3">
+                                    <TextBlock
+                                        Padding="10"
+                                        FontSize="{StaticResource WD.NormalFontSize}"
+                                        Foreground="{StaticResource WD.BackgroundSolidColorBrush}"
+                                        Text="{Binding Name}" />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </controls:ScrollViewerAnimation>
+            </StackPanel>
+        </WrapPanel>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml.cs" 
-                CodeType="CSharp"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ScrollViewer/ScrollViewerAnimation.cs"
+                CodeType="CSharp"
+                Haader="ScrollViewerAnimation.cs" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ScrollViewer/ScrollViewerBehavior.cs"
+                CodeType="CSharp"
+                Haader="ScrollViewerBehavior.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

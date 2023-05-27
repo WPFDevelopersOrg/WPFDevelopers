@@ -1,37 +1,66 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.OtherControlExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.OtherControlExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <controls:CodeViewer>
-        <Border HorizontalAlignment="Center" VerticalAlignment="Center"
-                Background="{StaticResource WD.BlackSolidColorBrush}"
-                Height="200" Width="200">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom"
-                        Margin="0,10">
-                <wpfdev:FireControl IsStart="True" Width="100" Height="100" Opacity="0.8"/>
+        <Border
+            Width="200"
+            Height="200"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{StaticResource WD.BlackSolidColorBrush}">
+            <StackPanel
+                Margin="0,10"
+                VerticalAlignment="Bottom"
+                Orientation="Vertical">
+                <controls:FireControl
+                    Width="100"
+                    Height="100"
+                    IsStart="True"
+                    Opacity="0.8" />
                 <Grid Width="100" Height="60">
-                    <Path Data="M495.746032 859.654321l-7.223986-169.763668c-3.611993 0-7.223986-1.805996-12.641975-3.611993l10.835978 155.315696c0 7.223986 3.611993 14.447972 9.029983 18.059965zM530.059965 691.696649c-1.805996-1.805996-12.641975 1.805996-32.507937 0l5.41799 171.569665c3.611993 1.805996 5.417989 1.805996 9.029982 1.805996 5.417989 0 9.029982-1.805996 14.447972-3.611993 5.417989-111.971781 5.417989-167.957672 3.611993-169.763668z" Fill="#FFB938" Stretch="Fill"></Path>
-                    <Path Data="M502.970018 863.266314l-5.41799-171.569665c-1.805996 0-5.417989 0-9.029982-1.805996l7.223986 169.763668c1.805996 1.805996 3.611993 3.611993 7.223986 3.611993z" Fill="#FFEA8B" Stretch="Fill"></Path>
-                    <Path Data="M362.102293 572.500882h281.73545c-14.447972 77.657848-61.40388 115.583774-140.867725 115.583774s-126.419753-37.925926-140.867725-111.971781" Fill="#F49B1E" Stretch="Fill"></Path>
-                    <Path Data="M358.4903 572.500882H573.40388c0 81.269841-30.70194 119.195767-93.911817 117.389771s-102.941799-43.343915-121.001763-117.389771z" Fill="#FFB938" Stretch="Fill"></Path>
-                    <Path Data="M398.222222 572.500882c5.417989 36.119929 10.835979 59.597884 18.059965 72.239859 10.835979 18.059965 28.895944 37.925926 66.821869 43.343915h1.805997c0-1.805996-10.835979-7.223986-21.671958-16.253968-7.223986-7.223986-12.641975-18.059965-18.059964-30.70194-7.223986-12.641975-10.835979-34.313933-12.641976-68.627866h-34.313933z" Fill="#FFEA8B" Stretch="Fill"></Path>
+                    <Path
+                        Data="M495.746032 859.654321l-7.223986-169.763668c-3.611993 0-7.223986-1.805996-12.641975-3.611993l10.835978 155.315696c0 7.223986 3.611993 14.447972 9.029983 18.059965zM530.059965 691.696649c-1.805996-1.805996-12.641975 1.805996-32.507937 0l5.41799 171.569665c3.611993 1.805996 5.417989 1.805996 9.029982 1.805996 5.417989 0 9.029982-1.805996 14.447972-3.611993 5.417989-111.971781 5.417989-167.957672 3.611993-169.763668z"
+                        Fill="#FFB938"
+                        Stretch="Fill" />
+                    <Path
+                        Data="M502.970018 863.266314l-5.41799-171.569665c-1.805996 0-5.417989 0-9.029982-1.805996l7.223986 169.763668c1.805996 1.805996 3.611993 3.611993 7.223986 3.611993z"
+                        Fill="#FFEA8B"
+                        Stretch="Fill" />
+                    <Path
+                        Data="M362.102293 572.500882h281.73545c-14.447972 77.657848-61.40388 115.583774-140.867725 115.583774s-126.419753-37.925926-140.867725-111.971781"
+                        Fill="#F49B1E"
+                        Stretch="Fill" />
+                    <Path
+                        Data="M358.4903 572.500882H573.40388c0 81.269841-30.70194 119.195767-93.911817 117.389771s-102.941799-43.343915-121.001763-117.389771z"
+                        Fill="#FFB938"
+                        Stretch="Fill" />
+                    <Path
+                        Data="M398.222222 572.500882c5.417989 36.119929 10.835979 59.597884 18.059965 72.239859 10.835979 18.059965 28.895944 37.925926 66.821869 43.343915h1.805997c0-1.805996-10.835979-7.223986-21.671958-16.253968-7.223986-7.223986-12.641975-18.059965-18.059964-30.70194-7.223986-12.641975-10.835979-34.313933-12.641976-68.627866h-34.313933z"
+                        Fill="#FFEA8B"
+                        Stretch="Fill" />
                 </Grid>
             </StackPanel>
-            
+
         </Border>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/OtherControlExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/OtherControlExample.xaml.cs" 
-                CodeType="CSharp"/>
-            </controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/OtherControlExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/OtherControlExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Others/OtherControl.xaml"
+                CodeType="Xaml"
+                Haader="OtherControl" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Others/FireControl.cs"
+                CodeType="CSharp"
+                Haader="FireControl.cs" />
+        </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

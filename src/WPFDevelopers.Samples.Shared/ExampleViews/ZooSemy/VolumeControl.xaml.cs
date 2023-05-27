@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using WPFDevelopers.Controls;
+using WPFDevelopers.Samples.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
