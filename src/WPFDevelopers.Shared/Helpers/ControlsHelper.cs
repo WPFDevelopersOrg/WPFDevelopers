@@ -18,9 +18,14 @@ namespace WPFDevelopers.Helpers
 {
     public class ControlsHelper : DependencyObject
     {
-        private static Win32ApiHelper.DeskTopSize size;
+        private static Win32.DeskTopSize size;
         private static readonly Regex _regexNumber = new Regex("[^0-9]+");
-        public static Brush Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
+        public static Brush Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
+
+        /// <summary>
+        /// PrimaryNormalBrush
+        /// </summary>
+        public static Brush PrimaryNormalBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
 
         public static Brush WindowForegroundBrush =
             (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
@@ -31,8 +36,8 @@ namespace WPFDevelopers.Helpers
         {
             if (!_IsCurrentDark)
             {
-                var vBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
-                Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = vBrush;
+                PrimaryNormalBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
+                Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = PrimaryNormalBrush;
             }
         }
 
@@ -47,15 +52,15 @@ namespace WPFDevelopers.Helpers
                 existingResourceDictionary.Theme = type;
                 if (type == ThemeType.Light)
                 {
-                    var vBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
-                    Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = vBrush;
+                    PrimaryNormalBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
+                    Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = PrimaryNormalBrush;
                     WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
                     if (Application.Current.TryFindResource("WD.DefaultBackgroundColor") is Color color)
                         Application.Current.Resources["WD.DefaultBackgroundSolidColorBrush"] = new SolidColorBrush(color);
                 }
                 else
                 {
-                    if (Application.Current.TryFindResource("WindowBorderBrushColor") is Color color)
+                    if (Application.Current.TryFindResource("WD.WindowBorderBrushColor") is Color color)
                     {
                         var colorBrush = new SolidColorBrush(color);
                         Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = colorBrush;
@@ -65,7 +70,7 @@ namespace WPFDevelopers.Helpers
                     WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.DefaultBackgroundSolidColorBrush");
                 }
 
-                Brush = (Brush)Application.Current.TryFindResource("BackgroundSolidColorBrush");
+                Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
                 //WindowForegroundBrush = Application.Current.TryFindResource["WD.PrimaryTextSolidColorBrush"] as Brush;
                 _IsCurrentDark = isDark;
                 ThemeRefresh();
@@ -196,22 +201,22 @@ namespace WPFDevelopers.Helpers
         {
 
             IntPtr hBitmap;
-            var hDC = Win32ApiHelper.GetDC(Win32ApiHelper.GetDesktopWindow());
-            var hMemDC = Win32ApiHelper.CreateCompatibleDC(hDC);
-            size.cx = Win32ApiHelper.GetSystemMetrics(0);
-            size.cy = Win32ApiHelper.GetSystemMetrics(1);
-            hBitmap = Win32ApiHelper.CreateCompatibleBitmap(hDC, size.cx, size.cy);
+            var hDC = Win32.GetDC(Win32.GetDesktopWindow());
+            var hMemDC = Win32.CreateCompatibleDC(hDC);
+            size.cx = Win32.GetSystemMetrics(0);
+            size.cy = Win32.GetSystemMetrics(1);
+            hBitmap = Win32.CreateCompatibleBitmap(hDC, size.cx, size.cy);
             if (hBitmap != IntPtr.Zero)
             {
-                var hOld = Win32ApiHelper.SelectObject(hMemDC, hBitmap);
-                Win32ApiHelper.BitBlt(hMemDC, 0, 0, size.cx, size.cy, hDC, 0, 0,
-                    Win32ApiHelper.TernaryRasterOperations.SRCCOPY);
-                Win32ApiHelper.SelectObject(hMemDC, hOld);
-                Win32ApiHelper.DeleteDC(hMemDC);
-                Win32ApiHelper.ReleaseDC(Win32ApiHelper.GetDesktopWindow(), hDC);
+                var hOld = Win32.SelectObject(hMemDC, hBitmap);
+                Win32.BitBlt(hMemDC, 0, 0, size.cx, size.cy, hDC, 0, 0,
+                    Win32.TernaryRasterOperations.SRCCOPY);
+                Win32.SelectObject(hMemDC, hOld);
+                Win32.DeleteDC(hMemDC);
+                Win32.ReleaseDC(Win32.GetDesktopWindow(), hDC);
                 var bsource = Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty,
                     BitmapSizeOptions.FromEmptyOptions());
-                Win32ApiHelper.DeleteObject(hBitmap);
+                Win32.DeleteObject(hBitmap);
                 GC.Collect();
                 return bsource;
             }

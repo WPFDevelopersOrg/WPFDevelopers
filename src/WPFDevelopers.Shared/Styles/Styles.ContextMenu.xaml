@@ -13,6 +13,7 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type ContextMenu}">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -20,7 +21,7 @@
                     <Border
                         Margin="10"
                         Background="{TemplateBinding Background}"
-                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="1"
                         CornerRadius="3"
                         Effect="{StaticResource WD.PopupShadowDepth}">

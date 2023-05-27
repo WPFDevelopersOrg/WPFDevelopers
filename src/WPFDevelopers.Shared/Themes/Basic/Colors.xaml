@@ -167,29 +167,8 @@
         po:Freeze="True"
         Color="{StaticResource WD.CircularDualColor}" />
 
-    <!--  DrawPrize  -->
-    <Color x:Key="WD.DrawPrizeSingularColor" po:Freeze="True">#F63C3D</Color>
-    <SolidColorBrush
-        x:Key="WD.DrawPrizeSingularSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.DrawPrizeSingularColor}" />
 
-    <Color x:Key="WD.DrawPrizeDualColor" po:Freeze="True">#E5292A</Color>
-    <SolidColorBrush
-        x:Key="WD.DrawPrizeDualSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.DrawPrizeDualColor}" />
-    <SolidColorBrush
-        x:Key="WD.TimeLineForeground"
-        po:Freeze="True"
-        Color="#005980" />
-    <LinearGradientBrush x:Key="WD.RainbowBrush" po:Freeze="True" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0.1" Color="#FF9C1031" />
-        <GradientStop Offset="0.2" Color="#FFBE0E20" />
-        <GradientStop Offset="0.7" Color="#FF9C12AC" />
-        <GradientStop Offset="0.8" Color="#FF0A8DC3" />
-        <GradientStop Offset="1" Color="#FF1AEBCC" />
-    </LinearGradientBrush>
+
     <RadialGradientBrush x:Key="WD.StarrySkyRadialGradientBrush" po:Freeze="True" Center="0.5,0.3" GradientOrigin="0.5,0" RadiusX="0.7">
         <GradientStop Offset="0" Color="#FF04040E" />
         <GradientStop Offset="1" Color="#FF24315D" />

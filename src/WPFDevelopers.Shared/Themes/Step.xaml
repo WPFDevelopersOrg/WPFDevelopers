@@ -8,7 +8,7 @@
     </ResourceDictionary.MergedDictionaries>
     <converts:StepIndexConverter x:Key="WD.StepIndexConverter" />
     <Style
-        x:Key="WD.DefaultStepItem"
+        x:Key="WD.StepItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:StepItem}">
         <Setter Property="BorderThickness" Value="1" />
@@ -82,10 +82,10 @@
         </Setter>
     </Style>
     <Style
-        x:Key="WD.DefaultStep"
+        x:Key="WD.Step"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:Step}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource DefaultStepItem}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource WD.StepItem}" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -112,6 +112,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.DefaultStepItem}" TargetType="{x:Type controls:StepItem}" />
-    <Style BasedOn="{StaticResource WD.DefaultStep}" TargetType="{x:Type controls:Step}" />
+    <Style BasedOn="{StaticResource WD.StepItem}" TargetType="{x:Type controls:StepItem}" />
+    <Style BasedOn="{StaticResource WD.Step}" TargetType="{x:Type controls:Step}" />
 </ResourceDictionary>

@@ -47,7 +47,7 @@ namespace WPFDevelopers.Samples.ExampleViews.Desktop
                 storyboard.Children.Add(mediaTimeline);
 
                 // 设置当前窗口为 Program Manager的子窗口
-                Win32ApiHelper.SetParent(new WindowInteropHelper(this).Handle, programHandle);
+                Win32.SetParent(new WindowInteropHelper(this).Handle, programHandle);
                 PART_MediaElement.Loaded += (s1, e1) =>
                 {
                     storyboard.Begin(PART_MediaElement);
@@ -62,23 +62,23 @@ namespace WPFDevelopers.Samples.ExampleViews.Desktop
         void SendMsgToProgman()
         {
             // 桌面窗口句柄，在外部定义，用于后面将我们自己的窗口作为子窗口放入
-            programHandle = Win32ApiHelper.FindWindow("Progman", null);
+            programHandle = Win32.FindWindow("Progman", null);
 
             IntPtr result = IntPtr.Zero;
             // 向 Program Manager 窗口发送消息 0x52c 的一个消息，超时设置为2秒
-            Win32ApiHelper.SendMessageTimeout(programHandle, 0x52c, IntPtr.Zero, IntPtr.Zero, 0, 2, result);
+            Win32.SendMessageTimeout(programHandle, 0x52c, IntPtr.Zero, IntPtr.Zero, 0, 2, result);
 
             // 遍历顶级窗口
-            Win32ApiHelper.EnumWindows((hwnd, lParam) =>
+            Win32.EnumWindows((hwnd, lParam) =>
             {
                 // 找到第一个 WorkerW 窗口，此窗口中有子窗口 SHELLDLL_DefView，所以先找子窗口
-                if (Win32ApiHelper.FindWindowEx(hwnd, IntPtr.Zero, "SHELLDLL_DefView", null) != IntPtr.Zero)
+                if (Win32.FindWindowEx(hwnd, IntPtr.Zero, "SHELLDLL_DefView", null) != IntPtr.Zero)
                 {
                     // 找到当前第一个 WorkerW 窗口的，后一个窗口，及第二个 WorkerW 窗口。
-                    IntPtr tempHwnd = Win32ApiHelper.FindWindowEx(IntPtr.Zero, hwnd, "WorkerW", null);
+                    IntPtr tempHwnd = Win32.FindWindowEx(IntPtr.Zero, hwnd, "WorkerW", null);
 
                     // 隐藏第二个 WorkerW 窗口
-                    Win32ApiHelper.ShowWindow(tempHwnd, 0);
+                    Win32.ShowWindow(tempHwnd, 0);
                 }
                 return true;
             }, IntPtr.Zero);

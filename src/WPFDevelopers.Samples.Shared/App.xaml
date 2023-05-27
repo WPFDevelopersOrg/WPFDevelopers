@@ -1,22 +1,35 @@
-﻿<Application x:Class="WPFDevelopers.Samples.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
-             StartupUri="ExampleViews\MainWindow.xaml" ShutdownMode="OnMainWindowClose">
+﻿<Application
+    x:Class="WPFDevelopers.Samples.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    ShutdownMode="OnMainWindowClose"
+    StartupUri="ExampleViews\MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
-                <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
-                <ws:Resources Theme="Light"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CodeViewer/CodeViewer.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml" />
+                <!--  需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤  -->
+                <wd:Resources Theme="Light" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CodeViewer/CodeViewer.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/TimeLine/TimeLine.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Drawing/Drawing.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Others/OtherControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/ChatEmoji/ChatEmoji.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/RoundPicker/RoundPicker.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CutImage/CutImage.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Dashboard/Dashboard.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/PieControl/PieControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Prize/PrizeItemControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/RainbowButtons/RainbowButtons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/SnowCanvas/SnowCanvas.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="avalonedit:TextEditor">
-                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}"/>
-                <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

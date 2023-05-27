@@ -1,189 +1,306 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.BasicControlsExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d"  Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-             d:DesignHeight="450" d:DesignWidth="800" Name="MyBasicControls">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.BasicControlsExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Name="MyBasicControls"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+    mc:Ignorable="d">
     <controls:CodeViewer>
         <ScrollViewer>
             <Grid Margin="20,10">
                 <VirtualizingStackPanel>
                     <WrapPanel Margin="0,10">
-                        <Image Source="/WPFDevelopers.Samples;component/WPFDevelopers.ico"
-                       RenderOptions.BitmapScalingMode="HighQuality"
-                       Width="100" Height="100"/>
+                        <Image
+                            Width="100"
+                            Height="100"
+                            RenderOptions.BitmapScalingMode="HighQuality"
+                            Source="/WPFDevelopers.Samples;component/WPFDevelopers.ico" />
                         <StackPanel Margin="10,0">
-                            <TextBlock Text="WPFDevelopers" FontSize="20" 
-                                   HorizontalAlignment="Center"
-                                   Padding="0,4"
-                               Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"/>
-                            <TextBlock Text="微信号公众号:WPFDevelopers" 
-                                   HorizontalAlignment="Center"
-                                   Padding="0,4"
-                                   FontSize="20" Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"/>
-                            <TextBlock FontSize="20" Padding="0,10"
-                       Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
-            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.Minimal.git"
-                       RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源码</Hyperlink>
-            <Run/>
-            <Run/>
-            <Run/>
-            <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers.Minimal.git"
-                       RequestNavigate="GiteeHyperlink_RequestNavigate"> 码云源码</Hyperlink>
-                        <Run/>
-            <Run/>
-            <Run/>
-                         <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git" RequestNavigate="QQHyperlink_RequestNavigate"> 加入QQ群：458041663</Hyperlink>
+                            <TextBlock
+                                Padding="0,4"
+                                HorizontalAlignment="Center"
+                                FontSize="20"
+                                Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                Text="WPFDevelopers" />
+                            <TextBlock
+                                Padding="0,4"
+                                HorizontalAlignment="Center"
+                                FontSize="20"
+                                Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                Text="微信号公众号:WPFDevelopers" />
+                            <TextBlock
+                                Padding="0,10"
+                                FontSize="20"
+                                Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
+                                <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.Minimal.git" RequestNavigate="GithubHyperlink_RequestNavigate">Github 源码</Hyperlink>
+                                <Run />
+                                <Run />
+                                <Run />
+                                <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers.Minimal.git" RequestNavigate="GiteeHyperlink_RequestNavigate">码云源码</Hyperlink>
+                                <Run />
+                                <Run />
+                                <Run />
+                                <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git" RequestNavigate="QQHyperlink_RequestNavigate">加入QQ群：458041663</Hyperlink>
                             </TextBlock>
                         </StackPanel>
 
                     </WrapPanel>
-                    <TextBlock Text="Theme" FontSize="20" Margin="0,20,0,0"/>
-                    <wpfdev:ThemeControl Margin="0,10" ItemsSource="{Binding ThemesCollection,RelativeSource={RelativeSource AncestorType=UserControl},Mode=OneWayToSource}"/>
-                    <TextBlock Text="Light | Dark" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Theme" />
+                    <wd:ThemeControl Margin="0,10" ItemsSource="{Binding ThemesCollection, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=OneWayToSource}" />
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Light | Dark" />
                     <WrapPanel Margin="10">
-                        <TextBlock Text="Light"/>
-                        <ToggleButton x:Name="tbLightDark" Checked="LightDark_Checked" Margin="10,0" Unchecked="LightDark_Checked"/>
-                        <TextBlock Text="Dark"/>
+                        <TextBlock Text="Light" />
+                        <ToggleButton
+                            x:Name="tbLightDark"
+                            Margin="10,0"
+                            Checked="LightDark_Checked"
+                            Unchecked="LightDark_Checked" />
+                        <TextBlock Text="Dark" />
                     </WrapPanel>
-                    <TextBlock Text="Menu" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Menu" />
                     <WrapPanel Margin="0,10">
                         <WrapPanel.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Menu1"/>
-                                <MenuItem Header="Menu2"/>
-                                <MenuItem Header="Menu3"/>
+                                <MenuItem Header="Menu1" />
+                                <MenuItem Header="Menu2" />
+                                <MenuItem Header="Menu3" />
                             </ContextMenu>
                         </WrapPanel.ContextMenu>
                         <Menu>
                             <MenuItem Header="MenuItem 1">
                                 <MenuItem Header="MenuItem 1.1">
                                     <MenuItem.Icon>
-                                        <Path Data="{DynamicResource WD.WarningGeometry}" 
-                                      Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
-                                      Stretch="Uniform" Height="20" Width="20"/>
+                                        <Path
+                                            Width="20"
+                                            Height="20"
+                                            Data="{StaticResource WD.WarningGeometry}"
+                                            Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                            Stretch="Uniform" />
                                     </MenuItem.Icon>
                                     <MenuItem Header="MenuItem 1.1.1">
-                                        <MenuItem Header="MenuItem 1.1.1.1"/>
-                                        <MenuItem Header="MenuItem 1.1.1.2"/>
+                                        <MenuItem Header="MenuItem 1.1.1.1" />
+                                        <MenuItem Header="MenuItem 1.1.1.2" />
                                     </MenuItem>
-                                    <MenuItem Header="MenuItem 1.1.2"/>
+                                    <MenuItem Header="MenuItem 1.1.2" />
                                 </MenuItem>
-                                <Separator/>
-                                <MenuItem Header="MenuItem 1.2"/>
-                                <MenuItem Header="MenuItem 1.3"/>
-                                <MenuItem Header="MenuItem 1.4"/>
-                                <MenuItem Header="MenuItem 1.5"/>
+                                <Separator />
+                                <MenuItem Header="MenuItem 1.2" />
+                                <MenuItem Header="MenuItem 1.3" />
+                                <MenuItem Header="MenuItem 1.4" />
+                                <MenuItem Header="MenuItem 1.5" />
                             </MenuItem>
-                            <MenuItem Header="MenuItem 2"/>
-                            <MenuItem Header="MenuItem 3"/>
-                            <MenuItem Header="MenuItem 4"/>
+                            <MenuItem Header="MenuItem 2" />
+                            <MenuItem Header="MenuItem 3" />
+                            <MenuItem Header="MenuItem 4" />
                         </Menu>
-                        <Menu  IsEnabled="False"/>
+                        <Menu IsEnabled="False" />
                     </WrapPanel>
 
-                    <TextBlock Text="Loading" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Loading" />
                     <WrapPanel Margin="0,10">
-                        <Button Content="Loading" Click="Loading_Click" 
-                            Style="{DynamicResource WD.PrimaryButton}"/>
-                        <Button Name="btnLoadingTask" Content="LoadingTask" Click="LoadingTask_Click" 
-                                Style="{DynamicResource WD.SuccessPrimaryButton}" Margin="10,0"/>
-                        <Button Name="btnLoading" Click="BtnLoading_Click" Content="AddLoading"
-                                wpfdev:Loading.Child="{x:Static wpfdev:NormalLoading.Default}"
-                                Style="{DynamicResource WD.WarningPrimaryButton}"/>
-                        <Button Name="btnOffTask" Click="BtnOffTask_Click" 
-                                Margin="10,0" Content="Off Task"
-                                Style="{DynamicResource WD.DangerPrimaryButton}"/>
+                        <Button
+                            Click="Loading_Click"
+                            Content="Loading"
+                            Style="{DynamicResource WD.PrimaryButton}" />
+                        <Button
+                            Name="btnLoadingTask"
+                            Margin="10,0"
+                            Click="LoadingTask_Click"
+                            Content="LoadingTask"
+                            Style="{DynamicResource WD.SuccessPrimaryButton}" />
+                        <Button
+                            Name="btnLoading"
+                            wd:Loading.Child="{x:Static wd:NormalLoading.Default}"
+                            Click="BtnLoading_Click"
+                            Content="AddLoading"
+                            Style="{DynamicResource WD.WarningPrimaryButton}" />
+                        <Button
+                            Name="btnOffTask"
+                            Margin="10,0"
+                            Click="BtnOffTask_Click"
+                            Content="Off Task"
+                            Style="{DynamicResource WD.DangerPrimaryButton}" />
                     </WrapPanel>
-                    <TextBlock Text="Button" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Button" />
                     <WrapPanel Margin="0,10">
-                        <Button Content="Default"/>
-                        <Button Content="Default" Margin="10,0" IsEnabled="False"/>
-                        <Button Content="Default" Style="{DynamicResource WD.PrimaryButton}"/>
-                        <Button Content="Default" Style="{DynamicResource WD.PrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Default" />
+                        <Button
+                            Margin="10,0"
+                            Content="Default"
+                            IsEnabled="False" />
+                        <Button Content="Default" Style="{DynamicResource WD.PrimaryButton}" />
+                        <Button
+                            Margin="10,0"
+                            Content="Default"
+                            IsEnabled="False"
+                            Style="{DynamicResource WD.PrimaryButton}" />
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Success" Style="{DynamicResource WD.SuccessDefaultButton}"/>
-                        <Button Content="Success" Margin="10,0" IsEnabled="False" Style="{DynamicResource WD.SuccessDefaultButton}"/>
-                        <Button Content="Success" Style="{DynamicResource WD.SuccessPrimaryButton}"/>
-                        <Button Content="Success" Style="{DynamicResource WD.SuccessPrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Success" Style="{DynamicResource WD.SuccessDefaultButton}" />
+                        <Button
+                            Margin="10,0"
+                            Content="Success"
+                            IsEnabled="False"
+                            Style="{DynamicResource WD.SuccessDefaultButton}" />
+                        <Button Content="Success" Style="{DynamicResource WD.SuccessPrimaryButton}" />
+                        <Button
+                            Margin="10,0"
+                            Content="Success"
+                            IsEnabled="False"
+                            Style="{DynamicResource WD.SuccessPrimaryButton}" />
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Warning" Style="{DynamicResource WD.WarningDefaultButton}"/>
-                        <Button Content="Warning" Margin="10,0" IsEnabled="False" Style="{DynamicResource WD.WarningDefaultButton}"/>
-                        <Button Content="Warning" Style="{DynamicResource WD.WarningPrimaryButton}"/>
-                        <Button Content="Warning" Style="{DynamicResource WD.WarningPrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Warning" Style="{DynamicResource WD.WarningDefaultButton}" />
+                        <Button
+                            Margin="10,0"
+                            Content="Warning"
+                            IsEnabled="False"
+                            Style="{DynamicResource WD.WarningDefaultButton}" />
+                        <Button Content="Warning" Style="{DynamicResource WD.WarningPrimaryButton}" />
+                        <Button
+                            Margin="10,0"
+                            Content="Warning"
+                            IsEnabled="False"
+                            Style="{DynamicResource WD.WarningPrimaryButton}" />
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Danger" Style="{DynamicResource WD.DangerDefaultButton}"/>
-                        <Button Content="Danger" Margin="10,0" IsEnabled="False" Style="{DynamicResource WD.DangerDefaultButton}"/>
-                        <Button Content="Danger" Style="{DynamicResource WD.DangerPrimaryButton}"/>
-                        <Button Content="Danger" Style="{DynamicResource WD.DangerPrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                        <Button Content="Danger" Style="{DynamicResource WD.DangerDefaultButton}" />
+                        <Button
+                            Margin="10,0"
+                            Content="Danger"
+                            IsEnabled="False"
+                            Style="{DynamicResource WD.DangerDefaultButton}" />
+                        <Button Content="Danger" Style="{DynamicResource WD.DangerPrimaryButton}" />
+                        <Button
+                            Margin="10,0"
+                            Content="Danger"
+                            IsEnabled="False"
+                            Style="{DynamicResource WD.DangerPrimaryButton}" />
                     </WrapPanel>
-                    <TextBlock Text="MessageBox" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="MessageBox" />
                     <WrapPanel Margin="0,10">
-                        <Button x:Name="btnInformation" Content="Info" 
-                                Style="{StaticResource WD.SuccessPrimaryButton}" 
-                                Click="btnInformation_Click"/>
-                        <Button x:Name="btnWarning" Content="Warning"
-                                Style="{StaticResource WD.WarningPrimaryButton}"
-                                Margin="10,0" Click="btnWarning_Click"/>
-                        <Button x:Name="btnError" Content="Error"
-                                Click="btnError_Click"
-                                Style="{StaticResource WD.DangerPrimaryButton}"/>
-                        <Button x:Name="btnQuestion" 
-                                Content="Question" 
-                                Style="{StaticResource WD.PrimaryButton}"
-                                Margin="10,0" 
-                                Click="btnQuestion_Click"/>
+                        <Button
+                            x:Name="btnInformation"
+                            Click="btnInformation_Click"
+                            Content="Info"
+                            Style="{StaticResource WD.SuccessPrimaryButton}" />
+                        <Button
+                            x:Name="btnWarning"
+                            Margin="10,0"
+                            Click="btnWarning_Click"
+                            Content="Warning"
+                            Style="{StaticResource WD.WarningPrimaryButton}" />
+                        <Button
+                            x:Name="btnError"
+                            Click="btnError_Click"
+                            Content="Error"
+                            Style="{StaticResource WD.DangerPrimaryButton}" />
+                        <Button
+                            x:Name="btnQuestion"
+                            Margin="10,0"
+                            Click="btnQuestion_Click"
+                            Content="Question"
+                            Style="{StaticResource WD.PrimaryButton}" />
                     </WrapPanel>
-                    <TextBlock Text="RadioButton" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="RadioButton" />
                     <WrapPanel Margin="0,10">
-                        <RadioButton Content="Option A"/>
-                        <RadioButton Content="Option B" Margin="10,0" IsChecked="True"/>
-                        <RadioButton Content="Option C" IsEnabled="False"/>
+                        <RadioButton Content="Option A" />
+                        <RadioButton
+                            Margin="10,0"
+                            Content="Option B"
+                            IsChecked="True" />
+                        <RadioButton Content="Option C" IsEnabled="False" />
                     </WrapPanel>
-                    <TextBlock Text="Checkbox" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Checkbox" />
                     <WrapPanel Margin="0,10">
-                        <CheckBox Content="Option A"/>
-                        <CheckBox Content="Option B" Margin="10,0" IsChecked="True"/>
-                        <CheckBox Content="Option C" IsChecked="{x:Null}"/>
-                        <CheckBox Content="Option D" Margin="10,0" IsEnabled="False"/>
+                        <CheckBox Content="Option A" />
+                        <CheckBox
+                            Margin="10,0"
+                            Content="Option B"
+                            IsChecked="True" />
+                        <CheckBox Content="Option C" IsChecked="{x:Null}" />
+                        <CheckBox
+                            Margin="10,0"
+                            Content="Option D"
+                            IsEnabled="False" />
                     </WrapPanel>
-                    <TextBlock Text="TextBox" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="TextBox" />
                     <WrapPanel Margin="0,10">
                         <TextBox />
-                        <TextBox Margin="10,0" 
-                             wpfdev:ElementHelper.Watermark="TextBox"/>
-                        <TextBox IsEnabled="False"/>
+                        <TextBox Margin="10,0" wd:ElementHelper.Watermark="TextBox" />
+                        <TextBox IsEnabled="False" />
                     </WrapPanel>
-                    <TextBlock Text="PasswordBox" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="PasswordBox" />
                     <WrapPanel Margin="0,10">
                         <PasswordBox />
-                        <PasswordBox Margin="10,0" wpfdev:ElementHelper.Watermark="PasswordBox"/>
-                        <PasswordBox IsEnabled="False"/>
-                        <PasswordBox x:Name="myPasswordBox"
-                                 wpfdev:PasswordBoxHelper.IsMonitoring="True" 
-                                 Margin="10,0"
-                                 wpfdev:ElementHelper.Watermark="PasswordBox"/>
+                        <PasswordBox Margin="10,0" wd:ElementHelper.Watermark="PasswordBox" />
+                        <PasswordBox IsEnabled="False" />
+                        <PasswordBox
+                            x:Name="myPasswordBox"
+                            Margin="10,0"
+                            wd:ElementHelper.Watermark="PasswordBox"
+                            wd:PasswordBoxHelper.IsMonitoring="True" />
                     </WrapPanel>
-                    <TextBlock Text="ComboBox" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="ComboBox" />
                     <WrapPanel Margin="0,10">
-                        <ComboBox Width="200" Background="LightYellow"
-                                  wpfdev:ElementHelper.Watermark="ComboBox">
+                        <ComboBox
+                            Width="200"
+                            wd:ElementHelper.Watermark="ComboBox"
+                            Background="LightYellow">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
                             <ComboBoxItem>Option 3</ComboBoxItem>
                             <ComboBoxItem>Option 4</ComboBoxItem>
                             <ComboBoxItem>Option 5</ComboBoxItem>
                         </ComboBox>
-                        <ComboBox Width="200" Margin="10,0" IsEnabled="False"/>
-                        <ComboBox Width="200" IsEditable="True"
-                                  wpfdev:ElementHelper.Watermark="ComboBox">
+                        <ComboBox
+                            Width="200"
+                            Margin="10,0"
+                            IsEnabled="False" />
+                        <ComboBox
+                            Width="200"
+                            wd:ElementHelper.Watermark="ComboBox"
+                            IsEditable="True">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
                             <ComboBoxItem>Option 3</ComboBoxItem>
@@ -191,74 +308,130 @@
                             <ComboBoxItem>Option 5</ComboBoxItem>
                         </ComboBox>
                     </WrapPanel>
-                    <TextBlock Text="ToggleButton" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="ToggleButton" />
                     <WrapPanel Margin="0,10">
-                        <ToggleButton Content="IsOpen"/>
-                        <ToggleButton Margin="10,0" IsEnabled="False" Content="False"/>
-                        <ToggleButton IsChecked="True" Content="启用" Padding="10,0"/>
+                        <ToggleButton Content="IsOpen" />
+                        <ToggleButton
+                            Margin="10,0"
+                            Content="False"
+                            IsEnabled="False" />
+                        <ToggleButton
+                            Padding="10,0"
+                            Content="启用"
+                            IsChecked="True" />
                     </WrapPanel>
 
-                    <TextBlock Text="DatePicker" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="DatePicker" />
                     <WrapPanel Margin="0,10">
-                        <DatePicker Width="200" wpfdev:DatePickerHelper.Watermark="日期 yyyy/MM/dd"/>
-                        <DatePicker Width="200" SelectedDateFormat="Long" Margin="10,0" 
-                                    wpfdev:DatePickerHelper.Watermark="DatePicker"/>
-                        <DatePicker Width="200" wpfdev:DatePickerHelper.Watermark="{x:Null}">
+                        <DatePicker Width="200" wd:DatePickerHelper.Watermark="日期 yyyy/MM/dd" />
+                        <DatePicker
+                            Width="200"
+                            Margin="10,0"
+                            wd:DatePickerHelper.Watermark="DatePicker"
+                            SelectedDateFormat="Long" />
+                        <DatePicker Width="200" wd:DatePickerHelper.Watermark="{x:Null}">
                             <DatePicker.BlackoutDates>
-                                <CalendarDateRange Start="2023-03-31" End="2023-04-07" />
+                                <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
                             </DatePicker.BlackoutDates>
                         </DatePicker>
                     </WrapPanel>
 
-                    <TextBlock Text="Calendar" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Calendar" />
                     <WrapPanel Margin="0,10">
-                        <Calendar/>
-                        <Calendar Margin="10,0" SelectionMode="SingleRange"/>
+                        <Calendar />
+                        <Calendar Margin="10,0" SelectionMode="SingleRange" />
                         <Calendar SelectionMode="MultipleRange">
                             <Calendar.BlackoutDates>
-                                <CalendarDateRange Start="2023-03-31" End="2023-04-07" />
+                                <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
                             </Calendar.BlackoutDates>
                         </Calendar>
                     </WrapPanel>
 
-                    <TextBlock Text="Slider" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Slider" />
                     <WrapPanel Margin="0,10">
-                        <Slider Width="200"/>
-                        <Slider Width="200" Value="50" Maximum="100"  Margin="10,0"/>
-                        <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
+                        <Slider Width="200" />
+                        <Slider
+                            Width="200"
+                            Margin="10,0"
+                            Maximum="100"
+                            Value="50" />
+                        <Slider
+                            Width="200"
+                            IsEnabled="False"
+                            Maximum="100"
+                            Value="50" />
                     </WrapPanel>
 
-                    <TextBlock Text="ProgressBar" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="ProgressBar" />
                     <WrapPanel Margin="0,10">
-                        <ProgressBar Width="200" Value="50"/>
-                        <ProgressBar Width="200" Margin="10,0"  Value="80" wpfdev:ElementHelper.IsStripe="True"/>
-                        <ProgressBar Width="200" Margin="10,0" IsIndeterminate="True" Value="10"/>
+                        <ProgressBar Width="200" Value="50" />
+                        <ProgressBar
+                            Width="200"
+                            Margin="10,0"
+                            wd:ElementHelper.IsStripe="True"
+                            Value="80" />
+                        <ProgressBar
+                            Width="200"
+                            Margin="10,0"
+                            IsIndeterminate="True"
+                            Value="10" />
                         <!--<ProgressBar Width="6" Value="40" Orientation="Vertical"/>
                     <ProgressBar Width="6" Height="200" Margin="10,0" Orientation="Vertical" Value="80"/>-->
                     </WrapPanel>
 
-                    <TextBlock Text="DataGrid" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="DataGrid" />
                     <TabControl Margin="0,10">
                         <TabItem Header="Mode 1">
-                            <DataGrid AutoGenerateColumns="False" HeadersVisibility="All" RowHeaderWidth="40"
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                  Margin="0,10">
+                            <DataGrid
+                                Margin="0,10"
+                                AutoGenerateColumns="False"
+                                HeadersVisibility="All"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                RowHeaderWidth="40">
                                 <DataGrid.RowHeaderTemplate>
                                     <DataTemplate>
-                                        <CheckBox IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
+                                        <CheckBox IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                                     </DataTemplate>
                                 </DataGrid.RowHeaderTemplate>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                    <DataGridTextColumn
+                                        Binding="{Binding Date}"
+                                        Header="Date"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
                         <TabItem Header="Mode 2">
-                            <DataGrid AutoGenerateColumns="False" 
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                  Margin="0,10">
+                            <DataGrid
+                                Margin="0,10"
+                                AutoGenerateColumns="False"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn CanUserResize="False">
                                         <DataGridTemplateColumn.HeaderTemplate>
@@ -268,29 +441,45 @@
                                         </DataGridTemplateColumn.HeaderTemplate>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <CheckBox Margin="4,0,0,0" IsChecked="{Binding IsChecked}"/>
+                                                <CheckBox Margin="4,0,0,0" IsChecked="{Binding IsChecked}" />
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                    <DataGridTextColumn
+                                        Binding="{Binding Date}"
+                                        Header="Date"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
                         <TabItem Header="Mode 3">
-                            <DataGrid Margin="0,10"
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
+                            <DataGrid Margin="0,10" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
                         <TabItem Header="Mode 4">
-                            <DataGrid IsEnabled="False" Margin="0,10"
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
+                            <DataGrid
+                                Margin="0,10"
+                                IsEnabled="False"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn CanUserResize="False">
                                         <DataGridTemplateColumn.HeaderTemplate>
@@ -300,183 +489,251 @@
                                         </DataGridTemplateColumn.HeaderTemplate>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <CheckBox IsChecked="{Binding IsChecked}"/>
+                                                <CheckBox IsChecked="{Binding IsChecked}" />
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                    <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                    <DataGridTextColumn
+                                        Binding="{Binding Date}"
+                                        Header="Date"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
                     </TabControl>
                     <!--<UniformGrid Margin="0,10" Columns="2">
-                    
-                    
-                   
+
+
+
                 </UniformGrid>-->
-                    <TextBlock Text="ListBox" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="ListBox" />
                     <UniformGrid Margin="0,10" Columns="2">
-                        <ListBox DisplayMemberPath="Name" IsEnabled="False"
-                        ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
-                        </ListBox>
-                        <ListBox  Margin="10,0"
-                             ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <ListBox
+                            DisplayMemberPath="Name"
+                            IsEnabled="False"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                        <ListBox Margin="10,0" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <UniformGrid Columns="3">
-                                        <TextBlock Text="{Binding Date}"/>
-                                        <TextBlock Text="{Binding Name}"/>
-                                        <TextBlock Text="{Binding Address}"/>
+                                        <TextBlock Text="{Binding Date}" />
+                                        <TextBlock Text="{Binding Name}" />
+                                        <TextBlock Text="{Binding Address}" />
                                     </UniformGrid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </UniformGrid>
 
-                    <TextBlock Text="ListView" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="ListView" />
                     <UniformGrid Margin="0,10" Columns="2">
-                        <ListView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <ListView ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                                    <GridViewColumn
+                                        Width="Auto"
+                                        DisplayMemberBinding="{Binding Address}"
+                                        Header="Address" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <ListView IsEnabled="False" Margin="10,0" BorderThickness="0"
-                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <ListView
+                            Margin="10,0"
+                            BorderThickness="0"
+                            IsEnabled="False"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                                    <GridViewColumn
+                                        Width="Auto"
+                                        DisplayMemberBinding="{Binding Address}"
+                                        Header="Address" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
                     </UniformGrid>
 
-                    <TextBlock Text="TreeView" FontSize="20" Margin="0,20,0,0"/>
-                    <UniformGrid Margin="0,10" Columns="2" Height="400">
-                        <TreeView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="TreeView" />
+                    <UniformGrid
+                        Height="400"
+                        Margin="0,10"
+                        Columns="2">
+                        <TreeView ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                     <Border>
-                                        <TextBlock Text="{Binding Path=Name}"/>
+                                        <TextBlock Text="{Binding Path=Name}" />
                                     </Border>
                                 </HierarchicalDataTemplate>
                             </TreeView.ItemTemplate>
                         </TreeView>
-                        <TreeView IsEnabled="False" Margin="10,0" BorderThickness="0"
-                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <TreeView
+                            Margin="10,0"
+                            BorderThickness="0"
+                            IsEnabled="False"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                     <Border>
-                                        <TextBlock Text="{Binding Path=Name}"/>
+                                        <TextBlock Text="{Binding Path=Name}" />
                                     </Border>
                                 </HierarchicalDataTemplate>
                             </TreeView.ItemTemplate>
                         </TreeView>
                     </UniformGrid>
 
-                    <TextBlock Text="Expander" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Expander" />
                     <UniformGrid Margin="0,10" Columns="2">
                         <Expander Header="Expander1">
-                            <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                            <Rectangle
+                                Width="400"
+                                Height="300"
+                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                         </Expander>
-                        <Expander Header="Expander1" ExpandDirection="Up" Margin="10,0" FlowDirection="RightToLeft" IsExpanded="True">
-                            <Rectangle Fill="{DynamicResource WD.LightSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                        <Expander
+                            Margin="10,0"
+                            ExpandDirection="Up"
+                            FlowDirection="RightToLeft"
+                            Header="Expander1"
+                            IsExpanded="True">
+                            <Rectangle
+                                Width="400"
+                                Height="300"
+                                Fill="{DynamicResource WD.LightSolidColorBrush}" />
                         </Expander>
-                        <Expander ExpandDirection="Right" Margin="0,10">
+                        <Expander Margin="0,10" ExpandDirection="Right">
                             <Expander.Header>
                                 <TextBlock Text="Expander1">
                                     <TextBlock.LayoutTransform>
-                                        <RotateTransform Angle="90"/>
+                                        <RotateTransform Angle="90" />
                                     </TextBlock.LayoutTransform>
                                 </TextBlock>
                             </Expander.Header>
-                            <Rectangle Fill="{DynamicResource WD.CircularSingularSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                            <Rectangle
+                                Width="400"
+                                Height="300"
+                                Fill="{DynamicResource WD.CircularSingularSolidColorBrush}" />
                         </Expander>
-                        <Expander ExpandDirection="Left" Margin="10" IsExpanded="True">
+                        <Expander
+                            Margin="10"
+                            ExpandDirection="Left"
+                            IsExpanded="True">
                             <Expander.Header>
                                 <TextBlock Text="Expander1">
                                     <TextBlock.LayoutTransform>
-                                        <RotateTransform Angle="90"/>
+                                        <RotateTransform Angle="90" />
                                     </TextBlock.LayoutTransform>
                                 </TextBlock>
                             </Expander.Header>
-                            <Rectangle Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                            <Rectangle
+                                Width="400"
+                                Height="300"
+                                Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Expander>
                     </UniformGrid>
-                    <TextBlock Text="GroupBox" FontSize="20" Margin="0,20,0,0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="GroupBox" />
                     <UniformGrid Margin="0,10" Columns="2">
                         <GroupBox Header="GroupBox1">
-                            <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                            <Rectangle
+                                Width="400"
+                                Height="300"
+                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                         </GroupBox>
-                        <GroupBox Header="GroupBox1" Margin="10,0" IsEnabled="False">
-                            <Rectangle Fill="{DynamicResource WD.LightSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                        <GroupBox
+                            Margin="10,0"
+                            Header="GroupBox1"
+                            IsEnabled="False">
+                            <Rectangle
+                                Width="400"
+                                Height="300"
+                                Fill="{DynamicResource WD.LightSolidColorBrush}" />
                         </GroupBox>
                     </UniformGrid>
 
 
-                    <TextBlock Text="TabControl" FontSize="20" Margin="0,20,0,0"/>
-                    <UniformGrid Columns="2" Rows="2" Margin="0,10">
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="TabControl" />
+                    <UniformGrid
+                        Margin="0,10"
+                        Columns="2"
+                        Rows="2">
                         <UniformGrid.Resources>
                             <Style TargetType="{x:Type Rectangle}">
-                                <Setter Property="Width" Value="{x:Static SystemParameters.PrimaryScreenWidth}"/>
-                                <Setter Property="Height" Value="400"/>
+                                <Setter Property="Width" Value="{x:Static SystemParameters.PrimaryScreenWidth}" />
+                                <Setter Property="Height" Value="400" />
                             </Style>
                         </UniformGrid.Resources>
                         <TabControl>
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
+                            <TabItem Header="TabItem3">
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl TabStripPlacement="Bottom">
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
+                            <TabItem Header="TabItem3">
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl TabStripPlacement="Left">
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}"/>
+                            <TabItem Header="TabItem3">
+                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
-                        <TabControl TabStripPlacement="Right" IsEnabled="False">
+                        <TabControl IsEnabled="False" TabStripPlacement="Right">
                             <TabItem Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WD.SuccessSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.SuccessSolidColorBrush}" />
                             </TabItem>
                             <TabItem Header="TabItem2">
-                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}"/>
+                                <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3" >
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}"/>
+                            <TabItem Header="TabItem3">
+                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
                     </UniformGrid>
@@ -484,12 +741,8 @@
             </Grid>
         </ScrollViewer>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BasicControlsExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BasicControlsExample.xaml.cs" 
-                CodeType="CSharp"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BasicControlsExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BasicControlsExample.xaml.cs" CodeType="CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

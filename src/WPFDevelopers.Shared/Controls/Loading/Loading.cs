@@ -43,8 +43,6 @@ namespace WPFDevelopers.Controls
         static void CreateMask(UIElement uIElement, bool isRemove = false)
         {
             var layer = AdornerLayer.GetAdornerLayer(uIElement);
-            //if (uIElement is Window)
-            //    layer = GetAdornerLayer((Visual)uIElement);
             if (layer == null) return;
             if (isRemove && uIElement != null)
             {
@@ -124,16 +122,5 @@ namespace WPFDevelopers.Controls
         {
             obj.SetValue(IsShowProperty, value);
         }
-        //private static AdornerLayer GetAdornerLayer(Visual visual)
-        //{
-        //    var decorator = visual as AdornerDecorator;
-        //    if (decorator != null)
-        //        return decorator.AdornerLayer;
-        //    var presenter = visual as ScrollContentPresenter;
-        //    if (presenter != null)
-        //        return presenter.AdornerLayer;
-        //    var visualContent = (visual as Window)?.Content as Visual;
-        //    return AdornerLayer.GetAdornerLayer(visualContent ?? visual);
-        //}
     }
 }

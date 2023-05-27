@@ -9,44 +9,44 @@ using System.Windows.Media;
 using Microsoft.Win32.SafeHandles;
 using WPFDevelopers.Controls.Runtimes.Interop;
 using WPFDevelopers.Controls.Runtimes.User32;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls.Runtimes
 {
     public static class User32Interop
     {
-        private const string _User32 = "user32.dll";
 
-        [DllImport(_User32, EntryPoint = "RegisterClassExW", SetLastError = true)]
+        [DllImport(Win32.User32, EntryPoint = "RegisterClassExW", SetLastError = true)]
         public static extern short RegisterClassEx([In] ref WNDCLASSEX lpwcx);
 
-        [DllImport(_User32, CharSet = CharSet.Unicode, SetLastError = true)]
+        [DllImport(Win32.User32, CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern int RegisterWindowMessage(string lpString);
 
-        [DllImport(_User32, CharSet = CharSet.Unicode, EntryPoint = "DefWindowProcW")]
+        [DllImport(Win32.User32, CharSet = CharSet.Unicode, EntryPoint = "DefWindowProcW")]
         public static extern IntPtr DefWindowProc(IntPtr hWnd, WM Msg, IntPtr wParam, IntPtr lParam);
 
-        [DllImport(_User32, CharSet = CharSet.Unicode, EntryPoint = "CreateWindowExW", SetLastError = true)]
+        [DllImport(Win32.User32, CharSet = CharSet.Unicode, EntryPoint = "CreateWindowExW", SetLastError = true)]
         public static extern IntPtr CreateWindowEx(WS_EX dwExStyle, [MarshalAs(UnmanagedType.LPWStr)] string lpClassName, [MarshalAs(UnmanagedType.LPWStr)] string lpWindowName, WS dwStyle, int x, int y, int nWidth, int nHeight, IntPtr hWndParent, IntPtr hMenu, IntPtr hInstance, IntPtr lpParam);
 
-        [DllImport(_User32)]
+        [DllImport(Win32.User32)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool IsWindow(IntPtr hwnd);
 
-        [DllImport(_User32, CharSet = CharSet.Unicode, EntryPoint = "UnregisterClass", SetLastError = true)]
+        [DllImport(Win32.User32, CharSet = CharSet.Unicode, EntryPoint = "UnregisterClass", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool UnregisterClassName(string lpClassName, IntPtr hInstance);
 
-        [DllImport(_User32, SetLastError = true)]
+        [DllImport(Win32.User32, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool DestroyWindow(IntPtr hwnd);
 
-        [DllImport(_User32, SetLastError = true, CharSet = CharSet.Auto)]
+        [DllImport(Win32.User32, SetLastError = true, CharSet = CharSet.Auto)]
         public static extern IntPtr LoadImage(IntPtr hinst, string lpszName, ImageType uType, int cxDesired, int cyDesired, LoadImageFlags fuLoad);
 
-        //[DllImport(_User32, SetLastError = true)]
+        //[DllImport(Win32.User32, SetLastError = true)]
         //public static extern int DestroyIcon(IntPtr hIcon);
 
-        [DllImport(_User32, ExactSpelling = true, CharSet = CharSet.Auto)]
+        [DllImport(Win32.User32, ExactSpelling = true, CharSet = CharSet.Auto)]
         internal static extern bool SetForegroundWindow(IntPtr hWnd);
 
         public static IntPtr GetHandle(this Visual visual) => (PresentationSource.FromVisual(visual) as HwndSource)?.Handle ?? IntPtr.Zero;
@@ -64,7 +64,7 @@ namespace WPFDevelopers.Controls.Runtimes
         /// </SecurityNote>
         [SecurityCritical]
         [SuppressUnmanagedCodeSecurity]
-        [DllImport(_User32)]
+        [DllImport(Win32.User32)]
         public static extern bool GetLayeredWindowAttributes(
                 HandleRef hwnd, IntPtr pcrKey, IntPtr pbAlpha, IntPtr pdwFlags);
         internal sealed class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
@@ -123,7 +123,7 @@ namespace WPFDevelopers.Controls.Runtimes
         ///</SecurityNote>
         [SecurityCritical]
         [SuppressUnmanagedCodeSecurity]
-        [DllImport(_User32, EntryPoint = "DestroyIcon", CharSet = System.Runtime.InteropServices.CharSet.Auto, SetLastError = true)]
+        [DllImport(Win32.User32, EntryPoint = "DestroyIcon", CharSet = System.Runtime.InteropServices.CharSet.Auto, SetLastError = true)]
         private static extern bool IntDestroyIcon(IntPtr hIcon);
 
         ///<SecurityNote>
@@ -149,7 +149,7 @@ namespace WPFDevelopers.Controls.Runtimes
         }
         [SecurityCritical]
         [SuppressUnmanagedCodeSecurity]
-        [DllImport(_User32, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Auto,
+        [DllImport(Win32.User32, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Auto,
             EntryPoint = nameof(CreateIconIndirect))]
         private static extern IconHandle PrivateCreateIconIndirect([In] [MarshalAs(UnmanagedType.LPStruct)]
             Gdi32Interop.ICONINFO iconInfo);

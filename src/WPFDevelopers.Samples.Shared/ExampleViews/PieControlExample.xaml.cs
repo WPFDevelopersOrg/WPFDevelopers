@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using WPFDevelopers.Controls;
+using WPFDevelopers.Samples.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {

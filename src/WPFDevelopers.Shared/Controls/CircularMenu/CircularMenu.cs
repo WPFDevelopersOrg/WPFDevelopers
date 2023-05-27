@@ -44,7 +44,6 @@ namespace WPFDevelopers.Controls
                 _toggleButton.Unchecked -= _toggleButton_Unchecked;
                 _toggleButton.Unchecked += _toggleButton_Unchecked;
             }
-            //AlternationCount = this.Items.Count;
         }
 
         private void _itemsControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

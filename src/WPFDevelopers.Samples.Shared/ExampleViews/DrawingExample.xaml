@@ -1,124 +1,117 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.DrawingExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers" 
-             xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.DrawingExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <UserControl.DataContext>
-        <vm:DrawingExampleVM/>
+        <vm:DrawingExampleVM />
     </UserControl.DataContext>
     <controls:CodeViewer>
-    <UniformGrid Columns="3" Rows="2">
-        <wpfdev:DrawingControl 
-            InnerBackground="{StaticResource WD.SuccessSolidColorBrush}"
-            Content="反应盘">
-            <ListBoxItem Content="盘1"/>
-            <ListBoxItem Content="盘2"/>
-            <ListBoxItem Content="盘3"/>
-            <ListBoxItem Content="盘4"/>
-            <ListBoxItem Content="盘5"/>
-        </wpfdev:DrawingControl>
-        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试剂仓"
-                               PanelBorderThinckness="0" 
-                               PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="1" 
-                               InnerBorderBrush="{StaticResource WD.DangerSolidColorBrush}"
-                               InnerBackground="White" 
-                               PanelDrawingMode="Top">
-            <wpfdev:DrawingControl.ItemTemplate>
-                <DataTemplate>
-                    <!--<Border CornerRadius="5"
-                            Width="28" Height="45" 
-                            BorderThickness="1" 
-                            BorderBrush="Green"
-                            Background="Red">
-                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>-->
-                    <Button Style="{StaticResource WD.DefaultButton}"
-                            Content="{Binding Number}"/>
-                </DataTemplate>
-            </wpfdev:DrawingControl.ItemTemplate>
+        <UniformGrid Columns="3" Rows="2">
+            <controls:DrawingControl Content="反应盘" InnerBackground="{StaticResource WD.SuccessSolidColorBrush}">
+                <ListBoxItem Content="盘1" />
+                <ListBoxItem Content="盘2" />
+                <ListBoxItem Content="盘3" />
+                <ListBoxItem Content="盘4" />
+                <ListBoxItem Content="盘5" />
+            </controls:DrawingControl>
+            <controls:DrawingControl
+                Content="试剂仓"
+                InnerBackground="White"
+                InnerBorderBrush="{StaticResource WD.DangerSolidColorBrush}"
+                InnerBorderThickness="1"
+                ItemsSource="{Binding Drawings}"
+                PanelBackground="#FFF2F2F2"
+                PanelBorderThinckness="0"
+                PanelDrawingMode="Top">
+                <controls:DrawingControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Number}" Style="{StaticResource WD.DefaultButton}" />
+                    </DataTemplate>
+                </controls:DrawingControl.ItemTemplate>
 
-        </wpfdev:DrawingControl>
+            </controls:DrawingControl>
 
 
-        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试剂仓"
-                               PanelBorderThinckness="0" 
-                               PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="1" 
-                               InnerBackground="{StaticResource WD.WarningSolidColorBrush}" 
-                               PanelDrawingMode="Right"
-                               PanelMultipleSpace="10"
-                               PanelMultipleDescription="5">
-            <wpfdev:DrawingControl.ItemTemplate>
-                <DataTemplate>
-                    <!--<Border CornerRadius="30" Width="30" Height="30" BorderThickness="1" BorderBrush="Green" Background="Red">
-                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>-->
-                    <CheckBox Content="{Binding Number}"/>
-                </DataTemplate>
-            </wpfdev:DrawingControl.ItemTemplate>
+            <controls:DrawingControl
+                Content="试剂仓"
+                InnerBackground="{StaticResource WD.WarningSolidColorBrush}"
+                InnerBorderThickness="1"
+                ItemsSource="{Binding Drawings}"
+                PanelBackground="#FFF2F2F2"
+                PanelBorderThinckness="0"
+                PanelDrawingMode="Right"
+                PanelMultipleDescription="5"
+                PanelMultipleSpace="10">
+                <controls:DrawingControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Number}" />
+                    </DataTemplate>
+                </controls:DrawingControl.ItemTemplate>
 
-        </wpfdev:DrawingControl>
+            </controls:DrawingControl>
 
 
-        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试剂仓"
-                               PanelBorderThinckness="0" 
-                               PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="1" 
-                               InnerBackground="White" 
-                               PanelDrawingMode="Bottom"
-                               PanelMultipleSpace="2"
-                               PanelMultipleDescription="2,3">
-            <wpfdev:DrawingControl.ItemTemplate>
-                <DataTemplate>
-                    <!--<Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
-                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>-->
-                    <RadioButton Content="{Binding Number}"/>
-                </DataTemplate>
-            </wpfdev:DrawingControl.ItemTemplate>
+            <controls:DrawingControl
+                Content="试剂仓"
+                InnerBackground="White"
+                InnerBorderThickness="1"
+                ItemsSource="{Binding Drawings}"
+                PanelBackground="#FFF2F2F2"
+                PanelBorderThinckness="0"
+                PanelDrawingMode="Bottom"
+                PanelMultipleDescription="2,3"
+                PanelMultipleSpace="2">
+                <controls:DrawingControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton Content="{Binding Number}" />
+                    </DataTemplate>
+                </controls:DrawingControl.ItemTemplate>
 
-        </wpfdev:DrawingControl>
+            </controls:DrawingControl>
 
 
 
-        <wpfdev:DrawingControl ItemsSource="{Binding Drawings}"
-                               Content="试剂仓"
-                               PanelBorderThinckness="0" 
-                               PanelBackground="#FFF2F2F2" 
-                               InnerBorderThickness="1" 
-                               InnerBackground="White" 
-                               PanelDrawingMode="Left"
-                               PanelMultipleSpace="0"
-                               PanelMultipleDescription="3,3">
-            <wpfdev:DrawingControl.ItemTemplate>
-                <DataTemplate>
-                    <!--<Border CornerRadius="5" Width="28" Height="45" BorderThickness="1" BorderBrush="Green" Background="Red">
-                        <TextBlock Text="{Binding Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Normal"  Foreground="White"/>
-                    </Border>-->
-                    <Button Style="{StaticResource WD.PrimaryButton}" Content="{Binding Number}"/>
-                </DataTemplate>
-            </wpfdev:DrawingControl.ItemTemplate>
+            <controls:DrawingControl
+                Content="试剂仓"
+                InnerBackground="White"
+                InnerBorderThickness="1"
+                ItemsSource="{Binding Drawings}"
+                PanelBackground="#FFF2F2F2"
+                PanelBorderThinckness="0"
+                PanelDrawingMode="Left"
+                PanelMultipleDescription="3,3"
+                PanelMultipleSpace="0">
+                <controls:DrawingControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Number}" Style="{StaticResource WD.PrimaryButton}" />
+                    </DataTemplate>
+                </controls:DrawingControl.ItemTemplate>
 
-        </wpfdev:DrawingControl>
-    </UniformGrid>
+            </controls:DrawingControl>
+        </UniformGrid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DrawingExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DrawingExample.xaml.cs" 
-                CodeType="CSharp"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DrawingExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DrawingExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Drawing/Drawing.xaml"
+                CodeType="Xaml"
+                Haader="Drawing" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Drawing/DrawingPanel.cs"
+                CodeType="CSharp"
+                Haader="DrawingPanel.cs" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Drawing/DrawingControl.cs"
+                CodeType="CSharp"
+                Haader="DrawingControl.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

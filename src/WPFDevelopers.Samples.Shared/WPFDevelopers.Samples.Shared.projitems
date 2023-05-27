@@ -13,8 +13,32 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\EmojiHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\CodeViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\SourceCodeModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CountdownTimer\CountdownTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\CutImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\DragDrop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\Dashboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\ScaleItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\FireControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieSegmentModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\DrawPrize.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\PrizeItemControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowAppleButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowAppleButtonWithGlow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RoundPicker\RoundPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\SnowCanvas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\Snowflake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLineItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\DrawPrizeIndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\StateConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AboutWindow.xaml.cs">
       <SubType>Code</SubType>
@@ -385,7 +409,51 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\CodeViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\CutImage\CutImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Dashboard\Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Drawing\Drawing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Others\OtherControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Prize\PrizeItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowButtons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\RoundPicker\RoundPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\SnowCanvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

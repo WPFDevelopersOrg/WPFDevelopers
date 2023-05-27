@@ -104,6 +104,28 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SelectorExample.xaml.cs" Link="ExampleViews\SelectorExample.xaml.cs" DependentUpon="SelectorExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs" Link="ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs" DependentUpon="MultiSelectSearchComboBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreadCrumbBarExample.xaml.cs" Link="ExampleViews\BreadCrumbBarExample.xaml.cs" DependentUpon="BreadCrumbBarExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TimeLine\TimeLineItem.cs" Link="Controls\TimeLine\TimeLineItem.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TimeLine\TimeLine.cs" Link="Controls\TimeLine\TimeLine.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\DrawingPanel.cs" Link="Controls\Drawing\DrawingPanel.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\DrawingControl.cs" Link="Controls\Drawing\DrawingControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Others\FireControl.cs" Link="Controls\Others\FireControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ChatEmoji\ChatEmoji.cs" Link="Controls\ChatEmoji\ChatEmoji.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ChatEmoji\EmojiHelper.cs" Link="Controls\ChatEmoji\EmojiHelper.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\RoundPicker\RoundPicker.cs" Link="Controls\RoundPicker\RoundPicker.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CutImage\CutImage.cs" Link="Controls\CutImage\CutImage.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CutImage\DragDrop.cs" Link="Controls\CutImage\DragDrop.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Dashboard\Dashboard.cs" Link="Controls\Dashboard\Dashboard.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Dashboard\ScaleItem.cs" Link="Controls\Dashboard\ScaleItem.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\PieControl\PieControl.cs" Link="Controls\PieControl\PieControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\PieControl\PieSegmentModel.cs" Link="Controls\PieControl\PieSegmentModel.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Prize\DrawPrize.cs" Link="Controls\Prize\DrawPrize.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Prize\PrizeItemControl.cs" Link="Controls\Prize\PrizeItemControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\RainbowButtons\RainbowAppleButton.cs" Link="Controls\RainbowButtons\RainbowAppleButton.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\RainbowButtons\RainbowAppleButtonWithGlow.cs" Link="Controls\RainbowButtons\RainbowAppleButtonWithGlow.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\SnowCanvas\SnowCanvas.cs" Link="Controls\SnowCanvas\SnowCanvas.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\SnowCanvas\Snowflake.cs" Link="Controls\SnowCanvas\Snowflake.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ScrollViewer\ScrollViewerAnimation.cs" Link="Controls\ScrollViewer\ScrollViewerAnimation.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ScrollViewer\ScrollViewerBehavior.cs" Link="Controls\ScrollViewer\ScrollViewerBehavior.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -372,6 +394,39 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreadCrumbBarExample.xaml">
 			<Link>ExampleViews\BreadCrumbBarExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TimeLine\TimeLine.xaml">
+			<Link>Controls\TimeLine\TimeLine.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\Drawing.xaml">
+			<Link>Controls\Drawing\Drawing.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Others\OtherControl.xaml">
+			<Link>Controls\Others\OtherControl.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ChatEmoji\ChatEmoji.xaml">
+			<Link>Controls\ChatEmoji\ChatEmoji.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\RoundPicker\RoundPicker.xaml">
+			<Link>Controls\RoundPicker\RoundPicker.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CutImage\CutImage.xaml">
+			<Link>Controls\CutImage\CutImage.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Dashboard\Dashboard.xaml">
+			<Link>Controls\Dashboard\Dashboard.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\PieControl\PieControl.xaml">
+			<Link>Controls\PieControl\PieControl.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Prize\PrizeItemControl.xaml">
+			<Link>Controls\Prize\PrizeItemControl.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\RainbowButtons\RainbowButtons.xaml">
+			<Link>Controls\RainbowButtons\RainbowButtons.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\SnowCanvas\SnowCanvas.xaml">
+			<Link>Controls\SnowCanvas\SnowCanvas.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

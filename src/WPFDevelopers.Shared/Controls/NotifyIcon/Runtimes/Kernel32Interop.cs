@@ -5,20 +5,20 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using WPFDevelopers.Controls.Runtimes.Interop;
+using WPFDevelopers.Helpers;
 using HandleCollector = WPFDevelopers.Controls.Runtimes.Interop.HandleCollector;
 
 namespace WPFDevelopers.Controls.Runtimes
 {
     public static class Kernel32Interop
     {
-        private const string _Kernel32 = "kernel32.dll";
 
-        [DllImport(_Kernel32, CharSet = CharSet.Unicode, EntryPoint = "GetModuleHandleW", SetLastError = true)]
+        [DllImport(Win32.Kernel32, CharSet = CharSet.Unicode, EntryPoint = "GetModuleHandleW", SetLastError = true)]
         public static extern IntPtr GetModuleHandle([MarshalAs(UnmanagedType.LPWStr)] string lpModuleName);
 
         [SecurityCritical]
         [SuppressUnmanagedCodeSecurity]
-        [DllImport(_Kernel32, EntryPoint = "GetModuleFileName", CharSet = CharSet.Unicode,
+        [DllImport(Win32.Kernel32, EntryPoint = "GetModuleFileName", CharSet = CharSet.Unicode,
            SetLastError = true)]
         private static extern int IntGetModuleFileName(HandleRef hModule, StringBuilder buffer, int length);
 
@@ -38,7 +38,7 @@ namespace WPFDevelopers.Controls.Runtimes
                 return sBuilder.ToString();
             }
         }
-        [DllImport(_Kernel32, EntryPoint = "CloseHandle", CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport(Win32.Kernel32, EntryPoint = "CloseHandle", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool IntCloseHandle(HandleRef handle);
 
         ///<SecurityNote>

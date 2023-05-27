@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFDevelopers.Controls;
+using WPFDevelopers.Samples.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {

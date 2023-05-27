@@ -1,142 +1,204 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.ChatEmojiExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.ChatEmojiExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <controls:CodeViewer>
-    <UniformGrid Columns="2" Width="800">
-        <Grid Margin="10,0" Background="{StaticResource WD.WarningSolidColorBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>
-            <RichTextBox x:Name="_LeftChat">
-                <RichTextBox.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Left.jpg" Stretch="Fill"/>
-                </RichTextBox.Background>
-            </RichTextBox>
-            <Grid Grid.Row="1">
+        <UniformGrid Width="800" Columns="2">
+            <Grid Margin="10,0" Background="{StaticResource WD.WarningSolidColorBrush}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
-                <ToggleButton x:Name="LeftButtonEmoji" Margin="10,0" Content="Emoji" Width="40" HorizontalAlignment="Left"/>
-                <Popup Placement="Top" PlacementTarget="{Binding ElementName=LeftButtonEmoji}" 
-                       IsOpen="{Binding ElementName=LeftButtonEmoji,Path=IsChecked}" AllowsTransparency="True" 
-                       VerticalOffset="-4">
-                    <Border Margin="10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" CornerRadius="4"
-                            Width="76">
-                        <Border.Effect>
-                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" Color="#80000000"/>
-                        </Border.Effect>
-                        <ItemsControl ItemsSource="{Binding EmojiArray,RelativeSource={RelativeSource AncestorType=local:ChatEmojiExample}}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border x:Name="PART_Border" CornerRadius="2"
+                <RichTextBox x:Name="_LeftChat">
+                    <RichTextBox.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Left.jpg" Stretch="Fill" />
+                    </RichTextBox.Background>
+                </RichTextBox>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ToggleButton
+                        x:Name="LeftButtonEmoji"
+                        Width="40"
+                        Margin="10,0"
+                        HorizontalAlignment="Left"
+                        Content="Emoji" />
+                    <Popup
+                        AllowsTransparency="True"
+                        IsOpen="{Binding ElementName=LeftButtonEmoji, Path=IsChecked}"
+                        Placement="Top"
+                        PlacementTarget="{Binding ElementName=LeftButtonEmoji}"
+                        VerticalOffset="-4">
+                        <Border
+                            Width="76"
+                            Margin="10"
+                            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            CornerRadius="4">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="10"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="#80000000" />
+                            </Border.Effect>
+                            <ItemsControl ItemsSource="{Binding EmojiArray, RelativeSource={RelativeSource AncestorType=local:ChatEmojiExample}}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            x:Name="PART_Border"
+                                            CornerRadius="2"
                                             PreviewMouseLeftButtonDown="PART_Border_PreviewMouseLeftButtonDown"
                                             Tag="{Binding Key}">
-                                        <Image Source="{Binding Value}" ToolTip="{Binding Name}"
-                                               Width="30" Height="30" Margin="4"
-                                               IsHitTestVisible="True"/>
-                                    </Border>
-                                    <DataTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" TargetName="PART_Border" Value="#FFD8D1D1"/>
-                                        </Trigger>
-                                    </DataTemplate.Triggers>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </Border>
-                </Popup>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="LeftInput" wpfdev:ElementHelper.Watermark="请输入内容"/>
-                    <Button Grid.Column="1" Content="发送" x:Name="LeftSend" Click="LeftSend_Click" Style="{StaticResource WD.PrimaryButton}"></Button>
+                                            <Image
+                                                Width="30"
+                                                Height="30"
+                                                Margin="4"
+                                                IsHitTestVisible="True"
+                                                Source="{Binding Value}"
+                                                ToolTip="{Binding Name}" />
+                                        </Border>
+                                        <DataTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="PART_Border" Property="Background" Value="#FFD8D1D1" />
+                                            </Trigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </Border>
+                    </Popup>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="LeftInput" wpfdev:ElementHelper.Watermark="请输入内容" />
+                        <Button
+                            x:Name="LeftSend"
+                            Grid.Column="1"
+                            Click="LeftSend_Click"
+                            Content="发送"
+                            Style="{StaticResource WD.PrimaryButton}" />
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-        <Grid Margin="10,0" Background="{StaticResource WD.SuccessSolidColorBrush}">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>
-            <RichTextBox x:Name="_RightChat">
-                <RichTextBox.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Right.jpg" Stretch="Fill"/>
-                </RichTextBox.Background>
-            </RichTextBox>
-
-            <Grid Grid.Row="1">
+            <Grid Margin="10,0" Background="{StaticResource WD.SuccessSolidColorBrush}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
-                <ToggleButton x:Name="RightButtonEmoji" Margin="10,0" Content="Emoji" Width="40" HorizontalAlignment="Left"/>
-                <Popup Placement="Top" PlacementTarget="{Binding ElementName=RightButtonEmoji}" 
-                       IsOpen="{Binding ElementName=RightButtonEmoji,Path=IsChecked}" AllowsTransparency="True" 
-                       VerticalOffset="-4">
-                    <Border Margin="10" Background="{DynamicResource WD.BackgroundSolidColorBrush}" CornerRadius="4"
-                            Width="76">
-                        <Border.Effect>
-                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" Color="#80000000"/>
-                        </Border.Effect>
-                        <ItemsControl ItemsSource="{Binding EmojiArray,RelativeSource={RelativeSource AncestorType=local:ChatEmojiExample}}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border x:Name="PART_Border" CornerRadius="2"
+                <RichTextBox x:Name="_RightChat">
+                    <RichTextBox.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Right.jpg" Stretch="Fill" />
+                    </RichTextBox.Background>
+                </RichTextBox>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ToggleButton
+                        x:Name="RightButtonEmoji"
+                        Width="40"
+                        Margin="10,0"
+                        HorizontalAlignment="Left"
+                        Content="Emoji" />
+                    <Popup
+                        AllowsTransparency="True"
+                        IsOpen="{Binding ElementName=RightButtonEmoji, Path=IsChecked}"
+                        Placement="Top"
+                        PlacementTarget="{Binding ElementName=RightButtonEmoji}"
+                        VerticalOffset="-4">
+                        <Border
+                            Width="76"
+                            Margin="10"
+                            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            CornerRadius="4">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="10"
+                                    Opacity="0.2"
+                                    ShadowDepth="0"
+                                    Color="#80000000" />
+                            </Border.Effect>
+                            <ItemsControl ItemsSource="{Binding EmojiArray, RelativeSource={RelativeSource AncestorType=local:ChatEmojiExample}}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            x:Name="PART_Border"
+                                            CornerRadius="2"
                                             PreviewMouseLeftButtonDown="PART_Border_RightPreviewMouseLeftButtonDown"
                                             Tag="{Binding Key}">
-                                        <Image Source="{Binding Value}" ToolTip="{Binding Name}"
-                                               Width="30" Height="30" Margin="4"
-                                               IsHitTestVisible="True"/>
-                                    </Border>
-                                    <DataTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" TargetName="PART_Border" Value="#FFD8D1D1"/>
-                                        </Trigger>
-                                    </DataTemplate.Triggers>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </Border>
-                </Popup>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="RightInput" wpfdev:ElementHelper.Watermark="请输入内容"/>
-                    <Button Grid.Column="1" Content="发送" x:Name="RightSend" Click="RightSend_Click" Style="{StaticResource WD.PrimaryButton}"></Button>
+                                            <Image
+                                                Width="30"
+                                                Height="30"
+                                                Margin="4"
+                                                IsHitTestVisible="True"
+                                                Source="{Binding Value}"
+                                                ToolTip="{Binding Name}" />
+                                        </Border>
+                                        <DataTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="PART_Border" Property="Background" Value="#FFD8D1D1" />
+                                            </Trigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </Border>
+                    </Popup>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="RightInput" wpfdev:ElementHelper.Watermark="请输入内容" />
+                        <Button
+                            x:Name="RightSend"
+                            Grid.Column="1"
+                            Click="RightSend_Click"
+                            Content="发送"
+                            Style="{StaticResource WD.PrimaryButton}" />
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-    </UniformGrid>
+        </UniformGrid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ChatEmojiExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ChatEmojiExample.xaml.cs" 
-                CodeType="CSharp"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ChatEmojiExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ChatEmojiExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ChatEmoji/ChatEmoji.xaml"
+                CodeType="Xaml"
+                Haader="ChatEmoji" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ChatEmoji/EmojiHelper.cs"
+                CodeType="CSharp"
+                Haader="EmojiHelper.cs" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ChatEmoji/ChatEmoji.cs"
+                CodeType="CSharp"
+                Haader="ChatEmoji.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

@@ -49,27 +49,5 @@ namespace WPFDevelopers.Utilities
         public static readonly DependencyProperty IsAddChildProperty =
             DependencyProperty.Register("IsAddChild", typeof(bool), typeof(BaseControl), new PropertyMetadata(false));
 
-        //public static object GetOldChild(UIElement element)
-        //{
-        //    if (element == null) { throw new ArgumentNullException("element"); }
-
-        //    return (object)element.GetValue(OldChildProperty);
-        //}
-
-        //public static void SetOldChild(UIElement element, object child)
-        //{
-        //    if (element == null) { throw new ArgumentNullException("element"); }
-
-        //    element.SetValue(OldChildProperty, child);
-        //}
-
-        //public object OldChild
-        //{
-        //    get { return (object)GetValue(OldChildProperty); }
-        //    set { SetValue(OldChildProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty OldChildProperty =
-        //    DependencyProperty.Register("OldChild", typeof(object), typeof(BaseControl), new PropertyMetadata(null));
     }
 }

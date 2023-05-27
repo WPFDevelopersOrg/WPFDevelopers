@@ -54,41 +54,15 @@ namespace WPFDevelopers.Controls
             _storyboard = new Storyboard();
             _storyboard.RepeatBehavior = RepeatBehavior.Forever;
             var animation = new DoubleAnimation(0, Width + 20, new Duration(TimeSpan.FromSeconds(1.0)));
-            //animation.EasingFunction = new SineEase { EasingMode = EasingMode.EaseInOut };
-            //animation.AutoReverse = true;
             _storyboard.Children.Add(animation);
             Storyboard.SetTarget(animation, this);
             Storyboard.SetTargetProperty(animation, new PropertyPath(StrokeValueProperty));
             _storyboard.Begin();
-
-
-            //_storyboard = new Storyboard();
-            //_storyboard.RepeatBehavior = RepeatBehavior.Forever;
-            //var doubleAnimation1 = new DoubleAnimation
-            //{
-            //    Duration = TimeSpan.FromMilliseconds(1500),
-            //    From = 55,
-            //    //To = 24 //W,H = 25
-            //    To = 0 // W,H = 40
-            //};
-            //Storyboard.SetTargetProperty(doubleAnimation1, new PropertyPath("StrokeDashOffset"));
-            //Storyboard.SetTarget(doubleAnimation1, _ellipse);
-            //_storyboard.Children.Add(doubleAnimation1);
-            //var doubleAnimation2 = new DoubleAnimation
-            //{
-            //    Duration = TimeSpan.FromMilliseconds(1500),
-            //    To = 360
-            //};
-            //Storyboard.SetTargetProperty(doubleAnimation2, new PropertyPath("(Ellipse.RenderTransform).(RotateTransform.Angle)"));
-            //Storyboard.SetTarget(doubleAnimation2, _ellipse);
-            //_storyboard.Children.Add(doubleAnimation2);
-            //_storyboard.Begin();
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            //_ellipse = GetTemplateChild(PART_EillipseTemplateName) as Ellipse;
         }
 
         private void LoadingNew_Unloaded(object sender, RoutedEventArgs e)

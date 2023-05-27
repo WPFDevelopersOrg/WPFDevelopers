@@ -231,9 +231,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.LineChart:
                     ControlPanel = new LineChartExample();
                     break;
-                case MenuEnum.LogoAnimation:
-                    ControlPanel = new LogoAnimationExample();
-                    break;
+                //case MenuEnum.LogoAnimation:
+                //    ControlPanel = new LogoAnimationExample();
+                //    break;
                 case MenuEnum.Thermometer:
                     ControlPanel = new ThermometerExample();
                     break;
