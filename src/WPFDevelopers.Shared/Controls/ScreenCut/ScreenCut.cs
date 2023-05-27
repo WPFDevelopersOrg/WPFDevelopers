@@ -39,9 +39,9 @@ namespace WPFDevelopers.Controls
             var mon = MonitorFromPoint(pnt, 2);
             GetDpiForMonitor(mon, dpiType, out dpiX, out dpiY);
         }
-        [DllImport("User32.dll")]
+        [DllImport(Win32.User32)]
         private static extern IntPtr MonitorFromPoint([In] System.Drawing.Point pt, [In] uint dwFlags);
-        [DllImport("Shcore.dll")]
+        [DllImport(Win32.Shcore)]
         private static extern IntPtr GetDpiForMonitor([In] IntPtr hmonitor, [In] DpiType dpiType, [Out] out uint dpiX, [Out] out uint dpiY);
     }
     public struct ScreenDPI {
