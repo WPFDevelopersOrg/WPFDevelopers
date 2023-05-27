@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -171,7 +172,7 @@ namespace WPFDevelopers.Controls
             set => SetValue(SearchWatermarkProperty, value);
         }
 
-        [DllImport("User32.dll")]
+        [DllImport(Win32.User32)]
         private static extern IntPtr SetFocus(IntPtr hWnd);
 
         public event RoutedEventHandler Closed
