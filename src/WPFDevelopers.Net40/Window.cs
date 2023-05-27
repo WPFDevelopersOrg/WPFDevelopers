@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using Microsoft.Windows.Shell;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Net40
 {
@@ -104,7 +105,7 @@ namespace WPFDevelopers.Net40
 
         private IntPtr hWnd;
 
-        [DllImport("user32.dll")]
+        [DllImport(Win32.User32)]
         public static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
