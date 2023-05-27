@@ -17,13 +17,15 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="MinWidth" Value="120" />
         <Setter Property="MinHeight" Value="95" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="0,1,0,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
                     <Border
                         Name="Border"
-                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
                         <ScrollViewer Focusable="False">
                             <VirtualizingStackPanel IsItemsHost="True" />
@@ -46,6 +48,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="MinHeight" Value="48" />
         <Setter Property="Padding" Value="2" />
         <Setter Property="Template">
@@ -55,12 +58,10 @@
                         <Border
                             x:Name="PART_Border"
                             Padding="{TemplateBinding Padding}"
-                            BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="0,0,0,1"
                             SnapsToDevicePixels="True">
-                            <Border.Background>
-                                <SolidColorBrush Color="{DynamicResource WhiteColor}" />
-                            </Border.Background>
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </Border>
                         <VisualStateManager.VisualStateGroups>
