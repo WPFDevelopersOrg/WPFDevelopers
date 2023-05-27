@@ -3,18 +3,19 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security;
 using WPFDevelopers.Controls.Runtimes.Interop;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls.Runtimes
 {
     public static class Gdi32Interop
     {
-        private const string _Gdi32 = "gdi32.dll";
+
 
         ///  
         /// Critical as suppressing UnmanagedCodeSecurity
         /// 
         [SecurityCritical][SuppressUnmanagedCodeSecurity]
-        [DllImport(_Gdi32, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Auto, EntryPoint = "CreateBitmap")]
+        [DllImport(Win32.Gdi32, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Auto, EntryPoint = "CreateBitmap")]
         private static extern BitmapHandle PrivateCreateBitmap(int width, int height, int planes, int bitsPerPixel, byte[] lpvBits);
 
         ///  
@@ -36,7 +37,7 @@ namespace WPFDevelopers.Controls.Runtimes
         ///</SecurityNote>
         [SecurityCritical]
         [SuppressUnmanagedCodeSecurity]
-        [DllImport(_Gdi32, EntryPoint = "DeleteObject", CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport(Win32.Gdi32, EntryPoint = "DeleteObject", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool IntDeleteObject(IntPtr hObject);
 
         ///<SecurityNote>
@@ -63,14 +64,14 @@ namespace WPFDevelopers.Controls.Runtimes
         /// Critical : Elevates to UnmanagedCode permissions
         /// </SecurityNote>
         [SecurityCritical]
-        [DllImport(_Gdi32, ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport(Win32.Gdi32, ExactSpelling = true, CharSet = CharSet.Auto, SetLastError = true)]
         internal static extern IntPtr SetEnhMetaFileBits(uint cbBuffer, byte[] buffer);
 
         /// <SecurityNote>
         /// Critical as suppressing UnmanagedCodeSecurity
         /// </SecurityNote>
         [SecurityCritical][SuppressUnmanagedCodeSecurity]
-        [DllImport(_Gdi32, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Auto, EntryPoint = "CreateDIBSection")]
+        [DllImport(Win32.Gdi32, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Auto, EntryPoint = "CreateDIBSection")]
         private static extern BitmapHandle PrivateCreateDIBSection(HandleRef hdc, ref BITMAPINFO bitmapInfo, int iUsage, ref IntPtr ppvBits, User32Interop.SafeFileMappingHandle hSection, int dwOffset);
 
         /// <SecurityNote>
