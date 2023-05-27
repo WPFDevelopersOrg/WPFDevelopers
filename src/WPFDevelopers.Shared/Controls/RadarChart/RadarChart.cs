@@ -4,11 +4,13 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
     public class RadarChart : Control
     {
+
         public static readonly DependencyProperty RadarArrayProperty =
             DependencyProperty.Register("RadarArray", typeof(ObservableCollection<RadarModel>), typeof(RadarChart),
                 new UIPropertyMetadata(OnRadarArrayChanged));
@@ -37,8 +39,6 @@ namespace WPFDevelopers.Controls
             //防止延迟加载时，RadarArray为null时报错，防止RadarArray.Count==0时，后续做 被除数（double perangle = 360 / polygonBound） 时溢出错误
             if (RadarArray == null || RadarArray.Count == 0)
                 return;
-
-            //base.OnRender(drawingContext);
             DrawPoints(150, drawingContext, true);
             DrawPoints(100, drawingContext);
             DrawPoints(50, drawingContext);
@@ -46,7 +46,7 @@ namespace WPFDevelopers.Controls
             var myPen = new Pen
             {
                 Thickness = 4,
-                Brush = Brushes.DodgerBlue
+                Brush = ControlsHelper.PrimaryNormalBrush
             };
             myPen.Freeze();
             var streamGeometry = new StreamGeometry();
@@ -67,7 +67,8 @@ namespace WPFDevelopers.Controls
             }
 
             streamGeometry.Freeze();
-            var rectBrush = new SolidColorBrush(Colors.LightSkyBlue);
+            var color = (Color)Application.Current.TryFindResource("WD.PrimaryNormalColor");
+            var rectBrush = new SolidColorBrush(color);
             rectBrush.Opacity = 0.5;
             drawingContext.DrawGeometry(rectBrush, myPen, streamGeometry);
         }
@@ -110,7 +111,7 @@ namespace WPFDevelopers.Controls
                 var p2 = new Point(r * Math.Cos(g * pi / 180) + center.X, r * Math.Sin(g * pi / 180) + center.Y);
                 if (drawingContext != null)
                 {
-                    var formattedText = DrawingContextHelper.GetFormattedText(RadarArray[i].Text,
+                    var formattedText = DrawingContextHelper.GetFormattedText(RadarArray[i].Text, ControlsHelper.PrimaryNormalBrush,
                         flowDirection: FlowDirection.LeftToRight, textSize: 20.001D);
                     RadarArray[i].PointValue = p2;
                     if (p2.Y > center.Y && p2.X < center.X)
