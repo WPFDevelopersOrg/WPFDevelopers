@@ -29,22 +29,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\EmojiHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularProgressBar\CircularProgressBar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CountdownTimer\CountdownTimer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CropAvatar\CropAvatar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CropControl\CropControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\CutImage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\DragDrop.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\Dashboard.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\ScaleItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenuItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\EdgeLight\EdgeLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ThumbAngle.cs" />
@@ -91,27 +82,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\User32\WndProc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\User32\WS.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\User32\WS_EX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\FireControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SixGirdView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SmallPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieSegmentModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\DrawPrize.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\PrizeItemControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\RadarChart\RadarChart.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\RadarChart\RadarModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowAppleButton.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowAppleButtonWithGlow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\RoundPicker\RoundPicker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\RulerControl\Ruler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Ruler\Ruler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCapture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCut.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCutAdorner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerBehavior.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\SnowCanvas.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\Snowflake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SongWords\SongWords.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SpotLight\SpotLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StarrySky\StarrySky.cs" />
@@ -121,8 +100,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLine.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLineItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Windows\WindowAcrylicBlur.cs" />
@@ -142,7 +119,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\SnowCanvasHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThemeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ViewModelBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Win32ApiHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Win32.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ChangedPathLayoutProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Distribution.cs" />
@@ -430,10 +407,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\ChatEmoji.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\CircularMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -450,15 +423,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\CutImage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Dark.Blue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Dashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -479,10 +444,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\DrawerMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Drawing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -522,35 +483,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\OtherControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Pagination.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\PieControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\PrizeItemControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\RainbowButtons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\RoundPicker.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\ScreenCut.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\SnowCanvas.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -563,10 +500,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Magnifier.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\TimeLine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
