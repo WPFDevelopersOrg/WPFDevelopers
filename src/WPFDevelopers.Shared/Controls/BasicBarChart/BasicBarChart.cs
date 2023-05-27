@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -63,7 +64,7 @@ namespace WPFDevelopers.Controls
             var x = startX;
             var y = h + myPen.Thickness;
             var points = new List<Point>();
-            var rectBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5470C6"));
+            var rectBrush = ControlsHelper.PrimaryNormalBrush;
             for (var i = 0; i < SeriesArray.Count() + 1; i++)
             {
                 points.Add(new Point(x, y));
