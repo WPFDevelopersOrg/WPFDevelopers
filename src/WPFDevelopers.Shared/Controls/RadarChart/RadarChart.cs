@@ -57,9 +57,9 @@ namespace WPFDevelopers.Controls
                 var points = new PointCollection();
                 foreach (var item in RadarArray)
                 {
-                    var ss = new Point((item.PointValue.X - w) / 100 * item.ValueMax + w,
+                    var model = new Point((item.PointValue.X - w) / 100 * item.ValueMax + w,
                         (item.PointValue.Y - h) / 100 * item.ValueMax + h);
-                    points.Add(ss);
+                    points.Add(model);
                 }
 
                 geometryContext.BeginFigure(points[points.Count - 1], true, true);
