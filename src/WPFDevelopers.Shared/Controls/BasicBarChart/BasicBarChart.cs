@@ -51,7 +51,7 @@ namespace WPFDevelopers.Controls
 
             var h = ActualHeight / 2 + 160;
             var w = ActualWidth / 2;
-            var startX = w / 3;
+            var startX = 0;
             var width = SeriesArray.Count() * 120 + startX;
             var stratNum = 0;
 

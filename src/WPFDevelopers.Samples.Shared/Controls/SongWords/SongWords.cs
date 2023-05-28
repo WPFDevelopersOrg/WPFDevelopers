@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Samples.Controls
 {
     public class SongWords : TextBlock
     {

@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\SnowCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\Snowflake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SongWords\SongWords.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLineItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\DrawPrizeIndexToColor.cs" />

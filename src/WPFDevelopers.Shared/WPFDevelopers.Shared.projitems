@@ -91,7 +91,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCapture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCut.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCutAdorner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\SongWords\SongWords.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SpotLight\SpotLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StarrySky\StarrySky.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Status.cs" />
