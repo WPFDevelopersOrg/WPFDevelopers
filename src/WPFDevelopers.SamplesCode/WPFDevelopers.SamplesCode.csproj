@@ -126,6 +126,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\SnowCanvas\Snowflake.cs" Link="Controls\SnowCanvas\Snowflake.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ScrollViewer\ScrollViewerAnimation.cs" Link="Controls\ScrollViewer\ScrollViewerAnimation.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ScrollViewer\ScrollViewerBehavior.cs" Link="Controls\ScrollViewer\ScrollViewerBehavior.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\SongWords\SongWords.cs" Link="Controls\SongWords\SongWords.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
