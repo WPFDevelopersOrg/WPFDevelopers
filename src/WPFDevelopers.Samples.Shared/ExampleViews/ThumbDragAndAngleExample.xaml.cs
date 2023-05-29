@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Documents;
-using WPFDevelopers.Controls;
+using WPFDevelopers.Samples.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
@@ -12,7 +12,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         public ThumbDragAndAngleExample()
         {
             InitializeComponent();
-            this.Loaded += (s, e) =>
+            Loaded += delegate
             {
                 var al = AdornerLayer.GetAdornerLayer(_border);
                 al.Add(new ElementAdorner(_border));
