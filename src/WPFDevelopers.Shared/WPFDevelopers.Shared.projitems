@@ -37,8 +37,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\EdgeLight\EdgeLight.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ElementAdorner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ThumbAngle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\BallLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\CycleLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\DefaultLoading.cs" />
