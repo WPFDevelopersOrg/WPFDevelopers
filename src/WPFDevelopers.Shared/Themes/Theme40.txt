@@ -47,7 +47,6 @@ Carousel.xaml
 VerifyCode.xaml
 CircularMenu.xaml
 CircularProgressBar.xaml
-CropControl.xaml
 EdgeLight.xaml
 LoadingGroup.xaml
 NavigateMenu.xaml
@@ -64,3 +63,4 @@ MultiSelectComboBox.xaml
 Mask.xaml
 MultiSelectSearchComboBox.xaml
 BreadCrumbBar.xaml
+CropImage.xaml

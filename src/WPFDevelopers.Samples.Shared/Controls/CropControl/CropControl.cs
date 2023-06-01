@@ -8,7 +8,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Samples.Controls
 {
     [TemplatePart(Name = UniformGridTemplateName, Type = typeof(UniformGrid))]
     public class CropControl : Control

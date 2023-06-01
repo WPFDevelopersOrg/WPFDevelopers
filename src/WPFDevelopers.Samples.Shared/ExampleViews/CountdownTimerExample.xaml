@@ -1,33 +1,57 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.CountdownTimerExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.CountdownTimerExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <controls:CodeViewer>
         <TabControl TabStripPlacement="Bottom">
             <TabItem Header="Default">
-                <controls:CountdownTimer Number="3" x:Name="CountdownTimer1" FontSize="120"/>
+                <controls:CountdownTimer
+                    x:Name="CountdownTimer1"
+                    FontSize="120"
+                    Number="3" />
             </TabItem>
             <TabItem Header="MultiColor">
-                <UniformGrid Columns="4" Visibility="Collapsed" x:Name="CountdownTimerGroup">
-                    <controls:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
-                    <controls:CountdownTimer Number="0" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
-                    <controls:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
-                    <controls:CountdownTimer Number="2" CountdownTimerEffect="MultiColor" FontSize="150" IsFinishStart="True"/>
+                <UniformGrid
+                    x:Name="CountdownTimerGroup"
+                    Columns="4"
+                    Visibility="Collapsed">
+                    <controls:CountdownTimer
+                        CountdownTimerEffect="MultiColor"
+                        FontSize="150"
+                        IsFinishStart="True"
+                        Number="2" />
+                    <controls:CountdownTimer
+                        CountdownTimerEffect="MultiColor"
+                        FontSize="150"
+                        IsFinishStart="True"
+                        Number="0" />
+                    <controls:CountdownTimer
+                        CountdownTimerEffect="MultiColor"
+                        FontSize="150"
+                        IsFinishStart="True"
+                        Number="2" />
+                    <controls:CountdownTimer
+                        CountdownTimerEffect="MultiColor"
+                        FontSize="150"
+                        IsFinishStart="True"
+                        Number="2" />
                 </UniformGrid>
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CountdownTimerExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CountdownTimerExample.xaml.cs" 
-                CodeType="CSharp"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CountdownTimerExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CountdownTimerExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/CountdownTimer/CountdownTimer.cs"
+                CodeType="CSharp"
+                Haader="CountdownTimer.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\CodeViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\SourceCodeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CountdownTimer\CountdownTimer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CropControl\CropControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\CutImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\DragDrop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\Dashboard.cs" />
@@ -417,6 +418,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\CodeViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\CropControl\CropControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
