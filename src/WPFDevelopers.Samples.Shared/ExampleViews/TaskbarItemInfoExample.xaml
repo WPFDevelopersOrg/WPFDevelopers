@@ -1,32 +1,53 @@
-﻿<wpfdev:Window  x:Class="WPFDevelopers.Samples.ExampleViews.TaskbarItemInfoExample"
-                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                xmlns:local="clr-namespace:WPFDevelopers.Samples"
-                xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-                Owner="{x:Static local:App.CurrentMainWindow}"
-                WindowStartupLocation="CenterOwner" Icon="/WPFDevelopers.ico"
-                Title="TaskbarItemInfoExample" TitleHeight="40"
-                WindowStyle="ToolWindow" ResizeMode="NoResize"
-                mc:Ignorable="d" Height="211" Width="363"
-                d:DesignHeight="450" d:DesignWidth="800">
+﻿<wpfdev:Window
+    x:Class="WPFDevelopers.Samples.ExampleViews.TaskbarItemInfoExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Title="TaskbarItemInfoExample"
+    Width="363"
+    Height="211"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Icon="/WPFDevelopers.ico"
+    Owner="{x:Static local:App.CurrentMainWindow}"
+    ResizeMode="NoResize"
+    TitleHeight="40"
+    WindowStartupLocation="CenterOwner"
+    WindowStyle="ToolWindow"
+    mc:Ignorable="d">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo />
     </Window.TaskbarItemInfo>
     <Window.Resources>
         <DataTemplate x:Key="TaskbarIcon">
-            <Border Width="20" Height="20"
-                    Background="{StaticResource WD.PrimaryPressedSolidColorBrush}"
-                    BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}" BorderThickness="2">
-                <TextBlock Text="{Binding}" TextAlignment="Center" Foreground="White" 
-                           VerticalAlignment="Center"/>
+            <Border
+                Width="20"
+                Height="20"
+                Background="{StaticResource WD.PrimaryPressedSolidColorBrush}"
+                BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}"
+                BorderThickness="2">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    Text="{Binding}"
+                    TextAlignment="Center" />
             </Border>
         </DataTemplate>
     </Window.Resources>
-    <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button Content="增加" Click="Button_Click" Tag="add"
-                Style="{StaticResource WD.DefaultButton}" />
-        <Button Content="移除" Click="Button_Click" Tag="remove"/>
+    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button
+            Click="Button_Click"
+            Content="增加"
+            Style="{StaticResource WD.PrimaryButton}"
+            Tag="add" />
+        <Button
+            Margin="10,0"
+            Click="Button_Click"
+            Content="移除"
+            Style="{StaticResource WD.SuccessPrimaryButton}"
+            Tag="remove" />
     </WrapPanel>
 </wpfdev:Window>
