@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using Microsoft.Win32;
+using WPFDevelopers.Helpers;
 #if NET40
 using Microsoft.Windows.Shell;
 using WPFDevelopers.Helpers;

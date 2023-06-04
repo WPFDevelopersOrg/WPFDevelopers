@@ -36,7 +36,7 @@ namespace WPFDevelopers.Controls
         private Image image;
         private int initialX, initialY, voffsetX, voffsetY;
         private bool isDown;
-        private bool isLeft;
+        private bool? isLeft;
         private Path path;
         private Point point;
         private Button replaceButton, addButton;
@@ -97,13 +97,12 @@ namespace WPFDevelopers.Controls
 
         void SettingPoint()
         {
-            if (isLeft)
+            if (isLeft == true)
             {
                 _StartX = Canvas.GetLeft(image);
                 initialX = voffsetX;
             }
-
-            else
+            else if(isLeft == false)
             {
                 _StartY = Canvas.GetTop(image);
                 initialY = voffsetY;
@@ -120,7 +119,7 @@ namespace WPFDevelopers.Controls
             if (e.LeftButton == MouseButtonState.Pressed && isDown)
             {
                 var vPoint = e.GetPosition(this);
-                if (isLeft)
+                if (isLeft == true)
                 {
                     var voffset = vPoint.X - point.X;
                     vNewStartX = _StartX + voffset;
@@ -133,7 +132,7 @@ namespace WPFDevelopers.Controls
                         crop = new CroppedBitmap(bitmapFrame, new Int32Rect(voffsetX, 0, _size, _size));
                     }
                 }
-                else
+                else if (isLeft == false)
                 {
                     var voffset = vPoint.Y - point.Y;
                     vNewStartY = _StartY + voffset;
@@ -146,7 +145,6 @@ namespace WPFDevelopers.Controls
                         crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, voffsetY, _size, _size));
                     }
                 }
-
                 OutImageSource = crop;
             }
         }
@@ -173,7 +171,11 @@ namespace WPFDevelopers.Controls
             vNewStartY = 0;
             var uri = ControlsHelper.ImageUri();
             if (uri == null) return;
-            var bitmap = new BitmapImage(uri);
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.UriSource = uri;
+            bitmap.EndInit();
             if (bitmap.Height > bitmap.Width)
             {
                 var scale = bitmap.Width / path.Width;
@@ -187,6 +189,12 @@ namespace WPFDevelopers.Controls
                 image.Width = bitmap.Width / scale;
                 image.Height = _size;
                 isLeft = true;
+            }
+            else
+            {
+                image.Width = _size;
+                image.Height = _size;
+                isLeft = null;
             }
 
             bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int)image.Width, (int)image.Height, 0);
@@ -203,19 +211,20 @@ namespace WPFDevelopers.Controls
             _StartY = (canvas.ActualHeight - image.Height) / 2.0d;
             Canvas.SetLeft(image, _StartX);
             Canvas.SetTop(image, _StartY);
-            if (isLeft)
+            if (isLeft == true)
             {
                 initialX = ((int)image.Width - 200) / 2;
                 initialY = 0;
                 crop = new CroppedBitmap(bitmapFrame, new Int32Rect(initialX, 0, _size, _size));
             }
-            else
+            else if (isLeft == false)
             {
                 initialY = ((int)image.Height - 200) / 2;
                 initialX = 0;
                 crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, initialY, _size, _size));
             }
-
+            else
+                crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, 0, _size, _size));
             OutImageSource = crop;
         }
     }
