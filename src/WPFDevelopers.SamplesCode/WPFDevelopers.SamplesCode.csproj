@@ -130,6 +130,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ElementAdorner.cs" Link="Controls\ElementAdorner\ElementAdorner.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ThumbAngle.cs" Link="Controls\ElementAdorner\ThumbAngle.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.cs" Link="Controls\CropControl\CropControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml.cs" Link="ExampleViews\CropImageExample.xaml.cs" DependentUpon="CropImageExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -435,8 +436,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.xaml">
 			<Link>Controls\CropControl\CropControl.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.xaml">
-			<Link>Controls\CropControl\CropControl.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml">
+			<Link>ExampleViews\CropImageExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>
