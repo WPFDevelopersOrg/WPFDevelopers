@@ -20,14 +20,6 @@ namespace WPFDevelopers.Samples.ViewModels
 {
     public class MainVM:ViewModelBase
     {
-        //private ObservableCollection<NavigateMenuModel> _navigateMenuModelList;
-
-        //public ObservableCollection<NavigateMenuModel> NavigateMenuModelList
-        //{
-        //    get { return _navigateMenuModelList; }
-        //    set { _navigateMenuModelList = value; }
-        //}
-
         private ObservableCollection<ListBoxItem> _navigateMenuModelList;
 
         public ObservableCollection<ListBoxItem> NavigateMenuModelList
@@ -64,13 +56,6 @@ namespace WPFDevelopers.Samples.ViewModels
         }
         public MainVM()
         {
-            //NavigateMenuModelList = new ObservableCollection<NavigateMenuModel>();
-            //foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
-            //{
-            //    NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
-            //}
-            //NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
-
             NavigateMenuModelList = new ObservableCollection<ListBoxItem>();
             foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
             {
@@ -87,15 +72,12 @@ namespace WPFDevelopers.Samples.ViewModels
         public ICommand MenuSelectionChangedCommand => new RelayCommand(obj =>
         {
             if (obj == null) return;
-            //var model = obj as NavigateMenuModel;
-            //MenuItemSelection(model.Name);
             var model = obj as ListBoxItem;
             MenuItemSelection(model.Content.ToString());
         });
 
         public ICommand CloseCommand => new RelayCommand( obj => 
         {
-            //Environment.Exit(0);
             Application.Current.MainWindow.Close();
         });
 
@@ -308,6 +290,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.BreadCrumbBar:
                     ControlPanel = new BreadCrumbBarExample();
+                    break;
+                case MenuEnum.CropImage:
+                    ControlPanel = new CropImageExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

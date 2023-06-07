@@ -5982,6 +5982,22 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.BreadCrumbBar}" TargetType="{x:Type controls:BreadCrumbBar}" />
+	<Style x:Key="WD.CropImage" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:CropImage}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:CropImage}">
+					<Canvas x:Name="PART_Canvas">
+						<Rectangle x:Name="PART_RectangleLeft" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleTop" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleRight" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+						<Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+						<Border x:Name="PART_Border" Background="Transparent" BorderBrush="{DynamicResource WD.PrimaryNormalSolidColorBrush}" BorderThickness="2" Cursor="SizeAll" />
+					</Canvas>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.CropImage}" TargetType="{x:Type controls:CropImage}" />
 	<Style x:Key="WD.DatePickerCalendarStyle" BasedOn="{StaticResource {x:Type Calendar}}" TargetType="{x:Type Calendar}" />
 	<Style x:Key="WD.DefaultDatePicker" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type DatePicker}">
 		<Setter Property="IsTodayHighlighted" Value="True" />

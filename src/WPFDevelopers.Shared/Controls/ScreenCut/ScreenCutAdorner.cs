@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
@@ -21,9 +22,12 @@ namespace WPFDevelopers.Controls
         private readonly Thumb bc;
         private readonly Thumb bl;
         private readonly VisualCollection visCollec;
+        private readonly Canvas canvas;
 
         public ScreenCutAdorner(UIElement adorned) : base(adorned)
         {
+            canvas = FindParent(adorned) as Canvas;
+
             visCollec = new VisualCollection(this);
             visCollec.Add(lc = GetResizeThumb(Cursors.SizeWE, HorizontalAlignment.Left, VerticalAlignment.Center));
             visCollec.Add(tl = GetResizeThumb(Cursors.SizeNWSE, HorizontalAlignment.Left, VerticalAlignment.Top));
@@ -34,7 +38,12 @@ namespace WPFDevelopers.Controls
             visCollec.Add(bc = GetResizeThumb(Cursors.SizeNS, HorizontalAlignment.Center, VerticalAlignment.Bottom));
             visCollec.Add(bl = GetResizeThumb(Cursors.SizeNESW, HorizontalAlignment.Left, VerticalAlignment.Bottom));
         }
-
+        private static UIElement FindParent(UIElement element)
+        {
+            DependencyObject obj = element;
+            obj = VisualTreeHelper.GetParent(obj);
+            return obj as UIElement;
+        }
         protected override int VisualChildrenCount => visCollec.Count;
 
         protected override Size ArrangeOverride(Size finalSize)
@@ -56,7 +65,7 @@ namespace WPFDevelopers.Controls
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             return finalSize;
         }
-
+       
         private void Resize(FrameworkElement frameworkElement)
         {
             if (double.IsNaN(frameworkElement.Width))
@@ -79,25 +88,38 @@ namespace WPFDevelopers.Controls
                     VisualTree = GetFactory(new SolidColorBrush(Colors.White))
                 }
             };
-
+            var maxWidth = double.IsNaN(canvas.Width) ? canvas.ActualWidth : canvas.Width;
+            var maxHeight = double.IsNaN(canvas.Height) ? canvas.ActualHeight : canvas.Height;
             thumb.DragDelta += (s, e) =>
             {
                 var element = AdornedElement as FrameworkElement;
                 if (element == null)
                     return;
                 Resize(element);
+                
                 switch (thumb.VerticalAlignment)
                 {
                     case VerticalAlignment.Bottom:
                         if (element.Height + e.VerticalChange > MINIMAL_SIZE)
-                            element.Height += e.VerticalChange;
+                        {
+                            var newHeight = element.Height + e.VerticalChange;
+                            var top = Canvas.GetTop(element) + newHeight;
+                            if (newHeight > 0 && top <= canvas.ActualHeight)
+                                element.Height = newHeight;
+                        }
                         break;
 
                     case VerticalAlignment.Top:
                         if (element.Height - e.VerticalChange > MINIMAL_SIZE)
                         {
-                            element.Height -= e.VerticalChange;
-                            Canvas.SetTop(element, Canvas.GetTop(element) + e.VerticalChange);
+
+                            var newHeight = element.Height - e.VerticalChange;
+                            var top = Canvas.GetTop(element);
+                            if (newHeight > 0 && top + e.VerticalChange >= 0)
+                            {
+                                element.Height = newHeight;
+                                Canvas.SetTop(element, top + e.VerticalChange);
+                            }
                         }
 
                         break;
@@ -108,14 +130,25 @@ namespace WPFDevelopers.Controls
                     case HorizontalAlignment.Left:
                         if (element.Width - e.HorizontalChange > MINIMAL_SIZE)
                         {
-                            element.Width -= e.HorizontalChange;
-                            Canvas.SetLeft(element, Canvas.GetLeft(element) + e.HorizontalChange);
+                            var newWidth = element.Width - e.HorizontalChange;
+                            var left = Canvas.GetLeft(element);
+                            if (newWidth > 0 && left + e.HorizontalChange >= 0)
+                            {
+                                element.Width = newWidth;
+                                Canvas.SetLeft(element, left + e.HorizontalChange);
+                            }
                         }
 
                         break;
                     case HorizontalAlignment.Right:
                         if (element.Width + e.HorizontalChange > MINIMAL_SIZE)
-                            element.Width += e.HorizontalChange;
+                        {
+                            var newWidth = element.Width + e.HorizontalChange;
+                            var left = Canvas.GetLeft(element) + newWidth;
+                            if (newWidth > 0 && left <= canvas.ActualWidth)
+                                element.Width = newWidth;
+                        }
+                            
                         break;
                 }
 

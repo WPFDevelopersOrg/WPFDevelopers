@@ -71,6 +71,7 @@
         Selector,
         MultiSelectSearchComboBox,
         BreadCrumbBar,
+        CropImage,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

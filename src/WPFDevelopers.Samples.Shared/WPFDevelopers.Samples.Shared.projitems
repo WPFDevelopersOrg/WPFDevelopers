@@ -134,6 +134,10 @@
       <SubType>Code</SubType>
       <DependentUpon>CutImageExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CropImageExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>CropImageExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DashboardExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>DashboardExample.xaml</DependentUpon>
@@ -546,6 +550,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CropControlExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CropImageExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
