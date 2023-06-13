@@ -123,7 +123,7 @@ namespace WPFDevelopers.Controls
         }
         public string Text
         {
-            get => (string) GetValue(TextProperty);
+            get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
         public IEnumerable ItemsSource
@@ -133,7 +133,7 @@ namespace WPFDevelopers.Controls
         }
         public IEnumerable ItemsSourceSearch
         {
-            get => (IEnumerable) GetValue(ItemsSourceSearchProperty);
+            get => (IEnumerable)GetValue(ItemsSourceSearchProperty);
             set => SetValue(ItemsSourceSearchProperty, value);
         }
 
@@ -145,25 +145,25 @@ namespace WPFDevelopers.Controls
 
         public bool IsSelectAllActive
         {
-            get => (bool) GetValue(IsSelectAllActiveProperty);
+            get => (bool)GetValue(IsSelectAllActiveProperty);
             set => SetValue(IsSelectAllActiveProperty, value);
         }
 
         public bool IsDropDownOpen
         {
-            get => (bool) GetValue(IsDropDownOpenProperty);
+            get => (bool)GetValue(IsDropDownOpenProperty);
             set => SetValue(IsDropDownOpenProperty, value);
         }
 
         public double MaxDropDownHeight
         {
-            get => (double) GetValue(MaxDropDownHeightProperty);
+            get => (double)GetValue(MaxDropDownHeightProperty);
             set => SetValue(MaxDropDownHeightProperty, value);
         }
 
         public IList SelectedItems
         {
-            get => (IList) GetValue(SelectedItemsProperty);
+            get => (IList)GetValue(SelectedItemsProperty);
             set => SetValue(SelectedItemsProperty, value);
         }
         public string SearchWatermark
@@ -229,13 +229,13 @@ namespace WPFDevelopers.Controls
 
         private void _listBoxSearch_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool) e.NewValue)
+            if ((bool)e.NewValue)
                 UpdateIsChecked(_listBoxSearch);
         }
 
         private void _listBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool) e.NewValue)
+            if ((bool)e.NewValue)
             {
                 foreach (var item in selectedSearchList)
                     if (!_listBox.SelectedItems.Contains(item))
@@ -265,7 +265,7 @@ namespace WPFDevelopers.Controls
 
         private void _popup_GotFocus(object sender, RoutedEventArgs e)
         {
-            var source = (HwndSource) PresentationSource.FromVisual(_popup.Child);
+            var source = (HwndSource)PresentationSource.FromVisual(_popup.Child);
             if (source != null)
             {
                 SetFocus(source.Handle);
@@ -295,24 +295,30 @@ namespace WPFDevelopers.Controls
             foreach (var item in _listBox.SelectedItems)
             {
                 var name = GetDisplayText(item);
-                seletedName.Add(name);
+                if(!string.IsNullOrWhiteSpace(name))
+                    seletedName.Add(name);
+                else
+                    seletedName.Add(item.ToString());
             }
-
             foreach (var item in _listBoxSearch.SelectedItems)
             {
                 if (_listBox.SelectedItems.Contains(item))
                     continue;
                 var name = GetDisplayText(item);
-                seletedName.Add(name);
+                if (!string.IsNullOrWhiteSpace(name))
+                    seletedName.Add(name);
+                else
+                    seletedName.Add(item.ToString());
             }
-
             Text = string.Join(Delimiter, seletedName.ToArray());
         }
 
         private void _listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.RemovedItems.Count > 0)
+            {
                 foreach (var item in e.RemovedItems)
+                {
                     if (_checkBox.IsChecked == true)
                     {
                         _checkBox.Unchecked -= _checkBox_Unchecked;
@@ -322,6 +328,14 @@ namespace WPFDevelopers.Controls
                             _checkBox.IsChecked = null;
                         _checkBox.Unchecked += _checkBox_Unchecked;
                     }
+                    if (_listBoxSearch.SelectedItems.Contains(item))
+                        _listBoxSearch.SelectedItems.Remove(item);
+                    if (selectedSearchList.Contains(item))
+                        selectedSearchList.Remove(item);
+                }
+                SelectionChecked(_listBox);
+            }
+                
 
             if (e.AddedItems.Count > 0)
                 SelectionChecked(_listBox);
@@ -331,12 +345,20 @@ namespace WPFDevelopers.Controls
 
         private void _listBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!_listBoxSearch.IsVisible) return;
+            if (!_listBoxSearch.IsVisible)
+                return;
             if (e.RemovedItems.Count > 0)
             {
                 foreach (var item in e.RemovedItems)
+                {
                     if (selectedSearchList.Contains(item))
                         selectedSearchList.Remove(item);
+                    if (_listBox.SelectedItems.Contains(item))
+                        _listBox.SelectedItems.Remove(item);
+                    if (selectedList.Contains(item))
+                        selectedList.Remove(item);
+                }
+                   
                 Combination();
                 SelectionChecked(_listBoxSearch);
             }
@@ -365,7 +387,7 @@ namespace WPFDevelopers.Controls
             {
                 _checkBox.Checked -= _checkBox_Checked;
                 if (listbox.SelectedItems.Count > 0
-                    && 
+                    &&
                     listbox.Items.Count == listbox.SelectedItems.Count)
                 {
                     if (_checkBox.IsChecked != true)
@@ -407,14 +429,16 @@ namespace WPFDevelopers.Controls
             }
             else
             {
-                if(_listBoxSearch.Visibility != Visibility.Visible)
+                if (_listBoxSearch.Visibility != Visibility.Visible)
                     _listBoxSearch.Visibility = Visibility.Visible;
-                if(_listBox.Visibility != Visibility.Collapsed)
+                if (_listBox.Visibility != Visibility.Collapsed)
                     _listBox.Visibility = Visibility.Collapsed;
                 var listSearch = new List<object>();
                 foreach (var item in _listBox.Items)
                 {
                     var str = GetPropertyValue(item);
+                    if (string.IsNullOrWhiteSpace(str))
+                        str = item.ToString();
                     if (!string.IsNullOrWhiteSpace(str))
                         if (str.Contains(text.ToUpperInvariant()))
                             listSearch.Add(item);
@@ -453,7 +477,7 @@ namespace WPFDevelopers.Controls
         {
             var multiSelectionSearchComboBox = o as MultiSelectionSearchComboBox;
             if (multiSelectionSearchComboBox != null)
-                multiSelectionSearchComboBox.OnIsOpenChanged((bool) e.OldValue, (bool) e.NewValue);
+                multiSelectionSearchComboBox.OnIsOpenChanged((bool)e.OldValue, (bool)e.NewValue);
         }
 
         protected virtual void OnIsOpenChanged(bool oldValue, bool newValue)
@@ -472,7 +496,7 @@ namespace WPFDevelopers.Controls
         {
             var comboBox = o as MultiSelectionSearchComboBox;
             if (comboBox != null)
-                comboBox.OnMaxDropDownHeightChanged((double) e.OldValue, (double) e.NewValue);
+                comboBox.OnMaxDropDownHeightChanged((double)e.OldValue, (double)e.NewValue);
         }
 
         protected virtual void OnMaxDropDownHeightChanged(double oldValue, double newValue)
@@ -487,27 +511,26 @@ namespace WPFDevelopers.Controls
             {
                 var collection = e.NewValue as IList;
                 if (collection.Count <= 0) return;
-                if (e.OldValue != null && mltiSelectionSearchComboBox._listBox != null)
-                {
-                    mltiSelectionSearchComboBox._listBox.SelectionChanged -=
-                        mltiSelectionSearchComboBox._listBox_SelectionChanged;
-                    mltiSelectionSearchComboBox._listBox.SelectedItems.Clear();
-                }
-
+                mltiSelectionSearchComboBox._listBox.SelectionChanged -=
+                       mltiSelectionSearchComboBox._listBox_SelectionChanged;
                 foreach (var item in collection)
                 {
                     var name = mltiSelectionSearchComboBox.GetPropertyValue(item);
-                    var model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>().FirstOrDefault(h =>
+                    object model = null;
+                    if (!string.IsNullOrWhiteSpace(name))
+                    {
+                        model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>().FirstOrDefault(h =>
                         mltiSelectionSearchComboBox.GetPropertyValue(h).ToUpperInvariant()
                             .Equals(name));
+                    }
+                    else
+                        model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>().FirstOrDefault(h => h == item);
                     if (model != null && !mltiSelectionSearchComboBox._listBox.SelectedItems.Contains(item))
                         mltiSelectionSearchComboBox._listBox.SelectedItems.Add(model);
-
-                    if (e.OldValue != null && mltiSelectionSearchComboBox._listBox != null)
-                        mltiSelectionSearchComboBox._listBox.SelectionChanged +=
-                            mltiSelectionSearchComboBox._listBox_SelectionChanged;
-                    mltiSelectionSearchComboBox.Combination();
                 }
+                mltiSelectionSearchComboBox._listBox.SelectionChanged +=
+                    mltiSelectionSearchComboBox._listBox_SelectionChanged;
+                mltiSelectionSearchComboBox.Combination();
             }
         }
     }
