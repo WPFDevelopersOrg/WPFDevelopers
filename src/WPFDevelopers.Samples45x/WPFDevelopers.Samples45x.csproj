@@ -13,7 +13,7 @@
 		<ApplicationIcon>..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico</ApplicationIcon>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview7" />
+		<PackageReference Include="WPFDevelopers" Version="1.1.0.1-preview8" />
 	</ItemGroup>
 	<ItemGroup>
 		<Reference Include="ICSharpCode.AvalonEdit, Version=6.1.3.50, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
