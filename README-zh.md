@@ -91,6 +91,11 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### CropImage
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropImage.gif"/>   
+
+----------
 
 ### BreakCrumbBar
 
