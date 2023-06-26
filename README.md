@@ -61,35 +61,40 @@ If you think our open source software is helpful to you, please scan the QR code
 Install-Package WPFDevelopers
 ```
 ###  Step 2: Add nodes to App.xaml;
-
-### Nuget Version >= 1.0.8-preview 
-
+``` XML
+xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+```
 ``` XML
 <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
-                    <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤-->
-                    <ws:Resources Theme="Light"/>
+                    <!--需要注意 wd:Resources 必须在配色主题后，Theme="Dark" 为黑色皮肤-->
+                    <wd:Resources Theme="Light"/>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 ```
-### Nuget Version < 1.0.8-preview 
 
-``` XML
-      <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Generic.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>  
-```
 ###  Step 3: Add the namespace;
 
-`xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+`xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+----------
+### CropImage
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropImage.gif"/>   
+
+----------
+### BreakCrumbBar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BreakCrumbBar.gif"/>   
+
+----------
+### MultiSelectionSearchComboBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectionSearchComboBox.gif"/>   
+
 ----------
 ### ScrollIntoView.IsPosition
 
