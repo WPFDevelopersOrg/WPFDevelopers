@@ -1,71 +1,71 @@
 ﻿using System.Linq;
-using System.Security.Cryptography;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Media;
-using System.Windows.Media.Media3D;
-using System.Windows.Shapes;
 using WPFDevelopers.Helpers;
-using WPFDevelopers.Utilities;
 
 namespace WPFDevelopers.Controls
 {
     public static class MessageBox
     {
-        public static MessageBoxResult Show(string messageBoxText)
+        public static MessageBoxResult Show(string messageBoxText,Window owner = null)
         {
             var msg = new WPFMessageBox(messageBoxText);
-            return GetWindow(msg);
+            return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption)
+        public static MessageBoxResult Show(string messageBoxText, string caption, Window owner = null)
         {
             var msg = new WPFMessageBox(messageBoxText, caption);
-            return GetWindow(msg);
+            return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button)
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null)
         {
             var msg = new WPFMessageBox(messageBoxText, caption, button);
-            return GetWindow(msg);
+            return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon)
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null)
         {
             var msg = new WPFMessageBox(messageBoxText, caption, icon);
-            return GetWindow(msg);
+            return GetWindow(msg, owner);
         }
 
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button,
-            MessageBoxImage icon)
+            MessageBoxImage icon, Window owner = null)
         {
             var msg = new WPFMessageBox(messageBoxText, caption, button, icon);
-            return GetWindow(msg);
+            return GetWindow(msg, owner);
         }
 
-        private static MessageBoxResult GetWindow(WPFMessageBox msg)
+        private static MessageBoxResult GetWindow(WPFMessageBox msg, Window owner = null)
         {
-            try
+            msg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            if (owner != null)
             {
-                msg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                msg.CreateMask();
+                msg.Owner = owner;
+                msg.ShowDialog();
+            }
+            else
+            {
                 Window win = null;
                 if (Application.Current.Windows.Count > 0)
                     win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
                 if (win != null)
                 {
+                    if (win.WindowState == WindowState.Minimized)
+                        msg.BorderThickness = new Thickness(1);
                     msg.CreateMask();
                     msg.Owner = win;
                     msg.ShowDialog();
                 }
                 else
+                {
+                    msg.BorderThickness = new Thickness(1);
                     msg.Show();
-                return msg.Result;
+                }
             }
-            catch (System.Exception)
-            {
-                throw;
-            }
+            return msg.Result;
         }
     }
 }

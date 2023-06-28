@@ -96,7 +96,7 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void btnWarning_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("当前文件不存在！", "警告", MessageBoxImage.Warning);
+            MessageBox.Show("执行此操作可能导致文件无法打开！", "警告", MessageBoxImage.Warning, App.CurrentMainWindow);
         }
 
         private void btnError_Click(object sender, RoutedEventArgs e)
