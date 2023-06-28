@@ -51,7 +51,7 @@ namespace WPFDevelopers.Controls
 
         public ImageSource OutImageSource
         {
-            get => (ImageSource)GetValue(OutImageSourceProperty);
+            get => (ImageSource) GetValue(OutImageSourceProperty);
             set => SetValue(OutImageSourceProperty, value);
         }
 
@@ -95,19 +95,20 @@ namespace WPFDevelopers.Controls
             SettingPoint();
         }
 
-        void SettingPoint()
+        private void SettingPoint()
         {
             if (isLeft == true)
             {
                 _StartX = Canvas.GetLeft(image);
                 initialX = voffsetX;
             }
-            else if(isLeft == false)
+            else if (isLeft == false)
             {
                 _StartY = Canvas.GetTop(image);
                 initialY = voffsetY;
             }
         }
+
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (isDown)
@@ -127,7 +128,7 @@ namespace WPFDevelopers.Controls
                     if (vNewStartX <= xPath && vNewStartX >= -(bitmapFrame.Width - 200 - xPath))
                     {
                         Canvas.SetLeft(image, vNewStartX);
-                        voffsetX = initialX - (int)Math.Round(voffset);
+                        voffsetX = initialX - (int) Math.Round(voffset);
                         voffsetX = voffsetX < 0 ? 0 : voffsetX;
                         crop = new CroppedBitmap(bitmapFrame, new Int32Rect(voffsetX, 0, _size, _size));
                     }
@@ -140,11 +141,12 @@ namespace WPFDevelopers.Controls
                     if (vNewStartY <= yPath && vNewStartY >= -(bitmapFrame.Height - 200 - yPath))
                     {
                         Canvas.SetTop(image, vNewStartY);
-                        voffsetY = initialY - (int)Math.Round(voffset);
+                        voffsetY = initialY - (int) Math.Round(voffset);
                         voffsetY = voffsetY < 0 ? 0 : voffsetY;
                         crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, voffsetY, _size, _size));
                     }
                 }
+
                 OutImageSource = crop;
             }
         }
@@ -197,7 +199,7 @@ namespace WPFDevelopers.Controls
                 isLeft = null;
             }
 
-            bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int)image.Width, (int)image.Height, 0);
+            bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int) image.Width, (int) image.Height, 0);
             image.Source = bitmapFrame;
             if (image.Source != null)
             {
@@ -213,18 +215,21 @@ namespace WPFDevelopers.Controls
             Canvas.SetTop(image, _StartY);
             if (isLeft == true)
             {
-                initialX = ((int)image.Width - 200) / 2;
+                initialX = ((int) image.Width - 200) / 2;
                 initialY = 0;
                 crop = new CroppedBitmap(bitmapFrame, new Int32Rect(initialX, 0, _size, _size));
             }
             else if (isLeft == false)
             {
-                initialY = ((int)image.Height - 200) / 2;
+                initialY = ((int) image.Height - 200) / 2;
                 initialX = 0;
                 crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, initialY, _size, _size));
             }
             else
+            {
                 crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, 0, _size, _size));
+            }
+
             OutImageSource = crop;
         }
     }
