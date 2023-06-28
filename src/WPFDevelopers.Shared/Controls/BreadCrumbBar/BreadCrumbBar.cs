@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Specialized;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace WPFDevelopers.Controls
@@ -9,31 +7,35 @@ namespace WPFDevelopers.Controls
     {
         static BreadCrumbBar()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(BreadCrumbBar), new FrameworkPropertyMetadata(typeof(BreadCrumbBar)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(BreadCrumbBar),
+                new FrameworkPropertyMetadata(typeof(BreadCrumbBar)));
         }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
         }
+
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
-            for (int i = 0; i <= SelectedIndex; i++)
+            for (var i = 0; i <= SelectedIndex; i++)
             {
-                var item = (ListBoxItem)ItemContainerGenerator.ContainerFromIndex(i);
+                var item = (ListBoxItem) ItemContainerGenerator.ContainerFromIndex(i);
                 if (item == null) continue;
                 if (!item.IsEnabled)
                     item.IsEnabled = true;
             }
-            for (int i = Items.Count - 1; i > SelectedIndex; i--)
+
+            for (var i = Items.Count - 1; i > SelectedIndex; i--)
             {
-                var item = (ListBoxItem)ItemContainerGenerator.ContainerFromIndex(i);
+                var item = (ListBoxItem) ItemContainerGenerator.ContainerFromIndex(i);
                 if (item == null) continue;
-                if(item.IsEnabled)
+                if (item.IsEnabled)
                     item.IsEnabled = false;
             }
         }
-       
+
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
             return item is BreadCrumbBarItem;
