@@ -44,7 +44,7 @@ namespace WPFDevelopers.Controls
 
         public bool IsDropDownOpen
         {
-            get => (bool)GetValue(IsDropDownOpenProperty);
+            get => (bool) GetValue(IsDropDownOpenProperty);
             set => SetValue(IsDropDownOpenProperty, value);
         }
 
@@ -54,7 +54,7 @@ namespace WPFDevelopers.Controls
         [TypeConverter(typeof(LengthConverter))]
         public double MaxDropDownHeight
         {
-            get => (double)GetValue(MaxDropDownHeightProperty);
+            get => (double) GetValue(MaxDropDownHeightProperty);
             set => SetValue(MaxDropDownHeightProperty, value);
         }
 
@@ -68,29 +68,29 @@ namespace WPFDevelopers.Controls
 
         public bool IsSelectAllActive
         {
-            get => (bool)GetValue(IsSelectAllActiveProperty);
+            get => (bool) GetValue(IsSelectAllActiveProperty);
             set => SetValue(IsSelectAllActiveProperty, value);
         }
 
 
         public string Delimiter
         {
-            get => (string)GetValue(DelimiterProperty);
+            get => (string) GetValue(DelimiterProperty);
             set => SetValue(DelimiterProperty, value);
         }
 
 
         public string Text
         {
-            get => (string)GetValue(TextProperty);
+            get => (string) GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
 
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var MultiSelectComboBox = (MultiSelectComboBox)d;
+            var MultiSelectComboBox = (MultiSelectComboBox) d;
 
-            if (!(bool)e.NewValue)
+            if (!(bool) e.NewValue)
                 MultiSelectComboBox.Dispatcher.BeginInvoke(new Action(() => { Mouse.Capture(null); }),
                     DispatcherPriority.Send);
         }
@@ -156,7 +156,6 @@ namespace WPFDevelopers.Controls
                 SetCurrentValue(TextProperty, newValue);
                 _ignoreTextValueChanged = false;
             }
-            
         }
 
         protected object GetItemDisplayValue(object item)
