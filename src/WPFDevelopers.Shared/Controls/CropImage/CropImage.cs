@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -25,56 +24,61 @@ namespace WPFDevelopers.Controls
         private const string RectangleBottomTemplateName = "PART_RectangleBottom";
         private const string BorderTemplateName = "PART_Border";
 
-        private BitmapFrame bitmapFrame;
-        private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
-        private Border _border;
-        private Canvas _canvas;
-
-        public ImageSource Source
-        {
-            get { return (ImageSource)GetValue(SourceProperty); }
-            set { SetValue(SourceProperty, value); }
-        }
-
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Source", typeof(ImageSource), typeof(CropImage), new PropertyMetadata(null, OnSourceChanged));
-
-        public Rect CurrentRect
-        {
-            get { return (Rect)GetValue(CurrentRectProperty); }
-            private set { SetValue(CurrentRectProperty, value); }
-        }
+            DependencyProperty.Register("Source", typeof(ImageSource), typeof(CropImage),
+                new PropertyMetadata(null, OnSourceChanged));
 
         public static readonly DependencyProperty CurrentRectProperty =
             DependencyProperty.Register("CurrentRect", typeof(Rect), typeof(CropImage), new PropertyMetadata(null));
 
-
-        public ImageSource CurrentAreaBitmap
-        {
-            get { return (ImageSource)GetValue(CurrentAreaBitmapProperty); }
-            private set { SetValue(CurrentAreaBitmapProperty, value); }
-        }
-
         public static readonly DependencyProperty CurrentAreaBitmapProperty =
-            DependencyProperty.Register("CurrentAreaBitmap", typeof(ImageSource), typeof(CropImage), new PropertyMetadata(null));
+            DependencyProperty.Register("CurrentAreaBitmap", typeof(ImageSource), typeof(CropImage),
+                new PropertyMetadata(null));
+
+        private Border _border;
+        private Canvas _canvas;
+        private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
 
 
         private AdornerLayer adornerLayer;
-        private ScreenCutAdorner screenCutAdorner;
+
+        private BitmapFrame bitmapFrame;
         private bool isDragging;
         private double offsetX, offsetY;
-        private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var crop = (CropImage)d;
-            if (crop != null)
-                crop.DrawImage();
-        }
+        private ScreenCutAdorner screenCutAdorner;
 
         static CropImage()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CropImage),
                 new FrameworkPropertyMetadata(typeof(CropImage)));
         }
+
+        public ImageSource Source
+        {
+            get => (ImageSource) GetValue(SourceProperty);
+            set => SetValue(SourceProperty, value);
+        }
+
+        public Rect CurrentRect
+        {
+            get => (Rect) GetValue(CurrentRectProperty);
+            private set => SetValue(CurrentRectProperty, value);
+        }
+
+
+        public ImageSource CurrentAreaBitmap
+        {
+            get => (ImageSource) GetValue(CurrentAreaBitmapProperty);
+            private set => SetValue(CurrentAreaBitmapProperty, value);
+        }
+
+        private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var crop = (CropImage) d;
+            if (crop != null)
+                crop.DrawImage();
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -87,7 +91,7 @@ namespace WPFDevelopers.Controls
             DrawImage();
         }
 
-        void DrawImage()
+        private void DrawImage()
         {
             if (Source == null)
             {
@@ -98,9 +102,10 @@ namespace WPFDevelopers.Controls
                 adornerLayer = null;
                 return;
             }
+
             _border.Visibility = Visibility.Visible;
-            var bitmap = (BitmapImage)Source;
-            bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int)bitmap.Width, (int)bitmap.Height, 0);
+            var bitmap = (BitmapImage) Source;
+            bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int) bitmap.Width, (int) bitmap.Height, 0);
             _canvas.Width = bitmap.Width;
             _canvas.Height = bitmap.Height;
             _canvas.Background = new ImageBrush(bitmap);
@@ -163,7 +168,7 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        void Render()
+        private void Render()
         {
             var cy = Canvas.GetTop(_border);
             cy = cy < 0 ? 0 : cy;
@@ -200,6 +205,7 @@ namespace WPFDevelopers.Controls
         {
             Render();
         }
+
         private CroppedBitmap CutBitmap()
         {
             var width = _border.Width;
@@ -210,8 +216,8 @@ namespace WPFDevelopers.Controls
             var top = Canvas.GetTop(_border);
             CurrentRect = new Rect(left, top, width, height);
             return new CroppedBitmap(bitmapFrame,
-               new Int32Rect((int)CurrentRect.X, (int)CurrentRect.Y, (int)CurrentRect.Width, (int)CurrentRect.Height));
-            
+                new Int32Rect((int) CurrentRect.X, (int) CurrentRect.Y, (int) CurrentRect.Width,
+                    (int) CurrentRect.Height));
         }
     }
 }
