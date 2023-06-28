@@ -79,13 +79,6 @@ namespace WPFDevelopers.Helpers
 
         public static void ThemeRefresh()
         {
-            //var themePath = "pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml";
-            //var themeResourceDictionary =
-            //    Application.Current.TryFindResource.MergedDictionaries.FirstOrDefault(x =>
-            //        x.Source != null && x.Source.Equals(themePath));
-            //if (themeResourceDictionary == null) return;
-            //Application.Current.TryFindResource.MergedDictionaries.Remove(themeResourceDictionary);
-            //Application.Current.TryFindResource.MergedDictionaries.Add(themeResourceDictionary);
             OnSubThemeChanged();
         }
 
@@ -106,6 +99,10 @@ namespace WPFDevelopers.Helpers
             return angle;
         }
 
+        public static bool IsDifferenceOne(double a, double b)
+        {
+            return Math.Abs(a / b - 1) < 0.0001 || Math.Abs(b / a - 1) < 0.0001;
+        }
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
             return (CornerRadius)obj.GetValue(CornerRadiusProperty);
