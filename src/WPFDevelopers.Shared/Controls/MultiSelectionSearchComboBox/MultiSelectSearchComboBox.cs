@@ -31,16 +31,16 @@ namespace WPFDevelopers.Controls
                 typeof(MultiSelectionSearchComboBox));
 
         public static readonly DependencyProperty DisplayMemberPathProperty =
-           DependencyProperty.Register("DisplayMemberPath",
-               typeof(string),
-               typeof(MultiSelectionSearchComboBox),
-               new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("DisplayMemberPath",
+                typeof(string),
+                typeof(MultiSelectionSearchComboBox),
+                new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty SelectedValuePathProperty =
-           DependencyProperty.Register("SelectedValuePath",
-               typeof(string),
-               typeof(MultiSelectionSearchComboBox),
-               new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("SelectedValuePath",
+                typeof(string),
+                typeof(MultiSelectionSearchComboBox),
+                new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text",
@@ -83,10 +83,10 @@ namespace WPFDevelopers.Controls
                     OnSelectedItemsChanged));
 
         public static readonly DependencyProperty SearchWatermarkProperty =
-           DependencyProperty.Register("SearchWatermark",
-               typeof(string),
-               typeof(MultiSelectionSearchComboBox),
-               new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("SearchWatermark",
+                typeof(string),
+                typeof(MultiSelectionSearchComboBox),
+                new PropertyMetadata(string.Empty));
 
         private CheckBox _checkBox;
         private ListBox _listBox;
@@ -108,32 +108,37 @@ namespace WPFDevelopers.Controls
 
         public string Delimiter
         {
-            get => (string)GetValue(DelimiterProperty);
+            get => (string) GetValue(DelimiterProperty);
             set => SetValue(DelimiterProperty, value);
         }
+
         public string SelectedValuePath
         {
-            get => (string)GetValue(SelectedValuePathProperty);
+            get => (string) GetValue(SelectedValuePathProperty);
             set => SetValue(SelectedValuePathProperty, value);
         }
+
         public string DisplayMemberPath
         {
-            get => (string)GetValue(DisplayMemberPathProperty);
+            get => (string) GetValue(DisplayMemberPathProperty);
             set => SetValue(DisplayMemberPathProperty, value);
         }
+
         public string Text
         {
-            get => (string)GetValue(TextProperty);
+            get => (string) GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
+
         public IEnumerable ItemsSource
         {
-            get => (IEnumerable)GetValue(ItemsSourceProperty);
+            get => (IEnumerable) GetValue(ItemsSourceProperty);
             set => SetValue(ItemsSourceProperty, value);
         }
+
         public IEnumerable ItemsSourceSearch
         {
-            get => (IEnumerable)GetValue(ItemsSourceSearchProperty);
+            get => (IEnumerable) GetValue(ItemsSourceSearchProperty);
             set => SetValue(ItemsSourceSearchProperty, value);
         }
 
@@ -145,30 +150,31 @@ namespace WPFDevelopers.Controls
 
         public bool IsSelectAllActive
         {
-            get => (bool)GetValue(IsSelectAllActiveProperty);
+            get => (bool) GetValue(IsSelectAllActiveProperty);
             set => SetValue(IsSelectAllActiveProperty, value);
         }
 
         public bool IsDropDownOpen
         {
-            get => (bool)GetValue(IsDropDownOpenProperty);
+            get => (bool) GetValue(IsDropDownOpenProperty);
             set => SetValue(IsDropDownOpenProperty, value);
         }
 
         public double MaxDropDownHeight
         {
-            get => (double)GetValue(MaxDropDownHeightProperty);
+            get => (double) GetValue(MaxDropDownHeightProperty);
             set => SetValue(MaxDropDownHeightProperty, value);
         }
 
         public IList SelectedItems
         {
-            get => (IList)GetValue(SelectedItemsProperty);
+            get => (IList) GetValue(SelectedItemsProperty);
             set => SetValue(SelectedItemsProperty, value);
         }
+
         public string SearchWatermark
         {
-            get => (string)GetValue(SearchWatermarkProperty);
+            get => (string) GetValue(SearchWatermarkProperty);
             set => SetValue(SearchWatermarkProperty, value);
         }
 
@@ -229,13 +235,13 @@ namespace WPFDevelopers.Controls
 
         private void _listBoxSearch_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool)e.NewValue)
+            if ((bool) e.NewValue)
                 UpdateIsChecked(_listBoxSearch);
         }
 
         private void _listBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool)e.NewValue)
+            if ((bool) e.NewValue)
             {
                 foreach (var item in selectedSearchList)
                     if (!_listBox.SelectedItems.Contains(item))
@@ -265,7 +271,7 @@ namespace WPFDevelopers.Controls
 
         private void _popup_GotFocus(object sender, RoutedEventArgs e)
         {
-            var source = (HwndSource)PresentationSource.FromVisual(_popup.Child);
+            var source = (HwndSource) PresentationSource.FromVisual(_popup.Child);
             if (source != null)
             {
                 SetFocus(source.Handle);
@@ -295,11 +301,12 @@ namespace WPFDevelopers.Controls
             foreach (var item in _listBox.SelectedItems)
             {
                 var name = GetDisplayText(item);
-                if(!string.IsNullOrWhiteSpace(name))
+                if (!string.IsNullOrWhiteSpace(name))
                     seletedName.Add(name);
                 else
                     seletedName.Add(item.ToString());
             }
+
             foreach (var item in _listBoxSearch.SelectedItems)
             {
                 if (_listBox.SelectedItems.Contains(item))
@@ -310,6 +317,7 @@ namespace WPFDevelopers.Controls
                 else
                     seletedName.Add(item.ToString());
             }
+
             Text = string.Join(Delimiter, seletedName.ToArray());
         }
 
@@ -328,14 +336,16 @@ namespace WPFDevelopers.Controls
                             _checkBox.IsChecked = null;
                         _checkBox.Unchecked += _checkBox_Unchecked;
                     }
+
                     if (_listBoxSearch.SelectedItems.Contains(item))
                         _listBoxSearch.SelectedItems.Remove(item);
                     if (selectedSearchList.Contains(item))
                         selectedSearchList.Remove(item);
                 }
+
                 SelectionChecked(_listBox);
             }
-                
+
 
             if (e.AddedItems.Count > 0)
                 SelectionChecked(_listBox);
@@ -353,12 +363,16 @@ namespace WPFDevelopers.Controls
                 {
                     if (selectedSearchList.Contains(item))
                         selectedSearchList.Remove(item);
-                    if (_listBox.SelectedItems.Contains(item))
-                        _listBox.SelectedItems.Remove(item);
+                    if (_listBoxSearch.Items.Contains(item))
+                    {
+                        if (_listBox.SelectedItems.Contains(item))
+                            _listBox.SelectedItems.Remove(item);
+                    }
+
                     if (selectedList.Contains(item))
                         selectedList.Remove(item);
                 }
-                   
+
                 Combination();
                 SelectionChecked(_listBoxSearch);
             }
@@ -477,7 +491,7 @@ namespace WPFDevelopers.Controls
         {
             var multiSelectionSearchComboBox = o as MultiSelectionSearchComboBox;
             if (multiSelectionSearchComboBox != null)
-                multiSelectionSearchComboBox.OnIsOpenChanged((bool)e.OldValue, (bool)e.NewValue);
+                multiSelectionSearchComboBox.OnIsOpenChanged((bool) e.OldValue, (bool) e.NewValue);
         }
 
         protected virtual void OnIsOpenChanged(bool oldValue, bool newValue)
@@ -496,7 +510,7 @@ namespace WPFDevelopers.Controls
         {
             var comboBox = o as MultiSelectionSearchComboBox;
             if (comboBox != null)
-                comboBox.OnMaxDropDownHeightChanged((double)e.OldValue, (double)e.NewValue);
+                comboBox.OnMaxDropDownHeightChanged((double) e.OldValue, (double) e.NewValue);
         }
 
         protected virtual void OnMaxDropDownHeightChanged(double oldValue, double newValue)
@@ -512,22 +526,22 @@ namespace WPFDevelopers.Controls
                 var collection = e.NewValue as IList;
                 if (collection.Count <= 0) return;
                 mltiSelectionSearchComboBox._listBox.SelectionChanged -=
-                       mltiSelectionSearchComboBox._listBox_SelectionChanged;
+                    mltiSelectionSearchComboBox._listBox_SelectionChanged;
                 foreach (var item in collection)
                 {
                     var name = mltiSelectionSearchComboBox.GetPropertyValue(item);
                     object model = null;
                     if (!string.IsNullOrWhiteSpace(name))
-                    {
                         model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>().FirstOrDefault(h =>
-                        mltiSelectionSearchComboBox.GetPropertyValue(h).ToUpperInvariant()
-                            .Equals(name));
-                    }
+                            mltiSelectionSearchComboBox.GetPropertyValue(h).ToUpperInvariant()
+                                .Equals(name));
                     else
-                        model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>().FirstOrDefault(h => h == item);
+                        model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>()
+                            .FirstOrDefault(h => h == item);
                     if (model != null && !mltiSelectionSearchComboBox._listBox.SelectedItems.Contains(item))
                         mltiSelectionSearchComboBox._listBox.SelectedItems.Add(model);
                 }
+
                 mltiSelectionSearchComboBox._listBox.SelectionChanged +=
                     mltiSelectionSearchComboBox._listBox_SelectionChanged;
                 mltiSelectionSearchComboBox.Combination();
