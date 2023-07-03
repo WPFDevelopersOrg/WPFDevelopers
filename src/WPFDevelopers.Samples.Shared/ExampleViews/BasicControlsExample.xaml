@@ -139,18 +139,27 @@
                             Click="BtnOffTask_Click"
                             Content="Off Task"
                             Style="{DynamicResource WD.DangerPrimaryButton}" />
+                        <Button
+                            wd:Loading.Child="{x:Static wd:NormalLoading.Default}"
+                            wd:Loading.IsShow="True"
+                            Content="NormalLoading"
+                            Style="{DynamicResource WD.PrimaryButton}" />
                     </WrapPanel>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="Button" />
                     <WrapPanel Margin="0,10">
-                        <Button Content="Default" />
+                        <Button wd:Badge.IsShow="True" Content="Default" />
                         <Button
                             Margin="10,0"
                             Content="Default"
                             IsEnabled="False" />
-                        <Button Content="Default" Style="{DynamicResource WD.PrimaryButton}" />
+                        <Button
+                            wd:Badge.IsShow="True"
+                            wd:Badge.Text="new"
+                            Content="Default"
+                            Style="{DynamicResource WD.PrimaryButton}" />
                         <Button
                             Margin="10,0"
                             Content="Default"
@@ -158,7 +167,12 @@
                             Style="{DynamicResource WD.PrimaryButton}" />
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Success" Style="{DynamicResource WD.SuccessDefaultButton}" />
+                        <Button
+                            wd:Badge.FontSize="12"
+                            wd:Badge.IsShow="True"
+                            wd:Badge.Text="3"
+                            Content="Success"
+                            Style="{DynamicResource WD.SuccessDefaultButton}" />
                         <Button
                             Margin="10,0"
                             Content="Success"
@@ -172,7 +186,12 @@
                             Style="{DynamicResource WD.SuccessPrimaryButton}" />
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Warning" Style="{DynamicResource WD.WarningDefaultButton}" />
+                        <Button
+                            wd:Badge.FontSize="12"
+                            wd:Badge.IsShow="True"
+                            wd:Badge.Text="10+"
+                            Content="Warning"
+                            Style="{DynamicResource WD.WarningDefaultButton}" />
                         <Button
                             Margin="10,0"
                             Content="Warning"
@@ -186,7 +205,11 @@
                             Style="{DynamicResource WD.WarningPrimaryButton}" />
                     </WrapPanel>
                     <WrapPanel Margin="0,10">
-                        <Button Content="Danger" Style="{DynamicResource WD.DangerDefaultButton}" />
+                        <Button
+                            wd:Badge.IsShow="True"
+                            wd:Badge.Text="NEW"
+                            Content="Danger"
+                            Style="{DynamicResource WD.DangerDefaultButton}" />
                         <Button
                             Margin="10,0"
                             Content="Danger"

@@ -72,6 +72,7 @@
         MultiSelectSearchComboBox,
         BreadCrumbBar,
         CropImage,
+        Badge,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

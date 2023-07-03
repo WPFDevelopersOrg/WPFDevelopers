@@ -404,6 +404,10 @@
       <SubType>Code</SubType>
       <DependentUpon>ZooSemyExample.xaml</DependentUpon>
     </Compile>
+	 <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>BadgeExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementVisualTreeHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RelayCommand.cs" />
@@ -839,6 +843,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ZooSemy\ZooSemyExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+	<Page Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

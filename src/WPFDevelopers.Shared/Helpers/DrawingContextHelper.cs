@@ -70,7 +70,6 @@ namespace WPFDevelopers
                 TextAlignment = TextAlignment.Justify,
                 Trimming = TextTrimming.CharacterEllipsis
             };
-            //textSize, color == null ? Brush : (Brush)brushConverter.ConvertFromString(color))
         }
     }
 }

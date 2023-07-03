@@ -13,7 +13,6 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.RadioButton.xaml
 ..\Styles\Styles.ScrollBar.xaml
 ..\Styles\Styles.Slider.xaml
-..\Styles\Styles.TextBlock.xaml
 ..\Styles\Styles.Hyperlink.xaml
 ..\Styles\Styles.CheckBox.xaml
 ..\Styles\Styles.TextBox.xaml
