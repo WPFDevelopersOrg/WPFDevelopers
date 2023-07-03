@@ -91,6 +91,11 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### Badge
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>   
+
+----------
 ### GrayscaleEffect
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
