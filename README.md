@@ -80,7 +80,19 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ###  Step 3: Add the namespace;
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
 ----------
+### Badge
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>   
+
+----------
+### GrayscaleEffect
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+
+----------
+
 ### CropImage
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropImage.gif"/>   

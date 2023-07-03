@@ -88,9 +88,20 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ###  第三步：添加命名空间;
 
 
-`xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
+`xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### Badge
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>   
+
+----------
+### GrayscaleEffect
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+
+----------
+
 ### CropImage
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropImage.gif"/>   
