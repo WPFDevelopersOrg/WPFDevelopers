@@ -84,7 +84,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 ### Badge
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>   
 
 ----------
 ### GrayscaleEffect
