@@ -254,6 +254,9 @@
       <SubType>Code</SubType>
       <DependentUpon>MaskExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MessageExample.xaml.cs">
+      <DependentUpon>MessageExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MultiSelectComboBoxExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>MultiSelectComboBoxExample.xaml</DependentUpon>
@@ -261,6 +264,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>MultiSelectSearchComboBoxExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NoChromeWindow.xaml.cs">
+      <DependentUpon>NoChromeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NoneNoChromeWindow.xaml.cs">
+      <DependentUpon>NoneNoChromeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NumberCard\NumberCardControl.xaml.cs">
       <SubType>Code</SubType>
@@ -404,7 +413,7 @@
       <SubType>Code</SubType>
       <DependentUpon>ZooSemyExample.xaml</DependentUpon>
     </Compile>
-	 <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>BadgeExample.xaml</DependentUpon>
     </Compile>
@@ -698,11 +707,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MessageExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MultiSelectComboBoxExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MultiSelectSearchComboBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NoChromeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NoneNoChromeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -846,7 +867,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-	<Page Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

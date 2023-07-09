@@ -196,7 +196,6 @@ namespace WPFDevelopers.Helpers
 
         public static BitmapSource Capture()
         {
-
             IntPtr hBitmap;
             var hDC = Win32.GetDC(Win32.GetDesktopWindow());
             var hMemDC = Win32.CreateCompatibleDC(hDC);
@@ -219,7 +218,33 @@ namespace WPFDevelopers.Helpers
             }
             return null;
         }
+        public static AdornerLayer GetAdornerLayer(Visual visual)
+        {
+            var decorator = visual as AdornerDecorator;
+            if (decorator != null)
+                return decorator.AdornerLayer;
+            var presenter = visual as ScrollContentPresenter;
+            if (presenter != null)
+                return presenter.AdornerLayer;
+            var visualContent = (visual as Window)?.Content as Visual;
+            return AdornerLayer.GetAdornerLayer(visualContent ?? visual);
+        }
+
+        public static Window GetDefaultWindow()
+        {
+            Window window = null;
+            if (Application.Current.Windows.Count > 0)
+            {
+                window = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
+                if (window == null)
+                    window = Enumerable.FirstOrDefault(Application.Current.Windows.OfType<Window>());
+            }
+            return window;
+        }
+
     }
+
+
     #region 是否设计时模式
     public class DesignerHelper
     {

@@ -132,6 +132,9 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.cs" Link="Controls\CropControl\CropControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml.cs" Link="ExampleViews\CropImageExample.xaml.cs" DependentUpon="CropImageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BadgeExample.xaml.cs" Link="ExampleViews\BadgeExample.xaml.cs" DependentUpon="BadgeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageExample.xaml.cs" Link="ExampleViews\MessageExample.xaml.cs" DependentUpon="MessageExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoChromeWindow.xaml.cs" Link="ExampleViews\NoChromeWindow.xaml.cs" DependentUpon="NoChromeWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoneNoChromeWindow.xaml.cs" Link="ExampleViews\NoneNoChromeWindow.xaml.cs" DependentUpon="NoneNoChromeWindow.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -442,6 +445,15 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BadgeExample.xaml">
 			<Link>ExampleViews\BadgeExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageExample.xaml">
+			<Link>ExampleViews\MessageExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoChromeWindow.xaml">
+			<Link>ExampleViews\NoChromeWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoneNoChromeWindow.xaml">
+			<Link>ExampleViews\NoneNoChromeWindow.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

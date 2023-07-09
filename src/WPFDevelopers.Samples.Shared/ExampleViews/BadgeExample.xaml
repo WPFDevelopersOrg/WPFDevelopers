@@ -54,6 +54,10 @@
                     Height="100"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     Fill="Aqua" />
+                <Label
+                    Background="Red"
+                    Content="40"
+                    FontSize="40" />
             </StackPanel>
         </Grid>
         <controls:CodeViewer.SourceCodes>

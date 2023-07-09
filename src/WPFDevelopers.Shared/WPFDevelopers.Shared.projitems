@@ -14,11 +14,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBarItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CropImage\CropImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\Message.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\BreadCrumbBarConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DatePickerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxItemExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollIntoView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AnimationAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AudioWindow.cs" />
@@ -422,6 +427,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Mask.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Message.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

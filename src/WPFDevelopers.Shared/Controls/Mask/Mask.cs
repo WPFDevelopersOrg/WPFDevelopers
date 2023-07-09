@@ -13,10 +13,11 @@ namespace WPFDevelopers.Controls
 
         private static void OnIsShowChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is bool IsShow && d is FrameworkElement parent)
+            if (e.NewValue is bool isShow && d is FrameworkElement parent)
             {
-                if (IsShow)
+                if (isShow)
                 {
+                    parent.IsVisibleChanged += Parent_IsVisibleChanged;
                     if (!parent.IsLoaded)
                         parent.Loaded += Parent_Loaded;
                     else
@@ -25,8 +26,19 @@ namespace WPFDevelopers.Controls
                 else
                 {
                     parent.Loaded -= Parent_Loaded;
+                    parent.IsVisibleChanged -= Parent_IsVisibleChanged;
                     CreateMask(parent, true);
                 }
+            }
+        }
+
+        private static void Parent_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue is bool isVisible && sender is FrameworkElement parent)
+            {
+                var isShow = GetIsShow(parent);
+                if (isVisible && isShow && !parent.IsLoaded)
+                    CreateMask(parent);
             }
         }
 

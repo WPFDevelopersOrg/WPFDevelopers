@@ -73,6 +73,7 @@
         BreadCrumbBar,
         CropImage,
         Badge,
+        Message,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

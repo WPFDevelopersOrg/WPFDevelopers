@@ -14,6 +14,8 @@
         TargetType="{x:Type RadioButton}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Background" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="4,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -28,7 +30,7 @@
                                     <Ellipse
                                         x:Name="PART_Border"
                                         Fill="{TemplateBinding Background}"
-                                        Stroke="{DynamicResource WD.BaseSolidColorBrush}"
+                                        Stroke="{TemplateBinding BorderBrush}"
                                         StrokeThickness="{TemplateBinding BorderThickness}" />
                                     <Ellipse
                                         x:Name="PART_Ellipse"
@@ -53,8 +55,7 @@
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             Focusable="False"
                             RecognizesAccessKey="True"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            TextElement.Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Unchecked" />

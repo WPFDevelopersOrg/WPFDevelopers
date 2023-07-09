@@ -111,7 +111,21 @@
                         </Menu>
                         <Menu IsEnabled="False" />
                     </WrapPanel>
-
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="Window" />
+                    <WrapPanel Margin="0,10">
+                        <Button
+                            Click="Button_Click"
+                            Content="ToolWindow"
+                            Style="{DynamicResource WD.PrimaryButton}" />
+                        <Button
+                            Margin="10,0"
+                            Click="ButtonNone_Click"
+                            Content="NoneWindow"
+                            Style="{DynamicResource WD.DangerPrimaryButton}" />
+                    </WrapPanel>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
@@ -129,7 +143,7 @@
                             Style="{DynamicResource WD.SuccessPrimaryButton}" />
                         <Button
                             Name="btnLoading"
-                            wd:Loading.Child="{x:Static wd:NormalLoading.Default}"
+                            wd:Loading.LoadingType="Normal"
                             Click="BtnLoading_Click"
                             Content="AddLoading"
                             Style="{DynamicResource WD.WarningPrimaryButton}" />
@@ -140,8 +154,9 @@
                             Content="Off Task"
                             Style="{DynamicResource WD.DangerPrimaryButton}" />
                         <Button
-                            wd:Loading.Child="{x:Static wd:NormalLoading.Default}"
+                            wd:Badge.IsShow="True"
                             wd:Loading.IsShow="True"
+                            wd:Loading.LoadingType="Normal"
                             Content="NormalLoading"
                             Style="{DynamicResource WD.PrimaryButton}" />
                     </WrapPanel>
@@ -309,7 +324,8 @@
                         <ComboBox
                             Width="200"
                             wd:ElementHelper.Watermark="ComboBox"
-                            Background="LightYellow">
+                            Background="LightYellow"
+                            Foreground="Black">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
                             <ComboBoxItem>Option 3</ComboBoxItem>

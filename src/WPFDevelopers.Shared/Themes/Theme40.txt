@@ -63,3 +63,4 @@ Mask.xaml
 MultiSelectSearchComboBox.xaml
 BreadCrumbBar.xaml
 CropImage.xaml
+Message.xaml

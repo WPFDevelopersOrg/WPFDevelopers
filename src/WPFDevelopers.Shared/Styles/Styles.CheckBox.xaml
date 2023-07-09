@@ -14,6 +14,9 @@
         <Setter Property="Padding" Value="4,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Background" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -27,8 +30,8 @@
                                     x:Name="PART_Border"
                                     Width="16"
                                     Height="16"
-                                    Background="{DynamicResource WD.WindowForegroundColorBrush}"
-                                    BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="1"
                                     CornerRadius="3">
                                     <controls:SmallPanel>
@@ -68,8 +71,7 @@
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Focusable="False"
                             RecognizesAccessKey="True"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            TextElement.Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">

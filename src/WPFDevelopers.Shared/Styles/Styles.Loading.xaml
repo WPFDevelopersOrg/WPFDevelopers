@@ -45,7 +45,10 @@
                             </Ellipse.RenderTransform>
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Loaded">
-                                    <BeginStoryboard Storyboard="{StaticResource StarStoryboard}" />
+                                    <BeginStoryboard x:Name="LoadedBeginStoryboard" Storyboard="{StaticResource StarStoryboard}" />
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Unloaded">
+                                    <StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
@@ -91,7 +94,10 @@
                                 </Ellipse.RenderTransform>
                                 <Ellipse.Triggers>
                                     <EventTrigger RoutedEvent="Loaded">
-                                        <BeginStoryboard Storyboard="{StaticResource StarStoryboard}" />
+                                        <BeginStoryboard x:Name="LoadedBeginStoryboard" Storyboard="{StaticResource StarStoryboard}" />
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Unloaded">
+                                        <StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
                                     </EventTrigger>
                                 </Ellipse.Triggers>
                             </Ellipse>

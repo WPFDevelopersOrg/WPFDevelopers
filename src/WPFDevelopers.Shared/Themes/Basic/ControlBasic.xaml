@@ -57,4 +57,17 @@
         Color="{StaticResource WD.BlackColor}" />
     <BooleanToVisibilityConverter x:Key="WD.Bool2VisibilityConverter" />
     <Thickness x:Key="WD.TabItemBorderThickness">0,0,0,2</Thickness>
+
+    <Style TargetType="ToolTip">
+        <Setter Property="Visibility" Value="Visible" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

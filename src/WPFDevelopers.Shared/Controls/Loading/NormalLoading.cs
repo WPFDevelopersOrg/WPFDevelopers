@@ -20,7 +20,6 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("StrokeArray", typeof(DoubleCollection), typeof(NormalLoading)
                 , new PropertyMetadata(new DoubleCollection {10, 100}));
 
-        public static NormalLoading Default = new NormalLoading();
         private Ellipse _ellipse;
 
         private Storyboard _storyboard;
