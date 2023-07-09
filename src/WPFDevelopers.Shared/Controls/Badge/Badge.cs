@@ -72,9 +72,9 @@ namespace WPFDevelopers.Controls
 
         private static void OnIsBadgeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is bool isBadge && d is FrameworkElement parent)
+            if (e.NewValue is bool isShow && d is FrameworkElement parent)
             {
-                if (isBadge)
+                if (isShow)
                 {
                     parent.IsVisibleChanged += Parent_IsVisibleChanged;
                     if (!parent.IsLoaded)
@@ -96,7 +96,7 @@ namespace WPFDevelopers.Controls
             if (e.NewValue is bool isVisible && sender is FrameworkElement parent)
             {
                 var isShow = GetIsShow(parent);
-                if (isVisible && isShow)
+                if (isVisible && isShow && !parent.IsLoaded)
                     CreateBadge(parent);
             }
         }
