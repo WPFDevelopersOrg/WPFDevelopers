@@ -48,9 +48,7 @@ namespace WPFDevelopers.Controls
             }
             else
             {
-                Window win = null;
-                if (Application.Current.Windows.Count > 0)
-                    win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
+                var win = ControlsHelper.GetDefaultWindow();
                 if (win != null)
                 {
                     if (win.WindowState == WindowState.Minimized)
