@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
 using Microsoft.Windows.Shell;
 using WPFDevelopers.Helpers;
 
@@ -12,8 +13,15 @@ namespace WPFDevelopers.Net40
     public class Window : System.Windows.Window
     {
         private WindowStyle _windowStyle;
+
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
+
+        public static readonly DependencyProperty NoChromeProperty =
+            DependencyProperty.Register("NoChrome", typeof(bool), typeof(Window), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty TitleBarProperty =
+            DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
 
         static Window()
         {
@@ -43,6 +51,18 @@ namespace WPFDevelopers.Net40
             set => SetValue(TitleHeightProperty, value);
         }
 
+        public bool NoChrome
+        {
+            get => (bool)GetValue(NoChromeProperty);
+            set => SetValue(NoChromeProperty, value);
+        }
+
+        public object TitleBar
+        {
+            get => (object)GetValue(TitleBarProperty);
+            set => SetValue(TitleBarProperty, value);
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             hWnd = new WindowInteropHelper(this).Handle;
@@ -70,23 +90,16 @@ namespace WPFDevelopers.Net40
 
         private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            //Close();
             SystemCommands.CloseWindow(this);
         }
 
         private void MaximizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.MaximizeWindow(this);
-            //var window = sender as Window;
-            //window.WindowState = WindowState.Maximized;
-            //WindowState = WindowState.Maximized;
         }
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            //SystemCommands.MinimizeWindow(this);
-            //WindowStyle = WindowStyle.SingleBorderWindow;
-            //WindowState = WindowState.Minimized;
             SendMessage(hWnd, ApiCodes.WM_SYSCOMMAND, new IntPtr(ApiCodes.SC_MINIMIZE), IntPtr.Zero);
         }
 
