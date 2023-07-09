@@ -19,7 +19,7 @@
                 </Grid.ColumnDefinitions>
                 <wpfdev:BreathLamp Width="60" Height="60" LampEffect="OuterGlow" IsLampStart="true"
                                    VerticalAlignment="Top" HorizontalAlignment="Left"
-                                   Background="{DynamicResource DefaultBackgroundPressedSolidColorBrush}" 
+                                   Background="{DynamicResource WD.BlackSolidColorBrush}" 
                                    EffectColor="{DynamicResource WD.DefaultBackgroundPressedColor}">
                     <Ellipse>
                         <Ellipse.Fill>
