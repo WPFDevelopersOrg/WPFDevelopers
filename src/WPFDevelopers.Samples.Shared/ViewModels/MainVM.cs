@@ -297,6 +297,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Badge:
                     ControlPanel = new BadgeExample();
                     break;
+                case MenuEnum.Message:
+                    ControlPanel = new MessageExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
