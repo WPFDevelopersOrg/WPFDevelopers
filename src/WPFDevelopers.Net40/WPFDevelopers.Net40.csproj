@@ -8,9 +8,9 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<Copyright>Copyright © WPFDevelopersOrg 2022</Copyright>
-		<AssemblyVersion>1.1.0.1</AssemblyVersion>
-		<FileVersion>1.1.0.1</FileVersion>
-		<Version>1.1.0.1</Version>
+		<AssemblyVersion>1.1.0.2</AssemblyVersion>
+		<FileVersion>1.1.0.2</FileVersion>
+		<Version>1.1.0.2</Version>
 		<RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers</RepositoryUrl>
 		<Configurations>Debug;Release;Debug-.NET40;Release-.NET40</Configurations>
 	</PropertyGroup>
