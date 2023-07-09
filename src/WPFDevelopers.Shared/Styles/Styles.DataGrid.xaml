@@ -195,20 +195,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsSelected" Value="True" />
-                    <Condition Property="Selector.IsSelectionActive" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-            </MultiTrigger>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-            </Trigger>
-        </Style.Triggers>
     </Style>
     <!--  Style and template for the DataGridRow.  -->
     <Style
