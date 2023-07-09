@@ -96,7 +96,7 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void btnWarning_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("执行此操作可能导致文件无法打开！", "警告", MessageBoxImage.Warning, App.CurrentMainWindow);
+            MessageBox.Show("执行此操作可能导致文件无法打开！", "警告", MessageBoxImage.Warning);
         }
 
         private void btnError_Click(object sender, RoutedEventArgs e)
@@ -182,7 +182,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         private void BtnLoading_Click(object sender, RoutedEventArgs e)
         {
-            var task = new Task(() => { Thread.Sleep(5000); });
+            var task = new Task(() => { Thread.Sleep(50000); });
             task.ContinueWith(previousTask => { Loading.SetIsShow(btnLoading, false); }, TaskScheduler.FromCurrentSynchronizationContext());
             Loading.SetIsShow(btnLoading, true);
             task.Start();
@@ -226,8 +226,17 @@ namespace WPFDevelopers.Samples.ExampleViews
 
 
 
+
         #endregion
 
-       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new NoChromeWindow().Show();
+        }
+
+        private void ButtonNone_Click(object sender, RoutedEventArgs e)
+        {
+            new NoneNoChromeWindow().Show();
+        }
     }
 }
