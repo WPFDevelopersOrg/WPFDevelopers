@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Media;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Utilities;
@@ -22,10 +19,8 @@ namespace WPFDevelopers.Helpers
         }
         public static void CreateMask(this Window outputWindow)
         {
-            Visual parent = null;
-            if (Application.Current.Windows.Count > 0)
-                parent = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
-            var _layer = GetAdornerLayer(parent);
+            Visual parent = ControlsHelper.GetDefaultWindow();
+            var _layer = ControlsHelper.GetAdornerLayer(parent);
             if (_layer == null) return;
             var _adornerContainer = new AdornerContainer(_layer)
             {
@@ -40,17 +35,6 @@ namespace WPFDevelopers.Helpers
                         _layer.Remove(_adornerContainer);
                 };
             }
-        }
-        static AdornerLayer GetAdornerLayer(Visual visual)
-        {
-            var decorator = visual as AdornerDecorator;
-            if (decorator != null)
-                return decorator.AdornerLayer;
-            var presenter = visual as ScrollContentPresenter;
-            if (presenter != null)
-                return presenter.AdornerLayer;
-            var visualContent = (visual as Window)?.Content as Visual;
-            return AdornerLayer.GetAdornerLayer(visualContent ?? visual);
         }
     }
 }
