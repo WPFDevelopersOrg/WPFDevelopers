@@ -1,8 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Documents;
-using System.Windows.Markup;
 using System.Windows.Media;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Utilities;
@@ -11,116 +8,150 @@ namespace WPFDevelopers.Controls
 {
     public class Loading : BaseControl
     {
-        public static readonly DependencyProperty IsShowProperty =
-           DependencyProperty.RegisterAttached("IsShow", typeof(bool), typeof(Loading),
-               new PropertyMetadata(false, OnIsLoadingChanged));
         private const short SIZE = 25;
         private const double MINSIZE = 40;
-        private static FrameworkElement oldFrameworkElement;
-        private static void OnIsLoadingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+
+        public static readonly DependencyProperty IsShowProperty =
+            DependencyProperty.RegisterAttached("IsShow", typeof(bool), typeof(Loading),
+                new PropertyMetadata(false, OnIsShowChanged));
+
+        public static readonly DependencyProperty LoadingTypeProperty =
+            DependencyProperty.RegisterAttached("LoadingType", typeof(LoadingType), typeof(Loading),
+                new PropertyMetadata(LoadingType.Default));
+
+
+        public static LoadingType GetLoadingType(DependencyObject obj)
         {
-            if (e.NewValue is bool isMask && d is FrameworkElement parent)
+            return (LoadingType) obj.GetValue(LoadingTypeProperty);
+        }
+
+        public static void SetLoadingType(DependencyObject obj, LoadingType value)
+        {
+            obj.SetValue(LoadingTypeProperty, value);
+        }
+
+        private static void OnIsShowChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue is bool isShow && d is FrameworkElement parent)
             {
-                if (isMask)
+                if (isShow)
                 {
+                    parent.IsVisibleChanged += Parent_IsVisibleChanged;
                     if (!parent.IsLoaded)
                         parent.Loaded += Parent_Loaded;
                     else
-                        CreateMask(parent);
+                        CreateLoading(parent);
                 }
                 else
                 {
                     parent.Loaded -= Parent_Loaded;
-                    CreateMask(parent, true);
+                    parent.IsVisibleChanged -= Parent_IsVisibleChanged;
+                    CreateLoading(parent, true);
                 }
             }
         }
+
+        private static void Parent_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (e.NewValue is bool isVisible && sender is FrameworkElement parent)
+            {
+                var isShow = GetIsShow(parent);
+                if (isVisible && isShow && !parent.IsLoaded)
+                    CreateLoading(parent);
+            }
+        }
+
         private static void Parent_Loaded(object sender, RoutedEventArgs e)
         {
             if (sender is UIElement element)
-                CreateMask(element);
+                CreateLoading(element);
         }
-        static void CreateMask(UIElement uIElement, bool isRemove = false)
+
+        private static void CreateLoading(UIElement uIElement, bool isRemove = false)
         {
+            UIElement value = null;
             var layer = AdornerLayer.GetAdornerLayer(uIElement);
             if (layer == null) return;
-            if (isRemove && uIElement != null)
-            {
-                var adorners = layer.GetAdorners(uIElement);
-                if (adorners != null)
-                {
-                    foreach (var item in adorners)
+            var adorners = layer.GetAdorners(uIElement);
+            if (isRemove || adorners != null)
+                foreach (var item in adorners)
+                    if (item is AdornerContainer container)
                     {
-                        if (item is AdornerContainer container)
-                        {
-                            var isAddChild = (bool)Loading.GetIsAddChild(uIElement);
-                            if (!isAddChild)
-                                Loading.SetChild(uIElement, null);
-                            container.Child = null;
-                            layer.Remove(container);
-                        }
+                        if (isRemove)
+                            SetChild(uIElement, null);
+                        container.Child = null;
+                        layer.Remove(container);
                     }
-                }
-                return;
-            }
+
             var adornerContainer = new AdornerContainer(uIElement);
-            var value = Loading.GetChild(uIElement);
-            if (value == null)
+            var type = GetLoadingType(uIElement);
+            var isLoading = GetIsShow(uIElement);
+            if (!isLoading) return;
+            var w = (double) uIElement.GetValue(ActualWidthProperty);
+            var h = (double) uIElement.GetValue(ActualHeightProperty);
+            switch (type)
             {
-                var isLoading = GetIsShow(uIElement);
-                if (isLoading)
-                {
-                    var w = (double)uIElement.GetValue(ActualWidthProperty);
-                    var h = (double)uIElement.GetValue(ActualHeightProperty);
-                    var defaultLoading = new DefaultLoading();
-                    if (w < MINSIZE || h < MINSIZE)
+                case LoadingType.Default:
+                    if (isLoading)
                     {
-                        defaultLoading.Width = SIZE;
-                        defaultLoading.Height = SIZE;
-                        defaultLoading.StrokeArray = new DoubleCollection { 10, 100 };
+                        var defaultLoading = new DefaultLoading();
+                        if (w < MINSIZE || h < MINSIZE)
+                        {
+                            defaultLoading.Width = SIZE;
+                            defaultLoading.Height = SIZE;
+                            defaultLoading.StrokeArray = new DoubleCollection {10, 100};
+                        }
+
+                        value = defaultLoading;
                     }
-                    SetChild(uIElement, defaultLoading);
-                    value = Loading.GetChild(uIElement);
-                }
-                if (value != null)
-                    adornerContainer.Child = new MaskControl(uIElement) { Content = value, Background = ControlsHelper.Brush };
-            }
-            else
-            {
-                var normalLoading = (FrameworkElement)value;
-                var frameworkElement = (FrameworkElement)uIElement;
-                Loading.SetIsAddChild(uIElement, true);
 
-                if (oldFrameworkElement != null)
-                    value = oldFrameworkElement;
-                else
-                {
-                    string xaml = XamlWriter.Save(normalLoading);
-                    oldFrameworkElement = (FrameworkElement) XamlReader.Parse(xaml);
-                }
+                    break;
+                case LoadingType.Normal:
+                    var frameworkElement = (FrameworkElement) uIElement;
+                    var normalLoading = new NormalLoading();
+                    var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth
+                        ? frameworkElement.ActualHeight
+                        : frameworkElement.ActualWidth;
+                    if (_size < MINSIZE)
+                    {
+                        normalLoading.Width = SIZE;
+                        normalLoading.Height = SIZE;
+                    }
 
-                var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth ? frameworkElement.ActualHeight : frameworkElement.ActualWidth;
-                if(_size < MINSIZE)
-                {
-                    normalLoading.Width = SIZE;
-                    normalLoading.Height = SIZE;
                     value = normalLoading;
-                }
-                
-                adornerContainer.Child = new MaskControl(uIElement) { Content = value, Background = ControlsHelper.Brush };
-
+                    break;
             }
-            layer.Add(adornerContainer);
 
+            if (value != null)
+                adornerContainer.Child = new MaskControl(uIElement)
+                    {Content = value, Background = ControlsHelper.Brush};
+            layer.Add(adornerContainer);
         }
+
         public static bool GetIsShow(DependencyObject obj)
         {
-            return (bool)obj.GetValue(IsShowProperty);
+            return (bool) obj.GetValue(IsShowProperty);
         }
 
         public static void SetIsShow(DependencyObject obj, bool value)
         {
             obj.SetValue(IsShowProperty, value);
         }
+    }
+
+    /// <summary>
+    ///     Loading类型
+    /// </summary>
+    public enum LoadingType
+    {
+        /// <summary>
+        ///     默认
+        /// </summary>
+        Default,
+
+        /// <summary>
+        ///     普通
+        /// </summary>
+        Normal
     }
 }
