@@ -78,73 +78,57 @@
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathRadioButton}"
                                         ToolTip="方框">
-                                        <RadioButton.Content>
-                                            <Path
-                                                Width="18"
-                                                Height="18"
-                                                Data="{StaticResource WD.RectangleGeometry}"
-                                                Fill="{DynamicResource WD.RegularTextSolidColorBrush}"
-                                                Stretch="Fill" />
-                                        </RadioButton.Content>
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{StaticResource WD.RegularTextSolidColorBrush}"
+                                            Kind="Rectangle" />
                                     </RadioButton>
                                     <RadioButton
                                         x:Name="PART_RadioButtonEllipse"
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathRadioButton}"
                                         ToolTip="椭圆">
-                                        <ToggleButton.Content>
-                                            <Ellipse
-                                                Width="19"
-                                                Height="19"
-                                                SnapsToDevicePixels="True"
-                                                Stroke="{DynamicResource WD.RegularTextSolidColorBrush}"
-                                                StrokeThickness="1.5"
-                                                UseLayoutRounding="True" />
-                                        </ToggleButton.Content>
+                                        <Ellipse
+                                            Width="19"
+                                            Height="19"
+                                            SnapsToDevicePixels="True"
+                                            Stroke="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                            StrokeThickness="1.5"
+                                            UseLayoutRounding="True" />
                                     </RadioButton>
                                     <RadioButton
                                         x:Name="PART_RadioButtonArrow"
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathRadioButton}"
                                         ToolTip="箭头">
-                                        <RadioButton.Content>
-                                            <Path
-                                                Width="18"
-                                                Height="18"
-                                                Data="{StaticResource WD.ArrowRightTopGeometry}"
-                                                Fill="{DynamicResource WD.RegularTextSolidColorBrush}"
-                                                Stretch="Fill"
-                                                Stroke="Transparent"
-                                                StrokeThickness="3" />
-                                        </RadioButton.Content>
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{StaticResource WD.RegularTextSolidColorBrush}"
+                                            Kind="ArrowRightTop" />
                                     </RadioButton>
                                     <RadioButton
                                         x:Name="PART_RadioButtonInk"
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathRadioButton}"
                                         ToolTip="画笔">
-                                        <RadioButton.Content>
-                                            <Path
-                                                Width="18"
-                                                Height="18"
-                                                Data="{StaticResource WD.InkGeometry}"
-                                                Fill="{DynamicResource WD.RegularTextSolidColorBrush}"
-                                                Stretch="Fill" />
-                                        </RadioButton.Content>
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{StaticResource WD.RegularTextSolidColorBrush}"
+                                            Kind="Ink" />
                                     </RadioButton>
                                     <RadioButton
                                         x:Name="PART_RadioButtonText"
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathRadioButton}"
                                         ToolTip="文字">
-                                        <RadioButton.Content>
-                                            <Path
-                                                Width="18"
-                                                Height="18"
-                                                Data="{StaticResource WD.TextGeometry}"
-                                                Fill="{DynamicResource WD.RegularTextSolidColorBrush}"
-                                                Stretch="Fill" />
-                                        </RadioButton.Content>
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{StaticResource WD.RegularTextSolidColorBrush}"
+                                            Kind="Text" />
                                     </RadioButton>
                                     <Rectangle
                                         Width="1"
@@ -156,42 +140,33 @@
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathButton}"
                                         ToolTip="保存">
-                                        <Button.Content>
-                                            <Path
-                                                Width="18"
-                                                Height="18"
-                                                Data="{StaticResource WD.SaveGeometry}"
-                                                Fill="{DynamicResource WD.RegularTextSolidColorBrush}"
-                                                Stretch="Fill" />
-                                        </Button.Content>
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{StaticResource WD.RegularTextSolidColorBrush}"
+                                            Kind="Save" />
                                     </Button>
                                     <Button
                                         x:Name="PART_ButtonCancel"
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathButton}"
                                         ToolTip="取消">
-                                        <Button.Content>
-                                            <Path
-                                                Width="14"
-                                                Height="14"
-                                                Data="{StaticResource WD.CancelGeometry}"
-                                                Fill="{DynamicResource WD.DrawPrizeDualSolidColorBrush}"
-                                                Stretch="Fill" />
-                                        </Button.Content>
+                                        <controls:PathIcon
+                                            Width="14"
+                                            Height="14"
+                                            Foreground="{StaticResource WD.DangerSolidColorBrush}"
+                                            Kind="Cancel" />
                                     </Button>
                                     <Button
                                         x:Name="PART_ButtonComplete"
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathButton}"
                                         ToolTip="完成">
-                                        <Button.Content>
-                                            <Path
-                                                Width="20"
-                                                Height="15"
-                                                Data="{StaticResource WD.CompleteGeometry}"
-                                                Fill="{DynamicResource WD.SuccessSolidColorBrush}"
-                                                Stretch="Fill" />
-                                        </Button.Content>
+                                        <controls:PathIcon
+                                            Width="20"
+                                            Height="15"
+                                            Foreground="{StaticResource WD.SuccessSolidColorBrush}"
+                                            Kind="Complete" />
                                     </Button>
                                 </WrapPanel>
                             </Border>
