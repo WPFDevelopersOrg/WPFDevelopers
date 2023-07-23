@@ -300,6 +300,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Message:
                     ControlPanel = new MessageExample();
                     break;
+                case MenuEnum.PathIcon:
+                    ControlPanel = new PathIconExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
