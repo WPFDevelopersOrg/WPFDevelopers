@@ -11,7 +11,7 @@
     <Style
         x:Key="WD.BaseButton"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type Button}">
+        TargetType="{x:Type ButtonBase}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
