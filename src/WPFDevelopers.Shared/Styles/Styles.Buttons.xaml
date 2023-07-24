@@ -2,12 +2,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:convert="clr-namespace:WPFDevelopers.Converts"
     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <convert:WidthHeightEqualValueConverter x:Key="WidthHeightEqualValueConverter" />
+    <convert:HalfValueConverter x:Key="HalfValueConverter" />
+
     <Style
         x:Key="WD.BaseButton"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -50,6 +55,19 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                        </Trigger>
+                        <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
+                            <Setter Property="Padding" Value="0" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+                            <Setter TargetName="PART_Border" Property="Width">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+                                        <Binding ElementName="PART_Border" Path="ActualWidth" />
+                                        <Binding ElementName="PART_Border" Path="ActualHeight" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Border" Property="Height" Value="{Binding Width, RelativeSource={RelativeSource Self}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -97,6 +115,19 @@
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrushSolidColorBrush}" />
                             <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                        </Trigger>
+                        <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
+                            <Setter Property="Padding" Value="0" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+                            <Setter TargetName="PART_Border" Property="Width">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+                                        <Binding ElementName="PART_Border" Path="ActualWidth" />
+                                        <Binding ElementName="PART_Border" Path="ActualHeight" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Border" Property="Height" Value="{Binding Width, RelativeSource={RelativeSource Self}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
