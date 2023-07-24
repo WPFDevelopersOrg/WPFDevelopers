@@ -14,81 +14,69 @@
         <UniformGrid
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            Columns="6"
             Rows="2">
             <Button
-                Width="50"
-                Height="50"
-                Margin="3,0"
-                Padding="6,0"
-                wd:ElementHelper.CornerRadius="25"
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.PrimaryButton}">
+                <wd:PathIcon Foreground="White" Kind="Arrow" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.DangerPrimaryButton}">
                 <wd:PathIcon Foreground="White" Kind="Arrow" />
             </Button>
             <Button
-                Width="50"
-                Height="50"
-                Margin="3,0"
-                Padding="6,0"
-                wd:ElementHelper.CornerRadius="25"
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.DangerDefaultButton}">
                 <wd:PathIcon Kind="SortArrow" />
             </Button>
             <Button
-                Width="50"
-                Height="50"
-                Margin="3,0"
-                Padding="6,0"
-                wd:ElementHelper.CornerRadius="25"
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.WarningDefaultButton}">
                 <wd:PathIcon Kind="SmileyOutline" />
             </Button>
             <Button
-                Width="50"
-                Height="50"
-                Margin="3,0"
-                Padding="6,0"
-                wd:ElementHelper.CornerRadius="25"
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.DefaultButton}">
                 <wd:PathIcon Kind="Replace" />
             </Button>
             <Button
-                Width="50"
-                Height="50"
-                Margin="3,0"
-                Padding="6,0"
-                wd:ElementHelper.CornerRadius="25"
+                Margin="4"
+                wd:Badge.IsShow="True"
+                wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.SuccessDefaultButton}">
-                <wd:PathIcon Kind="Home" />
+                <wd:PathIcon Foreground="{StaticResource WD.SuccessSolidColorBrush}" Kind="Home" />
             </Button>
-            <Button
-                Margin="3"
-                Padding="6,0"
-                Style="{StaticResource WD.DangerPrimaryButton}">
+            <Button Margin="4" Style="{StaticResource WD.SuccessPrimaryButton}">
                 <wd:PathIcon Foreground="White" Kind="Arrow" />
             </Button>
-            <Button
-                Margin="3"
-                Padding="6,0"
-                Style="{StaticResource WD.DangerDefaultButton}">
-                <wd:PathIcon Kind="SortArrow" />
+            <Button Margin="4" Style="{StaticResource WD.DangerPrimaryButton}">
+                <wd:PathIcon Foreground="White" Kind="SortArrow" />
             </Button>
             <Button
-                Margin="3"
-                Padding="6,0"
-                Style="{StaticResource WD.WarningDefaultButton}">
-                <wd:PathIcon Kind="SmileyOutline" />
+                Margin="4"
+                wd:Badge.IsShow="True"
+                Style="{StaticResource WD.WarningPrimaryButton}">
+                <wd:PathIcon
+                    Width="20"
+                    Height="20"
+                    Foreground="White"
+                    Kind="SmileyOutline" />
             </Button>
-            <Button
-                Margin="3"
-                Padding="6,0"
-                Style="{StaticResource WD.DefaultButton}">
-                <wd:PathIcon Kind="Replace" />
+            <Button Margin="4" Style="{StaticResource WD.PrimaryButton}">
+                <wd:PathIcon Foreground="White" Kind="Replace" />
             </Button>
-            <Button
-                Margin="3"
-                Padding="6,0"
-                Style="{StaticResource WD.SuccessDefaultButton}">
-                <wd:PathIcon Kind="Home" />
+            <Button Margin="4" Style="{StaticResource WD.SuccessPrimaryButton}">
+                <StackPanel Orientation="Horizontal">
+                    <wd:PathIcon Foreground="White" Kind="Home" />
+                    <TextBlock Margin="4,0" Text="Home" />
+                </StackPanel>
             </Button>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
