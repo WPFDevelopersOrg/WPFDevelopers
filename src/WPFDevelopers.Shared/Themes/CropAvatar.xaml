@@ -47,14 +47,11 @@
                                 Style="{StaticResource WD.PathButton}"
                                 ToolTip="更换图片"
                                 Visibility="Collapsed">
-                                <Button.Content>
-                                    <Path
-                                        Width="15"
-                                        Height="15"
-                                        Data="{StaticResource WD.ReplaceGeometry}"
-                                        Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}"
-                                        Stretch="Fill" />
-                                </Button.Content>
+                                <controls:PathIcon
+                                    Width="15"
+                                    Height="15"
+                                    Foreground="{StaticResource WD.PrimaryNormalSolidColorBrush}"
+                                    Kind="Replace" />
                             </Button>
                             <Button
                                 x:Name="PART_AddButton"
@@ -62,20 +59,18 @@
                                 Height="40"
                                 Style="{StaticResource WD.PathButton}"
                                 ToolTip="选择图片">
-                                <Button.Content>
-                                    <Path
-                                        Width="20"
-                                        Height="20"
-                                        Data="{StaticResource WD.AddGeometry}"
-                                        Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}"
-                                        IsHitTestVisible="False"
-                                        RenderTransformOrigin="0.5,0.5"
-                                        Stretch="Fill">
-                                        <Path.RenderTransform>
-                                            <RotateTransform Angle="45" />
-                                        </Path.RenderTransform>
-                                    </Path>
-                                </Button.Content>
+                                <Path
+                                    Width="20"
+                                    Height="20"
+                                    Data="{StaticResource WD.AddGeometry}"
+                                    Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}"
+                                    IsHitTestVisible="False"
+                                    RenderTransformOrigin="0.5,0.5"
+                                    Stretch="Fill">
+                                    <Path.RenderTransform>
+                                        <RotateTransform Angle="45" />
+                                    </Path.RenderTransform>
+                                </Path>
                             </Button>
                         </controls:SmallPanel>
                     </Canvas>
