@@ -135,6 +135,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageExample.xaml.cs" Link="ExampleViews\MessageExample.xaml.cs" DependentUpon="MessageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoChromeWindow.xaml.cs" Link="ExampleViews\NoChromeWindow.xaml.cs" DependentUpon="NoChromeWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoneNoChromeWindow.xaml.cs" Link="ExampleViews\NoneNoChromeWindow.xaml.cs" DependentUpon="NoneNoChromeWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml.cs" Link="ExampleViews\PathIconExample.xaml.cs" DependentUpon="PathIconExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -454,6 +455,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoneNoChromeWindow.xaml">
 			<Link>ExampleViews\NoneNoChromeWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml">
+			<Link>ExampleViews\PathIconExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>
