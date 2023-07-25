@@ -25,6 +25,54 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="20,10" />
     </Style>
+
+    <Style
+        x:Key="WD.NormalButton"
+        BasedOn="{StaticResource WD.BaseButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <controls:SmallPanel>
+                        <Border
+                            Name="PART_Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                            Opacity=".4"
+                            SnapsToDevicePixels="True" />
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </controls:SmallPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource WD.ButtonFocusVisualColor}" />
+                        </Trigger>
+                        <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
+                            <Setter Property="Padding" Value="0" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+                            <Setter TargetName="PART_Border" Property="Width">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+                                        <Binding ElementName="PART_Border" Path="ActualWidth" />
+                                        <Binding ElementName="PART_Border" Path="ActualHeight" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Border" Property="Height" Value="{Binding Width, RelativeSource={RelativeSource Self}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style
         x:Key="WD.PrimaryButton"
         BasedOn="{StaticResource WD.BaseButton}"
