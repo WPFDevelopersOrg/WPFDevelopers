@@ -20,8 +20,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericBox\NumericBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\BreadCrumbBarConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\DatePickerToCurrentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\HalfValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\WidthHeightEqualValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Datas\TextBoxValueChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DatePickerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxItemExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollIntoView.cs" />
@@ -322,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.RepeatButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ScrollBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -442,6 +451,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\PathIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Step.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -503,6 +516,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Magnifier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\NumericBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
