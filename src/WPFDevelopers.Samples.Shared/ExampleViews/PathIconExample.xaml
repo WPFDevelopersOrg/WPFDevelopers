@@ -20,7 +20,7 @@
                 Margin="4"
                 wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.PrimaryButton}">
-                <wd:PathIcon Foreground="White" Kind="Arrow" />
+                <wd:PathIcon Foreground="White" PathData="M682 256h256v256l-98-98-268 268-170-170-256 256-60-60 316-316 170 170 208-208z" />
             </Button>
             <Button
                 Margin="4"
@@ -32,19 +32,19 @@
                 Margin="4"
                 wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.DangerDefaultButton}">
-                <wd:PathIcon Kind="SortArrow" />
+                <wd:PathIcon Foreground="{StaticResource WD.DangerSolidColorBrush}" Kind="SortArrow" />
             </Button>
             <Button
                 Margin="4"
                 wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.WarningDefaultButton}">
-                <wd:PathIcon Kind="SmileyOutline" />
+                <wd:PathIcon Foreground="{StaticResource WD.WarningSolidColorBrush}" Kind="SmileyOutline" />
             </Button>
             <Button
                 Margin="4"
                 wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.DefaultButton}">
-                <wd:PathIcon Kind="Replace" />
+                <wd:PathIcon Foreground="{StaticResource WD.NormalSolidColorBrush}" Kind="Replace" />
             </Button>
             <Button
                 Margin="4"
@@ -52,6 +52,12 @@
                 wd:ElementHelper.IsRound="True"
                 Style="{StaticResource WD.SuccessDefaultButton}">
                 <wd:PathIcon Foreground="{StaticResource WD.SuccessSolidColorBrush}" Kind="Home" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.NormalButton}">
+                <wd:PathIcon PathData="M682 256h256v256l-98-98-268 268-170-170-256 256-60-60 316-316 170 170 208-208z" />
             </Button>
             <Button Margin="4" Style="{StaticResource WD.SuccessPrimaryButton}">
                 <wd:PathIcon Foreground="White" Kind="Arrow" />
