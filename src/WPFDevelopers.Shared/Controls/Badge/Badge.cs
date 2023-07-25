@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -32,13 +33,13 @@ namespace WPFDevelopers.Controls
 
         public string Text
         {
-            get => (string) GetValue(TextProperty);
+            get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
 
         public double FontSize
         {
-            get => (double) GetValue(FontSizeProperty);
+            get => (double)GetValue(FontSizeProperty);
             set => SetValue(FontSizeProperty, value);
         }
 
@@ -46,7 +47,7 @@ namespace WPFDevelopers.Controls
         {
             if (element == null) throw new ArgumentNullException("Text");
 
-            return (string) element.GetValue(TextProperty);
+            return (string)element.GetValue(TextProperty);
         }
 
         public static void SetText(UIElement element, string Text)
@@ -60,7 +61,7 @@ namespace WPFDevelopers.Controls
         {
             if (element == null) throw new ArgumentNullException("FontSize");
 
-            return (double) element.GetValue(FontSizeProperty);
+            return (double)element.GetValue(FontSizeProperty);
         }
 
         public static void SetFontSize(UIElement element, string Text)
@@ -128,7 +129,7 @@ namespace WPFDevelopers.Controls
 
         public static bool GetIsShow(DependencyObject obj)
         {
-            return (bool) obj.GetValue(IsShowProperty);
+            return (bool)obj.GetValue(IsShowProperty);
         }
 
         public static void SetIsShow(DependencyObject obj, bool value)
@@ -139,10 +140,18 @@ namespace WPFDevelopers.Controls
         protected override void OnRender(DrawingContext drawingContext)
         {
             var adornedElement = AdornedElement as FrameworkElement;
-            //var margin = adornedElement.Margin;
-            //var desiredWidth = adornedElement.DesiredSize.Width - margin.Left - margin.Right;
+            var margin = adornedElement.Margin;
+            var padding = ControlsHelper.GetPadding(adornedElement);
+            var desired = adornedElement.DesiredSize.Width - margin.Left - margin.Right;
             var desiredWidth = adornedElement.ActualWidth;
-            var brush = new SolidColorBrush((Color) Application.Current.TryFindResource("WD.DangerColor"));
+            if (double.IsNaN(adornedElement.Width) && desired != adornedElement.ActualWidth)
+            {
+                var w = desired + padding.Left + padding.Right;
+                if (w < adornedElement.ActualWidth)
+                    desiredWidth = adornedElement.DesiredSize.Width;
+            }
+
+            var brush = new SolidColorBrush((Color)Application.Current.TryFindResource("WD.DangerColor"));
             brush.Freeze();
             var radius = 5.0;
             var center = new Point(desiredWidth, 0);
