@@ -76,7 +76,7 @@
                                         Delay="{TemplateBinding Delay}"
                                         IsTabStop="False"
                                         Style="{StaticResource WD.DefaultRepeatButton}">
-                                        <controls:PathIcon Kind="NumericUp" Style="{StaticResource WD.MiniPathIcon}" />
+                                        <controls:PathIcon Kind="ChevronUp" Style="{StaticResource WD.MiniPathIcon}" />
                                     </RepeatButton>
                                     <RepeatButton
                                         x:Name="PART_NumericDown"
@@ -85,7 +85,7 @@
                                         Command="{x:Static controls:NumericBox.DecreaseCommand}"
                                         Delay="{TemplateBinding Delay}"
                                         IsTabStop="False">
-                                        <controls:PathIcon Kind="NumericDown" Style="{StaticResource WD.MiniPathIcon}" />
+                                        <controls:PathIcon Kind="ChevronDown" Style="{StaticResource WD.MiniPathIcon}" />
                                     </RepeatButton>
                                 </Grid>
                             </Grid>
