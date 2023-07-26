@@ -227,7 +227,7 @@
                     Width="10"
                     Height="12"
                     VerticalAlignment="Center"
-                    Data="{StaticResource WD.MenuItemGeometry}"
+                    Data="{StaticResource WD.ChevronRightGeometry}"
                     Fill="{TemplateBinding Foreground}"
                     FlowDirection="LeftToRight"
                     Stretch="Fill" />
