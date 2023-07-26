@@ -31,7 +31,7 @@
                     Height="6"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Data="{StaticResource WD.ComboBoxToggleButtonGeometry}"
+                    Data="{StaticResource WD.ChevronDownGeometry}"
                     RenderTransformOrigin=".5,.5"
                     Stretch="Fill">
                     <Path.Fill>
