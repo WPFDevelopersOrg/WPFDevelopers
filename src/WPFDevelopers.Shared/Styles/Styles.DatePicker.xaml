@@ -672,7 +672,7 @@
                                 Margin="4,3,4,3"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Data="{StaticResource WD.DatePickerDropDownGeometry}"
+                                Data="{StaticResource WD.DatePickerGeometry}"
                                 Fill="{DynamicResource WD.RegularTextSolidColorBrush}"
                                 RenderTransformOrigin="0.5,0.5"
                                 Stretch="Fill" />
