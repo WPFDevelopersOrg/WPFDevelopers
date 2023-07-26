@@ -21,7 +21,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericBox\NumericBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PackIconKind.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PathIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\BreadCrumbBarConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\HalfValueConverter.cs" />
