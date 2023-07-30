@@ -115,7 +115,10 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="Window" />
-                    <WrapPanel Margin="0,10">
+                    <UniformGrid
+                        Height="38"
+                        Margin="0,10"
+                        Rows="1">
                         <Button
                             Click="Button_Click"
                             Content="ToolWindow"
@@ -125,12 +128,15 @@
                             Click="ButtonNone_Click"
                             Content="NoneWindow"
                             Style="{DynamicResource WD.DangerPrimaryButton}" />
-                    </WrapPanel>
+                    </UniformGrid>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="Loading" />
-                    <WrapPanel Margin="0,10">
+                    <UniformGrid
+                        Height="38"
+                        Margin="0,10"
+                        Rows="1">
                         <Button
                             Click="Loading_Click"
                             Content="Loading"
@@ -159,12 +165,15 @@
                             wd:Loading.LoadingType="Normal"
                             Content="NormalLoading"
                             Style="{DynamicResource WD.PrimaryButton}" />
-                    </WrapPanel>
+                    </UniformGrid>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="Button" />
-                    <WrapPanel Margin="0,10">
+                    <UniformGrid
+                        Height="38"
+                        Margin="0,10"
+                        Rows="1">
                         <Button
                             Margin="0,0,10,0"
                             Content="Button"
@@ -184,8 +193,11 @@
                             Content="Default"
                             IsEnabled="False"
                             Style="{DynamicResource WD.PrimaryButton}" />
-                    </WrapPanel>
-                    <WrapPanel Margin="0,10">
+                    </UniformGrid>
+                    <UniformGrid
+                        Height="38"
+                        Margin="0,10"
+                        Rows="1">
                         <Button
                             wd:Badge.FontSize="12"
                             wd:Badge.IsShow="True"
@@ -203,8 +215,11 @@
                             Content="Success"
                             IsEnabled="False"
                             Style="{DynamicResource WD.SuccessPrimaryButton}" />
-                    </WrapPanel>
-                    <WrapPanel Margin="0,10">
+                    </UniformGrid>
+                    <UniformGrid
+                        Height="38"
+                        Margin="0,10"
+                        Rows="1">
                         <Button
                             wd:Badge.FontSize="12"
                             wd:Badge.IsShow="True"
@@ -222,8 +237,11 @@
                             Content="Warning"
                             IsEnabled="False"
                             Style="{DynamicResource WD.WarningPrimaryButton}" />
-                    </WrapPanel>
-                    <WrapPanel Margin="0,10">
+                    </UniformGrid>
+                    <UniformGrid
+                        Height="38"
+                        Margin="0,10"
+                        Rows="1">
                         <Button
                             wd:Badge.IsShow="True"
                             wd:Badge.Text="NEW"
@@ -240,12 +258,15 @@
                             Content="Danger"
                             IsEnabled="False"
                             Style="{DynamicResource WD.DangerPrimaryButton}" />
-                    </WrapPanel>
+                    </UniformGrid>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="MessageBox" />
-                    <WrapPanel Margin="0,10">
+                    <UniformGrid
+                        Height="38"
+                        Margin="0,10"
+                        Rows="1">
                         <Button
                             x:Name="btnInformation"
                             Click="btnInformation_Click"
@@ -268,7 +289,7 @@
                             Click="btnQuestion_Click"
                             Content="Question"
                             Style="{StaticResource WD.PrimaryButton}" />
-                    </WrapPanel>
+                    </UniformGrid>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
