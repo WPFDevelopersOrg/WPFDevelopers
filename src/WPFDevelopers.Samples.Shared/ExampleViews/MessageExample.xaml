@@ -11,11 +11,11 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer>
-        <StackPanel
-            Grid.Row="1"
+        <UniformGrid
+            Height="38"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
-            Orientation="Horizontal">
+            Rows="1">
             <Button
                 Click="AddButton_Click"
                 Content="Info Message"
@@ -41,7 +41,7 @@
                 Content="Long Message"
                 Style="{StaticResource WD.SuccessPrimaryButton}"
                 Tag="Long" />
-        </StackPanel>
+        </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MessageExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MessageExample.xaml.cs" CodeType="CSharp" />
