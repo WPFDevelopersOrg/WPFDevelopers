@@ -17,7 +17,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Padding" Value="4" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
@@ -26,10 +26,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
-                        <ScrollViewer
-                            Padding="{TemplateBinding Padding}"
-                            CanContentScroll="False"
-                            Focusable="False">
+                        <ScrollViewer CanContentScroll="False" Focusable="False">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
@@ -114,7 +111,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="Padding" Value="10" />
+        <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource WD.TreeViewItemFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
