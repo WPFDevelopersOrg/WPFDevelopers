@@ -48,7 +48,6 @@
             </Button>
             <Button
                 Margin="4"
-                wd:Badge.HorizontalOffset="17"
                 wd:Badge.IsShow="True"
                 wd:Badge.VerticalOffset="8"
                 wd:ElementHelper.IsRound="True"
