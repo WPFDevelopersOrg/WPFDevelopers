@@ -55,7 +55,7 @@
                             <Setter Property="Background" Value="{DynamicResource WD.ButtonFocusVisualColor}" />
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-                            <Setter Property="Padding" Value="0" />
+                            <!--<Setter Property="Padding" Value="0" />-->
                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
                             <Setter TargetName="PART_Border" Property="Width">
                                 <Setter.Value>
@@ -105,7 +105,7 @@
                             <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-                            <Setter Property="Padding" Value="0" />
+                            <!--<Setter Property="Padding" Value="0" />-->
                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
                             <Setter TargetName="PART_Border" Property="Width">
                                 <Setter.Value>
