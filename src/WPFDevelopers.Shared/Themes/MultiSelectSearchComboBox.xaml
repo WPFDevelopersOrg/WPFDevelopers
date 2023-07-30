@@ -8,29 +8,6 @@
         <ResourceDictionary Source="MultiSelectionComboBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:MultiSelectListBox}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:MultiSelectListBox}">
-                    <Border
-                        Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <ScrollViewer Focusable="False">
-                            <VirtualizingStackPanel IsItemsHost="True" />
-                        </ScrollViewer>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsGrouping" Value="True">
-                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style
         x:Key="WD.MultiSelectionSearchComboBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -165,7 +142,8 @@
                                         ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}"
                                         ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}"
                                         SelectedValuePath="{TemplateBinding SelectedValuePath}"
-                                        SelectionMode="Multiple" />
+                                        SelectionMode="Multiple"
+                                        Style="{StaticResource WD.DefaultListBox}" />
                                     <controls:MultiSelectListBox
                                         x:Name="PART_SearchSelector"
                                         Grid.Row="2"
@@ -182,6 +160,7 @@
                                         ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}"
                                         SelectedValuePath="{TemplateBinding SelectedValuePath}"
                                         SelectionMode="Multiple"
+                                        Style="{StaticResource WD.DefaultListBox}"
                                         Visibility="Collapsed" />
                                 </Grid>
                             </controls:SmallPanel>
