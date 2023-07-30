@@ -9,8 +9,6 @@
         x:Key="WD.NumericBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:NumericBox}">
-        <Setter Property="MinWidth" Value="40" />
-        <Setter Property="MinHeight" Value="{StaticResource WD.MinHeight}" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
         <Setter Property="BorderThickness" Value="1" />
@@ -19,7 +17,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Padding" Value="6,0" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:NumericBox}">
