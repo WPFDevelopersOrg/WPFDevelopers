@@ -1,13 +1,15 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.PaginationExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.PaginationExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <!--<UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
@@ -16,43 +18,63 @@
         </Style>
     </UserControl.Resources>-->
     <controls:CodeViewer>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-            <RowDefinition Height="40"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="正常模式分页" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Grid.Column="2" Text="精简模式分页" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="正常模式分页" />
+            <TextBlock
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="精简模式分页" />
 
-        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection}" Margin="20,0,0,0"/>
-        <ListBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding LitePaginationViewModel.PaginationCollection}" Margin="0,0,20,0"/>
+            <ListBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="20,0,0,0"
+                ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection}" />
+            <ListBox
+                Grid.Row="1"
+                Grid.Column="2"
+                Margin="0,0,20,0"
+                ItemsSource="{Binding LitePaginationViewModel.PaginationCollection}" />
 
-        <wpfdev:Pagination Grid.Row="2" Grid.Column="0" IsLite="False"  Margin="20,0,0,0"
-                             Count="{Binding NormalPaginationViewModel.Count,Mode=TwoWay}"
-                             CountPerPage="{Binding NormalPaginationViewModel.CountPerPage,Mode=TwoWay}"
-                             Current="{Binding NormalPaginationViewModel.Current,Mode=TwoWay}"/>
+            <wpfdev:Pagination
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="20,0,0,0"
+                Count="{Binding NormalPaginationViewModel.Count, Mode=TwoWay}"
+                CountPerPage="{Binding NormalPaginationViewModel.CountPerPage, Mode=TwoWay}"
+                Current="{Binding NormalPaginationViewModel.Current, Mode=TwoWay}"
+                IsLite="False" />
 
-        <wpfdev:Pagination Grid.Row="2" Grid.Column="2" IsLite="true"  Margin="0,0,20,0"
-                             Count="{Binding LitePaginationViewModel.Count,Mode=TwoWay}"
-                             CountPerPage="{Binding LitePaginationViewModel.CountPerPage,Mode=TwoWay}"
-                             Current="{Binding LitePaginationViewModel.Current,Mode=TwoWay}"/>
-    </Grid>
+            <wpfdev:Pagination
+                Grid.Row="2"
+                Grid.Column="2"
+                Margin="0,0,20,0"
+                Count="{Binding LitePaginationViewModel.Count, Mode=TwoWay}"
+                CountPerPage="{Binding LitePaginationViewModel.CountPerPage, Mode=TwoWay}"
+                Current="{Binding LitePaginationViewModel.Current, Mode=TwoWay}"
+                IsLite="true" />
+        </Grid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml.cs" 
-                CodeType="CSharp"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ViewModels/PaginationExampleVM.cs" 
-                CodeType="CSharp" Haader="VM"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ViewModels/PaginationExampleVM.cs"
+                CodeType="CSharp"
+                Haader="VM" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
