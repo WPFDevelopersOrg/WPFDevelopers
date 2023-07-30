@@ -189,17 +189,7 @@ namespace WPFDevelopers.Controls
         protected override void OnRender(DrawingContext drawingContext)
         {
             var adornedElement = AdornedElement as FrameworkElement;
-            var margin = adornedElement.Margin;
-            var padding = ControlsHelper.GetPadding(adornedElement);
-            var desired = adornedElement.DesiredSize.Width - margin.Left - margin.Right;
             var desiredWidth = adornedElement.ActualWidth;
-            if (double.IsNaN(adornedElement.Width) && desired != adornedElement.ActualWidth)
-            {
-                var w = desired + padding.Left + padding.Right;
-                if (w < adornedElement.ActualWidth)
-                    desiredWidth = adornedElement.DesiredSize.Width;
-            }
-
             var brush = new SolidColorBrush((Color)Application.Current.TryFindResource("WD.DangerColor"));
             brush.Freeze();
             var radius = 5.0;
