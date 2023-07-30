@@ -39,11 +39,11 @@
         x:Key="WD.PageListBoxItemStyleKey"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type ListBoxItem}">
-        <Setter Property="MinWidth" Value="32" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="5,0" />
+        <Setter Property="MinWidth" Value="32" />
         <Setter Property="Margin" Value="3,0" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
@@ -106,7 +106,7 @@
                 <controls:NumericBox
                     x:Name="PART_CountPerPageNumericBox"
                     Grid.Column="2"
-                    MinWidth="40"
+                    Width="32"
                     VerticalContentAlignment="Center"
                     Maximum="100000"
                     Minimum="1"
@@ -116,13 +116,16 @@
                     Grid.Column="3"
                     VerticalAlignment="Center"
                     Text=" 条 / 页" />
-                <Button Grid.Column="5" Command="{x:Static controls:Pagination.PrevCommand}">
+                <Button
+                    Grid.Column="5"
+                    Width="32"
+                    Command="{x:Static controls:Pagination.PrevCommand}">
                     <controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
                 </Button>
                 <controls:NumericBox
                     x:Name="PART_JumpPageNumericBox"
                     Grid.Column="7"
-                    MinWidth="40"
+                    Width="32"
                     Padding="3,0"
                     FontSize="{TemplateBinding FontSize}"
                     Minimum="1"
@@ -139,7 +142,10 @@
                         </TextBlock>
                     </controls:NumericBox.ToolTip>
                 </controls:NumericBox>
-                <Button Grid.Column="9" Command="{x:Static controls:Pagination.NextCommand}">
+                <Button
+                    Grid.Column="9"
+                    Width="32"
+                    Command="{x:Static controls:Pagination.NextCommand}">
                     <controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
                 </Button>
             </Grid>
@@ -178,7 +184,7 @@
                                 <controls:NumericBox
                                     x:Name="PART_CountPerPageNumericBox"
                                     Grid.Column="2"
-                                    MinWidth="40"
+                                    Width="32"
                                     VerticalContentAlignment="Center"
                                     FontSize="{TemplateBinding FontSize}"
                                     Minimum="1"
@@ -186,7 +192,10 @@
                                     UpDownButtonsWidth="0" />
                                 <TextBlock VerticalAlignment="Center" Text=" 条" />
                             </StackPanel>
-                            <Button Grid.Column="2" Command="{x:Static controls:Pagination.PrevCommand}">
+                            <Button
+                                Grid.Column="2"
+                                Width="32"
+                                Command="{x:Static controls:Pagination.PrevCommand}">
                                 <controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
                             </Button>
                             <ListBox
@@ -205,14 +214,17 @@
                                     </ItemsPanelTemplate>
                                 </ListBox.ItemsPanel>
                             </ListBox>
-                            <Button Grid.Column="4" Command="{x:Static controls:Pagination.NextCommand}">
+                            <Button
+                                Grid.Column="4"
+                                Width="32"
+                                Command="{x:Static controls:Pagination.NextCommand}">
                                 <controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
                             </Button>
                             <StackPanel Grid.Column="5" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text=" 前往 " />
                                 <controls:NumericBox
                                     x:Name="PART_JumpPageNumericBox"
-                                    MinWidth="40"
+                                    Width="32"
                                     VerticalContentAlignment="Center"
                                     FontSize="{TemplateBinding FontSize}"
                                     Minimum="1"
