@@ -15,10 +15,8 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="6,0" />
-        <Setter Property="AllowDrop" Value="true" />
-        <Setter Property="MinHeight" Value="{StaticResource WD.MinHeight}" />
-        <Setter Property="MinWidth" Value="180" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="AllowDrop" Value="True" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
@@ -34,7 +32,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                        <controls:SmallPanel Margin="{TemplateBinding Padding}">
+                        <controls:SmallPanel>
                             <TextBlock
                                 x:Name="PART_Watermark"
                                 Margin="{TemplateBinding Padding}"
