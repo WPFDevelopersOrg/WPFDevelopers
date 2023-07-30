@@ -15,6 +15,8 @@
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContextMenu">
