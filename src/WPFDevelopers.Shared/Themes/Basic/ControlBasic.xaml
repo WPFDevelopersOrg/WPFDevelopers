@@ -37,10 +37,10 @@
     <sys:Double x:Key="WD.EnabledOpacity">0.7</sys:Double>
     <sys:Double x:Key="WD.NormalCornerRadius">4</sys:Double>
     <sys:Double x:Key="WD.MinHeight">40</sys:Double>
-    <sys:Double x:Key="WD.MinDataGridRowHeight">48</sys:Double>
     <sys:Double x:Key="WD.ThumbWidth">16</sys:Double>
     <sys:Double x:Key="WD.ThumbCornerRadius">8</sys:Double>
     <sys:Double x:Key="WD.RepeatButtonSize">5</sys:Double>
+    <Thickness x:Key="WD.DefaultPadding">6</Thickness>
     <DropShadowEffect
         x:Key="WD.NormalShadowDepth"
         BlurRadius="5"
