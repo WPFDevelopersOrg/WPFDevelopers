@@ -428,7 +428,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="Padding" Value="20,10" />
+		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 	</Style>
 	<Style x:Key="WD.NormalButton" BasedOn="{StaticResource WD.BaseButton}" TargetType="{x:Type Button}">
 		<Setter Property="Background" Value="Transparent" />
@@ -3728,10 +3728,10 @@
 								</DockPanel>
 							</controls:SmallPanel>
 							<controls:SmallPanel Grid.Row="2" Margin="140,20,10,10">
-								<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-									<Button x:Name="PART_ButtonCancel" Content="取消" Visibility="Collapsed" />
-									<Button x:Name="PART_ButtonOK" Margin="10,0,0,0" Content="确认" Style="{DynamicResource WD.PrimaryButton}" />
-								</StackPanel>
+								<UniformGrid Height="38" HorizontalAlignment="Right" Rows="1">
+									<Button x:Name="PART_ButtonCancel" Width="60" Content="取消" Visibility="Collapsed" />
+									<Button x:Name="PART_ButtonOK" Width="60" Margin="6,0,0,0" Content="确认" Style="{DynamicResource WD.PrimaryButton}" />
+								</UniformGrid>
 							</controls:SmallPanel>
 						</Grid>
 					</Border>
@@ -5195,11 +5195,11 @@
 		</Setter>
 	</Style>
 	<Style x:Key="WD.PageListBoxItemStyleKey" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ListBoxItem}">
-		<Setter Property="MinWidth" Value="32" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="5,0" />
+		<Setter Property="MinWidth" Value="32" />
 		<Setter Property="Margin" Value="3,0" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
@@ -5848,24 +5848,6 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.MaskControl}" TargetType="{x:Type controls:MaskControl}" />
-	<Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:MultiSelectListBox}">
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:MultiSelectListBox}">
-					<Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<ScrollViewer Focusable="False">
-							<VirtualizingStackPanel IsItemsHost="True" />
-						</ScrollViewer>
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsGrouping" Value="True">
-							<Setter Property="ScrollViewer.CanContentScroll" Value="False" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
 	<Style x:Key="WD.MultiSelectionSearchComboBox" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:MultiSelectionSearchComboBox}">
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
@@ -5906,8 +5888,8 @@
 									</Grid.RowDefinitions>
 									<TextBox x:Name="PART_TextBox" Margin="6,0" helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}}" />
 									<CheckBox x:Name="PART_SelectAll" Grid.Row="1" Margin="4" Content="{TemplateBinding SelectAllContent}" Visibility="{TemplateBinding IsSelectAllActive,&#xD;&#xA;                                                                     Converter={StaticResource WD.Bool2VisibilityConverter}}" />
-									<controls:MultiSelectListBox x:Name="PART_Selector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" />
-									<controls:MultiSelectListBox x:Name="PART_SearchSelector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSourceSearch}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Visibility="Collapsed" />
+									<controls:MultiSelectListBox x:Name="PART_Selector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Style="{StaticResource WD.DefaultListBox}" />
+									<controls:MultiSelectListBox x:Name="PART_SearchSelector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSourceSearch}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Style="{StaticResource WD.DefaultListBox}" Visibility="Collapsed" />
 								</Grid>
 							</controls:SmallPanel>
 						</Popup>
@@ -6235,12 +6217,12 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 				<TextBlock VerticalAlignment="Center" Text="{Binding Count, StringFormat=共 {0} 条, RelativeSource={RelativeSource TemplatedParent}}" />
-				<controls:NumericBox x:Name="PART_CountPerPageNumericBox" Grid.Column="2" MinWidth="40" VerticalContentAlignment="Center" Maximum="100000" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
+				<controls:NumericBox x:Name="PART_CountPerPageNumericBox" Grid.Column="2" Width="32" VerticalContentAlignment="Center" Maximum="100000" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
 				<TextBlock Grid.Column="3" VerticalAlignment="Center" Text=" 条 / 页" />
-				<Button Grid.Column="5" Command="{x:Static controls:Pagination.PrevCommand}">
+				<Button Grid.Column="5" Width="32" Command="{x:Static controls:Pagination.PrevCommand}">
 					<controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
 				</Button>
-				<controls:NumericBox x:Name="PART_JumpPageNumericBox" Grid.Column="7" MinWidth="40" Padding="3,0" FontSize="{TemplateBinding FontSize}" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0">
+				<controls:NumericBox x:Name="PART_JumpPageNumericBox" Grid.Column="7" Width="32" Padding="3,0" FontSize="{TemplateBinding FontSize}" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0">
 					<controls:NumericBox.ToolTip>
 						<TextBlock>
 							<TextBlock.Text>
@@ -6252,7 +6234,7 @@
 						</TextBlock>
 					</controls:NumericBox.ToolTip>
 				</controls:NumericBox>
-				<Button Grid.Column="9" Command="{x:Static controls:Pagination.NextCommand}">
+				<Button Grid.Column="9" Width="32" Command="{x:Static controls:Pagination.NextCommand}">
 					<controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
 				</Button>
 			</Grid>
@@ -6275,10 +6257,10 @@
 							<TextBlock Margin="0,0,15,0" VerticalAlignment="Center" Text="{Binding Count, StringFormat=共 {0} 条, RelativeSource={RelativeSource TemplatedParent}}" />
 							<StackPanel Grid.Column="1" Margin="0,0,15,0" Orientation="Horizontal">
 								<TextBlock VerticalAlignment="Center" Text="每页 " />
-								<controls:NumericBox x:Name="PART_CountPerPageNumericBox" Grid.Column="2" MinWidth="40" VerticalContentAlignment="Center" FontSize="{TemplateBinding FontSize}" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
+								<controls:NumericBox x:Name="PART_CountPerPageNumericBox" Grid.Column="2" Width="32" VerticalContentAlignment="Center" FontSize="{TemplateBinding FontSize}" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
 								<TextBlock VerticalAlignment="Center" Text=" 条" />
 							</StackPanel>
-							<Button Grid.Column="2" Command="{x:Static controls:Pagination.PrevCommand}">
+							<Button Grid.Column="2" Width="32" Command="{x:Static controls:Pagination.PrevCommand}">
 								<controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
 							</Button>
 							<ListBox x:Name="PART_ListBox" Grid.Column="3" Margin="5,0" ItemContainerStyle="{StaticResource WD.PageListBoxItemStyleKey}" ItemsSource="{TemplateBinding Pages}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectedIndex="0" Style="{StaticResource WD.PageListBoxStyleKey}">
@@ -6288,12 +6270,12 @@
 									</ItemsPanelTemplate>
 								</ListBox.ItemsPanel>
 							</ListBox>
-							<Button Grid.Column="4" Command="{x:Static controls:Pagination.NextCommand}">
+							<Button Grid.Column="4" Width="32" Command="{x:Static controls:Pagination.NextCommand}">
 								<controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
 							</Button>
 							<StackPanel Grid.Column="5" Orientation="Horizontal">
 								<TextBlock VerticalAlignment="Center" Text=" 前往 " />
-								<controls:NumericBox x:Name="PART_JumpPageNumericBox" MinWidth="40" VerticalContentAlignment="Center" FontSize="{TemplateBinding FontSize}" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
+								<controls:NumericBox x:Name="PART_JumpPageNumericBox" Width="32" VerticalContentAlignment="Center" FontSize="{TemplateBinding FontSize}" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
 								<TextBlock VerticalAlignment="Center" Text=" 页" />
 							</StackPanel>
 						</Grid>
