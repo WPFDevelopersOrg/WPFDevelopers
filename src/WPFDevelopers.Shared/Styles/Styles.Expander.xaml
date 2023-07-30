@@ -16,6 +16,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.LighterSolidColorBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Expander}">
@@ -23,9 +24,6 @@
                         <DockPanel>
                             <ToggleButton
                                 x:Name="HeaderSite"
-                                MinWidth="0"
-                                MinHeight="0"
-                                Padding="{TemplateBinding Padding}"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Content="{TemplateBinding Header}"
@@ -38,12 +36,12 @@
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
-                                                        Padding="2,10"
+                                                        Margin="{TemplateBinding Padding}"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                                                         BorderThickness="1">
                                                         <Grid
-                                                            Margin="{TemplateBinding Padding}"
+                                                            Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
                                                             SnapsToDevicePixels="False">
                                                             <Grid.ColumnDefinitions>
@@ -66,7 +64,6 @@
                                                             </Path>
                                                             <ContentPresenter
                                                                 Grid.Column="1"
-                                                                Margin="4,0,0,0"
                                                                 HorizontalAlignment="Left"
                                                                 VerticalAlignment="Center"
                                                                 Content="{TemplateBinding Content}"
@@ -139,12 +136,12 @@
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
-                                                        Padding="10,2"
+                                                        Margin="{Binding Padding}"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                                                         BorderThickness="1">
                                                         <Grid
-                                                            Margin="{TemplateBinding Padding}"
+                                                            Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
                                                             SnapsToDevicePixels="False">
                                                             <Grid.RowDefinitions>
@@ -174,7 +171,6 @@
                                                             </controls:SmallPanel>
                                                             <ContentPresenter
                                                                 Grid.Row="1"
-                                                                Margin="0,4,0,0"
                                                                 HorizontalAlignment="Center"
                                                                 VerticalAlignment="Top"
                                                                 Content="{TemplateBinding Content}"
@@ -220,17 +216,16 @@
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
-
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
-                                                        Padding="2,10"
+                                                        Margin="{Binding Padding}"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                                                         BorderThickness="1">
                                                         <Grid
-                                                            Margin="{TemplateBinding Padding}"
+                                                            Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
                                                             SnapsToDevicePixels="False">
                                                             <Grid.ColumnDefinitions>
@@ -255,7 +250,6 @@
                                                             </controls:SmallPanel>
                                                             <ContentPresenter
                                                                 Grid.Column="1"
-                                                                Margin="4,0,0,0"
                                                                 HorizontalAlignment="Left"
                                                                 VerticalAlignment="Center"
                                                                 Content="{TemplateBinding Content}"
@@ -301,17 +295,16 @@
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
-
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
-                                                        Padding="10,2"
+                                                        Margin="{Binding Padding}"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                                                         BorderThickness="1">
                                                         <Grid
-                                                            Margin="{TemplateBinding Padding}"
+                                                            Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
                                                             SnapsToDevicePixels="False">
                                                             <Grid.RowDefinitions>
@@ -341,7 +334,6 @@
                                                             </controls:SmallPanel>
                                                             <ContentPresenter
                                                                 Grid.Row="1"
-                                                                Margin="0,4,0,0"
                                                                 HorizontalAlignment="Center"
                                                                 VerticalAlignment="Top"
                                                                 Content="{TemplateBinding Content}"
