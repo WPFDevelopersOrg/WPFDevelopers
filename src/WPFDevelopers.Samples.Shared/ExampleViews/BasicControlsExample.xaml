@@ -165,7 +165,10 @@
                         FontSize="20"
                         Text="Button" />
                     <WrapPanel Margin="0,10">
-                        <Button Content="Button" Margin="0,0,10,0" Style="{StaticResource WD.NormalButton}" />
+                        <Button
+                            Margin="0,0,10,0"
+                            Content="Button"
+                            Style="{StaticResource WD.NormalButton}" />
                         <Button wd:Badge.IsShow="True" Content="Default" />
                         <Button
                             Margin="10,0"
@@ -298,16 +301,16 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="TextBox" />
-                    <WrapPanel Margin="0,10">
+                    <UniformGrid Margin="0,10" Rows="1">
                         <TextBox />
                         <TextBox Margin="10,0" wd:ElementHelper.Watermark="TextBox" />
                         <TextBox IsEnabled="False" />
-                    </WrapPanel>
+                    </UniformGrid>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="PasswordBox" />
-                    <WrapPanel Margin="0,10">
+                    <UniformGrid Margin="0,10" Rows="1">
                         <PasswordBox />
                         <PasswordBox Margin="10,0" wd:ElementHelper.Watermark="PasswordBox" />
                         <PasswordBox IsEnabled="False" />
@@ -316,14 +319,13 @@
                             Margin="10,0"
                             wd:ElementHelper.Watermark="PasswordBox"
                             wd:PasswordBoxHelper.IsMonitoring="True" />
-                    </WrapPanel>
+                    </UniformGrid>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="ComboBox" />
-                    <WrapPanel Margin="0,10">
+                    <UniformGrid Margin="0,10" Rows="1">
                         <ComboBox
-                            Width="200"
                             wd:ElementHelper.Watermark="ComboBox"
                             Background="LightYellow"
                             Foreground="Black">
@@ -333,21 +335,15 @@
                             <ComboBoxItem>Option 4</ComboBoxItem>
                             <ComboBoxItem>Option 5</ComboBoxItem>
                         </ComboBox>
-                        <ComboBox
-                            Width="200"
-                            Margin="10,0"
-                            IsEnabled="False" />
-                        <ComboBox
-                            Width="200"
-                            wd:ElementHelper.Watermark="ComboBox"
-                            IsEditable="True">
+                        <ComboBox Margin="10,0" IsEnabled="False" />
+                        <ComboBox wd:ElementHelper.Watermark="ComboBox" IsEditable="True">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
                             <ComboBoxItem>Option 3</ComboBoxItem>
                             <ComboBoxItem>Option 4</ComboBoxItem>
                             <ComboBoxItem>Option 5</ComboBoxItem>
                         </ComboBox>
-                    </WrapPanel>
+                    </UniformGrid>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
@@ -368,19 +364,18 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="DatePicker" />
-                    <WrapPanel Margin="0,10">
-                        <DatePicker Width="200" wd:DatePickerHelper.Watermark="日期 yyyy/MM/dd" />
+                    <UniformGrid Margin="0,10" Rows="1">
+                        <DatePicker wd:DatePickerHelper.Watermark="日期 yyyy/MM/dd" />
                         <DatePicker
-                            Width="200"
                             Margin="10,0"
                             wd:DatePickerHelper.Watermark="DatePicker"
                             SelectedDateFormat="Long" />
-                        <DatePicker Width="200" wd:DatePickerHelper.Watermark="{x:Null}">
+                        <DatePicker wd:DatePickerHelper.Watermark="{x:Null}">
                             <DatePicker.BlackoutDates>
                                 <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
                             </DatePicker.BlackoutDates>
                         </DatePicker>
-                    </WrapPanel>
+                    </UniformGrid>
 
                     <TextBlock
                         Margin="0,20,0,0"
@@ -430,18 +425,19 @@
                             Margin="10,0"
                             IsIndeterminate="True"
                             Value="10" />
-                        <!--<ProgressBar Width="6" Value="40" Orientation="Vertical"/>
-                    <ProgressBar Width="6" Height="200" Margin="10,0" Orientation="Vertical" Value="80"/>-->
+
                     </WrapPanel>
 
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="DataGrid" />
-                    <TabControl Margin="0,10">
-                        <TabItem Header="Mode 1">
+                    <TabControl Margin="0,10" BorderThickness="0">
+                        <TabItem
+                            Height="38"
+                            Padding="20,0"
+                            Header="Mode 1">
                             <DataGrid
-                                Margin="0,10"
                                 AutoGenerateColumns="False"
                                 HeadersVisibility="All"
                                 ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
@@ -467,11 +463,8 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
-                        <TabItem Header="Mode 2">
-                            <DataGrid
-                                Margin="0,10"
-                                AutoGenerateColumns="False"
-                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <TabItem Padding="20,0" Header="Mode 2">
+                            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn CanUserResize="False">
                                         <DataGridTemplateColumn.HeaderTemplate>
@@ -481,7 +474,7 @@
                                         </DataGridTemplateColumn.HeaderTemplate>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <CheckBox Margin="4,0,0,0" IsChecked="{Binding IsChecked}" />
+                                                <CheckBox IsChecked="{Binding IsChecked}" />
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
@@ -500,8 +493,8 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
-                        <TabItem Header="Mode 3">
-                            <DataGrid Margin="0,10" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <TabItem Padding="20,0" Header="Mode 3">
+                            <DataGrid ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
                                     <DataGridTextColumn
@@ -515,7 +508,7 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
-                        <TabItem Header="Mode 4">
+                        <TabItem Padding="20,0" Header="Mode 4">
                             <DataGrid
                                 Margin="0,10"
                                 IsEnabled="False"
@@ -549,11 +542,7 @@
                             </DataGrid>
                         </TabItem>
                     </TabControl>
-                    <!--<UniformGrid Margin="0,10" Columns="2">
 
-
-
-                </UniformGrid>-->
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
@@ -732,8 +721,8 @@
                                 <Setter Property="Height" Value="400" />
                             </Style>
                         </UniformGrid.Resources>
-                        <TabControl>
-                            <TabItem Header="TabItem1">
+                        <TabControl Margin="4">
+                            <TabItem Padding="20,0" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
                             <TabItem Header="TabItem2">
@@ -743,8 +732,8 @@
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
-                        <TabControl TabStripPlacement="Bottom">
-                            <TabItem Header="TabItem1">
+                        <TabControl Margin="4" TabStripPlacement="Bottom">
+                            <TabItem Padding="20,0" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
                             <TabItem Header="TabItem2">
@@ -754,25 +743,28 @@
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
-                        <TabControl TabStripPlacement="Left">
-                            <TabItem Header="TabItem1">
+                        <TabControl Margin="4" TabStripPlacement="Left">
+                            <TabItem Padding="10" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem2">
+                            <TabItem Padding="10" Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3">
+                            <TabItem Padding="10" Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
-                        <TabControl IsEnabled="False" TabStripPlacement="Right">
-                            <TabItem Header="TabItem1">
+                        <TabControl
+                            Margin="4"
+                            IsEnabled="False"
+                            TabStripPlacement="Right">
+                            <TabItem Padding="10" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.SuccessSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem2">
+                            <TabItem Padding="10" Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3">
+                            <TabItem Padding="10" Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
