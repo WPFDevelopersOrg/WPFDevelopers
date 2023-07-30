@@ -7,6 +7,30 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="MultiSelectionComboBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:MultiSelectListBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:MultiSelectListBox}">
+                    <Border
+                        Name="Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Focusable="False">
+                            <VirtualizingStackPanel IsItemsHost="True" />
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsGrouping" Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style
         x:Key="WD.MultiSelectionSearchComboBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -14,15 +38,12 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
-        <Setter Property="MinWidth" Value="120" />
-        <Setter Property="MinHeight" Value="{StaticResource WD.MinHeight}" />
-        <Setter Property="Height" Value="{StaticResource WD.MinHeight}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Padding" Value="14.5,3,30,3" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MultiSelectionSearchComboBox}">
@@ -52,13 +73,6 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                             SnapsToDevicePixels="True" />
-                        <ToggleButton
-                            x:Name="PART_ToggleButton"
-                            ClickMode="Release"
-                            Focusable="False"
-                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                            Style="{x:Null}"
-                            Template="{StaticResource WD.ComboBoxToggleButton}" />
                         <TextBox
                             Name="PART_EditableTextBox"
                             Margin="{TemplateBinding Padding}"
@@ -85,6 +99,14 @@
                             Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
                             TextTrimming="CharacterEllipsis"
                             Visibility="Collapsed" />
+                        <ToggleButton
+                            x:Name="PART_ToggleButton"
+                            Background="{TemplateBinding Background}"
+                            ClickMode="Release"
+                            Focusable="False"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            Style="{x:Null}"
+                            Template="{StaticResource WD.ComboBoxToggleButton}" />
                         <Popup
                             x:Name="PART_Popup"
                             AllowsTransparency="True"
@@ -124,18 +146,19 @@
                                     <CheckBox
                                         x:Name="PART_SelectAll"
                                         Grid.Row="1"
-                                        Margin="5,4"
+                                        Margin="4"
                                         Content="{TemplateBinding SelectAllContent}"
                                         Visibility="{TemplateBinding IsSelectAllActive,
                                                                      Converter={StaticResource WD.Bool2VisibilityConverter}}" />
                                     <controls:MultiSelectListBox
                                         x:Name="PART_Selector"
                                         Grid.Row="2"
-                                        MinHeight="{TemplateBinding MinHeight}"
+                                        Margin="1,0"
+                                        Padding="{TemplateBinding Padding}"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="1,0,1,0"
+                                        BorderThickness="0"
                                         DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
                                         ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}"
                                         ItemsSource="{TemplateBinding ItemsSource}"
@@ -146,11 +169,12 @@
                                     <controls:MultiSelectListBox
                                         x:Name="PART_SearchSelector"
                                         Grid.Row="2"
-                                        MinHeight="{TemplateBinding MinHeight}"
+                                        Margin="1,0"
+                                        Padding="{TemplateBinding Padding}"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="1,0,1,0"
+                                        BorderThickness="0"
                                         DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
                                         ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}"
                                         ItemsSource="{TemplateBinding ItemsSourceSearch}"
