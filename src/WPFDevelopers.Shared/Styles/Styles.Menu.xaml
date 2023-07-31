@@ -15,7 +15,7 @@
         x:Key="WD.DefaultMenu"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Menu}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
@@ -43,7 +43,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <!--TopLevelHeader-->
+    <!--  TopLevelHeader  -->
     <ControlTemplate x:Key="WD.TopLevelHeaderTemplateKey" TargetType="{x:Type MenuItem}">
         <Border
             x:Name="Border"
@@ -104,7 +104,7 @@
 
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    <!--TopLevelItem-->
+    <!--  TopLevelItem  -->
     <ControlTemplate x:Key="WD.TopLevelItemTemplateKey" TargetType="{x:Type MenuItem}">
         <Border
             x:Name="Border"
