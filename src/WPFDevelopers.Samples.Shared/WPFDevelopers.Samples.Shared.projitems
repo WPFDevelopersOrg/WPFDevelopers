@@ -279,6 +279,9 @@
       <SubType>Code</SubType>
       <DependentUpon>NumberCardExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NumericBoxExample.xaml.cs">
+      <DependentUpon>NumericBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\OtherControlExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>OtherControlExample.xaml</DependentUpon>
@@ -735,6 +738,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NumberCard\NumberCardExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NumericBoxExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
