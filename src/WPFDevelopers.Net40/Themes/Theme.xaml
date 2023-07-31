@@ -155,8 +155,8 @@
 			</DataTrigger>
 		</Style.Triggers>
 	</Style>
-	<convert:WidthHeightEqualValueConverter x:Key="WidthHeightEqualValueConverter" />
-	<convert:HalfValueConverter x:Key="HalfValueConverter" />
+	<convert:WidthHeightEqualValueConverter x:Key="WD.WidthHeightEqualValueConverter" />
+	<convert:HalfValueConverter x:Key="WD.HalfValueConverter" />
 	<convert:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
 	<Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
 		<Setter Property="OverridesDefaultStyle" Value="True" />
@@ -445,11 +445,10 @@
 							<Setter Property="Background" Value="{DynamicResource WD.ButtonFocusVisualColor}" />
 						</Trigger>
 						<Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-							<!--<Setter Property="Padding" Value="0" />-->
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
 							<Setter TargetName="PART_Border" Property="Width">
 								<Setter.Value>
-									<MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+									<MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
 										<Binding ElementName="PART_Border" Path="ActualWidth" />
 										<Binding ElementName="PART_Border" Path="ActualHeight" />
 									</MultiBinding>
@@ -483,11 +482,10 @@
 							<Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-							<!--<Setter Property="Padding" Value="0" />-->
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
 							<Setter TargetName="PART_Border" Property="Width">
 								<Setter.Value>
-									<MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+									<MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
 										<Binding ElementName="PART_Border" Path="ActualWidth" />
 										<Binding ElementName="PART_Border" Path="ActualHeight" />
 									</MultiBinding>
@@ -529,10 +527,10 @@
 						</Trigger>
 						<Trigger Property="helpers:ElementHelper.IsRound" Value="True">
 							<Setter Property="Padding" Value="0" />
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
 							<Setter TargetName="PART_Border" Property="Width">
 								<Setter.Value>
-									<MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+									<MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
 										<Binding ElementName="PART_Border" Path="ActualWidth" />
 										<Binding ElementName="PART_Border" Path="ActualHeight" />
 									</MultiBinding>
@@ -713,7 +711,7 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.DefaultButton}" TargetType="{x:Type Button}" />
 	<Style BasedOn="{x:Null}" TargetType="{x:Type wd:Window}">
-		<Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
 		<Setter Property="IsTabStop" Value="False" />
@@ -745,27 +743,27 @@
 									<ColumnDefinition Width="Auto" MinWidth="30" />
 								</Grid.ColumnDefinitions>
 								<Image Width="30" Height="30" Margin="14,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Source="{TemplateBinding Icon}" Stretch="Fill" Visibility="{TemplateBinding Icon,&#xD;&#xA;                                                                 Converter={StaticResource ObjectNullToVisibilityConverter}}" />
-								<TextBlock x:Name="PART_Title" Grid.Column="1" Margin="6,0" VerticalAlignment="Center" FontSize="{DynamicResource WD.TitleFontSize}" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Title}" />
+								<TextBlock x:Name="PART_Title" Grid.Column="1" Margin="6,0" VerticalAlignment="Center" FontSize="{DynamicResource WD.TitleFontSize}" Foreground="{DynamicResource WD.WindowForegroundColorBrush}" Text="{TemplateBinding Title}" />
 								<WrapPanel Grid.Column="2" Margin="0,6" shell:WindowChrome.IsHitTestVisibleInChrome="True">
 									<WrapPanel x:Name="PART_MinAndMax">
 										<Button Name="PART_MinimizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
 											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-												<Rectangle x:Name="MinimizeGlyph" Width="10" Height="1" Margin="0,7,0,0" VerticalAlignment="Bottom" Fill="{TemplateBinding Foreground}" />
+												<Rectangle x:Name="MinimizeGlyph" Width="10" Height="1" Margin="0,7,0,0" VerticalAlignment="Bottom" Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
 											</Grid>
 										</Button>
 										<Button Name="PART_MaximizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
 											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowMaximizeGeometry}" Fill="{TemplateBinding Foreground}" Stretch="Fill" UseLayoutRounding="False" />
+												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowMaximizeGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" UseLayoutRounding="False" />
 											</Grid>
 										</Button>
 										<Button Name="PART_RestoreButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" Visibility="Collapsed">
 											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowRestoreGeometry}" Fill="{TemplateBinding Foreground}" Stretch="Fill" UseLayoutRounding="False" />
+												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowRestoreGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" UseLayoutRounding="False" />
 											</Grid>
 										</Button>
 									</WrapPanel>
 									<Button Name="PART_CloseButton" Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
-										<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowCloseGeometry}" Fill="{TemplateBinding Foreground}" Stretch="Fill" />
+										<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowCloseGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" />
 									</Button>
 								</WrapPanel>
 							</Grid>
@@ -802,7 +800,7 @@
 		</Setter>
 	</Style>
 	<Style x:Key="WD.DefaultMenu" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type Menu}">
-		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 		<Setter Property="Template">
@@ -959,12 +957,13 @@
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Margin" Value="10" />
 		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ContextMenu">
-					<Border Margin="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="3" Effect="{StaticResource WD.PopupShadowDepth}">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{StaticResource WD.PopupShadowDepth}">
 						<ScrollViewer Padding="0,6">
 							<ItemsPresenter />
 						</ScrollViewer>
@@ -976,7 +975,7 @@
 	<Style BasedOn="{StaticResource WD.DefaultContextMenu}" TargetType="{x:Type ContextMenu}" />
 	<Style x:Key="WD.DefaultRadioButton" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type RadioButton}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
-		<Setter Property="Background" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
 		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="1" />
@@ -1604,7 +1603,7 @@
 		<Setter Property="Padding" Value="4,0" />
 		<Setter Property="VerticalAlignment" Value="Center" />
 		<Setter Property="HorizontalAlignment" Value="Left" />
-		<Setter Property="Background" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
 		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
 		<Setter Property="Template">
