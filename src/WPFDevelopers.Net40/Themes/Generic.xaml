@@ -6,7 +6,7 @@
     xmlns:wd="clr-namespace:WPFDevelopers.Net40">
     <converts:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
     <Style BasedOn="{x:Null}" TargetType="{x:Type wd:Window}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
         <Setter Property="IsTabStop" Value="False" />
@@ -61,7 +61,7 @@
                                     Margin="6,0"
                                     VerticalAlignment="Center"
                                     FontSize="{DynamicResource WD.TitleFontSize}"
-                                    Foreground="{TemplateBinding Foreground}"
+                                    Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
                                     Text="{TemplateBinding Title}" />
                                 <WrapPanel
                                     Grid.Column="2"
@@ -81,7 +81,7 @@
                                                     Height="1"
                                                     Margin="0,7,0,0"
                                                     VerticalAlignment="Bottom"
-                                                    Fill="{TemplateBinding Foreground}" />
+                                                    Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
                                             </Grid>
                                         </Button>
                                         <Button
@@ -97,8 +97,8 @@
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     Data="{DynamicResource WD.WindowMaximizeGeometry}"
-                                                    Fill="{TemplateBinding Foreground}"
-                                                    Stretch="Fill"
+                                                    Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                    Stretch="Uniform"
                                                     UseLayoutRounding="False" />
                                             </Grid>
                                         </Button>
@@ -116,8 +116,8 @@
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
                                                     Data="{DynamicResource WD.WindowRestoreGeometry}"
-                                                    Fill="{TemplateBinding Foreground}"
-                                                    Stretch="Fill"
+                                                    Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                    Stretch="Uniform"
                                                     UseLayoutRounding="False" />
                                             </Grid>
                                         </Button>
@@ -134,8 +134,8 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Data="{DynamicResource WD.WindowCloseGeometry}"
-                                            Fill="{TemplateBinding Foreground}"
-                                            Stretch="Fill" />
+                                            Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                            Stretch="Uniform" />
                                     </Button>
                                 </WrapPanel>
                             </Grid>
