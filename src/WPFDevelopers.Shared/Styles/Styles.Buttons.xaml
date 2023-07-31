@@ -10,8 +10,8 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <convert:WidthHeightEqualValueConverter x:Key="WidthHeightEqualValueConverter" />
-    <convert:HalfValueConverter x:Key="HalfValueConverter" />
+    <convert:WidthHeightEqualValueConverter x:Key="WD.WidthHeightEqualValueConverter" />
+    <convert:HalfValueConverter x:Key="WD.HalfValueConverter" />
 
     <Style
         x:Key="WD.BaseButton"
@@ -55,11 +55,10 @@
                             <Setter Property="Background" Value="{DynamicResource WD.ButtonFocusVisualColor}" />
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-                            <!--<Setter Property="Padding" Value="0" />-->
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
                             <Setter TargetName="PART_Border" Property="Width">
                                 <Setter.Value>
-                                    <MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+                                    <MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
                                         <Binding ElementName="PART_Border" Path="ActualWidth" />
                                         <Binding ElementName="PART_Border" Path="ActualHeight" />
                                     </MultiBinding>
@@ -105,11 +104,10 @@
                             <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-                            <!--<Setter Property="Padding" Value="0" />-->
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
                             <Setter TargetName="PART_Border" Property="Width">
                                 <Setter.Value>
-                                    <MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+                                    <MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
                                         <Binding ElementName="PART_Border" Path="ActualWidth" />
                                         <Binding ElementName="PART_Border" Path="ActualHeight" />
                                     </MultiBinding>
@@ -166,10 +164,10 @@
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
                             <Setter Property="Padding" Value="0" />
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
                             <Setter TargetName="PART_Border" Property="Width">
                                 <Setter.Value>
-                                    <MultiBinding Converter="{StaticResource WidthHeightEqualValueConverter}">
+                                    <MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
                                         <Binding ElementName="PART_Border" Path="ActualWidth" />
                                         <Binding ElementName="PART_Border" Path="ActualHeight" />
                                     </MultiBinding>
