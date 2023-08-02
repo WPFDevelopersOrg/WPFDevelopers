@@ -13,6 +13,7 @@
     BorderThickness="0"
     NoChrome="True"
     ResizeMode="NoResize"
+    TitleBackground="{DynamicResource WD.BackgroundSolidColorBrush}"
     TitleHeight="30"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ToolWindow"
@@ -40,12 +41,10 @@
                 Click="CloseButton_Click"
                 Style="{StaticResource WD.WindowButtonStyle}"
                 ToolTip="关闭">
-                <Path
+                <wd:PathIcon
                     Width="10"
                     Height="10"
-                    Data="{StaticResource WD.WindowCloseGeometry}"
-                    Fill="DarkGray"
-                    Stretch="UniformToFill" />
+                    Kind="WindowClose" />
             </Button>
         </Grid>
     </wd:Window.TitleBar>
