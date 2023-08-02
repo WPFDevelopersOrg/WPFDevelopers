@@ -8,11 +8,11 @@
     Title="关于"
     Width="300"
     Height="400"
-    Background="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
     BorderBrush="Transparent"
     BorderThickness="0"
     NoChrome="True"
     ResizeMode="NoResize"
+    TitleBackground="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
     TitleHeight="30"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ToolWindow"
@@ -50,7 +50,7 @@
             </Button>
         </Grid>
     </wd:Window.TitleBar>
-    <Grid Background="{DynamicResource WD.BackgroundSolidColorBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />
             <RowDefinition Height="6*" />
