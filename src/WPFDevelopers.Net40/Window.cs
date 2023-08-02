@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.Windows.Shell;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
-using Microsoft.Windows.Shell;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Net40
@@ -22,6 +21,9 @@ namespace WPFDevelopers.Net40
 
         public static readonly DependencyProperty TitleBarProperty =
             DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty TitleBackgroundProperty =
+           DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(ControlsHelper.PrimaryNormalBrush));
 
         static Window()
         {
@@ -60,6 +62,12 @@ namespace WPFDevelopers.Net40
         public object TitleBar
         {
             get => (object)GetValue(TitleBarProperty);
+            set => SetValue(TitleBarProperty, value);
+        }
+
+        public Brush TitleBackground
+        {
+            get => (Brush)GetValue(TitleBarProperty);
             set => SetValue(TitleBarProperty, value);
         }
 
@@ -142,7 +150,6 @@ namespace WPFDevelopers.Net40
                     handled = true;
                 }
             }
-
             return IntPtr.Zero;
         }
 

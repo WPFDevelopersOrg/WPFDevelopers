@@ -32,7 +32,7 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview" />
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview1" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico">

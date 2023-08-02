@@ -24,16 +24,6 @@ namespace WPFDevelopers.Controls
             var mItem = new MessageListBoxItem { Content = message, MessageType = type, IsCenter = center };
             listBox.Items.Insert(0, mItem);
         }
-
-
-
-        private void ListBox_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (e.NewSize.Height != 0.0)
-                return;
-            listBox.Items.RemoveAt(listBox.Items.Count - 1);
-        }
-
         public UIElement Child
         {
             get => _child;

@@ -13,7 +13,7 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type RadioButton}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Background" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -55,7 +55,7 @@
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             Focusable="False"
                             RecognizesAccessKey="True"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Unchecked" />

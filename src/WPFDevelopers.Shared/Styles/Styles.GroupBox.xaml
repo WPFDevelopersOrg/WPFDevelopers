@@ -10,7 +10,7 @@
         x:Key="WD.DefaultGroupBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type GroupBox}">
-        <Setter Property="Padding" Value="4" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
@@ -27,7 +27,7 @@
                                 <SolidColorBrush Color="{DynamicResource BackgroundColor}" />
                             </Border.Background>
                             <ContentPresenter
-                                Margin="10"
+                                Margin="{TemplateBinding Padding}"
                                 ContentSource="Header"
                                 RecognizesAccessKey="True" />
                         </Border>

@@ -2,8 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
-    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
-    xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore">
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -40,12 +39,11 @@
         x:Key="WD.PageListBoxItemStyleKey"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type ListBoxItem}">
-        <Setter Property="MinWidth" Value="32" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="5,0" />
+        <Setter Property="MinWidth" Value="32" />
         <Setter Property="Margin" Value="3,0" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
@@ -105,34 +103,35 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBlock VerticalAlignment="Center" Text="{Binding Count, StringFormat=共 {0} 条, RelativeSource={RelativeSource TemplatedParent}}" />
-                <TextBox
-                    x:Name="PART_CountPerPageTextBox"
+                <controls:NumericBox
+                    x:Name="PART_CountPerPageNumericBox"
                     Grid.Column="2"
-                    Width="60"
-                    MinWidth="0"
+                    Width="32"
                     VerticalContentAlignment="Center"
-                    input:InputMethod.IsInputMethodEnabled="False"
-                    TextAlignment="Center" />
+                    Maximum="100000"
+                    Minimum="1"
+                    TextAlignment="Center"
+                    UpDownButtonsWidth="0" />
                 <TextBlock
                     Grid.Column="3"
                     VerticalAlignment="Center"
                     Text=" 条 / 页" />
-                <Button Grid.Column="5" Command="{x:Static controls:Pagination.PrevCommand}">
-                    <Path
-                        Width="7"
-                        Height="10"
-                        Data="{StaticResource WD.PreviousGeometry}"
-                        Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                        Stretch="Fill" />
+                <Button
+                    Grid.Column="5"
+                    Width="32"
+                    Command="{x:Static controls:Pagination.PrevCommand}">
+                    <controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
                 </Button>
-                <TextBox
-                    x:Name="PART_JumpPageTextBox"
+                <controls:NumericBox
+                    x:Name="PART_JumpPageNumericBox"
                     Grid.Column="7"
-                    Width="60"
-                    MinWidth="0"
-                    VerticalContentAlignment="Center"
-                    TextAlignment="Center">
-                    <TextBox.ToolTip>
+                    Width="32"
+                    Padding="3,0"
+                    FontSize="{TemplateBinding FontSize}"
+                    Minimum="1"
+                    TextAlignment="Center"
+                    UpDownButtonsWidth="0">
+                    <controls:NumericBox.ToolTip>
                         <TextBlock>
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0}/{1}">
@@ -141,15 +140,13 @@
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
-                    </TextBox.ToolTip>
-                </TextBox>
-                <Button Grid.Column="9" Command="{x:Static controls:Pagination.NextCommand}">
-                    <Path
-                        Width="7"
-                        Height="10"
-                        Data="{StaticResource WD.NextGeometry}"
-                        Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                        Stretch="Fill" />
+                    </controls:NumericBox.ToolTip>
+                </controls:NumericBox>
+                <Button
+                    Grid.Column="9"
+                    Width="32"
+                    Command="{x:Static controls:Pagination.NextCommand}">
+                    <controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
                 </Button>
             </Grid>
         </Border>
@@ -184,23 +181,22 @@
                                 Margin="0,0,15,0"
                                 Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text="每页 " />
-                                <TextBox
-                                    x:Name="PART_CountPerPageTextBox"
-                                    Width="60"
-                                    MinWidth="0"
+                                <controls:NumericBox
+                                    x:Name="PART_CountPerPageNumericBox"
+                                    Grid.Column="2"
+                                    Width="32"
                                     VerticalContentAlignment="Center"
-                                    input:InputMethod.IsInputMethodEnabled="False"
                                     FontSize="{TemplateBinding FontSize}"
-                                    TextAlignment="Center" />
+                                    Minimum="1"
+                                    TextAlignment="Center"
+                                    UpDownButtonsWidth="0" />
                                 <TextBlock VerticalAlignment="Center" Text=" 条" />
                             </StackPanel>
-                            <Button Grid.Column="2" Command="{x:Static controls:Pagination.PrevCommand}">
-                                <Path
-                                    Width="7"
-                                    Height="10"
-                                    Data="{StaticResource WD.PreviousGeometry}"
-                                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                                    Stretch="Fill" />
+                            <Button
+                                Grid.Column="2"
+                                Width="32"
+                                Command="{x:Static controls:Pagination.PrevCommand}">
+                                <controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
                             </Button>
                             <ListBox
                                 x:Name="PART_ListBox"
@@ -218,24 +214,22 @@
                                     </ItemsPanelTemplate>
                                 </ListBox.ItemsPanel>
                             </ListBox>
-                            <Button Grid.Column="4" Command="{x:Static controls:Pagination.NextCommand}">
-                                <Path
-                                    Width="7"
-                                    Height="10"
-                                    Data="{StaticResource WD.NextGeometry}"
-                                    Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
-                                    Stretch="Fill" />
+                            <Button
+                                Grid.Column="4"
+                                Width="32"
+                                Command="{x:Static controls:Pagination.NextCommand}">
+                                <controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
                             </Button>
                             <StackPanel Grid.Column="5" Orientation="Horizontal">
                                 <TextBlock VerticalAlignment="Center" Text=" 前往 " />
-                                <TextBox
-                                    x:Name="PART_JumpPageTextBox"
-                                    Width="60"
-                                    MinWidth="0"
+                                <controls:NumericBox
+                                    x:Name="PART_JumpPageNumericBox"
+                                    Width="32"
                                     VerticalContentAlignment="Center"
-                                    ContextMenu="{x:Null}"
                                     FontSize="{TemplateBinding FontSize}"
-                                    TextAlignment="Center" />
+                                    Minimum="1"
+                                    TextAlignment="Center"
+                                    UpDownButtonsWidth="0" />
                                 <TextBlock VerticalAlignment="Center" Text=" 页" />
                             </StackPanel>
                         </Grid>

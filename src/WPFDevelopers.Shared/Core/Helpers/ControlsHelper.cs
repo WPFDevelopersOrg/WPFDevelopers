@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Media;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -56,7 +57,11 @@ namespace WPFDevelopers.Helpers
                     Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = PrimaryNormalBrush;
                     WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
                     if (Application.Current.TryFindResource("WD.DefaultBackgroundColor") is Color color)
-                        Application.Current.Resources["WD.DefaultBackgroundSolidColorBrush"] = new SolidColorBrush(color);
+                    {
+                        var solidColorBrush = new SolidColorBrush(color);
+                        Application.Current.Resources["WD.DefaultBackgroundSolidColorBrush"] = solidColorBrush;
+
+                    }
                 }
                 else
                 {
@@ -71,7 +76,6 @@ namespace WPFDevelopers.Helpers
                 }
 
                 Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
-                //WindowForegroundBrush = Application.Current.TryFindResource["WD.PrimaryTextSolidColorBrush"] as Brush;
                 _IsCurrentDark = isDark;
                 ThemeRefresh();
             }
@@ -241,6 +245,15 @@ namespace WPFDevelopers.Helpers
             }
             return window;
         }
+        public static Thickness GetPadding(FrameworkElement element)
+        {
+            Type elementType = element.GetType();
+            PropertyInfo paddingProperty = elementType.GetProperty("Padding");
+            if (paddingProperty != null)
+                return (Thickness)paddingProperty.GetValue(element, null);
+            return new Thickness();
+        }
+
 
     }
 

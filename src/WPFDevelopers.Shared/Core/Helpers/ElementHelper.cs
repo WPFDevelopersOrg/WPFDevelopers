@@ -16,6 +16,10 @@ namespace WPFDevelopers.Helpers
             DependencyProperty.RegisterAttached("IsStripe", typeof(bool), typeof(ElementHelper),
                 new PropertyMetadata(false));
 
+        public static readonly DependencyProperty IsRoundProperty =
+           DependencyProperty.RegisterAttached("IsRound", typeof(bool), typeof(ElementHelper),
+               new PropertyMetadata(false));
+
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
             return (CornerRadius) obj.GetValue(CornerRadiusProperty);
@@ -44,6 +48,15 @@ namespace WPFDevelopers.Helpers
         public static void SetIsStripe(DependencyObject obj, bool value)
         {
             obj.SetValue(IsStripeProperty, value);
+        }
+        public static bool GetIsRound(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsRoundProperty);
+        }
+
+        public static void SetIsRound(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsRoundProperty, value);
         }
     }
 }

@@ -74,6 +74,8 @@
         CropImage,
         Badge,
         Message,
+        PathIcon,
+        NumericBox,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

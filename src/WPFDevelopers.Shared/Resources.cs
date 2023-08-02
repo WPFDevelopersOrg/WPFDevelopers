@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows;
+using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers
 {
     public class Resources : ResourceDictionary
     {
+        public static event ThemeChangedEvent ThemeChanged;
         public ThemeType Theme
         {
             set => InitializeTheme(value);
@@ -16,6 +18,7 @@ namespace WPFDevelopers
             MergedDictionaries.Clear();
             var path = GetResourceUri(GetThemeResourceName(themeType));
             MergedDictionaries.Add(new ResourceDictionary { Source = path });
+            ThemeChanged?.Invoke(themeType);
         }
 
         protected Uri GetResourceUri(string path)

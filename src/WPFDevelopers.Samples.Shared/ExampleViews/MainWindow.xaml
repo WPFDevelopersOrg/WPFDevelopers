@@ -20,32 +20,14 @@
     <wd:Window.Effect>
         <wd:GrayscaleEffect x:Name="grayscaleEffect" Factor="1" />
     </wd:Window.Effect>
-    <!--<shell:WindowChrome.WindowChrome>
-        <shell:WindowChrome  GlassFrameThickness="0 1 0 0"/>
-    </shell:WindowChrome.WindowChrome>
-    <wpfdev:WindowAcrylicBlur.WindowAcrylicBlur>
-        <wpfdev:WindowAcrylicBlur BlurColor="AliceBlue" Opacity="0.2"/>
-    </wpfdev:WindowAcrylicBlur.WindowAcrylicBlur>-->
     <Window.DataContext>
         <vm:MainVM />
     </Window.DataContext>
-    <Window.Resources>
-        <!--<ObjectDataProvider x:Key="EnumDataMenu"
-                            MethodName="GetValues"
-                            ObjectType="{x:Type System:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="helpers:MenuEnum"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>-->
-    </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding ViewLoaded}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-
-    <!--<Grid Background="{StaticResource WD.ExtralightSolidColorBrush}">-->
-
     <Grid>
         <wd:NotifyIcon Name="WpfNotifyIcon" Title="WPF开发者">
             <wd:NotifyIcon.ContextMenu>
@@ -73,30 +55,7 @@
                 </ContextMenu>
             </wd:NotifyIcon.ContextMenu>
         </wd:NotifyIcon>
-        <!--<Rectangle Margin="5,0,0,0">
-            <Rectangle.Fill>
-                <VisualBrush Viewport="0,0,95,35" ViewportUnits="Absolute" TileMode="Tile">
-                    <VisualBrush.Visual>
-                        <StackPanel Background="Transparent">
-                            <TextBlock FontSize="{StaticResource WD.TitleFontSize}" Margin="10"
-                                       Foreground="Gray">WPFDevelopers</TextBlock>
-                        </StackPanel>
-                    </VisualBrush.Visual>
-                    <VisualBrush.RelativeTransform>
-                        <RotateTransform Angle="45" CenterX="0.5" CenterY="0.5" />
-                    </VisualBrush.RelativeTransform>
-                </VisualBrush>
-            </Rectangle.Fill>
-        </Rectangle>-->
 
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>-->
-
-        <!--<StackPanel HorizontalAlignment="Right"  shell:WindowChrome.IsHitTestVisibleInChrome="True">
-            <Button Content="Close" Width="50" Height="25" Command="{Binding CloseCommand}"/>
-        </StackPanel>-->
 
         <Grid Margin="10">
             <Grid.ColumnDefinitions>

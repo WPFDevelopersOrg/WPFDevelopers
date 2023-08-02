@@ -9,7 +9,7 @@
     <Import_RootNamespace>WPFDevelopers</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Assists\ThincknessAssert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Assists\ThincknessAssert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge\Badge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBarItem.cs" />
@@ -20,16 +20,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\BreadCrumbBarConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\DatePickerToCurrentConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DatePickerHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListBoxItemExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollIntoView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericBox\NumericBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PackIconKind.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PathIcon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\BreadCrumbBarConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\HalfValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightEqualValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\TextBoxValueChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DatePickerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ListBoxItemExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ScrollIntoView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AnimationAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AudioWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilities\BaseControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\ThemeChangedEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\BaseControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BasicBarChart\BasicBarChart.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
@@ -106,24 +113,24 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Windows\WindowAcrylicBlur.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToIsLargeConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\AngleToPointConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\StepIndexConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\IndexToColor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converts\ObjectNullToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\AngleToIsLargeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\AngleToPointConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ElementConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\StepIndexConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\IndexToColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AudioPlayer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ControlsHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DrawingContextHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\EnumerableHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SnowCanvasHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThemeType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ViewModelBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Win32.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\AudioPlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ControlsHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DrawingContextHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ElementHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\EnumerableHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SnowCanvasHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ThemeType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Win32.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ChangedPathLayoutProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Distribution.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\DistributionStrategy.cs" />
@@ -234,8 +241,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\WipeDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\WipeTransitionEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilities\AdornerContainer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilities\DoubleUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\AdornerContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\DoubleUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Themes\Generic.xaml">
@@ -319,6 +326,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.RepeatButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -442,6 +453,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\PathIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Step.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -503,6 +518,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Magnifier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\NumericBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

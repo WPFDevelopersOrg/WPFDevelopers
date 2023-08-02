@@ -33,6 +33,7 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.ThemeControl.xaml
 ..\Styles\Styles.GridSplitter.xaml
 ..\Styles\Styles.Label.xaml
+..\Styles\Styles.RepeatButton.xaml
 
 ..\Microsoft.Expression.Controls\Themes\Generic.xaml
 ..\Microsoft.Expression.Drawing\Themes\Generic.xaml
@@ -64,3 +65,5 @@ MultiSelectSearchComboBox.xaml
 BreadCrumbBar.xaml
 CropImage.xaml
 Message.xaml
+PathIcon.xaml
+NumericBox.xaml

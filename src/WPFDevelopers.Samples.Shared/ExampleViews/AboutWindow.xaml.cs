@@ -1,12 +1,6 @@
-﻿#if NET40
-using Microsoft.Windows.Shell;
-#else
-using System.Windows.Shell;
-# endif
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -14,27 +8,11 @@ namespace WPFDevelopers.Samples.ExampleViews
     /// <summary>
     ///     Window1.xaml 的交互逻辑
     /// </summary>
-    public partial class AboutWindow : Window
+    public partial class AboutWindow
     {
         public AboutWindow()
         {
             InitializeComponent();
-#if NET40
-            var windowChrome = new WindowChrome
-            {
-                CaptionHeight = 160,
-                GlassFrameThickness = new Thickness(1)
-            };
-            WindowChrome.SetIsHitTestVisibleInChrome(CloseButton, true);
-#else
-            var windowChrome = new WindowChrome
-            {
-                CaptionHeight = 160,
-                GlassFrameThickness = new Thickness(1),
-                UseAeroCaptionButtons = false
-            };
-             WindowChrome.SetIsHitTestVisibleInChrome(CloseButton, true);
-#endif
         }
 
         private void GithubHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

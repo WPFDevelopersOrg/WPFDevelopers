@@ -30,6 +30,8 @@ namespace WPFDevelopers.Samples.Controls
             foreach (var item in SourceCodes)
             {
                 var tabItem = CreateTabItem(item);
+                tabItem.Height = 38;
+                tabItem.Padding = new Thickness(20,0,20,0);
                 _tabControl.Items.Add(tabItem);
             }
         }

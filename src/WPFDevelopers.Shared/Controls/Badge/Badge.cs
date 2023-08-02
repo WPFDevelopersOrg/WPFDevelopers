@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -18,27 +19,46 @@ namespace WPFDevelopers.Controls
             DependencyProperty.RegisterAttached("IsShow", typeof(bool), typeof(Badge),
                 new PropertyMetadata(false, OnIsBadgeChanged));
 
+        public static readonly DependencyProperty HorizontalOffsetProperty =
+            DependencyProperty.Register("HorizontalOffset", typeof(double), typeof(Badge),
+                new PropertyMetadata(0.0d, OnOffsetChanged));
+
+        public static readonly DependencyProperty VerticalOffsetProperty =
+            DependencyProperty.Register("VerticalOffset", typeof(double), typeof(Badge),
+                new PropertyMetadata(0.0d, OnOffsetChanged));
+
+        private static void OnOffsetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is Badge badge)
+                badge.InvalidateVisual();
+        }
+
         private readonly double _size;
 
         private readonly string _text;
 
-        public Badge(UIElement adornedElement, string text = null, double size = 0)
+        private readonly double _verticalOffset;
+        private readonly double _horizontalOffset;
+
+        public Badge(UIElement adornedElement, string text = null, double size = 0, double horizontalOffset = 0, double verticalOffset = 0)
             : base(adornedElement)
         {
             _text = text;
             _size = size;
             ToolTip = text;
+            _horizontalOffset = horizontalOffset;
+            _verticalOffset = verticalOffset;
         }
 
         public string Text
         {
-            get => (string) GetValue(TextProperty);
+            get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
 
         public double FontSize
         {
-            get => (double) GetValue(FontSizeProperty);
+            get => (double)GetValue(FontSizeProperty);
             set => SetValue(FontSizeProperty, value);
         }
 
@@ -46,7 +66,7 @@ namespace WPFDevelopers.Controls
         {
             if (element == null) throw new ArgumentNullException("Text");
 
-            return (string) element.GetValue(TextProperty);
+            return (string)element.GetValue(TextProperty);
         }
 
         public static void SetText(UIElement element, string Text)
@@ -60,7 +80,7 @@ namespace WPFDevelopers.Controls
         {
             if (element == null) throw new ArgumentNullException("FontSize");
 
-            return (double) element.GetValue(FontSizeProperty);
+            return (double)element.GetValue(FontSizeProperty);
         }
 
         public static void SetFontSize(UIElement element, string Text)
@@ -68,6 +88,34 @@ namespace WPFDevelopers.Controls
             if (element == null) throw new ArgumentNullException("FontSize");
 
             element.SetValue(FontSizeProperty, Text);
+        }
+
+        public static double GetVerticalOffset(UIElement element)
+        {
+            if (element == null) throw new ArgumentNullException("VerticalOffset");
+
+            return (double)element.GetValue(VerticalOffsetProperty);
+        }
+
+        public static void SetVerticalOffset(UIElement element, string verticalOffset)
+        {
+            if (element == null) throw new ArgumentNullException("VerticalOffset");
+
+            element.SetValue(VerticalOffsetProperty, verticalOffset);
+        }
+
+        public static double GetHorizontalOffset(UIElement element)
+        {
+            if (element == null) throw new ArgumentNullException("HorizontalOffset");
+
+            return (double)element.GetValue(HorizontalOffsetProperty);
+        }
+
+        public static void SetHorizontalOffset(UIElement element, string horizontalOffset)
+        {
+            if (element == null) throw new ArgumentNullException("HorizontalOffset");
+
+            element.SetValue(HorizontalOffsetProperty, horizontalOffset);
         }
 
         private static void OnIsBadgeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -122,13 +170,15 @@ namespace WPFDevelopers.Controls
 
             var value = GetText(uIElement);
             var size = GetFontSize(uIElement);
-            var badgeAdorner = new Badge(uIElement, value, size);
+            var horizontalOffset = GetHorizontalOffset(uIElement);
+            var verticalOffset = GetVerticalOffset(uIElement);
+            var badgeAdorner = new Badge(uIElement, value, size, horizontalOffset, verticalOffset);
             layer.Add(badgeAdorner);
         }
 
         public static bool GetIsShow(DependencyObject obj)
         {
-            return (bool) obj.GetValue(IsShowProperty);
+            return (bool)obj.GetValue(IsShowProperty);
         }
 
         public static void SetIsShow(DependencyObject obj, bool value)
@@ -139,12 +189,11 @@ namespace WPFDevelopers.Controls
         protected override void OnRender(DrawingContext drawingContext)
         {
             var adornedElement = AdornedElement as FrameworkElement;
-            var margin = adornedElement.Margin;
-            var desiredWidth = adornedElement.DesiredSize.Width - margin.Left - margin.Right;
-            var brush = new SolidColorBrush((Color) Application.Current.TryFindResource("WD.DangerColor"));
+            var desiredWidth = adornedElement.ActualWidth;
+            var brush = new SolidColorBrush((Color)Application.Current.TryFindResource("WD.DangerColor"));
             brush.Freeze();
             var radius = 5.0;
-            var center = new Point(desiredWidth, 0);
+            var center = new Point(desiredWidth + _horizontalOffset, _verticalOffset);
             FormattedText formattedText = null;
             if (!string.IsNullOrEmpty(_text))
                 formattedText = DrawingContextHelper.GetFormattedText(
@@ -180,13 +229,12 @@ namespace WPFDevelopers.Controls
                     startPoint = new Point(center.X - width / 2, center.Y - height / 2);
                     endPoint = new Point(center.X + width / 2, center.Y + height / 2);
                 }
-
                 var rect = new Rect(startPoint, endPoint);
                 drawingContext.DrawRoundedRectangle(brush, pen, rect, 8, 8);
                 formattedText.MaxTextWidth = width + 10;
                 var centerRect = new Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2);
                 var textPosition = new Point(centerRect.X - formattedText.Width / 2,
-                    centerRect.Y - formattedText.Height / 2);
+                    centerRect.Y - formattedText.Height / 2 + _verticalOffset);
                 drawingContext.DrawText(formattedText, textPosition);
             }
             else

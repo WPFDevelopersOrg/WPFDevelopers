@@ -21,30 +21,34 @@
                 Margin="10"
                 HorizontalAlignment="Center"
                 Content="显示Badge" />
-            <StackPanel
+            <UniformGrid
                 Grid.Row="1"
                 HorizontalAlignment="Center"
-                Orientation="Horizontal">
+                Rows="1">
                 <Button
+                    Width="100"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="new"
                     Content="Default"
                     Style="{DynamicResource WD.PrimaryButton}" />
                 <Button
-                    Margin="40,0"
+                    Width="100"
+                    Margin="10,0"
                     wd:Badge.FontSize="12"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="3"
                     Content="Success"
                     Style="{DynamicResource WD.SuccessDefaultButton}" />
                 <Button
+                    Width="100"
                     wd:Badge.FontSize="12"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="10+"
                     Content="Warning"
                     Style="{DynamicResource WD.WarningDefaultButton}" />
                 <Button
-                    Margin="40,0"
+                    Width="100"
+                    Margin="10,0"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="NEW"
                     Content="Danger"
@@ -58,7 +62,7 @@
                     Background="Red"
                     Content="40"
                     FontSize="40" />
-            </StackPanel>
+            </UniformGrid>
         </Grid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml" CodeType="Xaml" />

@@ -1,0 +1,94 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.PathIconExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer>
+        <UniformGrid
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Columns="6"
+            Rows="2">
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.PrimaryButton}">
+                <wd:PathIcon Data="M682 256h256v256l-98-98-268 268-170-170-256 256-60-60 316-316 170 170 208-208z" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.DangerPrimaryButton}">
+                <wd:PathIcon Kind="Arrow" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.DangerDefaultButton}">
+                <wd:PathIcon Kind="SortArrow" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.WarningDefaultButton}">
+                <wd:PathIcon Kind="SmileyOutline" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.DefaultButton}">
+                <wd:PathIcon Kind="Replace" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:Badge.HorizontalOffset="-20"
+                wd:Badge.IsShow="True"
+                wd:Badge.VerticalOffset="8"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.SuccessDefaultButton}">
+                <wd:PathIcon Kind="Home" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:ElementHelper.IsRound="True"
+                Style="{StaticResource WD.NormalButton}">
+                <wd:PathIcon Data="M682 256h256v256l-98-98-268 268-170-170-256 256-60-60 316-316 170 170 208-208z" />
+            </Button>
+            <Button Margin="4" Style="{StaticResource WD.SuccessPrimaryButton}">
+                <wd:PathIcon Kind="Arrow" />
+            </Button>
+            <Button Margin="4" Style="{StaticResource WD.DangerPrimaryButton}">
+                <wd:PathIcon Kind="SortArrow" />
+            </Button>
+            <Button
+                Margin="4"
+                wd:Badge.IsShow="True"
+                Style="{StaticResource WD.WarningPrimaryButton}">
+                <wd:PathIcon
+                    Width="20"
+                    Height="20"
+                    Kind="SmileyOutline" />
+            </Button>
+            <Button Margin="4" Style="{StaticResource WD.PrimaryButton}">
+                <wd:PathIcon Kind="Replace" />
+            </Button>
+            <Button Margin="4" Style="{StaticResource WD.SuccessPrimaryButton}">
+                <StackPanel Orientation="Horizontal">
+                    <wd:PathIcon Kind="Home" />
+                    <TextBlock Margin="4,0" Text="Home" />
+                </StackPanel>
+            </Button>
+        </UniformGrid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PathIconExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PathIconExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

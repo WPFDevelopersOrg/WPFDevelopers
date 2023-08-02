@@ -34,6 +34,7 @@
                 Rows="2">
                 <wd:MultiSelectionSearchComboBox
                     Width="200"
+                    Height="38"
                     HorizontalAlignment="Center"
                     VerticalContentAlignment="Center"
                     Delimiter=","
@@ -47,6 +48,7 @@
                 </wd:MultiSelectionSearchComboBox>
                 <wd:MultiSelectionSearchComboBox
                     Width="200"
+                    Height="38"
                     HorizontalAlignment="Center"
                     VerticalContentAlignment="Center"
                     wd:ElementHelper.Watermark="MultiSelectionSearchComboBox"
@@ -63,6 +65,7 @@
                 <wd:MultiSelectionSearchComboBox
                     Name="MyMultiSelectionSearchComboBox2"
                     Width="200"
+                    Height="38"
                     HorizontalAlignment="Center"
                     VerticalContentAlignment="Center"
                     wd:ElementHelper.Watermark="下拉多选搜索"

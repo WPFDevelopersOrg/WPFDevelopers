@@ -279,6 +279,9 @@
       <SubType>Code</SubType>
       <DependentUpon>NumberCardExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NumericBoxExample.xaml.cs">
+      <DependentUpon>NumericBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\OtherControlExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>OtherControlExample.xaml</DependentUpon>
@@ -300,6 +303,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>PasswordWithPlainText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\PathIconExample.xaml.cs">
+      <DependentUpon>PathIconExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\PieControlExample.xaml.cs">
       <SubType>Code</SubType>
@@ -735,6 +741,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NumericBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\OtherControlExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -752,6 +762,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Passwrod\PasswordWithPlainText.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\PathIconExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

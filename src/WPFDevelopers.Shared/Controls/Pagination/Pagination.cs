@@ -8,21 +8,25 @@ using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
-    [TemplatePart(Name = CountPerPageTextBoxTemplateName, Type = typeof(TextBox))]
-    [TemplatePart(Name = JustPageTextBoxTemplateName, Type = typeof(TextBox))]
+    [TemplatePart(Name = CountPerPageNumericBoxTemplateName, Type = typeof(NumericBox))]
+    [TemplatePart(Name = JustPageNumericBoxTemplateName, Type = typeof(NumericBox))]
     [TemplatePart(Name = ListBoxTemplateName, Type = typeof(ListBox))]
     public class Pagination : Control
     {
-        private const string CountPerPageTextBoxTemplateName = "PART_CountPerPageTextBox";
-        private const string JustPageTextBoxTemplateName = "PART_JumpPageTextBox";
+        private static readonly Type _typeofSelf = typeof(Pagination);
+
+        private const string CountPerPageNumericBoxTemplateName = "PART_CountPerPageNumericBox";
+        private const string JustPageNumericBoxTemplateName = "PART_JumpPageNumericBox";
         private const string ListBoxTemplateName = "PART_ListBox";
 
         private const string Ellipsis = "···";
-        private static readonly Type _typeofSelf = typeof(Pagination);
 
-        private TextBox _countPerPageTextBox;
-        private TextBox _jumpPageTextBox;
+        private NumericBox _countPerPageNumericBox;
+        private NumericBox _jumpPageNumericBox;
         private ListBox _listBox;
+
+        private static RoutedCommand _prevCommand = null;
+        private static RoutedCommand _nextCommand = null;
 
         static Pagination()
         {
@@ -31,69 +35,26 @@ namespace WPFDevelopers.Controls
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
 
-        #region Override
-
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            UnsubscribeEvents();
-
-            _countPerPageTextBox = GetTemplateChild(CountPerPageTextBoxTemplateName) as TextBox;
-            if (_countPerPageTextBox != null)
-            {
-                _countPerPageTextBox.ContextMenu = null;
-                _countPerPageTextBox.PreviewTextInput += _countPerPageTextBox_PreviewTextInput;
-                _countPerPageTextBox.PreviewKeyDown += _countPerPageTextBox_PreviewKeyDown;
-            }
-
-            _jumpPageTextBox = GetTemplateChild(JustPageTextBoxTemplateName) as TextBox;
-            if (_jumpPageTextBox != null)
-            {
-                _jumpPageTextBox.ContextMenu = null;
-                _jumpPageTextBox.PreviewTextInput += _countPerPageTextBox_PreviewTextInput;
-                _jumpPageTextBox.PreviewKeyDown += _countPerPageTextBox_PreviewKeyDown;
-            }
-
-            _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
-
-            Init();
-
-            SubscribeEvents();
-        }
-
-        private void _countPerPageTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (Key.Space == e.Key
-                ||
-                Key.V == e.Key
-                && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
-                e.Handled = true;
-        }
-
-        private void _countPerPageTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = ControlsHelper.IsNumber(e.Text);
-        }
-
-        #endregion
-
         #region Command
 
         private static void InitializeCommands()
         {
-            PrevCommand = new RoutedCommand("Prev", _typeofSelf);
-            NextCommand = new RoutedCommand("Next", _typeofSelf);
+            _prevCommand = new RoutedCommand("Prev", _typeofSelf);
+            _nextCommand = new RoutedCommand("Next", _typeofSelf);
 
-            CommandManager.RegisterClassCommandBinding(_typeofSelf,
-                new CommandBinding(PrevCommand, OnPrevCommand, OnCanPrevCommand));
-            CommandManager.RegisterClassCommandBinding(_typeofSelf,
-                new CommandBinding(NextCommand, OnNextCommand, OnCanNextCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_prevCommand, OnPrevCommand, OnCanPrevCommand));
+            CommandManager.RegisterClassCommandBinding(_typeofSelf, new CommandBinding(_nextCommand, OnNextCommand, OnCanNextCommand));
         }
 
-        public static RoutedCommand PrevCommand { get; private set; }
+        public static RoutedCommand PrevCommand
+        {
+            get { return _prevCommand; }
+        }
 
-        public static RoutedCommand NextCommand { get; private set; }
+        public static RoutedCommand NextCommand
+        {
+            get { return _nextCommand; }
+        }
 
         private static void OnPrevCommand(object sender, RoutedEventArgs e)
         {
@@ -124,89 +85,81 @@ namespace WPFDevelopers.Controls
         #region Properties
 
         private static readonly DependencyPropertyKey PagesPropertyKey =
-            DependencyProperty.RegisterReadOnly("Pages", typeof(IEnumerable<string>), _typeofSelf,
-                new PropertyMetadata(null));
-
+           DependencyProperty.RegisterReadOnly("Pages", typeof(IEnumerable<string>), _typeofSelf, new PropertyMetadata(null));
         public static readonly DependencyProperty PagesProperty = PagesPropertyKey.DependencyProperty;
-
-        public IEnumerable<string> Pages => (IEnumerable<string>) GetValue(PagesProperty);
+        public IEnumerable<string> Pages
+        {
+            get { return (IEnumerable<string>)GetValue(PagesProperty); }
+        }
 
         private static readonly DependencyPropertyKey PageCountPropertyKey =
-            DependencyProperty.RegisterReadOnly("PageCount", typeof(int), _typeofSelf,
-                new PropertyMetadata(1, OnPageCountPropertyChanged));
-
+           DependencyProperty.RegisterReadOnly("PageCount", typeof(int), _typeofSelf, new PropertyMetadata(1, OnPageCountPropertyChanged));
         public static readonly DependencyProperty PageCountProperty = PageCountPropertyKey.DependencyProperty;
-
-        public int PageCount => (int) GetValue(PageCountProperty);
+        public int PageCount
+        {
+            get { return (int)GetValue(PageCountProperty); }
+        }
 
         private static void OnPageCountPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var pageCount = (int) e.NewValue;
+            var pageCount = (int)e.NewValue;
 
-            /*
-            if (ctrl._jumpPageTextBox != null)
-                ctrl._jumpPageTextBox.Maximum = pageCount;
-            */
+            if (ctrl._jumpPageNumericBox != null)
+                ctrl._jumpPageNumericBox.Maximum = pageCount;
         }
 
-        public static readonly DependencyProperty IsLiteProperty =
-            DependencyProperty.Register("IsLite", typeof(bool), _typeofSelf, new PropertyMetadata(false));
-
+        public static readonly DependencyProperty IsLiteProperty = DependencyProperty.Register("IsLite", typeof(bool), _typeofSelf, new PropertyMetadata(false));
         public bool IsLite
         {
-            get => (bool) GetValue(IsLiteProperty);
-            set => SetValue(IsLiteProperty, value);
+            get { return (bool)GetValue(IsLiteProperty); }
+            set { SetValue(IsLiteProperty, value); }
         }
 
-        public static readonly DependencyProperty CountProperty = DependencyProperty.Register("Count", typeof(int),
-            _typeofSelf, new PropertyMetadata(0, OnCountPropertyChanged, CoerceCount));
-
+        public static readonly DependencyProperty CountProperty = DependencyProperty.Register("Count", typeof(int), _typeofSelf, new PropertyMetadata(0, OnCountPropertyChanged, CoerceCount));
         public int Count
         {
-            get => (int) GetValue(CountProperty);
-            set => SetValue(CountProperty, value);
+            get { return (int)GetValue(CountProperty); }
+            set { SetValue(CountProperty, value); }
         }
 
         private static object CoerceCount(DependencyObject d, object value)
         {
-            var count = (int) value;
+            var count = (int)value;
             return Math.Max(count, 0);
         }
 
         private static void OnCountPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var count = (int) e.NewValue;
+            var count = (int)e.NewValue;
 
-            ctrl.SetValue(PageCountPropertyKey, (int) Math.Ceiling(count * 1.0 / ctrl.CountPerPage));
+            ctrl.SetValue(PageCountPropertyKey, (int)Math.Ceiling(count * 1.0 / ctrl.CountPerPage));
             ctrl.UpdatePages();
         }
 
-        public static readonly DependencyProperty CountPerPageProperty = DependencyProperty.Register("CountPerPage",
-            typeof(int), _typeofSelf, new PropertyMetadata(50, OnCountPerPagePropertyChanged, CoerceCountPerPage));
-
+        public static readonly DependencyProperty CountPerPageProperty = DependencyProperty.Register("CountPerPage", typeof(int), _typeofSelf, new PropertyMetadata(50, OnCountPerPagePropertyChanged, CoerceCountPerPage));
         public int CountPerPage
         {
-            get => (int) GetValue(CountPerPageProperty);
-            set => SetValue(CountPerPageProperty, value);
+            get { return (int)GetValue(CountPerPageProperty); }
+            set { SetValue(CountPerPageProperty, value); }
         }
 
         private static object CoerceCountPerPage(DependencyObject d, object value)
         {
-            var countPerPage = (int) value;
+            var countPerPage = (int)value;
             return Math.Max(countPerPage, 1);
         }
 
         private static void OnCountPerPagePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var countPerPage = (int) e.NewValue;
+            var countPerPage = (int)e.NewValue;
 
-            if (ctrl._countPerPageTextBox != null)
-                ctrl._countPerPageTextBox.Text = countPerPage.ToString();
+            if (ctrl._countPerPageNumericBox != null)
+                ctrl._countPerPageNumericBox.Value = countPerPage;
 
-            ctrl.SetValue(PageCountPropertyKey, (int) Math.Ceiling(ctrl.Count * 1.0 / countPerPage));
+            ctrl.SetValue(PageCountPropertyKey, (int)Math.Ceiling(ctrl.Count * 1.0 / countPerPage));
 
             if (ctrl.Current != 1)
                 ctrl.Current = 1;
@@ -214,18 +167,16 @@ namespace WPFDevelopers.Controls
                 ctrl.UpdatePages();
         }
 
-        public static readonly DependencyProperty CurrentProperty = DependencyProperty.Register("Current", typeof(int),
-            _typeofSelf, new PropertyMetadata(1, OnCurrentPropertyChanged, CoerceCurrent));
-
+        public static readonly DependencyProperty CurrentProperty = DependencyProperty.Register("Current", typeof(int), _typeofSelf, new PropertyMetadata(1, OnCurrentPropertyChanged, CoerceCurrent));
         public int Current
         {
-            get => (int) GetValue(CurrentProperty);
-            set => SetValue(CurrentProperty, value);
+            get { return (int)GetValue(CurrentProperty); }
+            set { SetValue(CurrentProperty, value); }
         }
 
         private static object CoerceCurrent(DependencyObject d, object value)
         {
-            var current = (int) value;
+            var current = (int)value;
             var ctrl = d as Pagination;
 
             return Math.Max(current, 1);
@@ -234,15 +185,34 @@ namespace WPFDevelopers.Controls
         private static void OnCurrentPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Pagination;
-            var current = (int) e.NewValue;
+            var current = (int)e.NewValue;
 
             if (ctrl._listBox != null)
                 ctrl._listBox.SelectedItem = current.ToString();
 
-            if (ctrl._jumpPageTextBox != null)
-                ctrl._jumpPageTextBox.Text = current.ToString();
+            if (ctrl._jumpPageNumericBox != null)
+                ctrl._jumpPageNumericBox.Value = current;
 
             ctrl.UpdatePages();
+        }
+
+        #endregion
+
+        #region Override
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            UnsubscribeEvents();
+
+            _countPerPageNumericBox = GetTemplateChild(CountPerPageNumericBoxTemplateName) as NumericBox;
+            _jumpPageNumericBox = GetTemplateChild(JustPageNumericBoxTemplateName) as NumericBox;
+            _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
+
+            Init();
+
+            SubscribeEvents();
         }
 
         #endregion
@@ -250,25 +220,23 @@ namespace WPFDevelopers.Controls
         #region Event
 
         /// <summary>
-        ///     分页
+        /// 分页
         /// </summary>
-        private void OnCountPerPageTextBoxChanged(object sender, TextChangedEventArgs e)
+        private void OnCountPerPageTextBoxChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (int.TryParse(_countPerPageTextBox.Text, out var _ountPerPage))
-                CountPerPage = _ountPerPage;
+            CountPerPage = (int)e.NewValue;
         }
 
         /// <summary>
-        ///     跳转页
+        /// 跳转页
         /// </summary>
-        private void OnJumpPageTextBoxChanged(object sender, TextChangedEventArgs e)
+        private void OnJumpPageTextBoxChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (int.TryParse(_jumpPageTextBox.Text, out var _current))
-                Current = _current;
+            Current = (int)e.NewValue;
         }
 
         /// <summary>
-        ///     选择页
+        /// 选择页
         /// </summary>
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -284,12 +252,12 @@ namespace WPFDevelopers.Controls
 
         private void Init()
         {
-            SetValue(PageCountPropertyKey, (int) Math.Ceiling(Count * 1.0 / CountPerPage));
+            SetValue(PageCountPropertyKey, (int)Math.Ceiling(Count * 1.0 / CountPerPage));
 
-            _jumpPageTextBox.Text = Current.ToString();
-            //_jumpPageTextBox.Maximum = PageCount;
+            _jumpPageNumericBox.Value = Current;
+            _jumpPageNumericBox.Maximum = PageCount;
 
-            _countPerPageTextBox.Text = CountPerPage.ToString();
+            _countPerPageNumericBox.Value = CountPerPage;
 
             if (_listBox != null)
                 _listBox.SelectedItem = Current.ToString();
@@ -297,11 +265,11 @@ namespace WPFDevelopers.Controls
 
         private void UnsubscribeEvents()
         {
-            if (_countPerPageTextBox != null)
-                _countPerPageTextBox.TextChanged -= OnCountPerPageTextBoxChanged;
+            if (_countPerPageNumericBox != null)
+                _countPerPageNumericBox.ValueChanged -= OnCountPerPageTextBoxChanged;
 
-            if (_jumpPageTextBox != null)
-                _jumpPageTextBox.TextChanged -= OnJumpPageTextBoxChanged;
+            if (_jumpPageNumericBox != null)
+                _jumpPageNumericBox.ValueChanged -= OnJumpPageTextBoxChanged;
 
             if (_listBox != null)
                 _listBox.SelectionChanged -= OnSelectionChanged;
@@ -309,11 +277,11 @@ namespace WPFDevelopers.Controls
 
         private void SubscribeEvents()
         {
-            if (_countPerPageTextBox != null)
-                _countPerPageTextBox.TextChanged += OnCountPerPageTextBoxChanged;
+            if (_countPerPageNumericBox != null)
+                _countPerPageNumericBox.ValueChanged += OnCountPerPageTextBoxChanged;
 
-            if (_jumpPageTextBox != null)
-                _jumpPageTextBox.TextChanged += OnJumpPageTextBoxChanged;
+            if (_jumpPageNumericBox != null)
+                _jumpPageNumericBox.ValueChanged += OnJumpPageTextBoxChanged;
 
             if (_listBox != null)
                 _listBox.SelectionChanged += OnSelectionChanged;
@@ -336,20 +304,12 @@ namespace WPFDevelopers.Controls
                 return Enumerable.Range(1, PageCount).Select(p => p.ToString()).ToArray();
 
             if (current <= 4)
-                return new[] {"1", "2", "3", "4", "5", Ellipsis, PageCount.ToString()};
+                return new string[] { "1", "2", "3", "4", "5", Ellipsis, PageCount.ToString() };
 
             if (current >= PageCount - 3)
-                return new[]
-                {
-                    "1", Ellipsis, (PageCount - 4).ToString(), (PageCount - 3).ToString(), (PageCount - 2).ToString(),
-                    (PageCount - 1).ToString(), PageCount.ToString()
-                };
+                return new string[] { "1", Ellipsis, (PageCount - 4).ToString(), (PageCount - 3).ToString(), (PageCount - 2).ToString(), (PageCount - 1).ToString(), PageCount.ToString() };
 
-            return new[]
-            {
-                "1", Ellipsis, (current - 1).ToString(), current.ToString(), (current + 1).ToString(), Ellipsis,
-                PageCount.ToString()
-            };
+            return new string[] { "1", Ellipsis, (current - 1).ToString(), current.ToString(), (current + 1).ToString(), Ellipsis, PageCount.ToString() };
         }
 
         #endregion

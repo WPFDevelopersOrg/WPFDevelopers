@@ -22,7 +22,7 @@
                             Name="PART_PathSymbol"
                             Width="9"
                             Height="9"
-                            Data="{StaticResource WD.BreadCrumbBarGeometry}"
+                            Data="{StaticResource WD.ChevronRightGeometry}"
                             Fill="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
                             IsHitTestVisible="False"
                             Stretch="Uniform">
