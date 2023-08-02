@@ -82,6 +82,16 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### Window
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/window.jpg"/>   
+
+----------
+### Message
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Message.gif"/>   
+
+----------
 ### Badge
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>   
