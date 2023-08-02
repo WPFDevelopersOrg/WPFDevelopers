@@ -730,44 +730,46 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type wd:Window}">
-					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-						<Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+						<Grid x:Name="LayoutRoot">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="*" />
 							</Grid.RowDefinitions>
-							<Grid x:Name="PART_GridChrome" Grid.Row="0" Height="{TemplateBinding TitleHeight}" Background="{TemplateBinding BorderBrush}">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="Auto" />
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" MinWidth="30" />
-								</Grid.ColumnDefinitions>
-								<Image Width="30" Height="30" Margin="14,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Source="{TemplateBinding Icon}" Stretch="Fill" Visibility="{TemplateBinding Icon,&#xD;&#xA;                                                                 Converter={StaticResource ObjectNullToVisibilityConverter}}" />
-								<TextBlock x:Name="PART_Title" Grid.Column="1" Margin="6,0" VerticalAlignment="Center" FontSize="{DynamicResource WD.TitleFontSize}" Foreground="{DynamicResource WD.WindowForegroundColorBrush}" Text="{TemplateBinding Title}" />
-								<WrapPanel Grid.Column="2" Margin="0,6" shell:WindowChrome.IsHitTestVisibleInChrome="True">
-									<WrapPanel x:Name="PART_MinAndMax">
-										<Button Name="PART_MinimizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
-											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-												<Rectangle x:Name="MinimizeGlyph" Width="10" Height="1" Margin="0,7,0,0" VerticalAlignment="Bottom" Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
-											</Grid>
-										</Button>
-										<Button Name="PART_MaximizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
-											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowMaximizeGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" UseLayoutRounding="False" />
-											</Grid>
-										</Button>
-										<Button Name="PART_RestoreButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" Visibility="Collapsed">
-											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowRestoreGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" UseLayoutRounding="False" />
-											</Grid>
+							<controls:SmallPanel Grid.Row="0" Background="{TemplateBinding TitleBackground}">
+								<Grid x:Name="PART_GridChrome" Height="{TemplateBinding TitleHeight}">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="*" />
+										<ColumnDefinition Width="Auto" MinWidth="30" />
+									</Grid.ColumnDefinitions>
+									<Image Width="30" Height="30" Margin="14,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Source="{TemplateBinding Icon}" Stretch="Fill" Visibility="{TemplateBinding Icon,&#xD;&#xA;                                                                     Converter={StaticResource ObjectNullToVisibilityConverter}}" />
+									<TextBlock x:Name="PART_Title" Grid.Column="1" Margin="6,0" VerticalAlignment="Center" FontSize="{DynamicResource WD.TitleFontSize}" Foreground="{DynamicResource WD.WindowForegroundColorBrush}" Text="{TemplateBinding Title}" />
+									<WrapPanel Grid.Column="2" Margin="0,6" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+										<WrapPanel x:Name="PART_MinAndMax">
+											<Button Name="PART_MinimizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
+												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+													<Rectangle x:Name="MinimizeGlyph" Width="10" Height="1" Margin="0,7,0,0" VerticalAlignment="Bottom" Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
+												</Grid>
+											</Button>
+											<Button Name="PART_MaximizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
+												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+													<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowMaximizeGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" UseLayoutRounding="False" />
+												</Grid>
+											</Button>
+											<Button Name="PART_RestoreButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" Visibility="Collapsed">
+												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+													<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowRestoreGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" UseLayoutRounding="False" />
+												</Grid>
+											</Button>
+										</WrapPanel>
+										<Button Name="PART_CloseButton" Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
+											<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowCloseGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" />
 										</Button>
 									</WrapPanel>
-									<Button Name="PART_CloseButton" Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}">
-										<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowCloseGeometry}" Fill="{DynamicResource WD.WindowForegroundColorBrush}" Stretch="Uniform" />
-									</Button>
-								</WrapPanel>
-							</Grid>
-							<ContentPresenter x:Name="PART_TitleToolBar" Grid.Row="0" shell:WindowChrome.IsHitTestVisibleInChrome="True" Content="{Binding TitleBar, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" Focusable="False" Visibility="Collapsed" />
+								</Grid>
+								<ContentPresenter x:Name="PART_TitleToolBar" shell:WindowChrome.IsHitTestVisibleInChrome="True" Content="{Binding TitleBar, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" Focusable="False" Visibility="Collapsed" />
+							</controls:SmallPanel>
 							<AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False">
 								<ContentPresenter x:Name="MainContentPresenter" ClipToBounds="True" />
 							</AdornerDecorator>
@@ -907,7 +909,8 @@
 					<ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
 					<ColumnDefinition Width="20" />
 				</Grid.ColumnDefinitions>
-				<ContentPresenter x:Name="Icon" Margin="6,0,6,0" VerticalAlignment="Center" ContentSource="Icon" />
+				<ContentPresenter x:Name="Icon" Margin="3,0,0,0" VerticalAlignment="Center" ContentSource="Icon" />
+				<Path x:Name="CheckMark" Width="12" Height="10" Margin="3,0,0,0" Data="{StaticResource WD.CheckMarkGeometry}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Stretch="Uniform" Visibility="Hidden" />
 				<ContentPresenter x:Name="HeaderHost" Grid.Column="2" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" />
 				<TextBlock x:Name="InputGestureText" Grid.Column="3" Margin="5,2,2,2" DockPanel.Dock="Right" Text="{TemplateBinding InputGestureText}" />
 				<Path x:Name="PART_Path" Grid.Column="4" Width="10" Height="12" VerticalAlignment="Center" Data="{StaticResource WD.ChevronRightGeometry}" Fill="{TemplateBinding Foreground}" FlowDirection="LeftToRight" Stretch="Uniform" />
@@ -922,6 +925,10 @@
 		</Border>
 		<ControlTemplate.Triggers>
 			<Trigger Property="Icon" Value="{x:Null}">
+				<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+			</Trigger>
+			<Trigger Property="IsChecked" Value="True">
+				<Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
 				<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
 			</Trigger>
 			<Trigger Property="IsHighlighted" Value="True">
