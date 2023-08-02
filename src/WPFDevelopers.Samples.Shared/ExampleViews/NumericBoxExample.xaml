@@ -25,6 +25,7 @@
                 Maximum="1000"
                 Minimum="100"
                 UpDownButtonsWidth="0" />
+            <wd:NumericBox Width="100" Precision="3" />
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NumericBoxExample.xaml" CodeType="Xaml" />
