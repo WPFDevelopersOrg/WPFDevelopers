@@ -12,6 +12,7 @@
     BorderBrush="{StaticResource WD.DangerSolidColorBrush}"
     BorderThickness="1"
     NoChrome="True"
+    TitleBackground="{StaticResource WD.DangerSolidColorBrush}"
     TitleHeight="30"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -22,31 +23,29 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" MinWidth="30" />
             </Grid.ColumnDefinitions>
-            <Rectangle
-                Grid.ColumnSpan="3"
-                Fill="{StaticResource WD.DangerSolidColorBrush}"
-                IsHitTestVisible="False" />
             <TextBlock
                 Margin="10,0"
                 VerticalAlignment="Center"
-                Foreground="{StaticResource WD.WindowForegroundColorBrush}"
+                FontSize="14"
+                Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
                 IsHitTestVisible="False"
                 Text="Danger" />
             <Button
                 x:Name="CloseButton"
                 Grid.Column="2"
-                Width="30"
-                Height="30"
+                Width="25"
+                Height="25"
+                Margin="0,2,4,0"
                 HorizontalAlignment="Right"
+                wd:ElementHelper.IsRound="True"
                 Click="CloseButton_Click"
-                Style="{StaticResource WD.WindowButtonStyle}"
+                Style="{StaticResource WD.NormalButton}"
                 ToolTip="关闭">
-                <Path
+                <wd:PathIcon
                     Width="10"
                     Height="10"
-                    Data="{StaticResource WD.WindowCloseGeometry}"
-                    Fill="{StaticResource WD.WindowForegroundColorBrush}"
-                    Stretch="UniformToFill" />
+                    Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                    Kind="WindowClose" />
             </Button>
         </Grid>
     </wd:Window.TitleBar>
