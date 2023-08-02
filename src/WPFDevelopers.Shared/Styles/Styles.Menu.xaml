@@ -205,9 +205,19 @@
                 </Grid.ColumnDefinitions>
                 <ContentPresenter
                     x:Name="Icon"
-                    Margin="6,0,6,0"
+                    Margin="3,0,0,0"
                     VerticalAlignment="Center"
                     ContentSource="Icon" />
+                <Path
+                    x:Name="CheckMark"
+                    Width="12"
+                    Height="10"
+                    Margin="3,0,0,0"
+                    Data="{StaticResource WD.CheckMarkGeometry}"
+                    Fill="{TemplateBinding Foreground}"
+                    FlowDirection="LeftToRight"
+                    Stretch="Uniform"
+                    Visibility="Hidden" />
                 <ContentPresenter
                     x:Name="HeaderHost"
                     Grid.Column="2"
@@ -258,6 +268,10 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="Icon" Value="{x:Null}">
+                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
