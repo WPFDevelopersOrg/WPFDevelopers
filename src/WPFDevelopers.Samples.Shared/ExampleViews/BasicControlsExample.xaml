@@ -100,7 +100,7 @@
                                     <MenuItem Header="MenuItem 1.1.2" />
                                 </MenuItem>
                                 <Separator />
-                                <MenuItem Header="MenuItem 1.2" />
+                                <MenuItem Header="MenuItem 1.2" IsChecked="True" />
                                 <MenuItem Header="MenuItem 1.3" />
                                 <MenuItem Header="MenuItem 1.4" />
                                 <MenuItem Header="MenuItem 1.5" />
