@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
@@ -10,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Xml.Linq;
 using WPFDevelopers.Controls.Runtimes;
 using WPFDevelopers.Controls.Runtimes.Interop;
 using WPFDevelopers.Controls.Runtimes.Shell32;
@@ -103,7 +106,7 @@ namespace WPFDevelopers.Controls
             Start();
             if (Application.Current != null)
             {
-                //Application.Current.MainWindow.Closed += (s, e) => Dispose();
+                WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
                 Application.Current.Exit += (s, e) => Dispose();
             }
             NotifyIconCache = this;
@@ -113,13 +116,35 @@ namespace WPFDevelopers.Controls
             DataContextProperty.OverrideMetadata(typeof(NotifyIcon), new FrameworkPropertyMetadata(DataContextPropertyChanged));
             ContextMenuProperty.OverrideMetadata(typeof(NotifyIcon), new FrameworkPropertyMetadata(ContextMenuPropertyChanged));
         }
+
+        private void Resources_ThemeChanged(ThemeType currentTheme)
+        {
+#if NET40
+            UpdateDefaultStyle();
+#else
+            ContextMenu.UpdateDefaultStyle();
+#endif
+        }
+
+        void UpdateDefaultStyle()
+        {
+            var currentContextMenu = ContextMenu;
+            var newContextMenu = new ContextMenu();
+            var itemsToMove = currentContextMenu.Items.OfType<MenuItem>().ToList();
+            currentContextMenu.Items.Clear();
+            itemsToMove.ForEach(item => newContextMenu.Items.Add(item));
+            ContextMenu = newContextMenu;
+        }
+
         private static void DataContextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) =>
             ((NotifyIcon)d).OnDataContextPropertyChanged(e);
+
         private void OnDataContextPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             UpdateDataContext(_contextContent, e.OldValue, e.NewValue);
             UpdateDataContext(ContextMenu, e.OldValue, e.NewValue);
         }
+
         private void UpdateDataContext(FrameworkElement target, object oldValue, object newValue)
         {
             if (target == null || BindingOperations.GetBindingExpression(target, DataContextProperty) != null) return;
@@ -128,6 +153,7 @@ namespace WPFDevelopers.Controls
                 target.DataContext = newValue ?? this;
             }
         }
+
         private static void ContextMenuPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctl = (NotifyIcon)d;
