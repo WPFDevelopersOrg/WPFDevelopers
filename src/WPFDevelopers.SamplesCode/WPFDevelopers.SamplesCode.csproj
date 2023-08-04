@@ -127,6 +127,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ScrollViewer\ScrollViewerAnimation.cs" Link="Controls\ScrollViewer\ScrollViewerAnimation.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ScrollViewer\ScrollViewerBehavior.cs" Link="Controls\ScrollViewer\ScrollViewerBehavior.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\SongWords\SongWords.cs" Link="Controls\SongWords\SongWords.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CountdownTimer\CountdownTimer.cs" Link="Controls\CountdownTimer\CountdownTimer.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ElementAdorner.cs" Link="Controls\ElementAdorner\ElementAdorner.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ThumbAngle.cs" Link="Controls\ElementAdorner\ThumbAngle.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.cs" Link="Controls\CropControl\CropControl.cs" />
