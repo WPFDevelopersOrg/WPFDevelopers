@@ -33,6 +33,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type wd:Window}">
                     <Border
+                        Name="PART_Border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
@@ -167,7 +168,7 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="LayoutRoot" Property="Margin" Value="7" />
+                            <Setter TargetName="PART_Border" Property="Margin" Value="7" />
                         </Trigger>
                         <Trigger Property="WindowStyle" Value="ToolWindow">
                             <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
