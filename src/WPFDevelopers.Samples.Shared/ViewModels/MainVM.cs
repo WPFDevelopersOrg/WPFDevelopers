@@ -306,6 +306,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.NumericBox:
                     ControlPanel = new NumericBoxExample();
                     break;
+                case MenuEnum.ColorPicker:
+                    ControlPanel = new ColorPickerExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
