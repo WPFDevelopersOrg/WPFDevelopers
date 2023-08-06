@@ -26,6 +26,7 @@ namespace WPFDevelopers.Utilities
         public static bool LessThanOrClose(double value1, double value2) => (value1 < value2) || AreClose(value1, value2);
 
         public static bool GreaterThanOrClose(double value1, double value2) => (value1 > value2) || AreClose(value1, value2);
+
         [StructLayout(LayoutKind.Explicit)]
         private struct NanUnion
         {
@@ -34,6 +35,7 @@ namespace WPFDevelopers.Utilities
             [FieldOffset(0)]
             internal UInt64 UintValue;
         }
+
         public static bool IsNaN(double value)
         {
             NanUnion t = new NanUnion();
@@ -43,6 +45,11 @@ namespace WPFDevelopers.Utilities
             UInt64 man = t.UintValue & 0x000fffffffffffff;
 
             return (exp == 0x7ff0000000000000 || exp == 0xfff0000000000000) && (man != 0);
+        }
+
+        public static bool IsOne(double value)
+        {
+            return Math.Abs(value - 1.0) < 10.0 * DBL_EPSILON;
         }
     }
 }
