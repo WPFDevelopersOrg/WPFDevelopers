@@ -9,6 +9,8 @@
     <Import_RootNamespace>WPFDevelopers</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\ColorPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Assists\ThincknessAssert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge\Badge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBar.cs" />
@@ -24,9 +26,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PackIconKind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PathIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\BreadCrumbBarConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorTypeToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\HalfValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightEqualValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\TextBoxValueChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DatePickerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ListBoxItemExtensions.cs" />
@@ -119,6 +124,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\StepIndexConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\IndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ObjectNullToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\ColorUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\AudioPlayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ControlsHelper.cs" />
@@ -422,6 +428,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\CircularProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\ColorPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
