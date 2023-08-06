@@ -19,6 +19,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
