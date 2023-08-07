@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Windows.Media;
 
 namespace WPFDevelopers.Utilities
@@ -13,22 +14,38 @@ namespace WPFDevelopers.Utilities
             double saturation = sValue;
             if (double.IsNaN(saturation))
             {
-                var s = ColorFromS(color);
-                saturation = (double) s / 100 ;
+                saturation = ColorFromS(color);
+                saturation = saturation / 100 ;
             }
             double lightness = lValue;
             if (double.IsNaN(lightness))
             {
-                var l = ColorFromL(color);
-                lightness = (double)l / 100;
+                lightness = ColorFromL(color);
+                lightness = lightness / 100;
             }
+
+            //double max = Math.Max(Math.Max(r, g), b);
+            //double min = Math.Min(Math.Min(r, g), b);
+            //double delta = max - min;
+
+            //int h = 0;
+            //if (delta != 0)
+            //{
+            //    if (max == r)
+            //        h = (int)(60 * (((g - b) / delta) % 6));
+            //    else if (max == g)
+            //        h = (int)(60 * (((b - r) / delta) + 2));
+            //    else if (max == b)
+            //        h = (int)(60 * (((r - g) / delta) + 4));
+            //}
+
+            //int s = max == 0 ? 0 : (int)(delta / max * 100);
+            //int l = (int)((max + min) / 2 / 255 * 100);
 
             double chroma = (1 - Math.Abs(2 * lightness - 1)) * saturation;
             double huePrime = hue / 60.0;
             double x = chroma * (1 - Math.Abs(huePrime % 2 - 1));
-
             double red = 0, green = 0, blue = 0;
-
             if (huePrime >= 0 && huePrime < 1)
             {
                 red = chroma;
@@ -59,13 +76,10 @@ namespace WPFDevelopers.Utilities
                 red = chroma;
                 blue = x;
             }
-
             double m = lightness - chroma / 2;
             byte r = (byte)((red + m) * 255);
             byte g = (byte)((green + m) * 255);
             byte b = (byte)((blue + m) * 255);
-
-
             return Color.FromRgb(r, g, b);
         }
 
