@@ -51,5 +51,6 @@ namespace WPFDevelopers.Controls
         [Description("WD.ReturnGeometry")] Return,
         [Description("WD.HomeGeometry")] Home,
         [Description("WD.BreadCrumbBarGeometry")] BreadCrumbBar,
+        [Description("WD.UnfoldMoreGeometry")] UnfoldMore,
     }
 }
