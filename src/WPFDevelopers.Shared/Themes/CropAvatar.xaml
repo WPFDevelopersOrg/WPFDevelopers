@@ -45,7 +45,6 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
                                 Style="{StaticResource WD.PathButton}"
-                                ToolTip="更换图片"
                                 Visibility="Collapsed">
                                 <controls:PathIcon
                                     Width="15"
@@ -57,20 +56,12 @@
                                 x:Name="PART_AddButton"
                                 Width="40"
                                 Height="40"
-                                Style="{StaticResource WD.PathButton}"
-                                ToolTip="选择图片">
-                                <Path
+                                Style="{StaticResource WD.PathButton}">
+                                <controls:PathIcon
                                     Width="20"
                                     Height="20"
-                                    Data="{StaticResource WD.AddGeometry}"
-                                    Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}"
-                                    IsHitTestVisible="False"
-                                    RenderTransformOrigin="0.5,0.5"
-                                    Stretch="Fill">
-                                    <Path.RenderTransform>
-                                        <RotateTransform Angle="45" />
-                                    </Path.RenderTransform>
-                                </Path>
+                                    Foreground="{StaticResource WD.PrimaryNormalSolidColorBrush}"
+                                    Kind="Add" />
                             </Button>
                         </controls:SmallPanel>
                     </Canvas>
