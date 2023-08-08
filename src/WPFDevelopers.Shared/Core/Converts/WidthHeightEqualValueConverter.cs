@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media.Media3D;
 
 namespace WPFDevelopers.Converts
 {
-    class WidthHeightEqualValueConverter : IMultiValueConverter
+    internal class WidthHeightEqualValueConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var width = (double)values[0];
-            var height = (double)values[1];
+            var width = (double) values[0];
+            var height = (double) values[1];
             if (width == 0 && height == 0)
                 return 0;
             var min = Math.Min(width, height);
