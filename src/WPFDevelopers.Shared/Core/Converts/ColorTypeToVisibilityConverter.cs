@@ -10,10 +10,8 @@ namespace WPFDevelopers.Converts
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Enum enumValue && parameter is Enum targetEnumValue)
-            {
                 if (enumValue.Equals(targetEnumValue))
                     return Visibility.Visible;
-            }
             return Visibility.Collapsed;
         }
 
