@@ -283,6 +283,7 @@
                                     <StackPanel>
                                         <TextBox
                                             helpers:TextBoxHelper.AllowOnlyNumericInput="True"
+                                            helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
                                             helpers:TextBoxHelper.SelectAllOnClick="True"
                                             Style="{StaticResource WD.TextBoxColorPicker}"
                                             Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.HToColorConverter}}" />
@@ -290,6 +291,7 @@
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
                                         <TextBox
+                                            helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
                                             helpers:TextBoxHelper.SelectAllOnClick="True"
                                             Style="{StaticResource WD.TextBoxColorPicker}"
                                             Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.SToColorConverter}}" />
@@ -297,6 +299,7 @@
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
                                         <TextBox
+                                            helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
                                             helpers:TextBoxHelper.SelectAllOnClick="True"
                                             Style="{StaticResource WD.TextBoxColorPicker}"
                                             Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.LToColorConverter}}" />
@@ -308,6 +311,7 @@
                                     Margin="12,0"
                                     Visibility="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorTypeToVisibilityConverter}, ConverterParameter={x:Static controls:ColorTypeEnum.HEX}}">
                                     <TextBox
+                                        helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
                                         helpers:TextBoxHelper.SelectAllOnClick="True"
                                         MaxLength="9"
                                         Text="{Binding SelectedColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorToStringConverter}}"
