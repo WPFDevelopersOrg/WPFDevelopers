@@ -104,7 +104,6 @@ namespace WPFDevelopers.Converts
         {
             _curColor = (Color) value;
             return $"{(int) ColorUtil.RgbToHSL(_curColor.Value).H}";
-            //return $"{ColorUtil.ColorFromH(_curColor.Value)}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -112,7 +111,6 @@ namespace WPFDevelopers.Converts
             var colorStr = (string) value;
             if (!string.IsNullOrWhiteSpace(colorStr) && double.TryParse(colorStr, out var hValue))
                 _curColor = ColorUtil.ConvertHSLToColor(_curColor.Value, hValue % 360);
-            //_curColor = ColorUtil.ConvertHSLToColor(_curColor.Value, hValue: hValue % 360);
             return _curColor;
         }
     }
@@ -125,7 +123,6 @@ namespace WPFDevelopers.Converts
         {
             _curColor = (Color) value;
             return $"{Math.Round(ColorUtil.RgbToHSL(_curColor.Value).S * 100)}%";
-            //return $"{ColorUtil.ColorFromS(_curColor.Value)}%";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -133,7 +130,6 @@ namespace WPFDevelopers.Converts
             var colorStr = (string) value;
             if (!string.IsNullOrWhiteSpace(colorStr) && double.TryParse(colorStr, out var sValue))
                 _curColor = ColorUtil.ConvertHSLToColor(_curColor.Value, sl: sValue / 100);
-            //_curColor = ColorUtil.ConvertHSLToColor(_curColor.Value, sValue: sValue / 100);
             return _curColor;
         }
     }
@@ -145,7 +141,6 @@ namespace WPFDevelopers.Converts
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             _curColor = (Color) value;
-            //return $"{ColorUtil.ColorFromL(_curColor.Value)}%";
             return $"{Math.Round(ColorUtil.RgbToHSL(_curColor.Value).L * 100)}%";
         }
 
@@ -154,7 +149,6 @@ namespace WPFDevelopers.Converts
             var colorStr = (string) value;
             if (!string.IsNullOrWhiteSpace(colorStr) && double.TryParse(colorStr, out var lValue))
                 _curColor = ColorUtil.ConvertHSLToColor(_curColor.Value, l: lValue / 100);
-            //_curColor = ColorUtil.ConvertHSLToColor(_curColor.Value, lValue: lValue / 100);
             return _curColor;
         }
     }
