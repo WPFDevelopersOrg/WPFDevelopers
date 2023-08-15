@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
+using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Utilities
 {
@@ -19,7 +20,7 @@ namespace WPFDevelopers.Utilities
             return rgb;
         }
 
-        private static Color HSLToRgb(HSLColor hslColor)
+        private static Color HSLToRgb(HSL hslColor)
         {
             var rgbColor = new Color();
             if (hslColor.S == 0)
@@ -75,9 +76,9 @@ namespace WPFDevelopers.Utilities
             return color;
         }
 
-        public static HSLColor RgbToHSL(Color rgbColor)
+        public static HSL RgbToHSL(Color rgbColor)
         {
-            var hslColor = new HSLColor();
+            var hslColor = new HSL();
             var r = (double) rgbColor.R / 255;
             var g = (double) rgbColor.G / 255;
             var b = (double) rgbColor.B / 255;
@@ -113,64 +114,7 @@ namespace WPFDevelopers.Utilities
 
             return hslColor;
         }
-        //public static Color ConvertHSLToColor(Color color, double hValue = double.NaN, double sValue = double.NaN, double lValue = double.NaN)
-        //{
-        //    double hue = hValue;
-        //    if (double.IsNaN(hue))
-        //        hue = ColorFromH(color) % 360;
-        //    double saturation = sValue;
-        //    if (double.IsNaN(saturation))
-        //    {
-        //        saturation = ColorFromS(color);
-        //        saturation = saturation / 100 ;
-        //    }
-        //    double lightness = lValue;
-        //    if (double.IsNaN(lightness))
-        //    {
-        //        lightness = ColorFromL(color);
-        //        lightness = lightness / 100;
-        //    }
-
-        //    double chroma = (1 - Math.Abs(2 * lightness - 1)) * saturation;
-        //    double huePrime = hue / 60.0;
-        //    double x = chroma * (1 - Math.Abs(huePrime % 2 - 1));
-        //    double red = 0, green = 0, blue = 0;
-        //    if (huePrime >= 0 && huePrime < 1)
-        //    {
-        //        red = chroma;
-        //        green = x;
-        //    }
-        //    else if (huePrime >= 1 && huePrime < 2)
-        //    {
-        //        red = x;
-        //        green = chroma;
-        //    }
-        //    else if (huePrime >= 2 && huePrime < 3)
-        //    {
-        //        green = chroma;
-        //        blue = x;
-        //    }
-        //    else if (huePrime >= 3 && huePrime < 4)
-        //    {
-        //        green = x;
-        //        blue = chroma;
-        //    }
-        //    else if (huePrime >= 4 && huePrime < 5)
-        //    {
-        //        red = x;
-        //        blue = chroma;
-        //    }
-        //    else if (huePrime >= 5 && huePrime < 6)
-        //    {
-        //        red = chroma;
-        //        blue = x;
-        //    }
-        //    double m = lightness - chroma / 2;
-        //    byte r = (byte)((red + m) * 255);
-        //    byte g = (byte)((green + m) * 255);
-        //    byte b = (byte)((blue + m) * 255);
-        //    return Color.FromRgb(r, g, b);
-        //}
+       
         public static void HsbFromColor(Color C, ref double H, ref double S, ref double B)
         {
             var r = C.R / 255d;
@@ -268,75 +212,6 @@ namespace WPFDevelopers.Utilities
             return Color.FromRgb((byte) Math.Round(red * 255.0), (byte) Math.Round(green * 255.0),
                 (byte) Math.Round(blue * 255.0));
         }
-
-        //public static int ColorFromH(Color color)
-        //{
-        //    double r = color.R / 255.0;
-        //    double g = color.G / 255.0;
-        //    double b = color.B / 255.0;
-
-        //    double max = Math.Max(r, Math.Max(g, b));
-        //    double min = Math.Min(r, Math.Min(g, b));
-
-        //    double hue = 0;
-
-        //    if (max == min)
-        //    {
-        //        hue = 0;
-        //    }
-        //    else if (max == r)
-        //    {
-        //        hue = ((g - b) / (max - min)) % 6;
-        //    }
-        //    else if (max == g)
-        //    {
-        //        hue = ((b - r) / (max - min)) + 2;
-        //    }
-        //    else if (max == b)
-        //    {
-        //        hue = ((r - g) / (max - min)) + 4;
-        //    }
-
-        //    hue *= 60;
-
-        //    if (hue < 0)
-        //    {
-        //        hue += 360;
-        //    }
-        //    return (int)hue;
-        //}
-
-        //public static int ColorFromS(Color color)
-        //{
-        //    double r = color.R / 255.0;
-        //    double g = color.G / 255.0;
-        //    double b = color.B / 255.0;
-        //    double max = Math.Max(r, Math.Max(g, b));
-        //    double min = Math.Min(r, Math.Min(g, b));
-        //    double saturation = max == 0 ? 0 : (max - min) / max;
-        //    return (int)(saturation * 100);
-        //}
-
-        //public static int ColorFromL(Color color)
-        //{
-        //    double r = color.R / 255.0;
-        //    double g = color.G / 255.0;
-        //    double b = color.B / 255.0;
-
-        //    double max = Math.Max(r, Math.Max(g, b));
-        //    double min = Math.Min(r, Math.Min(g, b));
-
-        //    double lightness = (max + min) / 2;
-
-        //    return (int)(lightness * 100);
-        //}
     }
 
-    public struct HSLColor
-    {
-        public double A;
-        public double H;
-        public double L;
-        public double S;
-    }
 }
