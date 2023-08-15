@@ -72,6 +72,7 @@
                                         x:Name="PART_NumericUp"
                                         Grid.Row="0"
                                         Margin="0,1,1,0"
+                                        Padding="0"
                                         Command="{x:Static controls:NumericBox.IncreaseCommand}"
                                         Delay="{TemplateBinding Delay}"
                                         IsTabStop="False"
@@ -82,6 +83,7 @@
                                         x:Name="PART_NumericDown"
                                         Grid.Row="2"
                                         Margin="0,0,1,1"
+                                        Padding="0"
                                         Command="{x:Static controls:NumericBox.DecreaseCommand}"
                                         Delay="{TemplateBinding Delay}"
                                         IsTabStop="False">
