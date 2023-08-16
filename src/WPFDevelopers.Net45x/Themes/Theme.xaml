@@ -6271,7 +6271,7 @@
 													<GeometryDrawing.Brush>
 														<LinearGradientBrush EndPoint="0,1">
 															<GradientStop Offset="0" Color="#00000000" />
-															<GradientStop Offset="1" Color="Black" />
+															<GradientStop Offset="1" Color="{StaticResource WD.BlackColor}" />
 														</LinearGradientBrush>
 													</GeometryDrawing.Brush>
 													<GeometryDrawing.Geometry>
