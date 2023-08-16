@@ -82,10 +82,7 @@
                                 </DockPanel>
                             </controls:SmallPanel>
                             <controls:SmallPanel Grid.Row="2" Margin="140,20,10,10">
-                                <UniformGrid
-                                    Height="38"
-                                    HorizontalAlignment="Right"
-                                    Rows="1">
+                                <UniformGrid Height="38" Rows="1">
                                     <Button
                                         x:Name="PART_ButtonCancel"
                                         Width="60"

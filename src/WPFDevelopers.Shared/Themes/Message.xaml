@@ -106,19 +106,18 @@
                                 <Button
                                     x:Name="PART_CloseButton"
                                     Grid.Column="2"
-                                    Width="30"
-                                    Height="28"
-                                    Padding="0"
+                                    Width="25"
+                                    Height="25"
+                                    Margin="0,2,4,0"
                                     HorizontalAlignment="Right"
-                                    Style="{StaticResource WD.PathButton}">
-                                    <Path
+                                    helpers:ElementHelper.IsRound="True"
+                                    Style="{StaticResource WD.NormalButton}"
+                                    ToolTip="关闭">
+                                    <controls:PathIcon
                                         Width="10"
                                         Height="10"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Data="{DynamicResource WD.WindowCloseGeometry}"
-                                        Fill="{DynamicResource WD.SecondaryTextSolidColorBrush}"
-                                        Stretch="Fill" />
+                                        Foreground="{DynamicResource WD.SecondaryTextSolidColorBrush}"
+                                        Kind="WindowClose" />
                                 </Button>
                             </Grid>
                         </Border>

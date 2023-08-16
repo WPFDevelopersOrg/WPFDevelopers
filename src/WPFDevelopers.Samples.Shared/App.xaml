@@ -13,6 +13,7 @@
                 <!--  需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤  -->
                 <wd:Resources Theme="Light" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
+                <!--  下方不用拷贝  -->
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CodeViewer/CodeViewer.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/TimeLine/TimeLine.xaml" />

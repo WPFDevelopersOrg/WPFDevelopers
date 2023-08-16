@@ -20,22 +20,22 @@
                 <ControlTemplate TargetType="{x:Type controls:AnimationAudio}">
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="PlayStoryboard" RepeatBehavior="Forever">
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="WD.AudioTwoGeometry" Storyboard.TargetProperty="(Path.Visibility)">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Path2" Storyboard.TargetProperty="(Path.Visibility)">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}" />
                             </ObjectAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PathAudioThree" Storyboard.TargetProperty="(Path.Visibility)">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_Path3" Storyboard.TargetProperty="(Path.Visibility)">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}" />
                             </ObjectAnimationUsingKeyFrames>
                             <ObjectAnimationUsingKeyFrames
                                 BeginTime="0:0:.3"
-                                Storyboard.TargetName="WD.AudioTwoGeometry"
+                                Storyboard.TargetName="PART_Path2"
                                 Storyboard.TargetProperty="(Path.Visibility)"
                                 Duration="0:0:.4">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}" />
                             </ObjectAnimationUsingKeyFrames>
                             <ObjectAnimationUsingKeyFrames
                                 BeginTime="0:0:.7"
-                                Storyboard.TargetName="PathAudioThree"
+                                Storyboard.TargetName="PART_Path3"
                                 Storyboard.TargetProperty="(Path.Visibility)"
                                 Duration="0:0:.4">
                                 <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}" />
@@ -68,7 +68,7 @@
                                     Fill="{TemplateBinding Foreground}"
                                     Stretch="Fill" />
                                 <Path
-                                    x:Name="PathAudioTwo"
+                                    x:Name="PART_Path2"
                                     Width="6"
                                     Margin="0,7"
                                     Data="{StaticResource WD.AudioTwoGeometry}"
@@ -77,7 +77,7 @@
                                     Stroke="Transparent"
                                     StrokeThickness="1.5" />
                                 <Path
-                                    x:Name="PathAudioThree"
+                                    x:Name="PART_Path3"
                                     Width="8"
                                     Margin="-3,4"
                                     Data="{StaticResource WD.AudioThreeGeometry}"

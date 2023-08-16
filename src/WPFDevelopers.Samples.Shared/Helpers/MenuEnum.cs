@@ -76,6 +76,7 @@
         Message,
         PathIcon,
         NumericBox,
+        ColorPicker,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

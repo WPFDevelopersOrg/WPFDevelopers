@@ -8,11 +8,12 @@ namespace WPFDevelopers.Helpers
     public static class ListBoxItemExtensions
     {
         public static readonly DependencyProperty AutoRemoveOnOpacityZeroProperty =
-        DependencyProperty.RegisterAttached("AutoRemoveOnOpacityZero", typeof(bool), typeof(ListBoxItemExtensions), new PropertyMetadata(false, OnAutoRemoveOnOpacityZeroChanged));
+            DependencyProperty.RegisterAttached("AutoRemoveOnOpacityZero", typeof(bool), typeof(ListBoxItemExtensions),
+                new PropertyMetadata(false, OnAutoRemoveOnOpacityZeroChanged));
 
         public static bool GetAutoRemoveOnOpacityZero(DependencyObject obj)
         {
-            return (bool)obj.GetValue(AutoRemoveOnOpacityZeroProperty);
+            return (bool) obj.GetValue(AutoRemoveOnOpacityZeroProperty);
         }
 
         public static void SetAutoRemoveOnOpacityZero(DependencyObject obj, bool value)
@@ -22,10 +23,10 @@ namespace WPFDevelopers.Helpers
 
         private static void OnAutoRemoveOnOpacityZeroChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            ListBoxItem item = obj as ListBoxItem;
+            var item = obj as ListBoxItem;
             if (item != null)
             {
-                if ((bool)e.NewValue)
+                if ((bool) e.NewValue)
                     item.Loaded += Item_Loaded;
                 else
                     item.Loaded -= Item_Loaded;
@@ -49,7 +50,7 @@ namespace WPFDevelopers.Helpers
                         var parent = ItemsControl.ItemsControlFromItemContainer(item);
                         if (parent != null)
                         {
-                            object selectedItem = parent.ItemContainerGenerator.ItemFromContainer(item);
+                            var selectedItem = parent.ItemContainerGenerator.ItemFromContainer(item);
                             parent.Items.Remove(selectedItem);
                             parent.Items.Refresh();
                         }

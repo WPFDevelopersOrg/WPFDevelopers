@@ -91,26 +91,22 @@
                                             x:Name="PART_Ellipse"
                                             Width="100"
                                             Height="100"
-                                            Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}"
-                                            ToolTip="关闭" />
-                                        <Path
+                                            Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}" />
+                                        <controls:PathIcon
                                             x:Name="PART_Path"
                                             Width="20"
                                             Height="20"
-                                            Data="{StaticResource WD.AddGeometry}"
-                                            Fill="{StaticResource WD.BackgroundSolidColorBrush}"
-                                            IsHitTestVisible="False"
-                                            RenderTransformOrigin="0.5,0.5"
-                                            Stretch="Fill" />
+                                            Foreground="{StaticResource WD.BackgroundSolidColorBrush}"
+                                            Kind="Add"
+                                            RenderTransformOrigin="0.5,0.5" />
                                     </controls:SmallPanel>
                                     <ControlTemplate.Triggers>
-                                        <Trigger Property="IsChecked" Value="false">
+                                        <Trigger Property="IsChecked" Value="True">
                                             <Setter TargetName="PART_Path" Property="RenderTransform">
                                                 <Setter.Value>
                                                     <RotateTransform Angle="45" />
                                                 </Setter.Value>
                                             </Setter>
-                                            <Setter TargetName="PART_Ellipse" Property="ToolTip" Value="展开" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>

@@ -15,7 +15,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Height" Value="16" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Foreground">
             <Setter.Value>
                 <Binding Path="Foreground" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Control}}" />
@@ -27,8 +27,8 @@
                 <ControlTemplate TargetType="{x:Type controls:PathIcon}">
                     <Viewbox
                         Margin="{TemplateBinding Padding}"
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         UseLayoutRounding="True">
                         <Path
                             x:Name="PART_Path"

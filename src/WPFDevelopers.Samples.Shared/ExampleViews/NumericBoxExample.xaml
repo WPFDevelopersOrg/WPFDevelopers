@@ -17,10 +17,12 @@
             Rows="1">
             <wd:NumericBox
                 Width="100"
+                Height="30"
                 Maximum="100"
                 Minimum="0" />
             <wd:NumericBox
                 Width="100"
+                Height="40"
                 Margin="10,0"
                 Maximum="1000"
                 Minimum="100"

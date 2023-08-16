@@ -114,6 +114,9 @@
       <SubType>Code</SubType>
       <DependentUpon>CircularProgressBarExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ColorPickerExample.xaml.cs">
+      <DependentUpon>ColorPickerExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CountdownTimerExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>CountdownTimerExample.xaml</DependentUpon>
@@ -553,6 +556,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircularProgressBarExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ColorPickerExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

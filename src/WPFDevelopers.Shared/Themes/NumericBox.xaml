@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -42,6 +43,7 @@
                                     VerticalAlignment="Center"
                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
                                     Background="{x:Null}"
                                     BorderThickness="0"
                                     FocusVisualStyle="{x:Null}"
@@ -70,6 +72,7 @@
                                         x:Name="PART_NumericUp"
                                         Grid.Row="0"
                                         Margin="0,1,1,0"
+                                        Padding="0"
                                         Command="{x:Static controls:NumericBox.IncreaseCommand}"
                                         Delay="{TemplateBinding Delay}"
                                         IsTabStop="False"
@@ -80,6 +83,7 @@
                                         x:Name="PART_NumericDown"
                                         Grid.Row="2"
                                         Margin="0,0,1,1"
+                                        Padding="0"
                                         Command="{x:Static controls:NumericBox.DecreaseCommand}"
                                         Delay="{TemplateBinding Delay}"
                                         IsTabStop="False">

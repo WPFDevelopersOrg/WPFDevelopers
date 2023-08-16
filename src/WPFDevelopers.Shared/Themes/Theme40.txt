@@ -66,3 +66,4 @@ CropImage.xaml
 Message.xaml
 PathIcon.xaml
 NumericBox.xaml
+ColorPicker.xaml

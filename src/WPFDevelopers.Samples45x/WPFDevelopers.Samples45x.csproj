@@ -13,7 +13,7 @@
 		<ApplicationIcon>..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico</ApplicationIcon>
 	</PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview1" />
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview2" />
 	</ItemGroup>
 	
 	<ItemGroup>

@@ -102,19 +102,19 @@ namespace WPFDevelopers.Controls
 
             _closeButton = GetTemplateChild(CloseButtonTemplateName) as Button;
             if (_closeButton != null)
-                _closeButton.Click += _closeButton_Click;
+                _closeButton.Click += CloseButton_Click;
             _buttonCancel = GetTemplateChild(ButtonCancelTemplateName) as Button;
             if (_buttonCancel != null)
             {
                 _buttonCancel.Visibility = _cancelVisibility;
-                _buttonCancel.Click += _buttonCancel_Click;
+                _buttonCancel.Click += ButtonCancel_Click;
             }
 
             _buttonOK = GetTemplateChild(ButtonOKTemplateName) as Button;
             if (_buttonOK != null)
             {
                 _buttonOK.Visibility = _okVisibility;
-                _buttonOK.Click += _buttonOK_Click;
+                _buttonOK.Click += ButtonOK_Click;
             }
 
             if (Owner == null)
@@ -143,19 +143,19 @@ namespace WPFDevelopers.Controls
 #endif
         }
 
-        private void _buttonOK_Click(object sender, RoutedEventArgs e)
+        private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             Result = MessageBoxResult.OK;
             Close();
         }
 
-        private void _buttonCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             Result = MessageBoxResult.Cancel;
             Close();
         }
 
-        private void _closeButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
