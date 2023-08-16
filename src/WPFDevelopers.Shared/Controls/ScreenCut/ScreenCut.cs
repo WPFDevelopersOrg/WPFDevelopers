@@ -216,33 +216,33 @@ namespace WPFDevelopers.Controls
             _rectangleRight = GetTemplateChild(RectangleRightTemplateName) as Rectangle;
             _rectangleBottom = GetTemplateChild(RectangleBottomTemplateName) as Rectangle;
             _border = GetTemplateChild(BorderTemplateName) as Border;
-            _border.MouseLeftButtonDown += _border_MouseLeftButtonDown;
+            _border.MouseLeftButtonDown += Border_MouseLeftButtonDown;
 
             _editBar = GetTemplateChild(EditBarTemplateName) as Border;
             _buttonSave = GetTemplateChild(ButtonSaveTemplateName) as Button;
             if (_buttonSave != null)
-                _buttonSave.Click += _buttonSave_Click;
+                _buttonSave.Click += ButtonSave_Click;
             _buttonCancel = GetTemplateChild(ButtonCancelTemplateName) as Button;
             if (_buttonCancel != null)
-                _buttonCancel.Click += _buttonCancel_Click;
+                _buttonCancel.Click += ButtonCancel_Click;
             _buttonComplete = GetTemplateChild(ButtonCompleteTemplateName) as Button;
             if (_buttonComplete != null)
-                _buttonComplete.Click += _buttonComplete_Click;
+                _buttonComplete.Click += ButtonComplete_Click;
             _radioButtonRectangle = GetTemplateChild(RadioButtonRectangleTemplateName) as RadioButton;
             if (_radioButtonRectangle != null)
-                _radioButtonRectangle.Click += _radioButtonRectangle_Click;
+                _radioButtonRectangle.Click += RadioButtonRectangle_Click;
             _radioButtonEllipse = GetTemplateChild(RadioButtonEllipseTemplateName) as RadioButton;
             if (_radioButtonEllipse != null)
-                _radioButtonEllipse.Click += _radioButtonEllipse_Click;
+                _radioButtonEllipse.Click += RadioButtonEllipse_Click;
             _radioButtonArrow = GetTemplateChild(RadioButtonArrowTemplateName) as RadioButton;
             if (_radioButtonArrow != null)
-                _radioButtonArrow.Click += _radioButtonArrow_Click;
+                _radioButtonArrow.Click += RadioButtonArrow_Click;
             _radioButtonInk = GetTemplateChild(RadioButtonInkTemplateName) as RadioButton;
             if (_radioButtonInk != null)
-                _radioButtonInk.Click += _radioButtonInk_Click;
+                _radioButtonInk.Click += RadioButtonInk_Click;
             _radioButtonText = GetTemplateChild(RadioButtonTextTemplateName) as RadioButton;
             if (_radioButtonText != null)
-                _radioButtonText.Click += _radioButtonText_Click;
+                _radioButtonText.Click += RadioButtonText_Click;
             _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width;
             _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height;
             //_canvas.Background = new ImageBrush(ControlsHelper.Capture());
@@ -254,7 +254,7 @@ namespace WPFDevelopers.Controls
             _popupBorder = GetTemplateChild(PopupBorderTemplateName) as Border;
             _popupBorder.Loaded += (s, e) => { _popup.HorizontalOffset = -_popupBorder.ActualWidth / 3; };
             _wrapPanel = GetTemplateChild(WrapPanelColorTemplateName) as WrapPanel;
-            _wrapPanel.PreviewMouseDown += _wrapPanel_PreviewMouseDown;
+            _wrapPanel.PreviewMouseDown += WrapPanel_PreviewMouseDown;
             Loaded += ScreenCut_Loaded;
             controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
         }
@@ -322,22 +322,22 @@ namespace WPFDevelopers.Controls
             OnCanceled();
         }
 
-        private void _radioButtonInk_Click(object sender, RoutedEventArgs e)
+        private void RadioButtonInk_Click(object sender, RoutedEventArgs e)
         {
             RadioButtonChecked(_radioButtonInk, ScreenCutMouseType.DrawInk);
         }
 
-        private void _radioButtonText_Click(object sender, RoutedEventArgs e)
+        private void RadioButtonText_Click(object sender, RoutedEventArgs e)
         {
             RadioButtonChecked(_radioButtonText, ScreenCutMouseType.DrawText);
         }
 
-        private void _radioButtonArrow_Click(object sender, RoutedEventArgs e)
+        private void RadioButtonArrow_Click(object sender, RoutedEventArgs e)
         {
             RadioButtonChecked(_radioButtonArrow, ScreenCutMouseType.DrawArrow);
         }
 
-        private void _wrapPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void WrapPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.Source is RadioButton)
             {
@@ -346,12 +346,12 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private void _radioButtonRectangle_Click(object sender, RoutedEventArgs e)
+        private void RadioButtonRectangle_Click(object sender, RoutedEventArgs e)
         {
             RadioButtonChecked(_radioButtonRectangle, ScreenCutMouseType.DrawRectangle);
         }
 
-        private void _radioButtonEllipse_Click(object sender, RoutedEventArgs e)
+        private void RadioButtonEllipse_Click(object sender, RoutedEventArgs e)
         {
             RadioButtonChecked(_radioButtonEllipse, ScreenCutMouseType.DrawEllipse);
         }
@@ -405,13 +405,13 @@ namespace WPFDevelopers.Controls
             EditBarPosition();
         }
         
-        private void _border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (screenCutMouseType == ScreenCutMouseType.Default)
                 screenCutMouseType = ScreenCutMouseType.MoveMouse;
         }
         
-        private void _buttonSave_Click(object sender, RoutedEventArgs e)
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog();
             dlg.FileName = $"WPFDevelopers{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
@@ -432,7 +432,7 @@ namespace WPFDevelopers.Controls
             }
         }
         
-        private void _buttonComplete_Click(object sender, RoutedEventArgs e)
+        private void ButtonComplete_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = CutBitmap();
             if (CutCompleted != null)
@@ -455,7 +455,7 @@ namespace WPFDevelopers.Controls
                 new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
         }
         
-        private void _buttonCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             OnCanceled();
         }
@@ -593,7 +593,7 @@ namespace WPFDevelopers.Controls
                     textBorder.PreviewMouseLeftButtonDown += (s, e) =>
                     {
                         _radioButtonText.IsChecked = true;
-                        _radioButtonText_Click(null, null);
+                        RadioButtonText_Click(null, null);
                         SelectElement();
                         var border = s as Border;
                         frameworkElement = border;
@@ -679,7 +679,7 @@ namespace WPFDevelopers.Controls
                     polyLine.MouseLeftButtonDown += (s, e) =>
                     {
                         _radioButtonInk.IsChecked = true;
-                        _radioButtonInk_Click(null, null);
+                        RadioButtonInk_Click(null, null);
                         SelectElement();
                         frameworkElement = s as Polyline;
                         frameworkElement.Opacity = .7;
@@ -713,7 +713,7 @@ namespace WPFDevelopers.Controls
                 controlArrow.MouseLeftButtonDown += (s, e) =>
                 {
                     _radioButtonArrow.IsChecked = true;
-                    _radioButtonArrow_Click(null, null);
+                    RadioButtonArrow_Click(null, null);
                     SelectElement();
                     frameworkElement = s as Control;
                     frameworkElement.Opacity = .7;
@@ -841,7 +841,7 @@ namespace WPFDevelopers.Controls
                         borderRectangle.MouseLeftButtonDown += (s, e) =>
                         {
                             _radioButtonRectangle.IsChecked = true;
-                            _radioButtonRectangle_Click(null, null);
+                            RadioButtonRectangle_Click(null, null);
                             SelectElement();
                             frameworkElement = s as Border;
                             frameworkElement.Opacity = .7;
@@ -863,7 +863,7 @@ namespace WPFDevelopers.Controls
                         drawEllipse.MouseLeftButtonDown += (s, e) =>
                         {
                             _radioButtonEllipse.IsChecked = true;
-                            _radioButtonEllipse_Click(null, null);
+                            RadioButtonEllipse_Click(null, null);
                             SelectElement();
                             frameworkElement = s as Ellipse;
                             frameworkElement.Opacity = .7;
