@@ -20,8 +20,6 @@
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
-### [ Use only the base control to jump →](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal) https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal  
-<!-- ![Blue](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Blue.png)  -->
 ### [ Wiki → Quick update in progress](https://github.com/WPFDevelopersOrg/WPFDevelopers/wiki)   
 ###  Visual Studio 2022  
 
@@ -80,6 +78,21 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ###  Step 3: Add the namespace;
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
+----------
+### ColorPicker
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ColorPicker.gif"/>   
+
+----------
+### NumericBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NumericBox.gif"/>   
+
+----------
+### PathIcon
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PathIcon.gif"/>   
 
 ----------
 ### Window
