@@ -32,6 +32,9 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview2" />
+	</ItemGroup>
+	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico">
 			<Link>WPFDevelopers.ico</Link>
 		</Resource>
@@ -172,7 +175,6 @@
 		</Resource>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\WPFDevelopers.Net40\WPFDevelopers.Net40.csproj" />
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
