@@ -58,8 +58,6 @@
         </Setter>
     </Style>
 
-
-
     <Style x:Key="WD.ColorPickerSlider" TargetType="{x:Type Slider}">
         <Setter Property="Background" Value="{StaticResource WD.ColorPickerRainbowBrush}" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
