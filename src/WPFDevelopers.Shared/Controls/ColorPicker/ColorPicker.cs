@@ -110,7 +110,7 @@ namespace WPFDevelopers.Controls
             if (_canvas != null)
             {
                 _canvas.Loaded += Canvas_Loaded;
-                _canvas.MouseUp += _canvas_MouseUp;
+                _canvas.MouseUp += Canvas_MouseUp;
             }
 
             _thumb = GetTemplateChild(ThumbTemplateName) as Thumb;
@@ -124,16 +124,16 @@ namespace WPFDevelopers.Controls
             currentGridStateIndex = 0;
             colorTypeEnums = (ColorTypeEnum[]) Enum.GetValues(typeof(ColorTypeEnum));
             if (_button != null)
-                _button.Click += _button_Click;
+                _button.Click += Button_Click;
         }
 
-        private void _button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             currentGridStateIndex = (currentGridStateIndex + 1) % colorTypeEnums.Length;
             ColorType = colorTypeEnums[currentGridStateIndex];
         }
 
-        private void _canvas_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
             var canvasPosition = e.GetPosition(_canvas);
             GetHSB(canvasPosition);
