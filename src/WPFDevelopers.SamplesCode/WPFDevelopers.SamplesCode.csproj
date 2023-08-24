@@ -139,6 +139,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml.cs" Link="ExampleViews\PathIconExample.xaml.cs" DependentUpon="PathIconExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumericBoxExample.xaml.cs" Link="ExampleViews\NumericBoxExample.xaml.cs" DependentUpon="NumericBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ColorPickerExample.xaml.cs" Link="ExampleViews\ColorPickerExample.xaml.cs" DependentUpon="ColorPickerExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml.cs" Link="ExampleViews\IPEditBoxExample.xaml.cs" DependentUpon="IPEditBoxExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -467,6 +468,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ColorPickerExample.xaml">
 			<Link>ExampleViews\ColorPickerExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml">
+			<Link>ExampleViews\IPEditBoxExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>
