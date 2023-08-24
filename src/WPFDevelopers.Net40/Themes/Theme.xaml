@@ -6354,7 +6354,7 @@
 								</UniformGrid>
 								<UniformGrid Grid.Column="1" Rows="1" Visibility="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorTypeToVisibilityConverter}, ConverterParameter={x:Static controls:ColorTypeEnum.HSL}}">
 									<StackPanel>
-										<TextBox helpers:TextBoxHelper.AllowOnlyNumericInput="True" helpers:TextBoxHelper.IsEnterUpdateEnabled="True" helpers:TextBoxHelper.SelectAllOnClick="True" Style="{StaticResource WD.TextBoxColorPicker}" Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.HToColorConverter}}" />
+										<TextBox helpers:TextBoxHelper.AllowOnlyNumericInput="True" helpers:TextBoxHelper.IsEnterUpdateEnabled="True" helpers:TextBoxHelper.MaxValue="360" helpers:TextBoxHelper.MinValue="0" helpers:TextBoxHelper.SelectAllOnClick="True" Style="{StaticResource WD.TextBoxColorPicker}" Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.HToColorConverter}}" />
 										<TextBlock Text="H" />
 									</StackPanel>
 									<StackPanel Grid.Column="1">
@@ -6402,8 +6402,8 @@
 							<Setter Property="VerticalAlignment" Value="Center" />
 						</Style>
 					</ControlTemplate.Resources>
-					<Border x:Name="Root" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
-						<ScrollViewer Padding="{TemplateBinding Padding}" HorizontalScrollBarVisibility="Auto">
+					<Border x:Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+						<ScrollViewer HorizontalScrollBarVisibility="Auto">
 							<Grid>
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition />
