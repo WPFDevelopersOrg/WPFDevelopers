@@ -181,6 +181,9 @@
       <SubType>Code</SubType>
       <DependentUpon>EdgeLightExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IPEditBoxExample.xaml.cs">
+      <DependentUpon>IPEditBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\LineChartExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>LineChartExample.xaml</DependentUpon>
@@ -624,6 +627,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\EdgeLightExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\IPEditBoxExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
