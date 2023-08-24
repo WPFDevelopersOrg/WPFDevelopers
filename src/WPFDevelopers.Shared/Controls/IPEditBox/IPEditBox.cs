@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,8 +19,6 @@ namespace WPFDevelopers.Controls
         private const string TextBox3TemplateName = "PART_TextBox3";
         private const string TextBox4TemplateName = "PART_TextBox4";
 
-
-
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -31,13 +31,13 @@ namespace WPFDevelopers.Controls
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as IPEditBox;
-            if (e.NewValue is string text && !ctrl._isChangingText)
+            if (e.NewValue is string text && !ctrl._isChangingText) 
                 ctrl.PasteTextIPTextBox(text);
         }
 
         private TextBox _textBox1, _textBox2, _textBox3, _textBox4;
-
         private bool _isChangingText = false;
+        private short _index = 0;
 
         public override void OnApplyTemplate()
         {
@@ -118,6 +118,7 @@ namespace WPFDevelopers.Controls
             {
                 var ip = $"{_textBox1.Text}.{_textBox2.Text}.{_textBox3.Text}.{_textBox4.Text}";
                 Clipboard.SetText(ip);
+                e.Handled = true;
             }
         }
 
@@ -133,51 +134,71 @@ namespace WPFDevelopers.Controls
 
         void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            var textbox = sender as TextBox;
+            switch (textbox.Name)
+            {
+                case TextBox1TemplateName:
+                    _index = 0;
+                    break;
+                case TextBox2TemplateName:
+                    _index = 1;
+                    break;
+                case TextBox3TemplateName:
+                    _index = 2;
+                    break;
+                case TextBox4TemplateName:
+                    _index = 3;
+                    break;
+            }
             if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.V)
             {
                 ClipboardHandle();
+                _isChangingText = false;
                 e.Handled = true;
             }
+            else if (e.Key == Key.Delete || e.Key == Key.Back)
+            {
+                _isChangingText = true;
+            }
+            else
+                _isChangingText = false;
         }
 
         void PasteTextIPTextBox(string text)
         {
+            _textBox1.TextChanged -= TextBox1_TextChanged;
+            _textBox2.TextChanged -= TextBox2_TextChanged;
+            _textBox3.TextChanged -= TextBox3_TextChanged;
+            _textBox4.TextChanged -= TextBox4_TextChanged;
             if (string.IsNullOrWhiteSpace(text))
             {
                 _textBox1.Text = string.Empty;
                 _textBox2.Text = string.Empty;
                 _textBox3.Text = string.Empty;
                 _textBox4.Text = string.Empty;
-                return;
             }
-            var strs = text.Split('.');
-            var _textboxBoxes = new TextBox[] { _textBox1, _textBox2, _textBox3, _textBox4 };
-            for (short i = 0; i < strs.Length && i < _textboxBoxes.Length; i++)
-                _textboxBoxes[i].Text = strs[i];
-        }
+            else
+            {
+                var strs = text.Split('.');
+                var _textboxBoxes = new TextBox[] { _textBox1, _textBox2, _textBox3, _textBox4 };
 
-        private void TextBox4_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            UpdateText();
-        }
-        private void TextBox3_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            if (_textBox3.Text.ToString().Length >= 3) _textBox4.Focus();
-            UpdateText();
-        }
+                if (_index == 0)
+                {
+                    for (short i = _index; i < strs.Length && i < _textboxBoxes.Length; i++)
+                        _textboxBoxes[i].Text = strs[i];
+                }
+                else
+                {
+                    for (short i = _index; i < strs.Length && i < _textboxBoxes.Length; i++)
+                        _textboxBoxes[i].Text = strs[i - 1];
+                }
 
-        private void TextBox2_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            if (_textBox2.Text.ToString().Length >= 3) _textBox3.Focus();
-            UpdateText();
+            }
+            _textBox1.TextChanged += TextBox1_TextChanged;
+            _textBox2.TextChanged += TextBox2_TextChanged;
+            _textBox3.TextChanged += TextBox3_TextChanged;
+            _textBox4.TextChanged += TextBox4_TextChanged;
         }
-
-        private void TextBox1_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            if (_textBox1.Text.ToString().Length >= 3) _textBox2.Focus();
-            UpdateText();
-        }
-
         void UpdateText()
         {
             var segments = new string[4]
@@ -187,10 +208,15 @@ namespace WPFDevelopers.Controls
                 _textBox3.Text.Trim(),
                 _textBox4.Text.Trim()
             };
-            _isChangingText = true;
-            var ips = string.Join(".", segments.Where(s => !string.IsNullOrEmpty(s)));
-            if (ips != Text)
-                SetValue(TextProperty, ips);
+            var allEmpty = segments.All(string.IsNullOrEmpty);
+            if (allEmpty)
+            {
+                SetValue(TextProperty, string.Empty);
+                return;
+            }
+            var ip = string.Join(".", segments.Where(s => !string.IsNullOrWhiteSpace(s)));
+            if (ip != Text)
+                SetValue(TextProperty, ip);
         }
     }
 }
