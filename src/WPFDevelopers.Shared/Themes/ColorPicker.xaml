@@ -292,8 +292,6 @@
                                     <StackPanel Grid.Column="1">
                                         <TextBox
                                             helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
-                                            helpers:TextBoxHelper.MaxValue="100"
-                                            helpers:TextBoxHelper.MinValue="0"
                                             helpers:TextBoxHelper.SelectAllOnClick="True"
                                             Style="{StaticResource WD.TextBoxColorPicker}"
                                             Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.SToColorConverter}}" />
@@ -302,8 +300,6 @@
                                     <StackPanel Grid.Column="2">
                                         <TextBox
                                             helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
-                                            helpers:TextBoxHelper.MaxValue="100"
-                                            helpers:TextBoxHelper.MinValue="0"
                                             helpers:TextBoxHelper.SelectAllOnClick="True"
                                             Style="{StaticResource WD.TextBoxColorPicker}"
                                             Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.LToColorConverter}}" />
