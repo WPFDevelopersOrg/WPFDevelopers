@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -112,6 +110,7 @@ namespace WPFDevelopers.Controls
             if (e.Command == ApplicationCommands.Paste)
             {
                 ClipboardHandle();
+                UpdateText();
                 e.Handled = true;
             }
             else if (e.Command == ApplicationCommands.Copy)
@@ -181,18 +180,8 @@ namespace WPFDevelopers.Controls
             {
                 var strs = text.Split('.');
                 var _textboxBoxes = new TextBox[] { _textBox1, _textBox2, _textBox3, _textBox4 };
-
-                if (_index == 0)
-                {
-                    for (short i = _index; i < strs.Length && i < _textboxBoxes.Length; i++)
-                        _textboxBoxes[i].Text = strs[i];
-                }
-                else
-                {
-                    for (short i = _index; i < strs.Length && i < _textboxBoxes.Length; i++)
-                        _textboxBoxes[i].Text = strs[i - 1];
-                }
-
+                for (short i = _index; i < strs.Length && i < _textboxBoxes.Length; i++)
+                    _textboxBoxes[i].Text = strs[i];
             }
             _textBox1.TextChanged += TextBox1_TextChanged;
             _textBox2.TextChanged += TextBox2_TextChanged;
@@ -214,7 +203,9 @@ namespace WPFDevelopers.Controls
                 SetValue(TextProperty, string.Empty);
                 return;
             }
-            var ip = string.Join(".", segments.Where(s => !string.IsNullOrWhiteSpace(s)));
+            var noEmpty = segments.Where(s => !string.IsNullOrWhiteSpace(s));
+            if (noEmpty.Count() != 4) return;
+            var ip = string.Join(".", noEmpty);
             if (ip != Text)
                 SetValue(TextProperty, ip);
         }
