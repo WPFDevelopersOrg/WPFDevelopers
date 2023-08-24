@@ -77,6 +77,7 @@
         PathIcon,
         NumericBox,
         ColorPicker,
+        IPEditBox,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo
