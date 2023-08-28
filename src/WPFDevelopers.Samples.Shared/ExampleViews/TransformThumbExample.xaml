@@ -1,0 +1,71 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.TransformThumbExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer>
+        <Canvas x:Name="CanvasMain" Background="ForestGreen">
+            <TextBlock
+                Canvas.Left="296"
+                Canvas.Top="48"
+                FontSize="20"
+                Foreground="White"
+                Text="QQ群：340500857" />
+            <TextBlock
+                Canvas.Left="292"
+                Canvas.Top="110"
+                FontSize="20"
+                Foreground="White"
+                Text="QQ群：458041663" />
+            <controls:TransformThumb
+                Canvas.Left="305"
+                Canvas.Top="205"
+                Width="280"
+                Height="100">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="40"
+                    Foreground="White"
+                    Text="WPF开发者" />
+            </controls:TransformThumb>
+            <controls:TransformThumb
+                Canvas.Left="100"
+                Canvas.Top="200"
+                Width="50"
+                Height="50">
+                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/UserImages/yanjinhua.png" />
+            </controls:TransformThumb>
+            <TextBlock
+                Canvas.Left="295"
+                Canvas.Top="368"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="24"
+                Foreground="White"
+                Text="微信公众号：WPFDevelopers" />
+        </Canvas>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransformThumbExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransformThumbExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ElementAdorner/ElementAdorner.cs"
+                CodeType="CSharp"
+                Haader="ElementAdorner" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ElementAdorner/TransformThumb.cs"
+                CodeType="CSharp"
+                Haader="TransformThumb" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ElementAdorner/TransformThumb.xaml"
+                CodeType="Xaml"
+                Haader="TransformThumb.xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>
