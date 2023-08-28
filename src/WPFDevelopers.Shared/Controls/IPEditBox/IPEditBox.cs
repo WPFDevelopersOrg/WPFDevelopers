@@ -11,12 +11,10 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = TextBox4TemplateName, Type = typeof(TextBox))]
     public class IPEditBox : Control
     {
-
         private const string TextBox1TemplateName = "PART_TextBox1";
         private const string TextBox2TemplateName = "PART_TextBox2";
         private const string TextBox3TemplateName = "PART_TextBox3";
         private const string TextBox4TemplateName = "PART_TextBox4";
-
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -29,13 +27,12 @@ namespace WPFDevelopers.Controls
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as IPEditBox;
-            if (e.NewValue is string text && !ctrl._isChangingText) 
+            if (e.NewValue is string text && !ctrl._isChangingText)
                 ctrl.PasteTextIPTextBox(text);
         }
 
         private TextBox _textBox1, _textBox2, _textBox3, _textBox4;
         private bool _isChangingText = false;
-        private short _index = 0;
 
         public override void OnApplyTemplate()
         {
@@ -133,22 +130,6 @@ namespace WPFDevelopers.Controls
 
         void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var textbox = sender as TextBox;
-            switch (textbox.Name)
-            {
-                case TextBox1TemplateName:
-                    _index = 0;
-                    break;
-                case TextBox2TemplateName:
-                    _index = 1;
-                    break;
-                case TextBox3TemplateName:
-                    _index = 2;
-                    break;
-                case TextBox4TemplateName:
-                    _index = 3;
-                    break;
-            }
             if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.V)
             {
                 ClipboardHandle();
@@ -180,8 +161,11 @@ namespace WPFDevelopers.Controls
             {
                 var strs = text.Split('.');
                 var _textboxBoxes = new TextBox[] { _textBox1, _textBox2, _textBox3, _textBox4 };
-                for (short i = _index; i < strs.Length && i < _textboxBoxes.Length; i++)
-                    _textboxBoxes[i].Text = strs[i];
+                for (short i = 0; i < _textboxBoxes.Length; i++)
+                {
+                    var str = i < strs.Length ? strs[i] : string.Empty;
+                    _textboxBoxes[i].Text = str;
+                }
             }
             _textBox1.TextChanged += TextBox1_TextChanged;
             _textBox2.TextChanged += TextBox2_TextChanged;
