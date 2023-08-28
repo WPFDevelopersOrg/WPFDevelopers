@@ -27,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ElementAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ThumbAngle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\TransformThumb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\FireControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieSegmentModel.cs" />
@@ -393,9 +394,9 @@
       <SubType>Code</SubType>
       <DependentUpon>ThermometerExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ThumbDragAndAngleExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TransformThumbExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>ThumbDragAndAngleExample.xaml</DependentUpon>
+      <DependentUpon>TransformThumbExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TimeLineExample.xaml.cs">
       <SubType>Code</SubType>
@@ -463,6 +464,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\Drawing\Drawing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\TransformThumb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -863,7 +868,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ThumbDragAndAngleExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TransformThumbExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
