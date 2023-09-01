@@ -25,7 +25,7 @@
 
 ### [ Wiki→ 正在进行快速更新](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/wikis/pages)   
 
-### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。   
+### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star🌟</kbd>。   
 
 ### 运行环境 Visual Studio 2022  
 
