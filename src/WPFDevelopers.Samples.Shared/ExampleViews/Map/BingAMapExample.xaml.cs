@@ -21,6 +21,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         private Pushpin carPushpin;
         private DispatcherTimer dispatcherTimer;
         private List<Location> locations;
+        private AMapTitleLayer aMapTitleLayer;
 
         public IEnumerable PushpinArray
         {
@@ -31,9 +32,27 @@ namespace WPFDevelopers.Samples.ExampleViews
         public static readonly DependencyProperty PushpinArrayProperty =
             DependencyProperty.Register("PushpinArray", typeof(IEnumerable), typeof(BingAMapExample), new PropertyMetadata(null));
 
+
+
+        public Dictionary<int,string> MapStyleDic
+        {
+            get { return (Dictionary<int,string>)GetValue(MapStyleDicProperty); }
+            set { SetValue(MapStyleDicProperty, value); }
+        }
+
+        public static readonly DependencyProperty MapStyleDicProperty =
+            DependencyProperty.Register("MapStyleDic", typeof(Dictionary<int,string>), typeof(BingAMapExample), new PropertyMetadata());
+
+
+
         public BingAMapExample()
         {
             InitializeComponent();
+            MapStyleDic = new Dictionary<int, string>();
+            MapStyleDic.Add(6, "卫星地图");
+            MapStyleDic.Add(7, "标准地图");
+            MapStyleDic.Add(8, "主道路名称");
+
             var pushpins = new List<PushpinModel>();
             pushpins.Add(new PushpinModel { ID = 1, Location = new Location(39.8151940395589, 116.411970893135), Title = "和义东里社区" });
             pushpins.Add(new PushpinModel { ID = 2, Location = new Location(39.9094878843105, 116.33299936282), Title = "中国水科院南小区" });
@@ -106,9 +125,8 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         private void Map_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Point mousePosition = e.GetPosition(this);
-            Location pinLocation = this.map.ViewportPointToLocation(mousePosition);
-
+            var mousePosition = e.GetPosition(this);
+            var pinLocation = this.map.ViewportPointToLocation(mousePosition);
             //Console.WriteLine(pinLocation);
 
         }
@@ -127,5 +145,18 @@ namespace WPFDevelopers.Samples.ExampleViews
             map.Center = model.Location;
             map.ZoomLevel = 16;
         }
+
+        private void StyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var combobox = sender as ComboBox;
+            if (combobox == null) return;
+            var select = (int)combobox.SelectedValue;
+            if(aMapTitleLayer != null)
+                map.Children.Remove(aMapTitleLayer);
+            aMapTitleLayer = new AMapTitleLayer();
+            aMapTitleLayer.UpdateTileSourceStyle(select);
+            map.Children.Insert(0, aMapTitleLayer);
+        }
+
     }
 }
