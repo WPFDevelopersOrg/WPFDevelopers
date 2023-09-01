@@ -749,6 +749,7 @@
 		<Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+		<Setter Property="TitleBackground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 		<Setter Property="IsTabStop" Value="False" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
@@ -1814,10 +1815,10 @@
 					</ControlTemplate.Resources>
 					<Border x:Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
 						<controls:SmallPanel>
-							<ToggleButton x:Name="PART_ToggleButton" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
 							<ContentPresenter x:Name="ContentSite" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" IsHitTestVisible="False" />
 							<TextBox x:Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{TemplateBinding Background}" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Visibility="Hidden" />
 							<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" Padding="1,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.NormalFontSize}" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
+							<ToggleButton x:Name="PART_ToggleButton" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
 							<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
@@ -6176,7 +6177,7 @@
 									<RepeatButton x:Name="PART_NumericUp" Grid.Row="0" Margin="0,1,1,0" Padding="0" Command="{x:Static controls:NumericBox.IncreaseCommand}" Delay="{TemplateBinding Delay}" IsTabStop="False" Style="{StaticResource WD.DefaultRepeatButton}">
 										<controls:PathIcon Kind="ChevronUp" Style="{StaticResource WD.MiniPathIcon}" />
 									</RepeatButton>
-									<RepeatButton x:Name="PART_NumericDown" Grid.Row="2" Margin="0,0,1,1" Padding="0" Command="{x:Static controls:NumericBox.DecreaseCommand}" Delay="{TemplateBinding Delay}" IsTabStop="False">
+									<RepeatButton x:Name="PART_NumericDown" Grid.Row="2" Margin="0,0,1,1" Padding="0" Command="{x:Static controls:NumericBox.DecreaseCommand}" Delay="{TemplateBinding Delay}" IsTabStop="False" Style="{StaticResource WD.DefaultRepeatButton}">
 										<controls:PathIcon Kind="ChevronDown" Style="{StaticResource WD.MiniPathIcon}" />
 									</RepeatButton>
 								</Grid>
