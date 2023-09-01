@@ -20,11 +20,19 @@ namespace WPFDevelopers.Helpers
             DependencyProperty.RegisterAttached("IsEnterUpdateEnabled", typeof(bool), typeof(TextBoxHelper),
                 new PropertyMetadata(false, OnIsEnterUpdateEnabledChanged));
 
+        public static readonly DependencyProperty MinValueProperty =
+       DependencyProperty.RegisterAttached("MinValue", typeof(int), typeof(TextBoxHelper),
+           new PropertyMetadata(int.MinValue, OnMinMaxValueChanged));
+
+        public static readonly DependencyProperty MaxValueProperty =
+            DependencyProperty.RegisterAttached("MaxValue", typeof(int), typeof(TextBoxHelper),
+                new PropertyMetadata(int.MaxValue, OnMinMaxValueChanged));
+
         private static void OnSelectAllOnClickChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is TextBox textBox)
             {
-                if ((bool) e.NewValue)
+                if ((bool)e.NewValue)
                     textBox.PreviewMouseLeftButtonDown += TextBox_PreviewMouseLeftButtonDown;
                 else
                     textBox.PreviewMouseLeftButtonDown -= TextBox_PreviewMouseLeftButtonDown;
@@ -35,7 +43,7 @@ namespace WPFDevelopers.Helpers
         {
             if (d is TextBox textBox)
             {
-                if ((bool) e.NewValue)
+                if ((bool)e.NewValue)
                 {
                     DataObject.AddPastingHandler(textBox, TextBox_Pasting);
                     textBox.PreviewTextInput += TextBox_PreviewTextInput;
@@ -54,7 +62,7 @@ namespace WPFDevelopers.Helpers
         {
             if (d is TextBox textBox)
             {
-                if ((bool) e.NewValue)
+                if ((bool)e.NewValue)
                     textBox.PreviewKeyDown += TextBox_PreviewKeyDown;
                 else
                     textBox.PreviewKeyDown -= TextBox_PreviewKeyDown;
@@ -63,7 +71,7 @@ namespace WPFDevelopers.Helpers
 
         public static bool GetSelectAllOnClick(TextBox textBox)
         {
-            return (bool) textBox.GetValue(SelectAllOnClickProperty);
+            return (bool)textBox.GetValue(SelectAllOnClickProperty);
         }
 
         public static void SetSelectAllOnClick(TextBox textBox, bool value)
@@ -73,7 +81,7 @@ namespace WPFDevelopers.Helpers
 
         public static bool GetAllowOnlyNumericInput(DependencyObject obj)
         {
-            return (bool) obj.GetValue(AllowOnlyNumericInputProperty);
+            return (bool)obj.GetValue(AllowOnlyNumericInputProperty);
         }
 
         public static void SetAllowOnlyNumericInput(DependencyObject obj, bool value)
@@ -83,12 +91,81 @@ namespace WPFDevelopers.Helpers
 
         public static bool GetIsEnterUpdateEnabled(DependencyObject obj)
         {
-            return (bool) obj.GetValue(IsEnterUpdateEnabledProperty);
+            return (bool)obj.GetValue(IsEnterUpdateEnabledProperty);
         }
 
         public static void SetIsEnterUpdateEnabled(DependencyObject obj, bool value)
         {
             obj.SetValue(IsEnterUpdateEnabledProperty, value);
+        }
+
+        public static int GetMinValue(DependencyObject obj)
+        {
+            return (int)obj.GetValue(MinValueProperty);
+        }
+
+        public static void SetMinValue(DependencyObject obj, int value)
+        {
+            obj.SetValue(MinValueProperty, value);
+        }
+
+        public static int GetMaxValue(DependencyObject obj)
+        {
+            return (int)obj.GetValue(MaxValueProperty);
+        }
+
+        public static void SetMaxValue(DependencyObject obj, int value)
+        {
+            obj.SetValue(MaxValueProperty, value);
+        }
+
+        private static void OnMinMaxValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is TextBox textBox)
+            {
+                textBox.TextChanged -= TextBox_TextChanged;
+                textBox.TextChanged += TextBox_TextChanged;
+                textBox.PreviewTextInput -= TextBoxMinMaxValue_PreviewTextInput;
+                textBox.PreviewTextInput += TextBoxMinMaxValue_PreviewTextInput;
+            }
+        }
+
+        private static void TextBoxMinMaxValue_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                int minValue = GetMinValue(textBox);
+                int maxValue = GetMaxValue(textBox);
+                if (textBox.SelectionLength == textBox.Text.Length) return;
+                if (!int.TryParse(textBox.Text + e.Text, out int value))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    if (value < minValue || value > maxValue)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
+        private static void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                var minValue = GetMinValue(textBox);
+                var maxValue = GetMaxValue(textBox);
+                if (!int.TryParse(textBox.Text, out int value))
+                    textBox.Text = "";
+                else
+                {
+                    if (value < minValue)
+                        textBox.Text = minValue.ToString();
+                    else if (value > maxValue)
+                        textBox.Text = maxValue.ToString();
+                }
+            }
         }
 
         private static void TextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -106,7 +183,7 @@ namespace WPFDevelopers.Helpers
         {
             if (e.DataObject.GetDataPresent(typeof(string)))
             {
-                var text = (string) e.DataObject.GetData(typeof(string));
+                var text = (string)e.DataObject.GetData(typeof(string));
 
                 if (!IsNumeric(text)) e.CancelCommand();
             }
@@ -139,7 +216,7 @@ namespace WPFDevelopers.Helpers
         {
             if (e.Key == Key.Enter && !e.IsRepeat)
             {
-                var textBox = (TextBox) sender;
+                var textBox = (TextBox)sender;
                 var expression = textBox.GetBindingExpression(TextBox.TextProperty);
                 expression?.UpdateSource();
             }

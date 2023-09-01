@@ -749,6 +749,7 @@
 		<Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+		<Setter Property="TitleBackground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="IsTabStop" Value="False" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
@@ -1815,10 +1816,10 @@
 					</ControlTemplate.Resources>
 					<Border x:Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
 						<controls:SmallPanel>
-							<ToggleButton x:Name="PART_ToggleButton" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
 							<ContentPresenter x:Name="ContentSite" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" IsHitTestVisible="False" />
 							<TextBox x:Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{TemplateBinding Background}" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Visibility="Hidden" />
 							<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" Padding="1,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.NormalFontSize}" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
+							<ToggleButton x:Name="PART_ToggleButton" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
 							<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
@@ -6177,7 +6178,7 @@
 									<RepeatButton x:Name="PART_NumericUp" Grid.Row="0" Margin="0,1,1,0" Padding="0" Command="{x:Static controls:NumericBox.IncreaseCommand}" Delay="{TemplateBinding Delay}" IsTabStop="False" Style="{StaticResource WD.DefaultRepeatButton}">
 										<controls:PathIcon Kind="ChevronUp" Style="{StaticResource WD.MiniPathIcon}" />
 									</RepeatButton>
-									<RepeatButton x:Name="PART_NumericDown" Grid.Row="2" Margin="0,0,1,1" Padding="0" Command="{x:Static controls:NumericBox.DecreaseCommand}" Delay="{TemplateBinding Delay}" IsTabStop="False">
+									<RepeatButton x:Name="PART_NumericDown" Grid.Row="2" Margin="0,0,1,1" Padding="0" Command="{x:Static controls:NumericBox.DecreaseCommand}" Delay="{TemplateBinding Delay}" IsTabStop="False" Style="{StaticResource WD.DefaultRepeatButton}">
 										<controls:PathIcon Kind="ChevronDown" Style="{StaticResource WD.MiniPathIcon}" />
 									</RepeatButton>
 								</Grid>
@@ -6355,7 +6356,7 @@
 								</UniformGrid>
 								<UniformGrid Grid.Column="1" Rows="1" Visibility="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorTypeToVisibilityConverter}, ConverterParameter={x:Static controls:ColorTypeEnum.HSL}}">
 									<StackPanel>
-										<TextBox helpers:TextBoxHelper.AllowOnlyNumericInput="True" helpers:TextBoxHelper.IsEnterUpdateEnabled="True" helpers:TextBoxHelper.SelectAllOnClick="True" Style="{StaticResource WD.TextBoxColorPicker}" Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.HToColorConverter}}" />
+										<TextBox helpers:TextBoxHelper.AllowOnlyNumericInput="True" helpers:TextBoxHelper.IsEnterUpdateEnabled="True" helpers:TextBoxHelper.MaxValue="360" helpers:TextBoxHelper.MinValue="0" helpers:TextBoxHelper.SelectAllOnClick="True" Style="{StaticResource WD.TextBoxColorPicker}" Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.HToColorConverter}}" />
 										<TextBlock Text="H" />
 									</StackPanel>
 									<StackPanel Grid.Column="1">
@@ -6379,6 +6380,72 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.ColorPicker}" TargetType="{x:Type controls:ColorPicker}" />
+	<Style x:Key="WD.IPEditBox" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:IPEditBox}">
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:IPEditBox}">
+					<ControlTemplate.Resources>
+						<Style BasedOn="{StaticResource WD.DefaultTextBox}" TargetType="{x:Type TextBox}">
+							<Setter Property="BorderThickness" Value="0" />
+							<Setter Property="helpers:TextBoxHelper.AllowOnlyNumericInput" Value="True" />
+							<Setter Property="helpers:TextBoxHelper.MaxValue" Value="255" />
+							<Setter Property="helpers:TextBoxHelper.MinValue" Value="0" />
+							<Setter Property="VerticalContentAlignment" Value="Center" />
+							<Setter Property="HorizontalContentAlignment" Value="Center" />
+						</Style>
+						<Style TargetType="TextBlock">
+							<Setter Property="Text" Value="." />
+							<Setter Property="VerticalAlignment" Value="Center" />
+						</Style>
+					</ControlTemplate.Resources>
+					<Border x:Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+						<ScrollViewer HorizontalScrollBarVisibility="Auto">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition />
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition />
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition />
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition />
+								</Grid.ColumnDefinitions>
+								<TextBox x:Name="PART_TextBox1" />
+								<TextBlock Grid.Column="1" />
+								<TextBox x:Name="PART_TextBox2" Grid.Column="2" />
+								<TextBlock Grid.Column="3" />
+								<TextBox x:Name="PART_TextBox3" Grid.Column="4" />
+								<TextBlock Grid.Column="5" />
+								<TextBox x:Name="PART_TextBox4" Grid.Column="6" />
+							</Grid>
+						</ScrollViewer>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsKeyboardFocused" Value="True">
+							<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsKeyboardFocused" Value="True" />
+								<Condition Property="IsMouseOver" Value="False" />
+							</MultiTrigger.Conditions>
+							<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+						</MultiTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.IPEditBox}" TargetType="{x:Type controls:IPEditBox}" />
 	<Style x:Key="WD.DatePickerCalendarStyle" BasedOn="{StaticResource {x:Type Calendar}}" TargetType="{x:Type Calendar}" />
 	<Style x:Key="WD.DefaultDatePicker" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type DatePicker}">
 		<Setter Property="IsTodayHighlighted" Value="True" />

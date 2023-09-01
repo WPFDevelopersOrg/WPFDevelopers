@@ -83,7 +83,6 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\StarrySkyExample.xaml.cs" Link="ExampleViews\StarrySkyExample.xaml.cs" DependentUpon="StarrySkyExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TaskbarItemInfoExample.xaml.cs" Link="ExampleViews\TaskbarItemInfoExample.xaml.cs" DependentUpon="TaskbarItemInfoExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ThermometerExample.xaml.cs" Link="ExampleViews\ThermometerExample.xaml.cs" DependentUpon="ThermometerExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ThumbDragAndAngleExample.xaml.cs" Link="ExampleViews\ThumbDragAndAngleExample.xaml.cs" DependentUpon="ThumbDragAndAngleExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimeLineExample.xaml.cs" Link="ExampleViews\TimeLineExample.xaml.cs" DependentUpon="TimeLineExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TransitionPanelExample.xaml.cs" Link="ExampleViews\TransitionPanelExample.xaml.cs" DependentUpon="TransitionPanelExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\VerifyCodeExample.xaml.cs" Link="ExampleViews\VerifyCodeExample.xaml.cs" DependentUpon="VerifyCodeExample.xaml" />
@@ -130,6 +129,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CountdownTimer\CountdownTimer.cs" Link="Controls\CountdownTimer\CountdownTimer.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ElementAdorner.cs" Link="Controls\ElementAdorner\ElementAdorner.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ThumbAngle.cs" Link="Controls\ElementAdorner\ThumbAngle.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\TransformThumb.cs" Link="Controls\ElementAdorner\TransformThumb.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.cs" Link="Controls\CropControl\CropControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml.cs" Link="ExampleViews\CropImageExample.xaml.cs" DependentUpon="CropImageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BadgeExample.xaml.cs" Link="ExampleViews\BadgeExample.xaml.cs" DependentUpon="BadgeExample.xaml" />
@@ -139,6 +139,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml.cs" Link="ExampleViews\PathIconExample.xaml.cs" DependentUpon="PathIconExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumericBoxExample.xaml.cs" Link="ExampleViews\NumericBoxExample.xaml.cs" DependentUpon="NumericBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ColorPickerExample.xaml.cs" Link="ExampleViews\ColorPickerExample.xaml.cs" DependentUpon="ColorPickerExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml.cs" Link="ExampleViews\IPEditBoxExample.xaml.cs" DependentUpon="IPEditBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml.cs" Link="ExampleViews\TransformThumbExample.xaml.cs" DependentUpon="TransformThumbExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -358,8 +360,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ThermometerExample.xaml">
 			<Link>ExampleViews\ThermometerExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ThumbDragAndAngleExample.xaml">
-			<Link>ExampleViews\ThumbDragAndAngleExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TransformThumbExample.xaml">
+			<Link>ExampleViews\TransformThumbExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimeLineExample.xaml">
 			<Link>ExampleViews\TimeLineExample.xaml</Link>
@@ -417,6 +419,9 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Others\OtherControl.xaml">
 			<Link>Controls\Others\OtherControl.xaml</Link>
 		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\TransformThumb.xaml">
+			<Link>Controls\ElementAdorner\TransformThumb.xaml</Link>
+		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ChatEmoji\ChatEmoji.xaml">
 			<Link>Controls\ChatEmoji\ChatEmoji.xaml</Link>
 		</Resource>
@@ -467,6 +472,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ColorPickerExample.xaml">
 			<Link>ExampleViews\ColorPickerExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml">
+			<Link>ExampleViews\IPEditBoxExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

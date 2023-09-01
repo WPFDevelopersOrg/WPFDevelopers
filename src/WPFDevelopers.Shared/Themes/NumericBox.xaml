@@ -86,7 +86,8 @@
                                         Padding="0"
                                         Command="{x:Static controls:NumericBox.DecreaseCommand}"
                                         Delay="{TemplateBinding Delay}"
-                                        IsTabStop="False">
+                                        IsTabStop="False"
+                                        Style="{StaticResource WD.DefaultRepeatButton}">
                                         <controls:PathIcon Kind="ChevronDown" Style="{StaticResource WD.MiniPathIcon}" />
                                     </RepeatButton>
                                 </Grid>

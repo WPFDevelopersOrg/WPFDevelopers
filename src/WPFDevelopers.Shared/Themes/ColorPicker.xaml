@@ -282,6 +282,8 @@
                                         <TextBox
                                             helpers:TextBoxHelper.AllowOnlyNumericInput="True"
                                             helpers:TextBoxHelper.IsEnterUpdateEnabled="True"
+                                            helpers:TextBoxHelper.MaxValue="360"
+                                            helpers:TextBoxHelper.MinValue="0"
                                             helpers:TextBoxHelper.SelectAllOnClick="True"
                                             Style="{StaticResource WD.TextBoxColorPicker}"
                                             Text="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.HToColorConverter}}" />

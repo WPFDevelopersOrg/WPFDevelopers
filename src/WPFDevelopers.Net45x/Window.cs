@@ -22,7 +22,7 @@ namespace WPFDevelopers.Net45x
             DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleBackgroundProperty =
-          DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(ControlsHelper.PrimaryNormalBrush));
+          DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(null));
 
         static Window()
         {

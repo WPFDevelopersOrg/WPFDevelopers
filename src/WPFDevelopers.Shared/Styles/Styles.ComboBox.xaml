@@ -132,14 +132,6 @@
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
                         <controls:SmallPanel>
-                            <ToggleButton
-                                x:Name="PART_ToggleButton"
-                                Background="{TemplateBinding Background}"
-                                ClickMode="Press"
-                                Focusable="False"
-                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                Style="{x:Null}"
-                                Template="{StaticResource WD.ComboBoxToggleButton}" />
                             <ContentPresenter
                                 x:Name="ContentSite"
                                 Margin="{TemplateBinding Padding}"
@@ -174,6 +166,14 @@
                                 Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
                                 TextTrimming="CharacterEllipsis"
                                 Visibility="Collapsed" />
+                            <ToggleButton
+                                x:Name="PART_ToggleButton"
+                                Background="{TemplateBinding Background}"
+                                ClickMode="Press"
+                                Focusable="False"
+                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                Style="{x:Null}"
+                                Template="{StaticResource WD.ComboBoxToggleButton}" />
                             <Popup
                                 x:Name="PART_Popup"
                                 MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
