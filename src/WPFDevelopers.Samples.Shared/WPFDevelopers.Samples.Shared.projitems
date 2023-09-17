@@ -394,6 +394,9 @@
       <SubType>Code</SubType>
       <DependentUpon>ThermometerExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TimePickerExample.xaml.cs">
+      <DependentUpon>TimePickerExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TransformThumbExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>TransformThumbExample.xaml</DependentUpon>
@@ -865,6 +868,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ThermometerExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TimePickerExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

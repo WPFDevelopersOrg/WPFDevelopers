@@ -78,6 +78,7 @@
         NumericBox,
         ColorPicker,
         IPEditBox,
+        TimePicker,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo
