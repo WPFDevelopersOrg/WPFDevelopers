@@ -12,8 +12,6 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using WPFDevelopers.Controls;
-using WPFDevelopers.Utilities;
 
 namespace WPFDevelopers.Helpers
 {
@@ -252,6 +250,21 @@ namespace WPFDevelopers.Helpers
             if (paddingProperty != null)
                 return (Thickness)paddingProperty.GetValue(element, null);
             return new Thickness();
+        }
+
+        public static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            int childCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < childCount; i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T typedChild)
+                    return typedChild;
+                var result = FindVisualChild<T>(child);
+                if (result != null)
+                    return result;
+            }
+            return null;
         }
 
 
