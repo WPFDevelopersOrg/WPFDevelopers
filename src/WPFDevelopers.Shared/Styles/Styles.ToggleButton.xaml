@@ -14,6 +14,7 @@
         TargetType="{x:Type ToggleButton}">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Padding" Value="4,0" />
+        <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -23,7 +24,7 @@
                                 x:Name="PART_Border"
                                 Width="40"
                                 Height="20"
-                                Background="{DynamicResource WD.BaseSolidColorBrush}"
+                                Background="{TemplateBinding Background}"
                                 CornerRadius="10">
                                 <Ellipse
                                     x:Name="PART_Ellipse"
@@ -77,7 +78,7 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
