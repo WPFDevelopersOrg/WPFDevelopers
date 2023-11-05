@@ -38,7 +38,9 @@ namespace WPFDevelopers.Samples.ExampleViews
                     App.CurrentMainWindow.WindowState = WindowState.Minimized;
                     //Thread.Sleep(1000);
                 }
-                screenCapturer = new ScreenCapture();
+                ResourceDictionary resources = new ResourceDictionary();
+                resources.Source = new Uri("pack://application:,,,/MyResources.xaml");
+                screenCapturer = new ScreenCapture(resources: resources);
                 screenCapturer.SnapCompleted += ScreenCapturer_SnapCompleted;
                 screenCapturer.SnapCanceled += ScreenCapturer_SnapCanceled;
                 screenCapturer.Capture();
