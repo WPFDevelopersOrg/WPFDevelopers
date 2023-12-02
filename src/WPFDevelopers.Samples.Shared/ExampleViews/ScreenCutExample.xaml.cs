@@ -38,9 +38,16 @@ namespace WPFDevelopers.Samples.ExampleViews
                     App.CurrentMainWindow.WindowState = WindowState.Minimized;
                     //Thread.Sleep(1000);
                 }
-                ResourceDictionary resources = new ResourceDictionary();
-                resources.Source = new Uri("pack://application:,,,/MyResources.xaml");
-                screenCapturer = new ScreenCapture(resources: resources);
+
+                #region 无App.xaml情况，需引入资源文件
+                //如没有App.xaml文件需要使用截图控件需要按照以下方式传入资源文件，具体查看
+                //https://github.com/WPFDevelopersOrg/WPFDevelopers/issues/68
+                //ResourceDictionary resources = new ResourceDictionary();
+                //resources.Source = new Uri("pack://application:,,,/MyResources.xaml");
+                //screenCapturer = new ScreenCapture(resources: resources);
+
+                #endregion
+                screenCapturer = new ScreenCapture();
                 screenCapturer.SnapCompleted += ScreenCapturer_SnapCompleted;
                 screenCapturer.SnapCanceled += ScreenCapturer_SnapCanceled;
                 screenCapturer.Capture();
