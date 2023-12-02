@@ -67,8 +67,8 @@ namespace WPFDevelopers.Net40
 
         public Brush TitleBackground
         {
-            get => (Brush)GetValue(TitleBarProperty);
-            set => SetValue(TitleBarProperty, value);
+            get => (Brush)GetValue(TitleBackgroundProperty);
+            set => SetValue(TitleBackgroundProperty, value);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

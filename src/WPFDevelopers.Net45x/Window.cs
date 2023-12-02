@@ -63,8 +63,8 @@ namespace WPFDevelopers.Net45x
         }
         public Brush TitleBackground
         {
-            get => (Brush)GetValue(TitleBarProperty);
-            set => SetValue(TitleBarProperty, value);
+            get => (Brush)GetValue(TitleBackgroundProperty);
+            set => SetValue(TitleBackgroundProperty, value);
         }
 
         private static T GetResourceKey<T>(string key)
