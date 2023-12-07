@@ -36,8 +36,9 @@
                     Margin="10,0"
                     wd:Badge.FontSize="12"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
-                    wd:Badge.Text="3"
+                    wd:Badge.Text="{Binding Text,RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Content="Success"
+                    Click="myButton_Click" 
                     Style="{DynamicResource WD.SuccessDefaultButton}" />
                 <Button
                     Width="100"

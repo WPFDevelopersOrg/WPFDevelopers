@@ -1,7 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Xml.Linq;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -9,11 +13,10 @@ namespace WPFDevelopers.Controls
     public class Badge : Adorner
     {
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(Badge), new PropertyMetadata(string.Empty));
+            DependencyProperty.RegisterAttached("Text", typeof(string), typeof(Badge), new PropertyMetadata(string.Empty, OnTextChanged));
 
         public static readonly DependencyProperty FontSizeProperty =
             DependencyProperty.Register("FontSize", typeof(double), typeof(Badge), new PropertyMetadata(10.0d));
-
 
         public static readonly DependencyProperty IsShowProperty =
             DependencyProperty.RegisterAttached("IsShow", typeof(bool), typeof(Badge),
@@ -118,6 +121,21 @@ namespace WPFDevelopers.Controls
             element.SetValue(HorizontalOffsetProperty, horizontalOffset);
         }
 
+        private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is FrameworkElement parent)
+            {
+                var isShow = GetIsShow(parent);
+                if (!isShow) return;
+                var newEventArgs = new DependencyPropertyChangedEventArgs(
+               e.Property,
+               false,
+               isShow);
+                OnIsBadgeChanged(d, newEventArgs);
+            }
+
+        }
+
         private static void OnIsBadgeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue is bool isShow && d is FrameworkElement parent)
@@ -140,7 +158,6 @@ namespace WPFDevelopers.Controls
         }
         private static void Parent_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-
             if (e.NewValue is bool isVisible && sender is FrameworkElement parent)
             {
                 var isShow = GetIsShow(parent);
