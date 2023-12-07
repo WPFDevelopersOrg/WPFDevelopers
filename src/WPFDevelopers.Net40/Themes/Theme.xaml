@@ -5305,23 +5305,23 @@
 							<Border x:Name="PART_EditBar" Panel.ZIndex="99" Background="{DynamicResource WD.BackgroundSolidColorBrush}" Effect="{StaticResource WD.PopupShadowDepth}" Visibility="Hidden">
 								<WrapPanel Margin="10,5" VerticalAlignment="Center">
 									<RadioButton x:Name="PART_RadioButtonRectangle" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="方框">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Rectangle" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Rectangle" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonEllipse" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="椭圆">
 										<Ellipse Width="19" Height="19" SnapsToDevicePixels="True" Stroke="{DynamicResource WD.RegularTextSolidColorBrush}" StrokeThickness="1.5" UseLayoutRounding="True" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonArrow" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="箭头">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="ArrowRightTop" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="ArrowRightTop" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonInk" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="画笔">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Ink" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Ink" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonText" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="文字">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Text" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Text" />
 									</RadioButton>
 									<Rectangle Width="1" Height="18" Margin="4,0" Stroke="{DynamicResource WD.SecondaryTextSolidColorBrush}" />
 									<Button x:Name="PART_ButtonSave" Margin="4,0" Style="{DynamicResource WD.PathButton}" ToolTip="保存">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Save" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Save" />
 									</Button>
 									<Button x:Name="PART_ButtonCancel" Margin="4,0" Style="{DynamicResource WD.PathButton}" ToolTip="取消">
 										<controls:PathIcon Width="14" Height="14" Foreground="{StaticResource WD.DangerSolidColorBrush}" Kind="Cancel" />
@@ -6491,6 +6491,7 @@
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
 		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="False" />
 		<Setter Property="ItemContainerStyle" Value="{StaticResource WD.TimeSelectorItem}" />
 		<Style.Triggers>
 			<Trigger Property="IsMouseOver" Value="True">

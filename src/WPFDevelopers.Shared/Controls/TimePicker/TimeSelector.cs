@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,21 +43,21 @@ namespace WPFDevelopers.Controls
 
         public DateTime? SelectedTime
         {
-            get => (DateTime?) GetValue(SelectedTimeProperty);
+            get => (DateTime?)GetValue(SelectedTimeProperty);
             set => SetValue(SelectedTimeProperty, value);
         }
 
 
         public double ItemHeight
         {
-            get => (double) GetValue(ItemHeightProperty);
+            get => (double)GetValue(ItemHeightProperty);
             set => SetValue(ItemHeightProperty, value);
         }
 
 
         public Thickness SelectorMargin
         {
-            get => (Thickness) GetValue(SelectorMarginProperty);
+            get => (Thickness)GetValue(SelectorMarginProperty);
             set => SetValue(SelectorMarginProperty, value);
         }
 
@@ -77,7 +78,7 @@ namespace WPFDevelopers.Controls
         {
             var ctrl = d as TimeSelector;
             if (ctrl != null)
-                ctrl.OnSelectedTimeChanged((DateTime?) e.OldValue, (DateTime?) e.NewValue);
+                ctrl.OnSelectedTimeChanged((DateTime?)e.OldValue, (DateTime?)e.NewValue);
         }
 
 
@@ -108,7 +109,6 @@ namespace WPFDevelopers.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             var minuteSecondList = Enumerable.Range(0, 60).Select(num => num.ToString("D2"));
             var emptyData = Enumerable.Repeat(string.Empty, 4);
             var result = emptyData.Concat(minuteSecondList).Concat(emptyData);
@@ -116,9 +116,9 @@ namespace WPFDevelopers.Controls
             if (_listBoxHour != null)
             {
                 var hours = Enumerable.Range(0, 24).Select(num => num.ToString("D2"));
-                _listBoxHour.ItemsSource = emptyData.Concat(hours).Concat(emptyData);
                 _listBoxHour.SelectionChanged -= ListBoxHour_SelectionChanged;
                 _listBoxHour.SelectionChanged += ListBoxHour_SelectionChanged;
+                _listBoxHour.ItemsSource = emptyData.Concat(hours).Concat(emptyData);
                 _listBoxHour.Loaded += (sender, args) =>
                 {
                     var h = GetItemHeight(_listBoxHour);
@@ -186,16 +186,20 @@ namespace WPFDevelopers.Controls
             _listBoxHour.SelectionChanged -= ListBoxHour_SelectionChanged;
             var hour = _hour.ToString("D2");
             _listBoxHour.SelectedItem = hour;
+            //(_listBoxHour as TimeSelectorListBox).Positioning();
             _listBoxHour.SelectionChanged += ListBoxHour_SelectionChanged;
+
 
             _listBoxMinute.SelectionChanged -= ListBoxMinute_SelectionChanged;
             var minute = _minute.ToString("D2");
             _listBoxMinute.SelectedItem = minute;
+            //(_listBoxMinute as TimeSelectorListBox).Positioning();
             _listBoxMinute.SelectionChanged += ListBoxMinute_SelectionChanged;
 
             _listBoxSecond.SelectionChanged -= ListBoxSecond_SelectionChanged;
             var second = _second.ToString("D2");
             _listBoxSecond.SelectedItem = second;
+            //(_listBoxSecond as TimeSelectorListBox).Positioning();
             _listBoxSecond.SelectionChanged += ListBoxSecond_SelectionChanged;
 
             SetSelectedTime();

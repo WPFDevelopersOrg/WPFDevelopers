@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -113,7 +114,9 @@ namespace WPFDevelopers.Controls
         private void Popup_Opened(object sender, EventArgs e)
         {
             if (_timeSelector != null)
+            {
                 _timeSelector.SetTime();
+            }
         }
 
         private void TimeSelector_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)

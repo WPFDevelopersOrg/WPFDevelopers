@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDevelopers.Helpers;
@@ -14,9 +15,9 @@ namespace WPFDevelopers.Controls
         public TimeSelectorListBox()
         {
             Loaded += TimeSelectorListBox_Loaded;
+            PreviewMouseWheel -= ScrollListBox_PreviewMouseWheel;
             PreviewMouseWheel += ScrollListBox_PreviewMouseWheel;
         }
-
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
             return item is TimeSelectorItem;
@@ -32,18 +33,28 @@ namespace WPFDevelopers.Controls
             if (Items != null && Items.Count > 0)
             {
                 var delta = e.Delta;
-                var itemCount = Items.Count;
                 var scrollCount = delta > 0 ? -1 : 1;
-                var newIndex = SelectedIndex + scrollCount;
-                if (newIndex < 4)
-                    newIndex = 5;
-                else if (newIndex >= itemCount - 4)
-                    newIndex = itemCount;
-                SelectedIndex = newIndex;
+                ItemPositioning(scrollCount);
                 e.Handled = true;
             }
         }
-
+        void ItemPositioning(int scrollCount)
+        {
+            var itemCount = Items.Count;
+            var newIndex = SelectedIndex + scrollCount;
+            if (newIndex < 4)
+                newIndex = 5;
+            else if (newIndex >= itemCount - 4)
+                newIndex = itemCount;
+            SelectedIndex = newIndex;
+        }
+        void Positioning()
+        {
+            if (SelectedIndex <= 0 || scrollViewer == null) return;
+            var index = SelectedIndex - (int)lastIndex;
+            var offset = scrollViewer.VerticalOffset + index;
+            scrollViewer.ScrollToVerticalOffset(offset);
+        }
         private void TimeSelectorListBox_Loaded(object sender, RoutedEventArgs e)
         {
             scrollViewer = ControlsHelper.FindVisualChild<ScrollViewer>(this);
@@ -58,9 +69,7 @@ namespace WPFDevelopers.Controls
         {
             var offset = e.VerticalOffset;
             if (isFirst == false)
-            {
                 lastIndex = offset + 4;
-            }
             else
             {
                 lastIndex = offset == 0 ? 4 : offset + 4;
@@ -70,15 +79,12 @@ namespace WPFDevelopers.Controls
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
+            base.OnSelectionChanged(e);
             if (SelectedIndex != -1 && lastIndex != -1)
             {
                 if (SelectedIndex <= 0) return;
-                var index = SelectedIndex - lastIndex;
-                var offset = scrollViewer.VerticalOffset + index;
-                scrollViewer.ScrollToVerticalOffset(offset);
+                Positioning();
             }
-
-            base.OnSelectionChanged(e);
         }
     }
 }
