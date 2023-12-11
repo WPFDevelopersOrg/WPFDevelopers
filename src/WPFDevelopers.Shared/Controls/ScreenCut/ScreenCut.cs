@@ -448,11 +448,19 @@ namespace WPFDevelopers.Controls
             _rectangleTop.Visibility = Visibility.Collapsed;
             _rectangleRight.Visibility = Visibility.Collapsed;
             _rectangleBottom.Visibility = Visibility.Collapsed;
-            var renderTargetBitmap = new RenderTargetBitmap((int)_canvas.Width,
-                (int)_canvas.Height, 96d, 96d, PixelFormats.Default);
+            // 屏幕等比截图需要考虑缩放率进行等比放大canvas
+            var renderTargetBitmap = new RenderTargetBitmap((int)(_canvas.Width * screenDPI.scaleX),
+                (int)(_canvas.Height * screenDPI.scaleY), screenDPI.dpiX, screenDPI.dpiY, PixelFormats.Default);
             renderTargetBitmap.Render(_canvas);
-            return new CroppedBitmap(renderTargetBitmap,
-                new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
+            // 屏幕等比截图需要考虑缩放率进行等比放大截图区域
+            var realrect = new Int32Rect(
+                (int)(rect.X * screenDPI.scaleX),
+                (int)(rect.Y * screenDPI.scaleY),
+                (int)(rect.Width * screenDPI.scaleX),
+                (int)(rect.Height * screenDPI.scaleY));
+            //return new CroppedBitmap(renderTargetBitmap,
+            //    new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
+            return new CroppedBitmap(renderTargetBitmap, realrect);
         }
         
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)

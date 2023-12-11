@@ -52,5 +52,6 @@ namespace WPFDevelopers.Controls
         [Description("WD.HomeGeometry")] Home,
         [Description("WD.BreadCrumbBarGeometry")] BreadCrumbBar,
         [Description("WD.UnfoldMoreGeometry")] UnfoldMore,
+        [Description("WD.TimeGeometry")] Time,
     }
 }

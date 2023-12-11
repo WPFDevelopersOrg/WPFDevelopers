@@ -130,6 +130,7 @@
 	<Geometry x:Key="WD.HomeGeometry" po:Freeze="True">M804.571 566.857v274.286q0 14.857-10.857 25.714t-25.714 10.857h-219.429v-219.429h-146.286v219.429h-219.429q-14.857 0-25.714-10.857t-10.857-25.714v-274.286q0-0.571 0.286-1.714t0.286-1.714l328.571-270.857 328.571 270.857q0.571 1.143 0.571 3.429zM932 527.429l-35.429 42.286q-4.571 5.143-12 6.286h-1.714q-7.429 0-12-4l-395.429-329.714-395.429 329.714q-6.857 4.571-13.714 4-7.429-1.143-12-6.286l-35.429-42.286q-4.571-5.714-4-13.429t6.286-12.286l410.857-342.286q18.286-14.857 43.429-14.857t43.429 14.857l139.429 116.571v-111.429q0-8 5.143-13.143t13.143-5.143h109.714q8 0 13.143 5.143t5.143 13.143v233.143l125.143 104q5.714 4.571 6.286 12.286t-4 13.429z</Geometry>
 	<Geometry x:Key="WD.ChevronUpGeometry" po:Freeze="True">M336.998 621.619c-13.875 13.722-36.301 13.722-50.074 0s-13.926-35.891 0-49.613l200.090-196.096c13.824-13.722 36.198-13.722 50.125 0l200.090 196.096c13.824 13.67 13.824 35.891 0 49.613-13.875 13.722-36.301 13.722-50.125 0l-175.104-160.819-175.002 160.819z</Geometry>
 	<Geometry x:Key="WD.UnfoldMoreGeometry" po:Freeze="True">M512 776l136-136 60 60-196 196-196-196 60-60zM512 248l-136 136-60-60 196-196 196 196-60 60z</Geometry>
+	<Geometry x:Key="WD.TimeGeometry" po:Freeze="True">M512 112c-229.792 0-416 186.24-416 416s186.208 416 416 416c229.728 0 416-186.24 416-416s-186.24-416-416-416zM508.64 864.864c-185.568 0-336-150.432-336-336s150.432-336 336-336c185.536 0 336 150.432 336 336 0 185.568-150.464 336-336 336zM605.76 548.192h-95.36v-161.024c0-17.472-14.176-31.68-31.648-31.68-17.504 0-31.68 14.176-31.68 31.68v192.672c0 17.504 14.176 31.648 31.68 31.648h127.008c17.504 0 31.68-14.144 31.68-31.648 0-17.472-14.176-31.648-31.68-31.648z</Geometry>
 	<CubicEase x:Key="WD.CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="WD.PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="WD.ExponentialEaseOut" EasingMode="EaseOut" />
@@ -1962,12 +1963,13 @@
 	<Style x:Key="WD.DefaultToggleButton" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
 		<Setter Property="Focusable" Value="False" />
 		<Setter Property="Padding" Value="4,0" />
+		<Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ToggleButton}">
 					<BulletDecorator Background="Transparent">
 						<BulletDecorator.Bullet>
-							<Border x:Name="PART_Border" Width="40" Height="20" Background="{DynamicResource WD.BaseSolidColorBrush}" CornerRadius="10">
+							<Border x:Name="PART_Border" Width="40" Height="20" Background="{TemplateBinding Background}" CornerRadius="10">
 								<Ellipse x:Name="PART_Ellipse" Width="16" Height="16" Margin="2,0" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="{DynamicResource WD.WindowForegroundColorBrush}">
 									<Ellipse.RenderTransform>
 										<TranslateTransform />
@@ -1994,7 +1996,7 @@
 					</BulletDecorator>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsChecked" Value="True">
-							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+							<Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -5303,23 +5305,23 @@
 							<Border x:Name="PART_EditBar" Panel.ZIndex="99" Background="{DynamicResource WD.BackgroundSolidColorBrush}" Effect="{StaticResource WD.PopupShadowDepth}" Visibility="Hidden">
 								<WrapPanel Margin="10,5" VerticalAlignment="Center">
 									<RadioButton x:Name="PART_RadioButtonRectangle" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="方框">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Rectangle" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Rectangle" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonEllipse" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="椭圆">
 										<Ellipse Width="19" Height="19" SnapsToDevicePixels="True" Stroke="{DynamicResource WD.RegularTextSolidColorBrush}" StrokeThickness="1.5" UseLayoutRounding="True" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonArrow" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="箭头">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="ArrowRightTop" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="ArrowRightTop" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonInk" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="画笔">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Ink" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Ink" />
 									</RadioButton>
 									<RadioButton x:Name="PART_RadioButtonText" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="文字">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Text" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Text" />
 									</RadioButton>
 									<Rectangle Width="1" Height="18" Margin="4,0" Stroke="{DynamicResource WD.SecondaryTextSolidColorBrush}" />
 									<Button x:Name="PART_ButtonSave" Margin="4,0" Style="{DynamicResource WD.PathButton}" ToolTip="保存">
-										<controls:PathIcon Width="18" Height="18" Foreground="{StaticResource WD.RegularTextSolidColorBrush}" Kind="Save" />
+										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" Kind="Save" />
 									</Button>
 									<Button x:Name="PART_ButtonCancel" Margin="4,0" Style="{DynamicResource WD.PathButton}" ToolTip="取消">
 										<controls:PathIcon Width="14" Height="14" Foreground="{StaticResource WD.DangerSolidColorBrush}" Kind="Cancel" />
@@ -6445,6 +6447,157 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.IPEditBox}" TargetType="{x:Type controls:IPEditBox}" />
+	<ControlTemplate x:Key="WD.TimePickerToggleButton" TargetType="{x:Type ToggleButton}">
+		<Border x:Name="PART_Border" Padding="6,0" Background="Transparent" BorderThickness="0" SnapsToDevicePixels="true">
+			<controls:PathIcon x:Name="PART_PathIcon" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource WD.PlaceholderTextSolidColorBrush}" IsHitTestVisible="False" Kind="Time" />
+		</Border>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter TargetName="PART_PathIcon" Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+			</Trigger>
+			<Trigger Property="IsChecked" Value="True">
+				<Setter TargetName="PART_PathIcon" Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<Style x:Key="WD.TimeSelectorItem" BasedOn="{StaticResource WD.DefaultListBoxItem}" TargetType="{x:Type controls:TimeSelectorItem}">
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:TimeSelectorItem}">
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter Property="FontWeight" Value="Bold" />
+							<Setter Property="Background" Value="Transparent" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+						</Trigger>
+						<DataTrigger Binding="{Binding}" Value="">
+							<Setter Property="IsEnabled" Value="False" />
+						</DataTrigger>
+					</ControlTemplate.Triggers>
+					<controls:SmallPanel>
+						<Border Name="PART_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+						</Border>
+					</controls:SmallPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="WD.TimeListStyle" BasedOn="{StaticResource WD.DefaultListBox}" TargetType="{x:Type controls:TimeSelectorListBox}">
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="False" />
+		<Setter Property="ItemContainerStyle" Value="{StaticResource WD.TimeSelectorItem}" />
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+				<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="WD.TimeSelector" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:TimeSelector}">
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:TimeSelector}">
+					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+						<controls:SmallPanel SnapsToDevicePixels="True">
+							<UniformGrid Rows="1">
+								<controls:TimeSelectorListBox x:Name="PART_ListBoxHour" Style="{StaticResource WD.TimeListStyle}" />
+								<controls:TimeSelectorListBox x:Name="PART_ListBoxMinute" Style="{StaticResource WD.TimeListStyle}" />
+								<controls:TimeSelectorListBox x:Name="PART_ListBoxSecond" Style="{StaticResource WD.TimeListStyle}" />
+							</UniformGrid>
+							<Line />
+							<Path />
+							<Border Height="{TemplateBinding ItemHeight}" Margin="{TemplateBinding SelectorMargin}" VerticalAlignment="Top" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="0,1" IsHitTestVisible="False" />
+						</controls:SmallPanel>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="WD.TimePicker" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:TimePicker}">
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:TimePicker}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="OpenStoryboard">
+							<DoubleAnimation EasingFunction="{StaticResource WD.ExponentialEaseOut}" Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="00:00:.2" />
+						</Storyboard>
+						<Storyboard x:Key="CloseStoryboard">
+							<DoubleAnimation EasingFunction="{StaticResource WD.ExponentialEaseOut}" Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="0" Duration="00:00:.2" />
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<controls:SmallPanel SnapsToDevicePixels="True">
+						<Grid Background="Transparent">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<Border Name="PART_Border" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" />
+							<TextBox x:Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{TemplateBinding Background}" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" />
+							<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" Padding="1,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.NormalFontSize}" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
+							<ToggleButton x:Name="PART_ToggleButton" Grid.Column="1" Background="{TemplateBinding Background}" ClickMode="Release" Focusable="False" Style="{x:Null}" Template="{StaticResource WD.TimePickerToggleButton}" />
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding Path=IsChecked, ElementName=PART_ToggleButton}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
+								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
+									<controls:SmallPanel.RenderTransform>
+										<ScaleTransform ScaleY="0" />
+									</controls:SmallPanel.RenderTransform>
+									<Border Name="PART_DropDownBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{StaticResource WD.PopupShadowDepth}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+									<controls:TimeSelector x:Name="PART_TimeSelector" />
+								</controls:SmallPanel>
+							</Popup>
+						</Grid>
+					</controls:SmallPanel>
+					<ControlTemplate.Triggers>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardOpenStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="False">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardCloseStoryboard" Storyboard="{StaticResource CloseStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardCloseStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+						</Trigger>
+						<Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
+							<Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />
+						</Trigger>
+						<Trigger Property="SelectedTime" Value="">
+							<Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
+						</Trigger>
+						<Trigger Property="SelectedTime" Value="{x:Null}">
+							<Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.TimeSelector}" TargetType="{x:Type controls:TimeSelector}" />
+	<Style BasedOn="{StaticResource WD.TimePicker}" TargetType="{x:Type controls:TimePicker}" />
 	<Style x:Key="WD.DatePickerCalendarStyle" BasedOn="{StaticResource {x:Type Calendar}}" TargetType="{x:Type Calendar}" />
 	<Style x:Key="WD.DefaultDatePicker" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type DatePicker}">
 		<Setter Property="IsTodayHighlighted" Value="True" />

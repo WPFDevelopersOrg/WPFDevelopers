@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
 namespace WPFDevelopers.Controls.ScreenCapturer
 {
     public class ScreenCapture
-
     {
         /// <summary>
         /// 截图完成委托
@@ -30,12 +29,19 @@ namespace WPFDevelopers.Controls.ScreenCapturer
         /// </summary>
         private bool copyToClipboard;
         List<ScreenCut> ScreenCuts = new List<ScreenCut>();
-        public ScreenCapture(bool copyToClipboard = true)
+        /// <summary>
+        /// 资源
+        /// </summary>
+        private ResourceDictionary _resources;
+        public ScreenCapture(bool copyToClipboard = true, ResourceDictionary resources = null)
         {
             this.copyToClipboard = copyToClipboard;
             for (var i = 0; i < Screen.AllScreens.Length; i++)
             {
-                ScreenCuts.Add(CaptureScreen(i));
+                var screen = CaptureScreen(i);
+                if(resources != null)
+                    screen.Resources = resources;
+                ScreenCuts.Add(screen);
             }
         }
         private ScreenCut CaptureScreen(int index)

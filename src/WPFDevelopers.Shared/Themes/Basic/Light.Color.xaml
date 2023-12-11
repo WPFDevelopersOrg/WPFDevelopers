@@ -35,7 +35,7 @@
 
     <Color x:Key="WD.BaseMoveColor" po:Freeze="True">#F5F7FA</Color>
     <SolidColorBrush
-        x:Key=" WD.BaseMoveSolidColorBrush"
+        x:Key="WD.BaseMoveSolidColorBrush"
         po:Freeze="True"
         Color="{StaticResource WD.BaseMoveColor}" />
 

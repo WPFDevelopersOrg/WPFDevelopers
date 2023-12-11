@@ -312,6 +312,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.IPEditBox:
                     ControlPanel = new IPEditBoxExample();
                     break;
+                case MenuEnum.TimePicker:
+                    ControlPanel = new TimePickerExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
