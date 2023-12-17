@@ -21,7 +21,7 @@
                                 Width="45"
                                 Height="30"
                                 HorizontalAlignment="Center"
-                                Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
+                                Fill="{DynamicResource WD.BackgroundSolidColorBrush}" />
                             <Border
                                 Width="30"
                                 Height="30"
