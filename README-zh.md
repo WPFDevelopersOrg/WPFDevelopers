@@ -89,6 +89,11 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### TimePicker
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimePicker.gif"/>   
+
+----------
 ### IPEditBox
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
