@@ -201,7 +201,9 @@ namespace WPFDevelopers.Controls
 
         public void Dispose()
         {
+            _canvas.Background = null;
             GC.SuppressFinalize(this);
+            GC.Collect();
         }
         public static void ClearCaptureScreenID()
         {
@@ -258,6 +260,13 @@ namespace WPFDevelopers.Controls
             Loaded += ScreenCut_Loaded;
             controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Dispose();
+        }
+
         public static BitmapSource BitmapSourceFromBrush(Brush drawingBrush, int x = 32, int y = 32, int dpi = 96)
         {
             // RenderTargetBitmap = builds a bitmap rendering of a visual
@@ -290,6 +299,7 @@ namespace WPFDevelopers.Controls
                 IntPtr.Zero,
                 Int32Rect.Empty,
                 BitmapSizeOptions.FromEmptyOptions());
+            img.Freeze();
             return img;
         }
         private ScreenDPI GetScreenDPI(int screenIndex)
@@ -435,6 +445,7 @@ namespace WPFDevelopers.Controls
         private void ButtonComplete_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = CutBitmap();
+            bitmap.Freeze();
             if (CutCompleted != null)
                 CutCompleted(bitmap);
             Close();
