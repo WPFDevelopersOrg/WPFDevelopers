@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -14,6 +15,29 @@ namespace WPFDevelopers.Samples.Controls
 {
     public class ElementAdorner : Adorner
     {
+        public event RoutedPropertyChangedEventHandler<double> AngleChanged;
+
+        protected virtual void OnAngleChanged(double oldValue, double newValue)
+        {
+            RoutedPropertyChangedEventArgs<double> args = new RoutedPropertyChangedEventArgs<double>(oldValue, newValue);
+            AngleChanged?.Invoke(this, args);
+        }
+
+        private double angle;
+        public double Angle
+        {
+            get { return angle; }
+            set
+            {
+                if (angle != value)
+                {
+                    double oldValue = angle;
+                    angle = value;
+                    OnAngleChanged(oldValue, angle);
+                }
+            }
+        }
+
         private const double ThumbSize = 16, ElementMiniSize = 20;
         private const double RotateThumbSize = 20;
         private readonly Thumb tLeft;
@@ -244,7 +268,7 @@ namespace WPFDevelopers.Samples.Controls
             return thumb;
         }
 
-       
+        
         private Brush GetFactoryRotate()
         {
             var lan =
@@ -262,9 +286,8 @@ namespace WPFDevelopers.Samples.Controls
             {
                 var currentPoint = Mouse.GetPosition(canvas);
                 var deltaVector = Point.Subtract(currentPoint, centerPoint);
-
                 var angle = Vector.AngleBetween(startVector, deltaVector);
-
+                Angle = angle;
                 var rotateTransform = designerItem.RenderTransform as RotateTransform;
                 rotateTransform.Angle = initialAngle + Math.Round(angle, 0);
                 designerItem.InvalidateMeasure();
@@ -293,9 +316,7 @@ namespace WPFDevelopers.Samples.Controls
                     initialAngle = 0;
                 }
                 else
-                {
                     initialAngle = rotateTransform.Angle;
-                }
             }
         }
     }
