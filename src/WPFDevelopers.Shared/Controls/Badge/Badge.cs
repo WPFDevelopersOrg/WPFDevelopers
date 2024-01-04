@@ -133,7 +133,6 @@ namespace WPFDevelopers.Controls
                isShow);
                 OnIsBadgeChanged(d, newEventArgs);
             }
-
         }
 
         private static void OnIsBadgeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
