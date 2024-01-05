@@ -749,8 +749,8 @@
 	<Style BasedOn="{x:Null}" TargetType="{x:Type wd:Window}">
 		<Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-		<Setter Property="TitleBackground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+		<Setter Property="TitleBackground" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
 		<Setter Property="IsTabStop" Value="False" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
@@ -1060,7 +1060,6 @@
 						<Trigger Property="IsChecked" Value="True">
 							<Setter TargetName="PART_Border" Property="Fill" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 							<Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
@@ -1690,7 +1689,6 @@
 						<Trigger Property="IsChecked" Value="True">
 							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsChecked" Value="{x:Null}">
 							<Trigger.EnterActions>
@@ -2840,7 +2838,7 @@
 								<ScaleTransform ScaleX="0" ScaleY="1" />
 							</Border.RenderTransform>
 						</Border>
-						<ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						<ContentPresenter x:Name="PART_ContentPresenter" Margin="{TemplateBinding Padding}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="SelectionStates">
 								<VisualState x:Name="Unselected" />
@@ -2861,10 +2859,10 @@
 						<Trigger Property="IsSelected" Value="True">
 							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 							<Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-							<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
-							<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2888,7 +2886,7 @@
 								<ScaleTransform ScaleX="1" ScaleY="0" />
 							</Border.RenderTransform>
 						</Border>
-						<ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						<ContentPresenter x:Name="PART_ContentPresenter" Margin="{TemplateBinding Padding}" HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="SelectionStates">
 								<VisualState x:Name="Unselected" />
@@ -2909,10 +2907,10 @@
 						<Trigger Property="IsSelected" Value="True">
 							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 							<Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-							<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
-							<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2956,7 +2954,7 @@
 							<Border x:Name="HeaderBorder" Grid.Row="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1">
 								<TabPanel Name="HeaderPanel" Margin="2,2,2,0" Panel.ZIndex="1" IsItemsHost="True" KeyboardNavigation.TabIndex="1" />
 							</Border>
-							<controls:SmallPanel Name="ContentPanel" Grid.Row="1" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+							<controls:SmallPanel x:Name="ContentPanel" Grid.Row="1" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
 								<ContentPresenter Name="PART_SelectedContentHost" Margin="{TemplateBinding Padding}" Content="{TemplateBinding SelectedContent}" ContentSource="SelectedContent" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentTemplate="{TemplateBinding SelectedContentTemplate}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
 							</controls:SmallPanel>
 						</Grid>
@@ -5700,7 +5698,7 @@
 				<ControlTemplate TargetType="{x:Type controls:StepItem}">
 					<StackPanel>
 						<controls:SmallPanel>
-							<Ellipse Width="45" Height="30" HorizontalAlignment="Center" Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
+							<Ellipse Width="45" Height="30" HorizontalAlignment="Center" Fill="{DynamicResource WD.BackgroundSolidColorBrush}" />
 							<Border Width="30" Height="30" HorizontalAlignment="Center" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15">
 								<controls:SmallPanel>
 									<TextBlock Name="PART_Index" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:StepItem}}, Converter={StaticResource WD.StepIndexConverter}}" />
