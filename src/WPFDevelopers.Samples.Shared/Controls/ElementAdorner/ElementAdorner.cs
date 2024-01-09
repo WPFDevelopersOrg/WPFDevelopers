@@ -56,6 +56,7 @@ namespace WPFDevelopers.Samples.Controls
         private Vector startVector;
         public ElementAdorner(UIElement adornedElement) : base(adornedElement)
         {
+            canvas = FindParent(adornedElement) as Canvas;
             visualCollection = new VisualCollection(this);
             visualCollection.Add(tMove = CreateMoveThumb());
             visualCollection.Add(tLeft = CreateThumb(Cursors.SizeNWSE, HorizontalAlignment.Left,
@@ -131,6 +132,13 @@ namespace WPFDevelopers.Samples.Controls
             return thumb;
         }
 
+        UIElement FindParent(UIElement element)
+        {
+            DependencyObject obj = element;
+            obj = VisualTreeHelper.GetParent(obj);
+            return obj as UIElement;
+        }
+
         private Brush GetMoveEllipse()
         {
             return new DrawingBrush(new GeometryDrawing(Brushes.Transparent, null, null));
@@ -166,13 +174,24 @@ namespace WPFDevelopers.Samples.Controls
                 switch (thumb.VerticalAlignment)
                 {
                     case VerticalAlignment.Bottom:
-                        if (element.Height + e.VerticalChange > ElementMiniSize) element.Height += e.VerticalChange;
+                        if (element.Height + e.VerticalChange > ElementMiniSize)
+                        {
+                            var newHeight = element.Height + e.VerticalChange;
+                            var top = Canvas.GetTop(element) + newHeight;
+                            if (newHeight > 0 && top <= canvas.ActualHeight)
+                                element.Height = newHeight;
+                        }
                         break;
                     case VerticalAlignment.Top:
                         if (element.Height - e.VerticalChange > ElementMiniSize)
                         {
-                            element.Height -= e.VerticalChange;
-                            Canvas.SetTop(element, Canvas.GetTop(element) + e.VerticalChange);
+                            var newHeight = element.Height - e.VerticalChange;
+                            var top = Canvas.GetTop(element) + e.VerticalChange;
+                            if (newHeight > 0 && top >= 0)
+                            {
+                                element.Height = newHeight;
+                                Canvas.SetTop(element, top);
+                            }
                         }
 
                         break;
@@ -183,13 +202,24 @@ namespace WPFDevelopers.Samples.Controls
                     case HorizontalAlignment.Left:
                         if (element.Width - e.HorizontalChange > ElementMiniSize)
                         {
-                            element.Width -= e.HorizontalChange;
-                            Canvas.SetLeft(element, Canvas.GetLeft(element) + e.HorizontalChange);
+                            var newWidth = element.Width - e.HorizontalChange;
+                            var left = Canvas.GetLeft(element) + e.HorizontalChange;
+                            if (newWidth > 0 && left >= 0)
+                            {
+                                element.Width = newWidth;
+                                Canvas.SetLeft(element, left);
+                            }
                         }
 
                         break;
                     case HorizontalAlignment.Right:
-                        if (element.Width + e.HorizontalChange > ElementMiniSize) element.Width += e.HorizontalChange;
+                        if (element.Width + e.HorizontalChange > ElementMiniSize)
+                        {
+                            var newWidth = element.Width + e.HorizontalChange;
+                            var left = Canvas.GetLeft(element) + newWidth;
+                            if (newWidth > 0 && left <= canvas.ActualWidth)
+                                element.Width = newWidth;
+                        }
                         break;
                 }
 
