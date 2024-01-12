@@ -223,12 +223,10 @@
                 <ControlTemplate TargetType="{x:Type DataGridRow}">
                     <Border
                         x:Name="DGR_Border"
+                        Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         SnapsToDevicePixels="True">
-                        <Border.Background>
-                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Background}" />
-                        </Border.Background>
                         <SelectiveScrollingGrid>
                             <SelectiveScrollingGrid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
