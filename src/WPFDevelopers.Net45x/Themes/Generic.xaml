@@ -11,8 +11,8 @@
         TargetType="{x:Type wd:Window}">
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-        <Setter Property="TitleBackground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+        <Setter Property="TitleBackground" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />

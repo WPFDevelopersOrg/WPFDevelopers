@@ -27,13 +27,15 @@
                 Canvas.Left="305"
                 Canvas.Top="205"
                 Width="280"
-                Height="100">
+                Height="100" x:Name="MyTransformThumb">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="40"
-                    Foreground="White"
-                    Text="WPF开发者" />
+                    Foreground="White">
+                    <Run>WPF开发者</Run>
+                    <Run Text="{Binding ElementName=MyTransformThumb,Path=Angle,StringFormat=0.00}"></Run>
+                </TextBlock>
             </controls:TransformThumb>
             <controls:TransformThumb
                 Canvas.Left="100"

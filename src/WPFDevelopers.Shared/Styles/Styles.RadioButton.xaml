@@ -85,7 +85,6 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="PART_Border" Property="Fill" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                             <Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

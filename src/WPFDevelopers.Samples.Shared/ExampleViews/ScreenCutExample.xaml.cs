@@ -58,11 +58,37 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void ScreenCapturer_SnapCanceled()
         {
             App.CurrentMainWindow.WindowState = WindowState.Normal;
+            Message.Push($"{DateTime.Now} 取消截图", MessageBoxImage.Information);
         }
 
         private void ScreenCapturer_SnapCompleted(System.Windows.Media.Imaging.CroppedBitmap bitmap)
         {
+            myImage.Source = bitmap;
             App.CurrentMainWindow.WindowState = WindowState.Normal;
+        }
+        private void ButtonExt_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsChecked)
+            {
+                App.CurrentMainWindow.WindowState = WindowState.Minimized;
+            }
+
+            var screenCaptureExt = new ScreenCaptureExt();
+            screenCaptureExt.SnapCanceled += ScreenCaptureExt_SnapCanceled;
+            screenCaptureExt.SnapCompleted += ScreenCaptureExt_SnapCompleted;
+        }
+
+        private void ScreenCaptureExt_SnapCompleted(System.Windows.Media.Imaging.BitmapSource bitmap)
+        {
+            myImage.Source = bitmap;
+            App.CurrentMainWindow.WindowState = WindowState.Normal;
+        }
+
+        private void ScreenCaptureExt_SnapCanceled()
+        {
+            if (App.CurrentMainWindow.WindowState == WindowState.Minimized)
+                App.CurrentMainWindow.WindowState = WindowState.Normal;
+            Message.Push($"{DateTime.Now} 取消截图",MessageBoxImage.Information);
         }
     }
 }

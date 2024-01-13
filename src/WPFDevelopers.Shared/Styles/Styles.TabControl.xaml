@@ -28,6 +28,7 @@
                             </Border.RenderTransform>
                         </Border>
                         <ContentPresenter
+                            x:Name="PART_ContentPresenter"
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
                             VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
@@ -57,10 +58,10 @@
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                             <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -92,6 +93,7 @@
                             </Border.RenderTransform>
                         </Border>
                         <ContentPresenter
+                            x:Name="PART_ContentPresenter"
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
                             VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
@@ -121,10 +123,10 @@
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                             <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -201,7 +203,7 @@
                                     KeyboardNavigation.TabIndex="1" />
                             </Border>
                             <controls:SmallPanel
-                                Name="ContentPanel"
+                                x:Name="ContentPanel"
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 KeyboardNavigation.DirectionalNavigation="Contained"

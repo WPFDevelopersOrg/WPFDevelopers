@@ -139,7 +139,7 @@ namespace WPFDevelopers.Controls
 
             foreach (var item in newValue)
             {
-                ctrl._items.Add(new BubblleItem { Text = item, Bg = ControlsHelper.RandomBrush() });
+                ctrl._items.Add(new BubblleItem { Text = item, Bg = Helper.RandomBrush() });
             }
         }
 

@@ -1,10 +1,9 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -18,7 +17,7 @@ namespace WPFDevelopers.Helpers
     public class ControlsHelper : DependencyObject
     {
         private static Win32.DeskTopSize size;
-        private static readonly Regex _regexNumber = new Regex("[^0-9]+");
+        
         public static Brush Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
 
         /// <summary>
@@ -88,23 +87,7 @@ namespace WPFDevelopers.Helpers
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ControlsHelper),
                 new PropertyMetadata(new CornerRadius(4)));
 
-        /// <summary>
-        ///     Get angle
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        public static double CalculeAngle(Point start, Point end)
-        {
-            var radian = Math.Atan2(end.Y - start.Y, end.X - start.X);
-            var angle = (radian * (180 / Math.PI) + 360) % 360;
-            return angle;
-        }
-
-        public static bool IsDifferenceOne(double a, double b)
-        {
-            return Math.Abs(a / b - 1) < 0.0001 || Math.Abs(b / a - 1) < 0.0001;
-        }
+       
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
             return (CornerRadius)obj.GetValue(CornerRadiusProperty);
@@ -137,14 +120,6 @@ namespace WPFDevelopers.Helpers
             player1.Play();
         }
 
-        public static Uri ImageUri()
-        {
-            Uri uri = null;
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "图像文件(*.jpg;*.jpeg;*.png;)|*.jpg;*.jpeg;*.png;";
-            if (openFileDialog.ShowDialog() == true) uri = new Uri(openFileDialog.FileName);
-            return uri;
-        }
 
         public static BitmapFrame CreateResizedImage(ImageSource source, int width, int height, int margin)
         {
@@ -167,34 +142,7 @@ namespace WPFDevelopers.Helpers
             resizedImage.Render(drawingVisual);
             return BitmapFrame.Create(resizedImage);
         }
-        private static long _tick = DateTime.Now.Ticks;
-        public static Random GetRandom = new Random((int)(_tick & 0xffffffffL) | (int)(_tick >> 32));
-
-        public static double NextDouble(double miniDouble, double maxiDouble)
-        {
-            if (GetRandom != null)
-            {
-                return GetRandom.NextDouble() * (maxiDouble - miniDouble) + miniDouble;
-            }
-            else
-            {
-                return 0.0d;
-            }
-        }
-        public static Brush RandomBrush()
-        {
-            var R = GetRandom.Next(255);
-            var G = GetRandom.Next(255);
-            var B = GetRandom.Next(255);
-            var color = Color.FromRgb((byte)R, (byte)G, (byte)B);
-            var solidColorBrush = new SolidColorBrush(color);
-            return solidColorBrush;
-        }
-
-        public static bool IsNumber(string text)
-        {
-            return _regexNumber.IsMatch(text);
-        }
+        
 
         public static BitmapSource Capture()
         {

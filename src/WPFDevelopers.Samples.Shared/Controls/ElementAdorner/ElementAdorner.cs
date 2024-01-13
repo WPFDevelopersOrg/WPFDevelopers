@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -14,6 +15,29 @@ namespace WPFDevelopers.Samples.Controls
 {
     public class ElementAdorner : Adorner
     {
+        public event RoutedPropertyChangedEventHandler<double> AngleChanged;
+
+        protected virtual void OnAngleChanged(double oldValue, double newValue)
+        {
+            RoutedPropertyChangedEventArgs<double> args = new RoutedPropertyChangedEventArgs<double>(oldValue, newValue);
+            AngleChanged?.Invoke(this, args);
+        }
+
+        private double angle;
+        public double Angle
+        {
+            get { return angle; }
+            set
+            {
+                if (angle != value)
+                {
+                    double oldValue = angle;
+                    angle = value;
+                    OnAngleChanged(oldValue, angle);
+                }
+            }
+        }
+
         private const double ThumbSize = 16, ElementMiniSize = 20;
         private const double RotateThumbSize = 20;
         private readonly Thumb tLeft;
@@ -32,6 +56,7 @@ namespace WPFDevelopers.Samples.Controls
         private Vector startVector;
         public ElementAdorner(UIElement adornedElement) : base(adornedElement)
         {
+            canvas = FindParent(adornedElement) as Canvas;
             visualCollection = new VisualCollection(this);
             visualCollection.Add(tMove = CreateMoveThumb());
             visualCollection.Add(tLeft = CreateThumb(Cursors.SizeNWSE, HorizontalAlignment.Left,
@@ -107,6 +132,13 @@ namespace WPFDevelopers.Samples.Controls
             return thumb;
         }
 
+        UIElement FindParent(UIElement element)
+        {
+            DependencyObject obj = element;
+            obj = VisualTreeHelper.GetParent(obj);
+            return obj as UIElement;
+        }
+
         private Brush GetMoveEllipse()
         {
             return new DrawingBrush(new GeometryDrawing(Brushes.Transparent, null, null));
@@ -142,13 +174,24 @@ namespace WPFDevelopers.Samples.Controls
                 switch (thumb.VerticalAlignment)
                 {
                     case VerticalAlignment.Bottom:
-                        if (element.Height + e.VerticalChange > ElementMiniSize) element.Height += e.VerticalChange;
+                        if (element.Height + e.VerticalChange > ElementMiniSize)
+                        {
+                            var newHeight = element.Height + e.VerticalChange;
+                            var top = Canvas.GetTop(element) + newHeight;
+                            if (newHeight > 0 && top <= canvas.ActualHeight)
+                                element.Height = newHeight;
+                        }
                         break;
                     case VerticalAlignment.Top:
                         if (element.Height - e.VerticalChange > ElementMiniSize)
                         {
-                            element.Height -= e.VerticalChange;
-                            Canvas.SetTop(element, Canvas.GetTop(element) + e.VerticalChange);
+                            var newHeight = element.Height - e.VerticalChange;
+                            var top = Canvas.GetTop(element) + e.VerticalChange;
+                            if (newHeight > 0 && top >= 0)
+                            {
+                                element.Height = newHeight;
+                                Canvas.SetTop(element, top);
+                            }
                         }
 
                         break;
@@ -159,13 +202,24 @@ namespace WPFDevelopers.Samples.Controls
                     case HorizontalAlignment.Left:
                         if (element.Width - e.HorizontalChange > ElementMiniSize)
                         {
-                            element.Width -= e.HorizontalChange;
-                            Canvas.SetLeft(element, Canvas.GetLeft(element) + e.HorizontalChange);
+                            var newWidth = element.Width - e.HorizontalChange;
+                            var left = Canvas.GetLeft(element) + e.HorizontalChange;
+                            if (newWidth > 0 && left >= 0)
+                            {
+                                element.Width = newWidth;
+                                Canvas.SetLeft(element, left);
+                            }
                         }
 
                         break;
                     case HorizontalAlignment.Right:
-                        if (element.Width + e.HorizontalChange > ElementMiniSize) element.Width += e.HorizontalChange;
+                        if (element.Width + e.HorizontalChange > ElementMiniSize)
+                        {
+                            var newWidth = element.Width + e.HorizontalChange;
+                            var left = Canvas.GetLeft(element) + newWidth;
+                            if (newWidth > 0 && left <= canvas.ActualWidth)
+                                element.Width = newWidth;
+                        }
                         break;
                 }
 
@@ -244,7 +298,7 @@ namespace WPFDevelopers.Samples.Controls
             return thumb;
         }
 
-       
+        
         private Brush GetFactoryRotate()
         {
             var lan =
@@ -262,9 +316,8 @@ namespace WPFDevelopers.Samples.Controls
             {
                 var currentPoint = Mouse.GetPosition(canvas);
                 var deltaVector = Point.Subtract(currentPoint, centerPoint);
-
                 var angle = Vector.AngleBetween(startVector, deltaVector);
-
+                Angle = angle;
                 var rotateTransform = designerItem.RenderTransform as RotateTransform;
                 rotateTransform.Angle = initialAngle + Math.Round(angle, 0);
                 designerItem.InvalidateMeasure();
@@ -293,9 +346,7 @@ namespace WPFDevelopers.Samples.Controls
                     initialAngle = 0;
                 }
                 else
-                {
                     initialAngle = rotateTransform.Angle;
-                }
             }
         }
     }
