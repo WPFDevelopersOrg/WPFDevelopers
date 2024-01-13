@@ -3,7 +3,7 @@
 		<AssemblyName>WPFDevelopers.Samples</AssemblyName>
 		<RootNamespace>WPFDevelopers.Samples</RootNamespace>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
+		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;netcoreapp3.0</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -13,9 +13,8 @@
 		<ApplicationIcon>..\WPFDevelopers.Samples.Shared\WPFDevelopers.ico</ApplicationIcon>
 	</PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview3" />
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview5" />
 	</ItemGroup>
-	
 	<ItemGroup>
 		<Reference Include="ICSharpCode.AvalonEdit, Version=6.1.3.50, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
 			<SpecificVersion>False</SpecificVersion>
