@@ -159,7 +159,8 @@ namespace WPFDevelopers.Controls
                             if (newHeight > 0 && top <= canvas.ActualHeight)
                             {
                                 element.Height = newHeight;
-                                ScaleWidth(thumb, element, newHeight);
+                                if(_isRatioScale)
+                                    ScaleWidth(thumb, element, newHeight);
                             }
                         }
                         break;
@@ -167,10 +168,15 @@ namespace WPFDevelopers.Controls
                     case VerticalAlignment.Top:
                         if (element.Height - e.VerticalChange > MINIMAL_SIZE)
                         {
-
                             var newHeight = element.Height - e.VerticalChange;
                             var top = Canvas.GetTop(element);
-                            ScaleWidth(thumb, element, newHeight);
+                            if (newHeight > 0 && top + e.VerticalChange >= 0)
+                            {
+                                element.Height = newHeight;
+                                Canvas.SetTop(element, top + e.VerticalChange);
+                                if (_isRatioScale)
+                                    ScaleWidth(thumb, element, newHeight);
+                            }
                         }
 
                         break;
@@ -187,7 +193,8 @@ namespace WPFDevelopers.Controls
                             {
                                 element.Width = newWidth;
                                 Canvas.SetLeft(element, left + e.HorizontalChange);
-                                ScaleHeight(thumb, element, newWidth);
+                                if (_isRatioScale)
+                                    ScaleHeight(thumb, element, newWidth);
                             }
                         }
 
@@ -200,7 +207,8 @@ namespace WPFDevelopers.Controls
                             if (newWidth > 0 && left <= canvas.ActualWidth)
                             {
                                 element.Width = newWidth;
-                                ScaleHeight(thumb, element, newWidth);
+                                if (_isRatioScale)
+                                    ScaleHeight(thumb, element, newWidth);
                             }
                         }
                         break;
