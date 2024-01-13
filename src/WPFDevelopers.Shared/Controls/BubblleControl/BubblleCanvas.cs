@@ -41,11 +41,11 @@ namespace WPFDevelopers.Controls
                     {
                         double xNum = x + 1;
                         xNum = _maxSize * xNum;
-                        _bubbleItemX = ControlsHelper.NextDouble(left, xNum - _size * ControlsHelper.NextDouble(0.6, 0.9));
+                        _bubbleItemX = Helper.NextDouble(left, xNum - _size * Helper.NextDouble(0.6, 0.9));
                         var _width = _bubbleItemX + _size;
                         _width = _width > width ? width - (width - _bubbleItemX) - _size : _bubbleItemX;
                         _bubbleItemX = _width;
-                        _bubbleItemY = ControlsHelper.NextDouble(top, yNum - _size * ControlsHelper.NextDouble(0.6, 0.9));
+                        _bubbleItemY = Helper.NextDouble(top, yNum - _size * Helper.NextDouble(0.6, 0.9));
                         var _height = _bubbleItemY + _size;
                         _height = _height > height ? height - (height - _bubbleItemY) - _size : _bubbleItemY;
                         _bubbleItemY = _height;
@@ -68,9 +68,9 @@ namespace WPFDevelopers.Controls
         private void ResizeItem(FrameworkElement item)
         {
             if (DoubleUtil.GreaterThanOrClose(item.DesiredSize.Width, 55))
-                _size = ControlsHelper.GetRandom.Next(80, _maxSize);
+                _size = Helper.GetRandom.Next(80, _maxSize);
             else
-                _size = ControlsHelper.GetRandom.Next(55, _maxSize);
+                _size = Helper.GetRandom.Next(55, _maxSize);
             item.Width = _size;
             item.Height = _size;
         }

@@ -40,6 +40,12 @@ namespace WPFDevelopers.Helpers
         [DllImport(User32)]
         public static extern IntPtr SetParent(IntPtr hwnd, IntPtr parentHwnd);
 
+        [DllImport(User32)]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        [DllImport(User32)]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
         [DllImport(Winmm)]
         public static extern long mciSendString(string strCommand, StringBuilder strReturn,
             int iReturnLength, IntPtr hwndCallback);

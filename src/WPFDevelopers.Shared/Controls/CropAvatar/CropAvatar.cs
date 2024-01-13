@@ -171,7 +171,7 @@ namespace WPFDevelopers.Controls
         {
             vNewStartX = 0;
             vNewStartY = 0;
-            var uri = ControlsHelper.ImageUri();
+            var uri = Helper.ImageUri();
             if (uri == null) return;
             var bitmap = new BitmapImage();
             bitmap.BeginInit();

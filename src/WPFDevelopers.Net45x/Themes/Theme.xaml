@@ -1061,7 +1061,6 @@
 						<Trigger Property="IsChecked" Value="True">
 							<Setter TargetName="PART_Border" Property="Fill" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 							<Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
@@ -1691,7 +1690,6 @@
 						<Trigger Property="IsChecked" Value="True">
 							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsChecked" Value="{x:Null}">
 							<Trigger.EnterActions>
@@ -2626,10 +2624,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRow}">
-					<Border x:Name="DGR_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-						<Border.Background>
-							<SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Background}" />
-						</Border.Background>
+					<Border x:Name="DGR_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
 						<SelectiveScrollingGrid>
 							<SelectiveScrollingGrid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto" />

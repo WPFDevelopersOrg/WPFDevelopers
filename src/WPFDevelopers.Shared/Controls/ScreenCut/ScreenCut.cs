@@ -746,7 +746,7 @@ namespace WPFDevelopers.Controls
             var renderOrigin = new Point(0, .5);
             controlArrow.RenderTransformOrigin = renderOrigin;
             controlArrow.RenderTransform = rotate;
-            rotate.Angle = ControlsHelper.CalculeAngle(vPoint, current);
+            rotate.Angle = Helper.CalculeAngle(vPoint, current);
             if (current.X < rect.Left
                 ||
                 current.X > rect.Right

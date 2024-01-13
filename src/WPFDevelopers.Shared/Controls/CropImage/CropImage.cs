@@ -146,17 +146,18 @@ namespace WPFDevelopers.Controls
 
         private void DrawImage()
         {
-            if (Source == null)
+            if (Source == null) return;
+            if (_border.Visibility == Visibility.Visible)
             {
                 _border.Visibility = Visibility.Collapsed;
-                if (adornerLayer == null) return;
+                _border.Visibility = Visibility.Visible;
+            }
+            if (adornerLayer != null)
+            {
                 adornerLayer.Remove(screenCutAdorner);
                 screenCutAdorner = null;
                 adornerLayer = null;
-                return;
             }
-
-            _border.Visibility = Visibility.Visible;
             var bitmap = (BitmapImage)Source;
             bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int)bitmap.Width, (int)bitmap.Height, 0);
             _canvas.Width = bitmap.Width;
