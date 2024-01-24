@@ -3,11 +3,11 @@
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// TransformThumbExample.xaml 的交互逻辑
+    /// TransformLayoutExample.xaml 的交互逻辑
     /// </summary>
-    public partial class TransformThumbExample : UserControl
+    public partial class TransformLayoutExample : UserControl
     {
-        public TransformThumbExample()
+        public TransformLayoutExample()
         {
             InitializeComponent();
         }

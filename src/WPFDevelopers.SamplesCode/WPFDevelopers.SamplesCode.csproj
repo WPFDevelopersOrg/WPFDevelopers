@@ -127,9 +127,9 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ScrollViewer\ScrollViewerBehavior.cs" Link="Controls\ScrollViewer\ScrollViewerBehavior.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\SongWords\SongWords.cs" Link="Controls\SongWords\SongWords.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CountdownTimer\CountdownTimer.cs" Link="Controls\CountdownTimer\CountdownTimer.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ElementAdorner.cs" Link="Controls\ElementAdorner\ElementAdorner.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\ThumbAngle.cs" Link="Controls\ElementAdorner\ThumbAngle.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\TransformThumb.cs" Link="Controls\ElementAdorner\TransformThumb.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TransformLayout\ElementAdorner.cs" Link="Controls\TransformLayout\ElementAdorner.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TransformLayout\ThumbAngle.cs" Link="Controls\TransformLayout\ThumbAngle.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TransformLayout\TransformLayout.cs" Link="Controls\TransformLayout\TransformLayout.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.cs" Link="Controls\CropControl\CropControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml.cs" Link="ExampleViews\CropImageExample.xaml.cs" DependentUpon="CropImageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BadgeExample.xaml.cs" Link="ExampleViews\BadgeExample.xaml.cs" DependentUpon="BadgeExample.xaml" />
@@ -140,7 +140,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumericBoxExample.xaml.cs" Link="ExampleViews\NumericBoxExample.xaml.cs" DependentUpon="NumericBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ColorPickerExample.xaml.cs" Link="ExampleViews\ColorPickerExample.xaml.cs" DependentUpon="ColorPickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml.cs" Link="ExampleViews\IPEditBoxExample.xaml.cs" DependentUpon="IPEditBoxExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml.cs" Link="ExampleViews\TransformThumbExample.xaml.cs" DependentUpon="TransformThumbExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml.cs" Link="ExampleViews\TransformLayoutExample.xaml.cs" DependentUpon="TransformLayoutExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimePickerExample.xaml.cs" Link="ExampleViews\TimePickerExample.xaml.cs" DependentUpon="TimePickerExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
@@ -361,8 +361,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ThermometerExample.xaml">
 			<Link>ExampleViews\ThermometerExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TransformThumbExample.xaml">
-			<Link>ExampleViews\TransformThumbExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TransformLayoutExample.xaml">
+			<Link>ExampleViews\TransformLayoutExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimeLineExample.xaml">
 			<Link>ExampleViews\TimeLineExample.xaml</Link>
@@ -420,8 +420,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Others\OtherControl.xaml">
 			<Link>Controls\Others\OtherControl.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ElementAdorner\TransformThumb.xaml">
-			<Link>Controls\ElementAdorner\TransformThumb.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TransformLayout\TransformLayout.xaml">
+			<Link>Controls\TransformLayout\TransformLayout.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ChatEmoji\ChatEmoji.xaml">
 			<Link>Controls\ChatEmoji\ChatEmoji.xaml</Link>

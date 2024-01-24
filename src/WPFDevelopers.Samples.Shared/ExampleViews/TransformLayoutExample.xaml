@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="WPFDevelopers.Samples.ExampleViews.TransformThumbExample"
+    x:Class="WPFDevelopers.Samples.ExampleViews.TransformLayoutExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
@@ -23,27 +23,28 @@
                 FontSize="20"
                 Foreground="White"
                 Text="QQ群：458041663" />
-            <controls:TransformThumb
+            <controls:TransformLayout
+                x:Name="MyTransformLayout"
                 Canvas.Left="305"
                 Canvas.Top="205"
                 Width="280"
-                Height="100" x:Name="MyTransformThumb">
+                Height="100">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="40"
                     Foreground="White">
                     <Run>WPF开发者</Run>
-                    <Run Text="{Binding ElementName=MyTransformThumb,Path=Angle,StringFormat=0.00}"></Run>
+                    <Run Text="{Binding ElementName=MyTransformLayout, Path=Angle, StringFormat=0.00}" />
                 </TextBlock>
-            </controls:TransformThumb>
-            <controls:TransformThumb
+            </controls:TransformLayout>
+            <controls:TransformLayout
                 Canvas.Left="100"
                 Canvas.Top="200"
                 Width="50"
                 Height="50">
                 <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/UserImages/yanjinhua.png" />
-            </controls:TransformThumb>
+            </controls:TransformLayout>
             <TextBlock
                 Canvas.Left="295"
                 Canvas.Top="368"
@@ -54,20 +55,20 @@
                 Text="微信公众号：WPFDevelopers" />
         </Canvas>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransformThumbExample.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransformThumbExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransformLayoutExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TransformLayoutExample.xaml.cs" CodeType="CSharp" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ElementAdorner/ElementAdorner.cs"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/TransformLayout/ElementAdorner.cs"
                 CodeType="CSharp"
                 Haader="ElementAdorner" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ElementAdorner/TransformThumb.cs"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/TransformLayout/TransformLayout.cs"
                 CodeType="CSharp"
-                Haader="TransformThumb" />
+                Haader="TransformLayout" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ElementAdorner/TransformThumb.xaml"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/TransformLayout/TransformLayout.xaml"
                 CodeType="Xaml"
-                Haader="TransformThumb.xaml" />
+                Haader="TransformLayout.xaml" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
