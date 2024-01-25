@@ -27,7 +27,7 @@ namespace WPFDevelopers.Controls
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as IPEditBox;
-            if (e.NewValue is string text && !ctrl._isChangingText)
+            if (e.NewValue is string text && !ctrl._isChangingText && ctrl.IsLoaded)
                 ctrl.PasteTextIPTextBox(text);
         }
 
@@ -74,7 +74,8 @@ namespace WPFDevelopers.Controls
             _textBox4.PreviewKeyDown += TextBox_PreviewKeyDown;
             _textBox4.Loaded -= TextBox_Loaded;
             _textBox4.Loaded += TextBox_Loaded;
-
+            if (!string.IsNullOrWhiteSpace(Text))
+                PasteTextIPTextBox(Text);
         }
 
         private void TextBox1_TextChanged(object sender, TextChangedEventArgs e)
