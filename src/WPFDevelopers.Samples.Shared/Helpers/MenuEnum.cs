@@ -19,7 +19,7 @@
         CropAvatar,
         AnimationAudio,
         AMap,
-        TransformThumb,
+        TransformLayout,
         VerifyCode,
         CircularMenu,
         ChatEmoji,
