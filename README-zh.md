@@ -40,6 +40,8 @@
 | netcoreapp3.0  | ✅ |
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
+| net7.0-windows  | ✅ |
+| net8.0-windows  | ✅ |
 
 ### 欢迎关注微信公众号  
 
@@ -89,14 +91,24 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### IPEditBox
+
+<img src="hhttps://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
+
+----------
+### TransformLayout
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransformLayout.gif"/>   
+
+----------
+### ScreenCaptureExt
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCutNew.gif"/>   
+
+----------
 ### TimePicker
 
 <img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimePicker.gif"/>   
-
-----------
-### IPEditBox
-
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
 
 ----------
 ### ColorPicker
