@@ -80,6 +80,16 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### IPEditBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
+
+----------
+### TransformLayout
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransformLayout.gif"/>   
+
+----------
 ### ScreenCaptureExt
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCutNew.gif"/>   
