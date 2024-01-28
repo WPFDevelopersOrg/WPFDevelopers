@@ -100,11 +100,6 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimePicker.gif"/>   
 
 ----------
-### IPEditBox
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
-
-----------
 ### ColorPicker
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ColorPicker.gif"/>   
