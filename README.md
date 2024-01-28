@@ -34,6 +34,8 @@
 | netcoreapp3.0  | ✅ |
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
+| net7.0-windows  | ✅ |
+| net8.0-windows  | ✅ |
 
 ### Donate
 If you think our open source software is helpful to you, please scan the QR code below and give us a cup of coffee.
