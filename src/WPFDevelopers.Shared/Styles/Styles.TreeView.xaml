@@ -22,11 +22,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
                     <Border
-                        Name="Border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
-                        <ScrollViewer CanContentScroll="False" Focusable="False">
+                        <ScrollViewer
+                            Padding="{TemplateBinding Padding}"
+                            CanContentScroll="False"
+                            Focusable="False">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
@@ -42,24 +44,30 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <controls:SmallPanel
-                        Width="15"
-                        Height="13"
-                        Background="Transparent">
-                        <Path
-                            x:Name="Expanded"
-                            Width="6"
-                            Height="10"
-                            Data="{StaticResource WD.NextGeometry}"
-                            RenderTransformOrigin=".5,.5"
-                            Stretch="Fill">
-                            <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource WD.PrimaryTextColor}" />
-                            </Path.Fill>
-                            <Path.RenderTransform>
-                                <RotateTransform />
-                            </Path.RenderTransform>
-                        </Path>
+                    <Border
+                        x:Name="PART_Border"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                        <controls:SmallPanel
+                            Width="15"
+                            Height="13"
+                            Background="Transparent">
+                            <Path
+                                x:Name="Expanded"
+                                Width="6"
+                                Height="10"
+                                Data="{StaticResource WD.NextGeometry}"
+                                RenderTransformOrigin=".5,.5"
+                                Stretch="Uniform">
+                                <Path.Fill>
+                                    <SolidColorBrush Color="{DynamicResource WD.PrimaryTextColor}" />
+                                </Path.Fill>
+                                <Path.RenderTransform>
+                                    <RotateTransform />
+                                </Path.RenderTransform>
+                            </Path>
+                        </controls:SmallPanel>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
@@ -83,7 +91,12 @@
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                    </controls:SmallPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseMoveSolidColorBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -117,33 +130,38 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="19" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
+                        <ToggleButton
+                            x:Name="Expander"
+                            ClickMode="Press"
+                            IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                            Style="{StaticResource WD.ExpandCollapseToggleStyle}" />
                         <Border
                             x:Name="PART_Border"
+                            Grid.Column="1"
                             Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
-                            <DockPanel LastChildFill="True">
-                                <ToggleButton
-                                    x:Name="Expander"
-                                    ClickMode="Press"
-                                    IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Style="{StaticResource WD.ExpandCollapseToggleStyle}" />
-                                <ContentPresenter
-                                    x:Name="PART_Header"
-                                    VerticalAlignment="Center"
-                                    ContentSource="Header"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </DockPanel>
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                            <ContentPresenter
+                                x:Name="PART_Header"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                ContentSource="Header" />
                         </Border>
                         <Border
                             x:Name="PART_ItemsHost"
                             Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
                             RenderTransformOrigin=".5,0">
                             <Border.RenderTransform>
                                 <ScaleTransform ScaleY="0" />
