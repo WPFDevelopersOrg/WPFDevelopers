@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Builds", "Builds", "{E1D5153C-CEA6-484B-BDDD-D7CB49FCDE94}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		Resources.props = Resources.props
+		TargetFrameworks.props = TargetFrameworks.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Net40", "WPFDevelopers.Net40\WPFDevelopers.Net40.csproj", "{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}"
