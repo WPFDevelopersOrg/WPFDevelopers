@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<Import Project="../TargetFrameworks.props"/>
 	<PropertyGroup>
 		<AssemblyName>WPFDevelopers</AssemblyName>
 		<RootNamespace>WPFDevelopers</RootNamespace>
-		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;netcoreapp3.0</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
 		<PackageId>WPFDevelopers</PackageId>
