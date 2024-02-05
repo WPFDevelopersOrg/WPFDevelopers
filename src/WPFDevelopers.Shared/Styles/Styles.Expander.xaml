@@ -7,6 +7,7 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
     <Style
         x:Key="WD.DefaultExpander"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -54,7 +55,7 @@
                                                                 Height="10"
                                                                 Data="{StaticResource WD.NextGeometry}"
                                                                 RenderTransformOrigin=".5,.5"
-                                                                Stretch="Fill">
+                                                                Stretch="Uniform">
                                                                 <Path.Fill>
                                                                     <SolidColorBrush Color="{DynamicResource WD.PrimaryTextColor}" />
                                                                 </Path.Fill>
@@ -107,7 +108,11 @@
                                 BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                                 BorderThickness="0"
                                 DockPanel.Dock="Bottom"
+                                RenderTransformOrigin=".5,0"
                                 SnapsToDevicePixels="True">
+                                <Border.RenderTransform>
+                                    <ScaleTransform ScaleY="0" />
+                                </Border.RenderTransform>
                                 <ContentPresenter
                                     x:Name="ExpandSite"
                                     Margin="{TemplateBinding Padding}"
@@ -120,6 +125,7 @@
                                     Visibility="Collapsed" />
                             </Border>
                         </DockPanel>
+
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="True">
@@ -128,6 +134,12 @@
                         <Trigger Property="ExpandDirection" Value="Right">
                             <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Right" />
                             <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Left" />
+                            <Setter TargetName="PART_Content" Property="RenderTransformOrigin" Value="0,.5" />
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0" />
+                                </Setter.Value>
+                            </Setter>
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
@@ -213,6 +225,7 @@
                         <Trigger Property="ExpandDirection" Value="Up">
                             <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Top" />
                             <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Bottom" />
+                            <Setter TargetName="PART_Content" Property="RenderTransformOrigin" Value=".5,1" />
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
@@ -292,6 +305,12 @@
                         <Trigger Property="ExpandDirection" Value="Left">
                             <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Left" />
                             <Setter TargetName="HeaderSite" Property="DockPanel.Dock" Value="Right" />
+                            <Setter TargetName="PART_Content" Property="RenderTransformOrigin" Value="1,.5" />
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0" />
+                                </Setter.Value>
+                            </Setter>
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
@@ -379,6 +398,20 @@
                                 <Condition Property="ExpandDirection" Value="Down" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,0,1,1" />
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_DownBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="1"
+                                            Duration="00:00:.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="PART_DownBeginStoryboard" />
+                            </MultiTrigger.ExitActions>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -386,6 +419,20 @@
                                 <Condition Property="ExpandDirection" Value="Right" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="0,1,1,1" />
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_RightBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
+                                            To="1"
+                                            Duration="00:00:.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="PART_RightBeginStoryboard" />
+                            </MultiTrigger.ExitActions>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -393,6 +440,20 @@
                                 <Condition Property="ExpandDirection" Value="Up" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,1,0" />
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_UpBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="1"
+                                            Duration="00:00:.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="PART_UpBeginStoryboard" />
+                            </MultiTrigger.ExitActions>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -400,6 +461,20 @@
                                 <Condition Property="ExpandDirection" Value="Left" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,0,1" />
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_LeftBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
+                                            To="1"
+                                            Duration="00:00:.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="PART_LeftBeginStoryboard" />
+                            </MultiTrigger.ExitActions>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -407,4 +482,5 @@
         </Setter>
     </Style>
     <Style BasedOn="{StaticResource WD.DefaultExpander}" TargetType="{x:Type Expander}" />
+
 </ResourceDictionary>
