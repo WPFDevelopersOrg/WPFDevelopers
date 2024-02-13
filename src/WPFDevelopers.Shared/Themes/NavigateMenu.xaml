@@ -6,7 +6,7 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <ControlTemplate x:Key="WD.NavigateMenuLeft" TargetType="{x:Type controls:NavigateMenu}">
-        <controls:SmallPanel>
+        <controls:SmallPanel ClipToBounds="True">
             <ListBox
                 x:Name="PART_ListBox"
                 Background="Transparent"
