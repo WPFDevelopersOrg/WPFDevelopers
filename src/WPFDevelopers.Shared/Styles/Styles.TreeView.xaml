@@ -147,6 +147,7 @@
                         <Border
                             x:Name="PART_Border"
                             Grid.Column="1"
+                            Grid.ColumnSpan="2"
                             Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
