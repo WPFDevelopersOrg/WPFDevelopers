@@ -7,17 +7,22 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <converts:StepIndexConverter x:Key="WD.StepIndexConverter" />
+    <converts:OrientationConverter x:Key="WD.OrientationConverter" />
     <Style
         x:Key="WD.StepItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:StepItem}">
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="0,6,0,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:StepItem}">
-                    <StackPanel>
+                    <StackPanel Orientation="{Binding Orientation, RelativeSource={RelativeSource AncestorType=controls:Step}, Converter={StaticResource WD.OrientationConverter}}">
                         <controls:SmallPanel>
                             <Ellipse
+                                Name="PART_Ellipse"
                                 Width="45"
                                 Height="30"
                                 HorizontalAlignment="Center"
@@ -50,13 +55,20 @@
                             </Border>
                         </controls:SmallPanel>
                         <ContentPresenter
-                            Margin="0,6,0,0"
-                            HorizontalAlignment="Center"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             ContentTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource AncestorType=controls:Step}}"
                             TextElement.FontWeight="Black"
                             TextElement.Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" />
                     </StackPanel>
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Orientation, RelativeSource={RelativeSource AncestorType=controls:Step}}" Value="Vertical">
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter TargetName="PART_Ellipse" Property="Width" Value="30" />
+                            <Setter TargetName="PART_Ellipse" Property="Height" Value="45" />
+                            <Setter Property="Padding" Value="6,0,0,0" />
+                        </DataTrigger>
                         <Trigger Property="Status" Value="Waiting">
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
                             <Setter TargetName="PART_PathComplete" Property="Visibility" Value="Collapsed" />
@@ -101,6 +113,21 @@
                             Value="{Binding StepIndex, RelativeSource={RelativeSource AncestorType=controls:Step}}" />
                         <ItemsPresenter />
                     </controls:SmallPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter TargetName="PART_ProgressBar" Property="Width" Value="1" />
+                            <Setter TargetName="PART_ProgressBar" Property="Orientation" Value="Vertical" />
+                            <Setter TargetName="PART_ProgressBar" Property="Margin" Value="16,0" />
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter TargetName="PART_ProgressBar" Property="RenderTransformOrigin" Value=".5,.5" />
+                            <Setter TargetName="PART_ProgressBar" Property="RenderTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="180" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -111,6 +138,17 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1" />
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource WD.StepItem}" TargetType="{x:Type controls:StepItem}" />
     <Style BasedOn="{StaticResource WD.Step}" TargetType="{x:Type controls:Step}" />

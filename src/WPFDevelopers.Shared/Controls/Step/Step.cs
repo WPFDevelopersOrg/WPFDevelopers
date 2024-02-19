@@ -11,6 +11,17 @@ namespace WPFDevelopers.Controls
     {
         private const string ProgressBarTemplateName = "PART_ProgressBar";
         private ProgressBar _progressBar;
+
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
+        public static readonly DependencyProperty OrientationProperty =
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(Step), new PropertyMetadata(Orientation.Horizontal));
+
+
         public int StepIndex
         {
             get => (int)GetValue(StepIndexProperty);
@@ -66,9 +77,10 @@ namespace WPFDevelopers.Controls
             if (_progressBar == null || count <= 0) return;
             _progressBar.Maximum = count - 1;
             _progressBar.Value = StepIndex;
-            _progressBar.Width = (ActualWidth / count) * (count - 1);
-
-
+            if (Orientation == Orientation.Horizontal)
+                _progressBar.Width = (ActualWidth / count) * (count - 1);
+            else
+                _progressBar.Height = (ActualHeight / count) * (count - 1);
         }
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
