@@ -31,17 +31,17 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         public ICommand NextCommand => new RelayCommand(new Action<object>((sender) =>
         {
-            var uniformGrid = sender as UniformGrid;
-            if (uniformGrid == null) return;
-            foreach (var step in uniformGrid.Children.OfType<Step>())
+            var grid = sender as Grid;
+            if (grid == null) return;
+            foreach (var step in grid.Children.OfType<Step>())
                 step.Next();
 
         }));
         public ICommand PreviousCommand => new RelayCommand(new Action<object>((sender) =>
         {
-            var uniformGrid = sender as UniformGrid;
-            if (uniformGrid == null) return;
-            foreach (var step in uniformGrid.Children.OfType<Step>())
+            var grid = sender as Grid;
+            if (grid == null) return;
+            foreach (var step in grid.Children.OfType<Step>())
                 step.Previous();
         }));
     }
