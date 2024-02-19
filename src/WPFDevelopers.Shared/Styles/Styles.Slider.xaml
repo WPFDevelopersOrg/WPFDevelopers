@@ -43,6 +43,8 @@
                         Name="PART_Border"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
@@ -123,6 +125,7 @@
                     <Track.DecreaseRepeatButton>
                         <RepeatButton
                             Height="{StaticResource WD.RepeatButtonSize}"
+                            Margin="0,2,0,0"
                             Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             Command="{x:Static Slider.DecreaseLarge}"
                             Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
@@ -130,15 +133,13 @@
                     <Track.IncreaseRepeatButton>
                         <RepeatButton
                             Height="{StaticResource WD.RepeatButtonSize}"
+                            Margin="0,2,0,0"
                             Background="{DynamicResource WD.BaseSolidColorBrush}"
                             Command="{x:Static Slider.IncreaseLarge}"
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
                     </Track.IncreaseRepeatButton>
                     <Track.Thumb>
-                        <Thumb
-                            x:Name="PART_Thumb"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource WD.SliderThumbStyle}" />
+                        <Thumb Style="{StaticResource WD.SliderThumbStyle}" />
                     </Track.Thumb>
                 </Track>
             </Grid>
@@ -205,7 +206,7 @@
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
                     </Track.IncreaseRepeatButton>
                     <Track.Thumb>
-                        <Thumb HorizontalAlignment="Center" Style="{StaticResource WD.SliderThumbStyle}" />
+                        <Thumb Style="{StaticResource WD.SliderThumbStyle}" />
                     </Track.Thumb>
                 </Track>
             </Grid>
