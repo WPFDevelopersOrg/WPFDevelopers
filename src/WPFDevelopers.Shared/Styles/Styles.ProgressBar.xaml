@@ -37,31 +37,33 @@
                             </PointAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
-                        <Border
-                            x:Name="PART_Border"
-                            Background="{DynamicResource WD.BaseSolidColorBrush}"
-                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-                        <Rectangle x:Name="PART_Track" />
-                        <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+                    <Border x:Name="PART_TemplateRoot">
+                        <controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
                             <Border
-                                x:Name="Indicator"
-                                Background="{TemplateBinding Foreground}"
+                                x:Name="PART_Border"
+                                Background="{DynamicResource WD.BaseSolidColorBrush}"
                                 CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-                        </Decorator>
-                        <Rectangle
-                            x:Name="PART_Rectangle"
-                            Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
-                            Visibility="Collapsed">
-                            <Rectangle.RenderTransform>
-                                <ScaleTransform />
-                            </Rectangle.RenderTransform>
-                        </Rectangle>
-                    </controls:SmallPanel>
+                            <Rectangle x:Name="PART_Track" />
+                            <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+                                <Border
+                                    x:Name="Indicator"
+                                    Background="{TemplateBinding Foreground}"
+                                    CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Decorator>
+                            <Rectangle
+                                x:Name="PART_Rectangle"
+                                Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                Visibility="Collapsed">
+                                <Rectangle.RenderTransform>
+                                    <ScaleTransform />
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </controls:SmallPanel>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">
                             <Setter Property="Height" Value="{x:Static sys:Double.NaN}" />
-                            <Setter TargetName="PART_Border" Property="LayoutTransform">
+                            <Setter TargetName="PART_TemplateRoot" Property="LayoutTransform">
                                 <Setter.Value>
                                     <RotateTransform Angle="-90" />
                                 </Setter.Value>
