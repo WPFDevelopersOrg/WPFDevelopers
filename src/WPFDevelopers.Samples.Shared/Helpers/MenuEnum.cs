@@ -19,7 +19,7 @@
         CropAvatar,
         AnimationAudio,
         AMap,
-        TransformThumb,
+        TransformLayout,
         VerifyCode,
         CircularMenu,
         ChatEmoji,
@@ -79,6 +79,7 @@
         ColorPicker,
         IPEditBox,
         TimePicker,
+        WaterfallPanel,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

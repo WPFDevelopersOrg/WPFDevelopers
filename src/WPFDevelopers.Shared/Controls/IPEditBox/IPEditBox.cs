@@ -27,7 +27,7 @@ namespace WPFDevelopers.Controls
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as IPEditBox;
-            if (e.NewValue is string text && !ctrl._isChangingText)
+            if (e.NewValue is string text && !ctrl._isChangingText && ctrl.IsLoaded)
                 ctrl.PasteTextIPTextBox(text);
         }
 
@@ -74,7 +74,8 @@ namespace WPFDevelopers.Controls
             _textBox4.PreviewKeyDown += TextBox_PreviewKeyDown;
             _textBox4.Loaded -= TextBox_Loaded;
             _textBox4.Loaded += TextBox_Loaded;
-
+            if (!string.IsNullOrWhiteSpace(Text))
+                PasteTextIPTextBox(Text);
         }
 
         private void TextBox1_TextChanged(object sender, TextChangedEventArgs e)
@@ -130,11 +131,38 @@ namespace WPFDevelopers.Controls
 
         void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            var textBox = sender as TextBox;
             if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.V)
             {
                 ClipboardHandle();
                 _isChangingText = false;
                 e.Handled = true;
+            }
+            else if(e.Key == Key.Left)
+            {
+                if (textBox.CaretIndex == 0 && !IsFirstTextBox(textBox))
+                {
+                    GetPreviousTextBox(textBox).Focus();
+                }
+            }
+            else if (e.Key == Key.Right)
+            {
+                if (textBox.CaretIndex == textBox.Text.Length && !IsLastTextBox(textBox))
+                {
+                    GetNextTextBox(textBox).Focus();
+                }
+            }
+            else if (e.Key == Key.Back)
+            {
+                if (textBox.CaretIndex == 0 && !IsFirstTextBox(textBox))
+                {
+                    var previousTextBox = GetPreviousTextBox(textBox);
+                    if (previousTextBox.Text.Length > 0)
+                        previousTextBox.Text = previousTextBox.Text.Remove(previousTextBox.Text.Length - 1);
+                    previousTextBox.Focus();
+                    previousTextBox.CaretIndex = previousTextBox.Text.Length;
+                    e.Handled = true;
+                }
             }
             else if (e.Key == Key.Delete || e.Key == Key.Back)
             {
@@ -142,6 +170,37 @@ namespace WPFDevelopers.Controls
             }
             else
                 _isChangingText = false;
+        }
+
+        bool IsFirstTextBox(TextBox textBox)
+        {
+            return textBox == _textBox1;
+        }
+
+        bool IsLastTextBox(TextBox textBox)
+        {
+            return textBox == _textBox4;
+        }
+        TextBox GetPreviousTextBox(TextBox textBox)
+        {
+            if (textBox == _textBox2)
+                return _textBox1;
+            else if (textBox == _textBox3)
+                return _textBox2;
+            else if (textBox == _textBox4)
+                return _textBox3;
+            return textBox;
+        }
+
+        TextBox GetNextTextBox(TextBox textBox)
+        {
+            if (textBox == _textBox1)
+                return _textBox2;
+            else if (textBox == _textBox2)
+                return _textBox3;
+            else if (textBox == _textBox3)
+                return _textBox4;
+            return textBox;
         }
 
         void PasteTextIPTextBox(string text)

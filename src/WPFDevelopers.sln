@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Builds", "Builds", "{E1D5153C-CEA6-484B-BDDD-D7CB49FCDE94}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		Package.props = Package.props
+		Resources.props = Resources.props
+		TargetFrameworks.props = TargetFrameworks.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Net40", "WPFDevelopers.Net40\WPFDevelopers.Net40.csproj", "{A608CEB8-62C0-47AB-8F8E-6F1E033CFD74}"
@@ -86,6 +89,7 @@ Global
 		WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems*{a0a4e0f8-745e-401a-a654-d4962ca9cc64}*SharedItemsImports = 13
 		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 5
 		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{a608ceb8-62c0-47ab-8f8e-6f1e033cfd74}*SharedItemsImports = 5
+		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{ad525acc-1df1-4ff6-8cc8-412b866e748a}*SharedItemsImports = 5
 		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{ad525acc-1df1-4ff6-8cc8-412b866e748a}*SharedItemsImports = 5
 		WPFDevelopers.Shared\WPFDevelopers.Shared.projitems*{f424a42d-ed95-4c4a-8b74-50a7c59658de}*SharedItemsImports = 13
 	EndGlobalSection

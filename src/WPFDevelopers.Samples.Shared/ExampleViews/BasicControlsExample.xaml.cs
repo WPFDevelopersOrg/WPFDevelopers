@@ -52,7 +52,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             else
                 tbLightDark.IsChecked = false;
 
-            myPasswordBox.Password = "WPFDevelopers.Minimal";
+            myPasswordBox.Password = "WPFDevelopers";
             var time = DateTime.Now;
             UserCollection = new ObservableCollection<UserModel>();
             for (var i = 0; i < 4; i++)
@@ -61,15 +61,18 @@ namespace WPFDevelopers.Samples.ExampleViews
                 {
                     Date = time,
                     Name = "WPFDevelopers",
-                    Address = "No. 189, Grove St, Los Angeles",
+                    Address = "One Microsoft Way, Redmond",
                     Children = new List<UserModel>
                     {
-                        new UserModel { Name = "WPFDevelopers.Minimal1.1" },
-                        new UserModel { Name = "WPFDevelopers.Minimal1.2" },
-                        new UserModel { Name = "WPFDevelopers.Minimal1.3" },
-                        new UserModel { Name = "WPFDevelopers.Minimal1.4" },
-                        new UserModel { Name = "WPFDevelopers.Minimal1.5" },
-                        new UserModel { Name = "WPFDevelopers.Minimal1.6" }
+                        new UserModel { Name = "WPFDevelopers1.1",Children=new List<UserModel>
+                        {
+                            new UserModel{ Name = "WPFDevelopers1.1.1"}
+                        } },
+                        new UserModel { Name = "WPFDevelopers1.2" },
+                        new UserModel { Name = "WPFDevelopers1.3" },
+                        new UserModel { Name = "WPFDevelopers1.4" },
+                        new UserModel { Name = "WPFDevelopers1.5" },
+                        new UserModel { Name = "WPFDevelopers1.6" }
                     }
                 });
                 time = time.AddDays(2);
@@ -78,7 +81,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             if (ThemesCollection != null)
             {
                 var model = ThemesCollection.FirstOrDefault(x => x.Color == "#B31B1B");
-                if (model != null)return;
+                if (model != null) return;
                 ThemesCollection.Add(new ThemeModel
                 {
                     Color = "#B31B1B",
@@ -86,7 +89,7 @@ namespace WPFDevelopers.Samples.ExampleViews
                         "pack://application:,,,/WPFDevelopers.Samples;component/Light.Carmine.xaml"
                 });
             }
-               
+
         }
 
         private void btnInformation_Click(object sender, RoutedEventArgs e)
@@ -131,10 +134,10 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void Loading_Click(object sender, RoutedEventArgs e)
         {
             var task = new Task(() => { Thread.Sleep(5000); });
-            task.ContinueWith(previousTask => 
+            task.ContinueWith(previousTask =>
             {
                 Loading.SetIsShow(MyBasicControls, false);
-            }, 
+            },
             TaskScheduler.FromCurrentSynchronizationContext());
             Loading.SetIsShow(MyBasicControls, true);
             task.Start();
@@ -192,8 +195,8 @@ namespace WPFDevelopers.Samples.ExampleViews
             var lightDark = sender as ToggleButton;
             if (lightDark == null) return;
             var theme = lightDark.IsChecked.Value ? ThemeType.Dark : ThemeType.Light;
-            if(App.Theme == theme)return;
-                App.Theme = theme;
+            if (App.Theme == theme) return;
+            App.Theme = theme;
             ControlsHelper.ToggleLightAndDark(lightDark.IsChecked == true);
         }
 

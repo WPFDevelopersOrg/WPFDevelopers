@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using WPFDevelopers.Helpers;
 
@@ -287,6 +285,7 @@ namespace WPFDevelopers.Samples.Controls
                 Width = RotateThumbSize,
                 Height = RotateThumbSize,
                 VerticalAlignment = VerticalAlignment.Top,
+                HorizontalAlignment = HorizontalAlignment.Center,
                 Margin = new Thickness(0, -RotateThumbSize, 0, 0),
                 Template = new ControlTemplate(typeof(Thumb))
                 {
@@ -302,12 +301,12 @@ namespace WPFDevelopers.Samples.Controls
         private Brush GetFactoryRotate()
         {
             var lan =
-                "M242 842l60-60c48 36 106 60 168 68v86c-86-8-164-42-228-94zM554 850c62-8 120-32 166-68l62 60c-64 52-142 86-228 94v-86zM782 722c36-48 60-104 68-166h86c-8 86-42 162-94 226zM640 512c0 70-58 128-128 128s-128-58-128-128 58-128 128-128 128 58 128 128zM174 554c8 62 32 120 68 166l-60 62c-52-64-86-142-94-228h86zM242 302c-36 48-60 106-68 168h-86c8-86 42-164 94-228zM850 470c-8-62-32-120-68-168l60-60c52 64 86 142 94 228h-86zM782 182l-60 60c-48-36-106-60-168-68v-86c86 8 164 42 228 94zM470 174c-62 8-120 32-168 68l-60-60c64-52 142-86 228-94v86z";
+                "M35.072 512h121.446v-10.496c5.53-227.021 190.669-409.395 418.253-409.395 231.168 0 418.509 188.006 418.509 419.891s-187.341 419.789-418.509 419.789c-97.178 0-186.624-33.28-257.69-88.986l71.987-77.005c52.019 38.298 116.224 61.082 185.702 61.082 173.363 0 313.907-141.005 313.907-314.88s-140.544-314.88-313.907-314.88c-169.83 0-308.122 135.322-313.6 304.384v10.496h136.806l-178.893 199.373-184.013-199.373z";
             var converter = TypeDescriptor.GetConverter(typeof(Geometry));
             var geometry = (Geometry)converter.ConvertFrom(lan);
-            TileBrush bsh =
+            var bsh =
                 new DrawingBrush(new GeometryDrawing(ControlsHelper.Brush, new Pen(Brushes.Transparent, 2), geometry));
-            bsh.Stretch = Stretch.Fill;
+            bsh.Stretch = Stretch.Uniform;
             return bsh;
         }
         private void Thumb_DragDelta(object sender, DragDeltaEventArgs e)

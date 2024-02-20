@@ -28,6 +28,8 @@ using Rectangle = System.Windows.Shapes.Rectangle;
 using Brushes = System.Windows.Media.Brushes;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
+using System.Drawing.Imaging;
+using System.Windows.Threading;
 
 namespace WPFDevelopers.Controls
 {
@@ -248,7 +250,7 @@ namespace WPFDevelopers.Controls
             _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width;
             _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height;
             //_canvas.Background = new ImageBrush(ControlsHelper.Capture());
-            _canvas.Background = new ImageBrush(ConvertBitmap(CopyScreen()));
+            _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
             _rectangleLeft.Width = _canvas.Width;
             _rectangleLeft.Height = _canvas.Height;
             _border.Opacity = 0;
@@ -289,19 +291,7 @@ namespace WPFDevelopers.Controls
         {
             
         }
-        private BitmapSource ConvertBitmap(Bitmap bitmap)
-        {
-            BitmapSource img;
-            IntPtr hBitmap;
-            hBitmap = bitmap.GetHbitmap();
-            img = Imaging.CreateBitmapSourceFromHBitmap(
-                hBitmap,
-                IntPtr.Zero,
-                Int32Rect.Empty,
-                BitmapSizeOptions.FromEmptyOptions());
-            img.Freeze();
-            return img;
-        }
+        
         private ScreenDPI GetScreenDPI(int screenIndex)
         {
             ScreenDPI dpi = new ScreenDPI();

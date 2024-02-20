@@ -1,22 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<Import Project="../TargetFrameworks.props"/>
+	<Import Project="../Package.props"/>
 	<PropertyGroup>
-		<AssemblyName>WPFDevelopers</AssemblyName>
-		<RootNamespace>WPFDevelopers</RootNamespace>
-		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;netcoreapp3.0</TargetFrameworks>
-		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
-		<PackageId>WPFDevelopers</PackageId>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<Copyright>Copyright © WPFDevelopersOrg 2022</Copyright>
-		<AssemblyVersion>1.1.0.2</AssemblyVersion>
-		<FileVersion>1.1.0.2</FileVersion>
-		<Version>1.1.0.2</Version>
-		<RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers</RepositoryUrl>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Configurations>Debug;Release;Debug-.NET40;Release-.NET40</Configurations>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 	<Import Project="..\WPFDevelopers.Shared\WPFDevelopers.Shared.projitems" Label="Shared" />
+	<Import Project="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems" Label="Shared" />
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 	  <Exec Command="$(SolutionDir)WPFDevelopers.Shared\Themes\XamlCombine.exe $(SolutionDir)WPFDevelopers.Shared\Themes\Theme45x.txt $(ProjectDir)Themes\Theme.xaml" />
 	</Target>
@@ -47,6 +37,16 @@
 	  <PackageReference Include="System.Drawing.Common">
 	    <Version>7.0.0</Version>
 	  </PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows'">
+		<PackageReference Include="System.Drawing.Common">
+			<Version>7.0.0</Version>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+		<PackageReference Include="System.Drawing.Common">
+			<Version>7.0.0</Version>
+		</PackageReference>
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
 	  <PackageReference Include="System.Drawing.Common">

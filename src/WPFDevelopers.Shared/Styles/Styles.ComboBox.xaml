@@ -180,6 +180,7 @@
                                 MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}"
                                 AllowsTransparency="True"
                                 Focusable="False"
+                                HorizontalOffset="-1"
                                 IsOpen="{TemplateBinding IsDropDownOpen}"
                                 Placement="Bottom"
                                 StaysOpen="False">
@@ -199,9 +200,13 @@
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
                                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                        Effect="{StaticResource WD.PopupShadowDepth}"
                                         SnapsToDevicePixels="True"
                                         UseLayoutRounding="True" />
-                                    <ScrollViewer Margin="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                    <ScrollViewer
+                                        Margin="0,8"
+                                        ClipToBounds="False"
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto">
                                         <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
                                     </ScrollViewer>
                                 </controls:SmallPanel>
@@ -261,7 +266,7 @@
                             <Setter TargetName="ContentSite" Property="UIElement.Visibility" Value="Hidden" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>

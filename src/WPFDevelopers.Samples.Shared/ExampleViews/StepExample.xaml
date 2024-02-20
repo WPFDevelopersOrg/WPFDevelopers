@@ -11,33 +11,49 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer>
-        <StackPanel VerticalAlignment="Center">
-            <UniformGrid Name="PART_UniformGrid" Columns="2">
-                <wd:Step x:Name="PART_Step" StepIndex="{Binding Progress}">
-                    <wd:StepItem Content="填写账号" />
-                    <wd:StepItem Content="身份验证" />
-                    <wd:StepItem Content="设置新密码" />
-                    <wd:StepItem Content="完成" />
-                </wd:Step>
-                <wd:Step ItemsSource="{Binding Steps}" StepIndex="0" />
-            </UniformGrid>
+        <Grid x:Name="PART_Grid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <wd:Step
+                x:Name="PART_Step"
+                VerticalAlignment="Center"
+                StepIndex="{Binding Progress}">
+                <wd:StepItem Content="填写账号" />
+                <wd:StepItem Content="身份验证" />
+                <wd:StepItem Content="设置新密码" />
+                <wd:StepItem Content="完成" />
+            </wd:Step>
+            <wd:Step
+                Grid.Column="1"
+                ItemsSource="{Binding Steps}"
+                Orientation="Vertical"
+                StepIndex="0" />
             <StackPanel
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
                 Margin="10"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Orientation="Horizontal">
                 <Button
                     Command="{Binding PreviousCommand}"
-                    CommandParameter="{Binding ElementName=PART_UniformGrid}"
+                    CommandParameter="{Binding ElementName=PART_Grid}"
                     Content="上一步"
                     Style="{StaticResource WD.PrimaryButton}" />
                 <Button
                     Command="{Binding NextCommand}"
-                    CommandParameter="{Binding ElementName=PART_UniformGrid}"
+                    CommandParameter="{Binding ElementName=PART_Grid}"
                     Content="下一步"
                     Style="{StaticResource WD.SuccessPrimaryButton}" />
             </StackPanel>
-        </StackPanel>
+        </Grid>
+
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/StepExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/StepExample.xaml.cs" CodeType="CSharp" />

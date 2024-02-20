@@ -126,8 +126,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.AMap:
                     ControlPanel = new BingAMapExample();
                     break;
-                case MenuEnum.TransformThumb:
-                    ControlPanel = new TransformThumbExample();
+                case MenuEnum.TransformLayout:
+                    ControlPanel = new TransformLayoutExample();
                     break;
                 case MenuEnum.VerifyCode:
                     ControlPanel = new VerifyCodeExample();
@@ -314,6 +314,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.TimePicker:
                     ControlPanel = new TimePickerExample();
+                    break;
+                case MenuEnum.WaterfallPanel:
+                    ControlPanel = new WaterfallPanelExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

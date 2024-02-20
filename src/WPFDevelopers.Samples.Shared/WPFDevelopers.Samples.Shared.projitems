@@ -25,9 +25,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\ScaleItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ElementAdorner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\ThumbAngle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\TransformThumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ElementAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ThumbAngle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\TransformLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\FireControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieSegmentModel.cs" />
@@ -397,9 +397,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TimePickerExample.xaml.cs">
       <DependentUpon>TimePickerExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TransformThumbExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TransformLayoutExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>TransformThumbExample.xaml</DependentUpon>
+      <DependentUpon>TransformLayoutExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TimeLineExample.xaml.cs">
       <SubType>Code</SubType>
@@ -420,6 +420,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\VirtualizingWrapPanelExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>VirtualizingWrapPanelExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\WaterfallPanelExample.xaml.cs">
+      <DependentUpon>WaterfallPanelExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ZooSemy\VolumeControl.xaml.cs">
       <SubType>Code</SubType>
@@ -470,7 +473,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\ElementAdorner\TransformThumb.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\TransformLayout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -875,7 +878,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TransformThumbExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TransformLayoutExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -896,6 +899,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\VirtualizingWrapPanelExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\WaterfallPanelExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

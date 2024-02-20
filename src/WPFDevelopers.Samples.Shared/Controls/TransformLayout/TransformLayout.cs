@@ -1,11 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Xml.Linq;
 
 namespace WPFDevelopers.Samples.Controls
 {
-    public class TransformThumb : ContentControl
+    public class TransformLayout : ContentControl
     {
         public double Angle
         {
@@ -13,20 +12,20 @@ namespace WPFDevelopers.Samples.Controls
             set { SetValue(AngleProperty, value); }
         }
         public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.Register("Angle", typeof(double), typeof(TransformThumb), new PropertyMetadata(0d, OnAngleChanged));
+            DependencyProperty.Register("Angle", typeof(double), typeof(TransformLayout), new PropertyMetadata(0d, OnAngleChanged));
 
         private static void OnAngleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
            
         }
-        static TransformThumb()
+        static TransformLayout()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(TransformThumb), new FrameworkPropertyMetadata(typeof(TransformThumb)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TransformLayout), new FrameworkPropertyMetadata(typeof(TransformLayout)));
         }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            IsVisibleChanged += TransformThumb_IsVisibleChanged;
+            IsVisibleChanged += TransformContent_IsVisibleChanged;
             CreateAdorner();
         }
         void CreateAdorner()
@@ -51,7 +50,7 @@ namespace WPFDevelopers.Samples.Controls
             Angle = e.NewValue;
         }
 
-        private void TransformThumb_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void TransformContent_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue is bool isVisible)
             {
@@ -59,7 +58,6 @@ namespace WPFDevelopers.Samples.Controls
                 {
                     CreateAdorner();
                 }
-                
             }
         }
     }

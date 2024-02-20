@@ -20,6 +20,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <wd:IPEditBox x:Name="myIPEditBox" Text="{Binding ElementName=MyIp, Path=Text, Mode=TwoWay}" />
             <TextBox
@@ -31,6 +33,7 @@
                 Click="Button_Click"
                 Content="获取IP地址" />
             <TextBox Grid.Row="6" />
+            <wd:IPEditBox Grid.Row="8" Text="192.168.1.1" />
         </Grid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml" CodeType="Xaml" />

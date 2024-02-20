@@ -445,7 +445,7 @@
                             Background="{DynamicResource WD.BackgroundSolidColorBrush}"
                             BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                             BorderThickness="1"
-                            CornerRadius="3"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                             SnapsToDevicePixels="True"
                             UseLayoutRounding="True">
                             <Border.Effect>
@@ -453,7 +453,7 @@
                                     BlurRadius="12"
                                     Opacity="0.1"
                                     ShadowDepth="2"
-                                    Color="Black" />
+                                    Color="{DynamicResource WD.BlackColor}" />
                             </Border.Effect>
                             <Grid Margin="0,20,0,0">
                                 <Grid.ColumnDefinitions>
