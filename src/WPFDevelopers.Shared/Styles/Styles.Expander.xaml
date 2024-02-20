@@ -40,8 +40,7 @@
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
-                                                        BorderThickness="1"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -98,11 +97,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="3,3,0,0" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -156,8 +150,7 @@
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
-                                                        BorderThickness="1"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -221,11 +214,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="3,0,0,3" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -247,8 +235,7 @@
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
-                                                        BorderThickness="1"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -307,11 +294,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0,0,3,3" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -338,8 +320,7 @@
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
                                                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
-                                                        BorderThickness="1"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -403,11 +384,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0,3,3,0" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -421,7 +397,6 @@
                                 <Condition Property="ExpandDirection" Value="Down" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,0,1,1" />
-                            <Setter TargetName="PART_Content" Property="CornerRadius" Value="0,0,3,3" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_DownBeginStoryboard">
                                     <Storyboard>
@@ -443,7 +418,6 @@
                                 <Condition Property="ExpandDirection" Value="Right" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="0,1,1,1" />
-                            <Setter TargetName="PART_Content" Property="CornerRadius" Value="0,3,3,0" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_RightBeginStoryboard">
                                     <Storyboard>
@@ -465,7 +439,6 @@
                                 <Condition Property="ExpandDirection" Value="Up" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,1,0" />
-                            <Setter TargetName="PART_Content" Property="CornerRadius" Value="3,3,0,0" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_UpBeginStoryboard">
                                     <Storyboard>
@@ -487,7 +460,6 @@
                                 <Condition Property="ExpandDirection" Value="Left" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,0,1" />
-                            <Setter TargetName="PART_Content" Property="CornerRadius" Value="3,0,0,3" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_LeftBeginStoryboard">
                                     <Storyboard>
