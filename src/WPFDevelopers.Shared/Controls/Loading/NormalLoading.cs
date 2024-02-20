@@ -1,73 +1,61 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Microsoft.Expression.Drawing.Media;
+using Microsoft.Expression.Drawing.Shapes;
 
 namespace WPFDevelopers.Controls
 {
-    [TemplatePart(Name = PART_EillipseTemplateName, Type = typeof(Ellipse))]
-    public class NormalLoading : Control
+    [TemplatePart(Name = IndicatorTemplateName, Type = typeof(Arc))]
+    public class NormalLoading : RangeBase
     {
-        private const string PART_EillipseTemplateName = "PART_Ellipse";
+        private const string IndicatorTemplateName = "PART_Indicator";
 
-        public static readonly DependencyProperty StrokeValueProperty =
-            DependencyProperty.Register("StrokeValue", typeof(double), typeof(NormalLoading)
-                , new PropertyMetadata(0.0, OnStrokeValueChanged));
+        public static readonly DependencyProperty ArcThicknessProperty = 
+            DependencyProperty.Register("ArcThickness", typeof(double), typeof(NormalLoading),
+                new PropertyMetadata(0d));
 
-        public static readonly DependencyProperty StrokeArrayProperty =
-            DependencyProperty.Register("StrokeArray", typeof(DoubleCollection), typeof(NormalLoading)
-                , new PropertyMetadata(new DoubleCollection {10, 100}));
+        public static readonly DependencyProperty IsIndeterminateProperty =
+           ProgressBar.IsIndeterminateProperty.AddOwner(typeof(NormalLoading),
+               new FrameworkPropertyMetadata(true));
 
-        private Ellipse _ellipse;
+        private Arc _indicator;
 
-        private Storyboard _storyboard;
-
-        public NormalLoading()
+        public double ArcThickness
         {
-            Loaded += LoadingNew_Loaded;
-            Unloaded += LoadingNew_Unloaded;
+            get => (double)GetValue(ArcThicknessProperty);
+            set => SetValue(ArcThicknessProperty, value);
         }
-
-        public double StrokeValue
+        public bool IsIndeterminate
         {
-            get => (double) GetValue(StrokeValueProperty);
-            set => SetValue(StrokeValueProperty, value);
-        }
-
-
-        public DoubleCollection StrokeArray
-        {
-            get => (DoubleCollection) GetValue(StrokeArrayProperty);
-            set => SetValue(StrokeArrayProperty, value);
-        }
-
-        private static void OnStrokeValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            (d as NormalLoading).StrokeArray = new DoubleCollection {(double) e.NewValue, 100};
-        }
-
-        private void LoadingNew_Loaded(object sender, RoutedEventArgs e)
-        {
-            _storyboard = new Storyboard();
-            _storyboard.RepeatBehavior = RepeatBehavior.Forever;
-            var animation = new DoubleAnimation(0, Width + 20, new Duration(TimeSpan.FromSeconds(1.0)));
-            _storyboard.Children.Add(animation);
-            Storyboard.SetTarget(animation, this);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(StrokeValueProperty));
-            _storyboard.Begin();
+            get => (bool)GetValue(IsIndeterminateProperty);
+            set => SetValue(IsIndeterminateProperty, value);
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            _indicator = GetTemplateChild(IndicatorTemplateName) as Arc;
+            if (_indicator != null)
+            {
+                _indicator.StartAngle = 0;
+                _indicator.EndAngle = 0;
+            }
+            SetProgressBarIndicatorAngle();
         }
 
-        private void LoadingNew_Unloaded(object sender, RoutedEventArgs e)
+        private void SetProgressBarIndicatorAngle()
         {
-            if (_storyboard != null)
-                _storyboard.Stop();
+            if (_indicator == null) return;
+            var minimum = Minimum;
+            var maximum = Maximum;
+            var num = Value;
+            _indicator.EndAngle = (maximum <= minimum ? 0 : (num - minimum) / (maximum - minimum)) * 360;
         }
     }
+
 }
