@@ -421,6 +421,9 @@
       <SubType>Code</SubType>
       <DependentUpon>VirtualizingWrapPanelExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\WaterfallPanelExample.xaml.cs">
+      <DependentUpon>WaterfallPanelExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ZooSemy\VolumeControl.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>VolumeControl.xaml</DependentUpon>
@@ -896,6 +899,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\VirtualizingWrapPanelExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\WaterfallPanelExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
