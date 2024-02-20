@@ -315,6 +315,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.TimePicker:
                     ControlPanel = new TimePickerExample();
                     break;
+                case MenuEnum.WaterfallPanel:
+                    ControlPanel = new WaterfallPanelExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
