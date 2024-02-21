@@ -91,34 +91,32 @@ namespace WPFDevelopers.Controls
             var h = (double) uIElement.GetValue(ActualHeightProperty);
             switch (type)
             {
-                case LoadingType.Normal:
+                case LoadingType.Default:
                     if (isLoading)
                     {
-                        var defaultLoading = new DefaultLoading();
-                        if (w < MINSIZE || h < MINSIZE)
+                        var frameworkElement = (FrameworkElement)uIElement;
+                        var normalLoading = new DefaultLoading();
+                        var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth
+                            ? frameworkElement.ActualHeight
+                            : frameworkElement.ActualWidth;
+                        if (_size < MINSIZE)
                         {
-                            defaultLoading.Width = SIZE;
-                            defaultLoading.Height = SIZE;
-                            defaultLoading.StrokeArray = new DoubleCollection {10, 100};
+                            normalLoading.Width = SIZE;
+                            normalLoading.Height = SIZE;
                         }
-
-                        value = defaultLoading;
+                        value = normalLoading;
                     }
 
                     break;
-                case LoadingType.Default:
-                    var frameworkElement = (FrameworkElement) uIElement;
-                    var normalLoading = new NormalLoading();
-                    var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth
-                        ? frameworkElement.ActualHeight
-                        : frameworkElement.ActualWidth;
-                    if (_size < MINSIZE)
+                case LoadingType.Normal:
+                    var defaultLoading = new NormalLoading();
+                    if (w < MINSIZE || h < MINSIZE)
                     {
-                        normalLoading.Width = SIZE;
-                        normalLoading.Height = SIZE;
+                        defaultLoading.Width = SIZE;
+                        defaultLoading.Height = SIZE;
+                        defaultLoading.StrokeArray = new DoubleCollection { 10, 100 };
                     }
-
-                    value = normalLoading;
+                    value = defaultLoading;
                     break;
             }
 
