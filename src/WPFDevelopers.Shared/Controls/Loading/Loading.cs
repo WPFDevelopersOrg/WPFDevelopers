@@ -91,7 +91,7 @@ namespace WPFDevelopers.Controls
             var h = (double) uIElement.GetValue(ActualHeightProperty);
             switch (type)
             {
-                case LoadingType.Default:
+                case LoadingType.Normal:
                     if (isLoading)
                     {
                         var defaultLoading = new DefaultLoading();
@@ -106,7 +106,7 @@ namespace WPFDevelopers.Controls
                     }
 
                     break;
-                case LoadingType.Normal:
+                case LoadingType.Default:
                     var frameworkElement = (FrameworkElement) uIElement;
                     var normalLoading = new NormalLoading();
                     var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth
