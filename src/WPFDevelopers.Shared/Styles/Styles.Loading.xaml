@@ -72,16 +72,16 @@
                 <ControlTemplate TargetType="{x:Type controls:NormalLoading}">
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
-                            <DoubleAnimationUsingKeyFrames
+                            <DoubleAnimation
                                 RepeatBehavior="Forever"
                                 Storyboard.TargetName="PART_SmallPanel"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-                                <LinearDoubleKeyFrame KeyTime="0:0:0.784" Value="360" />
-                            </DoubleAnimationUsingKeyFrames>
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                To="360"
+                                Duration="0:0:0.784" />
                             <DoubleAnimationUsingKeyFrames
                                 RepeatBehavior="Forever"
                                 Storyboard.TargetName="PART_Arc"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)">
                                 <SplineDoubleKeyFrame KeyTime="0" Value="0" />
                                 <SplineDoubleKeyFrame
                                     KeySpline="0.4,0.0,0.2,1"
@@ -148,9 +148,7 @@
                     </ControlTemplate.Resources>
                     <controls:SmallPanel x:Name="PART_SmallPanel" RenderTransformOrigin=".5,.5">
                         <controls:SmallPanel.RenderTransform>
-                            <TransformGroup>
-                                <RotateTransform />
-                            </TransformGroup>
+                            <RotateTransform />
                         </controls:SmallPanel.RenderTransform>
                         <shapes:Arc
                             x:Name="PART_Arc"
@@ -164,18 +162,14 @@
                             Stretch="None"
                             StrokeThickness="0">
                             <shapes:Arc.RenderTransform>
-                                <TransformGroup>
-                                    <RotateTransform />
-                                </TransformGroup>
+                                <RotateTransform />
                             </shapes:Arc.RenderTransform>
                         </shapes:Arc>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsIndeterminate" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
-                            </Trigger.EnterActions>
-                        </Trigger>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
+                        </EventTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
