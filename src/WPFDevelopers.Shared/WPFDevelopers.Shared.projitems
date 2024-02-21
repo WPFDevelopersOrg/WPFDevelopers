@@ -69,13 +69,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\EdgeLight\EdgeLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\BallLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\CycleLoading.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\DefaultLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\NormalLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RingLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RollLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\WaitLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\Loading.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\NormalLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\DefaultLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\Magnifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\MagnifierDesktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\Mask.cs" />
