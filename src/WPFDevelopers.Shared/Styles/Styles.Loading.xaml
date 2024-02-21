@@ -9,12 +9,12 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="WD.DefaultLoading" TargetType="{x:Type controls:DefaultLoading}">
+    <Style x:Key="WD.NormalLoading" TargetType="{x:Type controls:NormalLoading}">
         <Setter Property="Width" Value="40" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:DefaultLoading}">
+                <ControlTemplate TargetType="{x:Type controls:NormalLoading}">
                     <Viewbox Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <controls:SmallPanel>
                             <controls:SmallPanel.Resources>
@@ -60,16 +60,16 @@
         </Setter>
     </Style>
     <Style
-        x:Key="WD.NormalLoading"
+        x:Key="WD.DefaultLoading"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:NormalLoading}">
+        TargetType="{x:Type controls:DefaultLoading}">
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="40" />
         <Setter Property="ArcThickness" Value="2" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:NormalLoading}">
+                <ControlTemplate TargetType="{x:Type controls:DefaultLoading}">
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
                             <DoubleAnimation
