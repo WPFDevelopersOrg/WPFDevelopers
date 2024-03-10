@@ -6,7 +6,6 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
     <Style
         x:Key="WD.AnimationNavigationBar3DItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -65,7 +64,6 @@
                                         </RotateTransform3D.Rotation>
                                     </RotateTransform3D>
                                 </ContainerUIElement3D.Transform>
-
                                 <Viewport2DVisual3D>
                                     <Viewport2DVisual3D.Material>
                                         <DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True" />
@@ -125,7 +123,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style
         x:Key="WD.AnimationNavigationBar3D"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -154,8 +151,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style BasedOn="{StaticResource WD.AnimationNavigationBar3DItem}" TargetType="{x:Type controls:AnimationNavigationBar3DItem}" />
     <Style BasedOn="{StaticResource WD.AnimationNavigationBar3D}" TargetType="{x:Type controls:AnimationNavigationBar3D}" />
-
 </ResourceDictionary>
