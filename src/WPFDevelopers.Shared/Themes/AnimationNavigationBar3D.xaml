@@ -6,12 +6,16 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
     <Style
         x:Key="WD.AnimationNavigationBar3DItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
         <Setter Property="Width" Value="80" />
         <Setter Property="Height" Value="80" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
@@ -47,7 +51,7 @@
                         <Viewport3D.Children>
                             <ModelVisual3D>
                                 <ModelVisual3D.Content>
-                                    <AmbientLight Color="{DynamicResource BackgroundColor}" />
+                                    <AmbientLight Color="{DynamicResource WD.BackgroundColor}" />
                                 </ModelVisual3D.Content>
                             </ModelVisual3D>
                             <ContainerUIElement3D>
@@ -75,14 +79,14 @@
                                     <Border
                                         Width="110"
                                         Height="110"
-                                        Background="{TemplateBinding FileBackground}"
+                                        Background="{TemplateBinding Background}"
                                         CornerRadius="0,0,0,0">
-                                        <Path
-                                            Width="40"
-                                            Height="40"
-                                            Data="{TemplateBinding PathDate}"
-                                            Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                            Stretch="Fill" />
+                                        <ContentPresenter
+                                            x:Name="PART_ContentPresenter"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            TextElement.Foreground="{TemplateBinding Foreground}" />
                                     </Border>
                                 </Viewport2DVisual3D>
                                 <Viewport2DVisual3D>
@@ -98,7 +102,7 @@
                                     <Border
                                         Width="110"
                                         Height="110"
-                                        Background="{TemplateBinding BackFileBackground}"
+                                        Background="{TemplateBinding Fill}"
                                         CornerRadius="0,0,0,0"
                                         RenderTransformOrigin="0.5,0.5">
                                         <Border.RenderTransform>
@@ -106,19 +110,12 @@
                                                 <RotateTransform Angle="90" />
                                             </TransformGroup>
                                         </Border.RenderTransform>
-                                        <StackPanel VerticalAlignment="Center">
-                                            <Path
-                                                Width="40"
-                                                Height="40"
-                                                Data="{TemplateBinding PathDate}"
-                                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                                Stretch="Fill" />
-                                            <TextBlock
-                                                HorizontalAlignment="Center"
-                                                FontSize="{TemplateBinding FontSize}"
-                                                Foreground="{DynamicResource WD.BackgroundSolidColorBrush}"
-                                                Text="{TemplateBinding Text}" />
-                                        </StackPanel>
+                                        <ContentPresenter
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Content="{Binding ContentBack, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3DItem}}}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            TextElement.Foreground="{TemplateBinding Foreground}" />
                                     </Border>
                                 </Viewport2DVisual3D>
                             </ContainerUIElement3D>
@@ -128,6 +125,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style
         x:Key="WD.AnimationNavigationBar3D"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -151,11 +149,13 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="{Binding Columns, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3D}}}" />
+                    <UniformGrid Columns="{Binding Items.Count, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3D}}}" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style BasedOn="{StaticResource WD.AnimationNavigationBar3DItem}" TargetType="{x:Type controls:AnimationNavigationBar3DItem}" />
     <Style BasedOn="{StaticResource WD.AnimationNavigationBar3D}" TargetType="{x:Type controls:AnimationNavigationBar3D}" />
+
 </ResourceDictionary>
