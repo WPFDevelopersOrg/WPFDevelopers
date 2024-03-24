@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -42,27 +42,25 @@
             <ListBox
                 Grid.Row="1"
                 Grid.Column="0"
-                Margin="20,0,0,0"
+                Margin="0,0,0,10"
                 ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection}" />
             <ListBox
                 Grid.Row="1"
                 Grid.Column="2"
-                Margin="0,0,20,0"
+                Margin="0,0,0,10"
                 ItemsSource="{Binding LitePaginationViewModel.PaginationCollection}" />
 
-            <wpfdev:Pagination
+            <wd:Pagination
                 Grid.Row="2"
                 Grid.Column="0"
-                Margin="20,0,0,0"
                 Count="{Binding NormalPaginationViewModel.Count, Mode=TwoWay}"
                 CountPerPage="{Binding NormalPaginationViewModel.CountPerPage, Mode=TwoWay}"
                 Current="{Binding NormalPaginationViewModel.Current, Mode=TwoWay}"
                 IsLite="False" />
 
-            <wpfdev:Pagination
+            <wd:Pagination
                 Grid.Row="2"
                 Grid.Column="2"
-                Margin="0,0,20,0"
                 Count="{Binding LitePaginationViewModel.Count, Mode=TwoWay}"
                 CountPerPage="{Binding LitePaginationViewModel.CountPerPage, Mode=TwoWay}"
                 Current="{Binding LitePaginationViewModel.Current, Mode=TwoWay}"
