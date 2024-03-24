@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:controls="clr-namespace:WPFDevelopers.Controls" xmlns:convert="clr-namespace:WPFDevelopers.Converts" xmlns:helpers="clr-namespace:WPFDevelopers.Helpers" xmlns:shell="clr-namespace:Microsoft.Windows.Shell" xmlns:wd="clr-namespace:WPFDevelopers.Net40" xmlns:shapes="clr-namespace:Microsoft.Expression.Drawing.Shapes" xmlns:ec="clr-namespace:Microsoft.Expression.Controls" xmlns:drawingControls="clr-namespace:Microsoft.Expression.Drawing.Controls" xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:converts="clr-namespace:WPFDevelopers.Converts" xmlns:controls="clr-namespace:WPFDevelopers.Controls" xmlns:helpers="clr-namespace:WPFDevelopers.Helpers" xmlns:shell="clr-namespace:Microsoft.Windows.Shell" xmlns:wd="clr-namespace:WPFDevelopers.Net40" xmlns:shapes="clr-namespace:Microsoft.Expression.Drawing.Shapes" xmlns:ec="clr-namespace:Microsoft.Expression.Controls" xmlns:drawingControls="clr-namespace:Microsoft.Expression.Drawing.Controls" xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore">
 	<SolidColorBrush x:Key="WD.ButtonFocusVisualColor" po:Freeze="True" Color="#60000000" />
 	<Color x:Key="WD.ShadowDepthColor" po:Freeze="True">#AA000000</Color>
 	<Color x:Key="WD.PrimaryTextColor" po:Freeze="True">#909399</Color>
@@ -145,6 +145,8 @@
 	<sys:Double x:Key="WD.RepeatButtonSize">6</sys:Double>
 	<Thickness x:Key="WD.DefaultPadding">6</Thickness>
 	<BooleanToVisibilityConverter x:Key="WD.Bool2VisibilityConverter" />
+	<converts:CornerRadiusToSurroundConverter x:Key="WD.CornerRadiusToSurroundConverter" />
+	<converts:WidthHeightToRectConverter x:Key="WD.WidthHeightToRectConverter" />
 	<Thickness x:Key="WD.TabItemBorderThickness">0,0,0,2</Thickness>
 	<Style TargetType="ToolTip">
 		<Setter Property="Visibility" Value="Visible" />
@@ -157,16 +159,16 @@
 			</DataTrigger>
 		</Style.Triggers>
 	</Style>
-	<convert:WidthHeightEqualValueConverter x:Key="WD.WidthHeightEqualValueConverter" />
-	<convert:HalfValueConverter x:Key="WD.HalfValueConverter" />
-	<convert:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
+	<converts:WidthHeightEqualValueConverter x:Key="WD.WidthHeightEqualValueConverter" />
+	<converts:HalfValueConverter x:Key="WD.HalfValueConverter" />
+	<converts:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
 	<ControlTemplate x:Key="WD.ComboBoxTextBox" TargetType="{x:Type TextBox}">
 		<Border Background="{TemplateBinding Background}" Focusable="False">
 			<ScrollViewer x:Name="PART_ContentHost" Background="Transparent" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
 		</Border>
 	</ControlTemplate>
-	<convert:DatePickerToCurrentConverter x:Key="WD.DatePickerToCurrentConverter" />
-	<convert:DoubleMinConverter x:Key="WD.DoubleMinConverter" />
+	<converts:DatePickerToCurrentConverter x:Key="WD.DatePickerToCurrentConverter" />
+	<converts:DoubleMinConverter x:Key="WD.DoubleMinConverter" />
 	<ec:IsArrangedToScaleConverter x:Key="IsArrangedToScaleConverter" />
 	<ControlTemplate x:Key="ValidationToolTipTemplate">
 		<Grid Name="Root" Margin="5,0" Opacity="0" RenderTransformOrigin="0,0">
@@ -346,26 +348,26 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
-	<convert:IndexToColor x:Key="WD.IndexToColor" />
-	<convert:AngleToPointConverter x:Key="WD.PrConverter" />
-	<convert:AngleToIsLargeConverter x:Key="WD.IsLargeConverter" />
-	<convert:StepIndexConverter x:Key="WD.StepIndexConverter" />
-	<convert:OrientationConverter x:Key="WD.OrientationConverter" />
-	<convert:BreadCrumbBarConvertr x:Key="WD.BreadCrumbBarConvertr" />
+	<converts:IndexToColor x:Key="WD.IndexToColor" />
+	<converts:AngleToPointConverter x:Key="WD.PrConverter" />
+	<converts:AngleToIsLargeConverter x:Key="WD.IsLargeConverter" />
+	<converts:StepIndexConverter x:Key="WD.StepIndexConverter" />
+	<converts:OrientationConverter x:Key="WD.OrientationConverter" />
+	<converts:BreadCrumbBarConvertr x:Key="WD.BreadCrumbBarConvertr" />
 	<Style x:Key="WD.MessageListBox" TargetType="{x:Type controls:MessageListBox}">
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
 	</Style>
-	<convert:ColorToBrushConverter x:Key="WD.ColorToBrushConverter" />
-	<convert:ColorToRedConverter x:Key="WD.ColorToRedConverter" />
-	<convert:ColorToGreenConverter x:Key="WD.ColorToGreenConverter" />
-	<convert:ColorToBlueConverter x:Key="WD.ColorToBlueConverter" />
-	<convert:ColorTypeToVisibilityConverter x:Key="WD.ColorTypeToVisibilityConverter" />
-	<convert:ColorToStringConverter x:Key="WD.ColorToStringConverter" />
-	<convert:HToColorConverter x:Key="WD.HToColorConverter" />
-	<convert:SToColorConverter x:Key="WD.SToColorConverter" />
-	<convert:LToColorConverter x:Key="WD.LToColorConverter" />
+	<converts:ColorToBrushConverter x:Key="WD.ColorToBrushConverter" />
+	<converts:ColorToRedConverter x:Key="WD.ColorToRedConverter" />
+	<converts:ColorToGreenConverter x:Key="WD.ColorToGreenConverter" />
+	<converts:ColorToBlueConverter x:Key="WD.ColorToBlueConverter" />
+	<converts:ColorTypeToVisibilityConverter x:Key="WD.ColorTypeToVisibilityConverter" />
+	<converts:ColorToStringConverter x:Key="WD.ColorToStringConverter" />
+	<converts:HToColorConverter x:Key="WD.HToColorConverter" />
+	<converts:SToColorConverter x:Key="WD.SToColorConverter" />
+	<converts:LToColorConverter x:Key="WD.LToColorConverter" />
 	<LinearGradientBrush x:Key="WD.ColorPickerRainbowBrush" po:Freeze="True">
 		<GradientStop Color="#FF0000" />
 		<GradientStop Offset="0.167" Color="#FF00FF" />
@@ -1401,14 +1403,28 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="WD.SliderRepeatButtonStyle" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type RepeatButton}">
+	<Style x:Key="WD.SliderRepeatButtonStyle" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:SliderRepeatButton}">
 		<Setter Property="OverridesDefaultStyle" Value="True" />
 		<Setter Property="Focusable" Value="False" />
 		<Setter Property="IsTabStop" Value="False" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type RepeatButton}">
-					<Rectangle Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="{TemplateBinding Background}" />
+				<ControlTemplate TargetType="{x:Type controls:SliderRepeatButton}">
+					<Border x:Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" />
+					<ControlTemplate.Triggers>
+						<Trigger Property="RadiusOrientation" Value="Right">
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
+						</Trigger>
+						<Trigger Property="RadiusOrientation" Value="Left">
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
+						</Trigger>
+						<Trigger Property="RadiusOrientation" Value="Down">
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
+						</Trigger>
+						<Trigger Property="RadiusOrientation" Value="Up">
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -1425,10 +1441,10 @@
 				<TickBar x:Name="BottomTick" Grid.Row="2" Height="4" Margin="0,2,0,0" Fill="{TemplateBinding Foreground}" Placement="Bottom" Visibility="Collapsed" />
 				<Track x:Name="PART_Track" Grid.Row="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
+						<controls:SliderRepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" RadiusOrientation="Right" Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
-						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.BaseSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
+						<controls:SliderRepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.BaseSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" RadiusOrientation="Left" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
 						<Thumb Style="{StaticResource WD.SliderThumbStyle}" />
@@ -1461,10 +1477,10 @@
 				<TickBar x:Name="BottomTick" Grid.Column="2" Width="4" Margin="2,0,0,0" Fill="{TemplateBinding Foreground}" Placement="Right" Visibility="Collapsed" />
 				<Track x:Name="PART_Track" Grid.Column="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Width="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
+						<controls:SliderRepeatButton Width="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" RadiusOrientation="Up" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
-						<RepeatButton Width="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.LightSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
+						<controls:SliderRepeatButton Width="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.LightSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" RadiusOrientation="Down" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
 						<Thumb Style="{StaticResource WD.SliderThumbStyle}" />
@@ -2378,14 +2394,6 @@
 								<SolidColorBrush Color="{DynamicResource WD.PrimaryTextColor}" />
 							</Polygon.Fill>
 						</Polygon>
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="MouseOver" />
-								<VisualState x:Name="Pressed" />
-								<VisualState x:Name="Disabled" />
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
 					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsMouseOver" Value="True">
@@ -2398,7 +2406,7 @@
 	</Style>
 	<Style x:Key="WD.DefaultDataGrid" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type DataGrid}">
 		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-		<Setter Property="BorderThickness" Value="1,1,1,0" />
+		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
 		<Setter Property="Background" Value="{x:Null}" />
 		<Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
@@ -2411,24 +2419,45 @@
 		<Setter Property="AutoGenerateColumns" Value="False" />
 		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 		<Setter Property="RowHeaderWidth" Value="0" />
+		<Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+		<Setter Property="ScrollViewer.PanningMode" Value="VerticalOnly" />
+		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGrid}">
-					<Border x:Name="DGR_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+					<Border x:Name="DGR_Border" Padding="0,0,0,.1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
 						<ScrollViewer x:Name="DG_ScrollViewer" Focusable="False">
+							<ScrollViewer.Clip>
+								<RectangleGeometry>
+									<RectangleGeometry.RadiusX>
+										<Binding ElementName="DGR_Border" Path="CornerRadius.TopLeft" />
+									</RectangleGeometry.RadiusX>
+									<RectangleGeometry.RadiusY>
+										<Binding ElementName="DGR_Border" Path="CornerRadius.TopLeft" />
+									</RectangleGeometry.RadiusY>
+									<RectangleGeometry.Rect>
+										<MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
+											<Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+											<Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+										</MultiBinding>
+									</RectangleGeometry.Rect>
+								</RectangleGeometry>
+							</ScrollViewer.Clip>
 							<ScrollViewer.Template>
 								<ControlTemplate TargetType="{x:Type ScrollViewer}">
 									<Grid>
 										<Grid.ColumnDefinitions>
 											<ColumnDefinition Width="Auto" />
 											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="Auto" />
 										</Grid.ColumnDefinitions>
 										<Grid.RowDefinitions>
 											<RowDefinition Height="Auto" />
 											<RowDefinition Height="*" />
 											<RowDefinition Height="Auto" />
 										</Grid.RowDefinitions>
-										<Button Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource WD.DoubleMinConverter}}" Command="{x:Static DataGrid.SelectAllCommand}" Focusable="False" Style="{StaticResource WD.DefaultDataGridSelectAllButtonStyle}" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+										<Button x:Name="PART_DataGridSelectAllButton" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource WD.DoubleMinConverter}}" Command="{x:Static DataGrid.SelectAllCommand}" Focusable="False" Style="{StaticResource WD.DefaultDataGridSelectAllButtonStyle}" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 										<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Row="1" Grid.ColumnSpan="2" CanContentScroll="{TemplateBinding CanContentScroll}" />
 										<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
@@ -2444,12 +2473,6 @@
 							</ScrollViewer.Template>
 							<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 						</ScrollViewer>
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Disabled" />
-								<VisualState x:Name="Normal" />
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>
@@ -2571,7 +2594,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRowHeader}">
 					<controls:SmallPanel HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
-						<Border x:Name="rowHeaderBorder" Background="{TemplateBinding Background}">
+						<Border x:Name="DGR_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
 							<StackPanel Orientation="Horizontal">
 								<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.FontWeight="{TemplateBinding FontWeight}" />
 								<Control SnapsToDevicePixels="false" Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" Visibility="{Binding (Validation.HasError), Converter={StaticResource WD.Bool2VisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
@@ -2579,26 +2602,6 @@
 						</Border>
 						<Thumb x:Name="PART_TopHeaderGripper" VerticalAlignment="Top" Style="{StaticResource WD.RowHeaderGripperStyle}" />
 						<Thumb x:Name="PART_BottomHeaderGripper" VerticalAlignment="Bottom" Style="{StaticResource WD.RowHeaderGripperStyle}" />
-						<VisualStateManager.VisualStateGroups>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="Normal_CurrentRow" />
-								<VisualState x:Name="Unfocused_EditingRow" />
-								<VisualState x:Name="Normal_EditingRow" />
-								<VisualState x:Name="MouseOver" />
-								<VisualState x:Name="MouseOver_CurrentRow" />
-								<VisualState x:Name="MouseOver_Unfocused_EditingRow" />
-								<VisualState x:Name="MouseOver_EditingRow" />
-								<VisualState x:Name="MouseOver_Unfocused_Selected" />
-								<VisualState x:Name="MouseOver_Selected" />
-								<VisualState x:Name="MouseOver_Unfocused_CurrentRow_Selected" />
-								<VisualState x:Name="MouseOver_CurrentRow_Selected" />
-								<VisualState x:Name="Unfocused_Selected" />
-								<VisualState x:Name="Unfocused_CurrentRow_Selected" />
-								<VisualState x:Name="Normal_CurrentRow_Selected" />
-								<VisualState x:Name="Normal_Selected" />
-							</VisualStateGroup>
-						</VisualStateManager.VisualStateGroups>
 					</controls:SmallPanel>
 				</ControlTemplate>
 			</Setter.Value>
@@ -2641,7 +2644,7 @@
 						</Storyboard>
 					</ControlTemplate.Resources>
 					<controls:SmallPanel>
-						<Border x:Name="columnHeaderBorder" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<Border x:Name="DGR_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
 							<Grid Name="HedearGrid">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="*" />
@@ -2725,11 +2728,6 @@
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="MouseOver" />
-								<VisualState x:Name="Disabled" />
-							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
@@ -2773,11 +2771,6 @@
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
-							<VisualStateGroup x:Name="CommonStates">
-								<VisualState x:Name="Normal" />
-								<VisualState x:Name="MouseOver" />
-								<VisualState x:Name="Disabled" />
-							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
@@ -2814,12 +2807,28 @@
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="Padding" Value="2" />
+		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabControl}">
-					<Border Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<Grid ClipToBounds="True" KeyboardNavigation.TabNavigation="Local" SnapsToDevicePixels="True">
+					<Border x:Name="PART_Border" Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
+						<Border.Clip>
+							<RectangleGeometry>
+								<RectangleGeometry.RadiusX>
+									<Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
+								</RectangleGeometry.RadiusX>
+								<RectangleGeometry.RadiusY>
+									<Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
+								</RectangleGeometry.RadiusY>
+								<RectangleGeometry.Rect>
+									<MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
+										<Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}" />
+										<Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}" />
+									</MultiBinding>
+								</RectangleGeometry.Rect>
+							</RectangleGeometry>
+						</Border.Clip>
+						<Grid KeyboardNavigation.TabNavigation="Local" SnapsToDevicePixels="True">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Name="ColumnDefinition0" />
 								<ColumnDefinition Name="ColumnDefinition1" Width="0" />
@@ -2828,8 +2837,8 @@
 								<RowDefinition Name="RowDefinition0" Height="Auto" />
 								<RowDefinition Name="RowDefinition1" Height="*" />
 							</Grid.RowDefinitions>
-							<Border x:Name="HeaderBorder" Grid.Row="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1">
-								<TabPanel Name="HeaderPanel" Margin="2,2,2,0" Panel.ZIndex="1" IsItemsHost="True" KeyboardNavigation.TabIndex="1" />
+							<Border x:Name="HeaderBorder" Grid.Row="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1" ClipToBounds="True" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" SnapsToDevicePixels="True">
+								<TabPanel Name="HeaderPanel" Panel.ZIndex="1" IsItemsHost="True" KeyboardNavigation.TabIndex="1" />
 							</Border>
 							<controls:SmallPanel x:Name="ContentPanel" Grid.Row="1" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
 								<ContentPresenter Name="PART_SelectedContentHost" Margin="{TemplateBinding Padding}" Content="{TemplateBinding SelectedContent}" ContentSource="SelectedContent" ContentStringFormat="{TemplateBinding SelectedContentStringFormat}" ContentTemplate="{TemplateBinding SelectedContentTemplate}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
@@ -2843,6 +2852,7 @@
 							<Setter TargetName="HeaderBorder" Property="Grid.Row" Value="1" />
 							<Setter TargetName="ContentPanel" Property="Grid.Row" Value="0" />
 							<Setter TargetName="HeaderBorder" Property="BorderThickness" Value="0,1,0,0" />
+							<Setter TargetName="HeaderBorder" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
 							<Setter Property="ItemContainerStyle" Value="{StaticResource WD.BottomTabItem}" />
 						</Trigger>
 						<Trigger Property="TabControl.TabStripPlacement" Value="Left">
@@ -2853,6 +2863,7 @@
 							<Setter TargetName="RowDefinition0" Property="RowDefinition.Height" Value="*" />
 							<Setter TargetName="RowDefinition1" Property="RowDefinition.Height" Value="0" />
 							<Setter TargetName="HeaderBorder" Property="BorderThickness" Value="0,0,1,0" />
+							<Setter TargetName="HeaderBorder" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
 							<Setter Property="ItemContainerStyle" Value="{StaticResource WD.LeftTabItem}" />
 						</Trigger>
 						<Trigger Property="TabControl.TabStripPlacement" Value="Right">
@@ -2864,6 +2875,7 @@
 							<Setter TargetName="RowDefinition0" Property="RowDefinition.Height" Value="*" />
 							<Setter TargetName="RowDefinition1" Property="RowDefinition.Height" Value="0" />
 							<Setter TargetName="HeaderBorder" Property="BorderThickness" Value="1,0,0,0" />
+							<Setter TargetName="HeaderBorder" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
 							<Setter Property="ItemContainerStyle" Value="{StaticResource WD.RightTabItem}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
@@ -2911,20 +2923,21 @@
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="VerticalContentAlignment" Value="Stretch" />
-		<Setter Property="BorderBrush" Value="{DynamicResource WD.LighterSolidColorBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
 		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Expander}">
-					<Border Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+					<Border x:Name="PART_BorderRoot" Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" ClipToBounds="True" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
 						<DockPanel>
-							<ToggleButton x:Name="HeaderSite" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" DockPanel.Dock="Top" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+							<ToggleButton x:Name="HeaderSite" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" DockPanel.Dock="Top" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
 								<ToggleButton.Style>
 									<Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
+										<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
-													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1">
+													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
 														<Grid Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}" Background="Transparent" SnapsToDevicePixels="False">
 															<Grid.ColumnDefinitions>
 																<ColumnDefinition Width="19" />
@@ -2956,13 +2969,18 @@
 															</VisualStateGroup>
 														</VisualStateManager.VisualStateGroups>
 													</Border>
+													<ControlTemplate.Triggers>
+														<Trigger Property="IsChecked" Value="True">
+															<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
+														</Trigger>
+													</ControlTemplate.Triggers>
 												</ControlTemplate>
 											</Setter.Value>
 										</Setter>
 									</Style>
 								</ToggleButton.Style>
 							</ToggleButton>
-							<Border x:Name="PART_Content" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="0" DockPanel.Dock="Bottom" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True" Visibility="Collapsed">
+							<Border x:Name="PART_Content" DockPanel.Dock="Bottom" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True" Visibility="Collapsed">
 								<Border.RenderTransform>
 									<ScaleTransform ScaleY="0" />
 								</Border.RenderTransform>
@@ -2973,6 +2991,8 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsExpanded" Value="True">
 							<Setter TargetName="PART_Content" Property="Visibility" Value="Visible" />
+							<Setter TargetName="PART_BorderRoot" Property="BorderThickness" Value="1" />
+							<Setter TargetName="HeaderSite" Property="BorderThickness" Value="0" />
 						</Trigger>
 						<Trigger Property="ExpandDirection" Value="Right">
 							<Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Right" />
@@ -2986,10 +3006,11 @@
 							<Setter TargetName="HeaderSite" Property="Style">
 								<Setter.Value>
 									<Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
+										<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
-													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1">
+													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
 														<Grid Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}" Background="Transparent" SnapsToDevicePixels="False">
 															<Grid.RowDefinitions>
 																<RowDefinition Height="19" />
@@ -3028,6 +3049,11 @@
 															</VisualStateGroup>
 														</VisualStateManager.VisualStateGroups>
 													</Border>
+													<ControlTemplate.Triggers>
+														<Trigger Property="IsChecked" Value="True">
+															<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding (helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
+														</Trigger>
+													</ControlTemplate.Triggers>
 												</ControlTemplate>
 											</Setter.Value>
 										</Setter>
@@ -3042,10 +3068,11 @@
 							<Setter TargetName="HeaderSite" Property="Style">
 								<Setter.Value>
 									<Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
+										<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
-													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1">
+													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
 														<Grid Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}" Background="Transparent" SnapsToDevicePixels="False">
 															<Grid.ColumnDefinitions>
 																<ColumnDefinition Width="19" />
@@ -3079,6 +3106,11 @@
 															</VisualStateGroup>
 														</VisualStateManager.VisualStateGroups>
 													</Border>
+													<ControlTemplate.Triggers>
+														<Trigger Property="IsChecked" Value="True">
+															<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
+														</Trigger>
+													</ControlTemplate.Triggers>
 												</ControlTemplate>
 											</Setter.Value>
 										</Setter>
@@ -3098,10 +3130,11 @@
 							<Setter TargetName="HeaderSite" Property="Style">
 								<Setter.Value>
 									<Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
+										<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
-													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{DynamicResource WD.BaseSolidColorBrush}" BorderThickness="1">
+													<Border x:Name="PART_Border" Background="{DynamicResource WD.LighterSolidColorBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
 														<Grid Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}" Background="Transparent" SnapsToDevicePixels="False">
 															<Grid.RowDefinitions>
 																<RowDefinition Height="19" />
@@ -3140,6 +3173,11 @@
 															</VisualStateGroup>
 														</VisualStateManager.VisualStateGroups>
 													</Border>
+													<ControlTemplate.Triggers>
+														<Trigger Property="IsChecked" Value="True">
+															<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
+														</Trigger>
+													</ControlTemplate.Triggers>
 												</ControlTemplate>
 											</Setter.Value>
 										</Setter>
@@ -3153,6 +3191,7 @@
 								<Condition Property="ExpandDirection" Value="Down" />
 							</MultiTrigger.Conditions>
 							<Setter TargetName="PART_Content" Property="BorderThickness" Value="1,0,1,1" />
+							<Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,0,1" />
 							<MultiTrigger.EnterActions>
 								<BeginStoryboard x:Name="PART_DownBeginStoryboard">
 									<Storyboard>
@@ -3170,6 +3209,7 @@
 								<Condition Property="ExpandDirection" Value="Right" />
 							</MultiTrigger.Conditions>
 							<Setter TargetName="PART_Content" Property="BorderThickness" Value="0,1,1,1" />
+							<Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,1,0" />
 							<MultiTrigger.EnterActions>
 								<BeginStoryboard x:Name="PART_RightBeginStoryboard">
 									<Storyboard>
@@ -3187,6 +3227,7 @@
 								<Condition Property="ExpandDirection" Value="Up" />
 							</MultiTrigger.Conditions>
 							<Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,1,0" />
+							<Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,1,0,0" />
 							<MultiTrigger.EnterActions>
 								<BeginStoryboard x:Name="PART_UpBeginStoryboard">
 									<Storyboard>
@@ -3204,6 +3245,7 @@
 								<Condition Property="ExpandDirection" Value="Left" />
 							</MultiTrigger.Conditions>
 							<Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,0,1" />
+							<Setter TargetName="HeaderSite" Property="BorderThickness" Value="1,0,0,0" />
 							<MultiTrigger.EnterActions>
 								<BeginStoryboard x:Name="PART_LeftBeginStoryboard">
 									<Storyboard>
@@ -3225,18 +3267,19 @@
 		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 		<Setter Property="Background" Value="{DynamicResource WD.LighterSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type GroupBox}">
-					<Grid>
+					<Grid Margin="{TemplateBinding Margin}">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="*" />
 						</Grid.RowDefinitions>
-						<Border Grid.Row="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+						<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" SnapsToDevicePixels="True">
 							<ContentPresenter Margin="{TemplateBinding Padding}" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" />
 						</Border>
-						<Border Grid.Row="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,0,1,1" SnapsToDevicePixels="True">
+						<Border Grid.Row="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,0,1,1" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" SnapsToDevicePixels="True">
 							<ContentPresenter Margin="{TemplateBinding Padding}" />
 						</Border>
 					</Grid>
@@ -3250,13 +3293,29 @@
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
 		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-		<Setter Property="BorderThickness" Value="0,1,0,0" />
+		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListBox}">
-					<Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+					<Border Name="Border" Margin="{TemplateBinding Margin}" Padding="0,0,0,.1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
 						<ScrollViewer Focusable="False">
+							<ScrollViewer.Clip>
+								<RectangleGeometry>
+									<RectangleGeometry.RadiusX>
+										<Binding ElementName="Border" Path="CornerRadius.TopLeft" />
+									</RectangleGeometry.RadiusX>
+									<RectangleGeometry.RadiusY>
+										<Binding ElementName="Border" Path="CornerRadius.TopLeft" />
+									</RectangleGeometry.RadiusY>
+									<RectangleGeometry.Rect>
+										<MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
+											<Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+											<Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+										</MultiBinding>
+									</RectangleGeometry.Rect>
+								</RectangleGeometry>
+							</ScrollViewer.Clip>
 							<VirtualizingStackPanel IsItemsHost="True" />
 						</ScrollViewer>
 					</Border>
@@ -3314,20 +3373,16 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ScrollViewer}">
-					<Grid Background="{TemplateBinding Background}">
-						<Grid.RowDefinitions>
-							<RowDefinition Height="*" />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
+					<controls:SmallPanel>
 						<DockPanel Margin="{TemplateBinding Padding}">
 							<ScrollViewer DockPanel.Dock="Top" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
 								<GridViewHeaderRowPresenter AllowsColumnReorder="{Binding Path=TemplatedParent.View.AllowsColumnReorder, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderContainerStyle="{Binding Path=TemplatedParent.View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderContextMenu="{Binding Path=TemplatedParent.View.ColumnHeaderContextMenu, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderTemplate="{Binding Path=TemplatedParent.View.ColumnHeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderTemplateSelector="{Binding Path=TemplatedParent.View.ColumnHeaderTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderToolTip="{Binding Path=TemplatedParent.View.ColumnHeaderToolTip, RelativeSource={RelativeSource TemplatedParent}}" Columns="{Binding Path=TemplatedParent.View.Columns, RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 							</ScrollViewer>
 							<ScrollContentPresenter Name="PART_ScrollContentPresenter" CanContentScroll="True" CanHorizontallyScroll="False" CanVerticallyScroll="False" KeyboardNavigation.DirectionalNavigation="Local" />
 						</DockPanel>
-						<ScrollBar Name="PART_HorizontalScrollBar" Grid.Row="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{TemplateBinding HorizontalOffset}" />
+						<ScrollBar Name="PART_HorizontalScrollBar" VerticalAlignment="Bottom" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{TemplateBinding HorizontalOffset}" />
 						<ScrollBar Name="PART_VerticalScrollBar" HorizontalAlignment="Right" Maximum="{TemplateBinding ScrollableHeight}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{TemplateBinding VerticalOffset}" />
-					</Grid>
+					</controls:SmallPanel>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -3390,8 +3445,24 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ListView}">
-					<Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+					<Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
 						<ScrollViewer Style="{StaticResource WD.GridViewScrollViewerStyleKey}">
+							<ScrollViewer.Clip>
+								<RectangleGeometry>
+									<RectangleGeometry.RadiusX>
+										<Binding ElementName="Border" Path="CornerRadius.TopLeft" />
+									</RectangleGeometry.RadiusX>
+									<RectangleGeometry.RadiusY>
+										<Binding ElementName="Border" Path="CornerRadius.TopLeft" />
+									</RectangleGeometry.RadiusY>
+									<RectangleGeometry.Rect>
+										<MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
+											<Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+											<Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+										</MultiBinding>
+									</RectangleGeometry.Rect>
+								</RectangleGeometry>
+							</ScrollViewer.Clip>
 							<ItemsPresenter />
 						</ScrollViewer>
 					</Border>
@@ -3457,6 +3528,22 @@
 						</Storyboard>
 					</ControlTemplate.Resources>
 					<Border x:Name="PART_TemplateRoot">
+						<Border.Clip>
+							<RectangleGeometry>
+								<RectangleGeometry.RadiusX>
+									<Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
+								</RectangleGeometry.RadiusX>
+								<RectangleGeometry.RadiusY>
+									<Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
+								</RectangleGeometry.RadiusY>
+								<RectangleGeometry.Rect>
+									<MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
+										<Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}" />
+										<Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}" />
+									</MultiBinding>
+								</RectangleGeometry.Rect>
+							</RectangleGeometry>
+						</Border.Clip>
 						<controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
 							<Border x:Name="PART_Border" Background="{DynamicResource WD.BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
 							<Rectangle x:Name="PART_Track" />
@@ -3485,7 +3572,7 @@
 							</Trigger.EnterActions>
 							<Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed" />
 							<Setter TargetName="PART_Rectangle" Property="Visibility" Value="Visible" />
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />
+							<!--<Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />-->
 							<Trigger.ExitActions>
 								<StopStoryboard BeginStoryboardName="IndeterminateStoryboard" />
 							</Trigger.ExitActions>
@@ -3545,8 +3632,8 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="TreeView">
-					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<ScrollViewer Padding="{TemplateBinding Padding}" CanContentScroll="False" Focusable="False">
+					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
+						<ScrollViewer CanContentScroll="False" Focusable="False">
 							<ItemsPresenter />
 						</ScrollViewer>
 					</Border>
@@ -5085,7 +5172,7 @@
 	<Style BasedOn="{StaticResource WD.RingLoading}" TargetType="{x:Type controls:RingLoading}" />
 	<ControlTemplate x:Key="WD.NavigateMenuLeft" TargetType="{x:Type controls:NavigateMenu}">
 		<controls:SmallPanel ClipToBounds="True">
-			<ListBox x:Name="PART_ListBox" Background="Transparent" BorderThickness="0" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}" SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}">
+			<ListBox x:Name="PART_ListBox" Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}" SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
 						<TextBlock Text="{Binding Content}" TextTrimming="CharacterEllipsis" />
@@ -5159,6 +5246,8 @@
 		</Grid>
 	</ControlTemplate>
 	<Style x:Key="WD.NavigateMenu" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:NavigateMenu}">
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
 		<Style.Triggers>
 			<Trigger Property="TabStripPlacement" Value="Left">
 				<Setter Property="Template" Value="{StaticResource WD.NavigateMenuLeft}" />
@@ -5404,6 +5493,9 @@
 							<Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
 							<Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+						</Trigger>
 						<Trigger Property="IsEnabled" Value="False">
 							<Setter TargetName="Border" Property="Background" Value="Transparent" />
 							<Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
@@ -5473,12 +5565,14 @@
 		<Setter Property="MenuIconColor" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
 		<Setter Property="SelectionIndicatorColor" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 		<Setter Property="MenuItemForeground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
 		<Setter Property="SelectedIndex" Value="0" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="controls:DrawerMenu">
-					<Grid Background="{TemplateBinding Background}">
+					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
 							<RowDefinition />
