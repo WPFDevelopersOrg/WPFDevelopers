@@ -3724,12 +3724,12 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.WPFMessageBox}" TargetType="{x:Type controls:WPFMessageBox}" />
-	<Style x:Key="WD.DefaultLoading" TargetType="{x:Type controls:DefaultLoading}">
+	<Style x:Key="WD.NormalLoading" TargetType="{x:Type controls:NormalLoading}">
 		<Setter Property="Width" Value="40" />
 		<Setter Property="Height" Value="40" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:DefaultLoading}">
+				<ControlTemplate TargetType="{x:Type controls:NormalLoading}">
 					<Viewbox Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 						<controls:SmallPanel>
 							<controls:SmallPanel.Resources>
@@ -3757,20 +3757,18 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="WD.NormalLoading" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:NormalLoading}">
+	<Style x:Key="WD.DefaultLoading" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:DefaultLoading}">
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Height" Value="40" />
 		<Setter Property="Width" Value="40" />
 		<Setter Property="ArcThickness" Value="2" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:NormalLoading}">
+				<ControlTemplate TargetType="{x:Type controls:DefaultLoading}">
 					<ControlTemplate.Resources>
 						<Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
-							<DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetName="PART_SmallPanel" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
-								<LinearDoubleKeyFrame KeyTime="0:0:0.784" Value="360" />
-							</DoubleAnimationUsingKeyFrames>
-							<DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetName="PART_Arc" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
+							<DoubleAnimation RepeatBehavior="Forever" Storyboard.TargetName="PART_SmallPanel" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" To="360" Duration="0:0:0.784" />
+							<DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetName="PART_Arc" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)">
 								<SplineDoubleKeyFrame KeyTime="0" Value="0" />
 								<SplineDoubleKeyFrame KeySpline="0.4,0.0,0.2,1" KeyTime="0:0:0.666" Value="135" />
 								<SplineDoubleKeyFrame KeySpline="0.4,0.0,0.2,1" KeyTime="0:0:1.333" Value="270" />
@@ -3795,24 +3793,18 @@
 					</ControlTemplate.Resources>
 					<controls:SmallPanel x:Name="PART_SmallPanel" RenderTransformOrigin=".5,.5">
 						<controls:SmallPanel.RenderTransform>
-							<TransformGroup>
-								<RotateTransform />
-							</TransformGroup>
+							<RotateTransform />
 						</controls:SmallPanel.RenderTransform>
 						<shapes:Arc x:Name="PART_Arc" Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" ArcThickness="{TemplateBinding ArcThickness}" EndAngle="5" Fill="{TemplateBinding BorderBrush}" RenderTransformOrigin=".5,.5" StartAngle="-5" Stretch="None" StrokeThickness="0">
 							<shapes:Arc.RenderTransform>
-								<TransformGroup>
-									<RotateTransform />
-								</TransformGroup>
+								<RotateTransform />
 							</shapes:Arc.RenderTransform>
 						</shapes:Arc>
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsIndeterminate" Value="True">
-							<Trigger.EnterActions>
-								<BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
-							</Trigger.EnterActions>
-						</Trigger>
+						<EventTrigger RoutedEvent="Loaded">
+							<BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
+						</EventTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
