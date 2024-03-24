@@ -17,8 +17,8 @@ namespace WPFDevelopers.Helpers
             DwmApi = "dwmapi.dll",
             Winmm = "winmm.dll",
             Shcore = "Shcore.dll";
-    //查找窗口的委托 查找逻辑
-    public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
+        //查找窗口的委托 查找逻辑
+        public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
 
         [DllImport(User32)]
         public static extern IntPtr FindWindow(string className, string winName);
@@ -45,6 +45,12 @@ namespace WPFDevelopers.Helpers
 
         [DllImport(User32)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport(User32)]
+        public static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport(User32)]
+        public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
         [DllImport(Winmm)]
         public static extern long mciSendString(string strCommand, StringBuilder strReturn,
