@@ -10,7 +10,8 @@
             <ListBox
                 x:Name="PART_ListBox"
                 Background="Transparent"
-                BorderThickness="0"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
                 ItemsSource="{TemplateBinding ItemsSource}"
                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
                 SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}"
@@ -23,7 +24,6 @@
                 <ListBox.ItemContainerStyle>
                     <Style BasedOn="{x:Null}" TargetType="ListBoxItem">
                         <Setter Property="VerticalContentAlignment" Value="Center" />
-
                         <Setter Property="Padding" Value="10,8" />
                         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
                         <Setter Property="Template">
@@ -134,6 +134,8 @@
         x:Key="WD.NavigateMenu"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:NavigateMenu}">
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
             <Trigger Property="TabStripPlacement" Value="Left">
                 <Setter Property="Template" Value="{StaticResource WD.NavigateMenuLeft}" />
