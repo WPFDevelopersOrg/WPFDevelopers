@@ -38,6 +38,22 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Border x:Name="PART_TemplateRoot">
+                        <Border.Clip>
+                            <RectangleGeometry>
+                                <RectangleGeometry.RadiusX>
+                                    <Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
+                                </RectangleGeometry.RadiusX>
+                                <RectangleGeometry.RadiusY>
+                                    <Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
+                                </RectangleGeometry.RadiusY>
+                                <RectangleGeometry.Rect>
+                                    <MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}" />
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}" />
+                                    </MultiBinding>
+                                </RectangleGeometry.Rect>
+                            </RectangleGeometry>
+                        </Border.Clip>
                         <controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
                             <Border
                                 x:Name="PART_Border"
@@ -75,7 +91,7 @@
                             </Trigger.EnterActions>
                             <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_Rectangle" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />
+                            <!--<Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />-->
                             <Trigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="IndeterminateStoryboard" />
                             </Trigger.ExitActions>
@@ -128,7 +144,6 @@
                                 <StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
                             </Trigger.ExitActions>
                         </Trigger>
-
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
