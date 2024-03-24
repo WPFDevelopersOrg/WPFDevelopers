@@ -428,6 +428,12 @@
                             IsEnabled="False"
                             Maximum="100"
                             Value="50" />
+                        <Slider
+                            Height="200"
+                            Maximum="10"
+                            Minimum="0"
+                            Orientation="Vertical"
+                            Value="3" />
                     </WrapPanel>
 
                     <TextBlock
@@ -446,14 +452,19 @@
                             Margin="10,0"
                             IsIndeterminate="True"
                             Value="10" />
-
+                        <ProgressBar
+                            Width="10"
+                            Height="200"
+                            Margin="10,0"
+                            Orientation="Vertical"
+                            Value="10" />
                     </WrapPanel>
 
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="DataGrid" />
-                    <TabControl Margin="0,10" BorderThickness="0">
+                    <TabControl Height="200" Margin="0,10">
                         <TabItem
                             Height="38"
                             Padding="20,0"
@@ -743,24 +754,24 @@
                             </Style>
                         </UniformGrid.Resources>
                         <TabControl Margin="4">
-                            <TabItem Padding="20,0" Header="TabItem1">
+                            <TabItem Padding="10" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem2">
+                            <TabItem Padding="10" Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3">
+                            <TabItem Padding="10" Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl Margin="4" TabStripPlacement="Bottom">
-                            <TabItem Padding="20,0" Header="TabItem1">
+                            <TabItem Padding="10" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem2">
+                            <TabItem Padding="10" Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3">
+                            <TabItem Padding="10" Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
