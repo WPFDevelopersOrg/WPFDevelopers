@@ -22,13 +22,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
                     <Border
+                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                        <ScrollViewer
-                            Padding="{TemplateBinding Padding}"
-                            CanContentScroll="False"
-                            Focusable="False">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True">
+                        <ScrollViewer CanContentScroll="False" Focusable="False">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
