@@ -272,7 +272,10 @@ namespace WPFDevelopers.Controls
                 _jumpPageNumericBox.ValueChanged -= OnJumpPageTextBoxChanged;
 
             if (_listBox != null)
+            {
+                _listBox.PreviewMouseMove -= ListBox_PreviewMouseMove;
                 _listBox.SelectionChanged -= OnSelectionChanged;
+            }
         }
 
         private void SubscribeEvents()
@@ -284,7 +287,15 @@ namespace WPFDevelopers.Controls
                 _jumpPageNumericBox.ValueChanged += OnJumpPageTextBoxChanged;
 
             if (_listBox != null)
+            {
+                _listBox.PreviewMouseMove += ListBox_PreviewMouseMove;
                 _listBox.SelectionChanged += OnSelectionChanged;
+            }
+        }
+
+        private void ListBox_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            e.Handled = true;
         }
 
         private void UpdatePages()
