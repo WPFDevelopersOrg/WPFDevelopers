@@ -147,11 +147,8 @@ namespace WPFDevelopers.Controls
         private void DrawImage()
         {
             if (Source == null) return;
-            if (_border.Visibility == Visibility.Visible)
-            {
-                _border.Visibility = Visibility.Collapsed;
+            if (_border.Visibility == Visibility.Collapsed)
                 _border.Visibility = Visibility.Visible;
-            }
             if (adornerLayer != null)
             {
                 adornerLayer.Remove(screenCutAdorner);
