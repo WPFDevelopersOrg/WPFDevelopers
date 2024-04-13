@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -42,7 +42,7 @@
                         Foreground="#2B579A"
                         Text="{Binding NowPlayerName, RelativeSource={RelativeSource AncestorType=local:RadarChartExample}}" />
                 </WrapPanel>
-                <wpfdev:RadarChart
+                <wd:RadarChart
                     Grid.Row="1"
                     Grid.Column="0"
                     RadarArray="{Binding RadarModels, RelativeSource={RelativeSource AncestorType=local:RadarChartExample}}" />

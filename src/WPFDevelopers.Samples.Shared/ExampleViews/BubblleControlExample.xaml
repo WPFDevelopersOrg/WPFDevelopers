@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
@@ -13,8 +13,8 @@
     <controls:CodeViewer>
         <TabControl TabStripPlacement="Bottom">
             <TabItem Header="随机">
-                <wpfdev:BubblleControl x:Name="MyBubblleControl"  Click="BubblleControl_Click">
-                    <wpfdev:BubblleControl.ItemsSource>
+                <wd:BubblleControl x:Name="MyBubblleControl"  Click="BubblleControl_Click">
+                    <wd:BubblleControl.ItemsSource>
                         <x:Array Type="sys:String">
                             <sys:String>WPF</sys:String>
                             <sys:String>ASP.NET</sys:String>
@@ -26,11 +26,11 @@
                             <sys:String>WinForm</sys:String>
                             <sys:String>UWP</sys:String>
                         </x:Array>
-                    </wpfdev:BubblleControl.ItemsSource>
-                </wpfdev:BubblleControl>
+                    </wd:BubblleControl.ItemsSource>
+                </wd:BubblleControl>
             </TabItem>
             <TabItem Header="自定义">
-                <wpfdev:BubblleCanvas Width="400" Height="400">
+                <wd:BubblleCanvas Width="400" Height="400">
                     <Grid>
                         <Grid Width="60" 
                               Height="60">
@@ -94,7 +94,7 @@
                             </Hyperlink>
                         </TextBlock>
                     </Grid>
-                </wpfdev:BubblleCanvas>
+                </wd:BubblleCanvas>
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>

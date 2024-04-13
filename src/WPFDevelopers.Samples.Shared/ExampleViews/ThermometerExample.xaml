@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              mc:Ignorable="d" 
@@ -31,7 +31,7 @@
                           Stroke="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}"
                           StrokeThickness="1" Opacity=".6"
                           Data="{Binding ElementName=PART_Thermometer, Path=CurrentGeometry,Mode=TwoWay}"/>
-                    <wpfdev:Thermometer x:Name="PART_Thermometer"
+                    <wd:Thermometer x:Name="PART_Thermometer"
                                         CurrentValue="{Binding ElementName=PART_Slider,Path=Value,Mode=TwoWay}"/>
                 </Grid>
                 <TextBlock Text="{Binding ElementName=PART_Thermometer,Path=CurrentValue,StringFormat={}{0}℃}" 

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="OuterGlow" IsLampStart="true"
+                <wd:BreathLamp Width="60" Height="60" LampEffect="OuterGlow" IsLampStart="true"
                                    VerticalAlignment="Top" HorizontalAlignment="Left"
                                    Background="{DynamicResource WD.BlackSolidColorBrush}" 
                                    EffectColor="{DynamicResource WD.DefaultBackgroundPressedColor}">
@@ -26,7 +26,7 @@
                                 <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/2.jpg"/>
                         </Ellipse.Fill>
                     </Ellipse>
-                </wpfdev:BreathLamp>
+                </wd:BreathLamp>
 
                 <TextBlock Grid.Column="1" 
                            Margin="10,20"
@@ -50,7 +50,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Eclipse"  IsLampStart="true"
+                <wd:BreathLamp Width="60" Height="60" LampEffect="Eclipse"  IsLampStart="true"
                                    VerticalAlignment="Top" HorizontalAlignment="Left"
                                    Background="LightGreen" EffectColor="LightGreen">
                     <Ellipse>
@@ -58,7 +58,7 @@
                                 <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/1.jpg"/>
                         </Ellipse.Fill>
                     </Ellipse>
-                </wpfdev:BreathLamp>
+                </wd:BreathLamp>
 
                 <TextBlock Grid.Column="1" 
                            Margin="10,20"
@@ -82,14 +82,14 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
+                <wd:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
                                    VerticalAlignment="Top" HorizontalAlignment="Left">
                     <Ellipse>
                         <Ellipse.Fill>
                                 <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/0.jpg"/>
                         </Ellipse.Fill>
                     </Ellipse>
-                </wpfdev:BreathLamp>
+                </wd:BreathLamp>
 
                 <TextBlock Grid.Column="1" 
                            Margin="10,20"
@@ -113,7 +113,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"
+                <wd:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"
                                    VerticalAlignment="Top" HorizontalAlignment="Left" 
                                    GradientStopColor1="#FF00cec9" GradientStopColor2="#2000cec9">
                     <Ellipse Width="53" Height="53">
@@ -121,7 +121,7 @@
                                 <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/UserImages/yanjinhua.png"/>
                         </Ellipse.Fill>
                     </Ellipse>
-                </wpfdev:BreathLamp>
+                </wd:BreathLamp>
 
                 <TextBlock Grid.Column="1" 
                            Margin="10,20"
