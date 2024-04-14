@@ -195,8 +195,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();
                     break;
-                case MenuEnum.BasicBarChart:
-                    ControlPanel = new BasicBarChartExample();
+                case MenuEnum.ChartBar:
+                    ControlPanel = new ChartBarExample();
                     break;
                 case MenuEnum.ZooSemy:
                     ControlPanel = new ZooSemyExample();
@@ -317,6 +317,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.WaterfallPanel:
                     ControlPanel = new WaterfallPanelExample();
+                    break;
+                case MenuEnum.ChartLine:
+                    ControlPanel = new ChartLineExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
