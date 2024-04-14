@@ -69,9 +69,9 @@
       <SubType>Code</SubType>
       <DependentUpon>BarrageExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BasicBarChartExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartBarExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>BasicBarChartExample.xaml</DependentUpon>
+      <DependentUpon>ChartBarExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BasicControlsExample.xaml.cs">
       <SubType>Code</SubType>
@@ -102,6 +102,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>CarouselExampleEx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml.cs">
+      <DependentUpon>ChartLineExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChatEmojiExample.xaml.cs">
       <SubType>Code</SubType>
@@ -529,7 +532,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BasicBarChartExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ChartBarExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -558,6 +561,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
