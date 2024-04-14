@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\ColorPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSL.cs" />
@@ -57,7 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\ThemeChangedEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\BaseControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BasicBarChart\BasicBarChart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
@@ -116,8 +118,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SixGirdView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SmallPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\RadarChart\RadarChart.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\RadarChart\RadarModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\RadarChart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\RadarModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Ruler\Ruler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCapture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCut.cs" />
