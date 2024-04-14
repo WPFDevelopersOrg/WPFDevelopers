@@ -6119,7 +6119,7 @@
 						<Rectangle x:Name="PART_RectangleTop" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
 						<Rectangle x:Name="PART_RectangleRight" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
 						<Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
-						<Border x:Name="PART_Border" Background="Transparent" BorderBrush="{DynamicResource WD.PrimaryNormalSolidColorBrush}" BorderThickness="2" Cursor="SizeAll" />
+						<Border x:Name="PART_Border" Background="Transparent" BorderBrush="{DynamicResource WD.PrimaryNormalSolidColorBrush}" BorderThickness="2" Cursor="SizeAll" Visibility="Collapsed" />
 					</Canvas>
 				</ControlTemplate>
 			</Setter.Value>
