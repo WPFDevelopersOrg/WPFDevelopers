@@ -13,7 +13,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationAudioExample.xaml.cs" Link="ExampleViews\AnimationAudioExample.xaml.cs" DependentUpon="AnimationAudioExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationNavigationBar3DExample.xaml.cs" Link="ExampleViews\AnimationNavigationBar3DExample.xaml.cs" DependentUpon="AnimationNavigationBar3DExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BarrageExample.xaml.cs" Link="ExampleViews\BarrageExample.xaml.cs" DependentUpon="BarrageExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BasicBarChartExample.xaml.cs" Link="ExampleViews\BasicBarChartExample.xaml.cs" DependentUpon="BasicBarChartExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartBarExample.xaml.cs" Link="ExampleViews\ChartBarExample.xaml.cs" DependentUpon="ChartBarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BasicControlsExample.xaml.cs" Link="ExampleViews\BasicControlsExample.xaml.cs" DependentUpon="BasicControlsExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreatheLightExample.xaml.cs" Link="ExampleViews\BreatheLightExample.xaml.cs" DependentUpon="BreatheLightExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BubblleControlExample.xaml.cs" Link="ExampleViews\BubblleControlExample.xaml.cs" DependentUpon="BubblleControlExample.xaml" />
@@ -143,6 +143,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IPEditBoxExample.xaml.cs" Link="ExampleViews\TransformLayoutExample.xaml.cs" DependentUpon="TransformLayoutExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimePickerExample.xaml.cs" Link="ExampleViews\TimePickerExample.xaml.cs" DependentUpon="TimePickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\WaterfallPanelExample.xaml.cs" Link="ExampleViews\WaterfallPanelExample.xaml.cs" DependentUpon="WaterfallPanelExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartLineExample.xaml.cs" Link="ExampleViews\ChartLineExample.xaml.cs" DependentUpon="ChartLineExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -160,8 +161,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BarrageExample.xaml">
 			<Link>ExampleViews\BarrageExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BasicBarChartExample.xaml">
-			<Link>ExampleViews\BasicBarChartExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartBarExample.xaml">
+			<Link>ExampleViews\ChartBarExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BasicControlsExample.xaml">
 			<Link>ExampleViews\BasicControlsExample.xaml</Link>
@@ -483,6 +484,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\WaterfallPanelExample.xaml">
 			<Link>ExampleViews\WaterfallPanelExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartLineExample.xaml">
+			<Link>ExampleViews\ChartLineExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>
