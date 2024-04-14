@@ -39,7 +39,7 @@
         SpotLight,
         DrawerMenu,
         RadarChart,
-        BasicBarChart,
+        ChartBar,
         ZooSemy,
         RulerControl,
         RainbowBtn,
@@ -80,6 +80,7 @@
         IPEditBox,
         TimePicker,
         WaterfallPanel,
+        ChartLine,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo
