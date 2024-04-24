@@ -29,6 +29,7 @@
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/SnowCanvas/SnowCanvas.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CropControl/CropControl.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/TransformLayout/TransformLayout.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/DrapView/Controls/TransformThumb.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="avalonedit:TextEditor">
                 <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />

@@ -1,0 +1,159 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.DrapViewExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer>
+        <!--  内容  -->
+        <DockPanel>
+            <DockPanel.Resources>
+                <Color x:Key="WD.MainContentForegroundColor">#FFF0F0F0</Color>
+                <Color x:Key="WD.MainContentBackgroundColor">#FFF5F5F5</Color>
+                <DrawingBrush
+                    x:Key="WD.MainContentForegroundDrawingBrush"
+                    RenderOptions.CachingHint="Cache"
+                    Stretch="None"
+                    TileMode="Tile"
+                    Viewport="0,0,16,16"
+                    ViewportUnits="Absolute">
+                    <DrawingBrush.Drawing>
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{DynamicResource WD.MainContentForegroundBrush}">
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <RectangleGeometry Rect="0,0,8,8" />
+                                        <RectangleGeometry Rect="8,8,8,8" />
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+
+                <SolidColorBrush x:Key="WD.MainContentForegroundBrush" Color="{DynamicResource WD.MainContentForegroundColor}" />
+                <SolidColorBrush x:Key="WD.MainContentBackgroundBrush" Color="{DynamicResource WD.MainContentBackgroundColor}" />
+            </DockPanel.Resources>
+            <Border Margin="0,10" DockPanel.Dock="Top">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown">
+                    <RadioButton
+                        Margin="4,0"
+                        Background="Red"
+                        GroupName="color"
+                        IsChecked="True"
+                        Style="{StaticResource WD.ColorRadioButton}" />
+                    <RadioButton
+                        Margin="4,0"
+                        Background="DodgerBlue"
+                        GroupName="color"
+                        Style="{StaticResource WD.ColorRadioButton}" />
+                    <RadioButton
+                        Margin="4,0"
+                        Background="LimeGreen"
+                        GroupName="color"
+                        Style="{StaticResource WD.ColorRadioButton}" />
+                    <RadioButton
+                        Margin="4,0"
+                        Background="Yellow"
+                        GroupName="color"
+                        Style="{StaticResource WD.ColorRadioButton}" />
+                </StackPanel>
+            </Border>
+            <Border Margin="0,10" DockPanel.Dock="Top">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Content="点"
+                        GroupName="polygon"
+                        Tag="0" />
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Content="线"
+                        GroupName="polygon"
+                        Tag="1" />
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Content="三角形"
+                        GroupName="polygon"
+                        Tag="2" />
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Content="矩形"
+                        GroupName="polygon"
+                        IsChecked="True"
+                        Tag="3" />
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Content="多边形"
+                        GroupName="polygon"
+                        Tag="4" />
+                </StackPanel>
+            </Border>
+            <Border Margin="0,10" DockPanel.Dock="Top">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Checked="RadioButton_Checked"
+                        Content="Style1"
+                        GroupName="style"
+                        IsChecked="True"
+                        Tag="YYYY" />
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Checked="RadioButton_Checked"
+                        Content="Style2"
+                        GroupName="style"
+                        Tag="1" />
+                    <RadioButton
+                        VerticalContentAlignment="Center"
+                        Checked="RadioButton_Checked"
+                        Content="Style3"
+                        GroupName="style"
+                        Tag="2" />
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Button
+                            Name="btn_import"
+                            Margin="10,0"
+                            Padding="10,5"
+                            Content="导入" />
+                        <Button
+                            Name="btn_export"
+                            Margin="10,0"
+                            Padding="10,5"
+                            Content="导出" />
+                        <Button
+                            Name="btn_remove"
+                            Margin="10,0"
+                            Padding="10,5"
+                            Click="btn_remove_Click"
+                            Content="删除选中" />
+                        <Button
+                            Name="btn_removeAll"
+                            Margin="10,0"
+                            Padding="10,5"
+                            Click="btn_removeAll_Click"
+                            Content="清空画板" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border Width="200" DockPanel.Dock="Left">
+                <ListBox x:Name="lst_layers" />
+            </Border>
+            <Canvas
+                Name="MainCanvas"
+                Background="{StaticResource WD.MainContentForegroundDrawingBrush}"
+                ClipToBounds="True"
+                MouseLeftButtonDown="MainCanvas_MouseLeftButtonDown"
+                MouseLeftButtonUp="MainCanvas_MouseLeftButtonUp"
+                MouseMove="MainCanvas_MouseMove" />
+        </DockPanel>
+    </controls:CodeViewer>
+</UserControl>

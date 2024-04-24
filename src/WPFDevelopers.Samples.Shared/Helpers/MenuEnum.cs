@@ -81,6 +81,7 @@
         TimePicker,
         WaterfallPanel,
         ChartLine,
+        Drap,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

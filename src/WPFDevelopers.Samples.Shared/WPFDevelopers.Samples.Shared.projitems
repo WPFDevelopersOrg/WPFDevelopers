@@ -157,6 +157,17 @@
       <SubType>Code</SubType>
       <DependentUpon>DesktopPlayVideo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ElementAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ThumbAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ThumbAdorner2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ThumbAngle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\TransformThumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Datas\PrintState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Datas\ShapeType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Datas\ThumbType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\DrapViewExample.xaml.cs">
+      <DependentUpon>DrapViewExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>DrawerMenuExample.xaml</DependentUpon>
@@ -617,6 +628,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Desktop\DesktopPlayVideo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\TransformThumb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\DrapViewExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

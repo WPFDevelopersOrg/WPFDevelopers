@@ -321,6 +321,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ChartLine:
                     ControlPanel = new ChartLineExample();
                     break;
+                case MenuEnum.Drap:
+                    ControlPanel = new DrapViewExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
