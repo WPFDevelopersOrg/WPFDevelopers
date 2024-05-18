@@ -163,31 +163,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
-                    <Border
+                    <controls:WDBorder
                         x:Name="PART_Border"
                         Margin="{TemplateBinding Margin}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                        SnapsToDevicePixels="True">
-                        <Border.Clip>
-                            <RectangleGeometry>
-                                <RectangleGeometry.RadiusX>
-                                    <Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
-                                </RectangleGeometry.RadiusX>
-                                <RectangleGeometry.RadiusY>
-                                    <Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
-                                </RectangleGeometry.RadiusY>
-                                <RectangleGeometry.Rect>
-                                    <MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
-                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}" />
-                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}" />
-                                    </MultiBinding>
-                                </RectangleGeometry.Rect>
-                            </RectangleGeometry>
-                        </Border.Clip>
-                        <Grid KeyboardNavigation.TabNavigation="Local" SnapsToDevicePixels="True">
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                        <Grid Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Name="ColumnDefinition0" />
                                 <ColumnDefinition Name="ColumnDefinition1" Width="0" />
@@ -228,7 +211,7 @@
                                     SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
                             </controls:SmallPanel>
                         </Grid>
-                    </Border>
+                    </controls:WDBorder>
                     <ControlTemplate.Triggers>
                         <Trigger Property="TabControl.TabStripPlacement" Value="Bottom">
                             <Setter TargetName="RowDefinition0" Property="RowDefinition.Height" Value="*" />
