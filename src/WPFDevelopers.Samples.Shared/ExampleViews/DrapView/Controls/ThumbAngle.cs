@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Media.Media3D;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Windows;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
