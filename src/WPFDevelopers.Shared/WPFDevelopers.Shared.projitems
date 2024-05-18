@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\ColorPicker.cs" />
@@ -45,10 +46,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\HalfValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\OrientationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightEqualValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\GeometryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ImagingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightToRectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Languages\Language.Designer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\TextBoxValueChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DatePickerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ListBoxItemExtensions.cs" />
@@ -86,10 +89,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\Mask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\MaskControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WPFMessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WDMessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelectComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelectComboBoxItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\NotifyIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\Gdi32Interop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NotifyIcon\Runtimes\Interop\BitmapHandle.cs" />
@@ -118,8 +120,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SixGirdView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SmallPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\RadarChart.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\RadarModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartRadar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Ruler\Ruler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCapture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCut.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Win32.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LanguageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ChangedPathLayoutProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Distribution.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\DistributionStrategy.cs" />
@@ -528,10 +530,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\NavigateMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Pagination.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -566,6 +564,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Languages\Language.en-US.resx" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Languages\Language.ko-KR.resx" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Languages\Language.resx" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)GZ\WPFDevelopersExt.exe.gz" />
     <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\blindstransitioneffect.ps" />
     <None Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Media.Effects\Shaders\bloom.ps" />
