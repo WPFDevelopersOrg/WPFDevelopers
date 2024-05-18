@@ -22,8 +22,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border
-                        Name="Border"
+                    <controls:WDBorder
+                        x:Name="Border"
                         Margin="{TemplateBinding Margin}"
                         Padding="0,0,0,.1"
                         Background="{TemplateBinding Background}"
@@ -31,26 +31,10 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
-                        <ScrollViewer Focusable="False">
-                            <ScrollViewer.Clip>
-                                <RectangleGeometry>
-                                    <RectangleGeometry.RadiusX>
-                                        <Binding ElementName="Border" Path="CornerRadius.TopLeft" />
-                                    </RectangleGeometry.RadiusX>
-                                    <RectangleGeometry.RadiusY>
-                                        <Binding ElementName="Border" Path="CornerRadius.TopLeft" />
-                                    </RectangleGeometry.RadiusY>
-                                    <RectangleGeometry.Rect>
-                                        <MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
-                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
-                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
-                                        </MultiBinding>
-                                    </RectangleGeometry.Rect>
-                                </RectangleGeometry>
-                            </ScrollViewer.Clip>
+                        <ScrollViewer Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" Focusable="False">
                             <VirtualizingStackPanel IsItemsHost="True" />
                         </ScrollViewer>
-                    </Border>
+                    </controls:WDBorder>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsGrouping" Value="True">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
