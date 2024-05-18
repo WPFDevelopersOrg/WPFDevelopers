@@ -37,34 +37,18 @@
                             </PointAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Border x:Name="PART_TemplateRoot">
-                        <Border.Clip>
-                            <RectangleGeometry>
-                                <RectangleGeometry.RadiusX>
-                                    <Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
-                                </RectangleGeometry.RadiusX>
-                                <RectangleGeometry.RadiusY>
-                                    <Binding ElementName="PART_Border" Path="CornerRadius.TopLeft" />
-                                </RectangleGeometry.RadiusY>
-                                <RectangleGeometry.Rect>
-                                    <MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
-                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Border}" />
-                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Border}" />
-                                    </MultiBinding>
-                                </RectangleGeometry.Rect>
-                            </RectangleGeometry>
-                        </Border.Clip>
+                    <controls:WDBorder x:Name="PART_TemplateRoot" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
                         <controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
                             <Border
                                 x:Name="PART_Border"
                                 Background="{DynamicResource WD.BaseSolidColorBrush}"
-                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+                                Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" />
                             <Rectangle x:Name="PART_Track" />
                             <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
                                 <Border
                                     x:Name="Indicator"
                                     Background="{TemplateBinding Foreground}"
-                                    CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+                                    Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" />
                             </Decorator>
                             <Rectangle
                                 x:Name="PART_Rectangle"
@@ -75,7 +59,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                         </controls:SmallPanel>
-                    </Border>
+                    </controls:WDBorder>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">
                             <Setter Property="Height" Value="{x:Static sys:Double.NaN}" />
@@ -91,7 +75,6 @@
                             </Trigger.EnterActions>
                             <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_Rectangle" Property="Visibility" Value="Visible" />
-                            <!--<Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />-->
                             <Trigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="IndeterminateStoryboard" />
                             </Trigger.ExitActions>
