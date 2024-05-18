@@ -75,7 +75,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGrid}">
-                    <Border
+                    <controls:WDBorder
                         x:Name="DGR_Border"
                         Padding="0,0,0,.1"
                         Background="{TemplateBinding Background}"
@@ -83,23 +83,10 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="DG_ScrollViewer" Focusable="False">
-                            <ScrollViewer.Clip>
-                                <RectangleGeometry>
-                                    <RectangleGeometry.RadiusX>
-                                        <Binding ElementName="DGR_Border" Path="CornerRadius.TopLeft" />
-                                    </RectangleGeometry.RadiusX>
-                                    <RectangleGeometry.RadiusY>
-                                        <Binding ElementName="DGR_Border" Path="CornerRadius.TopLeft" />
-                                    </RectangleGeometry.RadiusY>
-                                    <RectangleGeometry.Rect>
-                                        <MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
-                                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
-                                            <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
-                                        </MultiBinding>
-                                    </RectangleGeometry.Rect>
-                                </RectangleGeometry>
-                            </ScrollViewer.Clip>
+                        <ScrollViewer
+                            x:Name="DG_ScrollViewer"
+                            Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}"
+                            Focusable="False">
                             <ScrollViewer.Template>
                                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
                                     <Grid>
@@ -158,7 +145,7 @@
                             </ScrollViewer.Template>
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </ScrollViewer>
-                    </Border>
+                    </controls:WDBorder>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
