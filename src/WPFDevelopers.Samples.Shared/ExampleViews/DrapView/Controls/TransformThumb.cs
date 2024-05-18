@@ -20,7 +20,6 @@ namespace WPFDevelopers.Samples.ExampleViews
             set { SetValue(ContentTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentTypeProperty =
             DependencyProperty.Register("ContentType", typeof(Type), typeof(TransformThumb));
 
@@ -44,12 +43,8 @@ namespace WPFDevelopers.Samples.ExampleViews
             set { SetValue(PrintStateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PrintState.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PrintStateProperty =
             DependencyProperty.Register("PrintState", typeof(PrintState), typeof(TransformThumb), new PropertyMetadata(PrintState.Printing));
-
-
-
 
         public bool IsSeleted
         {
@@ -57,7 +52,6 @@ namespace WPFDevelopers.Samples.ExampleViews
             set { SetValue(IsSeletedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IsSeleted.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsSeletedProperty =
             DependencyProperty.Register("IsSeleted", typeof(bool), typeof(TransformThumb), new FrameworkPropertyMetadata(false, (s, e) => {
 
@@ -114,7 +108,6 @@ namespace WPFDevelopers.Samples.ExampleViews
             set { SetValue(ShapeTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShapeTypeProperty =
             DependencyProperty.Register("ShapeType", typeof(ShapeType), typeof(TransformThumb));
 
@@ -124,7 +117,6 @@ namespace WPFDevelopers.Samples.ExampleViews
             set { SetValue(ThumbTypeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThumbTypeProperty =
             DependencyProperty.Register("ThumbType", typeof(ThumbType), typeof(TransformThumb),new FrameworkPropertyMetadata(ThumbType.Style1, onPropertyChanged));
 
