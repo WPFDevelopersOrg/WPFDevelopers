@@ -8,12 +8,12 @@ namespace WPFDevelopers.Controls
 {
     public class ChartLine : ChartBase
     {
-        private const double _size = 10;
         protected override void OnRender(DrawingContext drawingContext)
         {
             if (Datas == null || Datas.Count() == 0)
                 return;
             base.OnRender(drawingContext);
+            var dicts = new Dictionary<Rect, string>();
             var x = StartX;
             var interval = Interval;
             var drawingPen = new Pen
@@ -38,13 +38,16 @@ namespace WPFDevelopers.Controls
                 var y = StartY - (item.Value / IntervalY) * (ScaleFactor * Rows);
                 var endPoint = new Point(x + Interval / 2, y);
                 drawingContext.DrawLine(drawingPen, startPoint, endPoint);
-                var ellipsePoint = new Point(endPoint.X - _size / 2, endPoint.Y - _size / 2);
-                var rect = new Rect(ellipsePoint, new Size(_size, _size));
+                var ellipsePoint = new Point(endPoint.X - EllipseSize / 2, endPoint.Y - EllipseSize / 2);
+                var rect = new Rect(ellipsePoint, new Size(EllipseSize, EllipseSize));
                 var ellipseGeom = new EllipseGeometry(rect);
                 drawingContext.DrawGeometry(drawingPen.Brush, drawingPen, ellipseGeom);
                 startPoint = endPoint;
                 x += interval;
+                var nRect = new Rect(rect.Left - EllipsePadding, rect.Top - EllipsePadding, rect.Width + EllipsePadding, rect.Height + EllipsePadding);
+                dicts.Add(nRect, $"{item.Key} : {item.Value}");
             }
+            PointCache = dicts;
         }
     }
 }
