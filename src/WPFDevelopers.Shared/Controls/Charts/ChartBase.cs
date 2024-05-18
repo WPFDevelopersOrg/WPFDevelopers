@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +13,12 @@ namespace WPFDevelopers.Controls
 {
     public class ChartBase : Control
     {
+        private Popup _popup;
+        private Border _border;
+        private TextBlock _textBlock;
+        public IDictionary<Rect, string> PointCache;
+        private bool isPopupOpen = false;
+        private KeyValuePair<Rect, string> _lastItem;
 
         public static readonly DependencyProperty DatasProperty =
             DependencyProperty.Register("Datas", typeof(IEnumerable<KeyValuePair<string, double>>),
@@ -25,6 +30,8 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(ChartBase)));
         }
 
+        protected double EllipseSize { get; } = 7;
+        protected double EllipsePadding{ get; } = 20;
         protected double Rows { get; } = 5;
 
         protected double Interval { get; } = 120;
@@ -33,7 +40,7 @@ namespace WPFDevelopers.Controls
 
         protected Brush ChartFill { get; private set; }
 
-        protected double StartX { get; private set; }
+        protected double StartX { get; private set; } = 40;
 
         protected double StartY { get; private set; }
 
@@ -56,6 +63,68 @@ namespace WPFDevelopers.Controls
             if (e.NewValue != null)
                 ctrl.InvalidateVisual();
         }
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (Datas == null || Datas.Count() == 0 || isPopupOpen)
+                return;
+            if (_popup == null)
+            {
+                _popup = new Popup
+                {
+                    AllowsTransparency = true,
+                    Placement = PlacementMode.MousePoint,
+                    PlacementTarget = this,
+                    StaysOpen = false,
+                };
+                _popup.MouseMove += (y, j) =>
+                {
+                    var point = j.GetPosition(this);
+                    if (isPopupOpen && _lastItem.Value != null)
+                    {
+                        if (!_lastItem.Key.Contains(point))
+                        {
+                            _popup.IsOpen = false;
+                            isPopupOpen = false;
+                            _lastItem = new KeyValuePair<Rect, string>();
+                        }
+                    }
+                };
+                _popup.Closed += delegate
+                {
+                    isPopupOpen = false;
+                };
+                _textBlock = new TextBlock()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Foreground = (Brush)Application.Current.TryFindResource("WD.WindowForegroundColorBrush")
+                };
+                _border = new Border
+                {
+                    Child = _textBlock,
+                    Background = (Brush)Application.Current.TryFindResource("WD.ChartFillSolidColorBrush"),
+                    Effect = Application.Current.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
+                    Margin = new Thickness(10),
+                    CornerRadius = new CornerRadius(3),
+                    Padding = new Thickness(6)
+                };
+                _popup.Child = _border;
+            }
+            if (PointCache == null) return;
+            var currentPoint = e.GetPosition(this);
+            if (PointCache.Any(x => x.Key.Contains(currentPoint)))
+            {
+                isPopupOpen = true;
+
+                var currentItem = PointCache.FirstOrDefault(x => x.Key.Contains(currentPoint));
+                if (currentItem.Key == null) return;
+                _textBlock.Text = currentItem.Value;
+                _popup.IsOpen = true;
+                _lastItem = currentItem;
+            }
+        }
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
