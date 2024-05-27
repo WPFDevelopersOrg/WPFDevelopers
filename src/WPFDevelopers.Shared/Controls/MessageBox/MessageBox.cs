@@ -8,36 +8,36 @@ namespace WPFDevelopers.Controls
     {
         public static MessageBoxResult Show(string messageBoxText,Window owner = null)
         {
-            var msg = new WDMessageBox(messageBoxText);
+            var msg = new WPFMessageBox(messageBoxText);
             return GetWindow(msg, owner);
         }
 
         public static MessageBoxResult Show(string messageBoxText, string caption, Window owner = null)
         {
-            var msg = new WDMessageBox(messageBoxText, caption);
+            var msg = new WPFMessageBox(messageBoxText, caption);
             return GetWindow(msg, owner);
         }
 
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, button);
+            var msg = new WPFMessageBox(messageBoxText, caption, button);
             return GetWindow(msg, owner);
         }
 
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, icon);
+            var msg = new WPFMessageBox(messageBoxText, caption, icon);
             return GetWindow(msg, owner);
         }
 
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button,
             MessageBoxImage icon, Window owner = null)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, button, icon);
+            var msg = new WPFMessageBox(messageBoxText, caption, button, icon);
             return GetWindow(msg, owner);
         }
 
-        private static MessageBoxResult GetWindow(WDMessageBox msg, Window owner = null)
+        private static MessageBoxResult GetWindow(WPFMessageBox msg, Window owner = null)
         {
             msg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             if (owner != null)

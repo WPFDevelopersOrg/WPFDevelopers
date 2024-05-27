@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -87,7 +87,7 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="LeftInput" wd:ElementHelper.Watermark="请输入内容" />
+                        <TextBox x:Name="LeftInput" wpfdev:ElementHelper.Watermark="请输入内容" />
                         <Button
                             x:Name="LeftSend"
                             Grid.Column="1"
@@ -173,7 +173,7 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="RightInput" wd:ElementHelper.Watermark="请输入内容" />
+                        <TextBox x:Name="RightInput" wpfdev:ElementHelper.Watermark="请输入内容" />
                         <Button
                             x:Name="RightSend"
                             Grid.Column="1"

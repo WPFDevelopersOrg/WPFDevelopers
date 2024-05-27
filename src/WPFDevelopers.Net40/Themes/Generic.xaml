@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:control="clr-namespace:WPFDevelopers.Controls"
     xmlns:converts="clr-namespace:WPFDevelopers.Converts"
-    xmlns:resx="clr-namespace:WPFDevelopers"
     xmlns:shell="clr-namespace:Microsoft.Windows.Shell"
     xmlns:wd="clr-namespace:WPFDevelopers.Net40">
     <converts:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
@@ -75,8 +74,7 @@
                                                 Padding="0"
                                                 Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
-                                                ToolTip="{Binding [Minimize], Source={x:Static resx:LanguageManager.Instance}}">
+                                                Style="{DynamicResource WD.WindowButtonStyle}">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <Rectangle
                                                         x:Name="MinimizeGlyph"
@@ -92,8 +90,7 @@
                                                 Padding="0"
                                                 Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
-                                                ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
+                                                Style="{DynamicResource WD.WindowButtonStyle}">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <Path
                                                         Width="10"
@@ -112,7 +109,6 @@
                                                 Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
                                                 IsTabStop="False"
                                                 Style="{DynamicResource WD.WindowButtonStyle}"
-                                                ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}"
                                                 Visibility="Collapsed">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <Path
@@ -132,8 +128,7 @@
                                             Name="PART_CloseButton"
                                             Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}"
                                             IsTabStop="False"
-                                            Style="{DynamicResource WD.WindowButtonStyle}"
-                                            ToolTip="{Binding [Close], Source={x:Static resx:LanguageManager.Instance}}">
+                                            Style="{DynamicResource WD.WindowButtonStyle}">
                                             <Path
                                                 Width="10"
                                                 Height="10"

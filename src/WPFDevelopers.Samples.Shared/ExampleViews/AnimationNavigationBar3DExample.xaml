@@ -20,77 +20,34 @@
                 Height="235"
                 Margin="10,0"
                 VerticalAlignment="Top"
-                Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                Background="#F9F7F9"
                 SnapsToDevicePixels="True">
                 <wd:AnimationNavigationBar3D VerticalAlignment="Bottom">
-                    <wd:AnimationNavigationBar3DItem Background="#E21854" Fill="#FD3574">
-                        <StackPanel VerticalAlignment="Center">
-                            <Path
-                                Width="40"
-                                Height="40"
-                                Data="{StaticResource WD.SmileyOutlineGeometry}"
-                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                Stretch="Uniform" />
-                            <TextBlock HorizontalAlignment="Center" Text="Emoji" />
-                        </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#41A545" Fill="#5EECA6">
-                        <StackPanel VerticalAlignment="Center">
-                            <Path
-                                Width="40"
-                                Height="40"
-                                Data="{StaticResource WD.BusGeometry}"
-                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                Stretch="Uniform" />
-                            <TextBlock HorizontalAlignment="Center" Text="Bus" />
-                        </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#0A58F0" Fill="#3A7DFE">
-                        <StackPanel VerticalAlignment="Center">
-                            <Path
-                                Width="40"
-                                Height="40"
-                                Data="{StaticResource WD.FriendGeometry}"
-                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                Stretch="Uniform" />
-                            <TextBlock HorizontalAlignment="Center" Text="Friend" />
-                        </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#5F0574" Fill="#8E1FA4">
-                        <StackPanel VerticalAlignment="Center">
-                            <Path
-                                Width="40"
-                                Height="40"
-                                Data="{StaticResource WD.AlarmClockGeometry}"
-                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                Stretch="Uniform" />
-                            <TextBlock HorizontalAlignment="Center" Text="Clock" />
-                        </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#1F0355" Fill="#5B31AD">
-                        <wd:AnimationNavigationBar3DItem.Content>
-                            <StackPanel VerticalAlignment="Center">
-                                <Path
-                                    Width="40"
-                                    Height="40"
-                                    Data="{StaticResource WD.BuildingRegularGeometry}"
-                                    Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                    Stretch="Uniform" />
-                                <TextBlock HorizontalAlignment="Center" Text="Regular" />
-                            </StackPanel>
-                        </wd:AnimationNavigationBar3DItem.Content>
-                        <wd:AnimationNavigationBar3DItem.ContentBack>
-                            <StackPanel VerticalAlignment="Center">
-                                <Path
-                                    Width="40"
-                                    Height="40"
-                                    Data="{StaticResource WD.BuildingRegularGeometry}"
-                                    Fill="{DynamicResource WD.WindowForegroundColorBrush}"
-                                    Stretch="Uniform" />
-                                <TextBlock HorizontalAlignment="Center" Text="建筑" />
-                            </StackPanel>
-                        </wd:AnimationNavigationBar3DItem.ContentBack>
-                    </wd:AnimationNavigationBar3DItem>
+                    <wd:AnimationNavigationBar3DItem
+                        BackFileBackground="#E21854"
+                        FileBackground="#FD3574"
+                        PathDate="{StaticResource WD.SmileyOutlineGeometry}"
+                        Text="Emoji" />
+                    <wd:AnimationNavigationBar3DItem
+                        BackFileBackground="#41A545"
+                        FileBackground="#5EECA6"
+                        PathDate="{StaticResource WD.BusGeometry}"
+                        Text="Bus" />
+                    <wd:AnimationNavigationBar3DItem
+                        BackFileBackground="#0A58F0"
+                        FileBackground="#3A7DFE"
+                        PathDate="{StaticResource WD.FriendGeometry}"
+                        Text="Friend" />
+                    <wd:AnimationNavigationBar3DItem
+                        BackFileBackground="#5F0574"
+                        FileBackground="#8E1FA4"
+                        PathDate="{StaticResource WD.AlarmClockGeometry}"
+                        Text="Clock" />
+                    <wd:AnimationNavigationBar3DItem
+                        BackFileBackground="#1F0355"
+                        FileBackground="#5B31AD"
+                        PathDate="{StaticResource WD.BuildingRegularGeometry}"
+                        Text="Regular" />
                 </wd:AnimationNavigationBar3D>
             </Border>
             <Border
@@ -118,6 +75,7 @@
                     VerticalAlignment="Top"
                     FontSize="20"
                     FontWeight="Black"
+                    Foreground="Black"
                     Text="微信号公众号:WPFDevelopers" />
                 <TextBlock
                     Margin="0,20"

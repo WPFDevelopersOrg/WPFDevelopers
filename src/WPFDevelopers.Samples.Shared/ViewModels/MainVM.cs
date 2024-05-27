@@ -1,8 +1,5 @@
-﻿using Microsoft.Expression.Drawing.Core;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -21,11 +18,11 @@ using VirtualizingWrapPanel = WPFDevelopers.Samples.ExampleViews.VirtualizingWra
 
 namespace WPFDevelopers.Samples.ViewModels
 {
-    public class MainVM : ViewModelBase
+    public class MainVM:ViewModelBase
     {
-        private IList<NavigateMenuModel> _navigateMenuModelList;
+        private ObservableCollection<ListBoxItem> _navigateMenuModelList;
 
-        public IList<NavigateMenuModel> NavigateMenuModelList
+        public ObservableCollection<ListBoxItem> NavigateMenuModelList
         {
             get { return _navigateMenuModelList; }
             set { _navigateMenuModelList = value; }
@@ -41,7 +38,7 @@ namespace WPFDevelopers.Samples.ViewModels
             set
             {
                 _navigateMenuItem = value;
-                NotifyPropertyChange("NavigateMenuItem");
+                this.NotifyPropertyChange("NavigateMenuItem");
             }
         }
         private object _controlPanel;
@@ -54,54 +51,32 @@ namespace WPFDevelopers.Samples.ViewModels
             set
             {
                 _controlPanel = value;
-                NotifyPropertyChange("ControlPanel");
+                this.NotifyPropertyChange("ControlPanel");
             }
         }
         public MainVM()
         {
-            NavigateMenuModelList = new ObservableCollection<NavigateMenuModel>();
+            NavigateMenuModelList = new ObservableCollection<ListBoxItem>();
             foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
             {
-                NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
+                NavigateMenuModelList.Add(new ListBoxItem { Content = menuEnum.ToString() });
             }
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
+            NavigateMenuModelList.Add(new ListBoxItem { Content = "持续更新中" });
             ControlPanel = new AnimationNavigationBar3DExample();
         }
-
         public ICommand ViewLoaded => new RelayCommand(obj =>
         {
-
+           
 
         });
-
-        public ICommand MenuSearchTextChanged => new RelayCommand(obj =>
-        {
-            var search = obj.ToString();
-            if (string.IsNullOrEmpty(search))
-            {
-                NavigateMenuModelList.ForEach(y => y.IsVisible = true);
-            }
-            else
-            {
-                var key = search.ToLower();
-                foreach (var item in NavigateMenuModelList)
-                {
-                    if (item.Name.ToLower().Contains(key))
-                        item.IsVisible = true;
-                    else
-                        item.IsVisible = false;
-                }
-            }
-        });
-
         public ICommand MenuSelectionChangedCommand => new RelayCommand(obj =>
         {
             if (obj == null) return;
-            var model = obj as NavigateMenuModel;
-            MenuItemSelection(model.Name);
+            var model = obj as ListBoxItem;
+            MenuItemSelection(model.Content.ToString());
         });
 
-        public ICommand CloseCommand => new RelayCommand(obj =>
+        public ICommand CloseCommand => new RelayCommand( obj => 
         {
             Application.Current.MainWindow.Close();
         });
@@ -112,7 +87,7 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum flag;
             if (!Enum.TryParse<MenuEnum>(_menuName, true, out flag))
                 return;
-            var menuEnum = (MenuEnum)Enum.Parse(typeof(MenuEnum), _menuName, true);
+            var menuEnum = (MenuEnum)Enum.Parse(typeof(MenuEnum), _menuName,true);
             switch (menuEnum)
             {
                 case MenuEnum.Navigation3D:
@@ -163,7 +138,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BreatheLight:
                     ControlPanel = new BreatheLightExample();
                     break;
-
+               
                 case MenuEnum.ChatEmoji:
                     ControlPanel = new ChatEmojiExample();
                     break;
@@ -209,8 +184,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.DrawerMenu:
                     ControlPanel = new DrawerMenuExample();
                     break;
-                case MenuEnum.ChartRadar:
-                    ControlPanel = new ChartRadarExample();
+                case MenuEnum.RadarChart:
+                    ControlPanel = new RadarChartExample();
                     break;
                 case MenuEnum.LoginWindow:
                     ControlPanel = new LoginExample();
@@ -220,8 +195,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Pagination:
                     ControlPanel = new PaginationExample();
                     break;
-                case MenuEnum.ChartBar:
-                    ControlPanel = new ChartBarExample();
+                case MenuEnum.BasicBarChart:
+                    ControlPanel = new BasicBarChartExample();
                     break;
                 case MenuEnum.ZooSemy:
                     ControlPanel = new ZooSemyExample();
@@ -343,12 +318,6 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.WaterfallPanel:
                     ControlPanel = new WaterfallPanelExample();
                     break;
-                case MenuEnum.ChartLine:
-                    ControlPanel = new ChartLineExample();
-                    break;
-                case MenuEnum.Drap:
-                    ControlPanel = new DrapViewExample();
-                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
@@ -370,5 +339,5 @@ namespace WPFDevelopers.Samples.ViewModels
 
 
 
-    }
+     }
 }

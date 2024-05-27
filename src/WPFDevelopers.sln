@@ -80,8 +80,6 @@ Global
 		{88DD2697-4DF1-40DC-B33B-DE1FD9846800} = {2C729CA5-1110-40DA-8EF4-2A7549072C53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_SaveFilesImmediatelyUponChange = False
-		RESX_NeutralResourcesLanguage = zh-CN
 		SolutionGuid = {641F8D5D-5514-4C9A-9FAB-7FAF38D9C008}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

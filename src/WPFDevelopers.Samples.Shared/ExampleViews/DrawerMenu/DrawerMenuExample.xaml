@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.DrawerMenu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -20,43 +20,43 @@
                 Name="myFrame"
                 Grid.Column="1"
                 NavigationUIVisibility="Hidden" />
-            <wd:DrawerMenu SelectionChanged="DrawerMenu_SelectionChanged">
-                <wd:DrawerMenuItem Text="主页">
-                    <wd:DrawerMenuItem.Icon>
+            <wpfdev:DrawerMenu SelectionChanged="DrawerMenu_SelectionChanged">
+                <wpfdev:DrawerMenuItem Text="主页">
+                    <wpfdev:DrawerMenuItem.Icon>
                         <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/2.png" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-                <wd:DrawerMenuItem Text="Edge">
-                    <wd:DrawerMenuItem.Icon>
+                    </wpfdev:DrawerMenuItem.Icon>
+                </wpfdev:DrawerMenuItem>
+                <wpfdev:DrawerMenuItem Text="Edge">
+                    <wpfdev:DrawerMenuItem.Icon>
                         <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/4.png" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-                <wd:DrawerMenuItem Text="云盘">
-                    <wd:DrawerMenuItem.Icon>
+                    </wpfdev:DrawerMenuItem.Icon>
+                </wpfdev:DrawerMenuItem>
+                <wpfdev:DrawerMenuItem Text="云盘">
+                    <wpfdev:DrawerMenuItem.Icon>
                         <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/1.png" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-                <wd:DrawerMenuItem Text="邮件">
-                    <wd:DrawerMenuItem.Icon>
+                    </wpfdev:DrawerMenuItem.Icon>
+                </wpfdev:DrawerMenuItem>
+                <wpfdev:DrawerMenuItem Text="邮件">
+                    <wpfdev:DrawerMenuItem.Icon>
                         <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/8.png" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-                <wd:DrawerMenuItem Text="视频">
-                    <wd:DrawerMenuItem.Icon>
+                    </wpfdev:DrawerMenuItem.Icon>
+                </wpfdev:DrawerMenuItem>
+                <wpfdev:DrawerMenuItem Text="视频">
+                    <wpfdev:DrawerMenuItem.Icon>
                         <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/6.png" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-                <wd:DrawerMenuItem Text="Bus">
-                    <wd:DrawerMenuItem.Icon>
+                    </wpfdev:DrawerMenuItem.Icon>
+                </wpfdev:DrawerMenuItem>
+                <wpfdev:DrawerMenuItem Text="Bus">
+                    <wpfdev:DrawerMenuItem.Icon>
                         <Path
                             Width="20"
                             Height="20"
                             Data="{StaticResource WD.BusGeometry}"
                             Fill="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
                             Stretch="Uniform" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-            </wd:DrawerMenu>
+                    </wpfdev:DrawerMenuItem.Icon>
+                </wpfdev:DrawerMenuItem>
+            </wpfdev:DrawerMenu>
 
         </Grid>
         <controls:CodeViewer.SourceCodes>

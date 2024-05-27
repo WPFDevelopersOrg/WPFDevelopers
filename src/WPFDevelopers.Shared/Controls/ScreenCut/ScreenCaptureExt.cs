@@ -9,7 +9,8 @@ namespace WPFDevelopers.Controls
 {
     public class ScreenCaptureExt : Window
     {
-        
+        const int WM_USER = 0x03FC;
+        const int MY_MESSAGE = WM_USER + 1;
         /// <summary>
         /// 截图完成委托
         /// </summary>
@@ -52,11 +53,11 @@ namespace WPFDevelopers.Controls
         {
             switch (msg)
             {
-                case Helper.WM_USER:
+                case WM_USER:
                     GetClipboard();
                     Close();
                     break;
-                case Helper.MY_MESSAGE:
+                case MY_MESSAGE:
                     if (SnapCanceled != null) 
                         SnapCanceled();
                     Close();

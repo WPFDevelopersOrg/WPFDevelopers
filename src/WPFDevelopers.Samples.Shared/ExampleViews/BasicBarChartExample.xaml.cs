@@ -1,14 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// ChartBarExample.xaml 的交互逻辑
+    /// BasicBarChartExample.xaml 的交互逻辑
     /// </summary>
-    public partial class ChartBarExample : UserControl
+    public partial class BasicBarChartExample : UserControl
     {
         public IEnumerable<KeyValuePair<string, double>> SeriesModels
         {
@@ -17,7 +26,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
 
         public static readonly DependencyProperty SeriesModelsProperty =
-            DependencyProperty.Register("SeriesModels", typeof(IEnumerable<KeyValuePair<string, double>>), typeof(ChartBarExample), new PropertyMetadata(null));
+            DependencyProperty.Register("SeriesModels", typeof(IEnumerable<KeyValuePair<string, double>>), typeof(BasicBarChartExample), new PropertyMetadata(null));
 
 
         Dictionary<string, IEnumerable<KeyValuePair<string, double>>> keyValues = new Dictionary<string, IEnumerable<KeyValuePair<string, double>>>();
@@ -27,9 +36,9 @@ namespace WPFDevelopers.Samples.ExampleViews
             set { SetValue(KeyBarChartProperty, value); }
         }
         public static readonly DependencyProperty KeyBarChartProperty =
-     DependencyProperty.Register("KeyBarChart", typeof(string), typeof(ChartBarExample), new PropertyMetadata(null));
+     DependencyProperty.Register("KeyBarChart", typeof(string), typeof(BasicBarChartExample), new PropertyMetadata(null));
         private int _index = 0;
-        public ChartBarExample()
+        public BasicBarChartExample()
         {
             InitializeComponent();
             var Models1 = new[]
