@@ -38,7 +38,7 @@
         TransitionPanel,
         SpotLight,
         DrawerMenu,
-        RadarChart,
+        ChartRadar,
         ChartBar,
         ZooSemy,
         RulerControl,
