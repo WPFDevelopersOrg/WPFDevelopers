@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class ChartBar : ChartBase
+    public class ChartBar : ChartRect
     {
         protected override void OnRender(DrawingContext drawingContext)
         {
