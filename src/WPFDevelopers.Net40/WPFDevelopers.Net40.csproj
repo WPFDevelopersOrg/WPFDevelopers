@@ -1,7 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-	<Import Project="../Package.props"/>
+	<Import Project="../Package.props" />
 	<PropertyGroup>
 		<TargetFramework>net40</TargetFramework>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 	<Import Project="..\WPFDevelopers.Shared\WPFDevelopers.Shared.projitems" Label="Shared" />
 	<Import Project="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems" Label="Shared" />

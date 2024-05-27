@@ -49,7 +49,6 @@ CircularMenu.xaml
 CircularProgressBar.xaml
 EdgeLight.xaml
 LoadingGroup.xaml
-NavigateMenu.xaml
 Pagination.xaml
 ScreenCut.xaml
 SpotLight.xaml

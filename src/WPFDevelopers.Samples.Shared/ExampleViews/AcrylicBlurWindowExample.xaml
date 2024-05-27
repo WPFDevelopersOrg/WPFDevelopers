@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-        xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+        xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         Title="Login" Height="350" Width="400">
-    <wpfdev:WindowAcrylicBlur.WindowAcrylicBlur>
-        <wpfdev:WindowAcrylicBlur BlurColor="AliceBlue" Opacity="0.2"/>
-    </wpfdev:WindowAcrylicBlur.WindowAcrylicBlur>
+    <wd:WindowAcrylicBlur.WindowAcrylicBlur>
+        <wd:WindowAcrylicBlur BlurColor="AliceBlue" Opacity="0.2"/>
+    </wd:WindowAcrylicBlur.WindowAcrylicBlur>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -33,8 +33,8 @@
         <StackPanel Grid.Row="1" Margin="40,0,40,0"
                     x:Name="MyStackPanelContent">
             <Image Source="/WPFDevelopers.ico" Width="80" Height="80"/>
-            <TextBox wpfdev:ElementHelper.Watermark="账户" Margin="0,20,0,0" Cursor="Hand"/>
-            <PasswordBox  wpfdev:ElementHelper.Watermark="密码"  Margin="0,20,0,0" Cursor="Hand"/>
+            <TextBox wd:ElementHelper.Watermark="账户" Margin="0,20,0,0" Cursor="Hand"/>
+            <PasswordBox  wd:ElementHelper.Watermark="密码"  Margin="0,20,0,0" Cursor="Hand"/>
             <Button x:Name="LoginButton" 
                     Content="登 录" 
                     Margin="0,20,0,0"
