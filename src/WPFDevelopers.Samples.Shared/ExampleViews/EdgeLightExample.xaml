@@ -4,19 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
         <UniformGrid Columns="2">
-            <wd:EdgeLight IsAnimation="{Binding ElementName=myCheckBox,Path=IsChecked}" Margin="10" LineSize="2">
+            <wpfdev:EdgeLight IsAnimation="{Binding ElementName=myCheckBox,Path=IsChecked}" Margin="10" LineSize="2">
                 <CheckBox Content="EdgeLight" x:Name="myCheckBox"/>
-            </wd:EdgeLight>
-            <wd:EdgeLight IsAnimation="{Binding ElementName=myToggleButton,Path=IsChecked}" Margin="10" 
+            </wpfdev:EdgeLight>
+            <wpfdev:EdgeLight IsAnimation="{Binding ElementName=myToggleButton,Path=IsChecked}" Margin="10" 
                               BorderBrush="OrangeRed" LineSize="4">
                 <ToggleButton Content="EdgeLight2" x:Name="myToggleButton"/>
-            </wd:EdgeLight>
+            </wpfdev:EdgeLight>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 

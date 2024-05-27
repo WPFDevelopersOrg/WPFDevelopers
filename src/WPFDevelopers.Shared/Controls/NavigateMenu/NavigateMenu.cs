@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace WPFDevelopers.Samples.Controls
+namespace WPFDevelopers.Controls
 {
     [TemplatePart(Name = ListBoxTemplateName, Type = typeof(ListBox))]
     [TemplatePart(Name = RectangleTemplateName, Type = typeof(Rectangle))]
@@ -27,7 +27,6 @@ namespace WPFDevelopers.Samples.Controls
         private ListBox _listBox;
         private Rectangle _rectangle;
         private TranslateTransform _translateTransform;
-        private double _lastY = 0d;
 
 
         static NavigateMenu()
@@ -38,14 +37,14 @@ namespace WPFDevelopers.Samples.Controls
 
         public Dock TabStripPlacement
         {
-            get => (Dock)GetValue(TabStripPlacementProperty);
+            get => (Dock) GetValue(TabStripPlacementProperty);
             set => SetValue(TabStripPlacementProperty, value);
         }
 
 
         public double RectangleSelectWidth
         {
-            get => (double)GetValue(RectangleSelectWidthProperty);
+            get => (double) GetValue(RectangleSelectWidthProperty);
             set => SetValue(RectangleSelectWidthProperty, value);
         }
 
@@ -53,7 +52,9 @@ namespace WPFDevelopers.Samples.Controls
         {
             base.OnApplyTemplate();
             if (ItemsSource == null)
-                return;
+            {
+            }
+
             _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
             _rectangle = GetTemplateChild(RectangleTemplateName) as Rectangle;
             _translateTransform = GetTemplateChild(TranslateTransformTemplateName) as TranslateTransform;
@@ -74,11 +75,9 @@ namespace WPFDevelopers.Samples.Controls
                     var offset = currentItem.TranslatePoint(new Point(0, 0), _rectangle).Y;
                     var animation = new DoubleAnimation
                     {
-                        From = _lastY,
                         To = offset,
                         Duration = TimeSpan.FromSeconds(0.3)
                     };
-                    _lastY = offset;
                     _translateTransform.BeginAnimation(TranslateTransform.YProperty, animation);
                     break;
                 case Dock.Top:
@@ -97,6 +96,43 @@ namespace WPFDevelopers.Samples.Controls
                     base.OnSelectionChanged(e);
                     break;
             }
+
+            //if (_listBox == null) return;
+            //object viewItem = _listBox.ItemContainerGenerator.ContainerFromItem(SelectedItem);
+            //if (viewItem == null) return;
+            //var currentItem = viewItem as ListBoxItem;
+            //if (currentItem == null) return;
+            //RectangleSelectWidth = currentItem.ActualWidth;
+            //var offset = 0d;
+            //var animation = new DoubleAnimation()
+            //{
+            //    To = offset,
+            //    Duration = TimeSpan.FromSeconds(0.3),
+            //};
+            //switch (TabStripPlacement)
+            //{
+            //    case Dock.Left:
+            //    case Dock.Right:
+            //        offset = currentItem.TranslatePoint(new System.Windows.Point(0, 0), _rectangle).Y;
+            //        animation.To = offset;
+            //        _translateTransform.BeginAnimation(TranslateTransform.YProperty, animation);
+            //        break;
+            //    case Dock.Top:
+            //    case Dock.Bottom:
+            //        offset = currentItem.TranslatePoint(new System.Windows.Point(0, 0), _rectangle).X;
+            //        animation.To = offset;
+            //        _translateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
+            //        break;
+            //}
+
+
+            //var offset = currentItem.TranslatePoint(new System.Windows.Point(0, 0), _rectangle).Y;
+            //var animation = new DoubleAnimation()
+            //{
+            //    To = offset,
+            //    Duration = TimeSpan.FromSeconds(0.3),
+            //};
+            //_translateTransform.BeginAnimation(TranslateTransform.YProperty, animation);
         }
     }
 }

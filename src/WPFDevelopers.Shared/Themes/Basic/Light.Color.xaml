@@ -51,16 +51,4 @@
         po:Freeze="True"
         Color="{StaticResource WD.LightColor}" />
 
-    <Color x:Key="WD.ChartXAxisColor" po:Freeze="True">#E0E6F1</Color>
-    <SolidColorBrush
-        x:Key="WD.ChartXAxisSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.ChartXAxisColor}" />
-
-    <Color x:Key="WD.ChartFillColor" po:Freeze="True">#6E7079</Color>
-    <SolidColorBrush
-        x:Key="WD.ChartFillSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.ChartFillColor}" />
-
 </ResourceDictionary>

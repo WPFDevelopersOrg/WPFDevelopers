@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
-    xmlns:resx="clr-namespace:WPFDevelopers">
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
@@ -44,23 +44,6 @@
                                 Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
                                 Visibility="Collapsed" />
                             <ScrollViewer x:Name="PART_ContentHost" />
-                            <Button
-                                x:Name="PART_CloseButton"
-                                Width="20"
-                                Height="20"
-                                Margin="0,0,4,0"
-                                HorizontalAlignment="Right"
-                                helpers:ElementHelper.IsClear="{Binding Path=(helpers:ElementHelper.IsClear), RelativeSource={RelativeSource TemplatedParent}}"
-                                helpers:ElementHelper.IsRound="True"
-                                Style="{StaticResource WD.NormalButton}"
-                                ToolTip="{Binding [Clear], Source={x:Static resx:LanguageManager.Instance}}"
-                                Visibility="Collapsed">
-                                <controls:PathIcon
-                                    Width="10"
-                                    Height="10"
-                                    Foreground="{DynamicResource WD.SecondaryTextSolidColorBrush}"
-                                    Kind="WindowClose" />
-                            </Button>
                         </controls:SmallPanel>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -73,23 +56,6 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                         </Trigger>
-                        <Trigger Property="helpers:ElementHelper.IsClear" Value="True">
-                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Visible" />
-                        </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="helpers:ElementHelper.IsClear" Value="True" />
-                                <Condition Property="Text" Value="{x:Null}" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="helpers:ElementHelper.IsClear" Value="True" />
-                                <Condition Property="Text" Value="" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed" />
-                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

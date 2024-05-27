@@ -11,7 +11,9 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\WPFDevelopers.Net40\WPFDevelopers.Net40.csproj" />
+	  <PackageReference Include="WPFDevelopers" Version="1.1.0.2-preview6" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
 	</ItemGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

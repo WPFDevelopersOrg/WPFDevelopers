@@ -445,7 +445,7 @@
                             Background="{DynamicResource WD.BackgroundSolidColorBrush}"
                             BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                             BorderThickness="1"
-                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Calendar}}"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                             SnapsToDevicePixels="True"
                             UseLayoutRounding="True">
                             <Border.Effect>
