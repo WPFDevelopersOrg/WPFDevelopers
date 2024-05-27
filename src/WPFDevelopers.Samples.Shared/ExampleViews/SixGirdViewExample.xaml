@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
               xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
-        <wd:SixGirdView BorderThickness="1" SelectBrush="Red">
-            <wd:SixGirdView.Resources>
+        <wpfdev:SixGirdView BorderThickness="1" SelectBrush="Red">
+            <wpfdev:SixGirdView.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -19,11 +19,11 @@
                 <Style TargetType="Border">
                     <Setter Property="Margin" Value="1"/>
                 </Style>
-            </wd:SixGirdView.Resources>
+            </wpfdev:SixGirdView.Resources>
             <MediaElement x:Name="MyMediaElement" Loaded="MyMediaElement_Loaded"
                           MediaEnded="MyMediaElement_MediaEnded"/>
             <Border Background="#282C34">
-                <wd:SmallPanel>
+                <wpfdev:SmallPanel>
                     <TextBlock Text="信号源1"/>
                     <Border Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             VerticalAlignment="Top"
@@ -32,7 +32,7 @@
                             CornerRadius="3">
                         <TextBlock Text="HD"/>
                     </Border>
-                </wd:SmallPanel>
+                </wpfdev:SmallPanel>
             </Border>
             <Border Background="#282C34">
                 <TextBlock Text="无信号"/>
@@ -46,7 +46,7 @@
             <Border Background="#282C34">
                 <TextBlock Text="无信号"/>
             </Border>
-        </wd:SixGirdView>
+        </wpfdev:SixGirdView>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel 
                 CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SixGirdViewExample.xaml" 

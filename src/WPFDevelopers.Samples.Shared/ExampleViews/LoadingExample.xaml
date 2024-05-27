@@ -49,17 +49,8 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
                         wd:Loading.IsShow="{Binding ElementName=MyCheckBox, Path=IsChecked}"
-                        wd:Loading.LoadingType="Normal"
                         Content="提交"
                         Style="{StaticResource WD.PrimaryButton}" />
-                    <Button
-                        Margin="0,10"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
-                        Click="Btn_LoadingExtClick"
-                        Content="LoadingExt 当UI线程阻塞时使用"
-                        Style="{StaticResource WD.SuccessPrimaryButton}"
-                        ToolTip="当UI线程阻塞时使用" />
                 </UniformGrid>
             </StackPanel>
         </Grid>

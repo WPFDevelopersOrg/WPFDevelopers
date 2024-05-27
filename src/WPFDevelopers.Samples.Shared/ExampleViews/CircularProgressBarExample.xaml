@@ -4,32 +4,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
         <UniformGrid>
-            <wd:CircularProgressBar Background="#21BA9D"
+            <wpfdev:CircularProgressBar Background="#21BA9D"
                                        Value="{Binding ElementName=CirularSlider,Path=Value}"
                                        BrushStrokeThickness="2"
                                        StrokeThickness="3"
                                        Size="20,30"
                                        BorderBrush="LightGray"/>
 
-            <wd:CircularProgressBar Background="#E14D5F" 
+            <wpfdev:CircularProgressBar Background="#E14D5F" 
                                         Value="{Binding ElementName=CirularSlider,Path=Value}"
                                        BrushStrokeThickness="4"
                                        StrokeThickness="5"
                                        Size="15,15"
                                         BorderBrush="#42ABAC" />
-            <wd:CircularProgressBar Background="#1FA7FC" 
+            <wpfdev:CircularProgressBar Background="#1FA7FC" 
                                        BorderBrush="#D6D6D6" 
                                        Value="{Binding ElementName=CirularSlider,Path=Value}"
                                        BrushStrokeThickness="10"
                                        StrokeThickness="10"
                                        Foreground="Black"/>
-            <wd:CircularProgressBar Value="{Binding ElementName=CirularSlider,Path=Value}"/>
+            <wpfdev:CircularProgressBar Value="{Binding ElementName=CirularSlider,Path=Value}"/>
 
             <Slider Minimum="0" Maximum="100" 
                     x:Name="CirularSlider" IsSnapToTickEnabled="True"

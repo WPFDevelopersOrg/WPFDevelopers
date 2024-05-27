@@ -3,20 +3,29 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Controls
 {
-    public class AnimationNavigationBar3D : ListBox
+    public class AnimationNavigationBar3D : ItemsControl
     {
+        public static readonly DependencyProperty ColumnsProperty =
+            DependencyProperty.Register("Columns", typeof(int), typeof(AnimationNavigationBar3D),
+                new PropertyMetadata(null));
+
         static AnimationNavigationBar3D()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AnimationNavigationBar3D),
                 new FrameworkPropertyMetadata(typeof(AnimationNavigationBar3D)));
         }
-        protected override bool IsItemItsOwnContainerOverride(object item)
+
+
+        public int Columns
         {
-            return item is AnimationNavigationBar3DItem;
+            get => (int)GetValue(ColumnsProperty);
+            set => SetValue(ColumnsProperty, value);
         }
-        protected override DependencyObject GetContainerForItemOverride()
+
+        public override void OnApplyTemplate()
         {
-            return new AnimationNavigationBar3DItem();
+            base.OnApplyTemplate();
+            Columns = Items.Count;
         }
     }
 }

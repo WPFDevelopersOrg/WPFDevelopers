@@ -1,11 +1,11 @@
-﻿<wd:Window
+﻿<wpfdev:Window
     x:Class="WPFDevelopers.Samples.ExampleViews.TaskbarItemInfoExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFDevelopers.Samples"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     Title="TaskbarItemInfoExample"
     Width="363"
     Height="211"
@@ -50,4 +50,4 @@
             Style="{StaticResource WD.SuccessPrimaryButton}"
             Tag="remove" />
     </WrapPanel>
-</wd:Window>
+</wpfdev:Window>

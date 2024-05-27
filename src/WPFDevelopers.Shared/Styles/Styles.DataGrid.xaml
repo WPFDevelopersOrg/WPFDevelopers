@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
     xmlns:converts="clr-namespace:WPFDevelopers.Converts"
-    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
@@ -39,6 +38,14 @@
                                 <SolidColorBrush Color="{DynamicResource WD.PrimaryTextColor}" />
                             </Polygon.Fill>
                         </Polygon>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -55,7 +62,7 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type DataGrid}">
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="1,1,1,0" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
@@ -68,32 +75,22 @@
         <Setter Property="AutoGenerateColumns" Value="False" />
         <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="RowHeaderWidth" Value="0" />
-        <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-        <Setter Property="ScrollViewer.PanningMode" Value="VerticalOnly" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGrid}">
-                    <controls:WDBorder
+                    <Border
                         x:Name="DGR_Border"
-                        Padding="0,0,0,.1"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
-                        <ScrollViewer
-                            x:Name="DG_ScrollViewer"
-                            Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}"
-                            Focusable="False">
+                        <ScrollViewer x:Name="DG_ScrollViewer" Focusable="False">
                             <ScrollViewer.Template>
                                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
@@ -101,7 +98,6 @@
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <Button
-                                            x:Name="PART_DataGridSelectAllButton"
                                             Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid}, Converter={StaticResource WD.DoubleMinConverter}}"
                                             Command="{x:Static DataGrid.SelectAllCommand}"
                                             Focusable="False"
@@ -145,7 +141,13 @@
                             </ScrollViewer.Template>
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </ScrollViewer>
-                    </controls:WDBorder>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Disabled" />
+                                <VisualState x:Name="Normal" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -318,12 +320,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
                     <controls:SmallPanel HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                        <Border
-                            x:Name="DGR_Border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
+                        <Border x:Name="rowHeaderBorder" Background="{TemplateBinding Background}">
                             <StackPanel Orientation="Horizontal">
                                 <ContentPresenter
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -344,6 +341,26 @@
                             x:Name="PART_BottomHeaderGripper"
                             VerticalAlignment="Bottom"
                             Style="{StaticResource WD.RowHeaderGripperStyle}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Normal_CurrentRow" />
+                                <VisualState x:Name="Unfocused_EditingRow" />
+                                <VisualState x:Name="Normal_EditingRow" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="MouseOver_CurrentRow" />
+                                <VisualState x:Name="MouseOver_Unfocused_EditingRow" />
+                                <VisualState x:Name="MouseOver_EditingRow" />
+                                <VisualState x:Name="MouseOver_Unfocused_Selected" />
+                                <VisualState x:Name="MouseOver_Selected" />
+                                <VisualState x:Name="MouseOver_Unfocused_CurrentRow_Selected" />
+                                <VisualState x:Name="MouseOver_CurrentRow_Selected" />
+                                <VisualState x:Name="Unfocused_Selected" />
+                                <VisualState x:Name="Unfocused_CurrentRow_Selected" />
+                                <VisualState x:Name="Normal_CurrentRow_Selected" />
+                                <VisualState x:Name="Normal_Selected" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -406,12 +423,11 @@
                     </ControlTemplate.Resources>
                     <controls:SmallPanel>
                         <Border
-                            x:Name="DGR_Border"
+                            x:Name="columnHeaderBorder"
                             Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
+                            BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid Name="HedearGrid">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
