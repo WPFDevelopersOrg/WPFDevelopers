@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:resx="clr-namespace:WPFDevelopers">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -45,6 +46,7 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
                                 Style="{StaticResource WD.PathButton}"
+                                ToolTip="{Binding [Replace], Source={x:Static resx:LanguageManager.Instance}}"
                                 Visibility="Collapsed">
                                 <controls:PathIcon
                                     Width="15"
@@ -56,7 +58,8 @@
                                 x:Name="PART_AddButton"
                                 Width="40"
                                 Height="40"
-                                Style="{StaticResource WD.PathButton}">
+                                Style="{StaticResource WD.PathButton}"
+                                ToolTip="{Binding [Select], Source={x:Static resx:LanguageManager.Instance}}">
                                 <controls:PathIcon
                                     Width="20"
                                     Height="20"
