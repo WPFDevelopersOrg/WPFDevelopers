@@ -11,6 +11,7 @@ namespace WPFDevelopers.Controls
     {
         private PointCollection _points;
         private double _h, _w;
+        private Pen _penXAxis;
         static ChartRadar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ChartRadar),
@@ -18,10 +19,14 @@ namespace WPFDevelopers.Controls
         }
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (Datas == null || Datas.Count() == 0)
-                return;
-            SnapsToDevicePixels = true;
-            UseLayoutRounding = true;
+            base.OnRender(drawingContext);
+            _penXAxis = new Pen
+            {
+                Thickness = 1,
+                Brush = Application.Current.TryFindResource("WD.ChartXAxisSolidColorBrush") as Brush
+            };
+            _penXAxis.Freeze();
+
             var dicts = new Dictionary<Rect, string>();
             var rects = new List<Rect>();
             var max = Convert.ToInt32(Datas.Max(kvp => kvp.Value)) + 50;
@@ -70,38 +75,17 @@ namespace WPFDevelopers.Controls
             rectBrush.Opacity = 0.5;
             rectBrush.Freeze();
             drawingContext.DrawGeometry(rectBrush, myPen, streamGeometry);
-
-            var drawingPen = new Pen
-            {
-                Thickness = 2,
-                Brush = NormalBrush
-            };
-            drawingPen.Freeze();
-
-            var backgroupBrush = new SolidColorBrush()
-            {
-                Color = (Color)Application.Current.TryFindResource("WD.BackgroundColor")
-            };
-            backgroupBrush.Freeze();
-            foreach (var item in rects)
-            {
-                var ellipseGeom = new EllipseGeometry(item);
-                drawingContext.DrawGeometry(backgroupBrush, drawingPen, ellipseGeom);
-            }
+            DrawEllipse(rects, drawingContext);
         }
         private void DrawPoints(double circleRadius, DrawingContext drawingContext, bool isDrawText = false)
         {
-            var myPen = new Pen
-            {
-                Thickness = 1,
-                Brush = Application.Current.TryFindResource("WD.ChartXAxisSolidColorBrush") as Brush
-            };
-            myPen.Freeze();
+            var pieWidth = ActualWidth > ActualHeight ? ActualHeight : ActualWidth;
+            var pieHeight = ActualWidth > ActualHeight ? ActualHeight : ActualWidth;
+            _h = pieWidth / 2;
+            _w = pieHeight / 2;
             var streamGeometry = new StreamGeometry();
             using (var geometryContext = streamGeometry.Open())
             {
-                _h = ActualHeight / 2;
-                _w = ActualWidth / 2;
                 if (isDrawText)
                     _points = GetPolygonPoint(new Point(_w, _h), circleRadius, drawingContext);
                 else
@@ -110,7 +94,7 @@ namespace WPFDevelopers.Controls
                 geometryContext.PolyLineTo(_points, true, true);
             }
             streamGeometry.Freeze();
-            drawingContext.DrawGeometry(null, myPen, streamGeometry);
+            drawingContext.DrawGeometry(null, _penXAxis, streamGeometry);
         }
 
         private PointCollection GetPolygonPoint(Point center, double r,
@@ -122,9 +106,11 @@ namespace WPFDevelopers.Controls
             var values = new List<Point>();
             foreach (var item in Datas)
             {
+                var p1 = new Point(_w, _h);
                 var p2 = new Point(r * Math.Cos(g * pi / 180) + center.X, r * Math.Sin(g * pi / 180) + center.Y);
                 if (drawingContext != null)
                 {
+                    drawingContext.DrawLine(_penXAxis, p1, p2);
                     var formattedText = DrawingContextHelper.GetFormattedText(item.Key, ControlsHelper.PrimaryNormalBrush,
                         flowDirection: FlowDirection.LeftToRight, textSize: 20.001D);
                     if (p2.Y > center.Y && p2.X < center.X)
@@ -141,11 +127,9 @@ namespace WPFDevelopers.Controls
                     else
                         drawingContext.DrawText(formattedText, new Point(p2.X, p2.Y));
                 }
-
                 values.Add(p2);
                 g += perangle;
             }
-
             var pcollect = new PointCollection(values);
             return pcollect;
         }
