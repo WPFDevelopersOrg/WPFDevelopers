@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\ScaleItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ElementAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ThumbAngle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\TransformLayout.cs" />
@@ -69,9 +70,9 @@
       <SubType>Code</SubType>
       <DependentUpon>BarrageExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BasicBarChartExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartBarExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>BasicBarChartExample.xaml</DependentUpon>
+      <DependentUpon>ChartBarExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BasicControlsExample.xaml.cs">
       <SubType>Code</SubType>
@@ -102,6 +103,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>CarouselExampleEx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml.cs">
+      <DependentUpon>ChartLineExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChatEmojiExample.xaml.cs">
       <SubType>Code</SubType>
@@ -153,6 +157,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Desktop\DesktopPlayVideo.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>DesktopPlayVideo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ElementAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ThumbAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ThumbAdorner2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\ThumbAngle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\TransformThumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Datas\PrintState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Datas\ShapeType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Datas\ThumbType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\DrapViewExample.xaml.cs">
+      <DependentUpon>DrapViewExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs">
       <SubType>Code</SubType>
@@ -318,9 +333,9 @@
       <SubType>Code</SubType>
       <DependentUpon>PieControlExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\RadarChartExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartRadarExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>RadarChartExample.xaml</DependentUpon>
+      <DependentUpon>ChartRadarExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\RainbowButtonsExample.xaml.cs">
       <SubType>Code</SubType>
@@ -473,6 +488,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\TransformLayout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -529,7 +548,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BasicBarChartExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ChartBarExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -558,6 +577,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -610,6 +633,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Desktop\DesktopPlayVideo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\Controls\TransformThumb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\DrapViewExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -798,7 +829,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\RadarChartExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ChartRadarExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

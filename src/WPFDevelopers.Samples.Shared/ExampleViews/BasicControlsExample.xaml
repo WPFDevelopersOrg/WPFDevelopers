@@ -181,8 +181,8 @@
                         <Button wd:Badge.IsShow="True" Content="Default" />
                         <Button
                             Margin="10,0"
-                            Content="Default"
-                            IsEnabled="False" />
+                            wd:ElementHelper.CornerRadius="3"
+                            Content="Default" />
                         <Button
                             wd:Badge.IsShow="True"
                             wd:Badge.Text="new"
@@ -190,8 +190,8 @@
                             Style="{DynamicResource WD.PrimaryButton}" />
                         <Button
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Default"
-                            IsEnabled="False"
                             Style="{DynamicResource WD.PrimaryButton}" />
                     </UniformGrid>
                     <UniformGrid
@@ -206,14 +206,14 @@
                             Style="{DynamicResource WD.SuccessDefaultButton}" />
                         <Button
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Success"
-                            IsEnabled="False"
                             Style="{DynamicResource WD.SuccessDefaultButton}" />
                         <Button Content="Success" Style="{DynamicResource WD.SuccessPrimaryButton}" />
                         <Button
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Success"
-                            IsEnabled="False"
                             Style="{DynamicResource WD.SuccessPrimaryButton}" />
                     </UniformGrid>
                     <UniformGrid
@@ -228,14 +228,14 @@
                             Style="{DynamicResource WD.WarningDefaultButton}" />
                         <Button
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Warning"
-                            IsEnabled="False"
                             Style="{DynamicResource WD.WarningDefaultButton}" />
                         <Button Content="Warning" Style="{DynamicResource WD.WarningPrimaryButton}" />
                         <Button
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Warning"
-                            IsEnabled="False"
                             Style="{DynamicResource WD.WarningPrimaryButton}" />
                     </UniformGrid>
                     <UniformGrid
@@ -249,14 +249,14 @@
                             Style="{DynamicResource WD.DangerDefaultButton}" />
                         <Button
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Danger"
-                            IsEnabled="False"
                             Style="{DynamicResource WD.DangerDefaultButton}" />
                         <Button Content="Danger" Style="{DynamicResource WD.DangerPrimaryButton}" />
                         <Button
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Danger"
-                            IsEnabled="False"
                             Style="{DynamicResource WD.DangerPrimaryButton}" />
                     </UniformGrid>
                     <TextBlock
@@ -310,6 +310,7 @@
                         <CheckBox Content="Option A" />
                         <CheckBox
                             Margin="10,0"
+                            wd:ElementHelper.CornerRadius="3"
                             Content="Option B"
                             IsChecked="True" />
                         <CheckBox Content="Option C" IsChecked="{x:Null}" />
@@ -323,8 +324,11 @@
                         FontSize="20"
                         Text="TextBox" />
                     <UniformGrid Margin="0,10" Rows="1">
-                        <TextBox />
-                        <TextBox Margin="10,0" wd:ElementHelper.Watermark="TextBox" />
+                        <TextBox wd:ElementHelper.CornerRadius="3" />
+                        <TextBox
+                            Margin="10,0"
+                            wd:ElementHelper.IsClear="True"
+                            wd:ElementHelper.Watermark="TextBox" />
                         <TextBox IsEnabled="False" />
                     </UniformGrid>
                     <TextBlock
@@ -332,8 +336,11 @@
                         FontSize="20"
                         Text="PasswordBox" />
                     <UniformGrid Margin="0,10" Rows="1">
-                        <PasswordBox />
-                        <PasswordBox Margin="10,0" wd:ElementHelper.Watermark="PasswordBox" />
+                        <PasswordBox wd:ElementHelper.CornerRadius="3" />
+                        <PasswordBox
+                            Margin="10,0"
+                            wd:ElementHelper.IsClear="True"
+                            wd:ElementHelper.Watermark="PasswordBox" />
                         <PasswordBox IsEnabled="False" />
                         <PasswordBox
                             x:Name="myPasswordBox"
@@ -357,7 +364,10 @@
                             <ComboBoxItem>Option 5</ComboBoxItem>
                         </ComboBox>
                         <ComboBox Margin="10,0" IsEnabled="False" />
-                        <ComboBox wd:ElementHelper.Watermark="ComboBox" IsEditable="True">
+                        <ComboBox
+                            wd:ElementHelper.CornerRadius="3"
+                            wd:ElementHelper.Watermark="ComboBox"
+                            IsEditable="True">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
                             <ComboBoxItem>Option 3</ComboBoxItem>
@@ -386,7 +396,7 @@
                         FontSize="20"
                         Text="DatePicker" />
                     <UniformGrid Margin="0,10" Rows="1">
-                        <DatePicker wd:DatePickerHelper.Watermark="日期 yyyy/MM/dd" />
+                        <DatePicker wd:DatePickerHelper.Watermark="日期 yyyy/MM/dd" wd:ElementHelper.CornerRadius="3" />
                         <DatePicker
                             Margin="10,0"
                             wd:DatePickerHelper.Watermark="DatePicker"
@@ -403,7 +413,7 @@
                         FontSize="20"
                         Text="Calendar" />
                     <WrapPanel Margin="0,10">
-                        <Calendar />
+                        <Calendar wd:ElementHelper.CornerRadius="3" />
                         <Calendar Margin="10,0" SelectionMode="SingleRange" />
                         <Calendar SelectionMode="MultipleRange">
                             <Calendar.BlackoutDates>
@@ -417,7 +427,7 @@
                         FontSize="20"
                         Text="Slider" />
                     <WrapPanel Margin="0,10">
-                        <Slider Width="200" />
+                        <Slider Width="200" wd:ElementHelper.CornerRadius="3" />
                         <Slider
                             Width="200"
                             Margin="10,0"
@@ -428,6 +438,12 @@
                             IsEnabled="False"
                             Maximum="100"
                             Value="50" />
+                        <Slider
+                            Height="200"
+                            Maximum="10"
+                            Minimum="0"
+                            Orientation="Vertical"
+                            Value="3" />
                     </WrapPanel>
 
                     <TextBlock
@@ -435,7 +451,10 @@
                         FontSize="20"
                         Text="ProgressBar" />
                     <WrapPanel Margin="0,10">
-                        <ProgressBar Width="200" Value="50" />
+                        <ProgressBar
+                            Width="200"
+                            wd:ElementHelper.CornerRadius="3"
+                            Value="50" />
                         <ProgressBar
                             Width="200"
                             Margin="10,0"
@@ -446,19 +465,25 @@
                             Margin="10,0"
                             IsIndeterminate="True"
                             Value="10" />
-
+                        <ProgressBar
+                            Width="10"
+                            Height="200"
+                            Margin="10,0"
+                            Orientation="Vertical"
+                            Value="10" />
                     </WrapPanel>
 
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="DataGrid" />
-                    <TabControl Margin="0,10" BorderThickness="0">
+                    <TabControl Height="200" Margin="0,10">
                         <TabItem
                             Height="38"
                             Padding="20,0"
                             Header="Mode 1">
                             <DataGrid
+                                wd:ElementHelper.CornerRadius="3"
                                 AutoGenerateColumns="False"
                                 HeadersVisibility="All"
                                 ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
@@ -570,8 +595,8 @@
                         Text="ListBox" />
                     <UniformGrid Margin="0,10" Columns="2">
                         <ListBox
+                            wd:ElementHelper.CornerRadius="3"
                             DisplayMemberPath="Name"
-                            IsEnabled="False"
                             ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                         <ListBox Margin="10,0" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListBox.ItemTemplate>
@@ -591,7 +616,7 @@
                         FontSize="20"
                         Text="ListView" />
                     <UniformGrid Margin="0,10" Columns="2">
-                        <ListView ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <ListView wd:ElementHelper.CornerRadius="3" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" />
@@ -606,7 +631,6 @@
                         <ListView
                             Margin="10,0"
                             BorderThickness="0"
-                            IsEnabled="False"
                             ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListView.View>
                                 <GridView>
@@ -629,7 +653,7 @@
                         Height="400"
                         Margin="0,10"
                         Columns="2">
-                        <TreeView ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <TreeView wd:ElementHelper.CornerRadius="3" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                     <Border>
@@ -641,7 +665,6 @@
                         <TreeView
                             Margin="10,0"
                             BorderThickness="0"
-                            IsEnabled="False"
                             ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
@@ -658,7 +681,7 @@
                         FontSize="20"
                         Text="Expander" />
                     <UniformGrid Margin="0,10" Columns="2">
-                        <Expander Header="Expander1">
+                        <Expander wd:ElementHelper.CornerRadius="3" Header="Expander1">
                             <Rectangle
                                 Width="400"
                                 Height="300"
@@ -710,16 +733,13 @@
                         FontSize="20"
                         Text="GroupBox" />
                     <UniformGrid Margin="0,10" Columns="2">
-                        <GroupBox Header="GroupBox1">
+                        <GroupBox wd:ElementHelper.CornerRadius="3" Header="GroupBox1">
                             <Rectangle
                                 Width="400"
                                 Height="300"
                                 Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                         </GroupBox>
-                        <GroupBox
-                            Margin="10,0"
-                            Header="GroupBox1"
-                            IsEnabled="False">
+                        <GroupBox Margin="10,0" Header="GroupBox1">
                             <Rectangle
                                 Width="400"
                                 Height="300"
@@ -742,25 +762,25 @@
                                 <Setter Property="Height" Value="400" />
                             </Style>
                         </UniformGrid.Resources>
-                        <TabControl Margin="4">
-                            <TabItem Padding="20,0" Header="TabItem1">
+                        <TabControl Margin="4" wd:ElementHelper.CornerRadius="3">
+                            <TabItem Padding="10" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem2">
+                            <TabItem Padding="10" Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3">
+                            <TabItem Padding="10" Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl Margin="4" TabStripPlacement="Bottom">
-                            <TabItem Padding="20,0" Header="TabItem1">
+                            <TabItem Padding="10" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem2">
+                            <TabItem Padding="10" Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Header="TabItem3">
+                            <TabItem Padding="10" Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>

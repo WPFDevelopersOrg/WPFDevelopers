@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:example="clr-namespace:WPFDevelopers.Samples.ExampleViews"
     xmlns:helpers="clr-namespace:WPFDevelopers.Samples.Helpers"
@@ -63,18 +64,34 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Border
-                Margin="0,0,5,0"
-                Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-                Effect="{StaticResource WD.NormalShadowDepth}">
-                <wd:NavigateMenu x:Name="NavigateMenu" ItemsSource="{Binding NavigateMenuModelList}">
+            <Grid Margin="0,0,3,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBox
+                    Name="PART_MenuTextBox"
+                    wd:ElementHelper.IsClear="True"
+                    wd:ElementHelper.Watermark="Please input">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <controls:NavigateMenu
+                    x:Name="NavigateMenu"
+                    Grid.Row="1"
+                    Margin="0,3,0,0"
+                    DisplayMemberPath="Name"
+                    ItemsSource="{Binding NavigateMenuModelList}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSelectionChangedCommand}" CommandParameter="{Binding ElementName=NavigateMenu, Path=SelectedItem}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                </wd:NavigateMenu>
-            </Border>
+                </controls:NavigateMenu>
+            </Grid>
             <GridSplitter
                 Grid.Column="1"
                 Width="5"
@@ -84,8 +101,7 @@
             <Border
                 Grid.Column="2"
                 Margin="5,0,0,0"
-                Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-                Effect="{StaticResource WD.NormalShadowDepth}">
+                Background="{DynamicResource WD.BackgroundSolidColorBrush}">
                 <ContentControl Content="{Binding ControlPanel}" />
             </Border>
         </Grid>

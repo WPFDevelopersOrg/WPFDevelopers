@@ -16,21 +16,29 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = MessageTemplateName, Type = typeof(TextBox))]
     [TemplatePart(Name = ButtonCancelTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = ButtonCancelTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = ButtonYesTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = ButtonNoTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = PathTemplateName, Type = typeof(Path))]
-    internal sealed class WPFMessageBox : Window
+    internal sealed class WDMessageBox : Window
     {
         private const string TitleTemplateName = "PART_Title";
         private const string CloseButtonTemplateName = "PART_CloseButton";
         private const string MessageTemplateName = "PART_Message";
         private const string ButtonCancelTemplateName = "PART_ButtonCancel";
         private const string ButtonOKTemplateName = "PART_ButtonOK";
+        private const string ButtonYesTemplateName = "PART_ButtonYes";
+        private const string ButtonNoTemplateName = "PART_ButtonNo";
         private const string PathTemplateName = "PART_Path";
 
         private readonly string _messageString;
         private readonly string _titleString;
         private Button _buttonCancel;
         private Button _buttonOK;
+        private Button _buttonYes;
+        private Button _buttonNo;
         private Visibility _cancelVisibility = Visibility.Collapsed;
+        private Visibility _yesVisibility = Visibility.Collapsed;
+        private Visibility _noVisibility = Visibility.Collapsed;
         private Button _closeButton;
         private Geometry _geometry;
         private TextBox _message;
@@ -41,37 +49,37 @@ namespace WPFDevelopers.Controls
         private TextBlock _title;
 
 
-        static WPFMessageBox()
+        static WDMessageBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(WPFMessageBox),
-                new FrameworkPropertyMetadata(typeof(WPFMessageBox)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(WDMessageBox),
+                new FrameworkPropertyMetadata(typeof(WDMessageBox)));
         }
 
-        public WPFMessageBox(string message)
+        public WDMessageBox(string message)
         {
             _messageString = message;
         }
 
-        public WPFMessageBox(string message, string caption)
+        public WDMessageBox(string message, string caption)
         {
             _titleString = caption;
             _messageString = message;
         }
 
-        public WPFMessageBox(string message, string caption, MessageBoxButton button)
+        public WDMessageBox(string message, string caption, MessageBoxButton button)
         {
             _titleString = caption;
             _messageString = message;
         }
 
-        public WPFMessageBox(string message, string caption, MessageBoxImage image)
+        public WDMessageBox(string message, string caption, MessageBoxImage image)
         {
             _titleString = caption;
             _messageString = message;
             DisplayImage(image);
         }
 
-        public WPFMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image)
+        public WDMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image)
         {
             _titleString = caption;
             _messageString = message;
@@ -117,6 +125,19 @@ namespace WPFDevelopers.Controls
                 _buttonOK.Click += ButtonOK_Click;
             }
 
+            _buttonYes = GetTemplateChild(ButtonYesTemplateName) as Button;
+            if (_buttonYes != null)
+            {
+                _buttonYes.Visibility = _yesVisibility;
+                _buttonYes.Click += ButtonYes_Click;
+            }
+
+            _buttonNo = GetTemplateChild(ButtonNoTemplateName) as Button;
+            if (_buttonNo != null)
+            {
+                _buttonNo.Visibility = _noVisibility;
+                _buttonNo.Click += ButtonNo_Click;
+            }
             if (Owner == null)
             {
                 BorderThickness = new Thickness(1);
@@ -143,6 +164,18 @@ namespace WPFDevelopers.Controls
 #endif
         }
 
+        private void ButtonNo_Click(object sender, RoutedEventArgs e)
+        {
+            Result = MessageBoxResult.No;
+            Close();
+        }
+
+        private void ButtonYes_Click(object sender, RoutedEventArgs e)
+        {
+            Result = MessageBoxResult.Yes;
+            Close();
+        }
+
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             Result = MessageBoxResult.OK;
@@ -165,9 +198,17 @@ namespace WPFDevelopers.Controls
             switch (button)
             {
                 case MessageBoxButton.OKCancel:
-                case MessageBoxButton.YesNo:
                     _cancelVisibility = Visibility.Visible;
                     _okVisibility = Visibility.Visible;
+                    break;
+                case MessageBoxButton.YesNo:
+                    _yesVisibility = Visibility.Visible;
+                    _noVisibility = Visibility.Visible;
+                    break;
+                case MessageBoxButton.YesNoCancel:
+                    _yesVisibility = Visibility.Visible;
+                    _noVisibility = Visibility.Visible;
+                    _cancelVisibility = Visibility.Visible;
                     break;
                 default:
                     _okVisibility = Visibility.Visible;

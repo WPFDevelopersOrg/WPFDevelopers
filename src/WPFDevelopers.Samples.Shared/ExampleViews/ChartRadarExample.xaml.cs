@@ -10,17 +10,19 @@ using WPFDevelopers.Controls;
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// RadarChartExample.xaml 的交互逻辑
+    /// ChartRadarExample.xaml 的交互逻辑
     /// </summary>
-    public partial class RadarChartExample : UserControl
+    public partial class ChartRadarExample : UserControl
     {
-        public ObservableCollection<RadarModel> RadarModels
+        public IEnumerable<KeyValuePair<string, double>> Datas
         {
-            get { return (ObservableCollection<RadarModel>)GetValue(RadarModelsProperty); }
-            set { SetValue(RadarModelsProperty, value); }
+            get { return (IEnumerable<KeyValuePair<string, double>>)GetValue(DatasProperty); }
+            set { SetValue(DatasProperty, value); }
         }
-        public static readonly DependencyProperty RadarModelsProperty =
-       DependencyProperty.Register("RadarModels", typeof(ObservableCollection<RadarModel>), typeof(RadarChartExample), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty DatasProperty =
+            DependencyProperty.Register("Datas", typeof(IEnumerable<KeyValuePair<string, double>>), typeof(ChartRadarExample), new PropertyMetadata(null));
+
         List<Player> Players = new List<Player>();
         private int NowPlayerIndex = 0;
         public string NowPlayerName
@@ -29,23 +31,22 @@ namespace WPFDevelopers.Samples.ExampleViews
             set { SetValue(NowPlayerNameProperty, value); }
         }
         public static readonly DependencyProperty NowPlayerNameProperty =
-     DependencyProperty.Register("NowPlayerName", typeof(string), typeof(RadarChartExample), new PropertyMetadata(null));
+     DependencyProperty.Register("NowPlayerName", typeof(string), typeof(ChartRadarExample), new PropertyMetadata(null));
 
-        List<ObservableCollection<RadarModel>> collectionList = new List<ObservableCollection<RadarModel>>();
-        public RadarChartExample()
+        List<List<KeyValuePair<string, double>>> collectionList = new List<List<KeyValuePair<string, double>>>();
+        public ChartRadarExample()
         {
             InitializeComponent();
-            RadarModels = new ObservableCollection<RadarModel>();
             Player theShy = new Player()
             {
                 姓名 = "The Shy",
-                击杀 = 80,
-                助攻 = 50,
+                击杀 = 800,
+                助攻 = 500,
                 物理 = 90,
-                生存 = 10,
-                金钱 = 60,
-                防御 = 30,
-                魔法 = 30
+                生存 = 120,
+                金钱 = 360,
+                防御 = 230,
+                魔法 = 130
             };
             Player xiaoHu = new Player()
             {
@@ -77,7 +78,7 @@ namespace WPFDevelopers.Samples.ExampleViews
                 物理 = 80,
                 生存 = 70,
                 金钱 = 80,
-                防御 = 80,
+                防御 = 100,
                 魔法 = 30
             };
             Players.AddRange(new[] { theShy, xiaoHu, yinHang, flandre });
@@ -88,14 +89,14 @@ namespace WPFDevelopers.Samples.ExampleViews
 
             foreach (var player in Players)
             {
-                var collectionpPayer = new ObservableCollection<RadarModel>();
+                var collectionpPayer = new List<KeyValuePair<string, double>>();
                 Array.ForEach<PropertyInfo>(pArray, p =>
                 {
-                    collectionpPayer.Add(new RadarModel { Text = $"{p.Name}（{(int)p.GetValue(player, null)}分）", ValueMax = (int)p.GetValue(player, null) });
+                    collectionpPayer.Add(new KeyValuePair<string, double>( $"{p.Name}（{(int)p.GetValue(player, null)}分）", (int)p.GetValue(player, null)));
                 });
                 collectionList.Add(collectionpPayer);
             }
-            RadarModels = collectionList[0];
+            Datas = collectionList[0];
             NowPlayerName = Players[0].姓名;
         }
 
@@ -106,7 +107,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             {
                 NowPlayerIndex = 0;
             }
-            RadarModels = collectionList[NowPlayerIndex];
+            Datas = collectionList[NowPlayerIndex];
             NowPlayerName = Players[NowPlayerIndex].姓名;
         }
     }

@@ -8,9 +8,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Interop;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Xml;
 
 namespace WPFDevelopers.Helpers
 {
@@ -215,6 +217,24 @@ namespace WPFDevelopers.Helpers
             return null;
         }
 
+        public static object GetXmlReader(object Content)
+        {
+            var originalContent = Content as UIElement;
+            string contentXaml = XamlWriter.Save(originalContent);
+            using (StringReader stringReader = new StringReader(contentXaml))
+            {
+                using (XmlReader xmlReader = XmlReader.Create(stringReader))
+                {
+                    object clonedContent = XamlReader.Load(xmlReader);
+
+                    if (clonedContent is UIElement clonedElement)
+                    {
+                        return clonedElement;
+                    }
+                }
+            }
+            return null;
+        }
 
     }
 

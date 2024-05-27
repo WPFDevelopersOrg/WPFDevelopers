@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
-    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
+    xmlns:resx="clr-namespace:WPFDevelopers">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -102,7 +103,11 @@
                     <ColumnDefinition Width="5" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock VerticalAlignment="Center" Text="{Binding Count, StringFormat=共 {0} 条, RelativeSource={RelativeSource TemplatedParent}}" />
+                <WrapPanel VerticalAlignment="Center">
+                    <TextBlock Text="{Binding [Total], Source={x:Static resx:LanguageManager.Instance}}" />
+                    <TextBlock Text="{Binding Count, StringFormat=' {0} ', RelativeSource={RelativeSource TemplatedParent}}" />
+                    <TextBlock Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
+                </WrapPanel>
                 <controls:NumericBox
                     x:Name="PART_CountPerPageNumericBox"
                     Grid.Column="2"
@@ -112,10 +117,14 @@
                     Minimum="1"
                     TextAlignment="Center"
                     UpDownButtonsWidth="0" />
-                <TextBlock
+                <WrapPanel
                     Grid.Column="3"
-                    VerticalAlignment="Center"
-                    Text=" 条 / 页" />
+                    Margin="3,0,0,0"
+                    VerticalAlignment="Center">
+                    <TextBlock Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
+                    <TextBlock Text=" /  " />
+                    <TextBlock Text="{Binding [Page], Source={x:Static resx:LanguageManager.Instance}}" />
+                </WrapPanel>
                 <Button
                     Grid.Column="5"
                     Width="32"
@@ -172,15 +181,19 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                Text="{Binding Count, StringFormat=共 {0} 条, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <WrapPanel Margin="0,0,15,0" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding [Total], Source={x:Static resx:LanguageManager.Instance}}" />
+                                <TextBlock Text="{Binding Count, StringFormat=' {0} ', RelativeSource={RelativeSource TemplatedParent}}" />
+                                <TextBlock Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
+                            </WrapPanel>
                             <StackPanel
                                 Grid.Column="1"
                                 Margin="0,0,15,0"
                                 Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Text="每页 " />
+                                <TextBlock
+                                    Margin="0,0,3,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding [Page], Source={x:Static resx:LanguageManager.Instance}}" />
                                 <controls:NumericBox
                                     x:Name="PART_CountPerPageNumericBox"
                                     Grid.Column="2"
@@ -190,7 +203,10 @@
                                     Minimum="1"
                                     TextAlignment="Center"
                                     UpDownButtonsWidth="0" />
-                                <TextBlock VerticalAlignment="Center" Text=" 条" />
+                                <TextBlock
+                                    Margin="3,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
                             </StackPanel>
                             <Button
                                 Grid.Column="2"
@@ -221,7 +237,10 @@
                                 <controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
                             </Button>
                             <StackPanel Grid.Column="5" Orientation="Horizontal">
-                                <TextBlock VerticalAlignment="Center" Text=" 前往 " />
+                                <TextBlock
+                                    Margin="3,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding [Goto], Source={x:Static resx:LanguageManager.Instance}}" />
                                 <controls:NumericBox
                                     x:Name="PART_JumpPageNumericBox"
                                     Width="32"
@@ -230,7 +249,10 @@
                                     Minimum="1"
                                     TextAlignment="Center"
                                     UpDownButtonsWidth="0" />
-                                <TextBlock VerticalAlignment="Center" Text=" 页" />
+                                <TextBlock
+                                    Margin="3,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding [Page], Source={x:Static resx:LanguageManager.Instance}}" />
                             </StackPanel>
                         </Grid>
                     </Border>

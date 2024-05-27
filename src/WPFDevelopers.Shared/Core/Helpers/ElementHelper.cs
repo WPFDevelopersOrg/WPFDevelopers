@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace WPFDevelopers.Helpers
 {
@@ -19,6 +21,10 @@ namespace WPFDevelopers.Helpers
         public static readonly DependencyProperty IsRoundProperty =
            DependencyProperty.RegisterAttached("IsRound", typeof(bool), typeof(ElementHelper),
                new PropertyMetadata(false));
+
+        public static readonly DependencyProperty IsClearProperty =
+          DependencyProperty.RegisterAttached("IsClear", typeof(bool), typeof(ElementHelper),
+              new PropertyMetadata(false, OnIsClearChanged));
 
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
@@ -57,6 +63,42 @@ namespace WPFDevelopers.Helpers
         public static void SetIsRound(DependencyObject obj, bool value)
         {
             obj.SetValue(IsRoundProperty, value);
+        }
+        public static void SetIsClear(UIElement element, bool value)
+        {
+            element.SetValue(IsClearProperty, value);
+        }
+
+        public static bool GetIsClear(UIElement element)
+        {
+            return (bool)element.GetValue(IsClearProperty);
+        }
+
+        private static void OnIsClearChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var button = d as Button;
+            if (button != null)
+            {
+                if ((bool)e.NewValue)
+                    button.Click += ButtonClear_Click;
+                else
+                    button.Click -= ButtonClear_Click;
+            }
+        }
+
+        private static void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                if (button.TemplatedParent is TextBox textBox)
+                {
+                    textBox.Clear();
+                }
+                else if (button.TemplatedParent is PasswordBox passwordBox)
+                {
+                    passwordBox.Clear();
+                }
+            }
         }
     }
 }

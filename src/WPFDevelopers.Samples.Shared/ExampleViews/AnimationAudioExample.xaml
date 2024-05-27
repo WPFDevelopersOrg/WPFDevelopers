@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <controls:CodeViewer>
         <UniformGrid Columns="2" x:Name="MyUniformGrid">
         <StackPanel Orientation="Horizontal">
-            <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
+            <wd:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
                                    VerticalAlignment="Center" HorizontalAlignment="Left"
                                Margin="10,0">
                 <Ellipse>
@@ -19,16 +19,16 @@
                             <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/0.jpg"/>
                     </Ellipse.Fill>
                 </Ellipse>
-            </wpfdev:BreathLamp>
-            <wpfdev:AnimationAudio x:Name="AnimationAudioLeft" MouseDown="AnimationAudioLeft_MouseDown"/>
+            </wd:BreathLamp>
+            <wd:AnimationAudio x:Name="AnimationAudioLeft" MouseDown="AnimationAudioLeft_MouseDown"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            <wpfdev:AnimationAudio x:Name="AnimationAudioRight" IsRight ="true" 
+            <wd:AnimationAudio x:Name="AnimationAudioRight" IsRight ="true" 
                                Background="{DynamicResource WD.SuccessSolidColorBrush}"
                                Foreground="Black"
                                MouseDown="AnimationAudioLeft_MouseDown"/>
-            <wpfdev:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"
+            <wd:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"
                                VerticalAlignment="Center" HorizontalAlignment="Left" 
                                GradientStopColor1="#FF00cec9" GradientStopColor2="#2000cec9"
                                Margin="10,0">
@@ -37,7 +37,7 @@
                             <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/UserImages/yanjinhua.png"/>
                     </Ellipse.Fill>
                 </Ellipse>
-            </wpfdev:BreathLamp>
+            </wd:BreathLamp>
         </StackPanel>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
