@@ -26,7 +26,7 @@
 ### .Net Version
 |  .Net Version   | Status  |
 |  ----  | ----  |
-| Net40  | ✅ |
+| net40  | ✅ |
 | net45  | ✅ |
 | net46  | ✅ |
 | net47  | ✅ |
@@ -80,6 +80,31 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ###  Step 3: Add the namespace;
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
+----------
+### ChartRadar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartRadar.gif"/>   
+
+----------
+### ChartLine
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartLine.gif"/>   
+
+----------
+### ChartBar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartBar.gif"/>   
+
+----------
+### SearchText
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SearchText.gif"/>   
+
+----------
+### ClearButton
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ClearButton.gif"/>   
 
 ----------
 ### IPEditBox
