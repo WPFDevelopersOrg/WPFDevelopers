@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
@@ -19,16 +19,16 @@
             <Setter Property="Margin" Value="2"></Setter>
         </Style>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
-            <Setter Property="wpfdev:ElementHelper.Watermark" Value="输入内容"></Setter>
+            <Setter Property="wd:ElementHelper.Watermark" Value="输入内容"></Setter>
             <Setter Property="Margin" Value="-30,0"></Setter>
             <Setter Property="Width" Value="100"></Setter>
         </Style>
     </UserControl.Resources>
     <controls:CodeViewer>
     <Grid>
-        <wpfdev:StarrySky Name="myStarrySky">
+        <wd:StarrySky Name="myStarrySky">
 
-        </wpfdev:StarrySky>
+        </wd:StarrySky>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="星星个数:"></TextBlock>

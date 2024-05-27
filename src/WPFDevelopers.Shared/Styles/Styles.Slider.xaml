@@ -73,17 +73,32 @@
     <Style
         x:Key="WD.SliderRepeatButtonStyle"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type RepeatButton}">
+        TargetType="{x:Type controls:SliderRepeatButton}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Rectangle
+                <ControlTemplate TargetType="{x:Type controls:SliderRepeatButton}">
+                    <Border
+                        x:Name="PART_Border"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Fill="{TemplateBinding Background}" />
+                        Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="RadiusOrientation" Value="Right">
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
+                        </Trigger>
+                        <Trigger Property="RadiusOrientation" Value="Left">
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
+                        </Trigger>
+                        <Trigger Property="RadiusOrientation" Value="Down">
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
+                        </Trigger>
+                        <Trigger Property="RadiusOrientation" Value="Up">
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -123,19 +138,21 @@
 
                 <Track x:Name="PART_Track" Grid.Row="1">
                     <Track.DecreaseRepeatButton>
-                        <RepeatButton
+                        <controls:SliderRepeatButton
                             Height="{StaticResource WD.RepeatButtonSize}"
                             Margin="0,2,0,0"
                             Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             Command="{x:Static Slider.DecreaseLarge}"
+                            RadiusOrientation="Right"
                             Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
                     </Track.DecreaseRepeatButton>
                     <Track.IncreaseRepeatButton>
-                        <RepeatButton
+                        <controls:SliderRepeatButton
                             Height="{StaticResource WD.RepeatButtonSize}"
                             Margin="0,2,0,0"
                             Background="{DynamicResource WD.BaseSolidColorBrush}"
                             Command="{x:Static Slider.IncreaseLarge}"
+                            RadiusOrientation="Left"
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
                     </Track.IncreaseRepeatButton>
                     <Track.Thumb>
@@ -192,17 +209,19 @@
                     Visibility="Collapsed" />
                 <Track x:Name="PART_Track" Grid.Column="1">
                     <Track.DecreaseRepeatButton>
-                        <RepeatButton
+                        <controls:SliderRepeatButton
                             Width="{StaticResource WD.RepeatButtonSize}"
                             Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             Command="{x:Static Slider.DecreaseLarge}"
+                            RadiusOrientation="Up"
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
                     </Track.DecreaseRepeatButton>
                     <Track.IncreaseRepeatButton>
-                        <RepeatButton
+                        <controls:SliderRepeatButton
                             Width="{StaticResource WD.RepeatButtonSize}"
                             Background="{DynamicResource WD.LightSolidColorBrush}"
                             Command="{x:Static Slider.IncreaseLarge}"
+                            RadiusOrientation="Down"
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
                     </Track.IncreaseRepeatButton>
                     <Track.Thumb>

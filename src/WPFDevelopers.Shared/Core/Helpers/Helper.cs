@@ -11,11 +11,8 @@ namespace WPFDevelopers
 {
     public class Helper
     {
-        //public static string GetTempPath = Path.Combine(Path.GetTempPath(), Assembly.GetEntryAssembly().GetName().Name);
-        //public static string GetTempPathVersion = Path.Combine(GetTempPath, Assembly.GetExecutingAssembly().GetName().Version.ToString());
-        //public const string GetExtName = "WPFDevelopersExt.exe";
-        //public static string GetTempPathVersionExt = Path.Combine(GetTempPathVersion, GetExtName);
-
+        public const int WM_USER = 0x03FC;
+        public const int MY_MESSAGE = WM_USER + 1;
         public static string GetTempPath = Path.Combine(Path.GetTempPath(), Assembly.GetExecutingAssembly().GetName().Name);
         public static string GetTempPathVersion = Path.Combine(GetTempPath, GetMD5Hash(GetCurrentDllPath()));
         public const string GetExtName = "WPFDevelopersExt.exe";

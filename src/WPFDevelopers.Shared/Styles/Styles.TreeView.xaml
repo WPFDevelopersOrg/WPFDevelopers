@@ -21,17 +21,20 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
-                    <Border
+                    <controls:WDBorder
+                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True">
                         <ScrollViewer
-                            Padding="{TemplateBinding Padding}"
                             CanContentScroll="False"
+                            Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}"
                             Focusable="False">
                             <ItemsPresenter />
                         </ScrollViewer>
-                    </Border>
+                    </controls:WDBorder>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

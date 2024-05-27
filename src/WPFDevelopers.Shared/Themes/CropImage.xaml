@@ -22,7 +22,8 @@
                             Background="Transparent"
                             BorderBrush="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             BorderThickness="2"
-                            Cursor="SizeAll" />
+                            Cursor="SizeAll"
+                            Visibility="Collapsed" />
                     </Canvas>
                 </ControlTemplate>
             </Setter.Value>
