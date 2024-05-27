@@ -68,7 +68,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Passwrod\PasswordExample.xaml.cs" Link="ExampleViews\Passwrod\PasswordExample.xaml.cs" DependentUpon="PasswordExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" Link="ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" DependentUpon="PasswordWithPlainText.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PieControlExample.xaml.cs" Link="ExampleViews\PieControlExample.xaml.cs" DependentUpon="PieControlExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RadarChartExample.xaml.cs" Link="ExampleViews\RadarChartExample.xaml.cs" DependentUpon="RadarChartExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartRadarExample.xaml.cs" Link="ExampleViews\ChartRadarExample.xaml.cs" DependentUpon="ChartRadarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RainbowButtonsExample.xaml.cs" Link="ExampleViews\RainbowButtonsExample.xaml.cs" DependentUpon="RainbowButtonsExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RoundPickerExample.xaml.cs" Link="ExampleViews\RoundPickerExample.xaml.cs" DependentUpon="RoundPickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RulerControlExample.xaml.cs" Link="ExampleViews\RulerControlExample.xaml.cs" DependentUpon="RulerControlExample.xaml" />
@@ -317,8 +317,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PieControlExample.xaml">
 			<Link>ExampleViews\PieControlExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RadarChartExample.xaml">
-			<Link>ExampleViews\RadarChartExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartRadarExample.xaml">
+			<Link>ExampleViews\ChartRadarExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RainbowButtonsExample.xaml">
 			<Link>ExampleViews\RainbowButtonsExample.xaml</Link>
