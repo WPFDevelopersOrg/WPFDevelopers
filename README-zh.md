@@ -32,7 +32,7 @@
 ### .Net Version
 |  .Net Version   | Status  |
 |  ----  | ----  |
-| Net40  | ✅ |
+| net40  | ✅ |
 | net45  | ✅ |
 | net46  | ✅ |
 | net47  | ✅ |
@@ -91,6 +91,31 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`  
 
 ***
+### ChartRadar
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartRadar.gif"/>   
+
+----------
+### ChartLine
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartLine.gif"/>   
+
+----------
+### ChartBar
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartBar.gif"/>   
+
+----------
+### SearchText
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SearchText.gif"/>   
+
+----------
+### ClearButton
+
+<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ClearButton.gif"/>   
+
+----------
 ### IPEditBox
 
 <img src="hhttps://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
