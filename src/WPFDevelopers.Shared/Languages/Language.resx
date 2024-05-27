@@ -151,4 +151,16 @@
   <data name="Replace" xml:space="preserve">
     <value>更换</value>
   </data>
+  <data name="Clear" xml:space="preserve">
+    <value>清空</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>向下还原</value>
+  </data>
 </root>
