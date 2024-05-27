@@ -37,18 +37,18 @@
                             </PointAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:WDBorder x:Name="PART_TemplateRoot" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                    <Border x:Name="PART_TemplateRoot">
                         <controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
                             <Border
                                 x:Name="PART_Border"
                                 Background="{DynamicResource WD.BaseSolidColorBrush}"
-                                Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" />
+                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
                             <Rectangle x:Name="PART_Track" />
                             <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
                                 <Border
                                     x:Name="Indicator"
                                     Background="{TemplateBinding Foreground}"
-                                    Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" />
+                                    CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
                             </Decorator>
                             <Rectangle
                                 x:Name="PART_Rectangle"
@@ -59,7 +59,7 @@
                                 </Rectangle.RenderTransform>
                             </Rectangle>
                         </controls:SmallPanel>
-                    </controls:WDBorder>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Vertical">
                             <Setter Property="Height" Value="{x:Static sys:Double.NaN}" />
@@ -75,6 +75,7 @@
                             </Trigger.EnterActions>
                             <Setter TargetName="PART_Indicator" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_Rectangle" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />
                             <Trigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="IndeterminateStoryboard" />
                             </Trigger.ExitActions>
@@ -127,6 +128,7 @@
                                 <StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
                             </Trigger.ExitActions>
                         </Trigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

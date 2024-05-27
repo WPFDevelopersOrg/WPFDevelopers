@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+             xmlns:wpfdev="https://github.com/WPFDevelopersOrg/WPFDevelopers"
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -20,10 +20,10 @@
                     Click="Button_Click"
                     Content="获取"/>
             <UniformGrid Rows="2" Columns="2" Grid.Row="1">
-                <wd:VerifyCode Foreground="LimeGreen" Name="VerifyCode1"/>
-                <wd:VerifyCode Foreground="Red" Name="VerifyCode2"/>
-                <wd:VerifyCode Foreground="DodgerBlue" Name="VerifyCode3"/>
-                <wd:VerifyCode Foreground="HotPink" Name="VerifyCode4"/>
+                <wpfdev:VerifyCode Foreground="LimeGreen" Name="VerifyCode1"/>
+                <wpfdev:VerifyCode Foreground="Red" Name="VerifyCode2"/>
+                <wpfdev:VerifyCode Foreground="DodgerBlue" Name="VerifyCode3"/>
+                <wpfdev:VerifyCode Foreground="HotPink" Name="VerifyCode4"/>
             </UniformGrid>
         </Grid>
         <controls:CodeViewer.SourceCodes>

@@ -1,19 +1,26 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
-    public class AnimationNavigationBar3DItem : ListBoxItem
+    public class AnimationNavigationBar3DItem : Control
     {
-        public static readonly DependencyProperty FillProperty =
-            DependencyProperty.Register("Fill", typeof(Brush), typeof(AnimationNavigationBar3DItem),
+        public static readonly DependencyProperty FileBackgroundProperty =
+            DependencyProperty.Register("FileBackground", typeof(Brush), typeof(AnimationNavigationBar3DItem),
                 new PropertyMetadata(null));
 
-        public static readonly DependencyProperty ContentBackProperty =
-            DependencyProperty.Register("ContentBack", typeof(object), typeof(AnimationNavigationBar3DItem),
+        public static readonly DependencyProperty BackFileBackgroundProperty =
+            DependencyProperty.Register("BackFileBackground", typeof(Brush), typeof(AnimationNavigationBar3DItem),
                 new PropertyMetadata(null));
+
+        public static readonly DependencyProperty PathDateProperty =
+            DependencyProperty.Register("PathDate", typeof(Geometry), typeof(AnimationNavigationBar3DItem),
+                new PropertyMetadata());
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(AnimationNavigationBar3DItem),
+                new PropertyMetadata());
 
         static AnimationNavigationBar3DItem()
         {
@@ -21,29 +28,42 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(AnimationNavigationBar3DItem)));
         }
 
-        public override void OnApplyTemplate()
+        /// <summary>
+        ///     默认颜色
+        /// </summary>
+        public Brush FileBackground
         {
-            base.OnApplyTemplate();
-            if (ContentBack == null) 
-                ContentBack = ControlsHelper.GetXmlReader(Content);
+            get => (Brush)GetValue(FileBackgroundProperty);
+            set => SetValue(FileBackgroundProperty, value);
         }
 
         /// <summary>
-        ///  Color fore
+        ///     背面颜色
         /// </summary>
-        public Brush Fill
+        public Brush BackFileBackground
         {
-            get => (Brush)GetValue(FillProperty);
-            set => SetValue(FillProperty, value);
+            get => (Brush)GetValue(BackFileBackgroundProperty);
+            set => SetValue(BackFileBackgroundProperty, value);
         }
 
+
         /// <summary>
-        ///  The content after the mouse is moved in
+        ///     设置PathData
         /// </summary>
-        public object ContentBack
+        public Geometry PathDate
         {
-            get => (object)GetValue(ContentBackProperty);
-            set => SetValue(ContentBackProperty, value);
+            get => (Geometry)GetValue(PathDateProperty);
+            set => SetValue(PathDateProperty, value);
+        }
+
+
+        /// <summary>
+        ///     文本显示内容
+        /// </summary>
+        public string Text
+        {
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
         }
     }
 }

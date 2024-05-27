@@ -16,43 +16,31 @@
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.LighterSolidColorBrush}" />
         <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Expander}">
-                    <Border
-                        x:Name="PART_BorderRoot"
-                        Margin="{TemplateBinding Margin}"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="0"
-                        ClipToBounds="True"
-                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                        SnapsToDevicePixels="True">
+                    <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                         <DockPanel>
                             <ToggleButton
                                 x:Name="HeaderSite"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1"
                                 Content="{TemplateBinding Header}"
                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
                                 DockPanel.Dock="Top"
                                 IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
                                 <ToggleButton.Style>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
-                                        <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
-                                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -109,11 +97,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -122,6 +105,8 @@
                             </ToggleButton>
                             <Border
                                 x:Name="PART_Content"
+                                BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                                BorderThickness="0"
                                 DockPanel.Dock="Bottom"
                                 RenderTransformOrigin=".5,0"
                                 SnapsToDevicePixels="True"
@@ -145,8 +130,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="True">
                             <Setter TargetName="PART_Content" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="PART_BorderRoot" Property="BorderThickness" Value="1" />
-                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0" />
                         </Trigger>
                         <Trigger Property="ExpandDirection" Value="Right">
                             <Setter TargetName="ExpandSite" Property="DockPanel.Dock" Value="Right" />
@@ -160,16 +143,14 @@
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
-                                        <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
-                                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -233,11 +214,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding (helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -252,16 +228,14 @@
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
-                                        <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
-                                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -320,11 +294,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -344,16 +313,14 @@
                             <Setter TargetName="HeaderSite" Property="Style">
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
-                                        <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
                                                         Background="{DynamicResource WD.LighterSolidColorBrush}"
-                                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                                                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                                                        BorderThickness="1">
                                                         <Grid
                                                             Margin="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}}"
                                                             Background="Transparent"
@@ -417,11 +384,6 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                     </Border>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -435,7 +397,6 @@
                                 <Condition Property="ExpandDirection" Value="Down" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,0,1,1" />
-                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,0,1" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_DownBeginStoryboard">
                                     <Storyboard>
@@ -457,7 +418,6 @@
                                 <Condition Property="ExpandDirection" Value="Right" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="0,1,1,1" />
-                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,1,0" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_RightBeginStoryboard">
                                     <Storyboard>
@@ -479,7 +439,6 @@
                                 <Condition Property="ExpandDirection" Value="Up" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,1,0" />
-                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,1,0,0" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_UpBeginStoryboard">
                                     <Storyboard>
@@ -501,7 +460,6 @@
                                 <Condition Property="ExpandDirection" Value="Left" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,0,1" />
-                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="1,0,0,0" />
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_LeftBeginStoryboard">
                                     <Storyboard>

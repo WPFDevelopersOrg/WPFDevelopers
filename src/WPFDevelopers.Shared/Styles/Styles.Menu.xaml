@@ -78,8 +78,9 @@
                             CornerRadius="0,0,3,3"
                             Effect="{StaticResource WD.PopupShadowDepth}"
                             SnapsToDevicePixels="True">
+
                             <ScrollViewer Margin="0,4" CanContentScroll="True">
-                                <VirtualizingStackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                             </ScrollViewer>
                         </Border>
                         <Border
@@ -259,11 +260,11 @@
                         Background="{DynamicResource WD.BackgroundSolidColorBrush}"
                         BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
                         BorderThickness="1"
-                        CornerRadius="0,0,3,3"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         Effect="{StaticResource WD.PopupShadowDepth}"
                         SnapsToDevicePixels="True">
                         <ScrollViewer Margin="0,4" CanContentScroll="True">
-                            <VirtualizingStackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                         </ScrollViewer>
                     </Border>
                 </Popup>

@@ -12,9 +12,6 @@
         TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
         <Setter Property="Width" Value="80" />
         <Setter Property="Height" Value="80" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
@@ -50,7 +47,7 @@
                         <Viewport3D.Children>
                             <ModelVisual3D>
                                 <ModelVisual3D.Content>
-                                    <AmbientLight Color="{DynamicResource WD.BackgroundColor}" />
+                                    <AmbientLight Color="{DynamicResource BackgroundColor}" />
                                 </ModelVisual3D.Content>
                             </ModelVisual3D>
                             <ContainerUIElement3D>
@@ -64,6 +61,7 @@
                                         </RotateTransform3D.Rotation>
                                     </RotateTransform3D>
                                 </ContainerUIElement3D.Transform>
+
                                 <Viewport2DVisual3D>
                                     <Viewport2DVisual3D.Material>
                                         <DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True" />
@@ -77,14 +75,14 @@
                                     <Border
                                         Width="110"
                                         Height="110"
-                                        Background="{TemplateBinding Background}"
+                                        Background="{TemplateBinding FileBackground}"
                                         CornerRadius="0,0,0,0">
-                                        <ContentPresenter
-                                            x:Name="PART_ContentPresenter"
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                            TextElement.Foreground="{TemplateBinding Foreground}" />
+                                        <Path
+                                            Width="40"
+                                            Height="40"
+                                            Data="{TemplateBinding PathDate}"
+                                            Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                            Stretch="Fill" />
                                     </Border>
                                 </Viewport2DVisual3D>
                                 <Viewport2DVisual3D>
@@ -100,7 +98,7 @@
                                     <Border
                                         Width="110"
                                         Height="110"
-                                        Background="{TemplateBinding Fill}"
+                                        Background="{TemplateBinding BackFileBackground}"
                                         CornerRadius="0,0,0,0"
                                         RenderTransformOrigin="0.5,0.5">
                                         <Border.RenderTransform>
@@ -108,12 +106,19 @@
                                                 <RotateTransform Angle="90" />
                                             </TransformGroup>
                                         </Border.RenderTransform>
-                                        <ContentPresenter
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                            Content="{Binding ContentBack, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3DItem}}}"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                            TextElement.Foreground="{TemplateBinding Foreground}" />
+                                        <StackPanel VerticalAlignment="Center">
+                                            <Path
+                                                Width="40"
+                                                Height="40"
+                                                Data="{TemplateBinding PathDate}"
+                                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                Stretch="Fill" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="{TemplateBinding FontSize}"
+                                                Foreground="{DynamicResource WD.BackgroundSolidColorBrush}"
+                                                Text="{TemplateBinding Text}" />
+                                        </StackPanel>
                                     </Border>
                                 </Viewport2DVisual3D>
                             </ContainerUIElement3D>
@@ -146,7 +151,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="{Binding Items.Count, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3D}}}" />
+                    <UniformGrid Columns="{Binding Columns, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3D}}}" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
