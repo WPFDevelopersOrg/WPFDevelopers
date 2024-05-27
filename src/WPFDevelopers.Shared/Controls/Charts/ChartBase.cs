@@ -36,17 +36,9 @@ namespace WPFDevelopers.Controls
 
         protected double Interval { get; } = 120;
 
-        protected short ScaleFactor { get; private set; } = 80;
-
-        protected Brush ChartFill { get; private set; }
-
-        protected double StartX { get; private set; } = 40;
-
-        protected double StartY { get; private set; }
-
         protected double MaxY { get; }
-
-        protected double IntervalY { get; private set; }
+        protected double StartY { get; set; }
+        protected double StartX { get; set; } = 40;
 
         protected Brush NormalBrush => ControlsHelper.PrimaryNormalBrush;
 
@@ -132,67 +124,27 @@ namespace WPFDevelopers.Controls
                 return;
             SnapsToDevicePixels = true;
             UseLayoutRounding = true;
-            ChartFill = Application.Current.TryFindResource("WD.ChartFillSolidColorBrush") as Brush;
-            var myPen = new Pen
+        }
+
+        public void DrawEllipse(IEnumerable<Rect> rects, DrawingContext drawingContext)
+        {
+            var drawingPen = new Pen
             {
-                Thickness = 1,
-                Brush = ChartFill
+                Thickness = 2,
+                Brush = NormalBrush
             };
-            myPen.Freeze();
+            drawingPen.Freeze();
 
-            var xAxiHeight = 4;
-            StartY = ActualHeight - (xAxiHeight + myPen.Thickness) - 20;
-            var w = ActualWidth;
-            StartX = 40;
-            var width = Datas.Count() * Interval + StartX;
-            IntervalY = 0;
-            var x = StartX;
-            var y = StartY + myPen.Thickness;
-
-            drawingContext.DrawSnappedLinesBetweenPoints(myPen, myPen.Thickness, new Point(StartX, StartY),
-                new Point(width, StartY));
-
-            var points = new List<Point>();
-            for (var i = 0; i < Datas.Count() + 1; i++)
+            var backgroupBrush = new SolidColorBrush()
             {
-                points.Add(new Point(x, y));
-                points.Add(new Point(x, y + xAxiHeight));
-                x += Interval;
-            }
-
-            drawingContext.DrawSnappedLinesBetweenPoints(myPen, myPen.Thickness, points.ToArray());
-
-            var formattedText = DrawingContextHelper.GetFormattedText(IntervalY.ToString(),
-                ChartFill, FlowDirection.LeftToRight);
-            drawingContext.DrawText(formattedText,
-                new Point(StartX - formattedText.Width * 2, StartY - formattedText.Height / 2));
-
-            var xAxisPen = new Pen
-            {
-                Thickness = 1,
-                Brush = Application.Current.TryFindResource("WD.ChartXAxisSolidColorBrush") as Brush
+                Color = (Color)Application.Current.TryFindResource("WD.BackgroundColor")
             };
-            xAxisPen.Freeze();
-            var max = Convert.ToInt32(Datas.Max(kvp => kvp.Value));
-            var min = Convert.ToInt32(Datas.Min(kvp => kvp.Value));
-            ScaleFactor = Convert.ToInt16(StartY / Rows);
-            var yAxis = StartY - ScaleFactor;
-            points.Clear();
-            var average = Convert.ToInt32(max / Rows);
-            var result = Enumerable.Range(0, (Convert.ToInt32(max) - average) / average + 1)
-                .Select(i => average + i * average);
-            foreach (var item in result)
+            backgroupBrush.Freeze();
+            foreach (var item in rects)
             {
-                points.Add(new Point(StartX, yAxis));
-                points.Add(new Point(width, yAxis));
-                IntervalY = item;
-                formattedText = DrawingContextHelper.GetFormattedText(IntervalY.ToString(),
-                    ChartFill, FlowDirection.LeftToRight);
-                drawingContext.DrawText(formattedText,
-                    new Point(StartX - formattedText.Width - 10, yAxis - formattedText.Height / 2));
-                yAxis -= ScaleFactor;
+                var ellipseGeom = new EllipseGeometry(item);
+                drawingContext.DrawGeometry(backgroupBrush, drawingPen, ellipseGeom);
             }
-            drawingContext.DrawSnappedLinesBetweenPoints(xAxisPen, xAxisPen.Thickness, points.ToArray());
         }
     }
 }
