@@ -5,6 +5,7 @@ namespace WPFDevelopers.Controls
     public enum PackIconKind
     {
         [Description("WD.CheckMarkGeometry")] CheckMark,
+        [Description("WD.ChevronUpGeometry")] ChevronUp,
         [Description("WD.ChevronDownGeometry")] ChevronDown,
         [Description("WD.BlackoutGeometry")] Blackout,
         [Description("WD.PreviousGeometry")] Previous,
