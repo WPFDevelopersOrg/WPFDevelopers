@@ -1,39 +1,38 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
     public static class MessageBox
     {
-        public static MessageBoxResult Show(string messageBoxText,Window owner = null)
+        public static MessageBoxResult Show(string messageBoxText, Window owner = null, double buttonRadius = 0d)
         {
-            var msg = new WDMessageBox(messageBoxText);
+            var msg = new WDMessageBox(messageBoxText, buttonRadius);
             return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, Window owner = null)
+        public static MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double buttonRadius = 0d)
         {
-            var msg = new WDMessageBox(messageBoxText, caption);
+            var msg = new WDMessageBox(messageBoxText, caption, buttonRadius);
             return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null)
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double buttonRadius = 0d)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, button);
+            var msg = new WDMessageBox(messageBoxText, caption, button, buttonRadius);
             return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null)
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double buttonRadius = 0d)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, icon);
+            var msg = new WDMessageBox(messageBoxText, caption, icon, buttonRadius);
             return GetWindow(msg, owner);
         }
 
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button,
-            MessageBoxImage icon, Window owner = null)
+            MessageBoxImage icon, Window owner = null, double buttonRadius = 0d)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, button, icon);
+            var msg = new WDMessageBox(messageBoxText, caption, button, icon, buttonRadius);
             return GetWindow(msg, owner);
         }
 
