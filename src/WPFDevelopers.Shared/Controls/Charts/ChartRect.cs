@@ -9,8 +9,6 @@ namespace WPFDevelopers.Controls
 {
     public class ChartRect:ChartBase
     {
-        
-        
         protected Brush ChartFill { get; private set; }
         protected double IntervalY { get; private set; }
         protected short ScaleFactor { get; private set; } = 80;
