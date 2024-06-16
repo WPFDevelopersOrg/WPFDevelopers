@@ -3767,10 +3767,10 @@
 							</controls:SmallPanel>
 							<controls:SmallPanel Grid.Row="2" Margin="140,20,10,10" HorizontalAlignment="Right">
 								<UniformGrid Height="38" Rows="1">
-									<Button x:Name="PART_ButtonYes" Width="60" Content="{Binding [Yes], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" Visibility="Collapsed" />
-									<Button x:Name="PART_ButtonNo" Width="60" Margin="6,0,0,0" Content="{Binding [No], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
-									<Button x:Name="PART_ButtonOK" Width="60" Margin="6,0,0,0" Content="{Binding [OK], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" />
-									<Button x:Name="PART_ButtonCancel" Width="60" Margin="6,0,0,0" Content="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
+									<Button x:Name="PART_ButtonYes" Width="60" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [Yes], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" Visibility="Collapsed" />
+									<Button x:Name="PART_ButtonNo" Width="60" Margin="6,0,0,0" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [No], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
+									<Button x:Name="PART_ButtonOK" Width="60" Margin="6,0,0,0" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [OK], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" />
+									<Button x:Name="PART_ButtonCancel" Width="60" Margin="6,0,0,0" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
 								</UniformGrid>
 							</controls:SmallPanel>
 						</Grid>
