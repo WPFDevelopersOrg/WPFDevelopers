@@ -454,7 +454,7 @@ namespace WPFDevelopers.Controls
                     if (string.IsNullOrWhiteSpace(str))
                         str = item.ToString();
                     if (!string.IsNullOrWhiteSpace(str))
-                        if (str.Contains(text.ToUpperInvariant()))
+                        if (str.ToUpperInvariant().Contains(text.ToUpperInvariant()))
                             listSearch.Add(item);
                 }
 
