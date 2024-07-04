@@ -71,11 +71,17 @@
                     wd:ElementHelper.Watermark="下拉多选搜索"
                     Delimiter="^"
                     IsSelectAllActive="True"
-                    SearchWatermark="请输入搜索内容">
-                    <wd:MultiSelectionSearchComboBox.DataContext>
-                        <vm:DrawingExampleVM />
-                    </wd:MultiSelectionSearchComboBox.DataContext>
-                </wd:MultiSelectionSearchComboBox>
+                    SearchWatermark="请输入搜索内容" />
+                <wd:MultiSelectionSearchComboBox
+                    Name="MyMultiSelectionSearchComboBox3"
+                    Width="200"
+                    Height="38"
+                    HorizontalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Delimiter=","
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="ID" 
+                    wd:ElementHelper.CornerRadius="3"/>
             </UniformGrid>
         </Grid>
         <controls:CodeViewer.SourceCodes>
