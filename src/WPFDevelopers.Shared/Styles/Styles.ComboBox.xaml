@@ -11,7 +11,7 @@
     <ControlTemplate x:Key="WD.ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Border
             x:Name="PART_Border"
-            Padding="6,0"
+            Padding="6,1.2"
             BorderThickness="0"
             SnapsToDevicePixels="true">
             <Grid Background="Transparent">
