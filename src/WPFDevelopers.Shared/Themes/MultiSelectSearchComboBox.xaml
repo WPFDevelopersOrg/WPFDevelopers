@@ -119,11 +119,14 @@
                                     <TextBox
                                         x:Name="PART_TextBox"
                                         Margin="6,0"
+                                        helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                        helpers:ElementHelper.IsClear="True"
                                         helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}}" />
                                     <CheckBox
                                         x:Name="PART_SelectAll"
                                         Grid.Row="1"
                                         Margin="4"
+                                        helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="{TemplateBinding SelectAllContent}"
                                         Visibility="{TemplateBinding IsSelectAllActive,
                                                                      Converter={StaticResource WD.Bool2VisibilityConverter}}" />
@@ -134,6 +137,7 @@
                                         Padding="{TemplateBinding Padding}"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="0"
                                         DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
@@ -151,6 +155,7 @@
                                         Padding="{TemplateBinding Padding}"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="0"
                                         DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
@@ -194,6 +199,9 @@
                         </Trigger>
                         <Trigger Property="Text" Value="{x:Null}">
                             <Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsSelectAllActive" Value="False">
+                            <Setter TargetName="PART_TextBox" Property="Margin" Value="6,2" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
