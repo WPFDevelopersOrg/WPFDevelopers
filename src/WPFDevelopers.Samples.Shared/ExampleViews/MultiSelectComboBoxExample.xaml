@@ -51,6 +51,7 @@
                     Height="38"
                     HorizontalAlignment="Center"
                     VerticalContentAlignment="Center"
+                    wd:ElementHelper.CornerRadius="3"
                     wd:ElementHelper.Watermark="MultiSelectComboBox"
                     DisplayMemberPath="Number"
                     IsSelectAllActive="True"
