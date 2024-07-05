@@ -533,8 +533,7 @@ namespace WPFDevelopers.Controls
                     object model = null;
                     if (!string.IsNullOrWhiteSpace(name))
                         model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>().FirstOrDefault(h =>
-                            mltiSelectionSearchComboBox.GetPropertyValue(h).ToUpperInvariant()
-                                .Equals(name));
+                            mltiSelectionSearchComboBox.GetPropertyValue(h) == name);
                     else
                         model = mltiSelectionSearchComboBox._listBox.ItemsSource.OfType<object>()
                             .FirstOrDefault(h => h == item);
