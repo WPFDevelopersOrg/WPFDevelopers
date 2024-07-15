@@ -48,7 +48,7 @@ namespace WPFDevelopers.Controls
             else
             {
                 var win = ControlsHelper.GetDefaultWindow();
-                if (win != null)
+                if (win != null && win != msg)
                 {
                     if (win.WindowState == WindowState.Minimized)
                         msg.BorderThickness = new Thickness(1);
