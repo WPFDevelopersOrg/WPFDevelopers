@@ -31,7 +31,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             list2.Add(new UserInfo() { ID = "2", Name = "PPOI.xu" });
             list2.Add(new UserInfo() { ID = "3", Name = "josh.peng" });
             MyMultiSelectionSearchComboBox3.ItemsSource = list2;
-
+            MyMultiSelectionSearchComboBox3.SelectedItems = list2.Where(x => x.ID == "1" || x.ID == "3").ToList();
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
