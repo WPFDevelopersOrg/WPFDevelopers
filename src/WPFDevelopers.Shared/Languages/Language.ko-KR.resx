@@ -183,4 +183,7 @@
   <data name="Maximize" xml:space="preserve">
     <value>최대화</value>
   </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>모두선택</value>
+  </data>
 </root>
