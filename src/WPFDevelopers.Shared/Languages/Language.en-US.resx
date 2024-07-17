@@ -183,4 +183,7 @@
   <data name="Restore" xml:space="preserve">
     <value>Restore</value>
   </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
 </root>
