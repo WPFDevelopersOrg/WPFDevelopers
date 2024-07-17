@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -58,7 +59,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty SelectAllContentProperty =
             DependencyProperty.Register("SelectAllContent", typeof(object), typeof(MultiSelectionSearchComboBox),
-                new PropertyMetadata("全选"));
+                new PropertyMetadata(LanguageManager.Instance["SelectAll"]));
 
         public static readonly DependencyProperty IsSelectAllActiveProperty =
             DependencyProperty.Register("IsSelectAllActive", typeof(bool), typeof(MultiSelectionSearchComboBox),
@@ -190,6 +191,7 @@ namespace WPFDevelopers.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            LanguageManager.Instance.PropertyChanged += Instance_PropertyChanged;
             selectedList = new List<object>();
             selectedSearchList = new List<object>();
             selectedItems = new List<object>();
@@ -232,6 +234,10 @@ namespace WPFDevelopers.Controls
             }
         }
 
+        private void Instance_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+           SelectAllContent = LanguageManager.Instance["SelectAll"];
+        }
 
         private void _listBoxSearch_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -380,8 +386,8 @@ namespace WPFDevelopers.Controls
             if (e.AddedItems.Count > 0)
             {
                 foreach (var item in e.AddedItems)
-                    if (!selectedSearchList.Contains(item))
-                        selectedSearchList.Add(item);
+                    if (!_listBox.SelectedItems.Contains(item))
+                        _listBox.SelectedItems.Add(item);
                 Combination();
                 SelectionChecked(_listBoxSearch);
             }
