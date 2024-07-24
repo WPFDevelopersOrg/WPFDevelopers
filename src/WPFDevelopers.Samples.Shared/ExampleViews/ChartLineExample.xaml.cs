@@ -30,19 +30,19 @@ namespace WPFDevelopers.Samples.ExampleViews
                 new KeyValuePair<string, double>("Tue", 530),
                 new KeyValuePair<string, double>("Wed", 1060),
                 new KeyValuePair<string, double>("Thu", 140),
-                new KeyValuePair<string, double>("Fri", 8000) ,
+                new KeyValuePair<string, double>("Fri", 8000.12) ,
                 new KeyValuePair<string, double>("Sat", 200) ,
                 new KeyValuePair<string, double>("Sun", 300) ,
             };
             var models2 = new[]
             {
-                new KeyValuePair<string, double>("（1）月", 120),
-                new KeyValuePair<string, double>("（2）月", 170),
-                new KeyValuePair<string, double>("（3）月", 30),
-                new KeyValuePair<string, double>("（4）月", 200),
-                new KeyValuePair<string, double>("（5）月", 100) ,
-                new KeyValuePair<string, double>("（6）月", 180) ,
-                new KeyValuePair<string, double>("（7）月", 90) ,
+                new KeyValuePair<string, double>("Bing", 120),
+                new KeyValuePair<string, double>("Google", 170),
+                new KeyValuePair<string, double>("Baidu", 30),
+                new KeyValuePair<string, double>("Github", 200),
+                new KeyValuePair<string, double>("Stack Overflow", 100) ,
+                new KeyValuePair<string, double>("Runoob", 180) ,
+                new KeyValuePair<string, double>("Open AI", 90) ,
             };
             keyValues.Add("1", models1);
             keyValues.Add("2", models2);
