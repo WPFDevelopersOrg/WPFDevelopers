@@ -24,7 +24,7 @@ namespace WPFDevelopers.Controls
                 drawingContext.DrawRectangle(NormalBrush, null, rect);
                 x += interval;
                 var nRect = new Rect(rect.Left - EllipsePadding, rect.Top - EllipsePadding, rect.Width + EllipsePadding, rect.Height + EllipsePadding);
-                dicts.Add(nRect, $"{item.Key} : {item.Value}");
+                dicts.Add(nRect, $"{item.Key} : {item.Value.ToString("#,##0.#########################")}");
             }
             PointCache = dicts;
         }
