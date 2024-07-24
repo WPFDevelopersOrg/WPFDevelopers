@@ -144,6 +144,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimePickerExample.xaml.cs" Link="ExampleViews\TimePickerExample.xaml.cs" DependentUpon="TimePickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\WaterfallPanelExample.xaml.cs" Link="ExampleViews\WaterfallPanelExample.xaml.cs" DependentUpon="WaterfallPanelExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartLineExample.xaml.cs" Link="ExampleViews\ChartLineExample.xaml.cs" DependentUpon="ChartLineExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartPieExample.xaml.cs" Link="ExampleViews\ChartPieExample.xaml.cs" DependentUpon="ChartPieExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -487,6 +488,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartLineExample.xaml">
 			<Link>ExampleViews\ChartLineExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartPieExample.xaml">
+			<Link>ExampleViews\ChartPieExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

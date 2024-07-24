@@ -82,6 +82,7 @@
         WaterfallPanel,
         ChartLine,
         Drap,
+        ChartPie,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

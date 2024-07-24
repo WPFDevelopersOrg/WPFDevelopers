@@ -107,6 +107,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml.cs">
       <DependentUpon>ChartLineExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartPieExample.xaml.cs">
+      <DependentUpon>ChartPieExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChatEmojiExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>ChatEmojiExample.xaml</DependentUpon>
@@ -581,6 +584,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ChartPieExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
