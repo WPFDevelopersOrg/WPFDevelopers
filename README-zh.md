@@ -1,4 +1,4 @@
-<div align="center"><img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png"/></div>   
+<div align="center"><img src="resources/Logo.png"/></div>   
 
 [English](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README.md)   
 
@@ -6,7 +6,7 @@
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
     </a>  <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers"></img>
-    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  <a href="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WPFDevelopers.vsix">
+    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  <a href="resources/WPFDevelopersResource/WPFDevelopers.vsix">
         <img alt=".NET6VSIX" src="https://img.shields.io/badge/.NET6-VSIX-ff69b4"></img>
     </a>  
 
@@ -14,10 +14,11 @@
 
 ## Welcome to WPFDevelopers    
 
-# __最新请使用 Nuget 预览版包__  |[下载可执行程序EXE](https://foruda.gitee.com/attach_file/1688956477367725173/net40.zip?token=71326e788298fd73e4e1dfd46558a23e&ts=1688956652&attname=net40.zip) |[项目模板下载VSIX](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WPFDevelopers.vsix)
+# __最新请使用 Nuget 预览版包__  |[下载可执行程序EXE](https://foruda.gitee.com/attach_file/1688956477367725173/net40.zip?token=71326e788298fd73e4e1dfd46558a23e&ts=1688956652&attname=net40.zip) |[项目模板下载VSIX](resources/WPFDevelopersResource/WPFDevelopers.vsix)
+
+# [最新 WPFDevelopers .Net4.5 至 Net8.0 版本如何编译 👀](https://mp.weixin.qq.com/s/M8as_AsVAFsiImDhaX7TKQ)
 
 # [下载完 WPFDevelopers 项目如何编译通过 👀](https://b23.tv/RTijGF8  )
-
 
 ### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg  
 
@@ -45,7 +46,7 @@
 
 ### 欢迎关注微信公众号  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/wxgzh.jpg"/>  
+<img src="resources/wxgzh.jpg"/>  
 
 ### 支持者  
 
@@ -93,496 +94,502 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ***
 ### ChartRadar
+[文章地址：https://mp.weixin.qq.com/s/D-UTqSl1JfaVxYURn851SQ](https://mp.weixin.qq.com/s/D-UTqSl1JfaVxYURn851SQ)
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartRadar.gif"/>   
+<img src="resources/WPFDevelopersResource/ChartRadar.gif"/>   
+
 
 ----------
 ### ChartLine
+[文章地址：https://mp.weixin.qq.com/s/-LCea6ZM-_0DY8mvtbLzGg](https://mp.weixin.qq.com/s/-LCea6ZM-_0DY8mvtbLzGg)
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartLine.gif"/>   
+<img src="resources/WPFDevelopersResource/ChartLine.gif"/>   
+
 
 ----------
 ### ChartBar
+[文章地址：https://mp.weixin.qq.com/s/ekkJhFK0e6vEv0FXsFye0A](https://mp.weixin.qq.com/s/ekkJhFK0e6vEv0FXsFye0A)
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartBar.gif"/>   
+<img src="resources/WPFDevelopersResource/ChartBar.gif"/>   
 
 ----------
 ### SearchText
+[文章地址：https://mp.weixin.qq.com/s/iTIIUdwNhMeINq4dleQY3g](https://mp.weixin.qq.com/s/iTIIUdwNhMeINq4dleQY3g)
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SearchText.gif"/>   
+<img src="resources/WPFDevelopersResource/SearchText.gif"/>   
 
 ----------
 ### ClearButton
+[文章地址：https://mp.weixin.qq.com/s/iTIIUdwNhMeINq4dleQY3g](https://mp.weixin.qq.com/s/iTIIUdwNhMeINq4dleQY3g)
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ClearButton.gif"/>   
+<img src="resources/WPFDevelopersResource/ClearButton.gif"/>   
 
 ----------
 ### IPEditBox
-
-<img src="hhttps://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
+[文章地址：https://mp.weixin.qq.com/s/1SeYjV_bxvFNFyP5IcpiLA](https://mp.weixin.qq.com/s/1SeYjV_bxvFNFyP5IcpiLA)
+<img src="resources/WPFDevelopersResource/IPEditBox.gif"/>   
 
 ----------
 ### TransformLayout
-
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransformLayout.gif"/>   
+[文章地址：https://mp.weixin.qq.com/s/zj1wBL3nqYGdHsp0Xe3u2Q](https://mp.weixin.qq.com/s/zj1wBL3nqYGdHsp0Xe3u2Q)
+<img src="resources/WPFDevelopersResource/TransformLayout.gif"/>   
 
 ----------
 ### ScreenCaptureExt
-
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCutNew.gif"/>   
+[文章地址：https://mp.weixin.qq.com/s/LiPR-q404WS2VPEmn0W_fQ](https://mp.weixin.qq.com/s/LiPR-q404WS2VPEmn0W_fQ)
+<img src="resources/WPFDevelopersResource/ScreenCutNew.gif"/>   
 
 ----------
 ### TimePicker
-
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimePicker.gif"/>   
+[文章地址：https://mp.weixin.qq.com/s/LiPR-q404WS2VPEmn0W_fQ](https://mp.weixin.qq.com/s/LiPR-q404WS2VPEmn0W_fQ)
+<img src="resources/WPFDevelopersResource/TimePicker.gif"/>   
 
 ----------
 ### ColorPicker
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ColorPicker.gif"/>   
+<img src="resources/WPFDevelopersResource/ColorPicker.gif"/>   
 
 ----------
 ### NumericBox
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NumericBox.gif"/>   
+<img src="resources/WPFDevelopersResource/NumericBox.gif"/>   
 
 ----------
 ### PathIcon
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PathIcon.gif"/>   
+<img src="resources/WPFDevelopersResource/PathIcon.gif"/>   
 
 ----------
 ### Window
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/window.jpg"/>   
+<img src="resources/WPFDevelopersResource/window.jpg"/>   
 
 ----------
 ### Message
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Message.gif"/>   
+<img src="resources/WPFDevelopersResource/Message.gif"/>   
 
 ----------
 ### Badge
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>   
+<img src="resources/WPFDevelopersResource/Badge.gif"/>   
 
 ----------
 ### GrayscaleEffect
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+<img src="resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
 
 ----------
 
 ### CropImage
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropImage.gif"/>   
+<img src="resources/WPFDevelopersResource/CropImage.gif"/>   
 
 ----------
 
 ### BreakCrumbBar
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BreakCrumbBar.gif"/>   
+<img src="resources/WPFDevelopersResource/BreakCrumbBar.gif"/>   
 
 ----------
 ### MultiSelectionSearchComboBox
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectionSearchComboBox.gif"/>  
+<img src="resources/WPFDevelopersResource/MultiSelectionSearchComboBox.gif"/>  
 
 ----------
 ### ScrollIntoView.IsPosition
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollIntoViewPosition.gif"/>   
+<img src="resources/WPFDevelopersResource/ScrollIntoViewPosition.gif"/>   
 
 ----------
 ### ControlLoading
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlLoading.gif"/>   
+<img src="resources/WPFDevelopersResource/ControlLoading.gif"/>   
 
 ----------
 ### BasicControlLoading
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BasicControlLoading.gif"/>   
+<img src="resources/WPFDevelopersResource/BasicControlLoading.gif"/>   
 
 ----------
 ### WindowMask
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowMask.gif"/>   
+<img src="resources/WPFDevelopersResource/WindowMask.gif"/>   
 
 ----------
 ### ControlMask
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlMask.gif"/>   
+<img src="resources/WPFDevelopersResource/ControlMask.gif"/>   
 
 ----------
 ### MultiSelectComboBox（下拉多选）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.gif"/>   
+<img src="resources/WPFDevelopersResource/MultiSelectComboBox.gif"/>   
 
 ----------
 ### Step（步骤）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/step.gif"/>   
+<img src="resources/WPFDevelopersResource/step.gif"/>   
 
 ----------
 ### Magnifier（放大镜）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Magnifier.gif"/>   
+<img src="resources/WPFDevelopersResource/Magnifier.gif"/>   
 
 ----------
 ### GrayscaleEffect（灰度）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+<img src="resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
 
 ----------
 ### NineGridView （视频查看器）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NineGridView.gif"/>   
+<img src="resources/WPFDevelopersResource/NineGridView.gif"/>   
 
 ----------
 ### CodeViewer（代码查看器） 
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CodeViewer.gif"/>   
+<img src="resources/WPFDevelopersResource/CodeViewer.gif"/>   
 
 ----------
 ### NotifyIcon（托盘）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
+<img src="resources/WPFDevelopersResource/NotifyIcon.gif"/>   
 ----------  
 
 ### WindowAcrylicBlur（亚克力窗体）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowAcrylicBlur.gif"/>   
+<img src="resources/WPFDevelopersResource/WindowAcrylicBlur.gif"/>   
 ----------  
 
 ### Barrage（WPF 弹幕）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Barrage.gif"/>   
+<img src="resources/WPFDevelopersResource/Barrage.gif"/>   
 
 
 ----------
 ### CanvasHandWriting（WPF Canvas平滑笔迹）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CanvasHandWriting.gif"/>   
+<img src="resources/WPFDevelopersResource/CanvasHandWriting.gif"/>   
 
 ----------
 
 ### Bubblle（WPF泡泡控件）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Bubblle.gif"/>   
+<img src="resources/WPFDevelopersResource/Bubblle.gif"/>   
 
 ----------
 
 ### PanningItems（WPF平移控件）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PanningItems.gif"/>   
+<img src="resources/WPFDevelopersResource/PanningItems.gif"/>   
 
 ----------
 ### Shake（WPF窗体抖动）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Shake.gif"/>   
+<img src="resources/WPFDevelopersResource/Shake.gif"/>   
 
 
 ----------
 ### StarrySky（WPF星空动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/StarrySky.gif"/>   
+<img src="resources/WPFDevelopersResource/StarrySky.gif"/>   
 
 
 ----------
 
 ### CropAvatar （WPF头像选择器）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropAvatar.gif"/>   
+<img src="resources/WPFDevelopersResource/CropAvatar.gif"/>   
 
 ----------
 
 ### ScreenCut （截屏）
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawInk.gif"/>
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawArrow.gif"/>
+<img src="resources/WPFDevelopersResource/DrawInk.gif"/>
+<img src="resources/WPFDevelopersResource/DrawArrow.gif"/>
 
 ----------
 
 ### AnimationAudio （WPF实现音频播放动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationAudio.gif"/>   
+<img src="resources/WPFDevelopersResource/AnimationAudio.gif"/>   
 
 ----------
 
 ### VerifyCode（WPF使用DrawingVisual绘制验证码）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>   
+<img src="resources/WPFDevelopersResource/CheckCode.gif"/>   
 
 ----------
 ### EdgeLight （WPF 实现边框跑马灯） 
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>
+<img src="resources/WPFDevelopersResource/EdgeLight.gif"/>
 
 ### DrawPrize（WPF 实现大转盘抽奖）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawPrize.gif"/>
+<img src="resources/WPFDevelopersResource/DrawPrize.gif"/>
 
 ----------
 
 ### DesktopPlayVideo（WPF实现动态Windows桌面壁纸）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DesktopPlayVideo.gif"/>
+<img src="resources/WPFDevelopersResource/DesktopPlayVideo.gif"/>
 
 ----------
 
 ### CropControl（WPF实现图片切成九宫格控件）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropControl.gif"/>
+<img src="resources/WPFDevelopersResource/CropControl.gif"/>
 
 ----------
 
 ### NumberCard（WPF实现3D翻转倒计时控件）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NumberCard.gif"/>
+<img src="resources/WPFDevelopersResource/NumberCard.gif"/>
 
 ----------
 
 ### CountdownTimer（倒计时动画）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CountdownTimer.gif"/>   
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CountdownTimerMultiColor.gif"/>  
+<img src="resources/WPFDevelopersResource/CountdownTimer.gif"/>   
+<img src="resources/WPFDevelopersResource/CountdownTimerMultiColor.gif"/>  
 
 ----------
 
 ### SpeedRockets（WPF实现加速火箭）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SpeedRockets.gif"/>   
+<img src="resources/WPFDevelopersResource/SpeedRockets.gif"/>   
 
 ----------
 
 ### SnowCanvas（WPF实现圣诞树雪花）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SnowCanvas.gif"/>   
+<img src="resources/WPFDevelopersResource/SnowCanvas.gif"/>   
 
 ----------
 
 ### WPFBreatheLight（WPF实现呼吸灯）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BreatheLight.gif"/>   
+<img src="resources/WPFDevelopersResource/BreatheLight.gif"/>   
 
 ----------
 
 ### Thermometer（温度计）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Thermometer.gif"/>  
+<img src="resources/WPFDevelopersResource/Thermometer.gif"/>  
 
 ----------
 
 ### RingLoading（酷酷的等待）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RingLoading.gif"/>  
+<img src="resources/WPFDevelopersResource/RingLoading.gif"/>  
 
 ----------
 
 ### RoundPicker（圆选择器）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RoundPicker.gif"/>  
+<img src="resources/WPFDevelopersResource/RoundPicker.gif"/>  
 
 ----------
 
 ### LogoAnimation（登录动画）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/LogoAnimation.gif"/>  
+<img src="resources/WPFDevelopersResource/LogoAnimation.gif"/>  
 
 ----------
 
 ### LineChart（折线图）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/LineChart.gif"/>  
+<img src="resources/WPFDevelopersResource/LineChart.gif"/>  
 
 ----------
 
 ### MetroWindow（窗体）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MetroWindow.gif"/>  
+<img src="resources/WPFDevelopersResource/MetroWindow.gif"/>  
 
 ----------
 
 ### RainbowButtons（彩虹按钮）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RainbowButtons.gif"/>  
+<img src="resources/WPFDevelopersResource/RainbowButtons.gif"/>  
 
 ----------
 
 ### Ruler（刻度尺）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Ruler.gif"/>  
+<img src="resources/WPFDevelopersResource/Ruler.gif"/>  
 
 ----------
 
 ### ZooSemy（拟物旋转按钮）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ZooSemy.gif"/>  
+<img src="resources/WPFDevelopersResource/ZooSemy.gif"/>  
 
 ----------
 
 ### BasicBarChart（统计图）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BasicBarChart.gif"/>  
+<img src="resources/WPFDevelopersResource/BasicBarChart.gif"/>  
 
 ----------
 
 ### RadarChart（雷达图）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RadarCha.gif"/>  
+<img src="resources/WPFDevelopersResource/RadarCha.gif"/>  
 
 ----------
 
 ### DrawerMenu（抽屉菜单）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Win10Menu.gif"/>  
+<img src="resources/WPFDevelopersResource/Win10Menu.gif"/>  
 
 ----------
 
 ### SpotLight（聚光灯）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SpotLight.gif"/>  
+<img src="resources/WPFDevelopersResource/SpotLight.gif"/>  
 
 ----------
 
 ### TransitionPanel（过渡面板）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransitionPanel.gif"/>  
+<img src="resources/WPFDevelopersResource/TransitionPanel.gif"/>  
 
 ----------
 
 ### OtherControl （火炬）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TorchControl.gif"/>  
+<img src="resources/WPFDevelopersResource/TorchControl.gif"/>  
 
 ----------
 
 ### EmphasizerCarousel （轮播图二）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EmphasizerCarousel.gif"/>  
+<img src="resources/WPFDevelopersResource/EmphasizerCarousel.gif"/>  
 
 ----------
 
 ### Carousel （轮播图）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Carousel.gif"/>  
+<img src="resources/WPFDevelopersResource/Carousel.gif"/>  
 
 ----------
 
 ### ScrollViewerAnimation （滚动条带动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollViewer.gif"/>  
+<img src="resources/WPFDevelopersResource/ScrollViewer.gif"/>  
 
 ----------
 
 ### RollLoading （等待动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RollLoading.gif"/>  
+<img src="resources/WPFDevelopersResource/RollLoading.gif"/>  
 
 ----------
 
 ### CycleLoading （等待动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CycleLoading.gif"/>  
+<img src="resources/WPFDevelopersResource/CycleLoading.gif"/>  
 
 ----------
 
 ### Pagination （分页）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Pagination.gif"/>  
+<img src="resources/WPFDevelopersResource/Pagination.gif"/>  
 
 ----------
 ### TaskbarItemInfo （窗体任务栏角徽）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TaskbarItemInfo.gif"/>  
+<img src="resources/WPFDevelopersResource/TaskbarItemInfo.gif"/>  
 
 ----------
 
 ### BallLoading （等待动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BallLoading.gif"/>  
+<img src="resources/WPFDevelopersResource/BallLoading.gif"/>  
 
 ----------
 
 ### WpfPieControl（WPF实现统计图（饼图仿LiveCharts））
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PieControl.gif"/>  
+<img src="resources/WPFDevelopersResource/PieControl.gif"/>  
 
 ----------
 
 ### WpfDashboard（WPF实现仪表盘（刻度跟随进度））
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Dashboard.gif"/> 
+<img src="resources/WPFDevelopersResource/Dashboard.gif"/> 
 
 ----------
 
 ### WpfTimeLineControl（WPF实现时间轴（仿Gitee））
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimeLine.gif"/>  
+<img src="resources/WPFDevelopersResource/TimeLine.gif"/>  
 
 ----------
 
 ### WpfCircularProgressBar（WPF实现环（圆）形进度条）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircularProgressBar.gif"/>  
+<img src="resources/WPFDevelopersResource/CircularProgressBar.gif"/>  
 
 ----------
 
 ### WpfCircularMenu（WPF实现环（圆）形菜单）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircularMenu.gif"/>   
+<img src="resources/WPFDevelopersResource/CircularMenu.gif"/>   
 
 ----------
 
 ### WpfPasswrod（WPF实现密文与密文切换）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Passwrod.gif"/>  
+<img src="resources/WPFDevelopersResource/Passwrod.gif"/>  
 
 ----------
 
 ### WpfChatEmojiText（WPF实现聊天Emoji+文本）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChatEmojiText.gif"/>  
+<img src="resources/WPFDevelopersResource/ChatEmojiText.gif"/>  
 
 ----------
 
 ### WPFSongWords（WPF实现歌词动画）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SongWords.gif"/>  
+<img src="resources/WPFDevelopersResource/SongWords.gif"/>  
 
 ----------
 
 ### 例子文件：ThumbDragAndAngleExample.xaml  （WPF实现旋转控件并修改宽高）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ElementAdorner.gif"/>    
+<img src="resources/WPFDevelopersResource/ElementAdorner.gif"/>    
 
 ----------
 
 ### WpfBingMap（WPF使用MapControl加载高德地图）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BingAMap.gif"/>  
+<img src="resources/WPFDevelopersResource/BingAMap.gif"/>  
 
 ----------
 
 ### 3DAnimationNavigationBar（WPF实现3D菜单动画） 
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationNavigationBar3D.gif"/>   
+<img src="resources/WPFDevelopersResource/AnimationNavigationBar3D.gif"/>   
 
 ----------
 
 ### WpfRoundMenu（WPF实现圆形菜单）  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RoundMenu.gif"/>   
+<img src="resources/WPFDevelopersResource/RoundMenu.gif"/>   
 
 ----------
 
 ### CutImageSolution（WPF实现用户头像裁剪）
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CutImage.gif"/>  
+<img src="resources/WPFDevelopersResource/CutImage.gif"/>  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CutImage1.gif"/>  
+<img src="resources/WPFDevelopersResource/CutImage1.gif"/>  
 
 ----------
 
 
 										~~底线~~
-
