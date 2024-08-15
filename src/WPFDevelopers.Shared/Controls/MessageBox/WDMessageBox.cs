@@ -202,10 +202,13 @@ namespace WPFDevelopers.Controls
                     _okVisibility = Visibility.Visible;
                     break;
                 case MessageBoxButton.YesNo:
+                    _okVisibility = Visibility.Hidden;
+                    _cancelVisibility = Visibility.Hidden;
                     _yesVisibility = Visibility.Visible;
                     _noVisibility = Visibility.Visible;
                     break;
                 case MessageBoxButton.YesNoCancel:
+                    _okVisibility = Visibility.Hidden;
                     _yesVisibility = Visibility.Visible;
                     _noVisibility = Visibility.Visible;
                     _cancelVisibility = Visibility.Visible;
