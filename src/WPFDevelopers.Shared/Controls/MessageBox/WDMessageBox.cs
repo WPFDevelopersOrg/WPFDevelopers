@@ -215,6 +215,8 @@ namespace WPFDevelopers.Controls
                 case MessageBoxButton.OKCancel:
                     _cancelVisibility = Visibility.Visible;
                     _okVisibility = Visibility.Visible;
+                    _yesVisibility = Visibility.Collapsed;
+                    _noVisibility = Visibility.Collapsed;
                     break;
                 case MessageBoxButton.YesNo:
                     _okVisibility = Visibility.Collapsed;
@@ -229,6 +231,9 @@ namespace WPFDevelopers.Controls
                     _cancelVisibility = Visibility.Visible;
                     break;
                 default:
+                    _cancelVisibility = Visibility.Collapsed;
+                    _yesVisibility = Visibility.Collapsed;
+                    _noVisibility = Visibility.Collapsed;
                     _okVisibility = Visibility.Visible;
                     break;
             }
