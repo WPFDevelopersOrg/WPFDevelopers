@@ -73,13 +73,20 @@ namespace WPFDevelopers.Controls
         private static void OnSelectedTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as TimePicker;
-            if (ctrl != null && e.NewValue != null)
+            if (ctrl != null)
             {
-                var dateTime = (DateTime) e.NewValue;
+                DateTime? dateTime = DateTime.MinValue;
+                if (e.NewValue != null)
+                    dateTime = (DateTime)e.NewValue;
                 if (ctrl._timeSelector != null && dateTime > DateTime.MinValue)
                     ctrl._timeSelector.SelectedTime = dateTime;
                 else
-                    ctrl._date = dateTime;
+                {
+                    if(ctrl._timeSelector != null)
+                        ctrl._timeSelector.SelectedTime = null;
+                    else
+                        ctrl._date = dateTime.Value;
+                }
             }
         }
 
