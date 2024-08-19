@@ -87,6 +87,8 @@ namespace WPFDevelopers.Controls
         {
             base.OnApplyTemplate();
             _textBox = GetTemplateChild(EditableTextBoxTemplateName) as TextBox;
+            if (_textBox != null)
+                _textBox.TextChanged += TextBox_TextChanged;
             _timeSelector = GetTemplateChild(TimeSelectorTemplateName) as TimeSelector;
             if (_timeSelector != null)
             {
@@ -111,12 +113,25 @@ namespace WPFDevelopers.Controls
             }
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_textBox != null)
+            {
+                _timeSelector.SelectedTimeChanged -= TimeSelector_SelectedTimeChanged;
+                if (DateTime.TryParse(_textBox.Text, out var dateTime))
+                {
+                    if (SelectedTime.HasValue && dateTime.ToString(SelectedTimeFormat) == SelectedTime.Value.ToString(SelectedTimeFormat)) return;
+                    SelectedTime = dateTime;
+                }
+                else
+                    SelectedTime = null;
+                _timeSelector.SelectedTimeChanged += TimeSelector_SelectedTimeChanged;
+            }
+        }
         private void Popup_Opened(object sender, EventArgs e)
         {
             if (_timeSelector != null)
-            {
                 _timeSelector.SetTime();
-            }
         }
 
         private void TimeSelector_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
