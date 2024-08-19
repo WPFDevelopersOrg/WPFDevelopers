@@ -23,6 +23,7 @@
             <wd:TimePicker
                 Width="200"
                 VerticalAlignment="Center"
+                wd:ElementHelper.Watermark="selection time"
                 SelectedTime="2023-05-06 23:59:59" />
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
