@@ -95,12 +95,12 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ***
 ### BasicControls
 
-<img src="resources/WPFDevelopersResource/BasicControls.png"/>
-<img src="resources/WPFDevelopersResource/BasicControlsTheme.gif"/>    
-<img src="resources/WPFDevelopersResource/BasicControls01.gif"/>    
-<img src="resources/WPFDevelopersResource/BasicControls02.gif"/>    
-<img src="resources/WPFDevelopersResource/BasicControls03.gif"/>    
-<img src="resources/WPFDevelopersResource/BasicControls04.gif"/>    
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls.png"/>
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControlsTheme.gif"/>    
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls01.gif"/>    
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls02.gif"/>    
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls03.gif"/>    
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>    
 
 ----------
 ### ChartRadar
