@@ -12,11 +12,9 @@
         TargetType="{x:Type controls:StreamerLoading}">
         <Setter Property="Width" Value="100" />
         <Setter Property="Height" Value="100" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
@@ -24,8 +22,9 @@
                         x:Name="PART_Rectangle"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        CacheMode="BitmapCache"
                         StrokeThickness="3">
                         <Rectangle.Stroke>
                             <LinearGradientBrush Opacity=".6" StartPoint="0.5,0" EndPoint="0.5,1">
@@ -35,26 +34,28 @@
                         </Rectangle.Stroke>
                     </Rectangle>
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard RepeatBehavior="Forever">
-                                    <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)">
-                                        <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0" />
-                                    </PointAnimationUsingKeyFrames>
-                                    <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.EndPoint)">
-                                        <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1" />
-                                    </PointAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
+                        <Trigger Property="IsVisible" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard DesiredFrameRate="30" RepeatBehavior="Forever">
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)">
+                                            <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0" />
+                                        </PointAnimationUsingKeyFrames>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.EndPoint)">
+                                            <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1" />
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -67,7 +68,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WaitLoading}">
-                    <Canvas Width="100" Height="20">
+                    <Canvas
+                        Width="100"
+                        Height="20"
+                        CacheMode="BitmapCache">
                         <Ellipse
                             x:Name="PART_RedEllipase"
                             Canvas.Left="0"
@@ -88,72 +92,74 @@
                             Fill="{StaticResource WD.WarningSolidColorBrush}" />
                     </Canvas>
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard RepeatBehavior="Forever">
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_RedEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:0.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1"
-                                            Value="100" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:3"
-                                            Value="0" />
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_GreenEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1"
-                                            Value="0" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:3" Value="50" />
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_OrangeEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:0.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2"
-                                            Value="0" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:3"
-                                            Value="100" />
-                                    </DoubleAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
+                        <Trigger Property="IsVisible" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_RedEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:0.5"
+                                                Value="50" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:1"
+                                                Value="100" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:1.5"
+                                                Value="50" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:3"
+                                                Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_GreenEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:1"
+                                                Value="0" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:1.5"
+                                                Value="50" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:2"
+                                                Value="50" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:2.5"
+                                                Value="50" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:3" Value="50" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_OrangeEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:0.5"
+                                                Value="50" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="50" />
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:2"
+                                                Value="0" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:2.5"
+                                                Value="50" />
+                                            <EasingDoubleKeyFrame
+                                                EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                                KeyTime="0:0:3"
+                                                Value="100" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -191,7 +197,7 @@
                                 Duration="0:0:5" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel>
+                    <controls:SmallPanel CacheMode="BitmapCache">
                         <Viewbox>
                             <controls:SmallPanel Width="400" Height="400">
                                 <controls:SmallPanel x:Name="Part_Cycle_Rotate1" RenderTransformOrigin="0.5,0.5">
@@ -423,7 +429,7 @@
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <Grid CacheMode="BitmapCache">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
@@ -669,7 +675,7 @@
                                 Duration="0:0:1.5" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <Grid CacheMode="BitmapCache">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
