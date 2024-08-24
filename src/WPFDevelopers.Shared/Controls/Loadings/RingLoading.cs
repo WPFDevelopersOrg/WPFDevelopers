@@ -3,10 +3,10 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Controls
 {
-    public class RingLoading : Control
+    public class RingLoading : LoadingBase
     {
-        public static readonly DependencyProperty IsStartProperty =
-            DependencyProperty.Register("IsStart", typeof(bool), typeof(RingLoading), new PropertyMetadata(default));
+        //public static readonly DependencyProperty IsStartProperty =
+        //    DependencyProperty.Register("IsStart", typeof(bool), typeof(RingLoading), new PropertyMetadata(default));
 
         public static readonly DependencyProperty ProgressValueProperty =
             DependencyProperty.Register("ProgressValue", typeof(double), typeof(RingLoading),
@@ -29,11 +29,11 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(RingLoading)));
         }
 
-        public bool IsStart
-        {
-            get => (bool)GetValue(IsStartProperty);
-            set => SetValue(IsStartProperty, value);
-        }
+        //public bool IsStart
+        //{
+        //    get => (bool)GetValue(IsStartProperty);
+        //    set => SetValue(IsStartProperty, value);
+        //}
 
 
         public double ProgressValue
@@ -66,10 +66,8 @@ namespace WPFDevelopers.Controls
         {
             if (!(d is RingLoading control))
                 return;
-
             if (!double.TryParse(e.NewValue?.ToString(), out var value))
                 return;
-
             var progress = value / control.Maximum;
             control.SetCurrentValue(ProgressProperty, progress.ToString("P0"));
         }
@@ -78,13 +76,10 @@ namespace WPFDevelopers.Controls
         {
             if (!(d is RingLoading control))
                 return;
-
             if (!double.TryParse(e.NewValue?.ToString(), out var maxValue))
                 return;
-
             if (maxValue <= 0)
                 return;
-
             var progress = control.ProgressValue / maxValue;
             control.SetCurrentValue(ProgressProperty, progress.ToString("P0"));
         }
