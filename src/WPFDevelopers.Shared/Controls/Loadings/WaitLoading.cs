@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Controls
 {
-    public class WaitLoading : Control
+    public class WaitLoading : LoadingBase
     {
         static WaitLoading()
         {
