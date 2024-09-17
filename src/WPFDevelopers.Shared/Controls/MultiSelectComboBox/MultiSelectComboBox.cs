@@ -115,8 +115,8 @@ namespace WPFDevelopers.Controls
             LanguageManager.Instance.PropertyChanged += Instance_PropertyChanged;
             _popup = GetTemplateChild(PART_Popup) as Popup;
             _multiSelectComboBoxItem = GetTemplateChild(PART_CheckBoxAll) as MultiSelectComboBoxItem;
-            _multiSelectComboBoxItem.Selected += _MultiSelectComboBoxItem_Selected;
-            _multiSelectComboBoxItem.Unselected += _MultiSelectComboBoxItem_Unselected;
+            _multiSelectComboBoxItem.Selected += OnMultiSelectComboBoxItem_Selected;
+            _multiSelectComboBoxItem.Unselected += OnMultiSelectComboBoxItem_Unselected;
         }
 
         private void Instance_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -124,7 +124,7 @@ namespace WPFDevelopers.Controls
             SelectAllContent = LanguageManager.Instance["SelectAll"];
         }
 
-        private void _MultiSelectComboBoxItem_Unselected(object sender, RoutedEventArgs e)
+        private void OnMultiSelectComboBoxItem_Unselected(object sender, RoutedEventArgs e)
         {
             if (_ignoreTextValueChanged) return;
             _ignoreTextValueChanged = true;
@@ -133,7 +133,7 @@ namespace WPFDevelopers.Controls
             UpdateText();
         }
 
-        private void _MultiSelectComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        private void OnMultiSelectComboBoxItem_Selected(object sender, RoutedEventArgs e)
         {
             if (_ignoreTextValueChanged) return;
             _ignoreTextValueChanged = true;
