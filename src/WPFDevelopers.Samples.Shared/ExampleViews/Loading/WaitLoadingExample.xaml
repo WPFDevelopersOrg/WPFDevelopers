@@ -10,8 +10,11 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer>
-        <StackPanel>
-            <CheckBox x:Name="MyCheckBox" Content="IsLoading" />
+        <StackPanel wd:PanelHelper.Spacing="4">
+            <CheckBox
+                x:Name="MyCheckBox"
+                HorizontalAlignment="Center"
+                Content="IsLoading" />
             <wd:WaitLoading HorizontalAlignment="Center" IsLoading="{Binding ElementName=MyCheckBox, Path=IsChecked}" />
         </StackPanel>
         <controls:CodeViewer.SourceCodes>
