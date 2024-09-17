@@ -4,34 +4,51 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Shapes;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
     public class ChartPie : Control
     {
-        private double centerX, centerY, radius;
-        private Popup _popup;
+        public static readonly DependencyProperty DatasProperty =
+            DependencyProperty.Register("Datas", typeof(IEnumerable<KeyValuePair<string, double>>),
+                typeof(ChartPie), new UIPropertyMetadata(DatasChanged));
+
         private Border _border;
+        private Ellipse _ellipse;
+        private KeyValuePair<PathGeometry, string> _lastItem;
+        private Popup _popup;
         private StackPanel _stackPanel;
         private TextBlock _textBlock;
-        private Ellipse _ellipse;
-        private bool isPopupOpen = false;
-        private KeyValuePair<PathGeometry, string> _lastItem;
-        private Dictionary<PathGeometry, string> pathGeometries = new Dictionary<PathGeometry, string>();
+        private double centerX, centerY, radius;
+        private bool isPopupOpen;
+        private readonly Dictionary<PathGeometry, string> pathGeometries = new Dictionary<PathGeometry, string>();
 
-        private Color[] vibrantColors;
+        private readonly Color[] vibrantColors;
 
-        public static readonly DependencyProperty DatasProperty =
-       DependencyProperty.Register("Datas", typeof(IEnumerable<KeyValuePair<string, double>>),
-           typeof(ChartPie), new UIPropertyMetadata(DatasChanged));
+        public ChartPie()
+        {
+            vibrantColors = new[]
+            {
+                Color.FromArgb(255, 84, 112, 198),
+                Color.FromArgb(255, 145, 204, 117),
+                Color.FromArgb(255, 250, 200, 88),
+                Color.FromArgb(255, 238, 102, 102),
+                Color.FromArgb(255, 115, 192, 222),
+                Color.FromArgb(255, 59, 162, 114),
+                Color.FromArgb(255, 252, 132, 82),
+                Color.FromArgb(255, 154, 96, 180),
+                Color.FromArgb(255, 234, 124, 204)
+            };
+        }
+
         public IEnumerable<KeyValuePair<string, double>> Datas
         {
-            get => (IEnumerable<KeyValuePair<string, double>>)GetValue(DatasProperty);
+            get => (IEnumerable<KeyValuePair<string, double>>) GetValue(DatasProperty);
             set => SetValue(DatasProperty, value);
         }
 
@@ -42,21 +59,6 @@ namespace WPFDevelopers.Controls
                 ctrl.InvalidateVisual();
         }
 
-        public ChartPie()
-        {
-            vibrantColors = new Color[]
-            {
-                Color.FromArgb(255, 84, 112, 198),
-                Color.FromArgb(255, 145, 204, 117),
-                Color.FromArgb(255, 250, 200, 88),
-                Color.FromArgb(255, 238, 102, 102),
-                Color.FromArgb(255, 115, 192, 222),
-                Color.FromArgb(255, 59, 162, 114),
-                Color.FromArgb(255, 252, 132, 82),
-                Color.FromArgb(255, 154, 96, 180),
-                Color.FromArgb(255, 234, 124, 204),
-            };
-        }
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -68,47 +70,42 @@ namespace WPFDevelopers.Controls
                     AllowsTransparency = true,
                     Placement = PlacementMode.MousePoint,
                     PlacementTarget = this,
-                    StaysOpen = false,
+                    StaysOpen = false
                 };
                 _popup.MouseMove += (y, j) =>
                 {
                     var point = j.GetPosition(this);
                     if (isPopupOpen && _lastItem.Value != null)
-                    {
                         if (!IsMouseOverGeometry(_lastItem.Key))
                         {
                             _popup.IsOpen = false;
                             isPopupOpen = false;
                             _lastItem = new KeyValuePair<PathGeometry, string>();
                         }
-                    }
                 };
-                _popup.Closed += delegate
-                {
-                    isPopupOpen = false;
-                };
+                _popup.Closed += delegate { isPopupOpen = false; };
 
-                _textBlock = new TextBlock()
+                _textBlock = new TextBlock
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Foreground = (Brush)Application.Current.TryFindResource("WD.WindowForegroundColorBrush"),
+                    Foreground = (Brush) Application.Current.TryFindResource("WD.WindowForegroundColorBrush"),
                     Padding = new Thickness(4, 0, 2, 0)
                 };
-                _ellipse = new Ellipse()
+                _ellipse = new Ellipse
                 {
                     Width = 10,
                     Height = 10,
-                    Stroke = Brushes.White,
+                    Stroke = Brushes.White
                 };
-                _stackPanel = new StackPanel() { Orientation = Orientation.Horizontal };
+                _stackPanel = new StackPanel {Orientation = Orientation.Horizontal};
                 _stackPanel.Children.Add(_ellipse);
                 _stackPanel.Children.Add(_textBlock);
 
                 _border = new Border
                 {
                     Child = _stackPanel,
-                    Background = (Brush)Application.Current.TryFindResource("WD.ChartFillSolidColorBrush"),
+                    Background = (Brush) Application.Current.TryFindResource("WD.ChartFillSolidColorBrush"),
                     Effect = Application.Current.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
                     Margin = new Thickness(10),
                     CornerRadius = new CornerRadius(3),
@@ -116,13 +113,14 @@ namespace WPFDevelopers.Controls
                 };
                 _popup.Child = _border;
             }
-            int index = 0;
+
+            var index = 0;
             foreach (var pathGeometry in pathGeometries)
             {
                 if (IsMouseOverGeometry(pathGeometry.Key))
                 {
                     isPopupOpen = true;
-                    _ellipse.Fill = new SolidColorBrush()
+                    _ellipse.Fill = new SolidColorBrush
                     {
                         Color = vibrantColors[index >= vibrantColors.Length ? index % vibrantColors.Length : index]
                     };
@@ -135,9 +133,11 @@ namespace WPFDevelopers.Controls
                     _lastItem = pathGeometry;
                     break;
                 }
+
                 index++;
             }
         }
+
         private bool IsMouseOverGeometry(PathGeometry pathGeometry)
         {
             var mousePosition = Mouse.GetPosition(this);
@@ -166,7 +166,6 @@ namespace WPFDevelopers.Controls
             var isFirst = false;
             foreach (var item in Datas)
             {
-
                 var arcStartX = radius * Math.Cos(angle * Math.PI / 180) + centerX;
                 var arcStartY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
                 angle = item.Value / sum * 360 + prevAngle;
@@ -176,16 +175,16 @@ namespace WPFDevelopers.Controls
                 {
                     isFirst = true;
                     arcEndX = centerX + Math.Cos(359.99999 * Math.PI / 180) * radius;
-                    arcEndY = (radius * Math.Sin(359.99999 * Math.PI / 180)) + centerY;
+                    arcEndY = radius * Math.Sin(359.99999 * Math.PI / 180) + centerY;
                 }
                 else
                 {
                     arcEndX = centerX + Math.Cos(angle * Math.PI / 180) * radius;
-                    arcEndY = (radius * Math.Sin(angle * Math.PI / 180)) + centerY;
+                    arcEndY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
                 }
                 var startPoint = new Point(arcStartX, arcStartY);
                 var line1Segment = new LineSegment(startPoint, false);
-                bool isLargeArc = item.Value / sum > 0.5;
+                var isLargeArc = item.Value / sum > 0.5;
                 var arcSegment = new ArcSegment();
                 var size = new Size(radius, radius);
                 var endPoint = new Point(arcEndX, arcEndY);
@@ -195,23 +194,25 @@ namespace WPFDevelopers.Controls
                 arcSegment.IsLargeArc = isLargeArc;
                 var center = new Point(centerX, centerY);
                 var line2Segment = new LineSegment(center, false);
-
-                var pathGeometry = new PathGeometry(new PathFigure[]
+                var pathGeometry = new PathGeometry(new[]
                 {
-                    new PathFigure(new Point(centerX, centerY), new List<PathSegment>()
+                    new PathFigure(new Point(centerX, centerY), new List<PathSegment>
                     {
                         line1Segment,
                         arcSegment,
-                        line2Segment,
+                        line2Segment
                     }, true)
                 });
-                pathGeometries.Add(pathGeometry, $"{item.Key} : {item.Value.ToString("#,##0.#########################")}");
-                var backgroupBrush = new SolidColorBrush()
+                pathGeometries.Add(pathGeometry,
+                    $"{item.Key} : {item.Value.FormatNumber()}");
+                var backgroupBrush = new SolidColorBrush
                 {
-                    Color = vibrantColors[index >= vibrantColors.Length ? index % vibrantColors.Length : index]//RandomColorGenerator.GenerateRandomColor(),
+                    Color = vibrantColors[
+                        index >= vibrantColors.Length
+                            ? index % vibrantColors.Length
+                            : index]
                 };
                 backgroupBrush.Freeze();
-
                 drawingContext.DrawGeometry(backgroupBrush, null, pathGeometry);
                 index++;
                 if (!isFirst)
@@ -223,28 +224,17 @@ namespace WPFDevelopers.Controls
                 }
                 prevAngle = angle;
             }
-
         }
+
         private Pen CreatePen(double thickness)
         {
             var pen = new Pen
             {
                 Thickness = thickness,
-                Brush = Brushes.White,
+                Brush = Brushes.White
             };
             pen.Freeze();
             return pen;
-        }
-    }
-    public class RandomColorGenerator
-    {
-        private static Random random = new Random();
-        public static Color GenerateRandomColor()
-        {
-            byte[] rgb = new byte[3];
-            random.NextBytes(rgb);
-            var randomColor = Color.FromArgb(255, rgb[0], rgb[1], rgb[2]);
-            return randomColor;
         }
     }
 }
