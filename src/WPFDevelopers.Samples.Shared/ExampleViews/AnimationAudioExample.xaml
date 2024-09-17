@@ -1,52 +1,65 @@
-﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.AnimationAudioExample"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
-             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-             xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.AnimationAudioExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <controls:CodeViewer>
-        <UniformGrid Columns="2" x:Name="MyUniformGrid">
-        <StackPanel Orientation="Horizontal">
-            <wd:BreathLamp Width="60" Height="60" LampEffect="Ripple"  IsLampStart="true"
-                                   VerticalAlignment="Center" HorizontalAlignment="Left"
-                               Margin="10,0">
-                <Ellipse>
-                    <Ellipse.Fill>
-                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/0.jpg"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-            </wd:BreathLamp>
-            <wd:AnimationAudio x:Name="AnimationAudioLeft" MouseDown="AnimationAudioLeft_MouseDown"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-            <wd:AnimationAudio x:Name="AnimationAudioRight" IsRight ="true" 
-                               Background="{DynamicResource WD.SuccessSolidColorBrush}"
-                               Foreground="Black"
-                               MouseDown="AnimationAudioLeft_MouseDown"/>
-            <wd:BreathLamp Width="60" Height="60" LampEffect="Streamer"  IsLampStart="True"
-                               VerticalAlignment="Center" HorizontalAlignment="Left" 
-                               GradientStopColor1="#FF00cec9" GradientStopColor2="#2000cec9"
-                               Margin="10,0">
-                <Ellipse>
-                    <Ellipse.Fill>
-                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/UserImages/yanjinhua.png"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-            </wd:BreathLamp>
-        </StackPanel>
+        <UniformGrid x:Name="MyUniformGrid" Columns="2">
+            <StackPanel Orientation="Horizontal">
+                <wd:BreathLamp
+                    Width="60"
+                    Height="60"
+                    Margin="10,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    IsLampStart="true"
+                    LampEffect="Ripple">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/0.jpg" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </wd:BreathLamp>
+                <wd:AnimationAudio
+                    x:Name="AnimationAudioLeft"
+                    wd:ElementHelper.CornerRadius="4"
+                    MouseDown="AnimationAudioLeft_MouseDown" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <wd:AnimationAudio
+                    x:Name="AnimationAudioRight"
+                    Background="{DynamicResource WD.SuccessSolidColorBrush}"
+                    Foreground="Black"
+                    IsRight="true"
+                    MouseDown="AnimationAudioLeft_MouseDown" />
+                <wd:BreathLamp
+                    Width="60"
+                    Height="60"
+                    Margin="10,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    GradientStopColor1="#FF00cec9"
+                    GradientStopColor2="#2000cec9"
+                    IsLampStart="True"
+                    LampEffect="Streamer">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/UserImages/yanjinhua.png" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </wd:BreathLamp>
+            </StackPanel>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationAudioExample.xaml" 
-                CodeType="Xaml"/>
-            <controls:SourceCodeModel 
-                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationAudioExample.xaml.cs" 
-                CodeType="CSharp"/>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationAudioExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationAudioExample.xaml.cs" CodeType="CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
