@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\ScaleItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ElementAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ThumbAngle.cs" />
@@ -488,6 +489,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\Drawing\Drawing.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
