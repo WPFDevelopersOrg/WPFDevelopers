@@ -198,39 +198,39 @@ namespace WPFDevelopers.Controls
             _textBox = GetTemplateChild(TextBoxTemplateName) as TextBox;
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
             if (_popup != null)
-                _popup.GotFocus += _popup_GotFocus;
+                _popup.GotFocus += OnPopup_GotFocus;
             _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
 
             _checkBox = GetTemplateChild(CheckBoxTemplateName) as CheckBox;
             _listBoxSearch = GetTemplateChild(ListBoxTemplateNameSearch) as ListBox;
             if (_textBox != null)
             {
-                _textBox.TextChanged -= _textbox_TextChanged;
-                _textBox.TextChanged += _textbox_TextChanged;
+                _textBox.TextChanged -= OnTextbox_TextChanged;
+                _textBox.TextChanged += OnTextbox_TextChanged;
             }
 
             if (_checkBox != null)
             {
-                _checkBox.Checked -= _checkBox_Checked;
-                _checkBox.Unchecked -= _checkBox_Unchecked;
-                _checkBox.Checked += _checkBox_Checked;
-                _checkBox.Unchecked += _checkBox_Unchecked;
+                _checkBox.Checked -= OnCheckBox_Checked;
+                _checkBox.Unchecked -= OnCheckBox_Unchecked;
+                _checkBox.Checked += OnCheckBox_Checked;
+                _checkBox.Unchecked += OnCheckBox_Unchecked;
             }
 
             if (_listBox != null)
             {
-                _listBox.IsVisibleChanged -= _listBox_IsVisibleChanged;
-                _listBox.IsVisibleChanged += _listBox_IsVisibleChanged;
-                _listBox.SelectionChanged -= _listBox_SelectionChanged;
-                _listBox.SelectionChanged += _listBox_SelectionChanged;
+                _listBox.IsVisibleChanged -= OnListBox_IsVisibleChanged;
+                _listBox.IsVisibleChanged += OnListBox_IsVisibleChanged;
+                _listBox.SelectionChanged -= OnListBox_SelectionChanged;
+                _listBox.SelectionChanged += OnListBox_SelectionChanged;
             }
 
             if (_listBoxSearch != null)
             {
-                _listBoxSearch.IsVisibleChanged -= _listBoxSearch_IsVisibleChanged;
-                _listBoxSearch.IsVisibleChanged += _listBoxSearch_IsVisibleChanged;
-                _listBoxSearch.SelectionChanged -= _listBoxSearch_SelectionChanged;
-                _listBoxSearch.SelectionChanged += _listBoxSearch_SelectionChanged;
+                _listBoxSearch.IsVisibleChanged -= OnListBoxSearch_IsVisibleChanged;
+                _listBoxSearch.IsVisibleChanged += OnListBoxSearch_IsVisibleChanged;
+                _listBoxSearch.SelectionChanged -= OnListBoxSearch_SelectionChanged;
+                _listBoxSearch.SelectionChanged += OnListBoxSearch_SelectionChanged;
             }
         }
 
@@ -239,13 +239,13 @@ namespace WPFDevelopers.Controls
            SelectAllContent = LanguageManager.Instance["SelectAll"];
         }
 
-        private void _listBoxSearch_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void OnListBoxSearch_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((bool) e.NewValue)
                 UpdateIsChecked(_listBoxSearch);
         }
 
-        private void _listBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void OnListBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((bool) e.NewValue)
             {
@@ -258,7 +258,7 @@ namespace WPFDevelopers.Controls
 
         private void UpdateIsChecked(ListBox listBox)
         {
-            _checkBox.Checked -= _checkBox_Checked;
+            _checkBox.Checked -= OnCheckBox_Checked;
             if (listBox.Items.Count > 0 && listBox.Items.Count == listBox.SelectedItems.Count)
             {
                 if (_checkBox.IsChecked != true)
@@ -272,10 +272,10 @@ namespace WPFDevelopers.Controls
                     _checkBox.IsChecked = null;
             }
 
-            _checkBox.Checked += _checkBox_Checked;
+            _checkBox.Checked += OnCheckBox_Checked;
         }
 
-        private void _popup_GotFocus(object sender, RoutedEventArgs e)
+        private void OnPopup_GotFocus(object sender, RoutedEventArgs e)
         {
             var source = (HwndSource) PresentationSource.FromVisual(_popup.Child);
             if (source != null)
@@ -285,7 +285,7 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private void _checkBox_Unchecked(object sender, RoutedEventArgs e)
+        private void OnCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (_listBoxSearch.Visibility == Visibility.Visible)
                 _listBoxSearch.UnselectAll();
@@ -293,7 +293,7 @@ namespace WPFDevelopers.Controls
                 _listBox.UnselectAll();
         }
 
-        private void _checkBox_Checked(object sender, RoutedEventArgs e)
+        private void OnCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (_listBoxSearch.Visibility == Visibility.Visible)
                 _listBoxSearch.SelectAll();
@@ -327,7 +327,7 @@ namespace WPFDevelopers.Controls
             Text = string.Join(Delimiter, seletedName.ToArray());
         }
 
-        private void _listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.RemovedItems.Count > 0)
             {
@@ -335,12 +335,12 @@ namespace WPFDevelopers.Controls
                 {
                     if (_checkBox.IsChecked == true)
                     {
-                        _checkBox.Unchecked -= _checkBox_Unchecked;
+                        _checkBox.Unchecked -= OnCheckBox_Unchecked;
                         if (_listBox.Items.Count == 1)
                             _checkBox.IsChecked = false;
                         else
                             _checkBox.IsChecked = null;
-                        _checkBox.Unchecked += _checkBox_Unchecked;
+                        _checkBox.Unchecked += OnCheckBox_Unchecked;
                     }
 
                     if (_listBoxSearch.SelectedItems.Contains(item))
@@ -359,7 +359,7 @@ namespace WPFDevelopers.Controls
             SelectedItems = _listBox.SelectedItems;
         }
 
-        private void _listBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnListBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!_listBoxSearch.IsVisible)
                 return;
@@ -399,13 +399,13 @@ namespace WPFDevelopers.Controls
                 &&
                 listbox.Items.Count == listbox.SelectedItems.Count)
             {
-                _checkBox.Checked -= _checkBox_Checked;
+                _checkBox.Checked -= OnCheckBox_Checked;
                 _checkBox.IsChecked = true;
-                _checkBox.Checked += _checkBox_Checked;
+                _checkBox.Checked += OnCheckBox_Checked;
             }
             else
             {
-                _checkBox.Checked -= _checkBox_Checked;
+                _checkBox.Checked -= OnCheckBox_Checked;
                 if (listbox.SelectedItems.Count > 0
                     &&
                     listbox.Items.Count == listbox.SelectedItems.Count)
@@ -421,7 +421,7 @@ namespace WPFDevelopers.Controls
                         _checkBox.IsChecked = null;
                 }
 
-                _checkBox.Checked += _checkBox_Checked;
+                _checkBox.Checked += OnCheckBox_Checked;
             }
         }
 
@@ -431,7 +431,7 @@ namespace WPFDevelopers.Controls
             return GetPropertyValue(dataItem);
         }
 
-        private void _textbox_TextChanged(object sender, TextChangedEventArgs e)
+        private void OnTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(theLastText)) theLastText = _textBox.Text;
             SearchText(_textBox.Text);
@@ -532,7 +532,7 @@ namespace WPFDevelopers.Controls
                 var collection = e.NewValue as IList;
                 if (collection.Count <= 0) return;
                 mltiSelectionSearchComboBox._listBox.SelectionChanged -=
-                    mltiSelectionSearchComboBox._listBox_SelectionChanged;
+                    mltiSelectionSearchComboBox.OnListBox_SelectionChanged;
                 foreach (var item in collection)
                 {
                     var name = mltiSelectionSearchComboBox.GetPropertyValue(item);
@@ -548,7 +548,7 @@ namespace WPFDevelopers.Controls
                 }
 
                 mltiSelectionSearchComboBox._listBox.SelectionChanged +=
-                    mltiSelectionSearchComboBox._listBox_SelectionChanged;
+                    mltiSelectionSearchComboBox.OnListBox_SelectionChanged;
                 mltiSelectionSearchComboBox.Combination();
             }
         }
