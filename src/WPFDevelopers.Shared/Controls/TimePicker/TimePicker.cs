@@ -25,7 +25,9 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty SelectedTimeProperty =
             DependencyProperty.Register("SelectedTime", typeof(DateTime?), typeof(TimePicker),
-                new PropertyMetadata(null, OnSelectedTimeChanged));
+                new FrameworkPropertyMetadata(null, 
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal,
+                    OnSelectedTimeChanged));
 
         public static readonly DependencyProperty IsCurrentTimeProperty =
             DependencyProperty.Register("IsCurrentTime", typeof(bool), typeof(TimePicker), new PropertyMetadata(false));
@@ -69,7 +71,7 @@ namespace WPFDevelopers.Controls
         protected virtual void OnMaxDropDownHeightChanged(double oldValue, double newValue)
         {
         }
-
+        
         private static void OnSelectedTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as TimePicker;
