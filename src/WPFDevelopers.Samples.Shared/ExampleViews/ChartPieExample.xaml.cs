@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Windows;
 using System.Windows.Controls;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
