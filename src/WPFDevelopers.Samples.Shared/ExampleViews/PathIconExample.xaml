@@ -14,40 +14,25 @@
         <UniformGrid
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            wd:PanelHelper.Spacing="4"
             Columns="6"
             Rows="2">
-            <Button
-                Margin="4"
-                wd:ElementHelper.IsRound="True"
-                Style="{StaticResource WD.PrimaryButton}">
+            <Button wd:ElementHelper.IsRound="True" Style="{StaticResource WD.PrimaryButton}">
                 <wd:PathIcon Data="M682 256h256v256l-98-98-268 268-170-170-256 256-60-60 316-316 170 170 208-208z" />
             </Button>
-            <Button
-                Margin="4"
-                wd:ElementHelper.IsRound="True"
-                Style="{StaticResource WD.DangerPrimaryButton}">
+            <Button wd:ElementHelper.IsRound="True" Style="{StaticResource WD.DangerPrimaryButton}">
                 <wd:PathIcon Kind="Arrow" />
             </Button>
-            <Button
-                Margin="4"
-                wd:ElementHelper.IsRound="True"
-                Style="{StaticResource WD.DangerDefaultButton}">
+            <Button wd:ElementHelper.IsRound="True" Style="{StaticResource WD.DangerDefaultButton}">
                 <wd:PathIcon Kind="SortArrow" />
             </Button>
-            <Button
-                Margin="4"
-                wd:ElementHelper.IsRound="True"
-                Style="{StaticResource WD.WarningDefaultButton}">
+            <Button wd:ElementHelper.IsRound="True" Style="{StaticResource WD.WarningDefaultButton}">
                 <wd:PathIcon Kind="SmileyOutline" />
             </Button>
-            <Button
-                Margin="4"
-                wd:ElementHelper.IsRound="True"
-                Style="{StaticResource WD.DefaultButton}">
+            <Button wd:ElementHelper.IsRound="True" Style="{StaticResource WD.DefaultButton}">
                 <wd:PathIcon Kind="Replace" />
             </Button>
             <Button
-                Margin="4"
                 wd:Badge.HorizontalOffset="-20"
                 wd:Badge.IsShow="True"
                 wd:Badge.VerticalOffset="8"
@@ -55,31 +40,25 @@
                 Style="{StaticResource WD.SuccessDefaultButton}">
                 <wd:PathIcon Kind="Home" />
             </Button>
-            <Button
-                Margin="4"
-                wd:ElementHelper.IsRound="True"
-                Style="{StaticResource WD.NormalButton}">
+            <Button wd:ElementHelper.IsRound="True" Style="{StaticResource WD.NormalButton}">
                 <wd:PathIcon Data="M682 256h256v256l-98-98-268 268-170-170-256 256-60-60 316-316 170 170 208-208z" />
             </Button>
-            <Button Margin="4" Style="{StaticResource WD.SuccessPrimaryButton}">
+            <Button Style="{StaticResource WD.SuccessPrimaryButton}">
                 <wd:PathIcon Kind="Arrow" />
             </Button>
-            <Button Margin="4" Style="{StaticResource WD.DangerPrimaryButton}">
+            <Button Style="{StaticResource WD.DangerPrimaryButton}">
                 <wd:PathIcon Kind="SortArrow" />
             </Button>
-            <Button
-                Margin="4"
-                wd:Badge.IsShow="True"
-                Style="{StaticResource WD.WarningPrimaryButton}">
+            <Button wd:Badge.IsShow="True" Style="{StaticResource WD.WarningPrimaryButton}">
                 <wd:PathIcon
                     Width="20"
                     Height="20"
                     Kind="SmileyOutline" />
             </Button>
-            <Button Margin="4" Style="{StaticResource WD.PrimaryButton}">
+            <Button Style="{StaticResource WD.PrimaryButton}">
                 <wd:PathIcon Kind="Replace" />
             </Button>
-            <Button Margin="4" Style="{StaticResource WD.SuccessPrimaryButton}">
+            <Button Style="{StaticResource WD.SuccessPrimaryButton}">
                 <StackPanel Orientation="Horizontal">
                     <wd:PathIcon Kind="Home" />
                     <TextBlock Margin="4,0" Text="Home" />
