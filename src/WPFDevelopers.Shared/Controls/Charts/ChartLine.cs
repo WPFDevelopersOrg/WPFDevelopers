@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
@@ -27,18 +27,18 @@ namespace WPFDevelopers.Controls
             var firstDataPoint = Datas.FirstOrDefault();
             if (firstDataPoint.Equals(default(KeyValuePair<string, double>)))
                 return;
-            double proportion = firstDataPoint.Value / IntervalY;
-            double yPositionFromBottom = StartY - proportion * (ScaleFactor * Rows);
+            var proportion = firstDataPoint.Value / IntervalY;
+            var yPositionFromBottom = StartY - proportion * (ScaleFactor * Rows);
             var startPoint = new Point(x + Interval / 2, yPositionFromBottom);
             points.Add(startPoint);
             foreach (var item in Datas)
             {
                 var formattedText = DrawingContextHelper.GetFormattedText(item.Key,
-                   ChartFill, FlowDirection.LeftToRight);
+                    ChartFill, FlowDirection.LeftToRight);
                 var point = new Point(x + interval / 2 - formattedText.Width / 2, StartY + 4);
                 drawingContext.DrawText(formattedText, point);
 
-                var y = StartY - (item.Value / IntervalY) * (ScaleFactor * Rows);
+                var y = StartY - item.Value / IntervalY * (ScaleFactor * Rows);
                 var endPoint = new Point(x + Interval / 2, y);
                 points.Add(endPoint);
                 drawingContext.DrawLine(drawingPen, startPoint, endPoint);
@@ -47,30 +47,34 @@ namespace WPFDevelopers.Controls
                 rects.Add(rect);
                 startPoint = endPoint;
                 x += interval;
-                var nRect = new Rect(rect.Left - EllipsePadding, rect.Top - EllipsePadding, rect.Width + EllipsePadding, rect.Height + EllipsePadding);
-                dicts.Add(nRect, $"{item.Key} : {item.Value.ToString("#,##0.#########################")}");
+                var nRect = new Rect(rect.Left - EllipsePadding, rect.Top - EllipsePadding, rect.Width + EllipsePadding,
+                    rect.Height + EllipsePadding);
+                dicts.Add(nRect, $"{item.Key} : {item.Value.FormatNumber()}");
             }
+
             PointCache = dicts;
-            if(points.Count > 1)
+            if (points.Count > 1)
             {
-                var color = (Color)Application.Current.TryFindResource("WD.PrimaryNormalColor");
+                var color = (Color) Application.Current.TryFindResource("WD.PrimaryNormalColor");
                 var rectBrush = new SolidColorBrush(color);
                 rectBrush.Opacity = 0.3;
                 rectBrush.Freeze();
                 var streamGeometry = new StreamGeometry();
-                using (StreamGeometryContext geometryContext = streamGeometry.Open())
+                using (var geometryContext = streamGeometry.Open())
                 {
                     var sPoint = new Point(points[0].X, StartY);
                     geometryContext.BeginFigure(sPoint, true, true);
 
-                    foreach (Point point in points)
+                    foreach (var point in points)
                         geometryContext.LineTo(point, true, true);
                     var ePoint = new Point(points[points.Count - 1].X, StartY);
                     geometryContext.LineTo(ePoint, true, true);
                     geometryContext.Close();
                 }
+
                 drawingContext.DrawGeometry(rectBrush, null, streamGeometry);
             }
+
             DrawEllipse(rects, drawingContext);
         }
     }
