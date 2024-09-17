@@ -9,14 +9,16 @@ namespace WPFDevelopers.Controls
 {
     public class ChartRadar : ChartBase
     {
-        private PointCollection _points;
         private double _h, _w;
         private Pen _penXAxis;
+        private PointCollection _points;
+
         static ChartRadar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ChartRadar),
                 new FrameworkPropertyMetadata(typeof(ChartRadar)));
         }
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
@@ -30,7 +32,7 @@ namespace WPFDevelopers.Controls
             var dicts = new Dictionary<Rect, string>();
             var rects = new List<Rect>();
             var max = Convert.ToInt32(Datas.Max(kvp => kvp.Value)) + 50;
-            double v = StartX;
+            var v = StartX;
             for (var i = 0; i < Rows; i++)
             {
                 DrawPoints(v, drawingContext, i == Rows - 1);
@@ -55,28 +57,33 @@ namespace WPFDevelopers.Controls
                     {
                         var startPoint = _points[index];
                         var point = new Point((startPoint.X - _w) / max * item.Value + _w,
-                        (startPoint.Y - _h) / max * item.Value + _h);
+                            (startPoint.Y - _h) / max * item.Value + _h);
                         points.Add(point);
                         var ellipsePoint = new Point(point.X - EllipseSize / 2, point.Y - EllipseSize / 2);
                         var rect = new Rect(ellipsePoint, new Size(EllipseSize, EllipseSize));
                         rects.Add(rect);
-                        var nRect = new Rect(rect.Left - EllipsePadding, rect.Top - EllipsePadding, rect.Width + EllipsePadding, rect.Height + EllipsePadding);
+                        var nRect = new Rect(rect.Left - EllipsePadding, rect.Top - EllipsePadding,
+                            rect.Width + EllipsePadding, rect.Height + EllipsePadding);
                         dicts.Add(nRect, $"{item.Key} : {item.Value}");
                     }
+
                     index++;
                 }
+
                 geometryContext.BeginFigure(points[points.Count - 1], true, true);
                 geometryContext.PolyLineTo(points, true, true);
             }
+
             PointCache = dicts;
             streamGeometry.Freeze();
-            var color = (Color)Application.Current.TryFindResource("WD.PrimaryNormalColor");
+            var color = (Color) Application.Current.TryFindResource("WD.PrimaryNormalColor");
             var rectBrush = new SolidColorBrush(color);
             rectBrush.Opacity = 0.5;
             rectBrush.Freeze();
             drawingContext.DrawGeometry(rectBrush, myPen, streamGeometry);
             DrawEllipse(rects, drawingContext);
         }
+
         private void DrawPoints(double circleRadius, DrawingContext drawingContext, bool isDrawText = false)
         {
             var pieWidth = ActualWidth > ActualHeight ? ActualHeight : ActualWidth;
@@ -93,6 +100,7 @@ namespace WPFDevelopers.Controls
                 geometryContext.BeginFigure(_points[_points.Count - 1], true, true);
                 geometryContext.PolyLineTo(_points, true, true);
             }
+
             streamGeometry.Freeze();
             drawingContext.DrawGeometry(null, _penXAxis, streamGeometry);
         }
@@ -111,8 +119,9 @@ namespace WPFDevelopers.Controls
                 if (drawingContext != null)
                 {
                     drawingContext.DrawLine(_penXAxis, p1, p2);
-                    var formattedText = DrawingContextHelper.GetFormattedText(item.Key, ControlsHelper.PrimaryNormalBrush,
-                        flowDirection: FlowDirection.LeftToRight, textSize: 20.001D);
+                    var formattedText = DrawingContextHelper.GetFormattedText(item.Key,
+                        ControlsHelper.PrimaryNormalBrush,
+                        FlowDirection.LeftToRight, 20.001D);
                     if (p2.Y > center.Y && p2.X < center.X)
                         drawingContext.DrawText(formattedText,
                             new Point(p2.X - formattedText.Width - 5, p2.Y - formattedText.Height / 2));
@@ -127,9 +136,11 @@ namespace WPFDevelopers.Controls
                     else
                         drawingContext.DrawText(formattedText, new Point(p2.X, p2.Y));
                 }
+
                 values.Add(p2);
                 g += perangle;
             }
+
             var pcollect = new PointCollection(values);
             return pcollect;
         }
