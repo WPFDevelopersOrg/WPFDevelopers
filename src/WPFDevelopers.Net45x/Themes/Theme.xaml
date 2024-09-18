@@ -1668,7 +1668,7 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.DefaultTextBox}" TargetType="{x:Type TextBox}" />
 	<ControlTemplate x:Key="WD.ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
-		<Border x:Name="PART_Border" Padding="6,0" BorderThickness="0" SnapsToDevicePixels="true">
+		<Border x:Name="PART_Border" Padding="6,1.2" BorderThickness="0" SnapsToDevicePixels="true">
 			<Grid Background="Transparent">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />
@@ -3768,10 +3768,10 @@
 							</controls:SmallPanel>
 							<controls:SmallPanel Grid.Row="2" Margin="140,20,10,10" HorizontalAlignment="Right">
 								<UniformGrid Height="38" Rows="1">
-									<Button x:Name="PART_ButtonYes" Width="60" Content="{Binding [Yes], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" Visibility="Collapsed" />
-									<Button x:Name="PART_ButtonNo" Width="60" Margin="6,0,0,0" Content="{Binding [No], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
-									<Button x:Name="PART_ButtonOK" Width="60" Margin="6,0,0,0" Content="{Binding [OK], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" />
-									<Button x:Name="PART_ButtonCancel" Width="60" Margin="6,0,0,0" Content="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
+									<Button x:Name="PART_ButtonYes" Width="60" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [Yes], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" Visibility="Collapsed" />
+									<Button x:Name="PART_ButtonNo" Width="60" Margin="6,0,0,0" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [No], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
+									<Button x:Name="PART_ButtonOK" Width="60" Margin="6,0,0,0" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [OK], Source={x:Static resx:LanguageManager.Instance}}" Style="{DynamicResource WD.PrimaryButton}" />
+									<Button x:Name="PART_ButtonCancel" Width="60" Margin="6,0,0,0" helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed" />
 								</UniformGrid>
 							</controls:SmallPanel>
 						</Grid>
@@ -3869,14 +3869,14 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.NormalLoading}" TargetType="{x:Type controls:NormalLoading}" />
 	<Style BasedOn="{StaticResource WD.DefaultLoading}" TargetType="{x:Type controls:DefaultLoading}" />
-	<Style x:Key="WD.ThemeControl" TargetType="{x:Type controls:ThemeControl}">
+	<Style x:Key="WD.Theme" TargetType="{x:Type controls:Theme}">
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:ThemeControl}">
-					<ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=controls:ThemeControl}}">
+				<ControlTemplate TargetType="{x:Type controls:Theme}">
+					<ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=controls:Theme}}">
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
-								<RadioButton Width="40" Height="40" Margin="4,0" Cursor="Hand" IsChecked="{Binding IsChecked}">
+								<RadioButton Width="40" Height="40" Cursor="Hand" IsChecked="{Binding IsChecked}">
 									<RadioButton.Style>
 										<Style TargetType="{x:Type RadioButton}">
 											<Setter Property="Template">
@@ -3907,7 +3907,7 @@
 						</ItemsControl.ItemTemplate>
 						<ItemsControl.ItemsPanel>
 							<ItemsPanelTemplate>
-								<WrapPanel />
+								<WrapPanel helpers:PanelHelper.Spacing="4" />
 							</ItemsPanelTemplate>
 						</ItemsControl.ItemsPanel>
 					</ItemsControl>
@@ -3915,7 +3915,7 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style BasedOn="{StaticResource WD.ThemeControl}" TargetType="{x:Type controls:ThemeControl}" />
+	<Style BasedOn="{StaticResource WD.Theme}" TargetType="{x:Type controls:Theme}" />
 	<Style x:Key="WD.GridSplitterPreviewStyle">
 		<Setter Property="Control.Template">
 			<Setter.Value>
@@ -3944,7 +3944,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Label}">
-					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="true">
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 					</Border>
 				</ControlTemplate>
@@ -4100,7 +4100,7 @@
 							</ObjectAnimationUsingKeyFrames>
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Border x:Name="PART_Border" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding helpers:ControlsHelper.CornerRadius}" SnapsToDevicePixels="True" UseLayoutRounding="True">
+					<Border x:Name="PART_Border" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding helpers:ElementHelper.CornerRadius}" SnapsToDevicePixels="True" UseLayoutRounding="True">
 						<Grid>
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition />
@@ -4649,91 +4649,52 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.EdgeLight}" TargetType="{x:Type controls:EdgeLight}" />
-	<Style x:Key="WD.StreamerLoading" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:StreamerLoading}">
-		<Setter Property="Width" Value="100" />
-		<Setter Property="Height" Value="100" />
-		<Setter Property="Background">
-			<Setter.Value>
-				<SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
-			</Setter.Value>
-		</Setter>
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
-					<Rectangle x:Name="PART_Rectangle" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="Center" VerticalAlignment="Center" StrokeThickness="3">
-						<Rectangle.Stroke>
-							<LinearGradientBrush Opacity=".6" StartPoint="0.5,0" EndPoint="0.5,1">
-								<GradientStop Offset="0" Color="Transparent" />
-								<GradientStop Offset="1" Color="{Binding Path=Background.Color, RelativeSource={RelativeSource TemplatedParent}}" />
-							</LinearGradientBrush>
-						</Rectangle.Stroke>
-					</Rectangle>
-					<ControlTemplate.Triggers>
-						<EventTrigger RoutedEvent="Loaded">
-							<BeginStoryboard>
-								<Storyboard RepeatBehavior="Forever">
-									<PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)">
-										<EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148" />
-										<EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855" />
-										<EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855" />
-										<EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149" />
-										<EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0" />
-									</PointAnimationUsingKeyFrames>
-									<PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.EndPoint)">
-										<EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852" />
-										<EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145" />
-										<EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145" />
-										<EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851" />
-										<EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1" />
-									</PointAnimationUsingKeyFrames>
-								</Storyboard>
-							</BeginStoryboard>
-						</EventTrigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
 	<Style x:Key="WD.WaitLoading" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:WaitLoading}">
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:WaitLoading}">
-					<Canvas Width="100" Height="20">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="PART_Storyboard" DesiredFrameRate="30" RepeatBehavior="Forever">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_RedEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:0.5" Value="50" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1" Value="100" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1.5" Value="50" />
+								<EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
+								<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:3" Value="0" />
+							</DoubleAnimationUsingKeyFrames>
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_GreenEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+								<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1" Value="0" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1.5" Value="50" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2" Value="50" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2.5" Value="50" />
+								<EasingDoubleKeyFrame KeyTime="0:0:3" Value="50" />
+							</DoubleAnimationUsingKeyFrames>
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_OrangeEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:0.5" Value="50" />
+								<EasingDoubleKeyFrame KeyTime="0:0:1" Value="50" />
+								<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2" Value="0" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2.5" Value="50" />
+								<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:3" Value="100" />
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Canvas Width="100" Height="20" CacheMode="BitmapCache">
 						<Ellipse x:Name="PART_RedEllipase" Canvas.Left="0" Width="20" Height="20" Fill="{StaticResource WD.DangerSolidColorBrush}" />
 						<Ellipse x:Name="PART_GreenEllipase" Canvas.Left="50" Width="20" Height="20" Fill="{StaticResource WD.SuccessSolidColorBrush}" />
 						<Ellipse x:Name="PART_OrangeEllipase" Canvas.Left="100" Width="20" Height="20" Fill="{StaticResource WD.WarningSolidColorBrush}" />
 					</Canvas>
 					<ControlTemplate.Triggers>
-						<EventTrigger RoutedEvent="Loaded">
-							<BeginStoryboard>
-								<Storyboard RepeatBehavior="Forever">
-									<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_RedEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:0.5" Value="50" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1" Value="100" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1.5" Value="50" />
-										<EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
-										<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:3" Value="0" />
-									</DoubleAnimationUsingKeyFrames>
-									<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_GreenEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-										<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1" Value="0" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1.5" Value="50" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2" Value="50" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2.5" Value="50" />
-										<EasingDoubleKeyFrame KeyTime="0:0:3" Value="50" />
-									</DoubleAnimationUsingKeyFrames>
-									<DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_OrangeEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:0.5" Value="50" />
-										<EasingDoubleKeyFrame KeyTime="0:0:1" Value="50" />
-										<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2" Value="0" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:2.5" Value="50" />
-										<EasingDoubleKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:3" Value="100" />
-									</DoubleAnimationUsingKeyFrames>
-								</Storyboard>
-							</BeginStoryboard>
-						</EventTrigger>
+						<Trigger Property="IsLoading" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="PART_BeginStoryboard" Storyboard="{StaticResource PART_Storyboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="PART_BeginStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -4748,22 +4709,17 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:CycleLoading}">
 					<ControlTemplate.Resources>
-						<Storyboard x:Key="Storyboard_LoadRunning" RepeatBehavior="Forever" SpeedRatio="2">
-							<DoubleAnimation BeginTime="0" Storyboard.TargetName="Part_Cycle_Rotate" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" Storyboard.TargetName="Part_Cycle_Rotate1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+						<Storyboard x:Key="Storyboard_LoadRunning" DesiredFrameRate="30" RepeatBehavior="Forever" SpeedRatio="2">
+							<DoubleAnimation BeginTime="0" Storyboard.TargetName="Part_Cycle_Rotate" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" Storyboard.TargetName="Part_Cycle_Rotate1" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<controls:SmallPanel>
+					<controls:SmallPanel CacheMode="BitmapCache">
 						<Viewbox>
 							<controls:SmallPanel Width="400" Height="400">
 								<controls:SmallPanel x:Name="Part_Cycle_Rotate1" RenderTransformOrigin="0.5,0.5">
 									<controls:SmallPanel.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</controls:SmallPanel.RenderTransform>
 									<Ellipse Margin="0,50,0,50">
 										<Ellipse.Fill>
@@ -4790,12 +4746,7 @@
 								</controls:SmallPanel>
 								<controls:SmallPanel x:Name="Part_Cycle_Rotate" RenderTransformOrigin="0.5,0.5">
 									<controls:SmallPanel.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</controls:SmallPanel.RenderTransform>
 									<Ellipse Margin="0,50,0,50">
 										<Ellipse.Fill>
@@ -4839,7 +4790,7 @@
 						</Grid>
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsStart" Value="True">
+						<Trigger Property="IsLoading" Value="True">
 							<Trigger.EnterActions>
 								<BeginStoryboard x:Name="Storyboard_LoadRunning" Storyboard="{StaticResource Storyboard_LoadRunning}" />
 							</Trigger.EnterActions>
@@ -4858,15 +4809,15 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:RollLoading}">
 					<ControlTemplate.Resources>
-						<Storyboard x:Key="RollKey" RepeatBehavior="Forever">
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="2" Storyboard.TargetName="PART_Border1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="4" Storyboard.TargetName="PART_Border2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="6" Storyboard.TargetName="PART_Border3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="8" Storyboard.TargetName="PART_Border4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="10" Storyboard.TargetName="PART_Border5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="12" Storyboard.TargetName="PART_Border6" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="14" Storyboard.TargetName="PART_Border7" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
-							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="16" Storyboard.TargetName="PART_Border8" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+						<Storyboard x:Key="PART_Storyboard" DesiredFrameRate="30" RepeatBehavior="Forever">
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="2" Storyboard.TargetName="PART_Border1" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="4" Storyboard.TargetName="PART_Border2" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="6" Storyboard.TargetName="PART_Border3" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="8" Storyboard.TargetName="PART_Border4" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="10" Storyboard.TargetName="PART_Border5" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="12" Storyboard.TargetName="PART_Border6" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="14" Storyboard.TargetName="PART_Border7" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
+							<DoubleAnimation BeginTime="0" RepeatBehavior="Forever" SpeedRatio="16" Storyboard.TargetName="PART_Border8" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:5" />
 							<ColorAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="ForegroundColor" Duration="0:0:5">
 								<EasingColorKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:0" Value="Red" />
 								<EasingColorKeyFrame EasingFunction="{StaticResource WD.PowerEaseInOut}" KeyTime="0:0:1" Value="Blue" />
@@ -4877,7 +4828,7 @@
 							</ColorAnimationUsingKeyFrames>
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Grid>
+					<Grid CacheMode="BitmapCache">
 						<Grid.RowDefinitions>
 							<RowDefinition />
 							<RowDefinition Height="Auto" />
@@ -4894,12 +4845,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 								<Border x:Name="PART_Border2" Width="140" Height="140" BorderThickness="0,5,0,0" CornerRadius="70" RenderTransformOrigin="0.5,0.5">
@@ -4912,12 +4858,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 								<Border x:Name="PART_Border3" Width="120" Height="120" BorderThickness="0,5,0,0" CornerRadius="60" RenderTransformOrigin="0.5,0.5">
@@ -4930,12 +4871,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 								<Border x:Name="PART_Border4" Width="100" Height="100" BorderThickness="0,5,0,0" CornerRadius="50" RenderTransformOrigin="0.5,0.5">
@@ -4948,12 +4884,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 								<Border x:Name="PART_Border5" Width="80" Height="80" BorderThickness="0,5,0,0" CornerRadius="40" RenderTransformOrigin="0.5,0.5">
@@ -4966,12 +4897,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 								<Border x:Name="PART_Border6" Width="60" Height="60" BorderThickness="0,5,0,0" CornerRadius="30" RenderTransformOrigin="0.5,0.5">
@@ -4984,12 +4910,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 								<Border x:Name="PART_Border7" Width="40" Height="40" BorderThickness="0,5,0,0" CornerRadius="20" RenderTransformOrigin="0.5,0.5">
@@ -5002,12 +4923,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 								<Border x:Name="PART_Border8" Width="20" Height="20" BorderThickness="0,5,0,0" CornerRadius="10" RenderTransformOrigin="0.5,0.5">
@@ -5020,12 +4936,7 @@
 										</LinearGradientBrush>
 									</Border.BorderBrush>
 									<Border.RenderTransform>
-										<TransformGroup>
-											<ScaleTransform />
-											<SkewTransform />
-											<RotateTransform />
-											<TranslateTransform />
-										</TransformGroup>
+										<RotateTransform />
 									</Border.RenderTransform>
 								</Border>
 							</controls:SmallPanel>
@@ -5033,9 +4944,9 @@
 						<ContentPresenter Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsStart" Value="True">
+						<Trigger Property="IsLoading" Value="True">
 							<Trigger.EnterActions>
-								<BeginStoryboard x:Name="Roll_Storyboard" Storyboard="{StaticResource RollKey}" />
+								<BeginStoryboard x:Name="Roll_Storyboard" Storyboard="{StaticResource PART_Storyboard}" />
 							</Trigger.EnterActions>
 							<Trigger.ExitActions>
 								<StopStoryboard BeginStoryboardName="Roll_Storyboard" />
@@ -5051,13 +4962,13 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="controls:RingLoading">
 					<ControlTemplate.Resources>
-						<Storyboard x:Key="PART_Resource_Storyboard" RepeatBehavior="Forever">
-							<DoubleAnimation Storyboard.TargetName="PART_Ring1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" To="-495" Duration="0:0:1.5" />
-							<DoubleAnimation Storyboard.TargetName="PART_Ring2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" To="585" Duration="0:0:1.5" />
-							<DoubleAnimation Storyboard.TargetName="PART_Ring3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" To="-315" Duration="0:0:1.5" />
+						<Storyboard x:Key="PART_Storyboard" DesiredFrameRate="30" RepeatBehavior="Forever">
+							<DoubleAnimation Storyboard.TargetName="PART_Ring1" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" To="-495" Duration="0:0:1.5" />
+							<DoubleAnimation Storyboard.TargetName="PART_Ring2" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" To="585" Duration="0:0:1.5" />
+							<DoubleAnimation Storyboard.TargetName="PART_Ring3" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" To="-315" Duration="0:0:1.5" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Grid>
+					<Grid CacheMode="BitmapCache">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="*" />
 							<RowDefinition Height="Auto" />
@@ -5067,12 +4978,7 @@
 								<controls:SmallPanel>
 									<controls:SmallPanel x:Name="PART_Ring1" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
 										<controls:SmallPanel.RenderTransform>
-											<TransformGroup>
-												<ScaleTransform />
-												<SkewTransform />
-												<RotateTransform Angle="-135" />
-												<TranslateTransform />
-											</TransformGroup>
+											<RotateTransform Angle="-135" />
 										</controls:SmallPanel.RenderTransform>
 										<Ellipse RenderTransformOrigin="0.5,0.5" Stroke="Red" StrokeDashArray="23 100" StrokeThickness="2" />
 										<Border Width="10" Height="10" Margin="0,0,-4,0" HorizontalAlignment="Right" Background="Red" CornerRadius="10">
@@ -5083,12 +4989,7 @@
 									</controls:SmallPanel>
 									<controls:SmallPanel x:Name="PART_Ring2" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
 										<controls:SmallPanel.RenderTransform>
-											<TransformGroup>
-												<ScaleTransform />
-												<SkewTransform />
-												<RotateTransform Angle="225" />
-												<TranslateTransform />
-											</TransformGroup>
+											<RotateTransform Angle="225" />
 										</controls:SmallPanel.RenderTransform>
 										<Ellipse Stroke="Purple" StrokeDashArray="23 100" StrokeThickness="2" />
 										<Border Width="10" Height="10" Margin="0,0,0,-4" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Purple" CornerRadius="10">
@@ -5099,12 +5000,7 @@
 									</controls:SmallPanel>
 									<controls:SmallPanel x:Name="PART_Ring3" Width="60" Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
 										<controls:SmallPanel.RenderTransform>
-											<TransformGroup>
-												<ScaleTransform />
-												<SkewTransform />
-												<RotateTransform Angle="45" />
-												<TranslateTransform />
-											</TransformGroup>
+											<RotateTransform Angle="45" />
 										</controls:SmallPanel.RenderTransform>
 										<Ellipse Stroke="#0fb8b2" StrokeDashArray="23 100" StrokeThickness="2" />
 										<Border Width="10" Height="10" Margin="0,0,-4,0" HorizontalAlignment="Right" Background="#0fb8b2" CornerRadius="10">
@@ -5123,9 +5019,9 @@
 						</StackPanel>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsStart" Value="True">
+						<Trigger Property="IsLoading" Value="True">
 							<Trigger.EnterActions>
-								<BeginStoryboard x:Name="PART_BeginStoryboard" Storyboard="{StaticResource PART_Resource_Storyboard}" />
+								<BeginStoryboard x:Name="PART_BeginStoryboard" Storyboard="{StaticResource PART_Storyboard}" />
 							</Trigger.EnterActions>
 							<Trigger.ExitActions>
 								<StopStoryboard BeginStoryboardName="PART_BeginStoryboard" />
@@ -5136,7 +5032,6 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style BasedOn="{StaticResource WD.StreamerLoading}" TargetType="{x:Type controls:StreamerLoading}" />
 	<Style BasedOn="{StaticResource WD.WaitLoading}" TargetType="{x:Type controls:WaitLoading}" />
 	<Style BasedOn="{StaticResource WD.CycleLoading}" TargetType="{x:Type controls:CycleLoading}" />
 	<Style BasedOn="{StaticResource WD.RollLoading}" TargetType="{x:Type controls:RollLoading}" />
@@ -5738,12 +5633,13 @@
 		<Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Margin" Value="1,0" />
+		<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
-					<Border x:Name="PART_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
-						<CheckBox MinHeight="{TemplateBinding MinHeight}" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+					<Border x:Name="PART_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="true">
+						<CheckBox MinHeight="{TemplateBinding MinHeight}" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
 							<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.Foreground="{TemplateBinding Foreground}" />
 						</CheckBox>
 					</Border>
@@ -5783,7 +5679,7 @@
 						<Border Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" />
 						<TextBox Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{TemplateBinding Background}" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 						<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" Padding="1,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.NormalFontSize}" Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
-						<ToggleButton x:Name="PART_ToggleButton" ClickMode="Release" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Background="{TemplateBinding Background}" Template="{StaticResource WD.ComboBoxToggleButton}" />
+						<ToggleButton x:Name="PART_ToggleButton" Background="{TemplateBinding Background}" ClickMode="Release" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
 						<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_ToggleButton}" StaysOpen="False">
 							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<controls:SmallPanel.RenderTransform>
@@ -5892,10 +5788,10 @@
 										<RowDefinition Height="Auto" />
 										<RowDefinition />
 									</Grid.RowDefinitions>
-									<TextBox x:Name="PART_TextBox" Margin="6,0" helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}}" />
-									<CheckBox x:Name="PART_SelectAll" Grid.Row="1" Margin="4" Content="{TemplateBinding SelectAllContent}" Visibility="{TemplateBinding IsSelectAllActive,&#xD;&#xA;                                                                     Converter={StaticResource WD.Bool2VisibilityConverter}}" />
-									<controls:MultiSelectListBox x:Name="PART_Selector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Style="{StaticResource WD.DefaultListBox}" />
-									<controls:MultiSelectListBox x:Name="PART_SearchSelector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSourceSearch}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Style="{StaticResource WD.DefaultListBox}" Visibility="Collapsed" />
+									<TextBox x:Name="PART_TextBox" Margin="6,0" helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" helpers:ElementHelper.IsClear="True" helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}}" />
+									<CheckBox x:Name="PART_SelectAll" Grid.Row="1" Margin="4" helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Content="{TemplateBinding SelectAllContent}" Visibility="{TemplateBinding IsSelectAllActive,&#xD;&#xA;                                                                     Converter={StaticResource WD.Bool2VisibilityConverter}}" />
+									<controls:MultiSelectListBox x:Name="PART_Selector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Style="{StaticResource WD.DefaultListBox}" />
+									<controls:MultiSelectListBox x:Name="PART_SearchSelector" Grid.Row="2" Margin="1,0" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" DisplayMemberPath="{TemplateBinding DisplayMemberPath}" ItemContainerStyle="{StaticResource WD.DefaultMultiSelectComboBoxItem}" ItemsSource="{TemplateBinding ItemsSourceSearch}" ScrollViewer.CanContentScroll="{Binding ScrollViewer.CanContentScroll, RelativeSource={RelativeSource TemplatedParent}}" ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollViewer.HorizontalScrollBarVisibility, RelativeSource={RelativeSource TemplatedParent}}" SelectedValuePath="{TemplateBinding SelectedValuePath}" SelectionMode="Multiple" Style="{StaticResource WD.DefaultListBox}" Visibility="Collapsed" />
 								</Grid>
 							</controls:SmallPanel>
 						</Popup>
@@ -5928,6 +5824,9 @@
 						</Trigger>
 						<Trigger Property="Text" Value="{x:Null}">
 							<Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
+						</Trigger>
+						<Trigger Property="IsSelectAllActive" Value="False">
+							<Setter TargetName="PART_TextBox" Property="Margin" Value="6,2" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

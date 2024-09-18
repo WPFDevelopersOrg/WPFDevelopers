@@ -4,7 +4,6 @@
 	<PropertyGroup>
 		<UseWindowsForms>true</UseWindowsForms>
 		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>E:\Code\git\WPFDevelopers\WPFDevelopersMultiple\WPFDevelopers.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 	<Import Project="..\WPFDevelopers.Shared\WPFDevelopers.Shared.projitems" Label="Shared" />
 	<Import Project="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems" Label="Shared" />
