@@ -45,7 +45,7 @@
                     <Border
                         x:Name="PART_Border"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="{TemplateBinding helpers:ControlsHelper.CornerRadius}"
+                        CornerRadius="{TemplateBinding helpers:ElementHelper.CornerRadius}"
                         SnapsToDevicePixels="True"
                         UseLayoutRounding="True">
                         <Grid>

@@ -20,9 +20,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelectorItem.cs" />
@@ -53,7 +56,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ImagingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightToRectConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PanelHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\FormatExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Languages\Language.Designer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\TextBoxValueChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DatePickerHelper.cs" />
@@ -132,8 +137,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Status.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\Step.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\StepItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
@@ -376,7 +379,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ThemeControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
