@@ -6,7 +6,6 @@ namespace WPFDevelopers.Helpers
 {
     public class PanelHelper : DependencyObject
     {
-
         public static double GetSpacing(DependencyObject obj)
         {
             return (double)obj.GetValue(SpacingProperty);

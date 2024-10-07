@@ -83,6 +83,7 @@
         ChartLine,
         Drap,
         ChartPie,
+        Spacing,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

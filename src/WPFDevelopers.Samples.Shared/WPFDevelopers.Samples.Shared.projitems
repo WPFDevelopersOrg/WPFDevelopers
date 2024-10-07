@@ -381,6 +381,9 @@
       <SubType>Code</SubType>
       <DependentUpon>SongWordsExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SpacingExample.xaml.cs">
+      <DependentUpon>SpacingExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SpeedRockets\SpeedRocketsExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>SpeedRocketsExample.xaml</DependentUpon>
@@ -882,6 +885,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\SongWordsExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\SpacingExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
