@@ -105,7 +105,8 @@
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Background="{TemplateBinding Background}"
+                            Panel.ZIndex="1"
+                            Background="Transparent"
                             Focusable="True"
                             Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
                             IsReadOnly="True"
@@ -123,7 +124,7 @@
                             FontSize="{StaticResource WD.NormalFontSize}"
                             Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
                             IsHitTestVisible="False"
-                            Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
+                            Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                             TextTrimming="CharacterEllipsis"
                             Visibility="Collapsed" />
                         <ToggleButton
