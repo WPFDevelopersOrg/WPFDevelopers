@@ -23,7 +23,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MessageListBoxItem}">
                     <ControlTemplate.Resources>
-                        <Storyboard x:Key="Storyboard_Close">
+                        <Storyboard x:Key="Storyboard_Close" DesiredFrameRate="30">
                             <DoubleAnimation
                                 Storyboard.TargetName="PART_SmallPanel"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
@@ -37,7 +37,7 @@
                                 To="0"
                                 Duration="0:0:0" />
                         </Storyboard>
-                        <Storyboard x:Key="Storyboard_Loaded">
+                        <Storyboard x:Key="Storyboard_Loaded" DesiredFrameRate="30">
                             <DoubleAnimation
                                 Storyboard.TargetName="PART_SmallPanel"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
@@ -63,11 +63,18 @@
                                 From="1"
                                 To="0"
                                 Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                Storyboard.TargetName="PART_Rectangle"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                From="1"
+                                To="0"
+                                Duration="0:0:10" />
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <controls:SmallPanel
                         x:Name="PART_SmallPanel"
                         Margin="{TemplateBinding Margin}"
+                        CacheMode="BitmapCache"
                         RenderTransformOrigin=".5,0">
                         <controls:SmallPanel.RenderTransform>
                             <ScaleTransform />
@@ -122,6 +129,16 @@
                                 </Button>
                             </Grid>
                         </Border>
+                        <Rectangle
+                            x:Name="PART_Rectangle"
+                            Height="2"
+                            VerticalAlignment="Bottom"
+                            Fill="{Binding ElementName=PART_Path, Path=Fill}"
+                            RenderTransformOrigin="0,0">
+                            <Rectangle.RenderTransform>
+                                <ScaleTransform ScaleX="1" />
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="MessageType" Value="Warning">
