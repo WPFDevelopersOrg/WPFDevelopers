@@ -297,6 +297,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NoneNoChromeWindow.xaml.cs">
       <DependentUpon>NoneNoChromeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NotifyIconExample.xaml.cs">
+      <DependentUpon>NotifyIconExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NumberCard\NumberCardControl.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>NumberCardControl.xaml</DependentUpon>
@@ -801,6 +804,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NoneNoChromeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NotifyIconExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
