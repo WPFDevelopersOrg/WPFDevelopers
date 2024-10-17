@@ -28,6 +28,7 @@
             <wd:TimePicker
                 Width="200"
                 VerticalAlignment="Center"
+                wd:ElementHelper.CornerRadius="4"
                 SelectedTime="{Binding MyDateTime, RelativeSource={RelativeSource AncestorType=local:TimePickerExample}}" />
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
