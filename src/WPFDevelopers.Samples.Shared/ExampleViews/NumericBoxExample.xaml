@@ -15,6 +15,7 @@
             Margin="10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            wd:PanelHelper.Spacing="6"
             Rows="1">
             <wd:NumericBox
                 Width="100"
