@@ -7,6 +7,7 @@
     {
         Navigation3D,
         BasicControls,
+        NotifyIcon,
         PanningItems,
         BreatheLight,
         RingLoading,
