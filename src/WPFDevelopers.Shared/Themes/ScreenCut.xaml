@@ -182,7 +182,7 @@
                                     x:Name="PART_PopupBorder"
                                     Margin="10,30,10,10"
                                     Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-                                    CornerRadius="{Binding Path=(helpers:ControlsHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                    CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                     Effect="{StaticResource WD.PopupShadowDepth}">
                                     <controls:SmallPanel>
                                         <Path
