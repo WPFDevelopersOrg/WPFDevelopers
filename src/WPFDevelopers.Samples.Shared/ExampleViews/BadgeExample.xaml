@@ -20,10 +20,12 @@
                 x:Name="MyBadgeToggleButton"
                 Margin="10"
                 HorizontalAlignment="Center"
-                Content="显示Badge" />
+                Content="显示Badge"
+                IsChecked="True" />
             <UniformGrid
                 Grid.Row="1"
                 HorizontalAlignment="Center"
+                wd:PanelHelper.Spacing="10"
                 Rows="1">
                 <Button
                     Width="100"
@@ -33,12 +35,11 @@
                     Style="{DynamicResource WD.PrimaryButton}" />
                 <Button
                     Width="100"
-                    Margin="10,0"
                     wd:Badge.FontSize="12"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
-                    wd:Badge.Text="{Binding Text,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    wd:Badge.Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Click="myButton_Click"
                     Content="Success"
-                    Click="myButton_Click" 
                     Style="{DynamicResource WD.SuccessDefaultButton}" />
                 <Button
                     Width="100"
@@ -49,7 +50,6 @@
                     Style="{DynamicResource WD.WarningDefaultButton}" />
                 <Button
                     Width="100"
-                    Margin="10,0"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="NEW"
                     Content="Danger"
