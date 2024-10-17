@@ -55,7 +55,8 @@
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Background="{TemplateBinding Background}"
+                            Panel.ZIndex="1"
+                            Background="Transparent"
                             Focusable="True"
                             Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
                             IsReadOnly="True"
@@ -121,7 +122,7 @@
                                         Margin="6,0"
                                         helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         helpers:ElementHelper.IsClear="True"
-                                        helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
                                     <CheckBox
                                         x:Name="PART_SelectAll"
                                         Grid.Row="1"
