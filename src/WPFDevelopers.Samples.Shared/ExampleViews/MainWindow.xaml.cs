@@ -71,5 +71,10 @@ namespace WPFDevelopers.Samples
             };
             grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, doubleAnimation);
         }
+        public void IsTwink()
+        {
+            WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;
+            menuItemTwink.IsChecked = WpfNotifyIcon.IsTwink;
+        }
     }
 }
