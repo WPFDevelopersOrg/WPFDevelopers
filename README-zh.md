@@ -103,6 +103,28 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>    
 
 ----------
+### DateRangePicker
+
+<img src="resources/WPFDevelopersResource/DateRangePicker.gif"/>   
+
+----------
+
+### Drawer
+
+<img src="resources/WPFDevelopersResource/Drawer.gif"/>   
+
+----------
+
+### Spacing
+
+<img src="resources/WPFDevelopersResource/Spacing.gif"/>   
+
+----------
+### NotifyIcon
+
+<img src="resources/WPFDevelopersResource/NotifyIcon2.gif"/>   
+
+----------
 ### ChartRadar
 [文章地址：https://mp.weixin.qq.com/s/D-UTqSl1JfaVxYURn851SQ](https://mp.weixin.qq.com/s/D-UTqSl1JfaVxYURn851SQ)
 
