@@ -105,24 +105,24 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 ### DateRangePicker
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/resources/WPFDevelopersResource/DateRangePicker.gif"/>   
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/DateRangePicker.gif"/>   
 
 ----------
 
 ### Drawer
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/resources/WPFDevelopersResource/Drawer.gif"/>   
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Drawer.gif"/>   
 
 ----------
 
 ### Spacing
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/resources/WPFDevelopersResource/Spacing.gif"/>   
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Spacing.gif"/>   
 
 ----------
 ### NotifyIcon
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/resources/WPFDevelopersResource/NotifyIcon2.gif"/>   
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/NotifyIcon2.gif"/>   
 
 ----------
 ### ChartRadar
