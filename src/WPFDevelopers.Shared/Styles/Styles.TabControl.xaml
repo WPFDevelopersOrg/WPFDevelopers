@@ -20,14 +20,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <controls:SmallPanel Background="{TemplateBinding Background}">
-                        <Border
-                            x:Name="PART_Border"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            RenderTransformOrigin=".5,.5">
-                            <Border.RenderTransform>
-                                <ScaleTransform ScaleX="0" ScaleY="1" />
-                            </Border.RenderTransform>
-                        </Border>
+                        <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" />
                         <ContentPresenter
                             x:Name="PART_ContentPresenter"
                             Margin="{TemplateBinding Padding}"
@@ -35,20 +28,6 @@
                             VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
                             ContentSource="Header"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected" />
-                                <VisualState x:Name="Selected">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_Border"
-                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
-                                            To="1"
-                                            Duration="00:00:.2" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
@@ -66,73 +45,14 @@
     </Style>
 
     <Style
-        x:Key="WD.BaseLAndRTabItem"
-        BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type TabItem}">
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
-        <Setter Property="BorderThickness" Value="{StaticResource WD.TabItemBorderThickness}" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type TabItem}">
-                    <controls:SmallPanel Background="{TemplateBinding Background}">
-                        <Border
-                            x:Name="PART_Border"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            RenderTransformOrigin=".5,.5">
-                            <Border.RenderTransform>
-                                <ScaleTransform ScaleX="1" ScaleY="0" />
-                            </Border.RenderTransform>
-                        </Border>
-                        <ContentPresenter
-                            x:Name="PART_ContentPresenter"
-                            Margin="{TemplateBinding Padding}"
-                            HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                            VerticalAlignment="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
-                            ContentSource="Header"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected" />
-                                <VisualState x:Name="Selected">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_Border"
-                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
-                                            To="1"
-                                            Duration="00:00:.2" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                    </controls:SmallPanel>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style
         x:Key="WD.LeftTabItem"
-        BasedOn="{StaticResource WD.BaseLAndRTabItem}"
+        BasedOn="{StaticResource WD.BaseTAndBTabItem}"
         TargetType="{x:Type TabItem}">
         <Setter Property="BorderThickness" Value="0,0,2,0" />
     </Style>
     <Style
         x:Key="WD.RightTabItem"
-        BasedOn="{StaticResource WD.BaseLAndRTabItem}"
+        BasedOn="{StaticResource WD.BaseTAndBTabItem}"
         TargetType="{x:Type TabItem}">
         <Setter Property="BorderThickness" Value="2,0,0,0" />
     </Style>
@@ -170,14 +90,17 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                        <Grid Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}">
+                        <Grid
+                            Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}"
+                            KeyboardNavigation.TabNavigation="Local"
+                            SnapsToDevicePixels="True">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Name="ColumnDefinition0" />
-                                <ColumnDefinition Name="ColumnDefinition1" Width="0" />
+                                <ColumnDefinition x:Name="ColumnDefinition0" />
+                                <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Name="RowDefinition0" Height="Auto" />
-                                <RowDefinition Name="RowDefinition1" Height="*" />
+                                <RowDefinition x:Name="RowDefinition0" Height="Auto" />
+                                <RowDefinition x:Name="RowDefinition1" Height="*" />
                             </Grid.RowDefinitions>
                             <Border
                                 x:Name="HeaderBorder"
@@ -223,10 +146,10 @@
                             <Setter Property="ItemContainerStyle" Value="{StaticResource WD.BottomTabItem}" />
                         </Trigger>
                         <Trigger Property="TabControl.TabStripPlacement" Value="Left">
-                            <Setter TargetName="ContentPanel" Property="Grid.Row" Value="0" />
-                            <Setter TargetName="ContentPanel" Property="Grid.Column" Value="1" />
                             <Setter TargetName="ColumnDefinition0" Property="ColumnDefinition.Width" Value="Auto" />
                             <Setter TargetName="ColumnDefinition1" Property="ColumnDefinition.Width" Value="*" />
+                            <Setter TargetName="ContentPanel" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="ContentPanel" Property="Grid.Column" Value="1" />
                             <Setter TargetName="RowDefinition0" Property="RowDefinition.Height" Value="*" />
                             <Setter TargetName="RowDefinition1" Property="RowDefinition.Height" Value="0" />
                             <Setter TargetName="HeaderBorder" Property="BorderThickness" Value="0,0,1,0" />
