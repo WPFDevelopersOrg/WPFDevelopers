@@ -53,13 +53,13 @@ namespace WPFDevelopers.Controls
             switch (msg)
             {
                 case Helper.WM_USER:
-                    GetClipboard();
                     Close();
+                    GetClipboard();
                     break;
                 case Helper.MY_MESSAGE:
+                    Close();
                     if (SnapCanceled != null) 
                         SnapCanceled();
-                    Close();
                     break;
             }
             return IntPtr.Zero;
