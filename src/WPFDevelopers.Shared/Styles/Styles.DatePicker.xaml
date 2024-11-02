@@ -117,7 +117,7 @@
                         <Trigger Property="IsBlackedOut" Value="True">
                             <Setter TargetName="Blackout" Property="Visibility" Value="Visible" />
                         </Trigger>
-                        <Trigger Property="helpers:DatePickerHelper.IsHighlight" Value="True">
+                        <!--<Trigger Property="helpers:DatePickerHelper.IsHighlight" Value="True">
                             <Setter TargetName="SelectedBackground" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="SelectionBackground" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
@@ -131,7 +131,7 @@
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                             <Setter TargetName="SelectedBackground" Property="Opacity" Value="0" />
                             <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
-                        </MultiTrigger>
+                        </MultiTrigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
