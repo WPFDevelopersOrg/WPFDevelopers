@@ -173,6 +173,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\DrapViewExample.xaml.cs">
       <DependentUpon>DrapViewExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerExample.xaml.cs">
+      <DependentUpon>DrawerExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerMenu\DrawerMenuExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>DrawerMenuExample.xaml</DependentUpon>
@@ -659,6 +662,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrapView\DrapViewExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DrawerExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

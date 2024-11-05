@@ -85,6 +85,7 @@
         Drap,
         ChartPie,
         Spacing,
+        Drawer,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

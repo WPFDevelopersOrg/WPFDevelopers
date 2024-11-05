@@ -358,6 +358,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Spacing:
                     ControlPanel = new SpacingExample();
                     break;
+                case MenuEnum.Drawer:
+                    ControlPanel = new DrawerExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
