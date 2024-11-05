@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using WPFDevelopers.Samples.Helpers;
+using System.Windows.Media.Imaging;
+using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
 {
@@ -19,9 +17,26 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
             new Uri("pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/DrawerMenu/HomePage.xaml",UriKind.Absolute),
             new Uri("pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/DrawerMenu/EdgePage.xaml",UriKind.Absolute),
         };
+
+
+        public IList<DrawerMenuItem> DrawerMenuItems
+        {
+            get { return (IList<DrawerMenuItem>)GetValue(DrawerMenuItemsProperty); }
+            set { SetValue(DrawerMenuItemsProperty, value); }
+        }
+
+        public static readonly DependencyProperty DrawerMenuItemsProperty =
+            DependencyProperty.Register("DrawerMenuItems", typeof(IList<DrawerMenuItem>), typeof(DrawerMenuExample), new PropertyMetadata(null));
+
+
         public DrawerMenuExample()
         {
             InitializeComponent();
+            var items = new List<DrawerMenuItem>();
+            items.Add(new DrawerMenuItem { Text = "Menu01", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/1.png")) } });
+            items.Add(new DrawerMenuItem { Text = "Menu02", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/2.png")) } });
+            items.Add(new DrawerMenuItem { Text = "Menu03", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/3.png")) } });
+            DrawerMenuItems = items;
         }
 
         //public ICommand HomeCommand => new RelayCommand(obj =>
