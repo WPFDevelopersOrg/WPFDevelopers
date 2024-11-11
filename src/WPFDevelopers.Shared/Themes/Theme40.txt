@@ -67,4 +67,5 @@ PathIcon.xaml
 NumericBox.xaml
 ColorPicker.xaml
 IPEditBox.xaml
-TimePicker.xaml
+TimePicker.xamlTimePicker.xaml
+Drawer.xaml
