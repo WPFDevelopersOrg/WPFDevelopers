@@ -15,7 +15,7 @@
         po:Freeze="True"
         Color="{StaticResource WD.PrimaryTextColor}" />
 
-    <Color x:Key="WD.RegularTextColor" po:Freeze="True">#FFFFFF</Color>
+    <Color x:Key="WD.RegularTextColor" po:Freeze="True">#C0C4CC</Color>
     <SolidColorBrush
         x:Key="WD.RegularTextSolidColorBrush"
         po:Freeze="True"

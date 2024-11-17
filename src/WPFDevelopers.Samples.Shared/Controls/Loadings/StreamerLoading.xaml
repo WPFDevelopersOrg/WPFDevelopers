@@ -1,0 +1,66 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
+    <Style
+        x:Key="WD.StreamerLoading"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:StreamerLoading}">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
+                    <Rectangle
+                        x:Name="PART_Rectangle"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        CacheMode="BitmapCache"
+                        StrokeThickness="3">
+                        <Rectangle.Stroke>
+                            <LinearGradientBrush Opacity=".6" StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Offset="0" Color="Transparent" />
+                                <GradientStop Offset="1" Color="{Binding Path=Background.Color, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </LinearGradientBrush>
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsVisible" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard DesiredFrameRate="30" RepeatBehavior="Forever">
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)">
+                                            <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0" />
+                                        </PointAnimationUsingKeyFrames>
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.EndPoint)">
+                                            <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1" />
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource WD.StreamerLoading}" TargetType="{x:Type controls:StreamerLoading}" />
+</ResourceDictionary>

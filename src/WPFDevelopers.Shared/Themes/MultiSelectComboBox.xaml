@@ -18,6 +18,7 @@
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Margin" Value="1,0" />
+        <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -28,11 +29,13 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="true">
                         <CheckBox
                             MinHeight="{TemplateBinding MinHeight}"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                             Foreground="{TemplateBinding Foreground}"
                             IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                             <ContentPresenter
@@ -102,7 +105,8 @@
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Background="{TemplateBinding Background}"
+                            Panel.ZIndex="1"
+                            Background="Transparent"
                             Focusable="True"
                             Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
                             IsReadOnly="True"
@@ -120,16 +124,16 @@
                             FontSize="{StaticResource WD.NormalFontSize}"
                             Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
                             IsHitTestVisible="False"
-                            Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
+                            Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                             TextTrimming="CharacterEllipsis"
                             Visibility="Collapsed" />
                         <ToggleButton
                             x:Name="PART_ToggleButton"
+                            Background="{TemplateBinding Background}"
                             ClickMode="Release"
                             Focusable="False"
                             IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                             Style="{x:Null}"
-                            Background="{TemplateBinding Background}"
                             Template="{StaticResource WD.ComboBoxToggleButton}" />
                         <Popup
                             x:Name="PART_Popup"

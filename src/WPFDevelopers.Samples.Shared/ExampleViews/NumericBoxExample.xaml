@@ -12,8 +12,10 @@
     mc:Ignorable="d">
     <controls:CodeViewer>
         <UniformGrid
+            Margin="10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            wd:PanelHelper.Spacing="6"
             Rows="1">
             <wd:NumericBox
                 Width="100"
@@ -23,7 +25,6 @@
             <wd:NumericBox
                 Width="100"
                 Height="40"
-                Margin="10,0"
                 Maximum="1000"
                 Minimum="100"
                 UpDownButtonsWidth="0" />

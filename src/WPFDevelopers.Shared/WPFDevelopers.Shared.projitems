@@ -13,15 +13,22 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartLine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartPie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartRect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartRound.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\ColorPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DateRangePicker\DateRangePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\WaterfallPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelectorItem.cs" />
@@ -52,6 +59,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ImagingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightToRectConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PanelHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\FormatExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Languages\Language.Designer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\TextBoxValueChangedEventArgs.cs" />
@@ -82,7 +92,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\NormalLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RingLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\RollLoading.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\WaitLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\Loading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\DefaultLoading.cs" />
@@ -132,8 +141,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Status.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\Step.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\StepItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
@@ -376,7 +383,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ThemeControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -465,6 +472,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Dark.Blue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\DateRangePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Drawer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

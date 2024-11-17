@@ -18,51 +18,37 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="1" />
+        <Setter Property="Margin" Value="0,1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
-                    <controls:SmallPanel>
-                        <Ellipse
-                            x:Name="SelectedBackground"
-                            Margin="{TemplateBinding Padding}"
-                            Opacity="0">
-                            <Ellipse.Fill>
-                                <SolidColorBrush Color="{DynamicResource WD.PrimaryMouseOverColor}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                        <Ellipse
-                            x:Name="SelectionBackground"
-                            Margin="{TemplateBinding Padding}"
-                            Opacity="0">
-                            <Ellipse.Fill>
-                                <SolidColorBrush Color="{DynamicResource WD.PrimaryMouseOverColor}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
+                    <controls:SmallPanel Margin="{TemplateBinding Margin}">
                         <Border
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" />
+                            x:Name="SelectedBackground"
+                            Background="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}"
+                            Opacity="0" />
+                        <Border
+                            x:Name="SelectionBackground"
+                            Background="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}"
+                            Opacity="0" />
+                        <Border
+                            x:Name="HighlightBackground"
+                            Background="{DynamicResource WD.DefaultBackgroundSolidColorBrush}"
+                            Visibility="Collapsed" />
                         <Ellipse
                             x:Name="DayButtonFocusVisual"
                             Width="5"
                             Height="5"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
+                            Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             IsHitTestVisible="False"
-                            Visibility="Collapsed">
-                            <Ellipse.Fill>
-                                <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
+                            Visibility="Collapsed" />
                         <ContentPresenter
                             x:Name="NormalText"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                            <TextElement.Foreground>
-                                <SolidColorBrush Color="{DynamicResource WD.RegularTextColor}" />
-                            </TextElement.Foreground>
-                        </ContentPresenter>
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            TextElement.Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" />
                         <Line
                             x:Name="Blackout"
                             Margin="8,3,8,0"
@@ -76,60 +62,6 @@
                             X2="{TemplateBinding Width}"
                             Y1="0"
                             Y2="0" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup Name="CommonStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0:0:0.1" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="Normal" />
-                                <VisualState Name="MouseOver" />
-                                <VisualState Name="Pressed" />
-                                <VisualState Name="Disabled" />
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="SelectionStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="Unselected" />
-                                <VisualState Name="Selected">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="SelectionBackground"
-                                            Storyboard.TargetProperty="Opacity"
-                                            To=".3"
-                                            Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="CalendarButtonFocusStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="CalendarButtonFocused" />
-                                <VisualState Name="CalendarButtonUnfocused" />
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="ActiveStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="Active" />
-                                <VisualState Name="Inactive" />
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="DayStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="RegularDay" />
-                                <VisualState Name="Today" />
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="BlackoutDayStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="NormalDay" />
-                                <VisualState Name="BlackoutDay" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsToday" Value="True">
@@ -147,7 +79,6 @@
                                 <Condition Property="IsBlackedOut" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
-                            <!--<Setter TargetName="DayButtonFocusVisual" Property="Visibility" Value="Collapsed"/>-->
                             <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
                         </MultiTrigger>
                         <MultiTrigger>
@@ -159,7 +90,6 @@
                             <Setter TargetName="SelectedBackground" Property="Opacity" Value="0" />
                             <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
                         </MultiTrigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="True" />
@@ -187,6 +117,21 @@
                         <Trigger Property="IsBlackedOut" Value="True">
                             <Setter TargetName="Blackout" Property="Visibility" Value="Visible" />
                         </Trigger>
+                        <Trigger Property="helpers:DatePickerHelper.IsHighlight" Value="True">
+                            <Setter TargetName="SelectedBackground" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="SelectionBackground" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
+                            <Setter TargetName="HighlightBackground" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="helpers:DatePickerHelper.IsHighlight" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="SelectedBackground" Property="Opacity" Value="0" />
+                            <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -206,34 +151,25 @@
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
                     <controls:SmallPanel>
-                        <Ellipse
+                        <Border
                             x:Name="SelectionBackground"
                             Margin="{TemplateBinding Padding}"
-                            Opacity=".3"
-                            Visibility="Collapsed">
-                            <Ellipse.Fill>
-                                <SolidColorBrush Color="{DynamicResource WD.PrimaryMouseOverColor}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
+                            Background="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}"
+                            Opacity="0" />
                         <ContentPresenter
                             x:Name="NormalText"
                             Margin="3,20"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                            <TextElement.Foreground>
-                                <SolidColorBrush Color="{DynamicResource WD.RegularTextColor}" />
-                            </TextElement.Foreground>
-                        </ContentPresenter>
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            TextElement.Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" />
                         <Ellipse
                             x:Name="ButtonFocusVisual"
                             Width="5"
                             Height="5"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
+                            Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
                             IsHitTestVisible="False">
-                            <Ellipse.Fill>
-                                <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
-                            </Ellipse.Fill>
                             <Ellipse.Visibility>
                                 <MultiBinding Converter="{StaticResource WD.DatePickerToCurrentConverter}">
                                     <Binding ElementName="NormalText" Path="Content" />
@@ -242,62 +178,14 @@
                                 </MultiBinding>
                             </Ellipse.Visibility>
                         </Ellipse>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup Name="CommonStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0:0:0.1" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="Normal" />
-                                <VisualState Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="NormalText" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource WD.PrimaryMouseOverColor}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState Name="Pressed" />
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="SelectionStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="Unselected" />
-                                <VisualState Name="Selected">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="NormalText" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource WD.PrimaryNormalColor}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="ActiveStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="Active" />
-                                <VisualState Name="Inactive" />
-                            </VisualStateGroup>
-                            <VisualStateGroup Name="CalendarButtonFocusStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition GeneratedDuration="0" />
-                                </VisualStateGroup.Transitions>
-                                <VisualState Name="CalendarButtonFocused">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="NormalText" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource WD.PrimaryNormalColor}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState Name="CalendarButtonUnfocused" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsInactive" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.BaseSolidColorBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="SelectionBackground" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -419,7 +307,6 @@
         x:Key="WD.CalendarItemStyle"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type CalendarItem}">
-        <Setter Property="Margin" Value="24,4,24,24" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CalendarItem}">
@@ -444,17 +331,11 @@
                         <Border
                             Background="{DynamicResource WD.BackgroundSolidColorBrush}"
                             BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
-                            BorderThickness="1"
+                            BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=Calendar}}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Calendar}}"
+                            Effect="{StaticResource WD.PopupShadowDepth}"
                             SnapsToDevicePixels="True"
                             UseLayoutRounding="True">
-                            <Border.Effect>
-                                <DropShadowEffect
-                                    BlurRadius="12"
-                                    Opacity="0.1"
-                                    ShadowDepth="2"
-                                    Color="{DynamicResource WD.BlackColor}" />
-                            </Border.Effect>
                             <Grid Margin="0,20,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -572,13 +453,16 @@
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="Padding" Value="3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">
                     <StackPanel x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
                         <CalendarItem
                             x:Name="PART_CalendarItem"
+                            Margin="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -588,10 +472,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style
-        x:Key="WD.DatePickerCalendarStyle"
-        BasedOn="{StaticResource {x:Type Calendar}}"
-        TargetType="{x:Type Calendar}" />
+
     <Style
         x:Key="WD.DropDownButtonStyle"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -798,13 +679,11 @@
                                 SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
                             <Popup
                                 x:Name="PART_Popup"
-                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                 AllowsTransparency="True"
-                                Focusable="False"
-                                HorizontalOffset="-50"
                                 Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=PART_Border}"
                                 StaysOpen="False"
-                                VerticalOffset="2" />
+                                VerticalOffset="-6" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -819,6 +698,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style
+        x:Key="WD.DatePickerCalendarStyle"
+        BasedOn="{StaticResource {x:Type Calendar}}"
+        TargetType="{x:Type Calendar}" />
     <Style BasedOn="{StaticResource WD.DefaultCalendar}" TargetType="{x:Type Calendar}" />
     <Style BasedOn="{StaticResource WD.DefaultDatePickerTextBox}" TargetType="{x:Type DatePickerTextBox}" />
     <Style BasedOn="{StaticResource WD.DefaultDatePicker}" TargetType="{x:Type DatePicker}" />

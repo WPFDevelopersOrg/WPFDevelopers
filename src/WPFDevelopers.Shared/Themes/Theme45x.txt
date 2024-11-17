@@ -30,7 +30,7 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.TreeView.xaml
 ..\Styles\Styles.MessageBox.xaml
 ..\Styles\Styles.Loading.xaml
-..\Styles\Styles.ThemeControl.xaml
+..\Styles\Styles.Theme.xaml
 ..\Styles\Styles.GridSplitter.xaml
 ..\Styles\Styles.Label.xaml
 ..\Styles\Styles.RepeatButton.xaml
@@ -69,3 +69,5 @@ NumericBox.xaml
 ColorPicker.xaml
 IPEditBox.xaml
 TimePicker.xaml
+Drawer.xaml
+DateRangePicker.xaml

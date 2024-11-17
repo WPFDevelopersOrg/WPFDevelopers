@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class ChartRect:ChartBase
+    public class ChartRect : ChartBase
     {
-        
-        
         protected Brush ChartFill { get; private set; }
         protected double IntervalY { get; private set; }
         protected short ScaleFactor { get; private set; } = 80;
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
@@ -77,6 +75,7 @@ namespace WPFDevelopers.Controls
                     new Point(StartX - formattedText.Width - 10, yAxis - formattedText.Height / 2));
                 yAxis -= ScaleFactor;
             }
+
             drawingContext.DrawSnappedLinesBetweenPoints(xAxisPen, xAxisPen.Thickness, points.ToArray());
         }
     }

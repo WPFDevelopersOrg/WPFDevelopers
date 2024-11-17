@@ -7,6 +7,7 @@
     {
         Navigation3D,
         BasicControls,
+        NotifyIcon,
         PanningItems,
         BreatheLight,
         RingLoading,
@@ -82,6 +83,10 @@
         WaterfallPanel,
         ChartLine,
         Drap,
+        ChartPie,
+        Spacing,
+        Drawer,
+        DateRangePicker,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

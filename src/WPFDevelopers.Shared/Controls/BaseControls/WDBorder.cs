@@ -7,16 +7,16 @@ namespace WPFDevelopers.Controls
 {
     public class WDBorder : Border
     {
+        public static readonly DependencyPropertyKey ContentClipPropertyKey =
+            DependencyProperty.RegisterReadOnly("ContentClip", typeof(Geometry), typeof(WDBorder),
+                new PropertyMetadata(null));
+
+        public static readonly DependencyProperty ContentClipProperty = ContentClipPropertyKey.DependencyProperty;
+
         public Geometry ContentClip
         {
-            get
-            {
-                return (Geometry)GetValue(ContentClipProperty);
-            }
-            set
-            {
-                SetValue(ContentClipProperty, value);
-            }
+            get => (Geometry) GetValue(ContentClipProperty);
+            set => SetValue(ContentClipProperty, value);
         }
 
         private Geometry CalculateContentClip()
@@ -31,13 +31,14 @@ namespace WPFDevelopers.Controls
                 var rect = new Rect(0.0, 0.0, width, height);
                 var radii = new GeometryHelper.Radii(cornerRadius, borderThickness, false);
                 var streamGeometry = new StreamGeometry();
-                using (StreamGeometryContext streamGeometryContext = streamGeometry.Open())
+                using (var streamGeometryContext = streamGeometry.Open())
                 {
                     GeometryHelper.GenerateGeometry(streamGeometryContext, rect, radii);
                     streamGeometry.Freeze();
                     return streamGeometry;
                 }
             }
+
             return null;
         }
 
@@ -46,11 +47,5 @@ namespace WPFDevelopers.Controls
             SetValue(ContentClipPropertyKey, CalculateContentClip());
             base.OnRender(dc);
         }
-
-        public static readonly DependencyPropertyKey ContentClipPropertyKey = 
-            DependencyProperty.RegisterReadOnly("ContentClip", typeof(Geometry), typeof(WDBorder), new PropertyMetadata(null));
-
-        public static readonly DependencyProperty ContentClipProperty = ContentClipPropertyKey.DependencyProperty;
-        
     }
 }

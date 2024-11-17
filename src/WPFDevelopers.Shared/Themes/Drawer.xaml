@@ -1,0 +1,66 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style
+        x:Key="WD.Drawer"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:Drawer}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Drawer}">
+                    <controls:WDBorder
+                        x:Name="Border"
+                        Margin="{TemplateBinding Margin}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True">
+                        <controls:SmallPanel Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}">
+                            <Border x:Name="PART_Content">
+                                <ContentPresenter Content="{TemplateBinding Content}" />
+                            </Border>
+                            <Border
+                                x:Name="PART_Mark"
+                                Background="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                                Opacity=".5" />
+                            <Border
+                                x:Name="PART_Header"
+                                HorizontalAlignment="Left"
+                                Background="{TemplateBinding Background}"
+                                Effect="{StaticResource WD.NormalShadowDepth}">
+                                <ContentPresenter Content="{TemplateBinding Header}" />
+                            </Border>
+                        </controls:SmallPanel>
+                    </controls:WDBorder>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Position" Value="Top">
+                            <Setter TargetName="PART_Header" Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter TargetName="PART_Header" Property="VerticalAlignment" Value="Top" />
+                        </Trigger>
+                        <Trigger Property="Position" Value="Right">
+                            <Setter TargetName="PART_Header" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="PART_Header" Property="VerticalAlignment" Value="Stretch" />
+                        </Trigger>
+                        <Trigger Property="Position" Value="Bottom">
+                            <Setter TargetName="PART_Header" Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter TargetName="PART_Header" Property="VerticalAlignment" Value="Bottom" />
+                        </Trigger>
+                        <Trigger Property="IsOpen" Value="False">
+                            <Setter TargetName="PART_Mark" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource WD.Drawer}" TargetType="{x:Type controls:Drawer}" />
+</ResourceDictionary>

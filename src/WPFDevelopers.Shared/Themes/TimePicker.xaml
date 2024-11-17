@@ -12,16 +12,28 @@
         <Border
             x:Name="PART_Border"
             Padding="6,0"
-            Background="Transparent"
             BorderThickness="0"
             SnapsToDevicePixels="true">
-            <controls:PathIcon
-                x:Name="PART_PathIcon"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Foreground="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
-                IsHitTestVisible="False"
-                Kind="Time" />
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <Rectangle
+                    Grid.Column="1"
+                    Width="30"
+                    Height="Auto"
+                    Margin="0,1"
+                    Fill="{TemplateBinding Background}" />
+                <controls:PathIcon
+                    x:Name="PART_PathIcon"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
+                    IsHitTestVisible="False"
+                    Kind="Time" />
+            </Grid>
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -157,81 +169,76 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <controls:SmallPanel SnapsToDevicePixels="True">
-                        <Grid Background="Transparent">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Border
-                                Name="PART_Border"
-                                Grid.ColumnSpan="2"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                SnapsToDevicePixels="True" />
-                            <TextBox
-                                x:Name="PART_EditableTextBox"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Background="{TemplateBinding Background}"
-                                Focusable="True"
-                                Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
-                                SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
-                                Style="{x:Null}"
-                                Template="{StaticResource WD.ComboBoxTextBox}" />
-                            <TextBlock
-                                x:Name="PART_Watermark"
-                                Margin="{TemplateBinding Padding}"
-                                Padding="1,0"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Background="Transparent"
-                                FontSize="{StaticResource WD.NormalFontSize}"
-                                Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
-                                IsHitTestVisible="False"
-                                Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
-                                TextTrimming="CharacterEllipsis"
-                                Visibility="Collapsed" />
-                            <ToggleButton
-                                x:Name="PART_ToggleButton"
-                                Grid.Column="1"
-                                Background="{TemplateBinding Background}"
-                                ClickMode="Release"
-                                Focusable="False"
-                                Style="{x:Null}"
-                                Template="{StaticResource WD.TimePickerToggleButton}" />
-                            <Popup
-                                x:Name="PART_Popup"
-                                AllowsTransparency="True"
-                                IsOpen="{Binding Path=IsChecked, ElementName=PART_ToggleButton}"
-                                Placement="Bottom"
-                                PlacementTarget="{Binding ElementName=PART_Border}"
-                                StaysOpen="False">
-                                <controls:SmallPanel
-                                    x:Name="PART_DropDown"
-                                    MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
-                                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                    Margin="24,2,24,24"
-                                    RenderTransformOrigin=".5,0"
-                                    SnapsToDevicePixels="True">
-                                    <controls:SmallPanel.RenderTransform>
-                                        <ScaleTransform ScaleY="0" />
-                                    </controls:SmallPanel.RenderTransform>
-                                    <Border
-                                        Name="PART_DropDownBorder"
-                                        Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                        Effect="{StaticResource WD.PopupShadowDepth}"
-                                        SnapsToDevicePixels="True"
-                                        UseLayoutRounding="True" />
-                                    <controls:TimeSelector x:Name="PART_TimeSelector" />
-                                </controls:SmallPanel>
-                            </Popup>
-                        </Grid>
+                        <Border
+                            Name="PART_Border"
+                            Grid.ColumnSpan="2"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                            SnapsToDevicePixels="True" />
+                        <TextBox
+                            x:Name="PART_EditableTextBox"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Panel.ZIndex="1"
+                            Background="Transparent"
+                            Focusable="True"
+                            Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                            SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
+                            Style="{x:Null}"
+                            Template="{StaticResource WD.ComboBoxTextBox}" />
+                        <TextBlock
+                            x:Name="PART_Watermark"
+                            Margin="{TemplateBinding Padding}"
+                            Padding="1,0"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Background="Transparent"
+                            FontSize="{StaticResource WD.NormalFontSize}"
+                            Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                            IsHitTestVisible="False"
+                            Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
+                            TextTrimming="CharacterEllipsis"
+                            Visibility="Collapsed" />
+                        <ToggleButton
+                            x:Name="PART_ToggleButton"
+                            Grid.Column="1"
+                            Background="{TemplateBinding Background}"
+                            ClickMode="Release"
+                            Focusable="False"
+                            Style="{x:Null}"
+                            Template="{StaticResource WD.TimePickerToggleButton}" />
+                        <Popup
+                            x:Name="PART_Popup"
+                            AllowsTransparency="True"
+                            IsOpen="{Binding Path=IsChecked, ElementName=PART_ToggleButton}"
+                            Placement="Bottom"
+                            PlacementTarget="{Binding ElementName=PART_Border}"
+                            StaysOpen="False">
+                            <controls:SmallPanel
+                                x:Name="PART_DropDown"
+                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                Margin="24,2,24,24"
+                                RenderTransformOrigin=".5,0"
+                                SnapsToDevicePixels="True">
+                                <controls:SmallPanel.RenderTransform>
+                                    <ScaleTransform ScaleY="0" />
+                                </controls:SmallPanel.RenderTransform>
+                                <Border
+                                    Name="PART_DropDownBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Effect="{StaticResource WD.PopupShadowDepth}"
+                                    SnapsToDevicePixels="True"
+                                    UseLayoutRounding="True" />
+                                <controls:TimeSelector x:Name="PART_TimeSelector" />
+                            </controls:SmallPanel>
+                        </Popup>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
@@ -256,12 +263,12 @@
                         <Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
                             <Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />
                         </Trigger>
-                        <Trigger Property="SelectedTime" Value="">
+                        <DataTrigger Binding="{Binding ElementName=PART_EditableTextBox, Path=Text}" Value="{x:Null}">
                             <Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
-                        </Trigger>
-                        <Trigger Property="SelectedTime" Value="{x:Null}">
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PART_EditableTextBox, Path=Text}" Value="">
                             <Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
-                        </Trigger>
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

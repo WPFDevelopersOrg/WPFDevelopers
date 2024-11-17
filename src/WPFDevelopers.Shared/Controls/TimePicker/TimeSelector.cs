@@ -186,20 +186,16 @@ namespace WPFDevelopers.Controls
             _listBoxHour.SelectionChanged -= ListBoxHour_SelectionChanged;
             var hour = _hour.ToString("D2");
             _listBoxHour.SelectedItem = hour;
-            //(_listBoxHour as TimeSelectorListBox).Positioning();
             _listBoxHour.SelectionChanged += ListBoxHour_SelectionChanged;
-
 
             _listBoxMinute.SelectionChanged -= ListBoxMinute_SelectionChanged;
             var minute = _minute.ToString("D2");
             _listBoxMinute.SelectedItem = minute;
-            //(_listBoxMinute as TimeSelectorListBox).Positioning();
             _listBoxMinute.SelectionChanged += ListBoxMinute_SelectionChanged;
 
             _listBoxSecond.SelectionChanged -= ListBoxSecond_SelectionChanged;
             var second = _second.ToString("D2");
             _listBoxSecond.SelectedItem = second;
-            //(_listBoxSecond as TimeSelectorListBox).Positioning();
             _listBoxSecond.SelectionChanged += ListBoxSecond_SelectionChanged;
 
             SetSelectedTime();

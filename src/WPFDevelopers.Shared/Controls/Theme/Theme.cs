@@ -10,16 +10,16 @@ using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
-    public class ThemeControl : Control
+    public class Theme : Control
     {
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(ObservableCollection<ThemeModel>), typeof(ThemeControl),
+            DependencyProperty.Register("ItemsSource", typeof(ObservableCollection<ThemeModel>), typeof(Theme),
                 new PropertyMetadata(null));
 
-        static ThemeControl()
+        static Theme()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ThemeControl),
-                new FrameworkPropertyMetadata(typeof(ThemeControl)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Theme),
+                new FrameworkPropertyMetadata(typeof(Theme)));
         }
 
         public ObservableCollection<ThemeModel> ItemsSource

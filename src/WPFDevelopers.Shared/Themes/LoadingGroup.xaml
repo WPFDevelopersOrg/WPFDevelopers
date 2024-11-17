@@ -6,60 +6,7 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style
-        x:Key="WD.StreamerLoading"
-        BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:StreamerLoading}">
-        <Setter Property="Width" Value="100" />
-        <Setter Property="Height" Value="100" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:StreamerLoading}">
-                    <Rectangle
-                        x:Name="PART_Rectangle"
-                        Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        StrokeThickness="3">
-                        <Rectangle.Stroke>
-                            <LinearGradientBrush Opacity=".6" StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Offset="0" Color="Transparent" />
-                                <GradientStop Offset="1" Color="{Binding Path=Background.Color, RelativeSource={RelativeSource TemplatedParent}}" />
-                            </LinearGradientBrush>
-                        </Rectangle.Stroke>
-                    </Rectangle>
-                    <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard RepeatBehavior="Forever">
-                                    <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.StartPoint)">
-                                        <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.855,0.148" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1" Value="0.852,0.855" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.148,0.855" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2" Value="0.144,0.149" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,0" />
-                                    </PointAnimationUsingKeyFrames>
-                                    <PointAnimationUsingKeyFrames Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(Shape.Stroke).(LinearGradientBrush.EndPoint)">
-                                        <EasingPointKeyFrame KeyTime="0:0:0.5" Value="0.145,0.852" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1" Value="0.148,0.145" />
-                                        <EasingPointKeyFrame KeyTime="0:0:1.5" Value="0.852,0.145" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2" Value="0.856,0.851" />
-                                        <EasingPointKeyFrame KeyTime="0:0:2.5" Value="0,1" />
-                                    </PointAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+
     <Style
         x:Key="WD.WaitLoading"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -67,7 +14,77 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:WaitLoading}">
-                    <Canvas Width="100" Height="20">
+                    <ControlTemplate.Resources>
+                        <Storyboard
+                            x:Key="PART_Storyboard"
+                            DesiredFrameRate="30"
+                            RepeatBehavior="Forever">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_RedEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:0.5"
+                                    Value="50" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:1"
+                                    Value="100" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:1.5"
+                                    Value="50" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:3"
+                                    Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_GreenEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:1"
+                                    Value="0" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:1.5"
+                                    Value="50" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:2"
+                                    Value="50" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:2.5"
+                                    Value="50" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="50" />
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_OrangeEllipase" Storyboard.TargetProperty="(Canvas.Left)">
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:0.5"
+                                    Value="50" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="50" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:2"
+                                    Value="0" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:2.5"
+                                    Value="50" />
+                                <EasingDoubleKeyFrame
+                                    EasingFunction="{StaticResource WD.PowerEaseInOut}"
+                                    KeyTime="0:0:3"
+                                    Value="100" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Canvas
+                        Width="100"
+                        Height="20"
+                        CacheMode="BitmapCache">
                         <Ellipse
                             x:Name="PART_RedEllipase"
                             Canvas.Left="0"
@@ -88,72 +105,14 @@
                             Fill="{StaticResource WD.WarningSolidColorBrush}" />
                     </Canvas>
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard RepeatBehavior="Forever">
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_RedEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:0.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1"
-                                            Value="100" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:3"
-                                            Value="0" />
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_GreenEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-                                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1"
-                                            Value="0" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:1.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:3" Value="50" />
-                                    </DoubleAnimationUsingKeyFrames>
-                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_OrangeEllipase" Storyboard.TargetProperty="(Canvas.Left)">
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:0.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="50" />
-                                        <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2"
-                                            Value="0" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:2.5"
-                                            Value="50" />
-                                        <EasingDoubleKeyFrame
-                                            EasingFunction="{StaticResource WD.PowerEaseInOut}"
-                                            KeyTime="0:0:3"
-                                            Value="100" />
-                                    </DoubleAnimationUsingKeyFrames>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
+                        <Trigger Property="IsLoading" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_BeginStoryboard" Storyboard="{StaticResource PART_Storyboard}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="PART_BeginStoryboard" />
+                            </Trigger.ExitActions>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -173,35 +132,31 @@
                     <ControlTemplate.Resources>
                         <Storyboard
                             x:Key="Storyboard_LoadRunning"
+                            DesiredFrameRate="30"
                             RepeatBehavior="Forever"
                             SpeedRatio="2">
                             <DoubleAnimation
                                 BeginTime="0"
                                 Storyboard.TargetName="Part_Cycle_Rotate"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
                             <DoubleAnimation
                                 BeginTime="0"
                                 Storyboard.TargetName="Part_Cycle_Rotate1"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel>
+                    <controls:SmallPanel CacheMode="BitmapCache">
                         <Viewbox>
                             <controls:SmallPanel Width="400" Height="400">
                                 <controls:SmallPanel x:Name="Part_Cycle_Rotate1" RenderTransformOrigin="0.5,0.5">
                                     <controls:SmallPanel.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </controls:SmallPanel.RenderTransform>
                                     <Ellipse Margin="0,50,0,50">
                                         <Ellipse.Fill>
@@ -228,12 +183,7 @@
                                 </controls:SmallPanel>
                                 <controls:SmallPanel x:Name="Part_Cycle_Rotate" RenderTransformOrigin="0.5,0.5">
                                     <controls:SmallPanel.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </controls:SmallPanel.RenderTransform>
                                     <Ellipse Margin="0,50,0,50">
                                         <Ellipse.Fill>
@@ -297,7 +247,7 @@
                         </Grid>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsStart" Value="True">
+                        <Trigger Property="IsLoading" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="Storyboard_LoadRunning" Storyboard="{StaticResource Storyboard_LoadRunning}" />
                             </Trigger.EnterActions>
@@ -319,13 +269,16 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:RollLoading}">
                     <ControlTemplate.Resources>
-                        <Storyboard x:Key="RollKey" RepeatBehavior="Forever">
+                        <Storyboard
+                            x:Key="PART_Storyboard"
+                            DesiredFrameRate="30"
+                            RepeatBehavior="Forever">
                             <DoubleAnimation
                                 BeginTime="0"
                                 RepeatBehavior="Forever"
                                 SpeedRatio="2"
                                 Storyboard.TargetName="PART_Border1"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -334,7 +287,7 @@
                                 RepeatBehavior="Forever"
                                 SpeedRatio="4"
                                 Storyboard.TargetName="PART_Border2"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -343,7 +296,7 @@
                                 RepeatBehavior="Forever"
                                 SpeedRatio="6"
                                 Storyboard.TargetName="PART_Border3"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -352,7 +305,7 @@
                                 RepeatBehavior="Forever"
                                 SpeedRatio="8"
                                 Storyboard.TargetName="PART_Border4"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -361,7 +314,7 @@
                                 RepeatBehavior="Forever"
                                 SpeedRatio="10"
                                 Storyboard.TargetName="PART_Border5"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -370,7 +323,7 @@
                                 RepeatBehavior="Forever"
                                 SpeedRatio="12"
                                 Storyboard.TargetName="PART_Border6"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -379,7 +332,7 @@
                                 RepeatBehavior="Forever"
                                 SpeedRatio="14"
                                 Storyboard.TargetName="PART_Border7"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -388,7 +341,7 @@
                                 RepeatBehavior="Forever"
                                 SpeedRatio="16"
                                 Storyboard.TargetName="PART_Border8"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 From="0"
                                 To="360"
                                 Duration="0:0:5" />
@@ -423,7 +376,7 @@
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <Grid CacheMode="BitmapCache">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
@@ -446,12 +399,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                                 <Border
@@ -470,12 +418,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                                 <Border
@@ -494,12 +437,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                                 <Border
@@ -518,12 +456,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                                 <Border
@@ -542,12 +475,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                                 <Border
@@ -566,12 +494,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                                 <Border
@@ -590,12 +513,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                                 <Border
@@ -614,12 +532,7 @@
                                         </LinearGradientBrush>
                                     </Border.BorderBrush>
                                     <Border.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform />
-                                            <SkewTransform />
-                                            <RotateTransform />
-                                            <TranslateTransform />
-                                        </TransformGroup>
+                                        <RotateTransform />
                                     </Border.RenderTransform>
                                 </Border>
                             </controls:SmallPanel>
@@ -630,9 +543,9 @@
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsStart" Value="True">
+                        <Trigger Property="IsLoading" Value="True">
                             <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="Roll_Storyboard" Storyboard="{StaticResource RollKey}" />
+                                <BeginStoryboard x:Name="Roll_Storyboard" Storyboard="{StaticResource PART_Storyboard}" />
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="Roll_Storyboard" />
@@ -651,25 +564,28 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:RingLoading">
                     <ControlTemplate.Resources>
-                        <Storyboard x:Key="PART_Resource_Storyboard" RepeatBehavior="Forever">
+                        <Storyboard
+                            x:Key="PART_Storyboard"
+                            DesiredFrameRate="30"
+                            RepeatBehavior="Forever">
                             <DoubleAnimation
                                 Storyboard.TargetName="PART_Ring1"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 To="-495"
                                 Duration="0:0:1.5" />
                             <DoubleAnimation
                                 Storyboard.TargetName="PART_Ring2"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 To="585"
                                 Duration="0:0:1.5" />
                             <DoubleAnimation
                                 Storyboard.TargetName="PART_Ring3"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 To="-315"
                                 Duration="0:0:1.5" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid>
+                    <Grid CacheMode="BitmapCache">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
@@ -688,12 +604,7 @@
                                         VerticalAlignment="Top"
                                         RenderTransformOrigin="0.5,0.5">
                                         <controls:SmallPanel.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform />
-                                                <SkewTransform />
-                                                <RotateTransform Angle="-135" />
-                                                <TranslateTransform />
-                                            </TransformGroup>
+                                            <RotateTransform Angle="-135" />
                                         </controls:SmallPanel.RenderTransform>
                                         <Ellipse
                                             RenderTransformOrigin="0.5,0.5"
@@ -723,12 +634,7 @@
                                         VerticalAlignment="Bottom"
                                         RenderTransformOrigin="0.5,0.5">
                                         <controls:SmallPanel.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform />
-                                                <SkewTransform />
-                                                <RotateTransform Angle="225" />
-                                                <TranslateTransform />
-                                            </TransformGroup>
+                                            <RotateTransform Angle="225" />
                                         </controls:SmallPanel.RenderTransform>
                                         <Ellipse
                                             Stroke="Purple"
@@ -758,12 +664,7 @@
                                         VerticalAlignment="Bottom"
                                         RenderTransformOrigin="0.5,0.5">
                                         <controls:SmallPanel.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform />
-                                                <SkewTransform />
-                                                <RotateTransform Angle="45" />
-                                                <TranslateTransform />
-                                            </TransformGroup>
+                                            <RotateTransform Angle="45" />
                                         </controls:SmallPanel.RenderTransform>
                                         <Ellipse
                                             Stroke="#0fb8b2"
@@ -807,9 +708,9 @@
                         </StackPanel>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsStart" Value="True">
+                        <Trigger Property="IsLoading" Value="True">
                             <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_BeginStoryboard" Storyboard="{StaticResource PART_Resource_Storyboard}" />
+                                <BeginStoryboard x:Name="PART_BeginStoryboard" Storyboard="{StaticResource PART_Storyboard}" />
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="PART_BeginStoryboard" />
@@ -820,7 +721,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.StreamerLoading}" TargetType="{x:Type controls:StreamerLoading}" />
+
     <Style BasedOn="{StaticResource WD.WaitLoading}" TargetType="{x:Type controls:WaitLoading}" />
     <Style BasedOn="{StaticResource WD.CycleLoading}" TargetType="{x:Type controls:CycleLoading}" />
     <Style BasedOn="{StaticResource WD.RollLoading}" TargetType="{x:Type controls:RollLoading}" />

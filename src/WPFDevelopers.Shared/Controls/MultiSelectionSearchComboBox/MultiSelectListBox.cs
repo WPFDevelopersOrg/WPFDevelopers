@@ -14,6 +14,5 @@ namespace WPFDevelopers.Controls
         {
             return new MultiSelectComboBoxItem();
         }
-
     }
 }

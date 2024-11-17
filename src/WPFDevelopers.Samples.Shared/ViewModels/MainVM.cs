@@ -121,6 +121,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BasicControls:
                     ControlPanel = new BasicControlsExample();
                     break;
+                case MenuEnum.NotifyIcon:
+                    ControlPanel = new NotifyIconExample();
+                    break;
                 case MenuEnum.RingLoading:
                     ControlPanel = new RingLoadingExample();
                     break;
@@ -348,6 +351,18 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Drap:
                     ControlPanel = new DrapViewExample();
+                    break;
+                case MenuEnum.ChartPie:
+                    ControlPanel = new ChartPieExample();
+                    break;
+                case MenuEnum.Spacing:
+                    ControlPanel = new SpacingExample();
+                    break;
+                case MenuEnum.Drawer:
+                    ControlPanel = new DrawerExample();
+                    break;
+                case MenuEnum.DateRangePicker:
+                    ControlPanel = new DateRangePickerExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

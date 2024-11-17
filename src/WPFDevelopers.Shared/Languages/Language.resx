@@ -163,4 +163,7 @@
   <data name="Restore" xml:space="preserve">
     <value>向下还原</value>
   </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>全选</value>
+  </data>
 </root>

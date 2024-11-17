@@ -23,7 +23,13 @@
             <wd:TimePicker
                 Width="200"
                 VerticalAlignment="Center"
+                wd:ElementHelper.Watermark="selection time"
                 SelectedTime="2023-05-06 23:59:59" />
+            <wd:TimePicker
+                Width="200"
+                VerticalAlignment="Center"
+                wd:ElementHelper.CornerRadius="4"
+                SelectedTime="{Binding MyDateTime, RelativeSource={RelativeSource AncestorType=local:TimePickerExample}}" />
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TimePickerExample.xaml" CodeType="Xaml" />

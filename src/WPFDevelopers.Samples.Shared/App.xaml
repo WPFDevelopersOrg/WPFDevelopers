@@ -31,6 +31,7 @@
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/TransformLayout/TransformLayout.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/DrapView/Controls/TransformThumb.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/NavigateMenu/NavigateMenu.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Loadings/StreamerLoading.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="avalonedit:TextEditor">
                 <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />

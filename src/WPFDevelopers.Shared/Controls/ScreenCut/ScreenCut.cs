@@ -130,42 +130,42 @@ namespace WPFDevelopers.Controls
 
         private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
         private WrapPanel _wrapPanel;
-        private AdornerLayer adornerLayer;
+        private AdornerLayer _adornerLayer;
 
         /// <summary>
         ///     当前绘制矩形
         /// </summary>
-        private Border borderRectangle;
+        private Border _borderRectangle;
 
         /// <summary>
         ///     当前箭头
         /// </summary>
-        private Control controlArrow;
+        private Control _controlArrow;
 
-        private ControlTemplate controlTemplate;
+        private ControlTemplate _controlTemplate;
 
         /// <summary>
         ///     绘制当前椭圆
         /// </summary>
-        private Ellipse drawEllipse;
+        private Ellipse _drawEllipse;
 
-        private FrameworkElement frameworkElement;
-        private bool isMouseUp;
-        private Point? pointStart, pointEnd;
+        private FrameworkElement _frameworkElement;
+        private bool _isMouseUp;
+        private Point? _pointStart, _pointEnd;
 
         /// <summary>
         ///     当前画笔
         /// </summary>
-        private Polyline polyLine;
+        private Polyline _polyLine;
 
-        private Rect rect;
-        private ScreenCutAdorner screenCutAdorner;
-        private ScreenCutMouseType screenCutMouseType = ScreenCutMouseType.Default;
+        private Rect _rect;
+        private ScreenCutAdorner _screenCutAdorner;
+        private ScreenCutMouseType _screenCutMouseType = ScreenCutMouseType.Default;
 
         /// <summary>
         ///     当前文本
         /// </summary>
-        private Border textBorder;
+        private Border _textBorder;
 
         /// <summary>
         /// 截图完成委托
@@ -183,17 +183,17 @@ namespace WPFDevelopers.Controls
         /// 截图取消事件
         /// </summary>
         public event ScreenShotCanceled CutCanceled;
-        private double y1;
-        private int ScreenIndex;
+        private double _y1;
+        private int _screenIndex;
         public static int CaptureScreenID = -1;
-        private Bitmap ScreenCapture;
-        private ScreenDPI screenDPI;
+        private Bitmap _screenCapture;
+        private ScreenDPI _screenDPI;
         public ScreenCut(int index)
         {
-            ScreenIndex = index;
-            this.Left = Screen.AllScreens[ScreenIndex].WorkingArea.Left;
+            _screenIndex = index;
+            this.Left = Screen.AllScreens[_screenIndex].WorkingArea.Left;
             ShowInTaskbar = false;
-            screenDPI = GetScreenDPI(ScreenIndex);
+            _screenDPI = GetScreenDPI(_screenIndex);
         }
         static ScreenCut()
         {
@@ -247,8 +247,8 @@ namespace WPFDevelopers.Controls
             _radioButtonText = GetTemplateChild(RadioButtonTextTemplateName) as RadioButton;
             if (_radioButtonText != null)
                 _radioButtonText.Click += RadioButtonText_Click;
-            _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width;
-            _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height;
+            _canvas.Width = Screen.AllScreens[_screenIndex].Bounds.Width;
+            _canvas.Height = Screen.AllScreens[_screenIndex].Bounds.Height;
             //_canvas.Background = new ImageBrush(ControlsHelper.Capture());
             _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
             _rectangleLeft.Width = _canvas.Width;
@@ -260,7 +260,7 @@ namespace WPFDevelopers.Controls
             _wrapPanel = GetTemplateChild(WrapPanelColorTemplateName) as WrapPanel;
             _wrapPanel.PreviewMouseDown += WrapPanel_PreviewMouseDown;
             Loaded += ScreenCut_Loaded;
-            controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
+            _controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
         }
 
         protected override void OnClosed(EventArgs e)
@@ -302,18 +302,18 @@ namespace WPFDevelopers.Controls
         }
         private Bitmap CopyScreen()
         {
-            Left = Screen.AllScreens[ScreenIndex].Bounds.Left / screenDPI.scaleX;
-            Top = Screen.AllScreens[ScreenIndex].Bounds.Top / screenDPI.scaleY;
-            Width = Screen.AllScreens[ScreenIndex].Bounds.Width / screenDPI.scaleX;
-            Height = Screen.AllScreens[ScreenIndex].Bounds.Height / screenDPI.scaleY;
-            _canvas.Width = Screen.AllScreens[ScreenIndex].Bounds.Width / screenDPI.scaleX;
-            _canvas.Height = Screen.AllScreens[ScreenIndex].Bounds.Height / screenDPI.scaleY;
+            Left = Screen.AllScreens[_screenIndex].Bounds.Left / _screenDPI.scaleX;
+            Top = Screen.AllScreens[_screenIndex].Bounds.Top / _screenDPI.scaleY;
+            Width = Screen.AllScreens[_screenIndex].Bounds.Width / _screenDPI.scaleX;
+            Height = Screen.AllScreens[_screenIndex].Bounds.Height / _screenDPI.scaleY;
+            _canvas.Width = Screen.AllScreens[_screenIndex].Bounds.Width / _screenDPI.scaleX;
+            _canvas.Height = Screen.AllScreens[_screenIndex].Bounds.Height / _screenDPI.scaleY;
             _canvas.SetValue(LeftProperty, Left);
             _canvas.SetValue(TopProperty, Top);
-            Bitmap ScreenCapture = new Bitmap(Screen.AllScreens[ScreenIndex].Bounds.Width, Screen.AllScreens[ScreenIndex].Bounds.Height);
+            Bitmap ScreenCapture = new Bitmap(Screen.AllScreens[_screenIndex].Bounds.Width, Screen.AllScreens[_screenIndex].Bounds.Height);
             using (Graphics g = Graphics.FromImage(ScreenCapture)) 
             {
-                g.CopyFromScreen(Screen.AllScreens[ScreenIndex].Bounds.Left, Screen.AllScreens[ScreenIndex].Bounds.Top, 0, 0, Screen.AllScreens[ScreenIndex].Bounds.Size);
+                g.CopyFromScreen(Screen.AllScreens[_screenIndex].Bounds.Left, Screen.AllScreens[_screenIndex].Bounds.Top, 0, 0, Screen.AllScreens[_screenIndex].Bounds.Size);
             }
             return ScreenCapture;
         }
@@ -360,7 +360,7 @@ namespace WPFDevelopers.Controls
         {
             if (radioButton.IsChecked == true)
             {
-                screenCutMouseType = screenCutMouseTypeRadio;
+                _screenCutMouseType = screenCutMouseTypeRadio;
                 _border.Cursor = Cursors.Arrow;
                 if (_popup.PlacementTarget != null && _popup.IsOpen)
                     _popup.IsOpen = false;
@@ -370,7 +370,7 @@ namespace WPFDevelopers.Controls
             }
             else
             {
-                if (screenCutMouseType == screenCutMouseTypeRadio)
+                if (_screenCutMouseType == screenCutMouseTypeRadio)
                     Restore();
             }
         }
@@ -378,8 +378,8 @@ namespace WPFDevelopers.Controls
         private void Restore()
         {
             _border.Cursor = Cursors.SizeAll;
-            if (screenCutMouseType == ScreenCutMouseType.Default) return;
-            screenCutMouseType = ScreenCutMouseType.Default;
+            if (_screenCutMouseType == ScreenCutMouseType.Default) return;
+            _screenCutMouseType = ScreenCutMouseType.Default;
             if (_popup.PlacementTarget != null && _popup.IsOpen)
                 _popup.IsOpen = false;
         }
@@ -392,14 +392,14 @@ namespace WPFDevelopers.Controls
 
         private void _border_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (isMouseUp)
+            if (_isMouseUp)
             {
                 var left = Canvas.GetLeft(_border);
                 var top = Canvas.GetTop(_border);
                 var beignPoint = new Point(left, top);
                 var endPoint = new Point(left + _border.ActualWidth, top + _border.ActualHeight);
-                rect = new Rect(beignPoint, endPoint);
-                pointStart = beignPoint;
+                _rect = new Rect(beignPoint, endPoint);
+                _pointStart = beignPoint;
                 MoveAllRectangle(endPoint);
             }
             EditBarPosition();
@@ -407,8 +407,8 @@ namespace WPFDevelopers.Controls
         
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (screenCutMouseType == ScreenCutMouseType.Default)
-                screenCutMouseType = ScreenCutMouseType.MoveMouse;
+            if (_screenCutMouseType == ScreenCutMouseType.Default)
+                _screenCutMouseType = ScreenCutMouseType.MoveMouse;
         }
         
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -450,17 +450,17 @@ namespace WPFDevelopers.Controls
             _rectangleRight.Visibility = Visibility.Collapsed;
             _rectangleBottom.Visibility = Visibility.Collapsed;
             // 屏幕等比截图需要考虑缩放率进行等比放大canvas
-            var renderTargetBitmap = new RenderTargetBitmap((int)(_canvas.Width * screenDPI.scaleX),
-                (int)(_canvas.Height * screenDPI.scaleY), screenDPI.dpiX, screenDPI.dpiY, PixelFormats.Default);
+            var renderTargetBitmap = new RenderTargetBitmap((int)(_canvas.Width * _screenDPI.scaleX),
+                (int)(_canvas.Height * _screenDPI.scaleY), _screenDPI.dpiX, _screenDPI.dpiY, PixelFormats.Default);
             renderTargetBitmap.Render(_canvas);
             // 屏幕等比截图需要考虑缩放率进行等比放大截图区域
             var realrect = new Int32Rect(
-                (int)(rect.X * screenDPI.scaleX),
-                (int)(rect.Y * screenDPI.scaleY),
-                (int)(rect.Width * screenDPI.scaleX),
-                (int)(rect.Height * screenDPI.scaleY));
+                (int)(_rect.X * _screenDPI.scaleX),
+                (int)(_rect.Y * _screenDPI.scaleY),
+                (int)(_rect.Width * _screenDPI.scaleX),
+                (int)(_rect.Height * _screenDPI.scaleY));
             //return new CroppedBitmap(renderTargetBitmap,
-            //    new Int32Rect((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height));
+            //    new Int32Rect((int)_rect.X, (int)_rect.Y, (int)_rect.Width, (int)_rect.Height));
             return new CroppedBitmap(renderTargetBitmap, realrect);
         }
         
@@ -483,7 +483,7 @@ namespace WPFDevelopers.Controls
             else if (e.Key == Key.Delete)
             {
                 if (_canvas.Children.Count > 0)
-                    _canvas.Children.Remove(frameworkElement);
+                    _canvas.Children.Remove(_frameworkElement);
             }
             else if (e.KeyStates == Keyboard.GetKeyStates(Key.Z) && Keyboard.Modifiers == ModifierKeys.Control)
             {
@@ -500,38 +500,38 @@ namespace WPFDevelopers.Controls
             // if is multi-screen, only one screen is allowed.
             if (CaptureScreenID == -1)
             {
-                CaptureScreenID = ScreenIndex;
+                CaptureScreenID = _screenIndex;
             }
-            if (CaptureScreenID != -1 && CaptureScreenID != ScreenIndex)
+            if (CaptureScreenID != -1 && CaptureScreenID != _screenIndex)
             {
                 e.Handled = true;
                 return;
             }
 
             var vPoint = e.GetPosition(_canvas);
-            if (!isMouseUp)
+            if (!_isMouseUp)
             {
-                pointStart = vPoint;
-                screenCutMouseType = ScreenCutMouseType.DrawMouse;
+                _pointStart = vPoint;
+                _screenCutMouseType = ScreenCutMouseType.DrawMouse;
                 _editBar.Visibility = Visibility.Hidden;
-                pointEnd = pointStart;
-                rect = new Rect(pointStart.Value, pointEnd.Value);
+                _pointEnd = _pointStart;
+                _rect = new Rect(_pointStart.Value, _pointEnd.Value);
             }
             else
             {
-                if (vPoint.X < rect.Left || vPoint.X > rect.Right)
+                if (vPoint.X < _rect.Left || vPoint.X > _rect.Right)
                     return;
 
-                if (vPoint.Y < rect.Top || vPoint.Y > rect.Bottom)
+                if (vPoint.Y < _rect.Top || vPoint.Y > _rect.Bottom)
                     return;
-                pointStart = vPoint;
-                if (textBorder != null)
+                _pointStart = vPoint;
+                if (_textBorder != null)
                     Focus();
 
-                switch (screenCutMouseType)
+                switch (_screenCutMouseType)
                 {
                     case ScreenCutMouseType.DrawText:
-                        y1 = vPoint.Y;
+                        _y1 = vPoint.Y;
                         DrawText();
                         break;
                     default:
@@ -543,18 +543,18 @@ namespace WPFDevelopers.Controls
         
         private void DrawText()
         {
-            if (pointStart.Value.X < rect.Right
+            if (_pointStart.Value.X < _rect.Right
                 &&
-                pointStart.Value.X > rect.Left
+                _pointStart.Value.X > _rect.Left
                 &&
-                pointStart.Value.Y > rect.Top
+                _pointStart.Value.Y > _rect.Top
                 &&
-                pointStart.Value.Y < rect.Bottom)
+                _pointStart.Value.Y < _rect.Bottom)
             {
-                var currentWAndX = pointStart.Value.X + 40;
-                if (textBorder == null)
+                var currentWAndX = _pointStart.Value.X + 40;
+                if (_textBorder == null)
                 {
-                    textBorder = new Border
+                    _textBorder = new Border
                     {
                         BorderBrush = _currentBrush == null ? Brushes.Red : _currentBrush,
                         BorderThickness = new Thickness(1),
@@ -565,14 +565,14 @@ namespace WPFDevelopers.Controls
                     textBox.Style = null;
                     textBox.Background = null;
                     textBox.BorderThickness = new Thickness(0);
-                    textBox.Foreground = textBorder.BorderBrush;
+                    textBox.Foreground = _textBorder.BorderBrush;
                     textBox.FontFamily = DrawingContextHelper.FontFamily;
                     textBox.FontSize = 16;
                     textBox.TextWrapping = TextWrapping.Wrap;
                     textBox.FontWeight = FontWeights.Normal;
                     textBox.MinWidth = _width;
-                    textBox.MaxWidth = rect.Right - pointStart.Value.X;
-                    textBox.MaxHeight = rect.Height - 4;
+                    textBox.MaxWidth = _rect.Right - _pointStart.Value.X;
+                    textBox.MaxHeight = _rect.Height - 4;
                     textBox.Cursor = Cursors.Hand;
 
                     textBox.Padding = new Thickness(4);
@@ -588,36 +588,36 @@ namespace WPFDevelopers.Controls
                                 _canvas.Children.Remove(border);
                         }
                     };
-                    textBorder.SizeChanged += (s, e1) =>
+                    _textBorder.SizeChanged += (s, e1) =>
                     {
                         var tb = s as Border;
-                        var y = y1;
-                        if (y + tb.ActualHeight > rect.Bottom)
+                        var y = _y1;
+                        if (y + tb.ActualHeight > _rect.Bottom)
                         {
-                            var v = Math.Abs(rect.Bottom - (y + tb.ActualHeight));
-                            y1 = y - v;
-                            Canvas.SetTop(tb, y1 + 2);
+                            var v = Math.Abs(_rect.Bottom - (y + tb.ActualHeight));
+                            _y1 = y - v;
+                            Canvas.SetTop(tb, _y1 + 2);
                         }
                     };
-                    textBorder.PreviewMouseLeftButtonDown += (s, e) =>
+                    _textBorder.PreviewMouseLeftButtonDown += (s, e) =>
                     {
                         _radioButtonText.IsChecked = true;
                         RadioButtonText_Click(null, null);
                         SelectElement();
                         var border = s as Border;
-                        frameworkElement = border;
-                        frameworkElement.Opacity = .7;
+                        _frameworkElement = border;
+                        _frameworkElement.Opacity = .7;
                         border.BorderThickness = new Thickness(1);
                     };
-                    textBorder.Child = textBox;
-                    _canvas.Children.Add(textBorder);
+                    _textBorder.Child = textBox;
+                    _canvas.Children.Add(_textBorder);
                     textBox.Focus();
-                    var x = pointStart.Value.X;
+                    var x = _pointStart.Value.X;
 
-                    if (currentWAndX > rect.Right)
-                        x = x - (currentWAndX - rect.Right);
-                    Canvas.SetLeft(textBorder, x - 2);
-                    Canvas.SetTop(textBorder, pointStart.Value.Y - 2);
+                    if (currentWAndX > _rect.Right)
+                        x = x - (currentWAndX - _rect.Right);
+                    Canvas.SetLeft(_textBorder, x - 2);
+                    Canvas.SetTop(_textBorder, _pointStart.Value.Y - 2);
                 }
             }
         }
@@ -627,13 +627,13 @@ namespace WPFDevelopers.Controls
             if (e.Source is RadioButton)
                 return;
 
-            if (pointStart is null)
+            if (_pointStart is null)
                 return;
 
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 var current = e.GetPosition(_canvas);
-                switch (screenCutMouseType)
+                switch (_screenCutMouseType)
                 {
                     case ScreenCutMouseType.DrawMouse:
                         MoveAllRectangle(current);
@@ -657,109 +657,109 @@ namespace WPFDevelopers.Controls
 
         private void CheckPoint(Point current)
         {
-            if (current == pointStart) return;
+            if (current == _pointStart) return;
 
-            if (current.X > rect.BottomRight.X
+            if (current.X > _rect.BottomRight.X
                 ||
-                current.Y > rect.BottomRight.Y)
+                current.Y > _rect.BottomRight.Y)
                 return;
         }
         
         private void DrwaInkControl(Point current)
         {
             CheckPoint(current);
-            if (current.X >= rect.Left
+            if (current.X >= _rect.Left
                 &&
-                current.X <= rect.Right
+                current.X <= _rect.Right
                 &&
-                current.Y >= rect.Top
+                current.Y >= _rect.Top
                 &&
-                current.Y <= rect.Bottom)
+                current.Y <= _rect.Bottom)
             {
-                if (polyLine == null)
+                if (_polyLine == null)
                 {
-                    polyLine = new Polyline();
-                    polyLine.Stroke = _currentBrush == null ? Brushes.Red : _currentBrush;
-                    polyLine.Cursor = Cursors.Hand;
-                    polyLine.StrokeThickness = 3;
-                    polyLine.StrokeLineJoin = PenLineJoin.Round;
-                    polyLine.StrokeStartLineCap = PenLineCap.Round;
-                    polyLine.StrokeEndLineCap = PenLineCap.Round;
-                    polyLine.MouseLeftButtonDown += (s, e) =>
+                    _polyLine = new Polyline();
+                    _polyLine.Stroke = _currentBrush == null ? Brushes.Red : _currentBrush;
+                    _polyLine.Cursor = Cursors.Hand;
+                    _polyLine.StrokeThickness = 3;
+                    _polyLine.StrokeLineJoin = PenLineJoin.Round;
+                    _polyLine.StrokeStartLineCap = PenLineCap.Round;
+                    _polyLine.StrokeEndLineCap = PenLineCap.Round;
+                    _polyLine.MouseLeftButtonDown += (s, e) =>
                     {
                         _radioButtonInk.IsChecked = true;
                         RadioButtonInk_Click(null, null);
                         SelectElement();
-                        frameworkElement = s as Polyline;
-                        frameworkElement.Opacity = .7;
+                        _frameworkElement = s as Polyline;
+                        _frameworkElement.Opacity = .7;
                     };
-                    _canvas.Children.Add(polyLine);
+                    _canvas.Children.Add(_polyLine);
                 }
 
-                polyLine.Points.Add(current);
+                _polyLine.Points.Add(current);
             }
         }
         
         private void DrawArrowControl(Point current)
         {
             CheckPoint(current);
-            if (screenCutMouseType != ScreenCutMouseType.DrawArrow)
+            if (_screenCutMouseType != ScreenCutMouseType.DrawArrow)
                 return;
 
-            if (pointStart is null)
+            if (_pointStart is null)
                 return;
 
-            var vPoint = pointStart.Value;
+            var vPoint = _pointStart.Value;
 
             var drawArrow = new Rect(vPoint, current);
-            if (controlArrow == null)
+            if (_controlArrow == null)
             {
-                controlArrow = new Control();
-                controlArrow.Background = _currentBrush == null ? Brushes.Red : _currentBrush;
-                controlArrow.Template = controlTemplate;
-                controlArrow.Cursor = Cursors.Hand;
-                controlArrow.Tag = _tag;
-                controlArrow.MouseLeftButtonDown += (s, e) =>
+                _controlArrow = new Control();
+                _controlArrow.Background = _currentBrush == null ? Brushes.Red : _currentBrush;
+                _controlArrow.Template = _controlTemplate;
+                _controlArrow.Cursor = Cursors.Hand;
+                _controlArrow.Tag = _tag;
+                _controlArrow.MouseLeftButtonDown += (s, e) =>
                 {
                     _radioButtonArrow.IsChecked = true;
                     RadioButtonArrow_Click(null, null);
                     SelectElement();
-                    frameworkElement = s as Control;
-                    frameworkElement.Opacity = .7;
+                    _frameworkElement = s as Control;
+                    _frameworkElement.Opacity = .7;
                 };
-                _canvas.Children.Add(controlArrow);
-                Canvas.SetLeft(controlArrow, drawArrow.Left);
-                Canvas.SetTop(controlArrow, drawArrow.Top - 7.5);
+                _canvas.Children.Add(_controlArrow);
+                Canvas.SetLeft(_controlArrow, drawArrow.Left);
+                Canvas.SetTop(_controlArrow, drawArrow.Top - 7.5);
             }
 
             var rotate = new RotateTransform();
             var renderOrigin = new Point(0, .5);
-            controlArrow.RenderTransformOrigin = renderOrigin;
-            controlArrow.RenderTransform = rotate;
+            _controlArrow.RenderTransformOrigin = renderOrigin;
+            _controlArrow.RenderTransform = rotate;
             rotate.Angle = Helper.CalculeAngle(vPoint, current);
-            if (current.X < rect.Left
+            if (current.X < _rect.Left
                 ||
-                current.X > rect.Right
+                current.X > _rect.Right
                 ||
-                current.Y < rect.Top
+                current.Y < _rect.Top
                 ||
-                current.Y > rect.Bottom)
+                current.Y > _rect.Bottom)
             {
                 if (current.X >= vPoint.X && current.Y < vPoint.Y)
                 {
                     var a1 = (current.Y - vPoint.Y) / (current.X - vPoint.X);
                     var b1 = vPoint.Y - a1 * vPoint.X;
-                    var xTop = (rect.Top - b1) / a1;
-                    var yRight = a1 * rect.Right + b1;
+                    var xTop = (_rect.Top - b1) / a1;
+                    var yRight = a1 * _rect.Right + b1;
 
-                    if (xTop <= rect.Right)
+                    if (xTop <= _rect.Right)
                     {
                         current.X = xTop;
-                        current.Y = rect.Top;
+                        current.Y = _rect.Top;
                     }
                     else
                     {
-                        current.X = rect.Right;
+                        current.X = _rect.Right;
                         current.Y = yRight;
                     }
                 }
@@ -767,17 +767,17 @@ namespace WPFDevelopers.Controls
                 {
                     var a1 = (current.Y - vPoint.Y) / (current.X - vPoint.X);
                     var b1 = vPoint.Y - a1 * vPoint.X;
-                    var xBottom = (rect.Bottom - b1) / a1;
-                    var yRight = a1 * rect.Right + b1;
+                    var xBottom = (_rect.Bottom - b1) / a1;
+                    var yRight = a1 * _rect.Right + b1;
 
-                    if (xBottom <= rect.Right)
+                    if (xBottom <= _rect.Right)
                     {
                         current.X = xBottom;
-                        current.Y = rect.Bottom;
+                        current.Y = _rect.Bottom;
                     }
                     else
                     {
-                        current.X = rect.Right;
+                        current.X = _rect.Right;
                         current.Y = yRight;
                     }
                 }
@@ -785,16 +785,16 @@ namespace WPFDevelopers.Controls
                 {
                     var a1 = (current.Y - vPoint.Y) / (current.X - vPoint.X);
                     var b1 = vPoint.Y - a1 * vPoint.X;
-                    var xTop = (rect.Top - b1) / a1;
-                    var yLeft = a1 * rect.Left + b1;
-                    if (xTop >= rect.Left)
+                    var xTop = (_rect.Top - b1) / a1;
+                    var yLeft = a1 * _rect.Left + b1;
+                    if (xTop >= _rect.Left)
                     {
                         current.X = xTop;
-                        current.Y = rect.Top;
+                        current.Y = _rect.Top;
                     }
                     else
                     {
-                        current.X = rect.Left;
+                        current.X = _rect.Left;
                         current.Y = yLeft;
                     }
                 }
@@ -802,18 +802,18 @@ namespace WPFDevelopers.Controls
                 {
                     var a1 = (current.Y - vPoint.Y) / (current.X - vPoint.X);
                     var b1 = vPoint.Y - a1 * vPoint.X;
-                    var xBottom = (rect.Bottom - b1) / a1;
-                    var yLeft = a1 * rect.Left + b1;
+                    var xBottom = (_rect.Bottom - b1) / a1;
+                    var yLeft = a1 * _rect.Left + b1;
 
-                    if (xBottom <= rect.Left)
+                    if (xBottom <= _rect.Left)
                     {
-                        current.X = rect.Left;
+                        current.X = _rect.Left;
                         current.Y = yLeft;
                     }
                     else
                     {
                         current.X = xBottom;
-                        current.Y = rect.Bottom;
+                        current.Y = _rect.Bottom;
                     }
                 }
             }
@@ -822,24 +822,24 @@ namespace WPFDevelopers.Controls
             var y = current.Y - vPoint.Y;
             var width = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
             width = width < 15 ? 15 : width;
-            controlArrow.Width = width;
+            _controlArrow.Width = width;
         }
         
         private void DrawMultipleControl(Point current)
         {
             CheckPoint(current);
-            if (pointStart is null)
+            if (_pointStart is null)
                 return;
 
-            var vPoint = pointStart.Value;
+            var vPoint = _pointStart.Value;
 
             var drawRect = new Rect(vPoint, current);
-            switch (screenCutMouseType)
+            switch (_screenCutMouseType)
             {
                 case ScreenCutMouseType.DrawRectangle:
-                    if (borderRectangle == null)
+                    if (_borderRectangle == null)
                     {
-                        borderRectangle = new Border
+                        _borderRectangle = new Border
                         {
                             BorderBrush = _currentBrush == null ? Brushes.Red : _currentBrush,
                             BorderThickness = new Thickness(3),
@@ -847,37 +847,37 @@ namespace WPFDevelopers.Controls
                             Tag = _tag,
                             Cursor = Cursors.Hand
                         };
-                        borderRectangle.MouseLeftButtonDown += (s, e) =>
+                        _borderRectangle.MouseLeftButtonDown += (s, e) =>
                         {
                             _radioButtonRectangle.IsChecked = true;
                             RadioButtonRectangle_Click(null, null);
                             SelectElement();
-                            frameworkElement = s as Border;
-                            frameworkElement.Opacity = .7;
+                            _frameworkElement = s as Border;
+                            _frameworkElement.Opacity = .7;
                         };
-                        _canvas.Children.Add(borderRectangle);
+                        _canvas.Children.Add(_borderRectangle);
                     }
 
                     break;
                 case ScreenCutMouseType.DrawEllipse:
-                    if (drawEllipse == null)
+                    if (_drawEllipse == null)
                     {
-                        drawEllipse = new Ellipse
+                        _drawEllipse = new Ellipse
                         {
                             Stroke = _currentBrush == null ? Brushes.Red : _currentBrush,
                             StrokeThickness = 3,
                             Tag = _tag,
                             Cursor = Cursors.Hand
                         };
-                        drawEllipse.MouseLeftButtonDown += (s, e) =>
+                        _drawEllipse.MouseLeftButtonDown += (s, e) =>
                         {
                             _radioButtonEllipse.IsChecked = true;
                             RadioButtonEllipse_Click(null, null);
                             SelectElement();
-                            frameworkElement = s as Ellipse;
-                            frameworkElement.Opacity = .7;
+                            _frameworkElement = s as Ellipse;
+                            _frameworkElement.Opacity = .7;
                         };
-                        _canvas.Children.Add(drawEllipse);
+                        _canvas.Children.Add(_drawEllipse);
                     }
 
                     break;
@@ -892,16 +892,16 @@ namespace WPFDevelopers.Controls
                 var wLeft = Canvas.GetLeft(_border) + _border.ActualWidth;
                 var left = drawRect.Left < Canvas.GetLeft(_border) ? Canvas.GetLeft(_border) :
                     drawRect.Left > wLeft ? wLeft : drawRect.Left;
-                if (borderRectangle != null)
+                if (_borderRectangle != null)
                 {
-                    borderRectangle.Width = drawRect.Width;
-                    Canvas.SetLeft(borderRectangle, left);
+                    _borderRectangle.Width = drawRect.Width;
+                    Canvas.SetLeft(_borderRectangle, left);
                 }
 
-                if (drawEllipse != null)
+                if (_drawEllipse != null)
                 {
-                    drawEllipse.Width = drawRect.Width;
-                    Canvas.SetLeft(drawEllipse, left);
+                    _drawEllipse.Width = drawRect.Width;
+                    Canvas.SetLeft(_drawEllipse, left);
                 }
             }
 
@@ -913,16 +913,16 @@ namespace WPFDevelopers.Controls
                 var hTop = Canvas.GetTop(_border) + _border.Height;
                 var top = drawRect.Top < Canvas.GetTop(_border) ? Canvas.GetTop(_border) :
                     drawRect.Top > hTop ? hTop : drawRect.Top;
-                if (borderRectangle != null)
+                if (_borderRectangle != null)
                 {
-                    borderRectangle.Height = drawRect.Height;
-                    Canvas.SetTop(borderRectangle, top);
+                    _borderRectangle.Height = drawRect.Height;
+                    Canvas.SetTop(_borderRectangle, top);
                 }
 
-                if (drawEllipse != null)
+                if (_drawEllipse != null)
                 {
-                    drawEllipse.Height = drawRect.Height;
-                    Canvas.SetTop(drawEllipse, top);
+                    _drawEllipse.Height = drawRect.Height;
+                    Canvas.SetTop(_drawEllipse, top);
                 }
             }
         }
@@ -940,10 +940,10 @@ namespace WPFDevelopers.Controls
         
         private void MoveRect(Point current)
         {
-            if (pointStart is null)
+            if (_pointStart is null)
                 return;
 
-            var vPoint = pointStart.Value;
+            var vPoint = _pointStart.Value;
 
             if (current != vPoint)
             {
@@ -958,11 +958,11 @@ namespace WPFDevelopers.Controls
                     left = _canvas.ActualWidth - _border.ActualWidth;
                 if (top + _border.Height >= _canvas.ActualHeight)
                     top = _canvas.ActualHeight - _border.ActualHeight;
-                pointStart = current;
+                _pointStart = current;
 
                 Canvas.SetLeft(_border, left);
                 Canvas.SetTop(_border, top);
-                rect = new Rect(new Point(left, top), new Point(left + _border.Width, top + _border.Height));
+                _rect = new Rect(new Point(left, top), new Point(left + _border.Width, top + _border.Height));
                 _rectangleLeft.Height = _canvas.ActualHeight;
                 _rectangleLeft.Width = left <= 0 ? 0 : left >= _canvas.ActualWidth ? _canvas.ActualWidth : left;
 
@@ -987,17 +987,17 @@ namespace WPFDevelopers.Controls
         {
             if (e.Source is ToggleButton)
                 return;
-            if (pointStart == pointEnd)
+            if (_pointStart == _pointEnd)
             {
                 return;
             }
             var fElement = e.Source as FrameworkElement;
             if (fElement != null && fElement.Tag == null)
                 SelectElement();
-            isMouseUp = true;
-            if (screenCutMouseType != ScreenCutMouseType.Default)
+            _isMouseUp = true;
+            if (_screenCutMouseType != ScreenCutMouseType.Default)
             {
-                if (screenCutMouseType == ScreenCutMouseType.MoveMouse)
+                if (_screenCutMouseType == ScreenCutMouseType.MoveMouse)
                     EditBarPosition();
 
                 if (_radioButtonRectangle.IsChecked != true
@@ -1009,7 +1009,7 @@ namespace WPFDevelopers.Controls
                     _radioButtonText.IsChecked != true
                     &&
                     _radioButtonInk.IsChecked != true)
-                    screenCutMouseType = ScreenCutMouseType.Default;
+                    _screenCutMouseType = ScreenCutMouseType.Default;
                 else
                     DisposeControl();
             }
@@ -1017,19 +1017,19 @@ namespace WPFDevelopers.Controls
         
         private void DisposeControl()
         {
-            polyLine = null;
-            textBorder = null;
-            borderRectangle = null;
-            drawEllipse = null;
-            controlArrow = null;
-            pointStart = null;
-            pointEnd = null;
+            _polyLine = null;
+            _textBorder = null;
+            _borderRectangle = null;
+            _drawEllipse = null;
+            _controlArrow = null;
+            _pointStart = null;
+            _pointEnd = null;
         }
         
         private void EditBarPosition()
         {
             _editBar.Visibility = Visibility.Visible;
-            Canvas.SetLeft(_editBar, rect.X + rect.Width - _editBar.ActualWidth);
+            Canvas.SetLeft(_editBar, _rect.X + _rect.Width - _editBar.ActualWidth);
             var y = Canvas.GetTop(_border) + _border.ActualHeight + _editBar.ActualHeight + _popupBorder.ActualHeight +
                     24;
             if (y > _canvas.ActualHeight && Canvas.GetTop(_border) > _editBar.ActualHeight)
@@ -1048,55 +1048,55 @@ namespace WPFDevelopers.Controls
         
         private void MoveAllRectangle(Point current)
         {
-            if (pointStart is null)
+            if (_pointStart is null)
                 return;
 
-            var vPoint = pointStart.Value;
+            var vPoint = _pointStart.Value;
 
-            pointEnd = current;
+            _pointEnd = current;
             var vEndPoint = current;
 
-            rect = new Rect(vPoint, vEndPoint);
-            _rectangleLeft.Width = rect.X < 0 ? 0 : rect.X > _canvas.ActualWidth ? _canvas.ActualWidth : rect.X;
+            _rect = new Rect(vPoint, vEndPoint);
+            _rectangleLeft.Width = _rect.X < 0 ? 0 : _rect.X > _canvas.ActualWidth ? _canvas.ActualWidth : _rect.X;
             _rectangleLeft.Height = _canvas.Height;
 
             Canvas.SetLeft(_rectangleTop, _rectangleLeft.Width);
-            _rectangleTop.Width = rect.Width;
+            _rectangleTop.Width = _rect.Width;
             var h = 0.0;
             if (current.Y < vPoint.Y)
                 h = current.Y;
             else
-                h = current.Y - rect.Height;
+                h = current.Y - _rect.Height;
 
             _rectangleTop.Height = h < 0 ? 0 : h > _canvas.ActualHeight ? _canvas.ActualHeight : h;
 
-            Canvas.SetLeft(_rectangleRight, _rectangleLeft.Width + rect.Width);
-            var rWidth = _canvas.Width - (rect.Width + _rectangleLeft.Width);
+            Canvas.SetLeft(_rectangleRight, _rectangleLeft.Width + _rect.Width);
+            var rWidth = _canvas.Width - (_rect.Width + _rectangleLeft.Width);
             _rectangleRight.Width = rWidth < 0 ? 0 : rWidth > _canvas.ActualWidth ? _canvas.ActualWidth : rWidth;
 
             _rectangleRight.Height = _canvas.Height;
 
             Canvas.SetLeft(_rectangleBottom, _rectangleLeft.Width);
-            Canvas.SetTop(_rectangleBottom, rect.Height + _rectangleTop.Height);
-            _rectangleBottom.Width = rect.Width;
-            var rBottomHeight = _canvas.Height - (rect.Height + _rectangleTop.Height);
+            Canvas.SetTop(_rectangleBottom, _rect.Height + _rectangleTop.Height);
+            _rectangleBottom.Width = _rect.Width;
+            var rBottomHeight = _canvas.Height - (_rect.Height + _rectangleTop.Height);
             _rectangleBottom.Height = rBottomHeight < 0 ? 0 : rBottomHeight;
 
-            _border.Height = rect.Height;
-            _border.Width = rect.Width;
-            Canvas.SetLeft(_border, rect.X);
-            Canvas.SetTop(_border, rect.Y);
+            _border.Height = _rect.Height;
+            _border.Width = _rect.Width;
+            Canvas.SetLeft(_border, _rect.X);
+            Canvas.SetTop(_border, _rect.Y);
 
-            if (adornerLayer != null) return;
+            if (_adornerLayer != null) return;
             _border.Opacity = 1;
-            adornerLayer = AdornerLayer.GetAdornerLayer(_border);
-            screenCutAdorner = new ScreenCutAdorner(_border);
-            screenCutAdorner.PreviewMouseDown += (s, e) =>
+            _adornerLayer = AdornerLayer.GetAdornerLayer(_border);
+            _screenCutAdorner = new ScreenCutAdorner(_border);
+            _screenCutAdorner.PreviewMouseDown += (s, e) =>
             {
                 Restore();
                 ResoreRadioButton();
             };
-            adornerLayer.Add(screenCutAdorner);
+            _adornerLayer.Add(_screenCutAdorner);
             _border.SizeChanged += _border_SizeChanged;
         }
         

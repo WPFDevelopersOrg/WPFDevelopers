@@ -22,6 +22,5 @@ namespace WPFDevelopers.Controls
         public static readonly DependencyProperty IsCenterProperty =
             DependencyProperty.Register("IsCenter", typeof(bool), typeof(MessageListBoxItem), new PropertyMetadata(false));
 
-
     }
 }

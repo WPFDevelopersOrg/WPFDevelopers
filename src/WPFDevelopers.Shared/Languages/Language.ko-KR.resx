@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="OK" xml:space="preserve">
-    <value>그래</value>
+    <value>확인</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>취소</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>예</value>
+    <value>네</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>아니오</value>
@@ -136,13 +136,14 @@
     <value>페이지</value>
   </data>
   <data name="Items" xml:space="preserve">
-    <value>바</value>
+    <value>행</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>전부의</value>
+    <value>전체</value>
   </data>
   <data name="Rectangle" xml:space="preserve">
-    <value>직사각형</value>
+    <value>사각형</value>
+  </data>
   </data>
   <data name="Ellipse" xml:space="preserve">
     <value>타원</value>
@@ -151,10 +152,10 @@
     <value>화살표</value>
   </data>
   <data name="Ink" xml:space="preserve">
-    <value>화필</value>
+    <value>잉크</value>
   </data>
   <data name="Text" xml:space="preserve">
-    <value>문자</value>
+    <value>텍스트</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>저장</value>
@@ -172,15 +173,18 @@
     <value>교체</value>
   </data>
   <data name="Clear" xml:space="preserve">
-    <value>비우기</value>
+    <value>지우기</value>
   </data>
   <data name="Restore" xml:space="preserve">
-    <value>아래로 복원</value>
+    <value>복원</value>
   </data>
   <data name="Minimize" xml:space="preserve">
     <value>최소화</value>
   </data>
   <data name="Maximize" xml:space="preserve">
     <value>최대화</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>모두선택</value>
   </data>
 </root>

@@ -55,6 +55,7 @@ namespace WPFDevelopers.Helpers
         {
             obj.SetValue(IsStripeProperty, value);
         }
+
         public static bool GetIsRound(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsRoundProperty);
@@ -64,6 +65,7 @@ namespace WPFDevelopers.Helpers
         {
             obj.SetValue(IsRoundProperty, value);
         }
+
         public static void SetIsClear(UIElement element, bool value)
         {
             element.SetValue(IsClearProperty, value);

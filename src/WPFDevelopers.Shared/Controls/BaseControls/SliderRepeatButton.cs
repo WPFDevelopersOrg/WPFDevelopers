@@ -4,17 +4,17 @@ using System.Windows.Controls.Primitives;
 
 namespace WPFDevelopers.Controls
 {
-    public class SliderRepeatButton: RepeatButton
+    public class SliderRepeatButton : RepeatButton
     {
+        public static readonly DependencyProperty RadiusOrientationProperty =
+            DependencyProperty.Register("RadiusOrientation", typeof(RadiusOrientation), typeof(SliderRepeatButton),
+                new PropertyMetadata(null));
+
         public RadiusOrientation RadiusOrientation
         {
-            get { return (RadiusOrientation)GetValue(RadiusOrientationProperty); }
-            set { SetValue(RadiusOrientationProperty, value); }
+            get => (RadiusOrientation) GetValue(RadiusOrientationProperty);
+            set => SetValue(RadiusOrientationProperty, value);
         }
-
-        public static readonly DependencyProperty RadiusOrientationProperty =
-            DependencyProperty.Register("RadiusOrientation", typeof(RadiusOrientation), typeof(SliderRepeatButton), new PropertyMetadata(null));
-
     }
 
     [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]

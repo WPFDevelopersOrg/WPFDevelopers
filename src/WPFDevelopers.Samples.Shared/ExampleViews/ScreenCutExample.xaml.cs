@@ -86,9 +86,16 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void ScreenCaptureExt_SnapCanceled()
         {
-            if (App.CurrentMainWindow.WindowState == WindowState.Minimized)
-                App.CurrentMainWindow.WindowState = WindowState.Normal;
-            Message.Push($"{DateTime.Now} 取消截图",MessageBoxImage.Information);
+            try
+            {
+                if (App.CurrentMainWindow.WindowState == WindowState.Minimized)
+                    App.CurrentMainWindow.WindowState = WindowState.Normal;
+                Message.Push($"{DateTime.Now} 取消截图", MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                WPFDevelopers.Controls.MessageBox.Show(ex.Message);
+            }
         }
     }
 }

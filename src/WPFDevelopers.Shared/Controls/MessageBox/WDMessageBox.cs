@@ -49,40 +49,55 @@ namespace WPFDevelopers.Controls
         private TextBlock _title;
 
 
+        public CornerRadius ButtonCornerRadius
+        {
+            get { return (CornerRadius)GetValue(ButtonRadiusProperty); }
+            set { SetValue(ButtonRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonRadiusProperty =
+            DependencyProperty.Register("ButtonCornerRadius", typeof(CornerRadius), typeof(WDMessageBox), new PropertyMetadata(null));
+
+
         static WDMessageBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(WDMessageBox),
                 new FrameworkPropertyMetadata(typeof(WDMessageBox)));
         }
 
-        public WDMessageBox(string message)
+        public WDMessageBox(string message, double buttonRadius = 0d)
         {
             _messageString = message;
+            ButtonCornerRadius = new CornerRadius(buttonRadius);
         }
 
-        public WDMessageBox(string message, string caption)
+        public WDMessageBox(string message, string caption, double buttonRadius = 0d)
         {
             _titleString = caption;
             _messageString = message;
+            ButtonCornerRadius = new CornerRadius(buttonRadius);
         }
 
-        public WDMessageBox(string message, string caption, MessageBoxButton button)
+        public WDMessageBox(string message, string caption, MessageBoxButton button, double buttonRadius = 0d)
         {
             _titleString = caption;
             _messageString = message;
+            ButtonCornerRadius = new CornerRadius(buttonRadius);
         }
 
-        public WDMessageBox(string message, string caption, MessageBoxImage image)
+        public WDMessageBox(string message, string caption, MessageBoxImage image, double buttonRadius = 0d)
         {
             _titleString = caption;
             _messageString = message;
+            ButtonCornerRadius = new CornerRadius(buttonRadius);
             DisplayImage(image);
         }
 
-        public WDMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image)
+        public WDMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image, double buttonRadius = 0d)
         {
             _titleString = caption;
             _messageString = message;
+            ButtonCornerRadius = new CornerRadius(buttonRadius);
             DisplayImage(image);
             DisplayButtons(button);
         }
@@ -200,17 +215,25 @@ namespace WPFDevelopers.Controls
                 case MessageBoxButton.OKCancel:
                     _cancelVisibility = Visibility.Visible;
                     _okVisibility = Visibility.Visible;
+                    _yesVisibility = Visibility.Collapsed;
+                    _noVisibility = Visibility.Collapsed;
                     break;
                 case MessageBoxButton.YesNo:
+                    _okVisibility = Visibility.Collapsed;
+                    _cancelVisibility = Visibility.Collapsed;
                     _yesVisibility = Visibility.Visible;
                     _noVisibility = Visibility.Visible;
                     break;
                 case MessageBoxButton.YesNoCancel:
+                    _okVisibility = Visibility.Collapsed;
                     _yesVisibility = Visibility.Visible;
                     _noVisibility = Visibility.Visible;
                     _cancelVisibility = Visibility.Visible;
                     break;
                 default:
+                    _cancelVisibility = Visibility.Collapsed;
+                    _yesVisibility = Visibility.Collapsed;
+                    _noVisibility = Visibility.Collapsed;
                     _okVisibility = Visibility.Visible;
                     break;
             }
