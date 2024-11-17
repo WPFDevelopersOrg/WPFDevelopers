@@ -144,7 +144,6 @@
   <data name="Rectangle" xml:space="preserve">
     <value>사각형</value>
   </data>
-  </data>
   <data name="Ellipse" xml:space="preserve">
     <value>타원</value>
   </data>
