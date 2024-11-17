@@ -87,6 +87,11 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DateRangePicker.gif"/>   
 
 ----------
+### Drawer
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Drawer.gif"/>   
+
+----------
 ### Spacing
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Spacing.gif"/>   
