@@ -62,6 +62,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PanelHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\FormatExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Languages\Language.Designer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\TextBoxValueChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DatePickerHelper.cs" />
