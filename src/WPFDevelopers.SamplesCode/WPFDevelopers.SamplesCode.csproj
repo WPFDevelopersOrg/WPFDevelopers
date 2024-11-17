@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-    <TargetFrameworks>net40;net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
+		<TargetFrameworks>net40;net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<AssemblyName>WPFDevelopers.SamplesCode</AssemblyName>
 		<RootNamespace>WPFDevelopers.SamplesCode</RootNamespace>
@@ -147,6 +147,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartPieExample.xaml.cs" Link="ExampleViews\ChartPieExample.xaml.cs" DependentUpon="ChartPieExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DrawerExample.xaml.cs" Link="ExampleViews\DrawerExample.xaml.cs" DependentUpon="DrawerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\\Loadings\StreamerLoading.cs" Link="Controls\Loadings\StreamerLoading.cs"/>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DateRangePickerExample.xaml.cs" Link="ExampleViews\DateRangePickerExample.xaml.cs" DependentUpon="DateRangePickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SpacingExample.xaml.cs" Link="ExampleViews\SpacingExample.xaml.cs" DependentUpon="SpacingExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NotifyIconExample.xaml.cs" Link="ExampleViews\NotifyIconExample.xaml.cs" DependentUpon="NotifyIconExample.xaml" />
 	</ItemGroup>
@@ -501,6 +502,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Loadings\StreamerLoading.xaml">
 			<Link>Controls\Loadings\StreamerLoading.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DateRangePickerExample.xaml">
+			<Link>ExampleViews\DateRangePickerExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SpacingExample.xaml">
 			<Link>ExampleViews\SpacingExample.xaml</Link>

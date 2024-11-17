@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\ColorPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSL.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DateRangePicker\DateRangePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
@@ -470,6 +471,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Dark.Blue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\DateRangePicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -86,6 +86,7 @@
         ChartPie,
         Spacing,
         Drawer,
+        DateRangePicker,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

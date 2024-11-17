@@ -69,3 +69,4 @@ ColorPicker.xaml
 IPEditBox.xaml
 TimePicker.xaml
 Drawer.xaml
+DateRangePicker.xaml

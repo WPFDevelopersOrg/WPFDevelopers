@@ -361,6 +361,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Drawer:
                     ControlPanel = new DrawerExample();
                     break;
+                case MenuEnum.DateRangePicker:
+                    ControlPanel = new DateRangePickerExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();

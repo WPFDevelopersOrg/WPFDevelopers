@@ -154,6 +154,9 @@
       <SubType>Code</SubType>
       <DependentUpon>DashboardExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DateRangePickerExample.xaml.cs">
+      <DependentUpon>DateRangePickerExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Desktop\DesktopBackground.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>DesktopBackground.xaml</DependentUpon>
@@ -646,6 +649,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DashboardExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DateRangePickerExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

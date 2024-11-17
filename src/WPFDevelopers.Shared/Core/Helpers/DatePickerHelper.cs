@@ -25,6 +25,10 @@ namespace WPFDevelopers.Helpers
        DependencyProperty.RegisterAttached("IsMonthYear", typeof(bool), typeof(DatePickerHelper),
                                            new PropertyMetadata(OnIsMonthYearChanged));
 
+        public static readonly DependencyProperty IsHighlightProperty =
+            DependencyProperty.RegisterAttached("IsHighlight", typeof(bool), typeof(DatePickerHelper), 
+                new PropertyMetadata(false));
+
         public static object GetWatermark(DependencyObject obj)
         {
             return obj.GetValue(WatermarkProperty);
@@ -53,24 +57,62 @@ namespace WPFDevelopers.Helpers
         {
             dobj.SetValue(IsMonthYearProperty, value);
         }
+
+        public static bool GetIsHighlight(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsHighlightProperty);
+        }
+
+        public static void SetIsHighlight(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsHighlightProperty, value);
+        }
+
         private static void OnWatermarkChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var datePicker = (DatePicker) d;
-            if (datePicker == null)
-                return;
-            if (datePicker.IsLoaded)
+            if (d is DatePicker datePicker)
             {
-                SetWatermarkInternal(datePicker, e.NewValue);
-            }
-            else
-            {
-                RoutedEventHandler loadedHandler = null;
-                loadedHandler = delegate
+                if (datePicker.IsLoaded)
                 {
-                    datePicker.Loaded -= loadedHandler;
                     SetWatermarkInternal(datePicker, e.NewValue);
-                };
-                datePicker.Loaded += loadedHandler;
+                }
+                else
+                {
+                    RoutedEventHandler loadedHandler = null;
+                    loadedHandler = delegate
+                    {
+                        datePicker.Loaded -= loadedHandler;
+                        SetWatermarkInternal(datePicker, e.NewValue);
+                    };
+                    datePicker.Loaded += loadedHandler;
+                }
+            }
+            else if (d is DatePickerTextBox datePickerTextBox)
+            {
+                if (datePickerTextBox.IsLoaded)
+                {
+                    SetDatePickerTextBoxWatermark(datePickerTextBox, e.NewValue);
+                }
+                else
+                {
+                    RoutedEventHandler loadedHandler = null;
+                    loadedHandler = delegate
+                    {
+                        datePickerTextBox.Loaded -= loadedHandler;
+                        SetDatePickerTextBoxWatermark(datePickerTextBox, e.NewValue);
+                    };
+                    datePickerTextBox.Loaded += loadedHandler;
+                }
+            }
+        }
+
+        private static void SetDatePickerTextBoxWatermark(DatePickerTextBox d, object value)
+        {
+            if (d != null)
+            {
+                var watermarkControl = d.Template.FindName("PART_Watermark", d) as ContentControl;
+                if (watermarkControl != null)
+                    watermarkControl.Content = value;
             }
         }
 
@@ -84,7 +126,6 @@ namespace WPFDevelopers.Helpers
                     watermarkControl.Content = value;
             }
         }
-
 
         private static void TextTrimmingPropertyChanged(
             DependencyObject obj, DependencyPropertyChangedEventArgs e)
