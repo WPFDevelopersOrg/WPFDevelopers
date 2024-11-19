@@ -122,7 +122,7 @@ namespace WPFDevelopers.Samples.Controls
                 rightWrapPanel == null) return;
             if (!IsRight)
             {
-                m_textBlock.Foreground = Brushes.White;
+                //m_textBlock.Foreground = Brushes.White;
                 leftWrapPanel.Visibility = Visibility.Visible;
                 border.Background = ControlsHelper.Brush;
                 rightWrapPanel.Visibility = Visibility.Collapsed;
