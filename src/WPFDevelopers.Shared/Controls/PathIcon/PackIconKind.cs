@@ -54,5 +54,7 @@ namespace WPFDevelopers.Controls
         [Description("WD.BreadCrumbBarGeometry")] BreadCrumbBar,
         [Description("WD.UnfoldMoreGeometry")] UnfoldMore,
         [Description("WD.TimeGeometry")] Time,
+        [Description("WD.DateRangeRightGeometry")] DateRangeRight,
+        [Description("WD.DateGeometry")] Date,
     }
 }
