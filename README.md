@@ -1,6 +1,6 @@
 <div align="center"><img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png"/></div>   
 
-[中文](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README-zh.md)   
+[中文](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README-zh.md)   
 
  ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet)  ![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers)   <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
@@ -26,7 +26,7 @@
 ### .Net Version
 |  .Net Version   | Status  |
 |  ----  | ----  |
-| Net40  | ✅ |
+| net40  | ✅ |
 | net45  | ✅ |
 | net46  | ✅ |
 | net47  | ✅ |
@@ -80,6 +80,46 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ###  Step 3: Add the namespace;
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
+----------
+### DateRangePicker
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DateRangePicker.gif"/>   
+
+----------
+### Spacing
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Spacing.gif"/>   
+
+----------
+### NotifyIcon
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon2.gif"/>   
+
+----------
+### ChartRadar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartRadar.gif"/>   
+
+----------
+### ChartLine
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartLine.gif"/>   
+
+----------
+### ChartBar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartBar.gif"/>   
+
+----------
+### SearchText
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SearchText.gif"/>   
+
+----------
+### ClearButton
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ClearButton.gif"/>   
 
 ----------
 ### IPEditBox
