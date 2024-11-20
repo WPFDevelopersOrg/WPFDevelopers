@@ -31,7 +31,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel x:Name="PART_Root" Margin="{TemplateBinding Margin}">
+                    <controls:SmallPanel x:Name="PART_Root">
                         <Border
                             Background="{DynamicResource WD.BackgroundSolidColorBrush}"
                             BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
@@ -125,12 +125,6 @@
                                 </Grid>
                             </Grid>
                         </Border>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Disabled" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}}" Value="Year">
@@ -150,6 +144,8 @@
     <Style x:Key="WD.DateRangePicker" TargetType="{x:Type controls:DateRangePicker}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
@@ -175,98 +171,103 @@
                                 Duration="00:00:.2" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel SnapsToDevicePixels="True">
-                        <Border
-                            Name="PART_Border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                            SnapsToDevicePixels="True" />
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <controls:PathIcon
-                                Margin="15,0,0,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Kind="Date" />
-                            <DatePickerTextBox
-                                x:Name="PART_TextBoxStart"
-                                Grid.Column="1"
-                                Width="Auto"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                helpers:DatePickerHelper.Watermark="{Binding StartWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                Background="Transparent"
-                                Focusable="True"
-                                Foreground="{TemplateBinding Foreground}"
-                                SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
-                            <controls:PathIcon
-                                Grid.Column="2"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Kind="DateRangeRight" />
-                            <DatePickerTextBox
-                                x:Name="PART_TextBoxEnd"
-                                Grid.Column="3"
-                                Width="Auto"
-                                Margin="10,0,0,0"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                Background="Transparent"
-                                Focusable="True"
-                                Foreground="{TemplateBinding Foreground}"
-                                SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
-                        </Grid>
-                        <Popup
-                            x:Name="PART_Popup"
-                            MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
-                            AllowsTransparency="True"
-                            Focusable="False"
-                            Placement="Bottom"
-                            StaysOpen="False"
-                            VerticalOffset="2">
-                            <controls:SmallPanel
-                                x:Name="PART_DropDown"
+                    <Border
+                        Name="PART_Border"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True">
+                        <controls:SmallPanel SnapsToDevicePixels="True">
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <controls:PathIcon
+                                    Margin="15,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Kind="Date" />
+                                <DatePickerTextBox
+                                    x:Name="PART_TextBoxStart"
+                                    Grid.Column="1"
+                                    Width="Auto"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    helpers:DatePickerHelper.Watermark="{Binding StartWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                    Background="Transparent"
+                                    Focusable="True"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+                                <controls:PathIcon
+                                    Grid.Column="2"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Kind="DateRangeRight" />
+                                <DatePickerTextBox
+                                    x:Name="PART_TextBoxEnd"
+                                    Grid.Column="3"
+                                    Width="Auto"
+                                    Margin="10,0,0,0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                    Background="Transparent"
+                                    Focusable="True"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+                            </Grid>
+                            <Popup
+                                x:Name="PART_Popup"
                                 MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
-                                MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                Margin="24,2,24,24"
-                                RenderTransformOrigin=".5,0"
-                                SnapsToDevicePixels="True">
-                                <controls:SmallPanel.RenderTransform>
-                                    <ScaleTransform ScaleY="0" />
-                                </controls:SmallPanel.RenderTransform>
-                                <Border
-                                    Name="PART_DropDownBorder"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                    Effect="{StaticResource WD.PopupShadowDepth}"
-                                    SnapsToDevicePixels="True"
-                                    UseLayoutRounding="True" />
-                                <StackPanel Orientation="Horizontal">
-                                    <Calendar
-                                        x:Name="PART_StartCalendar"
-                                        Margin="2,0,0,0"
-                                        BorderThickness="0"
-                                        CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
-                                        SelectionMode="MultipleRange" />
-                                    <Calendar
-                                        x:Name="PART_EndCalendar"
-                                        Margin="0,0,2,0"
-                                        BorderThickness="0"
-                                        CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
-                                        SelectionMode="MultipleRange" />
-                                </StackPanel>
-                            </controls:SmallPanel>
-                        </Popup>
-                    </controls:SmallPanel>
+                                AllowsTransparency="True"
+                                Focusable="False"
+                                Placement="Bottom"
+                                StaysOpen="False"
+                                VerticalOffset="2">
+                                <controls:SmallPanel
+                                    x:Name="PART_DropDown"
+                                    MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                    Margin="24,2,24,24"
+                                    RenderTransformOrigin=".5,0"
+                                    SnapsToDevicePixels="True">
+                                    <controls:SmallPanel.RenderTransform>
+                                        <ScaleTransform ScaleY="0" />
+                                    </controls:SmallPanel.RenderTransform>
+                                    <Border
+                                        Name="PART_DropDownBorder"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                        Effect="{StaticResource WD.PopupShadowDepth}"
+                                        SnapsToDevicePixels="True"
+                                        UseLayoutRounding="True" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <Calendar
+                                            x:Name="PART_StartCalendar"
+                                            Margin="2,0,0,0"
+                                            BorderThickness="0"
+                                            CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
+                                            SelectionMode="MultipleRange" />
+                                        <Calendar
+                                            x:Name="PART_EndCalendar"
+                                            Margin="0,0,2,0"
+                                            BorderThickness="0"
+                                            CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
+                                            SelectionMode="MultipleRange" />
+                                    </StackPanel>
+                                </controls:SmallPanel>
+                            </Popup>
+                        </controls:SmallPanel>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
                             <Trigger.EnterActions>
