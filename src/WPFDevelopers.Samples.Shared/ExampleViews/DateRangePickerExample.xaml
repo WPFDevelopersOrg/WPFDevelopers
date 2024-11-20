@@ -19,8 +19,6 @@
                 EndWatermark="结束日期"
                 StartWatermark="开始日期" />
             <wd:DateRangePicker
-                Width="300"
-                Height="38"
                 VerticalAlignment="Top"
                 wd:ElementHelper.CornerRadius="3"
                 EndWatermark="EndDate"
