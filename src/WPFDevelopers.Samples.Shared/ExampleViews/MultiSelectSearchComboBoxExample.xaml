@@ -30,13 +30,12 @@
                 Style="{StaticResource WD.SuccessPrimaryButton}" />
             <UniformGrid
                 Grid.Row="1"
+                wd:PanelHelper.Spacing="4"
                 Columns="2"
                 Rows="2">
                 <wd:MultiSelectionSearchComboBox
                     Width="200"
                     Height="38"
-                    HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
                     Delimiter=","
                     DisplayMemberPath="Number"
                     IsSelectAllActive="True"
@@ -48,9 +47,6 @@
                 </wd:MultiSelectionSearchComboBox>
                 <wd:MultiSelectionSearchComboBox
                     Width="200"
-                    Height="38"
-                    HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
                     wd:ElementHelper.Watermark="MultiSelectionSearchComboBox"
                     Delimiter="^"
                     DisplayMemberPath="Number"
@@ -66,8 +62,6 @@
                     Name="MyMultiSelectionSearchComboBox2"
                     Width="200"
                     Height="38"
-                    HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
                     wd:ElementHelper.Watermark="下拉多选搜索"
                     Delimiter="^"
                     IsSelectAllActive="True"
@@ -76,12 +70,10 @@
                     Name="MyMultiSelectionSearchComboBox3"
                     Width="200"
                     Height="38"
-                    HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
+                    wd:ElementHelper.CornerRadius="3"
                     Delimiter=","
                     DisplayMemberPath="Name"
-                    SelectedValuePath="ID" 
-                    wd:ElementHelper.CornerRadius="3"/>
+                    SelectedValuePath="ID" />
             </UniformGrid>
         </Grid>
         <controls:CodeViewer.SourceCodes>
