@@ -34,9 +34,7 @@
                 Rows="2">
                 <wd:MultiSelectComboBox
                     Width="200"
-                    Height="38"
                     HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
                     Delimiter="^"
                     IsSelectAllActive="True">
                     <wd:MultiSelectComboBoxItem>Option 1</wd:MultiSelectComboBoxItem>
