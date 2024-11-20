@@ -14,14 +14,14 @@
             Padding="6,1.2"
             BorderThickness="0"
             SnapsToDevicePixels="true">
-            <Grid Background="Transparent">
+            <Grid HorizontalAlignment="Right" Background="Transparent">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="ComboBoxButton" />
                 </Grid.ColumnDefinitions>
                 <Rectangle
                     Grid.Column="1"
-                    Width="30"
+                    Width="20"
                     Height="Auto"
                     Margin="0,1"
                     Fill="{TemplateBinding Background}" />
@@ -131,7 +131,11 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
-                        <controls:SmallPanel>
+                        <Grid Grid.IsSharedSizeScope="true">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="ComboBoxButton" />
+                            </Grid.ColumnDefinitions>
                             <ContentPresenter
                                 x:Name="ContentSite"
                                 Margin="{TemplateBinding Padding}"
@@ -169,6 +173,7 @@
                                 Visibility="Collapsed" />
                             <ToggleButton
                                 x:Name="PART_ToggleButton"
+                                Grid.ColumnSpan="2"
                                 Background="{TemplateBinding Background}"
                                 ClickMode="Press"
                                 Focusable="False"
@@ -232,7 +237,7 @@
                                     <VisualState x:Name="Uneditable" />
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                        </controls:SmallPanel>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
