@@ -74,6 +74,21 @@
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
+                        Text="Languages" />
+                    <WrapPanel Margin="10" wd:PanelHelper.Spacing="4">
+                        <TextBlock VerticalAlignment="Center" Text="Languages:" />
+                        <ComboBox
+                            SelectedIndex="0"
+                            SelectionChanged="ComboBoxLanguages_SelectionChanged"
+                            ToolTip="目前翻译只是针对WD的自定义控件进行了多语言翻译">
+                            <ComboBoxItem Tag="zh-cn">中文</ComboBoxItem>
+                            <ComboBoxItem Tag="en-US">English</ComboBoxItem>
+                            <ComboBoxItem Tag="ko-KR">한국어</ComboBoxItem>
+                        </ComboBox>
+                    </WrapPanel>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
                         Text="Menu" />
                     <WrapPanel Margin="0,10">
                         <WrapPanel.ContextMenu>
