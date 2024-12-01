@@ -79,7 +79,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty SelectedItemsProperty =
             DependencyProperty.Register("SelectedItems", typeof(IList), typeof(MultiSelectionSearchComboBox),
-                new FrameworkPropertyMetadata(null,
+                new FrameworkPropertyMetadata(new ArrayList(),
                     FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal,
                     OnSelectedItemsChanged));
 
@@ -109,37 +109,37 @@ namespace WPFDevelopers.Controls
 
         public string Delimiter
         {
-            get => (string) GetValue(DelimiterProperty);
+            get => (string)GetValue(DelimiterProperty);
             set => SetValue(DelimiterProperty, value);
         }
 
         public string SelectedValuePath
         {
-            get => (string) GetValue(SelectedValuePathProperty);
+            get => (string)GetValue(SelectedValuePathProperty);
             set => SetValue(SelectedValuePathProperty, value);
         }
 
         public string DisplayMemberPath
         {
-            get => (string) GetValue(DisplayMemberPathProperty);
+            get => (string)GetValue(DisplayMemberPathProperty);
             set => SetValue(DisplayMemberPathProperty, value);
         }
 
         public string Text
         {
-            get => (string) GetValue(TextProperty);
+            get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
 
         public IEnumerable ItemsSource
         {
-            get => (IEnumerable) GetValue(ItemsSourceProperty);
+            get => (IEnumerable)GetValue(ItemsSourceProperty);
             set => SetValue(ItemsSourceProperty, value);
         }
 
         public IEnumerable ItemsSourceSearch
         {
-            get => (IEnumerable) GetValue(ItemsSourceSearchProperty);
+            get => (IEnumerable)GetValue(ItemsSourceSearchProperty);
             set => SetValue(ItemsSourceSearchProperty, value);
         }
 
@@ -151,31 +151,31 @@ namespace WPFDevelopers.Controls
 
         public bool IsSelectAllActive
         {
-            get => (bool) GetValue(IsSelectAllActiveProperty);
+            get => (bool)GetValue(IsSelectAllActiveProperty);
             set => SetValue(IsSelectAllActiveProperty, value);
         }
 
         public bool IsDropDownOpen
         {
-            get => (bool) GetValue(IsDropDownOpenProperty);
+            get => (bool)GetValue(IsDropDownOpenProperty);
             set => SetValue(IsDropDownOpenProperty, value);
         }
 
         public double MaxDropDownHeight
         {
-            get => (double) GetValue(MaxDropDownHeightProperty);
+            get => (double)GetValue(MaxDropDownHeightProperty);
             set => SetValue(MaxDropDownHeightProperty, value);
         }
 
         public IList SelectedItems
         {
-            get => (IList) GetValue(SelectedItemsProperty);
+            get => (IList)GetValue(SelectedItemsProperty);
             set => SetValue(SelectedItemsProperty, value);
         }
 
         public string SearchWatermark
         {
-            get => (string) GetValue(SearchWatermarkProperty);
+            get => (string)GetValue(SearchWatermarkProperty);
             set => SetValue(SearchWatermarkProperty, value);
         }
 
@@ -236,18 +236,18 @@ namespace WPFDevelopers.Controls
 
         private void Instance_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-           SelectAllContent = LanguageManager.Instance["SelectAll"];
+            SelectAllContent = LanguageManager.Instance["SelectAll"];
         }
 
         private void OnListBoxSearch_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool) e.NewValue)
+            if ((bool)e.NewValue)
                 UpdateIsChecked(_listBoxSearch);
         }
 
         private void OnListBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool) e.NewValue)
+            if ((bool)e.NewValue)
             {
                 foreach (var item in selectedSearchList)
                     if (!_listBox.SelectedItems.Contains(item))
@@ -277,7 +277,7 @@ namespace WPFDevelopers.Controls
 
         private void OnPopup_GotFocus(object sender, RoutedEventArgs e)
         {
-            var source = (HwndSource) PresentationSource.FromVisual(_popup.Child);
+            var source = (HwndSource)PresentationSource.FromVisual(_popup.Child);
             if (source != null)
             {
                 SetFocus(source.Handle);
@@ -356,7 +356,17 @@ namespace WPFDevelopers.Controls
             if (e.AddedItems.Count > 0)
                 SelectionChecked(_listBox);
             Combination();
-            SelectedItems = _listBox.SelectedItems;
+            var selectedItems = _listBox.SelectedItems;
+            if (SelectedItems == null)
+                SelectedItems = selectedItems;
+            else
+            {
+                foreach (var item in selectedItems)
+                {
+                    if (!SelectedItems.Contains(item))
+                        SelectedItems.Add(item);
+                }
+            }
         }
 
         private void OnListBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -497,7 +507,7 @@ namespace WPFDevelopers.Controls
         {
             var multiSelectionSearchComboBox = o as MultiSelectionSearchComboBox;
             if (multiSelectionSearchComboBox != null)
-                multiSelectionSearchComboBox.OnIsOpenChanged((bool) e.OldValue, (bool) e.NewValue);
+                multiSelectionSearchComboBox.OnIsOpenChanged((bool)e.OldValue, (bool)e.NewValue);
         }
 
         protected virtual void OnIsOpenChanged(bool oldValue, bool newValue)
@@ -516,7 +526,7 @@ namespace WPFDevelopers.Controls
         {
             var comboBox = o as MultiSelectionSearchComboBox;
             if (comboBox != null)
-                comboBox.OnMaxDropDownHeightChanged((double) e.OldValue, (double) e.NewValue);
+                comboBox.OnMaxDropDownHeightChanged((double)e.OldValue, (double)e.NewValue);
         }
 
         protected virtual void OnMaxDropDownHeightChanged(double oldValue, double newValue)
