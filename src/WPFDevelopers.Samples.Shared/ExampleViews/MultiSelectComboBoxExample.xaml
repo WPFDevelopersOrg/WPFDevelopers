@@ -35,6 +35,7 @@
                 <wd:MultiSelectComboBox
                     Width="200"
                     HorizontalAlignment="Center"
+                    wd:ElementHelper.Watermark="请选择内容"
                     Delimiter="^"
                     IsSelectAllActive="True">
                     <wd:MultiSelectComboBoxItem>Option 1</wd:MultiSelectComboBoxItem>
