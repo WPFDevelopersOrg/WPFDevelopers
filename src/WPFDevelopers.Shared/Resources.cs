@@ -12,13 +12,16 @@ namespace WPFDevelopers
     public class Resources : ResourceDictionary
     {
         public static event ThemeChangedEvent ThemeChanged;
+        private ThemeType _theme;
         public ThemeType Theme
         {
+            get => _theme;
             set => InitializeTheme(value);
         }
 
         protected void InitializeTheme(ThemeType themeType)
         {
+            _theme = themeType;
             MergedDictionaries.Clear();
             var path = GetResourceUri(GetThemeResourceName(themeType));
             MergedDictionaries.Add(new ResourceDictionary { Source = path });
