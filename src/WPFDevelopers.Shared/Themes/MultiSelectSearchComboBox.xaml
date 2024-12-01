@@ -62,7 +62,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBox
                                 Name="PART_EditableTextBox"
-                                Margin="{TemplateBinding Padding}"
+                                Padding="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Panel.ZIndex="1"
@@ -76,7 +76,7 @@
                                 Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
                             <TextBlock
                                 x:Name="PART_Watermark"
-                                Margin="{TemplateBinding Padding}"
+                                Padding="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Background="Transparent"
