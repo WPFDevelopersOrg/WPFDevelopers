@@ -1,36 +1,27 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class Ruler : Control
+    public class Ruler : ScaleBase
     {
-        public static readonly DependencyProperty IntervalProperty =
-            DependencyProperty.Register("Interval", typeof(double), typeof(Ruler), new UIPropertyMetadata(30.0));
-
-
         public static readonly DependencyProperty SpanIntervalProperty =
-            DependencyProperty.Register("SpanInterval", typeof(double), typeof(Ruler), new UIPropertyMetadata(5.0));
+            DependencyProperty.Register("SpanInterval", typeof(double), typeof(Ruler), new UIPropertyMetadata(5.0, OnSpanIntervalChanged));
 
+        private static void OnSpanIntervalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Ruler;
+            ctrl?.InvalidateVisual();
+        }
 
         public static readonly DependencyProperty MiddleMaskProperty =
-            DependencyProperty.Register("MiddleMask", typeof(int), typeof(Ruler), new UIPropertyMetadata(2));
+            DependencyProperty.Register("MiddleMask", typeof(int), typeof(Ruler), new UIPropertyMetadata(2, OnMiddleMaskChanged));
 
-        public static readonly DependencyProperty CurrentValueProperty =
-            DependencyProperty.Register("CurrentValue", typeof(double), typeof(Ruler),
-                new UIPropertyMetadata(OnCurrentValueChanged));
-
-        public static readonly DependencyProperty StartValueProperty =
-            DependencyProperty.Register("StartValue", typeof(double), typeof(Ruler), new UIPropertyMetadata(120.0));
-
-        public static readonly DependencyProperty EndValueProperty =
-            DependencyProperty.Register("EndValue", typeof(double), typeof(Ruler), new UIPropertyMetadata(240.0));
-
-        public static readonly DependencyProperty CurrentGeometryProperty =
-            DependencyProperty.Register("CurrentGeometry", typeof(Geometry), typeof(Ruler),
-                new PropertyMetadata(Geometry.Parse("M 257,0 257,25 264,49 250,49 257,25")));
+        private static void OnMiddleMaskChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Ruler;
+            ctrl?.InvalidateVisual();
+        }
 
         static Ruler()
         {
@@ -39,14 +30,30 @@ namespace WPFDevelopers.Controls
 
         public Ruler()
         {
+            SetValue(MaximumProperty, 240.0);
+            SetValue(MinimumProperty, 120.0);
+            SetValue(IntervalProperty, 30.0);
+            SetValue(GeometryProperty, Geometry.Parse(@"M 257,0 257,25 264,49 250,49 257,25"));
             Loaded += Ruler_Loaded;
         }
 
-        public double Interval
+        protected override void OnValueChanged(double oldValue, double newValue)
         {
-            get => (double)GetValue(IntervalProperty);
+            PaintPath();
+        }
+        protected override void OnMaximumChanged(double oldValue, double newValue)
+        {
+            InvalidateVisual();
+        }
 
-            set => SetValue(IntervalProperty, value);
+        protected override void OnMinimumChanged(double oldValue, double newValue)
+        {
+            InvalidateVisual();
+        }
+
+        protected override void OnIntervalChanged(double oldValue, double newValue)
+        {
+            InvalidateVisual();
         }
 
         public double SpanInterval
@@ -63,53 +70,15 @@ namespace WPFDevelopers.Controls
             set => SetValue(MiddleMaskProperty, value);
         }
 
-        public double CurrentValue
-        {
-            get => (double)GetValue(CurrentValueProperty);
-
-            set
-            {
-                SetValue(CurrentValueProperty, value);
-                PaintPath();
-            }
-        }
-
-        public double StartValue
-        {
-            get => (double)GetValue(StartValueProperty);
-
-            set => SetValue(StartValueProperty, value);
-        }
-
-        public double EndValue
-        {
-            get => (double)GetValue(EndValueProperty);
-
-            set => SetValue(EndValueProperty, value);
-        }
-
-        public Geometry CurrentGeometry
-        {
-            get => (Geometry)GetValue(CurrentGeometryProperty);
-
-            set => SetValue(CurrentGeometryProperty, value);
-        }
-
-        private static void OnCurrentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ruler = d as Ruler;
-            ruler.CurrentValue = Convert.ToDouble(e.NewValue);
-        }
-
         protected override void OnRender(DrawingContext drawingContext)
         {
             RenderOptions.SetEdgeMode(this, EdgeMode.Aliased);
             var nextLineValue = 0d;
-            var one_Width = ActualWidth / ((EndValue - StartValue) / Interval);
+            var one_Width = ActualWidth / ((Maximum - Minimum) / Interval);
 
-            for (var i = 0; i <= (EndValue - StartValue) / Interval; i++)
+            for (var i = 0; i <= (Maximum - Minimum) / Interval; i++)
             {
-                var numberText = DrawingContextHelper.GetFormattedText((StartValue + i * Interval).ToString(),
+                var numberText = DrawingContextHelper.GetFormattedText((Minimum + i * Interval).ToString(),
                     (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#FFFFFF"), FlowDirection.LeftToRight,
                     10);
                 drawingContext.DrawText(numberText, new Point(i * one_Width - 8, 0));
@@ -130,17 +99,19 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private void Ruler_Loaded(object sender, RoutedEventArgs e)
+        void Ruler_Loaded(object sender, RoutedEventArgs e)
         {
             PaintPath();
         }
 
-        private void PaintPath()
+        void PaintPath()
         {
-            var d_Value = CurrentValue - StartValue;
-            var one_Value = ActualWidth / (EndValue - StartValue);
+            if (Parent == null)
+                return;
+            var d_Value = Value - Minimum;
+            var one_Value = ActualWidth / (Maximum - Minimum);
             var x_Point = one_Value * d_Value + ((double)Parent.GetValue(ActualWidthProperty) - ActualWidth) / 2d;
-            CurrentGeometry =
+            Geometry =
                 Geometry.Parse($"M {x_Point},0 {x_Point},25 {x_Point + 7},49 {x_Point - 7},49 {x_Point},25");
         }
     }
