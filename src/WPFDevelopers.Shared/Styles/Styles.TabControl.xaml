@@ -147,7 +147,6 @@
                         x:Name="PART_Border"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Margin="{TemplateBinding Margin}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
