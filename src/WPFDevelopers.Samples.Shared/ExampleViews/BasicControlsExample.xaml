@@ -753,16 +753,27 @@
                         Text="GroupBox" />
                     <UniformGrid Margin="0,10" Columns="2">
                         <GroupBox wd:ElementHelper.CornerRadius="3" Header="GroupBox1">
-                            <Rectangle
+                            <Grid wd:PanelHelper.Spacing="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="TextBlock:" />
+                                <Button Grid.Column="1" Content="Commit" />
+                            </Grid>
+                            <!--<Rectangle
                                 Width="400"
                                 Height="300"
-                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />
+                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />-->
                         </GroupBox>
-                        <GroupBox Margin="10,0" Header="GroupBox1">
-                            <Rectangle
-                                Width="400"
-                                Height="300"
-                                Fill="{DynamicResource WD.LightSolidColorBrush}" />
+                        <GroupBox
+                            Height="400"
+                            Margin="10,0"
+                            Header="GroupBox1">
+                            <Rectangle Fill="{DynamicResource WD.LightSolidColorBrush}" />
                         </GroupBox>
                     </UniformGrid>
 
@@ -793,10 +804,7 @@
                             </TabItem>
                         </TabControl>
                         <TabControl Margin="4" TabStripPlacement="Bottom">
-                            <TabItem
-                                Padding="10"
-                                wd:ElementHelper.IsClear="True"
-                                Header="1">
+                            <TabItem Padding="10" Header="Home">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
                             <TabItem
