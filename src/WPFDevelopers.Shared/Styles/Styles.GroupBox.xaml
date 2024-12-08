@@ -12,36 +12,43 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type GroupBox}">
         <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
-        <Setter Property="Background" Value="{DynamicResource WD.LighterSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
-                    <Grid Margin="{TemplateBinding Margin}">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Border
-                            Background="{TemplateBinding Background}"
+                            Background="{DynamicResource WD.LighterSolidColorBrush}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}"
                             SnapsToDevicePixels="True">
                             <ContentPresenter
                                 Margin="{TemplateBinding Padding}"
-                                VerticalAlignment="Center"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 ContentSource="Header"
                                 RecognizesAccessKey="True" />
                         </Border>
                         <Border
                             Grid.Row="1"
+                            Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="1,0,1,1"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}"
                             SnapsToDevicePixels="True">
-                            <ContentPresenter Margin="{TemplateBinding Padding}" />
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
                         </Border>
                     </Grid>
                 </ControlTemplate>
