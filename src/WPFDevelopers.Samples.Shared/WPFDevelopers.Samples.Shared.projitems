@@ -119,9 +119,9 @@
       <SubType>Code</SubType>
       <DependentUpon>CircleMenuExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircularProgressBarExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircleProgressBarExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>CircularProgressBarExample.xaml</DependentUpon>
+      <DependentUpon>CircleProgressBarExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ColorPickerExample.xaml.cs">
       <DependentUpon>ColorPickerExample.xaml</DependentUpon>
@@ -616,7 +616,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircularProgressBarExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircleProgressBarExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

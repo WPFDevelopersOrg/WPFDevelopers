@@ -24,7 +24,7 @@
         VerifyCode,
         CircleMenu,
         ChatEmoji,
-        ProgressBar,
+        CircleProgressBar,
         Dashboard,
         PieControl,
         Password,

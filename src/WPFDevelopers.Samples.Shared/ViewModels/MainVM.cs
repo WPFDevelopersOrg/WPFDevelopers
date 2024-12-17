@@ -170,8 +170,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ChatEmoji:
                     ControlPanel = new ChatEmojiExample();
                     break;
-                case MenuEnum.ProgressBar:
-                    ControlPanel = new CircularProgressBarExample();
+                case MenuEnum.CircleProgressBar:
+                    ControlPanel = new CircleProgressBarExample();
                     break;
                 case MenuEnum.Dashboard:
                     ControlPanel = new DashboardExample();

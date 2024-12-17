@@ -194,8 +194,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularMenuExample.xaml">
 			<Link>ExampleViews\CircularMenuExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularProgressBarExample.xaml">
-			<Link>ExampleViews\CircularProgressBarExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleProgressBarExample.xaml">
+			<Link>ExampleViews\CircleProgressBarExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CountdownTimerExample.xaml">
 			<Link>ExampleViews\CountdownTimerExample.xaml</Link>
