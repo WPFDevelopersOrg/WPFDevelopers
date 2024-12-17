@@ -18,10 +18,4 @@
 	  <Resource Include="Effects\GrayscaleEffect.ps" />
 	  <Resource Include="Resources\Audio\shake.wav" />
 	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net47'">
-	  <PackageReference Include="System.Drawing.Common">
-	    <Version>7.0.0</Version>
-	  </PackageReference>
-	</ItemGroup>
-	
 </Project>
