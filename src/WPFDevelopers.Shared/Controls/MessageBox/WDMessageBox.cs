@@ -256,7 +256,7 @@ namespace WPFDevelopers.Controls
                 case MessageBoxImage.Information:
                     _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.SuccessSolidColorBrush");
+                        (SolidColorBrush) Application.Current.TryFindResource("WD.SuccessNormalBrush");
                     break;
                 case MessageBoxImage.Question:
                     _geometry = (Geometry) Application.Current.TryFindResource("WD.QuestionGeometry");
