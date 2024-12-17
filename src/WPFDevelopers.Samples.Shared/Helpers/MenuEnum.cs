@@ -22,7 +22,7 @@
         AMap,
         TransformLayout,
         VerifyCode,
-        CircularMenu,
+        CircleMenu,
         ChatEmoji,
         ProgressBar,
         Dashboard,

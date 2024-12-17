@@ -24,8 +24,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExampleEx.xaml.cs" Link="ExampleViews\CarouselExampleEx.xaml.cs" DependentUpon="CarouselExampleEx.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChatEmojiExample.xaml.cs" Link="ExampleViews\ChatEmojiExample.xaml.cs" DependentUpon="ChatEmojiExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularMenuExample.xaml.cs" Link="ExampleViews\CircularMenuExample.xaml.cs" DependentUpon="CircularMenuExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularProgressBarExample.xaml.cs" Link="ExampleViews\CircularProgressBarExample.xaml.cs" DependentUpon="CircularProgressBarExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleMenuExample.xaml.cs" Link="ExampleViews\CircleMenuExample.xaml.cs" DependentUpon="CircleMenuExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CountdownTimerExample.xaml.cs" Link="ExampleViews\CountdownTimerExample.xaml.cs" DependentUpon="CountdownTimerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" DependentUpon="CropAvatarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" DependentUpon="CropAvatarWindow.xaml" />

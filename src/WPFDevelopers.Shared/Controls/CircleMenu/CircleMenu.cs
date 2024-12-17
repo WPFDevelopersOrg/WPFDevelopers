@@ -11,7 +11,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = ItemsControlTemplateName, Type = typeof(ItemsControl))]
     [TemplatePart(Name = EllipseGeometryTemplateName, Type = typeof(EllipseGeometry))]
     [TemplatePart(Name = ToggleButtonTemplateName, Type = typeof(ToggleButton))]
-    public class CircularMenu : ListBox
+    public class CircleMenu : ListBox
     {
         private const string ItemsControlTemplateName = "PART_ItemsControl";
         private const string EllipseGeometryTemplateName = "PART_EllipseGeometry";
@@ -21,10 +21,10 @@ namespace WPFDevelopers.Controls
         private ItemsControl _itemsControl;
         private ToggleButton _toggleButton;
 
-        static CircularMenu()
+        static CircleMenu()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularMenu),
-                new FrameworkPropertyMetadata(typeof(CircularMenu)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CircleMenu),
+                new FrameworkPropertyMetadata(typeof(CircleMenu)));
         }
 
         public override void OnApplyTemplate()

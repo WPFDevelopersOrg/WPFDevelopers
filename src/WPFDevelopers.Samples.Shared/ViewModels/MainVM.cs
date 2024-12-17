@@ -160,8 +160,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.VerifyCode:
                     ControlPanel = new VerifyCodeExample();
                     break;
-                case MenuEnum.CircularMenu:
-                    ControlPanel = new CircularMenuExample();
+                case MenuEnum.CircleMenu:
+                    ControlPanel = new CircleMenuExample();
                     break;
                 case MenuEnum.BreatheLight:
                     ControlPanel = new BreatheLightExample();

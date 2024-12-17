@@ -81,9 +81,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenu.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularProgressBar\CircularProgressBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CropAvatar\CropAvatar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenuItem.cs" />
@@ -452,7 +452,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\CircularMenu.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CircleMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

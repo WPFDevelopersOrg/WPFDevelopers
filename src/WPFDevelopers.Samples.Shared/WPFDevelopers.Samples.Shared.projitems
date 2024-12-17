@@ -115,9 +115,9 @@
       <SubType>Code</SubType>
       <DependentUpon>ChatEmojiExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircularMenuExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircleMenuExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>CircularMenuExample.xaml</DependentUpon>
+      <DependentUpon>CircleMenuExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircularProgressBarExample.xaml.cs">
       <SubType>Code</SubType>
@@ -612,7 +612,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircularMenuExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircleMenuExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
