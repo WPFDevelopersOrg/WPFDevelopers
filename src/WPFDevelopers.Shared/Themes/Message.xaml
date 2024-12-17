@@ -11,7 +11,6 @@
         x:Key="WD.MessageListBoxItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:MessageListBoxItem}">
-        <Setter Property="FontSize" Value="{DynamicResource WD.NormalFontSize}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
         <Setter Property="helpers:ListBoxItemExtensions.AutoRemoveOnOpacityZero" Value="True" />
@@ -73,7 +72,6 @@
                     </ControlTemplate.Resources>
                     <controls:SmallPanel
                         x:Name="PART_SmallPanel"
-                        Margin="{TemplateBinding Margin}"
                         CacheMode="BitmapCache"
                         RenderTransformOrigin=".5,0">
                         <controls:SmallPanel.RenderTransform>
@@ -153,8 +151,8 @@
                         </Trigger>
                         <Trigger Property="MessageType" Value="Information">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.InformationGeometry}" />
-                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.SuccessSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource WD.SuccessSolidColorBrush}" />
+                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.SuccessNormalBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource WD.SuccessNormalBrush}" />
                         </Trigger>
                         <Trigger Property="MessageType" Value="Question">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.QuestionGeometry}" />
