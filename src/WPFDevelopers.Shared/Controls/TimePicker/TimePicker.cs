@@ -129,7 +129,13 @@ namespace WPFDevelopers.Controls
                 _timeSelector.SelectedTimeChanged -= TimeSelector_SelectedTimeChanged;
                 if (DateTime.TryParse(_textBox.Text, out var dateTime))
                 {
-                    if (SelectedTime.HasValue && dateTime.ToString(SelectedTimeFormat) == SelectedTime.Value.ToString(SelectedTimeFormat)) return;
+                    if (SelectedTime.HasValue
+                        && 
+                        dateTime.ToString(SelectedTimeFormat) == SelectedTime.Value.ToString(SelectedTimeFormat))
+                    {
+                        _timeSelector.SelectedTimeChanged += TimeSelector_SelectedTimeChanged;
+                        return;
+                    } 
                     SelectedTime = dateTime;
                 }
                 else
