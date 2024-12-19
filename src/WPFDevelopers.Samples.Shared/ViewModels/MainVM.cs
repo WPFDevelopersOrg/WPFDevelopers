@@ -142,8 +142,11 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.RollLoading:
                     ControlPanel = new RollLoadingExample();
                     break;
-                case MenuEnum.CutImage:
-                    ControlPanel = new CutImageExample();
+                //case MenuEnum.CutImage:
+                //    ControlPanel = new CutImageExample();
+                //    break;
+                case MenuEnum.Window:
+                    ControlPanel = new WindowExample();
                     break;
                 case MenuEnum.CropAvatar:
                     ControlPanel = new CropAvatarExample();

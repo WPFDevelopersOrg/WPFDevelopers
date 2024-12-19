@@ -17,6 +17,8 @@
         CycleLoading,
         RollLoading,
         CutImage,
+        //CutImage,
+        Window,
         CropAvatar,
         AnimationAudio,
         AMap,
