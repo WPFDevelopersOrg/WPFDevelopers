@@ -82,6 +82,16 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### Gauge
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Gauge.gif"/>   
+
+----------
+### Message
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Message.png"/>   
+
+----------
 ### DateRangePicker
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DateRangePicker.gif"/>   
@@ -165,11 +175,6 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ### Window
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/window.jpg"/>   
-
-----------
-### Message
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Message.gif"/>   
 
 ----------
 ### Badge
