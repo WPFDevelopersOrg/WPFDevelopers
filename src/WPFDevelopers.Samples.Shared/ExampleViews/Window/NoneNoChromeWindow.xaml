@@ -7,12 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     Title="NoChromeWindow"
-    Width="400"
-    Height="300"
+    Width="710"
+    Height="520"
     BorderBrush="{StaticResource WD.DangerSolidColorBrush}"
     BorderThickness="1"
     NoChrome="True"
     TitleBackground="{StaticResource WD.DangerSolidColorBrush}"
+    TitleBarMode="HighTitleBar"
     TitleHeight="30"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -57,8 +58,8 @@
                 Text="Content" />
         </Grid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NoneNoChromeWindow.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NoneNoChromeWindow.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NoneNoChromeWindow.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NoneNoChromeWindow.xaml.cs" CodeType="CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </wd:Window>

@@ -115,13 +115,13 @@
       <SubType>Code</SubType>
       <DependentUpon>ChatEmojiExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircularMenuExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircleMenuExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>CircularMenuExample.xaml</DependentUpon>
+      <DependentUpon>CircleMenuExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircularProgressBarExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CircleProgressBarExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>CircularProgressBarExample.xaml</DependentUpon>
+      <DependentUpon>CircleProgressBarExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ColorPickerExample.xaml.cs">
       <DependentUpon>ColorPickerExample.xaml</DependentUpon>
@@ -206,6 +206,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\EdgeLightExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>EdgeLightExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\GaugeExample.xaml.cs">
+      <DependentUpon>GaugeExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IPEditBoxExample.xaml.cs">
       <DependentUpon>IPEditBoxExample.xaml</DependentUpon>
@@ -297,10 +300,13 @@
       <SubType>Code</SubType>
       <DependentUpon>MultiSelectSearchComboBoxExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NoChromeWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\HighTitleBarWindow.xaml.cs">
+      <DependentUpon>HighTitleBarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoChromeWindow.xaml.cs">
       <DependentUpon>NoChromeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NoneNoChromeWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoneNoChromeWindow.xaml.cs">
       <DependentUpon>NoneNoChromeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NotifyIconExample.xaml.cs">
@@ -454,6 +460,12 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\WaterfallPanelExample.xaml.cs">
       <DependentUpon>WaterfallPanelExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NormalWindow.xaml.cs">
+      <DependentUpon>NormalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\WindowExample.xaml.cs">
+      <DependentUpon>WindowExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ZooSemy\VolumeControl.xaml.cs">
       <SubType>Code</SubType>
@@ -612,11 +624,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircularMenuExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircleMenuExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircularProgressBarExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CircleProgressBarExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -701,6 +713,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\EdgeLightExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\GaugeExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -813,11 +829,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NoChromeWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\HighTitleBarWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NoneNoChromeWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoChromeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoneNoChromeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -974,6 +994,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\WaterfallPanelExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NormalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\WindowExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -11,37 +11,89 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer>
-        <UniformGrid
-            Height="38"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Rows="1">
-            <Button
-                Click="AddButton_Click"
-                Content="Info Message"
-                Style="{StaticResource WD.SuccessPrimaryButton}"
-                Tag="Info" />
-            <Button
-                Click="AddButton_Click"
-                Content="Error Message"
-                Style="{StaticResource WD.DangerPrimaryButton}"
-                Tag="Error" />
-            <Button
-                Click="AddButton_Click"
-                Content="Warning Message"
-                Style="{StaticResource WD.WarningPrimaryButton}"
-                Tag="Warning" />
-            <Button
-                Click="AddButton_Click"
-                Content="Question Message"
-                Style="{StaticResource WD.PrimaryButton}"
-                Tag="Question" />
-            <Button
-                Click="AddButton_Click"
-                Content="Long Message"
-                Style="{StaticResource WD.SuccessPrimaryButton}"
-                Tag="Long" />
-        </UniformGrid>
+        <StackPanel wd:PanelHelper.Spacing="2">
+            <GroupBox Header="Message Position">
+                <WrapPanel HorizontalAlignment="Center">
+                    <RadioButton Checked="RadioButton_Checked" Content="Left" />
+                    <RadioButton
+                        Checked="RadioButton_Checked"
+                        Content="Top"
+                        IsChecked="True" />
+                    <RadioButton Checked="RadioButton_Checked" Content="Right" />
+                    <RadioButton Checked="RadioButton_Checked" Content="Bottom" />
+                </WrapPanel>
+            </GroupBox>
+            <GroupBox Header="Window">
+                <UniformGrid
+                    Height="38"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    wd:PanelHelper.Spacing="2"
+                    Rows="1">
+                    <Button
+                        Click="AddButton_Click"
+                        Content="Info Message"
+                        Style="{StaticResource WD.SuccessPrimaryButton}"
+                        Tag="Info" />
+                    <Button
+                        Click="AddButton_Click"
+                        Content="Error Message"
+                        Style="{StaticResource WD.DangerPrimaryButton}"
+                        Tag="Error" />
+                    <Button
+                        Click="AddButton_Click"
+                        Content="Warning Message"
+                        Style="{StaticResource WD.WarningPrimaryButton}"
+                        Tag="Warning" />
+                    <Button
+                        Click="AddButton_Click"
+                        Content="Question Message"
+                        Style="{StaticResource WD.PrimaryButton}"
+                        Tag="Question" />
+                    <Button
+                        Click="AddButton_Click"
+                        Content="Long Message"
+                        Style="{StaticResource WD.SuccessPrimaryButton}"
+                        Tag="Long" />
+                    <Button Click="BtnClear_Click" Content="Clear" />
+                </UniformGrid>
+            </GroupBox>
+            <GroupBox Header="Desktop">
+                <UniformGrid
+                    Height="38"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    wd:PanelHelper.Spacing="2"
+                    Rows="1">
+                    <Button
+                        Click="AddButtonDesktop_Click"
+                        Content="Info Message"
+                        Style="{StaticResource WD.SuccessPrimaryButton}"
+                        Tag="Info" />
+                    <Button
+                        Click="AddButtonDesktop_Click"
+                        Content="Error Message"
+                        Style="{StaticResource WD.DangerPrimaryButton}"
+                        Tag="Error" />
+                    <Button
+                        Click="AddButtonDesktop_Click"
+                        Content="Warning Message"
+                        Style="{StaticResource WD.WarningPrimaryButton}"
+                        Tag="Warning" />
+                    <Button
+                        Click="AddButtonDesktop_Click"
+                        Content="Question Message"
+                        Style="{StaticResource WD.PrimaryButton}"
+                        Tag="Question" />
+                    <Button
+                        Click="AddButtonDesktop_Click"
+                        Content="Long Message"
+                        Style="{StaticResource WD.SuccessPrimaryButton}"
+                        Tag="Long" />
+                    <Button Click="BtnDesktopClear_Click" Content="Clear" />
+                </UniformGrid>
+            </GroupBox>
+        </StackPanel>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MessageExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MessageExample.xaml.cs" CodeType="CSharp" />

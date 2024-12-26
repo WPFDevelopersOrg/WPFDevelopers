@@ -183,6 +183,10 @@ namespace WPFDevelopers.Controls
         /// 截图取消事件
         /// </summary>
         public event ScreenShotCanceled CutCanceled;
+        /// <summary>
+        /// 获取保存的图片全路径
+        /// </summary>
+        public event Action<string> CutFullPath;
         private double _y1;
         private int _screenIndex;
         public static int CaptureScreenID = -1;
@@ -428,6 +432,8 @@ namespace WPFDevelopers.Controls
                     fs.Dispose();
                     fs.Close();
                     Close();
+                    if (CutFullPath != null)
+                        CutFullPath(dlg.FileName);
                 }
             }
         }

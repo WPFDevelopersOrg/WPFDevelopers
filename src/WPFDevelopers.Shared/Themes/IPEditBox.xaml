@@ -35,7 +35,6 @@
                     </ControlTemplate.Resources>
                     <Border
                         x:Name="PART_Border"
-                        
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"

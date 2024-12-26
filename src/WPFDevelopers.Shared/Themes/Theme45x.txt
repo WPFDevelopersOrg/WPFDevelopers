@@ -45,8 +45,8 @@ BallLoading.xaml
 BreathLamp.xaml
 Carousel.xaml
 VerifyCode.xaml
-CircularMenu.xaml
-CircularProgressBar.xaml
+CircleMenu.xaml
+CircleProgressBar.xaml
 EdgeLight.xaml
 LoadingGroup.xaml
 Pagination.xaml

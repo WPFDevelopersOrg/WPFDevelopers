@@ -16,9 +16,6 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("ValueDescription", typeof(string), typeof(CycleLoading),
                 new PropertyMetadata(default(string)));
 
-        //public static readonly DependencyProperty IsStartProperty =
-        //    DependencyProperty.Register("IsStart", typeof(bool), typeof(CycleLoading), new PropertyMetadata(true));
-
         public static readonly DependencyProperty LoadTitleProperty =
             DependencyProperty.Register("LoadTitle", typeof(string), typeof(CycleLoading),
                 new PropertyMetadata(default(string)));
@@ -46,12 +43,6 @@ namespace WPFDevelopers.Controls
             get => (string)GetValue(ValueDescriptionProperty);
             set => SetValue(ValueDescriptionProperty, value);
         }
-
-        //public bool IsStart
-        //{
-        //    get => (bool)GetValue(IsStartProperty);
-        //    set => SetValue(IsStartProperty, value);
-        //}
 
         public string LoadTitle
         {

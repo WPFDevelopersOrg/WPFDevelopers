@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
     public class ScreenCaptureExt : Window
     {
-        
+        private ThemeType? _theme;
         /// <summary>
         /// 截图完成委托
         /// </summary>
@@ -26,9 +28,23 @@ namespace WPFDevelopers.Controls
         /// 截图取消事件
         /// </summary>
         public event ScreenShotCanceled SnapCanceled;
+        /// <summary>
+        /// 获取保存的图片全路径
+        /// </summary>
+        public event Action<string> SnapSaveFullPath;
 
-        public ScreenCaptureExt()
+        public ScreenCaptureExt(ThemeType? themeType = null)
         {
+            if(themeType == null)
+            {
+                var existingResourceDictionary =
+               (Resources)Application.Current.Resources.MergedDictionaries.FirstOrDefault(x => x is Resources);
+                if (existingResourceDictionary != null)
+                    themeType = existingResourceDictionary.Theme;
+                else
+                    themeType = ThemeType.Dark;
+            }
+            _theme = themeType;
             Width = 0;
             Height = 0;
             Left = int.MinValue;
@@ -61,6 +77,10 @@ namespace WPFDevelopers.Controls
                     if (SnapCanceled != null) 
                         SnapCanceled();
                     break;
+                case Helper.MY_MESSAGEFULLPATH:
+                    Close();
+                    GetClipboard();
+                    break;
             }
             return IntPtr.Zero;
         }
@@ -88,15 +108,22 @@ namespace WPFDevelopers.Controls
                         SnapCompleted(bitmapImage);
                 }
             }
+            else if (Clipboard.ContainsText()) 
+            {
+                var clipboardText = Clipboard.GetText();
+                if (SnapSaveFullPath != null)
+                    SnapSaveFullPath(clipboardText);
+            }
         }
 
         void ShowScreenShot()
         {
+            string[] args = { Title, _theme.ToString() };//1.窗体tilte 2.Light或Dark
             if (Helper.GetTempPathVersionExt != null && File.Exists(Helper.GetTempPathVersionExt))
             {
                 var process = new Process();
                 process.StartInfo.FileName = Helper.GetTempPathVersionExt;
-                process.StartInfo.Arguments = Title;
+                process.StartInfo.Arguments = string.Join(" ", args);
                 process.Start();
             }
         }

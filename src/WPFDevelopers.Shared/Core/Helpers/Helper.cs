@@ -13,6 +13,7 @@ namespace WPFDevelopers
     {
         public const int WM_USER = 0x03FC;
         public const int MY_MESSAGE = WM_USER + 1;
+        public const int MY_MESSAGEFULLPATH = MY_MESSAGE + 1;
         public static string GetTempPath = Path.Combine(Path.GetTempPath(), Assembly.GetExecutingAssembly().GetName().Name);
         public static string GetTempPathVersion = Path.Combine(GetTempPath, GetMD5Hash(GetCurrentDllPath()));
         public const string GetExtName = "WPFDevelopersExt.exe";

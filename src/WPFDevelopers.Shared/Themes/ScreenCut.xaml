@@ -79,7 +79,7 @@
                                     <RadioButton
                                         x:Name="PART_RadioButtonRectangle"
                                         Margin="4,0"
-                                        Style="{DynamicResource WD.PathRadioButton}"
+                                        Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Rectangle], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
                                             Width="18"
@@ -90,7 +90,7 @@
                                     <RadioButton
                                         x:Name="PART_RadioButtonEllipse"
                                         Margin="4,0"
-                                        Style="{DynamicResource WD.PathRadioButton}"
+                                        Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Ellipse], Source={x:Static resx:LanguageManager.Instance}}">
                                         <Ellipse
                                             Width="19"
@@ -103,7 +103,7 @@
                                     <RadioButton
                                         x:Name="PART_RadioButtonArrow"
                                         Margin="4,0"
-                                        Style="{DynamicResource WD.PathRadioButton}"
+                                        Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Arrow], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
                                             Width="18"
@@ -114,7 +114,7 @@
                                     <RadioButton
                                         x:Name="PART_RadioButtonInk"
                                         Margin="4,0"
-                                        Style="{DynamicResource WD.PathRadioButton}"
+                                        Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
                                             Width="18"
@@ -141,7 +141,7 @@
                                     <Button
                                         x:Name="PART_ButtonSave"
                                         Margin="4,0"
-                                        Style="{DynamicResource WD.PathButton}"
+                                        Style="{StaticResource WD.PathButton}"
                                         ToolTip="{Binding [Save], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
                                             Width="18"
@@ -152,7 +152,7 @@
                                     <Button
                                         x:Name="PART_ButtonCancel"
                                         Margin="4,0"
-                                        Style="{DynamicResource WD.PathButton}"
+                                        Style="{StaticResource WD.PathButton}"
                                         ToolTip="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
                                             Width="14"
@@ -163,7 +163,7 @@
                                     <Button
                                         x:Name="PART_ButtonComplete"
                                         Margin="4,0"
-                                        Style="{DynamicResource WD.PathButton}"
+                                        Style="{StaticResource WD.PathButton}"
                                         ToolTip="{Binding [Complete], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
                                             Width="20"
@@ -202,19 +202,19 @@
                                                 Margin="4,0"
                                                 Background="Red"
                                                 IsChecked="True"
-                                                Style="{DynamicResource WD.ColorRadioButton}" />
+                                                Style="{StaticResource WD.ColorRadioButton}" />
                                             <RadioButton
                                                 Margin="4,0"
                                                 Background="DodgerBlue"
-                                                Style="{DynamicResource WD.ColorRadioButton}" />
+                                                Style="{StaticResource WD.ColorRadioButton}" />
                                             <RadioButton
                                                 Margin="4,0"
                                                 Background="LimeGreen"
-                                                Style="{DynamicResource WD.ColorRadioButton}" />
+                                                Style="{StaticResource WD.ColorRadioButton}" />
                                             <RadioButton
                                                 Margin="4,0"
                                                 Background="Yellow"
-                                                Style="{DynamicResource WD.ColorRadioButton}" />
+                                                Style="{StaticResource WD.ColorRadioButton}" />
                                         </WrapPanel>
                                     </controls:SmallPanel>
                                 </Border>

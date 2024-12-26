@@ -24,8 +24,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExampleEx.xaml.cs" Link="ExampleViews\CarouselExampleEx.xaml.cs" DependentUpon="CarouselExampleEx.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChatEmojiExample.xaml.cs" Link="ExampleViews\ChatEmojiExample.xaml.cs" DependentUpon="ChatEmojiExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularMenuExample.xaml.cs" Link="ExampleViews\CircularMenuExample.xaml.cs" DependentUpon="CircularMenuExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularProgressBarExample.xaml.cs" Link="ExampleViews\CircularProgressBarExample.xaml.cs" DependentUpon="CircularProgressBarExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleMenuExample.xaml.cs" Link="ExampleViews\CircleMenuExample.xaml.cs" DependentUpon="CircleMenuExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleProgressBarExample.xaml.cs" Link="ExampleViews\CircleProgressBarExample.xaml.cs" DependentUpon="CircleProgressBarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CountdownTimerExample.xaml.cs" Link="ExampleViews\CountdownTimerExample.xaml.cs" DependentUpon="CountdownTimerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" DependentUpon="CropAvatarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" DependentUpon="CropAvatarWindow.xaml" />
@@ -134,8 +134,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml.cs" Link="ExampleViews\CropImageExample.xaml.cs" DependentUpon="CropImageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BadgeExample.xaml.cs" Link="ExampleViews\BadgeExample.xaml.cs" DependentUpon="BadgeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageExample.xaml.cs" Link="ExampleViews\MessageExample.xaml.cs" DependentUpon="MessageExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoChromeWindow.xaml.cs" Link="ExampleViews\NoChromeWindow.xaml.cs" DependentUpon="NoChromeWindow.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoneNoChromeWindow.xaml.cs" Link="ExampleViews\NoneNoChromeWindow.xaml.cs" DependentUpon="NoneNoChromeWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoChromeWindow.xaml.cs" Link="ExampleViews\Window\NoChromeWindow.xaml.cs" DependentUpon="NoChromeWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoneNoChromeWindow.xaml.cs" Link="ExampleViews\Window\NoneNoChromeWindow.xaml.cs" DependentUpon="NoneNoChromeWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml.cs" Link="ExampleViews\PathIconExample.xaml.cs" DependentUpon="PathIconExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumericBoxExample.xaml.cs" Link="ExampleViews\NumericBoxExample.xaml.cs" DependentUpon="NumericBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ColorPickerExample.xaml.cs" Link="ExampleViews\ColorPickerExample.xaml.cs" DependentUpon="ColorPickerExample.xaml" />
@@ -150,6 +150,9 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DateRangePickerExample.xaml.cs" Link="ExampleViews\DateRangePickerExample.xaml.cs" DependentUpon="DateRangePickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SpacingExample.xaml.cs" Link="ExampleViews\SpacingExample.xaml.cs" DependentUpon="SpacingExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NotifyIconExample.xaml.cs" Link="ExampleViews\NotifyIconExample.xaml.cs" DependentUpon="NotifyIconExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GaugeExample.xaml.cs" Link="ExampleViews\GaugeExample.xaml.cs" DependentUpon="GaugeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml.cs" Link="ExampleViews\Window\NormalWindow.xaml.cs" DependentUpon="NormalWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml.cs" Link="ExampleViews\Window\HighTitleBarWindow.xaml.cs" DependentUpon="HighTitleBarWindow.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -191,11 +194,11 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChatEmojiExample.xaml">
 			<Link>ExampleViews\ChatEmojiExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularMenuExample.xaml">
-			<Link>ExampleViews\CircularMenuExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleMenuExample.xaml">
+			<Link>ExampleViews\CircleMenuExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircularProgressBarExample.xaml">
-			<Link>ExampleViews\CircularProgressBarExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleProgressBarExample.xaml">
+			<Link>ExampleViews\CircleProgressBarExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CountdownTimerExample.xaml">
 			<Link>ExampleViews\CountdownTimerExample.xaml</Link>
@@ -467,11 +470,11 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageExample.xaml">
 			<Link>ExampleViews\MessageExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoChromeWindow.xaml">
-			<Link>ExampleViews\NoChromeWindow.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoChromeWindow.xaml">
+			<Link>ExampleViews\Window\NoChromeWindow.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NoneNoChromeWindow.xaml">
-			<Link>ExampleViews\NoneNoChromeWindow.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoneNoChromeWindow.xaml">
+			<Link>ExampleViews\Window\NoneNoChromeWindow.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml">
 			<Link>ExampleViews\PathIconExample.xaml</Link>
@@ -511,6 +514,15 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NotifyIconExample.xaml">
 			<Link>ExampleViews\NotifyIconExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GaugeExample.xaml">
+			<Link>ExampleViews\GaugeExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml">
+			<Link>ExampleViews\Window\HighTitleBarWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml">
+			<Link>ExampleViews\Window\NormalWindow.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

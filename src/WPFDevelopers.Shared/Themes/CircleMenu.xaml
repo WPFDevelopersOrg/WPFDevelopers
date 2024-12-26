@@ -8,12 +8,12 @@
     </ResourceDictionary.MergedDictionaries>
     <convert:IndexToColor x:Key="WD.IndexToColor" />
     <Style
-        x:Key="WD.CircularMenuItem"
+        x:Key="WD.CircleMenuItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:CircularMenuItem}">
+        TargetType="{x:Type controls:CircleMenuItem}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:CircularMenuItem}">
+                <ControlTemplate TargetType="{x:Type controls:CircleMenuItem}">
                     <controls:SmallPanel VerticalAlignment="Top">
                         <controls:SmallPanel.RenderTransform>
                             <RotateTransform x:Name="PART_RotateTransform" Angle="{TemplateBinding Angle}" CenterX="200" CenterY="200" />
@@ -46,14 +46,14 @@
         </Setter>
     </Style>
     <Style
-        x:Key="WD.CircularMenu"
+        x:Key="WD.CircleMenu"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:CircularMenu}">
+        TargetType="{x:Type controls:CircleMenu}">
         <Setter Property="Width" Value="400" />
         <Setter Property="Height" Value="400" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:CircularMenu}">
+                <ControlTemplate TargetType="{x:Type controls:CircleMenu}">
                     <controls:SmallPanel>
                         <ItemsControl
                             x:Name="PART_ItemsControl"
@@ -70,7 +70,7 @@
                             </ItemsControl.Clip>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <controls:CircularMenuItem
+                                    <controls:CircleMenuItem
                                         Angle="{Binding Angle}"
                                         BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.IndexToColor}}"
                                         IconImage="{Binding IconImage}"
@@ -117,6 +117,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.CircularMenuItem}" TargetType="{x:Type controls:CircularMenuItem}" />
-    <Style BasedOn="{StaticResource WD.CircularMenu}" TargetType="{x:Type controls:CircularMenu}" />
+    <Style BasedOn="{StaticResource WD.CircleMenuItem}" TargetType="{x:Type controls:CircleMenuItem}" />
+    <Style BasedOn="{StaticResource WD.CircleMenu}" TargetType="{x:Type controls:CircleMenu}" />
 </ResourceDictionary>

@@ -25,27 +25,27 @@
                     <wd:DrawerMenu SelectionChanged="DrawerMenu_SelectionChanged">
                         <wd:DrawerMenuItem Text="主页">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/2.png" />
+                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/2.png" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
                         <wd:DrawerMenuItem Text="Edge">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/4.png" />
+                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/4.png" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
                         <wd:DrawerMenuItem Text="云盘">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/1.png" />
+                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/1.png" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
                         <wd:DrawerMenuItem Text="邮件">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/8.png" />
+                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/8.png" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
                         <wd:DrawerMenuItem Text="视频">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/6.png" />
+                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/6.png" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
                         <wd:DrawerMenuItem Text="Bus">

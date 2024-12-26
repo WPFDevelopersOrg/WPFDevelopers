@@ -16,74 +16,83 @@
         <model:HospitalList x:Key="myHospitalList" />
     </UserControl.Resources>
     <controls:CodeViewer>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Button
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Click="Button_Click"
-                Content="获取选中"
-                Style="{StaticResource WD.SuccessPrimaryButton}" />
-            <UniformGrid
-                Grid.Row="1"
-                Columns="2"
-                Rows="2">
-                <wd:MultiSelectionSearchComboBox
-                    Width="200"
-                    Height="38"
+        <UniformGrid
+            wd:PanelHelper.Spacing="4"
+            Columns="2"
+            Rows="2">
+            <wd:MultiSelectionSearchComboBox
+                Width="200"
+                Height="38"
+                Delimiter=","
+                DisplayMemberPath="Number"
+                IsSelectAllActive="True"
+                ItemsSource="{Binding Drawings}"
+                SelectedValuePath="Index">
+                <wd:MultiSelectionSearchComboBox.DataContext>
+                    <vm:DrawingExampleVM />
+                </wd:MultiSelectionSearchComboBox.DataContext>
+            </wd:MultiSelectionSearchComboBox>
+            <wd:MultiSelectionSearchComboBox
+                Width="200"
+                wd:ElementHelper.Watermark="MultiSelectionSearchComboBox"
+                Delimiter="^"
+                DisplayMemberPath="Number"
+                IsSelectAllActive="True"
+                ItemsSource="{Binding Drawings}"
+                SearchWatermark="请输入搜索内容"
+                SelectedValuePath="Index">
+                <wd:MultiSelectionSearchComboBox.DataContext>
+                    <vm:DrawingExampleVM />
+                </wd:MultiSelectionSearchComboBox.DataContext>
+            </wd:MultiSelectionSearchComboBox>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel
                     HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Delimiter=","
-                    DisplayMemberPath="Number"
-                    IsSelectAllActive="True"
-                    ItemsSource="{Binding Drawings}"
-                    SelectedValuePath="Index">
-                    <wd:MultiSelectionSearchComboBox.DataContext>
-                        <vm:DrawingExampleVM />
-                    </wd:MultiSelectionSearchComboBox.DataContext>
-                </wd:MultiSelectionSearchComboBox>
-                <wd:MultiSelectionSearchComboBox
-                    Width="200"
-                    Height="38"
+                    wd:PanelHelper.Spacing="5"
+                    Orientation="Horizontal">
+                    <Button
+                        Click="Button_Click"
+                        Content="获取选中"
+                        Style="{StaticResource WD.SuccessPrimaryButton}" />
+                    <Button
+                        wd:ElementHelper.CornerRadius="3"
+                        Click="BtnAdd_Click"
+                        Content="Add Item"
+                        Style="{StaticResource WD.SuccessPrimaryButton}" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="1"
                     HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    wd:ElementHelper.Watermark="MultiSelectionSearchComboBox"
-                    Delimiter="^"
-                    DisplayMemberPath="Number"
-                    IsSelectAllActive="True"
-                    ItemsSource="{Binding Drawings}"
-                    SearchWatermark="请输入搜索内容"
-                    SelectedValuePath="Index">
-                    <wd:MultiSelectionSearchComboBox.DataContext>
-                        <vm:DrawingExampleVM />
-                    </wd:MultiSelectionSearchComboBox.DataContext>
-                </wd:MultiSelectionSearchComboBox>
-                <wd:MultiSelectionSearchComboBox
-                    Name="MyMultiSelectionSearchComboBox2"
-                    Width="200"
-                    Height="38"
-                    HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    wd:ElementHelper.Watermark="下拉多选搜索"
-                    Delimiter="^"
-                    IsSelectAllActive="True"
-                    SearchWatermark="请输入搜索内容" />
-                <wd:MultiSelectionSearchComboBox
-                    Name="MyMultiSelectionSearchComboBox3"
-                    Width="200"
-                    Height="38"
-                    HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Delimiter=","
-                    DisplayMemberPath="Name"
-                    SelectedValuePath="ID" 
-                    wd:ElementHelper.CornerRadius="3"/>
-            </UniformGrid>
-        </Grid>
+                    VerticalAlignment="Top"
+                    wd:PanelHelper.Spacing="3"
+                    Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="Binding:" />
+                    <wd:MultiSelectionSearchComboBox
+                        Name="MyMultiSelectionSearchComboBox2"
+                        wd:ElementHelper.Watermark="下拉多选搜索"
+                        Delimiter="^"
+                        DisplayMemberPath="Name"
+                        IsSelectAllActive="True"
+                        ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=local:MultiSelectSearchComboBoxExample}}"
+                        SearchWatermark="请输入搜索内容"
+                        SelectedItems="{Binding SelectedItems, RelativeSource={RelativeSource AncestorType=local:MultiSelectSearchComboBoxExample}}"
+                        SelectedValuePath="ID" />
+                </StackPanel>
+            </Grid>
+
+            <wd:MultiSelectionSearchComboBox
+                Name="MyMultiSelectionSearchComboBox3"
+                Width="200"
+                Height="38"
+                wd:ElementHelper.CornerRadius="3"
+                Delimiter=","
+                DisplayMemberPath="Name"
+                SelectedValuePath="ID" />
+        </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectSearchComboBoxExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectSearchComboBoxExample.xaml.cs" CodeType="CSharp" />

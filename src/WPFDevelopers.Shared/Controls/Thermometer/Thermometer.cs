@@ -1,104 +1,62 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class Thermometer : Control
+    public class Thermometer : ScaleBase 
     {
-        public static readonly DependencyProperty MaxValueProperty =
-            DependencyProperty.Register("MaxValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(40.0));
-
-        public static readonly DependencyProperty MinValueProperty =
-            DependencyProperty.Register("MinValue", typeof(double), typeof(Thermometer), new UIPropertyMetadata(-10.0));
-
-        /// <summary>
-        ///     当前值
-        /// </summary>
-        public static readonly DependencyProperty CurrentValueProperty =
-            DependencyProperty.Register("CurrentValue", typeof(double), typeof(Thermometer),
-                new UIPropertyMetadata(OnCurrentValueChanged));
-
-        /// <summary>
-        ///     步长
-        /// </summary>
-        public static readonly DependencyProperty IntervalProperty =
-            DependencyProperty.Register("Interval", typeof(double), typeof(Thermometer), new UIPropertyMetadata(10.0));
-
-        /// <summary>
-        ///     当前值的图形坐标点
-        /// </summary>
-        public static readonly DependencyProperty CurrentGeometryProperty =
-            DependencyProperty.Register("CurrentGeometry", typeof(Geometry), typeof(Thermometer), new PropertyMetadata(
-                Geometry.Parse(@"M 2 132.8
+        public new double Maximum
+        {
+            get { return base.Maximum; }
+           
+        }
+        public new double Minimum
+        {
+            get { return base.Minimum; }
+           
+        }
+        static Thermometer()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Thermometer),
+                new FrameworkPropertyMetadata(typeof(Thermometer)));
+        }
+        public Thermometer()
+        {
+            SetValue(MaximumProperty, 40.0);
+            SetValue(MinimumProperty, -10.0);
+            SetValue(IntervalProperty, 10.0);
+            SetValue(GeometryProperty, Geometry.Parse(@"M 2 132.8
                               a 4 4 0 0 1 4 -4
                               h 18
                               a 4 4 0 0 1 4 4
                               v 32.2
                               a 4 4 0 0 1 -4 4
                               h -18
-                              a 4 4 0 0 1 -4 -4 z")));
-
-        /// <summary>
-        ///     构造函数
-        /// </summary>
-        static Thermometer()
+                              a 4 4 0 0 1 -4 -4 z"));
+        }
+        protected override void OnValueChanged(double oldValue, double newValue)
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Thermometer),
-                new FrameworkPropertyMetadata(typeof(Thermometer)));
+            PaintPath();
         }
 
-        public double MaxValue
+        protected override void OnMaximumChanged(double oldValue, double newValue)
         {
-            get => (double)GetValue(MaxValueProperty);
-
-            set => SetValue(MaxValueProperty, value);
+            InvalidateVisual();
         }
 
-        public double MinValue
+        protected override void OnMinimumChanged(double oldValue, double newValue)
         {
-            get => (double)GetValue(MinValueProperty);
-
-            set => SetValue(MinValueProperty, value);
+            InvalidateVisual();
         }
 
-        public double CurrentValue
+        protected override void OnIntervalChanged(double oldValue, double newValue)
         {
-            get => (double)GetValue(CurrentValueProperty);
-
-            set
-            {
-                SetValue(CurrentValueProperty, value);
-
-                PaintPath();
-            }
-        }
-
-        public double Interval
-        {
-            get => (double)GetValue(IntervalProperty);
-
-            set => SetValue(IntervalProperty, value);
-        }
-
-        public Geometry CurrentGeometry
-        {
-            get => (Geometry)GetValue(CurrentGeometryProperty);
-
-            set => SetValue(CurrentGeometryProperty, value);
-        }
-
-        private static void OnCurrentValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var thermometer = d as Thermometer;
-            thermometer.CurrentValue = Convert.ToDouble(e.NewValue);
+            InvalidateVisual();
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             PaintPath();
         }
 
@@ -168,7 +126,7 @@ namespace WPFDevelopers.Controls
 
             #region 画刻度
 
-            var total_Value = MaxValue - MinValue;
+            var total_Value = Maximum - Minimum;
 
             var cnt = total_Value / Interval;
 
@@ -176,14 +134,14 @@ namespace WPFDevelopers.Controls
 
             for (var i = 0; i <= cnt; i++)
             {
-                var formattedText = DrawingContextHelper.GetFormattedText($"{MaxValue - i * Interval}",
+                var formattedText = DrawingContextHelper.GetFormattedText($"{Maximum - i * Interval}",
                     (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), FlowDirection.LeftToRight,
                     14D);
 
                 drawingContext.DrawText(formattedText,
                     new Point(43, i * one_value - formattedText.Height / 2d)); //减去字体高度的一半
 
-                formattedText = DrawingContextHelper.GetFormattedText($"{(MaxValue - i * Interval) * 1.8d + 32d}",
+                formattedText = DrawingContextHelper.GetFormattedText($"{(Maximum - i * Interval) * 1.8d + 32d}",
                     (Brush)DrawingContextHelper.BrushConverter.ConvertFromString("#82848A"), textSize: 14D);
 
                 drawingContext.DrawText(formattedText, new Point(-13, i * one_value - formattedText.Height / 2d));
@@ -206,25 +164,18 @@ namespace WPFDevelopers.Controls
         /// </summary>
         private void PaintPath()
         {
-            var one_value = 161d / ((MaxValue - MinValue) / Interval);
-
+            var one_value = 161d / ((Maximum - Minimum) / Interval);
             var width = 26d;
-
-            var height = 169d - (MaxValue - CurrentValue) * (one_value / Interval);
-
-            var x = 2d;
-
-            var y = 169d - (169d - (MaxValue - CurrentValue) * (one_value / Interval));
-
-
-            CurrentGeometry = Geometry.Parse($@"M 2 {y + 4}
-                              a 4 4 0 0 1 4 -4
-                              h {width - 8}
-                              a 4 4 0 0 1 4 4
-                              v {height - 8}
-                              a 4 4 0 0 1 -4 4
-                              h -{width - 8}
-                              a 4 4 0 0 1 -4 -4 z");
+            var height = 169d - (Maximum - Value) * (one_value / Interval);
+            var y = 169d - (169d - (Maximum - Value) * (one_value / Interval));
+            Geometry = Geometry.Parse($@"M 2 {y + 4}
+                                  a 4 4 0 0 1 4 -4
+                                  h {width - 8}
+                                  a 4 4 0 0 1 4 4
+                                  v {height - 8}
+                                  a 4 4 0 0 1 -4 4
+                                  h -{width - 8}
+                                  a 4 4 0 0 1 -4 -4 z");
         }
     }
 }

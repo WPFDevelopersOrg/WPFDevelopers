@@ -6,23 +6,28 @@ namespace WPFDevelopers.Controls
 {
     public class MessageAdorner : Adorner
     {
-        private MessageListBox listBox;
+        private MessageListBox _listBox;
         private UIElement _child;
-        private FrameworkElement adornedElement;
+        private FrameworkElement _adornedElement;
+        internal Position Position;
         public MessageAdorner(UIElement adornedElement) : base(adornedElement)
         {
-            this.adornedElement = adornedElement as FrameworkElement;
+            _adornedElement = adornedElement as FrameworkElement;
         }
-
-        public void Push(string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
+        internal void Push(string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
         {
-            if (listBox == null)
+            if (_listBox == null)
             {
-                listBox = new MessageListBox();
-                Child = listBox;
+                _listBox = new MessageListBox();
+                Child = _listBox;
             }
             var mItem = new MessageListBoxItem { Content = message, MessageType = type, IsCenter = center };
-            listBox.Items.Insert(0, mItem);
+            _listBox.Items.Insert(0, mItem);
+        }
+        internal void Clear()
+        {
+            if(_listBox != null)
+                _listBox.Items.Clear();
         }
         public UIElement Child
         {
@@ -49,8 +54,24 @@ namespace WPFDevelopers.Controls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            var x = (adornedElement.ActualWidth - _child.DesiredSize.Width) / 2;
-            _child.Arrange(new Rect(new Point(x, 0), _child.DesiredSize));
+            if (_child == null)
+                return finalSize;
+            double x = 0;
+            double y = 0;
+            switch (Position)
+            {
+                case Position.Top:
+                    x = (_adornedElement.ActualWidth - _child.DesiredSize.Width) / 2;
+                    break;
+                case Position.Right:
+                    x = _adornedElement.ActualWidth - _child.DesiredSize.Width;
+                    break;
+                case Position.Bottom:
+                    x = (_adornedElement.ActualWidth - _child.DesiredSize.Width) / 2;
+                    y = _adornedElement.ActualHeight - _child.DesiredSize.Height;
+                    break;
+            }
+            _child.Arrange(new Rect(new Point(x, y), _child.DesiredSize));
             return finalSize;
         }
 

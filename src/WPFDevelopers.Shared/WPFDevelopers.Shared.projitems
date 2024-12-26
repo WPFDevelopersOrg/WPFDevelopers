@@ -9,6 +9,7 @@
     <Import_RootNamespace>WPFDevelopers</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ScaleBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBase.cs" />
@@ -21,9 +22,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateRangePicker\DateRangePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer\Drawer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Gauge\Gauge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
@@ -33,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelectorItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelectorListBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TitleBarMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Assists\ThincknessAssert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge\Badge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadCrumbBar\BreadCrumbBar.cs" />
@@ -79,9 +83,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenu.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularMenu\CircularMenuItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircularProgressBar\CircularProgressBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleProgressBar\CircleProgressBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CropAvatar\CropAvatar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DrawerMenu\DrawerMenuItem.cs" />
@@ -450,11 +454,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\CircularMenu.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CircleMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\CircularProgressBar.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\CircleProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

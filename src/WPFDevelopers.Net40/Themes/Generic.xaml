@@ -39,22 +39,142 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <control:SmallPanel Grid.Row="0" Background="{TemplateBinding TitleBackground}">
-                                <Grid x:Name="PART_GridChrome" Height="{TemplateBinding TitleHeight}">
+                            <control:SmallPanel
+                                x:Name="PART_Normal"
+                                Grid.Row="0"
+                                Background="{TemplateBinding TitleBackground}">
+                                <Grid Height="{TemplateBinding TitleHeight}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button
+                                            x:Name="PART_TitleBarIcon"
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Center"
+                                            shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ObjectNullToVisibilityConverter}}">
+                                            <Image
+                                                Width="{x:Static SystemParameters.SmallIconWidth}"
+                                                Height="{x:Static SystemParameters.SmallIconHeight}"
+                                                IsHitTestVisible="False"
+                                                RenderOptions.BitmapScalingMode="HighQuality"
+                                                Source="{TemplateBinding Icon}" />
+                                        </Button>
+
+                                        <ContentControl
+                                            Margin="5,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Content="{TemplateBinding Title}"
+                                            FontSize="{DynamicResource {x:Static SystemFonts.CaptionFontSizeKey}}"
+                                            Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                                            IsTabStop="False" />
+                                    </StackPanel>
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                        Orientation="Horizontal">
+                                        <StackPanel x:Name="PART_TitleBarMinAndMax" Orientation="Horizontal">
+                                            <Button
+                                                Name="PART_TitleBarMinimizeButton"
+                                                Padding="0"
+                                                Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}"
+                                                IsTabStop="False"
+                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                ToolTip="{Binding [Minimize], Source={x:Static resx:LanguageManager.Instance}}">
+                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <Rectangle
+                                                        Width="10"
+                                                        Height="1"
+                                                        Margin="0,7,0,0"
+                                                        VerticalAlignment="Bottom"
+                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
+                                                </Grid>
+                                            </Button>
+                                            <Button
+                                                Name="PART_TitleBarMaximizeButton"
+                                                Padding="0"
+                                                Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}"
+                                                IsTabStop="False"
+                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
+                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <Path
+                                                        Width="10"
+                                                        Height="10"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Data="{DynamicResource WD.WindowMaximizeGeometry}"
+                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                        Stretch="Uniform"
+                                                        UseLayoutRounding="False" />
+                                                </Grid>
+                                            </Button>
+                                            <Button
+                                                Name="PART_TitleBarRestoreButton"
+                                                Padding="0"
+                                                Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
+                                                IsTabStop="False"
+                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}"
+                                                Visibility="Collapsed">
+                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <Path
+                                                        Width="10"
+                                                        Height="10"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Data="{DynamicResource WD.WindowRestoreGeometry}"
+                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                        Stretch="Uniform"
+                                                        UseLayoutRounding="False" />
+                                                </Grid>
+                                            </Button>
+                                        </StackPanel>
+
+                                        <Button
+                                            Name="PART_TitleBarCloseButton"
+                                            Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}"
+                                            IsTabStop="False"
+                                            Style="{DynamicResource WD.WindowButtonStyle}"
+                                            ToolTip="{Binding [Close], Source={x:Static resx:LanguageManager.Instance}}">
+                                            <Path
+                                                Width="10"
+                                                Height="10"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Data="{DynamicResource WD.WindowCloseGeometry}"
+                                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                Stretch="Uniform" />
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </control:SmallPanel>
+                            <control:SmallPanel
+                                x:Name="PART_HighTitleBar"
+                                Grid.Row="0"
+                                Background="{TemplateBinding TitleBackground}"
+                                Visibility="Collapsed">
+                                <Grid
+                                    x:Name="PART_GridChrome"
+                                    Height="{TemplateBinding TitleHeight}"
+                                    Margin="10,0,0,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" MinWidth="30" />
                                     </Grid.ColumnDefinitions>
                                     <Image
-                                        Width="30"
-                                        Height="30"
-                                        Margin="14,0,0,0"
-                                        HorizontalAlignment="Left"
+                                        Width="23"
+                                        Height="23"
                                         VerticalAlignment="Center"
                                         RenderOptions.BitmapScalingMode="HighQuality"
                                         Source="{TemplateBinding Icon}"
-                                        Stretch="Fill"
                                         Visibility="{TemplateBinding Icon,
                                                                      Converter={StaticResource ObjectNullToVisibilityConverter}}" />
                                     <TextBlock
@@ -65,11 +185,12 @@
                                         FontSize="{DynamicResource WD.TitleFontSize}"
                                         Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
                                         Text="{TemplateBinding Title}" />
-                                    <WrapPanel
+                                    <StackPanel
                                         Grid.Column="2"
                                         Margin="0,6"
-                                        shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                                        <WrapPanel x:Name="PART_MinAndMax">
+                                        shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                        Orientation="Horizontal">
+                                        <StackPanel x:Name="PART_MinAndMax" Orientation="Horizontal">
                                             <Button
                                                 Name="PART_MinimizeButton"
                                                 Padding="0"
@@ -126,7 +247,7 @@
                                                         UseLayoutRounding="False" />
                                                 </Grid>
                                             </Button>
-                                        </WrapPanel>
+                                        </StackPanel>
 
                                         <Button
                                             Name="PART_CloseButton"
@@ -143,7 +264,7 @@
                                                 Fill="{DynamicResource WD.WindowForegroundColorBrush}"
                                                 Stretch="Uniform" />
                                         </Button>
-                                    </WrapPanel>
+                                    </StackPanel>
                                 </Grid>
                                 <ContentPresenter
                                     x:Name="PART_TitleToolBar"
@@ -165,18 +286,26 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="TitleBarMode" Value="HighTitleBar">
+                            <Setter TargetName="PART_HighTitleBar" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_Normal" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_TitleBarRestoreButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_TitleBarMaximizeButton" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_Border" Property="Margin" Value="7" />
                         </Trigger>
                         <Trigger Property="WindowStyle" Value="ToolWindow">
                             <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_TitleBarMinAndMax" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="NoChrome" Value="True">
                             <Setter TargetName="PART_GridChrome" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_TitleToolBar" Property="Visibility" Value="Visible" />
                         </Trigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="ResizeMode" Value="CanResizeWithGrip" />

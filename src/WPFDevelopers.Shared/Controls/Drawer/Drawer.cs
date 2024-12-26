@@ -14,7 +14,7 @@ namespace WPFDevelopers.Controls
         private const string BorderHeaderTemplateName = "PART_Header";
         private const string BorderMarkTemplateName = "PART_Mark";
 
-        public static readonly DependencyProperty EdgePositionProperty =
+        public static readonly DependencyProperty PositionProperty =
             DependencyProperty.Register("Position", typeof(Position), typeof(Drawer),
                 new PropertyMetadata(Position.Left));
 
@@ -37,8 +37,8 @@ namespace WPFDevelopers.Controls
 
         public Position Position
         {
-            get => (Position) GetValue(EdgePositionProperty);
-            set => SetValue(EdgePositionProperty, value);
+            get => (Position) GetValue(PositionProperty);
+            set => SetValue(PositionProperty, value);
         }
 
         public bool IsOpen

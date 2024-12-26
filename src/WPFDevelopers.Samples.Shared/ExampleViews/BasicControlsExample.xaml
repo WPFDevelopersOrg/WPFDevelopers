@@ -74,6 +74,21 @@
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
+                        Text="Languages" />
+                    <WrapPanel Margin="10" wd:PanelHelper.Spacing="4">
+                        <TextBlock VerticalAlignment="Center" Text="Languages:" />
+                        <ComboBox
+                            SelectedIndex="0"
+                            SelectionChanged="ComboBoxLanguages_SelectionChanged"
+                            ToolTip="目前翻译只是针对WD的自定义控件进行了多语言翻译">
+                            <ComboBoxItem Tag="zh-cn">中文</ComboBoxItem>
+                            <ComboBoxItem Tag="en-US">English</ComboBoxItem>
+                            <ComboBoxItem Tag="ko-KR">한국어</ComboBoxItem>
+                        </ComboBox>
+                    </WrapPanel>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
                         Text="Menu" />
                     <WrapPanel Margin="0,10">
                         <WrapPanel.ContextMenu>
@@ -738,16 +753,27 @@
                         Text="GroupBox" />
                     <UniformGrid Margin="0,10" Columns="2">
                         <GroupBox wd:ElementHelper.CornerRadius="3" Header="GroupBox1">
-                            <Rectangle
+                            <Grid wd:PanelHelper.Spacing="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Text="TextBlock:" />
+                                <Button Grid.Column="1" Content="Commit" />
+                            </Grid>
+                            <!--<Rectangle
                                 Width="400"
                                 Height="300"
-                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />
+                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />-->
                         </GroupBox>
-                        <GroupBox Margin="10,0" Header="GroupBox1">
-                            <Rectangle
-                                Width="400"
-                                Height="300"
-                                Fill="{DynamicResource WD.LightSolidColorBrush}" />
+                        <GroupBox
+                            Height="400"
+                            Margin="10,0"
+                            Header="GroupBox1">
+                            <Rectangle Fill="{DynamicResource WD.LightSolidColorBrush}" />
                         </GroupBox>
                     </UniformGrid>
 
@@ -764,32 +790,64 @@
                             <TabItem Padding="10" Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem2">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem3">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl Margin="4" TabStripPlacement="Bottom">
-                            <TabItem Padding="10" Header="TabItem1">
+                            <TabItem Padding="10" Header="Home">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem2">
+                            <TabItem
+                                x:Name="MyTabItem"
+                                MaxWidth="120"
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem2LongLongLongLongLongLongLongLong"
+                                ToolTip="{Binding ElementName=MyTabItem, Path=Header}">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem3">
+                            <TabItem
+                                MaxWidth="120"
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True">
+                                <TabItem.Header>
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        Text="TabItem3LongLongLongLongLongLongLongLong"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextWrapping="NoWrap"
+                                        ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
+                                </TabItem.Header>
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl Margin="4" TabStripPlacement="Left">
-                            <TabItem Padding="10" Header="TabItem1">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem2">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem3">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                             </TabItem>
                         </TabControl>
@@ -797,13 +855,22 @@
                             Margin="4"
                             IsEnabled="False"
                             TabStripPlacement="Right">
-                            <TabItem Padding="10" Header="TabItem1">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem1">
                                 <Rectangle Fill="{DynamicResource WD.SuccessSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem2">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem2">
                                 <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                             </TabItem>
-                            <TabItem Padding="10" Header="TabItem3">
+                            <TabItem
+                                Padding="10"
+                                wd:ElementHelper.IsClear="True"
+                                Header="TabItem3">
                                 <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                             </TabItem>
                         </TabControl>

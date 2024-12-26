@@ -142,8 +142,11 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.RollLoading:
                     ControlPanel = new RollLoadingExample();
                     break;
-                case MenuEnum.CutImage:
-                    ControlPanel = new CutImageExample();
+                //case MenuEnum.CutImage:
+                //    ControlPanel = new CutImageExample();
+                //    break;
+                case MenuEnum.Window:
+                    ControlPanel = new WindowExample();
                     break;
                 case MenuEnum.CropAvatar:
                     ControlPanel = new CropAvatarExample();
@@ -160,8 +163,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.VerifyCode:
                     ControlPanel = new VerifyCodeExample();
                     break;
-                case MenuEnum.CircularMenu:
-                    ControlPanel = new CircularMenuExample();
+                case MenuEnum.CircleMenu:
+                    ControlPanel = new CircleMenuExample();
                     break;
                 case MenuEnum.BreatheLight:
                     ControlPanel = new BreatheLightExample();
@@ -170,8 +173,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ChatEmoji:
                     ControlPanel = new ChatEmojiExample();
                     break;
-                case MenuEnum.ProgressBar:
-                    ControlPanel = new CircularProgressBarExample();
+                case MenuEnum.CircleProgressBar:
+                    ControlPanel = new CircleProgressBarExample();
                     break;
                 case MenuEnum.Dashboard:
                     ControlPanel = new DashboardExample();
@@ -363,6 +366,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.DateRangePicker:
                     ControlPanel = new DateRangePickerExample();
+                    break;
+                case MenuEnum.Gauge:
+                    ControlPanel = new GaugeExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

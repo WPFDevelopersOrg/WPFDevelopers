@@ -88,7 +88,7 @@ namespace WPFDevelopers.Helpers
         public static void WindowShake(Window window = null)
         {
             if (window == null)
-                if (Application.Current.Windows.Count > 0)
+                if (Application.Current != null && Application.Current.Windows.Count > 0)
                     window = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
 
             var doubleAnimation = new DoubleAnimation
@@ -155,22 +155,26 @@ namespace WPFDevelopers.Helpers
             }
             return null;
         }
+       
         public static AdornerLayer GetAdornerLayer(Visual visual)
         {
-            var decorator = visual as AdornerDecorator;
-            if (decorator != null)
+            if (visual == null) return null;  
+            if (visual is AdornerDecorator decorator)
                 return decorator.AdornerLayer;
-            var presenter = visual as ScrollContentPresenter;
-            if (presenter != null)
+            if (visual is ScrollContentPresenter presenter)
                 return presenter.AdornerLayer;
-            var visualContent = (visual as Window)?.Content as Visual;
-            return AdornerLayer.GetAdornerLayer(visualContent ?? visual);
+            if (visual is Window window)
+            {
+                var visualContent = window.Content as Visual;
+                return AdornerLayer.GetAdornerLayer(visualContent ?? visual);
+            }
+            return AdornerLayer.GetAdornerLayer(visual);
         }
 
         public static Window GetDefaultWindow()
         {
             Window window = null;
-            if (Application.Current.Windows.Count > 0)
+            if (Application.Current != null && Application.Current.Windows.Count > 0)
             {
                 window = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
                 if (window == null)

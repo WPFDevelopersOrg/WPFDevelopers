@@ -93,14 +93,17 @@ namespace WPFDevelopers.Helpers
             if (sender is Button button)
             {
                 if (button.TemplatedParent is TextBox textBox)
-                {
                     textBox.Clear();
-                }
                 else if (button.TemplatedParent is PasswordBox passwordBox)
-                {
                     passwordBox.Clear();
+                else if (button.TemplatedParent is TabItem tabItem)
+                {
+                    var tabControl = tabItem.Parent as TabControl;
+                    if (tabControl != null)
+                        tabControl.Items.Remove(tabItem); 
                 }
             }
         }
+        
     }
 }

@@ -3,11 +3,11 @@
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    ///     Window1.xaml 的交互逻辑
+    ///     NoChromeWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class NoneNoChromeWindow
+    public partial class NoChromeWindow 
     {
-        public NoneNoChromeWindow()
+        public NoChromeWindow()
         {
             InitializeComponent();
         }

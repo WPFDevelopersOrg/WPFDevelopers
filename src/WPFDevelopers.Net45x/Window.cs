@@ -1,16 +1,23 @@
-﻿using System;
+﻿using Standard;
+using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using WPFDevelopers.Controls;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Net45x
 {
+    [TemplatePart(Name = TitleBarIcon, Type = typeof(Button))]
     public class Window : System.Windows.Window
     {
+        private const string TitleBarIcon = "PART_TitleBarIcon";
         private WindowStyle _windowStyle;
+        private Button _titleBarIcon;
 
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
@@ -23,6 +30,9 @@ namespace WPFDevelopers.Net45x
 
         public static readonly DependencyProperty TitleBackgroundProperty =
           DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty TitleBarModeProperty =
+           DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal));
 
         static Window()
         {
@@ -45,26 +55,48 @@ namespace WPFDevelopers.Net45x
         {
             base.OnApplyTemplate();
             _windowStyle = WindowStyle;
+            _titleBarIcon = GetTemplateChild(TitleBarIcon) as Button;
+            if (_titleBarIcon != null)
+            {
+                _titleBarIcon.MouseDoubleClick -= Icon_MouseDoubleClick;
+                _titleBarIcon.MouseDoubleClick += Icon_MouseDoubleClick;
+            }
         }
+
+        private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                Close();
+        }
+
         public double TitleHeight
         {
             get => (double)GetValue(TitleHeightProperty);
             set => SetValue(TitleHeightProperty, value);
         }
+
         public bool NoChrome
         {
             get => (bool)GetValue(NoChromeProperty);
             set => SetValue(NoChromeProperty, value);
         }
+
         public object TitleBar
         {
             get => (object)GetValue(TitleBarProperty);
             set => SetValue(TitleBarProperty, value);
         }
+
         public Brush TitleBackground
         {
             get => (Brush)GetValue(TitleBackgroundProperty);
             set => SetValue(TitleBackgroundProperty, value);
+        }
+
+        public TitleBarMode TitleBarMode
+        {
+            get => (TitleBarMode)GetValue(TitleBarModeProperty);
+            set => SetValue(TitleBarModeProperty, value);
         }
 
         private static T GetResourceKey<T>(string key)
@@ -78,6 +110,8 @@ namespace WPFDevelopers.Net45x
         {
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
+            if (TitleBarMode == TitleBarMode.Normal)
+                TitleHeight = SystemParameters.WindowNonClientFrameThickness.Top + SystemParameters.WindowResizeBorderThickness.Top; //32;//SystemParameters.WindowNonClientFrameThickness.Top;
         }
 
         protected override void OnContentRendered(EventArgs e)
@@ -171,4 +205,5 @@ namespace WPFDevelopers.Net45x
 
         #endregion
     }
+    
 }

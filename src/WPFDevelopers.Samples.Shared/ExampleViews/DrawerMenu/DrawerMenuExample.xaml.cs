@@ -33,9 +33,9 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
         {
             InitializeComponent();
             var items = new List<DrawerMenuItem>();
-            items.Add(new DrawerMenuItem { Text = "Menu01", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/1.png")) } });
-            items.Add(new DrawerMenuItem { Text = "Menu02", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/2.png")) } });
-            items.Add(new DrawerMenuItem { Text = "Menu03", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircularMenu/3.png")) } });
+            items.Add(new DrawerMenuItem { Text = "Menu01", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/1.png")) } });
+            items.Add(new DrawerMenuItem { Text = "Menu02", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/2.png")) } });
+            items.Add(new DrawerMenuItem { Text = "Menu03", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/3.png")) } });
             DrawerMenuItems = items;
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -240,6 +241,20 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void ButtonNone_Click(object sender, RoutedEventArgs e)
         {
             new NoneNoChromeWindow().Show();
+        }
+
+        private void ComboBoxLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cBox = sender as ComboBox;
+            if (cBox != null)
+            {
+                var item = cBox.SelectedItem as ComboBoxItem;
+                var tag = item.Tag.ToString();
+                if (item != null && LanguageManager.Instance.CurrentCulture.Name != tag)
+                {
+                    LanguageManager.Instance.ChangeLanguage(new CultureInfo(tag));
+                }
+            }
         }
     }
 }

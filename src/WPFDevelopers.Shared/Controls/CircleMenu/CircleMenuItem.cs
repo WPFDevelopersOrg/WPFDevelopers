@@ -5,30 +5,30 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class CircularMenuItem : Control
+    public class CircleMenuItem : Control
     {
         private const string RotateTransformTemplateName = "PART_RotateTransform";
-        private static readonly Type _typeofSelf = typeof(CircularMenuItem);
+        private static readonly Type _typeofSelf = typeof(CircleMenuItem);
 
         public static readonly DependencyProperty AngleProperty =
-            DependencyProperty.Register("Angle", typeof(double), typeof(CircularMenuItem),
+            DependencyProperty.Register("Angle", typeof(double), typeof(CircleMenuItem),
                 new UIPropertyMetadata(OnAngleChanged));
 
         public static readonly DependencyProperty MenuTxtProperty =
-            DependencyProperty.Register("MenuTxt", typeof(string), typeof(CircularMenuItem),
+            DependencyProperty.Register("MenuTxt", typeof(string), typeof(CircleMenuItem),
                 new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty BackgroundColorProperty =
-            DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(CircularMenuItem),
+            DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(CircleMenuItem),
                 new PropertyMetadata(null));
 
         public static readonly DependencyProperty IconImageProperty =
-            DependencyProperty.Register("IconImage", typeof(ImageSource), typeof(CircularMenuItem),
+            DependencyProperty.Register("IconImage", typeof(ImageSource), typeof(CircleMenuItem),
                 new PropertyMetadata(null));
 
         private RotateTransform _angleRotateTransform;
 
-        static CircularMenuItem()
+        static CircleMenuItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
@@ -45,7 +45,6 @@ namespace WPFDevelopers.Controls
             set => SetValue(MenuTxtProperty, value);
         }
 
-
         public Brush BackgroundColor
         {
             get => (Brush)GetValue(BackgroundColorProperty);
@@ -60,7 +59,7 @@ namespace WPFDevelopers.Controls
 
         private static void OnAngleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var control = (CircularMenuItem)d;
+            var control = (CircleMenuItem)d;
             control.UpdateAngle();
         }
 

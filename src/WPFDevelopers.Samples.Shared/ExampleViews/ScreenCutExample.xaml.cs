@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Controls.ScreenCapturer;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
@@ -50,9 +51,15 @@ namespace WPFDevelopers.Samples.ExampleViews
                 screenCapturer = new ScreenCapture();
                 screenCapturer.SnapCompleted += ScreenCapturer_SnapCompleted;
                 screenCapturer.SnapCanceled += ScreenCapturer_SnapCanceled;
+                screenCapturer.SnapSaveFullPath += ScreenCapturer_SnapSaveFullPath;
                 screenCapturer.Capture();
             }));
 
+        }
+
+        private void ScreenCapturer_SnapSaveFullPath(string text)
+        {
+            WPFDevelopers.Controls.MessageBox.Show($"截图路径：{text}","Info",MessageBoxImage.Information);
         }
 
         private void ScreenCapturer_SnapCanceled()
@@ -76,6 +83,12 @@ namespace WPFDevelopers.Samples.ExampleViews
             var screenCaptureExt = new ScreenCaptureExt();
             screenCaptureExt.SnapCanceled += ScreenCaptureExt_SnapCanceled;
             screenCaptureExt.SnapCompleted += ScreenCaptureExt_SnapCompleted;
+            screenCaptureExt.SnapSaveFullPath += ScreenCaptureExt_SnapSaveFullPath;
+        }
+
+        private void ScreenCaptureExt_SnapSaveFullPath(string text)
+        {
+            Message.Push($"截图路径：{text}", MessageBoxImage.Information);
         }
 
         private void ScreenCaptureExt_SnapCompleted(System.Windows.Media.Imaging.BitmapSource bitmap)

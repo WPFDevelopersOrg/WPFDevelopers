@@ -11,8 +11,10 @@
         x:Key="WD.DefaultLabel"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Label}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
         <Setter Property="Template">
             <Setter.Value>

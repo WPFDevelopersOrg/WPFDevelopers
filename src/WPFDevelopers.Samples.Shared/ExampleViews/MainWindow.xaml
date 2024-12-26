@@ -16,6 +16,7 @@
     Width="{x:Static local:App.Wdith}"
     Height="{x:Static local:App.Height}"
     Icon="pack://application:,,,/WPFDevelopers.Samples;component/WPFDevelopers.ico"
+    TitleBarMode="HighTitleBar"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <wd:Window.Effect>
