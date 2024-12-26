@@ -25,7 +25,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty IsRoundProperty =
             DependencyProperty.Register("IsRound", typeof(bool), typeof(CircleProgressBar),
-                new PropertyMetadata(false));
+                new PropertyMetadata(true));
 
         public static readonly DependencyProperty AngleProperty =
             DependencyProperty.Register("Angle", typeof(double), typeof(CircleProgressBar),
