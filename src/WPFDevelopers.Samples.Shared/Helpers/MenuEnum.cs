@@ -89,6 +89,7 @@
         Spacing,
         Drawer,
         DateRangePicker,
+        Gauge,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

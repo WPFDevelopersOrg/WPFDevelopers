@@ -150,6 +150,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DateRangePickerExample.xaml.cs" Link="ExampleViews\DateRangePickerExample.xaml.cs" DependentUpon="DateRangePickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SpacingExample.xaml.cs" Link="ExampleViews\SpacingExample.xaml.cs" DependentUpon="SpacingExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NotifyIconExample.xaml.cs" Link="ExampleViews\NotifyIconExample.xaml.cs" DependentUpon="NotifyIconExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GaugeExample.xaml.cs" Link="ExampleViews\GaugeExample.xaml.cs" DependentUpon="GaugeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml.cs" Link="ExampleViews\Window\NormalWindow.xaml.cs" DependentUpon="NormalWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml.cs" Link="ExampleViews\Window\HighTitleBarWindow.xaml.cs" DependentUpon="HighTitleBarWindow.xaml" />
 	</ItemGroup>
@@ -513,6 +514,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NotifyIconExample.xaml">
 			<Link>ExampleViews\NotifyIconExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GaugeExample.xaml">
+			<Link>ExampleViews\GaugeExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml">
 			<Link>ExampleViews\Window\HighTitleBarWindow.xaml</Link>
