@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using WPFDevelopers.Helpers;
-using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
