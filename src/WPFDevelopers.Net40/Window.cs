@@ -1,13 +1,13 @@
 ﻿using Microsoft.Windows.Shell;
 using System;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using WPFDevelopers.Controls;
-using WPFDevelopers.Helpers;
+using WPFDevelopers.Core.Helpers;
+using static WPFDevelopers.Core.Helpers.MonitorHelper;
 
 namespace WPFDevelopers.Net40
 {
@@ -48,8 +48,8 @@ namespace WPFDevelopers.Net40
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
-           
         }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -61,6 +61,7 @@ namespace WPFDevelopers.Net40
                 _titleBarIcon.MouseDoubleClick += Icon_MouseDoubleClick;
             }
         }
+
 
         private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -102,7 +103,7 @@ namespace WPFDevelopers.Net40
         {
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
-            if(TitleBarMode == TitleBarMode.Normal)
+            if (TitleBarMode == TitleBarMode.Normal)
                 TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
         }
 
@@ -132,12 +133,17 @@ namespace WPFDevelopers.Net40
 
         private void MaximizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            SystemCommands.MaximizeWindow(this);
+            if (WindowState == WindowState.Normal)
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                WindowState = WindowState.Maximized;
+                WindowStyle = WindowStyle.None;
+            }
         }
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            SendMessage(hWnd, ApiCodes.WM_SYSCOMMAND, new IntPtr(ApiCodes.SC_MINIMIZE), IntPtr.Zero);
+            SendMessage(hWnd, MonitorHelper.WindowsMessageCodes.WM_SYSCOMMAND, new IntPtr(MonitorHelper.WindowsMessageCodes.SC_MINIMIZE), IntPtr.Zero);
         }
 
         private void RestoreWindow(object sender, ExecutedRoutedEventArgs e)
@@ -145,39 +151,30 @@ namespace WPFDevelopers.Net40
             SystemCommands.RestoreWindow(this);
         }
 
-
-        internal class ApiCodes
-        {
-            public const int SC_RESTORE = 0xF120;
-            public const int SC_MINIMIZE = 0xF020;
-            public const int WM_SYSCOMMAND = 0x0112;
-        }
-
         private IntPtr hWnd;
-
-        [DllImport(Win32.User32)]
-        public static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
-
+      
         private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == ApiCodes.WM_SYSCOMMAND)
+            switch (msg)
             {
-                if (wParam.ToInt32() == ApiCodes.SC_MINIMIZE)
-                {
-                    _windowStyle = WindowStyle;
-                    if (WindowStyle != WindowStyle.SingleBorderWindow)
-                        WindowStyle = WindowStyle.SingleBorderWindow;
-                    WindowState = WindowState.Minimized;
-                    handled = true;
-                }
-                else if (wParam.ToInt32() == ApiCodes.SC_RESTORE)
-                {
-                    WindowState = WindowState.Normal;
-                    WindowStyle = WindowStyle.None;
-                    if(WindowStyle.None != _windowStyle)
-                        WindowStyle = _windowStyle;
-                    handled = true;
-                }
+                case WindowsMessageCodes.WM_SYSCOMMAND:
+                    if (wParam.ToInt32() == WindowsMessageCodes.SC_MINIMIZE)
+                    {
+                        _windowStyle = WindowStyle;
+                        if (WindowStyle != WindowStyle.SingleBorderWindow)
+                            WindowStyle = WindowStyle.SingleBorderWindow;
+                        WindowState = WindowState.Minimized;
+                        handled = true;
+                    }
+                    else if (wParam.ToInt32() == WindowsMessageCodes.SC_RESTORE)
+                    {
+                        WindowState = WindowState.Normal;
+                        WindowStyle = WindowStyle.None;
+                        if (WindowStyle.None != _windowStyle)
+                            WindowStyle = _windowStyle;
+                        handled = true;
+                    }
+                    break;
             }
             return IntPtr.Zero;
         }
