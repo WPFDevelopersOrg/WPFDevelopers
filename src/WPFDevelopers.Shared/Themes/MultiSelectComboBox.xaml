@@ -60,9 +60,6 @@
         x:Key="WD.MultiSelectComboBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:MultiSelectComboBox}">
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="SelectionMode" Value="Multiple" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource WD.DefaultMultiSelectComboBoxItem}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -105,11 +102,20 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
-                        <Grid Grid.IsSharedSizeScope="true">
+                        <Grid Grid.IsSharedSizeScope="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="ComboBoxButton" />
                             </Grid.ColumnDefinitions>
+                            <ScrollViewer
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalScrollBarVisibility="Disabled"
+                                VerticalScrollBarVisibility="Auto">
+                                <controls:SimpleWrapPanel
+                                    x:Name="PART_SimpleWrapPanel"
+                                    Spacing="2"
+                                    Visibility="Collapsed" />
+                            </ScrollViewer>
                             <TextBox
                                 Name="PART_EditableTextBox"
                                 Padding="{TemplateBinding Padding}"
@@ -124,6 +130,7 @@
                                 Style="{x:Null}"
                                 Template="{StaticResource WD.ComboBoxTextBox}"
                                 Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+
                             <TextBlock
                                 x:Name="PART_Watermark"
                                 Padding="{TemplateBinding Padding}"
@@ -174,29 +181,65 @@
                                     <Grid Margin="0,8" ClipToBounds="False">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
-                                        <controls:MultiSelectComboBoxItem
-                                            x:Name="PART_CheckBoxAll"
+
+                                        <TextBox
+                                            x:Name="PART_TextBox"
+                                            Height="{Binding ElementName=PART_EditableTextBox, Path=Height}"
+                                            Margin="6,0"
+                                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                            helpers:ElementHelper.IsClear="True"
+                                            helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                            FontSize="{Binding ElementName=PART_EditableTextBox, Path=FontSize}"
+                                            Visibility="{TemplateBinding IsSearch,
+                                                                         Converter={StaticResource WD.Bool2VisibilityConverter}}" />
+
+                                        <CheckBox
+                                            x:Name="PART_SelectAll"
+                                            Grid.Row="1"
+                                            Margin="4"
+                                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                             Content="{TemplateBinding SelectAllContent}"
-                                            Style="{TemplateBinding ItemContainerStyle}"
                                             Visibility="{TemplateBinding IsSelectAllActive,
                                                                          Converter={StaticResource WD.Bool2VisibilityConverter}}" />
                                         <ScrollViewer
                                             x:Name="DropDownScrollViewer"
-                                            Grid.Row="1"
+                                            Grid.Row="2"
                                             ScrollViewer.VerticalScrollBarVisibility="Auto">
                                             <ItemsPresenter
-                                                x:Name="ItemsPresenter"
+                                                x:Name="PART_ItemsPresenter"
                                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
+                                        <controls:MultiSelectListBox
+                                            x:Name="PART_SearchSelector"
+                                            Grid.Row="2"
+                                            Margin="1,0"
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="0"
+                                            DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                            ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                            ItemsSource="{TemplateBinding ItemsSourceSearch}"
+                                            SelectedValuePath="{TemplateBinding SelectedValuePath}"
+                                            SelectionMode="{TemplateBinding SelectionMode}"
+                                            Style="{StaticResource WD.DefaultListBox}"
+                                            Visibility="Collapsed" />
                                     </Grid>
                                 </controls:SmallPanel>
                             </Popup>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="ShowType" Value="Tag">
+                            <Setter TargetName="PART_SimpleWrapPanel" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                         <Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
