@@ -1,0 +1,50 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.TagExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer>
+        <StackPanel
+            x:Name="MyStackPanel"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            wd:PanelHelper.Spacing="3"
+            Orientation="Horizontal">
+            <wd:Tag Content="Tag1" IsClose="False"/>
+            <wd:Tag wd:ElementHelper.CornerRadius="15">
+                <StackPanel Orientation="Horizontal">
+                    <wd:PathIcon Kind="Home" />
+                    <TextBlock Margin="2,0,0,0" Text="Tag2" />
+                </StackPanel>
+            </wd:Tag>
+            <wd:Tag
+                wd:ElementHelper.CornerRadius="4"
+                Background="{DynamicResource WD.SuccessBorderBrushSolidColorBrush}"
+                BorderBrush="{DynamicResource WD.SuccessNormalBrush}"
+                BorderThickness="1"
+                Content="Tag3" />
+            <wd:Tag
+                Height="24"
+                Padding="2,0,0,0"
+                wd:ElementHelper.CornerRadius="3"
+                Content="Tag4" />
+            <wd:Tag wd:ElementHelper.CornerRadius="15">
+                <StackPanel Orientation="Horizontal">
+                    <wd:PathIcon Data="M982 426l-2 4h2v82c0 12-2 22-6 32l-130 300c-12 30-42 52-78 52h-384c-46 0-86-40-86-86v-426c0-24 10-44 26-60l280-282 46 46c12 12 18 26 18 44v14l-42 196h270c46 0 86 38 86 84zM42 896v-512h172v512h-172z" Foreground="DodgerBlue" />
+                    <TextBlock Margin="2,0,0,0" Text="Tag5" />
+                </StackPanel>
+            </wd:Tag>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TagExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/TagExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

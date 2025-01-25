@@ -16,7 +16,6 @@
         WaitLoading,
         CycleLoading,
         RollLoading,
-        CutImage,
         //CutImage,
         Window,
         CropAvatar,
@@ -90,6 +89,7 @@
         Drawer,
         DateRangePicker,
         Gauge,
+        Tag,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

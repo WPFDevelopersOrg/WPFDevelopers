@@ -153,6 +153,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GaugeExample.xaml.cs" Link="ExampleViews\GaugeExample.xaml.cs" DependentUpon="GaugeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml.cs" Link="ExampleViews\Window\NormalWindow.xaml.cs" DependentUpon="NormalWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml.cs" Link="ExampleViews\Window\HighTitleBarWindow.xaml.cs" DependentUpon="HighTitleBarWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TagExample.xaml.cs" Link="ExampleViews\TagExample.xaml.cs" DependentUpon="TagExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -523,6 +524,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml">
 			<Link>ExampleViews\Window\NormalWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TagExample.xaml">
+			<Link>ExampleViews\TagExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

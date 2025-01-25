@@ -370,6 +370,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Gauge:
                     ControlPanel = new GaugeExample();
                     break;
+                case MenuEnum.Tag:
+                    ControlPanel = new TagExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
