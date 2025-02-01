@@ -5,7 +5,7 @@
     /// </summary>
     public enum MenuEnum
     {
-        Navigation3D,
+        NavMenu3D,
         BasicControls,
         NotifyIcon,
         PanningItems,

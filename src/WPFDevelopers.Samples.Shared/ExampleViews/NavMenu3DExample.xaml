@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="WPFDevelopers.Samples.ExampleViews.AnimationNavigationBar3DExample"
+    x:Class="WPFDevelopers.Samples.ExampleViews.NavMenu3DExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
@@ -13,7 +13,7 @@
     <controls:CodeViewer>
         <Grid>
             <Grid.Background>
-                <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/AnimationNavigationBar3D/background.png" />
+                <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/NavMenu3D/background.png" />
             </Grid.Background>
             <Border
                 Width="400"
@@ -22,8 +22,14 @@
                 VerticalAlignment="Top"
                 Background="{DynamicResource WD.BackgroundSolidColorBrush}"
                 SnapsToDevicePixels="True">
-                <wd:AnimationNavigationBar3D VerticalAlignment="Bottom">
-                    <wd:AnimationNavigationBar3DItem Background="#E21854" Fill="#FD3574">
+                <wd:NavMenu3D
+                    x:Name="PART_NavMenu3D"
+                    VerticalAlignment="Bottom"
+                    SelectionChanged="NavMenu3D_SelectionChanged">
+                    <wd:NavMenu3DItem
+                        Background="#E21854"
+                        Fill="#FD3574"
+                        Tag="Item1">
                         <StackPanel VerticalAlignment="Center">
                             <Path
                                 Width="40"
@@ -33,8 +39,11 @@
                                 Stretch="Uniform" />
                             <TextBlock HorizontalAlignment="Center" Text="Emoji" />
                         </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#41A545" Fill="#5EECA6">
+                    </wd:NavMenu3DItem>
+                    <wd:NavMenu3DItem
+                        Background="#41A545"
+                        Fill="#5EECA6"
+                        Tag="Item2">
                         <StackPanel VerticalAlignment="Center">
                             <Path
                                 Width="40"
@@ -44,8 +53,11 @@
                                 Stretch="Uniform" />
                             <TextBlock HorizontalAlignment="Center" Text="Bus" />
                         </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#0A58F0" Fill="#3A7DFE">
+                    </wd:NavMenu3DItem>
+                    <wd:NavMenu3DItem
+                        Background="#0A58F0"
+                        Fill="#3A7DFE"
+                        Tag="Item3">
                         <StackPanel VerticalAlignment="Center">
                             <Path
                                 Width="40"
@@ -55,8 +67,11 @@
                                 Stretch="Uniform" />
                             <TextBlock HorizontalAlignment="Center" Text="Friend" />
                         </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#5F0574" Fill="#8E1FA4">
+                    </wd:NavMenu3DItem>
+                    <wd:NavMenu3DItem
+                        Background="#5F0574"
+                        Fill="#8E1FA4"
+                        Tag="Item4">
                         <StackPanel VerticalAlignment="Center">
                             <Path
                                 Width="40"
@@ -66,9 +81,12 @@
                                 Stretch="Uniform" />
                             <TextBlock HorizontalAlignment="Center" Text="Clock" />
                         </StackPanel>
-                    </wd:AnimationNavigationBar3DItem>
-                    <wd:AnimationNavigationBar3DItem Background="#1F0355" Fill="#5B31AD">
-                        <wd:AnimationNavigationBar3DItem.Content>
+                    </wd:NavMenu3DItem>
+                    <wd:NavMenu3DItem
+                        Background="#1F0355"
+                        Fill="#5B31AD"
+                        Tag="Item5">
+                        <wd:NavMenu3DItem.Content>
                             <StackPanel VerticalAlignment="Center">
                                 <Path
                                     Width="40"
@@ -78,8 +96,8 @@
                                     Stretch="Uniform" />
                                 <TextBlock HorizontalAlignment="Center" Text="Regular" />
                             </StackPanel>
-                        </wd:AnimationNavigationBar3DItem.Content>
-                        <wd:AnimationNavigationBar3DItem.ContentBack>
+                        </wd:NavMenu3DItem.Content>
+                        <wd:NavMenu3DItem.ContentBack>
                             <StackPanel VerticalAlignment="Center">
                                 <Path
                                     Width="40"
@@ -89,9 +107,10 @@
                                     Stretch="Uniform" />
                                 <TextBlock HorizontalAlignment="Center" Text="建筑" />
                             </StackPanel>
-                        </wd:AnimationNavigationBar3DItem.ContentBack>
-                    </wd:AnimationNavigationBar3DItem>
-                </wd:AnimationNavigationBar3D>
+                        </wd:NavMenu3DItem.ContentBack>
+                    </wd:NavMenu3DItem>
+                    <wd:NavMenu3DItem Tag="Item6">Item 6</wd:NavMenu3DItem>
+                </wd:NavMenu3D>
             </Border>
             <Border
                 Width="450"
@@ -135,8 +154,8 @@
             </StackPanel>
         </Grid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationNavigationBar3DExample.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/AnimationNavigationBar3DExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NavMenu3DExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NavMenu3DExample.xaml.cs" CodeType="CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

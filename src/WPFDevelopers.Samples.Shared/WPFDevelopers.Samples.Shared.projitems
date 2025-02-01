@@ -63,9 +63,9 @@
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationNavigationBar3DExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>AnimationNavigationBar3DExample.xaml</DependentUpon>
+      <DependentUpon>NavMenu3DExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BarrageExample.xaml.cs">
       <SubType>Code</SubType>
@@ -575,7 +575,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationNavigationBar3DExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -76,8 +76,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ScrollIntoView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AnimationAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationAudio\AudioWindow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationNavigationBar3D\AnimationNavigationBar3DItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavMenu3D\NavMenu3D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavMenu3D\NavMenu3DItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\ThemeChangedEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\BaseControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBar.cs" />
@@ -405,7 +405,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\AnimationNavigationBar3D.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Themes\NavMenu3D.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

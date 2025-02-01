@@ -208,21 +208,31 @@ namespace WPFDevelopers.Helpers
 
         public static object GetXmlReader(object Content)
         {
-            var originalContent = Content as UIElement;
-            string contentXaml = XamlWriter.Save(originalContent);
-            using (StringReader stringReader = new StringReader(contentXaml))
+            try
             {
-                using (XmlReader xmlReader = XmlReader.Create(stringReader))
+                if (Content is string contentString)
+                    Content = new TextBlock { Text = contentString };
+                var originalContent = Content as UIElement;
+                if (originalContent == null) return null;
+                string contentXaml = XamlWriter.Save(originalContent);
+                using (StringReader stringReader = new StringReader(contentXaml))
                 {
-                    object clonedContent = XamlReader.Load(xmlReader);
-
-                    if (clonedContent is UIElement clonedElement)
+                    using (XmlReader xmlReader = XmlReader.Create(stringReader))
                     {
-                        return clonedElement;
+                        object clonedContent = XamlReader.Load(xmlReader);
+
+                        if (clonedContent is UIElement clonedElement)
+                        {
+                            return clonedElement;
+                        }
                     }
                 }
+                return null;
             }
-            return null;
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

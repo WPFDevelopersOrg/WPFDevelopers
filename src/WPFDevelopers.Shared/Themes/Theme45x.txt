@@ -40,7 +40,7 @@ Basic\ControlBasic.xaml
 
 
 AnimationAudio.xaml
-AnimationNavigationBar3D.xaml
+NavMenu3D.xaml
 BallLoading.xaml
 BreathLamp.xaml
 Carousel.xaml

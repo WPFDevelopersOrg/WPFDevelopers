@@ -5,20 +5,20 @@ using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
-    public class AnimationNavigationBar3DItem : ListBoxItem
+    public class NavMenu3DItem : ListBoxItem
     {
         public static readonly DependencyProperty FillProperty =
-            DependencyProperty.Register("Fill", typeof(Brush), typeof(AnimationNavigationBar3DItem),
+            DependencyProperty.Register("Fill", typeof(Brush), typeof(NavMenu3DItem),
                 new PropertyMetadata(null));
 
         public static readonly DependencyProperty ContentBackProperty =
-            DependencyProperty.Register("ContentBack", typeof(object), typeof(AnimationNavigationBar3DItem),
+            DependencyProperty.Register("ContentBack", typeof(object), typeof(NavMenu3DItem),
                 new PropertyMetadata(null));
 
-        static AnimationNavigationBar3DItem()
+        static NavMenu3DItem()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(AnimationNavigationBar3DItem),
-                new FrameworkPropertyMetadata(typeof(AnimationNavigationBar3DItem)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(NavMenu3DItem),
+                new FrameworkPropertyMetadata(typeof(NavMenu3DItem)));
         }
 
         public override void OnApplyTemplate()

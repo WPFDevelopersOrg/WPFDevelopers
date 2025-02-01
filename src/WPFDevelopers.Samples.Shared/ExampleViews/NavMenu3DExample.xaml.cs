@@ -1,15 +1,16 @@
 ﻿using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// AnimationNavigationBar3DExample.xaml 的交互逻辑
+    /// NavMenu3DExample.xaml 的交互逻辑
     /// </summary>
-    public partial class AnimationNavigationBar3DExample : UserControl
+    public partial class NavMenu3DExample : UserControl
     {
-        public AnimationNavigationBar3DExample()
+        public NavMenu3DExample()
         {
             InitializeComponent();
         }
@@ -24,6 +25,14 @@ namespace WPFDevelopers.Samples.ExampleViews
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
+        }
+
+        private void NavMenu3D_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PART_NavMenu3D.SelectedItem == null) return;
+            var item = PART_NavMenu3D.SelectedItem as NavMenu3DItem;
+            if (item.Tag.ToString() != null)
+                Message.Push(item.Tag.ToString());
         }
     }
 }
