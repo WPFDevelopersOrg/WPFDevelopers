@@ -8,7 +8,7 @@ namespace WPFDevelopers.Controls
     {
         private static MessageAdorner _messageAdorner;
         private static MessageExt _messageExt;
-        private static Position _position;
+        private static Position _position = Position.Top;
 
         static void CreateMessageAdorner(Window owner = null, string message = null, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
         {
