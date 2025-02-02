@@ -30,13 +30,15 @@
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                         VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         UseLayoutRounding="True">
-                        <Path
-                            x:Name="PART_Path"
-                            Data="{TemplateBinding Data}"
-                            Fill="{TemplateBinding Foreground}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            Stretch="Uniform"
-                            UseLayoutRounding="False" />
+                        <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <Path
+                                x:Name="PART_Path"
+                                Data="{TemplateBinding Data}"
+                                Fill="{TemplateBinding Foreground}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                Stretch="Uniform"
+                                UseLayoutRounding="False" />
+                        </controls:SmallPanel>
                     </Viewbox>
                 </ControlTemplate>
             </Setter.Value>
