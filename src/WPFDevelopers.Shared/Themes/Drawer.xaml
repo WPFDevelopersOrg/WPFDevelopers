@@ -30,7 +30,7 @@
                             </Border>
                             <Border
                                 x:Name="PART_Mark"
-                                Background="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                                Background="{DynamicResource WD.ChartFillSolidColorBrush}"
                                 Opacity=".5" />
                             <Border
                                 x:Name="PART_Header"
