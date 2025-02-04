@@ -33,7 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Tag\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\Theme.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelectorItem.cs" />
@@ -167,7 +167,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PasswordBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SnowCanvasHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ThemeType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Win32.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LanguageManager.cs" />

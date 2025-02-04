@@ -1,20 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
-    public class Theme : Control
+    public class Theme : ListBox
     {
-        public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(ObservableCollection<ThemeModel>), typeof(Theme),
-                new PropertyMetadata(null));
+        private readonly Dictionary<string, string> themeMapping = new Dictionary<string, string>
+        {
+            { "#409EFF", "pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml" },
+            { "#FF033E", "pack://application:,,,/WPFDevelopers;component/Themes/Light.Red.xaml" },
+            { "#A21BFC", "pack://application:,,,/WPFDevelopers;component/Themes/Light.Purple.xaml" },
+            { "#FE9426", "pack://application:,,,/WPFDevelopers;component/Themes/Light.Orange.xaml" },
+            { "#00B050", "pack://application:,,,/WPFDevelopers;component/Themes/Light.Green.xaml" },
+            { "#FF007F", "pack://application:,,,/WPFDevelopers;component/Themes/Light.Pink.xaml" }
+        };
+        public ObservableCollection<ThemeItem> ThemeItems { get; set; }
+
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
+        public static readonly DependencyProperty OrientationProperty =
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(Theme), new PropertyMetadata(Orientation.Horizontal));
+
 
         static Theme()
         {
@@ -22,135 +38,80 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(Theme)));
         }
 
-        public ObservableCollection<ThemeModel> ItemsSource
+        public Theme()
         {
-            get => (ObservableCollection<ThemeModel>)GetValue(ItemsSourceProperty);
-            set => SetValue(ItemsSourceProperty, value);
+            SelectionMode = SelectionMode.Single;
+            ThemeItems = new ObservableCollection<ThemeItem>();
+            foreach (var mapping in themeMapping)
+            {
+                ThemeItems.Add(new ThemeItem
+                {
+                    Background = GetColorBrush(mapping.Key),
+                    Content = mapping.Value
+                });
+            }
+            ItemsSource = ThemeItems;
+            var existsTheme = ThemeItems.FirstOrDefault(y =>
+              Application.Current.Resources.MergedDictionaries.ToList().Exists(j =>
+                  j.Source != null && y.Content.ToString().Contains(j.Source.AbsoluteUri)));
+            if (existsTheme == null) return;
+            SelectedItem = existsTheme;
         }
-
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
-            ItemsSource = new ObservableCollection<ThemeModel>();
-            ItemsSource.Add(new ThemeModel
-            {
-                Color = "#409EFF",
-                ResourcePath = "pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"
-            });
-            ItemsSource.Add(new ThemeModel
-            {
-                Color = "#FF033E",
-                ResourcePath = "pack://application:,,,/WPFDevelopers;component/Themes/Light.Red.xaml"
-            });
-            ItemsSource.Add(new ThemeModel
-            {
-                Color = "#A21BFC",
-                ResourcePath = "pack://application:,,,/WPFDevelopers;component/Themes/Light.Purple.xaml"
-            });
-            ItemsSource.Add(new ThemeModel
-            {
-                Color = "#FE9426",
-                ResourcePath = "pack://application:,,,/WPFDevelopers;component/Themes/Light.Orange.xaml"
-            });
-            ItemsSource.Add(new ThemeModel
-            {
-                Color = "#00B050",
-                ResourcePath = "pack://application:,,,/WPFDevelopers;component/Themes/Light.Green.xaml"
-            });
-            ItemsSource.Add(new ThemeModel
-            {
-                Color = "#FF007F",
-                ResourcePath = "pack://application:,,,/WPFDevelopers;component/Themes/Light.Pink.xaml"
-            });
-            if (ThemeCache.ThemesDictCache.Count > 0)
-                foreach (var item in ThemeCache.ThemesDictCache)
-                    if (ItemsSource.Any(x => x.Color != item.Key))
-                        ItemsSource.Add(item.Value);
-            SelectChecked();
-            ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
-            foreach (var theme in ItemsSource)
-                theme.PropertyChanged += Theme_PropertyChanged;
         }
 
-        private void SelectChecked()
+        protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            var existsTheme = ItemsSource.FirstOrDefault(y =>
-                Application.Current.Resources.MergedDictionaries.ToList().Exists(j =>
-                    j.Source != null && y.ResourcePath.Contains(j.Source.AbsoluteUri)));
-
-            if (existsTheme != null)
-                existsTheme.IsChecked = true;
+            return item is ThemeItem;
         }
 
-        private void ItemsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override DependencyObject GetContainerForItemOverride()
         {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    foreach (ThemeModel item in e.NewItems)
-                    {
-                        if (!ThemeCache.ThemesDictCache.ContainsKey(item.Color))
-                            ThemeCache.ThemesDictCache.Add(item.Color, item);
-                        item.PropertyChanged += Theme_PropertyChanged;
-                        SelectChecked();
-                        if (!item.IsChecked) return;
-                        ReviseTheme(item);
-                    }
-
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    foreach (ThemeModel item in e.NewItems)
-                        if (ThemeCache.ThemesDictCache.ContainsKey(item.Color))
-                            ThemeCache.ThemesDictCache.Remove(item.Color);
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    break;
-                case NotifyCollectionChangedAction.Move:
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-                    break;
-            }
+            return new ThemeItem();
         }
 
-
-        private void Theme_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private SolidColorBrush GetColorBrush(string colorHex)
         {
-            if (e.PropertyName == nameof(ThemeModel.IsChecked))
-            {
-                var theme = sender as ThemeModel;
-                if (!theme.IsChecked) return;
-                ReviseTheme(theme);
-            }
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorHex));
         }
 
-        private void ReviseTheme(ThemeModel theme)
+        protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
-            if (theme == null) return;
-
-            var old = ItemsSource.FirstOrDefault(x => x.IsChecked && x.Color != theme.Color);
-            if (old != null)
-            {
-                ItemsSource.Where(y => !y.Color.Equals(theme.Color) && y.IsChecked).ToList()
-                    .ForEach(h => h.IsChecked = false);
-                var existingResourceDictionary =
-                    Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
-                        x.Source != null && x.Source.Equals(old.ResourcePath));
-                if (existingResourceDictionary != null)
-                    Application.Current.Resources.MergedDictionaries.Remove(existingResourceDictionary);
-                var newResource =
-                    Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
-                        x.Source != null && x.Source.Equals(theme.ResourcePath));
-                if (newResource != null) return;
-                var newResourceDictionary = new ResourceDictionary { Source = new Uri(theme.ResourcePath) };
-                Application.Current.Resources.MergedDictionaries.Insert(0, newResourceDictionary);
-                ControlsHelper.ThemeRefresh();
-            }
+            base.OnSelectionChanged(e);
+            if(e.RemovedItems == null || e.RemovedItems.Count == 0) return;
+            var removeItem = e.RemovedItems[0] as ThemeItem;
+            ThemeRefresh(removeItem);
         }
-    }
 
-    public class ThemeCache
-    {
-        public static Dictionary<string, ThemeModel> ThemesDictCache = new Dictionary<string, ThemeModel>();
+        public void AddThemeItem(string backgroundColor, string content)
+        {
+            var newItem = new ThemeItem
+            {
+                Background = GetColorBrush(backgroundColor),
+                Content = content
+            };
+            ThemeItems.Add(newItem);
+        }
+
+        private void ThemeRefresh(ThemeItem removeItem)
+        {
+            if (removeItem == null) return;
+            if (SelectedItem == null) return;
+            var item = SelectedItem as ThemeItem;
+            var resourcePath = item.Content.ToString();
+            var items = ItemsSource.Cast<ThemeItem>();
+            var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            var existingResourceDictionary = mergedDictionaries.FirstOrDefault(x =>
+                        x.Source != null && x.Source.Equals(removeItem.Content.ToString()));
+            if (existingResourceDictionary != null)
+                mergedDictionaries.Remove(existingResourceDictionary);
+            if (mergedDictionaries.Any(x => x.Source != null && x.Source.Equals(resourcePath)))
+                return;
+            var newResourceDictionary = new ResourceDictionary { Source = new Uri(resourcePath) };
+            mergedDictionaries.Insert(0, newResourceDictionary);
+            ControlsHelper.ThemeRefresh();
+        }
     }
 }

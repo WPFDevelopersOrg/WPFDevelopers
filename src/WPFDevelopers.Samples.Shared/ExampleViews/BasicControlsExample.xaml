@@ -57,7 +57,7 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="Theme" />
-                    <wd:Theme Margin="0,10" ItemsSource="{Binding ThemesCollection, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=OneWayToSource}" />
+                    <wd:Theme Margin="0,10" x:Name="PART_Theme"/>
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"

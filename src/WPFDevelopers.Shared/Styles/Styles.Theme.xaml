@@ -8,68 +8,88 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <Style x:Key="WD.Theme" TargetType="{x:Type controls:Theme}">
+
+    <Style x:Key="WD.ThemeItem" TargetType="{x:Type controls:ThemeItem}">
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Bottom" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="Padding" Value="0,0,4,4" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:Theme}">
-                    <ItemsControl ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=controls:Theme}}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <RadioButton
-                                    Width="40"
-                                    Height="40"
-                                    Cursor="Hand"
-                                    IsChecked="{Binding IsChecked}">
-                                    <RadioButton.Style>
-                                        <Style TargetType="{x:Type RadioButton}">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type RadioButton}">
-                                                        <Border
-                                                            x:Name="PART_Border"
-                                                            Padding="2"
-                                                            BorderBrush="{Binding Color}"
-                                                            BorderThickness="0">
-                                                            <controls:SmallPanel Background="{x:Null}">
-                                                                <Rectangle x:Name="PART_Rectangle" Fill="{Binding Color}" />
-                                                                <Path
-                                                                    Width="12"
-                                                                    Height="10"
-                                                                    Margin="0,0,4,4"
-                                                                    HorizontalAlignment="Right"
-                                                                    VerticalAlignment="Bottom"
-                                                                    Data="{StaticResource WD.CheckMarkGeometry}"
-                                                                    Fill="{DynamicResource WD.BackgroundSolidColorBrush}"
-                                                                    Stretch="Fill"
-                                                                    Visibility="{Binding IsChecked, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
-                                                            </controls:SmallPanel>
-                                                        </Border>
-                                                        <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter TargetName="PART_Rectangle" Property="Opacity" Value=".8" />
-                                                                <Setter TargetName="PART_Border" Property="BorderThickness" Value="1" />
-                                                            </Trigger>
-                                                            <Trigger Property="IsChecked" Value="True">
-                                                                <Setter TargetName="PART_Border" Property="BorderThickness" Value="1" />
-                                                            </Trigger>
-                                                        </ControlTemplate.Triggers>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </RadioButton.Style>
-                                </RadioButton>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel helpers:PanelHelper.Spacing="4" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
+                <ControlTemplate TargetType="{x:Type controls:ThemeItem}">
+                    <Border
+                        x:Name="PART_Border"
+                        Padding="2"
+                        Background="Transparent"
+                        BorderBrush="{TemplateBinding Background}"
+                        BorderThickness="0"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:Theme}}">
+                        <controls:SmallPanel>
+                            <Border
+                                x:Name="PART_BorderBackground"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:Theme}}" />
+                            <controls:PathIcon
+                                Width="12"
+                                Height="10"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Data="{StaticResource WD.CheckMarkGeometry}"
+                                Foreground="{DynamicResource WD.BackgroundSolidColorBrush}"
+                                Kind="CheckMark"
+                                Visibility="{TemplateBinding IsSelected,
+                                                             Converter={StaticResource WD.Bool2VisibilityConverter}}" />
+                        </controls:SmallPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_BorderBackground" Property="Opacity" Value=".8" />
+                            <Setter TargetName="PART_Border" Property="BorderThickness" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Border" Property="BorderThickness" Value="1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="WD.Theme" TargetType="{x:Type controls:Theme}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource WD.ThemeItem}" />
+        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Theme}">
+                    <controls:WDBorder
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                        <ItemsPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" />
+                    </controls:WDBorder>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel helpers:PanelHelper.Spacing="4" Orientation="{Binding Path=Orientation, RelativeSource={RelativeSource AncestorType=controls:Theme}}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style BasedOn="{StaticResource WD.Theme}" TargetType="{x:Type controls:Theme}" />
 </ResourceDictionary>

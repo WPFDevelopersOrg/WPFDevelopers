@@ -30,20 +30,10 @@ namespace WPFDevelopers.Samples.ExampleViews
             DependencyProperty.Register("AllSelected", typeof(bool), typeof(BasicControlsExample),
                 new PropertyMetadata(AllSelectedChangedCallback));
 
-        public static readonly DependencyProperty ThemesCollectionProperty =
-            DependencyProperty.Register("ThemesCollection", typeof(ObservableCollection<ThemeModel>), typeof(BasicControlsExample),
-                new PropertyMetadata(null));
-
         public BasicControlsExample()
         {
             InitializeComponent();
             Loaded += MainView_Loaded;
-        }
-
-        public ObservableCollection<ThemeModel> ThemesCollection
-        {
-            get => (ObservableCollection<ThemeModel>)GetValue(ThemesCollectionProperty);
-            set => SetValue(ThemesCollectionProperty, value);
         }
 
         private void MainView_Loaded(object sender, RoutedEventArgs e)
@@ -78,18 +68,18 @@ namespace WPFDevelopers.Samples.ExampleViews
                 });
                 time = time.AddDays(2);
             }
-
-            if (ThemesCollection != null)
-            {
-                var model = ThemesCollection.FirstOrDefault(x => x.Color == "#B31B1B");
-                if (model != null) return;
-                ThemesCollection.Add(new ThemeModel
-                {
-                    Color = "#B31B1B",
-                    ResourcePath =
-                        "pack://application:,,,/WPFDevelopers.Samples;component/Light.Carmine.xaml"
-                });
-            }
+            PART_Theme.AddThemeItem("#B31B1B", "pack://application:,,,/WPFDevelopers.Samples;component/Light.Carmine.xaml");
+            //if (ThemesCollection != null)
+            //{
+            //    var model = ThemesCollection.FirstOrDefault(x => x.Color == "#B31B1B");
+            //    if (model != null) return;
+            //    ThemesCollection.Add(new ThemeModel
+            //    {
+            //        Color = "#B31B1B",
+            //        ResourcePath =
+            //            "pack://application:,,,/WPFDevelopers.Samples;component/Light.Carmine.xaml"
+            //    });
+            //}
 
         }
 
