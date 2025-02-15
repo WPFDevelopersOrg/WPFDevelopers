@@ -46,8 +46,8 @@
         <Setter Property="Padding" Value="5,0" />
         <Setter Property="MinWidth" Value="32" />
         <Setter Property="Margin" Value="3,0" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -74,13 +74,13 @@
                 <Setter Property="FontWeight" Value="Bold" />
             </DataTrigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrushSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.PrimaryPressedSolidColorBrush}" />
-                <Setter Property="TextElement.Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>

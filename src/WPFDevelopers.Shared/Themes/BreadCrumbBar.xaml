@@ -23,7 +23,7 @@
                             Width="9"
                             Height="9"
                             Data="{StaticResource WD.ChevronRightGeometry}"
-                            Fill="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
+                            Fill="{DynamicResource WD.PlaceholderTextBrush}"
                             IsHitTestVisible="False"
                             Stretch="Uniform">
                             <Path.Visibility>
@@ -43,7 +43,7 @@
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

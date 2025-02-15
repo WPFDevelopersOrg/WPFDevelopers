@@ -13,11 +13,11 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Expander}">
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Expander}">
@@ -49,7 +49,7 @@
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
-                                                        Background="{DynamicResource WD.LighterSolidColorBrush}"
+                                                        Background="{DynamicResource WD.LighterBrush}"
                                                         BorderBrush="{TemplateBinding BorderBrush}"
                                                         BorderThickness="{TemplateBinding BorderThickness}"
                                                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
@@ -166,7 +166,7 @@
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
-                                                        Background="{DynamicResource WD.LighterSolidColorBrush}"
+                                                        Background="{DynamicResource WD.LighterBrush}"
                                                         BorderBrush="{TemplateBinding BorderBrush}"
                                                         BorderThickness="{TemplateBinding BorderThickness}"
                                                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
@@ -258,7 +258,7 @@
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
-                                                        Background="{DynamicResource WD.LighterSolidColorBrush}"
+                                                        Background="{DynamicResource WD.LighterBrush}"
                                                         BorderBrush="{TemplateBinding BorderBrush}"
                                                         BorderThickness="{TemplateBinding BorderThickness}"
                                                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
@@ -350,7 +350,7 @@
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                                     <Border
                                                         x:Name="PART_Border"
-                                                        Background="{DynamicResource WD.LighterSolidColorBrush}"
+                                                        Background="{DynamicResource WD.LighterBrush}"
                                                         BorderBrush="{TemplateBinding BorderBrush}"
                                                         BorderThickness="{TemplateBinding BorderThickness}"
                                                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">

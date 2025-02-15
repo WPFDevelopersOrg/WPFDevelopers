@@ -8,5 +8,5 @@
     Title="EmailPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Background="{DynamicResource WD.DangerPressedSolidColorBrush}"
+    Background="{DynamicResource WD.DangerBrush}"
     mc:Ignorable="d" />

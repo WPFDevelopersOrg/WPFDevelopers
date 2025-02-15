@@ -9,10 +9,10 @@
     Title="NoChromeWindow"
     Width="710"
     Height="520"
-    BorderBrush="{StaticResource WD.DangerSolidColorBrush}"
+    BorderBrush="{StaticResource WD.DangerBrush}"
     BorderThickness="1"
     NoChrome="True"
-    TitleBackground="{StaticResource WD.DangerSolidColorBrush}"
+    TitleBackground="{StaticResource WD.DangerBrush}"
     TitleBarMode="HighTitleBar"
     TitleHeight="30"
     WindowStartupLocation="CenterScreen"
@@ -28,7 +28,7 @@
                 Margin="10,0"
                 VerticalAlignment="Center"
                 FontSize="14"
-                Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                Foreground="{DynamicResource WD.WindowTextBrush}"
                 IsHitTestVisible="False"
                 Text="Danger" />
             <Button
@@ -45,7 +45,7 @@
                 <wd:PathIcon
                     Width="10"
                     Height="10"
-                    Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                    Foreground="{DynamicResource WD.WindowTextBrush}"
                     Kind="WindowClose" />
             </Button>
         </Grid>

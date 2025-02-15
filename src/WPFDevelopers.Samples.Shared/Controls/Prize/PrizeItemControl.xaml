@@ -39,7 +39,7 @@
                             VerticalAlignment="Center"
                             FontSize="16"
                             FontWeight="DemiBold"
-                            Foreground="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            Foreground="{DynamicResource WD.BackgroundBrush}"
                             RenderTransformOrigin="0.5,0.5"
                             Text="{TemplateBinding Title}">
                             <TextBlock.RenderTransform>
@@ -105,7 +105,7 @@
                                 VerticalAlignment="Center"
                                 FontSize="40"
                                 FontWeight="DemiBold"
-                                Foreground="{DynamicResource WD.BackgroundSolidColorBrush}"
+                                Foreground="{DynamicResource WD.BackgroundBrush}"
                                 Text="GO" />
                         </Border>
                     </wd:SmallPanel>

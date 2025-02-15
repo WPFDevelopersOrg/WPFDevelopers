@@ -11,7 +11,7 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer>
-        <Grid Background="{DynamicResource WD.BackgroundSolidColorBrush}">
+        <Grid Background="{DynamicResource WD.BackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
@@ -20,7 +20,7 @@
                 <Border
                     Height="300"
                     Margin="30,0"
-                    Background="{DynamicResource WD.BackgroundSolidColorBrush}">
+                    Background="{DynamicResource WD.BackgroundBrush}">
                     <wd:ChartPie Datas="{Binding Datas, RelativeSource={RelativeSource AncestorType=local:ChartPieExample}}" />
                 </Border>
             </ScrollViewer>

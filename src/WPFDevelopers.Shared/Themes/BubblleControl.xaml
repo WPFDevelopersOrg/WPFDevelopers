@@ -12,10 +12,10 @@
         TargetType="controls:BubblleControl">
         <Setter Property="Width" Value="400" />
         <Setter Property="Height" Value="400" />
-        <Setter Property="Background" Value="{StaticResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{StaticResource WD.SecondaryTextSolidColorBrush}" />
-        <Setter Property="BorderBackground" Value="{StaticResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="BorderBackground" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:BubblleControl">

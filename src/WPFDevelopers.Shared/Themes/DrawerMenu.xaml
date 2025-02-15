@@ -29,7 +29,7 @@
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Border
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="{StaticResource WD.BlackSolidColorBrush}"
+                                BorderBrush="{StaticResource WD.BlackBrush}"
                                 BorderThickness="1">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Border>
@@ -86,11 +86,11 @@
                             <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="Transparent" />
@@ -108,7 +108,7 @@
         TargetType="controls:DrawerMenuItem">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=MenuItemForeground}" />
-        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
@@ -156,11 +156,11 @@
                     </Button>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Button" Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+                            <Setter TargetName="PART_Button" Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
                             <Setter TargetName="PART_ItemSelectedIndicator" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger SourceName="PART_Button" Property="IsPressed" Value="True">
                             <Trigger.ExitActions>
@@ -185,13 +185,13 @@
         TargetType="controls:DrawerMenu">
         <Setter Property="Width" Value="50" />
         <Setter Property="IsOpen" Value="True" />
-        <Setter Property="MenuIconColor" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-        <Setter Property="MenuItemForeground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="MenuIconColor" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="MenuItemForeground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="SelectedIndex" Value="0" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:DrawerMenu">

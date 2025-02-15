@@ -9,7 +9,7 @@
         x:Key="WD.PieControl"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:PieControl}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
         <Setter Property="Width" Value="250" />
         <Setter Property="Height" Value="250" />
         <Setter Property="Template">

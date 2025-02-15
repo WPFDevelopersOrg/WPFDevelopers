@@ -7,59 +7,66 @@
     <!--  字体颜色  -->
     <Color x:Key="WD.PrimaryTextColor" po:Freeze="True">#303133</Color>
     <SolidColorBrush
-        x:Key="WD.PrimaryTextSolidColorBrush"
+        x:Key="WD.PrimaryTextBrush"
         po:Freeze="True"
         Color="{StaticResource WD.PrimaryTextColor}" />
 
     <Color x:Key="WD.RegularTextColor" po:Freeze="True">#606266</Color>
     <SolidColorBrush
-        x:Key="WD.RegularTextSolidColorBrush"
+        x:Key="WD.RegularTextBrush"
         po:Freeze="True"
         Color="{StaticResource WD.RegularTextColor}" />
     <!--  背景色  -->
     <Color x:Key="WD.BackgroundColor" po:Freeze="True">#FFFFFF</Color>
     <SolidColorBrush
-        x:Key="WD.BackgroundSolidColorBrush"
+        x:Key="WD.BackgroundBrush"
         po:Freeze="True"
         Color="{StaticResource WD.BackgroundColor}" />
+
+    <Color x:Key="WD.WindowBorderColor" po:Freeze="True">#409EFF</Color>
     <SolidColorBrush
-        x:Key="WD.WindowForegroundColorBrush"
+        x:Key="WD.WindowBorderBrush"
+        po:Freeze="True"
+        Color="{StaticResource WD.WindowBorderColor}" />
+
+    <SolidColorBrush
+        x:Key="WD.WindowTextBrush"
         po:Freeze="True"
         Color="{StaticResource WD.BackgroundColor}" />
 
     <Color x:Key="WD.BaseColor" po:Freeze="True">#DCDFE6</Color>
     <SolidColorBrush
-        x:Key="WD.BaseSolidColorBrush"
+        x:Key="WD.BaseBrush"
         po:Freeze="True"
         Color="{StaticResource WD.BaseColor}" />
 
     <Color x:Key="WD.BaseMoveColor" po:Freeze="True">#F5F7FA</Color>
     <SolidColorBrush
-        x:Key="WD.BaseMoveSolidColorBrush"
+        x:Key="WD.BaseMoveBrush"
         po:Freeze="True"
         Color="{StaticResource WD.BaseMoveColor}" />
 
     <Color x:Key="WD.LighterColor" po:Freeze="True">#EBEEF5</Color>
     <SolidColorBrush
-        x:Key="WD.LighterSolidColorBrush"
+        x:Key="WD.LighterBrush"
         po:Freeze="True"
         Color="{StaticResource WD.LighterColor}" />
 
     <Color x:Key="WD.LightColor" po:Freeze="True">#E4E7ED</Color>
     <SolidColorBrush
-        x:Key="WD.LightSolidColorBrush"
+        x:Key="WD.LightBrush"
         po:Freeze="True"
         Color="{StaticResource WD.LightColor}" />
 
     <Color x:Key="WD.ChartXAxisColor" po:Freeze="True">#E0E6F1</Color>
     <SolidColorBrush
-        x:Key="WD.ChartXAxisSolidColorBrush"
+        x:Key="WD.ChartXAxisBrush"
         po:Freeze="True"
         Color="{StaticResource WD.ChartXAxisColor}" />
 
     <Color x:Key="WD.ChartFillColor" po:Freeze="True">#6E7079</Color>
     <SolidColorBrush
-        x:Key="WD.ChartFillSolidColorBrush"
+        x:Key="WD.ChartFillBrush"
         po:Freeze="True"
         Color="{StaticResource WD.ChartFillColor}" />
 

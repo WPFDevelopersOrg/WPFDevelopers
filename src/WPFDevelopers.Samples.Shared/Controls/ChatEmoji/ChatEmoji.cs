@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using WPFDevelopers.Helpers;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Samples.Controls
 {
@@ -124,7 +124,7 @@ namespace WPFDevelopers.Samples.Controls
             {
                 //m_textBlock.Foreground = Brushes.White;
                 leftWrapPanel.Visibility = Visibility.Visible;
-                border.Background = ControlsHelper.Brush;
+                border.Background = ThemeManager.Instance.BackgroundBrush;
                 rightWrapPanel.Visibility = Visibility.Collapsed;
             }
         }

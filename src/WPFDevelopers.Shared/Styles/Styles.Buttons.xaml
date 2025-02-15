@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
     xmlns:convert="clr-namespace:WPFDevelopers.Converts"
-    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
@@ -23,7 +24,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <!--<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />-->
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
     </Style>
 
     <Style
@@ -31,7 +32,7 @@
         BasedOn="{StaticResource WD.BaseButton}"
         TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -76,8 +77,8 @@
         x:Key="WD.PrimaryButton"
         BasedOn="{StaticResource WD.BaseButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -95,14 +96,15 @@
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryPressedSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Opacity" Value=".9" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryPressedSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Opacity" Value=".9" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Opacity" Value=".9" />
                         </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True" />
                         <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
                             <Setter TargetName="PART_Border" Property="Width">
@@ -125,9 +127,9 @@
         x:Key="WD.DefaultButton"
         BasedOn="{StaticResource WD.BaseButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -149,19 +151,19 @@
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrushSolidColorBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBackgroundPressedSolidColorBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource WD.DefaultBackgroundPressedSolidColorBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrushSolidColorBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsRound" Value="True">
                             <Setter Property="Padding" Value="0" />
@@ -185,41 +187,29 @@
         x:Key="WD.SuccessPrimaryButton"
         BasedOn="{StaticResource WD.PrimaryButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.SuccessSolidColorBrush}" />
-        <Style.Triggers>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.SuccessPressedSolidColorBrush}" />
-            </Trigger>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.SuccessPressedSolidColorBrush}" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.SuccessMouseOverSolidColorBrush}" />
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property="Background" Value="{DynamicResource WD.SuccessBrush}" />
     </Style>
     <Style
         x:Key="WD.SuccessDefaultButton"
         BasedOn="{StaticResource WD.DefaultButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBorderBrushSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.SuccessBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.SuccessMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessPressedSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.SuccessBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessPressedSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.SuccessMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBorderBrushSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.SuccessBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.SuccessMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -227,41 +217,29 @@
         x:Key="WD.WarningPrimaryButton"
         BasedOn="{StaticResource WD.PrimaryButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.WarningSolidColorBrush}" />
-        <Style.Triggers>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.WarningPressedSolidColorBrush}" />
-            </Trigger>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.WarningPressedSolidColorBrush}" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.WarningMouseOverSolidColorBrush}" />
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property="Background" Value="{DynamicResource WD.WarningBrush}" />
     </Style>
     <Style
         x:Key="WD.WarningDefaultButton"
         BasedOn="{StaticResource WD.DefaultButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBorderBrushSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.WarningBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.WarningSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.WarningMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningPressedSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.WarningBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.WarningPressedSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.WarningMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBorderBrushSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.WarningBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.WarningSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.WarningMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -269,41 +247,29 @@
         x:Key="WD.DangerPrimaryButton"
         BasedOn="{StaticResource WD.PrimaryButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.DangerSolidColorBrush}" />
-        <Style.Triggers>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.DangerPressedSolidColorBrush}" />
-            </Trigger>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.DangerPressedSolidColorBrush}" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.DangerMouseOverSolidColorBrush}" />
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property="Background" Value="{DynamicResource WD.DangerBrush}" />
     </Style>
     <Style
         x:Key="WD.DangerDefaultButton"
         BasedOn="{StaticResource WD.DefaultButton}"
         TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBorderBrushSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.DangerBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.DangerSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.DangerMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerPressedSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.DangerBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.DangerPressedSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.DangerMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBorderBrushSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.DangerBackgroundSolidColorBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource WD.DangerSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.DangerMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -333,7 +299,7 @@
         </Setter>
     </Style>
     <Style x:Key="WD.WindowButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="MinWidth" Value="30" />

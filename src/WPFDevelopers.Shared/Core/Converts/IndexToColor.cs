@@ -11,9 +11,9 @@ namespace WPFDevelopers.Converts
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var num = System.Convert.ToInt32(value);
-            var brush = (SolidColorBrush)Application.Current.TryFindResource("WD.CircularSingularSolidColorBrush");
+            var brush = (SolidColorBrush)Application.Current.TryFindResource("WD.CircleMenuBrush");
             if (num % 2 == 1)
-                brush = (SolidColorBrush)Application.Current.TryFindResource("WD.CircularDualSolidColorBrush");
+                brush = (SolidColorBrush)Application.Current.TryFindResource("WD.CircleMenuDualBrush");
             return brush;
         }
 

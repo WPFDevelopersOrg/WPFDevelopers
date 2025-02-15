@@ -17,8 +17,8 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="0,0,0,1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -42,7 +42,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -54,9 +54,9 @@
         x:Key="WD.DefaultDataGrid"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type DataGrid}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
@@ -66,7 +66,7 @@
         <Setter Property="VerticalGridLinesBrush" Value="{x:Null}" />
         <Setter Property="CanUserAddRows" Value="False" />
         <Setter Property="AutoGenerateColumns" Value="False" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="RowHeaderWidth" Value="0" />
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
@@ -203,15 +203,15 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="ValidationErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
                     <TextBlock
                         Margin="2,0,0,0"
                         VerticalAlignment="Center"
-                        Foreground="{DynamicResource WD.DangerPressedSolidColorBrush}"
+                        Foreground="{DynamicResource WD.DangerBrush}"
                         Text="!" />
                 </ControlTemplate>
             </Setter.Value>
@@ -260,7 +260,7 @@
                                         <ColorAnimation
                                             Storyboard.TargetName="DGR_Border"
                                             Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
-                                            To="{DynamicResource WD.DefaultBackgroundColor}" />
+                                            To="{DynamicResource WD.PrimaryBackgroundColor}" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="MouseOver_Unfocused_Editing" />
@@ -366,7 +366,7 @@
                         Background="{TemplateBinding Background}" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -381,8 +381,8 @@
         <Setter Property="FontWeight" Value="ExtraBlack" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
         <Setter Property="Template">
@@ -431,7 +431,7 @@
                                     Margin="4,0,0,0"
                                     VerticalAlignment="Center"
                                     Data="{StaticResource WD.SortArrowGeometry}"
-                                    Fill="{DynamicResource WD.PrimaryPressedSolidColorBrush}"
+                                    Fill="{DynamicResource WD.PrimaryPressedBrush}"
                                     RenderTransformOrigin="0.5,0.5"
                                     Stretch="Fill"
                                     Visibility="Collapsed">

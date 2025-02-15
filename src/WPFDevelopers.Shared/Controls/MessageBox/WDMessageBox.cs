@@ -246,22 +246,22 @@ namespace WPFDevelopers.Controls
                 case MessageBoxImage.Warning:
                     _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.WarningSolidColorBrush");
+                        (SolidColorBrush) Application.Current.TryFindResource("WD.WarningBrush");
                     break;
                 case MessageBoxImage.Error:
                     _geometry = (Geometry) Application.Current.TryFindResource("WD.ErrorGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.DangerSolidColorBrush");
+                        (SolidColorBrush) Application.Current.TryFindResource("WD.DangerBrush");
                     break;
                 case MessageBoxImage.Information:
                     _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.SuccessNormalBrush");
+                        (SolidColorBrush) Application.Current.TryFindResource("WD.SuccessBrush");
                     break;
                 case MessageBoxImage.Question:
                     _geometry = (Geometry) Application.Current.TryFindResource("WD.QuestionGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.NormalSolidColorBrush");
+                        (SolidColorBrush) Application.Current.TryFindResource("WD.PrimaryBrush");
                     break;
             }
         }

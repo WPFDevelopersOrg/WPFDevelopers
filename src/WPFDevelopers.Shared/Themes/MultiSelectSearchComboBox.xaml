@@ -19,10 +19,10 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MultiSelectionSearchComboBox}">
@@ -68,9 +68,9 @@
                                 Panel.ZIndex="1"
                                 Background="Transparent"
                                 Focusable="True"
-                                Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                                Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                 IsReadOnly="True"
-                                SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
+                                SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                                 Style="{x:Null}"
                                 Template="{StaticResource WD.ComboBoxTextBox}"
                                 Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
@@ -80,8 +80,8 @@
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Background="Transparent"
-                                FontSize="{StaticResource WD.NormalFontSize}"
-                                Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                FontSize="{StaticResource WD.PrimaryFontSize}"
+                                Foreground="{DynamicResource WD.RegularTextBrush}"
                                 IsHitTestVisible="False"
                                 Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
                                 TextTrimming="CharacterEllipsis"
@@ -203,7 +203,7 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
                             <Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />

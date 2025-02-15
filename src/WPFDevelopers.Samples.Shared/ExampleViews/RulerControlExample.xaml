@@ -28,11 +28,11 @@
                 <Grid
                     Height="51"
                     Margin="40,0"
-                    Background="{StaticResource WD.CircularDualSolidColorBrush}">
+                    Background="{StaticResource WD.CircleMenuDualBrush}">
                     <Path
                         Data="{Binding ElementName=PART_Ruler, Path=Geometry, Mode=TwoWay}"
-                        Fill="{StaticResource WD.SuccessPressedSolidColorBrush}"
-                        Stroke="{StaticResource WD.SuccessPressedSolidColorBrush}"
+                        Fill="{StaticResource WD.SuccessBrush}"
+                        Stroke="{StaticResource WD.SuccessBrush}"
                         StrokeThickness="1" />
                     <wd:Ruler
                         x:Name="PART_Ruler"
@@ -45,11 +45,11 @@
                 <Grid
                     Height="51"
                     Margin="40,0"
-                    Background="{StaticResource WD.DangerPressedSolidColorBrush}">
+                    Background="{StaticResource WD.DangerBrush}">
                     <Path
                         Data="{Binding ElementName=PART_Ruler1, Path=Geometry, Mode=TwoWay}"
-                        Fill="{StaticResource WD.SuccessPressedSolidColorBrush}"
-                        Stroke="{StaticResource WD.SuccessPressedSolidColorBrush}"
+                        Fill="{StaticResource WD.SuccessBrush}"
+                        Stroke="{StaticResource WD.SuccessBrush}"
                         StrokeThickness="1" />
                     <wd:Ruler
                         x:Name="PART_Ruler1"
@@ -62,11 +62,11 @@
                 <Grid
                     Height="51"
                     Margin="40,0"
-                    Background="{StaticResource WD.WarningPressedSolidColorBrush}">
+                    Background="{StaticResource WD.WarningBrush}">
                     <Path
                         Data="{Binding ElementName=PART_Ruler2, Path=Geometry, Mode=TwoWay}"
-                        Fill="{StaticResource WD.SuccessPressedSolidColorBrush}"
-                        Stroke="{StaticResource WD.SuccessPressedSolidColorBrush}"
+                        Fill="{StaticResource WD.SuccessBrush}"
+                        Stroke="{StaticResource WD.SuccessBrush}"
                         StrokeThickness="1" />
                     <wd:Ruler
                         x:Name="PART_Ruler2"

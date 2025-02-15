@@ -9,23 +9,23 @@
         <ResourceDictionary Source="Geometrys.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style x:Key="WD.ControlBasicStyle" TargetType="Control">
-        <Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}" />
-        <Setter Property="FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
-        <Setter Property="FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
-        <Setter Property="FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
-        <Setter Property="FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
-        <Setter Property="TextElement.FontSize" Value="{StaticResource WD.NormalFontSize}" />
-        <Setter Property="TextElement.FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
-        <Setter Property="TextElement.FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
-        <Setter Property="TextElement.FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
-        <Setter Property="TextElement.FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-        <Setter Property="TextBlock.FontSize" Value="{StaticResource WD.NormalFontSize}" />
-        <Setter Property="TextBlock.FontFamily" Value="{StaticResource WD.NormalFontFamily}" />
-        <Setter Property="TextBlock.FontStyle" Value="{StaticResource WD.NormalFontStyle}" />
-        <Setter Property="TextBlock.FontWeight" Value="{StaticResource WD.NormalFontWeight}" />
-        <Setter Property="TextBlock.FontStretch" Value="{StaticResource WD.NormalFontStretch}" />
-        <Setter Property="TextBlock.Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource WD.PrimaryFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource WD.FontFamily}" />
+        <Setter Property="FontStyle" Value="{StaticResource WD.FontStyle}" />
+        <Setter Property="FontWeight" Value="{StaticResource WD.FontWeight}" />
+        <Setter Property="FontStretch" Value="{StaticResource WD.FontStretch}" />
+        <Setter Property="TextElement.FontSize" Value="{StaticResource WD.PrimaryFontSize}" />
+        <Setter Property="TextElement.FontFamily" Value="{StaticResource WD.FontFamily}" />
+        <Setter Property="TextElement.FontStyle" Value="{StaticResource WD.FontStyle}" />
+        <Setter Property="TextElement.FontWeight" Value="{StaticResource WD.FontWeight}" />
+        <Setter Property="TextElement.FontStretch" Value="{StaticResource WD.FontStretch}" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="TextBlock.FontSize" Value="{StaticResource WD.PrimaryFontSize}" />
+        <Setter Property="TextBlock.FontFamily" Value="{StaticResource WD.FontFamily}" />
+        <Setter Property="TextBlock.FontStyle" Value="{StaticResource WD.FontStyle}" />
+        <Setter Property="TextBlock.FontWeight" Value="{StaticResource WD.FontWeight}" />
+        <Setter Property="TextBlock.FontStretch" Value="{StaticResource WD.FontStretch}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
@@ -36,14 +36,14 @@
         </Style.Triggers>
     </Style>
     <sys:Double x:Key="WD.EnabledOpacity">0.7</sys:Double>
-    <sys:Double x:Key="WD.DefaultCornerRadius">4</sys:Double>
-    <sys:Double x:Key="WD.DefaultHeight">32</sys:Double>
+    <sys:Double x:Key="WD.CornerRadius">4</sys:Double>
+    <sys:Double x:Key="WD.Height">32</sys:Double>
     <sys:Double x:Key="WD.ThumbWidth">16</sys:Double>
     <sys:Double x:Key="WD.ThumbCornerRadius">8</sys:Double>
     <sys:Double x:Key="WD.RepeatButtonSize">6</sys:Double>
-    <Thickness x:Key="WD.DefaultPadding">6</Thickness>
+    <Thickness x:Key="WD.Padding">6</Thickness>
     <DropShadowEffect
-        x:Key="WD.NormalShadowDepth"
+        x:Key="WD.PrimaryShadowDepth"
         BlurRadius="5"
         Direction="270"
         Opacity=".42"

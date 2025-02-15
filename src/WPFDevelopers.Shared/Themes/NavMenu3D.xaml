@@ -14,9 +14,9 @@
         <Setter Property="Height" Value="80" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
-        <Setter Property="Fill" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+        <Setter Property="Fill" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:NavMenu3DItem}">

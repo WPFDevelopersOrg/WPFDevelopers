@@ -1,12 +1,11 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using WPFDevelopers.Helpers;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
@@ -277,7 +276,7 @@ namespace WPFDevelopers.Controls
         {
             var fef = new FrameworkElementFactory(typeof(Ellipse));
             fef.SetValue(Shape.FillProperty, back);
-            fef.SetValue(Shape.StrokeProperty, ControlsHelper.PrimaryNormalBrush);
+            fef.SetValue(Shape.StrokeProperty, ThemeManager.Instance.PrimaryBrush);
             fef.SetValue(Shape.StrokeThicknessProperty, (double)2);
             return fef;
         }

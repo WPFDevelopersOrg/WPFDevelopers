@@ -20,7 +20,7 @@
                         <Border
                             x:Name="PART_Border"
                             Background="Transparent"
-                            BorderBrush="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                            BorderBrush="{DynamicResource WD.PrimaryBrush}"
                             BorderThickness="2"
                             Cursor="SizeAll"
                             Visibility="Collapsed" />

@@ -55,8 +55,7 @@ namespace WPFDevelopers.Controls
             PointCache = dicts;
             if (points.Count > 1)
             {
-                var color = (Color) Application.Current.TryFindResource("WD.PrimaryNormalColor");
-                var rectBrush = new SolidColorBrush(color);
+                var rectBrush = new SolidColorBrush(ThemeManager.Instance.PrimaryColor);
                 rectBrush.Opacity = 0.3;
                 rectBrush.Freeze();
                 var streamGeometry = new StreamGeometry();

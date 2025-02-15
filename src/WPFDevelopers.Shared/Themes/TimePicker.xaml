@@ -30,17 +30,17 @@
                     Grid.Column="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Foreground="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
+                    Foreground="{DynamicResource WD.PlaceholderTextBrush}"
                     IsHitTestVisible="False"
                     Kind="Time" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="PART_PathIcon" Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                <Setter TargetName="PART_PathIcon" Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
             </Trigger>
             <Trigger Property="IsChecked" Value="True">
-                <Setter TargetName="PART_PathIcon" Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                <Setter TargetName="PART_PathIcon" Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -59,7 +59,7 @@
                             <Setter Property="Background" Value="Transparent" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                         </Trigger>
                         <DataTrigger Binding="{Binding}" Value="">
                             <Setter Property="IsEnabled" Value="False" />
@@ -105,7 +105,7 @@
         TargetType="{x:Type controls:TimeSelector}">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:TimeSelector}">
@@ -127,7 +127,7 @@
                                 Height="{TemplateBinding ItemHeight}"
                                 Margin="{TemplateBinding SelectorMargin}"
                                 VerticalAlignment="Top"
-                                BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                                BorderBrush="{DynamicResource WD.BaseBrush}"
                                 BorderThickness="0,1"
                                 IsHitTestVisible="False" />
                         </controls:SmallPanel>
@@ -143,10 +143,10 @@
         TargetType="{x:Type controls:TimePicker}">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:TimePicker}">
@@ -185,8 +185,8 @@
                             Panel.ZIndex="1"
                             Background="Transparent"
                             Focusable="True"
-                            Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
-                            SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
+                            Foreground="{DynamicResource WD.PrimaryTextBrush}"
+                            SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                             Style="{x:Null}"
                             Template="{StaticResource WD.ComboBoxTextBox}" />
                         <TextBlock
@@ -196,8 +196,8 @@
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Background="Transparent"
-                            FontSize="{StaticResource WD.NormalFontSize}"
-                            Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                            FontSize="{StaticResource WD.PrimaryFontSize}"
+                            Foreground="{DynamicResource WD.RegularTextBrush}"
                             IsHitTestVisible="False"
                             Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
                             TextTrimming="CharacterEllipsis"
@@ -258,7 +258,7 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
                             <Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />

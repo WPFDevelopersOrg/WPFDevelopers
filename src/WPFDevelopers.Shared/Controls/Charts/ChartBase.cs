@@ -6,6 +6,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
+using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -39,7 +40,7 @@ namespace WPFDevelopers.Controls
         protected double StartY { get; set; }
         protected double StartX { get; set; } = 40;
 
-        protected Brush NormalBrush => ControlsHelper.PrimaryNormalBrush;
+        protected Brush NormalBrush => ThemeManager.Instance.PrimaryBrush;
 
 
         public IEnumerable<KeyValuePair<string, double>> Datas
@@ -85,12 +86,12 @@ namespace WPFDevelopers.Controls
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Foreground = (Brush) Application.Current.TryFindResource("WD.WindowForegroundColorBrush")
+                    Foreground = (Brush) Application.Current.TryFindResource("WD.WindowTextBrush")
                 };
                 _border = new Border
                 {
                     Child = _textBlock,
-                    Background = (Brush) Application.Current.TryFindResource("WD.ChartFillSolidColorBrush"),
+                    Background = (Brush) Application.Current.TryFindResource("WD.ChartFillBrush"),
                     Effect = Application.Current.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
                     Margin = new Thickness(10),
                     CornerRadius = new CornerRadius(3),

@@ -17,7 +17,7 @@
                 Content="IsVisible" />
             <controls:StreamerLoading Visibility="{Binding ElementName=MyCheckBox, Path=IsChecked, Converter={StaticResource WD.Bool2VisibilityConverter}}">
                 <controls:StreamerLoading.Background>
-                    <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
+                    <SolidColorBrush Color="{DynamicResource WD.PrimaryColor}" />
                 </controls:StreamerLoading.Background>
             </controls:StreamerLoading>
         </StackPanel>

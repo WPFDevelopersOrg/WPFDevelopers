@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Sample.Models;
 using MessageBox = WPFDevelopers.Controls.MessageBox;
@@ -69,18 +70,6 @@ namespace WPFDevelopers.Samples.ExampleViews
                 time = time.AddDays(2);
             }
             PART_Theme.AddThemeItem("#B31B1B", "pack://application:,,,/WPFDevelopers.Samples;component/Light.Carmine.xaml");
-            //if (ThemesCollection != null)
-            //{
-            //    var model = ThemesCollection.FirstOrDefault(x => x.Color == "#B31B1B");
-            //    if (model != null) return;
-            //    ThemesCollection.Add(new ThemeModel
-            //    {
-            //        Color = "#B31B1B",
-            //        ResourcePath =
-            //            "pack://application:,,,/WPFDevelopers.Samples;component/Light.Carmine.xaml"
-            //    });
-            //}
-
         }
 
         private void btnInformation_Click(object sender, RoutedEventArgs e)
@@ -188,7 +177,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             var theme = lightDark.IsChecked.Value ? ThemeType.Dark : ThemeType.Light;
             if (App.Theme == theme) return;
             App.Theme = theme;
-            ControlsHelper.ToggleLightAndDark(lightDark.IsChecked == true);
+            ThemeManager.Instance.SetTheme(theme);
         }
 
         #region DataSource

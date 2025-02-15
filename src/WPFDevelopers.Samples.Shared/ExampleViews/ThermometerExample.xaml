@@ -15,9 +15,9 @@
         <Border
             Width="400"
             Height="400"
-            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+            Background="{DynamicResource WD.BackgroundBrush}"
             CornerRadius="12"
-            Effect="{StaticResource WD.NormalShadowDepth}">
+            Effect="{StaticResource WD.PrimaryShadowDepth}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -34,9 +34,9 @@
                 <Grid Margin="160,0,0,0" VerticalAlignment="Center">
                     <Path
                         Data="{Binding ElementName=PART_Thermometer, Path=Geometry, Mode=TwoWay}"
-                        Fill="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}"
+                        Fill="{DynamicResource WD.PrimaryMouseOverBrush}"
                         Opacity=".6"
-                        Stroke="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}"
+                        Stroke="{DynamicResource WD.PrimaryMouseOverBrush}"
                         StrokeThickness="1" />
                     <wd:Thermometer x:Name="PART_Thermometer" Value="{Binding ElementName=PART_Slider, Path=Value, Mode=TwoWay}" />
                 </Grid>
@@ -46,7 +46,7 @@
                     VerticalAlignment="Center"
                     FontFamily="Bahnschrift"
                     FontSize="24"
-                    Foreground="{DynamicResource WD.PrimaryPressedSolidColorBrush}"
+                    Foreground="{DynamicResource WD.PrimaryPressedBrush}"
                     Text="{Binding ElementName=PART_Thermometer, Path=Value, StringFormat={}{0}℃}" />
             </Grid>
         </Border>

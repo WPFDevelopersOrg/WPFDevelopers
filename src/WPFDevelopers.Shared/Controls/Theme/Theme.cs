@@ -74,7 +74,9 @@ namespace WPFDevelopers.Controls
 
         private SolidColorBrush GetColorBrush(string colorHex)
         {
-            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorHex));
+            var brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorHex));
+            brush.Freeze();
+            return brush;
         }
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
@@ -111,7 +113,6 @@ namespace WPFDevelopers.Controls
                 return;
             var newResourceDictionary = new ResourceDictionary { Source = new Uri(resourcePath) };
             mergedDictionaries.Insert(0, newResourceDictionary);
-            ControlsHelper.ThemeRefresh();
         }
     }
 }

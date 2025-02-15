@@ -15,9 +15,9 @@
         x:Key="WD.DefaultMenu"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Menu}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Menu}">
@@ -37,7 +37,7 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Separator}">
         <Setter Property="Height" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Margin" Value="0,2" />
         <Setter Property="Template">
             <Setter.Value>
@@ -72,8 +72,8 @@
                     <Grid Margin="10,0,10,10">
                         <Border
                             x:Name="SubmenuBorder"
-                            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-                            BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                            Background="{DynamicResource WD.BackgroundBrush}"
+                            BorderBrush="{DynamicResource WD.BaseBrush}"
                             BorderThickness="1"
                             CornerRadius="0,0,3,3"
                             Effect="{StaticResource WD.PopupShadowDepth}"
@@ -87,7 +87,7 @@
                             Height="1.2"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            Background="{DynamicResource WD.BackgroundBrush}"
                             BorderThickness="1,0,0,0" />
                     </Grid>
                 </Popup>
@@ -98,11 +98,11 @@
                 <Setter TargetName="Popup" Property="PopupAnimation" Value="None" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
             </Trigger>
             <Trigger Property="IsSubmenuOpen" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-                <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
             </Trigger>
 
         </ControlTemplate.Triggers>
@@ -124,7 +124,7 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -185,7 +185,7 @@
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -256,8 +256,8 @@
                     <Border
                         x:Name="SubmenuBorder"
                         Margin="10,0,10,10"
-                        Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-                        BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                        Background="{DynamicResource WD.BackgroundBrush}"
+                        BorderBrush="{DynamicResource WD.BaseBrush}"
                         BorderThickness="1"
                         CornerRadius="0,0,3,3"
                         Effect="{StaticResource WD.PopupShadowDepth}"
@@ -278,7 +278,7 @@
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

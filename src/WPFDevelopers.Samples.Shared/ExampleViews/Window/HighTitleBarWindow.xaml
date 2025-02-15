@@ -9,9 +9,9 @@
     Title="HighTitleBar"
     Width="710"
     Height="520"
-    BorderBrush="{DynamicResource WD.DangerPressedSolidColorBrush}"
+    BorderBrush="{DynamicResource WD.DangerBrush}"
     Icon="pack://application:,,,/WPFDevelopers.Samples;component/WPFDevelopers.ico"
-    TitleBackground="{DynamicResource WD.DangerPressedSolidColorBrush}"
+    TitleBackground="{DynamicResource WD.DangerBrush}"
     TitleBarMode="HighTitleBar"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">

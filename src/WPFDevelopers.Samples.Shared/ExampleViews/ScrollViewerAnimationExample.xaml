@@ -22,13 +22,13 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border
-                                    Background="{StaticResource WD.SuccessSolidColorBrush}"
-                                    BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}"
+                                    Background="{StaticResource WD.SuccessBrush}"
+                                    BorderBrush="{StaticResource WD.BackgroundBrush}"
                                     BorderThickness="0,0,0,.3">
                                     <TextBlock
                                         Padding="10"
-                                        FontSize="{StaticResource WD.NormalFontSize}"
-                                        Foreground="{StaticResource WD.BlackSolidColorBrush}"
+                                        FontSize="{StaticResource WD.PrimaryFontSize}"
+                                        Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                         Text="{Binding Name}" />
                                 </Border>
                             </DataTemplate>
@@ -50,13 +50,13 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border
-                                    Background="{StaticResource WD.DangerSolidColorBrush}"
-                                    BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}"
+                                    Background="{StaticResource WD.DangerBrush}"
+                                    BorderBrush="{StaticResource WD.BackgroundBrush}"
                                     BorderThickness="0,0,0,.3">
                                     <TextBlock
                                         Padding="10"
-                                        FontSize="{StaticResource WD.NormalFontSize}"
-                                        Foreground="{StaticResource WD.BackgroundSolidColorBrush}"
+                                        FontSize="{StaticResource WD.PrimaryFontSize}"
+                                        Foreground="{StaticResource WD.BackgroundBrush}"
                                         Text="{Binding Name}" />
                                 </Border>
                             </DataTemplate>

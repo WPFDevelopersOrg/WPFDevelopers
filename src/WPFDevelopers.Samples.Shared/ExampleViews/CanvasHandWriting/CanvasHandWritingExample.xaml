@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{StaticResource WD.PrimaryTextSolidColorBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource WD.PrimaryTextBrush}" />
         </Style>
     </UserControl.Resources>
     <controls:CodeViewer>

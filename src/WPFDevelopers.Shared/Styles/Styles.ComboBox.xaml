@@ -96,11 +96,11 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -153,9 +153,9 @@
                                 Panel.ZIndex="1"
                                 Background="Transparent"
                                 Focusable="True"
-                                Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                                Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                 IsReadOnly="{TemplateBinding IsReadOnly}"
-                                SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
+                                SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                                 Style="{x:Null}"
                                 Template="{StaticResource WD.ComboBoxTextBox}"
                                 Visibility="Hidden" />
@@ -166,8 +166,8 @@
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Background="Transparent"
-                                FontSize="{StaticResource WD.NormalFontSize}"
-                                Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                FontSize="{StaticResource WD.PrimaryFontSize}"
+                                Foreground="{DynamicResource WD.RegularTextBrush}"
                                 Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
                                 TextTrimming="CharacterEllipsis"
                                 Visibility="Collapsed" />
@@ -226,7 +226,7 @@
                                                 EasingFunction="{StaticResource WD.ExponentialEaseOut}"
                                                 Storyboard.TargetName="PART_Border"
                                                 Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                To="{DynamicResource WD.PrimaryNormalColor}"
+                                                To="{DynamicResource WD.PrimaryColor}"
                                                 Duration="00:00:.1" />
                                         </Storyboard>
                                     </VisualState>
@@ -272,7 +272,7 @@
                             <Setter TargetName="ContentSite" Property="UIElement.Visibility" Value="Hidden" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -307,7 +307,7 @@
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Margin" Value="1,0" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="{DynamicResource WD.PlaceholderTextBrush}" />
         <Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -322,13 +322,14 @@
                                 Width="{TemplateBinding Width}"
                                 Height="{TemplateBinding Height}"
                                 Fill="{TemplateBinding Background}"
+                                Opacity="0"
                                 SnapsToDevicePixels="True"
                                 UseLayoutRounding="True" />
                             <Rectangle
                                 x:Name="PART_RectangleSelected"
                                 Width="{TemplateBinding Width}"
                                 Height="{TemplateBinding Height}"
-                                Fill="{DynamicResource WD.BaseSolidColorBrush}"
+                                Fill="{DynamicResource WD.BaseBrush}"
                                 SnapsToDevicePixels="True"
                                 UseLayoutRounding="True"
                                 Visibility="Collapsed" />
@@ -343,7 +344,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+                            <Setter TargetName="PART_RectangleMouseOver" Property="Opacity" Value=".2" />
+                            <!--<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{Binding Source={StaticResource WD.PlaceholderTextBrush}, Converter={StaticResource DangerColorConverter}, ConverterParameter=0.1}" />-->
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -351,7 +353,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                             <Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold" />
                         </MultiTrigger>
                         <MultiTrigger>
@@ -359,12 +361,13 @@
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition Property="IsMouseOver" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                             <Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold" />
                         </MultiTrigger>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+                            <!--<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{Binding Source={StaticResource WD.PlaceholderTextBrush}, Converter={StaticResource DangerColorConverter}, ConverterParameter=0.1}" />-->
+                            <Setter TargetName="PART_RectangleMouseOver" Property="Opacity" Value=".2" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

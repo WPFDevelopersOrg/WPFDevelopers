@@ -90,19 +90,19 @@
                             Canvas.Left="0"
                             Width="20"
                             Height="20"
-                            Fill="{StaticResource WD.DangerSolidColorBrush}" />
+                            Fill="{StaticResource WD.DangerBrush}" />
                         <Ellipse
                             x:Name="PART_GreenEllipase"
                             Canvas.Left="50"
                             Width="20"
                             Height="20"
-                            Fill="{StaticResource WD.SuccessSolidColorBrush}" />
+                            Fill="{StaticResource WD.SuccessBrush}" />
                         <Ellipse
                             x:Name="PART_OrangeEllipase"
                             Canvas.Left="100"
                             Width="20"
                             Height="20"
-                            Fill="{StaticResource WD.WarningSolidColorBrush}" />
+                            Fill="{StaticResource WD.WarningBrush}" />
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsLoading" Value="True">

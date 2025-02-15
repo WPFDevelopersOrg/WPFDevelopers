@@ -22,19 +22,19 @@
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="12"
-                                    Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                                    Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                     Text="{Binding}" />
                                 <Rectangle
                                     Height="1"
                                     VerticalAlignment="Bottom"
-                                    Fill="{DynamicResource WD.BaseSolidColorBrush}" />
+                                    Fill="{DynamicResource WD.BaseBrush}" />
                             </StackPanel>
                         </DataTemplate>
                     </ControlTemplate.Resources>
                     <controls:SmallPanel x:Name="PART_Root">
                         <Border
-                            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
-                            BorderBrush="{DynamicResource WD.BaseSolidColorBrush}"
+                            Background="{DynamicResource WD.BackgroundBrush}"
+                            BorderBrush="{DynamicResource WD.BaseBrush}"
                             BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource AncestorType=Calendar}}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Calendar}}"
                             SnapsToDevicePixels="True"
@@ -146,10 +146,10 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:DateRangePicker}">
@@ -205,7 +205,7 @@
                                     Background="Transparent"
                                     Focusable="True"
                                     Foreground="{TemplateBinding Foreground}"
-                                    SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+                                    SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
                                 <controls:PathIcon
                                     Grid.Column="2"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -221,7 +221,7 @@
                                     Background="Transparent"
                                     Focusable="True"
                                     Foreground="{TemplateBinding Foreground}"
-                                    SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+                                    SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
                             </Grid>
                             <Popup
                                 x:Name="PART_Popup"

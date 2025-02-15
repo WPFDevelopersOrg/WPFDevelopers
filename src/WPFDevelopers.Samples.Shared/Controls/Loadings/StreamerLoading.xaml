@@ -13,7 +13,7 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource WD.PrimaryNormalColor}" />
+                <SolidColorBrush Color="{DynamicResource WD.PrimaryColor}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">

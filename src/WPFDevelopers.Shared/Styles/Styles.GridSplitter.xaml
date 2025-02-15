@@ -7,13 +7,13 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Fill="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" Opacity=".6" />
+                    <Rectangle Fill="{DynamicResource WD.WindowBorderBrush}" Opacity=".6" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
     <Style x:Key="DefaultGridSplitter" TargetType="{x:Type GridSplitter}">
-        <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="PreviewStyle" Value="{StaticResource WD.GridSplitterPreviewStyle}" />
         <Setter Property="Template">
             <Setter.Value>

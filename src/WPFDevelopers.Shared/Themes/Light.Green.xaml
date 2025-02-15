@@ -2,23 +2,23 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True">
     <!--Default颜色-->
-    <Color x:Key="WD.DefaultBorderBrushColor" po:Freeze="True">#8CF4BB</Color>
-    <SolidColorBrush x:Key="WD.DefaultBorderBrushSolidColorBrush" Color="{StaticResource WD.DefaultBorderBrushColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.DefaultBorderColor" po:Freeze="True">#8CF4BB</Color>
+    <SolidColorBrush x:Key="WD.DefaultBorderBrush" Color="{StaticResource WD.DefaultBorderColor}" po:Freeze="True"></SolidColorBrush>
     
-    <Color x:Key="WD.DefaultBackgroundColor" po:Freeze="True">#DEFAEB</Color>
-    <SolidColorBrush x:Key="WD.DefaultBackgroundSolidColorBrush" Color="{StaticResource WD.DefaultBackgroundColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.PrimaryBackgroundColor" po:Freeze="True">#DEFAEB</Color>
+    <SolidColorBrush x:Key="WD.PrimaryBackgroundBrush" Color="{StaticResource WD.PrimaryBackgroundColor}" po:Freeze="True"></SolidColorBrush>
     
-    <Color x:Key="WD.DefaultBackgroundPressedColor" po:Freeze="True">#03C25A</Color>
-    <SolidColorBrush x:Key="WD.DefaultBackgroundPressedSolidColorBrush" Color="{StaticResource WD.DefaultBackgroundPressedColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.DefaultPressedColor" po:Freeze="True">#03C25A</Color>
+    <SolidColorBrush x:Key="WD.DefaultPressedBrush" Color="{StaticResource WD.DefaultPressedColor}" po:Freeze="True"></SolidColorBrush>
     <!--Primary颜色-->
     <Color x:Key="WD.PrimaryNormalColor" po:Freeze="True">#00B050</Color>
-    <SolidColorBrush x:Key="WD.PrimaryNormalSolidColorBrush" Color="{StaticResource WD.PrimaryNormalColor}" po:Freeze="True"></SolidColorBrush>
-    <SolidColorBrush x:Key="WD.WindowBorderBrushSolidColorBrush" Color="{StaticResource WD.PrimaryNormalColor}" po:Freeze="True"></SolidColorBrush>
+    <SolidColorBrush x:Key="WD.PrimaryBrush" Color="{StaticResource WD.PrimaryColor}" po:Freeze="True"></SolidColorBrush>
+    <SolidColorBrush x:Key="WD.WindowBorderBrush" Color="{StaticResource WD.PrimaryColor}" po:Freeze="True"></SolidColorBrush>
 
-    <Color x:Key="WD.PrimaryMouseOverColor" po:Freeze="True">#6DE0A1</Color>
-    <SolidColorBrush x:Key="WD.PrimaryMouseOverSolidColorBrush" Color="{StaticResource WD.PrimaryMouseOverColor}" po:Freeze="True"></SolidColorBrush>
+    <Color x:Key="WD.PrimaryBrush" po:Freeze="True">#6DE0A1</Color>
+    <SolidColorBrush x:Key="WD.PrimaryOverBrush" Color="{StaticResource WD.PrimaryBrush}" po:Freeze="True"></SolidColorBrush>
 
     <Color x:Key="WD.PrimaryPressedColor" po:Freeze="True">#01A74C</Color>
-    <SolidColorBrush x:Key="WD.PrimaryPressedSolidColorBrush" Color="{StaticResource WD.PrimaryPressedColor}" po:Freeze="True"></SolidColorBrush>
+    <SolidColorBrush x:Key="WD.PrimaryPressedBrush" Color="{StaticResource WD.PrimaryPressedColor}" po:Freeze="True"></SolidColorBrush>
 
 </ResourceDictionary>

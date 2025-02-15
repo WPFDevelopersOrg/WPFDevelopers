@@ -54,7 +54,7 @@
                                     Width="20"
                                     Height="20"
                                     Data="{StaticResource WD.BusGeometry}"
-                                    Fill="{DynamicResource WD.PlaceholderTextSolidColorBrush}"
+                                    Fill="{DynamicResource WD.PlaceholderTextBrush}"
                                     Stretch="Uniform" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>

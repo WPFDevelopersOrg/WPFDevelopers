@@ -9,7 +9,7 @@
         x:Key="WD.StarrySky"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:StarrySky}">
-        <Setter Property="Background" Value="{StaticResource WD.StarrySkyRadialGradientBrush}" />
+        <Setter Property="Background" Value="{StaticResource WD.StarrySkyBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:StarrySky}">

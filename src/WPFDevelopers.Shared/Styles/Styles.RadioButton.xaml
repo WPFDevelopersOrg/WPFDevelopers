@@ -13,9 +13,9 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type RadioButton}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="4,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -36,7 +36,7 @@
                                         x:Name="PART_Ellipse"
                                         MinWidth="6"
                                         MinHeight="6"
-                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                        Fill="{DynamicResource WD.WindowTextBrush}"
                                         RenderTransformOrigin=".5,.5">
                                         <Ellipse.RenderTransform>
                                             <ScaleTransform ScaleX="0" ScaleY="0" />
@@ -83,15 +83,15 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="PART_Border" Property="Fill" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-                            <Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Fill" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Stroke" Value="{DynamicResource WD.PrimaryBrush}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -156,7 +156,7 @@
                             x:Name="PART_Ellipse"
                             Width="7"
                             Height="7"
-                            Fill="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            Fill="{DynamicResource WD.BackgroundBrush}"
                             Visibility="Collapsed" />
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">

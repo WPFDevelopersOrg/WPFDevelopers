@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
-using WPFDevelopers.Helpers;
+using WPFDevelopers.Core;
 using WPFDevelopers.Utilities;
 
 namespace WPFDevelopers.Controls
@@ -22,7 +22,7 @@ namespace WPFDevelopers.Controls
 
         public static LoadingType GetLoadingType(DependencyObject obj)
         {
-            return (LoadingType) obj.GetValue(LoadingTypeProperty);
+            return (LoadingType)obj.GetValue(LoadingTypeProperty);
         }
 
         public static void SetLoadingType(DependencyObject obj, LoadingType value)
@@ -87,8 +87,8 @@ namespace WPFDevelopers.Controls
             var type = GetLoadingType(uIElement);
             var isLoading = GetIsShow(uIElement);
             if (!isLoading) return;
-            var w = (double) uIElement.GetValue(ActualWidthProperty);
-            var h = (double) uIElement.GetValue(ActualHeightProperty);
+            var w = (double)uIElement.GetValue(ActualWidthProperty);
+            var h = (double)uIElement.GetValue(ActualHeightProperty);
             switch (type)
             {
                 case LoadingType.Default:
@@ -122,13 +122,13 @@ namespace WPFDevelopers.Controls
 
             if (value != null)
                 adornerContainer.Child = new MaskControl(uIElement)
-                    {Content = value, Background = ControlsHelper.Brush};
+                { Content = value, Background = ThemeManager.Instance.BackgroundBrush };
             layer.Add(adornerContainer);
         }
 
         public static bool GetIsShow(DependencyObject obj)
         {
-            return (bool) obj.GetValue(IsShowProperty);
+            return (bool)obj.GetValue(IsShowProperty);
         }
 
         public static void SetIsShow(DependencyObject obj, bool value)

@@ -87,7 +87,7 @@
                     </EventTrigger>                </Grid.Triggers>
             </Grid>
             <!--<Ellipse Height="80" Width="80" x:Name="Ellipse1"
-                     StrokeThickness="2" Stroke="{StaticResource WD.PrimaryNormalSolidColorBrush}"
+                     StrokeThickness="2" Stroke="{StaticResource WD.PrimaryBrush}"
                      ToolTip="按下加速~喵 (゜-゜)つロ ">
                 <Ellipse.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

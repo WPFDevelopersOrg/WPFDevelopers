@@ -38,7 +38,7 @@
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Path" Property="Fill" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Path" Property="Fill" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -91,12 +91,12 @@
                                             x:Name="PART_Ellipse"
                                             Width="100"
                                             Height="100"
-                                            Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}" />
+                                            Fill="{DynamicResource WD.PrimaryBrush}" />
                                         <controls:PathIcon
                                             x:Name="PART_Path"
                                             Width="20"
                                             Height="20"
-                                            Foreground="{StaticResource WD.BackgroundSolidColorBrush}"
+                                            Foreground="{DynamicResource WD.BackgroundBrush}"
                                             Kind="Add"
                                             RenderTransformOrigin="0.5,0.5" />
                                     </controls:SmallPanel>

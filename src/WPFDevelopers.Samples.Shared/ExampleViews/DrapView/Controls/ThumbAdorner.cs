@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -62,7 +63,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         {
             var offset = THUMB_SIZE / 2;
             var sz = new Size(THUMB_SIZE, THUMB_SIZE);
-            var renderPen = new Pen(ControlsHelper.PrimaryNormalBrush, 2.0);
+            var renderPen = new Pen(ThemeManager.Instance.PrimaryBrush, 2.0);
             var startPoint = new Point(AdornedElement.RenderSize.Width / 2,
                 AdornedElement.RenderSize.Height - AdornedElement.RenderSize.Height);
             var endPoint = new Point(AdornedElement.RenderSize.Width / 2,
@@ -196,7 +197,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             var converter = TypeDescriptor.GetConverter(typeof(Geometry));
             var geometry = (Geometry)converter.ConvertFrom(lan);
             TileBrush bsh =
-                new DrawingBrush(new GeometryDrawing(ControlsHelper.PrimaryNormalBrush, new Pen(Brushes.Transparent, 2), geometry));
+                new DrawingBrush(new GeometryDrawing(ThemeManager.Instance.PrimaryBrush, new Pen(Brushes.Transparent, 2), geometry));
             bsh.Stretch = Stretch.Fill;
             return bsh;
         }
@@ -314,7 +315,7 @@ namespace WPFDevelopers.Samples.ExampleViews
                 Cursor = cur,
                 Template = new ControlTemplate(typeof(Thumb))
                 {
-                    VisualTree = GetFactory(ControlsHelper.PrimaryNormalBrush)
+                    VisualTree = GetFactory(ThemeManager.Instance.PrimaryBrush)
                 }
             };
 
@@ -405,7 +406,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         {
             var fef = new FrameworkElementFactory(typeof(Rectangle));
             fef.SetValue(Shape.FillProperty, back);
-            fef.SetValue(Shape.StrokeProperty, ControlsHelper.PrimaryNormalBrush);
+            fef.SetValue(Shape.StrokeProperty, ThemeManager.Instance.PrimaryBrush);
             fef.SetValue(Shape.StrokeThicknessProperty, (double)1);
             return fef;
         }

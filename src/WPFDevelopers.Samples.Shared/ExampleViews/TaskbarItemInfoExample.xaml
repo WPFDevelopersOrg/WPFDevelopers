@@ -26,8 +26,8 @@
             <Border
                 Width="20"
                 Height="20"
-                Background="{StaticResource WD.PrimaryPressedSolidColorBrush}"
-                BorderBrush="{StaticResource WD.BackgroundSolidColorBrush}"
+                Background="{StaticResource WD.PrimaryPressedBrush}"
+                BorderBrush="{StaticResource WD.BackgroundBrush}"
                 BorderThickness="2">
                 <TextBlock
                     VerticalAlignment="Center"

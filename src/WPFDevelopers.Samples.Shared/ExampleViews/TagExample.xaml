@@ -27,7 +27,7 @@
             <wd:Tag
                 wd:ElementHelper.CornerRadius="4"
                 Background="{DynamicResource WD.SuccessBorderBrushSolidColorBrush}"
-                BorderBrush="{DynamicResource WD.SuccessNormalBrush}"
+                BorderBrush="{DynamicResource WD.SuccessBrush}"
                 BorderThickness="1"
                 Content="Tag3" />
             <wd:Tag

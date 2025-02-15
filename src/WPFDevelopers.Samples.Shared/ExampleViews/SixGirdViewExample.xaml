@@ -25,7 +25,7 @@
             <Border Background="#282C34">
                 <wd:SmallPanel>
                     <TextBlock Text="信号源1"/>
-                    <Border Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                    <Border Background="{DynamicResource WD.PrimaryBrush}"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Right"
                             Padding="10,4"

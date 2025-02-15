@@ -15,7 +15,7 @@
                     <Ellipse
                         Width="10"
                         Height="10"
-                        Fill="{StaticResource WD.PrimaryNormalSolidColorBrush}" />
+                        Fill="{StaticResource WD.PrimaryBrush}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -15,7 +15,7 @@
             Height="10"
             VerticalAlignment="Top"
             Fill="White"
-            Stroke="{StaticResource WD.WarningSolidColorBrush}"
+            Stroke="{DynamicResource WD.WarningBrush}"
             StrokeThickness="2" />
     </DataTemplate>
     <DataTemplate x:Key="WD.NameContent">

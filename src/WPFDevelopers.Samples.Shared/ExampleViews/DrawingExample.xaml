@@ -15,7 +15,7 @@
     </UserControl.DataContext>
     <controls:CodeViewer>
         <UniformGrid Columns="3" Rows="2">
-            <controls:DrawingControl Content="反应盘" InnerBackground="{StaticResource WD.SuccessSolidColorBrush}">
+            <controls:DrawingControl Content="反应盘" InnerBackground="{StaticResource WD.SuccessBrush}">
                 <ListBoxItem Content="盘1" />
                 <ListBoxItem Content="盘2" />
                 <ListBoxItem Content="盘3" />
@@ -25,7 +25,7 @@
             <controls:DrawingControl
                 Content="试剂仓"
                 InnerBackground="White"
-                InnerBorderBrush="{StaticResource WD.DangerSolidColorBrush}"
+                InnerBorderBrush="{StaticResource WD.DangerBrush}"
                 InnerBorderThickness="1"
                 ItemsSource="{Binding Drawings}"
                 PanelBackground="#FFF2F2F2"
@@ -42,7 +42,7 @@
 
             <controls:DrawingControl
                 Content="试剂仓"
-                InnerBackground="{StaticResource WD.WarningSolidColorBrush}"
+                InnerBackground="{StaticResource WD.WarningBrush}"
                 InnerBorderThickness="1"
                 ItemsSource="{Binding Drawings}"
                 PanelBackground="#FFF2F2F2"
