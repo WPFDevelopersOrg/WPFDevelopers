@@ -244,24 +244,24 @@ namespace WPFDevelopers.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
+                    _geometry = (Geometry) Application.Current?.TryFindResource("WD.WarningGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.WarningBrush");
+                        (SolidColorBrush) Application.Current?.TryFindResource("WD.WarningBrush");
                     break;
                 case MessageBoxImage.Error:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.ErrorGeometry");
+                    _geometry = (Geometry) Application.Current?.TryFindResource("WD.ErrorGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.DangerBrush");
+                        (SolidColorBrush) Application.Current?.TryFindResource("WD.DangerBrush");
                     break;
                 case MessageBoxImage.Information:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
+                    _geometry = (Geometry) Application.Current?.TryFindResource("WD.WarningGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.SuccessBrush");
+                        (SolidColorBrush) Application.Current?.TryFindResource("WD.SuccessBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.QuestionGeometry");
+                    _geometry = (Geometry) Application.Current?.TryFindResource("WD.QuestionGeometry");
                     _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.PrimaryBrush");
+                        (SolidColorBrush) Application.Current?.TryFindResource("WD.PrimaryBrush");
                     break;
             }
         }
