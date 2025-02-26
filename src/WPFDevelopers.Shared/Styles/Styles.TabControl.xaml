@@ -23,11 +23,7 @@
                     <controls:SmallPanel
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Background="Transparent">
-                        <Border
-                            x:Name="PART_BorderSelect"
-                            Background="{DynamicResource WD.PrimaryBrush}"
-                            Opacity="0" />
+                        Background="{TemplateBinding Background}">
                         <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" />
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -63,7 +59,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
-                            <Setter TargetName="PART_BorderSelect" Property="Opacity" Value=".1" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
                             <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
