@@ -89,7 +89,7 @@ namespace WPFDevelopers.Controls
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Foreground = (Brush) Application.Current.TryFindResource("WD.WindowTextBrush"),
+                    Foreground = (Brush) Application.Current?.TryFindResource("WD.WindowTextBrush"),
                     Padding = new Thickness(4, 0, 2, 0)
                 };
                 _ellipse = new Ellipse
@@ -105,8 +105,8 @@ namespace WPFDevelopers.Controls
                 _border = new Border
                 {
                     Child = _stackPanel,
-                    Background = (Brush) Application.Current.TryFindResource("WD.ChartFillBrush"),
-                    Effect = Application.Current.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
+                    Background = (Brush) Application.Current?.TryFindResource("WD.ChartFillBrush"),
+                    Effect = Application.Current?.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
                     Margin = new Thickness(10),
                     CornerRadius = new CornerRadius(3),
                     Padding = new Thickness(6)
