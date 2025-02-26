@@ -99,7 +99,7 @@ namespace WPFDevelopers.Net45x
 
         private static T GetResourceKey<T>(string key)
         {
-            if (Application.Current.TryFindResource(key) is T resource) return resource;
+            if (Application.Current?.TryFindResource(key) is T resource) return resource;
 
             return default;
         }
