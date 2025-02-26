@@ -86,13 +86,13 @@ namespace WPFDevelopers.Controls
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Foreground = (Brush) Application.Current.TryFindResource("WD.WindowTextBrush")
+                    Foreground = (Brush) Application.Current?.TryFindResource("WD.WindowTextBrush")
                 };
                 _border = new Border
                 {
                     Child = _textBlock,
-                    Background = (Brush) Application.Current.TryFindResource("WD.ChartFillBrush"),
-                    Effect = Application.Current.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
+                    Background = (Brush) Application.Current?.TryFindResource("WD.ChartFillBrush"),
+                    Effect = Application.Current?.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
                     Margin = new Thickness(10),
                     CornerRadius = new CornerRadius(3),
                     Padding = new Thickness(6)
@@ -134,7 +134,7 @@ namespace WPFDevelopers.Controls
 
             var backgroupBrush = new SolidColorBrush
             {
-                Color = (Color) Application.Current.TryFindResource("WD.BackgroundColor")
+                Color = (Color) Application.Current?.TryFindResource("WD.BackgroundColor")
             };
             backgroupBrush.Freeze();
             foreach (var item in rects)
