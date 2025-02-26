@@ -15,7 +15,7 @@ namespace WPFDevelopers.Controls
         protected override void OnRender(DrawingContext drawingContext)
         {
             base.OnRender(drawingContext);
-            ChartFill = Application.Current.TryFindResource("WD.ChartFillBrush") as Brush;
+            ChartFill = Application.Current?.TryFindResource("WD.ChartFillBrush") as Brush;
             var myPen = new Pen
             {
                 Thickness = 1,
@@ -53,7 +53,7 @@ namespace WPFDevelopers.Controls
             var xAxisPen = new Pen
             {
                 Thickness = 1,
-                Brush = Application.Current.TryFindResource("WD.ChartXAxisBrush") as Brush
+                Brush = Application.Current?.TryFindResource("WD.ChartXAxisBrush") as Brush
             };
             xAxisPen.Freeze();
             var max = Convert.ToInt32(Datas.Max(kvp => kvp.Value));
