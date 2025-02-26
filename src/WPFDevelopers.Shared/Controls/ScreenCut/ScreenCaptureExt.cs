@@ -37,7 +37,7 @@ namespace WPFDevelopers.Controls
         {
             if(themeType == null)
             {
-                var existingResourceDictionary = Application.Current.TryFindResource("Resources") as Resources;
+                var existingResourceDictionary = Application.Current?.TryFindResource("Resources") as Resources;
                 if (existingResourceDictionary != null)
                     themeType = existingResourceDictionary.Theme;
                 else
