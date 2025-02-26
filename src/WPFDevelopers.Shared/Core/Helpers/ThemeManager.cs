@@ -24,18 +24,18 @@ namespace WPFDevelopers.Core
         }
         public Color PrimaryColor
         {
-            get => (Color)Application.Current.TryFindResource("WD.PrimaryColor");
+            get => (Color)Application.Current?.TryFindResource("WD.PrimaryColor");
 
         }
 
         public Brush PrimaryBrush
         {
-            get => (Brush)Application.Current.TryFindResource("WD.PrimaryBrush");
+            get => (Brush)Application.Current?.TryFindResource("WD.PrimaryBrush");
 
         }
         public Brush BackgroundBrush
         {
-            get => (Brush)Application.Current.TryFindResource("WD.BackgroundBrush");
+            get => (Brush)Application.Current?.TryFindResource("WD.BackgroundBrush");
         }
 
         public Dictionary<Tuple<ThemeType, Color, double>, SolidColorBrush> PrimaryColorCache = new Dictionary<Tuple<ThemeType, Color, double>, SolidColorBrush>();
@@ -60,6 +60,13 @@ namespace WPFDevelopers.Core
             var resources = GetResources();
             if (resources != null)
                 resources.Theme = themeType;
+        }
+
+        public void SetColor(Color color) 
+        {
+            var resources = GetResources();
+            if (resources != null)
+                resources.Color = color;
         }
     }
 }

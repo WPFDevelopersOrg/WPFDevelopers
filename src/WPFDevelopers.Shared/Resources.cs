@@ -19,6 +19,7 @@ namespace WPFDevelopers
         private string[] resourceKeys = { "WindowBorderColor", "PrimaryColor" };
 
         public static event ThemeChangedEvent ThemeChanged;
+
         private ThemeType _theme;
         public ThemeType Theme
         {
@@ -26,8 +27,8 @@ namespace WPFDevelopers
             set => InitializeTheme(value);
         }
 
-        private SolidColorBrush _color;
-        public SolidColorBrush Color
+        private Color _color;
+        public Color Color
         {
             get => _color;
             set
@@ -36,20 +37,24 @@ namespace WPFDevelopers
                 {
                     _color = value;
                     OnPropertyChanged(nameof(Color));
-                    var newBrush = new SolidColorBrush(_color.Color);
-                    newBrush.Freeze();
-                    UpdateResourceDictionaryColor(key: "Primary", color: newBrush.Color);
-                    UpdateResourceDictionaryColor(key: "WindowBorder", color: newBrush.Color);
-                    UpdateResourceDictionaryColor(key: "PrimaryMouseOver", color: newBrush.Color);
+                    UpdateResourceDictionaryColor(key: "Primary", color: _color);
+                    UpdateResourceDictionaryColor(key: "WindowBorder", color: _color);
+                    UpdateResourceDictionaryColor(key: "PrimaryMouseOver", color: _color);
                 }
             }
         }
 
         public Resources()
         {
-            var resourceDictionary = new ResourceDictionary { Source = new Uri("pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml") };
-            if (Application.Current.Resources != null)
+            var resourceUri = new Uri("pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml");
+            var resourceDictionary = new ResourceDictionary { Source = resourceUri };
+            if (Application.Current?.Resources != null 
+                &&
+                !Application.Current.Resources.MergedDictionaries.Any(dictionary => dictionary.Source != null && dictionary.Source == resourceUri))
+            {
                 Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+            }
+            _color = GetColorFromResource("Primary");
         }
 
         protected void InitializeTheme(ThemeType themeType)
@@ -99,8 +104,8 @@ namespace WPFDevelopers
 
         void UpdateColorOnThemeChange()
         {
-            UpdateResourceDictionaryColor();
-            var primary = Color != null ? Color.Color : default;
+            var primary = Color != null ? Color : default;
+            UpdateResourceDictionaryColor(color: primary);
             UpdateResourceDictionaryColor(key: "WindowBorder", color: primary);
             UpdateResourceDictionaryColor(key: "PrimaryMouseOver", color: primary);
             var successColor = GetColorFromResource("Success");
@@ -111,10 +116,12 @@ namespace WPFDevelopers
             UpdateResourceDictionaryColor(key: "DangerMouseOver", color: dangerColor != default ? dangerColor : default);
         }
 
+        
+
         Color GetColorFromResource(string colorName)
         {
             Color color = default;
-            if (Application.Current.TryFindResource(GenerateColorResourceKey(colorName)) is Color colorResource)
+            if (Application.Current?.TryFindResource(GenerateColorResourceKey(colorName)) is Color colorResource)
                 color = colorResource;
             return color;
         }
@@ -127,7 +134,7 @@ namespace WPFDevelopers
         void UpdateResourceDictionaryColor(string key = "Primary", Color color = default)
         {
             var newKey = GenerateColorResourceKey(key);
-            if (Application.Current.TryFindResource(newKey) is Color colorRes)
+            if (Application.Current?.TryFindResource(newKey) is Color colorRes)
             {
                 Color newColor = colorRes;
                 if (color != default)
@@ -145,44 +152,32 @@ namespace WPFDevelopers
                     newColor = ThemeManager.Instance.ColorCache[newColor][keyTuple];
                 else
                 {
-                    if (Theme == ThemeType.Dark
-                        &&
-                        !Array.Exists(resourceKeys, i => newKey.EndsWith(i)))
+                    if (Color != null
+                            &&
+                            !Array.Exists(resourceKeys, i => newKey.EndsWith(i)))
                     {
-                        var transparent = Brushes.Transparent.Color;
-                        ThemeManager.Instance.ColorCache[newColor][keyTuple] = transparent;
-                        newColor = transparent;
+                        var brightnessColor = new Color
+                        {
+                            A = (byte)(newColor.A * 0.1),
+                            R = newColor.R,
+                            G = newColor.G,
+                            B = newColor.B
+                        };
+                        newColor = brightnessColor;
                     }
                     else
                     {
-                        if (Color != null
+                        Color tempColor = newColor;
+                        if (!Array.Exists(resourceKeys, i => newKey.EndsWith(i)))
+                            tempColor = colorRes;
+                        if (newKey.EndsWith("WindowBorderColor")
                             &&
-                            !Array.Exists(resourceKeys, i => newKey.EndsWith(i)))
-                        {
-                            var brightnessColor = new Color
-                            {
-                                A = (byte)(newColor.A * 0.1),
-                                R = newColor.R,
-                                G = newColor.G,
-                                B = newColor.B
-                            };
-                            newColor = brightnessColor;
-                        }
-                        else
-                        {
-                            Color tempColor = newColor;
-                            if (!Array.Exists(resourceKeys, i => newKey.EndsWith(i)))
-                                tempColor = colorRes;
-                            if (newKey.EndsWith("WindowBorderColor")
-                                &&
-                                Application.Current.TryFindResource(GenerateColorResourceKey("Base")) is Color colorBase
-                                &&
-                                Theme == ThemeType.Dark)
-                                tempColor = colorBase;
-                            ThemeManager.Instance.ColorCache[newColor][keyTuple] = tempColor;
-                            newColor = tempColor;
-                        }
-
+                            Application.Current?.TryFindResource(GenerateColorResourceKey("Base")) is Color colorBase
+                            &&
+                            Theme == ThemeType.Dark)
+                            tempColor = colorBase;
+                        ThemeManager.Instance.ColorCache[newColor][keyTuple] = tempColor;
+                        newColor = tempColor;
                     }
                 }
                 SetResourceColorAndBrush(newKey, newColor);
