@@ -206,7 +206,7 @@ namespace WPFDevelopers.Controls
         {
             var adornedElement = AdornedElement as FrameworkElement;
             var desiredWidth = adornedElement.ActualWidth;
-            var brush = new SolidColorBrush((Color)Application.Current.TryFindResource("WD.DangerColor"));
+            var brush = new SolidColorBrush((Color)Application.Current?.TryFindResource("WD.DangerColor"));
             brush.Freeze();
             var radius = 5.0;
             var center = new Point(desiredWidth + _horizontalOffset, _verticalOffset);
