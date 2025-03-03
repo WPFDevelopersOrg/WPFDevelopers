@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -29,18 +30,18 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("OutImageSource", typeof(ImageSource), typeof(CropAvatar),
                 new PropertyMetadata(null));
 
-        private BitmapFrame bitmapFrame;
-        private Canvas canvas;
-        private CroppedBitmap crop;
-        private SmallPanel grid;
-        private Image image;
-        private int initialX, initialY, voffsetX, voffsetY;
-        private bool isDown;
-        private bool? isLeft;
-        private Path path;
-        private Point point;
-        private Button replaceButton, addButton;
-        private double vNewStartX, vNewStartY, _StartX, _StartY, centerX, centerY;
+        private BitmapFrame _bitmapFrame;
+        private Canvas _canvas;
+        private CroppedBitmap _crop;
+        private SmallPanel _grid;
+        private Image _image;
+        private int _initialX, _initialY, _voffsetX, _voffsetY;
+        private bool _isDown;
+        private bool? _isLeft;
+        private Path _path;
+        private Point _point;
+        private Button _replaceButton, _addButton;
+        private double _vNewStartX, _vNewStartY, _startX, _startY, _centerX, _centerY;
 
 
         static CropAvatar()
@@ -51,126 +52,146 @@ namespace WPFDevelopers.Controls
 
         public ImageSource OutImageSource
         {
-            get => (ImageSource) GetValue(OutImageSourceProperty);
+            get => (ImageSource)GetValue(OutImageSourceProperty);
             set => SetValue(OutImageSourceProperty, value);
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
-            canvas.Loaded += Canvas_Loaded;
-            grid = GetTemplateChild(GridTemplateName) as SmallPanel;
-            image = GetTemplateChild(ImageTemplateName) as Image;
-            image.MouseDown += Image_MouseDown;
-            image.MouseMove += Image_MouseMove;
-            image.MouseUp += Image_MouseUp;
-            image.MouseLeave += Image_MouseLeave;
-            path = GetTemplateChild(PathTemplateName) as Path;
-            replaceButton = GetTemplateChild(ReplaceButtonTemplateName) as Button;
-            replaceButton.Click += ReplaceButton_Click;
-            addButton = GetTemplateChild(AddButtonTemplateName) as Button;
-            addButton.Click += AddButton_Click;
+            _canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
+            if(_canvas != null)
+            {
+                _canvas.Loaded -= OnCanvas_Loaded;
+                _canvas.Loaded += OnCanvas_Loaded;
+            }
+            _grid = GetTemplateChild(GridTemplateName) as SmallPanel;
+            _image = GetTemplateChild(ImageTemplateName) as Image;
+            if(_image != null)
+            {
+                _image.MouseDown -= OnImage_MouseDown;
+                _image.MouseDown += OnImage_MouseDown;
+                _image.MouseMove -= OnImage_MouseMove;
+                _image.MouseMove += OnImage_MouseMove;
+                _image.MouseUp -= OnImage_MouseUp;
+                _image.MouseUp += OnImage_MouseUp;
+                _image.MouseLeave -= OnImage_MouseLeave;
+                _image.MouseLeave += OnImage_MouseLeave;
+            }
+            _path = GetTemplateChild(PathTemplateName) as Path;
+            _replaceButton = GetTemplateChild(ReplaceButtonTemplateName) as Button;
+            if(_replaceButton != null)
+            {
+                _replaceButton.Click -= OnReplaceButton_Click;
+                _replaceButton.Click += OnReplaceButton_Click;
+            }
+            _addButton = GetTemplateChild(AddButtonTemplateName) as Button;
+            if (_addButton != null)
+            {
+                _addButton.Click -= OnAddButton_Click;
+                _addButton.Click += OnAddButton_Click;
+            }
         }
 
-        private void Canvas_Loaded(object sender, RoutedEventArgs e)
+        private void OnCanvas_Loaded(object sender, RoutedEventArgs e)
         {
             if (sender is Canvas canvas)
             {
                 var width = canvas.ActualWidth;
                 var height = canvas.ActualHeight;
-                centerX = (width - path.Width) / 2.0d;
-                centerY = (height - path.Height) / 2.0d;
-                canvas.Clip = new RectangleGeometry(new Rect(centerX, centerY, 200, 200));
-                Canvas.SetLeft(path, centerX);
-                Canvas.SetTop(path, centerY);
-                Canvas.SetLeft(grid, centerX);
-                Canvas.SetTop(grid, centerY);
+                _centerX = (width - _path.Width) / 2.0d;
+                _centerY = (height - _path.Height) / 2.0d;
+                canvas.Clip = new RectangleGeometry(new Rect(_centerX, _centerY, 200, 200));
+                Canvas.SetLeft(_path, _centerX);
+                Canvas.SetTop(_path, _centerY);
+                Canvas.SetLeft(_grid, _centerX);
+                Canvas.SetTop(_grid, _centerY);
             }
         }
 
-        private void Image_MouseLeave(object sender, MouseEventArgs e)
+        private void OnImage_MouseLeave(object sender, MouseEventArgs e)
         {
-            isDown = false;
+            _isDown = false;
             SettingPoint();
         }
 
         private void SettingPoint()
         {
-            if (isLeft == true)
+            if (_isLeft == true)
             {
-                _StartX = Canvas.GetLeft(image);
-                initialX = voffsetX;
+                _startX = Canvas.GetLeft(_image);
+                _initialX = _voffsetX;
             }
-            else if (isLeft == false)
+            else if (_isLeft == false)
             {
-                _StartY = Canvas.GetTop(image);
-                initialY = voffsetY;
+                _startY = Canvas.GetTop(_image);
+                _initialY = _voffsetY;
             }
         }
 
-        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        private void OnImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (isDown)
+            if (_isDown)
                 SettingPoint();
         }
 
-        private void Image_MouseMove(object sender, MouseEventArgs e)
+        private void OnImage_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed && isDown)
+            if (e.LeftButton == MouseButtonState.Pressed && _isDown)
             {
                 var vPoint = e.GetPosition(this);
-                if (isLeft == true)
+                if (_isLeft == true)
                 {
-                    var voffset = vPoint.X - point.X;
-                    vNewStartX = _StartX + voffset;
-                    var xPath = Canvas.GetLeft(path);
-                    if (vNewStartX <= xPath && vNewStartX >= -(bitmapFrame.Width - 200 - xPath))
+                    var voffset = vPoint.X - _point.X;
+                    _vNewStartX = _startX + voffset;
+                    var xPath = Canvas.GetLeft(_path);
+                    if (_vNewStartX <= xPath && _vNewStartX >= -(_bitmapFrame.Width - 200 - xPath))
                     {
-                        Canvas.SetLeft(image, vNewStartX);
-                        voffsetX = initialX - (int) Math.Round(voffset);
-                        voffsetX = voffsetX < 0 ? 0 : voffsetX;
-                        crop = new CroppedBitmap(bitmapFrame, new Int32Rect(voffsetX, 0, _size, _size));
+                        Canvas.SetLeft(_image, _vNewStartX);
+                        _voffsetX = _initialX - (int)Math.Round(voffset);
+                        _voffsetX = _voffsetX < 0 ? 0 : _voffsetX;
+                        _crop = new CroppedBitmap(_bitmapFrame,
+                            new Int32Rect(_voffsetX + _size > _bitmapFrame.Width ? Convert.ToInt32(_bitmapFrame.Width - _size) : _voffsetX, 0, _size, _size));
                     }
                 }
-                else if (isLeft == false)
+                else if (_isLeft == false)
                 {
-                    var voffset = vPoint.Y - point.Y;
-                    vNewStartY = _StartY + voffset;
-                    var yPath = Canvas.GetTop(path);
-                    if (vNewStartY <= yPath && vNewStartY >= -(bitmapFrame.Height - 200 - yPath))
+                    var voffset = vPoint.Y - _point.Y;
+                    _vNewStartY = _startY + voffset;
+                    var yPath = Canvas.GetTop(_path);
+                    if (_vNewStartY <= yPath && _vNewStartY >= -(_bitmapFrame.Height - 200 - yPath))
                     {
-                        Canvas.SetTop(image, vNewStartY);
-                        voffsetY = initialY - (int) Math.Round(voffset);
-                        voffsetY = voffsetY < 0 ? 0 : voffsetY;
-                        crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, voffsetY, _size, _size));
+                        Canvas.SetTop(_image, _vNewStartY);
+                        _voffsetY = _initialY - (int)Math.Round(voffset);
+                        _voffsetY = _voffsetY < 0 ? 0 : _voffsetY;
+                        _crop = new CroppedBitmap(_bitmapFrame,
+                            new Int32Rect(0, _voffsetY + _size > _bitmapFrame.Height ? Convert.ToInt32(_bitmapFrame.Height - _size) : _voffsetY, _size, _size));
                     }
                 }
-
-                OutImageSource = crop;
+                OutImageSource = _crop;
             }
         }
 
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        private void OnImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            isDown = true;
-            point = e.GetPosition(this);
+            _isDown = true;
+            _point = e.GetPosition(this);
         }
 
-        private void ReplaceButton_Click(object sender, RoutedEventArgs e)
+        private void OnReplaceButton_Click(object sender, RoutedEventArgs e)
         {
             InitialImage();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void OnAddButton_Click(object sender, RoutedEventArgs e)
         {
             InitialImage();
         }
 
         private void InitialImage()
         {
-            vNewStartX = 0;
-            vNewStartY = 0;
+            _vNewStartX = 0;
+            _vNewStartY = 0;
             var uri = Helper.ImageUri();
             if (uri == null) return;
             var bitmap = new BitmapImage();
@@ -180,57 +201,57 @@ namespace WPFDevelopers.Controls
             bitmap.EndInit();
             if (bitmap.Height > bitmap.Width)
             {
-                var scale = bitmap.Width / path.Width;
-                image.Width = _size;
-                image.Height = bitmap.Height / scale;
-                isLeft = false;
+                var scale = bitmap.Width / _path.Width;
+                _image.Width = _size;
+                _image.Height = bitmap.Height / scale;
+                _isLeft = false;
             }
             else if (bitmap.Width > bitmap.Height)
             {
-                var scale = bitmap.Height / path.Height;
-                image.Width = bitmap.Width / scale;
-                image.Height = _size;
-                isLeft = true;
+                var scale = bitmap.Height / _path.Height;
+                _image.Width = bitmap.Width / scale;
+                _image.Height = _size;
+                _isLeft = true;
             }
             else
             {
-                image.Width = _size;
-                image.Height = _size;
-                isLeft = null;
+                _image.Width = _size;
+                _image.Height = _size;
+                _isLeft = null;
             }
 
-            bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int) image.Width, (int) image.Height, 0);
-            image.Source = bitmapFrame;
-            if (image.Source != null)
+            _bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int)_image.Width, (int)_image.Height, 0);
+            _image.Source = _bitmapFrame;
+            if (_image.Source != null)
             {
-                replaceButton.Visibility = Visibility.Visible;
-                addButton.Visibility = Visibility.Collapsed;
+                _replaceButton.Visibility = Visibility.Visible;
+                _addButton.Visibility = Visibility.Collapsed;
             }
-
-            Canvas.SetLeft(grid, centerX);
-            Canvas.SetTop(grid, centerY);
-            _StartX = (canvas.ActualWidth - image.Width) / 2.0d;
-            _StartY = (canvas.ActualHeight - image.Height) / 2.0d;
-            Canvas.SetLeft(image, _StartX);
-            Canvas.SetTop(image, _StartY);
-            if (isLeft == true)
+            Canvas.SetLeft(_grid, _centerX);
+            Canvas.SetTop(_grid, _centerY);
+            _startX = (_canvas.ActualWidth - _image.Width) / 2.0d;
+            _startY = (_canvas.ActualHeight - _image.Height) / 2.0d;
+            Canvas.SetLeft(_image, _startX);
+            Canvas.SetTop(_image, _startY);
+            if (_isLeft == true)
             {
-                initialX = ((int) image.Width - 200) / 2;
-                initialY = 0;
-                crop = new CroppedBitmap(bitmapFrame, new Int32Rect(initialX, 0, _size, _size));
+                _initialX = ((int)_image.Width - 200) / 2;
+                _initialY = 0;
+                _crop = new CroppedBitmap(_bitmapFrame,
+                            new Int32Rect(_voffsetX + _size > _bitmapFrame.Width ? Convert.ToInt32(_bitmapFrame.Width - _size) : _voffsetX, 0, _size, _size));
             }
-            else if (isLeft == false)
+            else if (_isLeft == false)
             {
-                initialY = ((int) image.Height - 200) / 2;
-                initialX = 0;
-                crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, initialY, _size, _size));
+                _initialY = ((int)_image.Height - 200) / 2;
+                _initialX = 0;
+                _crop = new CroppedBitmap(_bitmapFrame,
+                             new Int32Rect(0, _voffsetY + _size > _bitmapFrame.Height ? Convert.ToInt32(_bitmapFrame.Height - _size) : _voffsetY, _size, _size));
             }
             else
             {
-                crop = new CroppedBitmap(bitmapFrame, new Int32Rect(0, 0, _size, _size));
+                _crop = new CroppedBitmap(_bitmapFrame, new Int32Rect(0, 0, _size, _size));
             }
-
-            OutImageSource = crop;
+            OutImageSource = _crop;
         }
     }
 }
