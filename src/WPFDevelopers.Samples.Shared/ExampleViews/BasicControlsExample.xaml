@@ -57,7 +57,7 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="Theme" />
-                    <wd:Theme Margin="0,10" x:Name="PART_Theme"/>
+                    <controls:Theme Margin="0,10" />
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
@@ -425,6 +425,7 @@
                                 <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
                             </DatePicker.BlackoutDates>
                         </DatePicker>
+                        <DatePicker Margin="10,0" wd:DatePickerHelper.IsMonthYear="True"/>
                     </UniformGrid>
 
                     <TextBlock

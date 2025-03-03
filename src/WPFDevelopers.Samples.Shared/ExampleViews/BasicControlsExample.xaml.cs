@@ -69,7 +69,6 @@ namespace WPFDevelopers.Samples.ExampleViews
                 });
                 time = time.AddDays(2);
             }
-            PART_Theme.AddThemeItem("#B31B1B", "pack://application:,,,/WPFDevelopers.Samples;component/Light.Carmine.xaml");
         }
 
         private void btnInformation_Click(object sender, RoutedEventArgs e)
