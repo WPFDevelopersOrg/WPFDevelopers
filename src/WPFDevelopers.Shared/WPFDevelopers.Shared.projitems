@@ -57,7 +57,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorTypeToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\CornerRadiusToSurroundConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ThemeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\HalfValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\OrientationConverter.cs" />
@@ -167,7 +167,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\EnumerableHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PasswordBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SnowCanvasHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ThemeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Win32.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LanguageManager.cs" />

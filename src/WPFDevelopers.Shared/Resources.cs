@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using WPFDevelopers.Core;
-using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers
 {
@@ -20,13 +19,13 @@ namespace WPFDevelopers
 
         public static event ThemeChangedEvent ThemeChanged;
 
-        private ThemeType _theme;
+        private ThemeType _theme = ThemeType.Default;
         public ThemeType Theme
         {
             get => _theme;
             set => InitializeTheme(value);
         }
-
+        
         private Color _color;
         public Color Color
         {
@@ -36,7 +35,6 @@ namespace WPFDevelopers
                 if (_color != value)
                 {
                     _color = value;
-                    OnPropertyChanged(nameof(Color));
                     UpdateResourceDictionaryColor(key: "Primary", color: _color);
                     UpdateResourceDictionaryColor(key: "WindowBorder", color: _color);
                     UpdateResourceDictionaryColor(key: "PrimaryMouseOver", color: _color);
@@ -46,26 +44,87 @@ namespace WPFDevelopers
 
         public Resources()
         {
+            AddTheme();
+        }
+
+        void AddTheme()
+        {
             var resourceUri = new Uri("pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml");
             var resourceDictionary = new ResourceDictionary { Source = resourceUri };
-            if (Application.Current?.Resources != null 
-                &&
-                !Application.Current.Resources.MergedDictionaries.Any(dictionary => dictionary.Source != null && dictionary.Source == resourceUri))
-            {
-                Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
-            }
+            MergedDictionaries.Add(resourceDictionary);
             _color = GetColorFromResource("Primary");
+            ThemeManager.Instance.Resources = this;
+            if (Theme == ThemeType.Default && IsWindows10OrLater())
+            {
+                SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
+                ApplyTheme();
+            }
         }
 
         protected void InitializeTheme(ThemeType themeType)
         {
+            if (_theme == themeType)
+                return;
             _theme = themeType;
-            MergedDictionaries.Clear();
+            Uri oldUri = themeType == ThemeType.Default || themeType == ThemeType.Light ? GetResourceUri("Dark.Color") : GetResourceUri("Light.Color");
+            if (oldUri != null)
+            {
+                var existingResourceDictionary = MergedDictionaries.FirstOrDefault(x => x.Source != null && x.Source.Equals(oldUri));
+                if (existingResourceDictionary != null)
+                    MergedDictionaries.Remove(existingResourceDictionary);
+            }
             var path = GetResourceUri(GetThemeResourceName(themeType));
-            MergedDictionaries.Add(new ResourceDictionary { Source = path });
+            var newResourceDictionary = new ResourceDictionary { Source = path };
+           
+            MergedDictionaries.Insert(0, newResourceDictionary);
             ThemeChanged?.Invoke(themeType);
             UpdateColorOnThemeChange();
             Task.Factory.StartNew(PublishWPFDevelopersExt);
+        }
+
+        bool IsDarkMode()
+        {
+            const string registryKey = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
+            const string registryValue = "AppsUseLightTheme";
+            try
+            {
+                var value = (int)Registry.GetValue(registryKey, registryValue, 1);
+                return value == 0; 
+            }
+            catch
+            {
+                return false; 
+            }
+        }
+
+        void ApplyTheme()
+        {
+            var isDarkMode = IsDarkMode();
+            var theme = isDarkMode == true ? ThemeType.Dark : ThemeType.Light;
+            if(Theme != theme)
+                Theme = theme;
+        }
+
+        bool IsWindows10OrLater()
+        {
+            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+            {
+                object value = key?.GetValue("CurrentMajorVersionNumber");
+                if (value != null && int.TryParse(value.ToString(), out int majorVersion))
+                {
+                    return majorVersion >= 10;
+                }
+            }
+            Version version = Environment.OSVersion.Version;
+            return version.Major >= 10; 
+        }
+
+        private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category == UserPreferenceCategory.General)
+            {
+                ApplyTheme();
+            }
         }
 
         void PublishWPFDevelopersExt()
@@ -116,14 +175,12 @@ namespace WPFDevelopers
             UpdateResourceDictionaryColor(key: "DangerMouseOver", color: dangerColor != default ? dangerColor : default);
         }
 
-        
 
-        Color GetColorFromResource(string colorName)
+
+        public Color GetColorFromResource(string colorName)
         {
-            Color color = default;
-            if (Application.Current?.TryFindResource(GenerateColorResourceKey(colorName)) is Color colorResource)
-                color = colorResource;
-            return color;
+            colorName = GenerateColorResourceKey(colorName);
+            return TryFindResource<Color>(colorName);
         }
 
         string GenerateColorResourceKey(string key)
@@ -131,10 +188,30 @@ namespace WPFDevelopers
             return $"WD.{key}Color";
         }
 
+        object TryFindResource(string resourceKey)
+        {
+            object obj = null;
+            if (MergedDictionaries != null)
+                obj = MergedDictionaries.Where(dictionary => dictionary.Contains(resourceKey)).Select(dictionary => dictionary[resourceKey]).FirstOrDefault();
+            return obj;
+        }
+
+        public T TryFindResource<T>(string resourceKey)
+        {
+            var resource = TryFindResource(resourceKey);
+            if (resource is T typedResource)
+            {
+                return typedResource;
+            }
+            return default; 
+        }
+
+
         void UpdateResourceDictionaryColor(string key = "Primary", Color color = default)
         {
             var newKey = GenerateColorResourceKey(key);
-            if (Application.Current?.TryFindResource(newKey) is Color colorRes)
+            var resColor = TryFindResource<Color>(newKey);
+            if (resColor is Color colorRes)
             {
                 Color newColor = colorRes;
                 if (color != default)
@@ -172,7 +249,7 @@ namespace WPFDevelopers
                             tempColor = colorRes;
                         if (newKey.EndsWith("WindowBorderColor")
                             &&
-                            Application.Current?.TryFindResource(GenerateColorResourceKey("Base")) is Color colorBase
+                            TryFindResource<Color>(GenerateColorResourceKey("Base")) is Color colorBase
                             &&
                             Theme == ThemeType.Dark)
                             tempColor = colorBase;
@@ -186,18 +263,26 @@ namespace WPFDevelopers
 
         void SetResourceColorAndBrush(string key,Color color)
         {
-            Application.Current.Resources[key] = color;
+            UpdateResource(key, color);
             var newBrush = new SolidColorBrush(color);
             newBrush.Freeze();
             var keyBrush = key.Replace("Color", "Brush");
-            Application.Current.Resources[keyBrush] = newBrush;
+            UpdateResource(keyBrush, newBrush);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
+        void UpdateResource(string key, object value)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            var targetDictionary = MergedDictionaries.FirstOrDefault(dictionary => dictionary.Contains(key));
+            if (targetDictionary != null)
+            {
+                targetDictionary[key] = value;
+            }
         }
+    }
+    public enum ThemeType
+    {
+        Default,
+        Light,
+        Dark,
     }
 }
