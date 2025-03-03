@@ -2,11 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
-    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
+    xmlns:resx="clr-namespace:WPFDevelopers">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
     <Style
         x:Key="WD.NoShadowCalendarItemStyle"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -189,6 +189,7 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <controls:PathIcon
                                     Margin="15,0,0,0"
@@ -222,6 +223,24 @@
                                     Focusable="True"
                                     Foreground="{TemplateBinding Foreground}"
                                     SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
+                                <Button
+                                    x:Name="PART_CloseButton"
+                                    Grid.Column="4"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="0,0,4,0"
+                                    HorizontalAlignment="Right"
+                                    helpers:ElementHelper.IsClear="{Binding Path=(helpers:ElementHelper.IsClear), RelativeSource={RelativeSource TemplatedParent}}"
+                                    helpers:ElementHelper.IsRound="True"
+                                    Style="{StaticResource WD.NormalButton}"
+                                    ToolTip="{Binding [Clear], Source={x:Static resx:LanguageManager.Instance}}"
+                                    Visibility="Collapsed">
+                                    <controls:PathIcon
+                                        Width="10"
+                                        Height="10"
+                                        Foreground="{DynamicResource WD.PrimaryTextBrush}"
+                                        Kind="WindowClose" />
+                                </Button>
                             </Grid>
                             <Popup
                                 x:Name="PART_Popup"
@@ -269,6 +288,9 @@
                         </controls:SmallPanel>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="helpers:ElementHelper.IsClear" Value="True">
+                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
                         <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
