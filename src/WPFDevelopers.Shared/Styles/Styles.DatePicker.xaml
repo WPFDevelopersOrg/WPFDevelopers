@@ -178,6 +178,23 @@
                                 </MultiBinding>
                             </Ellipse.Visibility>
                         </Ellipse>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="SelectionStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState Name="Unselected" />
+                                <VisualState Name="Selected">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="SelectionBackground"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To=".4"
+                                            Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsInactive" Value="True">
