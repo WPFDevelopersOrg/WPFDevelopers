@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Helpers
 {
@@ -82,13 +83,13 @@ namespace WPFDevelopers.Helpers
             if (button != null)
             {
                 if ((bool)e.NewValue)
-                    button.Click += ButtonClear_Click;
+                    button.Click += OnButtonClear_Click;
                 else
-                    button.Click -= ButtonClear_Click;
+                    button.Click -= OnButtonClear_Click;
             }
         }
 
-        private static void ButtonClear_Click(object sender, RoutedEventArgs e)
+        private static void OnButtonClear_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button)
             {
@@ -101,6 +102,11 @@ namespace WPFDevelopers.Helpers
                     var tabControl = tabItem.Parent as TabControl;
                     if (tabControl != null)
                         tabControl.Items.Remove(tabItem); 
+                }
+                else if(button.TemplatedParent is DateRangePicker dateRangePicker)
+                {
+                    dateRangePicker.StartDate = null;
+                    dateRangePicker.EndDate = null;
                 }
             }
         }
