@@ -32,7 +32,8 @@
                     EndDate="{Binding EndDate, RelativeSource={RelativeSource AncestorType=local:DateRangePickerExample}}"
                     EndWatermark="结束日期"
                     StartDate="{Binding StartDate, RelativeSource={RelativeSource AncestorType=local:DateRangePickerExample}}"
-                    StartWatermark="开始日期" />
+                    StartWatermark="开始日期" 
+                    wd:ElementHelper.IsClear="True"/>
                 <Button
                     Width="60"
                     HorizontalAlignment="Center"

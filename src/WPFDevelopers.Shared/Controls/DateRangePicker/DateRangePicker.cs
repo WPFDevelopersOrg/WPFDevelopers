@@ -103,10 +103,22 @@ namespace WPFDevelopers.Controls
 
         private static void OnStartDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var ctrl = d as DateRangePicker;
+            if (ctrl != null && ctrl._textBoxStart != null)
+            {
+                ctrl._textBoxStart.Text = e.NewValue?.ToString();
+                ctrl.UpdateStartDateFromTextBox();
+            }
         }
 
         private static void OnEndDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var ctrl = d as DateRangePicker;
+            if (ctrl != null && ctrl._textBoxEnd != null)
+            {
+                ctrl._textBoxEnd.Text = e.NewValue?.ToString();
+                ctrl.UpdateEndDateFromTextBox();
+            }
         }
 
 
@@ -171,10 +183,29 @@ namespace WPFDevelopers.Controls
             Loaded += DateRangePicker_Loaded;
         }
 
+        private void OnBorder_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.OriginalSource is Button button)
+                return;
+            if (_popup != null && !_popup.IsOpen)
+                _popup.IsOpen = true;
+        }
+
         private void TextBoxEnd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateEndDateFromTextBox();
+        }
+
+        void UpdateEndDateFromTextBox()
         {
             if (_textBoxEnd != null)
             {
+                if (string.IsNullOrWhiteSpace(_textBoxEnd.Text))
+                {
+                    _endDate = null;
+                    SetIsHighlightFalse(_startCalendarDayButtons);
+                    return;
+                }
                 if (DateTime.TryParse(_textBoxEnd.Text, out var dateTime))
                 {
                     if (EndDate.HasValue && dateTime.ToString(DateFormat) == EndDate.Value.ToString(DateFormat))
@@ -200,8 +231,19 @@ namespace WPFDevelopers.Controls
 
         private void TextBoxStart_TextChanged(object sender, TextChangedEventArgs e)
         {
+            UpdateStartDateFromTextBox();
+        }
+
+        void UpdateStartDateFromTextBox()
+        {
             if (_textBoxStart != null)
             {
+                if (string.IsNullOrWhiteSpace(_textBoxStart.Text))
+                {
+                    _startDate = null;
+                    SetIsHighlightFalse(_startCalendarDayButtons);
+                    return;
+                }
                 if (DateTime.TryParse(_textBoxStart.Text, out var dateTime))
                 {
                     if (StartDate.HasValue && dateTime.ToString(DateFormat) == StartDate.Value.ToString(DateFormat))
@@ -357,6 +399,8 @@ namespace WPFDevelopers.Controls
 
         private void OnPreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (e.OriginalSource is Button button)
+                return;
             if (_popup != null && !_popup.IsOpen)
                 _popup.IsOpen = true;
         }
