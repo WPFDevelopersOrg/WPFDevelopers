@@ -277,21 +277,22 @@ namespace WPFDevelopers.Controls
             Render();
         }
 
-        private CroppedBitmap CutBitmap()
+        private WriteableBitmap CutBitmap()
         {
             try
             {
-                var width = _border.Width;
-                var height = _border.Height;
-                if (double.IsNaN(width) || double.IsNaN(height))
-                    return null;
-                var left = Canvas.GetLeft(_border);
-                var top = Canvas.GetTop(_border);
-                CurrentRect = new Rect(left, top, width, height);
-                if (CurrentRect.IsEmpty || CurrentRect.Width <= 0 || CurrentRect.Height <= 0) return null;
-                return new CroppedBitmap(bitmapFrame,
-                    new Int32Rect((int)CurrentRect.X, (int)CurrentRect.Y, (int)CurrentRect.Width,
-                        (int)CurrentRect.Height));
+                if(bitmapFrame == null) return null;
+                var left = (int)Canvas.GetLeft(_border);
+                var top = (int)Canvas.GetTop(_border);
+                var width = (int)_border.Width;
+                var height = (int)_border.Height;
+                if (width <= 0 || height <= 0) return null;
+                var croppedBitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Pbgra32, null);
+                var stride = (int)(bitmapFrame.PixelWidth * (bitmapFrame.Format.BitsPerPixel / 8.0));
+                var pixelData = new byte[stride * bitmapFrame.PixelHeight];
+                bitmapFrame.CopyPixels(pixelData, stride, 0);
+                croppedBitmap.WritePixels(new Int32Rect(0, 0, width, height), pixelData, stride, left + top * stride);
+                return croppedBitmap;
             }
             catch
             {
