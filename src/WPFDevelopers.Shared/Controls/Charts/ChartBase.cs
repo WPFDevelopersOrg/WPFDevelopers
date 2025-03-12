@@ -86,13 +86,13 @@ namespace WPFDevelopers.Controls
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Foreground = (Brush) Application.Current?.TryFindResource("WD.WindowTextBrush")
+                    Foreground = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.WindowTextBrush") 
                 };
                 _border = new Border
                 {
                     Child = _textBlock,
-                    Background = (Brush) Application.Current?.TryFindResource("WD.ChartFillBrush"),
-                    Effect = Application.Current?.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
+                    Background = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.ChartFillBrush"),
+                    Effect = ThemeManager.Instance.Resources.TryFindResource <DropShadowEffect>("WD.PopupShadowDepth"),
                     Margin = new Thickness(10),
                     CornerRadius = new CornerRadius(3),
                     Padding = new Thickness(6)
@@ -105,7 +105,6 @@ namespace WPFDevelopers.Controls
             if (PointCache.Any(x => x.Key.Contains(currentPoint)))
             {
                 isPopupOpen = true;
-
                 var currentItem = PointCache.FirstOrDefault(x => x.Key.Contains(currentPoint));
                 if (currentItem.Key == null) return;
                 _textBlock.Text = currentItem.Value;
@@ -134,7 +133,7 @@ namespace WPFDevelopers.Controls
 
             var backgroupBrush = new SolidColorBrush
             {
-                Color = (Color) Application.Current?.TryFindResource("WD.BackgroundColor")
+                Color = ThemeManager.Instance.Resources.GetColorFromResource("Background")
             };
             backgroupBrush.Freeze();
             foreach (var item in rects)
