@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Threading;
 
 namespace WPFDevelopers.Helpers
 {
@@ -135,15 +135,20 @@ namespace WPFDevelopers.Helpers
                 textBlock.TextTrimming = (TextTrimming) e.NewValue;
         }
 
-        private static void OnIsMonthYearChanged(DependencyObject dobj, DependencyPropertyChangedEventArgs e)
+        private static void OnIsMonthYearChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var datePicker = (DatePicker)dobj;
-
-            Application.Current.Dispatcher
-                .BeginInvoke(DispatcherPriority.Loaded,
-                             new Action<DatePicker, DependencyPropertyChangedEventArgs>(SetCalendarEventHandlers),
-                             datePicker, e);
+            var ctrl = (DatePicker)obj;
+            if (ctrl == null) return;
+            var syncContext = SynchronizationContext.Current;
+            if (syncContext != null)
+            {
+                syncContext.Post(new SendOrPostCallback((state) =>
+                {
+                    SetCalendarEventHandlers(ctrl, e);
+                }), null);
+            }
         }
+
         private static void SetCalendarEventHandlers(DatePicker datePicker, DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue == e.OldValue)
@@ -160,11 +165,11 @@ namespace WPFDevelopers.Helpers
                 datePicker.CalendarClosed -= DatePickerOnCalendarClosed;
             }
         }
+
         private static void DatePickerOnCalendarOpened(object sender, RoutedEventArgs routedEventArgs)
         {
             var calendar = GetDatePickerCalendar(sender);
             calendar.DisplayMode = CalendarMode.Year;
-
             calendar.DisplayModeChanged += CalendarOnDisplayModeChanged;
         }
 
@@ -173,9 +178,9 @@ namespace WPFDevelopers.Helpers
             var datePicker = (DatePicker)sender;
             var calendar = GetDatePickerCalendar(sender);
             datePicker.SelectedDate = calendar.SelectedDate;
-
             calendar.DisplayModeChanged -= CalendarOnDisplayModeChanged;
         }
+
         private static void CalendarOnDisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
         {
             var calendar = (Calendar)sender;
@@ -187,6 +192,7 @@ namespace WPFDevelopers.Helpers
             var datePicker = GetCalendarsDatePicker(calendar);
             datePicker.IsDropDownOpen = false;
         }
+
         private static Calendar GetDatePickerCalendar(object sender)
         {
             var datePicker = (DatePicker)sender;
