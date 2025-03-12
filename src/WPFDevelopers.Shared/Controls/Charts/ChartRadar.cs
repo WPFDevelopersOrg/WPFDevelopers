@@ -26,7 +26,7 @@ namespace WPFDevelopers.Controls
             _penXAxis = new Pen
             {
                 Thickness = 1,
-                Brush = Application.Current?.TryFindResource("WD.ChartXAxisBrush") as Brush
+                Brush = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.ChartXAxisBrush"),
             };
             _penXAxis.Freeze();
 
@@ -77,7 +77,6 @@ namespace WPFDevelopers.Controls
 
             PointCache = dicts;
             streamGeometry.Freeze();
-            //var color = (Color) Application.Current?.TryFindResource("WD.PrimaryColor");
             var rectBrush = new SolidColorBrush(ThemeManager.Instance.PrimaryColor);
             rectBrush.Opacity = 0.5;
             rectBrush.Freeze();
