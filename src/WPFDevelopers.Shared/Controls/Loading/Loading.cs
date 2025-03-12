@@ -74,7 +74,9 @@ namespace WPFDevelopers.Controls
             if (layer == null) return;
             var adorners = layer.GetAdorners(uIElement);
             if (isRemove || adorners != null)
+            {
                 foreach (var item in adorners)
+                {
                     if (item is AdornerContainer container)
                     {
                         if (isRemove)
@@ -82,7 +84,8 @@ namespace WPFDevelopers.Controls
                         container.Child = null;
                         layer.Remove(container);
                     }
-
+                }
+            }
             var adornerContainer = new AdornerContainer(uIElement);
             var type = GetLoadingType(uIElement);
             var isLoading = GetIsShow(uIElement);
@@ -121,8 +124,14 @@ namespace WPFDevelopers.Controls
             }
 
             if (value != null)
+            {
                 adornerContainer.Child = new MaskControl(uIElement)
-                { Content = value, Background = ThemeManager.Instance.BackgroundBrush };
+                {
+                    Content = value, 
+                    //Background = ThemeManager.Instance.BackgroundBrush 
+                };
+            }
+                
             layer.Add(adornerContainer);
         }
 
