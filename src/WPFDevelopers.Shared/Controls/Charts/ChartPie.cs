@@ -89,7 +89,7 @@ namespace WPFDevelopers.Controls
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Foreground = (Brush) Application.Current?.TryFindResource("WD.WindowTextBrush"),
+                    Foreground = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.WindowTextBrush"),
                     Padding = new Thickness(4, 0, 2, 0)
                 };
                 _ellipse = new Ellipse
@@ -105,8 +105,8 @@ namespace WPFDevelopers.Controls
                 _border = new Border
                 {
                     Child = _stackPanel,
-                    Background = (Brush) Application.Current?.TryFindResource("WD.ChartFillBrush"),
-                    Effect = Application.Current?.TryFindResource("WD.PopupShadowDepth") as DropShadowEffect,
+                    Background = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.ChartFillBrush"),
+                    Effect = ThemeManager.Instance.Resources.TryFindResource<DropShadowEffect>("WD.PopupShadowDepth"),
                     Margin = new Thickness(10),
                     CornerRadius = new CornerRadius(3),
                     Padding = new Thickness(6)
@@ -125,10 +125,6 @@ namespace WPFDevelopers.Controls
                         Color = vibrantColors[index >= vibrantColors.Length ? index % vibrantColors.Length : index]
                     };
                     _textBlock.Text = pathGeometry.Value;
-                    //var bounds = pathGeometry.Key.Bounds;
-                    //var center = new Point(bounds.Left + bounds.Width / 2, bounds.Top + bounds.Height / 2);
-                    //_popup.HorizontalOffset = center.X - (_border.ActualWidth / 2);
-                    //_popup.VerticalOffset = center.Y - (_border.ActualHeight / 2);
                     _popup.IsOpen = true;
                     _lastItem = pathGeometry;
                     break;
