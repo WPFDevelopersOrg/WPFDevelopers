@@ -117,6 +117,7 @@ namespace WPFDevelopers.Helpers
             }
             return window;
         }
+
         public static Thickness GetPadding(FrameworkElement element)
         {
             Type elementType = element.GetType();
