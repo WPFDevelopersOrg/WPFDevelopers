@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Core;
 using WPFDevelopers.Core.Helpers;
 using static WPFDevelopers.Core.Helpers.MonitorHelper;
 
@@ -99,8 +100,9 @@ namespace WPFDevelopers.Net45x
 
         private static T GetResourceKey<T>(string key)
         {
-            if (Application.Current?.TryFindResource(key) is T resource) return resource;
-
+            var t = ThemeManager.Instance.Resources.TryFindResource<T>(key);
+            if (t != null && t is T resource)
+                return resource;
             return default;
         }
 
