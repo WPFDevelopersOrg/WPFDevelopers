@@ -58,7 +58,10 @@ namespace WPFDevelopers
             {
                 SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
                 ApplyTheme();
+                return;
             }
+            if(Theme == ThemeType.Default)
+                Theme = ThemeType.Light;
         }
 
         protected void InitializeTheme(ThemeType themeType)
