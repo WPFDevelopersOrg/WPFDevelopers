@@ -35,13 +35,9 @@ namespace WPFDevelopers.Controls
 
         public ScreenCaptureExt(ThemeType? themeType = null)
         {
-            if(themeType == null)
+            if (themeType == null)
             {
-                var existingResourceDictionary = Application.Current?.TryFindResource("Resources") as Resources;
-                if (existingResourceDictionary != null)
-                    themeType = existingResourceDictionary.Theme;
-                else
-                    themeType = ThemeType.Dark;
+                themeType = ThemeManager.Instance.Resources.Theme;
             }
             _theme = themeType;
             Width = 0;
