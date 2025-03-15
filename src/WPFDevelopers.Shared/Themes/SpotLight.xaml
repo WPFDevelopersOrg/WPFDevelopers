@@ -9,11 +9,10 @@
         x:Key="WD.SpotLight"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:SpotLight}">
-        <Setter Property="Background" Value="#222222" />
         <Setter Property="FontSize" Value="60" />
-        <Setter Property="FontFamily" Value="Arial Black" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="DefaultForeground" Value="{DynamicResource WD.PlaceholderTextBrush}" />
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowBorderBrush}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Template">
