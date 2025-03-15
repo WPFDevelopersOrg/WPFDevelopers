@@ -94,10 +94,12 @@
         TargetType="{x:Type GridViewColumnHeader}">
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="FontWeight" Value="ExtraBlack" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -197,6 +199,9 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Template">
             <Setter.Value>
