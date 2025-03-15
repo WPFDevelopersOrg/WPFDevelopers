@@ -375,6 +375,7 @@
                         <ComboBox
                             wd:ElementHelper.Watermark="ComboBox"
                             Background="LightYellow"
+                            FontSize="20"
                             Foreground="Black">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
@@ -425,7 +426,7 @@
                                 <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
                             </DatePicker.BlackoutDates>
                         </DatePicker>
-                        <DatePicker Margin="10,0" wd:DatePickerHelper.IsMonthYear="True"/>
+                        <DatePicker Margin="10,0" wd:DatePickerHelper.IsMonthYear="True" />
                     </UniformGrid>
 
                     <TextBlock
@@ -497,7 +498,10 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="DataGrid" />
-                    <TabControl Height="200" Margin="0,10">
+                    <TabControl
+                        Height="200"
+                        Margin="0,10"
+                        FontSize="20">
                         <TabItem
                             Height="38"
                             Padding="20,0"
@@ -505,8 +509,8 @@
                             <DataGrid
                                 wd:ElementHelper.CornerRadius="3"
                                 AutoGenerateColumns="False"
-                                HeadersVisibility="All"
                                 FontSize="20"
+                                HeadersVisibility="All"
                                 ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 RowHeaderWidth="40">
                                 <DataGrid.RowHeaderTemplate>
@@ -618,6 +622,7 @@
                         <ListBox
                             wd:ElementHelper.CornerRadius="3"
                             DisplayMemberPath="Name"
+                            FontSize="20"
                             ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                         <ListBox Margin="10,0" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListBox.ItemTemplate>
@@ -637,7 +642,10 @@
                         FontSize="20"
                         Text="ListView" />
                     <UniformGrid Margin="0,10" Columns="2">
-                        <ListView wd:ElementHelper.CornerRadius="3" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <ListView
+                            wd:ElementHelper.CornerRadius="3"
+                            FontSize="20"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" />
@@ -674,7 +682,10 @@
                         Height="400"
                         Margin="0,10"
                         Columns="2">
-                        <TreeView wd:ElementHelper.CornerRadius="3" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <TreeView
+                            wd:ElementHelper.CornerRadius="3"
+                            FontSize="20"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                     <Border>
