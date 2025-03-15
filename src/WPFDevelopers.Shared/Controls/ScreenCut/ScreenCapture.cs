@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
-namespace WPFDevelopers.Controls.ScreenCapturer
+namespace WPFDevelopers.Controls
 {
     public class ScreenCapture
     {
@@ -32,26 +32,29 @@ namespace WPFDevelopers.Controls.ScreenCapturer
         /// 是否将截图结果复制
         /// 默认复制
         /// </summary>
-        private bool copyToClipboard;
+        private bool _copyToClipboard;
+
         List<ScreenCut> ScreenCuts = new List<ScreenCut>();
         /// <summary>
         /// 资源
         /// </summary>
         private ResourceDictionary _resources;
-        public ScreenCapture(bool copyToClipboard = true, ResourceDictionary resources = null)
+
+        public ScreenCapture(bool copyToClipboard = true)
         {
-            this.copyToClipboard = copyToClipboard;
+            if(System.Windows.Application.Current == null)
+                throw new ArgumentNullException("Application. Current is empty, please use ScreenCaptureExt");
+            _copyToClipboard = copyToClipboard;
             for (var i = 0; i < Screen.AllScreens.Length; i++)
             {
                 var screen = CaptureScreen(i);
-                if(resources != null)
-                    screen.Resources = resources;
                 ScreenCuts.Add(screen);
             }
         }
         private ScreenCut CaptureScreen(int index)
         {
             ScreenCut screenCut = new ScreenCut(index);
+            screenCut.Resources = ThemeManager.Instance.Resources;
             screenCut.CutCompleted += ScreenCut_CutCompleted;
             screenCut.CutCanceled += ScreenCut_CutCanceled;
             screenCut.CutFullPath += ScreenCut_CutFullPath;
@@ -100,7 +103,7 @@ namespace WPFDevelopers.Controls.ScreenCapturer
         {
             if (SnapCompleted != null)
                 SnapCompleted(bitmap);
-            if (copyToClipboard)
+            if (_copyToClipboard)
                 System.Windows.Clipboard.SetImage(bitmap);
         }
     }
