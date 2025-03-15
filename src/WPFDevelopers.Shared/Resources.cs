@@ -49,7 +49,7 @@ namespace WPFDevelopers
 
         void AddTheme()
         {
-            var resourceUri = new Uri("pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml");
+            var resourceUri = new Uri("pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml", UriKind.Absolute);
             var resourceDictionary = new ResourceDictionary { Source = resourceUri };
             MergedDictionaries.Add(resourceDictionary);
             _color = GetColorFromResource("Primary");
