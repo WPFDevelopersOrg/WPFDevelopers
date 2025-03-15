@@ -81,6 +81,8 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("ShowType", typeof(ShowType), typeof(MultiSelectComboBox),
                 new PropertyMetadata(ShowType.Text));
 
+        private HwndSource _hwndSource;
+        private Window _window;
         private bool _ignoreTextValueChanged;
         private Popup _popup;
         private Panel _panel;
@@ -169,9 +171,9 @@ namespace WPFDevelopers.Controls
 
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var MultiSelectComboBox = (MultiSelectComboBox)d;
+            var ctrl = (MultiSelectComboBox)d;
             if (!(bool)e.NewValue)
-                MultiSelectComboBox.Dispatcher.BeginInvoke(new Action(() => { Mouse.Capture(null); }),
+                ctrl.Dispatcher.BeginInvoke(new Action(() => { Mouse.Capture(null); }),
                     DispatcherPriority.Send);
         }
 
@@ -235,11 +237,25 @@ namespace WPFDevelopers.Controls
             selectedSearchList = new List<object>();
             selectedItems = new List<object>();
             _textBox = GetTemplateChild(TextBoxTemplateName) as TextBox;
-
-            _popup = GetTemplateChild(PART_Popup) as Popup;
-            if (_popup != null)
+            _window = Window.GetWindow(this);
+            if (_window != null)
             {
+                if (_window.IsInitialized)
+                    Window_SourceInitialized(_window, EventArgs.Empty);
+                else
+                {
+                    _window.SourceInitialized -= Window_SourceInitialized;
+                    _window.SourceInitialized += Window_SourceInitialized;
+                }
+            }
+            _popup = GetTemplateChild(PART_Popup) as Popup;
+            if (_popup != null && _window != null)
+            {
+                _popup.Closed += OnPopup_Closed;
+                _popup.Closed -= OnPopup_Closed;
+                _popup.Opened -= OnPopup_Opened;
                 _popup.Opened += OnPopup_Opened;
+                _popup.GotFocus -= OnPopup_GotFocus;
                 _popup.GotFocus += OnPopup_GotFocus;
             }
 
@@ -269,9 +285,44 @@ namespace WPFDevelopers.Controls
             }
         }
 
+        private void OnPopup_Closed(object sender, EventArgs e)
+        {
+            _window.PreviewMouseDown -= Window_PreviewMouseDown;
+        }
+
+        private void Window_SourceInitialized(object sender, EventArgs e)
+        {
+            var window = sender as Window;
+            if (window != null)
+            {
+                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
+                if (_hwndSource != null)
+                {
+                    _hwndSource.AddHook(WndProc);
+                }
+            }
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            const int WM_NCLBUTTONDOWN = 0x00A1;
+            if (msg == WM_NCLBUTTONDOWN)
+            {
+                IsDropDownOpen = false;
+            }
+            return IntPtr.Zero;
+        }
+
         private void OnPopup_Opened(object sender, EventArgs e)
         {
+            _window.PreviewMouseDown += Window_PreviewMouseDown;
             UpdateTags();
+        }
+
+        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!IsMouseOver)
+                IsDropDownOpen = false;
         }
 
         private void OnListBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)

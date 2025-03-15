@@ -147,7 +147,7 @@
                                 x:Name="PART_ToggleButton"
                                 Grid.ColumnSpan="2"
                                 Background="{TemplateBinding Background}"
-                                ClickMode="Release"
+                                ClickMode="Press"
                                 Focusable="False"
                                 IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                 Style="{x:Null}"
@@ -158,7 +158,8 @@
                                 IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                 Placement="Bottom"
                                 PlacementTarget="{Binding ElementName=PART_Border}"
-                                StaysOpen="False">
+                                StaysOpen="False"
+                                Focusable="True">
                                 <controls:SmallPanel
                                     x:Name="PART_DropDown"
                                     MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"

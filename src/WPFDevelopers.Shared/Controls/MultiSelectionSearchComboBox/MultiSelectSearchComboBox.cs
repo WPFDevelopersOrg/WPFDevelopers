@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Interop;
 using WPFDevelopers.Helpers;
 
@@ -89,6 +90,8 @@ namespace WPFDevelopers.Controls
                 typeof(MultiSelectionSearchComboBox),
                 new PropertyMetadata(string.Empty));
 
+        private HwndSource _hwndSource;
+        private Window _window;
         private CheckBox _checkBox;
         private ListBox _listBox;
         private ListBox _listBoxSearch;
@@ -196,9 +199,27 @@ namespace WPFDevelopers.Controls
             selectedSearchList = new List<object>();
             selectedItems = new List<object>();
             _textBox = GetTemplateChild(TextBoxTemplateName) as TextBox;
+            _window = Window.GetWindow(this);
+            if (_window != null)
+            {
+                if (_window.IsInitialized)
+                    Window_SourceInitialized(_window, EventArgs.Empty);
+                else
+                {
+                    _window.SourceInitialized -= Window_SourceInitialized;
+                    _window.SourceInitialized += Window_SourceInitialized;
+                }
+            }
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
-            if (_popup != null)
+            if (_popup != null && _window != null)
+            {
+                _popup.Closed += OnPopup_Closed;
+                _popup.Closed -= OnPopup_Closed;
+                _popup.Opened -= OnPopup_Opened;
+                _popup.Opened += OnPopup_Opened;
+                _popup.GotFocus -= OnPopup_GotFocus;
                 _popup.GotFocus += OnPopup_GotFocus;
+            }
             _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
 
             _checkBox = GetTemplateChild(CheckBoxTemplateName) as CheckBox;
@@ -232,6 +253,45 @@ namespace WPFDevelopers.Controls
                 _listBoxSearch.SelectionChanged -= OnListBoxSearch_SelectionChanged;
                 _listBoxSearch.SelectionChanged += OnListBoxSearch_SelectionChanged;
             }
+        }
+
+        private void OnPopup_Opened(object sender, EventArgs e)
+        {
+            _window.PreviewMouseDown += Window_PreviewMouseDown;
+        }
+
+        private void OnPopup_Closed(object sender, EventArgs e)
+        {
+            _window.PreviewMouseDown -= Window_PreviewMouseDown;
+        }
+
+        private void Window_SourceInitialized(object sender, EventArgs e)
+        {
+            var window = sender as Window;
+            if (window != null)
+            {
+                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
+                if (_hwndSource != null)
+                {
+                    _hwndSource.AddHook(WndProc);
+                }
+            }
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            const int WM_NCLBUTTONDOWN = 0x00A1;
+            if (msg == WM_NCLBUTTONDOWN)
+            {
+                IsDropDownOpen = false;
+            }
+            return IntPtr.Zero;
+        }
+
+        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!IsMouseOver)
+                IsDropDownOpen = false;
         }
 
         private void Instance_PropertyChanged(object sender, PropertyChangedEventArgs e)
