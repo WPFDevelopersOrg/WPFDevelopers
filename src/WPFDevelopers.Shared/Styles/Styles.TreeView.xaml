@@ -129,6 +129,9 @@
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource WD.TreeViewItemFocusVisual}" />
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontSize}" />
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontWeight}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontFamily}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
