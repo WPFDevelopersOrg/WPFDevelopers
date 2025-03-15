@@ -215,19 +215,10 @@ namespace WPFDevelopers.Controls
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
             base.OnItemsSourceChanged(oldValue, newValue);
-            if (_textBox != null)
-            {
-                if (Items.Count > 0 && ItemsSource != null)
-                {
-                    IsSearch = true;
-                    _textBox.Visibility = Visibility.Visible;
-                    _textBox.TextChanged -= OnTextbox_TextChanged;
-                    _textBox.TextChanged += OnTextbox_TextChanged;
-                }
-                else
-                    IsSearch = false;
-            }
+            if (_textBox != null) 
+                ApplySearchLogic();
         }
+
 
         public override void OnApplyTemplate()
         {
@@ -237,6 +228,8 @@ namespace WPFDevelopers.Controls
             selectedSearchList = new List<object>();
             selectedItems = new List<object>();
             _textBox = GetTemplateChild(TextBoxTemplateName) as TextBox;
+            if (_textBox != null)
+                ApplySearchLogic();
             _window = Window.GetWindow(this);
             if (_window != null)
             {
@@ -283,6 +276,19 @@ namespace WPFDevelopers.Controls
                 AddHandler(Controls.Tag.CloseEvent, new RoutedEventHandler(Tags_Close));
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
             }
+        }
+
+        private void ApplySearchLogic()
+        {
+            if (Items.Count > 0 && ItemsSource != null)
+            {
+                IsSearch = true;
+                _textBox.Visibility = Visibility.Visible;
+                _textBox.TextChanged -= OnTextbox_TextChanged;
+                _textBox.TextChanged += OnTextbox_TextChanged;
+            }
+            else
+                IsSearch = false;
         }
 
         private void OnPopup_Closed(object sender, EventArgs e)
