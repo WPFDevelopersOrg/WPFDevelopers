@@ -7,6 +7,7 @@
     {
         NavMenu3D,
         UsageGuide,
+        UsageColor,
         BasicControls,
         NotifyIcon,
         PanningItems,

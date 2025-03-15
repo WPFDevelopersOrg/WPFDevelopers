@@ -121,6 +121,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.UsageGuide:
                     ControlPanel = new UsageGuide();
                     break;
+                case MenuEnum.UsageColor:
+                    ControlPanel = new UsageColor();
+                    break;
                 case MenuEnum.BasicControls:
                     ControlPanel = new BasicControlsExample();
                     break;
