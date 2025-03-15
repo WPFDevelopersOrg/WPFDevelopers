@@ -506,6 +506,7 @@
                                 wd:ElementHelper.CornerRadius="3"
                                 AutoGenerateColumns="False"
                                 HeadersVisibility="All"
+                                FontSize="20"
                                 ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 RowHeaderWidth="40">
                                 <DataGrid.RowHeaderTemplate>
