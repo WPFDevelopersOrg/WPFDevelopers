@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
@@ -35,7 +36,7 @@ namespace WPFDevelopers.Controls
 
         public VerifyCode()
         {
-            Foreground = DrawingContextHelper.Brush;
+            Foreground = ThemeManager.Instance.PrimaryBrush;
             _size = new Size(70, 23);
             Loaded += CheckCode_Loaded;
         }
