@@ -21,7 +21,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty DefaultForegroundProperty =
             DependencyProperty.Register("DefaultForeground", typeof(Brush), typeof(SpotLight),
-                new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#323232"))));
+                new PropertyMetadata(null));
 
 
         public static readonly DependencyProperty DurationProperty =
@@ -68,11 +68,11 @@ namespace WPFDevelopers.Controls
             _ellipseGeometry.RadiusY = FontSize;
             _ellipseGeometry.Center = center;
             if (_textBlockBottom != null && _textBlockTop != null && _ellipseGeometry != null)
-                _textBlockTop.Loaded += _textBlockTop_Loaded;
+                _textBlockTop.Loaded += OnTextBlockTop_Loaded;
         }
 
 
-        private void _textBlockTop_Loaded(object sender, RoutedEventArgs e)
+        private void OnTextBlockTop_Loaded(object sender, RoutedEventArgs e)
         {
             var doubleAnimation = new DoubleAnimation
             {
