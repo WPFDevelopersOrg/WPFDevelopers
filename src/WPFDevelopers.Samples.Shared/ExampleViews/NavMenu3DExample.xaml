@@ -109,7 +109,7 @@
                             </StackPanel>
                         </wd:NavMenu3DItem.ContentBack>
                     </wd:NavMenu3DItem>
-                    <wd:NavMenu3DItem Tag="Item6">Item 6</wd:NavMenu3DItem>
+                    <wd:NavMenu3DItem Background="Red" Tag="Item6">Item 6</wd:NavMenu3DItem>
                 </wd:NavMenu3D>
             </Border>
             <Border
