@@ -948,6 +948,9 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="WD.DefaultMenuItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type MenuItem}">
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Style.Triggers>
 			<Trigger Property="Role" Value="TopLevelHeader">
@@ -1817,6 +1820,8 @@
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Background" Value="{DynamicResource WD.PlaceholderTextBrush}" />
 		<Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="FontFamily" Value="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="FontWeight" Value="{Binding FontWeight, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -2384,6 +2389,7 @@
 		<Setter Property="BorderBrush" Value="Transparent" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
 		<Setter Property="Template">
@@ -2413,6 +2419,7 @@
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="ValidationErrorTemplate">
 			<Setter.Value>
@@ -2489,6 +2496,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="HorizontalAlignment" Value="Center" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -2532,6 +2540,7 @@
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
 		<Setter Property="Template">
@@ -3175,6 +3184,9 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3248,10 +3260,12 @@
 	<Style x:Key="WD.DefaultGridViewColumnHeader" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type GridViewColumnHeader}">
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3321,6 +3335,9 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3522,6 +3539,9 @@
 		<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="FocusVisualStyle" Value="{StaticResource WD.TreeViewItemFocusVisual}" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontFamily}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TreeViewItem}">
@@ -5484,12 +5504,15 @@
 		<Setter Property="Margin" Value="1,0" />
 		<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBoxItem}}}" />
+		<Setter Property="FontFamily" Value="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBoxItem}}}" />
+		<Setter Property="FontWeight" Value="{Binding FontWeight, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBoxItem}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
 					<Border x:Name="PART_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="true">
 						<CheckBox MinHeight="{TemplateBinding MinHeight}" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-							<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.Foreground="{TemplateBinding Foreground}" />
+							<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.FontFamily="{TemplateBinding FontFamily}" TextElement.FontSize="{TemplateBinding FontSize}" TextElement.Foreground="{TemplateBinding Foreground}" />
 						</CheckBox>
 					</Border>
 					<ControlTemplate.Triggers>
@@ -5535,7 +5558,7 @@
 							<TextBox Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 							<TextBlock x:Name="PART_Watermark" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
 							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False" Focusable="True">
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
