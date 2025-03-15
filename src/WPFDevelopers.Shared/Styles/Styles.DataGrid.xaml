@@ -166,6 +166,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
         <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
         <Setter Property="Template">
@@ -208,6 +209,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
         <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
         <Setter Property="ValidationErrorTemplate">
             <Setter.Value>
@@ -319,6 +321,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
         <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -391,6 +394,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
         <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
         <Setter Property="Template">
