@@ -287,6 +287,9 @@
         x:Key="WD.DefaultMenuItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type MenuItem}">
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontSize}" />
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontWeight}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontFamily}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
