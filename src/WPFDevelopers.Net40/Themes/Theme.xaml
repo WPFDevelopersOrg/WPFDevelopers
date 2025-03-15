@@ -120,6 +120,7 @@
 	<Geometry x:Key="WD.TimeGeometry" po:Freeze="True">M512 112c-229.792 0-416 186.24-416 416s186.208 416 416 416c229.728 0 416-186.24 416-416s-186.24-416-416-416zM508.64 864.864c-185.568 0-336-150.432-336-336s150.432-336 336-336c185.536 0 336 150.432 336 336 0 185.568-150.464 336-336 336zM605.76 548.192h-95.36v-161.024c0-17.472-14.176-31.68-31.648-31.68-17.504 0-31.68 14.176-31.68 31.68v192.672c0 17.504 14.176 31.648 31.68 31.648h127.008c17.504 0 31.68-14.144 31.68-31.648 0-17.472-14.176-31.648-31.68-31.648z</Geometry>
 	<Geometry x:Key="WD.DateRangeRightGeometry" po:Freeze="True">M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z</Geometry>
 	<Geometry x:Key="WD.DateGeometry" po:Freeze="True">M13 2h-1v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H6v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H2c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 12H2V5h11v9zM5 3H4V1h1v2zm6 0h-1V1h1v2zM6 7H5V6h1v1zm2 0H7V6h1v1zm2 0H9V6h1v1zm2 0h-1V6h1v1zM4 9H3V8h1v1zm2 0H5V8h1v1zm2 0H7V8h1v1zm2 0H9V8h1v1zm2 0h-1V8h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1zm2 0h-1v-1h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1z</Geometry>
+	<Geometry x:Key="WD.CopyGeometry" po:Freeze="True">M20 109.9988C20 93.43 33.4314 79.998 50 79.998H80L80 99.998H50C44.4772 99.998 40 104.476 40 109.9988L40 249.9988C40 255.5216 44.4772 259.9988 50 259.9988L190 259.9988C195.5228 259.9988 200 255.5216 200 249.9988V219.9996H110C93.4316 219.9996 80 206.5682 80 189.9996V50C80 33.432 93.4316 20 110 20H250C266.568 20 280 33.432 280 50V189.9996C280 206.5682 266.568 219.9996 250 219.9996H220V249.9988C220 266.5674 206.568 279.9988 190 279.9988H50C33.4314 279.9988 20 266.5674 20 249.9988V109.9988zM100 189.9996C100 195.5224 104.4772 199.9996 110 199.9996H250C255.522 199.9996 260 195.5224 260 189.9996V50C260 44.476 255.522 40 250 40H110C104.4772 40 100 44.476 100 50V189.9996z</Geometry>
 	<CubicEase x:Key="WD.CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="WD.PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="WD.ExponentialEaseOut" EasingMode="EaseOut" />
@@ -2021,6 +2022,19 @@
 								</MultiBinding>
 							</Ellipse.Visibility>
 						</Ellipse>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup Name="SelectionStates">
+								<VisualStateGroup.Transitions>
+									<VisualTransition GeneratedDuration="0" />
+								</VisualStateGroup.Transitions>
+								<VisualState Name="Unselected" />
+								<VisualState Name="Selected">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="SelectionBackground" Storyboard.TargetProperty="Opacity" To=".4" Duration="0" />
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsInactive" Value="True">
@@ -2369,6 +2383,8 @@
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="BorderBrush" Value="Transparent" />
 		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -2396,6 +2412,8 @@
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="ValidationErrorTemplate">
 			<Setter.Value>
 				<ControlTemplate>
@@ -2470,6 +2488,8 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRowHeader}">
@@ -2511,6 +2531,8 @@
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -2592,8 +2614,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabItem}">
-					<controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="Transparent">
-						<Border x:Name="PART_BorderSelect" Background="{DynamicResource WD.PrimaryBrush}" Opacity="0" />
+					<controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
 						<Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" />
 						<Grid>
 							<Grid.ColumnDefinitions>
@@ -2609,7 +2630,7 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
 							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
-							<Setter TargetName="PART_BorderSelect" Property="Opacity" Value=".1" />
+							<Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
 							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
 						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
@@ -3702,60 +3723,6 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.NormalLoading}" TargetType="{x:Type controls:NormalLoading}" />
 	<Style BasedOn="{StaticResource WD.DefaultLoading}" TargetType="{x:Type controls:DefaultLoading}" />
-	<Style x:Key="WD.ThemeItem" TargetType="{x:Type controls:ThemeItem}">
-		<Setter Property="Width" Value="40" />
-		<Setter Property="Height" Value="40" />
-		<Setter Property="VerticalAlignment" Value="Center" />
-		<Setter Property="HorizontalAlignment" Value="Stretch" />
-		<Setter Property="VerticalContentAlignment" Value="Bottom" />
-		<Setter Property="HorizontalContentAlignment" Value="Right" />
-		<Setter Property="Padding" Value="0,0,4,4" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:ThemeItem}">
-					<Border x:Name="PART_Border" Padding="2" Background="Transparent" BorderBrush="{TemplateBinding Background}" BorderThickness="0" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:Theme}}">
-						<controls:SmallPanel>
-							<Border x:Name="PART_BorderBackground" Background="{TemplateBinding Background}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:Theme}}" />
-							<controls:PathIcon Width="12" Height="10" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Data="{StaticResource WD.CheckMarkGeometry}" Foreground="{DynamicResource WD.BackgroundBrush}" Kind="CheckMark" Visibility="{TemplateBinding IsSelected,&#xD;&#xA;                                                             Converter={StaticResource WD.Bool2VisibilityConverter}}" />
-						</controls:SmallPanel>
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsMouseOver" Value="True">
-							<Setter TargetName="PART_BorderBackground" Property="Opacity" Value=".8" />
-							<Setter TargetName="PART_Border" Property="BorderThickness" Value="1" />
-						</Trigger>
-						<Trigger Property="IsSelected" Value="True">
-							<Setter TargetName="PART_Border" Property="BorderThickness" Value="1" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style x:Key="WD.Theme" TargetType="{x:Type controls:Theme}">
-		<Setter Property="VerticalAlignment" Value="Center" />
-		<Setter Property="HorizontalAlignment" Value="Left" />
-		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
-		<Setter Property="ItemContainerStyle" Value="{StaticResource WD.ThemeItem}" />
-		<Setter Property="Padding" Value="{StaticResource WD.Padding}" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type controls:Theme}">
-					<controls:WDBorder Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-						<ItemsPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" />
-					</controls:WDBorder>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-		<Setter Property="ItemsPanel">
-			<Setter.Value>
-				<ItemsPanelTemplate>
-					<StackPanel helpers:PanelHelper.Spacing="4" Orientation="{Binding Path=Orientation, RelativeSource={RelativeSource AncestorType=controls:Theme}}" />
-				</ItemsPanelTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style BasedOn="{StaticResource WD.Theme}" TargetType="{x:Type controls:Theme}" />
 	<Style x:Key="WD.GridSplitterPreviewStyle">
 		<Setter Property="Control.Template">
 			<Setter.Value>
@@ -4287,6 +4254,31 @@
 							<Canvas x:Name="PART_ContentDock" Width="900" Height="400" />
 						</Viewbox>
 						<StackPanel x:Name="PART_ButtonDock" Margin="0,210,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" />
+						<!--<ListBox
+                            x:Name="PART_ListBox"
+                            Margin="0,210,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            ItemContainerStyle="{x:Null}"
+                            ItemsSource="{Binding Path=Children, RelativeSource={RelativeSource AncestorType=controls:MasterCarousel}}"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            Style="{x:Null}">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle
+                                        Width="33"
+                                        Height="3"
+                                        Margin="5"
+                                        Fill="{DynamicResource WD.RegularTextBrush}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>-->
 					</controls:SmallPanel>
 				</ControlTemplate>
 			</Setter.Value>
@@ -5035,11 +5027,10 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.ScreenCut}" TargetType="{x:Type controls:ScreenCut}" />
 	<Style x:Key="WD.SpotLight" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:SpotLight}">
-		<Setter Property="Background" Value="#222222" />
 		<Setter Property="FontSize" Value="60" />
-		<Setter Property="FontFamily" Value="Arial Black" />
+		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+		<Setter Property="DefaultForeground" Value="{DynamicResource WD.PlaceholderTextBrush}" />
 		<Setter Property="FontWeight" Value="Bold" />
-		<Setter Property="Foreground" Value="{DynamicResource WD.WindowBorderBrush}" />
 		<Setter Property="VerticalAlignment" Value="Center" />
 		<Setter Property="HorizontalAlignment" Value="Center" />
 		<Setter Property="Template">
@@ -5543,8 +5534,8 @@
 							</ScrollViewer>
 							<TextBox Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 							<TextBlock x:Name="PART_Watermark" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
-							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Release" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
+							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False" Focusable="True">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
@@ -5653,8 +5644,8 @@
 							</Grid.ColumnDefinitions>
 							<TextBox Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 							<TextBlock x:Name="PART_Watermark" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
-							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Release" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
+							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
@@ -6077,12 +6068,12 @@
 									<Style x:Key="WD.TextBoxColorPicker" BasedOn="{StaticResource WD.DefaultTextBox}" TargetType="{x:Type TextBox}">
 										<Setter Property="VerticalContentAlignment" Value="Center" />
 										<Setter Property="TextAlignment" Value="Center" />
-										<Setter Property="Width" Value="50" />
+										<Setter Property="Width" Value="NaN" />
 									</Style>
 									<Style BasedOn="{StaticResource WD.NumericBox}" TargetType="{x:Type controls:NumericBox}">
 										<Setter Property="VerticalContentAlignment" Value="Center" />
 										<Setter Property="TextAlignment" Value="Center" />
-										<Setter Property="Width" Value="50" />
+										<Setter Property="Width" Value="NaN" />
 										<Setter Property="UpDownButtonsWidth" Value="0" />
 										<Setter Property="Maximum" Value="255" />
 										<Setter Property="Minimum" Value="0" />
@@ -6499,11 +6490,15 @@
 									<ColumnDefinition />
 									<ColumnDefinition Width="Auto" />
 									<ColumnDefinition />
+									<ColumnDefinition Width="Auto" />
 								</Grid.ColumnDefinitions>
 								<controls:PathIcon Margin="15,0,0,0" HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="Date" />
 								<DatePickerTextBox x:Name="PART_TextBoxStart" Grid.Column="1" Width="Auto" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:DatePickerHelper.Watermark="{Binding StartWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Background="Transparent" Focusable="True" Foreground="{TemplateBinding Foreground}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
 								<controls:PathIcon Grid.Column="2" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="DateRangeRight" />
 								<DatePickerTextBox x:Name="PART_TextBoxEnd" Grid.Column="3" Width="Auto" Margin="10,0,0,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Background="Transparent" Focusable="True" Foreground="{TemplateBinding Foreground}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
+								<Button x:Name="PART_CloseButton" Grid.Column="4" Width="20" Height="20" Margin="0,0,4,0" HorizontalAlignment="Right" helpers:ElementHelper.IsClear="{Binding Path=(helpers:ElementHelper.IsClear), RelativeSource={RelativeSource TemplatedParent}}" helpers:ElementHelper.IsRound="True" Style="{StaticResource WD.NormalButton}" ToolTip="{Binding [Clear], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed">
+									<controls:PathIcon Width="10" Height="10" Foreground="{DynamicResource WD.PrimaryTextBrush}" Kind="WindowClose" />
+								</Button>
 							</Grid>
 							<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" AllowsTransparency="True" Focusable="False" Placement="Bottom" StaysOpen="False" VerticalOffset="2">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
@@ -6520,6 +6515,9 @@
 						</controls:SmallPanel>
 					</Border>
 					<ControlTemplate.Triggers>
+						<Trigger Property="helpers:ElementHelper.IsClear" Value="True">
+							<Setter TargetName="PART_CloseButton" Property="Visibility" Value="Visible" />
+						</Trigger>
 						<Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
 							<Trigger.EnterActions>
 								<BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
