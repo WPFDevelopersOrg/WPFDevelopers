@@ -17,29 +17,6 @@ namespace WPFDevelopers.Helpers
             return nSize;
         }
 
-        public static T FirstOrDefault<T>(this IEnumerable<T> eunmerable)
-        {
-            if (eunmerable == null)
-                return default;
-
-            var vEnumerator = eunmerable.GetEnumerator();
-            if (vEnumerator.MoveNext())
-                return vEnumerator.Current;
-            return default;
-        }
-
-        public static T LastOrDefault<T>(this IEnumerable<T> eunmerable)
-        {
-            if (eunmerable == null)
-                return default;
-            var vEnumerator = eunmerable.GetEnumerator();
-            for (;;)
-                if (!vEnumerator.MoveNext())
-                    break;
-
-            return vEnumerator.Current;
-        }
-
         public static TValue GetValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key,
             TValue defaultValue = default)
         {
