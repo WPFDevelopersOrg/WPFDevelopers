@@ -305,6 +305,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TagExample.xaml.cs">
       <DependentUpon>TagExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\UsageGuide.xaml.cs">
+      <DependentUpon>UsageGuide.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\HighTitleBarWindow.xaml.cs">
       <DependentUpon>HighTitleBarWindow.xaml</DependentUpon>
     </Compile>
@@ -839,6 +842,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TagExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\UsageGuide.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -118,6 +118,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.NavMenu3D:
                     ControlPanel = new NavMenu3DExample();
                     break;
+                case MenuEnum.UsageGuide:
+                    ControlPanel = new UsageGuide();
+                    break;
                 case MenuEnum.BasicControls:
                     ControlPanel = new BasicControlsExample();
                     break;

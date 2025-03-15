@@ -6,6 +6,7 @@
     public enum MenuEnum
     {
         NavMenu3D,
+        UsageGuide,
         BasicControls,
         NotifyIcon,
         PanningItems,
