@@ -156,7 +156,7 @@ namespace WPFDevelopers
 
         protected Uri GetResourceUri(string path)
         {
-            return new Uri($"pack://application:,,,/WPFDevelopers;component/Themes/Basic/{path}.xaml");
+            return new Uri($"pack://application:,,,/WPFDevelopers;component/Themes/Basic/{path}.xaml", UriKind.Absolute);
         }
 
         protected string GetThemeResourceName(ThemeType themeType)
