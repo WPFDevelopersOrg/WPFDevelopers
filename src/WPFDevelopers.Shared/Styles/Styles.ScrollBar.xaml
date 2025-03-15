@@ -40,7 +40,7 @@
                         <Rectangle
                             x:Name="PART_Rectangle"
                             Height="{TemplateBinding Height}"
-                            Fill="{DynamicResource WD.InfoPressedSolidColorBrush}"
+                            Fill="{DynamicResource WD.RegularTextBrush}"
                             RadiusX="1"
                             RadiusY="1" />
                     </Border>
@@ -61,7 +61,7 @@
                         <Rectangle
                             x:Name="PART_Rectangle"
                             Height="{TemplateBinding Height}"
-                            Fill="{DynamicResource WD.InfoPressedSolidColorBrush}"
+                            Fill="{DynamicResource WD.PrimaryTextBrush}"
                             RadiusX="1"
                             RadiusY="1" />
                     </Border>

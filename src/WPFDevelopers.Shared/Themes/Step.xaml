@@ -26,7 +26,7 @@
                                 Width="45"
                                 Height="30"
                                 HorizontalAlignment="Center"
-                                Fill="{DynamicResource WD.BackgroundSolidColorBrush}" />
+                                Fill="{DynamicResource WD.BackgroundBrush}" />
                             <Border
                                 Width="30"
                                 Height="30"
@@ -60,7 +60,7 @@
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             ContentTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource AncestorType=controls:Step}}"
                             TextElement.FontWeight="Black"
-                            TextElement.Foreground="{DynamicResource WD.RegularTextSolidColorBrush}" />
+                            TextElement.Foreground="{DynamicResource WD.RegularTextBrush}" />
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Orientation, RelativeSource={RelativeSource AncestorType=controls:Step}}" Value="Vertical">
@@ -70,23 +70,23 @@
                             <Setter Property="Padding" Value="6,0,0,0" />
                         </DataTrigger>
                         <Trigger Property="Status" Value="Waiting">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
                             <Setter TargetName="PART_PathComplete" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_Index" Property="Visibility" Value="Visible" />
-                            <Setter Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                         </Trigger>
                         <Trigger Property="Status" Value="InProgress">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
                             <Setter TargetName="PART_PathComplete" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_Index" Property="Visibility" Value="Visible" />
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="Status" Value="Complete">
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
                             <Setter TargetName="PART_PathComplete" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_Index" Property="Visibility" Value="Collapsed" />
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

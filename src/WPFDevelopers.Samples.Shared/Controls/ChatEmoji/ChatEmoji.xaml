@@ -42,7 +42,7 @@
                                 Margin="0,20,-14,0"
                                 VerticalAlignment="Top"
                                 Data="{StaticResource WD.ChatLeftGeometry}"
-                                Fill="{DynamicResource WD.BackgroundSolidColorBrush}"
+                                Fill="{DynamicResource WD.BackgroundBrush}"
                                 SnapsToDevicePixels="True"
                                 Stretch="Fill"
                                 StrokeThickness="0"

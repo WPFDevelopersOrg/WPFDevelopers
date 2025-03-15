@@ -6,7 +6,6 @@
 		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
 	<Import Project="..\WPFDevelopers.Shared\WPFDevelopers.Shared.projitems" Label="Shared" />
-	<Import Project="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems" Label="Shared" />
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 	  <Exec Command="$(SolutionDir)WPFDevelopers.Shared\Themes\XamlCombine.exe $(SolutionDir)WPFDevelopers.Shared\Themes\Theme45x.txt $(ProjectDir)Themes\Theme.xaml" />
 	</Target>

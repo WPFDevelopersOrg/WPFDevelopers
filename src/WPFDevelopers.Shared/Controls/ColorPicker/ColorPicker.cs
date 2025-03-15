@@ -89,16 +89,15 @@ namespace WPFDevelopers.Controls
                 ctrl._isInnerUpdateSelectedColor = false;
                 return;
             }
-
-            var color = (Color) e.NewValue;
+            if (ctrl._hueSliderColor == null) return;
+            var color = (Color)e.NewValue;
             double h = 0, s = 0, b = 0;
             ColorUtil.HsbFromColor(color, ref h, ref s, ref b);
-            var hsb = new HSB {H = h, S = s, B = b};
+            var hsb = new HSB { H = h, S = s, B = b };
             ctrl.SetValue(HueColorPropertyKey, ColorUtil.ColorFromHsb(hsb.H, 1, 1));
             ctrl.SetValue(HSBPropertyKey, hsb);
-            Canvas.SetLeft(ctrl._thumb, s * ctrl._canvas.ActualWidth - ctrl._thumb.ActualWidth / 2);
-            Canvas.SetTop(ctrl._thumb, (1 - b) * ctrl._canvas.ActualHeight - ctrl._thumb.ActualHeight / 2);
             ctrl._hueSliderColor.Value = 1 - h;
+            ctrl.UpdateThumbPosition();
         }
 
         public override void OnApplyTemplate()
@@ -109,7 +108,7 @@ namespace WPFDevelopers.Controls
             _canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
             if (_canvas != null)
             {
-                _canvas.Loaded += Canvas_Loaded;
+                _canvas.MouseUp -= Canvas_MouseUp;
                 _canvas.MouseUp += Canvas_MouseUp;
             }
 
@@ -122,9 +121,10 @@ namespace WPFDevelopers.Controls
 
             _button = GetTemplateChild(ButtonTemplateName) as Button;
             currentGridStateIndex = 0;
-            colorTypeEnums = (ColorTypeEnum[]) Enum.GetValues(typeof(ColorTypeEnum));
+            colorTypeEnums = (ColorTypeEnum[])Enum.GetValues(typeof(ColorTypeEnum));
             if (_button != null)
                 _button.Click += Button_Click;
+            LoadedColor();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -135,18 +135,21 @@ namespace WPFDevelopers.Controls
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (_canvas == null) return;
             var canvasPosition = e.GetPosition(_canvas);
             GetHSB(canvasPosition);
         }
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (_canvas == null) return;
             var canvasPosition = e.GetPosition(_canvas);
             GetHSB(canvasPosition);
         }
 
         private void GetHSB(Point point, bool isMove = true)
         {
+            if (_canvas == null || _thumb == null || _hueSliderColor == null) return;
             var newLeft = point.X - _thumb.ActualWidth / 2;
             var newTop = point.Y - _thumb.ActualHeight / 2;
             var thumbW = _thumb.ActualWidth / 2;
@@ -170,7 +173,8 @@ namespace WPFDevelopers.Controls
 
             var hsb = new HSB
             {
-                H = HSB.H, S = (newLeft + thumbW) / _canvas.ActualWidth,
+                H = HSB.H,
+                S = (newLeft + thumbW) / _canvas.ActualWidth,
                 B = 1 - (newTop + thumbH) / _canvas.ActualHeight
             };
             SetValue(HSBPropertyKey, hsb);
@@ -184,18 +188,20 @@ namespace WPFDevelopers.Controls
 
         private void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
+            if (_canvas == null) return;
             var point = Mouse.GetPosition(_canvas);
             GetHSB(point);
         }
 
-        private void Canvas_Loaded(object sender, RoutedEventArgs e)
+        private void LoadedColor()
         {
-            var width = (int) _canvas.ActualWidth;
-            var height = (int) _canvas.ActualHeight;
+            if (_canvas == null || _thumb == null || _hueSliderColor == null) return;
+            var width = (int)_canvas.ActualWidth;
+            var height = (int)_canvas.ActualHeight;
             var point = new Point(width - _thumb.ActualWidth / 2, -_thumb.ActualHeight / 2);
             Canvas.SetLeft(_thumb, point.X);
             Canvas.SetTop(_thumb, point.Y);
-            var hsb = new HSB {H = _hueSliderColor.Value, S = HSB.S, B = HSB.B};
+            var hsb = new HSB { H = _hueSliderColor.Value, S = HSB.S, B = HSB.B };
             SetValue(HSBPropertyKey, hsb);
         }
 
@@ -203,7 +209,7 @@ namespace WPFDevelopers.Controls
         {
             if (DoubleUtil.AreClose(HSB.H, e.NewValue))
                 return;
-            var hsb = new HSB {H = 1 - e.NewValue, S = HSB.S, B = HSB.B};
+            var hsb = new HSB { H = 1 - e.NewValue, S = HSB.S, B = HSB.B };
             SetValue(HSBPropertyKey, hsb);
             SetValue(HueColorPropertyKey, ColorUtil.ColorFromHsb(HSB.H, 1, 1));
 
@@ -211,6 +217,22 @@ namespace WPFDevelopers.Controls
             var newTop = Canvas.GetTop(_thumb);
             var point = new Point(newLeft, newTop);
             GetHSB(point, false);
+        }
+
+        private void UpdateThumbPosition()
+        {
+            if (_canvas == null || _thumb == null) return;
+            var color = SelectedColor;
+            double h = 0, s = 0, b = 0;
+            ColorUtil.HsbFromColor(color, ref h, ref s, ref b);
+            Canvas.SetLeft(_thumb, s * _canvas.ActualWidth - _thumb.ActualWidth / 2);
+            Canvas.SetTop(_thumb, (1 - b) * _canvas.ActualHeight - _thumb.ActualHeight / 2);
+        }
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            UpdateThumbPosition();
         }
     }
 

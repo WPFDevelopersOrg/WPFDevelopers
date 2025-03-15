@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
@@ -63,6 +64,11 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (MyCropImage.CurrentAreaBitmap == null)
+            {
+                Message.Push("请选择图片",MessageBoxImage.Warning);
+                return;
+            }
             var dlg = new SaveFileDialog();
             dlg.FileName = $"WPFDevelopers_CropImage_{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
             dlg.DefaultExt = ".jpg";

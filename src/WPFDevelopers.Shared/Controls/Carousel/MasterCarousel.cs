@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,35 +37,30 @@ namespace WPFDevelopers.Controls
     [DefaultProperty("Children")]
     [ContentProperty("Children")]
     [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
-    [TemplatePart(Name = Part_ContentDockName, Type = typeof(Canvas))]
-    [TemplatePart(Name = Part_ButtonDockName, Type = typeof(StackPanel))]
+    [TemplatePart(Name = PARTContentDockName, Type = typeof(Canvas))]
+    [TemplatePart(Name = PARTButtonDockName, Type = typeof(StackPanel))]
     public class MasterCarousel : Control, IAddChild
     {
-        private const string Part_ContentDockName = "PART_ContentDock";
-        private const string Part_ButtonDockName = "PART_ButtonDock";
+        private const string PARTContentDockName = "PART_ContentDock";
+        private const string PARTButtonDockName = "PART_ButtonDock";
 
-        // Using a DependencyProperty as the backing store for IsStartAinimation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsStartAinimationProperty =
             DependencyProperty.Register("IsStartAinimation", typeof(bool), typeof(MasterCarousel),
                 new PropertyMetadata(default(bool), OnIsStartAinimationPropertyChangedCallback));
 
-        // Using a DependencyProperty as the backing store for PlaySpeed.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PlaySpeedProperty =
             DependencyProperty.Register("PlaySpeed", typeof(double), typeof(MasterCarousel),
                 new PropertyMetadata(2000d, OnPlaySpeedPropertyChangedCallBack));
 
-        // Using a DependencyProperty as the backing store for Childrens.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(MasterCarousel),
                 new PropertyMetadata(default(IEnumerable), OnItemsSourcePropertyChangedCallBack));
 
         #region timer
 
-        private readonly Timer _PlayTimer = new Timer();
+        private readonly Timer _playTimer = new Timer();
 
         #endregion
-
-
         static MasterCarousel()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MasterCarousel),
@@ -72,19 +69,14 @@ namespace WPFDevelopers.Controls
 
         public MasterCarousel()
         {
-            //_uiElementCollection = new List<object>();
-            //SizeChanged += MasterCarousel_SizeChanged;
-
             LoadeTimer();
             Loaded += MasterCarousel_Loaded;
         }
-
         public bool IsStartAinimation
         {
             get => (bool)GetValue(IsStartAinimationProperty);
             set => SetValue(IsStartAinimationProperty, value);
         }
-
 
         public double PlaySpeed
         {
@@ -112,17 +104,16 @@ namespace WPFDevelopers.Controls
             throw new NotImplementedException();
         }
 
-
         #region override
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            _Part_ContentDock = GetTemplateChild(Part_ContentDockName) as Canvas;
-            _Part_ButtonDock = GetTemplateChild(Part_ButtonDockName) as StackPanel;
+            _contentDock = GetTemplateChild(PARTContentDockName) as Canvas;
+            _buttonDock = GetTemplateChild(PARTButtonDockName) as StackPanel;
 
-            if (_Part_ContentDock == null || _Part_ButtonDock == null)
+            if (_contentDock == null || _buttonDock == null)
                 throw new Exception("Some element is not in template!");
         }
 
@@ -200,8 +191,8 @@ namespace WPFDevelopers.Controls
 
         private bool LoadeTimer()
         {
-            _PlayTimer.Interval = PlaySpeed;
-            _PlayTimer.Elapsed += PlayTimer_Elapsed;
+            _playTimer.Interval = PlaySpeed;
+            _playTimer.Elapsed += PlayTimer_Elapsed;
 
             return true;
         }
@@ -211,7 +202,7 @@ namespace WPFDevelopers.Controls
             if (interval <= 0)
                 return false;
 
-            _PlayTimer.Interval = interval;
+            _playTimer.Interval = interval;
 
             return true;
         }
@@ -219,11 +210,11 @@ namespace WPFDevelopers.Controls
         private bool CalculationShellReletiveProperty()
         {
             //计算当前目标区域的尺寸
-            if (_Part_ContentDock == null)
+            if (_contentDock == null)
                 return false;
 
-            var vWidth = _Part_ContentDock.ActualWidth;
-            var vHeight = _Part_ContentDock.ActualHeight;
+            var vWidth = _contentDock.ActualWidth;
+            var vHeight = _contentDock.ActualHeight;
 
             if (vWidth == 0 || vHeight == 0)
                 return false;
@@ -250,20 +241,20 @@ namespace WPFDevelopers.Controls
             if (Children.Count <= 0 && ItemsSource == null)
                 return false;
 
-            if (_Part_ButtonDock != null)
-                foreach (var item in _Part_ButtonDock.Children)
+            if (_buttonDock != null)
+                foreach (var item in _buttonDock.Children)
                     if (item is FrameworkElement frameworkElement)
                     {
                         frameworkElement.MouseEnter -= Border_MouseEnter;
-                        frameworkElement.PreviewMouseDown -= Border_PreviewMouseDown;
+                        //frameworkElement.PreviewMouseDown -= Border_PreviewMouseDown;
                     }
 
             _mapFrameworkes.Clear();
             _mapCarouselLocationFramewokes.Clear();
             _BufferLinkedList.Clear();
 
-            _Part_ContentDock?.Children.Clear();
-            _Part_ButtonDock?.Children.Clear();
+            _contentDock?.Children.Clear();
+            _buttonDock?.Children.Clear();
 
 
             if (Children.Count > 0)
@@ -303,24 +294,15 @@ namespace WPFDevelopers.Controls
                     };
                     frameworkElement.RenderTransform = vTransformGroup;
 
-                    var border = new Border
-                    {
-                        Margin = new Thickness(5),
-                        Width = 20,
-                        Height = 6,
-                        //CornerRadius = new CornerRadius(20),
-                        Background = Brushes.Gray,
-                        Tag = i
-                    };
-
+                    var border = CreateBorder(i);
                     border.MouseEnter += Border_MouseEnter;
-                    border.PreviewMouseDown += Border_PreviewMouseDown;
+                    //border.PreviewMouseDown += Border_PreviewMouseDown;
 
                     _mapResources[i] = vItem;
                     _mapFrameworkes[i] = frameworkElement;
 
-                    _Part_ContentDock?.Children.Add(frameworkElement);
-                    _Part_ButtonDock?.Children.Add(border);
+                    _contentDock?.Children.Add(frameworkElement);
+                    _buttonDock?.Children.Add(border);
 
                     //第一个元素居中并且放大显示
                     if (i == 0)
@@ -387,24 +369,15 @@ namespace WPFDevelopers.Controls
                         }
                     };
                     frameworkElement.RenderTransform = vTransformGroup;
-
-                    var border = new Border
-                    {
-                        Width = 25,
-                        Height = 25,
-                        CornerRadius = new CornerRadius(25),
-                        Background = Brushes.Gray,
-                        Tag = nIndex
-                    };
-
+                    var border = CreateBorder(nIndex);
                     border.MouseEnter += Border_MouseEnter;
-                    border.PreviewMouseDown += Border_PreviewMouseDown;
+                    //border.PreviewMouseDown += Border_PreviewMouseDown;
 
                     _mapResources[nIndex] = item;
                     _mapFrameworkes[nIndex] = frameworkElement;
 
-                    _Part_ContentDock?.Children.Add(frameworkElement);
-                    _Part_ButtonDock?.Children.Add(border);
+                    _contentDock?.Children.Add(frameworkElement);
+                    _buttonDock?.Children.Add(border);
 
                     //第一个元素居中并且放大显示
                     if (nIndex == 0)
@@ -439,6 +412,20 @@ namespace WPFDevelopers.Controls
             return true;
         }
 
+        Border CreateBorder(int nIndex)
+        {
+            var brushKey = nIndex == 0 ? "WD.PrimaryBrush" : "WD.RegularTextBrush";
+            var border = new Border
+            {
+                Margin = new Thickness(5),
+                Width = 30,
+                Height = 2,
+                Background = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>(brushKey),
+                Tag = nIndex
+            };
+            return border;
+        }
+
         private void Storyboard_Completed(object sender, EventArgs e)
         {
             _IsStoryboardWorking = false;
@@ -446,7 +433,7 @@ namespace WPFDevelopers.Controls
 
         private void PlayTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Application.Current.Dispatcher?.BeginInvoke(new Action(() => PlayCarouselRightToLeft()),
+            Dispatcher?.BeginInvoke(new Action(() => PlayCarouselRightToLeft()),
                 DispatcherPriority.Background);
         }
 
@@ -463,8 +450,13 @@ namespace WPFDevelopers.Controls
         private void Border_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is FrameworkElement frameworkElement)
-                if (int.TryParse(frameworkElement.Tag?.ToString(), out var nResult))
+            {
+                var nResult = 0;
+                if (int.TryParse(frameworkElement.Tag?.ToString(), out nResult))
                     PlayCarouselWithIndex(nResult);
+                SelectedBorder(nResult + 1);
+            }
+                
         }
 
         private void MasterCarousel_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -497,8 +489,8 @@ namespace WPFDevelopers.Controls
         #region feild
 
         private bool _isLoaded;
-        private Canvas _Part_ContentDock;
-        private StackPanel _Part_ButtonDock;
+        private Canvas _contentDock;
+        private StackPanel _buttonDock;
 
         #endregion
 
@@ -834,7 +826,7 @@ namespace WPFDevelopers.Controls
 
             _Storyboard?.Children.Clear();
 
-            var nNextIndex = -1;
+            int nNextIndex = -1;
 
             //左边的动画移动到中间 后层
             {
@@ -907,7 +899,6 @@ namespace WPFDevelopers.Controls
                     //从中间到左边
                     var animation2 = new DoubleAnimation
                     {
-                        //BeginTime = TimeSpan.FromSeconds(_DelayAnimationTime),
                         To = _LeftDockLeft,
                         Duration = TimeSpan.FromSeconds(_AnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
@@ -984,7 +975,6 @@ namespace WPFDevelopers.Controls
                     if (nNextIndex >= _CarouselSize)
                         nNextIndex = 0;
                 }
-
                 _mapCarouselLocationFramewokes[CarouselLoacation.Right] = -1;
             }
 
@@ -1086,8 +1076,24 @@ namespace WPFDevelopers.Controls
             }
 
             _Storyboard?.Begin();
-
+            SelectedBorder(nNextIndex);
             return true;
+        }
+
+        void SelectedBorder(int index)
+        {
+            index = index == 0 ? 0 : index - 1;
+            if (_buttonDock != null)
+            {
+
+                var border = _buttonDock.Children.Cast<Border>().FirstOrDefault(x => Convert.ToInt32(x.Tag) == index);
+                if (border != null)
+                    border.Background = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PrimaryBrush");
+                foreach (var item in _buttonDock.Children.Cast<Border>().Where(x => Convert.ToInt32(x.Tag) != index))
+                {
+                    item.Background = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.RegularTextBrush");
+                }
+            }
         }
 
         //当用户点击其中某个位置的动画时
@@ -1454,7 +1460,7 @@ namespace WPFDevelopers.Controls
                 return true;
 
             _IsAinimationStart = true;
-            _PlayTimer.Start();
+            _playTimer.Start();
             return true;
         }
 
@@ -1463,7 +1469,7 @@ namespace WPFDevelopers.Controls
             if (_IsAinimationStart)
             {
                 _IsAinimationStart = false;
-                _PlayTimer.Stop();
+                _playTimer.Stop();
             }
 
             return true;

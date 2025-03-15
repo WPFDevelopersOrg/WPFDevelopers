@@ -9,7 +9,7 @@
         x:Key="WD.EdgeLight"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:EdgeLight}">
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />

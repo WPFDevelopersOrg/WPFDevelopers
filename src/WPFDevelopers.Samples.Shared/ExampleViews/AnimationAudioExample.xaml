@@ -35,7 +35,7 @@
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <wd:AnimationAudio
                     x:Name="AnimationAudioRight"
-                    Background="{DynamicResource WD.SuccessSolidColorBrush}"
+                    Background="{DynamicResource WD.SuccessBrush}"
                     Foreground="Black"
                     IsRight="true"
                     MouseDown="AnimationAudioLeft_MouseDown" />

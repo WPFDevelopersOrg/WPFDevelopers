@@ -9,7 +9,7 @@ namespace WPFDevelopers.Controls
         private MessageListBox _listBox;
         private UIElement _child;
         private FrameworkElement _adornedElement;
-        internal Position Position;
+        internal Position Position = Position.Top;
         public MessageAdorner(UIElement adornedElement) : base(adornedElement)
         {
             _adornedElement = adornedElement as FrameworkElement;

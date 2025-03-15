@@ -15,7 +15,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="BorderThickness" Value="{StaticResource WD.TabItemBorderThickness}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -51,53 +51,23 @@
                                 <controls:PathIcon
                                     Width="10"
                                     Height="10"
-                                    Foreground="{DynamicResource WD.SecondaryTextSolidColorBrush}"
+                                    Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                     Kind="WindowClose" />
                             </Button>
                         </Grid>
-                        <!--<Line
-                            x:Name="PART_Line"
-                            Margin="{TemplateBinding Margin}"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Stroke="{DynamicResource WD.SecondaryTextSolidColorBrush}"
-                            StrokeThickness="1"
-                            X1="2"
-                            X2="2"
-                            Y1="0"
-                            Y2="15" />-->
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsClear" Value="True">
                             <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Visible" />
                         </Trigger>
-                        <!--<Trigger Property="TabStripPlacement" Value="Left">
-                            <Setter TargetName="PART_Line" Property="X1" Value="0" />
-                            <Setter TargetName="PART_Line" Property="X2" Value="15" />
-                            <Setter TargetName="PART_Line" Property="Y1" Value="2" />
-                            <Setter TargetName="PART_Line" Property="Y2" Value="2" />
-                            <Setter TargetName="PART_Line" Property="VerticalAlignment" Value="Bottom" />
-                            <Setter TargetName="PART_Line" Property="HorizontalAlignment" Value="Center" />
-                        </Trigger>
-                        <Trigger Property="TabStripPlacement" Value="Right">
-                            <Setter TargetName="PART_Line" Property="X1" Value="0" />
-                            <Setter TargetName="PART_Line" Property="X2" Value="15" />
-                            <Setter TargetName="PART_Line" Property="Y1" Value="2" />
-                            <Setter TargetName="PART_Line" Property="Y2" Value="2" />
-                            <Setter TargetName="PART_Line" Property="VerticalAlignment" Value="Bottom" />
-                            <Setter TargetName="PART_Line" Property="HorizontalAlignment" Value="Center" />
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Line" Property="Visibility" Value="Collapsed" />
-                        </Trigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -133,13 +103,13 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type TabControl}">
         <Setter Property="TabStripPlacement" Value="Top" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource WD.TopTabItem}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">

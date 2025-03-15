@@ -16,52 +16,87 @@
         <model:HospitalList x:Key="myHospitalList" />
     </UserControl.Resources>
     <controls:CodeViewer>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Button
-                Margin="0,20,0,0"
+        <UniformGrid
+            Grid.Row="1"
+            Columns="2"
+            Rows="2">
+            <wd:MultiSelectComboBox
+                Width="200"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Click="Button_Click"
-                Content="获取选中"
-                Style="{StaticResource WD.WarningPrimaryButton}" />
-            <UniformGrid
-                Grid.Row="1"
-                Columns="2"
-                Rows="2">
-                <wd:MultiSelectComboBox
-                    Width="200"
-                    HorizontalAlignment="Center"
-                    wd:ElementHelper.Watermark="请选择内容"
-                    Delimiter="^"
-                    IsSelectAllActive="True">
-                    <wd:MultiSelectComboBoxItem>Option 1</wd:MultiSelectComboBoxItem>
-                    <wd:MultiSelectComboBoxItem>Option 2</wd:MultiSelectComboBoxItem>
-                    <wd:MultiSelectComboBoxItem>Option 3</wd:MultiSelectComboBoxItem>
-                    <wd:MultiSelectComboBoxItem>Option 4</wd:MultiSelectComboBoxItem>
-                    <wd:MultiSelectComboBoxItem>Option 5</wd:MultiSelectComboBoxItem>
-                </wd:MultiSelectComboBox>
+                wd:ElementHelper.Watermark="请选择内容"
+                Delimiter="^"
+                IsSearch="False"
+                IsSelectAllActive="True">
+                <wd:MultiSelectComboBoxItem>Option 1</wd:MultiSelectComboBoxItem>
+                <wd:MultiSelectComboBoxItem>Option 2</wd:MultiSelectComboBoxItem>
+                <wd:MultiSelectComboBoxItem>Option 3</wd:MultiSelectComboBoxItem>
+                <wd:MultiSelectComboBoxItem>Option 4</wd:MultiSelectComboBoxItem>
+                <wd:MultiSelectComboBoxItem>Option 5</wd:MultiSelectComboBoxItem>
+            </wd:MultiSelectComboBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <wd:MultiSelectComboBox
                     Name="MyMultiSelectComboBox"
-                    Width="200"
                     Height="38"
-                    HorizontalAlignment="Center"
                     VerticalContentAlignment="Center"
                     wd:ElementHelper.CornerRadius="3"
                     wd:ElementHelper.Watermark="MultiSelectComboBox"
                     DisplayMemberPath="Number"
                     IsSelectAllActive="True"
                     ItemsSource="{Binding Drawings}"
+                    SearchWatermark="请输入搜索内容"
                     SelectedValuePath="Index">
                     <wd:MultiSelectComboBox.DataContext>
                         <vm:DrawingExampleVM />
                     </wd:MultiSelectComboBox.DataContext>
                 </wd:MultiSelectComboBox>
-            </UniformGrid>
-        </Grid>
+                <Button
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    wd:ElementHelper.CornerRadius="3"
+                    Click="Button_Click"
+                    Content="获取选中"
+                    Style="{StaticResource WD.SuccessPrimaryButton}" />
+            </Grid>
+
+            <wd:MultiSelectComboBox
+                Width="200"
+                wd:ElementHelper.Watermark="Tag"
+                DisplayMemberPath="Number"
+                IsSelectAllActive="True"
+                ItemsSource="{Binding Drawings}"
+                SearchWatermark="请输入搜索内容"
+                SelectedValuePath="Index"
+                ShowType="Tag">
+                <wd:MultiSelectComboBox.DataContext>
+                    <vm:DrawingExampleVM />
+                </wd:MultiSelectComboBox.DataContext>
+            </wd:MultiSelectComboBox>
+            <Grid Grid.Row="1" wd:PanelHelper.Spacing="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Text="Binding:" />
+                <wd:MultiSelectComboBox
+                    Grid.Column="1"
+                    wd:ElementHelper.Watermark="下拉多选搜索"
+                    Delimiter="^"
+                    DisplayMemberPath="Name"
+                    IsSelectAllActive="True"
+                    ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=local:MultiSelectComboBoxExample}}"
+                    SearchWatermark="请输入搜索内容"
+                    SelectedItemsExt="{Binding SelectedItems, RelativeSource={RelativeSource AncestorType=local:MultiSelectComboBoxExample}}"
+                    SelectedValuePath="ID"
+                    ShowType="Tag" />
+            </Grid>
+
+        </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectComboBoxExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectComboBoxExample.xaml.cs" CodeType="CSharp" />

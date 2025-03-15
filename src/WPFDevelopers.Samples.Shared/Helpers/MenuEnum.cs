@@ -5,7 +5,9 @@
     /// </summary>
     public enum MenuEnum
     {
-        Navigation3D,
+        NavMenu3D,
+        UsageGuide,
+        UsageColor,
         BasicControls,
         NotifyIcon,
         PanningItems,
@@ -16,7 +18,6 @@
         WaitLoading,
         CycleLoading,
         RollLoading,
-        CutImage,
         //CutImage,
         Window,
         CropAvatar,
@@ -90,6 +91,7 @@
         Drawer,
         DateRangePicker,
         Gauge,
+        Tag,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

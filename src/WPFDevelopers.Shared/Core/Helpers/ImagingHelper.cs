@@ -16,7 +16,7 @@ namespace WPFDevelopers
             if (bitmap == null)
                 throw new ArgumentNullException("bitmap");
 
-            if (Application.Current.Dispatcher == null)
+            if (Application.Current?.Dispatcher == null)
                 return null; 
             try
             {
@@ -25,7 +25,7 @@ namespace WPFDevelopers
                     bitmap.Save(memoryStream, ImageFormat.Png);
                     memoryStream.Seek(0, SeekOrigin.Begin);
                     if (InvokeRequired)
-                        return (BitmapSource)Application.Current.Dispatcher.Invoke(
+                        return (BitmapSource)Application.Current?.Dispatcher.Invoke(
                             new Func<Stream, BitmapSource>(CreateBitmapSourceFromBitmap),
                             DispatcherPriority.Normal,
                             memoryStream);
@@ -40,7 +40,7 @@ namespace WPFDevelopers
 
         private static bool InvokeRequired
         {
-            get { return Dispatcher.CurrentDispatcher != Application.Current.Dispatcher; }
+            get { return Dispatcher.CurrentDispatcher != Application.Current?.Dispatcher; }
         }
 
         private static BitmapSource CreateBitmapSourceFromBitmap(Stream stream)

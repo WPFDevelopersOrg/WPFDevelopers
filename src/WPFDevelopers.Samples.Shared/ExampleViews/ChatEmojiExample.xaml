@@ -12,7 +12,7 @@
     mc:Ignorable="d">
     <controls:CodeViewer>
         <UniformGrid Width="800" Columns="2">
-            <Grid Margin="10,0" Background="{StaticResource WD.WarningSolidColorBrush}">
+            <Grid Margin="10,0" Background="{StaticResource WD.WarningBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="100" />
@@ -42,7 +42,7 @@
                         <Border
                             Width="76"
                             Margin="10"
-                            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            Background="{DynamicResource WD.BackgroundBrush}"
                             CornerRadius="4">
                             <Border.Effect>
                                 <DropShadowEffect
@@ -97,7 +97,7 @@
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid Margin="10,0" Background="{StaticResource WD.SuccessSolidColorBrush}">
+            <Grid Margin="10,0" Background="{StaticResource WD.SuccessBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="100" />
@@ -128,7 +128,7 @@
                         <Border
                             Width="76"
                             Margin="10"
-                            Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                            Background="{DynamicResource WD.BackgroundBrush}"
                             CornerRadius="4">
                             <Border.Effect>
                                 <DropShadowEffect

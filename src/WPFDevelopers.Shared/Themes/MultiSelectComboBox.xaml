@@ -15,7 +15,7 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Margin" Value="1,0" />
         <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -48,7 +48,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -60,19 +60,16 @@
         x:Key="WD.MultiSelectComboBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:MultiSelectComboBox}">
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="SelectionMode" Value="Multiple" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource WD.DefaultMultiSelectComboBoxItem}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:MultiSelectComboBox}">
@@ -105,11 +102,20 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
-                        <Grid Grid.IsSharedSizeScope="true">
+                        <Grid Grid.IsSharedSizeScope="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="ComboBoxButton" />
                             </Grid.ColumnDefinitions>
+                            <ScrollViewer
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalScrollBarVisibility="Disabled"
+                                VerticalScrollBarVisibility="Auto">
+                                <controls:SimpleWrapPanel
+                                    x:Name="PART_SimpleWrapPanel"
+                                    Spacing="2"
+                                    Visibility="Collapsed" />
+                            </ScrollViewer>
                             <TextBox
                                 Name="PART_EditableTextBox"
                                 Padding="{TemplateBinding Padding}"
@@ -118,20 +124,21 @@
                                 Panel.ZIndex="1"
                                 Background="Transparent"
                                 Focusable="True"
-                                Foreground="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                                Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                 IsReadOnly="True"
-                                SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
+                                SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                                 Style="{x:Null}"
                                 Template="{StaticResource WD.ComboBoxTextBox}"
                                 Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+
                             <TextBlock
                                 x:Name="PART_Watermark"
                                 Padding="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Background="Transparent"
-                                FontSize="{StaticResource WD.NormalFontSize}"
-                                Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                FontSize="{StaticResource WD.PrimaryFontSize}"
+                                Foreground="{DynamicResource WD.RegularTextBrush}"
                                 IsHitTestVisible="False"
                                 Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                 TextTrimming="CharacterEllipsis"
@@ -140,7 +147,7 @@
                                 x:Name="PART_ToggleButton"
                                 Grid.ColumnSpan="2"
                                 Background="{TemplateBinding Background}"
-                                ClickMode="Release"
+                                ClickMode="Press"
                                 Focusable="False"
                                 IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                 Style="{x:Null}"
@@ -148,6 +155,7 @@
                             <Popup
                                 x:Name="PART_Popup"
                                 AllowsTransparency="True"
+                                Focusable="True"
                                 IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                 Placement="Bottom"
                                 PlacementTarget="{Binding ElementName=PART_Border}"
@@ -174,29 +182,65 @@
                                     <Grid Margin="0,8" ClipToBounds="False">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
-                                        <controls:MultiSelectComboBoxItem
-                                            x:Name="PART_CheckBoxAll"
+
+                                        <TextBox
+                                            x:Name="PART_TextBox"
+                                            Height="{Binding ElementName=PART_EditableTextBox, Path=Height}"
+                                            Margin="6,0"
+                                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                            helpers:ElementHelper.IsClear="True"
+                                            helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                            FontSize="{Binding ElementName=PART_EditableTextBox, Path=FontSize}"
+                                            Visibility="{TemplateBinding IsSearch,
+                                                                         Converter={StaticResource WD.Bool2VisibilityConverter}}" />
+
+                                        <CheckBox
+                                            x:Name="PART_SelectAll"
+                                            Grid.Row="1"
+                                            Margin="4"
+                                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                             Content="{TemplateBinding SelectAllContent}"
-                                            Style="{TemplateBinding ItemContainerStyle}"
                                             Visibility="{TemplateBinding IsSelectAllActive,
                                                                          Converter={StaticResource WD.Bool2VisibilityConverter}}" />
                                         <ScrollViewer
                                             x:Name="DropDownScrollViewer"
-                                            Grid.Row="1"
+                                            Grid.Row="2"
                                             ScrollViewer.VerticalScrollBarVisibility="Auto">
                                             <ItemsPresenter
-                                                x:Name="ItemsPresenter"
+                                                x:Name="PART_ItemsPresenter"
                                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
+                                        <controls:MultiSelectListBox
+                                            x:Name="PART_SearchSelector"
+                                            Grid.Row="2"
+                                            Margin="1,0"
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="0"
+                                            DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                            ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                            ItemsSource="{TemplateBinding ItemsSourceSearch}"
+                                            SelectedValuePath="{TemplateBinding SelectedValuePath}"
+                                            SelectionMode="{TemplateBinding SelectionMode}"
+                                            Style="{StaticResource WD.DefaultListBox}"
+                                            Visibility="Collapsed" />
                                     </Grid>
                                 </controls:SmallPanel>
                             </Popup>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="ShowType" Value="Tag">
+                            <Setter TargetName="PART_SimpleWrapPanel" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                         <Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
@@ -214,7 +258,7 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
                             <Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />

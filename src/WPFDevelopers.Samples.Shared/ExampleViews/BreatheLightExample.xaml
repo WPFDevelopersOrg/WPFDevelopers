@@ -15,9 +15,9 @@
             <Border
                 Width="400"
                 Height="140"
-                Background="{StaticResource WD.BackgroundSolidColorBrush}"
+                Background="{StaticResource WD.BackgroundBrush}"
                 CornerRadius="3"
-                Effect="{StaticResource WD.NormalShadowDepth}">
+                Effect="{StaticResource WD.PrimaryShadowDepth}">
                 <Grid Margin="20,20,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -28,8 +28,8 @@
                         Height="60"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Background="{DynamicResource WD.BlackSolidColorBrush}"
-                        EffectColor="{DynamicResource WD.DefaultBackgroundPressedColor}"
+                        Background="{DynamicResource WD.PrimaryTextBrush}"
+                        EffectColor="{DynamicResource WD.DefaultPressedColor}"
                         IsLampStart="true"
                         LampEffect="OuterGlow">
                         <Ellipse>
@@ -43,10 +43,10 @@
                         Grid.Column="1"
                         Margin="10,20"
                         FontSize="{StaticResource WD.MediumFontSize}">
-                        <Run Foreground="{StaticResource WD.PrimaryTextSolidColorBrush}">
+                        <Run Foreground="{StaticResource WD.PrimaryTextBrush}">
                             周星星|达叔
                         </Run>
-                        <Run Foreground="{StaticResource WD.SuccessPressedSolidColorBrush}">正在直播</Run>
+                        <Run Foreground="{StaticResource WD.SuccessBrush}">正在直播</Run>
                     </TextBlock>
                     <Button
                         Grid.Column="1"
@@ -61,9 +61,9 @@
             <Border
                 Width="400"
                 Height="140"
-                Background="{StaticResource WD.BackgroundSolidColorBrush}"
+                Background="{StaticResource WD.BackgroundBrush}"
                 CornerRadius="3"
-                Effect="{StaticResource WD.NormalShadowDepth}">
+                Effect="{StaticResource WD.PrimaryShadowDepth}">
                 <Grid Margin="20,20,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -90,10 +90,10 @@
                         Margin="10,20"
                         FontSize="{StaticResource WD.MediumFontSize}"
                         TextWrapping="Wrap">
-                        <Run Foreground="{StaticResource WD.PrimaryTextSolidColorBrush}">
+                        <Run Foreground="{StaticResource WD.PrimaryTextBrush}">
                             大话西游之大圣娶亲&#x000A;
                         </Run>
-                        <Run Foreground="{StaticResource WD.SuccessPressedSolidColorBrush}">正在直播</Run>
+                        <Run Foreground="{StaticResource WD.SuccessBrush}">正在直播</Run>
                     </TextBlock>
                     <Button
                         Grid.Column="1"
@@ -106,9 +106,9 @@
             <Border
                 Width="400"
                 Height="140"
-                Background="{StaticResource WD.BackgroundSolidColorBrush}"
+                Background="{StaticResource WD.BackgroundBrush}"
                 CornerRadius="3"
-                Effect="{StaticResource WD.NormalShadowDepth}">
+                Effect="{StaticResource WD.PrimaryShadowDepth}">
 
                 <Grid Margin="20,20,0,0">
                     <Grid.ColumnDefinitions>
@@ -133,10 +133,10 @@
                         Grid.Column="1"
                         Margin="10,20"
                         FontSize="{StaticResource WD.MediumFontSize}">
-                        <Run Foreground="{StaticResource WD.PrimaryTextSolidColorBrush}">
+                        <Run Foreground="{StaticResource WD.PrimaryTextBrush}">
                             XXXYYY
                         </Run>
-                        <Run Foreground="{StaticResource WD.SuccessPressedSolidColorBrush}">正在直播</Run>
+                        <Run Foreground="{StaticResource WD.SuccessBrush}">正在直播</Run>
                     </TextBlock>
                     <Button
                         Grid.Column="1"
@@ -150,9 +150,9 @@
             <Border
                 Width="400"
                 Height="140"
-                Background="{StaticResource WD.BackgroundSolidColorBrush}"
+                Background="{StaticResource WD.BackgroundBrush}"
                 CornerRadius="3"
-                Effect="{StaticResource WD.NormalShadowDepth}">
+                Effect="{StaticResource WD.PrimaryShadowDepth}">
 
                 <Grid Margin="20,20,0,0">
                     <Grid.ColumnDefinitions>
@@ -179,10 +179,10 @@
                         Grid.Column="1"
                         Margin="10,20"
                         FontSize="{StaticResource WD.MediumFontSize}">
-                        <Run Foreground="{StaticResource WD.PrimaryTextSolidColorBrush}">
+                        <Run Foreground="{StaticResource WD.PrimaryTextBrush}">
                             WPF开发者
                         </Run>
-                        <Run Foreground="{StaticResource WD.SuccessPressedSolidColorBrush}">正在直播</Run>
+                        <Run Foreground="{StaticResource WD.SuccessBrush}">正在直播</Run>
                     </TextBlock>
                     <Button
                         Grid.Column="1"

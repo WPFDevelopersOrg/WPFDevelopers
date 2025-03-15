@@ -13,12 +13,12 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:NumericBox}">
@@ -55,7 +55,7 @@
                                     InputMethod.IsInputMethodEnabled="False"
                                     IsReadOnly="{TemplateBinding IsReadOnly}"
                                     IsTabStop="{TemplateBinding IsTabStop}"
-                                    SelectionBrush="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
+                                    SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                     Style="{x:Null}"
                                     TabIndex="{TemplateBinding TabIndex}"
@@ -105,7 +105,7 @@
                             <Setter TargetName="PART_NumericUp" Property="IsEnabled" Value="False" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

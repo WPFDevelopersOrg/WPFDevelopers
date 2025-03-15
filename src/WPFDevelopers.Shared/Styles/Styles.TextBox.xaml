@@ -15,12 +15,12 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="AllowDrop" Value="True" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource WD.WindowBorderBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -39,8 +39,8 @@
                                 Padding="1,0"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                FontSize="{StaticResource WD.NormalFontSize}"
-                                Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                FontSize="{StaticResource WD.PrimaryFontSize}"
+                                Foreground="{DynamicResource WD.RegularTextBrush}"
                                 Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
                                 Visibility="Collapsed" />
                             <ScrollViewer x:Name="PART_ContentHost" />
@@ -58,7 +58,7 @@
                                 <controls:PathIcon
                                     Width="10"
                                     Height="10"
-                                    Foreground="{DynamicResource WD.SecondaryTextSolidColorBrush}"
+                                    Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                     Kind="WindowClose" />
                             </Button>
                         </controls:SmallPanel>
@@ -71,7 +71,7 @@
                             <Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="helpers:ElementHelper.IsClear" Value="True">
                             <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Visible" />

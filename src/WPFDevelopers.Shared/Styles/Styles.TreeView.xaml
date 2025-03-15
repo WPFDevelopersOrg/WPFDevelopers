@@ -15,9 +15,9 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
@@ -97,7 +97,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.BaseMoveSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -112,7 +112,7 @@
                         <Rectangle
                             Margin="0,0,0,0"
                             Opacity="0"
-                            Stroke="{DynamicResource WD.BlackSolidColorBrush}"
+                            Stroke="{DynamicResource WD.BlackBrush}"
                             StrokeDashArray="1 2"
                             StrokeThickness="5" />
                     </Border>
@@ -129,6 +129,9 @@
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource WD.TreeViewItemFocusVisual}" />
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontSize}" />
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontWeight}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontFamily}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
@@ -189,7 +192,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_Border" Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BaseMoveSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
                         </Trigger>
                         <Trigger Property="IsExpanded" Value="False">
                             <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed" />
@@ -198,14 +201,14 @@
                             <Setter TargetName="Expander" Property="Visibility" Value="Hidden" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition Property="IsSelectionActive" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

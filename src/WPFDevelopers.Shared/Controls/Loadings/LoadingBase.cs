@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Controls
 {
-    public abstract class LoadingBase:ContentControl
+    public abstract class LoadingBase : ContentControl
     {
         public bool IsLoading
         {
@@ -31,5 +31,5 @@ namespace WPFDevelopers.Controls
         protected virtual void OnIsLoadingChanged(bool oldValue, bool newValue)
         {
         }
-    }   
+    }
 }

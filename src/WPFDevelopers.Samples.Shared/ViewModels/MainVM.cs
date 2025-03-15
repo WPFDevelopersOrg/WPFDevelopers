@@ -65,7 +65,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
             }
             NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
-            ControlPanel = new AnimationNavigationBar3DExample();
+            ControlPanel = new NavMenu3DExample();
         }
 
         public ICommand ViewLoaded => new RelayCommand(obj =>
@@ -115,8 +115,14 @@ namespace WPFDevelopers.Samples.ViewModels
             var menuEnum = (MenuEnum)Enum.Parse(typeof(MenuEnum), _menuName, true);
             switch (menuEnum)
             {
-                case MenuEnum.Navigation3D:
-                    ControlPanel = new AnimationNavigationBar3DExample();
+                case MenuEnum.NavMenu3D:
+                    ControlPanel = new NavMenu3DExample();
+                    break;
+                case MenuEnum.UsageGuide:
+                    ControlPanel = new UsageGuide();
+                    break;
+                case MenuEnum.UsageColor:
+                    ControlPanel = new UsageColor();
                     break;
                 case MenuEnum.BasicControls:
                     ControlPanel = new BasicControlsExample();
@@ -369,6 +375,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Gauge:
                     ControlPanel = new GaugeExample();
+                    break;
+                case MenuEnum.Tag:
+                    ControlPanel = new TagExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

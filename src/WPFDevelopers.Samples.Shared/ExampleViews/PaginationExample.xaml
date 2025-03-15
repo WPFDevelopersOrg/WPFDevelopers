@@ -12,8 +12,8 @@
     mc:Ignorable="d">
     <!--<UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
-            <Setter Property="FontSize" Value="{StaticResource WD.NormalFontSize}"/>
+            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+            <Setter Property="FontSize" Value="{StaticResource WD.PrimaryFontSize}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>-->

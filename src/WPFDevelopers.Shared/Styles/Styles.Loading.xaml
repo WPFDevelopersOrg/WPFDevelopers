@@ -29,7 +29,7 @@
                             <Ellipse
                                 Width="{TemplateBinding Width}"
                                 Height="{TemplateBinding Height}"
-                                Stroke="{DynamicResource WD.BaseSolidColorBrush}"
+                                Stroke="{DynamicResource WD.BaseBrush}"
                                 StrokeDashArray="100,100"
                                 StrokeThickness="2" />
                             <Ellipse
@@ -38,7 +38,7 @@
                                 Height="{TemplateBinding Height}"
                                 RenderTransformOrigin=".5,.5"
                                 Stretch="Uniform"
-                                Stroke="{DynamicResource WD.PrimaryPressedSolidColorBrush}"
+                                Stroke="{DynamicResource WD.PrimaryBrush}"
                                 StrokeDashArray="{TemplateBinding StrokeArray}"
                                 StrokeThickness="2">
                                 <Ellipse.RenderTransform>
@@ -63,7 +63,7 @@
         x:Key="WD.DefaultLoading"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:DefaultLoading}">
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="40" />
         <Setter Property="ArcThickness" Value="2" />

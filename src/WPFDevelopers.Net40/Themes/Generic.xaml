@@ -8,18 +8,17 @@
     xmlns:wd="clr-namespace:WPFDevelopers.Net40">
     <converts:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
     <Style BasedOn="{x:Null}" TargetType="{x:Type wd:Window}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
-        <Setter Property="TitleBackground" Value="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.WindowBorderBrush}" />
+        <Setter Property="TitleBackground" Value="{DynamicResource WD.WindowBorderBrush}" />
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
         <Setter Property="WindowStyle" Value="None" />
-        <Setter Property="MaxHeight" Value="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource WD.NormalFontFamily}" />
+        <Setter Property="FontFamily" Value="{DynamicResource WD.FontFamily}" />
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
                 <shell:WindowChrome CaptionHeight="{Binding TitleHeight, RelativeSource={RelativeSource AncestorType=wd:Window}}" GlassFrameThickness="0,0,0,.1" />
@@ -70,7 +69,7 @@
                                             VerticalAlignment="Center"
                                             Content="{TemplateBinding Title}"
                                             FontSize="{DynamicResource {x:Static SystemFonts.CaptionFontSizeKey}}"
-                                            Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                                            Foreground="{DynamicResource WD.WindowTextBrush}"
                                             IsTabStop="False" />
                                     </StackPanel>
                                     <StackPanel
@@ -93,7 +92,7 @@
                                                         Height="1"
                                                         Margin="0,7,0,0"
                                                         VerticalAlignment="Bottom"
-                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
+                                                        Fill="{DynamicResource WD.WindowTextBrush}" />
                                                 </Grid>
                                             </Button>
                                             <Button
@@ -110,7 +109,7 @@
                                                         HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         Data="{DynamicResource WD.WindowMaximizeGeometry}"
-                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                        Fill="{DynamicResource WD.WindowTextBrush}"
                                                         Stretch="Uniform"
                                                         UseLayoutRounding="False" />
                                                 </Grid>
@@ -130,7 +129,7 @@
                                                         HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         Data="{DynamicResource WD.WindowRestoreGeometry}"
-                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                        Fill="{DynamicResource WD.WindowTextBrush}"
                                                         Stretch="Uniform"
                                                         UseLayoutRounding="False" />
                                                 </Grid>
@@ -149,7 +148,7 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 Data="{DynamicResource WD.WindowCloseGeometry}"
-                                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                Fill="{DynamicResource WD.WindowTextBrush}"
                                                 Stretch="Uniform" />
                                         </Button>
                                     </StackPanel>
@@ -183,7 +182,7 @@
                                         Margin="6,0"
                                         VerticalAlignment="Center"
                                         FontSize="{DynamicResource WD.TitleFontSize}"
-                                        Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                                        Foreground="{DynamicResource WD.WindowTextBrush}"
                                         Text="{TemplateBinding Title}" />
                                     <StackPanel
                                         Grid.Column="2"
@@ -205,7 +204,7 @@
                                                         Height="1"
                                                         Margin="0,7,0,0"
                                                         VerticalAlignment="Bottom"
-                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}" />
+                                                        Fill="{DynamicResource WD.WindowTextBrush}" />
                                                 </Grid>
                                             </Button>
                                             <Button
@@ -222,7 +221,7 @@
                                                         HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         Data="{DynamicResource WD.WindowMaximizeGeometry}"
-                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                        Fill="{DynamicResource WD.WindowTextBrush}"
                                                         Stretch="Uniform"
                                                         UseLayoutRounding="False" />
                                                 </Grid>
@@ -242,7 +241,7 @@
                                                         HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         Data="{DynamicResource WD.WindowRestoreGeometry}"
-                                                        Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                        Fill="{DynamicResource WD.WindowTextBrush}"
                                                         Stretch="Uniform"
                                                         UseLayoutRounding="False" />
                                                 </Grid>
@@ -261,7 +260,7 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 Data="{DynamicResource WD.WindowCloseGeometry}"
-                                                Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                                Fill="{DynamicResource WD.WindowTextBrush}"
                                                 Stretch="Uniform" />
                                         </Button>
                                     </StackPanel>
@@ -305,7 +304,6 @@
                             <Setter TargetName="PART_GridChrome" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_TitleToolBar" Property="Visibility" Value="Visible" />
                         </Trigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="ResizeMode" Value="CanResizeWithGrip" />

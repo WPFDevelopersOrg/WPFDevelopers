@@ -195,7 +195,7 @@ namespace WPFDevelopers.Controls
         public ScreenCut(int index)
         {
             _screenIndex = index;
-            this.Left = Screen.AllScreens[_screenIndex].WorkingArea.Left;
+            Left = Screen.AllScreens[_screenIndex].WorkingArea.Left;
             ShowInTaskbar = false;
             _screenDPI = GetScreenDPI(_screenIndex);
         }

@@ -10,7 +10,7 @@
     Name="MyBasicControls"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+    Background="{DynamicResource WD.BackgroundBrush}"
     mc:Ignorable="d">
     <controls:CodeViewer>
         <ScrollViewer>
@@ -27,18 +27,18 @@
                                 Padding="0,4"
                                 HorizontalAlignment="Center"
                                 FontSize="20"
-                                Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                Foreground="{DynamicResource WD.PrimaryBrush}"
                                 Text="WPFDevelopers" />
                             <TextBlock
                                 Padding="0,4"
                                 HorizontalAlignment="Center"
                                 FontSize="20"
-                                Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                Foreground="{DynamicResource WD.PrimaryBrush}"
                                 Text="微信号公众号:WPFDevelopers" />
                             <TextBlock
                                 Padding="0,10"
                                 FontSize="20"
-                                Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
+                                Foreground="{DynamicResource WD.PrimaryBrush}">
                                 <Hyperlink NavigateUri="https://github.com/WPFDevelopersOrg/WPFDevelopers" RequestNavigate="GithubHyperlink_RequestNavigate">Github 源码</Hyperlink>
                                 <Run />
                                 <Run />
@@ -57,7 +57,7 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="Theme" />
-                    <wd:Theme Margin="0,10" ItemsSource="{Binding ThemesCollection, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=OneWayToSource}" />
+                    <controls:Theme Margin="0,10" />
                     <TextBlock
                         Margin="0,20,0,0"
                         FontSize="20"
@@ -106,7 +106,7 @@
                                             Width="20"
                                             Height="20"
                                             Data="{StaticResource WD.WarningGeometry}"
-                                            Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                            Fill="{DynamicResource WD.PrimaryBrush}"
                                             Stretch="Uniform" />
                                     </MenuItem.Icon>
                                     <MenuItem Header="MenuItem 1.1.1">
@@ -375,6 +375,7 @@
                         <ComboBox
                             wd:ElementHelper.Watermark="ComboBox"
                             Background="LightYellow"
+                            FontSize="20"
                             Foreground="Black">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
@@ -425,6 +426,7 @@
                                 <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
                             </DatePicker.BlackoutDates>
                         </DatePicker>
+                        <DatePicker Margin="10,0" wd:DatePickerHelper.IsMonthYear="True" />
                     </UniformGrid>
 
                     <TextBlock
@@ -496,7 +498,10 @@
                         Margin="0,20,0,0"
                         FontSize="20"
                         Text="DataGrid" />
-                    <TabControl Height="200" Margin="0,10">
+                    <TabControl
+                        Height="200"
+                        Margin="0,10"
+                        FontSize="20">
                         <TabItem
                             Height="38"
                             Padding="20,0"
@@ -504,6 +509,7 @@
                             <DataGrid
                                 wd:ElementHelper.CornerRadius="3"
                                 AutoGenerateColumns="False"
+                                FontSize="20"
                                 HeadersVisibility="All"
                                 ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                 RowHeaderWidth="40">
@@ -616,6 +622,7 @@
                         <ListBox
                             wd:ElementHelper.CornerRadius="3"
                             DisplayMemberPath="Name"
+                            FontSize="20"
                             ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                         <ListBox Margin="10,0" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListBox.ItemTemplate>
@@ -635,7 +642,10 @@
                         FontSize="20"
                         Text="ListView" />
                     <UniformGrid Margin="0,10" Columns="2">
-                        <ListView wd:ElementHelper.CornerRadius="3" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <ListView
+                            wd:ElementHelper.CornerRadius="3"
+                            FontSize="20"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" />
@@ -672,7 +682,10 @@
                         Height="400"
                         Margin="0,10"
                         Columns="2">
-                        <TreeView wd:ElementHelper.CornerRadius="3" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <TreeView
+                            wd:ElementHelper.CornerRadius="3"
+                            FontSize="20"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                     <Border>
@@ -704,7 +717,7 @@
                             <Rectangle
                                 Width="400"
                                 Height="300"
-                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />
+                                Fill="{DynamicResource WD.DangerBrush}" />
                         </Expander>
                         <Expander
                             Margin="10,0"
@@ -715,7 +728,7 @@
                             <Rectangle
                                 Width="400"
                                 Height="300"
-                                Fill="{DynamicResource WD.LightSolidColorBrush}" />
+                                Fill="{DynamicResource WD.LightBrush}" />
                         </Expander>
                         <Expander Margin="0,10" ExpandDirection="Right">
                             <Expander.Header>
@@ -744,7 +757,7 @@
                             <Rectangle
                                 Width="400"
                                 Height="300"
-                                Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                                Fill="{DynamicResource WD.PrimaryBrush}" />
                         </Expander>
                     </UniformGrid>
                     <TextBlock
@@ -767,13 +780,13 @@
                             <!--<Rectangle
                                 Width="400"
                                 Height="300"
-                                Fill="{DynamicResource WD.DangerSolidColorBrush}" />-->
+                                Fill="{DynamicResource WD.DangerBrush}" />-->
                         </GroupBox>
                         <GroupBox
                             Height="400"
                             Margin="10,0"
                             Header="GroupBox1">
-                            <Rectangle Fill="{DynamicResource WD.LightSolidColorBrush}" />
+                            <Rectangle Fill="{DynamicResource WD.LightBrush}" />
                         </GroupBox>
                     </UniformGrid>
 
@@ -788,7 +801,7 @@
                         Rows="2">
                         <TabControl Margin="4" wd:ElementHelper.CornerRadius="3">
                             <TabItem Padding="10" Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.DangerBrush}" />
                             </TabItem>
                             <TabItem
                                 Padding="10"
@@ -800,7 +813,7 @@
                                 Padding="10"
                                 wd:ElementHelper.IsClear="True"
                                 Header="TabItem3">
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl Margin="4" TabStripPlacement="Bottom">
@@ -814,7 +827,7 @@
                                 wd:ElementHelper.IsClear="True"
                                 Header="TabItem2LongLongLongLongLongLongLongLong"
                                 ToolTip="{Binding ElementName=MyTabItem, Path=Header}">
-                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.DangerBrush}" />
                             </TabItem>
                             <TabItem
                                 MaxWidth="120"
@@ -828,7 +841,7 @@
                                         TextWrapping="NoWrap"
                                         ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
                                 </TabItem.Header>
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl Margin="4" TabStripPlacement="Left">
@@ -836,7 +849,7 @@
                                 Padding="10"
                                 wd:ElementHelper.IsClear="True"
                                 Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
                             </TabItem>
                             <TabItem
                                 Padding="10"
@@ -848,7 +861,7 @@
                                 Padding="10"
                                 wd:ElementHelper.IsClear="True"
                                 Header="TabItem3">
-                                <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.DangerBrush}" />
                             </TabItem>
                         </TabControl>
                         <TabControl
@@ -859,7 +872,7 @@
                                 Padding="10"
                                 wd:ElementHelper.IsClear="True"
                                 Header="TabItem1">
-                                <Rectangle Fill="{DynamicResource WD.SuccessSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.SuccessBrush}" />
                             </TabItem>
                             <TabItem
                                 Padding="10"
@@ -871,7 +884,7 @@
                                 Padding="10"
                                 wd:ElementHelper.IsClear="True"
                                 Header="TabItem3">
-                                <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
+                                <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
                             </TabItem>
                         </TabControl>
                     </UniformGrid>

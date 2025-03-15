@@ -10,8 +10,8 @@
         x:Key="WD.Drawer"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:Drawer}">
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <Setter.Value>
@@ -30,13 +30,13 @@
                             </Border>
                             <Border
                                 x:Name="PART_Mark"
-                                Background="{DynamicResource WD.PrimaryTextSolidColorBrush}"
+                                Background="{DynamicResource WD.ChartFillBrush}"
                                 Opacity=".5" />
                             <Border
                                 x:Name="PART_Header"
                                 HorizontalAlignment="Left"
                                 Background="{TemplateBinding Background}"
-                                Effect="{StaticResource WD.NormalShadowDepth}">
+                                Effect="{StaticResource WD.PrimaryShadowDepth}">
                                 <ContentPresenter Content="{TemplateBinding Header}" />
                             </Border>
                         </controls:SmallPanel>

@@ -13,8 +13,8 @@
         TargetType="{x:Type Thumb}">
         <Setter Property="Width" Value="12" />
         <Setter Property="Height" Value="12" />
-        <Setter Property="Background" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.WindowTextBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="BorderThickness" Value="1.5" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -141,7 +141,7 @@
                         <controls:SliderRepeatButton
                             Height="{StaticResource WD.RepeatButtonSize}"
                             Margin="0,2,0,0"
-                            Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                            Background="{DynamicResource WD.PrimaryBrush}"
                             Command="{x:Static Slider.DecreaseLarge}"
                             RadiusOrientation="Right"
                             Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
@@ -150,7 +150,7 @@
                         <controls:SliderRepeatButton
                             Height="{StaticResource WD.RepeatButtonSize}"
                             Margin="0,2,0,0"
-                            Background="{DynamicResource WD.BaseSolidColorBrush}"
+                            Background="{DynamicResource WD.BaseBrush}"
                             Command="{x:Static Slider.IncreaseLarge}"
                             RadiusOrientation="Left"
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
@@ -211,7 +211,7 @@
                     <Track.DecreaseRepeatButton>
                         <controls:SliderRepeatButton
                             Width="{StaticResource WD.RepeatButtonSize}"
-                            Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                            Background="{DynamicResource WD.PrimaryBrush}"
                             Command="{x:Static Slider.DecreaseLarge}"
                             RadiusOrientation="Up"
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
@@ -219,7 +219,7 @@
                     <Track.IncreaseRepeatButton>
                         <controls:SliderRepeatButton
                             Width="{StaticResource WD.RepeatButtonSize}"
-                            Background="{DynamicResource WD.LightSolidColorBrush}"
+                            Background="{DynamicResource WD.LightBrush}"
                             Command="{x:Static Slider.IncreaseLarge}"
                             RadiusOrientation="Down"
                             Style="{StaticResource WD.SliderRepeatButtonStyle}" />
@@ -252,8 +252,8 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="SelectionEnd" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value}" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template" Value="{StaticResource WD.SliderHorizontal}" />
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">

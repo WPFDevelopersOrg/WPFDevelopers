@@ -12,7 +12,7 @@
     BorderThickness="0"
     NoChrome="True"
     ResizeMode="NoResize"
-    TitleBackground="{DynamicResource WD.WindowBorderBrushSolidColorBrush}"
+    TitleBackground="{DynamicResource WD.WindowBorderBrush}"
     TitleHeight="30"
     WindowStartupLocation="CenterScreen"
     WindowStyle="ToolWindow"
@@ -28,7 +28,7 @@
                 Margin="10,0"
                 VerticalAlignment="Center"
                 FontSize="14"
-                Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                Foreground="{DynamicResource WD.WindowTextBrush}"
                 IsHitTestVisible="False"
                 Text="关于" />
             <Button
@@ -45,7 +45,7 @@
                 <wd:PathIcon
                     Width="10"
                     Height="10"
-                    Foreground="{DynamicResource WD.WindowForegroundColorBrush}"
+                    Foreground="{DynamicResource WD.WindowTextBrush}"
                     Kind="WindowClose" />
             </Button>
         </Grid>
@@ -55,7 +55,7 @@
             <RowDefinition Height="4*" />
             <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
-        <Rectangle Fill="{DynamicResource WD.WindowBorderBrushSolidColorBrush}" />
+        <Rectangle Fill="{DynamicResource WD.WindowBorderBrush}" />
         <Rectangle Width="120">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/WPFDevelopers.ico" Stretch="Uniform" />
@@ -87,7 +87,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
                 FontSize="11"
-                Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
+                Foreground="{DynamicResource WD.PrimaryBrush}">
                 <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.git" RequestNavigate="GithubHyperlink_RequestNavigate">Github 源码</Hyperlink>
                 <Run />
                 <Run />

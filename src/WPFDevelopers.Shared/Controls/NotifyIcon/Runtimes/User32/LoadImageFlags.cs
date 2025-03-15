@@ -63,7 +63,7 @@ namespace WPFDevelopers.Controls.Runtimes.User32
         //     for images that have non-standard sizes, that may change after loading, or that
         //     are loaded from a file. When loading a system icon or cursor, you must use PInvoke.User32.LoadImageFlags.LR_SHARED
         //     or the function will fail to load the resource. This function finds the first
-        //     image in the cache with the requested resource name, regardless of the size requested.
+        //     image in the _cacheBrush with the requested resource name, regardless of the size requested.
         LR_SHARED = 0x8000u,
         //
         // Summary:

@@ -13,7 +13,7 @@
     BorderThickness="0"
     NoChrome="True"
     ResizeMode="NoResize"
-    TitleBackground="{DynamicResource WD.BackgroundSolidColorBrush}"
+    TitleBackground="{DynamicResource WD.BackgroundBrush}"
     TitleBarMode="HighTitleBar"
     TitleHeight="30"
     WindowStartupLocation="CenterScreen"
@@ -30,7 +30,7 @@
                 Margin="10,0"
                 VerticalAlignment="Center"
                 FontSize="14"
-                Foreground="{StaticResource WD.SecondaryTextSolidColorBrush}"
+                Foreground="{StaticResource WD.PrimaryTextBrush}"
                 IsHitTestVisible="False"
                 Text="ToolWindow" />
             <Button

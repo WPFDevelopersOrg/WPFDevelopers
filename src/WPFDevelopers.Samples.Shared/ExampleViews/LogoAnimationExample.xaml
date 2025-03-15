@@ -9,10 +9,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     
     <controls:CodeViewer>
-        <Border x:Name="PART_Border" Background="{DynamicResource WD.BackgroundSolidColorBrush}" CornerRadius="130"
+        <Border x:Name="PART_Border" Background="{DynamicResource WD.BackgroundBrush}" CornerRadius="130"
                     Width="260" Height="260"
                     RenderTransformOrigin=".5,.5" 
-                    Effect="{StaticResource WD.NormalShadowDepth}" Margin="20">
+                    Effect="{StaticResource WD.PrimaryShadowDepth}" Margin="20">
             <Border.Resources>
                 <Storyboard x:Key="YourLogoStoryboard" RepeatBehavior="Forever">
                     <!--隐藏所有-->
@@ -45,7 +45,7 @@
                     <ColorAnimation BeginTime="00:00:1.5" Duration="00:00:0.1" 
                             Storyboard.TargetName="PART_Border" 
                             Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                            To="{StaticResource WD.PrimaryNormalColor}"/>
+                            To="{StaticResource WD.PrimaryColor}"/>
                     <DoubleAnimation BeginTime="00:00:1.5" Duration="00:00:0.1" 
                              Storyboard.TargetName="PART_PathLogo" 
                              Storyboard.TargetProperty="Opacity"
@@ -111,7 +111,7 @@
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Border>
-                        <Path Width="100" Height="100" Fill="{DynamicResource WD.BackgroundSolidColorBrush}"
+                        <Path Width="100" Height="100" Fill="{DynamicResource WD.BackgroundBrush}"
                               HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" 
                               x:Name="PART_PathLogo" RenderTransformOrigin=".5,.5" Opacity="0">
                             <Path.RenderTransform>
@@ -142,7 +142,7 @@
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Border>
-                        <Path Width="100" Height="100"  Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                        <Path Width="100" Height="100"  Fill="{DynamicResource WD.PrimaryBrush}"
                                   HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform"
                                   x:Name="PART_PathDanger" RenderTransformOrigin=".5,.5" Opacity="0">
                             <Path.RenderTransform>

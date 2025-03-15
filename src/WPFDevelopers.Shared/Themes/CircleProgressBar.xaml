@@ -16,11 +16,11 @@
         <Setter Property="Maximum" Value="100" />
         <Setter Property="StrokeThickness" Value="5" />
         <Setter Property="BrushStrokeThickness" Value="5" />
-        <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircleProgressBar}">
@@ -80,53 +80,13 @@
                             <Setter TargetName="PART_PathArc" Property="StrokeEndLineCap" Value="Round" />
                         </Trigger>
                         <Trigger Property="Value" Value="100">
-                            <Setter Property="Background" Value="{StaticResource WD.SuccessNormalBrush}" />
+                            <Setter Property="Background" Value="{StaticResource WD.SuccessBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <!--<Style
-        x:Key="WD.CircularProgressBar"
-        BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:CircularProgressBar}">
-        <Setter Property="Maximum" Value="100" />
-        <Setter Property="StrokeThickness" Value="10" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.InfoSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:CircularProgressBar}">
-                    <controls:SmallPanel>
-                        <shapes:Arc
-                            x:Name="PART_ArcBackground"
-                            Width="{TemplateBinding ActualWidth}"
-                            Height="{TemplateBinding ActualHeight}"
-                            ArcThickness="{TemplateBinding BrushStrokeThickness}"
-                            Fill="{TemplateBinding BorderBrush}"
-                            Stretch="None" />
-                        <shapes:Arc
-                            x:Name="PART_Arc"
-                            Width="{TemplateBinding ActualWidth}"
-                            Height="{TemplateBinding ActualHeight}"
-                            ArcThickness="{TemplateBinding StrokeThickness}"
-                            EndAngle=""
-                            Fill="{TemplateBinding Background}"
-                            Stretch="None" />
-                        <TextBlock
-                            x:Name="PART_TextBlock"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontSize="{TemplateBinding FontSize}"
-                            Foreground="{TemplateBinding Foreground}"
-                            Text="{Binding Path=Value, StringFormat={}{0}%, RelativeSource={RelativeSource TemplatedParent}}" />
-                    </controls:SmallPanel>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
+
     <Style BasedOn="{StaticResource WD.CircleProgressBar}" TargetType="{x:Type controls:CircleProgressBar}" />
 </ResourceDictionary>

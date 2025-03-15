@@ -11,11 +11,11 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer>
-        <Grid Background="{DynamicResource WD.BackgroundSolidColorBrush}">
+        <Grid Background="{DynamicResource WD.BackgroundBrush}">
             <Border
                 Height="500"
                 Margin="30,0"
-                Background="{DynamicResource WD.BackgroundSolidColorBrush}">
+                Background="{DynamicResource WD.BackgroundBrush}">
                 <Grid Margin="20,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />

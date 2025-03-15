@@ -7,17 +7,19 @@
         <ResourceDictionary Source="Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style
-        x:Key="WD.AnimationNavigationBar3DItem"
+        x:Key="WD.NavMenu3DItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
+        TargetType="{x:Type controls:NavMenu3DItem}">
         <Setter Property="Width" Value="80" />
         <Setter Property="Height" Value="80" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+        <Setter Property="Fill" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3DItem}">
+                <ControlTemplate TargetType="{x:Type controls:NavMenu3DItem}">
                     <Viewport3D Width="{TemplateBinding Height}" Height="{TemplateBinding Width}">
                         <Viewport3D.Triggers>
                             <EventTrigger RoutedEvent="MouseEnter">
@@ -111,7 +113,7 @@
                                         <ContentPresenter
                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                            Content="{Binding ContentBack, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3DItem}}}"
+                                            Content="{Binding ContentBack, RelativeSource={RelativeSource AncestorType={x:Type controls:NavMenu3DItem}}}"
                                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                             TextElement.Foreground="{TemplateBinding Foreground}" />
                                     </Border>
@@ -124,12 +126,12 @@
         </Setter>
     </Style>
     <Style
-        x:Key="WD.AnimationNavigationBar3D"
+        x:Key="WD.NavMenu3D"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:AnimationNavigationBar3D}">
+        TargetType="{x:Type controls:NavMenu3D}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:AnimationNavigationBar3D}">
+                <ControlTemplate TargetType="{x:Type controls:NavMenu3D}">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -146,11 +148,11 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="{Binding Items.Count, RelativeSource={RelativeSource AncestorType={x:Type controls:AnimationNavigationBar3D}}}" />
+                    <UniformGrid Columns="{Binding Items.Count, RelativeSource={RelativeSource AncestorType={x:Type controls:NavMenu3D}}}" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.AnimationNavigationBar3DItem}" TargetType="{x:Type controls:AnimationNavigationBar3DItem}" />
-    <Style BasedOn="{StaticResource WD.AnimationNavigationBar3D}" TargetType="{x:Type controls:AnimationNavigationBar3D}" />
+    <Style BasedOn="{StaticResource WD.NavMenu3DItem}" TargetType="{x:Type controls:NavMenu3DItem}" />
+    <Style BasedOn="{StaticResource WD.NavMenu3D}" TargetType="{x:Type controls:NavMenu3D}" />
 </ResourceDictionary>

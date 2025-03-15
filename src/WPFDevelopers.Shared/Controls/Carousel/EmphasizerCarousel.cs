@@ -22,11 +22,7 @@ namespace WPFDevelopers.Controls
         [ReadOnly(true)] private const string Part_BackCanvasName = "PART_BackCanvas";
 
         private const int _maxSimpleHeight = 320;
-
-        //private double _SimpleOffset = 10;
-
         private double _DisplayHeight;
-
         private FrameworkElement _DisplayItem;
         private readonly double _DisplayOffset = 10d;
         private double _DisplayWidth;

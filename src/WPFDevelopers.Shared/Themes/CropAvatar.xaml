@@ -19,7 +19,7 @@
                             x:Name="PART_Layout"
                             Width="200"
                             Height="200"
-                            Fill="{DynamicResource WD.BlackSolidColorBrush}"
+                            Fill="{DynamicResource WD.BlackBrush}"
                             Opacity=".5">
                             <Path.Data>
                                 <CombinedGeometry GeometryCombineMode="Xor">
@@ -51,7 +51,7 @@
                                 <controls:PathIcon
                                     Width="15"
                                     Height="15"
-                                    Foreground="{StaticResource WD.PrimaryNormalSolidColorBrush}"
+                                    Foreground="{DynamicResource WD.PrimaryBrush}"
                                     Kind="Replace" />
                             </Button>
                             <Button
@@ -63,7 +63,7 @@
                                 <controls:PathIcon
                                     Width="20"
                                     Height="20"
-                                    Foreground="{StaticResource WD.PrimaryNormalSolidColorBrush}"
+                                    Foreground="{DynamicResource WD.PrimaryBrush}"
                                     Kind="Add" />
                             </Button>
                         </controls:SmallPanel>

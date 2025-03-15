@@ -3,8 +3,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using WPFDevelopers.Controls;
-using WPFDevelopers.Controls.ScreenCapturer;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
@@ -37,17 +35,7 @@ namespace WPFDevelopers.Samples.ExampleViews
                 if (IsChecked)
                 {
                     App.CurrentMainWindow.WindowState = WindowState.Minimized;
-                    //Thread.Sleep(1000);
                 }
-
-                #region 无App.xaml情况，需引入资源文件
-                //如没有App.xaml文件需要使用截图控件需要按照以下方式传入资源文件，具体查看
-                //https://github.com/WPFDevelopersOrg/WPFDevelopers/issues/68
-                //ResourceDictionary resources = new ResourceDictionary();
-                //resources.Source = new Uri("pack://application:,,,/MyResources.xaml");
-                //screenCapturer = new ScreenCapture(resources: resources);
-
-                #endregion
                 screenCapturer = new ScreenCapture();
                 screenCapturer.SnapCompleted += ScreenCapturer_SnapCompleted;
                 screenCapturer.SnapCanceled += ScreenCapturer_SnapCanceled;

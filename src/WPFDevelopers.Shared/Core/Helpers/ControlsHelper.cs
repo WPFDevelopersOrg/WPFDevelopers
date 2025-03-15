@@ -20,71 +20,6 @@ namespace WPFDevelopers.Helpers
     {
         private static Win32.DeskTopSize size;
         
-        public static Brush Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
-
-        /// <summary>
-        /// PrimaryNormalBrush
-        /// </summary>
-        public static Brush PrimaryNormalBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
-
-        public static Brush WindowForegroundBrush =
-            (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
-
-        private static bool _IsCurrentDark;
-
-        public static void OnSubThemeChanged()
-        {
-            if (!_IsCurrentDark)
-            {
-                PrimaryNormalBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
-                Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = PrimaryNormalBrush;
-            }
-        }
-
-        public static void ToggleLightAndDark(bool isDark = false)
-        {
-            var type = isDark ? ThemeType.Dark : ThemeType.Light;
-
-            var existingResourceDictionary =
-                (Resources)Application.Current.Resources.MergedDictionaries.FirstOrDefault(x => x is Resources);
-            if (existingResourceDictionary != null)
-            {
-                existingResourceDictionary.Theme = type;
-                if (type == ThemeType.Light)
-                {
-                    PrimaryNormalBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush");
-                    Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = PrimaryNormalBrush;
-                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.PrimaryTextSolidColorBrush");
-                    if (Application.Current.TryFindResource("WD.DefaultBackgroundColor") is Color color)
-                    {
-                        var solidColorBrush = new SolidColorBrush(color);
-                        Application.Current.Resources["WD.DefaultBackgroundSolidColorBrush"] = solidColorBrush;
-
-                    }
-                }
-                else
-                {
-                    if (Application.Current.TryFindResource("WD.WindowBorderBrushColor") is Color color)
-                    {
-                        var colorBrush = new SolidColorBrush(color);
-                        Application.Current.Resources["WD.WindowBorderBrushSolidColorBrush"] = colorBrush;
-                        Application.Current.Resources["WD.DefaultBackgroundSolidColorBrush"] = colorBrush;
-                    }
-
-                    WindowForegroundBrush = (Brush)Application.Current.TryFindResource("WD.DefaultBackgroundSolidColorBrush");
-                }
-
-                Brush = (Brush)Application.Current.TryFindResource("WD.BackgroundSolidColorBrush");
-                _IsCurrentDark = isDark;
-                ThemeRefresh();
-            }
-        }
-
-        public static void ThemeRefresh()
-        {
-            OnSubThemeChanged();
-        }
-
         public static void WindowShake(Window window = null)
         {
             if (window == null)
@@ -182,6 +117,7 @@ namespace WPFDevelopers.Helpers
             }
             return window;
         }
+
         public static Thickness GetPadding(FrameworkElement element)
         {
             Type elementType = element.GetType();
@@ -208,21 +144,31 @@ namespace WPFDevelopers.Helpers
 
         public static object GetXmlReader(object Content)
         {
-            var originalContent = Content as UIElement;
-            string contentXaml = XamlWriter.Save(originalContent);
-            using (StringReader stringReader = new StringReader(contentXaml))
+            try
             {
-                using (XmlReader xmlReader = XmlReader.Create(stringReader))
+                if (Content is string contentString)
+                    Content = new TextBlock { Text = contentString };
+                var originalContent = Content as UIElement;
+                if (originalContent == null) return null;
+                string contentXaml = XamlWriter.Save(originalContent);
+                using (StringReader stringReader = new StringReader(contentXaml))
                 {
-                    object clonedContent = XamlReader.Load(xmlReader);
-
-                    if (clonedContent is UIElement clonedElement)
+                    using (XmlReader xmlReader = XmlReader.Create(stringReader))
                     {
-                        return clonedElement;
+                        object clonedContent = XamlReader.Load(xmlReader);
+
+                        if (clonedContent is UIElement clonedElement)
+                        {
+                            return clonedElement;
+                        }
                     }
                 }
+                return null;
             }
-            return null;
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

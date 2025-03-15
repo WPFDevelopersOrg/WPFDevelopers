@@ -33,14 +33,14 @@
         </Grid>
     </ControlTemplate>
     <Style x:Key="WD.ScreenCutRectangleStyle" TargetType="{x:Type Rectangle}">
-        <Setter Property="Fill" Value="{DynamicResource WD.BlackSolidColorBrush}" />
+        <Setter Property="Fill" Value="{DynamicResource WD.BlackBrush}" />
         <Setter Property="Opacity" Value=".3" />
     </Style>
     <Style x:Key="WD.ScreenCutEllipseStyle" TargetType="{x:Type Ellipse}">
         <Setter Property="Width" Value="15" />
         <Setter Property="Height" Value="15" />
-        <Setter Property="Fill" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Stroke" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="Fill" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Stroke" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="StrokeThickness" Value="2" />
     </Style>
     <Style
@@ -66,13 +66,13 @@
                             <Border
                                 x:Name="PART_Border"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                BorderBrush="{DynamicResource WD.PrimaryBrush}"
                                 BorderThickness="2"
                                 Cursor="SizeAll" />
                             <Border
                                 x:Name="PART_EditBar"
                                 Panel.ZIndex="99"
-                                Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                                Background="{DynamicResource WD.BackgroundBrush}"
                                 Effect="{StaticResource WD.PopupShadowDepth}"
                                 Visibility="Hidden">
                                 <WrapPanel Margin="10,5" VerticalAlignment="Center">
@@ -84,7 +84,7 @@
                                         <controls:PathIcon
                                             Width="18"
                                             Height="18"
-                                            Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
                                             Kind="Rectangle" />
                                     </RadioButton>
                                     <RadioButton
@@ -96,7 +96,7 @@
                                             Width="19"
                                             Height="19"
                                             SnapsToDevicePixels="True"
-                                            Stroke="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                            Stroke="{DynamicResource WD.RegularTextBrush}"
                                             StrokeThickness="1.5"
                                             UseLayoutRounding="True" />
                                     </RadioButton>
@@ -108,7 +108,7 @@
                                         <controls:PathIcon
                                             Width="18"
                                             Height="18"
-                                            Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
                                             Kind="ArrowRightTop" />
                                     </RadioButton>
                                     <RadioButton
@@ -119,7 +119,7 @@
                                         <controls:PathIcon
                                             Width="18"
                                             Height="18"
-                                            Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
                                             Kind="Ink" />
                                     </RadioButton>
                                     <RadioButton
@@ -130,14 +130,14 @@
                                         <controls:PathIcon
                                             Width="18"
                                             Height="18"
-                                            Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
                                             Kind="Text" />
                                     </RadioButton>
                                     <Rectangle
                                         Width="1"
                                         Height="18"
                                         Margin="4,0"
-                                        Stroke="{DynamicResource WD.SecondaryTextSolidColorBrush}" />
+                                        Stroke="{DynamicResource WD.PrimaryTextBrush}" />
                                     <Button
                                         x:Name="PART_ButtonSave"
                                         Margin="4,0"
@@ -146,7 +146,7 @@
                                         <controls:PathIcon
                                             Width="18"
                                             Height="18"
-                                            Foreground="{DynamicResource WD.RegularTextSolidColorBrush}"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
                                             Kind="Save" />
                                     </Button>
                                     <Button
@@ -157,7 +157,7 @@
                                         <controls:PathIcon
                                             Width="14"
                                             Height="14"
-                                            Foreground="{StaticResource WD.DangerSolidColorBrush}"
+                                            Foreground="{StaticResource WD.DangerBrush}"
                                             Kind="Cancel" />
                                     </Button>
                                     <Button
@@ -168,7 +168,7 @@
                                         <controls:PathIcon
                                             Width="20"
                                             Height="15"
-                                            Foreground="{StaticResource WD.SuccessSolidColorBrush}"
+                                            Foreground="{StaticResource WD.SuccessBrush}"
                                             Kind="Complete" />
                                     </Button>
                                 </WrapPanel>
@@ -181,7 +181,7 @@
                                 <Border
                                     x:Name="PART_PopupBorder"
                                     Margin="10,30,10,10"
-                                    Background="{DynamicResource WD.BackgroundSolidColorBrush}"
+                                    Background="{DynamicResource WD.BackgroundBrush}"
                                     CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                     Effect="{StaticResource WD.PopupShadowDepth}">
                                     <controls:SmallPanel>
@@ -190,7 +190,7 @@
                                             Margin="0,-8,0,0"
                                             VerticalAlignment="Top"
                                             Data="{StaticResource WD.UpperTriangleGeometry}"
-                                            Fill="{DynamicResource WD.BackgroundSolidColorBrush}"
+                                            Fill="{DynamicResource WD.BackgroundBrush}"
                                             SnapsToDevicePixels="True"
                                             Stretch="Uniform"
                                             UseLayoutRounding="True" />

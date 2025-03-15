@@ -27,6 +27,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ElementAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ThumbAngle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\TransformLayout.cs" />
@@ -63,9 +65,9 @@
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationNavigationBar3DExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>AnimationNavigationBar3DExample.xaml</DependentUpon>
+      <DependentUpon>NavMenu3DExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BarrageExample.xaml.cs">
       <SubType>Code</SubType>
@@ -300,6 +302,15 @@
       <SubType>Code</SubType>
       <DependentUpon>MultiSelectSearchComboBoxExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TagExample.xaml.cs">
+      <DependentUpon>TagExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\UsageColor.xaml.cs">
+      <DependentUpon>UsageColor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\UsageGuide.xaml.cs">
+      <DependentUpon>UsageGuide.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\HighTitleBarWindow.xaml.cs">
       <DependentUpon>HighTitleBarWindow.xaml</DependentUpon>
     </Compile>
@@ -524,6 +535,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Theme\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\TransformLayout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -572,7 +587,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationNavigationBar3DExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -829,6 +844,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TagExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\UsageColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\UsageGuide.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\HighTitleBarWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1014,10 +1041,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Light.Carmine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

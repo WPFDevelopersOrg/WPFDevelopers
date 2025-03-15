@@ -28,7 +28,7 @@
                             <Setter Property="VerticalContentAlignment" Value="Center" />
                             <Setter Property="Padding" Value="10,8" />
                             <Setter Property="Visibility" Value="{Binding IsVisible, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -46,11 +46,11 @@
                                         </Border>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="Background" Value="{DynamicResource WD.DefaultBackgroundSolidColorBrush}" />
-                                                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryPressedSolidColorBrush}" />
+                                                <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                                             </Trigger>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
@@ -70,7 +70,7 @@
                     Height="35"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
-                    Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
+                    Fill="{DynamicResource WD.PrimaryBrush}">
                     <Rectangle.RenderTransform>
                         <TranslateTransform x:Name="PART_TranslateTransform" />
                     </Rectangle.RenderTransform>
@@ -85,7 +85,7 @@
         TargetType="{x:Type ListBoxItem}">
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <!--<Setter Property="Padding" Value="10,8" />-->
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -103,10 +103,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryPressedSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverSolidColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -120,13 +120,13 @@
                 Width="{TemplateBinding Width}"
                 Height="3"
                 VerticalAlignment="Bottom"
-                Fill="{DynamicResource WD.LighterSolidColorBrush}" />
+                Fill="{DynamicResource WD.LighterBrush}" />
             <Rectangle
                 Width="{TemplateBinding RectangleSelectWidth}"
                 Height="3"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
+                Fill="{DynamicResource WD.PrimaryBrush}">
                 <Rectangle.RenderTransform>
                     <TranslateTransform x:Name="PART_TranslateTransform" />
                 </Rectangle.RenderTransform>

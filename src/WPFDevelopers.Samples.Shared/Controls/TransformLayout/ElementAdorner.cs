@@ -7,6 +7,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Samples.Controls
@@ -74,7 +75,7 @@ namespace WPFDevelopers.Samples.Controls
         {
             var offset = ThumbSize / 2;
             var sz = new Size(ThumbSize, ThumbSize);
-            var renderPen = new Pen(ControlsHelper.Brush, 2.0);
+            var renderPen = new Pen(ThemeManager.Instance.BackgroundBrush, 2.0);
             var startPoint = new Point(AdornedElement.RenderSize.Width / 2,
                 AdornedElement.RenderSize.Height - AdornedElement.RenderSize.Height);
             var endPoint = new Point(AdornedElement.RenderSize.Width / 2,
@@ -89,7 +90,7 @@ namespace WPFDevelopers.Samples.Controls
             tRotate.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - 10, -(RotateThumbSize - 5)), new Size(20, 20)));
 
             var adornedElementRect = new Rect(AdornedElement.RenderSize);
-            var pen = new Pen(ControlsHelper.Brush, 2);
+            var pen = new Pen(ThemeManager.Instance.BackgroundBrush, 2);
             drawingContext.DrawRectangle(null, pen, adornedElementRect);
         }
 
@@ -160,7 +161,7 @@ namespace WPFDevelopers.Samples.Controls
                 VerticalAlignment = vertical,
                 Template = new ControlTemplate(typeof(Thumb))
                 {
-                    VisualTree = GetFactory(ControlsHelper.Brush)
+                    VisualTree = GetFactory(ThemeManager.Instance.BackgroundBrush)
                 }
             };
 
@@ -305,7 +306,7 @@ namespace WPFDevelopers.Samples.Controls
             var converter = TypeDescriptor.GetConverter(typeof(Geometry));
             var geometry = (Geometry)converter.ConvertFrom(lan);
             var bsh =
-                new DrawingBrush(new GeometryDrawing(ControlsHelper.Brush, new Pen(Brushes.Transparent, 2), geometry));
+                new DrawingBrush(new GeometryDrawing(ThemeManager.Instance.BackgroundBrush, new Pen(Brushes.Transparent, 2), geometry));
             bsh.Stretch = Stretch.Uniform;
             return bsh;
         }

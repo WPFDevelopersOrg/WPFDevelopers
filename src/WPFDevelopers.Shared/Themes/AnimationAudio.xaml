@@ -13,8 +13,8 @@
         TargetType="{x:Type controls:AnimationAudio}">
         <Setter Property="Width" Value="80" />
         <Setter Property="Height" Value="35" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
         <Setter Property="Template">
             <Setter.Value>

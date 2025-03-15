@@ -65,31 +65,37 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(WDMessageBox)));
         }
 
+        void SetResources(double buttonRadius = 0d)
+        {
+            Resources = ThemeManager.Instance.Resources;
+            ButtonCornerRadius = new CornerRadius(buttonRadius);
+        }
+
         public WDMessageBox(string message, double buttonRadius = 0d)
         {
             _messageString = message;
-            ButtonCornerRadius = new CornerRadius(buttonRadius);
+            SetResources(buttonRadius);
         }
 
         public WDMessageBox(string message, string caption, double buttonRadius = 0d)
         {
             _titleString = caption;
             _messageString = message;
-            ButtonCornerRadius = new CornerRadius(buttonRadius);
+            SetResources(buttonRadius);
         }
 
         public WDMessageBox(string message, string caption, MessageBoxButton button, double buttonRadius = 0d)
         {
             _titleString = caption;
             _messageString = message;
-            ButtonCornerRadius = new CornerRadius(buttonRadius);
+            SetResources(buttonRadius);
         }
 
         public WDMessageBox(string message, string caption, MessageBoxImage image, double buttonRadius = 0d)
         {
             _titleString = caption;
             _messageString = message;
-            ButtonCornerRadius = new CornerRadius(buttonRadius);
+            SetResources(buttonRadius);
             DisplayImage(image);
         }
 
@@ -97,7 +103,7 @@ namespace WPFDevelopers.Controls
         {
             _titleString = caption;
             _messageString = message;
-            ButtonCornerRadius = new CornerRadius(buttonRadius);
+            SetResources(buttonRadius);
             DisplayImage(image);
             DisplayButtons(button);
         }
@@ -107,7 +113,6 @@ namespace WPFDevelopers.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             _title = GetTemplateChild(TitleTemplateName) as TextBlock;
             _message = GetTemplateChild(MessageTemplateName) as TextBox;
 
@@ -244,24 +249,20 @@ namespace WPFDevelopers.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
-                    _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.WarningSolidColorBrush");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.WarningGeometry");
+                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.WarningBrush");
                     break;
                 case MessageBoxImage.Error:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.ErrorGeometry");
-                    _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.DangerSolidColorBrush");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.ErrorGeometry");
+                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.DangerBrush");
                     break;
                 case MessageBoxImage.Information:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.WarningGeometry");
-                    _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.SuccessNormalBrush");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.WarningGeometry");
+                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.SuccessBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = (Geometry) Application.Current.TryFindResource("WD.QuestionGeometry");
-                    _solidColorBrush =
-                        (SolidColorBrush) Application.Current.TryFindResource("WD.NormalSolidColorBrush");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.QuestionGeometry");
+                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PrimaryBrush");
                     break;
             }
         }

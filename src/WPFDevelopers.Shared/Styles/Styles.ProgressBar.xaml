@@ -12,7 +12,7 @@
         x:Key="WD.DefaultProgressBar"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type ProgressBar}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Height" Value="{StaticResource WD.RepeatButtonSize}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -41,7 +41,7 @@
                         <controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
                             <Border
                                 x:Name="PART_Border"
-                                Background="{DynamicResource WD.BaseSolidColorBrush}"
+                                Background="{DynamicResource WD.BaseBrush}"
                                 Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" />
                             <Rectangle x:Name="PART_Track" />
                             <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
@@ -52,7 +52,7 @@
                             </Decorator>
                             <Rectangle
                                 x:Name="PART_Rectangle"
-                                Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                Fill="{DynamicResource WD.PrimaryBrush}"
                                 Visibility="Collapsed">
                                 <Rectangle.RenderTransform>
                                     <ScaleTransform />
@@ -97,8 +97,8 @@
                                             <GeometryDrawing>
                                                 <GeometryDrawing.Brush>
                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                        <GradientStop Offset="0" Color="{DynamicResource WD.PrimaryNormalColor}" />
-                                                        <GradientStop Offset="0.5" Color="{DynamicResource WD.PrimaryNormalColor}" />
+                                                        <GradientStop Offset="0" Color="{DynamicResource WD.PrimaryColor}" />
+                                                        <GradientStop Offset="0.5" Color="{DynamicResource WD.PrimaryColor}" />
                                                         <GradientStop Offset="0.5" Color="Transparent" />
                                                         <GradientStop Offset="1" Color="Transparent" />
                                                     </LinearGradientBrush>

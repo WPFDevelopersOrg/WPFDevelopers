@@ -1,26 +1,27 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:Double x:Key="WD.NormalFontSize">13</sys:Double>
+    <sys:Double x:Key="WD.PrimaryFontSize">13</sys:Double>
     <sys:Double x:Key="WD.MediumFontSize">14</sys:Double>
     <sys:Double x:Key="WD.TitleFontSize">16</sys:Double>
 
-    <FontFamily x:Key="WD.NormalFontFamily">
-        Helvetica Neue For Number, 
-        -apple-system, 
-        BlinkMacSystemFont, 
+    <FontFamily x:Key="WD.FontFamily">
+        Helvetica Neue For Number,
+        -apple-system,
+        BlinkMacSystemFont,
         Segoe UI,
-        Roboto, 
-        PingFang SC, 
-        Hiragino Sans GB, 
-        Microsoft YaHei, 
-        Helvetica Neue, 
-        Helvetica, Arial, 
+        Roboto,
+        PingFang SC,
+        Hiragino Sans GB,
+        Microsoft YaHei,
+        Helvetica Neue,
+        Helvetica, Arial,
         sans-serif
     </FontFamily>
 
-    <FontStretch x:Key="WD.NormalFontStretch">Normal</FontStretch>
-    <FontStyle x:Key="WD.NormalFontStyle">Normal</FontStyle>
-    <FontWeight x:Key="WD.NormalFontWeight">Normal</FontWeight>
+    <FontStretch x:Key="WD.FontStretch">Normal</FontStretch>
+    <FontStyle x:Key="WD.FontStyle">Normal</FontStyle>
+    <FontWeight x:Key="WD.FontWeight">Normal</FontWeight>
 </ResourceDictionary>

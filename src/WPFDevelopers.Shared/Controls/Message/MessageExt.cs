@@ -12,6 +12,7 @@ namespace WPFDevelopers.Controls
 
         public MessageExt()
         {
+            Resources = ThemeManager.Instance.Resources;
             SizeToContent = SizeToContent.Width;
             ResizeMode = ResizeMode.NoResize;
             ShowInTaskbar = false;

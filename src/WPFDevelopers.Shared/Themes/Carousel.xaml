@@ -26,6 +26,31 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal" />
+                        <!--<ListBox
+                            x:Name="PART_ListBox"
+                            Margin="0,210,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            ItemContainerStyle="{x:Null}"
+                            ItemsSource="{Binding Path=Children, RelativeSource={RelativeSource AncestorType=controls:MasterCarousel}}"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            Style="{x:Null}">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle
+                                        Width="33"
+                                        Height="3"
+                                        Margin="5"
+                                        Fill="{DynamicResource WD.RegularTextBrush}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>-->
                     </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>

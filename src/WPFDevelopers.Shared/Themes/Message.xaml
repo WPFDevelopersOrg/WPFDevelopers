@@ -11,8 +11,8 @@
         x:Key="WD.MessageListBoxItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:MessageListBoxItem}">
-        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="helpers:ListBoxItemExtensions.AutoRemoveOnOpacityZero" Value="True" />
         <Setter Property="Width" Value="300" />
         <Setter Property="Height" Value="Auto" />
@@ -83,7 +83,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                            Effect="{StaticResource WD.NormalShadowDepth}"
+                            Effect="{StaticResource WD.PrimaryShadowDepth}"
                             SnapsToDevicePixels="True"
                             UseLayoutRounding="True" />
                         <Border Padding="{TemplateBinding Padding}">
@@ -98,7 +98,7 @@
                                         Width="15"
                                         Height="15"
                                         Data="{StaticResource WD.InformationGeometry}"
-                                        Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                        Fill="{DynamicResource WD.PrimaryBrush}"
                                         Stretch="Fill" />
                                     <TextBlock
                                         Grid.Column="1"
@@ -122,7 +122,7 @@
                                     <controls:PathIcon
                                         Width="10"
                                         Height="10"
-                                        Foreground="{DynamicResource WD.SecondaryTextSolidColorBrush}"
+                                        Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                         Kind="WindowClose" />
                                 </Button>
                             </Grid>
@@ -141,23 +141,23 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="MessageType" Value="Warning">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.WarningGeometry}" />
-                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.WarningSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource WD.WarningSolidColorBrush}" />
+                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.WarningBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource WD.WarningBrush}" />
                         </Trigger>
                         <Trigger Property="MessageType" Value="Error">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.ErrorGeometry}" />
-                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.DangerSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource WD.DangerSolidColorBrush}" />
+                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.DangerBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource WD.DangerBrush}" />
                         </Trigger>
                         <Trigger Property="MessageType" Value="Information">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.InformationGeometry}" />
-                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.SuccessNormalBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource WD.SuccessNormalBrush}" />
+                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.SuccessBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource WD.SuccessBrush}" />
                         </Trigger>
                         <Trigger Property="MessageType" Value="Question">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.QuestionGeometry}" />
-                            <Setter TargetName="PART_Path" Property="Fill" Value="{StaticResource WD.NormalSolidColorBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource WD.NormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Path" Property="Fill" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsCenter" Value="True">
                             <Setter TargetName="PART_DockPanel" Property="HorizontalAlignment" Value="Center" />

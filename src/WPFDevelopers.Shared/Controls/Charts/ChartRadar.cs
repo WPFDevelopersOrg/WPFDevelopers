@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -25,7 +26,7 @@ namespace WPFDevelopers.Controls
             _penXAxis = new Pen
             {
                 Thickness = 1,
-                Brush = Application.Current.TryFindResource("WD.ChartXAxisSolidColorBrush") as Brush
+                Brush = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.ChartXAxisBrush"),
             };
             _penXAxis.Freeze();
 
@@ -76,8 +77,7 @@ namespace WPFDevelopers.Controls
 
             PointCache = dicts;
             streamGeometry.Freeze();
-            var color = (Color) Application.Current.TryFindResource("WD.PrimaryNormalColor");
-            var rectBrush = new SolidColorBrush(color);
+            var rectBrush = new SolidColorBrush(ThemeManager.Instance.PrimaryColor);
             rectBrush.Opacity = 0.5;
             rectBrush.Freeze();
             drawingContext.DrawGeometry(rectBrush, myPen, streamGeometry);
@@ -120,7 +120,7 @@ namespace WPFDevelopers.Controls
                 {
                     drawingContext.DrawLine(_penXAxis, p1, p2);
                     var formattedText = DrawingContextHelper.GetFormattedText(item.Key,
-                        ControlsHelper.PrimaryNormalBrush,
+                        ThemeManager.Instance.PrimaryBrush,
                         FlowDirection.LeftToRight, 20.001D);
                     if (p2.Y > center.Y && p2.X < center.X)
                         drawingContext.DrawText(formattedText,

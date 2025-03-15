@@ -15,10 +15,10 @@
         <Setter Property="Padding" Value="4,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -42,7 +42,7 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
                                             Data="{StaticResource WD.CheckMarkGeometry}"
-                                            Fill="{DynamicResource WD.WindowForegroundColorBrush}"
+                                            Fill="{DynamicResource WD.WindowTextBrush}"
                                             RenderTransformOrigin=".5,.5"
                                             SnapsToDevicePixels="False"
                                             Stretch="Fill">
@@ -56,7 +56,7 @@
                                             Height="2"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                            Fill="{DynamicResource WD.PrimaryBrush}"
                                             RenderTransformOrigin=".5,.5">
                                             <Rectangle.RenderTransform>
                                                 <ScaleTransform ScaleX="0" />
@@ -99,8 +99,8 @@
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
                             <Trigger.EnterActions>
@@ -124,7 +124,7 @@
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

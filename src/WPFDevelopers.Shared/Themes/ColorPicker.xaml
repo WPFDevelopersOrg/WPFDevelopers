@@ -40,7 +40,6 @@
             CornerRadius="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
     </ControlTemplate>
 
-
     <Style x:Key="WD.ColorPickerSliderRepeatButtonBaseStyle" TargetType="RepeatButton">
         <Setter Property="OverridesDefaultStyle" Value="true" />
         <Setter Property="Background" Value="Transparent" />
@@ -100,7 +99,6 @@
         </Setter>
     </Style>
 
-
     <Style
         x:Key="WD.ColorPicker"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -109,8 +107,8 @@
         <Setter Property="Height" Value="200" />
         <Setter Property="Margin" Value="2" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ColorPicker}">
@@ -228,19 +226,19 @@
                                         TargetType="{x:Type TextBox}">
                                         <Setter Property="VerticalContentAlignment" Value="Center" />
                                         <Setter Property="TextAlignment" Value="Center" />
-                                        <Setter Property="Width" Value="50" />
+                                        <Setter Property="Width" Value="NaN" />
                                     </Style>
                                     <Style BasedOn="{StaticResource WD.NumericBox}" TargetType="{x:Type controls:NumericBox}">
                                         <Setter Property="VerticalContentAlignment" Value="Center" />
                                         <Setter Property="TextAlignment" Value="Center" />
-                                        <Setter Property="Width" Value="50" />
+                                        <Setter Property="Width" Value="NaN" />
                                         <Setter Property="UpDownButtonsWidth" Value="0" />
                                         <Setter Property="Maximum" Value="255" />
                                         <Setter Property="Minimum" Value="0" />
                                     </Style>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Setter Property="HorizontalAlignment" Value="Center" />
-                                        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextSolidColorBrush}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
                                         <Setter Property="FontSize" Value="10" />
                                     </Style>
                                 </Grid.Resources>

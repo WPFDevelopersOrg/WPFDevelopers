@@ -11,9 +11,9 @@
         x:Key="WD.DefaultGroupBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type GroupBox}">
-        <Setter Property="Padding" Value="{StaticResource WD.DefaultPadding}" />
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseSolidColorBrush}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -26,7 +26,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Border
-                            Background="{DynamicResource WD.LighterSolidColorBrush}"
+                            Background="{DynamicResource WD.LighterBrush}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}"

@@ -11,7 +11,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml.cs" Link="ExampleViews\AboutWindow.xaml.cs" DependentUpon="AboutWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AcrylicBlurWindowExample.xaml.cs" Link="ExampleViews\AcrylicBlurWindowExample.xaml.cs" DependentUpon="AcrylicBlurWindowExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationAudioExample.xaml.cs" Link="ExampleViews\AnimationAudioExample.xaml.cs" DependentUpon="AnimationAudioExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationNavigationBar3DExample.xaml.cs" Link="ExampleViews\AnimationNavigationBar3DExample.xaml.cs" DependentUpon="AnimationNavigationBar3DExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NavMenu3DExample.xaml.cs" Link="ExampleViews\NavMenu3DExample.xaml.cs" DependentUpon="NavMenu3DExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BarrageExample.xaml.cs" Link="ExampleViews\BarrageExample.xaml.cs" DependentUpon="BarrageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartBarExample.xaml.cs" Link="ExampleViews\ChartBarExample.xaml.cs" DependentUpon="ChartBarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BasicControlsExample.xaml.cs" Link="ExampleViews\BasicControlsExample.xaml.cs" DependentUpon="BasicControlsExample.xaml" />
@@ -146,13 +146,16 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartLineExample.xaml.cs" Link="ExampleViews\ChartLineExample.xaml.cs" DependentUpon="ChartLineExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartPieExample.xaml.cs" Link="ExampleViews\ChartPieExample.xaml.cs" DependentUpon="ChartPieExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DrawerExample.xaml.cs" Link="ExampleViews\DrawerExample.xaml.cs" DependentUpon="DrawerExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\\Loadings\StreamerLoading.cs" Link="Controls\Loadings\StreamerLoading.cs"/>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Loadings\StreamerLoading.cs" Link="Controls\Loadings\StreamerLoading.cs"/>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DateRangePickerExample.xaml.cs" Link="ExampleViews\DateRangePickerExample.xaml.cs" DependentUpon="DateRangePickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SpacingExample.xaml.cs" Link="ExampleViews\SpacingExample.xaml.cs" DependentUpon="SpacingExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NotifyIconExample.xaml.cs" Link="ExampleViews\NotifyIconExample.xaml.cs" DependentUpon="NotifyIconExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GaugeExample.xaml.cs" Link="ExampleViews\GaugeExample.xaml.cs" DependentUpon="GaugeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml.cs" Link="ExampleViews\Window\NormalWindow.xaml.cs" DependentUpon="NormalWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml.cs" Link="ExampleViews\Window\HighTitleBarWindow.xaml.cs" DependentUpon="HighTitleBarWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TagExample.xaml.cs" Link="ExampleViews\TagExample.xaml.cs" DependentUpon="TagExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\Theme.cs" Link="Controls\Theme\Theme.cs"/>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeItem.cs" Link="Controls\Theme\ThemeItem.cs"/>
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -164,8 +167,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationAudioExample.xaml">
 			<Link>ExampleViews\AnimationAudioExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationNavigationBar3DExample.xaml">
-			<Link>ExampleViews\AnimationNavigationBar3DExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NavMenu3DExample.xaml">
+			<Link>ExampleViews\NavMenu3DExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BarrageExample.xaml">
 			<Link>ExampleViews\BarrageExample.xaml</Link>
@@ -523,6 +526,12 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml">
 			<Link>ExampleViews\Window\NormalWindow.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TagExample.xaml">
+			<Link>ExampleViews\TagExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\Theme.xaml">
+			<Link>Controls\Theme\Theme.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

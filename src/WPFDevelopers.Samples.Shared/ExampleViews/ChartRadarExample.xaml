@@ -14,7 +14,7 @@
         <Border
             Width="700"
             Height="500"
-            Background="{DynamicResource WD.BackgroundSolidColorBrush}">
+            Background="{DynamicResource WD.BackgroundBrush}">
             <Grid Margin="20,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />

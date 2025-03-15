@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers
 {
@@ -10,12 +11,7 @@ namespace WPFDevelopers
         /// <summary>
         ///     字体资源
         /// </summary>
-        public static FontFamily FontFamily = Application.Current.TryFindResource("WD.NormalFontFamily") as FontFamily;
-
-        /// <summary>
-        ///     默认颜色
-        /// </summary>
-        public static Brush Brush = Application.Current.TryFindResource("WD.PrimaryNormalSolidColorBrush") as Brush;
+        public static FontFamily FontFamily = ThemeManager.Instance.Resources.TryFindResource<FontFamily>("WD.FontFamily");
 
         /// <summary>
         ///     颜色转换
@@ -64,7 +60,7 @@ namespace WPFDevelopers
                 CultureInfo.CurrentCulture,
                 flowDirection,
                 new Typeface(FontFamily, FontStyles.Normal, fontWeight, FontStretches.Normal),
-                textSize, color == null ? Brush : color)
+                textSize, color == null ? ThemeManager.Instance.PrimaryBrush : color)
             {
                 MaxLineCount = 1,
                 TextAlignment = TextAlignment.Justify,

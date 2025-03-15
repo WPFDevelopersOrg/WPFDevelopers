@@ -10,173 +10,86 @@
         Color="#60000000" />
 
     <Color x:Key="WD.ShadowDepthColor" po:Freeze="True">#AA000000</Color>
-    <!--  字体颜色  -->
-    <Color x:Key="WD.PrimaryTextColor" po:Freeze="True">#909399</Color>
-    <SolidColorBrush
-        x:Key="WD.SecondaryTextSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.PrimaryTextColor}" />
+
     <Color x:Key="WD.PlaceholderTextColor" po:Freeze="True">#C0C4CC</Color>
     <SolidColorBrush
-        x:Key="WD.PlaceholderTextSolidColorBrush"
+        x:Key="WD.PlaceholderTextBrush"
         po:Freeze="True"
         Color="{StaticResource WD.PlaceholderTextColor}" />
 
-    <!--  默认MessageBox Icon 颜色  -->
-    <Color x:Key="WD.NormalColor" po:Freeze="True">#409EFF</Color>
+    <!--  PrimaryColor  -->
+    <Color x:Key="WD.PrimaryColor" po:Freeze="True">#409EFF</Color>
     <SolidColorBrush
-        x:Key="WD.NormalSolidColorBrush"
+        x:Key="WD.PrimaryBrush"
         po:Freeze="True"
-        Color="{StaticResource WD.NormalColor}" />
-    <Color x:Key="WD.NormalSuccess" po:Freeze="True">#FF13CE67</Color>
+        Color="{StaticResource WD.PrimaryColor}" />
+
+    <Color x:Key="WD.PrimaryMouseOverColor" po:Freeze="True">#EBF4FF</Color>
     <SolidColorBrush
-        x:Key="WD.SuccessNormalBrush"
+        x:Key="WD.PrimaryMouseOverBrush"
         po:Freeze="True"
-        Color="{StaticResource WD.NormalSuccess}" />
+        Color="{DynamicResource WD.PrimaryMouseOverColor}" />
 
-    <!--  Success颜色  -->
-
-    <Color x:Key="WD.SuccessBorderBrushColor" po:Freeze="True">#99FA68</Color>
+    <!--  SuccessColor  -->
+    <Color x:Key="WD.SuccessColor" po:Freeze="True">#13CE67</Color>
     <SolidColorBrush
-        x:Key="WD.SuccessBorderBrushSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.SuccessBorderBrushColor}" />
-
-    <Color x:Key="WD.SuccessBackgroundColor" po:Freeze="True">#EFFCE9</Color>
-    <SolidColorBrush
-        x:Key="WD.SuccessBackgroundSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.SuccessBackgroundColor}" />
-
-    <Color x:Key="WD.SuccessColor" po:Freeze="True">#67C23A</Color>
-    <SolidColorBrush
-        x:Key="WD.SuccessSolidColorBrush"
+        x:Key="WD.SuccessBrush"
         po:Freeze="True"
         Color="{StaticResource WD.SuccessColor}" />
-
-    <Color x:Key="WD.SuccessMouseOverColor" po:Freeze="True">#85CE61</Color>
+    <Color x:Key="WD.SuccessMouseOverColor" po:Freeze="True">#EFFCE9</Color>
     <SolidColorBrush
-        x:Key="WD.SuccessMouseOverSolidColorBrush"
+        x:Key="WD.SuccessMouseOverBrush"
         po:Freeze="True"
         Color="{StaticResource WD.SuccessMouseOverColor}" />
 
-    <Color x:Key="WD.SuccessPressedColor" po:Freeze="True">#5DAF34</Color>
-    <SolidColorBrush
-        x:Key="WD.SuccessPressedSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.SuccessPressedColor}" />
-
-    <!--  Warning颜色  -->
-    <Color x:Key="WD.WarningBorderBrushColor" po:Freeze="True">#F8DBAF</Color>
-    <SolidColorBrush
-        x:Key="WD.WarningBorderBrushSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.WarningBorderBrushColor}" />
-
-    <Color x:Key="WD.WarningBackgroundColor" po:Freeze="True">#FAF2E5</Color>
-    <SolidColorBrush
-        x:Key="WD.WarningBackgroundSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.WarningBackgroundColor}" />
-
+    <!--  WarningColor  -->
     <Color x:Key="WD.WarningColor" po:Freeze="True">#E6A23C</Color>
     <SolidColorBrush
-        x:Key="WD.WarningSolidColorBrush"
+        x:Key="WD.WarningBrush"
         po:Freeze="True"
         Color="{StaticResource WD.WarningColor}" />
 
-    <Color x:Key="WD.WarningMouseOverColor" po:Freeze="True">#EBB563</Color>
+    <Color x:Key="WD.WarningMouseOverColor" po:Freeze="True">#FAF2E5</Color>
     <SolidColorBrush
-        x:Key="WD.WarningMouseOverSolidColorBrush"
+        x:Key="WD.WarningMouseOverBrush"
         po:Freeze="True"
         Color="{StaticResource WD.WarningMouseOverColor}" />
 
-    <Color x:Key="WD.WarningPressedColor" po:Freeze="True">#CF9236</Color>
-    <SolidColorBrush
-        x:Key="WD.WarningPressedSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.WarningPressedColor}" />
-
-
-    <!--  Danger颜色  -->
-    <Color x:Key="WD.DangerBorderBrushColor" po:Freeze="True">#F88C8C</Color>
-    <SolidColorBrush
-        x:Key="WD.DangerBorderBrushSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.DangerBorderBrushColor}" />
-
-    <Color x:Key="WD.DangerBackgroundColor" po:Freeze="True">#FCE5E5</Color>
-    <SolidColorBrush
-        x:Key="WD.DangerBackgroundSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.DangerBackgroundColor}" />
-
+    <!--  DangerColor  -->
     <Color x:Key="WD.DangerColor" po:Freeze="True">#F56C6C</Color>
     <SolidColorBrush
-        x:Key="WD.DangerSolidColorBrush"
+        x:Key="WD.DangerBrush"
         po:Freeze="True"
         Color="{StaticResource WD.DangerColor}" />
 
-    <Color x:Key="WD.DangerMouseOverColor" po:Freeze="True">#F78989</Color>
+    <Color x:Key="WD.DangerMouseOverColor" po:Freeze="True">#FCE5E5</Color>
     <SolidColorBrush
-        x:Key="WD.DangerMouseOverSolidColorBrush"
+        x:Key="WD.DangerMouseOverBrush"
         po:Freeze="True"
         Color="{StaticResource WD.DangerMouseOverColor}" />
 
-    <Color x:Key="WD.DangerPressedColor" po:Freeze="True">#DD6161</Color>
-    <SolidColorBrush
-        x:Key="WD.DangerPressedSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.DangerPressedColor}" />
-
-    <!--  Info颜色  -->
-    <Color x:Key="WD.InfoColor" po:Freeze="True">#909399</Color>
-    <SolidColorBrush
-        x:Key="WD.InfoSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.InfoColor}" />
-
-    <Color x:Key="WD.InfoMouseOverColor" po:Freeze="True">#A6A9AD</Color>
-    <SolidColorBrush
-        x:Key="WD.InfoMouseOverSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.InfoMouseOverColor}" />
-
-    <Color x:Key="WD.InfoPressedColor" po:Freeze="True">#82848A</Color>
-    <SolidColorBrush
-        x:Key="WD.InfoPressedSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.InfoPressedColor}" />
-
-    <Color x:Key="WD.ExtralightColor" po:Freeze="True">#F2F6FC</Color>
-    <SolidColorBrush
-        x:Key="WD.ExtralightSolidColorBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.ExtralightColor}" />
-
     <Color x:Key="WD.BlackColor" po:Freeze="True">#000000</Color>
     <SolidColorBrush
-        x:Key="WD.BlackSolidColorBrush"
+        x:Key="WD.BlackBrush"
         po:Freeze="True"
         Color="{StaticResource WD.BlackColor}" />
 
     <!--  CircularMenu  -->
-    <Color x:Key="WD.CircularSingularColor" po:Freeze="True">#BAE766</Color>
+    <Color x:Key="WD.CircleMenuColor" po:Freeze="True">#BAE766</Color>
     <SolidColorBrush
-        x:Key="WD.CircularSingularSolidColorBrush"
+        x:Key="WD.CircleMenuBrush"
         po:Freeze="True"
-        Color="{StaticResource WD.CircularSingularColor}" />
+        Color="{StaticResource WD.CircleMenuColor}" />
 
-    <Color x:Key="WD.CircularDualColor" po:Freeze="True">#B0D440</Color>
+    <Color x:Key="WD.CircleMenuDualColor" po:Freeze="True">#B0D440</Color>
     <SolidColorBrush
-        x:Key="WD.CircularDualSolidColorBrush"
+        x:Key="WD.CircleMenuDualBrush"
         po:Freeze="True"
-        Color="{StaticResource WD.CircularDualColor}" />
+        Color="{StaticResource WD.CircleMenuDualColor}" />
 
-
-
-    <RadialGradientBrush x:Key="WD.StarrySkyRadialGradientBrush" po:Freeze="True" Center="0.5,0.3" GradientOrigin="0.5,0" RadiusX="0.7">
+    <RadialGradientBrush x:Key="WD.StarrySkyBrush" po:Freeze="True" Center="0.5,0.3" GradientOrigin="0.5,0" RadiusX="0.7">
         <GradientStop Offset="0" Color="#FF04040E" />
         <GradientStop Offset="1" Color="#FF24315D" />
     </RadialGradientBrush>
+
 </ResourceDictionary>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews.DrawerMenu"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EdgePage"  Background="{DynamicResource WD.PrimaryPressedSolidColorBrush}">
+      Title="EdgePage"  Background="{DynamicResource WD.PrimaryPressedBrush}">
 
     <Grid>
         <StackPanel VerticalAlignment="Center"

@@ -12,7 +12,7 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource WD.WindowForegroundColorBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Margin" Value="2" />

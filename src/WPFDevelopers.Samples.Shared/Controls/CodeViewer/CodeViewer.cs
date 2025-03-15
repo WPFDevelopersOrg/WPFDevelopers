@@ -41,7 +41,7 @@ namespace WPFDevelopers.Samples.Controls
             var partTextEditor = new TextEditor();
             partTextEditor.Options = new TextEditorOptions { ConvertTabsToSpaces = true };
             partTextEditor.TextArea.SelectionCornerRadius = 0;
-            partTextEditor.SetResourceReference(TextArea.SelectionBrushProperty, "WD.WindowBorderBrushSolidColorBrush");
+            partTextEditor.SetResourceReference(TextArea.SelectionBrushProperty, "WD.WindowBorderBrush");
             partTextEditor.TextArea.SelectionBorder = null;
             partTextEditor.TextArea.SelectionForeground = null;
             partTextEditor.IsReadOnly = true;

@@ -27,7 +27,7 @@
                     Content="开启等比缩放"
                     IsChecked="False" />
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="裁剪区域比例:" />
+                    <TextBlock VerticalAlignment="Center" Text="裁剪区域比例:" />
                     <Slider
                         x:Name="myRectScaleSlider"
                         Width="100"
