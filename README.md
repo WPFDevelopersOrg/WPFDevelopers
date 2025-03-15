@@ -64,8 +64,24 @@ Install-Package WPFDevelopers
 ``` XML
 xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ```
+#### 1.1.0.3-preview1 and above versions
 ``` XML
-<Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
+ 			<!--  需要注意 wd:Resources 必须在Theme.xaml后  -->
+ 			<!--  默认情况下，Theme 会跟随系统主题（适用于 Windows 10 及以上版本），自动切换为 Light 或 Dark 模式。
+                              若要手动设置为 Light 模式，可以使用 Theme="Light"。
+                              你还可以自定义主题色，使用 Color="Fuchsia"（例如设置为 Fuchsia）-->
+ 		     <wd:Resources />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+```
+#### 1.1.0.3-preview1 and below versions
+``` XML
+    <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
