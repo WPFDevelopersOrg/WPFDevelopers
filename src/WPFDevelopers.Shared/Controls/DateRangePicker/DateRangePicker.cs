@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using WPFDevelopers.Helpers;
 
@@ -57,6 +58,8 @@ namespace WPFDevelopers.Controls
 
         private int _clickCount;
 
+        private HwndSource _hwndSource;
+        private Window _window;
         private bool _isHandlingSelectionChange;
         private Popup _popup;
         private Calendar _startCalendar, _endCalendar;
@@ -136,13 +139,26 @@ namespace WPFDevelopers.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            _window = Window.GetWindow(this);
+            if (_window != null)
+            {
+                if (_window.IsInitialized)
+                    Window_SourceInitialized(_window, EventArgs.Empty);
+                else
+                {
+                    _window.SourceInitialized -= Window_SourceInitialized;
+                    _window.SourceInitialized += Window_SourceInitialized;
+                }
+            }
             _popup = (Popup)GetTemplateChild(PopupTemplateName);
             if (_popup != null)
             {
                 _popup.Focusable = true;
                 _popup.PlacementTarget = this;
-                _popup.Opened -= Popup_Opened;
-                _popup.Opened += Popup_Opened;
+                _popup.Closed += OnPopup_Closed;
+                _popup.Closed -= OnPopup_Closed;
+                _popup.Opened -= OnPopup_Opened;
+                _popup.Opened += OnPopup_Opened;
             }
 
             AddHandler(PreviewMouseUpEvent, new MouseButtonEventHandler(OnPreviewMouseUp), true);
@@ -287,9 +303,44 @@ namespace WPFDevelopers.Controls
                 _textBoxEnd.Text = EndDate.Value.ToString(DateFormat);
         }
 
-        private void Popup_Opened(object sender, EventArgs e)
+        private void OnPopup_Closed(object sender, EventArgs e)
         {
+            _window.PreviewMouseDown -= Window_PreviewMouseDown;
+        }
+
+        private void Window_SourceInitialized(object sender, EventArgs e)
+        {
+            var window = sender as Window;
+            if (window != null)
+            {
+                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
+                if (_hwndSource != null)
+                {
+                    _hwndSource.AddHook(WndProc);
+                }
+            }
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            const int WM_NCLBUTTONDOWN = 0x00A1;
+            if (msg == WM_NCLBUTTONDOWN)
+            {
+                _popup.IsOpen = false;
+            }
+            return IntPtr.Zero;
+        }
+
+        private void OnPopup_Opened(object sender, EventArgs e)
+        {
+            _window.PreviewMouseDown += Window_PreviewMouseDown;
             PopupOpened();
+        }
+
+        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!IsMouseOver)
+                _popup.IsOpen = false;
         }
 
         private void PopupOpened()
