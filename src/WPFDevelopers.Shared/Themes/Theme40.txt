@@ -30,7 +30,6 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.TreeView.xaml
 ..\Styles\Styles.MessageBox.xaml
 ..\Styles\Styles.Loading.xaml
-..\Styles\Styles.Theme.xaml
 ..\Styles\Styles.GridSplitter.xaml
 ..\Styles\Styles.Label.xaml
 ..\Styles\Styles.RepeatButton.xaml
