@@ -9,7 +9,14 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <wd:Resources Theme="Light" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
+                <!--  需要注意 wd:Resources 必须在Theme.xaml后  -->
+                <!--
+                    默认情况下，Theme 会跟随系统主题（适用于 Windows 10 及以上版本），自动切换为 Light 或 Dark 模式。
+                    若要手动设置为 Light 模式，可以使用 Theme="Light"。
+                    你还可以自定义主题色，使用 Color="Fuchsia"（例如设置为 Fuchsia）
+                -->
+                <wd:Resources />
                 <!--  下方不用拷贝  -->
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CodeViewer/CodeViewer.xaml" />
