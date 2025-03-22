@@ -7,6 +7,7 @@ using System.Windows.Media;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Core;
 using WPFDevelopers.Core.Helpers;
+using WPFDevelopers.Helpers;
 using static WPFDevelopers.Core.Helpers.MonitorHelper;
 
 namespace WPFDevelopers.Net45x
@@ -53,6 +54,8 @@ namespace WPFDevelopers.Net45x
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            var source = (HwndSource)PresentationSource.FromVisual(this);
+            Win32.EnableDarkModeForWindow(source, true);
             _windowStyle = WindowStyle;
             _titleBarIcon = GetTemplateChild(TitleBarIcon) as Button;
             if (_titleBarIcon != null)

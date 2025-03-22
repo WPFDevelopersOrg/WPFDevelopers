@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Interop;
 
 namespace WPFDevelopers.Helpers
 {
@@ -165,6 +166,18 @@ namespace WPFDevelopers.Helpers
         /// <param name="y">纵坐标</param>   
         [DllImport(User32)]
         public extern static void SetCursorPos(int x, int y);
-       
+
+        [DllImport(DwmApi)]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute attr, ref int attrValue, int attrSize);
+        public enum DwmWindowAttribute : uint
+        {
+            UseImmersiveDarkMode = 20,
+        }
+        public static bool EnableDarkModeForWindow(HwndSource source, bool enable)
+        {
+            int darkMode = enable ? 1 : 0;
+            int hr = DwmSetWindowAttribute(source.Handle, DwmWindowAttribute.UseImmersiveDarkMode, ref darkMode, sizeof(int));
+            return hr >= 0;
+        }
     }
 }
