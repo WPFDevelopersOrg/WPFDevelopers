@@ -2,6 +2,7 @@
 using System.Windows.Documents;
 using System.Windows.Media;
 using WPFDevelopers.Core;
+using WPFDevelopers.Helpers;
 using WPFDevelopers.Utilities;
 
 namespace WPFDevelopers.Controls
@@ -125,10 +126,11 @@ namespace WPFDevelopers.Controls
 
             if (value != null)
             {
+                var cornerRadius = ElementHelper.GetCornerRadius(uIElement);
                 adornerContainer.Child = new MaskControl(uIElement)
                 {
+                    CornerRadius = cornerRadius,
                     Content = value, 
-                    //Background = ThemeManager.Instance.BackgroundBrush 
                 };
             }
                 

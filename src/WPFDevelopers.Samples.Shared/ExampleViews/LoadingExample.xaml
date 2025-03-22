@@ -33,9 +33,10 @@
                         wd:Loading.LoadingType="Normal"
                         Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/0.jpg" />
                     <Button
-                        Height="28"
+                        Width="50"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
+                        wd:ElementHelper.IsRound="True"
                         wd:Loading.IsShow="{Binding ElementName=MyCheckBox, Path=IsChecked}"
                         Content="Mask 1" />
                     <Button
