@@ -46,9 +46,9 @@
         po:Freeze="True"
         Color="{StaticResource WD.BaseColor}" />
 
-    <Color x:Key="WD.BaseMoveColor" po:Freeze="True">#202020</Color>
+    <Color x:Key="WD.BaseMoveColor" po:Freeze="True">#42414F</Color>
     <SolidColorBrush
-        x:Key=" WD.BaseMoveBrush"
+        x:Key="WD.BaseMoveBrush"
         po:Freeze="True"
         Color="{StaticResource WD.BaseMoveColor}" />
 
