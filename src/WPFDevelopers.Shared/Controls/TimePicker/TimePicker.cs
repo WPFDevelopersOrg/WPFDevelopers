@@ -3,6 +3,8 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Interop;
 
 namespace WPFDevelopers.Controls
 {
@@ -14,6 +16,10 @@ namespace WPFDevelopers.Controls
         private const string TimeSelectorTemplateName = "PART_TimeSelector";
         private const string EditableTextBoxTemplateName = "PART_EditableTextBox";
         private const string PopupTemplateName = "PART_Popup";
+
+        public static readonly DependencyProperty IsDropDownOpenProperty =
+            DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(TimePicker),
+                new PropertyMetadata(false));
 
         public static readonly DependencyProperty SelectedTimeFormatProperty =
             DependencyProperty.Register("SelectedTimeFormat", typeof(string), typeof(TimePicker),
@@ -32,6 +38,8 @@ namespace WPFDevelopers.Controls
         public static readonly DependencyProperty IsCurrentTimeProperty =
             DependencyProperty.Register("IsCurrentTime", typeof(bool), typeof(TimePicker), new PropertyMetadata(false));
 
+        private HwndSource _hwndSource;
+        private Window _window;
         private DateTime _date;
         private Popup _popup;
         private TextBox _textBox;
@@ -41,6 +49,12 @@ namespace WPFDevelopers.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TimePicker),
                 new FrameworkPropertyMetadata(typeof(TimePicker)));
+        }
+
+        public bool IsDropDownOpen
+        {
+            get => (bool)GetValue(IsDropDownOpenProperty);
+            set => SetValue(IsDropDownOpenProperty, value);
         }
 
         public string SelectedTimeFormat
@@ -95,6 +109,17 @@ namespace WPFDevelopers.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            _window = Window.GetWindow(this);
+            if (_window != null)
+            {
+                if (_window.IsInitialized)
+                    WindowSourceInitialized(_window, EventArgs.Empty);
+                else
+                {
+                    _window.SourceInitialized -= WindowSourceInitialized;
+                    _window.SourceInitialized += WindowSourceInitialized;
+                }
+            }
             _textBox = GetTemplateChild(EditableTextBoxTemplateName) as TextBox;
             if (_textBox != null)
                 _textBox.TextChanged += TextBox_TextChanged;
@@ -117,9 +142,39 @@ namespace WPFDevelopers.Controls
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
             if (_popup != null)
             {
-                _popup.Opened -= Popup_Opened;
-                _popup.Opened += Popup_Opened;
+                _popup.Closed += OnPopup_Closed;
+                _popup.Closed -= OnPopup_Closed;
+                _popup.Opened -= OnPopup_Opened;
+                _popup.Opened += OnPopup_Opened;
             }
+        }
+
+        private void OnPopup_Closed(object sender, EventArgs e)
+        {
+            _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
+        }
+
+        private void WindowSourceInitialized(object sender, EventArgs e)
+        {
+            var window = sender as Window;
+            if (window != null)
+            {
+                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
+                if (_hwndSource != null)
+                {
+                    _hwndSource.AddHook(WndProc);
+                }
+            }
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            const int WM_NCLBUTTONDOWN = 0x00A1;
+            if (msg == WM_NCLBUTTONDOWN)
+            {
+                IsDropDownOpen = false;
+            }
+            return IntPtr.Zero;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -143,10 +198,17 @@ namespace WPFDevelopers.Controls
                 _timeSelector.SelectedTimeChanged += TimeSelector_SelectedTimeChanged;
             }
         }
-        private void Popup_Opened(object sender, EventArgs e)
+
+        private void OnPopup_Opened(object sender, EventArgs e)
         {
+            _window.PreviewMouseDown += OnWindowPreviewMouseDown;
             if (_timeSelector != null)
                 _timeSelector.SetTime();
+        }
+        private void OnWindowPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!IsMouseOver)
+                IsDropDownOpen = false;
         }
 
         private void TimeSelector_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
