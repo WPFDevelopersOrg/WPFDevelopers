@@ -27,7 +27,7 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.ListBox.xaml
 ..\Styles\Styles.ListView.xaml
 ..\Styles\Styles.ProgressBar.xaml
-..\Styles\Styles.TreeView.xaml
+..\..\WPFDevelopers.Net40\Styles\Styles.TreeView.xaml
 ..\Styles\Styles.MessageBox.xaml
 ..\Styles\Styles.Loading.xaml
 ..\Styles\Styles.GridSplitter.xaml

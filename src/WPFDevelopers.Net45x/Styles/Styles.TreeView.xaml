@@ -12,15 +12,28 @@
         x:Key="WD.DefaultTreeView"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type TreeView}">
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="VirtualizingPanel.IsContainerVirtualizable" Value="True" />
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="True" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="TreeView">
+                <ControlTemplate TargetType="{x:Type TreeView}">
                     <controls:WDBorder
                         Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
@@ -29,9 +42,15 @@
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
                         <ScrollViewer
-                            CanContentScroll="False"
+                            x:Name="PART_ScrollViewer"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            CanContentScroll="True"
                             Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}"
-                            Focusable="False">
+                            Focusable="false"
+                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </controls:WDBorder>
@@ -125,13 +144,18 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type TreeViewItem}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource WD.TreeViewItemFocusVisual}" />
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontSize}" />
-        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontWeight}" />
-        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=TreeView}, Path=FontFamily}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
@@ -143,12 +167,12 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <ToggleButton
                             x:Name="Expander"
                             ClickMode="Press"
-                            IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                            IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                             Style="{StaticResource WD.ExpandCollapseToggleStyle}" />
                         <Border
                             x:Name="PART_Border"
@@ -162,7 +186,8 @@
                             <ContentPresenter
                                 x:Name="PART_Header"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                ContentSource="Header" />
+                                ContentSource="Header"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
                         <Border
                             x:Name="PART_ItemsHost"
@@ -206,15 +231,16 @@
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="True" />
-                                <Condition Property="IsSelectionActive" Value="False" />
+                                <Condition SourceName="PART_Border" Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style BasedOn="{StaticResource WD.DefaultTreeView}" TargetType="{x:Type TreeView}" />
     <Style BasedOn="{StaticResource WD.DefaultTreeViewItem}" TargetType="{x:Type TreeViewItem}" />
 </ResourceDictionary>
