@@ -206,17 +206,17 @@
                             x:Name="PART_ToggleButton"
                             Grid.Column="1"
                             Background="{TemplateBinding Background}"
-                            ClickMode="Release"
+                            ClickMode="Press"
                             Focusable="False"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                             Style="{x:Null}"
                             Template="{StaticResource WD.TimePickerToggleButton}" />
                         <Popup
                             x:Name="PART_Popup"
                             AllowsTransparency="True"
-                            IsOpen="{Binding Path=IsChecked, ElementName=PART_ToggleButton}"
+                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                             Placement="Bottom"
-                            PlacementTarget="{Binding ElementName=PART_Border}"
-                            StaysOpen="False">
+                            PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
                             <controls:SmallPanel
                                 x:Name="PART_DropDown"
                                 MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
