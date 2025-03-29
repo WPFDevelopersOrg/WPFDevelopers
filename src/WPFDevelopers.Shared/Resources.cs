@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -132,8 +133,34 @@ namespace WPFDevelopers
 
         void PublishWPFDevelopersExt()
         {
-            if (!File.Exists(Helper.GetTempPathVersionExt))
-                ExportResource(Helper.GetTempPathVersionExt, "GZ.WPFDevelopersExt.exe.gz");
+            try
+            {
+                string exePath = Helper.GetTempPathVersionExt;
+                if (File.Exists(exePath))
+                {
+                    KillExistingProcess("WPFDevelopersExt");
+                    File.Delete(exePath);
+                }
+                if (!File.Exists(exePath))
+                    ExportResource(exePath, "GZ.WPFDevelopersExt.exe.gz");
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"An error occurred while publishing WPFDevelopersExt {ex.Message}");
+            }
+        }
+
+        void KillExistingProcess(string processName)
+        {
+            foreach (var process in Process.GetProcessesByName(processName))
+            {
+                try
+                {
+                    process.Kill();
+                    process.WaitForExit(); 
+                }
+                catch { }
+            }
         }
 
         void ExportResource(string path, string source)
@@ -144,15 +171,15 @@ namespace WPFDevelopers
                 if (!Directory.Exists(Helper.GetTempPathVersion))
                     Directory.CreateDirectory(Helper.GetTempPathVersion);
                 var projectName = Assembly.GetExecutingAssembly().GetName().Name.ToString();
-                var gzStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(projectName + "." + source);
-                var stream = new GZipStream(gzStream, CompressionMode.Decompress);
-                var decompressedFile = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
-                stream.CopyTo(decompressedFile);
-                decompressedFile.Close();
-                stream.Close();
-                gzStream.Close();
+                using (var gzStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(projectName + "." + source))
+                using (var stream = new GZipStream(gzStream, CompressionMode.Decompress))
+                using (var decompressedFile = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    stream.CopyTo(decompressedFile);
+                }
             }
         }
+
 
         protected Uri GetResourceUri(string path)
         {
