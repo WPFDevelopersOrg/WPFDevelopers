@@ -5,7 +5,6 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using WPFDevelopers.Controls;
-using WPFDevelopers.Core;
 using WPFDevelopers.Core.Helpers;
 using WPFDevelopers.Helpers;
 using static WPFDevelopers.Core.Helpers.MonitorHelper;
@@ -43,6 +42,7 @@ namespace WPFDevelopers.Net45x
         public Window()
         {
             Loaded += Window_Loaded;
+            WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow,
                 CanResizeWindow));
@@ -51,11 +51,17 @@ namespace WPFDevelopers.Net45x
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
         }
+
+        private void Resources_ThemeChanged(ThemeType currentTheme)
+        {
+            var isDark = currentTheme == ThemeType.Dark ? true : false;
+            var source = (HwndSource)PresentationSource.FromVisual(this);
+            Win32.EnableDarkModeForWindow(source, isDark);
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            var source = (HwndSource)PresentationSource.FromVisual(this);
-            Win32.EnableDarkModeForWindow(source, true);
             _windowStyle = WindowStyle;
             _titleBarIcon = GetTemplateChild(TitleBarIcon) as Button;
             if (_titleBarIcon != null)

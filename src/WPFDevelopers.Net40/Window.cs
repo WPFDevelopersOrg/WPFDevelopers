@@ -42,6 +42,7 @@ namespace WPFDevelopers.Net40
         public Window()
         {
             Loaded += Window_Loaded;
+            WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow,
                 CanResizeWindow));
@@ -49,6 +50,13 @@ namespace WPFDevelopers.Net40
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
+        }
+
+        private void Resources_ThemeChanged(ThemeType currentTheme)
+        {
+            var isDark = currentTheme == ThemeType.Dark ? true : false;
+            var source = (HwndSource)PresentationSource.FromVisual(this);
+            Win32.EnableDarkModeForWindow(source, isDark);
         }
 
         public override void OnApplyTemplate()
@@ -104,8 +112,6 @@ namespace WPFDevelopers.Net40
         {
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
-            var source = (HwndSource)PresentationSource.FromVisual(this);
-            Win32.EnableDarkModeForWindow(source, true);
             if (TitleBarMode == TitleBarMode.Normal)
                 TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
         }
