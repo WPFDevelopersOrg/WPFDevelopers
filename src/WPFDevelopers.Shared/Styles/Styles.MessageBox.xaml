@@ -20,7 +20,7 @@
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-        <Setter Property="WindowStyle" Value="ToolWindow" />
+        <Setter Property="WindowStyle" Value="None" />
         <Setter Property="FontFamily" Value="{StaticResource WD.FontFamily}" />
         <Setter Property="Template">
             <Setter.Value>
