@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -44,8 +45,11 @@
 
 
             <StackPanel Margin="10,0">
-                <TextBlock Margin="10" Text="ScrollViewerAnimation" />
-                <controls:ScrollViewerAnimation Width="200" MaxHeight="300">
+                <TextBlock Margin="10" Text="wd:WDScrollViewer" />
+                <wd:WDScrollViewer
+                    Width="200"
+                    MaxHeight="300"
+                    IsScrollAnimation="True">
                     <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -56,7 +60,7 @@
                                     <TextBlock
                                         Padding="10"
                                         FontSize="{StaticResource WD.PrimaryFontSize}"
-                                        Foreground="{StaticResource WD.BackgroundBrush}"
+                                        Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                         Text="{Binding Name}" />
                                 </Border>
                             </DataTemplate>
@@ -67,20 +71,12 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                </controls:ScrollViewerAnimation>
+                </wd:WDScrollViewer>
             </StackPanel>
         </WrapPanel>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollViewerAnimationExample.xaml.cs" CodeType="CSharp" />
-            <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ScrollViewer/ScrollViewerAnimation.cs"
-                CodeType="CSharp"
-                Haader="ScrollViewerAnimation.cs" />
-            <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ScrollViewer/ScrollViewerBehavior.cs"
-                CodeType="CSharp"
-                Haader="ScrollViewerBehavior.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
