@@ -685,6 +685,7 @@
                         <TreeView
                             wd:ElementHelper.CornerRadius="3"
                             FontSize="20"
+                            wd:TreeViewHelper.IsScrollAnimation="true"
                             ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                             <TreeView.ItemTemplate>
                                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
