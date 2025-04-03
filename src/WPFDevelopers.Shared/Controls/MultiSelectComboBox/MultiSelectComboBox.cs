@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -172,9 +173,26 @@ namespace WPFDevelopers.Controls
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = (MultiSelectComboBox)d;
-            if (!(bool)e.NewValue)
-                ctrl.Dispatcher.BeginInvoke(new Action(() => { Mouse.Capture(null); }),
-                    DispatcherPriority.Send);
+            if (ctrl == null && !(bool)e.NewValue) return;
+            var ctrlScreenPos = ctrl.PointToScreen(new Point(0, ctrl.ActualHeight));
+            var windowScreenPos = Window.GetWindow(ctrl).PointToScreen(new Point(0, 0));
+            var ctrlBottomToWindowBottom = (windowScreenPos.Y + Window.GetWindow(ctrl).ActualHeight) - ctrlScreenPos.Y;
+            if(ctrlBottomToWindowBottom < ctrl.MaxDropDownHeight)
+            {
+                ctrl._popup.Placement = PlacementMode.Top;
+                ctrl._popup.VerticalOffset = ctrl.ActualHeight;
+            }
+            else
+            {
+                ctrl._popup.Placement = PlacementMode.Bottom;
+                ctrl._popup.VerticalOffset = 0;
+            }
+
+            //ctrl._popup.Placement = ctrlBottomToWindowBottom < ctrl.MaxDropDownHeight ? PlacementMode.Top : PlacementMode.Bottom;
+            //ctrl._popup.VerticalOffset = ctrlBottomToWindowBottom < ctrl.MaxDropDownHeight ? ctrl.ActualHeight : 0;
+            //if (!(bool)e.NewValue)
+            //    ctrl.Dispatcher.BeginInvoke(new Action(() => { Mouse.Capture(null); }),
+            //        DispatcherPriority.Send);
         }
 
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -277,7 +295,6 @@ namespace WPFDevelopers.Controls
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
             }
         }
-
         private void ApplySearchLogic()
         {
             if (Items.Count > 0 && ItemsSource != null)
@@ -323,6 +340,29 @@ namespace WPFDevelopers.Controls
         {
             _window.PreviewMouseDown += OnWindowPreviewMouseDown;
             UpdateTags();
+            Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(() =>
+            {
+                if (_popup == null) return;
+
+                double popupHeight = _panelDropDown.ActualHeight;
+                var controlScreenPos = PointToScreen(new Point(0, RenderSize.Height));
+                var window = Window.GetWindow(this);
+                if (window == null) return;
+
+                var windowScreenPos = window.PointToScreen(new Point(0, 0));
+                double availableBottomSpace = (windowScreenPos.Y + window.ActualHeight) - controlScreenPos.Y;
+                double availableTopSpace = controlScreenPos.Y - windowScreenPos.Y;
+                if (availableBottomSpace < popupHeight && availableTopSpace > popupHeight)
+                {
+                    _popup.Placement = PlacementMode.Top;
+                    _popup.VerticalOffset = -popupHeight - 2;
+                }
+                else
+                {
+                    _popup.Placement = PlacementMode.Bottom;
+                    _popup.VerticalOffset = 0;
+                }
+            }));
         }
 
         private void OnWindowPreviewMouseDown(object sender, MouseButtonEventArgs e)
