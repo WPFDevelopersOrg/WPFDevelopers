@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
-using System.Windows.Threading;
 
 namespace WPFDevelopers.Controls
 {
@@ -62,35 +61,6 @@ namespace WPFDevelopers.Controls
 
         private void AnimateScroll(double toValue)
         {
-
-#if NET40
-double fromValue = VerticalOffset;
-            double duration = 800; 
-            int frameRate = 40;   
-            int totalFrames = (int)(duration / 1000.0 * frameRate);
-            int currentFrame = 0;
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1000.0 / frameRate);
-
-            timer.Tick += (s, e) =>
-            {
-                currentFrame++;
-                double progress = (double)currentFrame / totalFrames;
-                progress = Math.Min(1, progress);
-
-                double easedValue = fromValue + (toValue - fromValue) * EaseOutCubic(progress);
-                ScrollToVerticalOffset(easedValue);
-
-                if (currentFrame >= totalFrames)
-                {
-                    ScrollToVerticalOffset(toValue);
-                    timer.Stop();
-                }
-            };
-
-            timer.Start();
-#else
             BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, null);
             var animation = new DoubleAnimation
             {
@@ -101,12 +71,7 @@ double fromValue = VerticalOffset;
             };
             Timeline.SetDesiredFrameRate(animation, 40);
             BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, animation);
-#endif
 
-        }
-        private double EaseOutCubic(double t)
-        {
-            return 1 - Math.Pow(1 - t, 3);
         }
     }
 }
