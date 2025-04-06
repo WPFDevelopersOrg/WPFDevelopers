@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -20,6 +19,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = PART_SimpleWrapPanel, Type = typeof(Panel))]
     [TemplatePart(Name = CheckBoxTemplateName, Type = typeof(CheckBox))]
     [TemplatePart(Name = TextBoxTemplateName, Type = typeof(TextBox))]
+    [TemplatePart(Name = PART_DropDownPanel, Type = typeof(Panel))]
     [TemplatePart(Name = ListBoxTemplateNameSearch, Type = typeof(ListBox))]
     [TemplatePart(Name = DropDownScrollViewer, Type = typeof(ScrollViewer))]
     [TemplatePart(Name = PART_ItemsPresenter, Type = typeof(ItemsPresenter))]
@@ -30,6 +30,7 @@ namespace WPFDevelopers.Controls
         private const string PART_SimpleWrapPanel = "PART_SimpleWrapPanel";
         private const string CheckBoxTemplateName = "PART_SelectAll";
         private const string TextBoxTemplateName = "PART_TextBox";
+        private const string PART_DropDownPanel = "PART_DropDown";
         private const string ListBoxTemplateNameSearch = "PART_SearchSelector";
         private const string DropDownScrollViewer = "DropDownScrollViewer";
         private const string PART_ItemsPresenter = "PART_ItemsPresenter";
@@ -89,6 +90,7 @@ namespace WPFDevelopers.Controls
         private Panel _panel;
         private ListBox _listBoxSearch;
         private TextBox _textBox;
+        private Panel _panelDropDown;
         private ScrollViewer _scrollViewer;
         private CheckBox _checkBox;
         private string _theLastText;
@@ -173,26 +175,9 @@ namespace WPFDevelopers.Controls
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = (MultiSelectComboBox)d;
-            if (ctrl == null && !(bool)e.NewValue) return;
-            var ctrlScreenPos = ctrl.PointToScreen(new Point(0, ctrl.ActualHeight));
-            var windowScreenPos = Window.GetWindow(ctrl).PointToScreen(new Point(0, 0));
-            var ctrlBottomToWindowBottom = (windowScreenPos.Y + Window.GetWindow(ctrl).ActualHeight) - ctrlScreenPos.Y;
-            if(ctrlBottomToWindowBottom < ctrl.MaxDropDownHeight)
-            {
-                ctrl._popup.Placement = PlacementMode.Top;
-                ctrl._popup.VerticalOffset = ctrl.ActualHeight;
-            }
-            else
-            {
-                ctrl._popup.Placement = PlacementMode.Bottom;
-                ctrl._popup.VerticalOffset = 0;
-            }
-
-            //ctrl._popup.Placement = ctrlBottomToWindowBottom < ctrl.MaxDropDownHeight ? PlacementMode.Top : PlacementMode.Bottom;
-            //ctrl._popup.VerticalOffset = ctrlBottomToWindowBottom < ctrl.MaxDropDownHeight ? ctrl.ActualHeight : 0;
-            //if (!(bool)e.NewValue)
-            //    ctrl.Dispatcher.BeginInvoke(new Action(() => { Mouse.Capture(null); }),
-            //        DispatcherPriority.Send);
+            if (!(bool)e.NewValue)
+                ctrl.Dispatcher.BeginInvoke(new Action(() => { Mouse.Capture(null); }),
+                    DispatcherPriority.Send);
         }
 
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -259,6 +244,8 @@ namespace WPFDevelopers.Controls
                     _window.SourceInitialized += WindowSourceInitialized;
                 }
             }
+            _panelDropDown = GetTemplateChild(PART_DropDownPanel) as Panel;
+
             _popup = GetTemplateChild(PART_Popup) as Popup;
             if (_popup != null && _window != null)
             {
