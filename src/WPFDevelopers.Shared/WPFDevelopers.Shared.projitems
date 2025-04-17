@@ -84,8 +84,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\BaseControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenu.cs" />
@@ -438,10 +436,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\BreathLamp.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\BubblleControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
