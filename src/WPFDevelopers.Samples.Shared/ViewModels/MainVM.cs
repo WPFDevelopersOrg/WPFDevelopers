@@ -64,6 +64,7 @@ namespace WPFDevelopers.Samples.ViewModels
             {
                 NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
             }
+            _navigateMenuItem = NavigateMenuModelList.First();
             NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
             ControlPanel = new NavMenu3DExample();
         }
@@ -98,6 +99,7 @@ namespace WPFDevelopers.Samples.ViewModels
         {
             if (obj == null) return;
             var model = obj as NavigateMenuModel;
+            NavigateMenuItem = model;
             MenuItemSelection(model.Name);
         });
 
