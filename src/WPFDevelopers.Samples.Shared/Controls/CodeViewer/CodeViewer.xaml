@@ -19,31 +19,31 @@
                                 Height="38"
                                 Padding="20,0"
                                 Header="Sample">
-                                <Grid
+                            <Grid
                                     x:Name="AnimatedContent"
                                     Opacity="0"
                                     RenderTransformOrigin="0.5,0.5">
-                                    <Grid.RenderTransform>
-                                        <TranslateTransform X="-100" />
-                                    </Grid.RenderTransform>
-                                    <ContentPresenter Content="{TemplateBinding Content}" />
-                                </Grid>
-                                <TabItem.Triggers>
-                                    <EventTrigger RoutedEvent="TabItem.Loaded">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation
+                                <Grid.RenderTransform>
+                                    <TranslateTransform X="-100" />
+                                </Grid.RenderTransform>
+                                <ContentPresenter Content="{TemplateBinding Content}" />
+                            </Grid>
+                            <TabItem.Triggers>
+                                <EventTrigger RoutedEvent="TabItem.Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
                                                     Storyboard.TargetName="AnimatedContent"
                                                     Storyboard.TargetProperty="Opacity"
                                                     To="1"
                                                     Duration="0:0:0.5" />
-                                                <DoubleAnimation
+                                            <DoubleAnimation
                                                     Storyboard.TargetName="AnimatedContent"
                                                     Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
                                                     To="0"
                                                     Duration="0:0:0.6">
-                                                    <DoubleAnimation.EasingFunction>
-                                                        <ElasticEase
+                                                <DoubleAnimation.EasingFunction>
+                                                    <ElasticEase
                                                             EasingMode="EaseOut"
                                                             Oscillations="2"
                                                             Springiness="3" />
