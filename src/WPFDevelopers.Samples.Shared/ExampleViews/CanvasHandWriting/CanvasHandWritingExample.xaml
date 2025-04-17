@@ -12,7 +12,7 @@
             <Setter Property="Foreground" Value="{StaticResource WD.PrimaryTextBrush}" />
         </Style>
     </UserControl.Resources>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

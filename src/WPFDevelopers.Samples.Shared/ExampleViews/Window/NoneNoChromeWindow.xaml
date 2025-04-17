@@ -50,7 +50,7 @@
             </Button>
         </Grid>
     </wd:Window.TitleBar>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid>
             <TextBlock
                 HorizontalAlignment="Center"

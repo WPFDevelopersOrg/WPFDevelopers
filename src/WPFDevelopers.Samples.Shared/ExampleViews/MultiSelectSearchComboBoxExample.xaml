@@ -15,7 +15,7 @@
     <UserControl.Resources>
         <model:HospitalList x:Key="myHospitalList" />
     </UserControl.Resources>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <UniformGrid
             wd:PanelHelper.Spacing="4"
             Columns="2"

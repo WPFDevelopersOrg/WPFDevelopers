@@ -14,7 +14,7 @@
     <UserControl.DataContext>
         <vm:MainVM />
     </UserControl.DataContext>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <TextBlock Margin="10" Text="ScrollViewer" />

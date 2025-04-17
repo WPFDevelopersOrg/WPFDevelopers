@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              PreviewMouseDown="UserControl_PreviewMouseDown"
              Loaded="UserControl_Loaded">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
     <Viewbox>
         <Grid Width="800" Height="600">
             <Grid x:Name="gArea"

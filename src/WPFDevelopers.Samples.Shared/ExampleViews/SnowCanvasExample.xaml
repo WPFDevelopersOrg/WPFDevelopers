@@ -9,7 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <controls:SnowCanvas Icon="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Snow/SnowTree.png" />
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SnowCanvasExample.xaml" CodeType="Xaml" />

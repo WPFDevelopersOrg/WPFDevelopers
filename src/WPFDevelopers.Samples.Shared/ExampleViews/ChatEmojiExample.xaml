@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <UniformGrid Width="800" Columns="2">
             <Grid Margin="10,0" Background="{StaticResource WD.WarningBrush}">
                 <Grid.RowDefinitions>

@@ -8,7 +8,7 @@
              xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <UniformGrid Columns="2">
             <wd:EdgeLight IsAnimation="{Binding ElementName=myCheckBox,Path=IsChecked}" Margin="10" LineSize="2">
                 <CheckBox Content="EdgeLight" x:Name="myCheckBox"/>

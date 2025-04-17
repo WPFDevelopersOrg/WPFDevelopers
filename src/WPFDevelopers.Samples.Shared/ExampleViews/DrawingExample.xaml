@@ -13,7 +13,7 @@
     <UserControl.DataContext>
         <vm:DrawingExampleVM />
     </UserControl.DataContext>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <UniformGrid Columns="3" Rows="2">
             <controls:DrawingControl Content="反应盘" InnerBackground="{StaticResource WD.SuccessBrush}">
                 <ListBoxItem Content="盘1" />

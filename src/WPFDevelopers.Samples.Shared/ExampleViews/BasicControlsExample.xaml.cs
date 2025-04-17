@@ -39,15 +39,15 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void MainView_Loaded(object sender, RoutedEventArgs e)
         {
+            App.Theme = ThemeManager.Instance.Resources.Theme;
             if (App.Theme == ThemeType.Dark)
                 tbLightDark.IsChecked = true;
             else
                 tbLightDark.IsChecked = false;
-
             myPasswordBox.Password = "WPFDevelopers";
             var time = DateTime.Now;
             UserCollection = new ObservableCollection<UserModel>();
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < 40; i++)
             {
                 UserCollection.Add(new UserModel
                 {

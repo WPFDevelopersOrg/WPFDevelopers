@@ -98,7 +98,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid>
             <map:Map
                 x:Name="map"
