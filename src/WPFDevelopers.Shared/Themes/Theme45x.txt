@@ -54,7 +54,6 @@ SpotLight.xaml
 DrawerMenu.xaml
 CropAvatar.xaml
 StarrySky.xaml
-BubblleControl.xaml
 Magnifier.xaml
 Step.xaml
 MultiSelectComboBox.xaml

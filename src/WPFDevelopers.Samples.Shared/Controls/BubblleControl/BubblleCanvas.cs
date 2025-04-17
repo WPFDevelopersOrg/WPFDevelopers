@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Utilities;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Samples.Controls
 {
     public class BubblleCanvas : Canvas
     {

@@ -13,6 +13,8 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\EmojiHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\CodeViewer.cs" />
@@ -503,6 +505,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

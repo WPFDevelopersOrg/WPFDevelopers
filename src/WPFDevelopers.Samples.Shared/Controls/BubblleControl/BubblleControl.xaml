@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:WPFDevelopers.Controls">
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="Basic/Animations.xaml" />
@@ -19,7 +20,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:BubblleControl">
-                    <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                    <wd:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <Border
                             x:Name="PART_Border"
                             Margin="45"
@@ -58,12 +59,12 @@
                         <ItemsControl x:Name="PART_ListBox" ItemsSource="{TemplateBinding ItemsSource}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <controls:SmallPanel>
-                                        <controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                                    <wd:SmallPanel>
+                                        <wd:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
                                             <Ellipse Fill="{Binding Bg}" Opacity=".4" />
                                             <Ellipse Stroke="{Binding Bg}" StrokeThickness=".8" />
-                                        </controls:SmallPanel>
+                                        </wd:SmallPanel>
                                         <TextBlock
                                             Padding="10,0"
                                             HorizontalAlignment="Center"
@@ -80,7 +81,7 @@
                                                     ToolTip="{Binding Text}" />
                                             </Hyperlink>
                                         </TextBlock>
-                                    </controls:SmallPanel>
+                                    </wd:SmallPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                             <ItemsControl.ItemsPanel>
@@ -89,7 +90,7 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
-                    </controls:SmallPanel>
+                    </wd:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

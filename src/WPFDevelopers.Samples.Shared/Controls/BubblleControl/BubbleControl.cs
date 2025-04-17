@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using WPFDevelopers.Helpers;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Samples.Controls
 {
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = EllipseTemplateName, Type = typeof(Ellipse))]
