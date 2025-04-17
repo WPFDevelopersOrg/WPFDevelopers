@@ -7,6 +7,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CodeViewer}">
+                    <Grid>
                         <TabControl x:Name="PART_TabControl">
                             <TabControl.Resources>
                                 <Style TargetType="TabPanel">
@@ -55,6 +56,11 @@
                             </TabItem>
                         </TabControl>
                         <TextBlock
+                            Margin="10"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Text="{TemplateBinding Header}" />
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter TargetName="PART_TabItemContent" Property="Visibility" Value="Collapsed" />

@@ -6,12 +6,13 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Samples.Controls
 {
     [TemplatePart(Name = TabControlTemplateName, Type = typeof(TabControl))]
-    public class CodeViewer : ContentControl
+    public class CodeViewer : HeaderedContentControl
     {
         private static readonly Type _typeofSelf = typeof(CodeViewer);
         public ObservableCollection<SourceCodeModel> SourceCodes { get; } = new ObservableCollection<SourceCodeModel>();
@@ -22,6 +23,7 @@ namespace WPFDevelopers.Samples.Controls
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf,
                 new FrameworkPropertyMetadata(_typeofSelf));
         }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
