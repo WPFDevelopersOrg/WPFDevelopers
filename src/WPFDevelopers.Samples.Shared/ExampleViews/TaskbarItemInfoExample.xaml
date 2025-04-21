@@ -26,7 +26,7 @@
             <Border
                 Width="20"
                 Height="20"
-                Background="{StaticResource WD.PrimaryPressedBrush}"
+                Background="{StaticResource WD.PrimaryBrush}"
                 BorderBrush="{StaticResource WD.BackgroundBrush}"
                 BorderThickness="2">
                 <TextBlock
