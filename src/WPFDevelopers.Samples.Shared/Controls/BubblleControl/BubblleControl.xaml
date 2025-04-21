@@ -1,12 +1,9 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
-    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
-        <ResourceDictionary Source="Basic/Animations.xaml" />
-    </ResourceDictionary.MergedDictionaries>
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
+
     <Style
         x:Key="WD.BubblleControl"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
