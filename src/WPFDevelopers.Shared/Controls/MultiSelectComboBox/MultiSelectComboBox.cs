@@ -182,6 +182,13 @@ namespace WPFDevelopers.Controls
 
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var ctrl = d as MultiSelectComboBox;
+            if (ctrl != null)
+                ctrl.OnTextChanged((string)e.OldValue, (string)e.NewValue);
+        }
+
+        public virtual void OnTextChanged(string oldValue, string newValue)
+        { 
         }
 
         protected override bool IsItemItsOwnContainerOverride(object item)
@@ -218,7 +225,7 @@ namespace WPFDevelopers.Controls
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
             base.OnItemsSourceChanged(oldValue, newValue);
-            if (_textBox != null) 
+            if (_textBox != null)
                 ApplySearchLogic();
         }
 
@@ -282,17 +289,15 @@ namespace WPFDevelopers.Controls
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
             }
         }
+
         private void ApplySearchLogic()
         {
-            if (Items.Count > 0 && ItemsSource != null)
+            if (Items.Count > 0 && ItemsSource != null && IsSearch)
             {
-                IsSearch = true;
                 _textBox.Visibility = Visibility.Visible;
                 _textBox.TextChanged -= OnTextbox_TextChanged;
                 _textBox.TextChanged += OnTextbox_TextChanged;
             }
-            else
-                IsSearch = false;
         }
 
         private void OnPopup_Closed(object sender, EventArgs e)
