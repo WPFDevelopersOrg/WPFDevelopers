@@ -46,7 +46,7 @@
                     VerticalAlignment="Center"
                     FontFamily="Bahnschrift"
                     FontSize="24"
-                    Foreground="{DynamicResource WD.PrimaryPressedBrush}"
+                    Foreground="{DynamicResource WD.PrimaryBrush}"
                     Text="{Binding ElementName=PART_Thermometer, Path=Value, StringFormat={}{0}℃}" />
             </Grid>
         </Border>
