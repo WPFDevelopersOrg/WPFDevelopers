@@ -120,6 +120,7 @@
 	<Geometry x:Key="WD.TimeGeometry" po:Freeze="True">M512 112c-229.792 0-416 186.24-416 416s186.208 416 416 416c229.728 0 416-186.24 416-416s-186.24-416-416-416zM508.64 864.864c-185.568 0-336-150.432-336-336s150.432-336 336-336c185.536 0 336 150.432 336 336 0 185.568-150.464 336-336 336zM605.76 548.192h-95.36v-161.024c0-17.472-14.176-31.68-31.648-31.68-17.504 0-31.68 14.176-31.68 31.68v192.672c0 17.504 14.176 31.648 31.68 31.648h127.008c17.504 0 31.68-14.144 31.68-31.648 0-17.472-14.176-31.648-31.68-31.648z</Geometry>
 	<Geometry x:Key="WD.DateRangeRightGeometry" po:Freeze="True">M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z</Geometry>
 	<Geometry x:Key="WD.DateGeometry" po:Freeze="True">M13 2h-1v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H6v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H2c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 12H2V5h11v9zM5 3H4V1h1v2zm6 0h-1V1h1v2zM6 7H5V6h1v1zm2 0H7V6h1v1zm2 0H9V6h1v1zm2 0h-1V6h1v1zM4 9H3V8h1v1zm2 0H5V8h1v1zm2 0H7V8h1v1zm2 0H9V8h1v1zm2 0h-1V8h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1zm2 0h-1v-1h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1z</Geometry>
+	<Geometry x:Key="WD.CopyGeometry" po:Freeze="True">M20 109.9988C20 93.43 33.4314 79.998 50 79.998H80L80 99.998H50C44.4772 99.998 40 104.476 40 109.9988L40 249.9988C40 255.5216 44.4772 259.9988 50 259.9988L190 259.9988C195.5228 259.9988 200 255.5216 200 249.9988V219.9996H110C93.4316 219.9996 80 206.5682 80 189.9996V50C80 33.432 93.4316 20 110 20H250C266.568 20 280 33.432 280 50V189.9996C280 206.5682 266.568 219.9996 250 219.9996H220V249.9988C220 266.5674 206.568 279.9988 190 279.9988H50C33.4314 279.9988 20 266.5674 20 249.9988V109.9988zM100 189.9996C100 195.5224 104.4772 199.9996 110 199.9996H250C255.522 199.9996 260 195.5224 260 189.9996V50C260 44.476 255.522 40 250 40H110C104.4772 40 100 44.476 100 50V189.9996z</Geometry>
 	<CubicEase x:Key="WD.CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="WD.PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="WD.ExponentialEaseOut" EasingMode="EaseOut" />
@@ -431,6 +432,7 @@
 		<!--<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />-->
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="{StaticResource WD.Padding}" />
+		<Setter Property="Cursor" Value="Hand" />
 	</Style>
 	<Style x:Key="WD.NormalButton" BasedOn="{StaticResource WD.BaseButton}" TargetType="{x:Type Button}">
 		<Setter Property="Background" Value="Transparent" />
@@ -447,7 +449,7 @@
 							<Setter Property="Background" Value="{DynamicResource WD.ButtonFocusVisualColor}" />
 						</Trigger>
 						<Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
+							<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
 							<Setter TargetName="PART_Border" Property="Width">
 								<Setter.Value>
 									<MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
@@ -485,7 +487,7 @@
 						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True" />
 						<Trigger Property="helpers:ElementHelper.IsRound" Value="True">
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
+							<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
 							<Setter TargetName="PART_Border" Property="Width">
 								<Setter.Value>
 									<MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
@@ -530,7 +532,7 @@
 						</Trigger>
 						<Trigger Property="helpers:ElementHelper.IsRound" Value="True">
 							<Setter Property="Padding" Value="0" />
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
+							<Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource WD.HalfValueConverter}}" />
 							<Setter TargetName="PART_Border" Property="Width">
 								<Setter.Value>
 									<MultiBinding Converter="{StaticResource WD.WidthHeightEqualValueConverter}">
@@ -949,6 +951,9 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="WD.DefaultMenuItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type MenuItem}">
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Style.Triggers>
 			<Trigger Property="Role" Value="TopLevelHeader">
@@ -1818,6 +1823,8 @@
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Background" Value="{DynamicResource WD.PlaceholderTextBrush}" />
 		<Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="FontFamily" Value="{Binding FontFamily, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="FontWeight" Value="{Binding FontWeight, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -1913,6 +1920,7 @@
 		<Setter Property="Width" Value="32" />
 		<Setter Property="Height" Value="32" />
 		<Setter Property="FontSize" Value="12" />
+		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Margin" Value="0,1" />
@@ -1958,6 +1966,7 @@
 							<MultiTrigger.Conditions>
 								<Condition Property="IsSelected" Value="True" />
 								<Condition Property="IsMouseOver" Value="False" />
+								<Condition Property="IsInactive" Value="False" />
 							</MultiTrigger.Conditions>
 							<Setter TargetName="SelectedBackground" Property="Opacity" Value="1" />
 							<Setter TargetName="SelectionBackground" Property="Opacity" Value="0" />
@@ -1996,6 +2005,9 @@
 							<Setter TargetName="SelectedBackground" Property="Opacity" Value="0" />
 							<Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
 						</MultiTrigger>
+						<Trigger Property="IsInactive" Value="True">
+							<Setter Property="IsHitTestVisible" Value="False" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -2385,6 +2397,7 @@
 		<Setter Property="BorderBrush" Value="Transparent" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
 		<Setter Property="Template">
@@ -2414,6 +2427,7 @@
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="ValidationErrorTemplate">
 			<Setter.Value>
@@ -2490,6 +2504,7 @@
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="HorizontalAlignment" Value="Center" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -2533,6 +2548,7 @@
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontSize}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontFamily}" />
 		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=FontWeight}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" />
 		<Setter Property="Template">
@@ -2615,7 +2631,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TabItem}">
-					<controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+					<controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" Cursor="Hand">
 						<Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" />
 						<Grid>
 							<Grid.ColumnDefinitions>
@@ -3176,6 +3192,9 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3249,10 +3268,12 @@
 	<Style x:Key="WD.DefaultGridViewColumnHeader" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type GridViewColumnHeader}">
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3322,6 +3343,9 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
+		<Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
+		<Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
+		<Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -3447,23 +3471,45 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.DefaultProgressBar}" TargetType="{x:Type ProgressBar}" />
 	<Style x:Key="WD.DefaultTreeView" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type TreeView}">
-		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="Padding" Value="{StaticResource WD.Padding}" />
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.PanningMode" Value="Both" />
+		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+		<Setter Property="VirtualizingPanel.IsContainerVirtualizable" Value="True" />
+		<Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+		<Setter Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="True" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="TreeView">
+				<ControlTemplate TargetType="{x:Type TreeView}">
 					<controls:WDBorder Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
-						<ScrollViewer CanContentScroll="False" Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" Focusable="False">
+						<controls:WDScrollViewer x:Name="PART_ScrollViewer" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsScrollAnimation="{Binding Path=(helpers:TreeViewHelper.IsScrollAnimation), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
 							<ItemsPresenter />
-						</ScrollViewer>
+						</controls:WDScrollViewer>
 					</controls:WDBorder>
+					<ControlTemplate.Triggers>
+						<Trigger Property="VirtualizingPanel.IsVirtualizing" Value="True">
+							<Setter TargetName="PART_ScrollViewer" Property="CanContentScroll" Value="True" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
+		<Style.Triggers>
+			<Trigger Property="VirtualizingPanel.IsVirtualizing" Value="True">
+				<Setter Property="ItemsPanel">
+					<Setter.Value>
+						<ItemsPanelTemplate>
+							<VirtualizingStackPanel />
+						</ItemsPanelTemplate>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</Style.Triggers>
 	</Style>
 	<Style x:Key="WD.ExpandCollapseToggleStyle" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
 		<Setter Property="Focusable" Value="False" />
@@ -3519,10 +3565,17 @@
 	</Style>
 	<Style x:Key="WD.DefaultTreeViewItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type TreeViewItem}">
 		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-		<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="FocusVisualStyle" Value="{StaticResource WD.TreeViewItemFocusVisual}" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TreeViewItem}">
@@ -3534,11 +3587,11 @@
 						</Grid.ColumnDefinitions>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
-							<RowDefinition Height="Auto" />
+							<RowDefinition />
 						</Grid.RowDefinitions>
-						<ToggleButton x:Name="Expander" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource WD.ExpandCollapseToggleStyle}" />
+						<ToggleButton x:Name="Expander" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource Mode=TemplatedParent}}" Style="{StaticResource WD.ExpandCollapseToggleStyle}" />
 						<Border x:Name="PART_Border" Grid.Column="1" Grid.ColumnSpan="2" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-							<ContentPresenter x:Name="PART_Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" />
+							<ContentPresenter x:Name="PART_Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 						</Border>
 						<Border x:Name="PART_ItemsHost" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" RenderTransformOrigin=".5,0">
 							<Border.RenderTransform>
@@ -3573,9 +3626,9 @@
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="IsSelected" Value="True" />
-								<Condition Property="IsSelectionActive" Value="False" />
+								<Condition SourceName="PART_Border" Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
-							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
 						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -3595,7 +3648,7 @@
 		<Setter Property="UseLayoutRounding" Value="True" />
 		<Setter Property="TextOptions.TextFormattingMode" Value="Display" />
 		<Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-		<Setter Property="WindowStyle" Value="ToolWindow" />
+		<Setter Property="WindowStyle" Value="None" />
 		<Setter Property="FontFamily" Value="{StaticResource WD.FontFamily}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -5278,62 +5331,6 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.StarrySky}" TargetType="{x:Type controls:StarrySky}" />
-	<Style x:Key="WD.BubblleControl" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="controls:BubblleControl">
-		<Setter Property="Width" Value="400" />
-		<Setter Property="Height" Value="400" />
-		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryTextBrush}" />
-		<Setter Property="BorderBackground" Value="{DynamicResource WD.BaseBrush}" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="controls:BubblleControl">
-					<controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-						<Border x:Name="PART_Border" Margin="45" Background="{TemplateBinding BorderBackground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="400">
-							<Ellipse Margin="20" Fill="{TemplateBinding Background}" />
-						</Border>
-						<Ellipse x:Name="PART_Ellipse" Width="26" Height="26" Margin="0,35,0,0" VerticalAlignment="Top" Fill="{TemplateBinding EarthBackground}" RenderTransformOrigin=".5,.5">
-							<Ellipse.RenderTransform>
-								<RotateTransform x:Name="PART_EllipseRotateTransform" />
-							</Ellipse.RenderTransform>
-							<Ellipse.Triggers>
-								<EventTrigger RoutedEvent="Loaded">
-									<BeginStoryboard>
-										<Storyboard>
-											<DoubleAnimation RepeatBehavior="Forever" Storyboard.TargetProperty="(Ellipse.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="00:00:13" />
-										</Storyboard>
-									</BeginStoryboard>
-								</EventTrigger>
-							</Ellipse.Triggers>
-						</Ellipse>
-						<ItemsControl x:Name="PART_ListBox" ItemsSource="{TemplateBinding ItemsSource}">
-							<ItemsControl.ItemTemplate>
-								<DataTemplate>
-									<controls:SmallPanel>
-										<controls:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-											<Ellipse Fill="{Binding Bg}" Opacity=".4" />
-											<Ellipse Stroke="{Binding Bg}" StrokeThickness=".8" />
-										</controls:SmallPanel>
-										<TextBlock Padding="10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-											<Hyperlink Command="{x:Static controls:BubblleControl.ClickCommand}" CommandParameter="{Binding Text}" FontWeight="Normal" Foreground="{Binding Bg}">
-												<TextBlock Text="{Binding Text}" TextAlignment="Center" TextTrimming="CharacterEllipsis" ToolTip="{Binding Text}" />
-											</Hyperlink>
-										</TextBlock>
-									</controls:SmallPanel>
-								</DataTemplate>
-							</ItemsControl.ItemTemplate>
-							<ItemsControl.ItemsPanel>
-								<ItemsPanelTemplate>
-									<controls:BubblleCanvas />
-								</ItemsPanelTemplate>
-							</ItemsControl.ItemsPanel>
-						</ItemsControl>
-					</controls:SmallPanel>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style BasedOn="{StaticResource WD.BubblleControl}" TargetType="{x:Type controls:BubblleControl}" />
 	<Style x:Key="WD.Magnifier" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:Magnifier}">
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="VerticalAlignment" Value="Top" />
@@ -5535,8 +5532,8 @@
 							</ScrollViewer>
 							<TextBox Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 							<TextBlock x:Name="PART_Watermark" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
-							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Release" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
+							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
@@ -5645,8 +5642,8 @@
 							</Grid.ColumnDefinitions>
 							<TextBox Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 							<TextBlock x:Name="PART_Watermark" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
-							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Release" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
+							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
@@ -6299,8 +6296,8 @@
 						<Border Name="PART_Border" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" />
 						<TextBox x:Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" />
 						<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" Padding="1,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
-						<ToggleButton x:Name="PART_ToggleButton" Grid.Column="1" Background="{TemplateBinding Background}" ClickMode="Release" Focusable="False" Style="{x:Null}" Template="{StaticResource WD.TimePickerToggleButton}" />
-						<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding Path=IsChecked, ElementName=PART_ToggleButton}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_Border}" StaysOpen="False">
+						<ToggleButton x:Name="PART_ToggleButton" Grid.Column="1" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.TimePickerToggleButton}" />
+						<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
 							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<controls:SmallPanel.RenderTransform>
 									<ScaleTransform ScaleY="0" />
@@ -6573,6 +6570,71 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.Tag}" TargetType="{x:Type controls:Tag}" />
+	<DataTemplate x:Key="WD.NavScrollPanelTemplate">
+		<StackPanel Margin="0,0,0,20">
+			<TextBlock Margin="0,0,0,20" FontSize="{DynamicResource WD.TitleFontSize}" Text="{Binding Title}" />
+			<Border Padding="20" Background="{DynamicResource WD.BaseBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:NavScrollPanel}}">
+				<ContentPresenter Content="{Binding Content}" />
+			</Border>
+		</StackPanel>
+	</DataTemplate>
+	<Style x:Key="WD.NavScrollPanelListBoxItem" BasedOn="{StaticResource WD.DefaultListBoxItem}" TargetType="{x:Type ListBoxItem}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ListBoxItem">
+					<controls:SmallPanel>
+						<Border x:Name="PART_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+						</Border>
+						<Rectangle x:Name="PART_Selected" Width="2" HorizontalAlignment="Right" Fill="{DynamicResource WD.PrimaryBrush}" Visibility="Collapsed" />
+					</controls:SmallPanel>
+					<ControlTemplate.Triggers>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="False" />
+								<Condition Property="IsMouseOver" Value="True" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+						</MultiTrigger>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter TargetName="PART_Selected" Property="Visibility" Value="Visible" />
+							<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+							<Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="WD.NavScrollPanel" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:NavScrollPanel}">
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+		<Setter Property="ItemTemplate" Value="{DynamicResource WD.NavScrollPanelTemplate}" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:NavScrollPanel}">
+					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+						<Grid Margin="{TemplateBinding Padding}">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" MinWidth="120" />
+								<ColumnDefinition Width="20" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<ListBox x:Name="PART_ListBox" Padding="10,8" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderThickness="0" ItemContainerStyle="{DynamicResource WD.NavScrollPanelListBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" />
+							<controls:WDScrollViewer x:Name="PART_ScrollViewer" Grid.Column="2" IsScrollAnimation="True" VerticalScrollBarVisibility="Auto">
+								<StackPanel x:Name="PART_ContentPanel" />
+							</controls:WDScrollViewer>
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.NavScrollPanel}" TargetType="{x:Type controls:NavScrollPanel}" />
 	<Style x:Key="WD.DatePickerCalendarStyle" BasedOn="{StaticResource {x:Type Calendar}}" TargetType="{x:Type Calendar}" />
 	<ControlTemplate x:Key="WD.LitePagerControlTemplate" TargetType="{x:Type controls:Pagination}">
 		<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
