@@ -59,7 +59,7 @@ namespace WPFDevelopers.Controls
             e.Handled = true;
         }
 
-        private void AnimateScroll(double toValue)
+        public void AnimateScroll(double toValue, Action onCompleted = null)
         {
             BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, null);
             var animation = new DoubleAnimation
@@ -70,8 +70,8 @@ namespace WPFDevelopers.Controls
                 Duration = TimeSpan.FromMilliseconds(800)
             };
             Timeline.SetDesiredFrameRate(animation, 40);
+            animation.Completed += (s, e) => onCompleted?.Invoke();
             BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, animation);
-
         }
     }
 }
