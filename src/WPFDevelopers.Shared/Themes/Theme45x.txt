@@ -33,6 +33,7 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.GridSplitter.xaml
 ..\Styles\Styles.Label.xaml
 ..\Styles\Styles.RepeatButton.xaml
+..\Styles\Styles.Grid.xaml
 
 ..\Microsoft.Expression.Controls\Themes\Generic.xaml
 ..\Microsoft.Expression.Drawing\Themes\Generic.xaml

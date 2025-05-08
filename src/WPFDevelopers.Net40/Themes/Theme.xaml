@@ -699,6 +699,11 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type wd:Window}">
+					<ControlTemplate.Resources>
+						<Style TargetType="Grid">
+							<Setter Property="Background" Value="Transparent" />
+						</Style>
+					</ControlTemplate.Resources>
 					<Border Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
 						<Grid x:Name="LayoutRoot">
 							<Grid.RowDefinitions>
@@ -3830,6 +3835,10 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.DefaultRepeatButton}" TargetType="{x:Type RepeatButton}" />
+	<Style x:Key="WD.DefaultGrid" TargetType="{x:Type Grid}">
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+	</Style>
+	<Style BasedOn="{StaticResource WD.DefaultGrid}" TargetType="{x:Type Grid}" />
 	<Style TargetType="{x:Type ec:PathListBox}" x:Key="{x:Type ec:PathListBox}">
 		<Setter Property="IsTabStop" Value="False" />
 		<Setter Property="FrameworkElement.UseLayoutRounding" Value="False" />
