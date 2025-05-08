@@ -92,6 +92,7 @@
         DateRangePicker,
         Gauge,
         Tag,
+        NavScrollPanel,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

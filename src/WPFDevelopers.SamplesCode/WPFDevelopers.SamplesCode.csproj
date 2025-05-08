@@ -158,6 +158,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeItem.cs" Link="Controls\Theme\ThemeItem.cs"/>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubbleControl.cs" Link="Controls\BubblleControl\BubbleControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubblleCanvas.cs" Link="Controls\BubblleControl\BubblleCanvas.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NavScrollPanelExample.xaml.cs" Link="ExampleViews\NavScrollPanelExample.xaml.cs" DependentUpon="NavScrollPanelExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -537,6 +538,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubblleControl.xaml">
 			<Link>Controls\BubblleControl\BubblleControl.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NavScrollPanelExample.xaml">
+			<Link>ExampleViews\NavScrollPanelExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>
