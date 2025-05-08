@@ -95,6 +95,7 @@ namespace WPFDevelopers.Controls
         private CheckBox _checkBox;
         private string _theLastText;
         private ItemsPresenter _itemsPresenter;
+        private bool _isUpdating;
 
         private List<object> selectedItems;
         private List<object> selectedList;
@@ -188,7 +189,7 @@ namespace WPFDevelopers.Controls
         }
 
         public virtual void OnTextChanged(string oldValue, string newValue)
-        { 
+        {
         }
 
         protected override bool IsItemItsOwnContainerOverride(object item)
@@ -217,11 +218,14 @@ namespace WPFDevelopers.Controls
                 {
                     SelectedItems.Remove(item);
                 }
-                if (SelectedItemsExt is IList list)
+                if (!_isUpdating)
                 {
-                    list.Clear();
-                    foreach (var itm in SelectedItems.Cast<object>())
-                        list.Add(itm);
+                    if (SelectedItemsExt is IList list)
+                    {
+                        list.Clear();
+                        foreach (var itm in SelectedItems.Cast<object>())
+                            list.Add(itm);
+                    }
                 }
                 SelectionChecked(this);
             }
@@ -668,6 +672,7 @@ namespace WPFDevelopers.Controls
                 var collection = e.NewValue as IList;
                 if (collection.Count <= 0) return;
                 multiSelectComboBox.SelectedItems.Clear();
+                multiSelectComboBox._isUpdating = true;
                 foreach (var item in collection)
                 {
                     var name = multiSelectComboBox.GetPropertyValue(item);
@@ -682,6 +687,7 @@ namespace WPFDevelopers.Controls
                         multiSelectComboBox.SelectedItems.Add(model);
 
                 }
+                multiSelectComboBox._isUpdating = false;
                 multiSelectComboBox.UpdateText();
             }
         }
