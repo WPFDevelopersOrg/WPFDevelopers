@@ -593,7 +593,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### 3DAnimationNavigationBar
+### NavMenu3D
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationNavigationBar3D.gif"/>   
 
