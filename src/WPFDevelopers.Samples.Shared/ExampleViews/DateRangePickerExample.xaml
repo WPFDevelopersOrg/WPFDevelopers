@@ -17,6 +17,7 @@
                 Height="38"
                 VerticalAlignment="Top"
                 EndWatermark="结束日期"
+                IsSyncingDisplayDate="True"
                 StartWatermark="开始日期" />
             <wd:DateRangePicker
                 VerticalAlignment="Top"
@@ -29,11 +30,11 @@
                     Width="240"
                     Height="38"
                     VerticalAlignment="Top"
+                    wd:ElementHelper.IsClear="True"
                     EndDate="{Binding EndDate, RelativeSource={RelativeSource AncestorType=local:DateRangePickerExample}}"
                     EndWatermark="结束日期"
                     StartDate="{Binding StartDate, RelativeSource={RelativeSource AncestorType=local:DateRangePickerExample}}"
-                    StartWatermark="开始日期" 
-                    wd:ElementHelper.IsClear="True"/>
+                    StartWatermark="开始日期" />
                 <Button
                     Width="60"
                     HorizontalAlignment="Center"

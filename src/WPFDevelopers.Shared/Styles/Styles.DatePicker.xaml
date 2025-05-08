@@ -95,6 +95,7 @@
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="True" />
                                 <Condition Property="IsMouseOver" Value="False" />
+                                <Condition Property="IsInactive" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="SelectedBackground" Property="Opacity" Value="1" />
                             <Setter TargetName="SelectionBackground" Property="Opacity" Value="0" />
@@ -133,6 +134,9 @@
                             <Setter TargetName="SelectedBackground" Property="Opacity" Value="0" />
                             <Setter TargetName="SelectionBackground" Property="Opacity" Value=".3" />
                         </MultiTrigger>
+                        <Trigger Property="IsInactive" Value="True">
+                            <Setter Property="IsHitTestVisible" Value="False" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

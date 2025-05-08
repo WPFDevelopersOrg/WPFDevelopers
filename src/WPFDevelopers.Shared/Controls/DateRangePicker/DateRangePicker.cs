@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -56,6 +57,10 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("MaxDropDownHeight", typeof(double), typeof(DateRangePicker),
                 new UIPropertyMetadata(SystemParameters.PrimaryScreenHeight / 2.5, OnMaxDropDownHeightChanged));
 
+        public static readonly DependencyProperty IsSyncingDisplayDateProperty =
+            DependencyProperty.Register(nameof(IsSyncingDisplayDate), typeof(bool), typeof(DateRangePicker),
+                new PropertyMetadata(false, OnIsSyncingDisplayDateChanged));
+
         private int _clickCount;
 
         private HwndSource _hwndSource;
@@ -104,6 +109,12 @@ namespace WPFDevelopers.Controls
             set => SetValue(DateFormatFormatProperty, value);
         }
 
+        public bool IsSyncingDisplayDate
+        {
+            get => (bool)GetValue(IsSyncingDisplayDateProperty);
+            set => SetValue(IsSyncingDisplayDateProperty, value);
+        }
+
         private static void OnStartDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as DateRangePicker;
@@ -124,7 +135,6 @@ namespace WPFDevelopers.Controls
             }
         }
 
-
         private static void OnMaxDropDownHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as DateRangePicker;
@@ -133,6 +143,17 @@ namespace WPFDevelopers.Controls
         }
 
         protected virtual void OnMaxDropDownHeightChanged(double oldValue, double newValue)
+        {
+        }
+
+        private static void OnIsSyncingDisplayDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as DateRangePicker;
+            if (ctrl != null)
+                ctrl.OnIsSyncingDisplayDateChanged((bool)e.OldValue, (bool)e.NewValue);
+        }
+
+        protected virtual void OnIsSyncingDisplayDateChanged(bool oldValue, bool newValue)
         {
         }
 
@@ -166,17 +187,23 @@ namespace WPFDevelopers.Controls
             _startCalendar = (Calendar)GetTemplateChild(StartCalendarTemplateName);
             if (_startCalendar != null)
             {
+                _startCalendar.PreviewMouseUp -= OnCalendar_PreviewMouseUp;
                 _startCalendar.PreviewMouseUp += OnCalendar_PreviewMouseUp;
+                _startCalendar.DisplayDateChanged -= OnStartCalendar_DisplayDateChanged;
                 _startCalendar.DisplayDateChanged += OnStartCalendar_DisplayDateChanged;
-                _startCalendar.SelectedDatesChanged += OnStartCalendar_SelectedDatesChanged;
+                _startCalendar.PreviewMouseUp -= OnStartCalendar_PreviewMouseUp;
+                _startCalendar.PreviewMouseUp += OnStartCalendar_PreviewMouseUp;
             }
 
             _endCalendar = (Calendar)GetTemplateChild(EndCalendarTemplateName);
             if (_endCalendar != null)
             {
+                _endCalendar.PreviewMouseUp -= OnCalendar_PreviewMouseUp;
                 _endCalendar.PreviewMouseUp += OnCalendar_PreviewMouseUp;
+                _endCalendar.DisplayDateChanged -= OnEndCalendar_DisplayDateChanged;
                 _endCalendar.DisplayDateChanged += OnEndCalendar_DisplayDateChanged;
-                _endCalendar.SelectedDatesChanged += OnEndCalendar_SelectedDatesChanged;
+                _endCalendar.PreviewMouseUp -= OnEndCalendar_PreviewMouseUp;
+                _endCalendar.PreviewMouseUp += OnEndCalendar_PreviewMouseUp;
             }
 
             var now = DateTime.Now;
@@ -197,6 +224,75 @@ namespace WPFDevelopers.Controls
             if (_textBoxEnd != null)
                 _textBoxEnd.TextChanged += TextBoxEnd_TextChanged;
             Loaded += DateRangePicker_Loaded;
+        }
+
+        private void OnEndCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (_isHandlingSelectionChange)
+                return;
+            _isHandlingSelectionChange = true;
+            try
+            {
+                var calendar = sender as Calendar;
+                if (e.OriginalSource is FrameworkElement fe)
+                {
+                    var dayButton = FindParent<CalendarDayButton>(fe);
+                    if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
+                    {
+                        if (!calendar.SelectedDates.Contains(clickedDate))
+                        {
+                            var dateTime = clickedDate;
+                            _startCalendar.SelectedDates.Clear();
+                            ResetDate(dateTime);
+                        }
+                    }
+                }
+                SetSelectedDates();
+            }
+            finally
+            {
+                _isHandlingSelectionChange = false;
+            }
+        }
+
+        private void OnStartCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (_isHandlingSelectionChange)
+                return;
+            _isHandlingSelectionChange = true;
+            try
+            {
+                var calendar = sender as Calendar;
+                if (e.OriginalSource is FrameworkElement fe)
+                {
+                    var dayButton = FindParent<CalendarDayButton>(fe);
+                    if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
+                    {
+                        if (!calendar.SelectedDates.Contains(clickedDate))
+                        {
+                            var dateTime = clickedDate;
+                            _endCalendar.SelectedDates.Clear();
+                            ResetDate(dateTime);
+                        }
+                    }
+                }
+                SetSelectedDates();
+            }
+            finally
+            {
+                _isHandlingSelectionChange = false;
+            }
+        }
+
+        private T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            var parent = VisualTreeHelper.GetParent(child);
+            if (parent == null) return null;
+
+            if (parent is T tParent)
+                return tParent;
+
+            return FindParent<T>(parent);
         }
 
         private void OnBorder_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -283,18 +379,6 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private void ClearSelectedDates()
-        {
-            _startCalendar.SelectedDatesChanged -= OnStartCalendar_SelectedDatesChanged;
-            _endCalendar.SelectedDatesChanged -= OnEndCalendar_SelectedDatesChanged;
-            _startCalendar.SelectedDates.Clear();
-            SetIsHighlightFalse(_startCalendarDayButtons);
-            _endCalendar.SelectedDates.Clear();
-            SetIsHighlightFalse(_endCalendarDayButtons);
-            _startCalendar.SelectedDatesChanged += OnStartCalendar_SelectedDatesChanged;
-            _endCalendar.SelectedDatesChanged += OnEndCalendar_SelectedDatesChanged;
-        }
-
         private void DateRangePicker_Loaded(object sender, RoutedEventArgs e)
         {
             if (_textBoxStart != null && StartDate.HasValue)
@@ -327,6 +411,10 @@ namespace WPFDevelopers.Controls
             if (msg == WM_NCLBUTTONDOWN)
             {
                 _popup.IsOpen = false;
+                _startDate = null;
+                _endDate = null;
+                _startCalendar.SelectedDate = null;
+                _endCalendar.SelectedDate = null;
             }
             return IntPtr.Zero;
         }
@@ -340,97 +428,91 @@ namespace WPFDevelopers.Controls
         private void OnWindowPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (!IsMouseOver)
+            {
                 _popup.IsOpen = false;
+                _startDate = null;
+                _endDate = null;
+                _startCalendar.SelectedDate = null;
+                _endCalendar.SelectedDate = null;
+            }
         }
 
         private void PopupOpened()
         {
-            _startCalendar.SelectedDatesChanged -= OnStartCalendar_SelectedDatesChanged;
-            _endCalendar.SelectedDatesChanged -= OnEndCalendar_SelectedDatesChanged;
+            if (IsSyncingDisplayDate)
+            {
+                var btnNext = GetButtonFromCalendar(_startCalendar, true);
+                if (btnNext != null)
+                    btnNext.Visibility = Visibility.Collapsed;
+                var prevBtn = GetButtonFromCalendar(_endCalendar, false);
+                if (prevBtn != null)
+                    prevBtn.Visibility = Visibility.Collapsed;
+            }
             if (StartDate.HasValue)
                 _startDate = StartDate.Value;
             if (EndDate.HasValue)
                 _endDate = EndDate.Value;
             _clickCount = 0;
             SetSelectedDates(EndDate);
-            _startCalendar.SelectedDatesChanged += OnStartCalendar_SelectedDatesChanged;
-            _endCalendar.SelectedDatesChanged += OnEndCalendar_SelectedDatesChanged;
         }
 
         private void OnEndCalendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
         {
+            if (_startCalendar != null)
+            {
+                var selectedDate = _startCalendar.DisplayDate;
+                var target = _endCalendar.DisplayDate.AddMonths(-1);
+                if (_startCalendar.DisplayDate.Year != target.Year
+                    ||
+                    _startCalendar.DisplayDate.Month != target.Month)
+                {
+                    if (IsSyncingDisplayDate)
+                        _startCalendar.DisplayDate = target;
+                    _startCalendar.DisplayDateEnd = target.AddMonths(1).AddDays(-1);
+                }
+                else
+                {
+                    if (!IsSyncingDisplayDate)
+                        _startCalendar.DisplayDateEnd = target.AddMonths(1).AddDays(-1);
+                }
+            }
             if (!_startDate.HasValue || !_endDate.HasValue)
                 return;
+            SetIsHighlightFalse(_endCalendarDayButtons);
             var isYearMonthBetween = IsYearMonthBetween(e.AddedDate.Value, _startDate.Value, _endDate.Value);
-            if (!isYearMonthBetween)
-            {
-                SetIsHighlightFalse(_endCalendarDayButtons);
-            }
-            else
-            {
-                SetIsHighlightFalse(_endCalendarDayButtons);
-                SetSelectedDates();
-            }
+            if (isYearMonthBetween)
+                SetIsHighlight(_endDate.Value);
         }
 
         private void OnStartCalendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
         {
+            if (_endCalendar != null)
+            {
+                
+                var selectedDate = _endCalendar.DisplayDate;
+                var target = _startCalendar.DisplayDate.AddMonths(1);
+                if (_endCalendar.DisplayDate.Year != target.Year
+                    ||
+                    _endCalendar.DisplayDate.Month != target.Month)
+                {
+                    _endCalendar.DisplayDateStart = target;
+                    if (IsSyncingDisplayDate)
+                        _endCalendar.DisplayDate = target;
+                }
+                else
+                {
+                    if (!IsSyncingDisplayDate)
+                        _endCalendar.DisplayDateStart = target;
+                }
+
+            }
             if (!_startDate.HasValue || !_endDate.HasValue)
                 return;
+            SetIsHighlightFalse(_startCalendarDayButtons);
             var isYearMonthBetween = IsYearMonthBetween(e.AddedDate.Value, _startDate.Value, _endDate.Value);
-            if (!isYearMonthBetween)
-            {
-                SetIsHighlightFalse(_startCalendarDayButtons);
-            }
-            else
-            {
-                SetIsHighlightFalse(_startCalendarDayButtons);
-                SetSelectedDates();
-            }
-        }
+            if(isYearMonthBetween)
+                SetIsHighlight(_endDate.Value);
 
-        private void OnStartCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_isHandlingSelectionChange)
-                return;
-            _isHandlingSelectionChange = true;
-            try
-            {
-                if (e.AddedItems.Count > 0)
-                {
-                    var dateTime = Convert.ToDateTime(e.AddedItems[0]);
-                    _endCalendar.SelectedDates.Clear();
-                    ResetDate(dateTime);
-                }
-
-                SetSelectedDates();
-            }
-            finally
-            {
-                _isHandlingSelectionChange = false;
-            }
-        }
-
-        private void OnEndCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_isHandlingSelectionChange)
-                return;
-            _isHandlingSelectionChange = true;
-            try
-            {
-                if (e.AddedItems.Count > 0)
-                {
-                    var dateTime = Convert.ToDateTime(e.AddedItems[0]);
-                    _startCalendar.SelectedDates.Clear();
-                    ResetDate(dateTime);
-                }
-
-                SetSelectedDates();
-            }
-            finally
-            {
-                _isHandlingSelectionChange = false;
-            }
         }
 
         private void OnCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -445,7 +527,24 @@ namespace WPFDevelopers.Controls
         private void OnWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (_popup != null && _popup.IsOpen)
+            {
                 _popup.IsOpen = false;
+                _startDate = null;
+                _endDate = null;
+                _startCalendar.SelectedDate = null;
+                _endCalendar.SelectedDate = null;
+            }
+        }
+
+        private void SetDate()
+        {
+            _popup.IsOpen = false;
+            StartDate = _startDate;
+            EndDate = _endDate;
+            if (_startDate.HasValue)
+                _textBoxStart.Text = _startDate.Value.ToString(DateFormat);
+            if (_endDate.HasValue)
+                _textBoxEnd.Text = _endDate.Value.ToString(DateFormat);
         }
 
         private void OnPreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -493,60 +592,51 @@ namespace WPFDevelopers.Controls
                     _startDate = _endDate.Value;
                     _endDate = temp;
                 }
-
                 _startCalendar.SelectedDates.Clear();
                 _endCalendar.SelectedDates.Clear();
                 var eDate = _endDate;
                 if (endDate.HasValue)
                     eDate = endDate.Value;
-                for (var date = _startDate.Value; date < eDate.Value.AddDays(1); date = date.AddDays(1))
-                {
-                    if (date.Date <= eDate.Value.Date
-                        &&
-                        !_startCalendar.SelectedDates.Contains(date.Date)
-                        &&
-                        date.Date <= _startCalendar.DisplayDateEnd.Value.Date)
-                    {
-                        _startCalendar.SelectedDates.Add(date);
-                        if (date.Date == _startDate.Value.Date || date.Date >= eDate.Value.Date)
-                            continue;
-                        if (_startCalendarDayButtons != null)
-                        {
-                            var day = _startCalendarDayButtons.FirstOrDefault(x =>
-                                x.DataContext is DateTime buttonDate && buttonDate.Date == date.Date);
-                            if (day != null)
-                                DatePickerHelper.SetIsHighlight(day, true);
-                        }
-                    }
-
-                    if (date.Date >= _endCalendar.DisplayDateStart.Value.Date &&
-                        !_endCalendar.SelectedDates.Contains(date.Date))
-                        if (date.Date >= _startDate.Value.Date
-                            &&
-                            !_endCalendar.SelectedDates.Contains(date)
-                            &&
-                            date.Date >= _endCalendar.DisplayDateStart.Value.Date)
-                        {
-                            _endCalendar.SelectedDates.Add(date);
-                            if (date.Date == eDate.Value.Date || date.Date <= _startDate.Value.Date)
-                                continue;
-                            if (_endCalendarDayButtons != null)
-                            {
-                                var day = _endCalendarDayButtons.FirstOrDefault(x =>
-                                    x.DataContext is DateTime buttonDate && buttonDate.Date == date.Date);
-                                if (day != null)
-                                    DatePickerHelper.SetIsHighlight(day, true);
-                            }
-                        }
-                }
-
+                _startCalendar.SelectedDates.AddRange(_startDate.Value, eDate.Value);
+                _endCalendar.SelectedDates.AddRange(_startDate.Value, eDate.Value);
+                SetIsHighlight(eDate.Value);
                 if (_clickCount == 2)
                 {
-                    _popup.IsOpen = false;
-                    StartDate = _startDate;
-                    EndDate = _endDate;
-                    _textBoxStart.Text = _startDate.Value.ToString(DateFormat);
-                    _textBoxEnd.Text = _endDate.Value.ToString(DateFormat);
+                    SetDate();
+                }
+            }
+        }
+
+        private void SetIsHighlight(DateTime endDate)
+        {
+            foreach (var date in _startCalendar.SelectedDates)
+            {
+                if (date.Date == _startDate.Value.Date || date.Date >= endDate.Date)
+                    continue;
+                if (_startCalendarDayButtons != null)
+                {
+                    var day = _startCalendarDayButtons.FirstOrDefault(x =>
+                    x.DataContext is DateTime buttonDate && buttonDate.Date == date.Date);
+                    if (day != null)
+                    {
+                        if (day.DataContext is DateTime dt)
+                            DatePickerHelper.SetIsHighlight(day, (dt.Month == _startCalendar.DisplayDate.Month && dt.Year == _startCalendar.DisplayDate.Year));
+                    }
+                }
+            }
+            foreach (var date in _endCalendar.SelectedDates)
+            {
+                if (date.Date == endDate.Date || date.Date <= _startDate.Value.Date)
+                    continue;
+                if (_endCalendarDayButtons != null)
+                {
+                    var day = _endCalendarDayButtons.FirstOrDefault(x =>
+                        x.DataContext is DateTime buttonDate && buttonDate.Date == date.Date);
+                    if (day != null)
+                    {
+                        if (day.DataContext is DateTime dt)
+                            DatePickerHelper.SetIsHighlight(day, (dt.Month == _endCalendar.DisplayDate.Month && dt.Year == _endCalendar.DisplayDate.Year));
+                    }
                 }
             }
         }
@@ -578,6 +668,20 @@ namespace WPFDevelopers.Controls
                 foreach (var result in GetCalendarDayButtons(child))
                     yield return result;
             }
+        }
+
+        private Button GetButtonFromCalendar(Calendar calendar, bool isNext)
+        {
+            var calendarItemTemplate = calendar.Template.FindName("PART_CalendarItem", calendar) as CalendarItem;
+
+            if (calendarItemTemplate != null)
+            {
+                var buttonName = isNext ? "PART_NextButton" : "PART_PreviousButton";
+                var button = calendarItemTemplate.Template.FindName(buttonName, calendarItemTemplate) as Button;
+                if (button != null)
+                    return button;
+            }
+            return null;
         }
     }
 }
