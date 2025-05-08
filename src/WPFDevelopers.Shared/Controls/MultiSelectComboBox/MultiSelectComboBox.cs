@@ -217,6 +217,12 @@ namespace WPFDevelopers.Controls
                 {
                     SelectedItems.Remove(item);
                 }
+                if (SelectedItemsExt is IList list)
+                {
+                    list.Clear();
+                    foreach (var itm in SelectedItems.Cast<object>())
+                        list.Add(itm);
+                }
                 SelectionChecked(this);
             }
             UpdateText();
