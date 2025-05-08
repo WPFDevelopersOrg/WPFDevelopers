@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid Margin="10">
             <StackPanel Grid.Column="1">
                 <CheckBox
@@ -33,9 +33,10 @@
                         wd:Loading.LoadingType="Normal"
                         Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/0.jpg" />
                     <Button
-                        Height="28"
+                        Width="50"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
+                        wd:ElementHelper.IsRound="True"
                         wd:Loading.IsShow="{Binding ElementName=MyCheckBox, Path=IsChecked}"
                         Content="Mask 1" />
                     <Button

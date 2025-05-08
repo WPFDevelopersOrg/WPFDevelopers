@@ -9,7 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/LoginWindow/LoginWindow.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/LoginWindow/LoginWindow.xaml.cs" CodeType="CSharp" />

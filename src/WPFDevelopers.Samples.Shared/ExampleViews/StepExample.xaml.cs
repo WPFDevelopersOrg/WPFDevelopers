@@ -27,7 +27,6 @@ namespace WPFDevelopers.Samples.ExampleViews
             Steps.Add("Step 2");
             Steps.Add("Step 3");
             Steps.Add("Step 4");
-            this.DataContext = this;
         }
         public ICommand NextCommand => new RelayCommand(new Action<object>((sender) =>
         {

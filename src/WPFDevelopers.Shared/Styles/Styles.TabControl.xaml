@@ -23,7 +23,8 @@
                     <controls:SmallPanel
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Background="{TemplateBinding Background}">
+                        Background="{TemplateBinding Background}"
+                        Cursor="Hand">
                         <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" />
                         <Grid>
                             <Grid.ColumnDefinitions>

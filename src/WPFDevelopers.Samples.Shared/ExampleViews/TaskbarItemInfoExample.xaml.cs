@@ -2,13 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
-    /// <summary>
-    /// TaskbarItemInfoExample.xaml 的交互逻辑
-    /// </summary>
     public partial class TaskbarItemInfoExample
     {
         int iconWidth = 20;
@@ -18,7 +14,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         public TaskbarItemInfoExample()
         {
             InitializeComponent();
-            this.Loaded += (s, e) =>
+            Loaded += (s, e) =>
             {
                 renderTargetBitmap = new RenderTargetBitmap(iconWidth, iconHeight, 96, 96, PixelFormats.Default);
                 contentControl = new ContentControl();

@@ -19,7 +19,7 @@
             <GradientStop Offset="1" Color="#FF007ACC" />
         </LinearGradientBrush>
     </UserControl.Resources>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid
             Width="400"
             Height="650"

@@ -37,6 +37,7 @@
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/NavigateMenu/NavigateMenu.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Loadings/StreamerLoading.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Theme/Theme.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/BubblleControl/BubblleControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="avalonedit:TextEditor">
                 <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />

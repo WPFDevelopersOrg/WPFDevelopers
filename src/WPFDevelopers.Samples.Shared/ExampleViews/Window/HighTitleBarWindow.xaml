@@ -15,7 +15,7 @@
     TitleBarMode="HighTitleBar"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid>
             <TextBlock
                 HorizontalAlignment="Center"

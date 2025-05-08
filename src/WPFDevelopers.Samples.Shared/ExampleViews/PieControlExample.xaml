@@ -9,7 +9,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <StackPanel HorizontalAlignment="Center">
             <WrapPanel Margin="10">
                 <controls:PieControl ArcThickness="1" PieSegmentModels="{Binding PieSegmentModels, RelativeSource={RelativeSource AncestorType=local:PieControlExample}}" />

@@ -7,20 +7,60 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CodeViewer}">
-                    <TabControl x:Name="PART_TabControl">
-                        <TabControl.Resources>
-                            <Style TargetType="TabPanel">
-                                <Setter Property="HorizontalAlignment" Value="Right" />
-                            </Style>
-                        </TabControl.Resources>
-                        <TabItem
-                            x:Name="PART_TabItemContent"
-                            Height="38"
-                            Padding="20,0"
-                            Content="{TemplateBinding Content}"
-                            Header="Sample" />
-
-                    </TabControl>
+                    <Grid>
+                        <TabControl x:Name="PART_TabControl">
+                            <TabControl.Resources>
+                                <Style TargetType="TabPanel">
+                                    <Setter Property="HorizontalAlignment" Value="Right" />
+                                </Style>
+                            </TabControl.Resources>
+                            <TabItem
+                                x:Name="PART_TabItemContent"
+                                Height="38"
+                                Padding="20,0"
+                                Header="Sample">
+                                <Grid
+                                    x:Name="AnimatedContent"
+                                    Opacity="0"
+                                    RenderTransformOrigin="0.5,0.5">
+                                    <Grid.RenderTransform>
+                                        <TranslateTransform X="-100" />
+                                    </Grid.RenderTransform>
+                                    <ContentPresenter Content="{TemplateBinding Content}" />
+                                </Grid>
+                                <TabItem.Triggers>
+                                    <EventTrigger RoutedEvent="TabItem.Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="AnimatedContent"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    To="1"
+                                                    Duration="0:0:0.5" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="AnimatedContent"
+                                                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                                    To="0"
+                                                    Duration="0:0:0.6">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <ElasticEase
+                                                            EasingMode="EaseOut"
+                                                            Oscillations="2"
+                                                            Springiness="3" />
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </TabItem.Triggers>
+                            </TabItem>
+                        </TabControl>
+                        <TextBlock
+                            Margin="10"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Text="{TemplateBinding Header}" />
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter TargetName="PART_TabItemContent" Property="Visibility" Value="Collapsed" />

@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
              mc:Ignorable="d" x:Name="_user"
              d:DesignHeight="450" d:DesignWidth="800">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <StackPanel>
             <Canvas ClipToBounds="True" x:Name="PART_Canvas"
             VerticalAlignment="Top">

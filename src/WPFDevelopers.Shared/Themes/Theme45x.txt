@@ -27,12 +27,13 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.ListBox.xaml
 ..\Styles\Styles.ListView.xaml
 ..\Styles\Styles.ProgressBar.xaml
-..\Styles\Styles.TreeView.xaml
+..\..\WPFDevelopers.Net45x\Styles\Styles.TreeView.xaml
 ..\Styles\Styles.MessageBox.xaml
 ..\Styles\Styles.Loading.xaml
 ..\Styles\Styles.GridSplitter.xaml
 ..\Styles\Styles.Label.xaml
 ..\Styles\Styles.RepeatButton.xaml
+..\Styles\Styles.Grid.xaml
 
 ..\Microsoft.Expression.Controls\Themes\Generic.xaml
 ..\Microsoft.Expression.Drawing\Themes\Generic.xaml
@@ -54,7 +55,6 @@ SpotLight.xaml
 DrawerMenu.xaml
 CropAvatar.xaml
 StarrySky.xaml
-BubblleControl.xaml
 Magnifier.xaml
 Step.xaml
 MultiSelectComboBox.xaml
@@ -71,3 +71,4 @@ TimePicker.xaml
 Drawer.xaml
 DateRangePicker.xaml
 Tag.xaml
+NavScrollPanel.xaml

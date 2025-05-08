@@ -42,12 +42,14 @@ namespace WPFDevelopers.Controls
             visCollec.Add(bc = GetResizeThumb(Cursors.SizeNS, HorizontalAlignment.Center, VerticalAlignment.Bottom));
             visCollec.Add(bl = GetResizeThumb(Cursors.SizeNESW, HorizontalAlignment.Left, VerticalAlignment.Bottom));
         }
-        private static UIElement FindParent(UIElement element)
+
+        private  UIElement FindParent(UIElement element)
         {
             DependencyObject obj = element;
             obj = VisualTreeHelper.GetParent(obj);
             return obj as UIElement;
         }
+
         protected override int VisualChildrenCount => visCollec.Count;
 
         protected override Size ArrangeOverride(Size finalSize)

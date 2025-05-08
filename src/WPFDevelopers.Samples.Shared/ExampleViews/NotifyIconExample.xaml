@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <UniformGrid VerticalAlignment="Center" wd:PanelHelper.Spacing="6">
             <StackPanel Width="200" wd:PanelHelper.Spacing="3">
                 <TextBox

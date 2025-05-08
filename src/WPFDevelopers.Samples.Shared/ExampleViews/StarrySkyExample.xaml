@@ -23,7 +23,7 @@
             <Setter Property="Width" Value="100" />
         </Style>
     </UserControl.Resources>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid>
             <wd:StarrySky Name="myStarrySky" />
             <StackPanel
@@ -64,6 +64,7 @@
                 </StackPanel>
                 <Button
                     Name="btn_render"
+                    Height="40"
                     wd:ElementHelper.CornerRadius="3"
                     Click="btn_render_Click"
                     Content="生成" />

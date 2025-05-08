@@ -12,7 +12,7 @@
     Icon="pack://application:,,,/WPFDevelopers.Samples;component/WPFDevelopers.ico"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid>
             <TextBlock
                 HorizontalAlignment="Center"

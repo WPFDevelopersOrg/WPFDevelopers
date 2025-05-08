@@ -18,6 +18,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = "PART_Selector", Type = typeof(ListBox))]
     [TemplatePart(Name = "PART_SelectAll", Type = typeof(CheckBox))]
     [TemplatePart(Name = "PART_SearchSelector", Type = typeof(ListBox))]
+    [Obsolete("MultiSelectionSearchComboBox is Obsolete,Use MultiSelectComboBox")]
     public class MultiSelectionSearchComboBox : Control
     {
         private const string TextBoxTemplateName = "PART_TextBox";
@@ -203,11 +204,11 @@ namespace WPFDevelopers.Controls
             if (_window != null)
             {
                 if (_window.IsInitialized)
-                    Window_SourceInitialized(_window, EventArgs.Empty);
+                    WindowSourceInitialized(_window, EventArgs.Empty);
                 else
                 {
-                    _window.SourceInitialized -= Window_SourceInitialized;
-                    _window.SourceInitialized += Window_SourceInitialized;
+                    _window.SourceInitialized -= WindowSourceInitialized;
+                    _window.SourceInitialized += WindowSourceInitialized;
                 }
             }
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
@@ -257,15 +258,15 @@ namespace WPFDevelopers.Controls
 
         private void OnPopup_Opened(object sender, EventArgs e)
         {
-            _window.PreviewMouseDown += Window_PreviewMouseDown;
+            _window.PreviewMouseDown += OnWindowPreviewMouseDown;
         }
 
         private void OnPopup_Closed(object sender, EventArgs e)
         {
-            _window.PreviewMouseDown -= Window_PreviewMouseDown;
+            _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
         }
 
-        private void Window_SourceInitialized(object sender, EventArgs e)
+        private void WindowSourceInitialized(object sender, EventArgs e)
         {
             var window = sender as Window;
             if (window != null)
@@ -288,7 +289,7 @@ namespace WPFDevelopers.Controls
             return IntPtr.Zero;
         }
 
-        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void OnWindowPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (!IsMouseOver)
                 IsDropDownOpen = false;

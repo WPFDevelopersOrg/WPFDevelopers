@@ -12,8 +12,8 @@ namespace WPFDevelopers.Converts
             var height = (double) values[1];
             if (width == 0 && height == 0)
                 return 0;
-            var min = Math.Min(width, height);
-            return min;
+            var max = Math.Max(width, height);
+            return max;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

@@ -27,10 +27,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\WDScrollViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Tag\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelector.cs" />
@@ -55,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorTypeToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\CornerRadiusToSurroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\HalfValueConverter.cs" />
@@ -81,8 +86,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\BaseControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenu.cs" />
@@ -318,6 +321,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Grid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.GridSplitter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -390,10 +397,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.TreeView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\AnimationAudio.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -439,10 +442,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\BreathLamp.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\BubblleControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -495,6 +494,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\MultiSelectSearchComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\NavScrollPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -10,14 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <!--<UserControl.Resources>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
-            <Setter Property="FontSize" Value="{StaticResource WD.PrimaryFontSize}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-    </UserControl.Resources>-->
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
@@ -43,27 +36,27 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Margin="0,0,0,10"
-                ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection}" />
+                ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
             <ListBox
                 Grid.Row="1"
                 Grid.Column="2"
                 Margin="0,0,0,10"
-                ItemsSource="{Binding LitePaginationViewModel.PaginationCollection}" />
+                ItemsSource="{Binding LitePaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
 
             <wd:Pagination
                 Grid.Row="2"
                 Grid.Column="0"
-                Count="{Binding NormalPaginationViewModel.Count, Mode=TwoWay}"
-                CountPerPage="{Binding NormalPaginationViewModel.CountPerPage, Mode=TwoWay}"
-                Current="{Binding NormalPaginationViewModel.Current, Mode=TwoWay}"
+                Count="{Binding NormalPaginationViewModel.Count, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"
+                CountPerPage="{Binding NormalPaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                Current="{Binding NormalPaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 IsLite="False" />
 
             <wd:Pagination
                 Grid.Row="2"
                 Grid.Column="2"
-                Count="{Binding LitePaginationViewModel.Count, Mode=TwoWay}"
-                CountPerPage="{Binding LitePaginationViewModel.CountPerPage, Mode=TwoWay}"
-                Current="{Binding LitePaginationViewModel.Current, Mode=TwoWay}"
+                Count="{Binding LitePaginationViewModel.Count, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                CountPerPage="{Binding LitePaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                Current="{Binding LitePaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 IsLite="true" />
         </Grid>
         <controls:CodeViewer.SourceCodes>

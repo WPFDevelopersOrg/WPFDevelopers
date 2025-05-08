@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using WPFDevelopers.Helpers;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Samples.Controls
 {
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = EllipseTemplateName, Type = typeof(Ellipse))]

@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Page Update="Styles\Styles.TreeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\Theme.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -10,7 +10,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid x:Name="PART_Grid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -23,7 +23,7 @@
             <wd:Step
                 x:Name="PART_Step"
                 VerticalAlignment="Center"
-                StepIndex="{Binding Progress}">
+                StepIndex="{Binding Progress, RelativeSource={RelativeSource AncestorType=UserControl}}">
                 <wd:StepItem Content="填写账号" />
                 <wd:StepItem Content="身份验证" />
                 <wd:StepItem Content="设置新密码" />
@@ -31,7 +31,7 @@
             </wd:Step>
             <wd:Step
                 Grid.Column="1"
-                ItemsSource="{Binding Steps}"
+                ItemsSource="{Binding Steps, RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Orientation="Vertical"
                 StepIndex="0" />
             <StackPanel
@@ -40,14 +40,17 @@
                 Margin="10"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                wd:PanelHelper.Spacing="3"
                 Orientation="Horizontal">
                 <Button
-                    Command="{Binding PreviousCommand}"
+                    Width="100"
+                    Command="{Binding PreviousCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     CommandParameter="{Binding ElementName=PART_Grid}"
                     Content="上一步"
                     Style="{StaticResource WD.PrimaryButton}" />
                 <Button
-                    Command="{Binding NextCommand}"
+                    Width="100"
+                    Command="{Binding NextCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     CommandParameter="{Binding ElementName=PART_Grid}"
                     Content="下一步"
                     Style="{StaticResource WD.SuccessPrimaryButton}" />

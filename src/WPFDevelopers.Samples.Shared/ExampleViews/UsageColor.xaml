@@ -11,7 +11,6 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <UserControl.Resources>
-
         <Style TargetType="TextBox">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -21,82 +20,84 @@
             <Setter Property="IsReadOnly" Value="True" />
         </Style>
     </UserControl.Resources>
-    <ScrollViewer HorizontalScrollBarVisibility="Auto">
-        <ItemsControl
-            Width="700"
-            VerticalAlignment="Center"
-            ItemsSource="{Binding Colors}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="6">
-                        <Border
-                            Width="147"
-                            Height="74"
-                            Background="{Binding Brush}"
-                            CornerRadius="3,3,0,0">
-                            <wd:SmallPanel>
-                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock
-                                        FontSize="{StaticResource WD.TitleFontSize}"
-                                        Foreground="{DynamicResource WD.BackgroundBrush}"
-                                        Text="{Binding Name}" />
-                                    <TextBox Text="{Binding ColorCode, Mode=OneWay}" />
-                                </StackPanel>
-                                <Button
-                                    Width="30"
-                                    Height="30"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
-                                    Click="BtnPrimary_Click"
-                                    Style="{StaticResource WD.NormalButton}"
-                                    Tag="{Binding BrushKey}"
-                                    ToolTip="Copy Key">
-                                    <wd:PathIcon
-                                        Width="10"
-                                        Height="10"
-                                        Foreground="{DynamicResource WD.ChartFillBrush}"
-                                        Kind="Copy" />
-                                </Button>
-                            </wd:SmallPanel>
-                        </Border>
-                        <Border Background="{Binding MouseOverBrush}" CornerRadius="0,0,3,3">
-                            <wd:SmallPanel>
-                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                    <TextBlock
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <ItemsControl
+                Width="700"
+                VerticalAlignment="Center"
+                ItemsSource="{Binding Colors}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="6">
+                            <Border
+                                Width="147"
+                                Height="74"
+                                Background="{Binding Brush}"
+                                CornerRadius="3,3,0,0">
+                                <wd:SmallPanel>
+                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock
+                                            FontSize="{StaticResource WD.TitleFontSize}"
+                                            Foreground="{DynamicResource WD.BackgroundBrush}"
+                                            Text="{Binding Name}" />
+                                        <TextBox Text="{Binding ColorCode, Mode=OneWay}" />
+                                    </StackPanel>
+                                    <Button
+                                        Width="30"
+                                        Height="30"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Click="BtnPrimary_Click"
+                                        Style="{StaticResource WD.NormalButton}"
+                                        Tag="{Binding BrushKey}"
+                                        ToolTip="Copy Key">
+                                        <wd:PathIcon
+                                            Width="10"
+                                            Height="10"
+                                            Foreground="{DynamicResource WD.ChartFillBrush}"
+                                            Kind="Copy" />
+                                    </Button>
+                                </wd:SmallPanel>
+                            </Border>
+                            <Border Background="{Binding MouseOverBrush}" CornerRadius="0,0,3,3">
+                                <wd:SmallPanel>
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="12"
+                                            Foreground="Black"
+                                            Text="{Binding MouseOver, Mode=OneWay}" />
+                                        <TextBox
+                                            Foreground="Black"
+                                            IsReadOnly="True"
+                                            Text="{Binding MouseOverColorCode, Mode=OneWay}" />
+                                    </StackPanel>
+                                    <Button
+                                        Width="20"
+                                        Height="20"
+                                        HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
-                                        FontSize="12"
-                                        Foreground="Black"
-                                        Text="{Binding MouseOver, Mode=OneWay}" />
-                                    <TextBox
-                                        Foreground="Black"
-                                        IsReadOnly="True"
-                                        Text="{Binding MouseOverColorCode, Mode=OneWay}" />
-                                </StackPanel>
-                                <Button
-                                    Width="20"
-                                    Height="20"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center"
-                                    Click="BtnMouseOver_Click"
-                                    Style="{StaticResource WD.NormalButton}"
-                                    Tag="{Binding MouseOverKey}"
-                                    ToolTip="Copy Key"
-                                    Visibility="{Binding IsMouseOver, Converter={StaticResource WD.Bool2VisibilityConverter}}">
-                                    <wd:PathIcon
-                                        Width="10"
-                                        Height="6"
-                                        Kind="Copy" />
-                                </Button>
-                            </wd:SmallPanel>
-                        </Border>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </ScrollViewer>
+                                        Click="BtnMouseOver_Click"
+                                        Style="{StaticResource WD.NormalButton}"
+                                        Tag="{Binding MouseOverKey}"
+                                        ToolTip="Copy Key"
+                                        Visibility="{Binding IsMouseOver, Converter={StaticResource WD.Bool2VisibilityConverter}}">
+                                        <wd:PathIcon
+                                            Width="10"
+                                            Height="6"
+                                            Kind="Copy" />
+                                    </Button>
+                                </wd:SmallPanel>
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </controls:CodeViewer>
 </UserControl>

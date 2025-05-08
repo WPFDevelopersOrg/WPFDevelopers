@@ -19,6 +19,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = PART_SimpleWrapPanel, Type = typeof(Panel))]
     [TemplatePart(Name = CheckBoxTemplateName, Type = typeof(CheckBox))]
     [TemplatePart(Name = TextBoxTemplateName, Type = typeof(TextBox))]
+    [TemplatePart(Name = PART_DropDownPanel, Type = typeof(Panel))]
     [TemplatePart(Name = ListBoxTemplateNameSearch, Type = typeof(ListBox))]
     [TemplatePart(Name = DropDownScrollViewer, Type = typeof(ScrollViewer))]
     [TemplatePart(Name = PART_ItemsPresenter, Type = typeof(ItemsPresenter))]
@@ -29,6 +30,7 @@ namespace WPFDevelopers.Controls
         private const string PART_SimpleWrapPanel = "PART_SimpleWrapPanel";
         private const string CheckBoxTemplateName = "PART_SelectAll";
         private const string TextBoxTemplateName = "PART_TextBox";
+        private const string PART_DropDownPanel = "PART_DropDown";
         private const string ListBoxTemplateNameSearch = "PART_SearchSelector";
         private const string DropDownScrollViewer = "DropDownScrollViewer";
         private const string PART_ItemsPresenter = "PART_ItemsPresenter";
@@ -88,6 +90,7 @@ namespace WPFDevelopers.Controls
         private Panel _panel;
         private ListBox _listBoxSearch;
         private TextBox _textBox;
+        private Panel _panelDropDown;
         private ScrollViewer _scrollViewer;
         private CheckBox _checkBox;
         private string _theLastText;
@@ -179,6 +182,13 @@ namespace WPFDevelopers.Controls
 
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var ctrl = d as MultiSelectComboBox;
+            if (ctrl != null)
+                ctrl.OnTextChanged((string)e.OldValue, (string)e.NewValue);
+        }
+
+        public virtual void OnTextChanged(string oldValue, string newValue)
+        { 
         }
 
         protected override bool IsItemItsOwnContainerOverride(object item)
@@ -207,6 +217,12 @@ namespace WPFDevelopers.Controls
                 {
                     SelectedItems.Remove(item);
                 }
+                if (SelectedItemsExt is IList list)
+                {
+                    list.Clear();
+                    foreach (var itm in SelectedItems.Cast<object>())
+                        list.Add(itm);
+                }
                 SelectionChecked(this);
             }
             UpdateText();
@@ -215,7 +231,7 @@ namespace WPFDevelopers.Controls
         protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
         {
             base.OnItemsSourceChanged(oldValue, newValue);
-            if (_textBox != null) 
+            if (_textBox != null)
                 ApplySearchLogic();
         }
 
@@ -234,13 +250,15 @@ namespace WPFDevelopers.Controls
             if (_window != null)
             {
                 if (_window.IsInitialized)
-                    Window_SourceInitialized(_window, EventArgs.Empty);
+                    WindowSourceInitialized(_window, EventArgs.Empty);
                 else
                 {
-                    _window.SourceInitialized -= Window_SourceInitialized;
-                    _window.SourceInitialized += Window_SourceInitialized;
+                    _window.SourceInitialized -= WindowSourceInitialized;
+                    _window.SourceInitialized += WindowSourceInitialized;
                 }
             }
+            _panelDropDown = GetTemplateChild(PART_DropDownPanel) as Panel;
+
             _popup = GetTemplateChild(PART_Popup) as Popup;
             if (_popup != null && _window != null)
             {
@@ -280,23 +298,20 @@ namespace WPFDevelopers.Controls
 
         private void ApplySearchLogic()
         {
-            if (Items.Count > 0 && ItemsSource != null)
+            if (Items.Count > 0 && ItemsSource != null && IsSearch)
             {
-                IsSearch = true;
                 _textBox.Visibility = Visibility.Visible;
                 _textBox.TextChanged -= OnTextbox_TextChanged;
                 _textBox.TextChanged += OnTextbox_TextChanged;
             }
-            else
-                IsSearch = false;
         }
 
         private void OnPopup_Closed(object sender, EventArgs e)
         {
-            _window.PreviewMouseDown -= Window_PreviewMouseDown;
+            _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
         }
 
-        private void Window_SourceInitialized(object sender, EventArgs e)
+        private void WindowSourceInitialized(object sender, EventArgs e)
         {
             var window = sender as Window;
             if (window != null)
@@ -321,11 +336,34 @@ namespace WPFDevelopers.Controls
 
         private void OnPopup_Opened(object sender, EventArgs e)
         {
-            _window.PreviewMouseDown += Window_PreviewMouseDown;
+            _window.PreviewMouseDown += OnWindowPreviewMouseDown;
             UpdateTags();
+            Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(() =>
+            {
+                if (_popup == null) return;
+
+                double popupHeight = _panelDropDown.ActualHeight;
+                var controlScreenPos = PointToScreen(new Point(0, RenderSize.Height));
+                var window = Window.GetWindow(this);
+                if (window == null) return;
+
+                var windowScreenPos = window.PointToScreen(new Point(0, 0));
+                double availableBottomSpace = (windowScreenPos.Y + window.ActualHeight) - controlScreenPos.Y;
+                double availableTopSpace = controlScreenPos.Y - windowScreenPos.Y;
+                if (availableBottomSpace < popupHeight && availableTopSpace > popupHeight)
+                {
+                    _popup.Placement = PlacementMode.Top;
+                    _popup.VerticalOffset = -popupHeight - 2;
+                }
+                else
+                {
+                    _popup.Placement = PlacementMode.Bottom;
+                    _popup.VerticalOffset = 0;
+                }
+            }));
         }
 
-        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void OnWindowPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (!IsMouseOver)
                 IsDropDownOpen = false;

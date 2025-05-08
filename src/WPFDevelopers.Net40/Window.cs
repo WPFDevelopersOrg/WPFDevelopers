@@ -7,6 +7,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Core.Helpers;
+using WPFDevelopers.Helpers;
 using static WPFDevelopers.Core.Helpers.MonitorHelper;
 
 namespace WPFDevelopers.Net40
@@ -41,6 +42,7 @@ namespace WPFDevelopers.Net40
         public Window()
         {
             Loaded += Window_Loaded;
+            WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow,
                 CanResizeWindow));
@@ -48,6 +50,13 @@ namespace WPFDevelopers.Net40
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
+        }
+
+        private void Resources_ThemeChanged(ThemeType currentTheme)
+        {
+            var isDark = currentTheme == ThemeType.Dark ? true : false;
+            var source = (HwndSource)PresentationSource.FromVisual(this);
+            Win32.EnableDarkModeForWindow(source, isDark);
         }
 
         public override void OnApplyTemplate()

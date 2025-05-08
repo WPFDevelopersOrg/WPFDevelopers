@@ -13,7 +13,6 @@ namespace WPFDevelopers.Samples.ExampleViews
         public PaginationExample()
         {
             InitializeComponent();
-            this.DataContext = this;
         }
     }
 }

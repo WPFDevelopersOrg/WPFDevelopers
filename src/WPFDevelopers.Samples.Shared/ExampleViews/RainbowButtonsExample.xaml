@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <FontFamily x:Key="Fixedsys">/WPFDevelopers.Samples;component/Resources/Fonts/fixedsys.ttf#Fixedsys Excelsior 3.01</FontFamily>
     </UserControl.Resources>
-    <controls:CodeViewer>
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <UniformGrid Rows="2">
             <controls:RainbowAppleButton Content="Apple!" FontFamily="{StaticResource Fixedsys}" />
             <controls:RainbowAppleButtonWithGlow FontFamily="{StaticResource Fixedsys}" />
