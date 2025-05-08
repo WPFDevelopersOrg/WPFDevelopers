@@ -133,20 +133,23 @@ namespace WPFDevelopers
 
         void PublishWPFDevelopersExt()
         {
-            try
+            lock (typeof(Resources))
             {
-                string exePath = Helper.GetTempPathVersionExt;
-                if (File.Exists(exePath))
+                try
                 {
-                    KillExistingProcess("WPFDevelopersExt");
-                    File.Delete(exePath);
+                    string exePath = Helper.GetTempPathVersionExt;
+                    if (File.Exists(exePath))
+                    {
+                        KillExistingProcess("WPFDevelopersExt");
+                        File.Delete(exePath);
+                    }
+                    if (!File.Exists(exePath))
+                        ExportResource(exePath, "GZ.WPFDevelopersExt.exe.gz");
                 }
-                if (!File.Exists(exePath))
-                    ExportResource(exePath, "GZ.WPFDevelopersExt.exe.gz");
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException($"An error occurred while publishing WPFDevelopersExt {ex.Message}");
+                catch (Exception ex)
+                {
+                    throw new ApplicationException($"An error occurred while publishing WPFDevelopersExt {ex.Message}");
+                }
             }
         }
 
