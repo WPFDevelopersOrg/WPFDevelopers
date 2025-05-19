@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -665,31 +666,65 @@ namespace WPFDevelopers.Controls
 
         private static void OnSelectedItemsExtChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var multiSelectComboBox = d as MultiSelectComboBox;
-            if (multiSelectComboBox == null) return;
+            var ctrl = d as MultiSelectComboBox;
+            if (ctrl == null) return;
+            if (e.OldValue is INotifyCollectionChanged oldCollection)
+                oldCollection.CollectionChanged -= ctrl.OnSelectedItemsExtCollectionChanged;
             if (e.NewValue != null)
             {
+                if (e.NewValue is INotifyCollectionChanged newCollection)
+                {
+                    ctrl.SelectedItemsExt = (IList)newCollection;
+                    newCollection.CollectionChanged += ctrl.OnSelectedItemsExtCollectionChanged;
+                }
                 var collection = e.NewValue as IList;
                 if (collection.Count <= 0) return;
-                multiSelectComboBox.SelectedItems.Clear();
-                multiSelectComboBox._isUpdating = true;
+                ctrl.SelectedItems.Clear();
+                ctrl._isUpdating = true;
                 foreach (var item in collection)
                 {
-                    var name = multiSelectComboBox.GetPropertyValue(item);
+                    var name = ctrl.GetPropertyValue(item);
                     object model = null;
                     if (!string.IsNullOrWhiteSpace(name))
-                        model = multiSelectComboBox.ItemsSource.OfType<object>().FirstOrDefault(h =>
-                            multiSelectComboBox.GetPropertyValue(h) == name);
+                        model = ctrl.ItemsSource.OfType<object>().FirstOrDefault(h =>
+                            ctrl.GetPropertyValue(h) == name);
                     else
-                        model = multiSelectComboBox.ItemsSource.OfType<object>()
+                        model = ctrl.ItemsSource.OfType<object>()
                             .FirstOrDefault(h => h == item);
-                    if (model != null && !multiSelectComboBox.SelectedItems.Contains(item))
-                        multiSelectComboBox.SelectedItems.Add(model);
+                    if (model != null && !ctrl.SelectedItems.Contains(item))
+                        ctrl.SelectedItems.Add(model);
 
                 }
-                multiSelectComboBox._isUpdating = false;
-                multiSelectComboBox.UpdateText();
+                ctrl._isUpdating = false;
+                ctrl.UpdateText();
             }
+        }
+
+        private void OnSelectedItemsExtCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Reset)
+            {
+                SelectedItems.Clear();
+            }
+            _isUpdating = true;
+            if (e.OldItems != null)
+            {
+                foreach (var item in e.OldItems)
+                {
+                    if (SelectedItems.Contains(item))
+                        SelectedItems.Remove(item);
+                }
+            }
+
+            if (e.NewItems != null)
+            {
+                foreach (var item in e.NewItems)
+                {
+                    if (!SelectedItems.Contains(item))
+                        SelectedItems.Add(item);
+                }
+            }
+            _isUpdating = false;
         }
     }
     public enum ShowType
