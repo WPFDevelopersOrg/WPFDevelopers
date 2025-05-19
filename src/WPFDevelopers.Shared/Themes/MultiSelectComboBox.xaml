@@ -158,7 +158,8 @@
                                 Focusable="True"
                                 IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                 Placement="Bottom"
-                                PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                                PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                StaysOpen="False">
                                 <controls:SmallPanel
                                     x:Name="PART_DropDown"
                                     MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
