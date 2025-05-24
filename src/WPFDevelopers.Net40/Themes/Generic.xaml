@@ -80,7 +80,7 @@
                                         Orientation="Horizontal">
                                         <StackPanel x:Name="PART_TitleBarMinAndMax" Orientation="Horizontal">
                                             <Button
-                                                Name="PART_TitleBarMinimizeButton"
+                                                x:Name="PART_TitleBarMinimizeButton"
                                                 Padding="0"
                                                 Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}"
                                                 IsTabStop="False"
@@ -96,7 +96,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_TitleBarMaximizeButton"
+                                                x:Name="PART_TitleBarMaximizeButton"
                                                 Padding="0"
                                                 Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}"
                                                 IsTabStop="False"
@@ -115,7 +115,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_TitleBarRestoreButton"
+                                                x:Name="PART_TitleBarRestoreButton"
                                                 Padding="0"
                                                 Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
                                                 IsTabStop="False"
@@ -208,7 +208,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_MaximizeButton"
+                                                x:Name="PART_MaximizeButton"
                                                 Padding="0"
                                                 Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}"
                                                 IsTabStop="False"
@@ -227,7 +227,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_RestoreButton"
+                                                x:Name="PART_RestoreButton"
                                                 Padding="0"
                                                 Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
                                                 IsTabStop="False"

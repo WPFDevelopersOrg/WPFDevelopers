@@ -29,6 +29,9 @@ namespace WPFDevelopers.Helpers
             uint fuFlage, uint timeout, IntPtr result);
 
         [DllImport(User32)]
+        internal static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport(User32)]
         public static extern bool EnumWindows(EnumWindowsProc proc, IntPtr lParam);
 
         [DllImport(User32)]
@@ -77,6 +80,9 @@ namespace WPFDevelopers.Helpers
 
         [DllImport(User32)]
         public static extern IntPtr GetDC(IntPtr hWnd);
+
+        [DllImport(Gdi32)]
+        public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
 
         [DllImport(User32)]
         public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
@@ -169,6 +175,7 @@ namespace WPFDevelopers.Helpers
 
         [DllImport(DwmApi)]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute attr, ref int attrValue, int attrSize);
+
         public enum DwmWindowAttribute : uint
         {
             UseImmersiveDarkMode = 20,
@@ -179,5 +186,14 @@ namespace WPFDevelopers.Helpers
             int hr = DwmSetWindowAttribute(source.Handle, DwmWindowAttribute.UseImmersiveDarkMode, ref darkMode, sizeof(int));
             return hr >= 0;
         }
+    }
+    internal class WindowsMessageCodes
+    {
+        public const int SC_RESTORE = 0xF120;
+        public const int SC_MINIMIZE = 0xF020;
+        public const int WM_SYSCOMMAND = 0x0112;
+        public const int WM_DEADCHAR = 0x0024;
+        public const int WM_NCLBUTTONDOWN = 0x00A1;
+        public const int WM_NCHITTEST = 0x0084;
     }
 }

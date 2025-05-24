@@ -1,6 +1,8 @@
 ﻿using Microsoft.Windows.Shell;
 using System;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -8,16 +10,28 @@ using System.Windows.Media;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Core.Helpers;
 using WPFDevelopers.Helpers;
-using static WPFDevelopers.Core.Helpers.MonitorHelper;
 
 namespace WPFDevelopers.Net40
 {
     [TemplatePart(Name = TitleBarIcon, Type = typeof(Button))]
+    [TemplatePart(Name = HighTitleMaximizeButton, Type = typeof(Button))]
+    [TemplatePart(Name = HighTitleRestoreButton, Type = typeof(Button))]
+    [TemplatePart(Name = TitleBarMaximizeButton, Type = typeof(Button))]
+    [TemplatePart(Name = TitleBarRestoreButton, Type = typeof(Button))]
     public class Window : System.Windows.Window
     {
         private const string TitleBarIcon = "PART_TitleBarIcon";
+        private const string HighTitleMaximizeButton = "PART_MaximizeButton";
+        private const string HighTitleRestoreButton = "PART_RestoreButton";
+        private const string TitleBarMaximizeButton = "PART_TitleBarMaximizeButton";
+        private const string TitleBarRestoreButton = "PART_TitleBarRestoreButton";
         private WindowStyle _windowStyle;
         private Button _titleBarIcon;
+        private Button _highTitleMaximizeButton;
+        private Button _highTitleRestoreButton;
+        private Button _titleBarMaximizeButton;
+        private Button _titleBarRestoreButton;
+        private IntPtr hWnd;
 
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
@@ -41,7 +55,6 @@ namespace WPFDevelopers.Net40
 
         public Window()
         {
-            Loaded += Window_Loaded;
             WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow,
@@ -69,8 +82,11 @@ namespace WPFDevelopers.Net40
                 _titleBarIcon.MouseDoubleClick -= Icon_MouseDoubleClick;
                 _titleBarIcon.MouseDoubleClick += Icon_MouseDoubleClick;
             }
+            _highTitleMaximizeButton = GetTemplateChild(HighTitleMaximizeButton) as Button;
+            _highTitleRestoreButton = GetTemplateChild(HighTitleRestoreButton) as Button;
+            _titleBarMaximizeButton = GetTemplateChild(TitleBarMaximizeButton) as Button;
+            _titleBarRestoreButton = GetTemplateChild(TitleBarRestoreButton) as Button;
         }
-
 
         private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -108,8 +124,9 @@ namespace WPFDevelopers.Net40
             set => SetValue(TitleBarModeProperty, value);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnSourceInitialized(EventArgs e)
         {
+            base.OnSourceInitialized(e);
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
             if (TitleBarMode == TitleBarMode.Normal)
@@ -152,7 +169,7 @@ namespace WPFDevelopers.Net40
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            SendMessage(hWnd, MonitorHelper.WindowsMessageCodes.WM_SYSCOMMAND, new IntPtr(MonitorHelper.WindowsMessageCodes.SC_MINIMIZE), IntPtr.Zero);
+            Win32.SendMessage(hWnd, WindowsMessageCodes.WM_SYSCOMMAND, new IntPtr(WindowsMessageCodes.SC_MINIMIZE), IntPtr.Zero);
         }
 
         private void RestoreWindow(object sender, ExecutedRoutedEventArgs e)
@@ -160,8 +177,7 @@ namespace WPFDevelopers.Net40
             SystemCommands.RestoreWindow(this);
         }
 
-        private IntPtr hWnd;
-      
+
         private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch (msg)
@@ -184,9 +200,130 @@ namespace WPFDevelopers.Net40
                         handled = true;
                     }
                     break;
+                case WindowsMessageCodes.WM_NCHITTEST:
+                case WindowsMessageCodes.WM_NCLBUTTONDOWN:
+                    try
+                    {
+                        IntPtr result = IntPtr.Zero;
+                        if (HandleSnapLayoutMessage(msg, lParam, ref result))
+                        {
+                            handled = true;
+                            return result;
+                        }
+                    }
+                    catch (OverflowException)
+                    {
+                        handled = true;
+                    }
+                    break;
+                    //#region SnapLayout
+                    //case WindowsMessageCodes.WM_NCHITTEST:
+                    //    try
+                    //    {
+                    //        Button button = null;
+                    //        if (TitleBarMode == TitleBarMode.Normal)
+                    //            button = WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton;
+                    //        else
+                    //            button = WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton;
+                    //        if (button != null && button.ActualHeight > 0 && button.ActualWidth > 0)
+                    //        {
+                    //            if (OSVersionHelper.IsSnapLayoutSupported() && ResizeMode != ResizeMode.NoResize && ResizeMode != ResizeMode.CanMinimize)
+                    //            {
+                    //                var x = lParam.ToInt32() & 0xffff;
+                    //                var y = lParam.ToInt32() >> 16;
+                    //                var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
+                    //                var rect = new Rect(button.PointToScreen(
+                    //                    new Point()),
+                    //                    new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+                    //                if (rect.Contains(new Point(x, y)))
+                    //                {
+                    //                    handled = true;
+                    //                    button.Opacity = 1;
+                    //                }
+                    //                else
+                    //                {
+                    //                    button.Opacity = .7;
+                    //                }
+                    //                return new IntPtr(OSVersionHelper.HTMAXBUTTON);
+                    //            }
+                    //        }
+
+                    //    }
+                    //    catch (OverflowException)
+                    //    {
+                    //        handled = true;
+                    //    }
+                    //    break;
+                    //case WindowsMessageCodes.WM_NCLBUTTONDOWN:
+                    //    Button button = null;
+                    //    if (TitleBarMode == TitleBarMode.Normal)
+                    //        button = WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton;
+                    //    else
+                    //        button = WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton;
+                    //    if (button != null && button.ActualHeight > 0 && button.ActualWidth > 0)
+                    //    {
+                    //        if (OSVersionHelper.IsSnapLayoutSupported() && ResizeMode != ResizeMode.NoResize && ResizeMode != ResizeMode.CanMinimize)
+                    //        {
+                    //            var x = lParam.ToInt32() & 0xffff;
+                    //            var y = lParam.ToInt32() >> 16;
+                    //            var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
+                    //            var rect = new Rect(button.PointToScreen(
+                    //                                           new Point()),
+                    //                                           new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+                    //            if (rect.Contains(new Point(x, y)))
+                    //            {
+                    //                handled = true;
+                    //                IInvokeProvider invokeProv = new ButtonAutomationPeer(button).GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                    //                invokeProv?.Invoke();
+                    //            }
+                    //        }
+                    //    }
+
+                    //    break;
+                    //    #endregion
             }
             return IntPtr.Zero;
         }
+
+        private bool HandleSnapLayoutMessage(int msg, IntPtr lParam, ref IntPtr result)
+        {
+            Button button = TitleBarMode == TitleBarMode.Normal
+                ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
+                : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
+
+            if (button == null || button.ActualWidth <= 0 || button.ActualHeight <= 0)
+                return false;
+            var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
+            if (!OSVersionHelper.IsSnapLayoutSupported() ||
+                ResizeMode == ResizeMode.NoResize || ResizeMode == ResizeMode.CanMinimize)
+                return false;
+
+            var x = lParam.ToInt32() & 0xffff;
+            var y = lParam.ToInt32() >> 16;
+            var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
+            var rect = new Rect(button.PointToScreen(new Point()), new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+            var point = new Point(x, y);
+
+            if (msg == WindowsMessageCodes.WM_NCHITTEST && contentPresenter != null)
+            {
+                if (!rect.Contains(point))
+                {
+                    if(contentPresenter.Opacity != 0.7)
+                        contentPresenter.Opacity = 0.7;
+                    return false;
+                }
+                contentPresenter.Opacity = 1;
+                result = new IntPtr(OSVersionHelper.HTMAXBUTTON);
+            }
+            else if (msg == WindowsMessageCodes.WM_NCLBUTTONDOWN)
+            {
+                IInvokeProvider invokeProv = new ButtonAutomationPeer(button).GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                invokeProv?.Invoke();
+            }
+
+            return true;
+        }
+
 
         private void ShowSystemMenu(object sender, ExecutedRoutedEventArgs e)
         {

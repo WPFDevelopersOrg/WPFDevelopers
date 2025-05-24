@@ -59,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorTypeToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\CornerRadiusToSurroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ImagingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightToRectConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\MonitorHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PanelHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\FormatExtensions.cs" />
