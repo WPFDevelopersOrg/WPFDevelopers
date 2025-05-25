@@ -210,6 +210,12 @@ namespace WPFDevelopers.Net45x
                 case WindowsMessageCodes.WM_NCLBUTTONDOWN:
                     try
                     {
+                        if (!OSVersionHelper.IsSnapLayoutSupported()
+                            ||
+                            ResizeMode == ResizeMode.NoResize
+                            ||
+                            ResizeMode == ResizeMode.CanMinimize)
+                            break;
                         IntPtr result = IntPtr.Zero;
                         if (HandleSnapLayoutMessage(msg, lParam, ref result))
                         {
@@ -235,10 +241,7 @@ namespace WPFDevelopers.Net45x
             if (button == null || button.ActualWidth <= 0 || button.ActualHeight <= 0)
                 return false;
             var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
-            if (!OSVersionHelper.IsSnapLayoutSupported() ||
-                ResizeMode == ResizeMode.NoResize || ResizeMode == ResizeMode.CanMinimize)
-                return false;
-
+            if(contentPresenter == null) return false;
             var x = lParam.ToInt32() & 0xffff;
             var y = lParam.ToInt32() >> 16;
             var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
