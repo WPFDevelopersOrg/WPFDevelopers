@@ -200,27 +200,74 @@ namespace WPFDevelopers.Net40
                         handled = true;
                     }
                     break;
+                #region SnapLayouts
                 case WindowsMessageCodes.WM_NCHITTEST:
-                case WindowsMessageCodes.WM_NCLBUTTONDOWN:
                     try
                     {
-                        if (!OSVersionHelper.IsSnapLayoutSupported()
-                            ||
-                            ResizeMode == ResizeMode.NoResize 
-                            || 
-                            ResizeMode == ResizeMode.CanMinimize)
-                            break;
-                        IntPtr result = IntPtr.Zero;
-                        if (HandleSnapLayoutMessage(msg, lParam, ref result))
+                        if (OSVersionHelper.IsSnapLayoutSupported() && ResizeMode != ResizeMode.NoResize && ResizeMode != ResizeMode.CanMinimize)
                         {
-                            handled = true;
-                            return result;
+                            int x = lParam.ToInt32() & 0xffff;
+                            int y = lParam.ToInt32() >> 16;
+                            var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
+                            var button = TitleBarMode == TitleBarMode.Normal
+                                ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
+                                : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
+                            if (button != null)
+                            {
+                                var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
+                                if (contentPresenter != null)
+                                {
+                                    var rect = new Rect(button.PointToScreen(new Point()), new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+                                    if (rect.Contains(new Point(x, y)))
+                                    {
+                                        handled = true;
+                                        contentPresenter.Opacity = 0.7;
+                                    }
+                                    else
+                                    {
+                                        contentPresenter.Opacity = 1;
+                                    }
+                                    return new IntPtr(OSVersionHelper.HTMAXBUTTON);
+                                }
+
+                            }
                         }
                     }
                     catch (OverflowException)
                     {
                         handled = true;
                     }
+                    break;
+                case WindowsMessageCodes.WM_NCLBUTTONDOWN:
+                    if (OSVersionHelper.IsSnapLayoutSupported()
+                        &&
+                        (ResizeMode != ResizeMode.NoResize
+                        ||
+                        ResizeMode != ResizeMode.CanMinimize))
+                    {
+                        int x = lParam.ToInt32() & 0xffff;
+                        int y = lParam.ToInt32() >> 16;
+                        var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
+                        Button button = TitleBarMode == TitleBarMode.Normal
+                            ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
+                            : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
+                        if (button != null)
+                        {
+                            var rect = new Rect(button.PointToScreen(
+                            new Point()),
+                            new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+                            if (rect.Contains(new Point(x, y)))
+                            {
+                                handled = true;
+                                IInvokeProvider invokeProv = new ButtonAutomationPeer(button).GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                                invokeProv?.Invoke();
+                            }
+                        }
+                    }
+                    break;
+                #endregion
+                default:
+                    handled = false;
                     break;
             }
             return IntPtr.Zero;
