@@ -93,6 +93,7 @@
         Gauge,
         Tag,
         NavScrollPanel,
+        IconicThumbnail,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

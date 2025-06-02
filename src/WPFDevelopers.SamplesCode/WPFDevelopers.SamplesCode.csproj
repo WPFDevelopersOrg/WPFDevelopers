@@ -146,7 +146,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartLineExample.xaml.cs" Link="ExampleViews\ChartLineExample.xaml.cs" DependentUpon="ChartLineExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartPieExample.xaml.cs" Link="ExampleViews\ChartPieExample.xaml.cs" DependentUpon="ChartPieExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DrawerExample.xaml.cs" Link="ExampleViews\DrawerExample.xaml.cs" DependentUpon="DrawerExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Loadings\StreamerLoading.cs" Link="Controls\Loadings\StreamerLoading.cs"/>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Loadings\StreamerLoading.cs" Link="Controls\Loadings\StreamerLoading.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DateRangePickerExample.xaml.cs" Link="ExampleViews\DateRangePickerExample.xaml.cs" DependentUpon="DateRangePickerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SpacingExample.xaml.cs" Link="ExampleViews\SpacingExample.xaml.cs" DependentUpon="SpacingExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NotifyIconExample.xaml.cs" Link="ExampleViews\NotifyIconExample.xaml.cs" DependentUpon="NotifyIconExample.xaml" />
@@ -154,11 +154,12 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NormalWindow.xaml.cs" Link="ExampleViews\Window\NormalWindow.xaml.cs" DependentUpon="NormalWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml.cs" Link="ExampleViews\Window\HighTitleBarWindow.xaml.cs" DependentUpon="HighTitleBarWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TagExample.xaml.cs" Link="ExampleViews\TagExample.xaml.cs" DependentUpon="TagExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\Theme.cs" Link="Controls\Theme\Theme.cs"/>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeItem.cs" Link="Controls\Theme\ThemeItem.cs"/>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\Theme.cs" Link="Controls\Theme\Theme.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeItem.cs" Link="Controls\Theme\ThemeItem.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubbleControl.cs" Link="Controls\BubblleControl\BubbleControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubblleCanvas.cs" Link="Controls\BubblleControl\BubblleCanvas.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NavScrollPanelExample.xaml.cs" Link="ExampleViews\NavScrollPanelExample.xaml.cs" DependentUpon="NavScrollPanelExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IconicThumbnailWindowExample.xaml.cs" Link="ExampleViews\IconicThumbnailWindowExample.xaml.cs" DependentUpon="IconicThumbnailWindowExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -541,6 +542,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NavScrollPanelExample.xaml">
 			<Link>ExampleViews\NavScrollPanelExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IconicThumbnailWindowExample.xaml">
+			<Link>ExampleViews\IconicThumbnailWindowExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

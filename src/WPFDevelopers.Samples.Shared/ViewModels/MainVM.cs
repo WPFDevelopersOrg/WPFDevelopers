@@ -384,6 +384,10 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.NavScrollPanel:
                     ControlPanel = new NavScrollPanelExample();
                     break;
+                case MenuEnum.IconicThumbnail:
+                    ControlPanel = new IconicThumbnailExample();
+                    new IconicThumbnailWindowExample().MaskShowDialog();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();

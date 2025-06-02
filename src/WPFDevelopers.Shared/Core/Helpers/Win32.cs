@@ -174,19 +174,26 @@ namespace WPFDevelopers.Helpers
         public extern static void SetCursorPos(int x, int y);
 
         [DllImport(DwmApi)]
-        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute attr, ref int attrValue, int attrSize);
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttributes attr, ref int attrValue, int attrSize);
 
-        public enum DwmWindowAttribute : uint
-        {
-            UseImmersiveDarkMode = 20,
-        }
         public static bool EnableDarkModeForWindow(HwndSource source, bool enable)
         {
             int darkMode = enable ? 1 : 0;
-            int hr = DwmSetWindowAttribute(source.Handle, DwmWindowAttribute.UseImmersiveDarkMode, ref darkMode, sizeof(int));
+            int hr = DwmSetWindowAttribute(source.Handle, DwmWindowAttributes.UseImmersiveDarkMode, ref darkMode, sizeof(int));
             return hr >= 0;
         }
+
+        [DllImport(DwmApi)]
+        public static extern int DwmSetIconicThumbnail(IntPtr hwnd, IntPtr hbmp, int dwSITFlags);
+
+        [DllImport(DwmApi)]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttributes dwAttribute, IntPtr pvAttribute, int cbAttribute);
+
+        [DllImport(DwmApi)]
+        public static extern int DwmInvalidateIconicBitmaps(IntPtr hwnd);
+
     }
+
     internal class WindowsMessageCodes
     {
         public const int SC_RESTORE = 0xF120;
@@ -195,5 +202,18 @@ namespace WPFDevelopers.Helpers
         public const int WM_DEADCHAR = 0x0024;
         public const int WM_NCLBUTTONDOWN = 0x00A1;
         public const int WM_NCHITTEST = 0x0084;
+
+        public const int WM_DWMSENDICONICTHUMBNAIL = 0x0323;
     }
+
+    [Flags]
+    public enum DwmWindowAttributes : uint
+    {
+        None = 0, 
+        DISPLAYFRAME = 1,
+        FORCE_ICONIC_REPRESENTATION = 7,
+        HAS_ICONIC_BITMAP = 10,
+        UseImmersiveDarkMode = 20
+    }
+
 }
