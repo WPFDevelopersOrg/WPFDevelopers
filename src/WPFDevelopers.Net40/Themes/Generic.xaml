@@ -38,10 +38,12 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <control:SmallPanel
-                                x:Name="PART_Normal"
+                            <Border
                                 Grid.Row="0"
-                                Background="{TemplateBinding TitleBackground}">
+                                HorizontalAlignment="Stretch"
+                                Margin="0,0,-1,0"
+                                Background="{TemplateBinding TitleBackground}" />
+                            <control:SmallPanel x:Name="PART_Normal" Grid.Row="0">
                                 <Grid Height="{TemplateBinding TitleHeight}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -157,7 +159,6 @@
                             <control:SmallPanel
                                 x:Name="PART_HighTitleBar"
                                 Grid.Row="0"
-                                Background="{TemplateBinding TitleBackground}"
                                 Visibility="Collapsed">
                                 <Grid
                                     x:Name="PART_GridChrome"
