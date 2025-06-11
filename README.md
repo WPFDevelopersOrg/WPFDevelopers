@@ -98,6 +98,16 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### IconicThumbnail
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IconicThumbnail.gif"/>   
+
+----------
+### Snap
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Snap.gif"/>   
+
+----------
 ### NavScrollPanel
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NavScrollPanel.gif"/>   
