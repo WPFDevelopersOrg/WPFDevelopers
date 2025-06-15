@@ -4,9 +4,26 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Controls
 {
-    public class NavScrollPanel: Control
+    public class NavScrollPanel : Control
     {
+        public static readonly DependencyProperty ItemsSourceProperty =
+            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable), typeof(NavScrollPanel),
+                new PropertyMetadata(null, OnItemsSourceChanged));
+
+        public static readonly DependencyProperty ItemTemplateProperty =
+            DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), typeof(NavScrollPanel),
+                new PropertyMetadata(null));
+
+        public static readonly DependencyProperty SelectedIndexProperty =
+            DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(NavScrollPanel),
+                new PropertyMetadata(-1, OnSelectedIndexChanged));
+
+        private StackPanel _contentPanel;
+
+        private ListBox _navListBox;
+        private WDScrollViewer _scrollViewer;
         private bool _suppressAutoSelectDuringAnimation;
+
         static NavScrollPanel()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NavScrollPanel),
@@ -15,34 +32,21 @@ namespace WPFDevelopers.Controls
 
         public IEnumerable ItemsSource
         {
-            get => (IEnumerable)GetValue(ItemsSourceProperty);
+            get => (IEnumerable) GetValue(ItemsSourceProperty);
             set => SetValue(ItemsSourceProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable), typeof(NavScrollPanel), new PropertyMetadata(null, OnItemsSourceChanged));
-
         public DataTemplate ItemTemplate
         {
-            get => (DataTemplate)GetValue(ItemTemplateProperty);
+            get => (DataTemplate) GetValue(ItemTemplateProperty);
             set => SetValue(ItemTemplateProperty, value);
         }
 
-        public static readonly DependencyProperty ItemTemplateProperty =
-            DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), typeof(NavScrollPanel), new PropertyMetadata(null));
-
         public int SelectedIndex
         {
-            get => (int)GetValue(SelectedIndexProperty);
+            get => (int) GetValue(SelectedIndexProperty);
             set => SetValue(SelectedIndexProperty, value);
         }
-
-        public static readonly DependencyProperty SelectedIndexProperty =
-            DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(NavScrollPanel), new PropertyMetadata(-1, OnSelectedIndexChanged));
-
-        private ListBox _navListBox;
-        private WDScrollViewer _scrollViewer;
-        private StackPanel _contentPanel;
 
         public override void OnApplyTemplate()
         {
@@ -58,11 +62,13 @@ namespace WPFDevelopers.Controls
                 _navListBox.SelectionChanged -= NavListBox_SelectionChanged;
                 _navListBox.SelectionChanged += NavListBox_SelectionChanged;
             }
+
             if (_scrollViewer != null)
             {
                 _scrollViewer.ScrollChanged -= ScrollViewer_ScrollChanged;
                 _scrollViewer.ScrollChanged += ScrollViewer_ScrollChanged;
             }
+
             RenderContent();
         }
 
@@ -90,6 +96,7 @@ namespace WPFDevelopers.Controls
                         _navListBox.SelectedIndex = i;
                         _navListBox.SelectionChanged += NavListBox_SelectionChanged;
                     }
+
                     break;
                 }
             }
@@ -98,17 +105,14 @@ namespace WPFDevelopers.Controls
 
         private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is NavScrollPanel ctrl)
-            {
-                ctrl.RenderContent();
-            }
+            if (d is NavScrollPanel ctrl) ctrl.RenderContent();
         }
 
         private static void OnSelectedIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is NavScrollPanel ctrl)
             {
-                int index = (int)e.NewValue;
+                var index = (int) e.NewValue;
 
                 if (ctrl._contentPanel != null &&
                     index >= 0 && index < ctrl._contentPanel.Children.Count)
@@ -117,7 +121,8 @@ namespace WPFDevelopers.Controls
                     if (target != null)
                     {
                         var virtualPoint = target.TranslatePoint(new Point(0, 0), ctrl._contentPanel);
-                        ctrl._scrollViewer.AnimateScroll(virtualPoint.Y, () => { ctrl._suppressAutoSelectDuringAnimation = false; });
+                        ctrl._scrollViewer.AnimateScroll(virtualPoint.Y,
+                            () => { ctrl._suppressAutoSelectDuringAnimation = false; });
                     }
                 }
             }
@@ -133,11 +138,12 @@ namespace WPFDevelopers.Controls
                 var content = new ContentControl
                 {
                     Content = item,
-                    ContentTemplate = ItemTemplate,
+                    ContentTemplate = ItemTemplate
                 };
                 _contentPanel.Children.Add(content);
             }
-            var panel = new SmallPanel { Height = 100 };
+
+            var panel = new SmallPanel {Height = 100};
             _contentPanel.Children.Add(panel);
         }
     }
