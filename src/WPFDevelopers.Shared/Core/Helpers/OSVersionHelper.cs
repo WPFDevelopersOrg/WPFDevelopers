@@ -1,10 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 using System.Windows.Media;
+using Microsoft.Win32;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Core.Helpers
@@ -12,28 +12,8 @@ namespace WPFDevelopers.Core.Helpers
     public class OSVersionHelper
     {
         private const double LogicalDpi = 96.0;
-        public static MatrixTransform TransformFromDevice { get; }
-        public static MatrixTransform TransformToDevice { get; }
 
-        public static double DeviceDpiX { get; }
-
-        public static double DeviceDpiY { get; }
-        public static double DeviceUnitsScalingFactorX => TransformToDevice.Matrix.M11;
-
-        public static double DeviceUnitsScalingFactorY => TransformToDevice.Matrix.M22;
-
-        private static bool? _isSnapLayoutSupported; 
-
-        public static bool IsSnapLayoutSupported()
-        {
-            if (_isSnapLayoutSupported.HasValue)
-            {
-                return _isSnapLayoutSupported.Value; 
-            }
-
-            _isSnapLayoutSupported = CheckSnapLayoutSupport();
-            return _isSnapLayoutSupported.Value;
-        }
+        private static bool? _isSnapLayoutSupported;
 
 
         static OSVersionHelper()
@@ -63,6 +43,24 @@ namespace WPFDevelopers.Core.Helpers
             TransformToDevice.Freeze();
         }
 
+        public static MatrixTransform TransformFromDevice { get; }
+        public static MatrixTransform TransformToDevice { get; }
+
+        public static double DeviceDpiX { get; }
+
+        public static double DeviceDpiY { get; }
+        public static double DeviceUnitsScalingFactorX => TransformToDevice.Matrix.M11;
+
+        public static double DeviceUnitsScalingFactorY => TransformToDevice.Matrix.M22;
+
+        public static bool IsSnapLayoutSupported()
+        {
+            if (_isSnapLayoutSupported.HasValue) return _isSnapLayoutSupported.Value;
+
+            _isSnapLayoutSupported = CheckSnapLayoutSupport();
+            return _isSnapLayoutSupported.Value;
+        }
+
         private static bool CheckSnapLayoutSupport()
         {
             var version = GetWindowsBuildNumber();
@@ -73,47 +71,42 @@ namespace WPFDevelopers.Core.Helpers
         {
             try
             {
-                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
+                using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion"))
                 {
                     if (key != null)
                     {
                         var buildNumber = key.GetValue("CurrentBuildNumber");
-                        if (buildNumber != null && int.TryParse(buildNumber.ToString(), out int result))
-                        {
-                            return result;
-                        }
+                        if (buildNumber != null && int.TryParse(buildNumber.ToString(), out var result)) return result;
                     }
                 }
             }
             catch
             {
-                
             }
+
             return 0;
         }
 
         #region SnapLayout
+
         private const double DPI_SCALE = 1.5;
         public const int HTMAXBUTTON = 9;
 
         private static HwndSource GetWindowHwndSource(DependencyObject dependencyObject)
         {
-            if (dependencyObject is Window window)
-            {
-                return PresentationSource.FromVisual(window) as HwndSource;
-            }
-            else if (dependencyObject is ToolTip tooltip)
-            {
-                return PresentationSource.FromVisual(tooltip) as HwndSource;
-            }
-            else if (dependencyObject is Popup popup)
+            if (dependencyObject is Window window) return PresentationSource.FromVisual(window) as HwndSource;
+
+            if (dependencyObject is ToolTip tooltip) return PresentationSource.FromVisual(tooltip) as HwndSource;
+
+            if (dependencyObject is Popup popup)
             {
                 if (popup.Child is null)
                     return null;
 
                 return PresentationSource.FromVisual(popup.Child) as HwndSource;
             }
-            else if (dependencyObject is Visual visual)
+
+            if (dependencyObject is Visual visual)
             {
                 return PresentationSource.FromVisual(visual) as HwndSource;
             }
@@ -121,8 +114,6 @@ namespace WPFDevelopers.Core.Helpers
             return null;
         }
 
-
         #endregion
-
     }
 }
