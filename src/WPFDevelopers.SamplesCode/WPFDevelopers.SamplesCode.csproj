@@ -156,7 +156,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TagExample.xaml.cs" Link="ExampleViews\TagExample.xaml.cs" DependentUpon="TagExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\Theme.cs" Link="Controls\Theme\Theme.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeItem.cs" Link="Controls\Theme\ThemeItem.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubbleControl.cs" Link="Controls\BubblleControl\BubbleControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubblleControl.cs" Link="Controls\BubblleControl\BubblleControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubblleControl\BubblleCanvas.cs" Link="Controls\BubblleControl\BubblleCanvas.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NavScrollPanelExample.xaml.cs" Link="ExampleViews\NavScrollPanelExample.xaml.cs" DependentUpon="NavScrollPanelExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IconicThumbnailWindowExample.xaml.cs" Link="ExampleViews\IconicThumbnailWindowExample.xaml.cs" DependentUpon="IconicThumbnailWindowExample.xaml" />
