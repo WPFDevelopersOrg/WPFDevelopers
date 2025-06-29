@@ -100,15 +100,15 @@
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BubblleControlExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BubblleControlExample.xaml.cs" CodeType="CSharp" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/BubblleControl/BubblleControl.cs"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/BubblleControl/BubblleControl.cs"
                 CodeType="CSharp"
                 Haader="BubblleControl.cs" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/BubblleControl/BubblleCanvas.cs"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/BubblleControl/BubblleCanvas.cs"
                 CodeType="CSharp"
                 Haader="BubblleCanvas.cs" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/BubblleControl/BubblleControl.xaml"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/BubblleControl/BubblleControl.xaml"
                 CodeType="Xaml"
                 Haader="BubblleControl.xaml" />
         </controls:CodeViewer.SourceCodes>
