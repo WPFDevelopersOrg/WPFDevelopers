@@ -13,7 +13,7 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\EmojiHelper.cs" />
