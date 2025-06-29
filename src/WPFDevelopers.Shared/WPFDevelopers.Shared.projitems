@@ -146,7 +146,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCutAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SpotLight\SpotLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StarrySky\StarrySky.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Status.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\Step.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\StepItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
