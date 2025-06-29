@@ -54,15 +54,15 @@ namespace WPFDevelopers.Controls
             for (var i = 0; i < stepIndex; i++)
             {
                 if (ItemContainerGenerator.ContainerFromIndex(i) is StepItem stepItem)
-                    stepItem.Status = Status.Complete;
+                    stepItem.Status = StepState.Complete;
             }
 
             if (ItemContainerGenerator.ContainerFromIndex(stepIndex) is StepItem itemInProgress)
-                itemInProgress.Status = Status.InProgress;
+                itemInProgress.Status = StepState.InProgress;
             for (var i = stepIndex + 1; i < Items.Count; i++)
             {
                 if (ItemContainerGenerator.ContainerFromIndex(i) is StepItem stepItem)
-                    stepItem.Status = Status.Waiting;
+                    stepItem.Status = StepState.Waiting;
             }
         }
         public override void OnApplyTemplate()
