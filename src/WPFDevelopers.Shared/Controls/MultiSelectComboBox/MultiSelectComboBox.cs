@@ -219,13 +219,21 @@ namespace WPFDevelopers.Controls
                 {
                     SelectedItems.Remove(item);
                 }
-                if (!_isUpdating)
+                if (!_isUpdating && SelectedItemsExt != null)
                 {
-                    if (SelectedItemsExt is IList list)
+                    _isUpdating = true;
+                    try
                     {
-                        list.Clear();
-                        foreach (var itm in SelectedItems.Cast<object>())
-                            list.Add(itm);
+                        if (SelectedItemsExt is IList list)
+                        {
+                            list.Clear();
+                            foreach (var itm in SelectedItems.Cast<object>())
+                                list.Add(itm);
+                        }
+                    }
+                    finally
+                    {
+                        _isUpdating = false;
                     }
                 }
                 SelectionChecked(this);
@@ -702,10 +710,9 @@ namespace WPFDevelopers.Controls
 
         private void OnSelectedItemsExtCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            if (_isUpdating) return;
             if (e.Action == NotifyCollectionChangedAction.Reset)
-            {
                 SelectedItems.Clear();
-            }
             _isUpdating = true;
             if (e.OldItems != null)
             {
