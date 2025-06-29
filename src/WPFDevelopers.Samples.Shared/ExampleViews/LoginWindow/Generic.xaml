@@ -61,12 +61,6 @@
             </Style>
         <!-- 文本框样式 -->
             <Style x:Key="TextBoxStyle" TargetType="TextBox">
-                <!-- 选中底色 -->
-                <Setter Property="SelectionBrush" Value="#4370F5"/>
-                <!-- 选中底色透明度 -->
-                <Setter Property="SelectionOpacity" Value="1"/>
-                <!-- 选中文本色 -->
-                <Setter Property="SelectionBrush" Value="White"/>
                 <!-- 文本色 -->
                 <Setter Property="Foreground" Value="Black"/>
                 <!-- 文本垂直居中 -->
@@ -100,17 +94,11 @@
             </Style>
             <!-- 密码框样式 -->
             <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
-                <!-- 选中底色 -->
-                <Setter Property="SelectionBrush" Value="#4370F5"/>
-                <!-- 选中底色透明度 -->
-                <Setter Property="SelectionOpacity" Value="1"/>
-                <!-- 选中文本色 -->
-                <Setter Property="SelectionBrush" Value="White"/>
                 <!-- 文本色 -->
                 <Setter Property="Foreground" Value="Black"/>
                 <!-- 文本垂直居中 -->
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="PasswordChar" Value="*"/>
+                <Setter Property="PasswordChar" Value="●"/>
                 <!-- 模板 -->
                 <Setter Property="Template">
                     <Setter.Value>
