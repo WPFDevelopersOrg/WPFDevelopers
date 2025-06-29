@@ -2,12 +2,20 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
+    [TemplatePart(Name = ListBoxTemplateName, Type = typeof(ListBox))]
+    [TemplatePart(Name = ScrollViewerTemplateName, Type = typeof(WDScrollViewer))]
+    [TemplatePart(Name = StackPanelTemplateName, Type = typeof(StackPanel))]
     public class NavScrollPanel : ItemsControl
     {
+        private const string ListBoxTemplateName = "PART_ListBox";
+        private const string ScrollViewerTemplateName = "PART_ScrollViewer";
+        private const string StackPanelTemplateName = "PART_ContentPanel";
+
         public static readonly DependencyProperty SelectedIndexProperty =
             DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(NavScrollPanel),
                 new PropertyMetadata(-1, OnSelectedIndexChanged));
@@ -34,9 +42,9 @@ namespace WPFDevelopers.Controls
         {
             base.OnApplyTemplate();
 
-            _navListBox = GetTemplateChild("PART_ListBox") as ListBox;
-            _scrollViewer = GetTemplateChild("PART_ScrollViewer") as WDScrollViewer;
-            _contentPanel = GetTemplateChild("PART_ContentPanel") as StackPanel;
+            _navListBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
+            _scrollViewer = GetTemplateChild(ScrollViewerTemplateName) as WDScrollViewer;
+            _contentPanel = GetTemplateChild(StackPanelTemplateName) as StackPanel;
 
             if (_navListBox != null)
             {
