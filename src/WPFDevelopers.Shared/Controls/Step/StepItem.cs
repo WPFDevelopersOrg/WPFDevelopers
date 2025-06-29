@@ -17,7 +17,7 @@ namespace WPFDevelopers.Controls
 
 
         public static readonly DependencyProperty StatusProperty = DependencyProperty.Register(
-            "StepState", typeof(StepState), typeof(StepItem), new PropertyMetadata(StepState.Waiting));
+            "Status", typeof(StepState), typeof(StepItem), new PropertyMetadata(StepState.Waiting));
 
 
         public StepState Status
