@@ -50,18 +50,20 @@ namespace WPFDevelopers.Controls
 
         private static void CreateMask(UIElement uIElement, bool isRemove = false)
         {
+            if (uIElement == null) return;
             var layer = AdornerLayer.GetAdornerLayer(uIElement);
             if (layer == null) return;
-            if (isRemove && uIElement != null)
+            var adorners = layer.GetAdorners(uIElement);
+            if (adorners != null)
             {
-                var adorners = layer.GetAdorners(uIElement);
-                if (adorners != null)
-                    foreach (var item in adorners)
-                        if (item is AdornerContainer container)
-                            layer.Remove(container);
-                return;
+                foreach (var item in adorners)
+                {
+                    if (item is AdornerContainer container)
+                        layer.Remove(container);
+                }
             }
-
+            if (isRemove)
+                return;
             var adornerContainer = new AdornerContainer(uIElement);
             var value = GetChild(uIElement);
             if (value != null)
