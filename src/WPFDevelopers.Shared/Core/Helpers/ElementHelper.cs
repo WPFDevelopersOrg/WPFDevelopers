@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Helpers
@@ -91,25 +93,32 @@ namespace WPFDevelopers.Helpers
 
         private static void OnButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is Button button && button.TemplatedParent != null)
             {
-                if (button.TemplatedParent is TextBox textBox)
-                    textBox.Clear();
-                else if (button.TemplatedParent is PasswordBox passwordBox)
-                    passwordBox.Clear();
-                else if (button.TemplatedParent is TabItem tabItem)
+                switch (button.TemplatedParent)
                 {
-                    var tabControl = tabItem.Parent as TabControl;
-                    if (tabControl != null)
-                        tabControl.Items.Remove(tabItem); 
-                }
-                else if(button.TemplatedParent is DateRangePicker dateRangePicker)
-                {
-                    dateRangePicker.StartDate = null;
-                    dateRangePicker.EndDate = null;
+                    case TextBox textBox:
+                        textBox.Clear();
+                        break;
+                    case PasswordBox passwordBox:
+                        passwordBox.Clear();
+                        break;
+                    case TabItem tabItem:
+                        var tabControl = ControlsHelper.FindParent<TabControl>(tabItem);
+                        if (tabControl != null)
+                        {
+                            if (tabControl.ItemsSource is IList itemsSource)
+                                itemsSource.Remove(tabItem.DataContext);
+                            else
+                                tabControl.Items.Remove(tabItem);
+                        }
+                        break;
+                    case DateRangePicker dateRangePicker:
+                        dateRangePicker.StartDate = null;
+                        dateRangePicker.EndDate = null;
+                        break;
                 }
             }
         }
-        
     }
 }
