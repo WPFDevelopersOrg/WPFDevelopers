@@ -238,7 +238,7 @@ namespace WPFDevelopers.Controls
                 var calendar = sender as Calendar;
                 if (e.OriginalSource is FrameworkElement fe)
                 {
-                    var dayButton = FindParent<CalendarDayButton>(fe);
+                    var dayButton = ControlsHelper.FindParent<CalendarDayButton>(fe);
                     if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
                         if (!calendar.SelectedDates.Contains(clickedDate))
                         {
@@ -266,7 +266,7 @@ namespace WPFDevelopers.Controls
                 var calendar = sender as Calendar;
                 if (e.OriginalSource is FrameworkElement fe)
                 {
-                    var dayButton = FindParent<CalendarDayButton>(fe);
+                    var dayButton = ControlsHelper.FindParent<CalendarDayButton>(fe);
                     if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
                         if (!calendar.SelectedDates.Contains(clickedDate))
                         {
@@ -282,17 +282,6 @@ namespace WPFDevelopers.Controls
             {
                 _isHandlingSelectionChange = false;
             }
-        }
-
-        private T FindParent<T>(DependencyObject child) where T : DependencyObject
-        {
-            var parent = VisualTreeHelper.GetParent(child);
-            if (parent == null) return null;
-
-            if (parent is T tParent)
-                return tParent;
-
-            return FindParent<T>(parent);
         }
 
         private void OnBorder_PreviewMouseUp(object sender, MouseButtonEventArgs e)
