@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Sample.ExampleViews.GestureUnlockExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <TabControl TabStripPlacement="Bottom">
+            <TabItem Header="Event">
+                <wd:GestureUnlock
+                    x:Name="myGestureUnlock"
+                    wd:ElementHelper.CornerRadius="5"
+                    GestureCompleted="GestureCompleted">
+                    <wd:GestureUnlock.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Right.jpg" />
+                    </wd:GestureUnlock.Background>
+                </wd:GestureUnlock>
+            </TabItem>
+            <TabItem Header="Command">
+                <TabItem.Resources>
+                    <Style BasedOn="{StaticResource WD.GestureItem}" TargetType="wd:GestureItem">
+                        <Setter Property="BorderBrush" Value="Yellow" />
+                    </Style>
+                </TabItem.Resources>
+                <wd:GestureUnlock
+                    x:Name="myGestureUnlock2"
+                    Width="400"
+                    Height="500"
+                    wd:ElementHelper.CornerRadius="10"
+                    GestureCompletedCommand="{Binding GestureCompletedCommand}">
+                    <wd:GestureUnlock.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/IconicThumbnail/LcupqA.jpg" />
+                    </wd:GestureUnlock.Background>
+                </wd:GestureUnlock>
+            </TabItem>
+        </TabControl>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/GestureUnlockExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/GestureUnlockExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

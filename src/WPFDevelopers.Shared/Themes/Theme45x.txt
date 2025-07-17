@@ -70,4 +70,4 @@ TimePicker.xaml
 Drawer.xaml
 DateRangePicker.xaml
 Tag.xaml
-NavScrollPanel.xaml
+NavScrollPanel.xamlGestureUnlock.xaml

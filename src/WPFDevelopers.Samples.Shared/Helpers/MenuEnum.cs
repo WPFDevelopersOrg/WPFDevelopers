@@ -94,6 +94,7 @@
         Tag,
         NavScrollPanel,
         IconicThumbnail,
+        GestureUnlock,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

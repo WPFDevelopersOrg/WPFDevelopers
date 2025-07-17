@@ -388,6 +388,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     ControlPanel = new IconicThumbnailExample();
                     new IconicThumbnailWindowExample().MaskShowDialog();
                     break;
+                case MenuEnum.GestureUnlock:
+                    ControlPanel = new GestureUnlockExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
