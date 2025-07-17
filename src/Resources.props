@@ -75,6 +75,9 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\ZooSemy\1.png">
 			<Link>Resources\Images\ZooSemy\1.png</Link>
 		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\IconicThumbnail\*.jpg">
+			<Link>Resources\Images\IconicThumbnail\%(Filename)%(Extension)</Link>
+		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Audio\HelloWPFDevelopes_en.mp3">
 			<Link>Resources\Audio\HelloWPFDevelopes_en.mp3</Link>
 		</Resource>
