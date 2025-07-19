@@ -141,7 +141,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="WD.DateRangePicker" TargetType="{x:Type controls:DateRangePicker}">
+    <Style
+        x:Key="WD.DateRangePicker"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:DateRangePicker}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -192,7 +195,7 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <controls:PathIcon
-                                    Margin="15,0,0,0"
+                                    Margin="6,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Kind="Date" />
@@ -209,13 +212,13 @@
                                     SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
                                 <controls:PathIcon
                                     Grid.Column="2"
+                                    Margin="6,0"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Kind="DateRangeRight" />
                                 <DatePickerTextBox
                                     x:Name="PART_TextBoxEnd"
                                     Grid.Column="3"
                                     Width="Auto"
-                                    Margin="10,0,0,0"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
