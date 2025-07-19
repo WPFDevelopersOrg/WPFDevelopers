@@ -226,7 +226,8 @@ namespace WPFDevelopers.Controls
                     {
                         if (SelectedItemsExt is IList list)
                         {
-                            list.Clear();
+                            if(list.Count > 0)
+                                list.Clear();
                             foreach (var itm in SelectedItems.Cast<object>())
                                 list.Add(itm);
                         }
@@ -247,7 +248,6 @@ namespace WPFDevelopers.Controls
             if (_textBox != null)
                 ApplySearchLogic();
         }
-
 
         public override void OnApplyTemplate()
         {
@@ -306,6 +306,20 @@ namespace WPFDevelopers.Controls
             {
                 AddHandler(Controls.Tag.CloseEvent, new RoutedEventHandler(Tags_Close));
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
+            }
+        }
+        public MultiSelectComboBox()
+        {
+            IsVisibleChanged += OnMultiSelectComboBox_IsVisibleChanged;
+        }
+
+        private void OnMultiSelectComboBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                InvalidateMeasure();
+                InvalidateArrange();
+                UpdateLayout();
             }
         }
 
@@ -525,6 +539,7 @@ namespace WPFDevelopers.Controls
 
         private void SelectionChecked(ListBox listbox)
         {
+            if (_checkBox == null) return;
             if (listbox.SelectedItems.Count > 0
                 &&
                 listbox.Items.Count == listbox.SelectedItems.Count)
