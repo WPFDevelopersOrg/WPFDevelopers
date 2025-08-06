@@ -87,16 +87,16 @@
                         Background="{TemplateBinding Background}" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="RadiusOrientation" Value="Right">
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
                         </Trigger>
                         <Trigger Property="RadiusOrientation" Value="Left">
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
                         </Trigger>
                         <Trigger Property="RadiusOrientation" Value="Down">
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
                         </Trigger>
                         <Trigger Property="RadiusOrientation" Value="Up">
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -249,6 +249,7 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Slider}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
+        <Setter Property="IsMoveToPointEnabled" Value="True" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="SelectionEnd" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value}" />
