@@ -561,6 +561,18 @@
                                         Binding="{Binding Address}"
                                         Header="Address"
                                         IsReadOnly="True" />
+                                    <DataGridTemplateColumn Width="*" Header="ContactMethod">
+                                        <DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <ComboBox ItemsSource="{x:Static local:BasicControlsExample.ContactMethods}" SelectedItem="{Binding ContactMethod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ContactMethod}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>

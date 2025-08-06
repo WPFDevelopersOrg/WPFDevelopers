@@ -21,6 +21,7 @@ namespace WPFDevelopers.Sample.Models
         public DateTime Date { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public string ContactMethod { get; set; }
         public List<UserModel> Children { get; set; }
     }
 }
