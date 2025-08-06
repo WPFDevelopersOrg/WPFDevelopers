@@ -221,11 +221,11 @@ namespace WPFDevelopers.Net40
                                     if (rect.Contains(new Point(x, y)))
                                     {
                                         handled = true;
-                                        contentPresenter.Opacity = 0.7;
+                                        contentPresenter.Opacity = 1;
                                     }
                                     else
                                     {
-                                        contentPresenter.Opacity = 1;
+                                        contentPresenter.Opacity = 0.7;
                                     }
                                     return new IntPtr(OSVersionHelper.HTMAXBUTTON);
                                 }
@@ -272,43 +272,6 @@ namespace WPFDevelopers.Net40
             }
             return IntPtr.Zero;
         }
-
-        private bool HandleSnapLayoutMessage(int msg, IntPtr lParam, ref IntPtr result)
-        {
-            Button button = TitleBarMode == TitleBarMode.Normal
-                ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
-                : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
-
-            if (button == null || button.ActualWidth <= 0 || button.ActualHeight <= 0)
-                return false;
-            var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
-            if (contentPresenter == null) return false;
-            var x = lParam.ToInt32() & 0xffff;
-            var y = lParam.ToInt32() >> 16;
-            var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
-            var rect = new Rect(button.PointToScreen(new Point()), new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
-            var point = new Point(x, y);
-
-            if (msg == WindowsMessageCodes.WM_NCHITTEST && contentPresenter != null)
-            {
-                if (!rect.Contains(point))
-                {
-                    if(contentPresenter.Opacity != 0.7)
-                        contentPresenter.Opacity = 0.7;
-                    return false;
-                }
-                contentPresenter.Opacity = 1;
-                result = new IntPtr(OSVersionHelper.HTMAXBUTTON);
-            }
-            else if (msg == WindowsMessageCodes.WM_NCLBUTTONDOWN)
-            {
-                IInvokeProvider invokeProv = new ButtonAutomationPeer(button).GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-                invokeProv?.Invoke();
-            }
-
-            return true;
-        }
-
 
         private void ShowSystemMenu(object sender, ExecutedRoutedEventArgs e)
         {
