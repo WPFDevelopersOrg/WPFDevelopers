@@ -33,6 +33,8 @@
                     wd:ElementHelper.IsClear="True"
                     EndDate="{Binding EndDate, RelativeSource={RelativeSource AncestorType=local:DateRangePickerExample}}"
                     EndWatermark="结束日期"
+                    MaxDate="2025-08-30"
+                    MinDate="2025-08-06"
                     StartDate="{Binding StartDate, RelativeSource={RelativeSource AncestorType=local:DateRangePickerExample}}"
                     StartWatermark="开始日期" />
                 <Button

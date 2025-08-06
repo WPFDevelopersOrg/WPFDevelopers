@@ -60,6 +60,14 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register(nameof(IsSyncingDisplayDate), typeof(bool), typeof(DateRangePicker),
                 new PropertyMetadata(false, OnIsSyncingDisplayDateChanged));
 
+        public static readonly DependencyProperty MinDateProperty =
+    DependencyProperty.Register("MinDate", typeof(DateTime?), typeof(DateRangePicker),
+        new PropertyMetadata(null, OnMinDateChanged));
+
+        public static readonly DependencyProperty MaxDateProperty =
+            DependencyProperty.Register("MaxDate", typeof(DateTime?), typeof(DateRangePicker),
+                    new PropertyMetadata(null, OnMaxDateChanged));
+
         private int _clickCount;
 
         private HwndSource _hwndSource;
@@ -79,39 +87,51 @@ namespace WPFDevelopers.Controls
 
         public string StartWatermark
         {
-            get => (string) GetValue(StartWatermarkProperty);
+            get => (string)GetValue(StartWatermarkProperty);
             set => SetValue(StartWatermarkProperty, value);
         }
 
         public string EndWatermark
         {
-            get => (string) GetValue(EndWatermarkProperty);
+            get => (string)GetValue(EndWatermarkProperty);
             set => SetValue(EndWatermarkProperty, value);
         }
 
 
         public DateTime? StartDate
         {
-            get => (DateTime?) GetValue(StartDateProperty);
+            get => (DateTime?)GetValue(StartDateProperty);
             set => SetValue(StartDateProperty, value);
         }
 
         public DateTime? EndDate
         {
-            get => (DateTime?) GetValue(EndDateProperty);
+            get => (DateTime?)GetValue(EndDateProperty);
             set => SetValue(EndDateProperty, value);
         }
 
         public string DateFormat
         {
-            get => (string) GetValue(DateFormatFormatProperty);
+            get => (string)GetValue(DateFormatFormatProperty);
             set => SetValue(DateFormatFormatProperty, value);
         }
 
         public bool IsSyncingDisplayDate
         {
-            get => (bool) GetValue(IsSyncingDisplayDateProperty);
+            get => (bool)GetValue(IsSyncingDisplayDateProperty);
             set => SetValue(IsSyncingDisplayDateProperty, value);
+        }
+
+        public DateTime? MinDate
+        {
+            get => (DateTime?)GetValue(MinDateProperty);
+            set => SetValue(MinDateProperty, value);
+        }
+
+        public DateTime? MaxDate
+        {
+            get => (DateTime?)GetValue(MaxDateProperty);
+            set => SetValue(MaxDateProperty, value);
         }
 
         private static void OnStartDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -138,7 +158,7 @@ namespace WPFDevelopers.Controls
         {
             var ctrl = d as DateRangePicker;
             if (ctrl != null)
-                ctrl.OnMaxDropDownHeightChanged((double) e.OldValue, (double) e.NewValue);
+                ctrl.OnMaxDropDownHeightChanged((double)e.OldValue, (double)e.NewValue);
         }
 
         protected virtual void OnMaxDropDownHeightChanged(double oldValue, double newValue)
@@ -149,11 +169,33 @@ namespace WPFDevelopers.Controls
         {
             var ctrl = d as DateRangePicker;
             if (ctrl != null)
-                ctrl.OnIsSyncingDisplayDateChanged((bool) e.OldValue, (bool) e.NewValue);
+                ctrl.OnIsSyncingDisplayDateChanged((bool)e.OldValue, (bool)e.NewValue);
         }
 
         protected virtual void OnIsSyncingDisplayDateChanged(bool oldValue, bool newValue)
         {
+        }
+
+        private static void OnMinDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (DateRangePicker)d;
+            if (control._startCalendar != null)
+                OnMinAndMaxChanged(control);
+        }
+
+        private static void OnMaxDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (DateRangePicker)d;
+            if (control._endCalendar != null)
+                OnMinAndMaxChanged(control);
+        }
+
+        static void OnMinAndMaxChanged(DateRangePicker control)
+        {
+            control._startCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, control.MinDate.Value.AddDays(-1)));
+            control._endCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, control.MinDate.Value.AddDays(-1)));
+            control._startCalendar.BlackoutDates.Add(new CalendarDateRange(control.MaxDate.Value.AddDays(1), DateTime.MaxValue));
+            control._endCalendar.BlackoutDates.Add(new CalendarDateRange(control.MaxDate.Value.AddDays(1), DateTime.MaxValue));
         }
 
         public override void OnApplyTemplate()
@@ -173,7 +215,7 @@ namespace WPFDevelopers.Controls
                 }
             }
 
-            _popup = (Popup) GetTemplateChild(PopupTemplateName);
+            _popup = (Popup)GetTemplateChild(PopupTemplateName);
             if (_popup != null)
             {
                 _popup.Focusable = true;
@@ -186,7 +228,7 @@ namespace WPFDevelopers.Controls
 
             AddHandler(PreviewMouseUpEvent, new MouseButtonEventHandler(OnPreviewMouseUp), true);
 
-            _startCalendar = (Calendar) GetTemplateChild(StartCalendarTemplateName);
+            _startCalendar = (Calendar)GetTemplateChild(StartCalendarTemplateName);
             if (_startCalendar != null)
             {
                 _startCalendar.PreviewMouseUp -= OnCalendar_PreviewMouseUp;
@@ -197,7 +239,7 @@ namespace WPFDevelopers.Controls
                 _startCalendar.PreviewMouseUp += OnStartCalendar_PreviewMouseUp;
             }
 
-            _endCalendar = (Calendar) GetTemplateChild(EndCalendarTemplateName);
+            _endCalendar = (Calendar)GetTemplateChild(EndCalendarTemplateName);
             if (_endCalendar != null)
             {
                 _endCalendar.PreviewMouseUp -= OnCalendar_PreviewMouseUp;
@@ -208,8 +250,23 @@ namespace WPFDevelopers.Controls
                 _endCalendar.PreviewMouseUp += OnEndCalendar_PreviewMouseUp;
             }
 
-            var now = DateTime.Now;
+            if (_startCalendar != null)
+            {
+                if (MinDate != null)
+                    _startCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, MinDate.Value.AddDays(-1)));
+                if (MaxDate != null)
+                    _startCalendar.BlackoutDates.Add(new CalendarDateRange(MaxDate.Value.AddDays(1), DateTime.MaxValue));
+            }
+            if (_endCalendar != null)
+            {
+                if (MinDate != null)
+                    _endCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, MinDate.Value.AddDays(-1)));
+                if (MaxDate != null)
+                    _endCalendar.BlackoutDates.Add(new CalendarDateRange(MaxDate.Value.AddDays(1), DateTime.MaxValue));
+            }
+            var now = MinDate == null ? DateTime.Now : MinDate.Value;
             var firstDayOfNextMonth = new DateTime(now.Year, now.Month, 1).AddMonths(1);
+            _startCalendar.DisplayDate = now;
             _startCalendar.DisplayDateEnd = firstDayOfNextMonth.AddDays(-1);
             _endCalendar.DisplayDate = firstDayOfNextMonth;
             _endCalendar.DisplayDateStart = firstDayOfNextMonth;
@@ -219,10 +276,10 @@ namespace WPFDevelopers.Controls
 
             _startCalendarDayButtons = GetCalendarDayButtons(_startCalendar);
             _endCalendarDayButtons = GetCalendarDayButtons(_endCalendar);
-            _textBoxStart = (DatePickerTextBox) GetTemplateChild(TextBoxStartTemplateName);
+            _textBoxStart = (DatePickerTextBox)GetTemplateChild(TextBoxStartTemplateName);
             if (_textBoxStart != null)
                 _textBoxStart.TextChanged += TextBoxStart_TextChanged;
-            _textBoxEnd = (DatePickerTextBox) GetTemplateChild(TextBoxEndTemplateName);
+            _textBoxEnd = (DatePickerTextBox)GetTemplateChild(TextBoxEndTemplateName);
             if (_textBoxEnd != null)
                 _textBoxEnd.TextChanged += TextBoxEnd_TextChanged;
             Loaded += DateRangePicker_Loaded;

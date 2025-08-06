@@ -50,19 +50,6 @@
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             TextElement.Foreground="{DynamicResource WD.RegularTextBrush}" />
-                        <Line
-                            x:Name="Blackout"
-                            Margin="8,3,8,0"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Opacity=".4"
-                            Stroke="{DynamicResource WD.PrimaryTextBrush}"
-                            StrokeThickness="1.5"
-                            Visibility="Collapsed"
-                            X1="0"
-                            X2="{TemplateBinding Width}"
-                            Y1="0"
-                            Y2="0" />
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsToday" Value="True">
@@ -117,7 +104,8 @@
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.BaseBrush}" />
                         </MultiTrigger>
                         <Trigger Property="IsBlackedOut" Value="True">
-                            <Setter TargetName="Blackout" Property="Visibility" Value="Visible" />
+                            <Setter Property="Opacity" Value=".4" />
+                            <Setter Property="Cursor" Value="No" />
                         </Trigger>
                         <Trigger Property="helpers:DatePickerHelper.IsHighlight" Value="True">
                             <Setter TargetName="SelectedBackground" Property="Visibility" Value="Collapsed" />
