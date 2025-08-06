@@ -4,16 +4,9 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Controls
 {
-    /// <summary>
-    /// 当不需要使用Grid的分行分列，则可使用 SmallPanel
-    /// </summary>
     public class SmallPanel : Panel
     {
-        /// <summary>
-        /// Content measurement.
-        /// </summary>
-        /// <param name="constraint">Constraint</param>
-        /// <returns>Desired size</returns>
+        
         protected override Size MeasureOverride(Size constraint)
         {
             Size gridDesiredSize = new Size();
@@ -31,10 +24,7 @@ namespace WPFDevelopers.Controls
             }
             return (gridDesiredSize);
         }
-        /// <summary>
-        /// Content arrangement.
-        /// </summary>
-        /// <param name="arrangeSize">Arrange size</param>
+        
         protected override Size ArrangeOverride(Size arrangeSize)
         {
             UIElementCollection children = InternalChildren;
