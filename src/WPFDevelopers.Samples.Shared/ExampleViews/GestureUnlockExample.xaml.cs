@@ -20,7 +20,6 @@ namespace WPFDevelopers.Sample.ExampleViews
         public GestureUnlockExample()
         {
             InitializeComponent();
-            DataContext = this;
         }
 
         private void HandleGestureUnlock(string pwd, GestureUnlockType unlockType)
