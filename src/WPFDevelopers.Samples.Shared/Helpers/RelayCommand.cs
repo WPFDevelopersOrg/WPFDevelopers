@@ -8,6 +8,10 @@ namespace WPFDevelopers.Samples.Helpers
         private readonly Func<object, bool> canExecuteFunc;
         private readonly Action<object> executeAction;
 
+        public RelayCommand()
+        {
+        }
+
         public RelayCommand(Action<object> execute)
             : this(execute, null)
         {
