@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Threading;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Utilities;
 using Size = System.Drawing.Size;
@@ -94,6 +95,19 @@ namespace WPFDevelopers.Helpers
             }
             Win32.DwmInvalidateIconicBitmaps(hwnd);
             window.ShowInTaskbar = true;
+        }
+
+        public static Rect GetWindowBounds(IntPtr hWnd)
+        {
+            Win32.RECT rect;
+            Win32.GetWindowRect(hWnd, out rect);
+            int dpi = Win32.GetDpiForWindow(hWnd);
+            double scale = dpi / 96.0;
+            return new Rect(
+                rect.Left / scale,
+                rect.Top / scale,
+                (rect.Right - rect.Left) / scale,
+                (rect.Bottom - rect.Top) / scale);
         }
     }
 }

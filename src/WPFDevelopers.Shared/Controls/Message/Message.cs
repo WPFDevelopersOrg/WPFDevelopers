@@ -40,16 +40,22 @@ namespace WPFDevelopers.Controls
                 throw;
             }
         }
+
         public static void Push(this Window owner, string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
         {
             CreateMessageAdorner(owner, message, type, center);
         }
+
         public static void Push(string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
         {
             CreateMessageAdorner(message: message, type: type, center: center);
         }
+        public static void Push(IntPtr intPtr, string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
+        {
+            PushDesktop(message, type, center, intPtr);
+        }
 
-        public static void PushDesktop(string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
+        public static void PushDesktop(string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false, IntPtr intPtr = default)
         {
             if (_messageExt == null)
             {
@@ -63,13 +69,15 @@ namespace WPFDevelopers.Controls
                 _messageExt.IsPosition = false;
                 _messageExt.Position = _position;
             }
-            _messageExt.Push(message, type, center); 
+            _messageExt.Push(message, type, center, intPtr);
         }
+
         public static void SetPosition(Position position = Position.Top)
         {
             if (_position != position)
                 _position = position;
         }
+
         public static void Clear()
         {
             if(_messageAdorner != null)

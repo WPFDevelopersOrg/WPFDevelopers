@@ -17,7 +17,7 @@ namespace WPFDevelopers.Helpers
             NTdll = "ntdll.dll",
             DwmApi = "dwmapi.dll",
             Winmm = "winmm.dll",
-            Shcore = "Shcore.dll";
+            Shcore = "shcore.dll";
         //查找窗口的委托 查找逻辑
         public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
 
@@ -192,6 +192,20 @@ namespace WPFDevelopers.Helpers
         [DllImport(DwmApi)]
         public static extern int DwmInvalidateIconicBitmaps(IntPtr hwnd);
 
+        [DllImport(User32)]
+        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport(User32)]
+        public static extern int GetDpiForWindow(IntPtr hwnd);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
     }
 
     internal class WindowsMessageCodes
