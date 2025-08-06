@@ -46,7 +46,7 @@ namespace WPFDevelopers.Samples.ExampleViews
                 case "IntPtr":
                     Window parentWindow = Window.GetWindow(this);
                     IntPtr windowHandle = new WindowInteropHelper(parentWindow).Handle;
-                    Message.Push(windowHandle, "This is a question message", MessageBoxImage.Question);
+                    Message.Push(windowHandle, "This is a Handle message", MessageBoxImage.Question);
                     break;
                 default:
                     Message.Push("这是一条很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长消息", MessageBoxImage.Information);
