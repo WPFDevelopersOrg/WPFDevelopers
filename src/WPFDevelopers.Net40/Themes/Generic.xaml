@@ -17,7 +17,6 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-        <Setter Property="WindowStyle" Value="None" />
         <Setter Property="FontFamily" Value="{DynamicResource WD.FontFamily}" />
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
@@ -40,8 +39,8 @@
                             </Grid.RowDefinitions>
                             <Border
                                 Grid.Row="0"
-                                HorizontalAlignment="Stretch"
                                 Margin="0,0,-1,0"
+                                HorizontalAlignment="Stretch"
                                 Background="{TemplateBinding TitleBackground}" />
                             <control:SmallPanel x:Name="PART_Normal" Grid.Row="0">
                                 <Grid Height="{TemplateBinding TitleHeight}">

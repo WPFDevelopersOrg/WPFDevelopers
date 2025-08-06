@@ -19,7 +19,6 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-        <Setter Property="WindowStyle" Value="None" />
         <Setter Property="FontFamily" Value="{DynamicResource WD.FontFamily}" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
