@@ -228,11 +228,11 @@ namespace WPFDevelopers.Net45x
                                     if (rect.Contains(new Point(x, y)))
                                     {
                                         handled = true;
-                                        contentPresenter.Opacity = 0.7;
+                                        contentPresenter.Opacity = 1;
                                     }
                                     else
                                     {
-                                        contentPresenter.Opacity = 1;
+                                        contentPresenter.Opacity = 0.7;
                                     }
                                     return new IntPtr(OSVersionHelper.HTMAXBUTTON);
                                 }
