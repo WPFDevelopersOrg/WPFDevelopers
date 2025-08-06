@@ -21,7 +21,6 @@ namespace WPFDevelopers.Samples.ExampleViews
                 new NavScrollPanelItem{ Header = "隐私设置", Content = new PrivacySettings()},
                 new NavScrollPanelItem{ Header = "关于我们", Content = new About()},
             };
-            DataContext = this;
         }
     }
 }

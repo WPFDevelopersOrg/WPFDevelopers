@@ -35,7 +35,7 @@
                 <wd:NavScrollPanel
                     Padding="10"
                     wd:ElementHelper.CornerRadius="10"
-                    ItemsSource="{Binding Items}" />
+                    ItemsSource="{Binding Items, RelativeSource={RelativeSource AncestorType=UserControl}}" />
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>
