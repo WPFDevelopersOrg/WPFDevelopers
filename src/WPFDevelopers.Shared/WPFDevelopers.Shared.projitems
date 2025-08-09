@@ -9,6 +9,7 @@
     <Import_RootNamespace>WPFDevelopers</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationGrid\AnimationGrid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ScaleBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDBorder.cs" />

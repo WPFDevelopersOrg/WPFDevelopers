@@ -63,6 +63,9 @@
       <SubType>Code</SubType>
       <DependentUpon>AcrylicBlurWindowExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml.cs">
+      <DependentUpon>AnimationGridExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationAudioExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
@@ -613,6 +616,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AcrylicBlurWindowExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
