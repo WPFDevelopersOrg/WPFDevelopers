@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Standard;
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Interop;
@@ -192,6 +193,9 @@ namespace WPFDevelopers.Helpers
         [DllImport(DwmApi)]
         public static extern int DwmInvalidateIconicBitmaps(IntPtr hwnd);
 
+        [DllImport(DwmApi)]
+        public static extern int DwmSetIconicLivePreviewBitmap(IntPtr hwnd, IntPtr hBitmap, IntPtr pptClient, DWM_SIT dwSITFlags);
+
         [DllImport(User32)]
         public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
@@ -218,6 +222,7 @@ namespace WPFDevelopers.Helpers
         public const int WM_NCHITTEST = 0x0084;
 
         public const int WM_DWMSENDICONICTHUMBNAIL = 0x0323;
+        public const int WM_DWMSENDICONICLIVEPREVIEWBITMAP = 0x0326;
     }
 
     [Flags]
@@ -230,4 +235,10 @@ namespace WPFDevelopers.Helpers
         UseImmersiveDarkMode = 20
     }
 
+    [Flags]
+    public enum DWM_SIT : uint
+    {
+        None = 0x0,
+        DisplayFrame = 0x1
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -87,6 +88,23 @@ namespace WPFDevelopers.Helpers
                             throw new Exception($"DwmSetIconicThumbnail error :{ex.Message}!");
                         }
 
+                        handled = true;
+                    }
+                    if (msg == WindowsMessageCodes.WM_DWMSENDICONICLIVEPREVIEWBITMAP)
+                    {
+                        try
+                        {
+                            using (var bmp = new Bitmap(imagePath))
+                            {
+                                IntPtr hBitmap = bmp.GetHbitmap();
+                                Win32.DwmSetIconicLivePreviewBitmap(hwnd2, hBitmap, IntPtr.Zero, 0);
+                                Win32.DeleteObject(hBitmap);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine($"LivePreview error: {ex.Message}");
+                        }
                         handled = true;
                     }
 
