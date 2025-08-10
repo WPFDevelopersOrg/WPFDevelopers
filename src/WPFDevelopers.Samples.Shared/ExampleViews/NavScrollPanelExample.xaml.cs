@@ -15,13 +15,12 @@ namespace WPFDevelopers.Samples.ExampleViews
             InitializeComponent();
             Items = new ObservableCollection<NavScrollPanelItem>
             {
-                new NavScrollPanelItem{ Title = "播放相关", Content = new PlaybackSettings()},
-                new NavScrollPanelItem{ Title = "桌面歌词", Content = new DesktopLyrics()},
-                new NavScrollPanelItem{ Title = "快捷键", Content = new ShortcutKeys()},
-                new NavScrollPanelItem{ Title = "隐私设置", Content = new PrivacySettings()},
-                new NavScrollPanelItem{ Title = "关于我们", Content = new About()},
+                new NavScrollPanelItem{ Header = "播放相关", Content = new PlaybackSettings()},
+                new NavScrollPanelItem{ Header = "桌面歌词", Content = new DesktopLyrics()},
+                new NavScrollPanelItem{ Header = "快捷键", Content = new ShortcutKeys()},
+                new NavScrollPanelItem{ Header = "隐私设置", Content = new PrivacySettings()},
+                new NavScrollPanelItem{ Header = "关于我们", Content = new About()},
             };
-            DataContext = this;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -30,43 +31,76 @@ namespace WPFDevelopers.Controls
             }
            
         }
-        
-        internal void Push(string message, MessageBoxImage type = MessageBoxImage.Information, bool center = false)
+
+        internal void Push(string message, MessageBoxImage type = MessageBoxImage.Information,
+                  bool center = false, IntPtr intPtr = default)
         {
-            var desktopWorkingArea = SystemParameters.WorkArea;
-            var item = new MessageListBoxItem { Content = message, MessageType = type, IsCenter = center };
-            _listBox.Items.Insert(0, item);
+            Rect targetArea = GetTargetArea(intPtr);
+            var messageItem = new MessageListBoxItem
+            {
+                Content = message,
+                MessageType = type,
+                IsCenter = center
+            };
+            _listBox.Items.Insert(0, messageItem);
             if (!IsPosition || Position == Position.Bottom)
             {
-                double x = 0;
-                double y = 0;
-                switch (Position)
-                {
-                    case Position.Top:
-                        x = (desktopWorkingArea.Right - item.Width) / 2;
-                        break;
-                    case Position.Right:
-                        x = desktopWorkingArea.Right - (item.Width + item.Margin.Right + item.Padding.Right);
-                        break;
-                    case Position.Bottom:
-                        x = (desktopWorkingArea.Right - item.Width) / 2;
-                        _listBox.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-                        var controlHeight = _listBox.DesiredSize.Height;
-                        y = desktopWorkingArea.Height - controlHeight;
-                        break;
-                }
-                Height = desktopWorkingArea.Height;
-                Left = x;
-                Top = y;
+                CalculateAndSetPosition(targetArea, messageItem);
                 IsPosition = true;
             }
         }
+
+        private Rect GetTargetArea(IntPtr windowHandle)
+        {
+            if (windowHandle != IntPtr.Zero)
+            {
+                IsPosition = false;
+                return WindowHelpers.GetWindowBounds(windowHandle);
+            }
+            return SystemParameters.WorkArea;
+        }
+
+        private void CalculateAndSetPosition(Rect targetArea, MessageListBoxItem item)
+        {
+            double x = 0;
+            double y = 0;
+
+            switch (Position)
+            {
+                case Position.Left:
+                    x = targetArea.Left + item.Margin.Left;
+                    y = targetArea.Top;
+                    break;
+
+                case Position.Top:
+                    x = targetArea.Left + (targetArea.Width - item.Width) / 2;
+                    y = targetArea.Top;
+                    break;
+
+                case Position.Right:
+                    x = targetArea.Right - (item.Width + item.Margin.Right + item.Padding.Right);
+                    y = targetArea.Top;
+                    break;
+
+                case Position.Bottom:
+                    x = targetArea.Left + (targetArea.Width - item.Width) / 2;
+                    _listBox.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                    y = targetArea.Bottom - _listBox.DesiredSize.Height;
+                    break;
+            }
+
+            Height = targetArea.Height;
+            Left = x;
+            Top = y;
+        }
+
         internal void Clear() 
         {
             if(_listBox!=null)
                 _listBox.Items.Clear();
             Close();
         }
+
         private void ListBox_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if(_listBox.ActualHeight <= 10)

@@ -70,11 +70,12 @@ namespace WPFDevelopers.Controls
 
         private static void CreateLoading(UIElement uIElement, bool isRemove = false)
         {
+            if (uIElement == null) return;
             UIElement value = null;
             var layer = AdornerLayer.GetAdornerLayer(uIElement);
             if (layer == null) return;
             var adorners = layer.GetAdorners(uIElement);
-            if (isRemove || adorners != null)
+            if (adorners != null)
             {
                 foreach (var item in adorners)
                 {
@@ -87,6 +88,8 @@ namespace WPFDevelopers.Controls
                     }
                 }
             }
+            if (isRemove)
+                return;
             var adornerContainer = new AdornerContainer(uIElement);
             var type = GetLoadingType(uIElement);
             var isLoading = GetIsShow(uIElement);

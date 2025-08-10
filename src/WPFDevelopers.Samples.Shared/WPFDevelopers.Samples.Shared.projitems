@@ -13,7 +13,7 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubbleControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\EmojiHelper.cs" />
@@ -63,9 +63,18 @@
       <SubType>Code</SubType>
       <DependentUpon>AcrylicBlurWindowExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml.cs">
+      <DependentUpon>AnimationGridExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationAudioExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailExample.xaml.cs">
+      <DependentUpon>IconicThumbnailExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailWindowExample.xaml.cs">
+      <DependentUpon>IconicThumbnailWindowExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml.cs">
       <SubType>Code</SubType>
@@ -321,6 +330,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NavScrollPanel\ShortcutKeys.xaml.cs">
       <DependentUpon>ShortcutKeys.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\GestureUnlockExample.xaml.cs">
+      <DependentUpon>GestureUnlockExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TagExample.xaml.cs">
       <DependentUpon>TagExample.xaml</DependentUpon>
@@ -607,7 +619,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationAudioExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailWindowExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -889,6 +913,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NavScrollPanel\ShortcutKeys.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\GestureUnlockExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

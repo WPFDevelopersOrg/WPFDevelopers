@@ -55,6 +55,11 @@
                         Content="Long Message"
                         Style="{StaticResource WD.SuccessPrimaryButton}"
                         Tag="Long" />
+                    <Button
+                        Click="AddButton_Click"
+                        Content="IntPtr Window"
+                        Style="{StaticResource WD.SuccessPrimaryButton}"
+                        Tag="IntPtr" />
                     <Button Click="BtnClear_Click" Content="Clear" />
                 </UniformGrid>
             </GroupBox>

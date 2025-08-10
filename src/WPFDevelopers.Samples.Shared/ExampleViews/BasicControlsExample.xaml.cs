@@ -31,6 +31,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             DependencyProperty.Register("AllSelected", typeof(bool), typeof(BasicControlsExample),
                 new PropertyMetadata(AllSelectedChangedCallback));
 
+        public static List<string> ContactMethods { get; } = new List<string> { "Tel", "Fax", "MB" };
         public BasicControlsExample()
         {
             InitializeComponent();
@@ -54,6 +55,7 @@ namespace WPFDevelopers.Samples.ExampleViews
                     Date = time,
                     Name = "WPFDevelopers",
                     Address = "One Microsoft Way, Redmond",
+                    ContactMethod = "MB",
                     Children = new List<UserModel>
                     {
                         new UserModel { Name = "WPFDevelopers1.1",Children=new List<UserModel>

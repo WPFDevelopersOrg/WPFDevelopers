@@ -22,19 +22,19 @@
             <!--  用户名输入框  -->
             <cc:TextInputBox
                 Height="40"
-                Icon="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/User.png"
+                Icon="User.png"
                 PlaceHolder="用户名" />
             <!--  邮箱输入框  -->
             <cc:TextInputBox
                 Height="40"
                 Margin="0,20,0,0"
-                Icon="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/Mail.png"
+                Icon="Mail.png"
                 PlaceHolder="邮箱" />
             <!--  密码输入框  -->
             <cc:PasswordInputBox
                 Height="40"
                 Margin="0,20,0,0"
-                Icon="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/Lock.png"
+                Icon="Lock.png"
                 PlaceHolder="密码" />
             <!--  注册按钮  -->
             <Button

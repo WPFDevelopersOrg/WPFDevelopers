@@ -2,11 +2,13 @@
 	<Import Project="../Resources.props" />
 	<Import Project="../TargetFrameworks.props" />
 	<ItemGroup>
-		<ProjectReference Include="..\WPFDevelopers.Net45x\WPFDevelopers.Net45x.csproj" />
+	  <PackageReference Include="WPFDevelopers" Version="0.0.0.2" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
 	</ItemGroup>
 	<Import Project="..\WPFDevelopers.Samples.Shared\WPFDevelopers.Samples.Shared.projitems" Label="Shared" />
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command=" if not exist &quot;$(OutDir)emoji&quot; mkdir &quot;$(OutDir)emoji&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/emoji&quot; &quot;$(OutDir)emoji\&quot;&#xD;&#xA;&#xD;&#xA; if not exist &quot;$(OutDir)Audio&quot; mkdir &quot;$(OutDir)Audio&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/Audio&quot; &quot;$(OutDir)Audio\&quot;" />
+	  <Exec Command=" if not exist &quot;$(OutDir)emoji&quot; mkdir &quot;$(OutDir)emoji&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/emoji&quot; &quot;$(OutDir)emoji\&quot;&#xD;&#xA;&#xD;&#xA; if not exist &quot;$(OutDir)Audio&quot; mkdir &quot;$(OutDir)Audio&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/Audio&quot; &quot;$(OutDir)Audio\&quot;&#xD;&#xA;&#xD;&#xA; if not exist &quot;$(OutDir)IconicThumbnail&quot; mkdir &quot;$(OutDir)IconicThumbnail&quot;&#xD;&#xA;&#xD;&#xA; copy &quot;$(SolutionDir)WPFDevelopers.Samples.Shared/Resources/Images/IconicThumbnail&quot; &quot;$(OutDir)IconicThumbnail\&quot;" />
 	</Target>
 </Project>

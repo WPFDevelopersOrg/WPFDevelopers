@@ -1,0 +1,94 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
+    xmlns:resx="clr-namespace:WPFDevelopers">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style
+        x:Key="WD.GestureItem"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:GestureItem}">
+        <Setter Property="Width" Value="60" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="Background" Value="#80FFFFFF" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:GestureItem}">
+                    <Border
+                        x:Name="PART_Border"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+                        <Ellipse
+                            x:Name="PART_Ellipse"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Fill="{TemplateBinding BorderBrush}"
+                            Visibility="Collapsed" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+                            <Setter TargetName="PART_Ellipse" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True" />
+                                <Condition Binding="{Binding State, RelativeSource={RelativeSource AncestorType=controls:GestureUnlock}}" Value="Error" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True" />
+                                <Condition Binding="{Binding State, RelativeSource={RelativeSource AncestorType=controls:GestureUnlock}}" Value="Success" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
+        x:Key="WD.GestureUnlock"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:GestureUnlock}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Width" Value="300" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Height" Value="300" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:GestureUnlock}">
+                    <controls:WDBorder CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                        <Canvas
+                            x:Name="PART_GestureUnlockCanvas"
+                            Background="{TemplateBinding Background}"
+                            Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}"
+                            SnapsToDevicePixels="True" />
+                    </controls:WDBorder>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource WD.GestureItem}" TargetType="{x:Type controls:GestureItem}" />
+    <Style BasedOn="{StaticResource WD.GestureUnlock}" TargetType="{x:Type controls:GestureUnlock}" />
+</ResourceDictionary>

@@ -142,6 +142,17 @@ namespace WPFDevelopers.Helpers
             return null;
         }
 
+        public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            var parent = VisualTreeHelper.GetParent(child);
+            if (parent == null) return null;
+
+            if (parent is T tParent)
+                return tParent;
+
+            return FindParent<T>(parent);
+        }
+
         public static object GetXmlReader(object Content)
         {
             try

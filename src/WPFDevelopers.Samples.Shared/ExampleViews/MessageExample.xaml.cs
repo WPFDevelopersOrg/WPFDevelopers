@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -41,6 +42,11 @@ namespace WPFDevelopers.Samples.ExampleViews
                     break;
                 case "Question":
                     Message.Push("This is a question message", MessageBoxImage.Question);
+                    break;
+                case "IntPtr":
+                    Window parentWindow = Window.GetWindow(this);
+                    IntPtr windowHandle = new WindowInteropHelper(parentWindow).Handle;
+                    Message.Push(windowHandle, "This is a Handle message", MessageBoxImage.Question);
                     break;
                 default:
                     Message.Push("这是一条很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长消息", MessageBoxImage.Information);

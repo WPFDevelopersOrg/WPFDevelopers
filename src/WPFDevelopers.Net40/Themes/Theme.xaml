@@ -689,7 +689,6 @@
 		<Setter Property="SnapsToDevicePixels" Value="True" />
 		<Setter Property="UseLayoutRounding" Value="True" />
 		<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-		<Setter Property="WindowStyle" Value="None" />
 		<Setter Property="FontFamily" Value="{DynamicResource WD.FontFamily}" />
 		<Setter Property="shell:WindowChrome.WindowChrome">
 			<Setter.Value>
@@ -699,18 +698,14 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type wd:Window}">
-					<ControlTemplate.Resources>
-						<Style TargetType="Grid">
-							<Setter Property="Background" Value="Transparent" />
-						</Style>
-					</ControlTemplate.Resources>
 					<Border Name="PART_Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
 						<Grid x:Name="LayoutRoot">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="*" />
 							</Grid.RowDefinitions>
-							<controls:SmallPanel x:Name="PART_Normal" Grid.Row="0" Background="{TemplateBinding TitleBackground}">
+							<Border Grid.Row="0" Margin="0,0,-1,0" HorizontalAlignment="Stretch" Background="{TemplateBinding TitleBackground}" />
+							<controls:SmallPanel x:Name="PART_Normal" Grid.Row="0">
 								<Grid Height="{TemplateBinding TitleHeight}">
 									<Grid.ColumnDefinitions>
 										<ColumnDefinition Width="*" />
@@ -724,17 +719,17 @@
 									</StackPanel>
 									<StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" shell:WindowChrome.IsHitTestVisibleInChrome="True" Orientation="Horizontal">
 										<StackPanel x:Name="PART_TitleBarMinAndMax" Orientation="Horizontal">
-											<Button Name="PART_TitleBarMinimizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Minimize], Source={x:Static resx:LanguageManager.Instance}}">
+											<Button x:Name="PART_TitleBarMinimizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Minimize], Source={x:Static resx:LanguageManager.Instance}}">
 												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 													<Rectangle Width="10" Height="1" Margin="0,7,0,0" VerticalAlignment="Bottom" Fill="{DynamicResource WD.WindowTextBrush}" />
 												</Grid>
 											</Button>
-											<Button Name="PART_TitleBarMaximizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
+											<Button x:Name="PART_TitleBarMaximizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
 												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 													<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowMaximizeGeometry}" Fill="{DynamicResource WD.WindowTextBrush}" Stretch="Uniform" UseLayoutRounding="False" />
 												</Grid>
 											</Button>
-											<Button Name="PART_TitleBarRestoreButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed">
+											<Button x:Name="PART_TitleBarRestoreButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed">
 												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 													<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowRestoreGeometry}" Fill="{DynamicResource WD.WindowTextBrush}" Stretch="Uniform" UseLayoutRounding="False" />
 												</Grid>
@@ -746,7 +741,7 @@
 									</StackPanel>
 								</Grid>
 							</controls:SmallPanel>
-							<controls:SmallPanel x:Name="PART_HighTitleBar" Grid.Row="0" Background="{TemplateBinding TitleBackground}" Visibility="Collapsed">
+							<controls:SmallPanel x:Name="PART_HighTitleBar" Grid.Row="0" Visibility="Collapsed">
 								<Grid x:Name="PART_GridChrome" Height="{TemplateBinding TitleHeight}" Margin="10,0,0,0">
 									<Grid.ColumnDefinitions>
 										<ColumnDefinition Width="Auto" />
@@ -762,12 +757,12 @@
 													<Rectangle x:Name="MinimizeGlyph" Width="10" Height="1" Margin="0,7,0,0" VerticalAlignment="Bottom" Fill="{DynamicResource WD.WindowTextBrush}" />
 												</Grid>
 											</Button>
-											<Button Name="PART_MaximizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
+											<Button x:Name="PART_MaximizeButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
 												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 													<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowMaximizeGeometry}" Fill="{DynamicResource WD.WindowTextBrush}" Stretch="Uniform" UseLayoutRounding="False" />
 												</Grid>
 											</Button>
-											<Button Name="PART_RestoreButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed">
+											<Button x:Name="PART_RestoreButton" Padding="0" Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}" IsTabStop="False" Style="{DynamicResource WD.WindowButtonStyle}" ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed">
 												<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 													<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource WD.WindowRestoreGeometry}" Fill="{DynamicResource WD.WindowTextBrush}" Stretch="Uniform" UseLayoutRounding="False" />
 												</Grid>
@@ -1406,16 +1401,16 @@
 					<Border x:Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" />
 					<ControlTemplate.Triggers>
 						<Trigger Property="RadiusOrientation" Value="Right">
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
 						</Trigger>
 						<Trigger Property="RadiusOrientation" Value="Left">
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
 						</Trigger>
 						<Trigger Property="RadiusOrientation" Value="Down">
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
 						</Trigger>
 						<Trigger Property="RadiusOrientation" Value="Up">
-							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
+							<Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -1496,6 +1491,7 @@
 	</ControlTemplate>
 	<Style x:Key="WD.DefaultSlider" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type Slider}">
 		<Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
+		<Setter Property="IsMoveToPointEnabled" Value="True" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="Transparent" />
 		<Setter Property="SelectionEnd" Value="{Binding RelativeSource={RelativeSource Self}, Path=Value}" />
@@ -1936,7 +1932,6 @@
 						<Border x:Name="HighlightBackground" Background="{DynamicResource WD.PrimaryMouseOverBrush}" Visibility="Collapsed" />
 						<Ellipse x:Name="DayButtonFocusVisual" Width="5" Height="5" HorizontalAlignment="Center" VerticalAlignment="Bottom" Fill="{DynamicResource WD.PrimaryBrush}" IsHitTestVisible="False" Visibility="Collapsed" />
 						<ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextElement.Foreground="{DynamicResource WD.RegularTextBrush}" />
-						<Line x:Name="Blackout" Margin="8,3,8,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Opacity=".4" Stroke="{DynamicResource WD.PrimaryTextBrush}" StrokeThickness="1.5" Visibility="Collapsed" X1="0" X2="{TemplateBinding Width}" Y1="0" Y2="0" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsToday" Value="True">
@@ -1991,7 +1986,8 @@
 							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WD.BaseBrush}" />
 						</MultiTrigger>
 						<Trigger Property="IsBlackedOut" Value="True">
-							<Setter TargetName="Blackout" Property="Visibility" Value="Visible" />
+							<Setter Property="Opacity" Value=".4" />
+							<Setter Property="Cursor" Value="No" />
 						</Trigger>
 						<Trigger Property="helpers:DatePickerHelper.IsHighlight" Value="True">
 							<Setter TargetName="SelectedBackground" Property="Visibility" Value="Collapsed" />
@@ -3835,10 +3831,6 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.DefaultRepeatButton}" TargetType="{x:Type RepeatButton}" />
-	<Style x:Key="WD.DefaultGrid" TargetType="{x:Type Grid}">
-		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
-	</Style>
-	<Style BasedOn="{StaticResource WD.DefaultGrid}" TargetType="{x:Type Grid}" />
 	<Style TargetType="{x:Type ec:PathListBox}" x:Key="{x:Type ec:PathListBox}">
 		<Setter Property="IsTabStop" Value="False" />
 		<Setter Property="FrameworkElement.UseLayoutRounding" Value="False" />
@@ -5514,7 +5506,7 @@
 							<TextBox Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 							<TextBlock x:Name="PART_Watermark" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
 							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" StaysOpen="False">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
@@ -5624,7 +5616,7 @@
 							<TextBox Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" IsReadOnly="True" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
 							<TextBlock x:Name="PART_Watermark" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
 							<ToggleButton x:Name="PART_ToggleButton" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxToggleButton}" />
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" StaysOpen="False">
 								<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
@@ -6278,7 +6270,7 @@
 						<TextBox x:Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" />
 						<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" Padding="1,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
 						<ToggleButton x:Name="PART_ToggleButton" Grid.Column="1" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.TimePickerToggleButton}" />
-						<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+						<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" StaysOpen="False">
 							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<controls:SmallPanel.RenderTransform>
 									<ScaleTransform ScaleY="0" />
@@ -6441,7 +6433,7 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="WD.DateRangePicker" TargetType="{x:Type controls:DateRangePicker}">
+	<Style x:Key="WD.DateRangePicker" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:DateRangePicker}">
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -6471,10 +6463,10 @@
 									<ColumnDefinition />
 									<ColumnDefinition Width="Auto" />
 								</Grid.ColumnDefinitions>
-								<controls:PathIcon Margin="15,0,0,0" HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="Date" />
+								<controls:PathIcon Margin="6,0" HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="Date" />
 								<DatePickerTextBox x:Name="PART_TextBoxStart" Grid.Column="1" Width="Auto" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:DatePickerHelper.Watermark="{Binding StartWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Background="Transparent" Focusable="True" Foreground="{TemplateBinding Foreground}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
-								<controls:PathIcon Grid.Column="2" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="DateRangeRight" />
-								<DatePickerTextBox x:Name="PART_TextBoxEnd" Grid.Column="3" Width="Auto" Margin="10,0,0,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Background="Transparent" Focusable="True" Foreground="{TemplateBinding Foreground}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
+								<controls:PathIcon Grid.Column="2" Margin="6,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="DateRangeRight" />
+								<DatePickerTextBox x:Name="PART_TextBoxEnd" Grid.Column="3" Width="Auto" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Background="Transparent" Focusable="True" Foreground="{TemplateBinding Foreground}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
 								<Button x:Name="PART_CloseButton" Grid.Column="4" Width="20" Height="20" Margin="0,0,4,0" HorizontalAlignment="Right" helpers:ElementHelper.IsClear="{Binding Path=(helpers:ElementHelper.IsClear), RelativeSource={RelativeSource TemplatedParent}}" helpers:ElementHelper.IsRound="True" Style="{StaticResource WD.NormalButton}" ToolTip="{Binding [Clear], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed">
 									<controls:PathIcon Width="10" Height="10" Foreground="{DynamicResource WD.PrimaryTextBrush}" Kind="WindowClose" />
 								</Button>
@@ -6551,14 +6543,24 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.Tag}" TargetType="{x:Type controls:Tag}" />
-	<DataTemplate x:Key="WD.NavScrollPanelTemplate">
-		<StackPanel Margin="0,0,0,20">
-			<TextBlock Margin="0,0,0,20" FontSize="{DynamicResource WD.TitleFontSize}" FontWeight="Black" Text="{Binding Title}" />
-			<Border Padding="20" BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:NavScrollPanel}}">
-				<ContentPresenter Content="{Binding Content}" />
-			</Border>
-		</StackPanel>
-	</DataTemplate>
+	<Style x:Key="WD.NavScrollPanelItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:NavScrollPanelItem}">
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="Margin" Value="0,0,0,20" />
+		<Setter Property="Padding" Value="20" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:NavScrollPanelItem}">
+					<StackPanel Margin="{TemplateBinding Margin}">
+						<TextBlock Margin="{TemplateBinding Margin}" FontSize="{DynamicResource WD.TitleFontSize}" FontWeight="Black" Text="{TemplateBinding Header}" />
+						<Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:NavScrollPanel}}">
+							<ContentPresenter Content="{TemplateBinding Content}" />
+						</Border>
+					</StackPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<Style x:Key="WD.NavScrollPanelListBoxItem" BasedOn="{StaticResource WD.DefaultListBoxItem}" TargetType="{x:Type ListBoxItem}">
 		<Setter Property="Template">
 			<Setter.Value>
@@ -6588,10 +6590,10 @@
 		</Setter>
 	</Style>
 	<Style x:Key="WD.NavScrollPanel" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:NavScrollPanel}">
-		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
-		<Setter Property="ItemTemplate" Value="{DynamicResource WD.NavScrollPanelTemplate}" />
+		<Setter Property="ItemContainerStyle" Value="{DynamicResource WD.NavScrollPanelListBoxItem}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 		<Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
@@ -6605,7 +6607,7 @@
 								<ColumnDefinition Width="20" />
 								<ColumnDefinition Width="*" />
 							</Grid.ColumnDefinitions>
-							<ListBox x:Name="PART_ListBox" Padding="10,8" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderThickness="0" ItemContainerStyle="{DynamicResource WD.NavScrollPanelListBoxItem}" ItemsSource="{TemplateBinding ItemsSource}" />
+							<ListBox x:Name="PART_ListBox" Padding="10,8" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" BorderThickness="0" ItemContainerStyle="{TemplateBinding ItemContainerStyle}" />
 							<controls:WDScrollViewer x:Name="PART_ScrollViewer" Grid.Column="2" IsScrollAnimation="True" VerticalScrollBarVisibility="Auto">
 								<StackPanel x:Name="PART_ContentPanel" />
 							</controls:WDScrollViewer>
@@ -6615,7 +6617,80 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style BasedOn="{StaticResource WD.NavScrollPanelItem}" TargetType="{x:Type controls:NavScrollPanelItem}" />
 	<Style BasedOn="{StaticResource WD.NavScrollPanel}" TargetType="{x:Type controls:NavScrollPanel}" />
+	<Style x:Key="WD.GestureItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:GestureItem}">
+		<Setter Property="Width" Value="60" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Stretch" />
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="Height" Value="60" />
+		<Setter Property="BorderThickness" Value="1.5" />
+		<Setter Property="Background" Value="#80FFFFFF" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+		<Setter Property="Padding" Value="15" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:GestureItem}">
+					<Border x:Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+						<Ellipse x:Name="PART_Ellipse" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Fill="{TemplateBinding BorderBrush}" Visibility="Collapsed" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+							<Setter TargetName="PART_Ellipse" Property="Visibility" Value="Visible" />
+						</Trigger>
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True" />
+								<Condition Binding="{Binding State, RelativeSource={RelativeSource AncestorType=controls:GestureUnlock}}" Value="Error" />
+							</MultiDataTrigger.Conditions>
+							<Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+						</MultiDataTrigger>
+						<MultiDataTrigger>
+							<MultiDataTrigger.Conditions>
+								<Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True" />
+								<Condition Binding="{Binding State, RelativeSource={RelativeSource AncestorType=controls:GestureUnlock}}" Value="Success" />
+							</MultiDataTrigger.Conditions>
+							<Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+						</MultiDataTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="WD.GestureUnlock" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:GestureUnlock}">
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+		<Setter Property="Width" Value="300" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="Height" Value="300" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:GestureUnlock}">
+					<controls:WDBorder CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+						<Canvas x:Name="PART_GestureUnlockCanvas" Background="{TemplateBinding Background}" Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}" SnapsToDevicePixels="True" />
+					</controls:WDBorder>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.GestureItem}" TargetType="{x:Type controls:GestureItem}" />
+	<Style BasedOn="{StaticResource WD.GestureUnlock}" TargetType="{x:Type controls:GestureUnlock}" />
+	<Style x:Key="WD.WDUserControl" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:WDUserControl}">
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:WDUserControl}">
+					<Border Background="{TemplateBinding Background}">
+						<ContentPresenter />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.WDUserControl}" TargetType="{x:Type controls:WDUserControl}" />
 	<Style x:Key="WD.DatePickerCalendarStyle" BasedOn="{StaticResource {x:Type Calendar}}" TargetType="{x:Type Calendar}" />
 	<ControlTemplate x:Key="WD.LitePagerControlTemplate" TargetType="{x:Type controls:Pagination}">
 		<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">

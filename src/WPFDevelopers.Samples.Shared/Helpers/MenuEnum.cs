@@ -93,6 +93,9 @@
         Gauge,
         Tag,
         NavScrollPanel,
+        IconicThumbnail,
+        GestureUnlock,
+        AnimationGrid,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

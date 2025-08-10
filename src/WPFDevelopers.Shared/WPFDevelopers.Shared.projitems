@@ -9,9 +9,11 @@
     <Import_RootNamespace>WPFDevelopers</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationGrid\AnimationGrid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ScaleBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDBorder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDUserControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartPie.cs" />
@@ -23,6 +25,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateRangePicker\DateRangePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Gauge\Gauge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\GestureUnlock\GestureItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\GestureUnlock\GestureUnlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
@@ -59,6 +63,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorTypeToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\CornerRadiusToSurroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
@@ -69,7 +74,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Helper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ImagingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\WidthHeightToRectConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\MonitorHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PanelHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\FormatExtensions.cs" />
@@ -146,7 +150,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCutAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SpotLight\SpotLight.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StarrySky\StarrySky.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Status.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\Step.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\StepItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
@@ -318,10 +322,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Expander.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Grid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -545,6 +545,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\GestureUnlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Tag.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -556,6 +560,10 @@
     <Page Include="$(MSBuildThisFileDirectory)Themes\VerifyCode.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\WDUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

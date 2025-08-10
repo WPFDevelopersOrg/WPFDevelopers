@@ -17,12 +17,12 @@ namespace WPFDevelopers.Controls
 
 
         public static readonly DependencyProperty StatusProperty = DependencyProperty.Register(
-            "Status", typeof(Status), typeof(StepItem), new PropertyMetadata(Status.Waiting));
+            "Status", typeof(StepState), typeof(StepItem), new PropertyMetadata(StepState.Waiting));
 
 
-        public Status Status
+        public StepState Status
         {
-            get => (Status)GetValue(StatusProperty);
+            get => (StepState)GetValue(StatusProperty);
             internal set => SetValue(StatusProperty, value);
         }
     }

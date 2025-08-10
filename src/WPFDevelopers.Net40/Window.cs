@@ -1,6 +1,8 @@
 ﻿using Microsoft.Windows.Shell;
 using System;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -8,16 +10,28 @@ using System.Windows.Media;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Core.Helpers;
 using WPFDevelopers.Helpers;
-using static WPFDevelopers.Core.Helpers.MonitorHelper;
 
 namespace WPFDevelopers.Net40
 {
     [TemplatePart(Name = TitleBarIcon, Type = typeof(Button))]
+    [TemplatePart(Name = HighTitleMaximizeButton, Type = typeof(Button))]
+    [TemplatePart(Name = HighTitleRestoreButton, Type = typeof(Button))]
+    [TemplatePart(Name = TitleBarMaximizeButton, Type = typeof(Button))]
+    [TemplatePart(Name = TitleBarRestoreButton, Type = typeof(Button))]
     public class Window : System.Windows.Window
     {
         private const string TitleBarIcon = "PART_TitleBarIcon";
+        private const string HighTitleMaximizeButton = "PART_MaximizeButton";
+        private const string HighTitleRestoreButton = "PART_RestoreButton";
+        private const string TitleBarMaximizeButton = "PART_TitleBarMaximizeButton";
+        private const string TitleBarRestoreButton = "PART_TitleBarRestoreButton";
         private WindowStyle _windowStyle;
         private Button _titleBarIcon;
+        private Button _highTitleMaximizeButton;
+        private Button _highTitleRestoreButton;
+        private Button _titleBarMaximizeButton;
+        private Button _titleBarRestoreButton;
+        private IntPtr hWnd;
 
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
@@ -41,7 +55,6 @@ namespace WPFDevelopers.Net40
 
         public Window()
         {
-            Loaded += Window_Loaded;
             WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow,
@@ -69,8 +82,11 @@ namespace WPFDevelopers.Net40
                 _titleBarIcon.MouseDoubleClick -= Icon_MouseDoubleClick;
                 _titleBarIcon.MouseDoubleClick += Icon_MouseDoubleClick;
             }
+            _highTitleMaximizeButton = GetTemplateChild(HighTitleMaximizeButton) as Button;
+            _highTitleRestoreButton = GetTemplateChild(HighTitleRestoreButton) as Button;
+            _titleBarMaximizeButton = GetTemplateChild(TitleBarMaximizeButton) as Button;
+            _titleBarRestoreButton = GetTemplateChild(TitleBarRestoreButton) as Button;
         }
-
 
         private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -108,8 +124,9 @@ namespace WPFDevelopers.Net40
             set => SetValue(TitleBarModeProperty, value);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnSourceInitialized(EventArgs e)
         {
+            base.OnSourceInitialized(e);
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
             if (TitleBarMode == TitleBarMode.Normal)
@@ -152,7 +169,7 @@ namespace WPFDevelopers.Net40
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            SendMessage(hWnd, MonitorHelper.WindowsMessageCodes.WM_SYSCOMMAND, new IntPtr(MonitorHelper.WindowsMessageCodes.SC_MINIMIZE), IntPtr.Zero);
+            Win32.SendMessage(hWnd, WindowsMessageCodes.WM_SYSCOMMAND, new IntPtr(WindowsMessageCodes.SC_MINIMIZE), IntPtr.Zero);
         }
 
         private void RestoreWindow(object sender, ExecutedRoutedEventArgs e)
@@ -160,8 +177,7 @@ namespace WPFDevelopers.Net40
             SystemCommands.RestoreWindow(this);
         }
 
-        private IntPtr hWnd;
-      
+
         private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch (msg)
@@ -183,6 +199,75 @@ namespace WPFDevelopers.Net40
                             WindowStyle = _windowStyle;
                         handled = true;
                     }
+                    break;
+                #region SnapLayouts
+                case WindowsMessageCodes.WM_NCHITTEST:
+                    try
+                    {
+                        if (OSVersionHelper.IsSnapLayoutSupported() && ResizeMode != ResizeMode.NoResize && ResizeMode != ResizeMode.CanMinimize)
+                        {
+                            int x = lParam.ToInt32() & 0xffff;
+                            int y = lParam.ToInt32() >> 16;
+                            var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
+                            var button = TitleBarMode == TitleBarMode.Normal
+                                ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
+                                : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
+                            if (button != null)
+                            {
+                                var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
+                                if (contentPresenter != null)
+                                {
+                                    var rect = new Rect(button.PointToScreen(new Point()), new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+                                    if (rect.Contains(new Point(x, y)))
+                                    {
+                                        handled = true;
+                                        contentPresenter.Opacity = 1;
+                                    }
+                                    else
+                                    {
+                                        contentPresenter.Opacity = 0.7;
+                                    }
+                                    return new IntPtr(OSVersionHelper.HTMAXBUTTON);
+                                }
+
+                            }
+                        }
+                    }
+                    catch (OverflowException)
+                    {
+                        handled = true;
+                    }
+                    break;
+                case WindowsMessageCodes.WM_NCLBUTTONDOWN:
+                    if (OSVersionHelper.IsSnapLayoutSupported()
+                        &&
+                        (ResizeMode != ResizeMode.NoResize
+                        ||
+                        ResizeMode != ResizeMode.CanMinimize))
+                    {
+                        int x = lParam.ToInt32() & 0xffff;
+                        int y = lParam.ToInt32() >> 16;
+                        var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
+                        Button button = TitleBarMode == TitleBarMode.Normal
+                            ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
+                            : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
+                        if (button != null)
+                        {
+                            var rect = new Rect(button.PointToScreen(
+                            new Point()),
+                            new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+                            if (rect.Contains(new Point(x, y)))
+                            {
+                                handled = true;
+                                IInvokeProvider invokeProv = new ButtonAutomationPeer(button).GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                                invokeProv?.Invoke();
+                            }
+                        }
+                    }
+                    break;
+                #endregion
+                default:
+                    handled = false;
                     break;
             }
             return IntPtr.Zero;

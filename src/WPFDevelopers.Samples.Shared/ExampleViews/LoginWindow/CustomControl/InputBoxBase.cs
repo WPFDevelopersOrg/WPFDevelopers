@@ -73,7 +73,7 @@ namespace WPFDevelopers.Samples.ExampleViews.LoginWindow.CustomControl
             {
                 try
                 {
-                    control.ApplyIcon(new BitmapImage(new Uri("pack://application:,,,/ExampleViews/LoginWindow/" + control.Icon)));
+                    control.ApplyIcon(new BitmapImage(new Uri("pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/" + control.Icon)));
                 }
                 catch (Exception ex)
                 {

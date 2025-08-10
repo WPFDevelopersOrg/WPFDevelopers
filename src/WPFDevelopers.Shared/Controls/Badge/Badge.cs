@@ -172,18 +172,20 @@ namespace WPFDevelopers.Controls
 
         private static void CreateBadge(UIElement uIElement, bool isRemove = false)
         {
+            if (uIElement == null) return;
             var layer = AdornerLayer.GetAdornerLayer(uIElement);
             if (layer == null) return;
-            if (isRemove && uIElement != null)
+            var adorners = layer.GetAdorners(uIElement);
+            if (adorners != null)
             {
-                var adorners = layer.GetAdorners(uIElement);
-                if (adorners != null)
-                    foreach (var item in adorners)
-                        if (item is Badge container)
-                            layer.Remove(container);
-                return;
+                foreach (var item in adorners)
+                {
+                    if (item is Badge container)
+                        layer.Remove(container);
+                }
             }
-
+            if (isRemove)
+                return;
             var value = GetText(uIElement);
             var size = GetFontSize(uIElement);
             var horizontalOffset = GetHorizontalOffset(uIElement);

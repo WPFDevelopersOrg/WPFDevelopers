@@ -17,7 +17,7 @@ namespace WPFDevelopers.Helpers
             NTdll = "ntdll.dll",
             DwmApi = "dwmapi.dll",
             Winmm = "winmm.dll",
-            Shcore = "Shcore.dll";
+            Shcore = "shcore.dll";
         //查找窗口的委托 查找逻辑
         public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
 
@@ -27,6 +27,9 @@ namespace WPFDevelopers.Helpers
         [DllImport(User32)]
         public static extern IntPtr SendMessageTimeout(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam,
             uint fuFlage, uint timeout, IntPtr result);
+
+        [DllImport(User32)]
+        internal static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         [DllImport(User32)]
         public static extern bool EnumWindows(EnumWindowsProc proc, IntPtr lParam);
@@ -77,6 +80,9 @@ namespace WPFDevelopers.Helpers
 
         [DllImport(User32)]
         public static extern IntPtr GetDC(IntPtr hWnd);
+
+        [DllImport(Gdi32)]
+        public static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
 
         [DllImport(User32)]
         public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
@@ -168,16 +174,70 @@ namespace WPFDevelopers.Helpers
         public extern static void SetCursorPos(int x, int y);
 
         [DllImport(DwmApi)]
-        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute attr, ref int attrValue, int attrSize);
-        public enum DwmWindowAttribute : uint
-        {
-            UseImmersiveDarkMode = 20,
-        }
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttributes attr, ref int attrValue, int attrSize);
+
         public static bool EnableDarkModeForWindow(HwndSource source, bool enable)
         {
             int darkMode = enable ? 1 : 0;
-            int hr = DwmSetWindowAttribute(source.Handle, DwmWindowAttribute.UseImmersiveDarkMode, ref darkMode, sizeof(int));
+            int hr = DwmSetWindowAttribute(source.Handle, DwmWindowAttributes.UseImmersiveDarkMode, ref darkMode, sizeof(int));
             return hr >= 0;
         }
+
+        [DllImport(DwmApi)]
+        public static extern int DwmSetIconicThumbnail(IntPtr hwnd, IntPtr hbmp, int dwSITFlags);
+
+        [DllImport(DwmApi)]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttributes dwAttribute, IntPtr pvAttribute, int cbAttribute);
+
+        [DllImport(DwmApi)]
+        public static extern int DwmInvalidateIconicBitmaps(IntPtr hwnd);
+
+        [DllImport(DwmApi)]
+        public static extern int DwmSetIconicLivePreviewBitmap(IntPtr hwnd, IntPtr hBitmap, IntPtr pptClient, DWM_SIT dwSITFlags);
+
+        [DllImport(User32)]
+        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport(User32)]
+        public static extern int GetDpiForWindow(IntPtr hwnd);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
+    }
+
+    internal class WindowsMessageCodes
+    {
+        public const int SC_RESTORE = 0xF120;
+        public const int SC_MINIMIZE = 0xF020;
+        public const int WM_SYSCOMMAND = 0x0112;
+        public const int WM_DEADCHAR = 0x0024;
+        public const int WM_NCLBUTTONDOWN = 0x00A1;
+        public const int WM_NCHITTEST = 0x0084;
+
+        public const int WM_DWMSENDICONICTHUMBNAIL = 0x0323;
+        public const int WM_DWMSENDICONICLIVEPREVIEWBITMAP = 0x0326;
+    }
+
+    [Flags]
+    public enum DwmWindowAttributes : uint
+    {
+        None = 0, 
+        DISPLAYFRAME = 1,
+        FORCE_ICONIC_REPRESENTATION = 7,
+        HAS_ICONIC_BITMAP = 10,
+        UseImmersiveDarkMode = 20
+    }
+
+    [Flags]
+    public enum DWM_SIT : uint
+    {
+        None = 0x0,
+        DisplayFrame = 0x1
     }
 }

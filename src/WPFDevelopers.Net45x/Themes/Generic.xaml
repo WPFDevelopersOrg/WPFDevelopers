@@ -19,7 +19,6 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
-        <Setter Property="WindowStyle" Value="None" />
         <Setter Property="FontFamily" Value="{DynamicResource WD.FontFamily}" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
@@ -32,11 +31,6 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type wd:Window}">
-                    <ControlTemplate.Resources>
-                        <Style TargetType="Grid">
-                            <Setter Property="Background" Value="Transparent" />
-                        </Style>
-                    </ControlTemplate.Resources>
                     <Border
                         Name="PART_Border"
                         Background="{TemplateBinding Background}"
@@ -48,10 +42,12 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <control:SmallPanel
-                                x:Name="PART_Normal"
+                            <Border
                                 Grid.Row="0"
-                                Background="{TemplateBinding TitleBackground}">
+                                Margin="0,0,-1,0"
+                                HorizontalAlignment="Stretch"
+                                Background="{TemplateBinding TitleBackground}" />
+                            <control:SmallPanel x:Name="PART_Normal" Grid.Row="0">
                                 <Grid Height="{TemplateBinding TitleHeight}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -106,7 +102,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_TitleBarMaximizeButton"
+                                                x:Name="PART_TitleBarMaximizeButton"
                                                 Padding="0"
                                                 Command="SystemCommands.MaximizeWindowCommand"
                                                 IsTabStop="False"
@@ -125,7 +121,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_TitleBarRestoreButton"
+                                                x:Name="PART_TitleBarRestoreButton"
                                                 Padding="0"
                                                 Command="SystemCommands.RestoreWindowCommand"
                                                 IsTabStop="False"
@@ -167,7 +163,6 @@
                             <control:SmallPanel
                                 x:Name="PART_HighTitleBar"
                                 Grid.Row="0"
-                                Background="{TemplateBinding TitleBackground}"
                                 Visibility="Collapsed">
                                 <Grid
                                     x:Name="PART_GridChrome"
@@ -218,7 +213,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_MaximizeButton"
+                                                x:Name="PART_MaximizeButton"
                                                 Padding="0"
                                                 Command="SystemCommands.MaximizeWindowCommand"
                                                 IsTabStop="False"
@@ -237,7 +232,7 @@
                                                 </Grid>
                                             </Button>
                                             <Button
-                                                Name="PART_RestoreButton"
+                                                x:Name="PART_RestoreButton"
                                                 Padding="0"
                                                 Command="SystemCommands.RestoreWindowCommand"
                                                 IsTabStop="False"

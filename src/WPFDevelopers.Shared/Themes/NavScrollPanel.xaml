@@ -7,23 +7,35 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <DataTemplate x:Key="WD.NavScrollPanelTemplate">
-        <StackPanel Margin="0,0,0,20">
-            <TextBlock
-                Margin="0,0,0,20"
-                FontSize="{DynamicResource WD.TitleFontSize}"
-                FontWeight="Black"
-                Text="{Binding Title}" />
-            <Border
-                Padding="20"
-                BorderBrush="{DynamicResource WD.BaseBrush}"
-                BorderThickness="1"
-                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:NavScrollPanel}}">
-                <ContentPresenter Content="{Binding Content}" />
-            </Border>
-        </StackPanel>
-    </DataTemplate>
+    <Style
+        x:Key="WD.NavScrollPanelItem"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:NavScrollPanelItem}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Margin" Value="0,0,0,20" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NavScrollPanelItem}">
+                    <StackPanel Margin="{TemplateBinding Margin}">
+                        <TextBlock
+                            Margin="{TemplateBinding Margin}"
+                            FontSize="{DynamicResource WD.TitleFontSize}"
+                            FontWeight="Black"
+                            Text="{TemplateBinding Header}" />
+                        <Border
+                            Padding="{TemplateBinding Padding}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:NavScrollPanel}}">
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style
         x:Key="WD.NavScrollPanelListBoxItem"
@@ -70,10 +82,10 @@
         x:Key="WD.NavScrollPanel"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:NavScrollPanel}">
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
-        <Setter Property="ItemTemplate" Value="{DynamicResource WD.NavScrollPanelTemplate}" />
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource WD.NavScrollPanelListBoxItem}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
@@ -96,8 +108,7 @@
                                 Padding="10,8"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                 BorderThickness="0"
-                                ItemContainerStyle="{DynamicResource WD.NavScrollPanelListBoxItem}"
-                                ItemsSource="{TemplateBinding ItemsSource}" />
+                                ItemContainerStyle="{TemplateBinding ItemContainerStyle}" />
                             <controls:WDScrollViewer
                                 x:Name="PART_ScrollViewer"
                                 Grid.Column="2"
@@ -111,5 +122,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style BasedOn="{StaticResource WD.NavScrollPanelItem}" TargetType="{x:Type controls:NavScrollPanelItem}" />
     <Style BasedOn="{StaticResource WD.NavScrollPanel}" TargetType="{x:Type controls:NavScrollPanel}" />
 </ResourceDictionary>

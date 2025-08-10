@@ -1,69 +1,70 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
-    public class NavScrollPanel: Control
+    [TemplatePart(Name = ListBoxTemplateName, Type = typeof(ListBox))]
+    [TemplatePart(Name = ScrollViewerTemplateName, Type = typeof(WDScrollViewer))]
+    [TemplatePart(Name = StackPanelTemplateName, Type = typeof(StackPanel))]
+    public class NavScrollPanel : ItemsControl
     {
+        private const string ListBoxTemplateName = "PART_ListBox";
+        private const string ScrollViewerTemplateName = "PART_ScrollViewer";
+        private const string StackPanelTemplateName = "PART_ContentPanel";
+
+        public static readonly DependencyProperty SelectedIndexProperty =
+            DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(NavScrollPanel),
+                new PropertyMetadata(-1, OnSelectedIndexChanged));
+
+        private StackPanel _contentPanel;
+
+        private ListBox _navListBox;
+        private WDScrollViewer _scrollViewer;
         private bool _suppressAutoSelectDuringAnimation;
+
         static NavScrollPanel()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NavScrollPanel),
                 new FrameworkPropertyMetadata(typeof(NavScrollPanel)));
         }
 
-        public IEnumerable ItemsSource
-        {
-            get => (IEnumerable)GetValue(ItemsSourceProperty);
-            set => SetValue(ItemsSourceProperty, value);
-        }
-
-        public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable), typeof(NavScrollPanel), new PropertyMetadata(null, OnItemsSourceChanged));
-
-        public DataTemplate ItemTemplate
-        {
-            get => (DataTemplate)GetValue(ItemTemplateProperty);
-            set => SetValue(ItemTemplateProperty, value);
-        }
-
-        public static readonly DependencyProperty ItemTemplateProperty =
-            DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), typeof(NavScrollPanel), new PropertyMetadata(null));
-
         public int SelectedIndex
         {
-            get => (int)GetValue(SelectedIndexProperty);
+            get => (int) GetValue(SelectedIndexProperty);
             set => SetValue(SelectedIndexProperty, value);
         }
-
-        public static readonly DependencyProperty SelectedIndexProperty =
-            DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(NavScrollPanel), new PropertyMetadata(-1, OnSelectedIndexChanged));
-
-        private ListBox _navListBox;
-        private WDScrollViewer _scrollViewer;
-        private StackPanel _contentPanel;
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            _navListBox = GetTemplateChild("PART_ListBox") as ListBox;
-            _scrollViewer = GetTemplateChild("PART_ScrollViewer") as WDScrollViewer;
-            _contentPanel = GetTemplateChild("PART_ContentPanel") as StackPanel;
+            _navListBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
+            _scrollViewer = GetTemplateChild(ScrollViewerTemplateName) as WDScrollViewer;
+            _contentPanel = GetTemplateChild(StackPanelTemplateName) as StackPanel;
 
             if (_navListBox != null)
             {
-                _navListBox.DisplayMemberPath = "Title";
                 _navListBox.SelectionChanged -= NavListBox_SelectionChanged;
                 _navListBox.SelectionChanged += NavListBox_SelectionChanged;
             }
+
             if (_scrollViewer != null)
             {
                 _scrollViewer.ScrollChanged -= ScrollViewer_ScrollChanged;
                 _scrollViewer.ScrollChanged += ScrollViewer_ScrollChanged;
             }
-            RenderContent();
+
+            RefreshContent();
+        }
+
+        protected override void OnItemsChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            base.OnItemsChanged(e);
+            RefreshContent();
         }
 
         private void NavListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,17 +91,9 @@ namespace WPFDevelopers.Controls
                         _navListBox.SelectedIndex = i;
                         _navListBox.SelectionChanged += NavListBox_SelectionChanged;
                     }
+
                     break;
                 }
-            }
-        }
-
-
-        private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d is NavScrollPanel ctrl)
-            {
-                ctrl.RenderContent();
             }
         }
 
@@ -108,7 +101,7 @@ namespace WPFDevelopers.Controls
         {
             if (d is NavScrollPanel ctrl)
             {
-                int index = (int)e.NewValue;
+                var index = (int) e.NewValue;
 
                 if (ctrl._contentPanel != null &&
                     index >= 0 && index < ctrl._contentPanel.Children.Count)
@@ -117,28 +110,34 @@ namespace WPFDevelopers.Controls
                     if (target != null)
                     {
                         var virtualPoint = target.TranslatePoint(new Point(0, 0), ctrl._contentPanel);
-                        ctrl._scrollViewer.AnimateScroll(virtualPoint.Y, () => { ctrl._suppressAutoSelectDuringAnimation = false; });
+                        ctrl._scrollViewer.AnimateScroll(virtualPoint.Y,
+                            () => { ctrl._suppressAutoSelectDuringAnimation = false; });
                     }
                 }
             }
         }
 
-        private void RenderContent()
+        private void RefreshContent()
         {
-            if (_contentPanel == null || ItemsSource == null || ItemTemplate == null)
-                return;
+            if (_navListBox == null || _contentPanel == null) return;
+            _navListBox.Items.Clear();
             _contentPanel.Children.Clear();
-            foreach (var item in ItemsSource)
+            foreach (var item in Items)
             {
-                var content = new ContentControl
+                if (item is NavScrollPanelItem panelItem)
                 {
-                    Content = item,
-                    ContentTemplate = ItemTemplate,
-                };
-                _contentPanel.Children.Add(content);
+                    _navListBox.Items.Add(panelItem.Header);
+                    
+                    var content = new NavScrollPanelItem
+                    {
+                        Header = panelItem.Header,
+                        Content = panelItem.Content,
+                    };
+                    _contentPanel.Children.Add(content);
+                }
             }
-            var panel = new SmallPanel { Height = 100 };
-            _contentPanel.Children.Add(panel);
+            if (_contentPanel.Children.Count > 1)
+                _contentPanel.Children.Add(new Border { Background = Brushes.Transparent, Height = 200 });
         }
     }
 }

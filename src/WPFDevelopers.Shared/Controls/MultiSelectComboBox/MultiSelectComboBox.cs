@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -95,6 +96,7 @@ namespace WPFDevelopers.Controls
         private CheckBox _checkBox;
         private string _theLastText;
         private ItemsPresenter _itemsPresenter;
+        private bool _isUpdating;
 
         private List<object> selectedItems;
         private List<object> selectedList;
@@ -188,7 +190,7 @@ namespace WPFDevelopers.Controls
         }
 
         public virtual void OnTextChanged(string oldValue, string newValue)
-        { 
+        {
         }
 
         protected override bool IsItemItsOwnContainerOverride(object item)
@@ -217,11 +219,23 @@ namespace WPFDevelopers.Controls
                 {
                     SelectedItems.Remove(item);
                 }
-                if (SelectedItemsExt is IList list)
+                if (!_isUpdating && SelectedItemsExt != null)
                 {
-                    list.Clear();
-                    foreach (var itm in SelectedItems.Cast<object>())
-                        list.Add(itm);
+                    _isUpdating = true;
+                    try
+                    {
+                        if (SelectedItemsExt is IList list)
+                        {
+                            if(list.Count > 0)
+                                list.Clear();
+                            foreach (var itm in SelectedItems.Cast<object>())
+                                list.Add(itm);
+                        }
+                    }
+                    finally
+                    {
+                        _isUpdating = false;
+                    }
                 }
                 SelectionChecked(this);
             }
@@ -234,7 +248,6 @@ namespace WPFDevelopers.Controls
             if (_textBox != null)
                 ApplySearchLogic();
         }
-
 
         public override void OnApplyTemplate()
         {
@@ -293,6 +306,20 @@ namespace WPFDevelopers.Controls
             {
                 AddHandler(Controls.Tag.CloseEvent, new RoutedEventHandler(Tags_Close));
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
+            }
+        }
+        public MultiSelectComboBox()
+        {
+            IsVisibleChanged += OnMultiSelectComboBox_IsVisibleChanged;
+        }
+
+        private void OnMultiSelectComboBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                InvalidateMeasure();
+                InvalidateArrange();
+                UpdateLayout();
             }
         }
 
@@ -512,6 +539,7 @@ namespace WPFDevelopers.Controls
 
         private void SelectionChecked(ListBox listbox)
         {
+            if (_checkBox == null) return;
             if (listbox.SelectedItems.Count > 0
                 &&
                 listbox.Items.Count == listbox.SelectedItems.Count)
@@ -661,29 +689,64 @@ namespace WPFDevelopers.Controls
 
         private static void OnSelectedItemsExtChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var multiSelectComboBox = d as MultiSelectComboBox;
-            if (multiSelectComboBox == null) return;
+            var ctrl = d as MultiSelectComboBox;
+            if (ctrl == null) return;
+            if (e.OldValue is INotifyCollectionChanged oldCollection)
+                oldCollection.CollectionChanged -= ctrl.OnSelectedItemsExtCollectionChanged;
             if (e.NewValue != null)
             {
+                if (e.NewValue is INotifyCollectionChanged newCollection)
+                {
+                    ctrl.SelectedItemsExt = (IList)newCollection;
+                    newCollection.CollectionChanged += ctrl.OnSelectedItemsExtCollectionChanged;
+                }
                 var collection = e.NewValue as IList;
                 if (collection.Count <= 0) return;
-                multiSelectComboBox.SelectedItems.Clear();
+                ctrl.SelectedItems.Clear();
+                ctrl._isUpdating = true;
                 foreach (var item in collection)
                 {
-                    var name = multiSelectComboBox.GetPropertyValue(item);
+                    var name = ctrl.GetPropertyValue(item);
                     object model = null;
                     if (!string.IsNullOrWhiteSpace(name))
-                        model = multiSelectComboBox.ItemsSource.OfType<object>().FirstOrDefault(h =>
-                            multiSelectComboBox.GetPropertyValue(h) == name);
+                        model = ctrl.ItemsSource.OfType<object>().FirstOrDefault(h =>
+                            ctrl.GetPropertyValue(h) == name);
                     else
-                        model = multiSelectComboBox.ItemsSource.OfType<object>()
+                        model = ctrl.ItemsSource.OfType<object>()
                             .FirstOrDefault(h => h == item);
-                    if (model != null && !multiSelectComboBox.SelectedItems.Contains(item))
-                        multiSelectComboBox.SelectedItems.Add(model);
+                    if (model != null && !ctrl.SelectedItems.Contains(item))
+                        ctrl.SelectedItems.Add(model);
 
                 }
-                multiSelectComboBox.UpdateText();
+                ctrl._isUpdating = false;
+                ctrl.UpdateText();
             }
+        }
+
+        private void OnSelectedItemsExtCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (_isUpdating) return;
+            if (e.Action == NotifyCollectionChangedAction.Reset)
+                SelectedItems.Clear();
+            _isUpdating = true;
+            if (e.OldItems != null)
+            {
+                foreach (var item in e.OldItems)
+                {
+                    if (SelectedItems.Contains(item))
+                        SelectedItems.Remove(item);
+                }
+            }
+
+            if (e.NewItems != null)
+            {
+                foreach (var item in e.NewItems)
+                {
+                    if (!SelectedItems.Contains(item))
+                        SelectedItems.Add(item);
+                }
+            }
+            _isUpdating = false;
         }
     }
     public enum ShowType

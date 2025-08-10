@@ -26,7 +26,7 @@ namespace WPFDevelopers
             get => _theme;
             set => InitializeTheme(value);
         }
-        
+
         private Color _color;
         public Color Color
         {
@@ -61,7 +61,7 @@ namespace WPFDevelopers
                 ApplyTheme();
                 return;
             }
-            if(Theme == ThemeType.Default)
+            if (Theme == ThemeType.Default)
                 Theme = ThemeType.Light;
         }
 
@@ -79,7 +79,7 @@ namespace WPFDevelopers
             }
             var path = GetResourceUri(GetThemeResourceName(themeType));
             var newResourceDictionary = new ResourceDictionary { Source = path };
-           
+
             MergedDictionaries.Insert(0, newResourceDictionary);
             ThemeChanged?.Invoke(themeType);
             UpdateColorOnThemeChange();
@@ -93,11 +93,11 @@ namespace WPFDevelopers
             try
             {
                 var value = (int)Registry.GetValue(registryKey, registryValue, 1);
-                return value == 0; 
+                return value == 0;
             }
             catch
             {
-                return false; 
+                return false;
             }
         }
 
@@ -105,7 +105,7 @@ namespace WPFDevelopers
         {
             var isDarkMode = IsDarkMode();
             var theme = isDarkMode == true ? ThemeType.Dark : ThemeType.Light;
-            if(Theme != theme)
+            if (Theme != theme)
                 Theme = theme;
         }
 
@@ -120,7 +120,7 @@ namespace WPFDevelopers
                 }
             }
             Version version = Environment.OSVersion.Version;
-            return version.Major >= 10; 
+            return version.Major >= 10;
         }
 
         private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
@@ -160,7 +160,7 @@ namespace WPFDevelopers
                 try
                 {
                     process.Kill();
-                    process.WaitForExit(); 
+                    process.WaitForExit();
                 }
                 catch { }
             }
@@ -236,7 +236,7 @@ namespace WPFDevelopers
             {
                 return typedResource;
             }
-            return default; 
+            return default;
         }
 
 
@@ -263,8 +263,8 @@ namespace WPFDevelopers
                 else
                 {
                     if (Color != null
-                            &&
-                            !Array.Exists(resourceKeys, i => newKey.EndsWith(i)))
+                        &&
+                        !Array.Exists(resourceKeys, i => newKey.EndsWith(i)))
                     {
                         var brightnessColor = new Color
                         {
@@ -294,7 +294,7 @@ namespace WPFDevelopers
             }
         }
 
-        void SetResourceColorAndBrush(string key,Color color)
+        void SetResourceColorAndBrush(string key, Color color)
         {
             UpdateResource(key, color);
             var newBrush = new SolidColorBrush(color);

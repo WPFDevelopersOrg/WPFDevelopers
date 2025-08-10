@@ -11,11 +11,33 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
-        <wd:NavScrollPanel
-            Padding="10"
-            wd:ElementHelper.CornerRadius="10"
-            BorderThickness="0"
-            ItemsSource="{Binding Items}" />
+        <TabControl TabStripPlacement="Bottom">
+            <TabItem Header="Xaml">
+                <wd:NavScrollPanel wd:ElementHelper.CornerRadius="10">
+                    <wd:NavScrollPanelItem Header="播放相关">
+                        <local:PlaybackSettings />
+                    </wd:NavScrollPanelItem>
+                    <wd:NavScrollPanelItem Header="桌面歌词">
+                        <local:DesktopLyrics />
+                    </wd:NavScrollPanelItem>
+                    <wd:NavScrollPanelItem Header="快捷键">
+                        <local:ShortcutKeys />
+                    </wd:NavScrollPanelItem>
+                    <wd:NavScrollPanelItem Header="隐私设置">
+                        <local:PrivacySettings />
+                    </wd:NavScrollPanelItem>
+                    <wd:NavScrollPanelItem Header="关于我们">
+                        <local:About />
+                    </wd:NavScrollPanelItem>
+                </wd:NavScrollPanel>
+            </TabItem>
+            <TabItem Header="Binding">
+                <wd:NavScrollPanel
+                    Padding="10"
+                    wd:ElementHelper.CornerRadius="10"
+                    ItemsSource="{Binding Items, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            </TabItem>
+        </TabControl>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NavScrollPanelExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NavScrollPanelExample.xaml.cs" CodeType="CSharp" />
