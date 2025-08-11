@@ -22,6 +22,14 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("MenuItemForeground", typeof(Brush), typeof(DrawerMenu),
                 new PropertyMetadata(null));
 
+        public static readonly DependencyProperty OpenIconProperty =
+        DependencyProperty.Register("OpenIcon", typeof(object), typeof(DrawerMenu),
+            new PropertyMetadata(null));
+
+        public static readonly DependencyProperty ClosedIconProperty =
+            DependencyProperty.Register("ClosedIcon", typeof(object), typeof(DrawerMenu),
+                new PropertyMetadata(null));
+
         static DrawerMenu()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DrawerMenu),
@@ -34,7 +42,7 @@ namespace WPFDevelopers.Controls
         }
         protected override DependencyObject GetContainerForItemOverride()
         {
-            return new DrawerMenu();
+            return new DrawerMenuItem();
         }
 
         
@@ -62,6 +70,17 @@ namespace WPFDevelopers.Controls
         {
             get => (Brush)GetValue(MenuItemForegroundProperty);
             set => SetValue(MenuItemForegroundProperty, value);
+        }
+        public object OpenIcon
+        {
+            get => GetValue(OpenIconProperty);
+            set => SetValue(OpenIconProperty, value);
+        }
+
+        public object ClosedIcon
+        {
+            get => GetValue(ClosedIconProperty);
+            set => SetValue(ClosedIconProperty, value);
         }
     }
 }

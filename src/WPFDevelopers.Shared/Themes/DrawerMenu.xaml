@@ -209,14 +209,11 @@
                             Background="#333"
                             IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsOpen}"
                             Style="{StaticResource WD.DrawerMenuToggleButton}">
-                            <Path
-                                x:Name="PART_Path"
-                                Width="20"
+                            <ContentControl
+                                x:Name="PART_IconContent"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Data="{StaticResource WD.MenuGeometry}"
-                                Fill="{TemplateBinding MenuIconColor}"
-                                Stretch="Uniform" />
+                                Content="{TemplateBinding OpenIcon}" />
                         </ToggleButton>
                         <ItemsPresenter
                             x:Name="ItemsPresenter"
@@ -226,7 +223,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOpen" Value="False">
-                            <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.ReturnGeometry}" />
+                            <Setter TargetName="PART_IconContent" Property="Content" Value="{Binding ClosedIcon, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

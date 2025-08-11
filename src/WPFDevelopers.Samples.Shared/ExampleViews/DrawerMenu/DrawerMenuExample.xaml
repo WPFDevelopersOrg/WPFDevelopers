@@ -23,6 +23,20 @@
                         Grid.Column="1"
                         NavigationUIVisibility="Hidden" />
                     <wd:DrawerMenu SelectionChanged="DrawerMenu_SelectionChanged">
+                        <wd:DrawerMenu.OpenIcon>
+                            <Path
+                                Width="20"
+                                Data="{StaticResource WD.MenuGeometry}"
+                                Fill="{DynamicResource WD.PrimaryBrush}"
+                                Stretch="Uniform" />
+                        </wd:DrawerMenu.OpenIcon>
+                        <wd:DrawerMenu.ClosedIcon>
+                            <Path
+                                Width="20"
+                                Data="{StaticResource WD.ReturnGeometry}"
+                                Fill="{DynamicResource WD.PrimaryBrush}"
+                                Stretch="Uniform" />
+                        </wd:DrawerMenu.ClosedIcon>
                         <wd:DrawerMenuItem Text="主页">
                             <wd:DrawerMenuItem.Icon>
                                 <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/2.png" />
@@ -62,7 +76,18 @@
                 </Grid>
             </TabItem>
             <TabItem Header="DrawerMenu binding">
-                <wd:DrawerMenu ItemsSource="{Binding DrawerMenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}" />
+                <wd:DrawerMenu ItemsSource="{Binding DrawerMenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}">
+                    <wd:DrawerMenu.OpenIcon>
+                        <Path
+                            Width="20"
+                            Data="{StaticResource WD.MenuGeometry}"
+                            Fill="{DynamicResource WD.PrimaryBrush}"
+                            Stretch="Uniform" />
+                    </wd:DrawerMenu.OpenIcon>
+                    <wd:DrawerMenu.ClosedIcon>
+                        <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/Clear.png" />
+                    </wd:DrawerMenu.ClosedIcon>
+                </wd:DrawerMenu>
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>
