@@ -385,4 +385,5 @@
     </Style>
     <Style BasedOn="{StaticResource WD.DefaultScrollBar}" TargetType="{x:Type ScrollBar}" />
     <Style BasedOn="{StaticResource WD.DefaultScrollViewer}" TargetType="{x:Type ScrollViewer}" />
+    <Style BasedOn="{StaticResource WD.DefaultScrollViewer}" TargetType="{x:Type controls:WDScrollViewer}" />
 </ResourceDictionary>
