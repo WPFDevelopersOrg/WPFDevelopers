@@ -22,21 +22,7 @@
                         Name="myFrame"
                         Grid.Column="1"
                         NavigationUIVisibility="Hidden" />
-                    <wd:DrawerMenu SelectionChanged="DrawerMenu_SelectionChanged">
-                        <wd:DrawerMenu.OpenIcon>
-                            <Path
-                                Width="20"
-                                Data="{StaticResource WD.MenuGeometry}"
-                                Fill="{DynamicResource WD.PrimaryBrush}"
-                                Stretch="Uniform" />
-                        </wd:DrawerMenu.OpenIcon>
-                        <wd:DrawerMenu.ClosedIcon>
-                            <Path
-                                Width="20"
-                                Data="{StaticResource WD.ReturnGeometry}"
-                                Fill="{DynamicResource WD.PrimaryBrush}"
-                                Stretch="Uniform" />
-                        </wd:DrawerMenu.ClosedIcon>
+                    <wd:DrawerMenu SelectedItemChanged="DrawerMenu_SelectedItemChanged">
                         <wd:DrawerMenuItem Text="主页">
                             <wd:DrawerMenuItem.Icon>
                                 <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/2.png" />
@@ -71,6 +57,7 @@
                                     Fill="{DynamicResource WD.PlaceholderTextBrush}"
                                     Stretch="Uniform" />
                             </wd:DrawerMenuItem.Icon>
+                            <wd:DrawerMenuItem Text="Bus 1" />
                         </wd:DrawerMenuItem>
                     </wd:DrawerMenu>
                 </Grid>

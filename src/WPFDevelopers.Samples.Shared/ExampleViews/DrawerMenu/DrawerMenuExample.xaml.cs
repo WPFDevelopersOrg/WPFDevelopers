@@ -60,12 +60,13 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
         //    WPFDevelopers.Controls.MessageBox.Show("点击了视频","提示");
         //});
 
-        private void DrawerMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void DrawerMenu_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (myFrame == null) return;
             var menu = (WPFDevelopers.Controls.DrawerMenu)sender;
             if (menu == null) return;
-            var item = (WPFDevelopers.Controls.DrawerMenuItem)menu.SelectedValue;
+            var item = (WPFDevelopers.Controls.DrawerMenuItem)menu.SelectedItem;
             if (item == null) return;
             switch (item.Text)
             {
