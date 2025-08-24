@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Samples.Helpers;
 
 namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
 {
@@ -60,6 +62,23 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
         //    WPFDevelopers.Controls.MessageBox.Show("点击了视频","提示");
         //});
 
+        public ICommand SelectionCommand => new RelayCommand(obj => 
+        {
+            var selection = obj as DrawerMenuItem;
+            if (selection != null) 
+            {
+                Message.Push($"当前选中{selection.Text}", MessageBoxImage.Information);
+            }
+        });
+
+
+        public ICommand IsOpenCommand => new RelayCommand(obj =>
+        {
+            if(obj is bool isOpen)
+            {
+                Message.Push(isOpen ? "打开": "关闭",MessageBoxImage.Information);
+            }
+        });
 
         private void DrawerMenu_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {

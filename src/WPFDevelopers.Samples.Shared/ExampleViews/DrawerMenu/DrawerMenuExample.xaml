@@ -63,7 +63,10 @@
                 </Grid>
             </TabItem>
             <TabItem Header="DrawerMenu binding">
-                <wd:DrawerMenu ItemsSource="{Binding DrawerMenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}">
+                <wd:DrawerMenu
+                    IsOpenCommand="{Binding IsOpenCommand, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"
+                    ItemsSource="{Binding DrawerMenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"
+                    SelectionCommand="{Binding SelectionCommand, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}">
                     <wd:DrawerMenu.OpenIcon>
                         <Path
                             Width="20"

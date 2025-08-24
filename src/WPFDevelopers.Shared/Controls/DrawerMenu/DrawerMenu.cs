@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WPFDevelopers.Controls
 {
@@ -25,9 +26,24 @@ namespace WPFDevelopers.Controls
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is DrawerMenu ctrl)
+            {
                 ctrl.RaiseEvent(new RoutedEventArgs(IsOpenChangedEvent));
+                if (ctrl.IsOpenCommand?.CanExecute(e.NewValue) == true)
+                {
+                    ctrl.IsOpenCommand?.Execute(e.NewValue);
+                }
+            }
         }
 
+        public ICommand IsOpenCommand
+        {
+            get => (ICommand)GetValue(IsOpenCommandProperty);
+            set => SetValue(IsOpenCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty IsOpenCommandProperty =
+            DependencyProperty.Register("IsOpenCommand", typeof(ICommand), typeof(DrawerMenu),
+                new PropertyMetadata(null));
         public object OpenIcon
         {
             get { return (object)GetValue(OpenIconProperty); }
@@ -55,6 +71,15 @@ namespace WPFDevelopers.Controls
 
         public event RoutedPropertyChangedEventHandler<object> SelectedItemChanged;
 
+        public ICommand SelectionCommand
+        {
+            get => (ICommand)GetValue(SelectionCommandProperty);
+            set => SetValue(SelectionCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectionCommandProperty =
+            DependencyProperty.Register("SelectionCommand", typeof(ICommand), typeof(DrawerMenu),
+                new PropertyMetadata(null));
 
         public object ClosedIcon
         {
@@ -74,6 +99,10 @@ namespace WPFDevelopers.Controls
             var old = SelectedItem;
             SelectedItem = item;
             SelectedItemChanged?.Invoke(this, new RoutedPropertyChangedEventArgs<object>(old, item));
+            if (SelectionCommand?.CanExecute(item) == true)
+            {
+                SelectionCommand.Execute(item);
+            }
         }
     }
 }
