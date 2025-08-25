@@ -97,9 +97,9 @@
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
-        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
-        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
+        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize, FallbackValue=12}" />
+        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight, FallbackValue=Normal}" />
+        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily, FallbackValue=Microsoft YaHei}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -125,14 +125,6 @@
                             Margin="0,0,-9,0"
                             HorizontalAlignment="Right"
                             Style="{StaticResource WD.GridViewColumnHeaderGripper}" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver" />
-                                <VisualState x:Name="Pressed" />
-                                <VisualState x:Name="Disabled" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>

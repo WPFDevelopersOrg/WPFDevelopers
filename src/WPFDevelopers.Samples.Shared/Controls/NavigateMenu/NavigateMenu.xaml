@@ -26,6 +26,7 @@
                     <ListBox.ItemContainerStyle>
                         <Style BasedOn="{x:Null}" TargetType="ListBoxItem">
                             <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="Padding" Value="10,8" />
                             <Setter Property="Visibility" Value="{Binding IsVisible, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
@@ -83,7 +84,8 @@
         x:Key="WD.NavigateMenuItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type ListBoxItem}">
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, FallbackValue=Center}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, FallbackValue=Center}" />
         <!--<Setter Property="Padding" Value="10,8" />-->
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="Template">
