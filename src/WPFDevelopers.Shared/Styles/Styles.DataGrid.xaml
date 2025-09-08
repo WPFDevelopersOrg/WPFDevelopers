@@ -172,23 +172,27 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="{Binding Path=Padding, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}, FallbackValue=5}" />
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
                     <Border
                         x:Name="PART_Border"
-                        Margin="{TemplateBinding Padding}"
+                        Margin="{TemplateBinding Margin}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         SnapsToDevicePixels="True">
                         <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             TextElement.FontFamily="{TemplateBinding FontFamily}"
                             TextElement.FontSize="{TemplateBinding FontSize}"
-                            TextElement.FontWeight="{TemplateBinding FontWeight}" />
+                            TextElement.FontWeight="{TemplateBinding FontWeight}"
+                            TextElement.Foreground="{TemplateBinding Foreground}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -252,45 +256,33 @@
                                 SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
                                 Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
                         </SelectiveScrollingGrid>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Normal_AlternatingRow" />
-                                <VisualState x:Name="Normal_Selected" />
-                                <VisualState x:Name="Unfocused_Selected" />
-                                <VisualState x:Name="Normal_Editing" />
-                                <VisualState x:Name="MouseOver_Editing">
-                                    <Storyboard>
-                                        <ColorAnimation
-                                            Storyboard.TargetName="DGR_Border"
-                                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
-                                            To="{DynamicResource WD.PrimaryBackgroundColor}" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="MouseOver_Unfocused_Editing" />
-                                <VisualState x:Name="Unfocused_Editing" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimation
-                                            Storyboard.TargetName="DGR_Border"
-                                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
-                                            To="{DynamicResource WD.BaseMoveColor}"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="MouseOver_Selected">
-                                    <Storyboard>
-                                        <ColorAnimation
-                                            Storyboard.TargetName="DGR_Border"
-                                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
-                                            To="{DynamicResource WD.BaseMoveColor}"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="MouseOver_Unfocused_Selected" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.BaseBrush}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
+                        </MultiTrigger>
+                        <Trigger Property="IsEditing" Value="True">
+                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsEditing" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
