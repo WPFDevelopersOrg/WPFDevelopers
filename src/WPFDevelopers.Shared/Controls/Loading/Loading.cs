@@ -1,9 +1,11 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
 using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Utilities;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WPFDevelopers.Controls
 {
@@ -20,6 +22,53 @@ namespace WPFDevelopers.Controls
             DependencyProperty.RegisterAttached("LoadingType", typeof(LoadingType), typeof(Loading),
                 new PropertyMetadata(LoadingType.Default));
 
+
+
+        public static double GetValue(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ValueProperty);
+        }
+
+        public static void SetValue(DependencyObject obj, double value)
+        {
+            obj.SetValue(ValueProperty, value);
+        }
+
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.RegisterAttached("Value", typeof(double), typeof(LoadingType), new PropertyMetadata(0d, OnValueChanged));
+
+        private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is FrameworkElement element)
+            {
+                var isShow = GetIsShow(element);
+                if (!isShow) return;
+                var newValue = (double)e.NewValue;
+                if (newValue >= 100)
+                {
+                    SetIsShow(element, false);
+                    return;
+                }
+                var layer = AdornerLayer.GetAdornerLayer(element);
+                if (layer != null)
+                {
+                    var adorners = layer.GetAdorners(element);
+                    if (adorners != null)
+                    {
+                        foreach (var adorner in adorners)
+                        {
+                            if (adorner is AdornerContainer container &&
+                                container.Child is MaskControl maskControl &&
+                                maskControl.Content is ProgressLoading progressLoading)
+                            {
+                                var value = ((double)newValue / 100.0) * 360;
+                                progressLoading.Value = value;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         public static LoadingType GetLoadingType(DependencyObject obj)
         {
@@ -113,7 +162,6 @@ namespace WPFDevelopers.Controls
                         }
                         value = normalLoading;
                     }
-
                     break;
                 case LoadingType.Normal:
                     var defaultLoading = new NormalLoading();
@@ -125,6 +173,22 @@ namespace WPFDevelopers.Controls
                     }
                     value = defaultLoading;
                     break;
+                case LoadingType.Progress:
+                    if (isLoading)
+                    {
+                        var frameworkElement = (FrameworkElement)uIElement;
+                        var progressLoading = new ProgressLoading();
+                        var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth
+                            ? frameworkElement.ActualHeight
+                            : frameworkElement.ActualWidth;
+                        if (_size < MINSIZE)
+                        {
+                            progressLoading.Width = SIZE;
+                            progressLoading.Height = SIZE;
+                        }
+                        value = progressLoading;
+                    }
+                    break;
             }
 
             if (value != null)
@@ -133,10 +197,10 @@ namespace WPFDevelopers.Controls
                 adornerContainer.Child = new MaskControl(uIElement)
                 {
                     CornerRadius = cornerRadius,
-                    Content = value, 
+                    Content = value,
                 };
             }
-                
+
             layer.Add(adornerContainer);
         }
 
@@ -164,6 +228,10 @@ namespace WPFDevelopers.Controls
         /// <summary>
         ///     普通
         /// </summary>
-        Normal
+        Normal,
+        /// <summary>
+        ///     进度
+        /// </summary>
+        Progress
     }
 }

@@ -10,8 +10,6 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("StrokeArray", typeof(DoubleCollection), typeof(NormalLoading)
                 , new PropertyMetadata(new DoubleCollection {20, 100}));
 
-        //public static NormalLoading Default = new NormalLoading();
-
         static NormalLoading()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NormalLoading),

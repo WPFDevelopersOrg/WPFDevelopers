@@ -17,7 +17,9 @@
                     Name="MyCheckBox"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="启动 Loading 动画" />
+                    Checked="MyCheckBox_Checked"
+                    Content="启动 Loading 动画"
+                    Unchecked="MyCheckBox_Unchecked" />
                 <UniformGrid
                     Margin="10"
                     Columns="3"
@@ -32,13 +34,23 @@
                         wd:Loading.IsShow="{Binding ElementName=MyCheckBox, Path=IsChecked}"
                         wd:Loading.LoadingType="Normal"
                         Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Breathe/0.jpg" />
-                    <Button
-                        Width="50"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
-                        wd:ElementHelper.IsRound="True"
-                        wd:Loading.IsShow="{Binding ElementName=MyCheckBox, Path=IsChecked}"
-                        Content="Mask 1" />
+
+                    <StackPanel wd:PanelHelper.Spacing="10">
+                        <Button
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            wd:ElementHelper.IsRound="True"
+                            wd:Loading.IsShow="{Binding ElementName=MyCheckBox, Path=IsChecked}"
+                            Content="Mask 1" />
+                        <Button
+                            x:Name="BtnProgress"
+                            Width="50"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            wd:ElementHelper.IsRound="True"
+                            Content="Progress" />
+                    </StackPanel>
                     <Button
                         Margin="0,10"
                         HorizontalAlignment="Center"
