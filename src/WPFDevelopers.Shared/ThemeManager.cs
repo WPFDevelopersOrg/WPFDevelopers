@@ -37,6 +37,11 @@ namespace WPFDevelopers
         {
             get => Resources.TryFindResource<Brush>("WD.BackgroundBrush");
         }
+        public Brush PrimaryTextBrush
+        {
+            get => Resources.TryFindResource<Brush>("WD.PrimaryTextBrush");
+
+        }
 
         public Dictionary<Tuple<ThemeType, Color, double>, SolidColorBrush> PrimaryColorCache = new Dictionary<Tuple<ThemeType, Color, double>, SolidColorBrush>();
 
