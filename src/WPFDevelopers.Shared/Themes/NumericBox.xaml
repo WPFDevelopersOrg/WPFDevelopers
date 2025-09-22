@@ -39,8 +39,6 @@
                                     x:Name="PART_TextBox"
                                     MinHeight="{TemplateBinding MinHeight}"
                                     Padding="{TemplateBinding Padding}"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Center"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -60,6 +58,7 @@
                                     SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                     Style="{x:Null}"
+                                    ContextMenu="{TemplateBinding ContextMenu}"
                                     TabIndex="{TemplateBinding TabIndex}"
                                     TextAlignment="{TemplateBinding TextAlignment}"
                                     VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" />
