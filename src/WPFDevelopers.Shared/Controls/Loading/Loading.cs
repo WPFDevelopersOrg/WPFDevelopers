@@ -1,11 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
-using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Utilities;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WPFDevelopers.Controls
 {
@@ -22,11 +19,14 @@ namespace WPFDevelopers.Controls
             DependencyProperty.RegisterAttached("LoadingType", typeof(LoadingType), typeof(Loading),
                 new PropertyMetadata(LoadingType.Default));
 
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.RegisterAttached("Value", typeof(double), typeof(LoadingType),
+                new PropertyMetadata(0d, OnValueChanged));
 
 
         public static double GetValue(DependencyObject obj)
         {
-            return (double)obj.GetValue(ValueProperty);
+            return (double) obj.GetValue(ValueProperty);
         }
 
         public static void SetValue(DependencyObject obj, double value)
@@ -34,45 +34,39 @@ namespace WPFDevelopers.Controls
             obj.SetValue(ValueProperty, value);
         }
 
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.RegisterAttached("Value", typeof(double), typeof(LoadingType), new PropertyMetadata(0d, OnValueChanged));
-
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is FrameworkElement element)
             {
                 var isShow = GetIsShow(element);
                 if (!isShow) return;
-                var newValue = (double)e.NewValue;
+                var newValue = (double) e.NewValue;
                 if (newValue >= 100)
                 {
                     SetIsShow(element, false);
                     return;
                 }
+
                 var layer = AdornerLayer.GetAdornerLayer(element);
                 if (layer != null)
                 {
                     var adorners = layer.GetAdorners(element);
                     if (adorners != null)
-                    {
                         foreach (var adorner in adorners)
-                        {
                             if (adorner is AdornerContainer container &&
                                 container.Child is MaskControl maskControl &&
                                 maskControl.Content is ProgressLoading progressLoading)
                             {
-                                var value = ((double)newValue / 100.0) * 360;
+                                var value = newValue / 100.0 * 360;
                                 progressLoading.Value = value;
                             }
-                        }
-                    }
                 }
             }
         }
 
         public static LoadingType GetLoadingType(DependencyObject obj)
         {
-            return (LoadingType)obj.GetValue(LoadingTypeProperty);
+            return (LoadingType) obj.GetValue(LoadingTypeProperty);
         }
 
         public static void SetLoadingType(DependencyObject obj, LoadingType value)
@@ -125,9 +119,7 @@ namespace WPFDevelopers.Controls
             if (layer == null) return;
             var adorners = layer.GetAdorners(uIElement);
             if (adorners != null)
-            {
                 foreach (var item in adorners)
-                {
                     if (item is AdornerContainer container)
                     {
                         if (isRemove)
@@ -135,22 +127,21 @@ namespace WPFDevelopers.Controls
                         container.Child = null;
                         layer.Remove(container);
                     }
-                }
-            }
+
             if (isRemove)
                 return;
             var adornerContainer = new AdornerContainer(uIElement);
             var type = GetLoadingType(uIElement);
             var isLoading = GetIsShow(uIElement);
             if (!isLoading) return;
-            var w = (double)uIElement.GetValue(ActualWidthProperty);
-            var h = (double)uIElement.GetValue(ActualHeightProperty);
+            var w = (double) uIElement.GetValue(ActualWidthProperty);
+            var h = (double) uIElement.GetValue(ActualHeightProperty);
             switch (type)
             {
                 case LoadingType.Default:
                     if (isLoading)
                     {
-                        var frameworkElement = (FrameworkElement)uIElement;
+                        var frameworkElement = (FrameworkElement) uIElement;
                         var normalLoading = new DefaultLoading();
                         var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth
                             ? frameworkElement.ActualHeight
@@ -160,8 +151,10 @@ namespace WPFDevelopers.Controls
                             normalLoading.Width = SIZE;
                             normalLoading.Height = SIZE;
                         }
+
                         value = normalLoading;
                     }
+
                     break;
                 case LoadingType.Normal:
                     var defaultLoading = new NormalLoading();
@@ -169,14 +162,15 @@ namespace WPFDevelopers.Controls
                     {
                         defaultLoading.Width = SIZE;
                         defaultLoading.Height = SIZE;
-                        defaultLoading.StrokeArray = new DoubleCollection { 10, 100 };
+                        defaultLoading.StrokeArray = new DoubleCollection {10, 100};
                     }
+
                     value = defaultLoading;
                     break;
                 case LoadingType.Progress:
                     if (isLoading)
                     {
-                        var frameworkElement = (FrameworkElement)uIElement;
+                        var frameworkElement = (FrameworkElement) uIElement;
                         var progressLoading = new ProgressLoading();
                         var _size = frameworkElement.ActualHeight < frameworkElement.ActualWidth
                             ? frameworkElement.ActualHeight
@@ -186,8 +180,10 @@ namespace WPFDevelopers.Controls
                             progressLoading.Width = SIZE;
                             progressLoading.Height = SIZE;
                         }
+
                         value = progressLoading;
                     }
+
                     break;
             }
 
@@ -197,7 +193,7 @@ namespace WPFDevelopers.Controls
                 adornerContainer.Child = new MaskControl(uIElement)
                 {
                     CornerRadius = cornerRadius,
-                    Content = value,
+                    Content = value
                 };
             }
 
@@ -206,7 +202,7 @@ namespace WPFDevelopers.Controls
 
         public static bool GetIsShow(DependencyObject obj)
         {
-            return (bool)obj.GetValue(IsShowProperty);
+            return (bool) obj.GetValue(IsShowProperty);
         }
 
         public static void SetIsShow(DependencyObject obj, bool value)
@@ -229,6 +225,7 @@ namespace WPFDevelopers.Controls
         ///     普通
         /// </summary>
         Normal,
+
         /// <summary>
         ///     进度
         /// </summary>
