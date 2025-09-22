@@ -300,6 +300,16 @@ namespace WPFDevelopers.Controls
             numericBox.OnValueChanged((double)e.OldValue, (double)e.NewValue);
         }
 
+        public bool IsAutoCapture
+        {
+            get { return (bool)GetValue(IsAutoCaptureProperty); }
+            set { SetValue(IsAutoCaptureProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsAutoCaptureProperty =
+            DependencyProperty.Register("IsAutoCapture", typeof(bool), _typeofSelf, new PropertyMetadata(false));
+
+
         #endregion
 
         #region Virtual
@@ -533,7 +543,7 @@ namespace WPFDevelopers.Controls
 
         private void InternalSetText(double newValue)
         {
-            var text = newValue.ToString(GetPrecisionFormat());
+            var text = IsAutoCapture ? newValue.ToString() : newValue.ToString(GetPrecisionFormat());
             if (_valueTextBox != null && !Equals(text, _valueTextBox.Text))
                 _valueTextBox.Text = text;
         }
