@@ -42,5 +42,16 @@ namespace WPFDevelopers.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PathIcon), new FrameworkPropertyMetadata(typeof(PathIcon)));
         }
+
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+
+            if (e.Property == ForegroundProperty)
+            {
+                if(Parent is null)
+                    Foreground = ThemeManager.Instance.PrimaryTextBrush;
+            }
+        }
     }
 }

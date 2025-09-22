@@ -56,12 +56,28 @@
             BorderThickness="1,1,1,0"
             SnapsToDevicePixels="True">
             <controls:SmallPanel Background="Transparent">
-                <ContentPresenter
-                    x:Name="PART_ContentPresenter"
-                    Margin="{TemplateBinding Padding}"
-                    VerticalAlignment="Center"
-                    ContentSource="Header"
-                    RecognizesAccessKey="True" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter
+                        x:Name="Icon"
+                        Grid.Column="0"
+                        Margin="3,0,0,0"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Grid.Column="2"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                </Grid>
                 <Popup
                     x:Name="Popup"
                     AllowsTransparency="True"
@@ -114,12 +130,27 @@
             Background="{TemplateBinding Background}"
             SnapsToDevicePixels="True">
             <controls:SmallPanel Background="Transparent">
-                <ContentPresenter
-                    x:Name="PART_ContentPresenter"
-                    Margin="{TemplateBinding Padding}"
-                    VerticalAlignment="Center"
-                    ContentSource="Header"
-                    RecognizesAccessKey="True" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter
+                        x:Name="Icon"
+                        Grid.Column="0"
+                        Margin="3,0,0,0"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Grid.Column="2"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                </Grid>
             </controls:SmallPanel>
         </Border>
         <ControlTemplate.Triggers>
