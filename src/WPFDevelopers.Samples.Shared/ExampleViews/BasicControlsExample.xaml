@@ -624,6 +624,61 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                         </TabItem>
+                        <TabItem Padding="20,0" Header="VerticalGrid">
+                            <DataGrid
+                                GridLinesVisibility="Vertical"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                VerticalGridLinesBrush="DodgerBlue">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Padding="20,0" Header="HorizontalGrid">
+                            <DataGrid
+                                GridLinesVisibility="Horizontal"
+                                HorizontalGridLinesBrush="DodgerBlue"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Padding="20,0" Header="AllGrid">
+                            <DataGrid
+                                GridLinesVisibility="All"
+                                HorizontalGridLinesBrush="Green"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                VerticalGridLinesBrush="Red">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
                     </TabControl>
 
                     <TextBlock
