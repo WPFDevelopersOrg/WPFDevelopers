@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPFDevelopers.Datas
+namespace WPFDevelopers.Core
 {
     public class TextBoxValueChangedEventArgs<T> : RoutedPropertyChangedEventArgs<T>
     {

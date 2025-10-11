@@ -13,22 +13,54 @@
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <UniformGrid
             Margin="10"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
             wd:PanelHelper.Spacing="6"
-            Rows="1">
-            <wd:NumericBox
-                Width="100"
-                Height="30"
-                Maximum="100"
-                Minimum="0" />
-            <wd:NumericBox
-                Width="100"
-                Height="40"
-                Maximum="1000"
-                Minimum="100"
-                UpDownButtonsWidth="0" />
-            <wd:NumericBox Width="100" Precision="3" />
+            Rows="2">
+            <GroupBox Header="自定义右键菜单">
+                <wd:NumericBox
+                    Width="100"
+                    Height="30"
+                    IsAutoCapture="True"
+                    Maximum="100"
+                    Minimum="0"
+                    Precision="2">
+                    <wd:NumericBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Copy">
+                                <MenuItem.Icon>
+                                    <wd:PathIcon Kind="Copy" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ContextMenu>
+                    </wd:NumericBox.ContextMenu>
+                </wd:NumericBox>
+            </GroupBox>
+            <GroupBox Header="不显示按钮组">
+                <wd:NumericBox
+                    Width="100"
+                    Height="40"
+                    Maximum="1000"
+                    Minimum="100"
+                    UpDownButtonsWidth="0" />
+            </GroupBox>
+            <GroupBox Header="自定义步长">
+                <wd:NumericBox
+                    Width="100"
+                    VerticalAlignment="Center"
+                    Interval="0.01"
+                    Precision="2" />
+            </GroupBox>
+            <GroupBox Header="自定义增加和减少事件">
+                <wd:NumericBox
+                    x:Name="MyNumericBox"
+                    Grid.Row="2"
+                    VerticalAlignment="Center"
+                    DecreaseClick="NumericBox_DecreaseClick"
+                    IncreaseClick="NumericBox_IncreaseClick"
+                    Maximum="1"
+                    Minimum="0"
+                    Precision="3"
+                    Value="1" />
+            </GroupBox>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/NumericBoxExample.xaml" CodeType="Xaml" />

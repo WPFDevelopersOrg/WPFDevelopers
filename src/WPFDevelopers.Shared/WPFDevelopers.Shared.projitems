@@ -70,6 +70,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\MultiBoolToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TreeViewHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\NumericBoxClickEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\HalfValueConverter.cs" />
