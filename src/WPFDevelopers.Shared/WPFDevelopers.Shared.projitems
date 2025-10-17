@@ -55,8 +55,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBoxItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericBox\NumericBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PackIconKind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PathIcon.cs" />
@@ -496,10 +494,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\MultiSelectComboBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\MultiSelectSearchComboBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

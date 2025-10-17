@@ -162,6 +162,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\IconicThumbnailWindowExample.xaml.cs" Link="ExampleViews\IconicThumbnailWindowExample.xaml.cs" DependentUpon="IconicThumbnailWindowExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GestureUnlockExample.xaml.cs" Link="ExampleViews\GestureUnlockExample.xaml.cs" DependentUpon="GestureUnlockExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationGridExample.xaml.cs" Link="ExampleViews\AnimationGridExample.xaml.cs" DependentUpon="AnimationGridExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" Link="Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" Link="Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -553,6 +555,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationGridExample.xaml">
 			<Link>ExampleViews\AnimationGridExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.xaml">
+			<Link>Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

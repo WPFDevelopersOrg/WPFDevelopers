@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using WPFDevelopers.Helpers;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Samples.Controls
 {
     [TemplatePart(Name = "PART_TextBox", Type = typeof(TextBox))]
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
