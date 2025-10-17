@@ -20,7 +20,7 @@
             wd:PanelHelper.Spacing="4"
             Columns="2"
             Rows="2">
-            <wd:MultiSelectionSearchComboBox
+            <controls:MultiSelectionSearchComboBox
                 Width="200"
                 Height="38"
                 Delimiter=","
@@ -28,11 +28,11 @@
                 IsSelectAllActive="True"
                 ItemsSource="{Binding Drawings}"
                 SelectedValuePath="Index">
-                <wd:MultiSelectionSearchComboBox.DataContext>
+                <controls:MultiSelectionSearchComboBox.DataContext>
                     <vm:DrawingExampleVM />
-                </wd:MultiSelectionSearchComboBox.DataContext>
-            </wd:MultiSelectionSearchComboBox>
-            <wd:MultiSelectionSearchComboBox
+                </controls:MultiSelectionSearchComboBox.DataContext>
+            </controls:MultiSelectionSearchComboBox>
+            <controls:MultiSelectionSearchComboBox
                 Width="200"
                 wd:ElementHelper.Watermark="MultiSelectionSearchComboBox"
                 Delimiter="^"
@@ -41,10 +41,10 @@
                 ItemsSource="{Binding Drawings}"
                 SearchWatermark="请输入搜索内容"
                 SelectedValuePath="Index">
-                <wd:MultiSelectionSearchComboBox.DataContext>
+                <controls:MultiSelectionSearchComboBox.DataContext>
                     <vm:DrawingExampleVM />
-                </wd:MultiSelectionSearchComboBox.DataContext>
-            </wd:MultiSelectionSearchComboBox>
+                </controls:MultiSelectionSearchComboBox.DataContext>
+            </controls:MultiSelectionSearchComboBox>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -71,8 +71,8 @@
                     wd:PanelHelper.Spacing="3"
                     Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Text="Binding:" />
-                    <wd:MultiSelectionSearchComboBox
-                        Name="MyMultiSelectionSearchComboBox2"
+                    <controls:MultiSelectionSearchComboBox
+                        x:Name="MyMultiSelectionSearchComboBox2"
                         wd:ElementHelper.Watermark="下拉多选搜索"
                         Delimiter="^"
                         DisplayMemberPath="Name"
@@ -84,8 +84,8 @@
                 </StackPanel>
             </Grid>
 
-            <wd:MultiSelectionSearchComboBox
-                Name="MyMultiSelectionSearchComboBox3"
+            <controls:MultiSelectionSearchComboBox
+                x:Name="MyMultiSelectionSearchComboBox3"
                 Width="200"
                 Height="38"
                 wd:ElementHelper.CornerRadius="3"
@@ -96,6 +96,18 @@
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectSearchComboBoxExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectSearchComboBoxExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/MultiSelectionSearchComboBox/MultiSelectSearchComboBox.xaml"
+                CodeType="Xaml"
+                Haader="MultiSelectSearchComboBox" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/MultiSelectionSearchComboBox/MultiSelectSearchComboBox.cs"
+                CodeType="CSharp"
+                Haader="MultiSelectSearchComboBox.cs" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/MultiSelectionSearchComboBox/MultiSelectListBox.cs"
+                CodeType="CSharp"
+                Haader="MultiSelectListBox.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
