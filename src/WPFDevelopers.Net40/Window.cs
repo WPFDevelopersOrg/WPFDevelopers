@@ -159,12 +159,8 @@ namespace WPFDevelopers.Net40
 
         private void MaximizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            if (WindowState == WindowState.Normal)
-            {
-                WindowStyle = WindowStyle.SingleBorderWindow;
-                WindowState = WindowState.Maximized;
-                WindowStyle = WindowStyle.None;
             }
+            SystemCommands.MaximizeWindow(this);
         }
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
