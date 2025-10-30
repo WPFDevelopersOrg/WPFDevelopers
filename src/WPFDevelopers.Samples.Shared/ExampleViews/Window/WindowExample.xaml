@@ -41,7 +41,7 @@
                     Margin="10,0"
                     wd:ElementHelper.CornerRadius="3"
                     Click="ButtonNone_Click"
-                    Content="NoneWindow"
+                    Content="NoneTitleBarWindow"
                     Style="{DynamicResource WD.DangerPrimaryButton}" />
             </UniformGrid>
         </Grid>

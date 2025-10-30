@@ -3,11 +3,11 @@
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    ///     NoChromeWindow.xaml 的交互逻辑
+    ///     ToolWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class NoChromeWindow 
+    public partial class ToolWindow
     {
-        public NoChromeWindow()
+        public ToolWindow()
         {
             InitializeComponent();
         }

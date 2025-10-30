@@ -24,12 +24,12 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new NoChromeWindow().MaskShowDialog();
+            new ToolWindow().MaskShowDialog();
         }
 
         private void ButtonNone_Click(object sender, RoutedEventArgs e)
         {
-            new NoneNoChromeWindow().MaskShowDialog();
+            new NoneTitleBarWindow().MaskShowDialog();
         }
     }
 }

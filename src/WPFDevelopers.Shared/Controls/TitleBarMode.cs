@@ -3,6 +3,7 @@
     public enum TitleBarMode
     {
         Normal,
-        HighTitleBar
+        High,
+        None
     }
 }

@@ -32,12 +32,10 @@ namespace WPFDevelopers.Net40
         private Button _titleBarMaximizeButton;
         private Button _titleBarRestoreButton;
         private IntPtr hWnd;
+        private WindowChrome _windowChrome;
 
         public static readonly DependencyProperty TitleHeightProperty =
-            DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
-
-        public static readonly DependencyProperty NoChromeProperty =
-            DependencyProperty.Register("NoChrome", typeof(bool), typeof(Window), new PropertyMetadata(false));
+            DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d, OnTitleHeightChanged));
 
         public static readonly DependencyProperty TitleBarProperty =
             DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
@@ -63,6 +61,14 @@ namespace WPFDevelopers.Net40
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
+            _windowChrome = new WindowChrome
+            {
+                CaptionHeight = TitleHeight,
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+            };
+            WindowChrome.SetWindowChrome(this, _windowChrome);
+            if (TitleBarMode == TitleBarMode.Normal)
+                TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
         }
 
         private void Resources_ThemeChanged(ThemeType currentTheme)
@@ -88,6 +94,13 @@ namespace WPFDevelopers.Net40
             _titleBarRestoreButton = GetTemplateChild(TitleBarRestoreButton) as Button;
         }
 
+        private static void OnTitleHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Window;
+            if (ctrl != null)
+                 ctrl._windowChrome.CaptionHeight = ctrl.TitleHeight;
+        }
+
         private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -98,12 +111,6 @@ namespace WPFDevelopers.Net40
         {
             get => (double)GetValue(TitleHeightProperty);
             set => SetValue(TitleHeightProperty, value);
-        }
-
-        public bool NoChrome
-        {
-            get => (bool)GetValue(NoChromeProperty);
-            set => SetValue(NoChromeProperty, value);
         }
 
         public object TitleBar
@@ -129,8 +136,6 @@ namespace WPFDevelopers.Net40
             base.OnSourceInitialized(e);
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
-            if (TitleBarMode == TitleBarMode.Normal)
-                TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
         }
 
         protected override void OnContentRendered(EventArgs e)
@@ -159,7 +164,6 @@ namespace WPFDevelopers.Net40
 
         private void MaximizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            }
             SystemCommands.MaximizeWindow(this);
         }
 

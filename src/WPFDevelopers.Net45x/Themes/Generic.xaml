@@ -20,14 +20,6 @@
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
         <Setter Property="FontFamily" Value="{DynamicResource WD.FontFamily}" />
-        <Setter Property="WindowChrome.WindowChrome">
-            <Setter.Value>
-                <WindowChrome
-                    CaptionHeight="{Binding TitleHeight, RelativeSource={RelativeSource AncestorType=wd:Window}}"
-                    GlassFrameThickness="0,0,0,.1"
-                    UseAeroCaptionButtons="False" />
-            </Setter.Value>
-        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type wd:Window}">
@@ -53,7 +45,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                                         <Button
                                             x:Name="PART_TitleBarIcon"
                                             Margin="5,0,0,0"
@@ -270,13 +262,13 @@
                                         </Button>
                                     </StackPanel>
                                 </Grid>
-                                <ContentPresenter
-                                    x:Name="PART_TitleToolBar"
-                                    Content="{Binding TitleBar, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Focusable="False"
-                                    Visibility="Collapsed"
-                                    WindowChrome.IsHitTestVisibleInChrome="True" />
                             </control:SmallPanel>
+                            <ContentPresenter
+                                x:Name="PART_TitleToolBar"
+                                Content="{Binding TitleBar, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Focusable="False"
+                                Visibility="Collapsed"
+                                WindowChrome.IsHitTestVisibleInChrome="True" />
                             <AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False">
                                 <ContentPresenter x:Name="MainContentPresenter" ClipToBounds="True" />
                             </AdornerDecorator>
@@ -291,7 +283,7 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="TitleBarMode" Value="HighTitleBar">
+                        <Trigger Property="TitleBarMode" Value="High">
                             <Setter TargetName="PART_HighTitleBar" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_Normal" Property="Visibility" Value="Collapsed" />
                         </Trigger>
@@ -308,8 +300,9 @@
                             <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_TitleBarMinAndMax" Property="Visibility" Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="NoChrome" Value="True">
+                        <Trigger Property="TitleBarMode" Value="None">
                             <Setter TargetName="PART_GridChrome" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_Normal" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_TitleToolBar" Property="Visibility" Value="Visible" />
                         </Trigger>
                         <MultiTrigger>

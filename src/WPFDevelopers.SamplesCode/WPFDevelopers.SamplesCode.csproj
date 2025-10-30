@@ -134,8 +134,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml.cs" Link="ExampleViews\CropImageExample.xaml.cs" DependentUpon="CropImageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BadgeExample.xaml.cs" Link="ExampleViews\BadgeExample.xaml.cs" DependentUpon="BadgeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageExample.xaml.cs" Link="ExampleViews\MessageExample.xaml.cs" DependentUpon="MessageExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoChromeWindow.xaml.cs" Link="ExampleViews\Window\NoChromeWindow.xaml.cs" DependentUpon="NoChromeWindow.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoneNoChromeWindow.xaml.cs" Link="ExampleViews\Window\NoneNoChromeWindow.xaml.cs" DependentUpon="NoneNoChromeWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoneTitleBarWindow.xaml.cs" Link="ExampleViews\Window\NoneTitleBarWindow.xaml.cs" DependentUpon="NoneTitleBarWindow.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\ToolWindow.xaml.cs" Link="ExampleViews\Window\ToolWindow.xaml.cs" DependentUpon="ToolWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml.cs" Link="ExampleViews\PathIconExample.xaml.cs" DependentUpon="PathIconExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumericBoxExample.xaml.cs" Link="ExampleViews\NumericBoxExample.xaml.cs" DependentUpon="NumericBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ColorPickerExample.xaml.cs" Link="ExampleViews\ColorPickerExample.xaml.cs" DependentUpon="ColorPickerExample.xaml" />
@@ -481,11 +481,11 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageExample.xaml">
 			<Link>ExampleViews\MessageExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoChromeWindow.xaml">
-			<Link>ExampleViews\Window\NoChromeWindow.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoneTitleBarWindow.xaml">
+			<Link>ExampleViews\Window\NoneTitleBarWindow.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\NoneNoChromeWindow.xaml">
-			<Link>ExampleViews\Window\NoneNoChromeWindow.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\ToolWindow.xaml">
+			<Link>ExampleViews\Window\ToolWindow.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PathIconExample.xaml">
 			<Link>ExampleViews\PathIconExample.xaml</Link>
