@@ -9,8 +9,6 @@
     Title="NoneTitleBarWindow"
     Width="710"
     Height="520"
-    BorderBrush="{StaticResource WD.DangerBrush}"
-    BorderThickness="1"
     TitleBackground="{StaticResource WD.DangerBrush}"
     TitleBarMode="None"
     TitleHeight="30"

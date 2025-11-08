@@ -45,7 +45,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal">
                                         <Button
                                             x:Name="PART_TitleBarIcon"
                                             Margin="5,0,0,0"
@@ -265,6 +265,7 @@
                             </control:SmallPanel>
                             <ContentPresenter
                                 x:Name="PART_TitleToolBar"
+                                Height="{TemplateBinding TitleHeight}"
                                 Content="{Binding TitleBar, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 Focusable="False"
                                 Visibility="Collapsed"

@@ -44,7 +44,9 @@ namespace WPFDevelopers.Net40
            DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleBarModeProperty =
-            DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal));
+            DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal, OnTitleBarModeChanged));
+
+        
 
         static Window()
         {
@@ -67,8 +69,6 @@ namespace WPFDevelopers.Net40
                 GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
             };
             WindowChrome.SetWindowChrome(this, _windowChrome);
-            if (TitleBarMode == TitleBarMode.Normal)
-                TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
         }
 
         private void Resources_ThemeChanged(ThemeType currentTheme)
@@ -92,6 +92,14 @@ namespace WPFDevelopers.Net40
             _highTitleRestoreButton = GetTemplateChild(HighTitleRestoreButton) as Button;
             _titleBarMaximizeButton = GetTemplateChild(TitleBarMaximizeButton) as Button;
             _titleBarRestoreButton = GetTemplateChild(TitleBarRestoreButton) as Button;
+            SetTitleHeight();
+        }
+
+        private static void OnTitleBarModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Window;
+            if (ctrl != null)
+                ctrl.SetTitleHeight();
         }
 
         private static void OnTitleHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -99,6 +107,16 @@ namespace WPFDevelopers.Net40
             var ctrl = d as Window;
             if (ctrl != null)
                  ctrl._windowChrome.CaptionHeight = ctrl.TitleHeight;
+        }
+
+        void SetTitleHeight()
+        {
+            if (TitleBarMode == TitleBarMode.Normal)
+                TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
+            else if(TitleBarMode == TitleBarMode.High)
+                TitleHeight = 50d;
+            else
+                _windowChrome.CaptionHeight = TitleHeight;
         }
 
         private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
