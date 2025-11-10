@@ -31,6 +31,15 @@ namespace WPFDevelopers.Samples.ExampleViews
             DependencyProperty.Register("AllSelected", typeof(bool), typeof(BasicControlsExample),
                 new PropertyMetadata(AllSelectedChangedCallback));
 
+        public DateTime CurrentDateTime
+        {
+            get { return (DateTime)GetValue(CurrentDateTimeProperty); }
+            set { SetValue(CurrentDateTimeProperty, value); }
+        }
+
+        public static readonly DependencyProperty CurrentDateTimeProperty =
+            DependencyProperty.Register("CurrentDateTime", typeof(DateTime), typeof(BasicControlsExample), new PropertyMetadata(DateTime.Now));
+
         public static List<string> ContactMethods { get; } = new List<string> { "Tel", "Fax", "MB" };
         public BasicControlsExample()
         {
@@ -215,12 +224,12 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new NoChromeWindow().Show();
+            new ToolWindow().Show();
         }
 
         private void ButtonNone_Click(object sender, RoutedEventArgs e)
         {
-            new NoneNoChromeWindow().Show();
+            new NoneTitleBarWindow().Show();
         }
 
         private void ComboBoxLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -235,6 +244,10 @@ namespace WPFDevelopers.Samples.ExampleViews
                     LanguageManager.Instance.ChangeLanguage(new CultureInfo(tag));
                 }
             }
+        }
+        private void BtnGetDateTime_Click(object sender, RoutedEventArgs e)
+        {
+            Message.Push(CurrentDateTime.ToString("yyyy-MM-dd HH:mm:ss"));
         }
     }
 }
