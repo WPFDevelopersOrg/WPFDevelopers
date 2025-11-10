@@ -214,7 +214,7 @@
                                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </ScrollViewer>
-                                        <controls:MultiSelectListBox
+                                        <controls:MultiSelectComboBox
                                             x:Name="PART_SearchSelector"
                                             Grid.Row="2"
                                             Margin="1,0"
