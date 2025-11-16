@@ -65,6 +65,9 @@
       <SubType>Code</SubType>
       <DependentUpon>AcrylicBlurWindowExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AllPathIconExample.xaml.cs">
+      <DependentUpon>AllPathIconExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml.cs">
       <DependentUpon>AnimationGridExample.xaml</DependentUpon>
     </Compile>
@@ -624,6 +627,10 @@
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AcrylicBlurWindowExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AllPathIconExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml">
       <SubType>Designer</SubType>

@@ -394,6 +394,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.AnimationGrid:
                     ControlPanel = new AnimationGridExample();
                     break;
+                case MenuEnum.AllPathIcon:
+                    ControlPanel = new AllPathIconExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
