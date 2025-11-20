@@ -6,6 +6,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
     <Style
         x:Key="WD.DefaultMultiSelectComboBoxItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -17,7 +18,6 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Margin" Value="1,0" />
         <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="Template">
@@ -25,31 +25,53 @@
                 <ControlTemplate TargetType="{x:Type controls:MultiSelectComboBoxItem}">
                     <Border
                         x:Name="PART_Border"
-                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="true">
-                        <CheckBox
-                            MinHeight="{TemplateBinding MinHeight}"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                            Foreground="{TemplateBinding Foreground}"
-                            IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                            <ContentPresenter
-                                x:Name="PART_ContentPresenter"
+                        <controls:SmallPanel>
+                            <CheckBox
+                                MinHeight="{TemplateBinding MinHeight}"
+                                Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=ListViewItem}}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                Foreground="{TemplateBinding Foreground}"
+                                IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                Visibility="{Binding View, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBox}}, Converter={StaticResource WD.NullToVisibilityConverter}}">
+                                <ContentPresenter
+                                    x:Name="PART_ContentPresenter"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Content="{TemplateBinding Content}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                            </CheckBox>
+                            <GridViewRowPresenter
+                                x:Name="PART_GridViewRowPresenter"
+                                Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource WD.DirectionalThicknessConverter}, ConverterParameter=vertical}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                TextElement.Foreground="{TemplateBinding Foreground}" />
-                        </CheckBox>
+                                Visibility="{Binding View, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBox}}, Converter={StaticResource WD.NullToVisibilityConverter_Inverse}}" />
+                        </controls:SmallPanel>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                         </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=IsSelected, RelativeSource={RelativeSource Self}}" Value="True" />
+                                <Condition Binding="{Binding SelectionMode, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBox}}}" Value="Single" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
+                                <Setter TargetName="PART_Border" Property="TextElement.FontWeight" Value="Bold" />
+                                <Setter TargetName="PART_Border" Property="TextElement.Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -189,7 +211,7 @@
                                         <TextBox
                                             x:Name="PART_TextBox"
                                             Height="{Binding ElementName=PART_EditableTextBox, Path=Height}"
-                                            Margin="6,0"
+                                            Margin="{TemplateBinding Padding}"
                                             helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                             helpers:ElementHelper.IsClear="True"
                                             helpers:ElementHelper.Watermark="{Binding SearchWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
@@ -200,36 +222,58 @@
                                         <CheckBox
                                             x:Name="PART_SelectAll"
                                             Grid.Row="1"
-                                            Margin="4"
+                                            Margin="{TemplateBinding Padding}"
                                             helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                             Content="{TemplateBinding SelectAllContent}"
                                             Visibility="{TemplateBinding IsSelectAllActive,
                                                                          Converter={StaticResource WD.Bool2VisibilityConverter}}" />
-                                        <ScrollViewer
-                                            x:Name="DropDownScrollViewer"
+                                        <Border
                                             Grid.Row="2"
-                                            ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                            <ItemsPresenter
-                                                x:Name="PART_ItemsPresenter"
-                                                KeyboardNavigation.DirectionalNavigation="Contained"
-                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                        </ScrollViewer>
-                                        <controls:MultiSelectComboBox
+                                            Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="1,0"
+                                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                            SnapsToDevicePixels="True"
+                                            UseLayoutRounding="True">
+                                            <ScrollViewer
+                                                x:Name="DropDownScrollViewer"
+                                                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                Style="{StaticResource WD.GridViewScrollViewerStyleKey}">
+                                                <ScrollViewer.Clip>
+                                                    <RectangleGeometry>
+                                                        <RectangleGeometry.RadiusX>
+                                                            <Binding ElementName="Border" Path="CornerRadius.TopLeft" />
+                                                        </RectangleGeometry.RadiusX>
+                                                        <RectangleGeometry.RadiusY>
+                                                            <Binding ElementName="Border" Path="CornerRadius.TopLeft" />
+                                                        </RectangleGeometry.RadiusY>
+                                                        <RectangleGeometry.Rect>
+                                                            <MultiBinding Converter="{StaticResource WD.WidthHeightToRectConverter}">
+                                                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+                                                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=ScrollViewer}" />
+                                                            </MultiBinding>
+                                                        </RectangleGeometry.Rect>
+                                                    </RectangleGeometry>
+                                                </ScrollViewer.Clip>
+                                                <ItemsPresenter
+                                                    x:Name="PART_ItemsPresenter"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                            </ScrollViewer>
+                                        </Border>
+                                        <controls:MultiSelector
                                             x:Name="PART_SearchSelector"
                                             Grid.Row="2"
-                                            Margin="1,0"
                                             Padding="{TemplateBinding Padding}"
                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                             helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                            BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="0"
                                             DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
                                             ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
                                             ItemsSource="{TemplateBinding ItemsSourceSearch}"
                                             SelectedValuePath="{TemplateBinding SelectedValuePath}"
                                             SelectionMode="{TemplateBinding SelectionMode}"
-                                            Style="{StaticResource WD.DefaultListBox}"
+                                            Style="{StaticResource WD.DefaultListView}"
                                             Visibility="Collapsed" />
                                     </Grid>
                                 </controls:SmallPanel>
@@ -268,6 +312,9 @@
                         </Trigger>
                         <Trigger Property="Text" Value="{x:Null}">
                             <Setter TargetName="PART_Watermark" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="SelectionMode" Value="Single">
+                            <Setter TargetName="PART_SelectAll" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
