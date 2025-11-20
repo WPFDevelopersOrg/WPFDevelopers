@@ -282,7 +282,7 @@
                             <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
                         </MultiTrigger>
                         <Trigger Property="IsEditing" Value="True">
-                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
                         </Trigger>
                         <MultiTrigger>
@@ -290,7 +290,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                                 <Condition Property="IsEditing" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter TargetName="DGR_Border" Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
