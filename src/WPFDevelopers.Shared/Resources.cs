@@ -20,11 +20,16 @@ namespace WPFDevelopers
 
         public static event ThemeChangedEvent ThemeChanged;
 
-        private ThemeType _theme = ThemeType.Default;
+        private ThemeType _theme = ThemeType.Light;
         public ThemeType Theme
         {
             get => _theme;
-            set => InitializeTheme(value);
+            set
+            {
+                if (_theme == value) return;
+                _theme = value;
+                InitializeTheme(value);
+            }
         }
 
         private Color _color;
@@ -55,20 +60,37 @@ namespace WPFDevelopers
             MergedDictionaries.Add(resourceDictionary);
             _color = GetColorFromResource("Primary");
             ThemeManager.Instance.Resources = this;
-            if (Theme == ThemeType.Default && IsWindows10OrLater())
-            {
-                SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
-                ApplyTheme();
-                return;
-            }
-            if (Theme == ThemeType.Default)
-                Theme = ThemeType.Light;
+            InitializeTheme(Theme,isInit: true);
+            //SetResources(Theme);
         }
 
-        protected void InitializeTheme(ThemeType themeType)
+        //void SetResources(ThemeType themeType)
+        //{
+        //    if (themeType == ThemeType.Default && IsWindows10OrLater())
+        //    {
+        //        SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
+        //        SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
+        //        ApplyTheme();
+        //        return;
+        //    }
+        //    if (themeType == ThemeType.Default)
+        //        Theme = ThemeType.Light;
+        //}
+        protected void InitializeTheme(ThemeType themeType,bool isInit = false)
         {
-            if (_theme == themeType)
-                return;
+            //SetResources(themeType);
+            if(!isInit)
+            {
+                if (themeType == ThemeType.Default && IsWindows10OrLater())
+                {
+                    SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
+                    SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
+                    ApplyTheme();
+                    return;
+                }
+                if (themeType == ThemeType.Default)
+                    Theme = ThemeType.Light;
+            }
             _theme = themeType;
             Uri oldUri = themeType == ThemeType.Default || themeType == ThemeType.Light ? GetResourceUri("Dark.Color") : GetResourceUri("Light.Color");
             if (oldUri != null)
