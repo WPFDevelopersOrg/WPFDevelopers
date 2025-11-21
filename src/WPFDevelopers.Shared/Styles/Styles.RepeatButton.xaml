@@ -40,22 +40,22 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseCaptured" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.DefaultBorderBrush}" />
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBackgroundBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
