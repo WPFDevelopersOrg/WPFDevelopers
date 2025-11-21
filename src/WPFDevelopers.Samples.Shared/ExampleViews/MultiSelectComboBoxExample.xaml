@@ -16,10 +16,7 @@
         <model:HospitalList x:Key="myHospitalList" />
     </UserControl.Resources>
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
-        <UniformGrid
-            Grid.Row="1"
-            Columns="2"
-            Rows="2">
+        <UniformGrid Columns="2" Rows="3">
             <wd:MultiSelectComboBox
                 Width="200"
                 HorizontalAlignment="Center"
@@ -66,18 +63,32 @@
 
             <wd:MultiSelectComboBox
                 Width="200"
-                wd:ElementHelper.Watermark="Tag"
-                DisplayMemberPath="Number"
+                wd:ElementHelper.Watermark="tags"
+                IsSearch="True"
                 IsSelectAllActive="True"
-                ItemsSource="{Binding Drawings}"
+                ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=local:MultiSelectComboBoxExample}}"
                 SearchWatermark="请输入搜索内容"
-                SelectedValuePath="Index"
+                SelectedValuePath="Name"
                 ShowType="Tag">
-                <wd:MultiSelectComboBox.DataContext>
-                    <vm:DrawingExampleVM />
-                </wd:MultiSelectComboBox.DataContext>
+                <wd:MultiSelectComboBox.View>
+                    <GridView>
+                        <GridViewColumn Width="30">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding ID}" Header="ID" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                    </GridView>
+                </wd:MultiSelectComboBox.View>
             </wd:MultiSelectComboBox>
-            <Grid Grid.Row="1" wd:PanelHelper.Spacing="3">
+
+            <Grid wd:PanelHelper.Spacing="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
@@ -85,8 +96,9 @@
                 <TextBlock VerticalAlignment="Center" Text="Binding:" />
                 <wd:MultiSelectComboBox
                     Grid.Column="1"
+                    Width="200"
+                    HorizontalAlignment="Left"
                     wd:ElementHelper.Watermark="下拉多选搜索"
-                    Delimiter="^"
                     DisplayMemberPath="Name"
                     IsSelectAllActive="True"
                     ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=local:MultiSelectComboBoxExample}}"
@@ -95,7 +107,31 @@
                     SelectedValuePath="ID"
                     ShowType="Tag" />
             </Grid>
-
+            <Grid HorizontalAlignment="Center" wd:PanelHelper.Spacing="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Text="Single:" />
+                <wd:MultiSelectComboBox
+                    Grid.Column="1"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    wd:ElementHelper.Watermark="Single select"
+                    DisplayMemberPath="Name"
+                    IsSelectAllActive="True"
+                    ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource AncestorType=local:MultiSelectComboBoxExample}}"
+                    SearchWatermark="请输入搜索内容"
+                    SelectionMode="Single"
+                    ShowType="Tag">
+                    <wd:MultiSelectComboBox.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding ID}" Header="ID" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                        </GridView>
+                    </wd:MultiSelectComboBox.View>
+                </wd:MultiSelectComboBox>
+            </Grid>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectComboBoxExample.xaml" CodeType="Xaml" />

@@ -208,7 +208,7 @@ namespace WPFDevelopers.Controls
             if (element is MultiSelectComboBoxItem comboBoxItem)
             {
                 if (View == null)
-                    comboBoxItem.Content = this.GetItemDisplayValue(item);
+                    comboBoxItem.Content = this.GetDisplayAndSelectedValue(item);
             }
         }
 
@@ -319,6 +319,7 @@ namespace WPFDevelopers.Controls
             }
             SyncListViewViews();
         }
+
         public MultiSelectComboBox()
         {
             IsVisibleChanged += OnMultiSelectComboBox_IsVisibleChanged;
@@ -551,7 +552,7 @@ namespace WPFDevelopers.Controls
                 var listSearch = new List<object>();
                 foreach (var item in Items)
                 {
-                    var str = this.GetItemDisplayValue(item).ToString();
+                    var str = this.GetDisplayAndSelectedValue(item).ToString();
                     if (string.IsNullOrWhiteSpace(str))
                         str = item.ToString();
                     if (!string.IsNullOrWhiteSpace(str))
@@ -656,7 +657,7 @@ namespace WPFDevelopers.Controls
         protected virtual void UpdateText()
         {
             if (_ignoreTextValueChanged) return;
-            var newValue = string.Join(Delimiter, SelectedItems.Cast<object>().Select(x => this.GetItemDisplayValue(x).ToString()));
+            var newValue = string.Join(Delimiter, SelectedItems.Cast<object>().Select(x => this.GetDisplayAndSelectedValue(x).ToString()));
             if (string.IsNullOrWhiteSpace(Text) || !Text.Equals(newValue))
             {
                 _ignoreTextValueChanged = true;
@@ -688,21 +689,25 @@ namespace WPFDevelopers.Controls
             {
                 if (multiSelectComboBoxItem != null)
                 {
-                    var contentPresenter = multiSelectComboBoxItem.Template?.FindName("PART_ContentPresenter", multiSelectComboBoxItem) as ContentPresenter;
-                    if (contentPresenter?.Content != null)
+                    if ((!string.IsNullOrEmpty(SelectedValuePath) || !string.IsNullOrEmpty(DisplayMemberPath)) && item != null)
                     {
-                        tag.Content = contentPresenter.Content;
+                        var propertyInfo = item.GetType().GetProperty(SelectedValuePath);
+                        propertyInfo = propertyInfo == null ? item.GetType().GetProperty(DisplayMemberPath) : propertyInfo;
+                        if (propertyInfo != null)
+                        {
+                            tag.Content = propertyInfo.GetValue(item, null);
+                        }
+                        else
+                        {
+                            tag.Content = multiSelectComboBoxItem.Content;
+                        }
                     }
                     else
                     {
-                        if ((!string.IsNullOrEmpty(SelectedValuePath)|| !string.IsNullOrEmpty(DisplayMemberPath)) && item != null)
+                        var contentPresenter = multiSelectComboBoxItem.Template?.FindName("PART_ContentPresenter", multiSelectComboBoxItem) as ContentPresenter;
+                        if (contentPresenter?.Content != null)
                         {
-                            var propertyInfo = item.GetType().GetProperty(SelectedValuePath);
-                            propertyInfo = propertyInfo == null ? item.GetType().GetProperty(DisplayMemberPath) : propertyInfo;
-                            if (propertyInfo != null)
-                            {
-                                tag.Content = propertyInfo.GetValue(item, null);
-                            }
+                            tag.Content = contentPresenter.Content;
                         }
                         else
                         {
@@ -728,7 +733,8 @@ namespace WPFDevelopers.Controls
 
             if (multiSelectComboBoxItem != null)
                 tag.Tag = multiSelectComboBoxItem;
-
+            else
+                tag.Tag = item;
             ElementHelper.SetCornerRadius(tag, new CornerRadius(3));
             _panel.Children.Add(tag);
         }
@@ -736,9 +742,27 @@ namespace WPFDevelopers.Controls
         private void Tags_Close(object sender, RoutedEventArgs e)
         {
             var tag = (Tag)e.OriginalSource;
-            var multiSelectComboBoxItem = (MultiSelectComboBoxItem)tag.Tag;
-            if (multiSelectComboBoxItem != null)
+            if (tag.Tag is MultiSelectComboBoxItem multiSelectComboBoxItem)
+            {
                 multiSelectComboBoxItem.SetCurrentValue(IsSelectedProperty, false);
+            }
+            else
+            {
+                var item = tag.Tag;
+                if (item != null)
+                {
+                    if (SelectedItems.Contains(item))
+                    {
+                        SelectedItems.Remove(item);
+                    }
+                    else
+                    {
+                        var match = Items.Cast<object>().FirstOrDefault(h => this.GetDisplayAndSelectedValue(h).ToString() == this.GetDisplayAndSelectedValue(item).ToString());
+                        if (match != null && SelectedItems.Contains(match))
+                            SelectedItems.Remove(match);
+                    }
+                }
+            }
         }
 
         private static void OnSelectedItemsExtChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -760,11 +784,11 @@ namespace WPFDevelopers.Controls
                 ctrl._isUpdating = true;
                 foreach (var item in collection)
                 {
-                    var name = ctrl.GetItemDisplayValue(item).ToString();
+                    var name = ctrl.GetDisplayAndSelectedValue(item).ToString();
                     object model = null;
                     if (!string.IsNullOrWhiteSpace(name))
                         model = ctrl.ItemsSource.OfType<object>().FirstOrDefault(h =>
-                            ctrl.GetItemDisplayValue(h).ToString() == name);
+                            ctrl.GetDisplayAndSelectedValue(h).ToString() == name);
                     else
                         model = ctrl.ItemsSource.OfType<object>()
                             .FirstOrDefault(h => h == item);

@@ -22,7 +22,7 @@ namespace WPFDevelopers.Controls
             if (element is MultiSelectComboBoxItem comboBoxItem)
             {
                 if (View == null)
-                    comboBoxItem.Content = this.GetItemDisplayValue(item);
+                    comboBoxItem.Content = this.GetDisplayAndSelectedValue(item);
             }
         }
     }
