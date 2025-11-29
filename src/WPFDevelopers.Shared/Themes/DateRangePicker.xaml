@@ -200,7 +200,7 @@
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Kind="Date" />
                                 <DatePickerTextBox
-                                    x:Name="PART_TextBoxStart"
+                                    x:Name="PART_StartTextBox"
                                     Grid.Column="1"
                                     Width="Auto"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -216,7 +216,7 @@
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Kind="DateRangeRight" />
                                 <DatePickerTextBox
-                                    x:Name="PART_TextBoxEnd"
+                                    x:Name="PART_EndTextBox"
                                     Grid.Column="3"
                                     Width="Auto"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -273,18 +273,30 @@
                                         SnapsToDevicePixels="True"
                                         UseLayoutRounding="True" />
                                     <StackPanel Orientation="Horizontal">
-                                        <Calendar
-                                            x:Name="PART_StartCalendar"
-                                            Margin="2,0,0,0"
-                                            BorderThickness="0"
-                                            CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
-                                            SelectionMode="MultipleRange" />
-                                        <Calendar
-                                            x:Name="PART_EndCalendar"
-                                            Margin="0,0,2,0"
-                                            BorderThickness="0"
-                                            CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
-                                            SelectionMode="MultipleRange" />
+                                        <StackPanel>
+                                            <Calendar
+                                                x:Name="PART_StartCalendar"
+                                                Margin="2,0,0,0"
+                                                BorderThickness="0"
+                                                CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
+                                                SelectionMode="MultipleRange" />
+                                            <controls:TimePicker
+                                                x:Name="PART_StartTimePicker"
+                                                Margin="6,0,6,6"
+                                                IsCurrentTime="True" />
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Calendar
+                                                x:Name="PART_EndCalendar"
+                                                Margin="0,0,2,0"
+                                                BorderThickness="0"
+                                                CalendarItemStyle="{StaticResource WD.NoShadowCalendarItemStyle}"
+                                                SelectionMode="MultipleRange" />
+                                            <controls:TimePicker
+                                                x:Name="PART_EndTimePicker"
+                                                Margin="6,0,6,6"
+                                                IsCurrentTime="True" />
+                                        </StackPanel>
                                     </StackPanel>
                                 </controls:SmallPanel>
                             </Popup>
