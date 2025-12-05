@@ -70,13 +70,13 @@
                                 Duration="0:0:10" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel
+                    <Grid
                         x:Name="PART_SmallPanel"
                         CacheMode="BitmapCache"
                         RenderTransformOrigin=".5,0">
-                        <controls:SmallPanel.RenderTransform>
+                        <Grid.RenderTransform>
                             <ScaleTransform />
-                        </controls:SmallPanel.RenderTransform>
+                        </Grid.RenderTransform>
                         <Border
                             x:Name="PART_Border"
                             Background="{TemplateBinding Background}"
@@ -137,7 +137,7 @@
                                 <ScaleTransform ScaleX="1" />
                             </Rectangle.RenderTransform>
                         </Rectangle>
-                    </controls:SmallPanel>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="MessageType" Value="Warning">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.WarningGeometry}" />

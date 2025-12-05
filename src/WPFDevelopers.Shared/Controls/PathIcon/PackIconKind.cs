@@ -51,7 +51,6 @@ namespace WPFDevelopers.Controls
         [Description("WD.StarSkyGeometry")] StarSky,
         [Description("WD.ReturnGeometry")] Return,
         [Description("WD.HomeGeometry")] Home,
-        [Description("WD.BreadCrumbBarGeometry")] BreadCrumbBar,
         [Description("WD.UnfoldMoreGeometry")] UnfoldMore,
         [Description("WD.TimeGeometry")] Time,
         [Description("WD.DateRangeRightGeometry")] DateRangeRight,

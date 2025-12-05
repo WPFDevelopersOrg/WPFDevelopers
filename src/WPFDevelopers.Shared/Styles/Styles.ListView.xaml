@@ -2,8 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
-    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
-    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    xmlns:converts="clr-namespace:WPFDevelopers.Converts"
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
@@ -66,20 +66,18 @@
         x:Key="WD.GridViewColumnHeaderGripper"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Thumb}">
-        <Setter Property="Width" Value="18" />
+        <Setter Property="Width" Value="8" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Padding="{TemplateBinding Padding}" Background="Transparent">
-                        <Rectangle
-                            Width="1"
-                            HorizontalAlignment="Center"
-                            Fill="{TemplateBinding Background}" />
-                    </Border>
+                    <Border
+                        Width="{TemplateBinding Width}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}" />
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -100,7 +98,7 @@
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize, FallbackValue=12}" />
         <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight, FallbackValue=Normal}" />
         <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily, FallbackValue=Microsoft YaHei}" />
-        <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, FallbackValue=6}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
@@ -113,7 +111,6 @@
                             BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter
                                 x:Name="HeaderContent"
-                                Margin="0,0,0,1"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 RecognizesAccessKey="True"
@@ -122,7 +119,6 @@
                         </Border>
                         <Thumb
                             x:Name="PART_HeaderGripper"
-                            Margin="0,0,-9,0"
                             HorizontalAlignment="Right"
                             Style="{StaticResource WD.GridViewColumnHeaderGripper}" />
                     </controls:SmallPanel>
@@ -194,18 +190,18 @@
         <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontSize}" />
         <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontWeight}" />
         <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=FontFamily}" />
-        <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, FallbackValue=6}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
                     <Border
                         x:Name="Border"
-                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         SnapsToDevicePixels="True">
                         <GridViewRowPresenter
+                            Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource WD.DirectionalThicknessConverter}, ConverterParameter=vertical}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />

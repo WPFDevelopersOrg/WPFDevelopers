@@ -357,14 +357,14 @@
                                 </Grid.RowDefinitions>
                                 <controls:TimePicker
                                     x:Name="PART_TimePicker"
-                                    Grid.Row="0"
+                                    Grid.Row="2"
                                     Grid.ColumnSpan="3"
-                                    Margin="6,0"
+                                    Margin="6,0,6,6"
                                     IsCurrentTime="True"
                                     Visibility="Collapsed" />
                                 <Button
                                     x:Name="PART_PreviousButton"
-                                    Grid.Row="1"
+                                    Grid.Row="0"
                                     Grid.Column="0"
                                     Width="28"
                                     Height="20"
@@ -373,7 +373,7 @@
                                     Template="{StaticResource WD.PreviousButtonTemplate}" />
                                 <Button
                                     x:Name="PART_HeaderButton"
-                                    Grid.Row="1"
+                                    Grid.Row="0"
                                     Grid.Column="1"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -382,7 +382,7 @@
                                     Template="{StaticResource WD.HeaderButtonTemplate}" />
                                 <Button
                                     x:Name="PART_NextButton"
-                                    Grid.Row="1"
+                                    Grid.Row="0"
                                     Grid.Column="2"
                                     Width="28"
                                     Height="20"
@@ -391,7 +391,7 @@
                                     Template="{StaticResource WD.NextButtonTemplate}" />
                                 <Grid
                                     x:Name="PART_MonthView"
-                                    Grid.Row="2"
+                                    Grid.Row="1"
                                     Grid.ColumnSpan="3"
                                     Margin="6,10"
                                     HorizontalAlignment="Center"
@@ -418,7 +418,7 @@
                                 </Grid>
                                 <Grid
                                     x:Name="PART_YearView"
-                                    Grid.Row="2"
+                                    Grid.Row="1"
                                     Grid.ColumnSpan="3"
                                     Margin="6,-3,7,6"
                                     HorizontalAlignment="Center"

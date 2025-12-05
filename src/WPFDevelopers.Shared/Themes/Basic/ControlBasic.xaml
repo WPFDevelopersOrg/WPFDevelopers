@@ -62,6 +62,9 @@
     <converts:FalseToVisibilityConverter x:Key="WD.FalseToVisibilityConverter" />
     <converts:MultiBoolToVisibilityConverter x:Key="WD.MultiBoolToVisibilityConverter" />
     <converts:DatePickerToCurrentConverter x:Key="WD.DatePickerToCurrentConverter" />
+    <converts:NullToVisibilityConverter x:Key="WD.NullToVisibilityConverter" />
+    <converts:NullToVisibilityConverter x:Key="WD.NullToVisibilityConverter_Inverse" Inverse="True" />
+    <converts:DirectionalThicknessConverter x:Key="WD.DirectionalThicknessConverter" />
     <Thickness x:Key="WD.TabItemBorderThickness">0,0,0,2</Thickness>
 
     <Style TargetType="ToolTip">
