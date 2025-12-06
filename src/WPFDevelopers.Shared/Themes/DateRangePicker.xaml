@@ -272,7 +272,7 @@
                                         Effect="{StaticResource WD.PopupShadowDepth}"
                                         SnapsToDevicePixels="True"
                                         UseLayoutRounding="True" />
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Margin="0,0,0,6" Orientation="Horizontal">
                                         <StackPanel>
                                             <Calendar
                                                 x:Name="PART_StartCalendar"
@@ -282,7 +282,7 @@
                                                 SelectionMode="MultipleRange" />
                                             <controls:TimePicker
                                                 x:Name="PART_StartTimePicker"
-                                                Margin="6,0,6,6"
+                                                Margin="6,0"
                                                 IsCurrentTime="True" />
                                         </StackPanel>
                                         <StackPanel>
@@ -294,7 +294,7 @@
                                                 SelectionMode="MultipleRange" />
                                             <controls:TimePicker
                                                 x:Name="PART_EndTimePicker"
-                                                Margin="6,0,6,6"
+                                                Margin="6,0"
                                                 IsCurrentTime="True" />
                                         </StackPanel>
                                     </StackPanel>
