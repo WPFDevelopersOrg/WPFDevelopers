@@ -53,7 +53,7 @@ namespace WPFDevelopers.Controls
                     OnEndDateChanged));
 
         public static readonly DependencyProperty DateTimeFormatProperty =
-            DependencyProperty.Register("DateTimeFormat", typeof(string), typeof(DateRangePicker), 
+            DependencyProperty.Register("DateTimeFormat", typeof(string), typeof(DateRangePicker),
                 new FrameworkPropertyMetadata("yyyy-MM-dd HH:mm:ss",
                 FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnDateFormatChanged));
 
@@ -402,7 +402,8 @@ namespace WPFDevelopers.Controls
                     if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
                         if (!calendar.SelectedDates.Contains(clickedDate))
                         {
-                            var dateTime = clickedDate + _startTimePicker.SelectedTime.Value.TimeOfDay;
+                            var timeOfDay = _startTimePicker.SelectedTime.HasValue ? _startTimePicker.SelectedTime.Value.TimeOfDay : TimeSpan.Zero;
+                            var dateTime = clickedDate + timeOfDay;
                             _endCalendar.SelectedDates.Clear();
                             ResetDate(dateTime);
                         }
@@ -659,7 +660,8 @@ namespace WPFDevelopers.Controls
 
         private void SetDate()
         {
-            _popup.IsOpen = false;
+            if (_clickCount == 2)
+                _popup.IsOpen = false;
             StartDate = _startDate;
             EndDate = _endDate;
             if (_startDate.HasValue)
@@ -678,7 +680,7 @@ namespace WPFDevelopers.Controls
 
         private void ResetDate(DateTime? dateTime)
         {
-            
+
             if (_startDate.HasValue && _endDate.HasValue)
             {
                 _startDate = Convert.ToDateTime(dateTime);
@@ -732,14 +734,14 @@ namespace WPFDevelopers.Controls
                     _startCalendar.SelectedDates.AddRange(actualStartDate, actualEndDate);
                     _endCalendar.SelectedDates.AddRange(actualStartDate, actualEndDate);
                     SetIsHighlight(actualEndDate);
-                    if (_clickCount == 2) SetDate();
+                    SetDate();
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw;
                 }
                 SetIsHighlight(eDate.Value);
-                if (_clickCount == 2) SetDate();
+                SetDate();
             }
         }
 
