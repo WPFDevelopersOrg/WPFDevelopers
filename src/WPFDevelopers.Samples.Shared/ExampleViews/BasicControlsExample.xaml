@@ -440,7 +440,10 @@
                     <UniformGrid Margin="0,10" Rows="1">
                         <StackPanel Orientation="Horizontal">
                             <DatePicker wd:DatePickerHelper.SelectedDateTime="{Binding CurrentDateTime, RelativeSource={RelativeSource AncestorType=UserControl}}" wd:DatePickerHelper.ShowTime="True" />
-                            <Button Margin="4,0" Content="DateTime" Click="BtnGetDateTime_Click"/>
+                            <Button
+                                Margin="4,0"
+                                Click="BtnGetDateTime_Click"
+                                Content="DateTime" />
                         </StackPanel>
                         <DatePicker
                             Margin="10,0"
