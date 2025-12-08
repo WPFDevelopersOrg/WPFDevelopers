@@ -474,7 +474,7 @@
                                         Margin="4,0,0,0"
                                         VerticalAlignment="Center"
                                         Data="{StaticResource WD.SortArrowGeometry}"
-                                        Fill="{DynamicResource WD.PrimaryPressedBrush}"
+                                        Fill="{DynamicResource WD.PrimaryBrush}"
                                         RenderTransformOrigin="0.5,0.5"
                                         Stretch="Fill"
                                         Visibility="Collapsed">
