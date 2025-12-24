@@ -11,8 +11,8 @@
         x:Key="WD.DefaultMultiSelectComboBoxItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:MultiSelectComboBoxItem}">
-        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -34,7 +34,7 @@
                             <CheckBox
                                 MinHeight="{TemplateBinding MinHeight}"
                                 Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=ListViewItem}}"
-                                HorizontalAlignment="Stretch"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                 Foreground="{TemplateBinding Foreground}"
@@ -46,15 +46,18 @@
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     Content="{TemplateBinding Content}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-
                             </CheckBox>
-                            <GridViewRowPresenter
-                                x:Name="PART_GridViewRowPresenter"
-                                Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource WD.DirectionalThicknessConverter}, ConverterParameter=vertical}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                Visibility="{Binding View, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBox}}, Converter={StaticResource WD.NullToVisibilityConverter_Inverse}}" />
+                            <Border
+                                x:Name="PART_GridViewContainer"
+                                Padding="{Binding Padding, RelativeSource={RelativeSource AncestorType=ListViewItem}, Converter={StaticResource WD.DirectionalThicknessConverter}, ConverterParameter=vertical}"
+                                Background="Transparent"
+                                Visibility="{Binding View, RelativeSource={RelativeSource AncestorType={x:Type controls:MultiSelectComboBox}}, Converter={StaticResource WD.NullToVisibilityConverter_Inverse}}">
+                                <GridViewRowPresenter
+                                    x:Name="PART_GridViewRowPresenter"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
                         </controls:SmallPanel>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -268,6 +271,7 @@
                                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                             helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                            BorderThickness="0"
                                             DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
                                             ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
                                             ItemsSource="{TemplateBinding ItemsSourceSearch}"

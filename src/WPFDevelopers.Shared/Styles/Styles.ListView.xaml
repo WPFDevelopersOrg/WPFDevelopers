@@ -85,13 +85,12 @@
         </Setter>
     </Style>
 
-
     <Style
         x:Key="WD.DefaultGridViewColumnHeader"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type GridViewColumnHeader}">
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, FallbackValue=Stretch}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, FallbackValue=Center}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
@@ -102,26 +101,32 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
-                    <controls:SmallPanel>
-                        <Border
-                            x:Name="HeaderBorder"
-                            Padding="{TemplateBinding Padding}"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                    <Border
+                        x:Name="HeaderBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="8" />
+                            </Grid.ColumnDefinitions>
                             <ContentPresenter
                                 x:Name="HeaderContent"
+                                Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 RecognizesAccessKey="True"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                 TextElement.FontWeight="{TemplateBinding FontWeight}" />
-                        </Border>
-                        <Thumb
-                            x:Name="PART_HeaderGripper"
-                            HorizontalAlignment="Right"
-                            Style="{StaticResource WD.GridViewColumnHeaderGripper}" />
-                    </controls:SmallPanel>
+                            <Thumb
+                                x:Name="PART_HeaderGripper"
+                                Grid.Column="2"
+                                Width="8"
+                                Style="{StaticResource WD.GridViewColumnHeaderGripper}" />
+                        </Grid>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

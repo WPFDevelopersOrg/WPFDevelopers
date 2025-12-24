@@ -215,18 +215,19 @@ namespace WPFDevelopers.Controls
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
+            if (!IsLoaded) return;
             if (SelectedItems != null)
             {
                 foreach (var item in e.AddedItems)
                 {
                     if (!SelectedItems.Contains(item))
                     {
-                        SelectedItems.Add(item);
+                        TrySelectItem(item);
                     }
                 }
                 foreach (var item in e.RemovedItems)
                 {
-                    SelectedItems.Remove(item);
+                    TryUnselectItem(item);
                 }
                 if (!_isUpdating && SelectedItemsExt != null)
                 {
@@ -317,7 +318,14 @@ namespace WPFDevelopers.Controls
                 AddHandler(Controls.Tag.CloseEvent, new RoutedEventHandler(Tags_Close));
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
             }
+            UpdateText();
             SyncListViewViews();
+            Loaded += OnMultiSelectComboBox_Loaded;
+        }
+
+        private void OnMultiSelectComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateText();
         }
 
         public MultiSelectComboBox()
@@ -448,7 +456,7 @@ namespace WPFDevelopers.Controls
                     if (_listViewSearch.Items.Contains(item))
                     {
                         if (SelectedItems.Contains(item))
-                            SelectedItems.Remove(item);
+                            TryUnselectItem(item);
                     }
 
                     if (selectedList.Contains(item))
@@ -464,7 +472,7 @@ namespace WPFDevelopers.Controls
                 foreach (var item in e.AddedItems)
                 {
                     if (!SelectedItems.Contains(item))
-                        SelectedItems.Add(item);
+                        TrySelectItem(item);
                 }
 
                 UpdateText();
@@ -569,9 +577,24 @@ namespace WPFDevelopers.Controls
                 selectedItems.Clear();
                 foreach (var item in _listViewSearch.Items)
                 {
+                    //if (SelectedItems.Contains(item))
+                    //    if (!_listViewSearch.SelectedItems.Contains(item))
+                    //        _listViewSearch.SelectedItems.Add(item);
                     if (SelectedItems.Contains(item))
+                    {
                         if (!_listViewSearch.SelectedItems.Contains(item))
-                            _listViewSearch.SelectedItems.Add(item);
+                        {
+                            if (SelectionMode == SelectionMode.Single)
+                            {
+                                _listViewSearch.SelectedItem = item;
+                            }
+                            else
+                            {
+                                if (!_listViewSearch.SelectedItems.Contains(item))
+                                    _listViewSearch.SelectedItems.Add(item);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -721,13 +744,21 @@ namespace WPFDevelopers.Controls
                 if (ItemsSource != null && (!string.IsNullOrEmpty(SelectedValuePath) || !string.IsNullOrEmpty(DisplayMemberPath)))
                 {
                     var bindingPath = !string.IsNullOrEmpty(SelectedValuePath) ? SelectedValuePath : DisplayMemberPath;
-                    var binding = new Binding(bindingPath) { Source = item };
-                    tag.SetBinding(ContentControl.ContentProperty, binding);
+                    var property = item.GetType().GetProperty(bindingPath);
+                    if (property != null && property.GetValue(item, null) != null)
+                    {
+                        var binding = new Binding(bindingPath) { Source = item };
+                        tag.SetBinding(ContentControl.ContentProperty, binding);
+                    }
+                    else
+                        tag.Content = item;
+                    //var binding = new Binding(bindingPath) { Source = item };
+                    //tag.SetBinding(ContentControl.ContentProperty, binding);
                 }
                 else
                 {
-                    if (multiSelectComboBoxItem != null)
-                        tag.Content = multiSelectComboBoxItem.Content;
+                    if (item != null)
+                        tag.Content = item;
                 }
             }
 
@@ -753,13 +784,13 @@ namespace WPFDevelopers.Controls
                 {
                     if (SelectedItems.Contains(item))
                     {
-                        SelectedItems.Remove(item);
+                        TryUnselectItem(item);
                     }
                     else
                     {
                         var match = Items.Cast<object>().FirstOrDefault(h => this.GetDisplayAndSelectedValue(h).ToString() == this.GetDisplayAndSelectedValue(item).ToString());
                         if (match != null && SelectedItems.Contains(match))
-                            SelectedItems.Remove(match);
+                            TryUnselectItem(match);
                     }
                 }
             }
@@ -793,7 +824,7 @@ namespace WPFDevelopers.Controls
                         model = ctrl.ItemsSource.OfType<object>()
                             .FirstOrDefault(h => h == item);
                     if (model != null && !ctrl.SelectedItems.Contains(item))
-                        ctrl.SelectedItems.Add(model);
+                        ctrl.TrySelectItem(model);
 
                 }
                 ctrl._isUpdating = false;
@@ -812,7 +843,7 @@ namespace WPFDevelopers.Controls
                 foreach (var item in e.OldItems)
                 {
                     if (SelectedItems.Contains(item))
-                        SelectedItems.Remove(item);
+                        TryUnselectItem(item);
                 }
             }
 
@@ -821,11 +852,39 @@ namespace WPFDevelopers.Controls
                 foreach (var item in e.NewItems)
                 {
                     if (!SelectedItems.Contains(item))
-                        SelectedItems.Add(item);
+                        TrySelectItem(item);
                 }
             }
             _isUpdating = false;
         }
+
+        private void TrySelectItem(object item)
+        {
+            if (SelectionMode == SelectionMode.Single)
+            {
+                SelectedItem = item;
+            }
+            else
+            {
+                if (!SelectedItems.Contains(item))
+                    SelectedItems.Add(item);
+            }
+        }
+
+        private void TryUnselectItem(object item)
+        {
+            if (SelectionMode == SelectionMode.Single)
+            {
+                if (Equals(SelectedItem, item))
+                    SelectedItem = null;
+            }
+            else
+            {
+                if (SelectedItems.Contains(item))
+                    SelectedItems.Remove(item);
+            }
+        }
+
     }
     public enum ShowType
     {

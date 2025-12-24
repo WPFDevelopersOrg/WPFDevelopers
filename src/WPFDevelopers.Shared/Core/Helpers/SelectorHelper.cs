@@ -34,7 +34,7 @@ namespace WPFDevelopers.Helpers
                 if (currentObject == null) return null;
 
                 var property = currentObject.GetType().GetProperty(part);
-                if (property == null) return null;
+                if (property == null) return item;
 
                 currentObject = property.GetValue(currentObject, null);
             }

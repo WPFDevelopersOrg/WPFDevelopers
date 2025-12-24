@@ -48,7 +48,24 @@ namespace WPFDevelopers.Controls
         {
             if (IsClickInside<CheckBox>(e.OriginalSource as DependencyObject))
                 return;
-            IsSelected = !IsSelected;
+            var listView = ItemsControl.ItemsControlFromItemContainer(this) as ListView;
+            if (listView != null && listView.SelectionMode == SelectionMode.Single)
+            {
+                foreach (var item in listView.Items)
+                {
+                    var container = listView.ItemContainerGenerator.ContainerFromItem(item) as MultiSelectComboBoxItem;
+                    if (container != null && container != this)
+                    {
+                        container.IsSelected = false;
+                    }
+                }
+                IsSelected = true;
+            }
+            else
+            {
+                IsSelected = !IsSelected;
+            }
+            //IsSelected = !IsSelected;
             e.Handled = true;
         }
 
