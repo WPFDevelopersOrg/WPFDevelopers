@@ -247,7 +247,7 @@
                             </Grid>
                             <Popup
                                 x:Name="PART_Popup"
-                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                MaxWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                 AllowsTransparency="True"
                                 Focusable="False"
                                 Placement="Bottom"
@@ -255,7 +255,7 @@
                                 VerticalOffset="2">
                                 <controls:SmallPanel
                                     x:Name="PART_DropDown"
-                                    MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                    MaxWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                     MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                     Margin="24,2,24,24"
                                     RenderTransformOrigin=".5,0"
