@@ -99,18 +99,18 @@
                                             UseLayoutRounding="True" />
                                     </RadioButton>
                                     <RadioButton
-                                        x:Name="PART_RadioButtonArrow"
+                                        x:Name="PART_ArrowRadioButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Arrow], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
-                                            Width="18"
-                                            Height="18"
+                                            Width="16"
+                                            Height="19"
                                             Foreground="{DynamicResource WD.RegularTextBrush}"
                                             Kind="ArrowRightTop" />
                                     </RadioButton>
                                     <RadioButton
-                                        x:Name="PART_RadioButtonInk"
+                                        x:Name="PART_InkRadioButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
@@ -118,7 +118,18 @@
                                             Width="18"
                                             Height="18"
                                             Foreground="{DynamicResource WD.RegularTextBrush}"
-                                            Kind="Ink" />
+                                            Kind="Pencil" />
+                                    </RadioButton>
+                                    <RadioButton
+                                        x:Name="PART_MosaicRadioButton"
+                                        Margin="4,0"
+                                        Style="{StaticResource WD.PathRadioButton}"
+                                        ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
+                                            Kind="Mosaic" />
                                     </RadioButton>
                                     <RadioButton
                                         x:Name="PART_TextRadioButton"

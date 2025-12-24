@@ -16,14 +16,14 @@ using WPFDevelopers.Helpers;
 using Brush = System.Windows.Media.Brush;
 using Brushes = System.Windows.Media.Brushes;
 using Button = System.Windows.Controls.Button;
-using Cursors = System.Windows.Input.Cursors;
+using Color = System.Windows.Media.Color;
 using Control = System.Windows.Controls.Control;
 using Cursors = System.Windows.Input.Cursors;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 using Path = System.Windows.Shapes.Path;
 using Point = System.Windows.Point;
-using Brush = System.Windows.Media.Brush;
+using RadioButton = System.Windows.Controls.RadioButton;
 using Rectangle = System.Windows.Shapes.Rectangle;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using TextBox = System.Windows.Controls.TextBox;
@@ -68,6 +68,7 @@ namespace WPFDevelopers.Controls
         DrawArrow,
         DrawText,
         DrawInk,
+        DrawMosaic
     }
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
     [TemplatePart(Name = LeftRectangleTemplateName, Type = typeof(Rectangle))]
@@ -83,6 +84,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = EllipseRadioButtonTemplateName, Type = typeof(RadioButton))]
     [TemplatePart(Name = ArrowRadioButtonTemplateName, Type = typeof(RadioButton))]
     [TemplatePart(Name = InkRadioButtonTemplateName, Type = typeof(RadioButton))]
+    [TemplatePart(Name = MosaicRadioButtonTemplateName, Type = typeof(RadioButton))]
     [TemplatePart(Name = TextRadioButtonTemplateName, Type = typeof(RadioButton))]
     [TemplatePart(Name = PopupTemplateName, Type = typeof(Popup))]
     [TemplatePart(Name = BorderPopupTemplateName, Type = typeof(Border))]
@@ -104,6 +106,7 @@ namespace WPFDevelopers.Controls
         private const string EllipseRadioButtonTemplateName = "PART_EllipseRadioButton";
         private const string ArrowRadioButtonTemplateName = "PART_ArrowRadioButton";
         private const string InkRadioButtonTemplateName = "PART_InkRadioButton";
+        private const string MosaicRadioButtonTemplateName = "PART_MosaicRadioButton";
         private const string TextRadioButtonTemplateName = "PART_TextRadioButton";
         private const string PopupTemplateName = "PART_Popup";
         private const string BorderPopupTemplateName = "PART_BorderPopup";
@@ -126,6 +129,7 @@ namespace WPFDevelopers.Controls
             _radioButtonEllipse,
             _arrowRadioButton,
             _inkRadioButton,
+            _mosaicRadioButton,
             _textRadioButton;
 
         private Rectangle _leftRectangle, _topRectangle, _rightRectangle, _bottomRectangle;
@@ -192,6 +196,11 @@ namespace WPFDevelopers.Controls
         public static int CaptureScreenID = -1;
         private Bitmap _screenCapture;
         private ScreenDPI _screenDPI;
+        private RenderTargetBitmap _imageSnapshot;
+        private Path _currentStrokeContainer = null;
+        private List<Rectangle> _currentStrokeRectangles = new List<Rectangle>();
+        private Stack<UIElement> _strokeHistory = new Stack<UIElement>();
+
         public ScreenCut(int index)
         {
             _screenIndex = index;
@@ -251,6 +260,9 @@ namespace WPFDevelopers.Controls
             _inkRadioButton = GetTemplateChild(InkRadioButtonTemplateName) as RadioButton;
             if (_inkRadioButton != null)
                 _inkRadioButton.Click += RadioButtonInk_Click;
+            _mosaicRadioButton = GetTemplateChild(MosaicRadioButtonTemplateName) as RadioButton;
+            if (_mosaicRadioButton != null)
+                _mosaicRadioButton.Click += RadioButtonMosaic_Click;
             _textRadioButton = GetTemplateChild(TextRadioButtonTemplateName) as RadioButton;
             if (_textRadioButton != null)
                 _textRadioButton.Click += RadioButtonText_Click;
@@ -277,6 +289,7 @@ namespace WPFDevelopers.Controls
         private void ScreenCut_Loaded(object sender, RoutedEventArgs e)
         {
             _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
+            TakeSnapshot();
         }
 
         private ScreenDPI GetScreenDPI(int screenIndex)
@@ -318,6 +331,11 @@ namespace WPFDevelopers.Controls
             RadioButtonChecked(_inkRadioButton, ScreenCutMouseType.DrawInk);
         }
 
+        private void RadioButtonMosaic_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButtonChecked(_mosaicRadioButton, ScreenCutMouseType.DrawMosaic);
+        }
+
         private void RadioButtonText_Click(object sender, RoutedEventArgs e)
         {
             RadioButtonChecked(_textRadioButton, ScreenCutMouseType.DrawText);
@@ -355,6 +373,11 @@ namespace WPFDevelopers.Controls
                 _border.Cursor = Cursors.Arrow;
                 if (_popup.PlacementTarget != null && _popup.IsOpen)
                     _popup.IsOpen = false;
+                if(screenCutMouseTypeRadio != ScreenCutMouseType.DrawMosaic)
+                {
+                    _popup.PlacementTarget = radioButton;
+                    _popup.IsOpen = true;
+                }
                 DisposeControl();
             }
             else
@@ -474,6 +497,11 @@ namespace WPFDevelopers.Controls
             }
             else if (e.KeyStates == Keyboard.GetKeyStates(Key.Z) && Keyboard.Modifiers == ModifierKeys.Control)
             {
+                if (_screenCutMouseType == ScreenCutMouseType.DrawMosaic)
+                {
+                    UndoLastStroke();
+                    return;
+                }
                 if (_canvas.Children.Count > 0)
                     _canvas.Children.Remove(_canvas.Children[_canvas.Children.Count - 1]);
                 
@@ -504,6 +532,10 @@ namespace WPFDevelopers.Controls
                 _editBar.Visibility = Visibility.Hidden;
                 _pointEnd = _pointStart;
                 _rect = new Rect(_pointStart.Value, _pointEnd.Value);
+                if (_screenCutMouseType == ScreenCutMouseType.DrawMosaic)
+                {
+                    _currentStrokeRectangles.Clear();
+                }
             }
             else
             {
@@ -639,6 +671,183 @@ namespace WPFDevelopers.Controls
                     case ScreenCutMouseType.DrawInk:
                         DrwaInkControl(current);
                         break;
+                    case ScreenCutMouseType.DrawMosaic:
+                        if ((current - _pointStart.Value).Length < 10)
+                            return;
+                        _pointStart = current;
+                        DrawMosaicBlock(current, 10, 20);
+                        break;
+                }
+            }
+        }
+
+        private void TakeSnapshot()
+        {
+            _canvas.Measure(new System.Windows.Size(_canvas.ActualWidth, _canvas.ActualHeight));
+            _canvas.Arrange(new Rect(0, 0, _canvas.ActualWidth, _canvas.ActualHeight));
+
+            _imageSnapshot = new RenderTargetBitmap(
+                (int)_canvas.ActualWidth,
+                (int)_canvas.ActualHeight,
+                96, 96, PixelFormats.Pbgra32);
+
+            _imageSnapshot.Render(_canvas);
+        }
+
+        private void DrawMosaicBlock(Point center, int blockSize, int brushSize)
+        {
+            if (_imageSnapshot == null) return;
+
+            int mosaicSize = blockSize;
+            int blocksPerRow = brushSize / mosaicSize;
+
+            for (int i = 0; i < blocksPerRow; i++)
+            {
+                for (int j = 0; j < blocksPerRow; j++)
+                {
+                    double x = center.X - brushSize / 2 + i * mosaicSize;
+                    double y = center.Y - brushSize / 2 + j * mosaicSize;
+
+                    Point blockCenter = new Point(x + mosaicSize / 2, y + mosaicSize / 2);
+                    Color color = GetAreaAverageColor(blockCenter, mosaicSize);
+
+                    var block = new Rectangle
+                    {
+                        Width = mosaicSize,
+                        Height = mosaicSize,
+                        Fill = new SolidColorBrush(color),
+                        IsHitTestVisible = false
+                    };
+
+                    Canvas.SetLeft(block, x);
+                    Canvas.SetTop(block, y);
+
+                   _canvas.Children.Add(block);
+
+                    _currentStrokeRectangles.Add(block);
+                }
+            }
+        }
+
+        private void CompleteCurrentStroke()
+        {
+            if (_currentStrokeRectangles.Count == 0) return;
+            RemoveTemporaryRectangles();
+            CreateStrokeContainer();
+            _canvas.Children.Add(_currentStrokeContainer);
+            _strokeHistory.Push(_currentStrokeContainer);
+            _currentStrokeContainer = null;
+            _currentStrokeRectangles.Clear();
+        }
+        
+        private void CreateStrokeContainer()
+        {
+            if (_currentStrokeRectangles.Count == 0) return;
+
+            double minX = double.MaxValue;
+            double minY = double.MaxValue;
+            double maxX = double.MinValue;
+            double maxY = double.MinValue;
+
+            foreach (var rect in _currentStrokeRectangles)
+            {
+                double x = Canvas.GetLeft(rect);
+                double y = Canvas.GetTop(rect);
+
+                minX = Math.Min(minX, x);
+                minY = Math.Min(minY, y);
+                maxX = Math.Max(maxX, x + rect.Width);
+                maxY = Math.Max(maxY, y + rect.Height);
+            }
+
+            double width = maxX - minX;
+            double height = maxY - minY;
+
+            var roundedRect = CreateRoundedRectangleGeometry(width, height);
+
+            var container = new Path
+            {
+                Data = roundedRect,
+                IsHitTestVisible = false,
+                Fill = CreateMosaicVisualBrush(minX, minY, width, height)
+            };
+
+            Canvas.SetLeft(container, minX);
+            Canvas.SetTop(container, minY);
+
+            _currentStrokeContainer = container;
+        }
+
+        private Geometry CreateRoundedRectangleGeometry(double width, double height)
+        {
+            bool isVertical = height > width * 1.5;
+            double cornerRadius = isVertical ? Math.Min(width / 2, 30) : Math.Min(height / 2, 30);
+            return new RectangleGeometry(new Rect(0, 0, width, height), cornerRadius, cornerRadius);
+        }
+
+        private Brush CreateMosaicVisualBrush(double left, double top, double width, double height)
+        {
+            var drawingVisual = new DrawingVisual();
+
+            using (var context = drawingVisual.RenderOpen())
+            {
+                foreach (var rect in _currentStrokeRectangles)
+                {
+                    double relativeX = Canvas.GetLeft(rect) - left;
+                    double relativeY = Canvas.GetTop(rect) - top;
+
+                    var rectGeometry = new RectangleGeometry(
+                        new Rect(relativeX, relativeY, rect.Width, rect.Height));
+
+                    context.DrawGeometry(rect.Fill, null, rectGeometry);
+                }
+            }
+            return new VisualBrush(drawingVisual)
+            {
+                Stretch = Stretch.None,
+                AlignmentX = AlignmentX.Left,
+                AlignmentY = AlignmentY.Top
+            };
+        }
+
+        private void RemoveTemporaryRectangles()
+        {
+            foreach (var rect in _currentStrokeRectangles)
+            {
+                _canvas.Children.Remove(rect);
+            }
+        }
+
+        private Color GetAreaAverageColor(Point center, int areaSize)
+        {
+            try
+            {
+                double scaleX = _imageSnapshot.PixelWidth / _canvas.ActualWidth;
+                double scaleY = _imageSnapshot.PixelHeight / _canvas.ActualHeight;
+                int pixelX = (int)(center.X * scaleX);
+                int pixelY = (int)(center.Y * scaleY);
+                int halfSize = areaSize / 2;
+                int totalR = 0, totalG = 0, totalB = 0;
+                int count = 0;
+                for (int dx = -halfSize; dx <= halfSize; dx++)
+                {
+                    for (int dy = -halfSize; dy <= halfSize; dy++)
+                    {
+                        int x = pixelX + dx;
+                        int y = pixelY + dy;
+
+                        if (x >= 0 && x < _imageSnapshot.PixelWidth &&
+                            y >= 0 && y < _imageSnapshot.PixelHeight)
+                        {
+                            byte[] pixels = new byte[4];
+                            _imageSnapshot.CopyPixels(new Int32Rect(x, y, 1, 1), pixels, 4, 0);
+
+                            totalR += pixels[2];
+                            totalG += pixels[1];
+                            totalB += pixels[0];
+                            count++;
+                        }
+                    }
                 }
                 if (count == 0) return Colors.Gray;
                 return Color.FromRgb(
@@ -1020,7 +1229,7 @@ namespace WPFDevelopers.Controls
                     &&
                     _inkRadioButton.IsChecked != true
                     &&
-                    _radioButtonInk.IsChecked != true)
+                    _mosaicRadioButton.IsChecked != true)
                     _screenCutMouseType = ScreenCutMouseType.Default;
                 else
                     DisposeControl();
