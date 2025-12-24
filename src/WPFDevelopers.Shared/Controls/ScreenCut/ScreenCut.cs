@@ -1,35 +1,32 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Win32;
 using WPFDevelopers.Helpers;
-using RadioButton = System.Windows.Controls.RadioButton;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
 using Button = System.Windows.Controls.Button;
 using Cursors = System.Windows.Input.Cursors;
 using Control = System.Windows.Controls.Control;
+using Cursors = System.Windows.Input.Cursors;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
-using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
-using TextBox = System.Windows.Controls.TextBox;
-using System.Collections.Generic;
-using System.Drawing;
+using Path = System.Windows.Shapes.Path;
 using Point = System.Windows.Point;
 using Brush = System.Windows.Media.Brush;
 using Rectangle = System.Windows.Shapes.Rectangle;
-using Brushes = System.Windows.Media.Brushes;
-using System.Runtime.InteropServices;
-using System.Runtime.Versioning;
-using System.Drawing.Imaging;
-using System.Windows.Threading;
+using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace WPFDevelopers.Controls
 {
@@ -46,7 +43,9 @@ namespace WPFDevelopers.Controls
         [DllImport(Win32.Shcore)]
         private static extern IntPtr GetDpiForMonitor([In] IntPtr hmonitor, [In] DpiType dpiType, [Out] out uint dpiX, [Out] out uint dpiY);
     }
-    public struct ScreenDPI {
+
+    public struct ScreenDPI
+    {
         public uint dpiX;
         public uint dpiY;
         public float scaleX;
@@ -58,6 +57,7 @@ namespace WPFDevelopers.Controls
         Angular = 1,
         Raw = 2,
     }
+
     public enum ScreenCutMouseType
     {
         Default,
@@ -67,52 +67,52 @@ namespace WPFDevelopers.Controls
         DrawEllipse,
         DrawArrow,
         DrawText,
-        DrawInk
+        DrawInk,
     }
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
-    [TemplatePart(Name = RectangleLeftTemplateName, Type = typeof(Rectangle))]
-    [TemplatePart(Name = RectangleTopTemplateName, Type = typeof(Rectangle))]
-    [TemplatePart(Name = RectangleRightTemplateName, Type = typeof(Rectangle))]
-    [TemplatePart(Name = RectangleBottomTemplateName, Type = typeof(Rectangle))]
+    [TemplatePart(Name = LeftRectangleTemplateName, Type = typeof(Rectangle))]
+    [TemplatePart(Name = TopRectangleTemplateName, Type = typeof(Rectangle))]
+    [TemplatePart(Name = RightRectangleTemplateName, Type = typeof(Rectangle))]
+    [TemplatePart(Name = BottomRectangleTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = EditBarTemplateName, Type = typeof(Border))]
-    [TemplatePart(Name = ButtonSaveTemplateName, Type = typeof(Button))]
-    [TemplatePart(Name = ButtonCancelTemplateName, Type = typeof(Button))]
-    [TemplatePart(Name = ButtonCompleteTemplateName, Type = typeof(Button))]
-    [TemplatePart(Name = RadioButtonRectangleTemplateName, Type = typeof(RadioButton))]
-    [TemplatePart(Name = RadioButtonEllipseTemplateName, Type = typeof(RadioButton))]
-    [TemplatePart(Name = RadioButtonArrowTemplateName, Type = typeof(RadioButton))]
-    [TemplatePart(Name = RadioButtonInkTemplateName, Type = typeof(RadioButton))]
-    [TemplatePart(Name = RadioButtonTextTemplateName, Type = typeof(RadioButton))]
+    [TemplatePart(Name = SaveButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = CancelButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = CompleteButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = RectangleRadioButtonTemplateName, Type = typeof(RadioButton))]
+    [TemplatePart(Name = EllipseRadioButtonTemplateName, Type = typeof(RadioButton))]
+    [TemplatePart(Name = ArrowRadioButtonTemplateName, Type = typeof(RadioButton))]
+    [TemplatePart(Name = InkRadioButtonTemplateName, Type = typeof(RadioButton))]
+    [TemplatePart(Name = TextRadioButtonTemplateName, Type = typeof(RadioButton))]
     [TemplatePart(Name = PopupTemplateName, Type = typeof(Popup))]
-    [TemplatePart(Name = PopupBorderTemplateName, Type = typeof(Border))]
-    [TemplatePart(Name = WrapPanelColorTemplateName, Type = typeof(WrapPanel))]
+    [TemplatePart(Name = BorderPopupTemplateName, Type = typeof(Border))]
+    [TemplatePart(Name = ColorWrapPanelTemplateName, Type = typeof(WrapPanel))]
 
     public class ScreenCut : Window, IDisposable
     {
         private const string CanvasTemplateName = "PART_Canvas";
-        private const string RectangleLeftTemplateName = "PART_RectangleLeft";
-        private const string RectangleTopTemplateName = "PART_RectangleTop";
-        private const string RectangleRightTemplateName = "PART_RectangleRight";
-        private const string RectangleBottomTemplateName = "PART_RectangleBottom";
+        private const string LeftRectangleTemplateName = "PART_LeftRectangle";
+        private const string TopRectangleTemplateName = "PART_TopRectangle";
+        private const string RightRectangleTemplateName = "PART_RightRectangle";
+        private const string BottomRectangleTemplateName = "PART_BottomRectangle";
         private const string BorderTemplateName = "PART_Border";
         private const string EditBarTemplateName = "PART_EditBar";
-        private const string ButtonSaveTemplateName = "PART_ButtonSave";
-        private const string ButtonCancelTemplateName = "PART_ButtonCancel";
-        private const string ButtonCompleteTemplateName = "PART_ButtonComplete";
-        private const string RadioButtonRectangleTemplateName = "PART_RadioButtonRectangle";
-        private const string RadioButtonEllipseTemplateName = "PART_RadioButtonEllipse";
-        private const string RadioButtonArrowTemplateName = "PART_RadioButtonArrow";
-        private const string RadioButtonInkTemplateName = "PART_RadioButtonInk";
-        private const string RadioButtonTextTemplateName = "PART_RadioButtonText";
+        private const string SaveButtonTemplateName = "PART_SaveButton";
+        private const string CancelButtonTemplateName = "PART_CancelButton";
+        private const string CompleteButtonTemplateName = "PART_CompleteButton";
+        private const string RectangleRadioButtonTemplateName = "PART_RectangleRadioButton";
+        private const string EllipseRadioButtonTemplateName = "PART_EllipseRadioButton";
+        private const string ArrowRadioButtonTemplateName = "PART_ArrowRadioButton";
+        private const string InkRadioButtonTemplateName = "PART_InkRadioButton";
+        private const string TextRadioButtonTemplateName = "PART_TextRadioButton";
         private const string PopupTemplateName = "PART_Popup";
-        private const string PopupBorderTemplateName = "PART_PopupBorder";
-        private const string WrapPanelColorTemplateName = "PART_WrapPanelColor";
+        private const string BorderPopupTemplateName = "PART_BorderPopup";
+        private const string ColorWrapPanelTemplateName = "PART_ColorPanelWrap";
 
         private const string _tag = "Draw";
         private const int _width = 40;
         private Border _border, _editBar, _popupBorder;
-        private Button _buttonSave, _buttonCancel, _buttonComplete;
+        private Button _saveButton, _cancelButton, _completeButton;
         private Canvas _canvas;
 
         /// <summary>
@@ -122,13 +122,13 @@ namespace WPFDevelopers.Controls
 
         private Popup _popup;
 
-        private RadioButton _radioButtonRectangle,
+        private RadioButton _rectangleRadioButton,
             _radioButtonEllipse,
-            _radioButtonArrow,
-            _radioButtonInk,
-            _radioButtonText;
+            _arrowRadioButton,
+            _inkRadioButton,
+            _textRadioButton;
 
-        private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
+        private Rectangle _leftRectangle, _topRectangle, _rightRectangle, _bottomRectangle;
         private WrapPanel _wrapPanel;
         private AdornerLayer _adornerLayer;
 
@@ -195,8 +195,11 @@ namespace WPFDevelopers.Controls
         public ScreenCut(int index)
         {
             _screenIndex = index;
-            Left = Screen.AllScreens[_screenIndex].WorkingArea.Left;
+            var screen = Screen.AllScreens[_screenIndex];
+            Left = screen.WorkingArea.Left;
             ShowInTaskbar = false;
+            WindowStyle = WindowStyle.None;
+            WindowState = WindowState.Normal;
             _screenDPI = GetScreenDPI(_screenIndex);
         }
         static ScreenCut()
@@ -219,50 +222,48 @@ namespace WPFDevelopers.Controls
         {
             base.OnApplyTemplate();
             _canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
-            _rectangleLeft = GetTemplateChild(RectangleLeftTemplateName) as Rectangle;
-            _rectangleTop = GetTemplateChild(RectangleTopTemplateName) as Rectangle;
-            _rectangleRight = GetTemplateChild(RectangleRightTemplateName) as Rectangle;
-            _rectangleBottom = GetTemplateChild(RectangleBottomTemplateName) as Rectangle;
+            _leftRectangle = GetTemplateChild(LeftRectangleTemplateName) as Rectangle;
+            _topRectangle = GetTemplateChild(TopRectangleTemplateName) as Rectangle;
+            _rightRectangle = GetTemplateChild(RightRectangleTemplateName) as Rectangle;
+            _bottomRectangle = GetTemplateChild(BottomRectangleTemplateName) as Rectangle;
             _border = GetTemplateChild(BorderTemplateName) as Border;
             _border.MouseLeftButtonDown += Border_MouseLeftButtonDown;
 
             _editBar = GetTemplateChild(EditBarTemplateName) as Border;
-            _buttonSave = GetTemplateChild(ButtonSaveTemplateName) as Button;
-            if (_buttonSave != null)
-                _buttonSave.Click += ButtonSave_Click;
-            _buttonCancel = GetTemplateChild(ButtonCancelTemplateName) as Button;
-            if (_buttonCancel != null)
-                _buttonCancel.Click += ButtonCancel_Click;
-            _buttonComplete = GetTemplateChild(ButtonCompleteTemplateName) as Button;
-            if (_buttonComplete != null)
-                _buttonComplete.Click += ButtonComplete_Click;
-            _radioButtonRectangle = GetTemplateChild(RadioButtonRectangleTemplateName) as RadioButton;
-            if (_radioButtonRectangle != null)
-                _radioButtonRectangle.Click += RadioButtonRectangle_Click;
-            _radioButtonEllipse = GetTemplateChild(RadioButtonEllipseTemplateName) as RadioButton;
+            _saveButton = GetTemplateChild(SaveButtonTemplateName) as Button;
+            if (_saveButton != null)
+                _saveButton.Click += ButtonSave_Click;
+            _cancelButton = GetTemplateChild(CancelButtonTemplateName) as Button;
+            if (_cancelButton != null)
+                _cancelButton.Click += ButtonCancel_Click;
+            _completeButton = GetTemplateChild(CompleteButtonTemplateName) as Button;
+            if (_completeButton != null)
+                _completeButton.Click += ButtonComplete_Click;
+            _rectangleRadioButton = GetTemplateChild(RectangleRadioButtonTemplateName) as RadioButton;
+            if (_rectangleRadioButton != null)
+                _rectangleRadioButton.Click += RadioButtonRectangle_Click;
+            _radioButtonEllipse = GetTemplateChild(EllipseRadioButtonTemplateName) as RadioButton;
             if (_radioButtonEllipse != null)
                 _radioButtonEllipse.Click += RadioButtonEllipse_Click;
-            _radioButtonArrow = GetTemplateChild(RadioButtonArrowTemplateName) as RadioButton;
-            if (_radioButtonArrow != null)
-                _radioButtonArrow.Click += RadioButtonArrow_Click;
-            _radioButtonInk = GetTemplateChild(RadioButtonInkTemplateName) as RadioButton;
-            if (_radioButtonInk != null)
-                _radioButtonInk.Click += RadioButtonInk_Click;
-            _radioButtonText = GetTemplateChild(RadioButtonTextTemplateName) as RadioButton;
-            if (_radioButtonText != null)
-                _radioButtonText.Click += RadioButtonText_Click;
-            _canvas.Width = Screen.AllScreens[_screenIndex].Bounds.Width;
-            _canvas.Height = Screen.AllScreens[_screenIndex].Bounds.Height;
-            //_canvas.Background = new ImageBrush(ControlsHelper.Capture());
-            _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
-            _rectangleLeft.Width = _canvas.Width;
-            _rectangleLeft.Height = _canvas.Height;
+            _arrowRadioButton = GetTemplateChild(ArrowRadioButtonTemplateName) as RadioButton;
+            if (_arrowRadioButton != null)
+                _arrowRadioButton.Click += RadioButtonArrow_Click;
+            _inkRadioButton = GetTemplateChild(InkRadioButtonTemplateName) as RadioButton;
+            if (_inkRadioButton != null)
+                _inkRadioButton.Click += RadioButtonInk_Click;
+            _textRadioButton = GetTemplateChild(TextRadioButtonTemplateName) as RadioButton;
+            if (_textRadioButton != null)
+                _textRadioButton.Click += RadioButtonText_Click;
+            _leftRectangle.Width = _canvas.Width;
+            _leftRectangle.Height = _canvas.Height;
             _border.Opacity = 0;
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
-            _popupBorder = GetTemplateChild(PopupBorderTemplateName) as Border;
-            _popupBorder.Loaded += (s, e) => { _popup.HorizontalOffset = -_popupBorder.ActualWidth / 3; };
-            _wrapPanel = GetTemplateChild(WrapPanelColorTemplateName) as WrapPanel;
-            _wrapPanel.PreviewMouseDown += WrapPanel_PreviewMouseDown;
+            _popupBorder = GetTemplateChild(BorderPopupTemplateName) as Border;
+            if (_popupBorder != null)
+                _popupBorder.Loaded += (s, e) => { _popup.HorizontalOffset = -_popupBorder.ActualWidth / 3; };
+            _wrapPanel = GetTemplateChild(ColorWrapPanelTemplateName) as WrapPanel;
+            if (_wrapPanel != null)
+                _wrapPanel.PreviewMouseDown += WrapPanel_PreviewMouseDown;
             Loaded += ScreenCut_Loaded;
             _controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
         }
@@ -272,30 +273,12 @@ namespace WPFDevelopers.Controls
             base.OnClosed(e);
             Dispose();
         }
-
-        public static BitmapSource BitmapSourceFromBrush(Brush drawingBrush, int x = 32, int y = 32, int dpi = 96)
-        {
-            // RenderTargetBitmap = builds a bitmap rendering of a visual
-            var pixelFormat = PixelFormats.Pbgra32;
-            RenderTargetBitmap rtb = new RenderTargetBitmap(x, y, dpi, dpi, pixelFormat);
-
-            // Drawing visual allows us to compose graphic drawing parts into a visual to render
-            var drawingVisual = new DrawingVisual();
-            using (DrawingContext context = drawingVisual.RenderOpen())
-            {
-                // Declaring drawing a rectangle using the input brush to fill up the visual
-                context.DrawRectangle(drawingBrush, null, new Rect(0, 0, x, y));
-            }
-
-            // Actually rendering the bitmap
-            rtb.Render(drawingVisual);
-            return rtb;
-        }
+       
         private void ScreenCut_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
         }
-        
+
         private ScreenDPI GetScreenDPI(int screenIndex)
         {
             ScreenDPI dpi = new ScreenDPI();
@@ -304,23 +287,27 @@ namespace WPFDevelopers.Controls
             dpi.scaleY = (dpi.dpiY / 0.96f) / 100;
             return dpi;
         }
+
         private Bitmap CopyScreen()
         {
-            Left = Screen.AllScreens[_screenIndex].Bounds.Left / _screenDPI.scaleX;
-            Top = Screen.AllScreens[_screenIndex].Bounds.Top / _screenDPI.scaleY;
+            Left = Screen.AllScreens[_screenIndex].Bounds.Left;
+            Top = Screen.AllScreens[_screenIndex].Bounds.Top;
             Width = Screen.AllScreens[_screenIndex].Bounds.Width / _screenDPI.scaleX;
             Height = Screen.AllScreens[_screenIndex].Bounds.Height / _screenDPI.scaleY;
-            _canvas.Width = Screen.AllScreens[_screenIndex].Bounds.Width / _screenDPI.scaleX;
-            _canvas.Height = Screen.AllScreens[_screenIndex].Bounds.Height / _screenDPI.scaleY;
+            WindowState = WindowState.Maximized;
+            _canvas.Width = Width;
+            _canvas.Height = Height;
             _canvas.SetValue(LeftProperty, Left);
             _canvas.SetValue(TopProperty, Top);
-            Bitmap ScreenCapture = new Bitmap(Screen.AllScreens[_screenIndex].Bounds.Width, Screen.AllScreens[_screenIndex].Bounds.Height);
-            using (Graphics g = Graphics.FromImage(ScreenCapture)) 
+            var bounds = Screen.AllScreens[_screenIndex].Bounds;
+            Bitmap screenCapture = new Bitmap(bounds.Width, bounds.Height);
+            using (Graphics g = Graphics.FromImage(screenCapture))
             {
-                g.CopyFromScreen(Screen.AllScreens[_screenIndex].Bounds.Left, Screen.AllScreens[_screenIndex].Bounds.Top, 0, 0, Screen.AllScreens[_screenIndex].Bounds.Size);
+                g.CopyFromScreen(bounds.Left, bounds.Top, 0, 0, screenCapture.Size);
             }
-            return ScreenCapture;
+            return screenCapture;
         }
+
         protected override void OnPreviewMouseRightButtonDown(MouseButtonEventArgs e)
         {
             OnCanceled();
@@ -328,17 +315,17 @@ namespace WPFDevelopers.Controls
 
         private void RadioButtonInk_Click(object sender, RoutedEventArgs e)
         {
-            RadioButtonChecked(_radioButtonInk, ScreenCutMouseType.DrawInk);
+            RadioButtonChecked(_inkRadioButton, ScreenCutMouseType.DrawInk);
         }
 
         private void RadioButtonText_Click(object sender, RoutedEventArgs e)
         {
-            RadioButtonChecked(_radioButtonText, ScreenCutMouseType.DrawText);
+            RadioButtonChecked(_textRadioButton, ScreenCutMouseType.DrawText);
         }
 
         private void RadioButtonArrow_Click(object sender, RoutedEventArgs e)
         {
-            RadioButtonChecked(_radioButtonArrow, ScreenCutMouseType.DrawArrow);
+            RadioButtonChecked(_arrowRadioButton, ScreenCutMouseType.DrawArrow);
         }
 
         private void WrapPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -352,7 +339,7 @@ namespace WPFDevelopers.Controls
 
         private void RadioButtonRectangle_Click(object sender, RoutedEventArgs e)
         {
-            RadioButtonChecked(_radioButtonRectangle, ScreenCutMouseType.DrawRectangle);
+            RadioButtonChecked(_rectangleRadioButton, ScreenCutMouseType.DrawRectangle);
         }
 
         private void RadioButtonEllipse_Click(object sender, RoutedEventArgs e)
@@ -368,8 +355,6 @@ namespace WPFDevelopers.Controls
                 _border.Cursor = Cursors.Arrow;
                 if (_popup.PlacementTarget != null && _popup.IsOpen)
                     _popup.IsOpen = false;
-                _popup.PlacementTarget = radioButton;
-                _popup.IsOpen = true;
                 DisposeControl();
             }
             else
@@ -390,7 +375,7 @@ namespace WPFDevelopers.Controls
 
         private void ResoreRadioButton()
         {
-            _radioButtonRectangle.IsChecked = false;
+            _rectangleRadioButton.IsChecked = false;
             _radioButtonEllipse.IsChecked = false;
         }
 
@@ -408,20 +393,20 @@ namespace WPFDevelopers.Controls
             }
             EditBarPosition();
         }
-        
+
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (_screenCutMouseType == ScreenCutMouseType.Default)
                 _screenCutMouseType = ScreenCutMouseType.MoveMouse;
         }
-        
+
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             var dlg = new SaveFileDialog();
             dlg.FileName = $"WPFDevelopers{DateTime.Now.ToString("yyyyMMddHHmmss")}.jpg";
             dlg.DefaultExt = ".jpg";
             dlg.Filter = "image file|*.jpg";
-            
+
             if (dlg.ShowDialog() == true)
             {
                 BitmapEncoder pngEncoder = new PngBitmapEncoder();
@@ -437,7 +422,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-        
+
         private void ButtonComplete_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = CutBitmap();
@@ -446,30 +431,26 @@ namespace WPFDevelopers.Controls
                 CutCompleted(bitmap);
             Close();
         }
-        
+
         private CroppedBitmap CutBitmap()
         {
             _border.Visibility = Visibility.Collapsed;
             _editBar.Visibility = Visibility.Collapsed;
-            _rectangleLeft.Visibility = Visibility.Collapsed;
-            _rectangleTop.Visibility = Visibility.Collapsed;
-            _rectangleRight.Visibility = Visibility.Collapsed;
-            _rectangleBottom.Visibility = Visibility.Collapsed;
-            // 屏幕等比截图需要考虑缩放率进行等比放大canvas
+            _leftRectangle.Visibility = Visibility.Collapsed;
+            _topRectangle.Visibility = Visibility.Collapsed;
+            _rightRectangle.Visibility = Visibility.Collapsed;
+            _bottomRectangle.Visibility = Visibility.Collapsed;
             var renderTargetBitmap = new RenderTargetBitmap((int)(_canvas.Width * _screenDPI.scaleX),
                 (int)(_canvas.Height * _screenDPI.scaleY), _screenDPI.dpiX, _screenDPI.dpiY, PixelFormats.Default);
             renderTargetBitmap.Render(_canvas);
-            // 屏幕等比截图需要考虑缩放率进行等比放大截图区域
             var realrect = new Int32Rect(
                 (int)(_rect.X * _screenDPI.scaleX),
                 (int)(_rect.Y * _screenDPI.scaleY),
                 (int)(_rect.Width * _screenDPI.scaleX),
                 (int)(_rect.Height * _screenDPI.scaleY));
-            //return new CroppedBitmap(renderTargetBitmap,
-            //    new Int32Rect((int)_rect.X, (int)_rect.Y, (int)_rect.Width, (int)_rect.Height));
             return new CroppedBitmap(renderTargetBitmap, realrect);
         }
-        
+
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             OnCanceled();
@@ -495,9 +476,10 @@ namespace WPFDevelopers.Controls
             {
                 if (_canvas.Children.Count > 0)
                     _canvas.Children.Remove(_canvas.Children[_canvas.Children.Count - 1]);
+                
             }
         }
-        
+
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             if (e.Source is RadioButton)
@@ -546,7 +528,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-        
+
         private void DrawText()
         {
             if (_pointStart.Value.X < _rect.Right
@@ -607,7 +589,7 @@ namespace WPFDevelopers.Controls
                     };
                     _textBorder.PreviewMouseLeftButtonDown += (s, e) =>
                     {
-                        _radioButtonText.IsChecked = true;
+                        _textRadioButton.IsChecked = true;
                         RadioButtonText_Click(null, null);
                         SelectElement();
                         var border = s as Border;
@@ -627,7 +609,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-        
+
         protected override void OnPreviewMouseMove(MouseEventArgs e)
         {
             if (e.Source is RadioButton)
@@ -658,6 +640,24 @@ namespace WPFDevelopers.Controls
                         DrwaInkControl(current);
                         break;
                 }
+                if (count == 0) return Colors.Gray;
+                return Color.FromRgb(
+                    (byte)(totalR / count),
+                    (byte)(totalG / count),
+                    (byte)(totalB / count));
+            }
+            catch
+            {
+                return Colors.Gray;
+            }
+        }
+
+        private void UndoLastStroke()
+        {
+            if (_strokeHistory.Count > 0)
+            {
+                var lastStroke = _strokeHistory.Pop();
+                _canvas.Children.Remove(lastStroke);
             }
         }
 
@@ -670,7 +670,7 @@ namespace WPFDevelopers.Controls
                 current.Y > _rect.BottomRight.Y)
                 return;
         }
-        
+
         private void DrwaInkControl(Point current)
         {
             CheckPoint(current);
@@ -693,7 +693,7 @@ namespace WPFDevelopers.Controls
                     _polyLine.StrokeEndLineCap = PenLineCap.Round;
                     _polyLine.MouseLeftButtonDown += (s, e) =>
                     {
-                        _radioButtonInk.IsChecked = true;
+                        _inkRadioButton.IsChecked = true;
                         RadioButtonInk_Click(null, null);
                         SelectElement();
                         _frameworkElement = s as Polyline;
@@ -705,7 +705,7 @@ namespace WPFDevelopers.Controls
                 _polyLine.Points.Add(current);
             }
         }
-        
+
         private void DrawArrowControl(Point current)
         {
             CheckPoint(current);
@@ -727,7 +727,7 @@ namespace WPFDevelopers.Controls
                 _controlArrow.Tag = _tag;
                 _controlArrow.MouseLeftButtonDown += (s, e) =>
                 {
-                    _radioButtonArrow.IsChecked = true;
+                    _arrowRadioButton.IsChecked = true;
                     RadioButtonArrow_Click(null, null);
                     SelectElement();
                     _frameworkElement = s as Control;
@@ -830,7 +830,7 @@ namespace WPFDevelopers.Controls
             width = width < 15 ? 15 : width;
             _controlArrow.Width = width;
         }
-        
+
         private void DrawMultipleControl(Point current)
         {
             CheckPoint(current);
@@ -855,7 +855,7 @@ namespace WPFDevelopers.Controls
                         };
                         _borderRectangle.MouseLeftButtonDown += (s, e) =>
                         {
-                            _radioButtonRectangle.IsChecked = true;
+                            _rectangleRadioButton.IsChecked = true;
                             RadioButtonRectangle_Click(null, null);
                             SelectElement();
                             _frameworkElement = s as Border;
@@ -932,7 +932,7 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-        
+
         private void SelectElement()
         {
             for (var i = 0; i < VisualTreeHelper.GetChildrenCount(_canvas); i++)
@@ -943,7 +943,7 @@ namespace WPFDevelopers.Controls
                         frameworkElement.Opacity = 1;
             }
         }
-        
+
         private void MoveRect(Point current)
         {
             if (_pointStart is null)
@@ -969,26 +969,26 @@ namespace WPFDevelopers.Controls
                 Canvas.SetLeft(_border, left);
                 Canvas.SetTop(_border, top);
                 _rect = new Rect(new Point(left, top), new Point(left + _border.Width, top + _border.Height));
-                _rectangleLeft.Height = _canvas.ActualHeight;
-                _rectangleLeft.Width = left <= 0 ? 0 : left >= _canvas.ActualWidth ? _canvas.ActualWidth : left;
+                _leftRectangle.Height = _canvas.ActualHeight;
+                _leftRectangle.Width = left <= 0 ? 0 : left >= _canvas.ActualWidth ? _canvas.ActualWidth : left;
 
 
-                Canvas.SetLeft(_rectangleTop, _rectangleLeft.Width);
-                _rectangleTop.Height = top <= 0 ? 0 : top >= _canvas.ActualHeight ? _canvas.ActualHeight : top;
+                Canvas.SetLeft(_topRectangle, _leftRectangle.Width);
+                _topRectangle.Height = top <= 0 ? 0 : top >= _canvas.ActualHeight ? _canvas.ActualHeight : top;
 
-                Canvas.SetLeft(_rectangleRight, left + _border.Width);
-                var wRight = _canvas.ActualWidth - (_border.Width + _rectangleLeft.Width);
-                _rectangleRight.Width = wRight <= 0 ? 0 : wRight;
-                _rectangleRight.Height = _canvas.ActualHeight;
+                Canvas.SetLeft(_rightRectangle, left + _border.Width);
+                var wRight = _canvas.ActualWidth - (_border.Width + _leftRectangle.Width);
+                _rightRectangle.Width = wRight <= 0 ? 0 : wRight;
+                _rightRectangle.Height = _canvas.ActualHeight;
 
-                Canvas.SetLeft(_rectangleBottom, _rectangleLeft.Width);
-                Canvas.SetTop(_rectangleBottom, top + _border.Height);
-                _rectangleBottom.Width = _border.Width;
+                Canvas.SetLeft(_bottomRectangle, _leftRectangle.Width);
+                Canvas.SetTop(_bottomRectangle, top + _border.Height);
+                _bottomRectangle.Width = _border.Width;
                 var hBottom = _canvas.ActualHeight - (top + _border.Height);
-                _rectangleBottom.Height = hBottom <= 0 ? 0 : hBottom;
+                _bottomRectangle.Height = hBottom <= 0 ? 0 : hBottom;
             }
         }
-        
+
         protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             if (e.Source is ToggleButton)
@@ -1005,14 +1005,20 @@ namespace WPFDevelopers.Controls
             {
                 if (_screenCutMouseType == ScreenCutMouseType.MoveMouse)
                     EditBarPosition();
+                else if(_screenCutMouseType == ScreenCutMouseType.DrawMosaic)
+                {
+                    CompleteCurrentStroke();
+                }
 
-                if (_radioButtonRectangle.IsChecked != true
+                if (_rectangleRadioButton.IsChecked != true
                     &&
                     _radioButtonEllipse.IsChecked != true
                     &&
-                    _radioButtonArrow.IsChecked != true
+                    _arrowRadioButton.IsChecked != true
                     &&
-                    _radioButtonText.IsChecked != true
+                    _textRadioButton.IsChecked != true
+                    &&
+                    _inkRadioButton.IsChecked != true
                     &&
                     _radioButtonInk.IsChecked != true)
                     _screenCutMouseType = ScreenCutMouseType.Default;
@@ -1020,7 +1026,7 @@ namespace WPFDevelopers.Controls
                     DisposeControl();
             }
         }
-        
+
         private void DisposeControl()
         {
             _polyLine = null;
@@ -1031,7 +1037,7 @@ namespace WPFDevelopers.Controls
             _pointStart = null;
             _pointEnd = null;
         }
-        
+
         private void EditBarPosition()
         {
             _editBar.Visibility = Visibility.Visible;
@@ -1051,7 +1057,7 @@ namespace WPFDevelopers.Controls
                 _popup.IsOpen = true;
             }
         }
-        
+
         private void MoveAllRectangle(Point current)
         {
             if (_pointStart is null)
@@ -1063,30 +1069,30 @@ namespace WPFDevelopers.Controls
             var vEndPoint = current;
 
             _rect = new Rect(vPoint, vEndPoint);
-            _rectangleLeft.Width = _rect.X < 0 ? 0 : _rect.X > _canvas.ActualWidth ? _canvas.ActualWidth : _rect.X;
-            _rectangleLeft.Height = _canvas.Height;
+            _leftRectangle.Width = _rect.X < 0 ? 0 : _rect.X > _canvas.ActualWidth ? _canvas.ActualWidth : _rect.X;
+            _leftRectangle.Height = _canvas.Height;
 
-            Canvas.SetLeft(_rectangleTop, _rectangleLeft.Width);
-            _rectangleTop.Width = _rect.Width;
+            Canvas.SetLeft(_topRectangle, _leftRectangle.Width);
+            _topRectangle.Width = _rect.Width;
             var h = 0.0;
             if (current.Y < vPoint.Y)
                 h = current.Y;
             else
                 h = current.Y - _rect.Height;
 
-            _rectangleTop.Height = h < 0 ? 0 : h > _canvas.ActualHeight ? _canvas.ActualHeight : h;
+            _topRectangle.Height = h < 0 ? 0 : h > _canvas.ActualHeight ? _canvas.ActualHeight : h;
 
-            Canvas.SetLeft(_rectangleRight, _rectangleLeft.Width + _rect.Width);
-            var rWidth = _canvas.Width - (_rect.Width + _rectangleLeft.Width);
-            _rectangleRight.Width = rWidth < 0 ? 0 : rWidth > _canvas.ActualWidth ? _canvas.ActualWidth : rWidth;
+            Canvas.SetLeft(_rightRectangle, _leftRectangle.Width + _rect.Width);
+            var rWidth = _canvas.Width - (_rect.Width + _leftRectangle.Width);
+            _rightRectangle.Width = rWidth < 0 ? 0 : rWidth > _canvas.ActualWidth ? _canvas.ActualWidth : rWidth;
 
-            _rectangleRight.Height = _canvas.Height;
+            _rightRectangle.Height = _canvas.Height;
 
-            Canvas.SetLeft(_rectangleBottom, _rectangleLeft.Width);
-            Canvas.SetTop(_rectangleBottom, _rect.Height + _rectangleTop.Height);
-            _rectangleBottom.Width = _rect.Width;
-            var rBottomHeight = _canvas.Height - (_rect.Height + _rectangleTop.Height);
-            _rectangleBottom.Height = rBottomHeight < 0 ? 0 : rBottomHeight;
+            Canvas.SetLeft(_bottomRectangle, _leftRectangle.Width);
+            Canvas.SetTop(_bottomRectangle, _rect.Height + _topRectangle.Height);
+            _bottomRectangle.Width = _rect.Width;
+            var rBottomHeight = _canvas.Height - (_rect.Height + _topRectangle.Height);
+            _bottomRectangle.Height = rBottomHeight < 0 ? 0 : rBottomHeight;
 
             _border.Height = _rect.Height;
             _border.Width = _rect.Width;
@@ -1105,6 +1111,6 @@ namespace WPFDevelopers.Controls
             _adornerLayer.Add(_screenCutAdorner);
             _border.SizeChanged += _border_SizeChanged;
         }
-        
+
     }
 }

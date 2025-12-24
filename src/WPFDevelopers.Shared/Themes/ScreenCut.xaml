@@ -47,8 +47,6 @@
         x:Key="WD.ScreenCut"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:ScreenCut}">
-        <Setter Property="WindowState" Value="Maximized" />
-        <Setter Property="WindowStyle" Value="None" />
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="Topmost" Value="True" />
         <Setter Property="Template">
@@ -59,10 +57,10 @@
                             x:Name="PART_Canvas"
                             Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}"
                             Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}">
-                            <Rectangle x:Name="PART_RectangleLeft" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
-                            <Rectangle x:Name="PART_RectangleTop" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
-                            <Rectangle x:Name="PART_RectangleRight" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
-                            <Rectangle x:Name="PART_RectangleBottom" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+                            <Rectangle x:Name="PART_LeftRectangle" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+                            <Rectangle x:Name="PART_TopRectangle" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+                            <Rectangle x:Name="PART_RightRectangle" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
+                            <Rectangle x:Name="PART_BottomRectangle" Style="{DynamicResource WD.ScreenCutRectangleStyle}" />
                             <Border
                                 x:Name="PART_Border"
                                 Background="Transparent"
@@ -77,7 +75,7 @@
                                 Visibility="Hidden">
                                 <WrapPanel Margin="10,5" VerticalAlignment="Center">
                                     <RadioButton
-                                        x:Name="PART_RadioButtonRectangle"
+                                        x:Name="PART_RectangleRadioButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Rectangle], Source={x:Static resx:LanguageManager.Instance}}">
@@ -88,7 +86,7 @@
                                             Kind="Rectangle" />
                                     </RadioButton>
                                     <RadioButton
-                                        x:Name="PART_RadioButtonEllipse"
+                                        x:Name="PART_EllipseRadioButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Ellipse], Source={x:Static resx:LanguageManager.Instance}}">
@@ -123,7 +121,7 @@
                                             Kind="Ink" />
                                     </RadioButton>
                                     <RadioButton
-                                        x:Name="PART_RadioButtonText"
+                                        x:Name="PART_TextRadioButton"
                                         Margin="4,0"
                                         Style="{DynamicResource WD.PathRadioButton}"
                                         ToolTip="{Binding [Text], Source={x:Static resx:LanguageManager.Instance}}">
@@ -139,7 +137,7 @@
                                         Margin="4,0"
                                         Stroke="{DynamicResource WD.PrimaryTextBrush}" />
                                     <Button
-                                        x:Name="PART_ButtonSave"
+                                        x:Name="PART_SaveButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathButton}"
                                         ToolTip="{Binding [Save], Source={x:Static resx:LanguageManager.Instance}}">
@@ -150,7 +148,7 @@
                                             Kind="Save" />
                                     </Button>
                                     <Button
-                                        x:Name="PART_ButtonCancel"
+                                        x:Name="PART_CancelButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathButton}"
                                         ToolTip="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}">
@@ -161,7 +159,7 @@
                                             Kind="Cancel" />
                                     </Button>
                                     <Button
-                                        x:Name="PART_ButtonComplete"
+                                        x:Name="PART_CompleteButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathButton}"
                                         ToolTip="{Binding [Complete], Source={x:Static resx:LanguageManager.Instance}}">
@@ -179,7 +177,7 @@
                                 Placement="Bottom"
                                 VerticalOffset="13">
                                 <Border
-                                    x:Name="PART_PopupBorder"
+                                    x:Name="PART_BorderPopup"
                                     Margin="10,30,10,10"
                                     Background="{DynamicResource WD.BackgroundBrush}"
                                     CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
@@ -195,7 +193,7 @@
                                             Stretch="Uniform"
                                             UseLayoutRounding="True" />
                                         <WrapPanel
-                                            x:Name="PART_WrapPanelColor"
+                                            x:Name="PART_ColorPanelWrap"
                                             Margin="10"
                                             VerticalAlignment="Center">
                                             <RadioButton
