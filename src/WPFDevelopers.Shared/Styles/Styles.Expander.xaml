@@ -44,6 +44,7 @@
                                 <ToggleButton.Style>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
                                         <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
+                                        <Setter Property="helpers:ElementHelper.IsAnimation" Value="{Binding Path=(helpers:ElementHelper.IsAnimation), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -85,34 +86,64 @@
                                                                 RecognizesAccessKey="True"
                                                                 SnapsToDevicePixels="True" />
                                                         </Grid>
-                                                        <VisualStateManager.VisualStateGroups>
-                                                            <VisualStateGroup x:Name="CheckStates">
-                                                                <VisualState x:Name="Checked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="90"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Unchecked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="0"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Indeterminate" />
-                                                            </VisualStateGroup>
-                                                        </VisualStateManager.VisualStateGroups>
                                                     </Border>
                                                     <ControlTemplate.Triggers>
                                                         <Trigger Property="IsChecked" Value="True">
                                                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Down}" />
                                                         </Trigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <MultiTrigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="ExpandededArrow"
+                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                                            To="90"
+                                                                            Duration="0:0:0.2" />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </MultiTrigger.EnterActions>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="90" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
@@ -140,7 +171,6 @@
                                     Focusable="False" />
                             </Border>
                         </DockPanel>
-
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="True">
@@ -161,6 +191,7 @@
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
                                         <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
+                                        <Setter Property="helpers:ElementHelper.IsAnimation" Value="{Binding Path=(helpers:ElementHelper.IsAnimation), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -209,34 +240,63 @@
                                                                 RecognizesAccessKey="True"
                                                                 SnapsToDevicePixels="True" />
                                                         </Grid>
-                                                        <VisualStateManager.VisualStateGroups>
-                                                            <VisualStateGroup x:Name="CheckStates">
-                                                                <VisualState x:Name="Checked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="-90"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Unchecked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="0"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Indeterminate" />
-                                                            </VisualStateGroup>
-                                                        </VisualStateManager.VisualStateGroups>
                                                     </Border>
                                                     <ControlTemplate.Triggers>
                                                         <Trigger Property="IsChecked" Value="True">
                                                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding (helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Right}" />
                                                         </Trigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <MultiTrigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="ExpandededArrow"
+                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                                            To="-90"
+                                                                            Duration="0:0:0.2" />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </MultiTrigger.EnterActions>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="-90" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
@@ -253,6 +313,7 @@
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
                                         <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
+                                        <Setter Property="helpers:ElementHelper.IsAnimation" Value="{Binding Path=(helpers:ElementHelper.IsAnimation), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -296,34 +357,64 @@
                                                                 RecognizesAccessKey="True"
                                                                 SnapsToDevicePixels="True" />
                                                         </Grid>
-                                                        <VisualStateManager.VisualStateGroups>
-                                                            <VisualStateGroup x:Name="CheckStates">
-                                                                <VisualState x:Name="Checked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="-90"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Unchecked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="0"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Indeterminate" />
-                                                            </VisualStateGroup>
-                                                        </VisualStateManager.VisualStateGroups>
+
                                                     </Border>
                                                     <ControlTemplate.Triggers>
                                                         <Trigger Property="IsChecked" Value="True">
                                                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Up}" />
                                                         </Trigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <MultiTrigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="ExpandededArrow"
+                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                                            To="-90"
+                                                                            Duration="0:0:0.2" />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </MultiTrigger.EnterActions>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="-90" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
@@ -345,6 +436,7 @@
                                 <Setter.Value>
                                     <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type ToggleButton}">
                                         <Setter Property="helpers:ElementHelper.CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
+                                        <Setter Property="helpers:ElementHelper.IsAnimation" Value="{Binding Path=(helpers:ElementHelper.IsAnimation), RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" />
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -393,34 +485,64 @@
                                                                 RecognizesAccessKey="True"
                                                                 SnapsToDevicePixels="True" />
                                                         </Grid>
-                                                        <VisualStateManager.VisualStateGroups>
-                                                            <VisualStateGroup x:Name="CheckStates">
-                                                                <VisualState x:Name="Checked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="90"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Unchecked">
-                                                                    <Storyboard>
-                                                                        <DoubleAnimation
-                                                                            Storyboard.TargetName="ExpandededArrow"
-                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                                            To="0"
-                                                                            Duration="00:00:.2" />
-                                                                    </Storyboard>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Indeterminate" />
-                                                            </VisualStateGroup>
-                                                        </VisualStateManager.VisualStateGroups>
+
                                                     </Border>
                                                     <ControlTemplate.Triggers>
                                                         <Trigger Property="IsChecked" Value="True">
                                                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.CornerRadiusToSurroundConverter}, ConverterParameter=Left}" />
                                                         </Trigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <MultiTrigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation
+                                                                            Storyboard.TargetName="ExpandededArrow"
+                                                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                                            To="90"
+                                                                            Duration="0:0:0.2" />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </MultiTrigger.EnterActions>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="True" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="90" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
+                                                        <MultiTrigger>
+                                                            <MultiTrigger.Conditions>
+                                                                <Condition Property="IsChecked" Value="False" />
+                                                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                                                            </MultiTrigger.Conditions>
+                                                            <Setter TargetName="ExpandededArrow" Property="RenderTransform">
+                                                                <Setter.Value>
+                                                                    <RotateTransform Angle="0" />
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </MultiTrigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
                                             </Setter.Value>
@@ -433,90 +555,236 @@
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="True" />
                                 <Condition Property="ExpandDirection" Value="Down" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,0,1,1" />
+                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,0,1" />
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleY="1" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True" />
+                                <Condition Property="ExpandDirection" Value="Down" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,0,1,1" />
                             <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,0,1" />
                             <MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_DownBeginStoryboard">
+                                <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="PART_Content"
                                             Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
                                             To="1"
-                                            Duration="00:00:.2" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="PART_DownBeginStoryboard" />
-                            </MultiTrigger.ExitActions>
+                            <!--<MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>-->
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Down" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleY="0" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True" />
+                                <Condition Property="ExpandDirection" Value="Right" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="BorderThickness" Value="0,1,1,1" />
+                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,1,0" />
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" />
+                                </Setter.Value>
+                            </Setter>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="True" />
                                 <Condition Property="ExpandDirection" Value="Right" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="0,1,1,1" />
                             <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,0,1,0" />
                             <MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_RightBeginStoryboard">
+                                <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="PART_Content"
                                             Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
                                             To="1"
-                                            Duration="00:00:.2" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="PART_RightBeginStoryboard" />
-                            </MultiTrigger.ExitActions>
+                            <!--<MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>-->
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Right" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True" />
+                                <Condition Property="ExpandDirection" Value="Up" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,1,0" />
+                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,1,0,0" />
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleY="1" />
+                                </Setter.Value>
+                            </Setter>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="True" />
                                 <Condition Property="ExpandDirection" Value="Up" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,1,0" />
                             <Setter TargetName="HeaderSite" Property="BorderThickness" Value="0,1,0,0" />
                             <MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_UpBeginStoryboard">
+                                <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="PART_Content"
                                             Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
                                             To="1"
-                                            Duration="00:00:.2" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="PART_UpBeginStoryboard" />
-                            </MultiTrigger.ExitActions>
+                            <!--<MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>-->
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Up" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleY="0" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="True" />
+                                <Condition Property="ExpandDirection" Value="Left" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,0,1" />
+                            <Setter TargetName="HeaderSite" Property="BorderThickness" Value="1,0,0,0" />
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" />
+                                </Setter.Value>
+                            </Setter>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="True" />
                                 <Condition Property="ExpandDirection" Value="Left" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Content" Property="BorderThickness" Value="1,1,0,1" />
                             <Setter TargetName="HeaderSite" Property="BorderThickness" Value="1,0,0,0" />
                             <MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="PART_LeftBeginStoryboard">
+                                <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
                                             Storyboard.TargetName="PART_Content"
                                             Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
                                             To="1"
-                                            Duration="00:00:.2" />
+                                            Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="PART_LeftBeginStoryboard" />
-                            </MultiTrigger.ExitActions>
+                            <!--<MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_Content"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded" Value="False" />
+                                <Condition Property="ExpandDirection" Value="Left" />
+                                <Condition Property="helpers:ElementHelper.IsAnimation" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Content" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
