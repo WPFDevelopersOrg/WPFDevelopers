@@ -16,8 +16,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:NormalLoading}">
                     <Viewbox Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
-                        <controls:SmallPanel>
-                            <controls:SmallPanel.Resources>
+                        <Grid>
+                            <Grid.Resources>
                                 <Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
                                     <DoubleAnimation
                                         Storyboard.TargetName="PART_Ellipse"
@@ -25,7 +25,7 @@
                                         To="360"
                                         Duration="0:0:1.0" />
                                 </Storyboard>
-                            </controls:SmallPanel.Resources>
+                            </Grid.Resources>
                             <Ellipse
                                 Width="{TemplateBinding Width}"
                                 Height="{TemplateBinding Height}"
@@ -53,7 +53,7 @@
                                     </EventTrigger>
                                 </Ellipse.Triggers>
                             </Ellipse>
-                        </controls:SmallPanel>
+                        </Grid>
                     </Viewbox>
                 </ControlTemplate>
             </Setter.Value>
@@ -74,7 +74,7 @@
                         <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
                             <DoubleAnimation
                                 RepeatBehavior="Forever"
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 To="360"
                                 Duration="0:0:0.784" />
@@ -146,10 +146,10 @@
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel x:Name="PART_SmallPanel" RenderTransformOrigin=".5,.5">
-                        <controls:SmallPanel.RenderTransform>
+                    <Grid x:Name="PART_Grid" RenderTransformOrigin=".5,.5">
+                        <Grid.RenderTransform>
                             <RotateTransform />
-                        </controls:SmallPanel.RenderTransform>
+                        </Grid.RenderTransform>
                         <shapes:Arc
                             x:Name="PART_Arc"
                             Width="{TemplateBinding ActualWidth}"
@@ -165,7 +165,7 @@
                                 <RotateTransform />
                             </shapes:Arc.RenderTransform>
                         </shapes:Arc>
-                    </controls:SmallPanel>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
@@ -190,16 +190,16 @@
                         <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
                             <DoubleAnimation
                                 RepeatBehavior="Forever"
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
                                 To="360"
                                 Duration="0:0:0.784" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel x:Name="PART_SmallPanel" RenderTransformOrigin=".5,.5">
-                        <controls:SmallPanel.RenderTransform>
+                    <Grid x:Name="PART_Grid" RenderTransformOrigin=".5,.5">
+                        <Grid.RenderTransform>
                             <RotateTransform />
-                        </controls:SmallPanel.RenderTransform>
+                        </Grid.RenderTransform>
                         <shapes:Arc
                             x:Name="PART_Arc"
                             Width="{TemplateBinding ActualWidth}"
@@ -210,7 +210,7 @@
                             StartAngle="0"
                             Stretch="None"
                             StrokeThickness="0" />
-                    </controls:SmallPanel>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
