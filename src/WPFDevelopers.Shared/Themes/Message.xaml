@@ -24,7 +24,7 @@
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="Storyboard_Close" DesiredFrameRate="30">
                             <DoubleAnimation
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                 From="1"
                                 To="0"
@@ -38,20 +38,20 @@
                         </Storyboard>
                         <Storyboard x:Key="Storyboard_Loaded" DesiredFrameRate="30">
                             <DoubleAnimation
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                 From="0"
                                 To="1"
                                 Duration="0:0:0.2" />
                             <DoubleAnimation
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="Opacity"
                                 From=".1"
                                 To="1"
                                 Duration="0:0:0.2" />
                             <DoubleAnimation
                                 BeginTime="0:0:10"
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                 From="1"
                                 To="0"
@@ -71,7 +71,7 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Grid
-                        x:Name="PART_SmallPanel"
+                        x:Name="PART_Grid"
                         CacheMode="BitmapCache"
                         RenderTransformOrigin=".5,0">
                         <Grid.RenderTransform>
