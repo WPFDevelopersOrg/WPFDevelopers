@@ -143,7 +143,7 @@
                         <Button
                             Margin="10,0"
                             Click="ButtonNone_Click"
-                            Content="NoneWindow"
+                            Content="NoneTitleBarWindow"
                             Style="{DynamicResource WD.DangerPrimaryButton}" />
                     </UniformGrid>
                     <TextBlock
@@ -383,7 +383,11 @@
                             <ComboBoxItem>Option 4</ComboBoxItem>
                             <ComboBoxItem>Option 5</ComboBoxItem>
                         </ComboBox>
-                        <ComboBox Margin="10,0" IsEnabled="False" />
+                        <ComboBox
+                            Margin="10,0"
+                            DisplayMemberPath="Name"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            SelectedValuePath="Name" />
                         <ComboBox
                             wd:ElementHelper.CornerRadius="3"
                             wd:ElementHelper.Watermark="ComboBox"
@@ -427,6 +431,25 @@
                             </DatePicker.BlackoutDates>
                         </DatePicker>
                         <DatePicker Margin="10,0" wd:DatePickerHelper.IsMonthYear="True" />
+                    </UniformGrid>
+
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        Text="DateTimePicker" />
+                    <UniformGrid Margin="0,10" Rows="1">
+                        <StackPanel Orientation="Horizontal">
+                            <DatePicker wd:DatePickerHelper.SelectedDateTime="{Binding CurrentDateTime, RelativeSource={RelativeSource AncestorType=UserControl}}" wd:DatePickerHelper.ShowTime="True" />
+                            <Button
+                                Margin="4,0"
+                                Click="BtnGetDateTime_Click"
+                                Content="DateTime" />
+                        </StackPanel>
+                        <DatePicker
+                            Margin="10,0"
+                            wd:DatePickerHelper.SelectedDateTime="2025-11-12 15:20:00"
+                            wd:DatePickerHelper.ShowTime="True" />
+                        <DatePicker wd:DatePickerHelper.ShowTime="True" wd:DatePickerHelper.Watermark="日期 yyyy-MM-dd HH:mm:ss" />
                     </UniformGrid>
 
                     <TextBlock
@@ -613,6 +636,61 @@
                                         Binding="{Binding Date}"
                                         Header="Date"
                                         IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Padding="20,0" Header="VerticalGrid">
+                            <DataGrid
+                                GridLinesVisibility="Vertical"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                VerticalGridLinesBrush="DodgerBlue">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Padding="20,0" Header="HorizontalGrid">
+                            <DataGrid
+                                GridLinesVisibility="Horizontal"
+                                HorizontalGridLinesBrush="DodgerBlue"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Name}"
+                                        Header="Name"
+                                        IsReadOnly="True" />
+                                    <DataGridTextColumn
+                                        Binding="{Binding Address}"
+                                        Header="Address"
+                                        IsReadOnly="True" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Padding="20,0" Header="AllGrid">
+                            <DataGrid
+                                GridLinesVisibility="All"
+                                HorizontalGridLinesBrush="Green"
+                                ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                VerticalGridLinesBrush="Red">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
                                     <DataGridTextColumn
                                         Binding="{Binding Name}"
                                         Header="Name"

@@ -32,7 +32,7 @@
                                     EasingFunction="{StaticResource WD.PowerEaseInOut}"
                                     KeyTime="0:0:1.5"
                                     Value="50" />
-                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="50" />
+                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="100" />
                                 <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="50" />
                                 <EasingDoubleKeyFrame
                                     EasingFunction="{StaticResource WD.PowerEaseInOut}"

@@ -2,13 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
-    xmlns:convert="clr-namespace:WPFDevelopers.Converts"
     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <convert:DatePickerToCurrentConverter x:Key="WD.DatePickerToCurrentConverter" />
     <Style
         x:Key="WD.CalendarDayButtonStyle"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -354,8 +352,16 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
+                                <controls:TimePicker
+                                    x:Name="PART_TimePicker"
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="3"
+                                    Margin="6,0,6,6"
+                                    IsCurrentTime="True"
+                                    Visibility="Collapsed" />
                                 <Button
                                     x:Name="PART_PreviousButton"
                                     Grid.Row="0"
@@ -432,12 +438,6 @@
                                 </Grid>
                             </Grid>
                         </Border>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Disabled" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}}" Value="Year">
@@ -447,6 +447,9 @@
                         <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Calendar}}}" Value="Decade">
                             <Setter TargetName="PART_MonthView" Property="Visibility" Value="Collapsed" />
                             <Setter TargetName="PART_YearView" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=(helpers:DatePickerHelper.ShowTime), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DatePicker}}}" Value="True">
+                            <Setter TargetName="PART_TimePicker" Property="Visibility" Value="Visible" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

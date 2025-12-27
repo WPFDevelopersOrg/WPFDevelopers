@@ -21,12 +21,6 @@
         po:Freeze="True"
         Color="{StaticResource WD.RegularTextColor}" />
 
-    <Color x:Key="WD.PrimaryBackgroundColor" po:Freeze="True">#202020</Color>
-    <SolidColorBrush
-        x:Key="WD.PrimaryBackgroundBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.PrimaryBackgroundColor}" />
-
     <!--  背景色  -->
     <Color x:Key="WD.BackgroundColor" po:Freeze="True">#323232</Color>
     <SolidColorBrush

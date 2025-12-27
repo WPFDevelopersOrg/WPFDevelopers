@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows;
-using System.Xml.Linq;
+using WPFDevelopers.Core;
 using WPFDevelopers.Utilities;
-using System.Windows.Controls;
-using WPFDevelopers.Datas;
 
 namespace WPFDevelopers.Controls
 {
@@ -74,8 +69,19 @@ namespace WPFDevelopers.Controls
 
         private static void OnIncreaseCommand(object sender, RoutedEventArgs e)
         {
+            //var numericBox = sender as NumericBox;
+            //numericBox.ContinueChangeValue(true);
             var numericBox = sender as NumericBox;
-            numericBox.ContinueChangeValue(true);
+            if (!numericBox.IsReadOnly && numericBox.IsEnabled)
+            {
+                var eventArgs = new NumericBoxClickEventArgs(IncreaseClickEvent);
+                numericBox.RaiseEvent(eventArgs);
+                if (!eventArgs.Handled)
+                {
+                    numericBox.ContinueChangeValue(true, isSkipStep: eventArgs.SkipStepChange);
+                }
+
+            }
         }
 
         private static void OnCanIncreaseCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -86,8 +92,18 @@ namespace WPFDevelopers.Controls
 
         private static void OnDecreaseCommand(object sender, RoutedEventArgs e)
         {
+            //var numericBox = sender as NumericBox;
+            //numericBox.ContinueChangeValue(false);
             var numericBox = sender as NumericBox;
-            numericBox.ContinueChangeValue(false);
+            if (!numericBox.IsReadOnly && numericBox.IsEnabled)
+            {
+                var eventArgs = new NumericBoxClickEventArgs(DecreaseClickEvent);
+                numericBox.RaiseEvent(eventArgs);
+                if (!eventArgs.Handled)
+                {
+                    numericBox.ContinueChangeValue(false, isSkipStep: eventArgs.SkipStepChange);
+                }
+            }
         }
 
         private static void OnCanDecreaseCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -105,6 +121,22 @@ namespace WPFDevelopers.Controls
         {
             add { AddHandler(ValueChangedEvent, value); }
             remove { RemoveHandler(ValueChangedEvent, value); }
+        }
+
+        public static readonly RoutedEvent IncreaseClickEvent = EventManager.RegisterRoutedEvent("IncreaseClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+
+        public event RoutedEventHandler IncreaseClick
+        {
+            add { AddHandler(IncreaseClickEvent, value); }
+            remove { RemoveHandler(IncreaseClickEvent, value); }
+        }
+
+        public static readonly RoutedEvent DecreaseClickEvent = EventManager.RegisterRoutedEvent("DecreaseClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+
+        public event RoutedEventHandler DecreaseClick
+        {
+            add { AddHandler(DecreaseClickEvent, value); }
+            remove { RemoveHandler(DecreaseClickEvent, value); }
         }
 
         #endregion
@@ -300,6 +332,16 @@ namespace WPFDevelopers.Controls
             numericBox.OnValueChanged((double)e.OldValue, (double)e.NewValue);
         }
 
+        public bool IsAutoCapture
+        {
+            get { return (bool)GetValue(IsAutoCaptureProperty); }
+            set { SetValue(IsAutoCaptureProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsAutoCaptureProperty =
+            DependencyProperty.Register("IsAutoCapture", typeof(bool), _typeofSelf, new PropertyMetadata(false));
+
+
         #endregion
 
         #region Virtual
@@ -357,9 +399,32 @@ namespace WPFDevelopers.Controls
         protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
         {
             base.OnPreviewMouseWheel(e);
-
+            //if (e.Delta != 0 && (IsFocused || _valueTextBox.IsFocused))
+            //    ContinueChangeValue(e.Delta >= 0, false);
             if (e.Delta != 0 && (IsFocused || _valueTextBox.IsFocused))
-                ContinueChangeValue(e.Delta >= 0, false);
+            {
+                bool isIncrease = e.Delta >= 0;
+                NumericBoxClickEventArgs eventArgs;
+                if (isIncrease)
+                {
+                    eventArgs = new NumericBoxClickEventArgs(IncreaseClickEvent);
+                    RaiseEvent(eventArgs);
+                    if (!eventArgs.Handled)
+                    {
+                        ContinueChangeValue(true, false, isSkipStep: eventArgs.SkipStepChange);
+                    }
+                }
+                else
+                {
+                    eventArgs = new NumericBoxClickEventArgs(DecreaseClickEvent);
+                    RaiseEvent(eventArgs);
+                    if (!eventArgs.Handled)
+                    {
+                        ContinueChangeValue(false, false, isSkipStep: eventArgs.SkipStepChange);
+                    }
+                }
+            }
+
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
@@ -375,12 +440,24 @@ namespace WPFDevelopers.Controls
                     break;
 
                 case Key.Up:
-                    ContinueChangeValue(true);
+                    var eventArgs = new NumericBoxClickEventArgs(IncreaseClickEvent);
+                    RaiseEvent(eventArgs);
+                    if (!eventArgs.Handled)
+                    {
+                        ContinueChangeValue(true, isSkipStep: eventArgs.SkipStepChange);
+                    }
+                    //ContinueChangeValue(true);
                     e.Handled = true;
                     break;
 
                 case Key.Down:
-                    ContinueChangeValue(false);
+                    var eventArgsDecrease = new NumericBoxClickEventArgs(DecreaseClickEvent);
+                    RaiseEvent(eventArgsDecrease);
+                    if (!eventArgsDecrease.Handled)
+                    {
+                        ContinueChangeValue(false, isSkipStep: eventArgsDecrease.SkipStepChange);
+                    }
+                    //ContinueChangeValue(false);
                     e.Handled = true;
                     break;
             }
@@ -533,7 +610,7 @@ namespace WPFDevelopers.Controls
 
         private void InternalSetText(double newValue)
         {
-            var text = newValue.ToString(GetPrecisionFormat());
+            var text = IsAutoCapture ? newValue.ToString() : newValue.ToString(GetPrecisionFormat());
             if (_valueTextBox != null && !Equals(text, _valueTextBox.Text))
                 _valueTextBox.Text = text;
         }
@@ -558,7 +635,7 @@ namespace WPFDevelopers.Controls
             return Math.Round(originValue, precision ?? 0, MidpointRounding.AwayFromZero);
         }
 
-        private void ContinueChangeValue(bool isIncrease, bool isContinue = true)
+        private void ContinueChangeValue(bool isIncrease, bool isContinue = true, bool isSkipStep = false)
         {
             if (IsReadOnly || !IsEnabled)
                 return;
@@ -572,9 +649,12 @@ namespace WPFDevelopers.Controls
                     if (DisabledValueChangedWhileBusy)
                         _lastOldValue = Value;
                 }
-
                 _isManual = true;
-                Value = (double)CoerceValue(this, Value + CalculateInterval(isContinue));
+                //Value = (double)CoerceValue(this, Value + CalculateInterval(isContinue));
+                if (!isSkipStep)
+                    Value = (double)CoerceValue(this, Value + CalculateInterval(isContinue));
+                else
+                    Value = (double)CoerceValue(this, Value);
             }
 
             if (!isIncrease && DoubleUtil.GreaterThan(Value, Minimum))
@@ -586,9 +666,12 @@ namespace WPFDevelopers.Controls
                     if (DisabledValueChangedWhileBusy)
                         _lastOldValue = Value;
                 }
-
                 _isManual = true;
-                Value = (double)CoerceValue(this, Value - CalculateInterval(isContinue));
+                //Value = (double)CoerceValue(this, Value - CalculateInterval(isContinue));
+                if (!isSkipStep)
+                    Value = (double)CoerceValue(this, Value - CalculateInterval(isContinue));
+                else
+                    Value = (double)CoerceValue(this, Value);
             }
         }
 

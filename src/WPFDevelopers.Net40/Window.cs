@@ -32,12 +32,10 @@ namespace WPFDevelopers.Net40
         private Button _titleBarMaximizeButton;
         private Button _titleBarRestoreButton;
         private IntPtr hWnd;
+        private WindowChrome _windowChrome;
 
         public static readonly DependencyProperty TitleHeightProperty =
-            DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
-
-        public static readonly DependencyProperty NoChromeProperty =
-            DependencyProperty.Register("NoChrome", typeof(bool), typeof(Window), new PropertyMetadata(false));
+            DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d, OnTitleHeightChanged));
 
         public static readonly DependencyProperty TitleBarProperty =
             DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
@@ -46,7 +44,9 @@ namespace WPFDevelopers.Net40
            DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleBarModeProperty =
-            DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal));
+            DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal, OnTitleBarModeChanged));
+
+        
 
         static Window()
         {
@@ -63,6 +63,12 @@ namespace WPFDevelopers.Net40
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
+            _windowChrome = new WindowChrome
+            {
+                CaptionHeight = TitleHeight,
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+            };
+            WindowChrome.SetWindowChrome(this, _windowChrome);
         }
 
         private void Resources_ThemeChanged(ThemeType currentTheme)
@@ -86,6 +92,31 @@ namespace WPFDevelopers.Net40
             _highTitleRestoreButton = GetTemplateChild(HighTitleRestoreButton) as Button;
             _titleBarMaximizeButton = GetTemplateChild(TitleBarMaximizeButton) as Button;
             _titleBarRestoreButton = GetTemplateChild(TitleBarRestoreButton) as Button;
+            SetTitleHeight();
+        }
+
+        private static void OnTitleBarModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Window;
+            if (ctrl != null)
+                ctrl.SetTitleHeight();
+        }
+
+        private static void OnTitleHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Window;
+            if (ctrl != null)
+                 ctrl._windowChrome.CaptionHeight = ctrl.TitleHeight;
+        }
+
+        void SetTitleHeight()
+        {
+            if (TitleBarMode == TitleBarMode.Normal)
+                TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
+            else if(TitleBarMode == TitleBarMode.High)
+                TitleHeight = 50d;
+            else
+                _windowChrome.CaptionHeight = TitleHeight;
         }
 
         private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -98,12 +129,6 @@ namespace WPFDevelopers.Net40
         {
             get => (double)GetValue(TitleHeightProperty);
             set => SetValue(TitleHeightProperty, value);
-        }
-
-        public bool NoChrome
-        {
-            get => (bool)GetValue(NoChromeProperty);
-            set => SetValue(NoChromeProperty, value);
         }
 
         public object TitleBar
@@ -129,8 +154,6 @@ namespace WPFDevelopers.Net40
             base.OnSourceInitialized(e);
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
-            if (TitleBarMode == TitleBarMode.Normal)
-                TitleHeight = SystemParameters2.Current.WindowNonClientFrameThickness.Top;
         }
 
         protected override void OnContentRendered(EventArgs e)
@@ -159,12 +182,7 @@ namespace WPFDevelopers.Net40
 
         private void MaximizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            if (WindowState == WindowState.Normal)
-            {
-                WindowStyle = WindowStyle.SingleBorderWindow;
-                WindowState = WindowState.Maximized;
-                WindowStyle = WindowStyle.None;
-            }
+            SystemCommands.MaximizeWindow(this);
         }
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)

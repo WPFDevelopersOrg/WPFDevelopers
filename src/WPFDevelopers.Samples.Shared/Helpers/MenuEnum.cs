@@ -96,6 +96,7 @@
         IconicThumbnail,
         GestureUnlock,
         AnimationGrid,
+        AllPathIcon,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

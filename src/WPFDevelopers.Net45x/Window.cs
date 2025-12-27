@@ -9,7 +9,6 @@ using System.Windows.Media;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Core.Helpers;
 using WPFDevelopers.Helpers;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace WPFDevelopers.Net45x
 {
@@ -32,12 +31,10 @@ namespace WPFDevelopers.Net45x
         private Button _titleBarMaximizeButton;
         private Button _titleBarRestoreButton;
         private IntPtr hWnd;
+        private System.Windows.Shell.WindowChrome _windowChrome;
 
         public static readonly DependencyProperty TitleHeightProperty =
-            DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
-
-        public static readonly DependencyProperty NoChromeProperty =
-            DependencyProperty.Register("NoChrome", typeof(bool), typeof(Window), new PropertyMetadata(false));
+            DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d, OnTitleHeightChanged));
 
         public static readonly DependencyProperty TitleBarProperty =
             DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
@@ -46,7 +43,7 @@ namespace WPFDevelopers.Net45x
           DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleBarModeProperty =
-           DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal));
+           DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal, OnTitleBarModeChanged));
 
         static Window()
         {
@@ -64,6 +61,13 @@ namespace WPFDevelopers.Net45x
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
+            _windowChrome = new System.Windows.Shell.WindowChrome
+            {
+                CaptionHeight = TitleHeight,
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+                UseAeroCaptionButtons = false
+            };
+            System.Windows.Shell.WindowChrome.SetWindowChrome(this, _windowChrome);
         }
 
         private void Resources_ThemeChanged(ThemeType currentTheme)
@@ -87,8 +91,29 @@ namespace WPFDevelopers.Net45x
             _highTitleRestoreButton = GetTemplateChild(HighTitleRestoreButton) as Button;
             _titleBarMaximizeButton = GetTemplateChild(TitleBarMaximizeButton) as Button;
             _titleBarRestoreButton = GetTemplateChild(TitleBarRestoreButton) as Button;
+            SetTitleHeight();
         }
-
+        private static void OnTitleBarModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Window;
+            if (ctrl != null)
+                ctrl.SetTitleHeight();
+        }
+        private static void OnTitleHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Window;
+            if (ctrl != null)
+                ctrl._windowChrome.CaptionHeight = ctrl.TitleHeight;
+        }
+        void SetTitleHeight()
+        {
+            if (TitleBarMode == TitleBarMode.Normal)
+                TitleHeight = SystemParameters.WindowNonClientFrameThickness.Top + SystemParameters.WindowResizeBorderThickness.Top;
+            else if (TitleBarMode == TitleBarMode.High)
+                TitleHeight = 50d;
+            else
+                _windowChrome.CaptionHeight = TitleHeight;
+        }
         private void Icon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -99,12 +124,6 @@ namespace WPFDevelopers.Net45x
         {
             get => (double)GetValue(TitleHeightProperty);
             set => SetValue(TitleHeightProperty, value);
-        }
-
-        public bool NoChrome
-        {
-            get => (bool)GetValue(NoChromeProperty);
-            set => SetValue(NoChromeProperty, value);
         }
 
         public object TitleBar
@@ -137,8 +156,6 @@ namespace WPFDevelopers.Net45x
             base.OnSourceInitialized(e);
             hWnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
-            if (TitleBarMode == TitleBarMode.Normal)
-                TitleHeight = SystemParameters.WindowNonClientFrameThickness.Top + SystemParameters.WindowResizeBorderThickness.Top;
         }
 
         protected override void OnContentRendered(EventArgs e)
@@ -167,12 +184,7 @@ namespace WPFDevelopers.Net45x
 
         private void MaximizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            if (WindowState == WindowState.Normal)
-            {
-                WindowStyle = WindowStyle.SingleBorderWindow;
-                WindowState = WindowState.Maximized;
-                WindowStyle = WindowStyle.None;
-            }
+            SystemCommands.MaximizeWindow(this);
         }
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
@@ -224,7 +236,7 @@ namespace WPFDevelopers.Net45x
                                 var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
                                 if (contentPresenter != null)
                                 {
-                                    var rect = new Rect(button.PointToScreen(new Point()),new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
+                                    var rect = new Rect(button.PointToScreen(new Point()), new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
                                     if (rect.Contains(new Point(x, y)))
                                     {
                                         handled = true;

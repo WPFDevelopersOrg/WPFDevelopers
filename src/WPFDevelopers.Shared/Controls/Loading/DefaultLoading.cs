@@ -10,8 +10,7 @@ namespace WPFDevelopers.Controls
         private const string IndicatorTemplateName = "PART_Indicator";
 
         public static readonly DependencyProperty ArcThicknessProperty = 
-            DependencyProperty.Register("ArcThickness", typeof(double), typeof(DefaultLoading),
-                new PropertyMetadata(0d));
+            DependencyProperty.Register("ArcThickness", typeof(double),typeof(DefaultLoading), new PropertyMetadata(0d));
 
         private Arc _indicator;
 

@@ -11,14 +11,13 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using WPFDevelopers.Helpers;
 
-namespace WPFDevelopers.Controls
+namespace WPFDevelopers.Samples.Controls
 {
     [TemplatePart(Name = "PART_TextBox", Type = typeof(TextBox))]
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
     [TemplatePart(Name = "PART_Selector", Type = typeof(ListBox))]
     [TemplatePart(Name = "PART_SelectAll", Type = typeof(CheckBox))]
     [TemplatePart(Name = "PART_SearchSelector", Type = typeof(ListBox))]
-    [Obsolete("MultiSelectionSearchComboBox is Obsolete,Use MultiSelectComboBox")]
     public class MultiSelectionSearchComboBox : Control
     {
         private const string TextBoxTemplateName = "PART_TextBox";

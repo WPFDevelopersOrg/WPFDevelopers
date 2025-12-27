@@ -24,10 +24,17 @@
                 wd:ElementHelper.CornerRadius="3"
                 EndWatermark="EndDate"
                 StartWatermark="StartDate" />
-            <WrapPanel wd:PanelHelper.Spacing="3">
+            <StackPanel wd:PanelHelper.Spacing="3">
+                <TextBlock HorizontalAlignment="Center">
+                    <Run Text="MinDate:" />
+                    <Run Text="{Binding ElementName=MyDateRangePicker, Path=MinDate, StringFormat=yyyy-MM-dd HH:mm:ss}" />
+                    <LineBreak />
+                    <Run Text="MaxDate:" />
+                    <Run Text="{Binding ElementName=MyDateRangePicker, Path=MaxDate, StringFormat=yyyy-MM-dd}" />
+                </TextBlock>
                 <wd:DateRangePicker
                     x:Name="MyDateRangePicker"
-                    Width="240"
+                    Width="300"
                     Height="38"
                     VerticalAlignment="Top"
                     wd:ElementHelper.IsClear="True"
@@ -43,7 +50,7 @@
                     Click="Button_Click"
                     Content="获取"
                     Style="{StaticResource WD.PrimaryButton}" />
-            </WrapPanel>
+            </StackPanel>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DateRangePickerExample.xaml" CodeType="Xaml" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -38,6 +37,16 @@ namespace WPFDevelopers.Controls
         public static readonly DependencyProperty IsCurrentTimeProperty =
             DependencyProperty.Register("IsCurrentTime", typeof(bool), typeof(TimePicker), new PropertyMetadata(false));
 
+
+        public static readonly RoutedEvent SelectedTimeChangedEvent =
+        EventManager.RegisterRoutedEvent(
+            "SelectedTimeChanged",
+            RoutingStrategy.Bubble,
+            typeof(RoutedPropertyChangedEventHandler<DateTime?>),
+            typeof(TimePicker));
+
+        
+
         private HwndSource _hwndSource;
         private Window _window;
         private DateTime _date;
@@ -75,6 +84,12 @@ namespace WPFDevelopers.Controls
             set => SetValue(IsCurrentTimeProperty, value);
         }
 
+        public event RoutedPropertyChangedEventHandler<DateTime?> SelectedTimeChanged
+        {
+            add { AddHandler(SelectedTimeChangedEvent, value); }
+            remove { RemoveHandler(SelectedTimeChangedEvent, value); }
+        }
+
         private static void OnMaxDropDownHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as TimePicker;
@@ -103,7 +118,16 @@ namespace WPFDevelopers.Controls
                     else
                         ctrl._date = dateTime.Value;
                 }
+                ctrl.RaiseSelectedTimeChangedEvent(e.OldValue as DateTime?, e.NewValue as DateTime?);
             }
+        }
+
+        protected virtual void RaiseSelectedTimeChangedEvent(DateTime? oldValue, DateTime? newValue)
+        {
+            RoutedPropertyChangedEventArgs<DateTime?> args =
+                new RoutedPropertyChangedEventArgs<DateTime?>(oldValue, newValue);
+            args.RoutedEvent = SelectedTimeChangedEvent;
+            RaiseEvent(args);
         }
 
         public override void OnApplyTemplate()

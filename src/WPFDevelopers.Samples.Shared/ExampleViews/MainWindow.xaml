@@ -16,7 +16,7 @@
     Width="{x:Static local:App.Wdith}"
     Height="{x:Static local:App.Height}"
     Icon="pack://application:,,,/WPFDevelopers.Samples;component/WPFDevelopers.ico"
-    TitleBarMode="HighTitleBar"
+    TitleBarMode="High"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <wd:Window.Effect>
@@ -103,7 +103,7 @@
                 Grid.Column="2"
                 Margin="3,0,0,0"
                 Background="{DynamicResource WD.BackgroundBrush}">
-                <ContentControl Content="{Binding ControlPanel}" /> 
+                <ContentControl Content="{Binding ControlPanel}" />
                 <!--  DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType=local:MainWindow}}"  -->
             </Border>
         </Grid>

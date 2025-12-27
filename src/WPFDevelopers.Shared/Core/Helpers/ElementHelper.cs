@@ -29,6 +29,10 @@ namespace WPFDevelopers.Helpers
           DependencyProperty.RegisterAttached("IsClear", typeof(bool), typeof(ElementHelper),
               new PropertyMetadata(false, OnIsClearChanged));
 
+        public static readonly DependencyProperty IsAnimationProperty =
+           DependencyProperty.RegisterAttached("IsAnimation", typeof(bool),typeof(ElementHelper),
+               new PropertyMetadata(true));
+
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
             return (CornerRadius) obj.GetValue(CornerRadiusProperty);
@@ -77,6 +81,16 @@ namespace WPFDevelopers.Helpers
         public static bool GetIsClear(UIElement element)
         {
             return (bool)element.GetValue(IsClearProperty);
+        }
+
+        public static void SetIsAnimation(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsAnimationProperty, value);
+        }
+
+        public static bool GetIsAnimation(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsAnimationProperty);
         }
 
         private static void OnIsClearChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

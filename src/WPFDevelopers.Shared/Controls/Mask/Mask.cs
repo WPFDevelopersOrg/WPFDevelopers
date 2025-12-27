@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Data;
 using System.Windows.Documents;
 using WPFDevelopers.Utilities;
 
@@ -65,11 +66,26 @@ namespace WPFDevelopers.Controls
             if (isRemove)
                 return;
             var adornerContainer = new AdornerContainer(uIElement);
-            var value = GetChild(uIElement);
-            if (value != null)
-                adornerContainer.Child = new MaskControl(uIElement) {Content = value};
-            else
-                adornerContainer.Child = new MaskControl(uIElement);
+            var childContent = GetChild(uIElement);
+            var maskControl = new MaskControl(uIElement);
+            if (childContent != null)
+            {
+                var contentBinding = new Binding("DataContext")
+                {
+                    Source = uIElement as FrameworkElement
+                };
+
+                if (childContent is FrameworkElement childElement)
+                {
+                    childElement.SetBinding(FrameworkElement.DataContextProperty, contentBinding);
+                }
+                maskControl.Content = childContent;
+            }
+            maskControl.SetBinding(DataContextProperty, new Binding("DataContext")
+            {
+                Source = uIElement as FrameworkElement
+            });
+            adornerContainer.Child = maskControl;
             layer.Add(adornerContainer);
         }
 

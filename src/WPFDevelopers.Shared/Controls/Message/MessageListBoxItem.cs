@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace WPFDevelopers.Controls
 {
@@ -22,5 +25,33 @@ namespace WPFDevelopers.Controls
         public static readonly DependencyProperty IsCenterProperty =
             DependencyProperty.Register("IsCenter", typeof(bool), typeof(MessageListBoxItem), new PropertyMetadata(false));
 
+        public MessageListBoxItem()
+        {
+            Loaded += OnMessageListBoxItem_Loaded;
+        }
+
+        private void OnMessageListBoxItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= OnMessageListBoxItem_Loaded;
+            var item = sender as ListBoxItem;
+            if (item == null) return;
+            var dpd = DependencyPropertyDescriptor
+                .FromProperty(UIElement.OpacityProperty, typeof(UIElement));
+            EventHandler handler = null;
+            handler = (s, args) =>
+            {
+                if (item.Opacity < 0.1)
+                {
+                    dpd.RemoveValueChanged(item, handler);
+                    var parent = ItemsControl.ItemsControlFromItemContainer(item);
+                    if (parent != null)
+                    {
+                        var selectedItem = parent.ItemContainerGenerator.ItemFromContainer(item);
+                        parent.Items.Remove(selectedItem);
+                    }
+                }
+            };
+            dpd.AddValueChanged(item, handler);
+        }
     }
 }

@@ -22,7 +22,7 @@
                         Name="myFrame"
                         Grid.Column="1"
                         NavigationUIVisibility="Hidden" />
-                    <wd:DrawerMenu SelectionChanged="DrawerMenu_SelectionChanged">
+                    <wd:DrawerMenu SelectedItemChanged="DrawerMenu_SelectedItemChanged">
                         <wd:DrawerMenuItem Text="主页">
                             <wd:DrawerMenuItem.Icon>
                                 <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/2.png" />
@@ -57,12 +57,58 @@
                                     Fill="{DynamicResource WD.PlaceholderTextBrush}"
                                     Stretch="Uniform" />
                             </wd:DrawerMenuItem.Icon>
+                            <wd:DrawerMenuItem Text="Bus 1" />
+                            <wd:DrawerMenuItem Text="Bus 2" />
                         </wd:DrawerMenuItem>
                     </wd:DrawerMenu>
                 </Grid>
             </TabItem>
             <TabItem Header="DrawerMenu binding">
-                <wd:DrawerMenu ItemsSource="{Binding DrawerMenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}" />
+                <wd:DrawerMenu
+                    IsOpenCommand="{Binding IsOpenCommand, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"
+                    ItemsSource="{Binding DrawerMenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"
+                    SelectionCommand="{Binding SelectionCommand, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}">
+                    <wd:DrawerMenu.OpenIcon>
+                        <Image
+                            Width="30"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Assets/Clear.png"
+                            Stretch="Uniform" />
+                    </wd:DrawerMenu.OpenIcon>
+                    <wd:DrawerMenu.ClosedIcon>
+                        <Path
+                            Width="20"
+                            Data="{StaticResource WD.MenuGeometry}"
+                            Fill="{DynamicResource WD.PrimaryBrush}"
+                            Stretch="Uniform" />
+                    </wd:DrawerMenu.ClosedIcon>
+                </wd:DrawerMenu>
+            </TabItem>
+            <TabItem Header="Binding">
+                <wd:DrawerMenu ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}">
+                    <wd:DrawerMenu.ItemContainerStyle>
+                        <Style BasedOn="{StaticResource WD.DrawerMenuItem}" TargetType="{x:Type wd:DrawerMenuItem}">
+                            <Setter Property="Text" Value="{Binding Text}" />
+                            <Setter Property="Icon" Value="{Binding Icon}" />
+                            <Setter Property="ItemsSource" Value="{Binding Children}" />
+                        </Style>
+                    </wd:DrawerMenu.ItemContainerStyle>
+                    <wd:DrawerMenu.OpenIcon>
+                        <Path
+                            Width="15"
+                            Data="{StaticResource WD.MenuGeometry}"
+                            Fill="{DynamicResource WD.PrimaryBrush}"
+                            Stretch="Uniform" />
+                    </wd:DrawerMenu.OpenIcon>
+                    <wd:DrawerMenu.ClosedIcon>
+                        <Path
+                            Width="15"
+                            Data="{StaticResource WD.MenuGeometry}"
+                            Fill="{DynamicResource WD.PrimaryBrush}"
+                            Stretch="Uniform" />
+                    </wd:DrawerMenu.ClosedIcon>
+                </wd:DrawerMenu>
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>

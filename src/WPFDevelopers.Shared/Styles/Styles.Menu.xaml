@@ -51,17 +51,34 @@
     <ControlTemplate x:Key="WD.TopLevelHeaderTemplateKey" TargetType="{x:Type MenuItem}">
         <Border
             x:Name="Border"
+            Padding="{TemplateBinding Padding}"
             Background="{TemplateBinding Background}"
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="1,1,1,0"
             SnapsToDevicePixels="True">
             <controls:SmallPanel Background="Transparent">
-                <ContentPresenter
-                    x:Name="PART_ContentPresenter"
-                    Margin="{TemplateBinding Padding}"
-                    VerticalAlignment="Center"
-                    ContentSource="Header"
-                    RecognizesAccessKey="True" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition x:Name="Column2" Width="4" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter
+                        x:Name="Icon"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                </Grid>
                 <Popup
                     x:Name="Popup"
                     AllowsTransparency="True"
@@ -94,6 +111,10 @@
             </controls:SmallPanel>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="Icon" Value="{x:Null}">
+                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="Column2" Property="Width" Value="0" />
+            </Trigger>
             <Trigger Property="IsSuspendingPopupAnimation" Value="True">
                 <Setter TargetName="Popup" Property="PopupAnimation" Value="None" />
             </Trigger>
@@ -104,25 +125,46 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
                 <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
             </Trigger>
-
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <!--  TopLevelItem  -->
     <ControlTemplate x:Key="WD.TopLevelItemTemplateKey" TargetType="{x:Type MenuItem}">
         <Border
             x:Name="Border"
+            Padding="{TemplateBinding Padding}"
             Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="1,1,1,0"
             SnapsToDevicePixels="True">
             <controls:SmallPanel Background="Transparent">
-                <ContentPresenter
-                    x:Name="PART_ContentPresenter"
-                    Margin="{TemplateBinding Padding}"
-                    VerticalAlignment="Center"
-                    ContentSource="Header"
-                    RecognizesAccessKey="True" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition x:Name="Column2" Width="4" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter
+                        x:Name="Icon"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    <ContentPresenter
+                        x:Name="PART_ContentPresenter"
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                </Grid>
             </controls:SmallPanel>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="Icon" Value="{x:Null}">
+                <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="Column2" Property="Width" Value="0" />
+            </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
                 <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
             </Trigger>
@@ -287,9 +329,6 @@
         x:Key="WD.DefaultMenuItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type MenuItem}">
-        <Setter Property="FontSize" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontSize}" />
-        <Setter Property="FontWeight" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontWeight}" />
-        <Setter Property="FontFamily" Value="{Binding RelativeSource={RelativeSource AncestorType=Menu}, Path=FontFamily}" />
         <Setter Property="Padding" Value="{Binding Padding, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}" />
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
@@ -298,6 +337,7 @@
                 <Setter Property="Grid.IsSharedSizeScope" Value="True" />
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
+                <Setter Property="MinWidth" Value="44" />
                 <Setter Property="Template" Value="{StaticResource WD.TopLevelItemTemplateKey}" />
             </Trigger>
             <Trigger Property="Role" Value="SubmenuHeader">

@@ -1,0 +1,136 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.AllPathIconExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <wd:WDScrollViewer Grid.Column="1" Width="200">
+                <StackPanel>
+                    <wd:ColorPicker
+                        x:Name="PART_ColorPicker"
+                        Width="200"
+                        SelectedColor="{DynamicResource WD.PrimaryTextColor}" />
+                    <TextBlock Margin="4,0" Text="PathIcon:" />
+                    <wd:SmallPanel Margin="4,0">
+                        <TextBox
+                            Height="60"
+                            Text="{Binding PathIconText}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" />
+                        <Button
+                            x:Name="PART_CopyButton"
+                            Margin="0,0,2,2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Click="BtnCopy_Click"
+                            ToolTip="Copy">
+                            <wd:PathIcon Kind="Copy" />
+                        </Button>
+                    </wd:SmallPanel>
+                    <TextBlock Margin="4,0" Text="Geometry:" />
+                    <wd:SmallPanel Margin="4,0">
+                        <TextBox
+                            Height="60"
+                            Text="{Binding Data}"
+                            TextAlignment="Left"
+                            TextWrapping="Wrap" />
+                        <Button
+                            Margin="0,0,2,2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Click="BtnCopyGeometry_Click"
+                            ToolTip="Copy">
+                            <wd:PathIcon Kind="Copy" />
+                        </Button>
+                    </wd:SmallPanel>
+                </StackPanel>
+            </wd:WDScrollViewer>
+
+            <ListBox
+                Padding="0"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                BorderThickness="0"
+                ItemsSource="{Binding AllPathIcon}"
+                SelectionChanged="OnPathIconSelectionChanged"
+                SelectionMode="Single">
+                <ListBox.Template>
+                    <ControlTemplate>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ScrollViewer
+                                x:Name="ScrollViewer"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                IsTabStop="False">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ListBox.Template>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <wd:SmallPanel Width="100" Height="100">
+                            <wd:PathIcon
+                                Width="20"
+                                Height="20"
+                                Kind="{Binding .}">
+                                <wd:PathIcon.Foreground>
+                                    <SolidColorBrush Color="{Binding SelectedColor, ElementName=PART_ColorPicker}" />
+                                </wd:PathIcon.Foreground>
+                            </wd:PathIcon>
+                            <!--<Button
+                                x:Name="PART_CopyButton"
+                                Margin="8,2.5"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                ToolTip="Copy"
+                                Visibility="Collapsed">
+                                <wd:PathIcon Kind="Copy" />
+                            </Button>-->
+                            <TextBlock
+                                Margin="2,0,6,6"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Text="{Binding .}"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTip="{Binding .}" />
+                        </wd:SmallPanel>
+                        <!--<DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" Value="True">
+                                <Setter TargetName="PART_CopyButton" Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>-->
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <wd:VirtualizingWrapPanel ItemHeight="100" ItemWidth="100" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemContainerStyle>
+                    <Style BasedOn="{StaticResource WD.DefaultListBoxItem}" TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="BorderThickness" Value=".5" />
+                        <Setter Property="Margin" Value="2" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

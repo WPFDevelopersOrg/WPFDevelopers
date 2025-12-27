@@ -28,6 +28,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawing\DrawingPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\StreamerLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\Theme.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeItem.cs" />
@@ -62,6 +64,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AcrylicBlurWindowExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>AcrylicBlurWindowExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AllPathIconExample.xaml.cs">
+      <DependentUpon>AllPathIconExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml.cs">
       <DependentUpon>AnimationGridExample.xaml</DependentUpon>
@@ -346,11 +351,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\HighTitleBarWindow.xaml.cs">
       <DependentUpon>HighTitleBarWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoChromeWindow.xaml.cs">
-      <DependentUpon>NoChromeWindow.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\ToolWindow.xaml.cs">
+      <DependentUpon>ToolWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoneNoChromeWindow.xaml.cs">
-      <DependentUpon>NoneNoChromeWindow.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoneTitleBarWindow.xaml.cs">
+      <DependentUpon>NoneTitleBarWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NotifyIconExample.xaml.cs">
       <DependentUpon>NotifyIconExample.xaml</DependentUpon>
@@ -567,6 +572,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -618,6 +627,10 @@
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AcrylicBlurWindowExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AllPathIconExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationGridExample.xaml">
       <SubType>Designer</SubType>
@@ -936,11 +949,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoChromeWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\ToolWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoneNoChromeWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Window\NoneTitleBarWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -12,32 +12,28 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="ToggleButton">
         <Setter Property="IsChecked" Value="False" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <controls:SmallPanel Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </controls:SmallPanel>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.8" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Opacity" Value="0.8" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type ToggleButton}">
-                            <Border
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{StaticResource WD.BlackBrush}"
-                                BorderThickness="1">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-        </Style.Triggers>
     </Style>
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
@@ -46,7 +42,7 @@
                     <Border>
                         <Rectangle
                             Margin="2"
-                            Stroke="{StaticResource WD.ButtonFocusVisualColor}"
+                            Stroke="{StaticResource controls.ButtonFocusVisualColor}"
                             StrokeDashArray="1 2"
                             StrokeThickness="1" />
                     </Border>
@@ -57,118 +53,171 @@
 
     <Style
         x:Key="WD.DrawerMenuItemButtonStyle"
-        BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="Button">
+        BasedOn="{StaticResource WD.BaseButton}"
+        TargetType="ToggleButton">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
-        <Setter Property="MinHeight" Value="23" />
-        <Setter Property="Height" Value="44" />
-        <Setter Property="MinWidth" Value="75" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="ToggleButton">
                     <Border
-                        x:Name="Border"
+                        x:Name="PART_Border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="0"
-                        CornerRadius="0">
-                        <ContentPresenter
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            RecognizesAccessKey="True" />
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <controls:SmallPanel>
+                            <Rectangle
+                                x:Name="PART_Rectangle"
+                                Fill="{DynamicResource WD.PrimaryBrush}"
+                                Opacity=".2"
+                                Visibility="Collapsed" />
+                            <ContentPresenter
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RecognizesAccessKey="True" />
+                        </controls:SmallPanel>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="Transparent " />
-                        </Trigger>
-                        <Trigger Property="IsDefaulted" Value="True">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
-                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="Transparent" />
-                            <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
-                            <Setter Property="Foreground" Value="Transparent" />
+                            <Setter TargetName="PART_Rectangle" Property="Visibility" Value="Visible" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style
         x:Key="WD.DrawerMenuItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="controls:DrawerMenuItem">
+        TargetType="{x:Type controls:DrawerMenuItem}">
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=MenuItemForeground}" />
-        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource WD.PrimaryBrush}" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="20,0,0,0" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:DrawerMenuItem">
-                    <Button
-                        x:Name="PART_Button"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"
-                        Command="{TemplateBinding SelectionCommand}"
-                        Style="{StaticResource WD.DrawerMenuItemButtonStyle}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3" />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.ColumnSpan="2">
-                                <Grid Width="300">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="45" />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <ContentPresenter
-                                        Grid.Column="0"
-                                        Margin="10,5,5,5"
-                                        ContentSource="Icon" />
-                                    <TextBlock
-                                        Grid.Column="1"
-                                        Margin="10,0,0,0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        FontSize="{StaticResource WD.TitleFontSize}"
-                                        Foreground="{TemplateBinding Foreground}"
-                                        Text="{TemplateBinding Text}"
-                                        TextWrapping="Wrap" />
-                                </Grid>
-                            </Grid>
+                <ControlTemplate TargetType="{x:Type controls:DrawerMenuItem}">
+                    <controls:WDBorder
+                        x:Name="PART_Border"
+                        Margin="{TemplateBinding Margin}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True"
+                        ToolTip="{TemplateBinding Text}">
+                        <controls:SmallPanel Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}">
+                            <StackPanel>
+                                <ToggleButton
+                                    x:Name="PART_ToggleButton"
+                                    Height="{TemplateBinding ItemHeight}"
+                                    ClickMode="Press"
+                                    Focusable="False"
+                                    IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Style="{StaticResource WD.DrawerMenuItemButtonStyle}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" MinWidth="45" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="30" />
+                                        </Grid.ColumnDefinitions>
+                                        <ContentPresenter
+                                            Grid.Column="0"
+                                            Margin="10,5,5,5"
+                                            ContentSource="Icon" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Margin="10,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            Text="{TemplateBinding Text}"
+                                            TextTrimming="CharacterEllipsis" />
+                                        <Path
+                                            x:Name="PART_Arrow"
+                                            Grid.Column="2"
+                                            Width="10"
+                                            Height="6"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Data="{StaticResource WD.ChevronDownGeometry}"
+                                            RenderTransformOrigin=".5,.5"
+                                            Stretch="Uniform">
+                                            <Path.Fill>
+                                                <SolidColorBrush Color="{DynamicResource WD.PlaceholderTextColor}" />
+                                            </Path.Fill>
+                                            <Path.RenderTransform>
+                                                <RotateTransform Angle="90" />
+                                            </Path.RenderTransform>
+                                            <Path.Visibility>
+                                                <MultiBinding Converter="{StaticResource WD.MultiBoolToVisibilityConverter}">
+                                                    <Binding Path="HasItems" RelativeSource="{RelativeSource AncestorType=controls:DrawerMenuItem}" />
+                                                    <Binding Path="IsOpen" RelativeSource="{RelativeSource AncestorType=controls:DrawerMenu}" />
+                                                </MultiBinding>
+                                            </Path.Visibility>
+                                        </Path>
+                                    </Grid>
+                                </ToggleButton>
+                                <Border
+                                    x:Name="PART_ItemsHost"
+                                    RenderTransformOrigin=".5,0"
+                                    Visibility="Collapsed">
+                                    <Border.RenderTransform>
+                                        <ScaleTransform ScaleY="0" />
+                                    </Border.RenderTransform>
+                                    <ItemsPresenter x:Name="ItemsHost" />
+                                </Border>
+                            </StackPanel>
                             <Rectangle
                                 x:Name="PART_ItemSelectedIndicator"
-                                Grid.Column="0"
-                                Fill="{TemplateBinding SelectionIndicatorColor}"
+                                Width="3"
+                                HorizontalAlignment="Left"
+                                Fill="{DynamicResource WD.PrimaryBrush}"
                                 Visibility="Collapsed" />
-                        </Grid>
-                    </Button>
+                        </controls:SmallPanel>
+                    </controls:WDBorder>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Button" Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
                             <Setter TargetName="PART_ItemSelectedIndicator" Property="Visibility" Value="Visible" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
-                        </Trigger>
-                        <Trigger SourceName="PART_Button" Property="IsPressed" Value="True">
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter TargetName="PART_ItemsHost" Property="Visibility" Value="Visible" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="ExpandStoryboard">
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_ItemsHost"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="1"
+                                            Duration="00:00:.2" />
+                                        <DoubleAnimation
+                                            EasingFunction="{StaticResource WD.ExponentialEaseOut}"
+                                            Storyboard.TargetName="PART_Arrow"
+                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                            To="0"
+                                            Duration="00:00:.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
-                                    <Storyboard>
-                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsSelected">
-                                            <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="True" />
-                                        </BooleanAnimationUsingKeyFrames>
+                                    <Storyboard x:Name="CollapseStoryboard">
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_ItemsHost"
+                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                                            To="0"
+                                            Duration="00:00:.2" />
+                                        <DoubleAnimation
+                                            EasingFunction="{StaticResource WD.ExponentialEaseOut}"
+                                            Storyboard.TargetName="PART_Arrow"
+                                            Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                            To="90"
+                                            Duration="00:00:.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -182,58 +231,95 @@
     <Style
         x:Key="WD.DrawerMenu"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="controls:DrawerMenu">
+        TargetType="{x:Type controls:DrawerMenu}">
         <Setter Property="Width" Value="50" />
-        <Setter Property="IsOpen" Value="True" />
-        <Setter Property="MenuIconColor" Value="{DynamicResource WD.PrimaryBrush}" />
-        <Setter Property="SelectionIndicatorColor" Value="{DynamicResource WD.PrimaryBrush}" />
-        <Setter Property="MenuItemForeground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
-        <Setter Property="SelectedIndex" Value="0" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="OpenIcon">
+            <Setter.Value>
+                <Path
+                    Width="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Data="{StaticResource WD.ReturnGeometry}"
+                    Fill="{DynamicResource WD.PrimaryBrush}"
+                    Stretch="Uniform" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ClosedIcon">
+            <Setter.Value>
+                <Path
+                    Width="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Data="{StaticResource WD.MenuGeometry}"
+                    Fill="{DynamicResource WD.PrimaryBrush}"
+                    Stretch="Uniform" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:DrawerMenu">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <ToggleButton
-                            x:Name="PART_ToggleButton"
-                            Width="50"
-                            Height="40"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="#333"
-                            IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsOpen}"
-                            Style="{StaticResource WD.DrawerMenuToggleButton}">
-                            <Path
-                                x:Name="PART_Path"
-                                Width="20"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Data="{StaticResource WD.MenuGeometry}"
-                                Fill="{TemplateBinding MenuIconColor}"
-                                Stretch="Uniform" />
-                        </ToggleButton>
-                        <ItemsPresenter
-                            x:Name="ItemsPresenter"
-                            Grid.Row="1"
-                            KeyboardNavigation.DirectionalNavigation="Contained"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                    </Grid>
+                <ControlTemplate TargetType="{x:Type controls:DrawerMenu}">
+                    <controls:WDBorder
+                        Margin="{TemplateBinding Margin}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True">
+                        <Grid Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <ToggleButton
+                                x:Name="PART_ToggleButton"
+                                Height="40"
+                                Padding="16,0,0,0"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsOpen}"
+                                Style="{StaticResource WD.DrawerMenuToggleButton}">
+                                <ContentPresenter
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Content="{TemplateBinding OpenIcon}" />
+                            </ToggleButton>
+                            <controls:WDScrollViewer
+                                x:Name="PART_ScrollViewer"
+                                Grid.Row="1"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                Focusable="False"
+                                HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                IsScrollAnimation="{Binding Path=(helpers:TreeViewHelper.IsScrollAnimation), RelativeSource={RelativeSource TemplatedParent}}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </controls:WDScrollViewer>
+                        </Grid>
+                    </controls:WDBorder>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsOpen" Value="False">
-                            <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.ReturnGeometry}" />
+                            <Setter TargetName="PART_ToggleButton" Property="Content" Value="{Binding ClosedIcon, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
-            <Trigger Property="IsOpen" Value="False">
+            <Trigger Property="IsOpen" Value="True">
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>

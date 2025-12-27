@@ -24,7 +24,7 @@
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="Storyboard_Close" DesiredFrameRate="30">
                             <DoubleAnimation
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                 From="1"
                                 To="0"
@@ -38,20 +38,20 @@
                         </Storyboard>
                         <Storyboard x:Key="Storyboard_Loaded" DesiredFrameRate="30">
                             <DoubleAnimation
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                 From="0"
                                 To="1"
                                 Duration="0:0:0.2" />
                             <DoubleAnimation
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="Opacity"
                                 From=".1"
                                 To="1"
                                 Duration="0:0:0.2" />
                             <DoubleAnimation
                                 BeginTime="0:0:10"
-                                Storyboard.TargetName="PART_SmallPanel"
+                                Storyboard.TargetName="PART_Grid"
                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
                                 From="1"
                                 To="0"
@@ -70,13 +70,13 @@
                                 Duration="0:0:10" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <controls:SmallPanel
-                        x:Name="PART_SmallPanel"
+                    <Grid
+                        x:Name="PART_Grid"
                         CacheMode="BitmapCache"
                         RenderTransformOrigin=".5,0">
-                        <controls:SmallPanel.RenderTransform>
+                        <Grid.RenderTransform>
                             <ScaleTransform />
-                        </controls:SmallPanel.RenderTransform>
+                        </Grid.RenderTransform>
                         <Border
                             x:Name="PART_Border"
                             Background="{TemplateBinding Background}"
@@ -137,7 +137,7 @@
                                 <ScaleTransform ScaleX="1" />
                             </Rectangle.RenderTransform>
                         </Rectangle>
-                    </controls:SmallPanel>
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="MessageType" Value="Warning">
                             <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.WarningGeometry}" />

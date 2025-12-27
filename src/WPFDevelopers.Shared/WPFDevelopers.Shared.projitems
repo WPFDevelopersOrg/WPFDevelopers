@@ -30,7 +30,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\ProgressLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleWrapPanel.cs" />
@@ -54,8 +56,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Message\MessageListBoxItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericBox\NumericBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PackIconKind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PathIcon\PathIcon.cs" />
@@ -63,8 +63,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ColorTypeToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\CornerRadiusToSurroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FalseToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\GridLinesBorderBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\LastColumnGridLineVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\MultiBoolToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\NullToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DirectionalThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\OSVersionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SelectorHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TreeViewHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\NumericBoxClickEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\HalfValueConverter.cs" />
@@ -490,10 +498,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\MultiSelectComboBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\MultiSelectSearchComboBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
