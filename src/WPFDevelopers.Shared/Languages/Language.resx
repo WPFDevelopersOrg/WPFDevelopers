@@ -166,4 +166,10 @@
   <data name="SelectAll" xml:space="preserve">
     <value>全选</value>
   </data>
+  <data name="Mosaic" xml:space="preserve">
+    <value>马赛克</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
 </root>

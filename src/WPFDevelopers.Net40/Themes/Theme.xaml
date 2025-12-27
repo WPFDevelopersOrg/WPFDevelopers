@@ -5344,7 +5344,7 @@
 									<RadioButton x:Name="PART_InkRadioButton" Margin="4,0" Style="{StaticResource WD.PathRadioButton}" ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
 										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextBrush}" Kind="Pencil" />
 									</RadioButton>
-									<RadioButton x:Name="PART_MosaicRadioButton" Margin="4,0" Style="{StaticResource WD.PathRadioButton}" ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
+									<RadioButton x:Name="PART_MosaicRadioButton" Margin="4,0" Style="{StaticResource WD.PathRadioButton}" ToolTip="{Binding [Mosaic], Source={x:Static resx:LanguageManager.Instance}}">
 										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextBrush}" Kind="Mosaic" />
 									</RadioButton>
 									<RadioButton x:Name="PART_TextRadioButton" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="{Binding [Text], Source={x:Static resx:LanguageManager.Instance}}">

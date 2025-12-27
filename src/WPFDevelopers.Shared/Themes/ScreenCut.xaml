@@ -124,7 +124,7 @@
                                         x:Name="PART_MosaicRadioButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathRadioButton}"
-                                        ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
+                                        ToolTip="{Binding [Mosaic], Source={x:Static resx:LanguageManager.Instance}}">
                                         <controls:PathIcon
                                             Width="18"
                                             Height="18"
