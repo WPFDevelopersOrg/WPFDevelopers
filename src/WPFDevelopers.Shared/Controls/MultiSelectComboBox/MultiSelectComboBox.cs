@@ -318,7 +318,6 @@ namespace WPFDevelopers.Controls
                 AddHandler(Controls.Tag.CloseEvent, new RoutedEventHandler(Tags_Close));
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
             }
-            UpdateText();
             SyncListViewViews();
             Loaded += OnMultiSelectComboBox_Loaded;
         }
@@ -335,11 +334,12 @@ namespace WPFDevelopers.Controls
 
         private void OnMultiSelectComboBox_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (Visibility == Visibility.Visible)
+            if (Visibility == Visibility.Visible && IsLoaded && IsVisible)
             {
                 InvalidateMeasure();
                 InvalidateArrange();
                 UpdateLayout();
+                UpdateText();
             }
         }
 
@@ -752,8 +752,6 @@ namespace WPFDevelopers.Controls
                     }
                     else
                         tag.Content = item;
-                    //var binding = new Binding(bindingPath) { Source = item };
-                    //tag.SetBinding(ContentControl.ContentProperty, binding);
                 }
                 else
                 {
@@ -802,7 +800,7 @@ namespace WPFDevelopers.Controls
             if (ctrl == null) return;
             if (e.OldValue is INotifyCollectionChanged oldCollection)
                 oldCollection.CollectionChanged -= ctrl.OnSelectedItemsExtCollectionChanged;
-            if (e.NewValue != null)
+            if (e.NewValue != null && ctrl.ItemsSource != null)
             {
                 if (e.NewValue is INotifyCollectionChanged newCollection)
                 {
@@ -828,7 +826,8 @@ namespace WPFDevelopers.Controls
 
                 }
                 ctrl._isUpdating = false;
-                ctrl.UpdateText();
+                if (ctrl.IsLoaded)
+                    ctrl.UpdateText();
             }
         }
 
