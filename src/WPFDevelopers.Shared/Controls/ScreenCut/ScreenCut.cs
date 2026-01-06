@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WPFDevelopers.Helpers;
 using Brush = System.Windows.Media.Brush;
 using Brushes = System.Windows.Media.Brushes;
@@ -203,12 +205,15 @@ namespace WPFDevelopers.Controls
 
         public ScreenCut(int index)
         {
+            Width = 0;
+            Height = 0;
             _screenIndex = index;
             var screen = Screen.AllScreens[_screenIndex];
             Left = screen.WorkingArea.Left;
             ShowInTaskbar = false;
             WindowStyle = WindowStyle.None;
             WindowState = WindowState.Normal;
+            Opacity = 0;
             _screenDPI = GetScreenDPI(_screenIndex);
         }
         static ScreenCut()
@@ -288,8 +293,10 @@ namespace WPFDevelopers.Controls
        
         private void ScreenCut_Loaded(object sender, RoutedEventArgs e)
         {
+            Loaded -= ScreenCut_Loaded;
             _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
             TakeSnapshot();
+            Opacity = 1;
         }
 
         private ScreenDPI GetScreenDPI(int screenIndex)
@@ -307,7 +314,6 @@ namespace WPFDevelopers.Controls
             Top = Screen.AllScreens[_screenIndex].Bounds.Top;
             Width = Screen.AllScreens[_screenIndex].Bounds.Width / _screenDPI.scaleX;
             Height = Screen.AllScreens[_screenIndex].Bounds.Height / _screenDPI.scaleY;
-            WindowState = WindowState.Maximized;
             _canvas.Width = Width;
             _canvas.Height = Height;
             _canvas.SetValue(LeftProperty, Left);
