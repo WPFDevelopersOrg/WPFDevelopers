@@ -28,21 +28,22 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            Dispatcher.Invoke(new Action(delegate
+            if (IsChecked)
             {
-                ScreenCapture screenCapturer;
-                if (IsChecked)
+                App.CurrentMainWindow.WindowState = WindowState.Minimized;
+            }
+            ThreadPool.QueueUserWorkItem(state =>
+            {
+                Thread.Sleep(350); 
+                Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    App.CurrentMainWindow.WindowState = WindowState.Minimized;
-                }
-                screenCapturer = new ScreenCapture();
-                screenCapturer.SnapCompleted += ScreenCapturer_SnapCompleted;
-                screenCapturer.SnapCanceled += ScreenCapturer_SnapCanceled;
-                screenCapturer.SnapSaveFullPath += ScreenCapturer_SnapSaveFullPath;
-                screenCapturer.Capture();
-            }));
-
+                    ScreenCapture screenCapturer = new ScreenCapture();
+                    screenCapturer.SnapCompleted += ScreenCapturer_SnapCompleted;
+                    screenCapturer.SnapCanceled += ScreenCapturer_SnapCanceled;
+                    screenCapturer.SnapSaveFullPath += ScreenCapturer_SnapSaveFullPath;
+                    screenCapturer.Capture();
+                }));
+            });
         }
 
         private void ScreenCapturer_SnapSaveFullPath(string text)
