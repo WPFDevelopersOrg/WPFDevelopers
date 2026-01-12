@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -234,12 +236,95 @@ namespace WPFDevelopers.Controls
                     _isUpdating = true;
                     try
                     {
-                        if (SelectedItemsExt is IList list)
+                        //if (SelectedItemsExt is IList list)
+                        //{
+                        //    //if (list.Count > 0)
+                        //    //    list.Clear();
+                        //    //foreach (var itme in SelectedItems.Cast<object>())
+                        //    //{
+                        //    //    list.Add(itme);
+                        //    //}
+
+
+                        //    //var items = SelectedItems.Cast<object>().ToList();
+                        //    //int count = items.Count;
+
+                        //    //if (count == 0)
+                        //    //{
+                        //    //    list.Clear();
+                        //    //    return;
+                        //    //}
+
+                        //    //if (list is INotifyCollectionChanged observableList)
+                        //    //{
+                        //    //    observableList.CollectionChanged -= OnSelectedItemsExtCollectionChanged;
+                        //    //    try
+                        //    //    {
+                        //    //        list.Clear();
+
+                        //    //        for (int i = 0; i < count - 1; i++)
+                        //    //        {
+                        //    //            list.Add(items[i]);
+                        //    //        }
+                        //    //    }
+                        //    //    finally
+                        //    //    {
+                        //    //        observableList.CollectionChanged += OnSelectedItemsExtCollectionChanged;
+                        //    //        if (count > 0)
+                        //    //        {
+                        //    //            list.Add(items[count - 1]);
+                        //    //        }
+                        //    //    }
+                        //    //}
+                        //    //else
+                        //    //{
+                        //    //    list.Clear();
+                        //    //    foreach (var itm in items)
+                        //    //    {
+                        //    //        list.Add(itm);
+                        //    //    }
+                        //    //}
+
+
+                        //}
+
+                        if (SelectedItemsExt is IList list && SelectedItemsExt is INotifyCollectionChanged notifier)
                         {
-                            if (list.Count > 0)
+                            var eventField = notifier.GetType().GetField("CollectionChanged",
+                                BindingFlags.NonPublic | BindingFlags.Instance);
+
+                            var originalHandler = eventField?.GetValue(notifier) as NotifyCollectionChangedEventHandler;
+
+                            if (eventField != null)
+                            {
+                                eventField.SetValue(notifier, null);
+                            }
+
+                            try
+                            {
                                 list.Clear();
-                            foreach (var itm in SelectedItems.Cast<object>())
-                                list.Add(itm);
+                                foreach (var item in SelectedItems.Cast<object>())
+                                {
+                                    list.Add(item);
+                                }
+                            }
+                            finally
+                            {
+                                if (eventField != null && originalHandler != null)
+                                {
+                                    eventField.SetValue(notifier, originalHandler);
+                                    var args = new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset);
+                                    originalHandler(notifier, args);
+                                }
+                            }
+                        }
+                        else if (SelectedItemsExt is IList list2)
+                        {
+                            list2.Clear();
+                            foreach (var item in SelectedItems.Cast<object>())
+                            {
+                                list2.Add(item);
+                            }
                         }
                     }
                     finally
@@ -807,9 +892,10 @@ namespace WPFDevelopers.Controls
                     ctrl.SelectedItemsExt = (IList)newCollection;
                     newCollection.CollectionChanged += ctrl.OnSelectedItemsExtCollectionChanged;
                 }
-                var collection = e.NewValue as IList;
-                if (collection.Count <= 0) return;
                 ctrl.SelectedItems.Clear();
+                var collection = e.NewValue as IList;
+                if (collection.Count <= 0)
+                    return;
                 ctrl._isUpdating = true;
                 foreach (var item in collection)
                 {
