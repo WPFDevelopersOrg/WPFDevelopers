@@ -362,25 +362,31 @@ namespace WPFDevelopers.Controls
 
         private void OnEndCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
+            OnCalendar_PreviewMouseUp(sender, e, false);
+        }
+
+        private void OnStartCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            OnCalendar_PreviewMouseUp(sender, e, true);
+        }
+
+        private void OnCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e, bool isStartCalendar)
+        {
             if (_isHandlingSelectionChange)
                 return;
             _isHandlingSelectionChange = true;
             try
             {
-                var calendar = sender as Calendar;
                 if (e.OriginalSource is FrameworkElement fe)
                 {
                     var dayButton = ControlsHelper.FindParent<CalendarDayButton>(fe);
                     if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
-                        if (!calendar.SelectedDates.Contains(clickedDate))
-                        {
-                            var dateTime = clickedDate + _endTimePicker.SelectedTime.Value.TimeOfDay;
-                            _startCalendar.SelectedDates.Clear();
-                            ResetDate(dateTime);
-                        }
+                    {
+                        HandleDateSelection(clickedDate, isStartCalendar);
+                    }
                 }
-
                 SetSelectedDates();
+                SetDate();
             }
             finally
             {
@@ -388,32 +394,61 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private void OnStartCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void HandleDateSelection(DateTime clickedDate, bool isStartCalendar)
         {
-            if (_isHandlingSelectionChange)
-                return;
-            _isHandlingSelectionChange = true;
-            try
-            {
-                var calendar = sender as Calendar;
-                if (e.OriginalSource is FrameworkElement fe)
-                {
-                    var dayButton = ControlsHelper.FindParent<CalendarDayButton>(fe);
-                    if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
-                        if (!calendar.SelectedDates.Contains(clickedDate))
-                        {
-                            var timeOfDay = _startTimePicker.SelectedTime.HasValue ? _startTimePicker.SelectedTime.Value.TimeOfDay : TimeSpan.Zero;
-                            var dateTime = clickedDate + timeOfDay;
-                            _endCalendar.SelectedDates.Clear();
-                            ResetDate(dateTime);
-                        }
-                }
+            TimeSpan startTime = _startTimePicker?.SelectedTime?.TimeOfDay ?? TimeSpan.Zero;
+            TimeSpan endTime = _endTimePicker?.SelectedTime?.TimeOfDay ?? TimeSpan.Zero;
 
-                SetSelectedDates();
-            }
-            finally
+            if (!_startDate.HasValue)
             {
-                _isHandlingSelectionChange = false;
+                _startDate = clickedDate + startTime;
+
+                if (isStartCalendar)
+                    _endCalendar.SelectedDates.Clear();
+                else
+                    _startCalendar.SelectedDate = clickedDate;
+            }
+            else if (!_endDate.HasValue)
+            {
+                DateTime clickedDateTime;
+                DateTime otherDateTime;
+
+                if (clickedDate < _startDate.Value.Date)
+                {
+                    clickedDateTime = clickedDate + startTime; 
+                    otherDateTime = _startDate.Value.Date + endTime; 
+
+                    _startDate = clickedDateTime;
+                    _endDate = otherDateTime;
+
+                    if (!isStartCalendar)
+                        _startCalendar.SelectedDate = clickedDate;
+                    else if (_startDate.Value.Date != clickedDate)
+                        _endCalendar.SelectedDate = _startDate.Value.Date;
+                }
+                else
+                {
+                    clickedDateTime = clickedDate + endTime; 
+                    _endDate = clickedDateTime;
+
+                    if (isStartCalendar)
+                        _endCalendar.SelectedDate = clickedDate;
+                }
+            }
+            else
+            {
+                if (isStartCalendar)
+                {
+                    _startDate = clickedDate + startTime;
+                    _endDate = null;
+                    _endCalendar.SelectedDates.Clear();
+                }
+                else
+                {
+                    _endDate = clickedDate + endTime;
+                    _startDate = null;
+                    _startCalendar.SelectedDates.Clear();
+                }
             }
         }
 
