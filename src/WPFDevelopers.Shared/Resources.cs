@@ -61,24 +61,10 @@ namespace WPFDevelopers
             _color = GetColorFromResource("Primary");
             ThemeManager.Instance.Resources = this;
             InitializeTheme(Theme,isInit: true);
-            //SetResources(Theme);
         }
-
-        //void SetResources(ThemeType themeType)
-        //{
-        //    if (themeType == ThemeType.Default && IsWindows10OrLater())
-        //    {
-        //        SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
-        //        SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
-        //        ApplyTheme();
-        //        return;
-        //    }
-        //    if (themeType == ThemeType.Default)
-        //        Theme = ThemeType.Light;
-        //}
+       
         protected void InitializeTheme(ThemeType themeType,bool isInit = false)
         {
-            //SetResources(themeType);
             if(!isInit)
             {
                 if (themeType == ThemeType.Default && IsWindows10OrLater())

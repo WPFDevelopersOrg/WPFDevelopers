@@ -186,4 +186,10 @@
   <data name="SelectAll" xml:space="preserve">
     <value>모두선택</value>
   </data>
+  <data name="Mosaic" xml:space="preserve">
+    <value>모자이크</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>갱신</value>
+  </data>
 </root>

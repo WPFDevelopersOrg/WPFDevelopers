@@ -186,4 +186,10 @@
   <data name="SelectAll" xml:space="preserve">
     <value>Select All</value>
   </data>
+  <data name="Mosaic" xml:space="preserve">
+    <value>Mosaic</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
 </root>

@@ -4043,6 +4043,11 @@
 							</shapes:Arc.RenderTransform>
 						</shapes:Arc>
 					</Grid>
+					<ControlTemplate.Triggers>
+						<EventTrigger RoutedEvent="Loaded">
+							<BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
+						</EventTrigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -4071,6 +4076,11 @@
 						</Grid.RenderTransform>
 						<shapes:Arc x:Name="PART_Arc" Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" ArcThickness="{TemplateBinding ArcThickness}" EndAngle="{TemplateBinding Value}" Fill="{TemplateBinding BorderBrush}" StartAngle="0" Stretch="None" StrokeThickness="0" />
 					</Grid>
+					<ControlTemplate.Triggers>
+						<EventTrigger RoutedEvent="Loaded">
+							<BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
+						</EventTrigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -5344,7 +5354,7 @@
 									<RadioButton x:Name="PART_InkRadioButton" Margin="4,0" Style="{StaticResource WD.PathRadioButton}" ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
 										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextBrush}" Kind="Pencil" />
 									</RadioButton>
-									<RadioButton x:Name="PART_MosaicRadioButton" Margin="4,0" Style="{StaticResource WD.PathRadioButton}" ToolTip="{Binding [Ink], Source={x:Static resx:LanguageManager.Instance}}">
+									<RadioButton x:Name="PART_MosaicRadioButton" Margin="4,0" Style="{StaticResource WD.PathRadioButton}" ToolTip="{Binding [Mosaic], Source={x:Static resx:LanguageManager.Instance}}">
 										<controls:PathIcon Width="18" Height="18" Foreground="{DynamicResource WD.RegularTextBrush}" Kind="Mosaic" />
 									</RadioButton>
 									<RadioButton x:Name="PART_TextRadioButton" Margin="4,0" Style="{DynamicResource WD.PathRadioButton}" ToolTip="{Binding [Text], Source={x:Static resx:LanguageManager.Instance}}">
@@ -6050,18 +6060,18 @@
 				<ControlTemplate TargetType="{x:Type controls:MessageListBoxItem}">
 					<ControlTemplate.Resources>
 						<Storyboard x:Key="Storyboard_Close" DesiredFrameRate="30">
-							<DoubleAnimation Storyboard.TargetName="PART_SmallPanel" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.2" />
+							<DoubleAnimation Storyboard.TargetName="PART_Grid" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.2" />
 							<DoubleAnimation BeginTime="0:0:0.2" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0" />
 						</Storyboard>
 						<Storyboard x:Key="Storyboard_Loaded" DesiredFrameRate="30">
-							<DoubleAnimation Storyboard.TargetName="PART_SmallPanel" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0" To="1" Duration="0:0:0.2" />
-							<DoubleAnimation Storyboard.TargetName="PART_SmallPanel" Storyboard.TargetProperty="Opacity" From=".1" To="1" Duration="0:0:0.2" />
-							<DoubleAnimation BeginTime="0:0:10" Storyboard.TargetName="PART_SmallPanel" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.2" />
+							<DoubleAnimation Storyboard.TargetName="PART_Grid" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0" To="1" Duration="0:0:0.2" />
+							<DoubleAnimation Storyboard.TargetName="PART_Grid" Storyboard.TargetProperty="Opacity" From=".1" To="1" Duration="0:0:0.2" />
+							<DoubleAnimation BeginTime="0:0:10" Storyboard.TargetName="PART_Grid" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.2" />
 							<DoubleAnimation BeginTime="0:0:10" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.2" />
 							<DoubleAnimation Storyboard.TargetName="PART_Rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="1" To="0" Duration="0:0:10" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Grid x:Name="PART_SmallPanel" CacheMode="BitmapCache" RenderTransformOrigin=".5,0">
+					<Grid x:Name="PART_Grid" CacheMode="BitmapCache" RenderTransformOrigin=".5,0">
 						<Grid.RenderTransform>
 							<ScaleTransform />
 						</Grid.RenderTransform>
@@ -6766,8 +6776,8 @@
 									<controls:PathIcon Width="10" Height="10" Foreground="{DynamicResource WD.PrimaryTextBrush}" Kind="WindowClose" />
 								</Button>
 							</Grid>
-							<Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" Placement="Bottom" StaysOpen="False" VerticalOffset="2">
-								<controls:SmallPanel x:Name="PART_DropDown" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
+							<Popup x:Name="PART_Popup" MaxWidth="{TemplateBinding FrameworkElement.ActualWidth}" AllowsTransparency="True" Focusable="False" Placement="Bottom" StaysOpen="False" VerticalOffset="2">
+								<controls:SmallPanel x:Name="PART_DropDown" MaxWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Margin="24,2,24,24" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 									<controls:SmallPanel.RenderTransform>
 										<ScaleTransform ScaleY="0" />
 									</controls:SmallPanel.RenderTransform>

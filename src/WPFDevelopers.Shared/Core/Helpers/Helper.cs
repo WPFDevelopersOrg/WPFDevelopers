@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 
@@ -36,7 +38,36 @@ namespace WPFDevelopers
             }
             foreach (FileInfo file in directory.GetFiles())
             {
+                KillProcessUsingFile(file.FullName);
+                Thread.Sleep(500);
                 file.Delete();
+            }
+        }
+
+        public static bool KillProcessUsingFile(string filePath)
+        {
+            try
+            {
+                string fileName = Path.GetFileNameWithoutExtension(filePath);
+
+                foreach (Process process in Process.GetProcesses())
+                {
+                    try
+                    {
+                        if (process.ProcessName.Equals(fileName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            process.Kill();
+                            process.WaitForExit(5000);
+                            return true;
+                        }
+                    }
+                    catch { }
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
             }
         }
 
