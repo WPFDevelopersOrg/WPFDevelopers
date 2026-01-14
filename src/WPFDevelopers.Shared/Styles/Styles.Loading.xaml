@@ -70,83 +70,88 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:DefaultLoading}">
-                    <ControlTemplate.Resources>
-                        <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
-                            <DoubleAnimation
-                                RepeatBehavior="Forever"
-                                Storyboard.TargetName="PART_Grid"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                                To="360"
-                                Duration="0:0:0.784" />
-                            <DoubleAnimationUsingKeyFrames
-                                RepeatBehavior="Forever"
-                                Storyboard.TargetName="PART_Arc"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)">
-                                <SplineDoubleKeyFrame KeyTime="0" Value="0" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:0.666"
-                                    Value="135" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:1.333"
-                                    Value="270" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:1.999"
-                                    Value="405" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:2.666"
-                                    Value="540" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:3.333"
-                                    Value="675" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:3.999"
-                                    Value="810" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:4.666"
-                                    Value="945" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:5.332"
-                                    Value="1080" />
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames
-                                RepeatBehavior="Forever"
-                                Storyboard.TargetName="PART_Arc"
-                                Storyboard.TargetProperty="(shapes:Arc.StartAngle)">
-                                <SplineDoubleKeyFrame KeyTime="0" Value="-5" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:0.666"
-                                    Value="-130" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:1.333"
-                                    Value="-5" />
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames
-                                RepeatBehavior="Forever"
-                                Storyboard.TargetName="PART_Arc"
-                                Storyboard.TargetProperty="(shapes:Arc.EndAngle)">
-                                <SplineDoubleKeyFrame KeyTime="0" Value="5" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:0.666"
-                                    Value="130" />
-                                <SplineDoubleKeyFrame
-                                    KeySpline="0.4,0.0,0.2,1"
-                                    KeyTime="0:0:1.333"
-                                    Value="5" />
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </ControlTemplate.Resources>
                     <Grid x:Name="PART_Grid" RenderTransformOrigin=".5,.5">
+                        <Grid.Resources>
+                            <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="PART_Grid"
+                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                    To="360"
+                                    Duration="0:0:0.784" />
+                                <DoubleAnimationUsingKeyFrames
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="PART_Arc"
+                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)">
+                                    <SplineDoubleKeyFrame KeyTime="0" Value="0" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:0.666"
+                                        Value="135" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:1.333"
+                                        Value="270" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:1.999"
+                                        Value="405" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:2.666"
+                                        Value="540" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:3.333"
+                                        Value="675" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:3.999"
+                                        Value="810" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:4.666"
+                                        Value="945" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:5.332"
+                                        Value="1080" />
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="PART_Arc"
+                                    Storyboard.TargetProperty="(shapes:Arc.StartAngle)">
+                                    <SplineDoubleKeyFrame KeyTime="0" Value="-5" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:0.666"
+                                        Value="-130" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:1.333"
+                                        Value="-5" />
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="PART_Arc"
+                                    Storyboard.TargetProperty="(shapes:Arc.EndAngle)">
+                                    <SplineDoubleKeyFrame KeyTime="0" Value="5" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:0.666"
+                                        Value="130" />
+                                    <SplineDoubleKeyFrame
+                                        KeySpline="0.4,0.0,0.2,1"
+                                        KeyTime="0:0:1.333"
+                                        Value="5" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </Grid.Resources>
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="Grid.Loaded">
+                                <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
+                            </EventTrigger>
+                        </Grid.Triggers>
                         <Grid.RenderTransform>
                             <RotateTransform />
                         </Grid.RenderTransform>
@@ -166,11 +171,7 @@
                             </shapes:Arc.RenderTransform>
                         </shapes:Arc>
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
-                        </EventTrigger>
-                    </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -186,17 +187,22 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ProgressLoading}">
-                    <ControlTemplate.Resources>
-                        <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
-                            <DoubleAnimation
-                                RepeatBehavior="Forever"
-                                Storyboard.TargetName="PART_Grid"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
-                                To="360"
-                                Duration="0:0:0.784" />
-                        </Storyboard>
-                    </ControlTemplate.Resources>
                     <Grid x:Name="PART_Grid" RenderTransformOrigin=".5,.5">
+                        <Grid.Resources>
+                            <Storyboard x:Key="WD.PlayStoryboard" RepeatBehavior="Forever">
+                                <DoubleAnimation
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="PART_Grid"
+                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                    To="360"
+                                    Duration="0:0:0.784" />
+                            </Storyboard>
+                        </Grid.Resources>
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="Grid.Loaded">
+                                <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
+                            </EventTrigger>
+                        </Grid.Triggers>
                         <Grid.RenderTransform>
                             <RotateTransform />
                         </Grid.RenderTransform>
@@ -211,11 +217,7 @@
                             Stretch="None"
                             StrokeThickness="0" />
                     </Grid>
-                    <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard Storyboard="{StaticResource WD.PlayStoryboard}" />
-                        </EventTrigger>
-                    </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
