@@ -7,7 +7,6 @@ using Microsoft.Win32;
 using WPFDevelopers.Helpers;
 #if NET40
 using Microsoft.Windows.Shell;
-using WPFDevelopers.Helpers;
 #else
 using System.Windows.Shell;
 #endif
