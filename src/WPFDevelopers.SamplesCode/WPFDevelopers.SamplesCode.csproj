@@ -1,12 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net40;net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
+		<TargetFrameworks>net40;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;net481;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;net9.0-windows;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<AssemblyName>WPFDevelopers.SamplesCode</AssemblyName>
 		<RootNamespace>WPFDevelopers.SamplesCode</RootNamespace>
 		<BaseOutputPath></BaseOutputPath>
 		<Configurations>Debug;Release;Debug-.NET40;Release-.NET40</Configurations>
 	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net45' Or
+                        '$(TargetFramework)' == 'net451' Or
+                        '$(TargetFramework)' == 'net452' Or
+                        '$(TargetFramework)' == 'net46' Or
+                        '$(TargetFramework)' == 'net461' Or
+                        '$(TargetFramework)' == 'net462' Or
+                        '$(TargetFramework)' == 'net47' Or
+                        '$(TargetFramework)' == 'net471' Or
+                        '$(TargetFramework)' == 'net472' Or
+                        '$(TargetFramework)' == 'net48' Or
+                        '$(TargetFramework)' == 'net481'">
+		<Reference Include="Microsoft.CSharp" />
+	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml.cs" Link="ExampleViews\AboutWindow.xaml.cs" DependentUpon="AboutWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AcrylicBlurWindowExample.xaml.cs" Link="ExampleViews\AcrylicBlurWindowExample.xaml.cs" DependentUpon="AcrylicBlurWindowExample.xaml" />
