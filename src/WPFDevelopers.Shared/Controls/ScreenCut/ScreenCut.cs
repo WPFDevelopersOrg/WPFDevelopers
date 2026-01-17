@@ -213,7 +213,6 @@ namespace WPFDevelopers.Controls
             ShowInTaskbar = false;
             WindowStyle = WindowStyle.None;
             WindowState = WindowState.Normal;
-            Opacity = 0;
             _screenDPI = GetScreenDPI(_screenIndex);
         }
         static ScreenCut()
@@ -283,6 +282,8 @@ namespace WPFDevelopers.Controls
                 _wrapPanel.PreviewMouseDown += WrapPanel_PreviewMouseDown;
             Loaded += ScreenCut_Loaded;
             _controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
+            _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
+            TakeSnapshot();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -294,8 +295,6 @@ namespace WPFDevelopers.Controls
         private void ScreenCut_Loaded(object sender, RoutedEventArgs e)
         {
             Loaded -= ScreenCut_Loaded;
-            _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
-            TakeSnapshot();
             Opacity = 1;
         }
 
