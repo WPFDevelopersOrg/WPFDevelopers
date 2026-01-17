@@ -18,6 +18,9 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = EndTextBoxTemplateName, Type = typeof(DatePickerTextBox))]
     [TemplatePart(Name = StartTimePickerTemplateName, Type = typeof(TimePicker))]
     [TemplatePart(Name = EndTimePickerTemplateName, Type = typeof(TimePicker))]
+    [TemplatePart(Name = OKButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = CancelTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = CloseTemplateName, Type = typeof(Button))]
     public class DateRangePicker : Control
     {
         private const string PopupTemplateName = "PART_Popup";
@@ -27,6 +30,9 @@ namespace WPFDevelopers.Controls
         private const string EndTextBoxTemplateName = "PART_EndTextBox";
         private const string StartTimePickerTemplateName = "PART_StartTimePicker";
         private const string EndTimePickerTemplateName = "PART_EndTimePicker";
+        private const string OKButtonTemplateName = "PART_ButtonOK";
+        private const string CancelTemplateName = "PART_ButtonCancel";
+        private const string CloseTemplateName = "PART_CloseButton";
 
         public static readonly DependencyProperty StartWatermarkProperty =
             DependencyProperty.Register("StartWatermark",
@@ -79,7 +85,6 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty HasTimeFormatProperty = HasTimeFormatPropertyKey.DependencyProperty;
 
-        private int _clickCount;
         private HwndSource _hwndSource;
         private bool _isHandlingSelectionChange;
         private Popup _popup;
@@ -89,6 +94,9 @@ namespace WPFDevelopers.Controls
         private DatePickerTextBox _startTextBox, _endTextBox;
         private Window _window;
         private TimePicker _startTimePicker, _endTimePicker;
+        private Button _oKButton, _cancelButton,_closeButton;
+        private DateTime? _backupStartDate;
+        private DateTime? _backupEndDate;
 
         static DateRangePicker()
         {
@@ -313,6 +321,100 @@ namespace WPFDevelopers.Controls
             if (_endTimePicker != null)
                 _endTimePicker.SelectedTimeChanged += OnEndTimePicker_SelectedTimeChanged;
             Loaded += DateRangePicker_Loaded;
+            _oKButton = (Button)GetTemplateChild(OKButtonTemplateName);
+            if (_oKButton != null)
+                _oKButton.Click += OnOKButton_Click;
+            _cancelButton = (Button)GetTemplateChild(CancelTemplateName);
+            if (_cancelButton != null)
+                _cancelButton.Click += OnCancelButton_Click;
+            _closeButton = (Button)GetTemplateChild(CloseTemplateName);
+            if (_closeButton != null)
+                _closeButton.Click += OnCloseButton_Click; ;
+        }
+
+        private void OnCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearDates();
+            ClearHighlight();
+        }
+
+        public void ClearDates()
+        {
+            StartDate = null;
+            EndDate = null;
+            _startDate = null;
+            _endDate = null;
+
+            if (_startTextBox != null)
+                _startTextBox.Text = string.Empty;
+            if (_endTextBox != null)
+                _endTextBox.Text = string.Empty;
+
+            if (_startCalendar != null)
+                _startCalendar.SelectedDates.Clear();
+            if (_endCalendar != null)
+                _endCalendar.SelectedDates.Clear();
+
+            if (_startTimePicker != null)
+                _startTimePicker.SelectedTime = null;
+            if (_endTimePicker != null)
+                _endTimePicker.SelectedTime = null;
+        }
+
+        private void OnCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            RestoreBackupDates();
+            _popup.IsOpen = false;
+        }
+
+        private void RestoreBackupDates()
+        {
+            StartDate = _backupStartDate;
+            EndDate = _backupEndDate;
+            _startDate = _backupStartDate;
+            _endDate = _backupEndDate;
+            if (_startTextBox != null && StartDate.HasValue)
+                _startTextBox.Text = StartDate.Value.ToString(DateTimeFormat);
+            else if (_startTextBox != null)
+                _startTextBox.Text = string.Empty;
+
+            if (_endTextBox != null && EndDate.HasValue)
+                _endTextBox.Text = EndDate.Value.ToString(DateTimeFormat);
+            else if (_endTextBox != null)
+                _endTextBox.Text = string.Empty;
+
+            UpdateCalendarSelections();
+        }
+
+        private void UpdateCalendarSelections()
+        {
+            if (_startCalendar != null)
+            {
+                _startCalendar.SelectedDates.Clear();
+                if (StartDate.HasValue)
+                    _startCalendar.SelectedDate = StartDate.Value;
+                SetIsHighlightFalse(_startCalendarDayButtons);
+            }
+
+            if (_endCalendar != null)
+            {
+                _endCalendar.SelectedDates.Clear();
+                if (EndDate.HasValue)
+                    _endCalendar.SelectedDate = EndDate.Value;
+                SetIsHighlightFalse(_endCalendarDayButtons);
+            }
+
+            if (_startTimePicker != null && StartDate.HasValue)
+                _startTimePicker.SelectedTime = StartDate.Value;
+
+            if (_endTimePicker != null && EndDate.HasValue)
+                _endTimePicker.SelectedTime = EndDate.Value;
+        }
+
+        private void OnOKButton_Click(object sender, RoutedEventArgs e)
+        {
+            SetDate();
+            _popup.IsOpen = false;
         }
 
         private void UpdateTimeFormatDetection()
@@ -362,12 +464,20 @@ namespace WPFDevelopers.Controls
 
         private void OnEndCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
+            ClearHighlight();
             OnCalendar_PreviewMouseUp(sender, e, false);
         }
 
         private void OnStartCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
+            ClearHighlight();
             OnCalendar_PreviewMouseUp(sender, e, true);
+        }
+
+        void ClearHighlight()
+        {
+            SetIsHighlightFalse(_startCalendarDayButtons);
+            SetIsHighlightFalse(_endCalendarDayButtons);
         }
 
         private void OnCalendar_PreviewMouseUp(object sender, MouseButtonEventArgs e, bool isStartCalendar)
@@ -578,6 +688,8 @@ namespace WPFDevelopers.Controls
 
         private void OnPopup_Opened(object sender, EventArgs e)
         {
+            _backupStartDate = StartDate;
+            _backupEndDate = EndDate;
             _window.PreviewMouseDown += OnWindowPreviewMouseDown;
             PopupOpened();
         }
@@ -610,7 +722,6 @@ namespace WPFDevelopers.Controls
                 _startDate = StartDate.Value;
             if (EndDate.HasValue)
                 _endDate = EndDate.Value;
-            _clickCount = 0;
             SetSelectedDates(EndDate);
         }
 
@@ -676,7 +787,6 @@ namespace WPFDevelopers.Controls
         {
             if (Mouse.Captured is CalendarItem)
             {
-                _clickCount++;
                 Mouse.Capture(null);
             }
         }
@@ -695,8 +805,6 @@ namespace WPFDevelopers.Controls
 
         private void SetDate()
         {
-            if (_clickCount == 2)
-                _popup.IsOpen = false;
             StartDate = _startDate;
             EndDate = _endDate;
             if (_startDate.HasValue)
