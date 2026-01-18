@@ -148,6 +148,18 @@
                                         Margin="4,0"
                                         Stroke="{DynamicResource WD.PrimaryTextBrush}" />
                                     <Button
+                                        x:Name="PART_UndoButton"
+                                        Margin="4,0"
+                                        IsEnabled="False"
+                                        Style="{StaticResource WD.PathButton}"
+                                        ToolTip="{Binding [Undo], Source={x:Static resx:LanguageManager.Instance}}">
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
+                                            Kind="Undo" />
+                                    </Button>
+                                    <Button
                                         x:Name="PART_SaveButton"
                                         Margin="4,0"
                                         Style="{StaticResource WD.PathButton}"
