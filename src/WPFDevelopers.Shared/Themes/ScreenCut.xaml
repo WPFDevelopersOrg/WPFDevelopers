@@ -71,6 +71,7 @@
                                 x:Name="PART_EditBar"
                                 Panel.ZIndex="99"
                                 Background="{DynamicResource WD.BackgroundBrush}"
+                                CornerRadius="4"
                                 Effect="{StaticResource WD.PopupShadowDepth}"
                                 Visibility="Hidden">
                                 <WrapPanel Margin="10,5" VerticalAlignment="Center">
