@@ -75,6 +75,7 @@
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
+      <DependentUpon>DialExample.xaml</DependentUpon>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailExample.xaml.cs">
       <DependentUpon>IconicThumbnailExample.xaml</DependentUpon>
     </Compile>
@@ -637,6 +638,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AnimationAudioExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DialExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
