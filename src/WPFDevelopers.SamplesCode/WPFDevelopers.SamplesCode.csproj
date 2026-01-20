@@ -174,6 +174,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" Link="Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" Link="Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DialExample.xaml.cs" Link="ExampleViews\DialExample.xaml.cs" DependentUpon="DialExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SvgViewerExample.xaml.cs" Link="ExampleViews\SvgViewerExample.xaml.cs" DependentUpon="SvgViewerExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -571,6 +572,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DialExample.xaml">
 			<Link>ExampleViews\DialExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SvgViewerExample.xaml">
+			<Link>ExampleViews\SvgViewerExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -93,31 +95,6 @@ namespace WPFDevelopers.Controls
             {
                 return null;
             }
-        }
-
-        private Stream GetStreamFromUri(Uri uri)
-        {
-            try
-            {
-                if (uri.Scheme == Uri.UriSchemeFile)
-                {
-                    return File.OpenRead(uri.LocalPath);
-                }
-                else if (uri.Scheme == "pack")
-                {
-                    var resource = Application.GetResourceStream(uri);
-                    return resource?.Stream;
-                }
-                else if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)
-                {
-                    throw new NotSupportedException("HTTP/HTTPS scheme is not supported in this implementation.");
-                }
-            }
-            catch
-            {
-                throw;
-            }
-            return null;
         }
 
         private Rect GetSvgBounds(XmlElement svgRoot)
@@ -281,33 +258,71 @@ namespace WPFDevelopers.Controls
                 Uri uri = GetUriFromSource(Source);
                 if (uri == null)
                     return;
-
-                using (Stream stream = GetStreamFromUri(uri))
+                Stream stream = null;
+                if (uri != null)
                 {
-                    if (stream == null || stream.Length == 0)
-                        return;
-
-                    var xml = new XmlDocument();
-                    xml.Load(stream);
-
-                    var svgRoot = xml.DocumentElement;
-                    if (svgRoot == null || svgRoot.Name != "svg")
-                        return;
-
-                    var bounds = GetSvgBounds(svgRoot);
-                    var drawingGroup = ParseSvgPaths(svgRoot, bounds);
-
-                    if (drawingGroup == null || drawingGroup.Children.Count == 0)
-                        return;
-
-                    CreateDrawingBrush(drawingGroup, bounds);
+                    var resource = Application.GetResourceStream(uri);
+                    if (resource != null)
+                    {
+                        stream = resource.Stream;
+                    }
                 }
+                string svgContent = null;
+
+                using (var reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    svgContent = reader.ReadToEnd();
+                }
+
+                if (string.IsNullOrEmpty(svgContent))
+                    return;
+
+                svgContent = RemoveDoctype(svgContent);
+                var xml = new XmlDocument();
+                xml.XmlResolver = null;
+
+                using (var stringReader = new StringReader(svgContent))
+                using (var xmlReader = XmlReader.Create(stringReader, new XmlReaderSettings
+                {
+                    XmlResolver = null,
+                    DtdProcessing = DtdProcessing.Ignore,
+                    IgnoreComments = true,
+                    IgnoreWhitespace = true
+                }))
+                {
+                    xml.Load(xmlReader);
+                }
+                var svgRoot = xml.DocumentElement;
+                if (svgRoot == null || svgRoot.Name != "svg")
+                    return;
+
+                var bounds = GetSvgBounds(svgRoot);
+                var drawingGroup = ParseSvgPaths(svgRoot, bounds);
+
+                if (drawingGroup == null || drawingGroup.Children.Count == 0)
+                    return;
+
+                CreateDrawingBrush(drawingGroup, bounds);
             }
             catch
             {
                 Background = null;
                 throw;
             }
+        }
+
+        private string RemoveDoctype(string xmlContent)
+        {
+            var doctypeStart = xmlContent.IndexOf("<!DOCTYPE", StringComparison.OrdinalIgnoreCase);
+            if (doctypeStart >= 0)
+            {
+                var doctypeEnd = xmlContent.IndexOf(">", doctypeStart);
+                if (doctypeEnd > doctypeStart)
+                {
+                    xmlContent = xmlContent.Remove(doctypeStart, doctypeEnd - doctypeStart + 1);
+                }
+            }
+            return xmlContent;
         }
 
         static SvgViewer()

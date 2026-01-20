@@ -400,6 +400,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Dial:
                     ControlPanel = new DialExample();
                     break;
+                case MenuEnum.SvgViewer:
+                    ControlPanel = new SvgViewerExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();

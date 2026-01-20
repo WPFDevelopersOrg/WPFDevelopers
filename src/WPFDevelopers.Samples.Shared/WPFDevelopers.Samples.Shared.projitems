@@ -340,6 +340,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\GestureUnlockExample.xaml.cs">
       <DependentUpon>GestureUnlockExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SvgViewerExample.xaml.cs">
+      <DependentUpon>SvgViewerExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TagExample.xaml.cs">
       <DependentUpon>TagExample.xaml</DependentUpon>
     </Compile>
@@ -935,6 +938,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\GestureUnlockExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\SvgViewerExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
