@@ -75,7 +75,9 @@
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DialExample.xaml.cs">
       <DependentUpon>DialExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailExample.xaml.cs">
       <DependentUpon>IconicThumbnailExample.xaml</DependentUpon>
     </Compile>
