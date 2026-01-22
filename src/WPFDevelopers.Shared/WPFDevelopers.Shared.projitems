@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateRangePicker\DateRangePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Dial\Dial.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Gauge\Gauge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\GestureUnlock\GestureItem.cs" />
@@ -41,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\WDScrollViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\ScrollViewerBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SvgViewer\SvgViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Tag\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelector.cs" />

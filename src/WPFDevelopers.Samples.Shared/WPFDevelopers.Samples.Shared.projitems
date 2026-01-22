@@ -75,6 +75,9 @@
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DialExample.xaml.cs">
+      <DependentUpon>DialExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailExample.xaml.cs">
       <DependentUpon>IconicThumbnailExample.xaml</DependentUpon>
     </Compile>
@@ -338,6 +341,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\GestureUnlockExample.xaml.cs">
       <DependentUpon>GestureUnlockExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SvgViewerExample.xaml.cs">
+      <DependentUpon>SvgViewerExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TagExample.xaml.cs">
       <DependentUpon>TagExample.xaml</DependentUpon>
@@ -640,6 +646,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\DialExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -930,6 +940,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\GestureUnlockExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\SvgViewerExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -43,7 +43,7 @@ namespace WPFDevelopers.Controls
             var itemCount = Items.Count;
             var newIndex = SelectedIndex + scrollCount;
             if (newIndex < 4)
-                newIndex = 5;
+                newIndex = 4;
             else if (newIndex >= itemCount - 4)
                 newIndex = itemCount;
             SelectedIndex = newIndex;

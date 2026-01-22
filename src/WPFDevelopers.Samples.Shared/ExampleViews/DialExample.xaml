@@ -1,0 +1,63 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.DialExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding ElementName=MyDial, Path=Value, StringFormat='{}{0:0}'}" />
+                <wd:Dial
+                    x:Name="MyDial"
+                    Width="200"
+                    Height="200"
+                    Margin="10"
+                    Value="{Binding ElementName=MySlider, Path=Value}" />
+                <Slider
+                    Name="MySlider"
+                    Width="200"
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    wd:ElementHelper.CornerRadius="4"
+                    IsSnapToTickEnabled="True"
+                    Maximum="100"
+                    Minimum="0" />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <TextBlock HorizontalAlignment="Center" Text="{Binding ElementName=MyDial1, Path=Value}" />
+                <wd:Dial
+                    x:Name="MyDial1"
+                    Width="200"
+                    Height="200"
+                    Margin="10"
+                    Background="WhiteSmoke"
+                    BorderBrush="DodgerBlue"
+                    BorderThickness="5"
+                    Maximum="80"
+                    Minimum="50"
+                    Value="{Binding ElementName=MySlider2, Path=Value}" />
+                <Slider
+                    Name="MySlider2"
+                    Width="200"
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    wd:ElementHelper.CornerRadius="4"
+                    Maximum="80"
+                    Minimum="50" />
+            </StackPanel>
+        </WrapPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DialExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/DialExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>
