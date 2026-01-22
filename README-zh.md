@@ -35,14 +35,23 @@
 |  ----  | ----  |
 | net40  | ✅ |
 | net45  | ✅ |
+| net451  | ✅ |
+| net452  | ✅ |
 | net46  | ✅ |
+| net461  | ✅ |
+| net462  | ✅ |
 | net47  | ✅ |
+| net471  | ✅ |
+| net472  | ✅ |
 | net48  | ✅ |
+| net481  | ✅ |
 | netcoreapp3.0  | ✅ |
+| netcoreapp3.1  | ✅ |
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 | net7.0-windows  | ✅ |
 | net8.0-windows  | ✅ |
+| net9.0-windows  | ✅ |
 
 ### 欢迎关注微信公众号  
 
@@ -81,7 +90,7 @@ Install-Package WPFDevelopers
 ``` XML
 xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ```
-#### 1.1.0.3-preview1 以上版本
+#### 
 ``` XML
     <Application.Resources>
         <ResourceDictionary>
@@ -92,19 +101,6 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
                               若要手动设置为 Light 模式，可以使用 Theme="Light"。
                               你还可以自定义主题色，使用 Color="Fuchsia"（例如设置为 Fuchsia）-->
  		     <wd:Resources />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
-```
-#### 1.1.0.3-preview1 以下版本
-``` XML
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
-                    <!--需要注意 wd:Resources 必须在配色主题后，Theme="Dark" 为黑色皮肤-->
-                    <wd:Resources Theme="Light"/>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -124,7 +120,32 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls02.gif"/>    
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls03.gif"/>    
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>    
+----------
+### SvgViewer
 
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/SvgViewer.jpg"/>   
+
+----------
+### Dial‎
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Dial.jpg"/>   
+
+----------
+### ScreenCaptureExt
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/ScreenCaptureExt.jpg"/>   
+
+----------
+### MultiSelectComboBox
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/MultiSelectComboBox.jpg"/>   
+
+----------
+### PathIcon‎
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/PathIcon.jpg"/>   
+
+----------
 ----------
 ### AnimatedGrid
 
