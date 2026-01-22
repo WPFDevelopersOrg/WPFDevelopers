@@ -28,14 +28,23 @@
 |  ----  | ----  |
 | net40  | ✅ |
 | net45  | ✅ |
+| net451  | ✅ |
+| net452  | ✅ |
 | net46  | ✅ |
+| net461  | ✅ |
+| net462  | ✅ |
 | net47  | ✅ |
+| net471  | ✅ |
+| net472  | ✅ |
 | net48  | ✅ |
+| net481  | ✅ |
 | netcoreapp3.0  | ✅ |
+| netcoreapp3.1  | ✅ |
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 | net7.0-windows  | ✅ |
 | net8.0-windows  | ✅ |
+| net9.0-windows  | ✅ |
 
 ### Donate
 If you think our open source software is helpful to you, please scan the QR code below and give us a cup of coffee.
