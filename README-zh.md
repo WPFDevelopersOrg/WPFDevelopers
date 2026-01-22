@@ -146,7 +146,6 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/PathIcon.jpg"/>   
 
 ----------
-----------
 ### AnimatedGrid
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/AnimatedGrid.gif"/>   
