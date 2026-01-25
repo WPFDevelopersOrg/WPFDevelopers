@@ -28,6 +28,18 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(ObservableCollection<UserInfo>), typeof(MultiSelectComboBoxExample), new PropertyMetadata(null));
+
+
+        public ObservableCollection<StkInfo> StkInfoList
+        {
+            get { return (ObservableCollection<StkInfo>)GetValue(StkInfoListProperty); }
+            set { SetValue(StkInfoListProperty, value); }
+        }
+
+        public static readonly DependencyProperty StkInfoListProperty =
+            DependencyProperty.Register("StkInfoList", typeof(ObservableCollection<StkInfo>), typeof(MultiSelectComboBoxExample), new PropertyMetadata(null));
+
+
         public MultiSelectComboBoxExample()
         {
             InitializeComponent();
@@ -44,6 +56,13 @@ namespace WPFDevelopers.Samples.ExampleViews
 
             ItemsSource = new ObservableCollection<UserInfo>(list2);
             SelectedItems = new ObservableCollection<UserInfo>(list2.Where(x => x.ID == "1" || x.ID == "3"));
+
+            var stkInfos = new List<StkInfo>();
+            stkInfos.Add(new StkInfo() { StkName = "平安银行", StkId = "000001", StkType = "sz", StkTypeName = "深Ａ" });
+            stkInfos.Add(new StkInfo() { StkName = "上证指数", StkId = "000001", StkType = "sh", StkTypeName = "指数" });
+            stkInfos.Add(new StkInfo() { StkName = "浦发银行", StkId = "600000", StkType = "sh", StkTypeName = "沪Ａ" });
+            StkInfoList = new ObservableCollection<StkInfo>(stkInfos);
+
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -53,5 +72,20 @@ namespace WPFDevelopers.Samples.ExampleViews
     : $"总共选中:{MyMultiSelectComboBox.SelectedItems.Count} 条";
             WPFDevelopers.Controls.MessageBox.Show(message, "选中内容", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+    }
+    public class StkInfo
+    {
+        public string StkId { get; set; }
+        public string StkName { get; set; }
+        public string StkType { get; set; }
+        public string StkTypeName { get; set; }
+        public string StkFull 
+        {
+            get
+            {
+                return StkType + StkId;
+            }
+        }
+
     }
 }

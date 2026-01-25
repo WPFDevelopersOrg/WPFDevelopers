@@ -132,6 +132,43 @@
                     </wd:MultiSelectComboBox.View>
                 </wd:MultiSelectComboBox>
             </Grid>
+            <Grid HorizontalAlignment="Center" wd:PanelHelper.Spacing="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Center" Text="证券代码:" />
+                <wd:MultiSelectComboBox
+                    Grid.Column="1"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    wd:ElementHelper.CornerRadius="3"
+                    wd:ElementHelper.Watermark="请选择股票代码"
+                    DisplayMemberPath="StkFull"
+                    IsSelectAllActive="True"
+                    ItemsSource="{Binding StkInfoList, RelativeSource={RelativeSource AncestorType=local:MultiSelectComboBoxExample}}"
+                    SearchWatermark="请选择股票代码"
+                    ShowType="Tag">
+                    <wd:MultiSelectComboBox.View>
+                        <GridView>
+                            <GridViewColumn Width="30">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            wd:ElementHelper.CornerRadius="3"
+                                            IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding StkTypeName}" Header="类型" />
+                            <GridViewColumn DisplayMemberBinding="{Binding StkId}" Header="代码" />
+                            <GridViewColumn DisplayMemberBinding="{Binding StkName}" Header="名称" />
+                        </GridView>
+                    </wd:MultiSelectComboBox.View>
+                </wd:MultiSelectComboBox>
+            </Grid>
         </UniformGrid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MultiSelectComboBoxExample.xaml" CodeType="Xaml" />
