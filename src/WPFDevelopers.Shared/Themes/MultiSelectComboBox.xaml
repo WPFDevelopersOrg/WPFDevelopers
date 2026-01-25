@@ -288,6 +288,7 @@
                         <Trigger Property="ShowType" Value="Tag">
                             <Setter TargetName="PART_SimpleWrapPanel" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_SimpleWrapPanel" Property="MinHeight" Value="21.6" />
                         </Trigger>
                         <Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
                             <Trigger.EnterActions>

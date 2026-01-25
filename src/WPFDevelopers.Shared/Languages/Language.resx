@@ -172,4 +172,7 @@
   <data name="Refresh" xml:space="preserve">
     <value>刷新</value>
   </data>
+  <data name="Undo" xml:space="preserve">
+    <value>撤销(Ctrl+Z)</value>
+  </data>
 </root>

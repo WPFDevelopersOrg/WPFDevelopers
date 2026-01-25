@@ -127,10 +127,6 @@ namespace WPFDevelopers.Helpers
                                 tabControl.Items.Remove(tabItem);
                         }
                         break;
-                    case DateRangePicker dateRangePicker:
-                        dateRangePicker.StartDate = null;
-                        dateRangePicker.EndDate = null;
-                        break;
                 }
             }
         }

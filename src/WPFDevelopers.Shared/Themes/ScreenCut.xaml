@@ -71,6 +71,7 @@
                                 x:Name="PART_EditBar"
                                 Panel.ZIndex="99"
                                 Background="{DynamicResource WD.BackgroundBrush}"
+                                CornerRadius="4"
                                 Effect="{StaticResource WD.PopupShadowDepth}"
                                 Visibility="Hidden">
                                 <WrapPanel Margin="10,5" VerticalAlignment="Center">
@@ -147,6 +148,18 @@
                                         Height="18"
                                         Margin="4,0"
                                         Stroke="{DynamicResource WD.PrimaryTextBrush}" />
+                                    <Button
+                                        x:Name="PART_UndoButton"
+                                        Margin="4,0"
+                                        IsEnabled="False"
+                                        Style="{StaticResource WD.PathButton}"
+                                        ToolTip="{Binding [Undo], Source={x:Static resx:LanguageManager.Instance}}">
+                                        <controls:PathIcon
+                                            Width="18"
+                                            Height="18"
+                                            Foreground="{DynamicResource WD.RegularTextBrush}"
+                                            Kind="Undo" />
+                                    </Button>
                                     <Button
                                         x:Name="PART_SaveButton"
                                         Margin="4,0"

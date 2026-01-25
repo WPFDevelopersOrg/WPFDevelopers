@@ -1,12 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net40;net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
+		<TargetFrameworks>
+			net40;net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0
+		</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<AssemblyName>WPFDevelopers.SamplesCode</AssemblyName>
 		<RootNamespace>WPFDevelopers.SamplesCode</RootNamespace>
 		<BaseOutputPath></BaseOutputPath>
-		<Configurations>Debug;Release;Debug-.NET40;Release-.NET40</Configurations>
+		<Configurations>Debug;Release</Configurations>
 	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net45' Or
+                        '$(TargetFramework)' == 'net46' Or
+                        '$(TargetFramework)' == 'net47' Or
+                        '$(TargetFramework)' == 'net48' Or
+                        '$(TargetFramework)' == 'net481'">
+		<Reference Include="Microsoft.CSharp" />
+	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml.cs" Link="ExampleViews\AboutWindow.xaml.cs" DependentUpon="AboutWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AcrylicBlurWindowExample.xaml.cs" Link="ExampleViews\AcrylicBlurWindowExample.xaml.cs" DependentUpon="AcrylicBlurWindowExample.xaml" />
@@ -164,6 +173,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationGridExample.xaml.cs" Link="ExampleViews\AnimationGridExample.xaml.cs" DependentUpon="AnimationGridExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" Link="Controls\MultiSelectionSearchComboBox\MultiSelectListBox.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" Link="Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DialExample.xaml.cs" Link="ExampleViews\DialExample.xaml.cs" DependentUpon="DialExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SvgViewerExample.xaml.cs" Link="ExampleViews\SvgViewerExample.xaml.cs" DependentUpon="SvgViewerExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -558,6 +569,12 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.xaml">
 			<Link>Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DialExample.xaml">
+			<Link>ExampleViews\DialExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SvgViewerExample.xaml">
+			<Link>ExampleViews\SvgViewerExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

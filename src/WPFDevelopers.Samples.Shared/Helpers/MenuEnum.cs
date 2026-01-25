@@ -97,6 +97,8 @@
         GestureUnlock,
         AnimationGrid,
         AllPathIcon,
+        Dial,
+        SvgViewer,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

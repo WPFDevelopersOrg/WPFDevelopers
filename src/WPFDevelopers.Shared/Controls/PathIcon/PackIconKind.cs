@@ -57,5 +57,6 @@ namespace WPFDevelopers.Controls
         [Description("WD.DateRangeRightGeometry")] DateRangeRight,
         [Description("WD.DateGeometry")] Date,
         [Description("WD.CopyGeometry")] Copy,
+        [Description("WD.UndoGeometry")] Undo,
     }
 }
