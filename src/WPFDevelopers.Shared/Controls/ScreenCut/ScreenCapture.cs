@@ -83,9 +83,14 @@ namespace WPFDevelopers.Controls
 
         private void ScreenCut_Closed(object sender, System.EventArgs e)
         {
-            if (ScreenCuts.Contains((ScreenCut)sender))
+            var screenCut = (ScreenCut)sender;
+            if (ScreenCuts.Contains(screenCut))
             {
-                ScreenCuts.Remove((ScreenCut)sender);
+                ScreenCuts.Remove(screenCut);
+                screenCut.CutCompleted -= ScreenCut_CutCompleted;
+                screenCut.CutCanceled -= ScreenCut_CutCanceled;
+                screenCut.CutFullPath -= ScreenCut_CutFullPath;
+                screenCut.Closed -= ScreenCut_Closed;
             }
             CloseCutters();
             ScreenCut.ClearCaptureScreenID();
