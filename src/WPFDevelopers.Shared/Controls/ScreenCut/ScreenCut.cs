@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -237,13 +238,21 @@ namespace WPFDevelopers.Controls
         public void Dispose()
         {
             _canvas.Background = null;
-            GC.SuppressFinalize(this);
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.Collect();
         }
+
         public static void ClearCaptureScreenID()
         {
             CaptureScreenID = -1;
         }
+        
+        ~ScreenCut()
+        {
+            Debug.WriteLine("~ScreenCut");
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -298,7 +307,17 @@ namespace WPFDevelopers.Controls
                 _wrapPanel.PreviewMouseDown += WrapPanel_PreviewMouseDown;
             Loaded += ScreenCut_Loaded;
             _controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
-            _canvas.Background = new ImageBrush(ImagingHelper.CreateBitmapSourceFromBitmap(CopyScreen()));
+            _screenCapture = CopyScreen();
+            using (var tempBitmap = _screenCapture)
+            {
+                var imageSource = ImagingHelper.CreateBitmapSourceFromBitmap(tempBitmap);
+                imageSource.Freeze();
+                var writeableBitmap = new WriteableBitmap(imageSource);
+                writeableBitmap.Freeze(); 
+                _canvas.Background = new ImageBrush(writeableBitmap);
+            }
+            _screenCapture?.Dispose();
+            _screenCapture = null;
             TakeSnapshot();
         }
 
@@ -310,6 +329,22 @@ namespace WPFDevelopers.Controls
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
+            if (_adornerLayer != null && _screenCutAdorner != null)
+            {
+                _adornerLayer.Remove(_screenCutAdorner);
+                _screenCutAdorner = null;
+                _adornerLayer = null;
+            }
+            if (_canvas != null)
+            {
+                if (_canvas.Background is ImageBrush brush)
+                {
+                    brush.ImageSource = null;
+                }
+                _canvas.Background = null;
+                _canvas.Children.Clear();
+            }
+            _imageSnapshot = null;
             Dispose();
         }
        
@@ -766,6 +801,7 @@ namespace WPFDevelopers.Controls
                 96, 96, PixelFormats.Pbgra32);
 
             _imageSnapshot.Render(_canvas);
+            _imageSnapshot.Freeze();
         }
 
         private void DrawMosaicBlock(Point center, int blockSize, int brushSize)
