@@ -236,58 +236,6 @@ namespace WPFDevelopers.Controls
                     _isUpdating = true;
                     try
                     {
-                        //if (SelectedItemsExt is IList list)
-                        //{
-                        //    //if (list.Count > 0)
-                        //    //    list.Clear();
-                        //    //foreach (var itme in SelectedItems.Cast<object>())
-                        //    //{
-                        //    //    list.Add(itme);
-                        //    //}
-
-
-                        //    //var items = SelectedItems.Cast<object>().ToList();
-                        //    //int count = items.Count;
-
-                        //    //if (count == 0)
-                        //    //{
-                        //    //    list.Clear();
-                        //    //    return;
-                        //    //}
-
-                        //    //if (list is INotifyCollectionChanged observableList)
-                        //    //{
-                        //    //    observableList.CollectionChanged -= OnSelectedItemsExtCollectionChanged;
-                        //    //    try
-                        //    //    {
-                        //    //        list.Clear();
-
-                        //    //        for (int i = 0; i < count - 1; i++)
-                        //    //        {
-                        //    //            list.Add(items[i]);
-                        //    //        }
-                        //    //    }
-                        //    //    finally
-                        //    //    {
-                        //    //        observableList.CollectionChanged += OnSelectedItemsExtCollectionChanged;
-                        //    //        if (count > 0)
-                        //    //        {
-                        //    //            list.Add(items[count - 1]);
-                        //    //        }
-                        //    //    }
-                        //    //}
-                        //    //else
-                        //    //{
-                        //    //    list.Clear();
-                        //    //    foreach (var itm in items)
-                        //    //    {
-                        //    //        list.Add(itm);
-                        //    //    }
-                        //    //}
-
-
-                        //}
-
                         if (SelectedItemsExt is IList list && SelectedItemsExt is INotifyCollectionChanged notifier)
                         {
                             var eventField = notifier.GetType().GetField("CollectionChanged",
@@ -662,9 +610,6 @@ namespace WPFDevelopers.Controls
                 selectedItems.Clear();
                 foreach (var item in _listViewSearch.Items)
                 {
-                    //if (SelectedItems.Contains(item))
-                    //    if (!_listViewSearch.SelectedItems.Contains(item))
-                    //        _listViewSearch.SelectedItems.Add(item);
                     if (SelectedItems.Contains(item))
                     {
                         if (!_listViewSearch.SelectedItems.Contains(item))
