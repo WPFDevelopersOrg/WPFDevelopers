@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 	<Import Project="../Package.props" />
 	<PropertyGroup>
+		<RestoreProjectStyle>None</RestoreProjectStyle>
 		<TargetFramework>net40</TargetFramework>
 		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
