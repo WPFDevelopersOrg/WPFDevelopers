@@ -1,17 +1,17 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
     public class ScreenCutAdorner : Adorner
     {
-        private const double THUMB_SIZE = 15;
+        private const double THUMB_SIZE = 10;
         private const double MINIMAL_SIZE = 20;
         private const double LINE_Size = 6;
         private readonly Thumb lc;
@@ -139,10 +139,7 @@ namespace WPFDevelopers.Controls
                     }
                 };
             }
-
-
-            var maxWidth = double.IsNaN(canvas.Width) ? canvas.ActualWidth : canvas.Width;
-            var maxHeight = double.IsNaN(canvas.Height) ? canvas.ActualHeight : canvas.Height;
+            
             thumb.DragDelta += (s, e) =>
             {
                 var element = AdornedElement as FrameworkElement;
@@ -150,67 +147,83 @@ namespace WPFDevelopers.Controls
                     return;
                 Resize(element);
 
+                if (double.IsNaN(Canvas.GetLeft(element)))
+                    Canvas.SetLeft(element, 0);
+                if (double.IsNaN(Canvas.GetTop(element)))
+                    Canvas.SetTop(element, 0);
+
+                double left = Canvas.GetLeft(element);
+                double top = Canvas.GetTop(element);
+
+                double canvasWidth = canvas.ActualWidth;
+                double canvasHeight = canvas.ActualHeight;
+
                 switch (thumb.VerticalAlignment)
                 {
-                    case VerticalAlignment.Bottom:
-                        if (element.Height + e.VerticalChange > MINIMAL_SIZE)
+                    case VerticalAlignment.Top:
                         {
-                            var newHeight = element.Height + e.VerticalChange;
-                            var top = Canvas.GetTop(element) + newHeight;
-                            if (newHeight > 0 && top <= canvas.ActualHeight)
-                            {
-                                element.Height = newHeight;
-                                if(_isRatioScale)
-                                    ScaleWidth(thumb, element, newHeight);
-                            }
+                            double newTop = top + e.VerticalChange;
+                            double maxTop = top + element.Height - MINIMAL_SIZE;
+
+                            newTop = Math.Max(0, Math.Min(newTop, maxTop));
+
+                            double newHeight = element.Height + (top - newTop);
+
+                            Canvas.SetTop(element, newTop);
+                            element.Height = newHeight;
+
+                            if (_isRatioScale)
+                                ScaleWidth(thumb, element, newHeight);
                         }
                         break;
 
-                    case VerticalAlignment.Top:
-                        if (element.Height - e.VerticalChange > MINIMAL_SIZE)
+                    case VerticalAlignment.Bottom:
                         {
-                            var newHeight = element.Height - e.VerticalChange;
-                            var top = Canvas.GetTop(element);
-                            if (newHeight > 0 && top + e.VerticalChange >= 0)
-                            {
-                                element.Height = newHeight;
-                                Canvas.SetTop(element, top + e.VerticalChange);
-                                if (_isRatioScale)
-                                    ScaleWidth(thumb, element, newHeight);
-                            }
-                        }
+                            double maxHeight = canvasHeight - top;
 
+                            double newHeight = element.Height + e.VerticalChange;
+                            newHeight = Math.Max(MINIMAL_SIZE, newHeight);
+                            newHeight = Math.Min(newHeight, maxHeight);
+
+                            element.Height = newHeight;
+
+                            if (_isRatioScale)
+                                ScaleWidth(thumb, element, newHeight);
+                        }
                         break;
                 }
 
                 switch (thumb.HorizontalAlignment)
                 {
                     case HorizontalAlignment.Left:
-                        if (element.Width - e.HorizontalChange > MINIMAL_SIZE)
                         {
-                            var newWidth = element.Width - e.HorizontalChange;
-                            var left = Canvas.GetLeft(element);
-                            if (newWidth > 0 && left + e.HorizontalChange >= 0)
-                            {
-                                element.Width = newWidth;
-                                Canvas.SetLeft(element, left + e.HorizontalChange);
-                                if (_isRatioScale)
-                                    ScaleHeight(thumb, element, newWidth);
-                            }
-                        }
+                            double newLeft = left + e.HorizontalChange;
+                            double maxLeft = left + element.Width - MINIMAL_SIZE;
 
+                            newLeft = Math.Max(0, Math.Min(newLeft, maxLeft));
+
+                            double newWidth = element.Width + (left - newLeft);
+
+                            Canvas.SetLeft(element, newLeft);
+                            element.Width = newWidth;
+
+                            if (_isRatioScale)
+                                ScaleHeight(thumb, element, newWidth);
+                        }
                         break;
+
                     case HorizontalAlignment.Right:
-                        if (element.Width + e.HorizontalChange > MINIMAL_SIZE)
                         {
-                            var newWidth = element.Width + e.HorizontalChange;
-                            var left = Canvas.GetLeft(element) + newWidth;
-                            if (newWidth > 0 && left <= canvas.ActualWidth)
-                            {
-                                element.Width = newWidth;
-                                if (_isRatioScale)
-                                    ScaleHeight(thumb, element, newWidth);
-                            }
+                            double maxWidth = canvasWidth - left;
+
+                            double newWidth = element.Width + e.HorizontalChange;
+                            newWidth = Math.Max(MINIMAL_SIZE, newWidth);
+                            newWidth = Math.Min(newWidth, maxWidth);
+
+                            element.Width = newWidth;
+
+                            if (_isRatioScale)
+                                ScaleHeight(thumb, element, newWidth);
                         }
                         break;
                 }
@@ -246,12 +259,12 @@ namespace WPFDevelopers.Controls
         void ScaleHeight(Thumb thumb, FrameworkElement element, double newWidth)
         {
             if (_isRatioScale
-                               &&
-            thumb.VerticalAlignment != VerticalAlignment.Top
-                               ||
-                               (thumb.HorizontalAlignment != HorizontalAlignment.Left
-            &&
-                               thumb.HorizontalAlignment != HorizontalAlignment.Right))
+                 &&
+                 thumb.VerticalAlignment != VerticalAlignment.Top
+                 ||
+                 (thumb.HorizontalAlignment != HorizontalAlignment.Left
+                 &&
+                 thumb.HorizontalAlignment != HorizontalAlignment.Right))
             {
                 if (!_scaleSize.IsEmpty
                 &&
