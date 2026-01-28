@@ -112,7 +112,19 @@ namespace WPFDevelopers
             Uri uri = null;
             var openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "图像文件(*.jpg;*.jpeg;*.png;)|*.jpg;*.jpeg;*.png;";
-            if (openFileDialog.ShowDialog() == true) uri = new Uri(openFileDialog.FileName);
+            openFileDialog.Multiselect = false;
+            openFileDialog.DefaultExt = ".jpg";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    uri = new Uri(openFileDialog.FileName);
+                }
+                catch 
+                {
+                    throw;
+                }
+            }
             return uri;
         }
 
