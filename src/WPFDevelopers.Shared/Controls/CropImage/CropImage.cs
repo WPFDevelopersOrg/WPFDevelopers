@@ -74,18 +74,26 @@ namespace WPFDevelopers.Controls
         private Canvas _canvas;
         private Rectangle _rectangleLeft, _rectangleTop, _rectangleRight, _rectangleBottom;
 
-
-        private AdornerLayer adornerLayer;
-
-        private BitmapFrame bitmapFrame;
-        private bool isDragging;
-        private double offsetX, offsetY;
-        private ScreenCutAdorner screenCutAdorner;
+        private AdornerLayer _adornerLayer;
+        private BitmapFrame _bitmapFrame;
+        private bool _isDragging;
+        private double _offsetX, _offsetY;
+        private ScreenCutAdorner _screenCutAdorner;
+        private bool _isInitialized = false;
+        private bool _isUnloaded = false;
 
         static CropImage()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CropImage),
                 new FrameworkPropertyMetadata(typeof(CropImage)));
+        }
+
+        public CropImage()
+        {
+            Loaded -= OnCropImage_Loaded;
+            Loaded += OnCropImage_Loaded;
+            Unloaded -= OnCropImage_Unloaded;
+            Unloaded += OnCropImage_Unloaded;
         }
 
         public ImageSource Source
@@ -99,7 +107,6 @@ namespace WPFDevelopers.Controls
             get => (Rect)GetValue(CurrentRectProperty);
             private set => SetValue(CurrentRectProperty, value);
         }
-
 
         public ImageSource CurrentAreaBitmap
         {
@@ -129,67 +136,103 @@ namespace WPFDevelopers.Controls
         {
             var crop = (CropImage)d;
             if (crop != null)
+            {
+                crop.CleanupResources();
                 crop.DrawImage();
+            }
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            if (_isUnloaded) return;
             _canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
             _rectangleLeft = GetTemplateChild(RectangleLeftTemplateName) as Rectangle;
             _rectangleTop = GetTemplateChild(RectangleTopTemplateName) as Rectangle;
             _rectangleRight = GetTemplateChild(RectangleRightTemplateName) as Rectangle;
             _rectangleBottom = GetTemplateChild(RectangleBottomTemplateName) as Rectangle;
             _border = GetTemplateChild(BorderTemplateName) as Border;
+
+            if (!_isInitialized)
+            {
+                _isInitialized = true;
+                InitializeEvents();
+            }
+
             DrawImage();
         }
 
-        private void DrawImage()
+        private void OnCropImage_Unloaded(object sender, RoutedEventArgs e)
         {
-            if (Source == null) return;
-            if (_border.Visibility == Visibility.Collapsed)
-                _border.Visibility = Visibility.Visible;
-            if (adornerLayer != null)
-            {
-                adornerLayer.Remove(screenCutAdorner);
-                screenCutAdorner = null;
-                adornerLayer = null;
-            }
-            var bitmap = (BitmapImage)Source;
-            bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int)bitmap.Width, (int)bitmap.Height, 0);
-            _canvas.Width = bitmap.Width;
-            _canvas.Height = bitmap.Height;
-            _canvas.Background = new ImageBrush(bitmap);
-            if (IsRatioScale && !ScaleSize.IsEmpty &&
-                ScaleSize.Width > double.MinValue &&
-                ScaleSize.Height > double.MinValue &&
-                ScaleSize.Width != ScaleSize.Height)
-            {
-                if(ScaleSize.Width > ScaleSize.Height)
-                {
-                    _border.Width = bitmap.Width * RectScale;
-                    _border.Height = _border.Width / ScaleSize.Width;
-                }
-                else
-                {
-                    _border.Height = bitmap.Height * RectScale;
-                    _border.Width = _border.Height * ScaleSize.Height;
-                }
-            }
-            else
-            {
-                _border.Width = bitmap.Width * RectScale;
-                _border.Height = bitmap.Height * RectScale;
-            }
+            _isUnloaded = true;
+            CleanupResources(true);
+        }
 
-            var cx = _canvas.Width / 2 - _border.Width / 2;
-            var cy = _canvas.Height / 2 - _border.Height / 2;
-            Canvas.SetLeft(_border, cx);
-            Canvas.SetTop(_border, cy);
-            if (adornerLayer != null) return;
-            adornerLayer = AdornerLayer.GetAdornerLayer(_border);
-            screenCutAdorner = new ScreenCutAdorner(_border, IsRatioScale, ScaleSize);
-            adornerLayer.Add(screenCutAdorner);
+        private void OnCropImage_Loaded(object sender, RoutedEventArgs e)
+        {
+            _isUnloaded = false;
+            if (!_isInitialized && _border != null)
+            {
+                InitializeEvents();
+            }
+            DrawImage();
+        }
+
+        private void CleanupResources(bool fullCleanup = false)
+        {
+            try
+            {
+                if (_screenCutAdorner != null && _adornerLayer != null)
+                {
+                    _adornerLayer.Remove(_screenCutAdorner);
+                    _screenCutAdorner = null;
+                }
+
+                if (fullCleanup)
+                {
+                    UninitializeEvents();
+                    _adornerLayer = null;
+
+                    if (_bitmapFrame != null)
+                    {
+                        _bitmapFrame = null;
+                    }
+
+                    if (_canvas != null)
+                    {
+                        var brush = _canvas.Background as ImageBrush;
+                        if (brush != null)
+                        {
+                            brush.ImageSource = null;
+                            _canvas.Background = null;
+                        }
+                    }
+
+                    if (CurrentAreaBitmap != null)
+                    {
+                        CurrentAreaBitmap = null;
+                    }
+
+                    _border = null;
+                    _canvas = null;
+                    _isInitialized = false;
+                    _isDragging = false;
+                }
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"CleanupResources error: {ex.Message}");
+            }
+        }
+
+
+        private void InitializeEvents()
+        {
+            if (_border == null) return;
+
             _border.SizeChanged -= Border_SizeChanged;
             _border.SizeChanged += Border_SizeChanged;
             _border.MouseDown -= Border_MouseDown;
@@ -201,38 +244,134 @@ namespace WPFDevelopers.Controls
         }
 
 
+        private void UninitializeEvents()
+        {
+            if (_border == null) return;
+
+            _border.SizeChanged -= Border_SizeChanged;
+            _border.MouseDown -= Border_MouseDown;
+            _border.MouseMove -= Border_MouseMove;
+            _border.MouseUp -= Border_MouseUp;
+        }
+
+        private void DrawImage()
+        {
+            if (Source == null) return;
+
+            CleanupResources();
+
+            if (_border.Visibility == Visibility.Collapsed)
+                _border.Visibility = Visibility.Visible;
+
+            var bitmap = Source as BitmapImage;
+            if (bitmap == null) return;
+
+            _bitmapFrame = ControlsHelper.CreateResizedImage(bitmap, (int)bitmap.Width, (int)bitmap.Height, 0);
+
+            _canvas.Width = bitmap.Width;
+            _canvas.Height = bitmap.Height;
+
+            var imageBrush = new ImageBrush(bitmap)
+            {
+                Stretch = Stretch.Uniform
+            };
+            _canvas.Background = imageBrush;
+
+            if (IsRatioScale && !ScaleSize.IsEmpty &&
+                ScaleSize.Width > 0 && ScaleSize.Height > 0)
+            {
+                double baseScale = RectScale;
+                double imageAspect = bitmap.Width / bitmap.Height;
+                double targetAspect = ScaleSize.Width / ScaleSize.Height;
+
+                if (imageAspect >= targetAspect)
+                {
+                    _border.Height = bitmap.Height * baseScale;
+                    _border.Width = _border.Height * targetAspect;
+
+                    if (_border.Width > bitmap.Width)
+                    {
+                        _border.Width = bitmap.Width * baseScale;
+                        _border.Height = _border.Width / targetAspect;
+                    }
+                }
+                else
+                {
+                    _border.Width = bitmap.Width * baseScale;
+                    _border.Height = _border.Width / targetAspect;
+
+                    if (_border.Height > bitmap.Height)
+                    {
+                        _border.Height = bitmap.Height * baseScale;
+                        _border.Width = _border.Height * targetAspect;
+                    }
+                }
+
+                const double MIN_SIZE = 10.0;
+                _border.Width = Math.Max(_border.Width, MIN_SIZE);
+                _border.Height = Math.Max(_border.Height, MIN_SIZE);
+            }
+            else
+            {
+                _border.Width = bitmap.Width * RectScale;
+                _border.Height = bitmap.Height * RectScale;
+
+                const double MIN_SIZE = 10.0;
+                _border.Width = Math.Max(_border.Width, MIN_SIZE);
+                _border.Height = Math.Max(_border.Height, MIN_SIZE);
+            }
+
+            var cx = Math.Max(0, Math.Min(_canvas.Width / 2 - _border.Width / 2, _canvas.Width - _border.Width));
+            var cy = Math.Max(0, Math.Min(_canvas.Height / 2 - _border.Height / 2, _canvas.Height - _border.Height));
+
+            Canvas.SetLeft(_border, cx);
+            Canvas.SetTop(_border, cy);
+
+            if (_adornerLayer == null)
+            {
+                _adornerLayer = AdornerLayer.GetAdornerLayer(_border);
+            }
+            if (_screenCutAdorner == null && _adornerLayer != null)
+            {
+                _screenCutAdorner = new ScreenCutAdorner(_border, IsRatioScale, ScaleSize);
+                _adornerLayer.Add(_screenCutAdorner);
+            }
+            Render();
+        }
+
         private void Border_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            isDragging = false;
+            _isDragging = false;
             var draggableControl = sender as UIElement;
-            draggableControl.ReleaseMouseCapture();
+            draggableControl?.ReleaseMouseCapture();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!isDragging)
+            if (!_isDragging)
             {
-                isDragging = true;
+                _isDragging = true;
                 var draggableControl = sender as UIElement;
                 var position = e.GetPosition(this);
-                offsetX = position.X - Canvas.GetLeft(draggableControl);
-                offsetY = position.Y - Canvas.GetTop(draggableControl);
-                draggableControl.CaptureMouse();
+                _offsetX = position.X - Canvas.GetLeft(draggableControl);
+                _offsetY = position.Y - Canvas.GetTop(draggableControl);
+                draggableControl?.CaptureMouse();
             }
         }
 
         private void Border_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDragging && e.LeftButton == MouseButtonState.Pressed)
+            if (_isDragging && e.LeftButton == MouseButtonState.Pressed)
             {
                 var draggableControl = sender as UIElement;
                 var position = e.GetPosition(this);
-                var x = position.X - offsetX;
-                x = x < 0 ? 0 : x;
-                x = x + _border.Width > _canvas.Width ? _canvas.Width - _border.Width : x;
-                var y = position.Y - offsetY;
-                y = y < 0 ? 0 : y;
-                y = y + _border.Height > _canvas.Height ? _canvas.Height - _border.Height : y;
+
+                var x = position.X - _offsetX;
+                x = Math.Max(0, Math.Min(x, _canvas.Width - _border.ActualWidth));
+
+                var y = position.Y - _offsetY;
+                y = Math.Max(0, Math.Min(y, _canvas.Height - _border.ActualHeight));
+
                 Canvas.SetLeft(draggableControl, x);
                 Canvas.SetTop(draggableControl, y);
                 Render();
@@ -241,10 +380,20 @@ namespace WPFDevelopers.Controls
 
         private void Render()
         {
-            var cy = Canvas.GetTop(_border);
-            cy = cy < 0 ? 0 : cy;
-            var borderLeft = Canvas.GetLeft(_border);
-            borderLeft = borderLeft < 0 ? 0 : borderLeft;
+            if (_border == null || _canvas == null) return;
+
+            var cy = Math.Max(0, Canvas.GetTop(_border));
+            var borderLeft = Math.Max(0, Canvas.GetLeft(_border));
+            UpdateMaskRectangles(cy, borderLeft);
+            var bitmap = CutBitmap();
+            if (bitmap == null) return;
+            var frame = BitmapFrame.Create(bitmap);
+            CurrentAreaBitmap = frame;
+            CurrentRect = new Rect(borderLeft, cy, _border.ActualWidth, _border.ActualHeight);
+        }
+
+        private void UpdateMaskRectangles(double cy, double borderLeft)
+        {
             _rectangleLeft.Width = borderLeft;
             _rectangleLeft.Height = _border.ActualHeight;
             Canvas.SetTop(_rectangleLeft, cy);
@@ -252,24 +401,16 @@ namespace WPFDevelopers.Controls
             _rectangleTop.Width = _canvas.Width;
             _rectangleTop.Height = cy;
 
-            var rx = borderLeft + _border.ActualWidth;
-            rx = rx > _canvas.Width ? _canvas.Width : rx;
-            _rectangleRight.Width = _canvas.Width - rx;
+            var rx = Math.Min(borderLeft + _border.ActualWidth, _canvas.Width);
+            _rectangleRight.Width = Math.Max(0, _canvas.Width - rx);
             _rectangleRight.Height = _border.ActualHeight;
             Canvas.SetLeft(_rectangleRight, rx);
             Canvas.SetTop(_rectangleRight, cy);
 
-            var by = cy + _border.ActualHeight;
-            by = by < 0 ? 0 : by;
+            var by = Math.Min(cy + _border.ActualHeight, _canvas.Height);
             _rectangleBottom.Width = _canvas.Width;
-            var rby = _canvas.Height - by;
-            _rectangleBottom.Height = rby < 0 ? 0 : rby;
+            _rectangleBottom.Height = Math.Max(0, _canvas.Height - by);
             Canvas.SetTop(_rectangleBottom, by);
-
-            var bitmap = CutBitmap();
-            if (bitmap == null) return;
-            var frame = BitmapFrame.Create(bitmap);
-            CurrentAreaBitmap = frame;
         }
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -281,22 +422,36 @@ namespace WPFDevelopers.Controls
         {
             try
             {
-                if(bitmapFrame == null) return null;
+                if (_bitmapFrame == null || _border == null) return null;
+
                 var left = (int)Canvas.GetLeft(_border);
                 var top = (int)Canvas.GetTop(_border);
-                var width = (int)_border.Width;
-                var height = (int)_border.Height;
+                var width = (int)_border.ActualWidth;
+                var height = (int)_border.ActualHeight;
+
                 if (width <= 0 || height <= 0) return null;
+
+                left = Math.Max(0, Math.Min(left, _bitmapFrame.PixelWidth - width));
+                top = Math.Max(0, Math.Min(top, _bitmapFrame.PixelHeight - height));
+                width = Math.Min(width, _bitmapFrame.PixelWidth - left);
+                height = Math.Min(height, _bitmapFrame.PixelHeight - top);
+
+                if (width <= 0 || height <= 0) return null;
+
                 var croppedBitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Pbgra32, null);
-                var stride = (int)(bitmapFrame.PixelWidth * (bitmapFrame.Format.BitsPerPixel / 8.0));
-                var pixelData = new byte[stride * bitmapFrame.PixelHeight];
-                bitmapFrame.CopyPixels(pixelData, stride, 0);
-                croppedBitmap.WritePixels(new Int32Rect(0, 0, width, height), pixelData, stride, left + top * stride);
+                var stride = (int)(_bitmapFrame.PixelWidth * (_bitmapFrame.Format.BitsPerPixel / 8.0));
+                var pixelData = new byte[stride * _bitmapFrame.PixelHeight];
+                _bitmapFrame.CopyPixels(pixelData, stride, 0);
+
+                var sourceOffset = left * (_bitmapFrame.Format.BitsPerPixel / 8) + top * stride;
+                croppedBitmap.WritePixels(new Int32Rect(0, 0, width, height), pixelData, stride, sourceOffset);
+
                 return croppedBitmap;
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                System.Diagnostics.Debug.WriteLine($"CutBitmap error: {ex.Message}");
+                return null;
             }
         }
     }
