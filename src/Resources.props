@@ -84,6 +84,9 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Audio\HelloWPFDevelopes_zh.mp3">
 			<Link>Resources\Audio\HelloWPFDevelopes_zh.mp3</Link>
 		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Svg\*.svg">
+			<Link>Resources\Svg\%(Filename)%(Extension)</Link>
+		</Resource>
 	</ItemGroup>
 	<PropertyGroup>
 		<RootNamespace>WPFDevelopers.Samples</RootNamespace>
