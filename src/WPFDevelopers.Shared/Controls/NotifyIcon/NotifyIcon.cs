@@ -280,6 +280,8 @@ namespace WPFDevelopers.Controls
         {
             s_NotifyIcon?.Dispose();
             s_NotifyIcon = default;
+            NotifyIconCache?.Dispose();
+            NotifyIconCache = null;
         }
 
 
