@@ -20,7 +20,7 @@
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
-### [ Wiki → Quick update in progress](https://github.com/WPFDevelopersOrg/WPFDevelopers/wiki)   
+###  [Documentation Center → Quick Start](docs/en/getting-started.md)   
 ###  Visual Studio 2022  
 
 ### .Net Version
