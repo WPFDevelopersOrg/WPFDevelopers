@@ -25,6 +25,7 @@ namespace WPFDevelopers.Samples
             {
                 e.Cancel = true;
             }
+            WpfNotifyIcon?.Dispose();
         }
 
         private void Quit_Click(object sender, RoutedEventArgs e)
