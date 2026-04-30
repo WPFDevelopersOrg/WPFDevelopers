@@ -1,4 +1,4 @@
-# WPFDevelopers Getting Started
+﻿# WPFDevelopers Getting Started
 
 > Get started with WPFDevelopers controls in your WPF project in three steps.
 

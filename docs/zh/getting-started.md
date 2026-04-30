@@ -1,4 +1,4 @@
-# WPFDevelopers 快速开始
+﻿# WPFDevelopers 快速开始
 
 > 三步即可在你的 WPF 项目中使用 WPFDevelopers 控件库
 
