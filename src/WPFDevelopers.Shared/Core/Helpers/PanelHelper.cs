@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace WPFDevelopers.Helpers
 {
@@ -50,13 +51,84 @@ namespace WPFDevelopers.Helpers
 
         private static void UpdateChildrenSpacing(Panel panel, double spacing)
         {
-            foreach (UIElement child in panel.Children)
+            if (panel is StackPanel sp)
             {
-                if (child is FrameworkElement frameworkElement)
+                var orientation = GetEffectiveOrientation(sp);
+                for (int i = 0; i < panel.Children.Count; i++)
                 {
-                    frameworkElement.Margin = new Thickness(spacing);
+                    if (panel.Children[i] is FrameworkElement fe)
+                    {
+                        bool isLast = i == panel.Children.Count - 1;
+                        if (orientation == Orientation.Horizontal)
+                            fe.Margin = new Thickness(spacing, 0, isLast ? 0 : spacing, 0);
+                        else
+                            fe.Margin = new Thickness(0, spacing, 0, isLast ? 0 : spacing);
+                    }
                 }
             }
+            else if (panel is WrapPanel wp)
+            {
+                var orientation = GetEffectiveOrientation(wp);
+                for (int i = 0; i < panel.Children.Count; i++)
+                {
+                    if (panel.Children[i] is FrameworkElement fe)
+                    {
+                        bool isLast = i == panel.Children.Count - 1;
+                        if (orientation == Orientation.Horizontal)
+                            fe.Margin = new Thickness(spacing, 0, isLast ? 0 : spacing, 0);
+                        else
+                            fe.Margin = new Thickness(0, spacing, 0, isLast ? 0 : spacing);
+                    }
+                }
+            }
+            else if (panel is UniformGrid ug)
+            {
+                int columns = ug.Columns;
+                int rows = ug.Rows;
+                if (columns == 0 && rows == 0)
+                    columns = rows = (int)Math.Ceiling(Math.Sqrt(panel.Children.Count));
+                else if (columns == 0)
+                    columns = (panel.Children.Count + rows - 1) / rows;
+                else if (rows == 0)
+                    rows = (panel.Children.Count + columns - 1) / columns;
+
+                for (int i = 0; i < panel.Children.Count; i++)
+                {
+                    if (panel.Children[i] is FrameworkElement fe)
+                    {
+                        int col = i % columns;
+                        int row = i / columns;
+                        bool isFirstRow = row == 0;
+                        bool isFirstCol = col == 0;
+                        bool isLastInRow = col == columns - 1;
+                        bool isLastInCol = row == rows - 1;
+                        fe.Margin = new Thickness(
+                            isFirstCol ? spacing : 0,
+                            isFirstRow ? spacing : 0,
+                            isLastInRow ? 0 : spacing,
+                            isLastInCol ? 0 : spacing);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < panel.Children.Count; i++)
+                {
+                    if (panel.Children[i] is FrameworkElement fe)
+                    {
+                        fe.Margin = new Thickness(spacing);
+                    }
+                }
+            }
+        }
+
+        private static Orientation GetEffectiveOrientation(Panel panel)
+        {
+            if (panel is StackPanel sp)
+                return sp.Orientation;
+            if (panel is WrapPanel wp)
+                return wp.Orientation;
+            return Orientation.Horizontal;
         }
     }
 }
