@@ -366,8 +366,23 @@ namespace WPFDevelopers.Controls
       
         private void OnBorder_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            IsDropDownOpen = !IsDropDownOpen;
-            e.Handled = true;
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                IsDropDownOpen = !IsDropDownOpen;
+                e.Handled = true;
+            }
+            else if (e.ChangedButton == MouseButton.Right)
+            {
+                if (IsDropDownOpen)
+                    IsDropDownOpen = false;
+
+                if (ContextMenu != null)
+                {
+                    ContextMenu.PlacementTarget = this;
+                    ContextMenu.IsOpen = true;
+                }
+                e.Handled = true;
+            }
         }
 
        
