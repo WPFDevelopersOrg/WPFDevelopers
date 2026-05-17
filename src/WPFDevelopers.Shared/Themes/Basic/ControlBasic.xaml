@@ -40,7 +40,7 @@
     <sys:Double x:Key="WD.Height">32</sys:Double>
     <sys:Double x:Key="WD.ThumbWidth">16</sys:Double>
     <sys:Double x:Key="WD.ThumbCornerRadius">8</sys:Double>
-    <sys:Double x:Key="WD.RepeatButtonSize">6</sys:Double>
+    <sys:Double x:Key="WD.RepeatButtonSize">4</sys:Double>
     <sys:Double x:Key="WD.ColumnHeaderWidth">6</sys:Double>
     <Thickness x:Key="WD.Padding">6</Thickness>
     <DropShadowEffect
