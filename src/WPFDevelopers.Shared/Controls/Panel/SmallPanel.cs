@@ -16,7 +16,20 @@ namespace WPFDevelopers.Controls
                 gridDesiredSize.Width = Math.Max(gridDesiredSize.Width, child.DesiredSize.Width);
                 gridDesiredSize.Height = Math.Max(gridDesiredSize.Height, child.DesiredSize.Height);
             }
-            return gridDesiredSize;
+
+            double width = gridDesiredSize.Width;
+            if (double.IsInfinity(width))
+                width = double.IsInfinity(constraint.Width)
+                    ? SystemParameters.WorkArea.Width
+                    : constraint.Width;
+
+            double height = gridDesiredSize.Height;
+            if (double.IsInfinity(height))
+                height = double.IsInfinity(constraint.Height)
+                    ? SystemParameters.WorkArea.Height
+                    : constraint.Height;
+
+            return new Size(width, height);
         }
 
         protected override Size ArrangeOverride(Size arrangeSize)
