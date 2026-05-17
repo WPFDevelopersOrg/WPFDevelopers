@@ -27,7 +27,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = ListViewTemplateNameSearch, Type = typeof(DataGrid))]
     [TemplatePart(Name = DropDownScrollViewer, Type = typeof(ScrollViewer))]
     [TemplatePart(Name = PART_Border, Type = typeof(Border))]
-
+    [TemplatePart(Name = PART_EditableTextBox, Type = typeof(TextBox))]
     public class MultiSelectComboBox : ListView
     {
         private const string PART_Popup = "PART_Popup";
@@ -38,6 +38,7 @@ namespace WPFDevelopers.Controls
         private const string ListViewTemplateNameSearch = "PART_SearchSelector";
         private const string DropDownScrollViewer = "DropDownScrollViewer";
         private const string PART_Border = "PART_Border";
+        private const string PART_EditableTextBox = "PART_EditableTextBox";
 
         public static readonly RoutedCommand ToggleDropDownCommand = new RoutedCommand();
 
@@ -100,6 +101,7 @@ namespace WPFDevelopers.Controls
         private ScrollViewer _scrollViewer;
         private CheckBox _checkBox;
         private Border _border;
+        private TextBox _editableTextBox;
         private string _theLastText;
         private bool _isUpdating;
 
@@ -305,6 +307,13 @@ namespace WPFDevelopers.Controls
             selectedList = new List<object>();
             selectedSearchList = new List<object>();
             selectedItems = new List<object>();
+            _editableTextBox = GetTemplateChild(PART_EditableTextBox) as TextBox;
+            if (_editableTextBox != null)
+            {
+                _editableTextBox.AddHandler(UIElement.PreviewMouseUpEvent,
+                    new MouseButtonEventHandler(OnEditableTextBox_PreviewMouseUp), true);
+            }
+
             _textBox = GetTemplateChild(TextBoxTemplateName) as TextBox;
             if (_textBox != null)
                 ApplySearchLogic();
@@ -441,6 +450,18 @@ namespace WPFDevelopers.Controls
                 _textBox.Visibility = Visibility.Visible;
                 _textBox.TextChanged -= OnTextbox_TextChanged;
                 _textBox.TextChanged += OnTextbox_TextChanged;
+            }
+        }
+
+        private void OnEditableTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_editableTextBox.SelectedText))
+            {
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    if (!IsDropDownOpen)
+                        IsDropDownOpen = true;
+                }), DispatcherPriority.Background);
             }
         }
 
