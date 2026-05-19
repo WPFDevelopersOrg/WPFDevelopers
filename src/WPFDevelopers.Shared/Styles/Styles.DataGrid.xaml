@@ -13,6 +13,7 @@
     <converts:DoubleMinConverter x:Key="WD.DoubleMinConverter" />
     <converts:GridLinesToVisibilityConverter x:Key="WD.GridLinesToVisibilityConverter" />
     <converts:LastColumnGridLineVisibilityConverter x:Key="WD.LastColumnGridLineVisibilityConverter" />
+    <converts:FilterVisibilityMultiConverter x:Key="WD.FilterVisibilityMultiConverter" />
     <!--  Style and template for the button in the upper left corner of the DataGrid.  -->
     <Style
         x:Key="WD.DefaultDataGridSelectAllButtonStyle"
@@ -488,9 +489,13 @@
                                         Grid.Column="2"
                                         Padding="2,0"
                                         helpers:DataGridHelper.IsFilter="True"
-                                        Opacity="0"
-                                        Style="{StaticResource WD.PathToggleButton}"
-                                        Visibility="{Binding Path=(helpers:DataGridHelper.FilterEngine), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Converter={StaticResource WD.NullToVisibilityConverter_Inverse}}">
+                                        Style="{StaticResource WD.PathToggleButton}">
+                                        <ToggleButton.Visibility>
+                                            <MultiBinding Converter="{StaticResource WD.FilterVisibilityMultiConverter}">
+                                                <Binding Path="Column" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type DataGridColumnHeader}}" />
+                                                <Binding Path="(helpers:DataGridHelper.FilterEngine)" RelativeSource="{RelativeSource AncestorType={x:Type DataGrid}}" />
+                                            </MultiBinding>
+                                        </ToggleButton.Visibility>
                                         <controls:PathIcon
                                             Width="10"
                                             Height="10"
@@ -526,16 +531,6 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="StoryboardDescendingBeginStoryboard" Storyboard="{StaticResource StoryboardDescending}" />
                             </Trigger.EnterActions>
-                        </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True" />
-                                <Condition SourceName="PART_FilterToggleButton" Property="Visibility" Value="Visible" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="PART_FilterToggleButton" Property="Opacity" Value="1" />
-                        </MultiTrigger>
-                        <Trigger SourceName="PART_FilterToggleButton" Property="IsChecked" Value="True">
-                            <Setter TargetName="PART_FilterToggleButton" Property="Opacity" Value="1" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
