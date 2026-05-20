@@ -18,6 +18,34 @@ namespace WPFDevelopers.Controls
         ObservableCollection<object> View { get; }
     }
 
+    public struct FilterInfo
+    {
+        internal FilterInfo(string propertyName, IEnumerable values)
+        {
+            PropertyName = propertyName;
+            Values = new HashSet<object>(values);
+        }
+        public string PropertyName { get; internal set; }
+        public IReadOnlyCollection<object> Values { get; internal set; }
+    }
+
+    public class FilterRelatedEventArgs : EventArgs
+    {
+        public FilterRelatedEventArgs(FilterInfo filter)
+        {
+            Filter = filter;
+        }
+        public FilterInfo Filter { get; set; }
+    }
+
+    public class FilterAppliedEventArgs: FilterRelatedEventArgs
+    {
+        public FilterAppliedEventArgs(FilterInfo filter) : base(filter)
+        {
+
+        }
+    }
+
     public class FilterEngine<T> : IFilterEngine, IDisposable
     {
         public IList<T> Source { get; set; }
@@ -26,6 +54,7 @@ namespace WPFDevelopers.Controls
         Type IFilterEngine.ItemType => typeof(T);
 
         public ObservableCollection<T> TypedView { get; } = new ObservableCollection<T>();
+        public EventHandler<FilterAppliedEventArgs> OnFilterApplied;
 
         private ObservableCollection<object> _objectView;
         private readonly object _syncLock = new object();
@@ -119,13 +148,15 @@ namespace WPFDevelopers.Controls
 
         public void ApplyFilter(string propertyName, IEnumerable<object> values)
         {
+            HashSet<object> persist = new HashSet<object>(values);
             _filters[propertyName] = new FilterCondition
             {
                 PropertyName = propertyName,
-                Values = new HashSet<object>(values)
+                Values = persist
             };
 
             Refresh();
+            OnFilterApplied?.Invoke(this,new FilterAppliedEventArgs(new FilterInfo(propertyName, persist)));
         }
 
         public void ClearFilter(string propertyName)
