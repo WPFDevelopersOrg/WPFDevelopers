@@ -17,6 +17,7 @@
         <Setter Property="Width" Value="300" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Padding" Value="10" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="Margin" Value="4,2" />
         <Setter Property="Template">
             <Setter.Value>
@@ -95,8 +96,8 @@
                                 <DockPanel x:Name="PART_DockPanel" Grid.Column="0">
                                     <Path
                                         x:Name="PART_Path"
-                                        Width="15"
-                                        Height="15"
+                                        Width="20"
+                                        Height="20"
                                         Data="{StaticResource WD.SuccessGeometry}"
                                         Fill="{DynamicResource WD.PrimaryBrush}"
                                         Stretch="Fill" />
@@ -155,7 +156,7 @@
                             <Setter Property="Foreground" Value="{StaticResource WD.SuccessBrush}" />
                         </Trigger>
                         <Trigger Property="ToastType" Value="Info">
-                            <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.WarningGeometry}" />
+                            <Setter TargetName="PART_Path" Property="Data" Value="{StaticResource WD.InfoGeometry}" />
                             <Setter TargetName="PART_Path" Property="Fill" Value="{DynamicResource WD.PrimaryBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
