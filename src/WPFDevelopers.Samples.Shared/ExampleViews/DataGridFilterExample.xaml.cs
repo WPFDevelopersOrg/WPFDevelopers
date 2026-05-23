@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,6 +44,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             }
             Engines.Source = list;
             Engines.Refresh();
+            Engines.OnFilterApplied += OnFilterAppliedHandler;
             //C#
             var Persons = new FilterEngine<Person>();
             Persons.Source = list;
@@ -51,6 +53,10 @@ namespace WPFDevelopers.Samples.ExampleViews
             myDataGridCodeCSharp.ItemsSource = Persons.TypedView;
             //default
             myDataGridDefault.ItemsSource = list;
+        }
+        private void OnFilterAppliedHandler(object sender, FilterAppliedEventArgs args)
+        {
+           
         }
     }
     public class Person
