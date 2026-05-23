@@ -38,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\ProgressLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FilterVisibilityMultiConverter.cs" />
     <Compile Include="..\WPFDevelopers.Shared\Controls\Toast\ToastExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
