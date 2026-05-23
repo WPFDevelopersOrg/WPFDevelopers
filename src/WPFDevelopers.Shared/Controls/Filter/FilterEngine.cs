@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Windows;
 
 namespace WPFDevelopers.Controls
@@ -23,10 +24,23 @@ namespace WPFDevelopers.Controls
         internal FilterInfo(string propertyName, IEnumerable values)
         {
             PropertyName = propertyName;
-            Values = new HashSet<object>(values);
+            var objectValues = values.Cast<object>();
+            var hashSet = new HashSet<object>(objectValues);
+
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
+            Values = hashSet;
+#else
+            Values = hashSet;
+#endif
         }
+
         public string PropertyName { get; internal set; }
+
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
+        public ICollection<object> Values { get; internal set; }
+#else
         public IReadOnlyCollection<object> Values { get; internal set; }
+#endif
     }
 
     public class FilterRelatedEventArgs : EventArgs
@@ -38,7 +52,7 @@ namespace WPFDevelopers.Controls
         public FilterInfo Filter { get; set; }
     }
 
-    public class FilterAppliedEventArgs: FilterRelatedEventArgs
+    public class FilterAppliedEventArgs : FilterRelatedEventArgs
     {
         public FilterAppliedEventArgs(FilterInfo filter) : base(filter)
         {
@@ -156,7 +170,7 @@ namespace WPFDevelopers.Controls
             };
 
             Refresh();
-            OnFilterApplied?.Invoke(this,new FilterAppliedEventArgs(new FilterInfo(propertyName, persist)));
+            OnFilterApplied?.Invoke(this, new FilterAppliedEventArgs(new FilterInfo(propertyName, persist)));
         }
 
         public void ClearFilter(string propertyName)
@@ -231,84 +245,4 @@ namespace WPFDevelopers.Controls
             }
         }
     }
-
-    //public class FilterEngine<T> : IFilterEngine
-    //{
-    //    public IList<T> Source { get; set; }
-
-    //    IEnumerable IFilterEngine.Source => Source;
-
-    //    Type IFilterEngine.ItemType => typeof(T);
-
-    //    public ObservableCollection<T> TypedView { get; } = new ObservableCollection<T>();
-
-    //    ObservableCollection<object> IFilterEngine.View
-    //    {
-    //        get
-    //        {
-    //            var objectView = new ObservableCollection<object>();
-    //            foreach (var item in TypedView)
-    //                objectView.Add(item);
-    //            return objectView;
-    //        }
-    //    }
-
-    //    private readonly Dictionary<string, FilterCondition> _filters
-    //        = new Dictionary<string, FilterCondition>();
-
-    //    public void ApplyFilter(string propertyName, IEnumerable<object> values)
-    //    {
-    //        _filters[propertyName] = new FilterCondition
-    //        {
-    //            PropertyName = propertyName,
-    //            Values = new HashSet<object>(values)
-    //        };
-
-    //        Refresh();
-    //    }
-
-    //    public void ClearFilter(string propertyName)
-    //    {
-    //        if (_filters.ContainsKey(propertyName))
-    //            _filters.Remove(propertyName);
-
-    //        Refresh();
-    //    }
-
-    //    public void Refresh()
-    //    {
-    //        TypedView.Clear();
-
-    //        if (Source == null)
-    //            return;
-
-    //        foreach (var item in Source)
-    //        {
-    //            if (Match(item))
-    //                TypedView.Add(item);
-    //        }
-    //    }
-
-    //    private bool Match(T item)
-    //    {
-    //        foreach (var filter in _filters.Values)
-    //        {
-    //            var getter = PropertyAccessor<T>.Get(filter.PropertyName);
-    //            var value = getter(item);
-
-    //            if (!filter.Values.Contains(value))
-    //                return false;
-    //        }
-
-    //        return true;
-    //    }
-
-    //    public HashSet<object> GetFilterValues(string propertyName)
-    //    {
-    //        if (_filters.TryGetValue(propertyName, out var condition))
-    //            return condition.Values;
-
-    //        return null;
-    //    }
-    //}
 }
