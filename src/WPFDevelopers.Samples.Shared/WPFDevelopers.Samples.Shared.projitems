@@ -87,6 +87,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailWindowExample.xaml.cs">
       <DependentUpon>IconicThumbnailWindowExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MessageBoxExample.xaml.cs">
+      <DependentUpon>MessageBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>NavMenu3DExample.xaml</DependentUpon>
@@ -662,6 +665,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailWindowExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MessageBoxExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

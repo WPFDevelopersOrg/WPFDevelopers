@@ -129,6 +129,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BasicControls:
                     ControlPanel = new BasicControlsExample();
                     break;
+                case MenuEnum.MessageBox:
+                    ControlPanel = new MessageBoxExample();
+                    break;
                 case MenuEnum.NotifyIcon:
                     ControlPanel = new NotifyIconExample();
                     break;

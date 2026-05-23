@@ -9,6 +9,7 @@
         UsageGuide,
         UsageColor,
         BasicControls,
+        MessageBox,
         NotifyIcon,
         PanningItems,
         BreatheLight,
