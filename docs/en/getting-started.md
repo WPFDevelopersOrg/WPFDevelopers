@@ -125,15 +125,6 @@ Then use WD controls:
     <wd:StepItem Content="Step 3" />
 </wd:Step>
 
-<!-- Dashboard gauge -->
-<wd:Dashboard Value="75" MaxValue="100" />
-
-<!-- Pie chart -->
-<wd:PieControl Datas="{Binding PieDatas}" />
-
-<!-- Timeline -->
-<wd:TimeLineControl ItemsSource="{Binding TimelineItems}" />
-
 <!-- Carousel -->
 <wd:Carousel ItemsSource="{Binding CarouselItems}" />
 
@@ -148,6 +139,12 @@ Then use WD controls:
 
 <!-- Pie chart (LiveCharts-style) -->
 <wd:ChartPie Datas="{Binding PieDatas}" />
+
+<!-- Dashboard gauge (NuGet version) -->
+<wd:Gauge Value="75" MaxValue="100" />
+
+<!-- Circular progress bar -->
+<wd:CircleProgressBar Value="75" />
 ```
 
 ### 2. Attached Properties on Standard WPF Controls
@@ -245,7 +242,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:Drawer` | NuGet | [DrawerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawerExample.xaml) | Slide-out panel (Top/Bottom/Left/Right) |
 | `wd:Mask` | NuGet | [MaskExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MaskExample.xaml) | Modal overlay |
 | `wd:AcrylicBlur` | NuGet | [AcrylicBlurExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/AcrylicBlurExample.xaml) | Acrylic blur window |
-| `wd:TaskbarItemInfo` | NuGet | [TaskbarItemInfoExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TaskbarItemInfoExample.xaml) | Taskbar badge |
+| <span style="color:#e6a23c">🟡 TaskbarItemInfo</span> | Sample-only | [TaskbarItemInfoExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TaskbarItemInfoExample.xaml) | Taskbar badge |
 
 ### Basic Controls & Styles
 
@@ -285,7 +282,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:VerifyCode` | NuGet | [VerifyCodeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/VerifyCodeExample.xaml) | CAPTCHA drawing |
 | <span style="color:#e6a23c">🟡 RoundPicker</span> | Sample-only | [RoundPickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RoundPickerExample.xaml) | Circular color picker |
 | `wd:RulerControl` | NuGet | [RulerControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RulerControlExample.xaml) | Ruler control |
-| `wd:Selector` | NuGet | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | Selector control |
+| <span style="color:#e6a23c">🟡 Selector</span> | Sample-only | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | Selector control |
 | `wd:Dial` | NuGet | [DialExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DialExample.xaml) | Dial pad |
 | `wd:GestureUnlock` | NuGet | [GestureUnlockExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GestureUnlockExample.xaml) | Gesture pattern unlock |
 | `wd:SvgViewer` | NuGet | [SvgViewerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SvgViewerExample.xaml) | SVG viewer |
@@ -313,7 +310,7 @@ WD provides a set of theme resources you can reference in XAML:
 | <span style="color:#e6a23c">🟡 Dashboard</span> | Sample-only | [DashboardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DashboardExample.xaml) | Dashboard gauge (tick marks follow progress) |
 | <span style="color:#e6a23c">🟡 PieControl</span> | Sample-only | [PieControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PieControlExample.xaml) | Pie chart statistics |
 | `wd:Gauge` | NuGet | [GaugeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GaugeExample.xaml) | Gauge control |
-| `wd:LineChart` | NuGet | [LineChartExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LineChartExample.xaml) | Line chart (alternate implementation) |
+| <span style="color:#e6a23c">🟡 LineChart</span> | Sample-only | [LineChartExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LineChartExample.xaml) | Line chart (alternate implementation) |
 | `wd:CircleProgressBar` | NuGet | [CircleProgressBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleProgressBarExample.xaml) | Circular progress bar |
 | `wd:Step` | NuGet | [StepExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StepExample.xaml) | Step wizard |
 | `wd:BreadCrumbBar` | NuGet | [BreadCrumbBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BreadCrumbBarExample.xaml) | Breadcrumb navigation |
@@ -351,15 +348,15 @@ WD provides a set of theme resources you can reference in XAML:
 | <span style="color:#e6a23c">🟡 BubblleControl</span> | Sample-only | [BubblleControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BubblleControlExample.xaml) | Bubble animation |
 | `wd:StarrySky` | NuGet | [StarrySkyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StarrySkyExample.xaml) | Starry sky animation |
 | <span style="color:#e6a23c">🟡 SnowCanvas</span> | Sample-only | [SnowCanvasExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SnowCanvasExample.xaml) | Christmas tree & snow canvas |
-| `wd:SpeedRockets` | NuGet | [SpeedRocketsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpeedRockets/SpeedRocketsExample.xaml) | Speed rocket animation |
+| <span style="color:#e6a23c">🟡 SpeedRockets</span> | Sample-only | [SpeedRocketsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpeedRockets/SpeedRocketsExample.xaml) | Speed rocket animation |
 | <span style="color:#e6a23c">🟡 CountdownTimer</span> | Sample-only | [CountdownTimerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CountdownTimerExample.xaml) | Countdown timer animation |
-| `wd:NumberCard` | NuGet | [NumberCardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/NumberCard/NumberCardExample.xaml) | 3D flip countdown cards |
+| <span style="color:#e6a23c">🟡 NumberCard</span> | Sample-only | [NumberCardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/NumberCard/NumberCardExample.xaml) | 3D flip countdown cards |
 | `wd:AnimationGrid` | NuGet | [AnimationGridExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/AnimationGridExample.xaml) | Animation grid |
-| `wd:LogoAnimation` | NuGet | [LogoAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LogoAnimationExample.xaml) | Login logo animation |
+| <span style="color:#e6a23c">🟡 LogoAnimation</span> | Sample-only | [LogoAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LogoAnimationExample.xaml) | Login logo animation |
 | <span style="color:#e6a23c">🟡 SongWords</span> | Sample-only | [SongWordsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SongWordsExample.xaml) | Lyrics scroll animation |
 | `wd:AnimationAudio` | NuGet | [AnimationAudioExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/AnimationAudioExample.xaml) | Audio waveform visualization |
-| `wd:Barrage` | NuGet | [BarrageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BarrageExample.xaml) | Danmaku / barrage control |
-| `wd:CanvasHandWriting` | NuGet | [CanvasHandWritingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml) | Smooth canvas handwriting |
+| <span style="color:#e6a23c">🟡 Barrage</span> | Sample-only | [BarrageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BarrageExample.xaml) | Danmaku / barrage control |
+| <span style="color:#e6a23c">🟡 CanvasHandWriting</span> | Sample-only | [CanvasHandWritingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml) | Smooth canvas handwriting |
 | <span style="color:#e6a23c">🟡 Drawing</span> | Sample-only | [DrawingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawingExample.xaml) | Freehand drawing |
 | <span style="color:#e6a23c">🟡 DrawPrize</span> | Sample-only | [DrawPrizeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawPrizeExample.xaml) | Lottery wheel |
 
@@ -389,11 +386,11 @@ WD provides a set of theme resources you can reference in XAML:
 
 | Control | Source | Example File | Description |
 |---------|--------|-------------|-------------|
-| `wd:ZooSemy` | NuGet | [ZooSemyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ZooSemy/ZooSemyExample.xaml) | Skeuomorphic rotary knob (volume) |
-| `wd:OtherControl` | NuGet | [OtherControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtherControlExample.xaml) | Torch & other fun controls |
-| `wd:Desktop` | NuGet | [DesktopBackground.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Desktop/DesktopBackground.xaml) | Dynamic desktop wallpaper |
-| `wd:AMap` | NuGet | [BingAMapExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/BingAMapExample.xaml) | Map integration (Bing / AutoNavi) |
-| `wd:LoginWindow` | NuGet | [LoginExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LoginWindow/LoginExample.xaml) | Login window template |
+| <span style="color:#e6a23c">🟡 ZooSemy</span> | Sample-only | [ZooSemyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ZooSemy/ZooSemyExample.xaml) | Skeuomorphic rotary knob (volume) |
+| <span style="color:#e6a23c">🟡 OtherControl</span> | Sample-only | [OtherControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtherControlExample.xaml) | Torch & other fun controls |
+| <span style="color:#e6a23c">🟡 Desktop</span> | Sample-only | [DesktopBackground.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Desktop/DesktopBackground.xaml) | Dynamic desktop wallpaper |
+| <span style="color:#e6a23c">🟡 AMap</span> | Sample-only | [BingAMapExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/BingAMapExample.xaml) | Map integration (Bing / AutoNavi) |
+| <span style="color:#e6a23c">🟡 LoginWindow</span> | Sample-only | [LoginExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LoginWindow/LoginExample.xaml) | Login window template |
 | <span style="color:#e6a23c">🟡 ChatEmoji</span> | Sample-only | [ChatEmojiExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ChatEmojiExample.xaml) | Emoji + text chat |
 
 ---
