@@ -270,7 +270,7 @@ namespace WPFDevelopers.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.WarningGeometry");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.InfoGeometry");
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.WarningBrush");
                     break;
                 case MessageBoxImage.Error:
@@ -282,7 +282,7 @@ namespace WPFDevelopers.Controls
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.SuccessBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.InfoGeometry");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.QuestionGeometry");
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PrimaryBrush");
                     break;
             }
