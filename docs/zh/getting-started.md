@@ -125,15 +125,6 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     <wd:StepItem Content="第三步" />
 </wd:Step>
 
-<!-- 仪表盘 -->
-<wd:Dashboard Value="75" MaxValue="100" />
-
-<!-- 饼图 -->
-<wd:PieControl Datas="{Binding PieDatas}" />
-
-<!-- 时间轴 -->
-<wd:TimeLineControl ItemsSource="{Binding TimelineItems}" />
-
 <!-- 轮播图 -->
 <wd:Carousel ItemsSource="{Binding CarouselItems}" />
 
@@ -148,6 +139,12 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 <!-- 饼图（仿LiveCharts） -->
 <wd:ChartPie Datas="{Binding PieDatas}" />
+
+<!-- 仪表盘（NuGet 版本） -->
+<wd:Gauge Value="75" MaxValue="100" />
+
+<!-- 环形进度条 -->
+<wd:CircleProgressBar Value="75" />
 ```
 
 ### 2. 附加属性扩展标准 WPF 控件
@@ -249,7 +246,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:Drawer` | NuGet | [DrawerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawerExample.xaml) | 滑出式面板（上/下/左/右） |
 | `wd:Mask` | NuGet | [MaskExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MaskExample.xaml) | 遮罩层（窗体级/控件级） |
 | `wd:AcrylicBlur` | NuGet | [AcrylicBlurExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/AcrylicBlurExample.xaml) | 亚克力模糊窗体 |
-| `wd:TaskbarItemInfo` | NuGet | [TaskbarItemInfoExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TaskbarItemInfoExample.xaml) | 任务栏角徽 |
+| <span style="color:#e6a23c">🟡 TaskbarItemInfo</span> | 示例专属 | [TaskbarItemInfoExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TaskbarItemInfoExample.xaml) | 任务栏角徽 |
 
 ### 基础控件与样式
 
@@ -289,7 +286,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:VerifyCode` | NuGet | [VerifyCodeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/VerifyCodeExample.xaml) | 验证码绘制 |
 | <span style="color:#e6a23c">🟡 RoundPicker</span> | 示例专属 | [RoundPickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RoundPickerExample.xaml) | 圆形颜色选择器 |
 | `wd:RulerControl` | NuGet | [RulerControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RulerControlExample.xaml) | 刻度尺控件 |
-| `wd:Selector` | NuGet | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | 选择器控件 |
+| <span style="color:#e6a23c">🟡 Selector</span> | 示例专属 | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | 选择器控件 |
 | `wd:Dial` | NuGet | [DialExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DialExample.xaml) | 拨号盘控件 |
 | `wd:GestureUnlock` | NuGet | [GestureUnlockExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GestureUnlockExample.xaml) | 手势解锁 |
 | `wd:SvgViewer` | NuGet | [SvgViewerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SvgViewerExample.xaml) | SVG 查看器 |
@@ -317,7 +314,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | <span style="color:#e6a23c">🟡 Dashboard</span> | 示例专属 | [DashboardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DashboardExample.xaml) | 仪表盘（刻度跟随进度） |
 | <span style="color:#e6a23c">🟡 PieControl</span> | 示例专属 | [PieControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PieControlExample.xaml) | 统计饼图 |
 | `wd:Gauge` | NuGet | [GaugeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GaugeExample.xaml) | 仪表盘 |
-| `wd:LineChart` | NuGet | [LineChartExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LineChartExample.xaml) | 折线图（另一实现） |
+| <span style="color:#e6a23c">🟡 LineChart</span> | 示例专属 | [LineChartExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LineChartExample.xaml) | 折线图（另一实现） |
 | `wd:CircleProgressBar` | NuGet | [CircleProgressBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleProgressBarExample.xaml) | 环形进度条 |
 | `wd:Step` | NuGet | [StepExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StepExample.xaml) | 步骤条向导 |
 | `wd:BreadCrumbBar` | NuGet | [BreadCrumbBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BreadCrumbBarExample.xaml) | 面包屑导航栏 |
@@ -355,15 +352,15 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | <span style="color:#e6a23c">🟡 BubblleControl</span> | 示例专属 | [BubblleControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BubblleControlExample.xaml) | 泡泡动画控件 |
 | `wd:StarrySky` | NuGet | [StarrySkyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StarrySkyExample.xaml) | 星空动画 |
 | <span style="color:#e6a23c">🟡 SnowCanvas</span> | 示例专属 | [SnowCanvasExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SnowCanvasExample.xaml) | 圣诞树雪花 Canvas |
-| `wd:SpeedRockets` | NuGet | [SpeedRocketsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpeedRockets/SpeedRocketsExample.xaml) | 加速火箭动画 |
+| <span style="color:#e6a23c">🟡 SpeedRockets</span> | 示例专属 | [SpeedRocketsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpeedRockets/SpeedRocketsExample.xaml) | 加速火箭动画 |
 | <span style="color:#e6a23c">🟡 CountdownTimer</span> | 示例专属 | [CountdownTimerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CountdownTimerExample.xaml) | 倒计时动画 |
-| `wd:NumberCard` | NuGet | [NumberCardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/NumberCard/NumberCardExample.xaml) | 3D 翻转倒计时卡片 |
+| <span style="color:#e6a23c">🟡 NumberCard</span> | 示例专属 | [NumberCardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/NumberCard/NumberCardExample.xaml) | 3D 翻转倒计时卡片 |
 | `wd:AnimationGrid` | NuGet | [AnimationGridExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/AnimationGridExample.xaml) | 动画网格 |
-| `wd:LogoAnimation` | NuGet | [LogoAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LogoAnimationExample.xaml) | 登录 Logo 动画 |
+| <span style="color:#e6a23c">🟡 LogoAnimation</span> | 示例专属 | [LogoAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LogoAnimationExample.xaml) | 登录 Logo 动画 |
 | <span style="color:#e6a23c">🟡 SongWords</span> | 示例专属 | [SongWordsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SongWordsExample.xaml) | 歌词滚动动画 |
 | `wd:AnimationAudio` | NuGet | [AnimationAudioExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/AnimationAudioExample.xaml) | 音频波形可视化 |
-| `wd:Barrage` | NuGet | [BarrageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BarrageExample.xaml) | 弹幕控件 |
-| `wd:CanvasHandWriting` | NuGet | [CanvasHandWritingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml) | Canvas 平滑笔迹绘制 |
+| <span style="color:#e6a23c">🟡 Barrage</span> | 示例专属 | [BarrageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BarrageExample.xaml) | 弹幕控件 |
+| <span style="color:#e6a23c">🟡 CanvasHandWriting</span> | 示例专属 | [CanvasHandWritingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml) | Canvas 平滑笔迹绘制 |
 | <span style="color:#e6a23c">🟡 Drawing</span> | 示例专属 | [DrawingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawingExample.xaml) | 自由手绘 |
 | <span style="color:#e6a23c">🟡 DrawPrize</span> | 示例专属 | [DrawPrizeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawPrizeExample.xaml) | 大转盘抽奖 |
 
@@ -393,11 +390,11 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 
 | 控件名 | 来源 | 示例文件 | 说明 |
 |--------|------|----------|------|
-| `wd:ZooSemy` | NuGet | [ZooSemyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ZooSemy/ZooSemyExample.xaml) | 拟物旋转按钮（音量旋钮） |
-| `wd:OtherControl` | NuGet | [OtherControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtherControlExample.xaml) | 火炬等趣味控件 |
-| `wd:Desktop` | NuGet | [DesktopBackground.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Desktop/DesktopBackground.xaml) | 动态桌面壁纸（视频播放） |
-| `wd:AMap` | NuGet | [BingAMapExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/BingAMapExample.xaml) | 地图集成（Bing/高德） |
-| `wd:LoginWindow` | NuGet | [LoginExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LoginWindow/LoginExample.xaml) | 登录窗口模板 |
+| <span style="color:#e6a23c">🟡 ZooSemy</span> | 示例专属 | [ZooSemyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ZooSemy/ZooSemyExample.xaml) | 拟物旋转按钮（音量旋钮） |
+| <span style="color:#e6a23c">🟡 OtherControl</span> | 示例专属 | [OtherControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtherControlExample.xaml) | 火炬等趣味控件 |
+| <span style="color:#e6a23c">🟡 Desktop</span> | 示例专属 | [DesktopBackground.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Desktop/DesktopBackground.xaml) | 动态桌面壁纸（视频播放） |
+| <span style="color:#e6a23c">🟡 AMap</span> | 示例专属 | [BingAMapExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/BingAMapExample.xaml) | 地图集成（Bing/高德） |
+| <span style="color:#e6a23c">🟡 LoginWindow</span> | 示例专属 | [LoginExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LoginWindow/LoginExample.xaml) | 登录窗口模板 |
 | <span style="color:#e6a23c">🟡 ChatEmoji</span> | 示例专属 | [ChatEmojiExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ChatEmojiExample.xaml) | Emoji + 文本聊天控件 |
 
 ---
