@@ -14,7 +14,7 @@ WPFDevelopers covers the full spectrum from .NET Framework 4.0 to .NET 10:
 
 ## Requirements
 
-- Visual Studio 2022
+- Visual Studio 2026
 - .NET Framework 4.0 or later / .NET Core 3.0 or later
 
 ---
@@ -65,7 +65,7 @@ Add the WD namespace and theme resources in `App.xaml`:
 
 | Configuration | Effect |
 |---------------|--------|
-| `<wd:Resources />` | Follows system theme (Windows 10+, auto Light/Dark switch) |
+| `<wd:Resources />` | Default Light theme (follows system Light/Dark on Windows 10+) |
 | `<wd:Resources Theme="Light" />` | Fixed light theme |
 | `<wd:Resources Theme="Dark" />` | Fixed dark theme |
 | `<wd:Resources Color="Fuchsia" />` | Custom theme color |
