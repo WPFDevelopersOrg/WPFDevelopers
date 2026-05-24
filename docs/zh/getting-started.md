@@ -14,7 +14,7 @@ WPFDevelopers 覆盖从 .NET Framework 4.0 到 .NET 10 的完整版本线：
 
 ## 环境要求
 
-- Visual Studio 2022
+- Visual Studio 2026
 - .NET Framework 4.0 或更高 / .NET Core 3.0 或更高
 
 ---
@@ -65,7 +65,7 @@ Install-Package WPFDevelopers
 
 | 配置方式 | 效果 |
 |----------|------|
-| `<wd:Resources />` | 跟随系统主题（Windows 10+ 自动切换 Light/Dark） |
+| `<wd:Resources />` | 默认 Light 主题（Windows 10+ 跟随系统 Light/Dark 切换） |
 | `<wd:Resources Theme="Light" />` | 固定浅色主题 |
 | `<wd:Resources Theme="Dark" />` | 固定深色主题 |
 | `<wd:Resources Color="Fuchsia" />` | 自定义主题色 |
