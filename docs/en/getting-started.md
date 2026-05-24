@@ -383,6 +383,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:Tag` | NuGet | [TagExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TagExample.xaml) | Tag control |
 | `wd:PathIcon` | NuGet | [PathIconExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PathIconExample.xaml) | Vector path icon |
 | `wd:AllPathIcon` | NuGet | [AllPathIconExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/AllPathIconExample.xaml) | Built-in icon browser |
+| `MessageBox` (static class) | NuGet | [MessageBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MessageBoxExample.xaml) | Message dialog |
 
 ### Other Controls
 
@@ -394,6 +395,118 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:AMap` | NuGet | [BingAMapExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/BingAMapExample.xaml) | Map integration (Bing / AutoNavi) |
 | `wd:LoginWindow` | NuGet | [LoginExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LoginWindow/LoginExample.xaml) | Login window template |
 | <span style="color:#e6a23c">🟡 ChatEmoji</span> | Sample-only | [ChatEmojiExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ChatEmojiExample.xaml) | Emoji + text chat |
+
+---
+
+## MessageBox Usage Tutorial
+
+`MessageBox` is a static message dialog class provided by WPFDevelopers, designed as a drop-in replacement for `System.Windows.MessageBox` with a more polished and customizable appearance.
+
+> **Note**: `MessageBox` is a **static class**, not a XAML control. It can only be called from C# code.
+
+### Import the Namespace
+
+To avoid conflicts with `System.Windows.MessageBox`, use an alias:
+
+```csharp
+using MessageBox = WPFDevelopers.Controls.MessageBox;
+```
+
+### Method Signatures
+
+`MessageBox.Show()` provides 5 overloads:
+
+```csharp
+// 1. Message text only (default OK button, no icon)
+MessageBoxResult Show(string messageBoxText, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+
+// 2. Message text + caption
+MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+
+// 3. Message text + caption + buttons
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+
+// 4. Message text + caption + icon
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+
+// 5. Message text + caption + buttons + icon (full signature)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+```
+
+### Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `messageBoxText` | string | — | Message content |
+| `caption` | string | — | Dialog title |
+| `button` | MessageBoxButton | OK | Button set: `OK` / `OKCancel` / `YesNo` / `YesNoCancel` |
+| `icon` | MessageBoxImage | None | Icon type: `Information` / `Warning` / `Error` / `Question` |
+| `owner` | Window | null | Parent window. When provided, the dialog centers on the owner with an overlay mask |
+| `buttonRadius` | double | 0 | Button corner radius in pixels. Use `4` for rounded buttons |
+| `isDefault` | bool | true | Whether the first button is the default button (triggered by Enter key) |
+
+### Icon and Color Mapping
+
+| MessageBoxImage | Icon | Color |
+|-----------------|------|-------|
+| `Information` | Info icon | Success (green) |
+| `Warning` | Warning icon | Warning (orange) |
+| `Error` | Error icon | Danger (red) |
+| `Question` | Question icon | Primary (blue) |
+
+### Usage Examples
+
+#### 1. Information Dialog
+
+```csharp
+// File deleted successfully, with rounded buttons
+MessageBox.Show("File deleted successfully.", "Message", MessageBoxButton.OK, MessageBoxImage.Information, buttonRadius: 4);
+```
+
+#### 2. Warning Dialog
+
+```csharp
+// Uses default OK button
+MessageBox.Show("Performing this action may cause the file to become inaccessible!", "Warning", MessageBoxImage.Warning);
+```
+
+#### 3. Error Dialog
+
+```csharp
+MessageBox.Show("The file does not exist.", "Error", MessageBoxImage.Error);
+```
+
+#### 4. Confirmation Dialog (with Result Handling)
+
+```csharp
+var result = MessageBox.Show("The file does not exist. Continue?", "Confirm", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+switch (result)
+{
+    case MessageBoxResult.Yes:
+        // User clicked "Yes"
+        break;
+    case MessageBoxResult.No:
+        // User clicked "No"
+        break;
+    case MessageBoxResult.Cancel:
+        // User clicked "Cancel" or closed the dialog
+        break;
+}
+```
+
+#### 5. With Owner Window (with Overlay Mask)
+
+```csharp
+// When owner is passed, the dialog centers on the parent window and shows an overlay mask
+MessageBox.Show("Operation successful!", "Info", MessageBoxButton.OK, MessageBoxImage.Information, owner: this, buttonRadius: 4);
+```
+
+### Interaction Behavior
+
+- **Close methods**: Click the close button (top-right), press `Escape`, or click any button
+- **Owner window**: When `owner` is provided, the dialog centers on the parent window and displays a mask overlay. Without an owner, it auto-detects the current window or centers on screen
+- **Button text**: Automatically localized via `LanguageManager` (follows system language)
 
 ---
 
