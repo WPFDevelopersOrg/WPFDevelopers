@@ -173,13 +173,22 @@ namespace WPFDevelopers.Controls
             OnFilterApplied?.Invoke(this, new FilterAppliedEventArgs(new FilterInfo(propertyName, persist)));
         }
 
-        public void ClearFilter(string propertyName)
+        public void ClearFilters(IEnumerable<string> propertyNames)
         {
-            if (_filters.ContainsKey(propertyName))
+            foreach (var propertyName in propertyNames)
+            {
                 _filters.Remove(propertyName);
+            }
 
             Refresh();
         }
+
+        /// <summary>
+        /// Remove the filter associated with the specified property name.
+        /// Use <seealso cref="ClearFilters"/> to remove multiple filters at once.
+        /// </summary>
+        /// <param name="propertyName"></param>
+        public void ClearFilter(string propertyName) => ClearFilters(new[] { propertyName });
 
         public void Refresh()
         {
