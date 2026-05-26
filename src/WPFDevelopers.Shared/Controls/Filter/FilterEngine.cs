@@ -52,13 +52,23 @@ namespace WPFDevelopers.Controls
         }
         public FilterInfo Filter { get; set; }
     }
+
     public class FiltersRelatedEventArgs : EventArgs
     {
         internal FiltersRelatedEventArgs(IEnumerable<FilterInfo> filters)
         {
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
             Filters = new List<FilterInfo>(filters);
+#else
+        Filters = new List<FilterInfo>(filters);
+#endif
         }
-        public IReadOnlyCollection<FilterInfo> Filters { get; set; }
+
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
+        public ICollection<FilterInfo> Filters { get; set; }
+#else
+    public IReadOnlyCollection<FilterInfo> Filters { get; set; }
+#endif
     }
 
     public class FilterAppliedEventArgs : FilterRelatedEventArgs
@@ -69,7 +79,7 @@ namespace WPFDevelopers.Controls
         }
     }
 
-    public class FiltersClearedEventArgs: FiltersRelatedEventArgs
+    public class FiltersClearedEventArgs : FiltersRelatedEventArgs
     {
         internal FiltersClearedEventArgs(IEnumerable<string> propertyNames) : base(
             propertyNames.Select(t => new FilterInfo(t, null)))
@@ -89,7 +99,7 @@ namespace WPFDevelopers.Controls
             propertyNames.Select(t => new FilterInfo(t, null)))
         {
         }
-        internal FiltersChangedEventArgs(FilterInfo filter) : base(new FilterInfo[]{filter})
+        internal FiltersChangedEventArgs(FilterInfo filter) : base(new FilterInfo[] { filter })
         {
         }
     }
@@ -208,7 +218,7 @@ namespace WPFDevelopers.Controls
             Refresh();
             FilterInfo filter = new FilterInfo(propertyName, persist);
             OnFilterApplied?.Invoke(this, new FilterAppliedEventArgs(filter));
-            OnFiltersChanged?.Invoke(this,new FiltersChangedEventArgs(filter));
+            OnFiltersChanged?.Invoke(this, new FiltersChangedEventArgs(filter));
         }
 
         public void ClearFilters(IEnumerable<string> propertyNames)
@@ -224,7 +234,7 @@ namespace WPFDevelopers.Controls
             }
 
             Refresh();
-            OnFiltersCleared?.Invoke(this,new FiltersClearedEventArgs(propertyNames));
+            OnFiltersCleared?.Invoke(this, new FiltersClearedEventArgs(propertyNames));
             OnFiltersChanged?.Invoke(this, new FiltersChangedEventArgs(propertyNames));
         }
 
