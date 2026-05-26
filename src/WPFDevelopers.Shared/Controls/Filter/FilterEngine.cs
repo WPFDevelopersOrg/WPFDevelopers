@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Windows;
 
@@ -24,8 +25,8 @@ namespace WPFDevelopers.Controls
         internal FilterInfo(string propertyName, IEnumerable values)
         {
             PropertyName = propertyName;
-            var objectValues = values.Cast<object>();
-            var hashSet = new HashSet<object>(objectValues);
+            var objectValues = values?.Cast<object>();
+            var hashSet = objectValues is null ? null : new HashSet<object>(objectValues);
 
 #if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
             Values = hashSet;
@@ -45,18 +46,51 @@ namespace WPFDevelopers.Controls
 
     public class FilterRelatedEventArgs : EventArgs
     {
-        public FilterRelatedEventArgs(FilterInfo filter)
+        internal FilterRelatedEventArgs(FilterInfo filter)
         {
             Filter = filter;
         }
         public FilterInfo Filter { get; set; }
     }
+    public class FiltersRelatedEventArgs : EventArgs
+    {
+        internal FiltersRelatedEventArgs(IEnumerable<FilterInfo> filters)
+        {
+            Filters = new List<FilterInfo>(filters);
+        }
+        public IReadOnlyCollection<FilterInfo> Filters { get; set; }
+    }
 
     public class FilterAppliedEventArgs : FilterRelatedEventArgs
     {
-        public FilterAppliedEventArgs(FilterInfo filter) : base(filter)
+        internal FilterAppliedEventArgs(FilterInfo filter) : base(filter)
         {
 
+        }
+    }
+
+    public class FiltersClearedEventArgs: FiltersRelatedEventArgs
+    {
+        internal FiltersClearedEventArgs(IEnumerable<string> propertyNames) : base(
+            propertyNames.Select(t => new FilterInfo(t, null)))
+        {
+        }
+        internal FiltersClearedEventArgs(FilterInfo filter) : base(new FilterInfo[] { filter })
+        {
+        }
+    }
+
+    public class FiltersChangedEventArgs : FiltersRelatedEventArgs
+    {
+        internal FiltersChangedEventArgs(IEnumerable<FilterInfo> filters) : base(filters)
+        {
+        }
+        internal FiltersChangedEventArgs(IEnumerable<string> propertyNames) : base(
+            propertyNames.Select(t => new FilterInfo(t, null)))
+        {
+        }
+        internal FiltersChangedEventArgs(FilterInfo filter) : base(new FilterInfo[]{filter})
+        {
         }
     }
 
@@ -69,6 +103,8 @@ namespace WPFDevelopers.Controls
 
         public ObservableCollection<T> TypedView { get; } = new ObservableCollection<T>();
         public EventHandler<FilterAppliedEventArgs> OnFilterApplied;
+        public EventHandler<FiltersClearedEventArgs> OnFiltersCleared;
+        public EventHandler<FiltersChangedEventArgs> OnFiltersChanged;
 
         private ObservableCollection<object> _objectView;
         private readonly object _syncLock = new object();
@@ -170,17 +206,26 @@ namespace WPFDevelopers.Controls
             };
 
             Refresh();
-            OnFilterApplied?.Invoke(this, new FilterAppliedEventArgs(new FilterInfo(propertyName, persist)));
+            FilterInfo filter = new FilterInfo(propertyName, persist);
+            OnFilterApplied?.Invoke(this, new FilterAppliedEventArgs(filter));
+            OnFiltersChanged?.Invoke(this,new FiltersChangedEventArgs(filter));
         }
 
         public void ClearFilters(IEnumerable<string> propertyNames)
         {
+            if (propertyNames is null)
+            {
+                return;
+            }
+            propertyNames = new List<string>(propertyNames);
             foreach (var propertyName in propertyNames)
             {
                 _filters.Remove(propertyName);
             }
 
             Refresh();
+            OnFiltersCleared?.Invoke(this,new FiltersClearedEventArgs(propertyNames));
+            OnFiltersChanged?.Invoke(this, new FiltersChangedEventArgs(propertyNames));
         }
 
         /// <summary>
