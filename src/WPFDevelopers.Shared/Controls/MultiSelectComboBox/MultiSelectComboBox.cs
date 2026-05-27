@@ -368,11 +368,11 @@ namespace WPFDevelopers.Controls
             SyncListViewViews();
             Loaded += OnMultiSelectComboBox_Loaded;
             _border = GetTemplateChild(PART_Border) as Border;
-            if(_border != null)
+            if (_border != null)
                 _border.MouseUp += OnBorder_MouseUp;
 
         }
-      
+
         private void OnBorder_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -394,7 +394,7 @@ namespace WPFDevelopers.Controls
             }
         }
 
-       
+
         private void OnMultiSelectComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateText();
