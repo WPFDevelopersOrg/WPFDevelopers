@@ -605,7 +605,7 @@ namespace WPFDevelopers.Controls
                 else
                     Value = convertedValue;
             }
-            else
+            else if(Value.HasValue)
                 InternalSetText(Value.Value);
         }
 
@@ -665,7 +665,7 @@ namespace WPFDevelopers.Controls
 
         private void ContinueChangeValue(bool isIncrease, bool isContinue = true, bool isSkipStep = false)
         {
-            if (IsReadOnly || !IsEnabled)
+            if (IsReadOnly || !IsEnabled || !Value.HasValue)
                 return;
 
             if (isIncrease && DoubleUtil.LessThan(Value.Value, Maximum))
