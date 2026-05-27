@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -18,6 +19,10 @@ namespace WPFDevelopers.Controls
         void Refresh();
         HashSet<object> GetFilterValues(string propertyName);
         ObservableCollection<object> View { get; }
+        /// <summary>
+        /// The existence of this property only serves syntax completeness, one can safely return null.
+        /// </summary>
+        object FilterChangedNotification { get; }
     }
 
     public struct FilterInfo
@@ -104,10 +109,28 @@ namespace WPFDevelopers.Controls
         }
     }
 
-    public class FilterEngine<T> : IFilterEngine, IDisposable
+    public class FilterEngine<T> : IFilterEngine, INotifyPropertyChanged, IDisposable
     {
-        public IList<T> Source { get; set; }
+        #region INotifyPropertyChanged implementations
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+        #region Dummy property FilterChangedNotification
 
+        /// <summary>
+        /// This is a dummy property to meet syntax completeness requirements.
+        /// </summary>
+        public object FilterChangedNotification => null;
+        protected virtual void NotifyFilterChanged()
+        {
+            OnPropertyChanged(nameof(FilterChangedNotification));
+        }
+
+        #endregion
+        public IList<T> Source { get; set; }
         IEnumerable IFilterEngine.Source => Source;
         Type IFilterEngine.ItemType => typeof(T);
 
@@ -216,6 +239,7 @@ namespace WPFDevelopers.Controls
             };
 
             Refresh();
+            NotifyFilterChanged();
             FilterInfo filter = new FilterInfo(propertyName, persist);
             OnFilterApplied?.Invoke(this, new FilterAppliedEventArgs(filter));
             OnFiltersChanged?.Invoke(this, new FiltersChangedEventArgs(filter));
@@ -234,6 +258,7 @@ namespace WPFDevelopers.Controls
             }
 
             Refresh();
+            NotifyFilterChanged();
             OnFiltersCleared?.Invoke(this, new FiltersClearedEventArgs(propertyNames));
             OnFiltersChanged?.Invoke(this, new FiltersChangedEventArgs(propertyNames));
         }
