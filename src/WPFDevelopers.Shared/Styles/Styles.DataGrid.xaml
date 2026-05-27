@@ -494,6 +494,8 @@
                                             <MultiBinding Converter="{StaticResource WD.FilterVisibilityMultiConverter}">
                                                 <Binding Path="Column" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type DataGridColumnHeader}}" />
                                                 <Binding Path="(helpers:DataGridHelper.FilterEngine)" RelativeSource="{RelativeSource AncestorType={x:Type DataGrid}}" />
+                                                <Binding Path="IsMouseOver" RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type DataGridColumnHeader}}" />
+                                                <Binding Path="(helpers:DataGridHelper.FilterEngine).FilterChangedNotification" RelativeSource="{RelativeSource AncestorType={x:Type DataGrid}}" />
                                             </MultiBinding>
                                         </ToggleButton.Visibility>
                                         <controls:PathIcon
