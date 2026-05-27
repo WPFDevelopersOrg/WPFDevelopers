@@ -18,7 +18,7 @@ namespace WPFDevelopers.Converts
             if (values.Length < VALUES_LENGTH_MIN)
                 throw new ArgumentException($"{nameof(FilterVisibilityMultiConverter)}.{nameof(Convert)} expects values to have at least {VALUES_LENGTH_MIN} values but got {values.Length}.");
 
-            // values.Count >= 4 means FilterVersion is included (values[3]) - used for binding refresh
+            // values.Count >= 4 means FilterChangedNotification is included (values[3]) - only used for binding refresh
             // The actual version value is not used in logic, but its change triggers re-evaluation
 
             var column = values[0] as DataGridColumn;
