@@ -794,10 +794,9 @@ namespace WPFDevelopers.Controls
             {
                 if (multiSelectComboBoxItem != null)
                 {
-                    if ((!string.IsNullOrEmpty(SelectedValuePath) || !string.IsNullOrEmpty(DisplayMemberPath)) && item != null)
+                    if (!string.IsNullOrEmpty(DisplayMemberPath) && item != null)
                     {
-                        var propertyInfo = item.GetType().GetProperty(SelectedValuePath);
-                        propertyInfo = propertyInfo == null ? item.GetType().GetProperty(DisplayMemberPath) : propertyInfo;
+                        var propertyInfo = item.GetType().GetProperty(DisplayMemberPath);
                         if (propertyInfo != null)
                         {
                             tag.Content = propertyInfo.GetValue(item, null);
@@ -823,13 +822,12 @@ namespace WPFDevelopers.Controls
             }
             else
             {
-                if (ItemsSource != null && (!string.IsNullOrEmpty(SelectedValuePath) || !string.IsNullOrEmpty(DisplayMemberPath)))
+                if (ItemsSource != null && !string.IsNullOrEmpty(DisplayMemberPath))
                 {
-                    var bindingPath = !string.IsNullOrEmpty(SelectedValuePath) ? SelectedValuePath : DisplayMemberPath;
-                    var property = item.GetType().GetProperty(bindingPath);
+                    var property = item.GetType().GetProperty(DisplayMemberPath);
                     if (property != null && property.GetValue(item, null) != null)
                     {
-                        var binding = new Binding(bindingPath) { Source = item };
+                        var binding = new Binding(DisplayMemberPath) { Source = item };
                         tag.SetBinding(ContentControl.ContentProperty, binding);
                     }
                     else
