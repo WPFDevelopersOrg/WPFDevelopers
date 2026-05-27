@@ -133,7 +133,7 @@
                             </Grid.ColumnDefinitions>
                             <ScrollViewer
                                 x:Name="PART_TagScrollViewer"
-                                Margin="{TemplateBinding Padding}"
+                                Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=controls:MultiSelectComboBox}, Converter={StaticResource WD.DirectionalThicknessConverter}, ConverterParameter=horizontal}"
                                 HorizontalScrollBarVisibility="Disabled"
                                 VerticalScrollBarVisibility="Auto"
                                 Visibility="Collapsed">
