@@ -11,7 +11,7 @@
     <ControlTemplate x:Key="WD.ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Border
             x:Name="PART_Border"
-            Padding="6,0"
+            Padding="6,1.2"
             BorderThickness="0"
             SnapsToDevicePixels="true">
             <Grid HorizontalAlignment="Right" Background="Transparent">
@@ -78,14 +78,15 @@
         </Border>
     </ControlTemplate>
     <ControlTemplate x:Key="WD.ComboBoxTextBox" TargetType="{x:Type TextBox}">
-        <ScrollViewer
-            x:Name="PART_ContentHost"
-            Background="Transparent"
-            Focusable="False"
-            HorizontalScrollBarVisibility="Hidden"
-            VerticalScrollBarVisibility="Hidden" />
+        <Border Background="{TemplateBinding Background}" Focusable="False">
+            <ScrollViewer
+                x:Name="PART_ContentHost"
+                Background="Transparent"
+                Focusable="False"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Hidden" />
+        </Border>
     </ControlTemplate>
-
     <Style
         x:Key="WD.DefaultComboBox"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -130,14 +131,14 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
-                        <Grid Grid.IsSharedSizeScope="True">
+                        <Grid Grid.IsSharedSizeScope="true">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="ComboBoxButton" />
                             </Grid.ColumnDefinitions>
                             <ContentPresenter
                                 x:Name="ContentSite"
-                                Margin="0"
+                                Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Content="{TemplateBinding SelectionBoxItem}"
@@ -146,7 +147,7 @@
                                 IsHitTestVisible="False" />
                             <TextBox
                                 x:Name="PART_EditableTextBox"
-                                Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=ComboBox}, Converter={StaticResource WD.DirectionalThicknessConverter}, ConverterParameter=horizontal}"
+                                Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 Panel.ZIndex="1"
@@ -157,7 +158,7 @@
                                 SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                                 Style="{x:Null}"
                                 Template="{StaticResource WD.ComboBoxTextBox}"
-                                Visibility="Collapsed" />
+                                Visibility="Hidden" />
                             <TextBlock
                                 x:Name="PART_Watermark"
                                 Margin="{TemplateBinding Padding}"
