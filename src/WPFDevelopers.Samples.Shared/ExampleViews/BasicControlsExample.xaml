@@ -353,7 +353,7 @@
                             wd:ElementHelper.Watermark="ComboBox"
                             Background="LightYellow"
                             FontSize="20" 
-                            Margin="10,0"
+                            Margin="10,2"
                             Foreground="Black">
                             <ComboBoxItem>Option 1</ComboBoxItem>
                             <ComboBoxItem>Option 2</ComboBoxItem>
