@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,6 +16,7 @@ namespace WPFDevelopers.Controls
         private const string TextBox2TemplateName = "PART_TextBox2";
         private const string TextBox3TemplateName = "PART_TextBox3";
         private const string TextBox4TemplateName = "PART_TextBox4";
+
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -33,65 +35,104 @@ namespace WPFDevelopers.Controls
 
         private TextBox _textBox1, _textBox2, _textBox3, _textBox4;
         private bool _isChangingText = false;
+        private readonly TextBox[] _textBoxes = new TextBox[4];
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+
             _textBox1 = GetTemplateChild(TextBox1TemplateName) as TextBox;
+            _textBox2 = GetTemplateChild(TextBox2TemplateName) as TextBox;
+            _textBox3 = GetTemplateChild(TextBox3TemplateName) as TextBox;
+            _textBox4 = GetTemplateChild(TextBox4TemplateName) as TextBox;
+
+            _textBoxes[0] = _textBox1;
+            _textBoxes[1] = _textBox2;
+            _textBoxes[2] = _textBox3;
+            _textBoxes[3] = _textBox4;
+
+            UnsubscribeTextBoxEvents();
+
             if (_textBox1 != null)
             {
-                _textBox1.TextChanged -= TextBox1_TextChanged;
                 _textBox1.TextChanged += TextBox1_TextChanged;
-                _textBox1.PreviewKeyDown -= TextBox_PreviewKeyDown;
                 _textBox1.PreviewKeyDown += TextBox_PreviewKeyDown;
-                _textBox1.Loaded -= TextBox_Loaded;
+                _textBox1.PreviewTextInput += TextBox_PreviewTextInput;
                 _textBox1.Loaded += TextBox_Loaded;
             }
-            _textBox2 = GetTemplateChild(TextBox2TemplateName) as TextBox;
             if (_textBox2 != null)
             {
-                _textBox2.TextChanged -= TextBox2_TextChanged;
                 _textBox2.TextChanged += TextBox2_TextChanged;
-                _textBox2.PreviewKeyDown -= TextBox_PreviewKeyDown;
                 _textBox2.PreviewKeyDown += TextBox_PreviewKeyDown;
-                _textBox2.Loaded -= TextBox_Loaded; ;
+                _textBox2.PreviewTextInput += TextBox_PreviewTextInput;
                 _textBox2.Loaded += TextBox_Loaded;
             }
-            _textBox3 = GetTemplateChild(TextBox3TemplateName) as TextBox;
             if (_textBox3 != null)
             {
-                _textBox3.TextChanged -= TextBox3_TextChanged;
                 _textBox3.TextChanged += TextBox3_TextChanged;
-                _textBox3.PreviewKeyDown -= TextBox_PreviewKeyDown;
                 _textBox3.PreviewKeyDown += TextBox_PreviewKeyDown;
-                _textBox3.Loaded -= TextBox_Loaded;
+                _textBox3.PreviewTextInput += TextBox_PreviewTextInput;
                 _textBox3.Loaded += TextBox_Loaded;
             }
-            _textBox4 = GetTemplateChild(TextBox4TemplateName) as TextBox;
-            _textBox4.TextChanged -= TextBox4_TextChanged;
-            _textBox4.TextChanged += TextBox4_TextChanged;
-            _textBox4.PreviewKeyDown -= TextBox_PreviewKeyDown;
-            _textBox4.PreviewKeyDown += TextBox_PreviewKeyDown;
-            _textBox4.Loaded -= TextBox_Loaded;
-            _textBox4.Loaded += TextBox_Loaded;
+            if (_textBox4 != null)
+            {
+                _textBox4.TextChanged += TextBox4_TextChanged;
+                _textBox4.PreviewKeyDown += TextBox_PreviewKeyDown;
+                _textBox4.PreviewTextInput += TextBox_PreviewTextInput;
+                _textBox4.Loaded += TextBox_Loaded;
+            }
+
             if (!string.IsNullOrWhiteSpace(Text))
                 PasteTextIPTextBox(Text);
         }
 
+        private void UnsubscribeTextBoxEvents()
+        {
+            if (_textBox1 != null)
+            {
+                _textBox1.TextChanged -= TextBox1_TextChanged;
+                _textBox1.PreviewKeyDown -= TextBox_PreviewKeyDown;
+                _textBox1.PreviewTextInput -= TextBox_PreviewTextInput;
+                _textBox1.Loaded -= TextBox_Loaded;
+            }
+            if (_textBox2 != null)
+            {
+                _textBox2.TextChanged -= TextBox2_TextChanged;
+                _textBox2.PreviewKeyDown -= TextBox_PreviewKeyDown;
+                _textBox2.PreviewTextInput -= TextBox_PreviewTextInput;
+                _textBox2.Loaded -= TextBox_Loaded;
+            }
+            if (_textBox3 != null)
+            {
+                _textBox3.TextChanged -= TextBox3_TextChanged;
+                _textBox3.PreviewKeyDown -= TextBox_PreviewKeyDown;
+                _textBox3.PreviewTextInput -= TextBox_PreviewTextInput;
+                _textBox3.Loaded -= TextBox_Loaded;
+            }
+            if (_textBox4 != null)
+            {
+                _textBox4.TextChanged -= TextBox4_TextChanged;
+                _textBox4.PreviewKeyDown -= TextBox_PreviewKeyDown;
+                _textBox4.PreviewTextInput -= TextBox_PreviewTextInput;
+                _textBox4.Loaded -= TextBox_Loaded;
+            }
+        }
+
         private void TextBox1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (_textBox1.Text.ToString().Length >= 3) _textBox2.Focus();
+            if (_textBox1.Text.Length >= 3) _textBox2?.Focus();
             UpdateText();
         }
+
         private void TextBox2_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (_textBox2.Text.ToString().Length >= 3) _textBox3.Focus();
+            if (_textBox2.Text.Length >= 3) _textBox3?.Focus();
             UpdateText();
         }
 
         private void TextBox3_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (_textBox3.Text.ToString().Length >= 3) _textBox4.Focus();
+            if (_textBox3.Text.Length >= 3) _textBox4?.Focus();
             UpdateText();
         }
 
@@ -99,16 +140,17 @@ namespace WPFDevelopers.Controls
         {
             UpdateText();
         }
+
         void TextBox_Loaded(object sender, RoutedEventArgs e)
         {
             CommandManager.AddPreviewExecutedHandler((sender as TextBox), TextBox_PreviewExecuted);
         }
+
         void TextBox_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Paste)
             {
                 ClipboardHandle();
-                UpdateText();
                 e.Handled = true;
             }
             else if (e.Command == ApplicationCommands.Copy)
@@ -129,32 +171,69 @@ namespace WPFDevelopers.Controls
             }
         }
 
+        void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (e.Text.Length != 1 || !char.IsDigit(e.Text[0]))
+                return;
+
+            var textBox = sender as TextBox;
+
+            var currentText = textBox.Text;
+            var insertPos = Math.Max(0, Math.Min(textBox.SelectionStart, currentText.Length));
+            var newText = currentText.Insert(insertPos, e.Text);
+
+            if (int.TryParse(newText, out int value) && value > 255)
+            {
+                if (textBox != _textBox4)
+                {
+                    var nextTextBox = GetNextTextBox(textBox);
+                    nextTextBox.Focus();
+                    nextTextBox.Text = e.Text;
+                    nextTextBox.CaretIndex = 1;
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
         void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             var textBox = sender as TextBox;
+
             if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.V)
             {
-                ClipboardHandle();
-                _isChangingText = false;
-                e.Handled = true;
+                return;
             }
-            else if(e.Key == Key.Left)
+
+            if (e.KeyboardDevice.Modifiers.HasFlag(ModifierKeys.Control) && e.Key == Key.A)
             {
-                if (textBox.CaretIndex == 0 && !IsFirstTextBox(textBox))
+                textBox.SelectAll();
+                e.Handled = true;
+                return;
+            }
+
+            if (e.Key == Key.Left)
+            {
+                if (textBox.CaretIndex == 0 && textBox != _textBox1)
                 {
                     GetPreviousTextBox(textBox).Focus();
+                    e.Handled = true;
                 }
             }
             else if (e.Key == Key.Right)
             {
-                if (textBox.CaretIndex == textBox.Text.Length && !IsLastTextBox(textBox))
+                if (textBox.CaretIndex == textBox.Text.Length && textBox != _textBox4)
                 {
                     GetNextTextBox(textBox).Focus();
+                    e.Handled = true;
                 }
             }
             else if (e.Key == Key.Back)
             {
-                if (textBox.CaretIndex == 0 && !IsFirstTextBox(textBox))
+                if (textBox.CaretIndex == 0 && textBox != _textBox1)
                 {
                     var previousTextBox = GetPreviousTextBox(textBox);
                     if (previousTextBox.Text.Length > 0)
@@ -164,75 +243,98 @@ namespace WPFDevelopers.Controls
                     e.Handled = true;
                 }
             }
-            else if (e.Key == Key.Delete || e.Key == Key.Back)
+            else if (e.Key == Key.Delete)
             {
-                _isChangingText = true;
+                if (textBox.CaretIndex == textBox.Text.Length && textBox != _textBox4)
+                {
+                    var nextTextBox = GetNextTextBox(textBox);
+                    if (nextTextBox.Text.Length > 0)
+                        nextTextBox.Text = nextTextBox.Text.Remove(0, 1);
+                    e.Handled = true;
+                }
             }
-            else
-                _isChangingText = false;
+            else if (e.Key == Key.Enter || e.Key == Key.Tab)
+            {
+                if (textBox != _textBox4)
+                {
+                    GetNextTextBox(textBox).Focus();
+                    e.Handled = true;
+                }
+            }
+            else if (e.Key == Key.Decimal || e.Key == Key.OemPeriod)
+            {
+                if (textBox != _textBox4)
+                {
+                    GetNextTextBox(textBox).Focus();
+                    e.Handled = true;
+                }
+            }
         }
 
-        bool IsFirstTextBox(TextBox textBox)
-        {
-            return textBox == _textBox1;
-        }
-
-        bool IsLastTextBox(TextBox textBox)
-        {
-            return textBox == _textBox4;
-        }
         TextBox GetPreviousTextBox(TextBox textBox)
         {
-            if (textBox == _textBox2)
-                return _textBox1;
-            else if (textBox == _textBox3)
-                return _textBox2;
-            else if (textBox == _textBox4)
-                return _textBox3;
-            return textBox;
+            if (textBox == _textBox2) return _textBox1;
+            if (textBox == _textBox3) return _textBox2;
+            if (textBox == _textBox4) return _textBox3;
+            return _textBox1;
         }
 
         TextBox GetNextTextBox(TextBox textBox)
         {
-            if (textBox == _textBox1)
-                return _textBox2;
-            else if (textBox == _textBox2)
-                return _textBox3;
-            else if (textBox == _textBox3)
-                return _textBox4;
-            return textBox;
+            if (textBox == _textBox1) return _textBox2;
+            if (textBox == _textBox2) return _textBox3;
+            if (textBox == _textBox3) return _textBox4;
+            return _textBox4;
         }
 
         void PasteTextIPTextBox(string text)
         {
-            _textBox1.TextChanged -= TextBox1_TextChanged;
-            _textBox2.TextChanged -= TextBox2_TextChanged;
-            _textBox3.TextChanged -= TextBox3_TextChanged;
-            _textBox4.TextChanged -= TextBox4_TextChanged;
+            _isChangingText = true;
+            if (_textBox1 != null) _textBox1.TextChanged -= TextBox1_TextChanged;
+            if (_textBox2 != null) _textBox2.TextChanged -= TextBox2_TextChanged;
+            if (_textBox3 != null) _textBox3.TextChanged -= TextBox3_TextChanged;
+            if (_textBox4 != null) _textBox4.TextChanged -= TextBox4_TextChanged;
             if (string.IsNullOrWhiteSpace(text))
             {
-                _textBox1.Text = string.Empty;
-                _textBox2.Text = string.Empty;
-                _textBox3.Text = string.Empty;
-                _textBox4.Text = string.Empty;
+                _textBox1?.Clear();
+                _textBox2?.Clear();
+                _textBox3?.Clear();
+                _textBox4?.Clear();
             }
             else
             {
                 var strs = text.Split('.');
-                var _textboxBoxes = new TextBox[] { _textBox1, _textBox2, _textBox3, _textBox4 };
-                for (short i = 0; i < _textboxBoxes.Length; i++)
+                for (short i = 0; i < 4; i++)
                 {
                     var str = i < strs.Length ? strs[i] : string.Empty;
-                    _textboxBoxes[i].Text = str;
+                    var tb = _textBoxes[i];
+                    if (tb == null) continue;
+                    if (int.TryParse(str, out int value))
+                    {
+                        if (value < 0) value = 0;
+                        if (value > 255) value = 255;
+                        tb.Text = value.ToString();
+                    }
+                    else
+                    {
+                        tb.Text = string.Empty;
+                    }
                 }
             }
-            _textBox1.TextChanged += TextBox1_TextChanged;
-            _textBox2.TextChanged += TextBox2_TextChanged;
-            _textBox3.TextChanged += TextBox3_TextChanged;
-            _textBox4.TextChanged += TextBox4_TextChanged;
+
+            if (_textBox1 != null) _textBox1.TextChanged += TextBox1_TextChanged;
+            if (_textBox2 != null) _textBox2.TextChanged += TextBox2_TextChanged;
+            if (_textBox3 != null) _textBox3.TextChanged += TextBox3_TextChanged;
+            if (_textBox4 != null) _textBox4.TextChanged += TextBox4_TextChanged;
+            _isChangingText = false;
+            UpdateText();
         }
+
+
         void UpdateText()
         {
+            if (_textBox1 == null || _textBox2 == null || _textBox3 == null || _textBox4 == null)
+                return;
             var segments = new string[4]
             {
                 _textBox1.Text.Trim(),
@@ -243,12 +345,18 @@ namespace WPFDevelopers.Controls
             var allEmpty = segments.All(string.IsNullOrEmpty);
             if (allEmpty)
             {
-                SetValue(TextProperty, string.Empty);
+                if (!string.IsNullOrEmpty(Text))
+                    SetValue(TextProperty, string.Empty);
                 return;
             }
             var noEmpty = segments.Where(s => !string.IsNullOrWhiteSpace(s));
             if (noEmpty.Count() != 4) return;
-            var ip = string.Join(".", noEmpty);
+            foreach (var seg in segments)
+            {
+                if (!int.TryParse(seg, out int v) || v < 0 || v > 255)
+                    return;
+            }
+            var ip = string.Join(".", segments);
             if (ip != Text)
                 SetValue(TextProperty, ip);
         }
