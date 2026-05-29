@@ -1,6 +1,7 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using WPFDevelopers.Controls;
+using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
@@ -9,9 +10,24 @@ namespace WPFDevelopers.Samples.ExampleViews
     /// </summary>
     public partial class NotifyIconExample : UserControl
     {
+        private int _clickCount;
+        private int _doubleClickCount;
+
         public NotifyIconExample()
         {
             InitializeComponent();
+        }
+
+        private void NotifyIcon_Click(object sender, RoutedEventArgs e)
+        {
+            _clickCount++;
+            ClickCountText.Text = _clickCount.ToString();
+        }
+
+        private void NotifyIcon_MouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            _doubleClickCount++;
+            DoubleClickCountText.Text = _doubleClickCount.ToString();
         }
 
         private void BtnNotifyIconMessage_Click(object sender, RoutedEventArgs e)
@@ -24,17 +40,32 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void IsTwink_Checked(object sender, RoutedEventArgs e)
         {
-            NotifyIconTwink();
+            NotifyIconEvents.IsTwink = true;
         }
+
         private void UnIsTwink_Checked(object sender, RoutedEventArgs e)
         {
-            NotifyIconTwink();
+            NotifyIconEvents.IsTwink = false;
         }
-        void NotifyIconTwink()
+
+        private void ContextContent_Send_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow == null) return;
-            mainWindow.IsTwink();
+            NotifyIcon.ShowBalloonTip("来自 ContextContent", "右键面板发送的消息", NotifyIconInfoType.Info);
+        }
+
+        private void ContextContent_Twink_Click(object sender, RoutedEventArgs e)
+        {
+            NotifyIconEvents.IsTwink = !NotifyIconEvents.IsTwink;
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("WPFDevelopers NotifyIcon 示例", "关于", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            NotifyIconEvents.Dispose();
         }
     }
 }
