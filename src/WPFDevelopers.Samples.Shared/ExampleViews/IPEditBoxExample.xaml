@@ -23,7 +23,10 @@
                 <RowDefinition Height="10" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <wd:IPEditBox x:Name="myIPEditBox" Text="{Binding ElementName=MyIp, Path=Text, Mode=TwoWay}" />
+            <wd:IPEditBox
+                x:Name="myIPEditBox"
+                wd:ElementHelper.CornerRadius="4"
+                Text="{Binding ElementName=MyIp, Path=Text, Mode=TwoWay}" />
             <TextBox
                 Name="MyIp"
                 Grid.Row="2"
