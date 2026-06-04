@@ -208,8 +208,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Carousel:
                     ControlPanel = new CarouselExample();
                     break;
-                case MenuEnum.CarouselEx:
-                    ControlPanel = new CarouselExampleEx();
+                case MenuEnum.EmphasizerCarousel:
+                    ControlPanel = new EmphasizerCarouselExample();
                     break;
                 case MenuEnum.OtherControls:
                     ControlPanel = new OtherControlExample();

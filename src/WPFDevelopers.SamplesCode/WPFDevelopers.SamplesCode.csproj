@@ -30,8 +30,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CanvasHandWriting\ComputingHelper.cs" Link="ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CanvasHandWriting\LineB.cs" Link="ExampleViews\CanvasHandWriting\LineB.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CanvasHandWriting\Vector2D.cs" Link="ExampleViews\CanvasHandWriting\Vector2D.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExampleEx.xaml.cs" Link="ExampleViews\CarouselExampleEx.xaml.cs" DependentUpon="CarouselExampleEx.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MasterCarouselExample.xaml.cs" Link="ExampleViews\MasterCarouselExample.xaml.cs" DependentUpon="MasterCarouselExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\EmphasizerCarouselExample.xaml.cs" Link="ExampleViews\EmphasizerCarouselExample.xaml.cs" DependentUpon="EmphasizerCarouselExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChatEmojiExample.xaml.cs" Link="ExampleViews\ChatEmojiExample.xaml.cs" DependentUpon="ChatEmojiExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleMenuExample.xaml.cs" Link="ExampleViews\CircleMenuExample.xaml.cs" DependentUpon="CircleMenuExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CircleProgressBarExample.xaml.cs" Link="ExampleViews\CircleProgressBarExample.xaml.cs" DependentUpon="CircleProgressBarExample.xaml" />
@@ -212,8 +212,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml">
 			<Link>ExampleViews\CarouselExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExampleEx.xaml">
-			<Link>ExampleViews\CarouselExampleEx.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\EmphasizerCarouselExample.xaml">
+			<Link>ExampleViews\EmphasizerCarouselExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChatEmojiExample.xaml">
 			<Link>ExampleViews\ChatEmojiExample.xaml</Link>

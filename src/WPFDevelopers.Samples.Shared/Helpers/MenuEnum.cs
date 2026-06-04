@@ -35,7 +35,7 @@
         SongWords,
         TimeLine,
         Carousel,
-        CarouselEx,
+        EmphasizerCarousel,
         Pagination,
         ScrollViewer,
         OtherControls,

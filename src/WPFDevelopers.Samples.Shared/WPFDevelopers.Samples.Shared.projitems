@@ -128,9 +128,7 @@
       <SubType>Code</SubType>
       <DependentUpon>CarouselExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>CarouselExampleEx.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml.cs">
       <DependentUpon>ChartLineExample.xaml</DependentUpon>
@@ -708,7 +706,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
