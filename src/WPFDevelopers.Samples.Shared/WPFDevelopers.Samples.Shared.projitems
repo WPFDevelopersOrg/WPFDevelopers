@@ -124,9 +124,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\LineB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\Vector2D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MasterCarouselExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>CarouselExample.xaml</DependentUpon>
+      <DependentUpon>MasterCarouselExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>EmphasizerCarouselExample.xaml</DependentUpon>
     </Compile>
       <SubType>Code</SubType>
     </Compile>

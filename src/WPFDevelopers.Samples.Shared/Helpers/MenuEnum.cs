@@ -34,7 +34,7 @@
         Password,
         SongWords,
         TimeLine,
-        Carousel,
+        MasterCarousel,
         EmphasizerCarousel,
         Pagination,
         ScrollViewer,
