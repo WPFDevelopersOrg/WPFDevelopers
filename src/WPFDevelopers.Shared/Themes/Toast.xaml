@@ -22,61 +22,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:ToastListBoxItem}">
-                    <ControlTemplate.Resources>
-                        <Storyboard x:Key="Storyboard_Close" DesiredFrameRate="30">
-                            <DoubleAnimation
-                                Storyboard.TargetName="PART_Grid"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                From="1"
-                                To="0"
-                                Duration="0:0:0.2" />
-                            <DoubleAnimation
-                                BeginTime="0:0:0.2"
-                                Storyboard.TargetProperty="Opacity"
-                                From="1"
-                                To="0"
-                                Duration="0:0:0" />
-                        </Storyboard>
-                        <Storyboard x:Key="Storyboard_Loaded" DesiredFrameRate="30">
-                            <DoubleAnimation
-                                Storyboard.TargetName="PART_Grid"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                From="0"
-                                To="1"
-                                Duration="0:0:0.2" />
-                            <DoubleAnimation
-                                Storyboard.TargetName="PART_Grid"
-                                Storyboard.TargetProperty="Opacity"
-                                From=".1"
-                                To="1"
-                                Duration="0:0:0.2" />
-                            <DoubleAnimation
-                                BeginTime="0:0:10"
-                                Storyboard.TargetName="PART_Grid"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                From="1"
-                                To="0"
-                                Duration="0:0:0.2" />
-                            <DoubleAnimation
-                                BeginTime="0:0:10"
-                                Storyboard.TargetProperty="Opacity"
-                                From="1"
-                                To="0"
-                                Duration="0:0:0.2" />
-                            <DoubleAnimation
-                                Storyboard.TargetName="PART_Rectangle"
-                                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
-                                From="1"
-                                To="0"
-                                Duration="0:0:10" />
-                        </Storyboard>
-                    </ControlTemplate.Resources>
                     <Grid
                         x:Name="PART_Grid"
                         CacheMode="BitmapCache"
                         RenderTransformOrigin=".5,0">
                         <Grid.RenderTransform>
-                            <ScaleTransform />
+                            <ScaleTransform ScaleY="0" />
                         </Grid.RenderTransform>
                         <Border
                             x:Name="PART_Border"
@@ -163,19 +114,84 @@
                         <Trigger Property="IsCenter" Value="True">
                             <Setter TargetName="PART_DockPanel" Property="HorizontalAlignment" Value="Center" />
                         </Trigger>
-                        <EventTrigger RoutedEvent="Button.Click" SourceName="PART_CloseButton">
-                            <BeginStoryboard x:Name="BeginStoryboardClose" Storyboard="{StaticResource Storyboard_Close}" />
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard x:Name="BeginStoryboardLoaded" Storyboard="{StaticResource Storyboard_Loaded}" />
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="Unloaded">
-                            <StopStoryboard BeginStoryboardName="BeginStoryboardLoaded" />
-                            <StopStoryboard BeginStoryboardName="BeginStoryboardClose" />
-                        </EventTrigger>
                         <Trigger Property="Opacity" Value="0">
                             <Setter Property="Visibility" Value="Collapsed" />
                         </Trigger>
+                        <EventTrigger RoutedEvent="Grid.Loaded" SourceName="PART_Grid">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="PART_Grid"
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                        From="0"
+                                        To="1"
+                                        Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="Opacity"
+                                        From=".1"
+                                        To="1"
+                                        Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        BeginTime="0:0:10"
+                                        Storyboard.TargetName="PART_Grid"
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                        From="1"
+                                        To="0"
+                                        Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        BeginTime="0:0:10"
+                                        Storyboard.TargetProperty="Opacity"
+                                        From="1"
+                                        To="0"
+                                        Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="PART_Rectangle"
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                        From="1"
+                                        To="0"
+                                        Duration="0:0:10" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.Click" SourceName="PART_CloseButton">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="PART_Grid"
+                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                        To="0"
+                                        Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="0"
+                                        Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
