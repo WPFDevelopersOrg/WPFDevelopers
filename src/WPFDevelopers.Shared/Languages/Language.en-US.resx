@@ -201,4 +201,10 @@
   <data name="Apply" xml:space="preserve">
     <value>Apply</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
 </root>
