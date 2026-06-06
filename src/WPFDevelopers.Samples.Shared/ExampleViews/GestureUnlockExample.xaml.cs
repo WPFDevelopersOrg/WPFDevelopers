@@ -26,23 +26,23 @@ namespace WPFDevelopers.Sample.ExampleViews
         {
             if (pwd.Length < 4)
             {
-                SetGestureState(unlockType, GestureState.Error);
+                SetControlState(unlockType, ControlState.Error);
                 Toast.PushDesktop("手势错误，最少 4 个节点!", ToastImage.Error, true);
                 return;
             }
 
             if (pwd != _password)
             {
-                SetGestureState(unlockType, GestureState.Error);
+                SetControlState(unlockType, ControlState.Error);
                 Toast.PushDesktop("手势错误，请重新解锁!", ToastImage.Error, true);
                 return;
             }
 
-            SetGestureState(unlockType, GestureState.Success);
+            SetControlState(unlockType, ControlState.Success);
             Toast.Push("手势正确!", ToastImage.Success, true);
         }
 
-        private void SetGestureState(GestureUnlockType unlockType, GestureState state)
+        private void SetControlState(GestureUnlockType unlockType, ControlState state)
         {
             if (unlockType == GestureUnlockType.Unlock1)
             {
@@ -56,11 +56,11 @@ namespace WPFDevelopers.Sample.ExampleViews
 
         private void GestureCompleted(object sender, RoutedEventArgs e)
         {
-            var pwd = e.OriginalSource.ToString();
-            HandleGestureUnlock(pwd, GestureUnlockType.Unlock1);
+            var unlock = e.OriginalSource as GestureUnlock;
+            HandleGestureUnlock(unlock?.Password ?? string.Empty, GestureUnlockType.Unlock1);
         }
 
-        public ICommand GestureCompletedCommand => new RelayCommand(param =>
+        public ICommand CompletedCommand => new RelayCommand(param =>
         {
             var pwd = param.ToString();
             HandleGestureUnlock(pwd, GestureUnlockType.Unlock2);
