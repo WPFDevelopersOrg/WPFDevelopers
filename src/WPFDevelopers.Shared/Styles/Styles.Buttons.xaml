@@ -25,7 +25,6 @@
         <!--<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />-->
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
-        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
     <Style
@@ -389,6 +388,19 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style
+        x:Key="WD.PathBarButtonPrimary"
+        BasedOn="{StaticResource WD.PathBarButton}"
+        TargetType="{x:Type Button}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource WD.DefaultButton}" TargetType="{x:Type Button}" />
 </ResourceDictionary>

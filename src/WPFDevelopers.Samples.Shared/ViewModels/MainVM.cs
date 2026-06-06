@@ -129,6 +129,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BasicControls:
                     ControlPanel = new BasicControlsExample();
                     break;
+                case MenuEnum.MessageBox:
+                    ControlPanel = new MessageBoxExample();
+                    break;
                 case MenuEnum.NotifyIcon:
                     ControlPanel = new NotifyIconExample();
                     break;
@@ -202,11 +205,11 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ScrollViewer:
                     ControlPanel = new ScrollViewerAnimationExample();
                     break;
-                case MenuEnum.Carousel:
-                    ControlPanel = new CarouselExample();
+                case MenuEnum.MasterCarousel:
+                    ControlPanel = new MasterCarouselExample();
                     break;
-                case MenuEnum.CarouselEx:
-                    ControlPanel = new CarouselExampleEx();
+                case MenuEnum.EmphasizerCarousel:
+                    ControlPanel = new EmphasizerCarouselExample();
                     break;
                 case MenuEnum.OtherControls:
                     ControlPanel = new OtherControlExample();
@@ -405,6 +408,15 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.DataGridFilter:
                     ControlPanel = new DataGridFilterExample();
+                    break;
+                case MenuEnum.GrayscaleEffect:
+                    ControlPanel = new GrayscaleEffectExample();
+                    break;
+                case MenuEnum.OtpBox:
+                    ControlPanel = new OtpBoxExample();
+                    break;
+                case MenuEnum.Carousel:
+                    ControlPanel = new CarouselExample();
                     break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

@@ -1,0 +1,75 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:helpers="clr-namespace:WPFDevelopers.Helpers">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Basic/ControlBasic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style
+        x:Key="WD.OtpBox"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="{x:Type controls:OtpBox}">
+        <Setter Property="Padding" Value="6,4" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:OtpBox}">
+                    <ItemsControl x:Name="PART_ItemsControl" Focusable="False">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Rows="1" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    x:Name="PART_TextBox"
+                                    Padding="{Binding RelativeSource={RelativeSource AncestorType=controls:OtpBox}, Path=Padding}"
+                                    HorizontalContentAlignment="{Binding RelativeSource={RelativeSource AncestorType=controls:OtpBox}, Path=HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{Binding RelativeSource={RelativeSource AncestorType=controls:OtpBox}, Path=VerticalContentAlignment}"
+                                    helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=controls:OtpBox}}"
+                                    helpers:TextBoxHelper.AllowOnlyNumericInput="True"
+                                    BorderThickness="{Binding RelativeSource={RelativeSource AncestorType=controls:OtpBox}, Path=BorderThickness}"
+                                    FontSize="{Binding RelativeSource={RelativeSource AncestorType=controls:OtpBox}, Path=FontSize}"
+                                    FontWeight="{Binding RelativeSource={RelativeSource AncestorType=controls:OtpBox}, Path=FontWeight}"
+                                    MaxLength="1"
+                                    TextAlignment="Center">
+                                    <TextBox.Margin>
+                                        <MultiBinding Converter="{StaticResource WD.FirstLastMarginConverter}">
+                                            <Binding RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                                            <Binding />
+                                        </MultiBinding>
+                                    </TextBox.Margin>
+                                </TextBox>
+                                <DataTemplate.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding State, RelativeSource={RelativeSource AncestorType=controls:OtpBox}}" Value="Error" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter TargetName="PART_TextBox" Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                                        <Setter TargetName="PART_TextBox" Property="BorderThickness" Value="1.3" />
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding State, RelativeSource={RelativeSource AncestorType=controls:OtpBox}}" Value="Success" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter TargetName="PART_TextBox" Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                                        <Setter TargetName="PART_TextBox" Property="BorderThickness" Value="1.3" />
+                                    </MultiDataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource WD.OtpBox}" TargetType="{x:Type controls:OtpBox}" />
+</ResourceDictionary>

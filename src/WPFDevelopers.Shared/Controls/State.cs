@@ -7,7 +7,7 @@
         Complete
     }
 
-    public enum GestureState
+    public enum ControlState
     {
         None,
         Success,

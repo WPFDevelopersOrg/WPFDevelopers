@@ -201,4 +201,10 @@
   <data name="Apply" xml:space="preserve">
     <value>응용</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>이전</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음</value>
+  </data>
 </root>

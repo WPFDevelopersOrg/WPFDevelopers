@@ -24,17 +24,14 @@
                 IsChecked="True" />
             <UniformGrid
                 Grid.Row="1"
-                HorizontalAlignment="Center"
                 wd:PanelHelper.Spacing="10"
                 Rows="1">
                 <Button
-                    Width="100"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="new"
                     Content="Default"
                     Style="{DynamicResource WD.PrimaryButton}" />
                 <Button
-                    Width="100"
                     wd:Badge.FontSize="12"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}}"
@@ -42,21 +39,17 @@
                     Content="Success"
                     Style="{DynamicResource WD.SuccessDefaultButton}" />
                 <Button
-                    Width="100"
                     wd:Badge.FontSize="12"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="10+"
                     Content="Warning"
                     Style="{DynamicResource WD.WarningDefaultButton}" />
                 <Button
-                    Width="100"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     wd:Badge.Text="NEW"
                     Content="Danger"
                     Style="{DynamicResource WD.DangerDefaultButton}" />
                 <Rectangle
-                    Width="100"
-                    Height="100"
                     wd:Badge.IsShow="{Binding ElementName=MyBadgeToggleButton, Path=IsChecked}"
                     Fill="Aqua" />
                 <Label

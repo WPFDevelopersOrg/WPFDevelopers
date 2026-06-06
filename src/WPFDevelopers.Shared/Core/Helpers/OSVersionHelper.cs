@@ -101,6 +101,11 @@ namespace WPFDevelopers.Core.Helpers
             return version.Major >= 10;
         }
 
+        public static bool IsWindows11OrLater()
+        {
+            return GetWindowsBuildNumber() >= 22000;
+        }
+
         #region SnapLayout
 
         private const double DPI_SCALE = 1.5;

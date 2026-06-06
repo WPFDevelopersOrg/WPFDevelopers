@@ -27,6 +27,9 @@
                             <Setter Property="helpers:TextBoxHelper.MinValue" Value="0" />
                             <Setter Property="VerticalContentAlignment" Value="Center" />
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="Padding" Value="0" />
+                            <Setter Property="Margin" Value="0" />
+                            <Setter Property="MinHeight" Value="0" />
                         </Style>
                         <Style TargetType="TextBlock">
                             <Setter Property="Text" Value="." />
@@ -35,49 +38,41 @@
                     </ControlTemplate.Resources>
                     <Border
                         x:Name="PART_Border"
+                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                         UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <TextBox x:Name="PART_TextBox1" />
-                                <TextBlock Grid.Column="1" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="PART_TextBox1" />
+                            <TextBlock Grid.Column="1" />
 
-                                <TextBox x:Name="PART_TextBox2" Grid.Column="2" />
-                                <TextBlock Grid.Column="3" />
+                            <TextBox x:Name="PART_TextBox2" Grid.Column="2" />
+                            <TextBlock Grid.Column="3" />
 
-                                <TextBox x:Name="PART_TextBox3" Grid.Column="4" />
-                                <TextBlock Grid.Column="5" />
-                                <TextBox x:Name="PART_TextBox4" Grid.Column="6" />
-                            </Grid>
-                        </ScrollViewer>
+                            <TextBox x:Name="PART_TextBox3" Grid.Column="4" />
+                            <TextBlock Grid.Column="5" />
+                            <TextBox x:Name="PART_TextBox4" Grid.Column="6" />
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
                         </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsKeyboardFocused" Value="True" />
-                                <Condition Property="IsMouseOver" Value="False" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
-                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

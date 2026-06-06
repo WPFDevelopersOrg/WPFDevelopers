@@ -179,7 +179,8 @@ namespace WPFDevelopers.Controls
             var chrome = new WindowChrome
             {
                 CaptionHeight = 40,
-                GlassFrameThickness = new Thickness(1),
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+                ResizeBorderThickness = new Thickness(0)
             };
             WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
             WindowChrome.SetWindowChrome(this, chrome);
@@ -187,8 +188,9 @@ namespace WPFDevelopers.Controls
             var chrome = new WindowChrome
             {
                 CaptionHeight = 40,
-                GlassFrameThickness = new Thickness(1),
-                UseAeroCaptionButtons = false
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+                UseAeroCaptionButtons = false,
+                ResizeBorderThickness = new Thickness(0)
             };
              WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
              WindowChrome.SetWindowChrome(this, chrome);
@@ -270,7 +272,7 @@ namespace WPFDevelopers.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.WarningGeometry");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.InfoGeometry");
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.WarningBrush");
                     break;
                 case MessageBoxImage.Error:
@@ -282,7 +284,7 @@ namespace WPFDevelopers.Controls
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.SuccessBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.InfoGeometry");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.QuestionGeometry");
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PrimaryBrush");
                     break;
             }

@@ -11,8 +11,8 @@
         x:Key="WD.SliderThumbStyle"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type Thumb}">
-        <Setter Property="Width" Value="12" />
-        <Setter Property="Height" Value="12" />
+        <Setter Property="Width" Value="10" />
+        <Setter Property="Height" Value="10" />
         <Setter Property="Background" Value="{DynamicResource WD.WindowTextBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="BorderThickness" Value="1.5" />

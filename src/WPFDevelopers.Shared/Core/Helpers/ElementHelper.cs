@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Core.Helpers;
 
 namespace WPFDevelopers.Helpers
 {
@@ -12,6 +13,15 @@ namespace WPFDevelopers.Helpers
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementHelper),
                 new PropertyMetadata(new CornerRadius(0)));
+
+        static ElementHelper()
+        {
+            if (OSVersionHelper.IsWindows11OrLater())
+            {
+                var meta = new PropertyMetadata(new CornerRadius(4));
+                CornerRadiusProperty.OverrideMetadata(typeof(FrameworkElement), meta);
+            }
+        }
 
         public static readonly DependencyProperty WatermarkProperty =
             DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ElementHelper),

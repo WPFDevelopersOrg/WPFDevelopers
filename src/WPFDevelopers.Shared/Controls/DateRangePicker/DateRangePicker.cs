@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
 using WPFDevelopers.Helpers;
 
@@ -85,7 +84,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty HasTimeFormatProperty = HasTimeFormatPropertyKey.DependencyProperty;
 
-        private HwndSource _hwndSource;
+        private PopupWindowHook _popupWindowHook;
         private bool _isHandlingSelectionChange;
         private Popup _popup;
         private Calendar _startCalendar, _endCalendar;
@@ -234,17 +233,7 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
             _window = Window.GetWindow(this);
             if (_window != null)
-            {
-                if (_window.IsInitialized)
-                {
-                    WindowSourceInitialized(_window, EventArgs.Empty);
-                }
-                else
-                {
-                    _window.SourceInitialized -= WindowSourceInitialized;
-                    _window.SourceInitialized += WindowSourceInitialized;
-                }
-            }
+                _popupWindowHook = new PopupWindowHook(_window, () => _popup.IsOpen = false, handleActivateApp: false);
 
             _popup = (Popup)GetTemplateChild(PopupTemplateName);
             if (_popup != null)
@@ -659,31 +648,10 @@ namespace WPFDevelopers.Controls
         private void OnPopup_Closed(object sender, EventArgs e)
         {
             _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
-        }
-
-        private void WindowSourceInitialized(object sender, EventArgs e)
-        {
-            var window = sender as Window;
-            if (window != null)
-            {
-                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
-                if (_hwndSource != null) _hwndSource.AddHook(WndProc);
-            }
-        }
-
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            if (msg == WM_NCLBUTTONDOWN)
-            {
-                _popup.IsOpen = false;
-                _startDate = null;
-                _endDate = null;
-                _startCalendar.SelectedDate = null;
-                _endCalendar.SelectedDate = null;
-            }
-
-            return IntPtr.Zero;
+            _startDate = null;
+            _endDate = null;
+            if (_startCalendar != null) _startCalendar.SelectedDate = null;
+            if (_endCalendar != null) _endCalendar.SelectedDate = null;
         }
 
         private void OnPopup_Opened(object sender, EventArgs e)

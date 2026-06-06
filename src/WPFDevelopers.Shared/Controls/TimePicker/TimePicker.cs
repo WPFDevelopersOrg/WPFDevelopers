@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Interop;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -40,7 +40,7 @@ namespace WPFDevelopers.Controls
             EventManager.RegisterRoutedEvent("SelectedTimeChanged",
                 RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<DateTime?>), typeof(TimePicker));
 
-        private HwndSource _hwndSource;
+        private PopupWindowHook _popupWindowHook;
         private Window _window;
         private DateTime _date;
         private Popup _popup;
@@ -127,15 +127,7 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
             _window = Window.GetWindow(this);
             if (_window != null)
-            {
-                if (_window.IsInitialized)
-                    WindowSourceInitialized(_window, EventArgs.Empty);
-                else
-                {
-                    _window.SourceInitialized -= WindowSourceInitialized;
-                    _window.SourceInitialized += WindowSourceInitialized;
-                }
-            }
+                _popupWindowHook = new PopupWindowHook(_window, () => IsDropDownOpen = false);
             _textBox = GetTemplateChild(EditableTextBoxTemplateName) as TextBox;
             if (_textBox != null)
                 _textBox.TextChanged += TextBox_TextChanged;
@@ -158,39 +150,9 @@ namespace WPFDevelopers.Controls
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
             if (_popup != null)
             {
-                _popup.Closed += OnPopup_Closed;
-                _popup.Closed -= OnPopup_Closed;
                 _popup.Opened -= OnPopup_Opened;
                 _popup.Opened += OnPopup_Opened;
             }
-        }
-
-        private void OnPopup_Closed(object sender, EventArgs e)
-        {
-            _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
-        }
-
-        private void WindowSourceInitialized(object sender, EventArgs e)
-        {
-            var window = sender as Window;
-            if (window != null)
-            {
-                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
-                if (_hwndSource != null)
-                {
-                    _hwndSource.AddHook(WndProc);
-                }
-            }
-        }
-
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            if (msg == WM_NCLBUTTONDOWN)
-            {
-                IsDropDownOpen = false;
-            }
-            return IntPtr.Zero;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

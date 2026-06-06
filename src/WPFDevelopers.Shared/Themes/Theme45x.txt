@@ -1,4 +1,4 @@
-Basic\Colors.xaml
+﻿Basic\Colors.xaml
 Basic\Font.xaml
 Basic\Geometrys.xaml
 Basic\Animations.xaml
@@ -65,6 +65,7 @@ PathIcon.xaml
 NumericBox.xaml
 ColorPicker.xaml
 IPEditBox.xaml
+OtpBox.xaml
 TimePicker.xaml
 Drawer.xaml
 DateRangePicker.xaml

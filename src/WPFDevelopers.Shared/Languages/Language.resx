@@ -181,4 +181,10 @@
   <data name="Apply" xml:space="preserve">
     <value>应用</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一页</value>
+  </data>
 </root>

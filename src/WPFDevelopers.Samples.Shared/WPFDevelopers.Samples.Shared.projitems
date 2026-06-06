@@ -87,6 +87,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\IconicThumbnailWindowExample.xaml.cs">
       <DependentUpon>IconicThumbnailWindowExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MessageBoxExample.xaml.cs">
+      <DependentUpon>MessageBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>NavMenu3DExample.xaml</DependentUpon>
@@ -121,13 +124,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\LineB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\Vector2D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MasterCarouselExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MasterCarouselExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>EmphasizerCarouselExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>CarouselExample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>CarouselExampleEx.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartLineExample.xaml.cs">
       <DependentUpon>ChartLineExample.xaml</DependentUpon>
@@ -313,6 +320,9 @@
       <SubType>Code</SubType>
       <DependentUpon>MaskExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\OtpBoxExample.xaml.cs">
+      <DependentUpon>OtpBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ToastExample.xaml.cs">
       <DependentUpon>ToastExample.xaml</DependentUpon>
     </Compile>
@@ -475,6 +485,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\StepExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>StepExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\GrayscaleEffectExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>GrayscaleEffectExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TaskbarItemInfo.xaml.cs">
       <SubType>Code</SubType>
@@ -665,6 +679,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MessageBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -697,11 +715,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MasterCarouselExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExampleEx.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -910,6 +932,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\OtpBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ToastExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1087,6 +1113,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\StepExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\GrayscaleEffectExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
