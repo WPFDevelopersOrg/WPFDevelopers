@@ -409,6 +409,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.DataGridFilter:
                     ControlPanel = new DataGridFilterExample();
                     break;
+                case MenuEnum.OtpBox:
+                    ControlPanel = new OtpBoxExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();

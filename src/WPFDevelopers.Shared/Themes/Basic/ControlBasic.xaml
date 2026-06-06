@@ -67,6 +67,7 @@
     <converts:NullToVisibilityConverter x:Key="WD.NullToVisibilityConverter_Inverse" Inverse="True" />
     <converts:DirectionalThicknessConverter x:Key="WD.DirectionalThicknessConverter" />
     <Thickness x:Key="WD.TabItemBorderThickness">0,0,0,2</Thickness>
+    <converts:FirstLastMarginConverter x:Key="WD.FirstLastMarginConverter" />
 
     <Style TargetType="ToolTip">
         <Setter Property="Visibility" Value="Visible" />

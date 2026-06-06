@@ -101,6 +101,7 @@
         Dial,
         SvgViewer,
         DataGridFilter,
+        OtpBox,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

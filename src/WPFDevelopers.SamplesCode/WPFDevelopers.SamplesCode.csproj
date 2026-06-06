@@ -177,6 +177,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SvgViewerExample.xaml.cs" Link="ExampleViews\SvgViewerExample.xaml.cs" DependentUpon="SvgViewerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DataGridFilterExample.xaml.cs" Link="ExampleViews\DataGridFilterExample.xaml.cs" DependentUpon="DataGridFilterExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageBoxExample.xaml.cs" Link="ExampleViews\MessageBoxExample.xaml.cs" DependentUpon="MessageBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\OtpBoxExample.xaml.cs" Link="ExampleViews\OtpBoxExample.xaml.cs" DependentUpon="OtpBoxExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -584,5 +585,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageBoxExample.xaml">
 			<Link>ExampleViews\MessageBoxExample.xaml</Link>
 		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\OtpBoxExample.xaml">
+			<Link>ExampleViews\OtpBoxExample.xaml</Link>
 	</ItemGroup>
 </Project>

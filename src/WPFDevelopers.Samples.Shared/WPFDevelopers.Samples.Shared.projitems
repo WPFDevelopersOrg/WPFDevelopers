@@ -318,6 +318,9 @@
       <SubType>Code</SubType>
       <DependentUpon>MaskExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\OtpBoxExample.xaml.cs">
+      <DependentUpon>OtpBoxExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ToastExample.xaml.cs">
       <DependentUpon>ToastExample.xaml</DependentUpon>
     </Compile>
@@ -919,6 +922,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MaskExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\OtpBoxExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
