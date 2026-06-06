@@ -86,6 +86,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DirectionalThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DataGridHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\OSVersionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PopupWindowHook.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SelectorHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\NumericBoxClickEventArgs.cs" />
