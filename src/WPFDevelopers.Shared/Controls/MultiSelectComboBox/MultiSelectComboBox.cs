@@ -788,7 +788,7 @@ namespace WPFDevelopers.Controls
 
         void CreateTag(object item, MultiSelectComboBoxItem multiSelectComboBoxItem = null)
         {
-            var tag = new Tag { Padding = new Thickness(2, 0, 0, 0), Margin = new Thickness(0, 4.4, 0, 4.4) };
+            var tag = new Tag { Padding = new Thickness(2, 0, 0, 0) };
             bool isUsingGridView = View != null;
             if (isUsingGridView)
             {
