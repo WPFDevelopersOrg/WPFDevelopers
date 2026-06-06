@@ -12,6 +12,18 @@
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <TabControl>
+            <TabItem Header="MVVM">
+                <wd:Carousel
+                    x:Name="myCarousel2"
+                    Height="300"
+                    Margin="20,0"
+                    wd:ElementHelper.CornerRadius="4"
+                    AutoPlay="True"
+                    DisplayMemberPath="URL"
+                    ItemClickCommand="{Binding CarouselClickCommand}"
+                    ItemsSource="{Binding ImagePaths}"
+                    ShowArrows="True" />
+            </TabItem>
             <TabItem Header="XAML">
                 <wd:Carousel
                     Width="400"
@@ -62,18 +74,7 @@
                     </Border>
                 </wd:Carousel>
             </TabItem>
-            <TabItem Header="MVVM">
-                <wd:Carousel
-                    x:Name="myCarousel2"
-                    Height="300"
-                    Margin="20,0"
-                    wd:ElementHelper.CornerRadius="4"
-                    AutoPlay="True"
-                    DisplayMemberPath="URL"
-                    ItemClickCommand="{Binding CarouselClickCommand}"
-                    ItemsSource="{Binding ImagePaths}"
-                    ShowArrows="True" />
-            </TabItem>
+
         </TabControl>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CarouselExample.xaml" CodeType="Xaml" />
