@@ -409,6 +409,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.DataGridFilter:
                     ControlPanel = new DataGridFilterExample();
                     break;
+                case MenuEnum.GrayscaleEffect:
+                    ControlPanel = new GrayscaleEffectExample();
+                    break;
                 case MenuEnum.OtpBox:
                     ControlPanel = new OtpBoxExample();
                     break;

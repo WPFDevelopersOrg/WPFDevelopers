@@ -484,6 +484,10 @@
       <SubType>Code</SubType>
       <DependentUpon>StepExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\GrayscaleEffectExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>GrayscaleEffectExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TaskbarItemInfo.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>TaskbarItemInfo.xaml</DependentUpon>
@@ -1106,6 +1110,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\StepExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\GrayscaleEffectExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

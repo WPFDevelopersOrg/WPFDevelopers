@@ -72,6 +72,13 @@ namespace WPFDevelopers.Samples
             };
             grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, doubleAnimation);
         }
+
+        public void SetWindowGrayscale(double factor)
+        {
+            grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, null);
+            grayscaleEffect.Factor = factor;
+        }
+
         public void IsTwink()
         {
             WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;

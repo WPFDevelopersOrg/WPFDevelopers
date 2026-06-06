@@ -101,6 +101,7 @@
         Dial,
         SvgViewer,
         DataGridFilter,
+        GrayscaleEffect,
         OtpBox,
         VirtualizingWrapPanel,
         AcrylicBlur,
