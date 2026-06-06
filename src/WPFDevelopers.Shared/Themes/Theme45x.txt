@@ -1,4 +1,4 @@
-Basic\Colors.xaml
+﻿Basic\Colors.xaml
 Basic\Font.xaml
 Basic\Geometrys.xaml
 Basic\Animations.xaml

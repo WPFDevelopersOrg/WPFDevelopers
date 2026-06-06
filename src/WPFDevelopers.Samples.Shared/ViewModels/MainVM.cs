@@ -415,6 +415,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.OtpBox:
                     ControlPanel = new OtpBoxExample();
                     break;
+                case MenuEnum.Carousel:
+                    ControlPanel = new CarouselExample();
+                    break;
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();

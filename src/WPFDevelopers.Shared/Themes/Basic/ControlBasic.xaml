@@ -68,6 +68,7 @@
     <converts:DirectionalThicknessConverter x:Key="WD.DirectionalThicknessConverter" />
     <Thickness x:Key="WD.TabItemBorderThickness">0,0,0,2</Thickness>
     <converts:FirstLastMarginConverter x:Key="WD.FirstLastMarginConverter" />
+    <converts:SelectedIndexToBoolConverter x:Key="WD.SelectedIndexToBoolConverter" />
 
     <Style TargetType="ToolTip">
         <Setter Property="Visibility" Value="Visible" />

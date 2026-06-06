@@ -103,6 +103,7 @@
         DataGridFilter,
         GrayscaleEffect,
         OtpBox,
+        Carousel,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo
