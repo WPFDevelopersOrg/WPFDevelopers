@@ -2,7 +2,7 @@
 
 [中文](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README-zh.md)   
 
- ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet)  ![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers)   <a href="https://www.nuget.org/packages/WPFDevelopers/">
+ ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2026](https://img.shields.io/badge/Visual%20Studio-2026-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers)   <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
     </a>   <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers"></img>
@@ -21,21 +21,36 @@
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
 ###  [Documentation Center → Quick Start](docs/en/getting-started.md)   
-###  Visual Studio 2022  
+
+###  Visual Studio 2026
+
+<h1 align="center">System Design</h1>   
+
+![System Design](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WPFDevelopersFrameworkDiagram.svg)
 
 ### .Net Version
 |  .Net Version   | Status  |
 |  ----  | ----  |
 | net40  | ✅ |
 | net45  | ✅ |
+| net451  | ✅ |
+| net452  | ✅ |
 | net46  | ✅ |
+| net461  | ✅ |
+| net462  | ✅ |
 | net47  | ✅ |
+| net471  | ✅ |
+| net472  | ✅ |
 | net48  | ✅ |
+| net481  | ✅ |
 | netcoreapp3.0  | ✅ |
+| netcoreapp3.1  | ✅ |
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 | net7.0-windows  | ✅ |
 | net8.0-windows  | ✅ |
+| net9.0-windows  | ✅ |
+| net10.0-windows  | ✅ |
 
 ### Donate
 If you think our open source software is helpful to you, please scan the QR code below and give us a cup of coffee.
@@ -52,6 +67,11 @@ If you think our open source software is helpful to you, please scan the QR code
 <a href="https://github.com/yanjinhuagood" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/23089734?v=4"></a>
 <a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>   <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%!important" width="64px" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>  <a href="https://github.com/githowe" target="_blank"><img style="border-radius:50%!important" width="64px" alt="githowe" src="https://avatars.githubusercontent.com/u/31241366?v=4"></a>  <a href="https://github.com/LuGuangguang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="LuGuangguang" src="https://avatars.githubusercontent.com/u/34500722?v=4"></a> <a href="https://github.com/DinoChan" target="_blank"><img style="border-radius:50%!important" width="64px" alt="DinoChan" src="https://avatars.githubusercontent.com/u/6076257?v=4"></a> <a href="https://github.com/mingyaodagege" target="_blank"><img style="border-radius:50%!important" width="64px" alt="mingyaodagege" src="https://avatars.githubusercontent.com/u/48346030?v=4"></a>   <a href="https://github.com/SFlyers" target="_blank"><img style="border-radius:50%!important" width="64px" alt="PettyHandSome" src="https://avatars.githubusercontent.com/u/16127328?v=4"></a>  <a href="https://github.com/choumengqizhigou" target="_blank"><img style="border-radius:50%!important" width="64px" alt="丑萌气质狗" src="https://avatars.githubusercontent.com/u/19163316?v=4"></a>  <a href="https://github.com/ptddqr" target="_blank"><img style="border-radius:50%!important" width="64px" alt="李伟" src="https://avatars.githubusercontent.com/u/24642606?v=4"></a>  <a href="https://github.com/SwaggyMacro" target="_blank"><img style="border-radius:50%!important" width="64px" alt="SwaggyMacro" src="https://avatars.githubusercontent.com/u/38845682?v=4"></a>  <a href="https://github.com/guanguanchuangyu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="guanguanchuangyu" src="https://avatars.githubusercontent.com/u/25916858?v=4"></a>
 
+| contributor | contribution |
+| :--- | :--- |
+| [@HaHa-ZYK](https://github.com/HaHa-ZYK) | **Project Quality Guardian** :shield: - Thank you for continuously submitting a large number of extremely valuable and high-quality issue reports. Your meticulous observation skills are the cornerstone of project stability. |
+| [@wanghaodong24](https://github.com/wanghaodong24) | Thank you for consistently submitting high-quality issues |
+
 ###  This is a UI library for WPF developers based on WPF custom advanced controls. Welcome to use..
 
 ###  how to use：
@@ -64,7 +84,7 @@ Install-Package WPFDevelopers
 ``` XML
 xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ```
-#### 1.1.0.3-preview1 and above versions
+
 ``` XML
     <Application.Resources>
         <ResourceDictionary>
@@ -79,23 +99,40 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
         </ResourceDictionary>
     </Application.Resources>
 ```
-#### 1.1.0.3-preview1 and below versions
-``` XML
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Light.Blue.xaml"/>
-                    <!--需要注意 wd:Resources 必须在配色主题后，Theme="Dark" 为黑色皮肤-->
-                    <wd:Resources Theme="Light"/>
-                    <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
-```
 
 ###  Step 3: Add the namespace;
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
+----------
+### DataGridFilter
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DataGridFilter.gif"/>   
+
+----------
+### SvgViewer
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SvgViewer.gif"/>   
+
+----------
+### Dial
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Dial.gif"/>   
+
+----------
+### MultiSelectComboBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.jpg"/>   
+
+----------
+### ScreenCaptureExt‎
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCaptureExt.jpg"/>  
+
+----------
+### AllPath
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AllPath.gif"/>   
 
 ----------
 ### AnimatedGrid
@@ -128,7 +165,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Gauge.gif"/>   
 
 ----------
-### Message
+### Toast
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Message.png"/>   
 
