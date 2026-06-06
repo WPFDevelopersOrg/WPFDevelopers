@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +12,6 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Threading;
 using WPFDevelopers.Helpers;
 
@@ -90,7 +88,7 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("ShowType", typeof(ShowType), typeof(MultiSelectComboBox),
                 new PropertyMetadata(ShowType.Text));
 
-        private HwndSource _hwndSource;
+        private PopupWindowHook _popupWindowHook;
         private Window _window;
         private bool _ignoreTextValueChanged;
         private Popup _popup;
@@ -319,22 +317,12 @@ namespace WPFDevelopers.Controls
                 ApplySearchLogic();
             _window = Window.GetWindow(this);
             if (_window != null)
-            {
-                if (_window.IsInitialized)
-                    WindowSourceInitialized(_window, EventArgs.Empty);
-                else
-                {
-                    _window.SourceInitialized -= WindowSourceInitialized;
-                    _window.SourceInitialized += WindowSourceInitialized;
-                }
-            }
+                _popupWindowHook = new PopupWindowHook(_window, () => IsDropDownOpen = false);
             _panelDropDown = GetTemplateChild(PART_DropDownPanel) as Panel;
 
             _popup = GetTemplateChild(PART_Popup) as Popup;
             if (_popup != null && _window != null)
             {
-                _popup.Closed += OnPopup_Closed;
-                _popup.Closed -= OnPopup_Closed;
                 _popup.Opened -= OnPopup_Opened;
                 _popup.Opened += OnPopup_Opened;
                 _popup.GotFocus -= OnPopup_GotFocus;
@@ -463,34 +451,6 @@ namespace WPFDevelopers.Controls
                         IsDropDownOpen = true;
                 }), DispatcherPriority.Background);
             }
-        }
-
-        private void OnPopup_Closed(object sender, EventArgs e)
-        {
-            _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
-        }
-
-        private void WindowSourceInitialized(object sender, EventArgs e)
-        {
-            var window = sender as Window;
-            if (window != null)
-            {
-                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
-                if (_hwndSource != null)
-                {
-                    _hwndSource.AddHook(WndProc);
-                }
-            }
-        }
-
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            if (msg == WM_NCLBUTTONDOWN)
-            {
-                IsDropDownOpen = false;
-            }
-            return IntPtr.Zero;
         }
 
         private void OnPopup_Opened(object sender, EventArgs e)
