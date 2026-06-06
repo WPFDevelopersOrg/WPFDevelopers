@@ -179,7 +179,8 @@ namespace WPFDevelopers.Controls
             var chrome = new WindowChrome
             {
                 CaptionHeight = 40,
-                GlassFrameThickness = new Thickness(1),
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+                ResizeBorderThickness = new Thickness(0)
             };
             WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
             WindowChrome.SetWindowChrome(this, chrome);
@@ -187,8 +188,9 @@ namespace WPFDevelopers.Controls
             var chrome = new WindowChrome
             {
                 CaptionHeight = 40,
-                GlassFrameThickness = new Thickness(1),
-                UseAeroCaptionButtons = false
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+                UseAeroCaptionButtons = false,
+                ResizeBorderThickness = new Thickness(0)
             };
              WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
              WindowChrome.SetWindowChrome(this, chrome);
