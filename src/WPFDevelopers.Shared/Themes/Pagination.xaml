@@ -128,7 +128,8 @@
                 <Button
                     Grid.Column="5"
                     Width="32"
-                    Command="{x:Static controls:Pagination.PrevCommand}">
+                    Command="{x:Static controls:Pagination.PrevCommand}"
+                    ToolTip="{Binding [Previous], Source={x:Static resx:LanguageManager.Instance}}">
                     <controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
                 </Button>
                 <controls:NumericBox
@@ -154,7 +155,8 @@
                 <Button
                     Grid.Column="9"
                     Width="32"
-                    Command="{x:Static controls:Pagination.NextCommand}">
+                    Command="{x:Static controls:Pagination.NextCommand}"
+                    ToolTip="{Binding [Next], Source={x:Static resx:LanguageManager.Instance}}">
                     <controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
                 </Button>
             </Grid>
@@ -211,7 +213,8 @@
                             <Button
                                 Grid.Column="2"
                                 Width="32"
-                                Command="{x:Static controls:Pagination.PrevCommand}">
+                                Command="{x:Static controls:Pagination.PrevCommand}"
+                                ToolTip="{Binding [Previous], Source={x:Static resx:LanguageManager.Instance}}">
                                 <controls:PathIcon Kind="Previous" Style="{StaticResource WD.MiniPathIcon}" />
                             </Button>
                             <ListBox
@@ -233,7 +236,8 @@
                             <Button
                                 Grid.Column="4"
                                 Width="32"
-                                Command="{x:Static controls:Pagination.NextCommand}">
+                                Command="{x:Static controls:Pagination.NextCommand}"
+                                ToolTip="{Binding [Next], Source={x:Static resx:LanguageManager.Instance}}">
                                 <controls:PathIcon Kind="Next" Style="{StaticResource WD.MiniPathIcon}" />
                             </Button>
                             <StackPanel Grid.Column="5" Orientation="Horizontal">
