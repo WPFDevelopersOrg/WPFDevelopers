@@ -134,6 +134,7 @@
                             <ScrollViewer
                                 x:Name="PART_TagScrollViewer"
                                 Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=controls:MultiSelectComboBox}, Converter={StaticResource WD.DirectionalThicknessConverter}, ConverterParameter=horizontal}"
+                                Padding="0,4.4"
                                 HorizontalScrollBarVisibility="Disabled"
                                 VerticalScrollBarVisibility="Auto"
                                 Visibility="Collapsed">
