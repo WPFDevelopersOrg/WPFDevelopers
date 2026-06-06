@@ -179,6 +179,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MessageBoxExample.xaml.cs" Link="ExampleViews\MessageBoxExample.xaml.cs" DependentUpon="MessageBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\OtpBoxExample.xaml.cs" Link="ExampleViews\OtpBoxExample.xaml.cs" DependentUpon="OtpBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GrayscaleEffectExample.xaml.cs" Link="ExampleViews\GrayscaleEffectExample.xaml.cs" DependentUpon="GrayscaleEffectExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -591,6 +592,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GrayscaleEffectExample.xaml">
 			<Link>ExampleViews\GrayscaleEffectExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml">
+			<Link>ExampleViews\CarouselExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>
