@@ -595,9 +595,9 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### Carousel （轮播图）
+### MasterCarousel （轮播图）
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Carousel.gif"/>  
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/MasterCarousel.gif"/>  
 
 ----------
 
