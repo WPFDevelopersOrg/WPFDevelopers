@@ -111,7 +111,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 ### OtpBox
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/OtpBox	.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/OtpBox.gif"/>   
 
 ----------
 ### GrayscaleEffect
