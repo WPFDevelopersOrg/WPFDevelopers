@@ -226,7 +226,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 ### NotifyIcon
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/NotifyIcon2.gif"/>   
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
 
 ----------
 ### ChartRadar
