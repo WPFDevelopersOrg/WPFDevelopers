@@ -127,6 +127,21 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>    
 
 ----------
+### Carousel
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Carousel.gif"/>   
+
+----------
+### OtpBox
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/OtpBox.gif"/>   
+
+----------
+### GrayscaleEffect
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+
+----------
 ### DataGridFilter
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/DataGridFilter.gif"/>   
