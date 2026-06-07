@@ -16,7 +16,7 @@
 
 # __最新请使用 Nuget 预览版包__  |[下载可执行程序EXE](https://foruda.gitee.com/attach_file/1688956477367725173/net40.zip?token=71326e788298fd73e4e1dfd46558a23e&ts=1688956652&attname=net40.zip) |[项目模板下载VSIX](resources/WPFDevelopersResource/WPFDevelopers.vsix)
 
-# [最新 WPFDevelopers .Net4.5 至 Net8.0 版本如何编译 👀](https://mp.weixin.qq.com/s/M8as_AsVAFsiImDhaX7TKQ)
+# [最新 WPFDevelopers .Net4.5 至 Net10.0 版本如何编译 👀](https://mp.weixin.qq.com/s/M8as_AsVAFsiImDhaX7TKQ)
 
 # [下载完 WPFDevelopers 项目如何编译通过 👀](https://b23.tv/RTijGF8  )
 
