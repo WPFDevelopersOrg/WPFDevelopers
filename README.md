@@ -567,9 +567,9 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### Carousel 
+### MasterCarousel 
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Carousel.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MasterCarousel.gif"/>  
 
 ----------
 
