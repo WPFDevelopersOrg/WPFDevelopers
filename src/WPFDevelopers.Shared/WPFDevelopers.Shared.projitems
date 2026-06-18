@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDUserControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\Carousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\CarouselBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartPie.cs" />
