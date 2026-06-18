@@ -325,8 +325,8 @@ WD provides a set of theme resources you can reference in XAML:
 | Control | Source | Example File | Description |
 |---------|--------|-------------|-------------|
 | `wd:Carousel` | NuGet | [CarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExample.xaml) | Carousel (auto-play / dot indicators / arrows / click navigation) |
-| `wd:EmphasizerCarousel` | NuGet | [EmphasizerCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/EmphasizerCarouselExample.xaml) | Emphasizer carousel (3D flip + zoom effect) |
-| `wd:MasterCarousel` | NuGet | [MasterCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MasterCarouselExample.xaml) | Master carousel (multi-layer overlay animation) |
+| `wd:FocusCarousel` | NuGet | [FocusCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/FocusCarouselExample.xaml) | Emphasizer carousel (3D flip + zoom effect) |
+| `wd:CardCarousel` | NuGet | [CardCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CardCarouselExample.xaml) | Master carousel (multi-layer overlay animation) |
 | `wd:CircleMenu` | NuGet | [CircleMenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleMenuExample.xaml) | Circular menu |
 | `wd:SixGridView` | NuGet | [SixGirdViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SixGirdViewExample.xaml) | Six-column grid layout |
 | `wd:WaterfallPanel` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | Waterfall / masonry panel |
@@ -601,36 +601,36 @@ public ICommand CarouselClickCommand => new RelayCommand(param =>
 
 ---
 
-## EmphasizerCarousel / MasterCarousel
+## FocusCarousel / CardCarousel
 
-### EmphasizerCarousel
+### FocusCarousel
 
 A carousel with 3D flip + zoom effects, where the center item is enlarged and highlighted:
 
 ```xml
-<wd:EmphasizerCarousel>
+<wd:FocusCarousel>
     <Image Source="pack://application:,,,/Images/photo1.jpg" />
     <Image Source="pack://application:,,,/Images/photo2.jpg" />
     <Image Source="pack://application:,,,/Images/photo3.jpg" />
-</wd:EmphasizerCarousel>
+</wd:FocusCarousel>
 ```
 
-### MasterCarousel
+### CardCarousel
 
-A carousel with multi-layer overlay animation and playback speed control:
+A carousel with multi-layer overlay animation and auto-play/interval control:
 
 ```xml
-<wd:MasterCarousel IsStartAnimation="True" PlaySpeed="5000">
+<wd:CardCarousel AutoPlay="True" AutoPlayInterval="0:0:5">
     <Image Source="pack://application:,,,/Images/photo1.jpg" />
     <Image Source="pack://application:,,,/Images/photo2.jpg" />
     <Image Source="pack://application:,,,/Images/photo3.jpg" />
-</wd:MasterCarousel>
+</wd:CardCarousel>
 ```
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `IsStartAnimation` | bool | false | Enable auto-play |
-| `PlaySpeed` | int | 5000 | Playback speed (milliseconds) |
+| `AutoPlay` | bool | false | Enable auto-play |
+| `AutoPlayInterval` | TimeSpan | 0:0:3 | Playback interval (TimeSpan) |
 
 ---
 
