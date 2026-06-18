@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -9,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -17,46 +19,39 @@ namespace WPFDevelopers.Controls
     [ContentProperty("Children")]
     [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
     [TemplatePart(Name = Part_BackCanvasName, Type = typeof(Canvas))]
-    public class EmphasizerCarousel : Control, IAddChild
+    public class FocusCarousel : CarouselBase, IAddChild
     {
         [ReadOnly(true)] private const string Part_BackCanvasName = "PART_BackCanvas";
 
         private const int _maxSimpleHeight = 320;
-        private double _DisplayHeight;
-        private FrameworkElement _DisplayItem;
-        private readonly double _DisplayOffset = 10d;
-        private double _DisplayWidth;
-
-
+        private double _displayHeight;
+        private FrameworkElement _displayItem;
+        private readonly double _displayOffset = 10d;
+        private double _displayWidth;
         private readonly Dictionary<int, Point> _mapCanvasPoint = new Dictionary<int, Point>();
-
         private readonly Dictionary<int, FrameworkElement> _mapUIwithIndex = new Dictionary<int, FrameworkElement>();
+        private int _simpleCount;
+        private double _simpleHeight;
+        private double _simpleTop;
+        private double _simpleWidth;
+        private Canvas _part_BackCanvas;
 
-        private int _SimpleCount;
-        private double _SimpleHeight;
-
-        private double _SimpleTop;
-        private double _SimpleWidth;
-
-        private Canvas Part_BackCanvas;
-
-        static EmphasizerCarousel()
+        static FocusCarousel()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(EmphasizerCarousel),
-                new FrameworkPropertyMetadata(typeof(EmphasizerCarousel)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FocusCarousel),
+                new FrameworkPropertyMetadata(typeof(FocusCarousel)));
         }
 
-        public EmphasizerCarousel()
+        public FocusCarousel()
         {
-            Loaded += EmphasizerCarousel_Loaded;
-            Unloaded += EmphasizerCarousel_Unloaded;
-            SizeChanged += EmphasizerCarousel_SizeChanged;
+            Loaded += FocusCarousel_Loaded;
+            Unloaded += FocusCarousel_Unloaded;
+            SizeChanged += FocusCarousel_SizeChanged;
             Children.CollectionChanged += OnItems_CollectionChanged;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public ObservableCollection<FrameworkElement> Children { get; } = new ObservableCollection<FrameworkElement>();
-
 
         void IAddChild.AddChild(object value)
         {
@@ -68,13 +63,15 @@ namespace WPFDevelopers.Controls
             throw new NotImplementedException();
         }
 
+        private bool _isUpdatingItemsSource;
+
         private void OnItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
                 foreach (var item in e.NewItems)
                     if (item is FrameworkElement element)
                     {
-                        element.PreviewMouseLeftButtonDown += EmphasizerCarousel_MouseLeftButtonDown;
+                        element.PreviewMouseLeftButtonDown += FocusCarousel_MouseLeftButtonDown;
 
                         element.RenderTransformOrigin = new Point(0.5, 0.5);
                         element.RenderTransform = new TransformGroup
@@ -90,16 +87,20 @@ namespace WPFDevelopers.Controls
                     }
 
             if (e.Action == NotifyCollectionChangedAction.Remove)
-                foreach (var item in e.NewItems)
+                foreach (var item in e.OldItems)
                 {
                     if (item is FrameworkElement element)
-                        element.PreviewMouseLeftButtonDown -= EmphasizerCarousel_MouseLeftButtonDown;
+                        element.PreviewMouseLeftButtonDown -= FocusCarousel_MouseLeftButtonDown;
 
-                    if (item == _DisplayItem)
-                        _DisplayItem = null;
+                    if (item == _displayItem)
+                        _displayItem = null;
                 }
 
-            OnSizeChangedCallback();
+            if (_isUpdatingItemsSource)
+                return;
+
+            if (_part_BackCanvas != null)
+                OnSizeChangedCallback();
         }
 
         #region override
@@ -108,10 +109,73 @@ namespace WPFDevelopers.Controls
         {
             base.OnApplyTemplate();
 
-            Part_BackCanvas = GetTemplateChild(Part_BackCanvasName) as Canvas;
+            _part_BackCanvas = GetTemplateChild(Part_BackCanvasName) as Canvas;
 
-            if (Part_BackCanvas == null)
+            if (_part_BackCanvas == null)
                 throw new Exception("Some element is not in template!");
+
+            Dispatcher.BeginInvoke(new Action(() => OnSizeChangedCallback()));
+        }
+
+        protected override void OnItemsSourceChangedCore(object oldValue, object newValue)
+        {
+            _isUpdatingItemsSource = true;
+            try
+            {
+                Children.Clear();
+                if (newValue is IEnumerable enumerable)
+                {
+                    foreach (var item in enumerable)
+                    {
+                        FrameworkElement fe = null;
+                        if (item is FrameworkElement element)
+                        {
+                            fe = element;
+                        }
+                        else if (!string.IsNullOrEmpty(DisplayMemberPath))
+                        {
+                            var imageUrl = GetDisplayValue(item, DisplayMemberPath);
+                            if (!string.IsNullOrEmpty(imageUrl))
+                            {
+                                fe = new Image { Tag = imageUrl };
+                            }
+                        }
+                        if (fe == null)
+                        {
+                            fe = new ContentControl { HorizontalContentAlignment = HorizontalAlignment.Center, VerticalContentAlignment = VerticalAlignment.Center, Content = item };
+                        }
+                        Children.Add(fe);
+                    }
+                }
+            }
+            finally
+            {
+                _isUpdatingItemsSource = false;
+            }
+            if (_part_BackCanvas != null)
+                OnSizeChangedCallback();
+        }
+
+        protected override void OnSelectedIndexChangedCore(int oldIndex, int newIndex)
+        {
+            if (newIndex >= 0 && newIndex < Children.Count)
+            {
+                _displayItem = Children[newIndex];
+                OnSizeChangedCallback();
+            }
+        }
+
+        protected override void OnItemsSourceCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            OnItemsSourceChangedCore(null, ItemsSource);
+        }
+
+        protected override void OnAutoPlayTick()
+        {
+            if (Children.Count == 0) return;
+            int next = SelectedIndex + 1;
+            if (next >= Children.Count) next = 0;
+            SelectedIndex = next;
         }
 
         #endregion
@@ -119,11 +183,13 @@ namespace WPFDevelopers.Controls
 
         public bool OnSizeChangedCallback()
         {
-            if (Part_BackCanvas == null)
+            var vItemCount = Children.Count;
+            if (vItemCount <= 0)
                 return false;
-
-            var vHeight = Part_BackCanvas.ActualHeight;
-            var vWidth = Part_BackCanvas.ActualWidth;
+            if (_part_BackCanvas == null)
+                return false;
+            var vHeight = _part_BackCanvas.ActualHeight;
+            var vWidth = _part_BackCanvas.ActualWidth;
 
             if (vHeight == double.NaN || vWidth == double.NaN)
                 return false;
@@ -131,42 +197,37 @@ namespace WPFDevelopers.Controls
             if (vHeight == 0 || vWidth == 0)
                 return false;
 
-            Part_BackCanvas.Children.Clear();
+            _part_BackCanvas.Children.Clear();
 
             _mapUIwithIndex.Clear();
             _mapCanvasPoint.Clear();
-
-            var vItemCount = Children.Count;
-            if (vItemCount <= 0)
-                return false;
-
-            _SimpleCount = vItemCount - 1;
-            if (_SimpleCount == 0)
+            _simpleCount = vItemCount - 1;
+            if (_simpleCount == 0)
             {
                 Children[0].Width = vWidth;
                 Children[0].Height = vHeight;
 
-                Part_BackCanvas.Children.Add(Children[0]);
+                _part_BackCanvas.Children.Add(Children[0]);
                 return true;
             }
 
             //计算并划分显示区域
             var vSimpleHeight = vHeight * 0.4;
-            _SimpleHeight = vSimpleHeight;
-            if (_SimpleHeight > _maxSimpleHeight)
-                _SimpleHeight = _maxSimpleHeight;
+            _simpleHeight = vSimpleHeight;
+            if (_simpleHeight > _maxSimpleHeight)
+                _simpleHeight = _maxSimpleHeight;
 
-            var vSimpleWidth = vWidth / _SimpleCount;
-            _SimpleWidth = vSimpleWidth;
-            _SimpleTop = vHeight - _SimpleHeight;
+            var vSimpleWidth = vWidth / _simpleCount;
+            _simpleWidth = vSimpleWidth;
+            _simpleTop = vHeight - _simpleHeight;
 
-            _DisplayHeight = vHeight - _SimpleHeight;
-            _DisplayHeight -= _DisplayOffset;
+            _displayHeight = vHeight - _simpleHeight;
+            _displayHeight -= _displayOffset;
 
-            _DisplayWidth = vWidth;
+            _displayWidth = vWidth;
 
-            if (_DisplayItem == null)
-                _DisplayItem = Children[0];
+            if (_displayItem == null)
+                _displayItem = Children[0];
 
             var nIndex = 0;
             var nPosIndex = 0;
@@ -174,38 +235,41 @@ namespace WPFDevelopers.Controls
 
             foreach (var item in Children)
             {
-                Part_BackCanvas.Children.Add(item);
+                EnsureImageLoaded(item, _displayItem == item ? _displayWidth : _simpleWidth,
+                    _displayItem == item ? _displayHeight : _simpleHeight);
+
+                _part_BackCanvas.Children.Add(item);
                 item.Tag = nIndex;
 
 
-                if (_DisplayItem == item)
+                if (_displayItem == item)
                 {
                     var storyboard = new Storyboard();
                     {
-                        if (_DisplayWidth == double.NaN)
+                        if (_displayWidth == double.NaN)
                         {
                         }
 
                         var animation = new DoubleAnimation
                         {
-                            To = _DisplayWidth,
+                            To = _displayWidth,
                             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
 
-                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTarget(animation, _displayItem);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Width"));
                         storyboard.Children.Add(animation);
                     }
                     {
                         var animation = new DoubleAnimation
                         {
-                            To = _DisplayHeight,
+                            To = _displayHeight,
                             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
 
-                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTarget(animation, _displayItem);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                         storyboard.Children.Add(animation);
                     }
@@ -218,7 +282,7 @@ namespace WPFDevelopers.Controls
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
 
-                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTarget(animation, _displayItem);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
                         storyboard.Children.Add(animation);
                     }
@@ -230,14 +294,14 @@ namespace WPFDevelopers.Controls
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
 
-                        Storyboard.SetTarget(animation, _DisplayItem);
+                        Storyboard.SetTarget(animation, _displayItem);
                         Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Top)"));
                         storyboard.Children.Add(animation);
                     }
                     storyboard.Begin();
 
-                    item.Width = _DisplayWidth;
-                    item.Height = _DisplayHeight;
+                    item.Width = _displayWidth;
+                    item.Height = _displayHeight;
                     item.SetValue(Canvas.LeftProperty, 0d);
                     item.SetValue(Canvas.TopProperty, 0d);
                 }
@@ -248,7 +312,7 @@ namespace WPFDevelopers.Controls
                     {
                         var animation = new DoubleAnimation
                         {
-                            To = _SimpleWidth,
+                            To = _simpleWidth,
                             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
@@ -260,7 +324,7 @@ namespace WPFDevelopers.Controls
                     {
                         var animation = new DoubleAnimation
                         {
-                            To = _SimpleHeight,
+                            To = _simpleHeight,
                             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
@@ -285,7 +349,7 @@ namespace WPFDevelopers.Controls
                     {
                         var animation = new DoubleAnimation
                         {
-                            To = _SimpleTop,
+                            To = _simpleTop,
                             Duration = new Duration(new TimeSpan(0, 0, 0, 0, 0)),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
@@ -296,15 +360,15 @@ namespace WPFDevelopers.Controls
                     }
                     storyboard.Begin();
 
-                    item.Width = _SimpleWidth;
-                    item.Height = _SimpleHeight;
+                    item.Width = _simpleWidth;
+                    item.Height = _simpleHeight;
                     item.SetValue(Canvas.LeftProperty, Left);
-                    item.SetValue(Canvas.TopProperty, _SimpleTop);
+                    item.SetValue(Canvas.TopProperty, _simpleTop);
 
-                    _mapCanvasPoint[nPosIndex] = new Point(Left, _SimpleTop);
+                    _mapCanvasPoint[nPosIndex] = new Point(Left, _simpleTop);
                     _mapUIwithIndex[nPosIndex] = item;
 
-                    Left += _SimpleWidth;
+                    Left += _simpleWidth;
                     ++nPosIndex;
                 }
 
@@ -314,9 +378,9 @@ namespace WPFDevelopers.Controls
             return true;
         }
 
-        private void EmphasizerCarousel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void FocusCarousel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender == _DisplayItem)
+            if (sender == _displayItem)
                 return;
 
             e.Handled = true;
@@ -325,7 +389,7 @@ namespace WPFDevelopers.Controls
             if (vFrameWorker == null)
                 return;
 
-            if (!int.TryParse(_DisplayItem.Tag.ToString(), out var nIndex))
+            if (_displayItem?.Tag == null || !int.TryParse(_displayItem.Tag.ToString(), out var nIndex))
                 return;
 
             if (!int.TryParse(vFrameWorker.Tag.ToString(), out var nLeaveIndex))
@@ -333,8 +397,8 @@ namespace WPFDevelopers.Controls
 
             var offset = 500;
 
-            var vLeft = (_DisplayWidth - _SimpleWidth) / 2d;
-            var vTop = (_DisplayHeight - _SimpleHeight) / 2d;
+            var vLeft = (_displayWidth - _simpleWidth) / 2d;
+            var vTop = (_displayHeight - _simpleHeight) / 2d;
 
             //一系列计算 计算得到当前展示页要回到的Dock位置  
             //一系列计算 计算得到当前点击页要移除的Dock位置
@@ -450,18 +514,18 @@ namespace WPFDevelopers.Controls
                 }
 
             if (_mapUIwithIndex.ContainsKey(nTargertIndex))
-                _mapUIwithIndex[nTargertIndex] = _DisplayItem;
+                _mapUIwithIndex[nTargertIndex] = _displayItem;
 
             //当前打开的界面 先缩放 位移 后 移到等待区
             {
                 var animation = new DoubleAnimation
                 {
-                    To = _SimpleWidth,
+                    To = _simpleWidth,
                     Duration = new Duration(new TimeSpan(0, 0, 0, 0, offset)),
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
 
-                Storyboard.SetTarget(animation, _DisplayItem);
+                Storyboard.SetTarget(animation, _displayItem);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("Width"));
                 storyboard.Children.Add(animation);
             }
@@ -469,12 +533,12 @@ namespace WPFDevelopers.Controls
             {
                 var animation = new DoubleAnimation
                 {
-                    To = _SimpleHeight,
+                    To = _simpleHeight,
                     Duration = new Duration(new TimeSpan(0, 0, 0, 0, offset)),
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
 
-                Storyboard.SetTarget(animation, _DisplayItem);
+                Storyboard.SetTarget(animation, _displayItem);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("Height"));
                 storyboard.Children.Add(animation);
             }
@@ -487,7 +551,7 @@ namespace WPFDevelopers.Controls
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
 
-                Storyboard.SetTarget(animation, _DisplayItem);
+                Storyboard.SetTarget(animation, _displayItem);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
                 storyboard.Children.Add(animation);
             }
@@ -500,7 +564,7 @@ namespace WPFDevelopers.Controls
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
 
-                Storyboard.SetTarget(animation, _DisplayItem);
+                Storyboard.SetTarget(animation, _displayItem);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Top)"));
                 storyboard.Children.Add(animation);
             }
@@ -514,7 +578,7 @@ namespace WPFDevelopers.Controls
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
 
-                Storyboard.SetTarget(animation, _DisplayItem);
+                Storyboard.SetTarget(animation, _displayItem);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Left)"));
                 storyboard.Children.Add(animation);
             }
@@ -528,7 +592,7 @@ namespace WPFDevelopers.Controls
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                 };
 
-                Storyboard.SetTarget(animation, _DisplayItem);
+                Storyboard.SetTarget(animation, _displayItem);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("(Canvas.Top)"));
                 storyboard.Children.Add(animation);
             }
@@ -565,7 +629,7 @@ namespace WPFDevelopers.Controls
             {
                 var animation = new DoubleAnimation
                 {
-                    To = _DisplayWidth,
+                    To = _displayWidth,
                     BeginTime = TimeSpan.FromMilliseconds(offset * 2),
                     Duration = new Duration(new TimeSpan(0, 0, 0, 0, offset)),
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
@@ -579,7 +643,7 @@ namespace WPFDevelopers.Controls
             {
                 var animation = new DoubleAnimation
                 {
-                    To = _DisplayHeight,
+                    To = _displayHeight,
                     BeginTime = TimeSpan.FromMilliseconds(offset * 2),
                     Duration = new Duration(new TimeSpan(0, 0, 0, 0, offset)),
                     EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
@@ -618,19 +682,51 @@ namespace WPFDevelopers.Controls
                 storyboard.Children.Add(animation);
             }
 
-            _DisplayItem = vFrameWorker;
+            ReplaceImageBitmap(vFrameWorker, _displayWidth, _displayHeight);
+            ReplaceImageBitmap(_displayItem, _simpleWidth, _simpleHeight);
+
+            _displayItem = vFrameWorker;
             storyboard.Begin(vFrameWorker);
+
+            RaiseItemClick(vFrameWorker);
         }
 
-        private void EmphasizerCarousel_Loaded(object sender, RoutedEventArgs e)
+        private void FocusCarousel_Loaded(object sender, RoutedEventArgs e)
         {
         }
 
-        private void EmphasizerCarousel_Unloaded(object sender, RoutedEventArgs e)
+        private static void EnsureImageLoaded(FrameworkElement fe, double width, double height)
+        {
+            if (fe is Image img && img.Tag is string uri)
+            {
+                img.Source = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
+                img.Tag = null;
+            }
+        }
+
+        private static void ReplaceImageBitmap(FrameworkElement fe, double width, double height)
+        {
+            if (fe is Image img && img.Source is BitmapSource)
+            {
+                if (img.Tag is string uri)
+                {
+                    img.Source = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
+                }
+                else
+                {
+                    var w = (int)width;
+                    var h = (int)height;
+                    img.Source = ControlsHelper.CreateBitmapImage(
+                        (img.Source as BitmapSource).ToString(), w, h);
+                }
+            }
+        }
+
+        private void FocusCarousel_Unloaded(object sender, RoutedEventArgs e)
         {
         }
 
-        private void EmphasizerCarousel_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void FocusCarousel_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             OnSizeChangedCallback();
         }

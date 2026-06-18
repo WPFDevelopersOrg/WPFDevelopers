@@ -129,9 +129,9 @@
       <SubType>Code</SubType>
       <DependentUpon>CardCarouselExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\FocusCarouselExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>EmphasizerCarouselExample.xaml</DependentUpon>
+      <DependentUpon>FocusCarouselExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExample.xaml.cs">
       <SubType>Code</SubType>
@@ -720,7 +720,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\FocusCarouselExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
