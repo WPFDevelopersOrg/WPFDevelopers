@@ -329,8 +329,8 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | 控件名 | 来源 | 示例文件 | 说明 |
 |--------|------|----------|------|
 | `wd:Carousel` | NuGet | [CarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExample.xaml) | 轮播图（自动播放/圆点指示器/箭头/点击跳转） |
-| `wd:EmphasizerCarousel` | NuGet | [EmphasizerCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/EmphasizerCarouselExample.xaml) | 强调型轮播图（3D 翻转 + 缩放效果） |
-| `wd:MasterCarousel` | NuGet | [MasterCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MasterCarouselExample.xaml) | 高级轮播图（多层叠加动画） |
+| `wd:FocusCarousel` | NuGet | [FocusCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/FocusCarouselExample.xaml) | 强调型轮播图（3D 翻转 + 缩放效果） |
+| `wd:CardCarousel` | NuGet | [CardCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CardCarouselExample.xaml) | 高级轮播图（多层叠加动画） |
 | `wd:CircleMenu` | NuGet | [CircleMenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleMenuExample.xaml) | 圆形菜单 |
 | `wd:SixGridView` | NuGet | [SixGirdViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SixGirdViewExample.xaml) | 六宫格布局 |
 | `wd:WaterfallPanel` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | 瀑布流面板 |
@@ -605,36 +605,36 @@ public ICommand CarouselClickCommand => new RelayCommand(param =>
 
 ---
 
-## EmphasizerCarousel / MasterCarousel
+## FocusCarousel / CardCarousel
 
-### EmphasizerCarousel（强调型轮播图）
+### FocusCarousel（强调型轮播图）
 
 3D 翻转 + 缩放效果的轮播图，中间项放大突出显示：
 
 ```xml
-<wd:EmphasizerCarousel>
+<wd:FocusCarousel>
     <Image Source="pack://application:,,,/Images/photo1.jpg" />
     <Image Source="pack://application:,,,/Images/photo2.jpg" />
     <Image Source="pack://application:,,,/Images/photo3.jpg" />
-</wd:EmphasizerCarousel>
+</wd:FocusCarousel>
 ```
 
-### MasterCarousel（高级轮播图）
+### CardCarousel（卡片轮播图）
 
-多层叠加动画效果的轮播图，支持播放速度控制：
+多层叠加动画效果的轮播图，支持自动播放和间隔控制：
 
 ```xml
-<wd:MasterCarousel IsStartAnimation="True" PlaySpeed="5000">
+<wd:CardCarousel AutoPlay="True" AutoPlayInterval="0:0:5">
     <Image Source="pack://application:,,,/Images/photo1.jpg" />
     <Image Source="pack://application:,,,/Images/photo2.jpg" />
     <Image Source="pack://application:,,,/Images/photo3.jpg" />
-</wd:MasterCarousel>
+</wd:CardCarousel>
 ```
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `IsStartAnimation` | bool | false | 是否自动播放 |
-| `PlaySpeed` | int | 5000 | 播放速度（毫秒） |
+| `AutoPlay` | bool | false | 是否自动播放 |
+| `AutoPlayInterval` | TimeSpan | 0:0:3 | 播放间隔（TimeSpan） |
 
 ---
 
