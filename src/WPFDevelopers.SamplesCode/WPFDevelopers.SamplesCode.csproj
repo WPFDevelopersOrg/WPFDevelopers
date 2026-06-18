@@ -180,6 +180,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\OtpBoxExample.xaml.cs" Link="ExampleViews\OtpBoxExample.xaml.cs" DependentUpon="OtpBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GrayscaleEffectExample.xaml.cs" Link="ExampleViews\GrayscaleEffectExample.xaml.cs" DependentUpon="GrayscaleEffectExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\CarouselExampleViewModel.cs" Link="ViewModels\CarouselExampleViewModel.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
