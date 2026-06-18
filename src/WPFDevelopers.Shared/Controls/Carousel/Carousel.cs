@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -10,8 +9,6 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -21,7 +18,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = PARTDotsName, Type = typeof(ItemsControl))]
     [TemplatePart(Name = PARTPrevButtonName, Type = typeof(Button))]
     [TemplatePart(Name = PARTNextButtonName, Type = typeof(Button))]
-    public class Carousel : Control, IAddChild
+    public class Carousel : CarouselBase, IAddChild
     {
         private const string PARTContentName = "PART_Content";
         private const string PARTDotsName = "PART_Dots";
@@ -29,23 +26,6 @@ namespace WPFDevelopers.Controls
         private const string PARTNextButtonName = "PART_NextButton";
 
         private static readonly Type _typeofSelf = typeof(Carousel);
-
-        public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable), _typeofSelf,
-                new PropertyMetadata(null, OnItemsSourceChanged));
-
-        public static readonly DependencyProperty SelectedIndexProperty =
-            DependencyProperty.Register(nameof(SelectedIndex), typeof(int), _typeofSelf,
-                new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
-                    OnSelectedIndexChanged));
-
-        public static readonly DependencyProperty AutoPlayProperty =
-            DependencyProperty.Register(nameof(AutoPlay), typeof(bool), _typeofSelf,
-                new PropertyMetadata(true, OnAutoPlayChanged));
-
-        public static readonly DependencyProperty AutoPlayIntervalProperty =
-            DependencyProperty.Register(nameof(AutoPlayInterval), typeof(TimeSpan), _typeofSelf,
-                new PropertyMetadata(TimeSpan.FromSeconds(3)));
 
         public static readonly DependencyProperty AnimationDurationProperty =
             DependencyProperty.Register(nameof(AnimationDuration), typeof(double), _typeofSelf,
@@ -63,26 +43,6 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), _typeofSelf,
                 new PropertyMetadata(null, OnItemTemplateChanged));
 
-        public static readonly DependencyProperty DisplayMemberPathProperty =
-            DependencyProperty.Register(nameof(DisplayMemberPath), typeof(string), _typeofSelf,
-                new PropertyMetadata(null, OnDisplayMemberPathChanged));
-
-        public static readonly DependencyProperty SelectedItemProperty =
-            DependencyProperty.Register(nameof(SelectedItem), typeof(object), _typeofSelf,
-                new FrameworkPropertyMetadata(null, OnSelectedItemChanged));
-
-        public static readonly RoutedEvent SelectedItemChangedEvent =
-            EventManager.RegisterRoutedEvent(nameof(SelectedItemChanged), RoutingStrategy.Bubble,
-                typeof(RoutedPropertyChangedEventHandler<object>), _typeofSelf);
-
-        public static readonly RoutedEvent ItemClickEvent =
-            EventManager.RegisterRoutedEvent(nameof(ItemClick), RoutingStrategy.Bubble,
-                typeof(RoutedEventHandler), _typeofSelf);
-
-        public static readonly DependencyProperty ItemClickCommandProperty =
-            DependencyProperty.Register(nameof(ItemClickCommand), typeof(ICommand), _typeofSelf,
-                new PropertyMetadata(null));
-
         private readonly ObservableCollection<int> _dotsItems = new ObservableCollection<int>();
 
         public ObservableCollection<int> DotsItems => _dotsItems;
@@ -91,11 +51,11 @@ namespace WPFDevelopers.Controls
         private ItemsControl _dotsPanel;
         private Button _prevButton;
         private Button _nextButton;
-        private DispatcherTimer _autoPlayTimer;
         private bool _isAnimating;
         private double _slideWidth;
         private int _itemCount;
         private TranslateTransform _translateTransform;
+        private readonly List<object> _cachedItems = new List<object>();
 
         static Carousel()
         {
@@ -113,35 +73,10 @@ namespace WPFDevelopers.Controls
         {
             BuildSlides();
             UpdateItems();
-            StartAutoPlay();
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public List<object> Children { get; } = new List<object>();
-
-        public IEnumerable ItemsSource
-        {
-            get => (IEnumerable)GetValue(ItemsSourceProperty);
-            set => SetValue(ItemsSourceProperty, value);
-        }
-
-        public int SelectedIndex
-        {
-            get => (int)GetValue(SelectedIndexProperty);
-            set => SetValue(SelectedIndexProperty, value);
-        }
-
-        public bool AutoPlay
-        {
-            get => (bool)GetValue(AutoPlayProperty);
-            set => SetValue(AutoPlayProperty, value);
-        }
-
-        public TimeSpan AutoPlayInterval
-        {
-            get => (TimeSpan)GetValue(AutoPlayIntervalProperty);
-            set => SetValue(AutoPlayIntervalProperty, value);
-        }
 
         public double AnimationDuration
         {
@@ -165,36 +100,6 @@ namespace WPFDevelopers.Controls
         {
             get => (DataTemplate)GetValue(ItemTemplateProperty);
             set => SetValue(ItemTemplateProperty, value);
-        }
-
-        public string DisplayMemberPath
-        {
-            get => (string)GetValue(DisplayMemberPathProperty);
-            set => SetValue(DisplayMemberPathProperty, value);
-        }
-
-        public object SelectedItem
-        {
-            get => GetValue(SelectedItemProperty);
-            set => SetValue(SelectedItemProperty, value);
-        }
-
-        public event RoutedPropertyChangedEventHandler<object> SelectedItemChanged
-        {
-            add => AddHandler(SelectedItemChangedEvent, value);
-            remove => RemoveHandler(SelectedItemChangedEvent, value);
-        }
-
-        public event RoutedEventHandler ItemClick
-        {
-            add => AddHandler(ItemClickEvent, value);
-            remove => RemoveHandler(ItemClickEvent, value);
-        }
-
-        public ICommand ItemClickCommand
-        {
-            get => (ICommand)GetValue(ItemClickCommandProperty);
-            set => SetValue(ItemClickCommandProperty, value);
         }
 
         void IAddChild.AddChild(object value)
@@ -238,6 +143,39 @@ namespace WPFDevelopers.Controls
             HandleSlideClick(e.GetTouchPoint(_contentCanvas).Position);
         }
 
+        protected override void OnItemsSourceChangedCore(object oldValue, object newValue)
+        {
+            BuildSlides();
+            UpdateItems();
+        }
+
+        protected override void OnSelectedIndexChangedCore(int oldIndex, int newIndex)
+        {
+            if (_translateTransform != null && _slideWidth > 0)
+            {
+                var expectedOffset = -newIndex * _slideWidth;
+                if (Math.Abs(_translateTransform.X - expectedOffset) < 1)
+                    return;
+            }
+            AnimateToIndex(newIndex);
+        }
+
+        protected override void OnItemsSourceCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            BuildSlides();
+            UpdateItems();
+        }
+
+        protected override void OnAutoPlayTick()
+        {
+            GoToNext();
+        }
+
+        private void Carousel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            BuildSlides();
+        }
+
         private void HandleSlideClick(Point pos)
         {
             if (_slideWidth <= 0 || _itemCount == 0 || _contentCanvas == null) return;
@@ -245,15 +183,11 @@ namespace WPFDevelopers.Controls
             var index = (int)(pos.X / _slideWidth);
             if (index < 0 || index >= _itemCount) return;
 
-            var item = GetItems()[index];
-
-            var clickArgs = new RoutedEventArgs(ItemClickEvent, item);
-            RaiseEvent(clickArgs);
+            var item = _cachedItems[index];
 
             SelectedItem = item;
 
-            if (ItemClickCommand?.CanExecute(item) == true)
-                ItemClickCommand.Execute(item);
+            RaiseItemClick(item);
         }
 
         private void DotsPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -269,39 +203,6 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private static void OnItemsSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = (Carousel)d;
-            if (e.OldValue is INotifyCollectionChanged oldNcc)
-                oldNcc.CollectionChanged -= ctrl.Items_CollectionChanged;
-            if (e.NewValue is INotifyCollectionChanged newNcc)
-                newNcc.CollectionChanged += ctrl.Items_CollectionChanged;
-            ctrl.BuildSlides();
-            ctrl.UpdateItems();
-        }
-
-        private static void OnSelectedIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = (Carousel)d;
-            var newIndex = (int)e.NewValue;
-            if (ctrl._translateTransform != null && ctrl._slideWidth > 0)
-            {
-                var expectedOffset = -newIndex * ctrl._slideWidth;
-                if (Math.Abs(ctrl._translateTransform.X - expectedOffset) < 1)
-                    return;
-            }
-            ctrl.AnimateToIndex(newIndex);
-        }
-
-        private static void OnAutoPlayChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = (Carousel)d;
-            if ((bool)e.NewValue)
-                ctrl.StartAutoPlay();
-            else
-                ctrl.StopAutoPlay();
-        }
-
         private static void OnItemTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = (Carousel)d;
@@ -309,40 +210,19 @@ namespace WPFDevelopers.Controls
             ctrl.UpdateItems();
         }
 
-        private static void OnDisplayMemberPathChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = (Carousel)d;
-            ctrl.BuildSlides();
-            ctrl.UpdateItems();
-        }
-
-        private static void OnSelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctrl = (Carousel)d;
-            var args = new RoutedPropertyChangedEventArgs<object>(e.OldValue, e.NewValue, SelectedItemChangedEvent);
-            ctrl.RaiseEvent(args);
-        }
-
-        private void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            BuildSlides();
-            UpdateItems();
-        }
-
-        private void Carousel_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (_slideWidth > 0)
-            {
-                BuildSlides();
-            }
-        }
-
         private void BuildSlides()
         {
             if (_contentCanvas == null) return;
+
             _contentCanvas.Children.Clear();
-            var items = GetItems();
-            _itemCount = items.Count;
+            _cachedItems.Clear();
+            if (Children.Count > 0)
+                _cachedItems.AddRange(Children);
+            else if (ItemsSource != null)
+                foreach (var item in ItemsSource)
+                    _cachedItems.Add(item);
+
+            _itemCount = _cachedItems.Count;
             if (_itemCount == 0) return;
             double width = ActualWidth;
             double height = ActualHeight;
@@ -353,57 +233,9 @@ namespace WPFDevelopers.Controls
             _contentCanvas.RenderTransform = _translateTransform;
             for (int i = 0; i < _itemCount; i++)
             {
-                var content = items[i];
-                FrameworkElement fe;
-
-                if (ItemTemplate != null)
-                {
-                    fe = new ContentPresenter
-                    {
-                        Content = content,
-                        ContentTemplate = ItemTemplate,
-                        Width = width,
-                        Height = height
-                    };
-                }
-                else if (content is FrameworkElement element)
-                {
-                    fe = element;
-                    fe.Width = width;
-                    fe.Height = height;
-                }
-                else if (content is string uri)
-                {
-                    var bitmap = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
-                    fe = new Image
-                    {
-                        Source = bitmap,
-                        Stretch = Stretch.UniformToFill,
-                        Width = width,
-                        Height = height
-                    };
-                }
-                else if (!string.IsNullOrEmpty(DisplayMemberPath))
-                {
-                    var imageUrl = GetDisplayValue(content, DisplayMemberPath);
-                    var bitmap = ControlsHelper.CreateBitmapImage(imageUrl, (int)width, (int)height);
-                    fe = new Image
-                    {
-                        Source = bitmap,
-                        Stretch = Stretch.UniformToFill,
-                        Width = width,
-                        Height = height
-                    };
-                }
-                else
-                {
-                    fe = new ContentPresenter
-                    {
-                        Content = content,
-                        Width = width,
-                        Height = height
-                    };
-                }
+                var content = _cachedItems[i];
+                FrameworkElement fe = CreateSlideElement(content, width, height);
+                if (fe == null) continue;
                 Canvas.SetLeft(fe, i * width);
                 Canvas.SetTop(fe, 0);
                 fe.Tag = content;
@@ -411,68 +243,95 @@ namespace WPFDevelopers.Controls
             }
             if (_itemCount > 1)
             {
-                var firstItem = items[0];
-                FrameworkElement clone;
-
-                if (ItemTemplate != null)
+                var firstContent = _cachedItems[0];
+                FrameworkElement clone = CreateCloneElement(firstContent, width, height);
+                if (clone != null)
                 {
-                    clone = new ContentPresenter
-                    {
-                        Content = firstItem,
-                        ContentTemplate = ItemTemplate,
-                        Width = width,
-                        Height = height
-                    };
+                    Canvas.SetLeft(clone, _itemCount * width);
+                    Canvas.SetTop(clone, 0);
+                    _contentCanvas.Children.Add(clone);
                 }
-                else if (firstItem is FrameworkElement element)
-                {
-                    var brush = new VisualBrush(element);
-                    brush.Stretch = Stretch.UniformToFill;
-                    clone = new Border
-                    {
-                        Background = brush,
-                        Width = width,
-                        Height = height
-                    };
-                }
-                else if (firstItem is string uri)
-                {
-                    var bitmap = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
-                    clone = new Image
-                    {
-                        Source = bitmap,
-                        Stretch = Stretch.UniformToFill,
-                        Width = width,
-                        Height = height
-                    };
-                }
-                else if (!string.IsNullOrEmpty(DisplayMemberPath))
-                {
-                    var imageUrl = GetDisplayValue(firstItem, DisplayMemberPath);
-                    var bitmap = ControlsHelper.CreateBitmapImage(imageUrl, (int)width, (int)height);
-                    clone = new Image
-                    {
-                        Source = bitmap,
-                        Stretch = Stretch.UniformToFill,
-                        Width = width,
-                        Height = height
-                    };
-                }
-                else
-                {
-                    clone = new ContentPresenter
-                    {
-                        Content = firstItem,
-                        Width = width,
-                        Height = height
-                    };
-                }
-                Canvas.SetLeft(clone, _itemCount * width);
-                Canvas.SetTop(clone, 0);
-                _contentCanvas.Children.Add(clone);
             }
 
             AnimateToIndex(SelectedIndex, false);
+        }
+
+        private FrameworkElement CreateCloneElement(object content, double width, double height)
+        {
+            if (content is Image img && img.Source != null)
+            {
+                return new Image
+                {
+                    Source = img.Source,
+                    Width = width,
+                    Height = height
+                };
+            }
+            if (content is FrameworkElement element)
+            {
+                var brush = new VisualBrush(element);
+                return new Border
+                {
+                    Background = brush,
+                    Width = width,
+                    Height = height
+                };
+            }
+            return CreateSlideElement(content, width, height);
+        }
+
+        private FrameworkElement CreateSlideElement(object content, double width, double height)
+        {
+            FrameworkElement fe;
+            if (ItemTemplate != null)
+            {
+                return new ContentPresenter
+                {
+                    Content = content,
+                    ContentTemplate = ItemTemplate,
+                    Width = width,
+                    Height = height
+                };
+            }
+
+            if (content is FrameworkElement element)
+            {
+                element.Width = width;
+                element.Height = height;
+                return element;
+            }
+
+            if (content is string uri)
+            {
+                var bitmap = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
+                return new Image
+                {
+                    Source = bitmap,
+                    Stretch = Stretch.UniformToFill,
+                    Width = width,
+                    Height = height
+                };
+            }
+
+            if (!string.IsNullOrEmpty(DisplayMemberPath))
+            {
+                var imageUrl = GetDisplayValue(content, DisplayMemberPath);
+                var bitmap = ControlsHelper.CreateBitmapImage(imageUrl, (int)width, (int)height);
+                return new Image
+                {
+                    Source = bitmap,
+                    Stretch = Stretch.UniformToFill,
+                    Width = width,
+                    Height = height
+                };
+            }
+
+            return new ContentPresenter
+            {
+                Content = content,
+                Width = width,
+                Height = height
+            };
         }
 
         private void UpdateItems()
@@ -567,48 +426,6 @@ namespace WPFDevelopers.Controls
             int prev = SelectedIndex - 1;
             if (prev < 0) prev = _itemCount - 1;
             SelectedIndex = prev;
-        }
-
-        private void StartAutoPlay()
-        {
-            if (!AutoPlay) return;
-
-            StopAutoPlay();
-            _autoPlayTimer = new DispatcherTimer
-            {
-                Interval = AutoPlayInterval
-            };
-            _autoPlayTimer.Tick += (s, e) => GoToNext();
-            _autoPlayTimer.Start();
-        }
-
-        private void StopAutoPlay()
-        {
-            _autoPlayTimer?.Stop();
-            _autoPlayTimer = null;
-        }
-
-        private IList<object> GetItems()
-        {
-            var list = new List<object>();
-            if (Children.Count > 0)
-            {
-                list.AddRange(Children);
-            }
-            else if (ItemsSource != null)
-            {
-                foreach (var item in ItemsSource)
-                    list.Add(item);
-            }
-            return list;
-        }
-
-        private string GetDisplayValue(object item, string propertyPath)
-        {
-            if (item == null || string.IsNullOrEmpty(propertyPath))
-                return null;
-            var prop = TypeDescriptor.GetProperties(item).Find(propertyPath, true);
-            return prop?.GetValue(item)?.ToString();
         }
     }
 }
