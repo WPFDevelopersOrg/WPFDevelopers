@@ -36,6 +36,7 @@
         TimeLine,
         MasterCarousel,
         EmphasizerCarousel,
+        CardCarousel,
         Pagination,
         ScrollViewer,
         OtherControls,

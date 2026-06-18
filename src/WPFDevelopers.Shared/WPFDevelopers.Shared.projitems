@@ -116,7 +116,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
+    <Compile Include="..\WPFDevelopers.Shared\Controls\Carousel\CardCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleProgressBar\CircleProgressBar.cs" />

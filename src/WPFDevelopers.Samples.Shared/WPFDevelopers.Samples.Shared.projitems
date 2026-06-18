@@ -125,9 +125,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\LineB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\Vector2D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MasterCarouselExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CardCarouselExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>MasterCarouselExample.xaml</DependentUpon>
+      <DependentUpon>CardCarouselExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml.cs">
       <SubType>Code</SubType>
@@ -716,7 +716,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MasterCarouselExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CardCarouselExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

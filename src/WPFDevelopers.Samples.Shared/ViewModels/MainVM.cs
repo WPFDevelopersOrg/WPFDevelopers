@@ -205,8 +205,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ScrollViewer:
                     ControlPanel = new ScrollViewerAnimationExample();
                     break;
-                case MenuEnum.MasterCarousel:
-                    ControlPanel = new MasterCarouselExample();
+                case MenuEnum.CardCarousel:
+                    ControlPanel = new CardCarouselExample();
                     break;
                 case MenuEnum.EmphasizerCarousel:
                     ControlPanel = new EmphasizerCarouselExample();
