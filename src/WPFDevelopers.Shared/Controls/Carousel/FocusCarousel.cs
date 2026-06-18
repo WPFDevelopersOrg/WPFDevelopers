@@ -30,6 +30,7 @@ namespace WPFDevelopers.Controls
         private double _displayWidth;
         private readonly Dictionary<int, Point> _mapCanvasPoint = new Dictionary<int, Point>();
         private readonly Dictionary<int, FrameworkElement> _mapUIwithIndex = new Dictionary<int, FrameworkElement>();
+        private readonly Dictionary<FrameworkElement, string> _imageUrlMap = new Dictionary<FrameworkElement, string>();
         private int _simpleCount;
         private double _simpleHeight;
         private double _simpleTop;
@@ -84,13 +85,19 @@ namespace WPFDevelopers.Controls
                                 new TranslateTransform()
                             }
                         };
+
+                        if (element is Image img && img.Tag is string uri)
+                            _imageUrlMap[element] = uri;
                     }
 
             if (e.Action == NotifyCollectionChangedAction.Remove)
                 foreach (var item in e.OldItems)
                 {
                     if (item is FrameworkElement element)
+                    {
                         element.PreviewMouseLeftButtonDown -= FocusCarousel_MouseLeftButtonDown;
+                        _imageUrlMap.Remove(element);
+                    }
 
                     if (item == _displayItem)
                         _displayItem = null;
@@ -122,6 +129,7 @@ namespace WPFDevelopers.Controls
             _isUpdatingItemsSource = true;
             try
             {
+                _imageUrlMap.Clear();
                 Children.Clear();
                 if (newValue is IEnumerable enumerable)
                 {
@@ -138,6 +146,7 @@ namespace WPFDevelopers.Controls
                             if (!string.IsNullOrEmpty(imageUrl))
                             {
                                 fe = new Image { Tag = imageUrl };
+                                _imageUrlMap[fe] = imageUrl;
                             }
                         }
                         if (fe == null)
@@ -160,7 +169,13 @@ namespace WPFDevelopers.Controls
         {
             if (newIndex >= 0 && newIndex < Children.Count)
             {
-                _displayItem = Children[newIndex];
+                var newItem = Children[newIndex];
+
+                ReplaceImageBitmap(newItem, _displayWidth, _displayHeight);
+                if (_displayItem != null && _displayItem != newItem)
+                    ReplaceImageBitmap(_displayItem, _simpleWidth, _simpleHeight);
+
+                _displayItem = newItem;
                 OnSizeChangedCallback();
             }
         }
@@ -688,37 +703,47 @@ namespace WPFDevelopers.Controls
             _displayItem = vFrameWorker;
             storyboard.Begin(vFrameWorker);
 
-            RaiseItemClick(vFrameWorker);
+            SetSelectedIndexSilent(nLeaveIndex);
+            var clickedItem = GetItemByIndex(nLeaveIndex);
+            RaiseItemClick(clickedItem);
         }
 
         private void FocusCarousel_Loaded(object sender, RoutedEventArgs e)
         {
         }
 
-        private static void EnsureImageLoaded(FrameworkElement fe, double width, double height)
+        private object GetItemByIndex(int index)
         {
-            if (fe is Image img && img.Tag is string uri)
+            if (ItemsSource != null)
+            {
+                int i = 0;
+                foreach (var item in ItemsSource)
+                {
+                    if (i == index) return item;
+                    i++;
+                }
+            }
+            return null;
+        }
+
+        private void SetSelectedIndexSilent(int index)
+        {
+            SetCurrentValue(SelectedIndexProperty, index);
+        }
+
+        private void EnsureImageLoaded(FrameworkElement fe, double width, double height)
+        {
+            if (fe is Image img && _imageUrlMap.TryGetValue(fe, out var uri))
             {
                 img.Source = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
-                img.Tag = null;
             }
         }
 
-        private static void ReplaceImageBitmap(FrameworkElement fe, double width, double height)
+        private void ReplaceImageBitmap(FrameworkElement fe, double width, double height)
         {
-            if (fe is Image img && img.Source is BitmapSource)
+            if (fe is Image img && _imageUrlMap.TryGetValue(fe, out var uri))
             {
-                if (img.Tag is string uri)
-                {
-                    img.Source = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
-                }
-                else
-                {
-                    var w = (int)width;
-                    var h = (int)height;
-                    img.Source = ControlsHelper.CreateBitmapImage(
-                        (img.Source as BitmapSource).ToString(), w, h);
-                }
+                img.Source = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
             }
         }
 
