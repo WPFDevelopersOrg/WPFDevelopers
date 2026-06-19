@@ -41,26 +41,15 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                        <controls:SmallPanel>
-                            <TextBlock
-                                x:Name="PART_Watermark"
-                                Margin="{TemplateBinding Padding}"
-                                Padding="1,0"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                FontSize="{StaticResource WD.PrimaryFontSize}"
-                                Foreground="{DynamicResource WD.RegularTextBrush}"
-                                Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
-                                Visibility="Collapsed" />
-                            <ScrollViewer x:Name="PART_ContentHost" />
+                        <DockPanel LastChildFill="True">
                             <Button
                                 x:Name="PART_CloseButton"
                                 Width="20"
                                 Height="20"
                                 Margin="0,0,4,0"
-                                HorizontalAlignment="Right"
                                 helpers:ElementHelper.IsClear="{Binding Path=(helpers:ElementHelper.IsClear), RelativeSource={RelativeSource TemplatedParent}}"
                                 helpers:ElementHelper.IsRound="True"
+                                DockPanel.Dock="Right"
                                 Style="{StaticResource WD.NormalButton}"
                                 ToolTip="{Binding [Clear], Source={x:Static resx:LanguageManager.Instance}}"
                                 Visibility="Collapsed">
@@ -70,7 +59,20 @@
                                     Foreground="{DynamicResource WD.PrimaryTextBrush}"
                                     Kind="WindowClose" />
                             </Button>
-                        </controls:SmallPanel>
+                            <controls:SmallPanel>
+                                <TextBlock
+                                    x:Name="PART_Watermark"
+                                    Margin="{TemplateBinding Padding}"
+                                    Padding="1,0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    FontSize="{StaticResource WD.PrimaryFontSize}"
+                                    Foreground="{DynamicResource WD.RegularTextBrush}"
+                                    Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}"
+                                    Visibility="Collapsed" />
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </controls:SmallPanel>
+                        </DockPanel>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Text" Value="">
