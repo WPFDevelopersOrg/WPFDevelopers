@@ -104,6 +104,7 @@
         GrayscaleEffect,
         OtpBox,
         Carousel,
+        SplitButton,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

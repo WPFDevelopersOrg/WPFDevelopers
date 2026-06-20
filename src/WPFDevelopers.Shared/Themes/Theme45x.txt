@@ -70,6 +70,7 @@ TimePicker.xaml
 Drawer.xaml
 DateRangePicker.xaml
 Tag.xaml
+SplitButton.xaml
 NavScrollPanel.xaml
 GestureUnlock.xaml
 WDUserControl.xaml

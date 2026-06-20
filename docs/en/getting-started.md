@@ -264,6 +264,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `GroupBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Group box |
 | `TabControl` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Tab control (4 directions / closable) |
 | `Menu` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Menu bar |
+| `wd:SplitButton` | NuGet | [SplitButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SplitButtonExample.xaml) | Split button (main button + dropdown menu, supports text/icon options) |
 | `Calendar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Calendar |
 | `DatePicker` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Date picker (with time selection) |
 
@@ -512,6 +513,105 @@ MessageBox.Show("Operation successful!", "Info", MessageBoxButton.OK, MessageBox
 - **Close methods**: Click the close button (top-right), press `Escape`, or click any button
 - **Owner window**: When `owner` is provided, the dialog centers on the parent window and displays a mask overlay. Without an owner, it auto-detects the current window or centers on screen
 - **Button text**: Automatically localized via `LanguageManager` (follows system language)
+
+---
+
+## SplitButton Usage Tutorial
+
+`SplitButton` is a split button control provided by WPFDevelopers. The left side is a clickable main button area, and the right side is a dropdown toggle button. It supports both text options and rich content options with icons.
+
+### Basic Usage (ItemsSource Data Binding)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    SelectionChanged="SplitButton_SelectionChanged" />
+```
+
+```csharp
+// ViewModel or Code-behind
+public ObservableCollection<string> MenuItems { get; } = new ObservableCollection<string>
+{
+    "Save in PDF",
+    "Save in Word",
+    "Save in Excel",
+    "Save in Image"
+};
+
+private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+{
+    // e.NewValue is the selected item
+}
+```
+
+### Default Style (Border + Transparent Background)
+
+```xml
+<wd:SplitButton Width="150" Content="File" ItemsSource="{Binding MenuItems}" />
+```
+
+### Primary Style (Solid Primary Color Background)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonPrimary}" />
+```
+
+### Custom Color + XAML Children (Supports MenuItem with Icons)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Background="{StaticResource WD.SuccessBrush}"
+    BorderBrush="{StaticResource WD.SuccessBrush}"
+    Content="File"
+    Foreground="White">
+    <MenuItem Header="Copy">
+        <MenuItem.Icon>
+            <wd:PathIcon Kind="Copy" />
+        </MenuItem.Icon>
+    </MenuItem>
+    <MenuItem Header="Paste" />
+    <MenuItem Header="Cut" />
+</wd:SplitButton>
+```
+
+### Key Properties
+
+| Property | Type | Default | Description |
+|------|------|--------|------|
+| `Content` | object | null | Main button display content |
+| `ItemsSource` | object | null | Dropdown menu data source (IEnumerable) |
+| `IsDropDownOpen` | bool | false | Whether dropdown is open (two-way binding) |
+| `ContextMenuStyle` | Style | null | Custom ContextMenu style |
+
+### Events
+
+| Event | Description |
+|------|------|
+| `Click` | Fired when the main button area is clicked (clicking ToggleButton does NOT fire this) |
+| `SelectionChanged` | Fired when a dropdown menu item is selected |
+
+### Available Styles
+
+| Style Key | Description |
+|--------|------|
+| `WD.SplitButton` (default) | Border + transparent background, border turns primary color on hover |
+| `WD.SplitButtonPrimary` | No border + solid primary color background + white text |
+
+### Interaction Behavior
+
+| Action | Behavior |
+|------|------|
+| Click main button area | Fires `Click` event |
+| Click ToggleButton | Expands/collapses dropdown menu |
+| Click menu item | Button Content updates to selected item, fires `SelectionChanged` |
+| Click outside menu | Automatically closes dropdown |
 
 ---
 

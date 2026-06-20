@@ -181,6 +181,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\GrayscaleEffectExample.xaml.cs" Link="ExampleViews\GrayscaleEffectExample.xaml.cs" DependentUpon="GrayscaleEffectExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\CarouselExampleViewModel.cs" Link="ViewModels\CarouselExampleViewModel.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SplitButtonExample.xaml.cs" Link="ExampleViews\SplitButtonExample.xaml.cs" DependentUpon="SplitButtonExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -596,6 +597,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml">
 			<Link>ExampleViews\CarouselExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SplitButtonExample.xaml">
+			<Link>ExampleViews\SplitButtonExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>
