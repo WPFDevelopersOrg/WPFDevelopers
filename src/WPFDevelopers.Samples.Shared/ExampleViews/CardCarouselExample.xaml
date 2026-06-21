@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.CardCarouselExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <TabControl>
+            <TabItem Header="MVVM">
+                <wd:CardCarousel
+                    x:Name="myCarousel2"
+                    AutoPlay="True"
+                    AutoPlayInterval="0:0:3"
+                    DisplayMemberPath="URL"
+                    ItemClickCommand="{Binding CarouselClickCommand}"
+                    ItemsSource="{Binding ImagePaths}" />
+            </TabItem>
+            <TabItem Header="XAML">
+                <wd:CardCarousel AutoPlay="False" ItemClick="Carousel_ItemClick">
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/0.jpg" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/1.jpg" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/2.jpg" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/3.jpg" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/4.jpg" />
+                </wd:CardCarousel>
+            </TabItem>
+        </TabControl>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CardCarouselExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/CardCarouselExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ViewModels/CarouselExampleViewModel.cs"
+                CodeType="CSharp"
+                Haader="ViewModel" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

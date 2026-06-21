@@ -547,9 +547,15 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### EmphasizerCarousel 
+### FocusCarousel 
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EmphasizerCarousel.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/FocusCarousel.gif"/>  
+
+----------
+
+### CardCarousel 
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CardCarousel.gif"/>  
 
 ----------
 

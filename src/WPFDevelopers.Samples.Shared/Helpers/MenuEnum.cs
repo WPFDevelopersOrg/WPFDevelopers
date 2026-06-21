@@ -34,8 +34,8 @@
         Password,
         SongWords,
         TimeLine,
-        MasterCarousel,
-        EmphasizerCarousel,
+        CardCarousel,
+        FocusCarousel,
         Pagination,
         ScrollViewer,
         OtherControls,
@@ -104,6 +104,7 @@
         GrayscaleEffect,
         OtpBox,
         Carousel,
+        SplitButton,
         VirtualizingWrapPanel,
         AcrylicBlur,
         TaskbarInfo

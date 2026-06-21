@@ -4,11 +4,11 @@ using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
-    public partial class CarouselExample : UserControl
+    public partial class CardCarouselExample : UserControl
     {
         public CarouselExampleViewModel ViewModel { get; }
 
-        public CarouselExample()
+        public CardCarouselExample()
         {
             InitializeComponent();
             ViewModel = new CarouselExampleViewModel();

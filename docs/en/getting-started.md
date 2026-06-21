@@ -264,6 +264,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `GroupBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Group box |
 | `TabControl` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Tab control (4 directions / closable) |
 | `Menu` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Menu bar |
+| `wd:SplitButton` | NuGet | [SplitButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SplitButtonExample.xaml) | Split button (main button + dropdown menu, supports text/icon options) |
 | `Calendar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Calendar |
 | `DatePicker` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Date picker (with time selection) |
 
@@ -325,8 +326,8 @@ WD provides a set of theme resources you can reference in XAML:
 | Control | Source | Example File | Description |
 |---------|--------|-------------|-------------|
 | `wd:Carousel` | NuGet | [CarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExample.xaml) | Carousel (auto-play / dot indicators / arrows / click navigation) |
-| `wd:EmphasizerCarousel` | NuGet | [EmphasizerCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/EmphasizerCarouselExample.xaml) | Emphasizer carousel (3D flip + zoom effect) |
-| `wd:MasterCarousel` | NuGet | [MasterCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MasterCarouselExample.xaml) | Master carousel (multi-layer overlay animation) |
+| `wd:FocusCarousel` | NuGet | [FocusCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/FocusCarouselExample.xaml) | Emphasizer carousel (3D flip + zoom effect) |
+| `wd:CardCarousel` | NuGet | [CardCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CardCarouselExample.xaml) | Master carousel (multi-layer overlay animation) |
 | `wd:CircleMenu` | NuGet | [CircleMenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleMenuExample.xaml) | Circular menu |
 | `wd:SixGridView` | NuGet | [SixGirdViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SixGirdViewExample.xaml) | Six-column grid layout |
 | `wd:WaterfallPanel` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | Waterfall / masonry panel |
@@ -515,6 +516,105 @@ MessageBox.Show("Operation successful!", "Info", MessageBoxButton.OK, MessageBox
 
 ---
 
+## SplitButton Usage Tutorial
+
+`SplitButton` is a split button control provided by WPFDevelopers. The left side is a clickable main button area, and the right side is a dropdown toggle button. It supports both text options and rich content options with icons.
+
+### Basic Usage (ItemsSource Data Binding)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    SelectionChanged="SplitButton_SelectionChanged" />
+```
+
+```csharp
+// ViewModel or Code-behind
+public ObservableCollection<string> MenuItems { get; } = new ObservableCollection<string>
+{
+    "Save in PDF",
+    "Save in Word",
+    "Save in Excel",
+    "Save in Image"
+};
+
+private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+{
+    // e.NewValue is the selected item
+}
+```
+
+### Default Style (Border + Transparent Background)
+
+```xml
+<wd:SplitButton Width="150" Content="File" ItemsSource="{Binding MenuItems}" />
+```
+
+### Primary Style (Solid Primary Color Background)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonPrimary}" />
+```
+
+### Custom Color + XAML Children (Supports MenuItem with Icons)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Background="{StaticResource WD.SuccessBrush}"
+    BorderBrush="{StaticResource WD.SuccessBrush}"
+    Content="File"
+    Foreground="White">
+    <MenuItem Header="Copy">
+        <MenuItem.Icon>
+            <wd:PathIcon Kind="Copy" />
+        </MenuItem.Icon>
+    </MenuItem>
+    <MenuItem Header="Paste" />
+    <MenuItem Header="Cut" />
+</wd:SplitButton>
+```
+
+### Key Properties
+
+| Property | Type | Default | Description |
+|------|------|--------|------|
+| `Content` | object | null | Main button display content |
+| `ItemsSource` | object | null | Dropdown menu data source (IEnumerable) |
+| `IsDropDownOpen` | bool | false | Whether dropdown is open (two-way binding) |
+| `ContextMenuStyle` | Style | null | Custom ContextMenu style |
+
+### Events
+
+| Event | Description |
+|------|------|
+| `Click` | Fired when the main button area is clicked (clicking ToggleButton does NOT fire this) |
+| `SelectionChanged` | Fired when a dropdown menu item is selected |
+
+### Available Styles
+
+| Style Key | Description |
+|--------|------|
+| `WD.SplitButton` (default) | Border + transparent background, border turns primary color on hover |
+| `WD.SplitButtonPrimary` | No border + solid primary color background + white text |
+
+### Interaction Behavior
+
+| Action | Behavior |
+|------|------|
+| Click main button area | Fires `Click` event |
+| Click ToggleButton | Expands/collapses dropdown menu |
+| Click menu item | Button Content updates to selected item, fires `SelectionChanged` |
+| Click outside menu | Automatically closes dropdown |
+
+---
+
 ## Carousel Usage Tutorial
 
 `Carousel` is a carousel control provided by WPFDevelopers, supporting auto-play, dot indicators, arrow navigation, click navigation, and more.
@@ -601,36 +701,36 @@ public ICommand CarouselClickCommand => new RelayCommand(param =>
 
 ---
 
-## EmphasizerCarousel / MasterCarousel
+## FocusCarousel / CardCarousel
 
-### EmphasizerCarousel
+### FocusCarousel
 
 A carousel with 3D flip + zoom effects, where the center item is enlarged and highlighted:
 
 ```xml
-<wd:EmphasizerCarousel>
+<wd:FocusCarousel>
     <Image Source="pack://application:,,,/Images/photo1.jpg" />
     <Image Source="pack://application:,,,/Images/photo2.jpg" />
     <Image Source="pack://application:,,,/Images/photo3.jpg" />
-</wd:EmphasizerCarousel>
+</wd:FocusCarousel>
 ```
 
-### MasterCarousel
+### CardCarousel
 
-A carousel with multi-layer overlay animation and playback speed control:
+A carousel with multi-layer overlay animation and auto-play/interval control:
 
 ```xml
-<wd:MasterCarousel IsStartAnimation="True" PlaySpeed="5000">
+<wd:CardCarousel AutoPlay="True" AutoPlayInterval="0:0:5">
     <Image Source="pack://application:,,,/Images/photo1.jpg" />
     <Image Source="pack://application:,,,/Images/photo2.jpg" />
     <Image Source="pack://application:,,,/Images/photo3.jpg" />
-</wd:MasterCarousel>
+</wd:CardCarousel>
 ```
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `IsStartAnimation` | bool | false | Enable auto-play |
-| `PlaySpeed` | int | 5000 | Playback speed (milliseconds) |
+| `AutoPlay` | bool | false | Enable auto-play |
+| `AutoPlayInterval` | TimeSpan | 0:0:3 | Playback interval (TimeSpan) |
 
 ---
 

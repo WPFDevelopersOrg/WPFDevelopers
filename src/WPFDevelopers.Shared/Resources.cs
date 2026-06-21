@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,15 +12,20 @@ using System.Windows;
 using System.Windows.Media;
 using WPFDevelopers.Core;
 using WPFDevelopers.Core.Helpers;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers
 {
-    public class Resources : ResourceDictionary
+    public class Resources : ResourceDictionary, ISupportInitialize
     {
 
         private string[] resourceKeys = { "WindowBorderColor", "PrimaryColor" };
 
         public static event ThemeChangedEvent ThemeChanged;
+
+        private static bool _hasRadiusSetByUser;
+
+        private int _initCount;
 
         private ThemeType _theme = ThemeType.Light;
         public ThemeType Theme
@@ -49,9 +55,38 @@ namespace WPFDevelopers
             }
         }
 
+        private double _radius;
+        private bool _radiusSet;
+       
+        public double Radius
+        {
+            get => _radius;
+            set
+            {
+                _radius = value;
+                _radiusSet = true;
+                _hasRadiusSetByUser = true;
+                ElementHelper.OverrideCornerRadius(value);
+            }
+        }
+
         public Resources()
         {
             AddTheme();
+        }
+
+        void ISupportInitialize.BeginInit()
+        {
+            _initCount++;
+        }
+
+        void ISupportInitialize.EndInit()
+        {
+            _initCount--;
+            if (_initCount == 0 && !_radiusSet && OSVersionHelper.IsWindows11OrLater())
+            {
+                ElementHelper.OverrideCornerRadius(4);
+            }
         }
 
         void AddTheme()

@@ -574,9 +574,15 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### EmphasizerCarousel （轮播图二）
+### FocusCarousel （轮播图二）
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/EmphasizerCarousel.gif"/>  
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/FocusCarousel.gif"/>  
+
+----------
+
+### CardCarousel （卡片轮播）
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/CardCarousel.gif"/>  
 
 ----------
 

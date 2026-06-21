@@ -75,6 +75,10 @@
       <SubType>Code</SubType>
       <DependentUpon>AnimationAudioExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SplitButtonExample.xaml.cs">
+      <DependentUpon>SplitButtonExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CarouselExampleViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DataGridFilterExample.xaml.cs">
       <DependentUpon>DataGridFilterExample.xaml</DependentUpon>
     </Compile>
@@ -124,13 +128,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\LineB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\Vector2D.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MasterCarouselExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CardCarouselExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>MasterCarouselExample.xaml</DependentUpon>
+      <DependentUpon>CardCarouselExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\FocusCarouselExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>EmphasizerCarouselExample.xaml</DependentUpon>
+      <DependentUpon>FocusCarouselExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CarouselExample.xaml.cs">
       <SubType>Code</SubType>
@@ -715,11 +719,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\MasterCarouselExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CardCarouselExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\EmphasizerCarouselExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\FocusCarouselExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -933,6 +937,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\OtpBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\SplitButtonExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

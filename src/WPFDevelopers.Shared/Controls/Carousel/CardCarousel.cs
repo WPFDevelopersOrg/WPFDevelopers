@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Threading;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -38,61 +35,54 @@ namespace WPFDevelopers.Controls
     [ContentProperty("Children")]
     [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
     [TemplatePart(Name = PARTContentDockName, Type = typeof(Canvas))]
-    [TemplatePart(Name = PARTButtonDockName, Type = typeof(StackPanel))]
-    public class MasterCarousel : Control, IAddChild
+    [TemplatePart(Name = PARTPrevButtonName, Type = typeof(Button))]
+    [TemplatePart(Name = PARTNextButtonName, Type = typeof(Button))]
+    [TemplatePart(Name = PARTDotsName, Type = typeof(ItemsControl))]
+    public class CardCarousel : CarouselBase, IAddChild
     {
         private const string PARTContentDockName = "PART_ContentDock";
-        private const string PARTButtonDockName = "PART_ButtonDock";
+        private const string PARTDotsName = "PART_Dots";
+        private const string PARTPrevButtonName = "PART_PrevButton";
+        private const string PARTNextButtonName = "PART_NextButton";
 
-        public static readonly DependencyProperty IsStartAinimationProperty =
-            DependencyProperty.Register("IsStartAinimation", typeof(bool), typeof(MasterCarousel),
-                new PropertyMetadata(default(bool), OnIsStartAinimationPropertyChangedCallback));
+        public static readonly DependencyProperty ShowDotsProperty =
+            DependencyProperty.Register(nameof(ShowDots), typeof(bool), typeof(CardCarousel),
+                new PropertyMetadata(true));
 
-        public static readonly DependencyProperty PlaySpeedProperty =
-            DependencyProperty.Register("PlaySpeed", typeof(double), typeof(MasterCarousel),
-                new PropertyMetadata(2000d, OnPlaySpeedPropertyChangedCallBack));
+        public static readonly DependencyProperty ShowArrowsProperty =
+            DependencyProperty.Register(nameof(ShowArrows), typeof(bool), typeof(CardCarousel),
+                new PropertyMetadata(false));
 
-        public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(MasterCarousel),
-                new PropertyMetadata(default(IEnumerable), OnItemsSourcePropertyChangedCallBack));
+        private readonly ObservableCollection<int> _dotsItems = new ObservableCollection<int>();
 
-        #region timer
+        public ObservableCollection<int> DotsItems => _dotsItems;
 
-        private readonly Timer _playTimer = new Timer();
-
-        #endregion
-        static MasterCarousel()
+        static CardCarousel()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(MasterCarousel),
-                new FrameworkPropertyMetadata(typeof(MasterCarousel)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CardCarousel),
+                new FrameworkPropertyMetadata(typeof(CardCarousel)));
         }
 
-        public MasterCarousel()
+        public CardCarousel()
         {
-            LoadeTimer();
-            Loaded += MasterCarousel_Loaded;
-        }
-        public bool IsStartAinimation
-        {
-            get => (bool)GetValue(IsStartAinimationProperty);
-            set => SetValue(IsStartAinimationProperty, value);
+            Loaded += CardCarousel_Loaded;
+            SizeChanged += CardCarousel_SizeChanged;
         }
 
-        public double PlaySpeed
+        public bool ShowDots
         {
-            get => (double)GetValue(PlaySpeedProperty);
-            set => SetValue(PlaySpeedProperty, value);
+            get => (bool)GetValue(ShowDotsProperty);
+            set => SetValue(ShowDotsProperty, value);
         }
 
-        public IEnumerable ItemsSource
+        public bool ShowArrows
         {
-            get => (IEnumerable)GetValue(ItemsSourceProperty);
-            set => SetValue(ItemsSourceProperty, value);
+            get => (bool)GetValue(ShowArrowsProperty);
+            set => SetValue(ShowArrowsProperty, value);
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public List<object> Children { get; } = new List<object>();
-
 
         public void AddChild(object value)
         {
@@ -111,105 +101,265 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
 
             _contentDock = GetTemplateChild(PARTContentDockName) as Canvas;
-            _buttonDock = GetTemplateChild(PARTButtonDockName) as StackPanel;
+            _prevButton = GetTemplateChild(PARTPrevButtonName) as Button;
+            _nextButton = GetTemplateChild(PARTNextButtonName) as Button;
+            _dots = GetTemplateChild(PARTDotsName) as ItemsControl;
 
-            if (_contentDock == null || _buttonDock == null)
-                throw new Exception("Some element is not in template!");
+            if (_prevButton != null)
+                _prevButton.Click += (s, e) => GoToPrevious();
+            if (_nextButton != null)
+                _nextButton.Click += (s, e) => GoToNext();
+            if (_dots != null)
+                _dots.PreviewMouseLeftButtonDown += Dots_PreviewMouseLeftButtonDown;
         }
 
         #endregion
 
-        private static void OnIsStartAinimationPropertyChangedCallback(DependencyObject d,
-            DependencyPropertyChangedEventArgs e)
+        protected override void OnItemsSourceChangedCore(object oldValue, object newValue)
         {
-            if (d == null)
-                return;
+            BuildSlides();
+        }
 
-            if (!(d is MasterCarousel control))
-                return;
+        protected override void OnItemsSourceCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            BuildSlides();
+        }
 
-            if (bool.TryParse(e.NewValue?.ToString(), out var bResult))
+        protected override void OnSelectedIndexChangedCore(int oldIndex, int newIndex)
+        {
+            PlayCarouselWithIndex(newIndex);
+        }
+
+        protected override void OnAutoPlayTick()
+        {
+            PlayCarouselRightToLeft();
+        }
+
+        protected override void OnMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseUp(e);
+            HandleSlideClick(e.GetPosition(_contentDock));
+        }
+
+        protected override void OnTouchUp(TouchEventArgs e)
+        {
+            base.OnTouchUp(e);
+            HandleSlideClick(e.GetTouchPoint(_contentDock).Position);
+        }
+
+        private void HandleSlideClick(Point pos)
+        {
+            if (_contentDock == null || _carouselSize == 0) return;
+
+            var hit = _contentDock.InputHitTest(pos);
+            if (hit is FrameworkElement fe)
             {
-                if (bResult)
-                    control.Start();
+                if (_mapFrameworkes.ContainsValue(fe))
+                {
+                    foreach (var kvp in _mapFrameworkes)
+                    {
+                        if (kvp.Value == fe)
+                        {
+                            var item = _mapResources[kvp.Key];
+                            SelectedItem = item;
+                            RaiseItemClick(item);
+                            return;
+                        }
+                    }
+                }
+            }
+            else if (hit is DependencyObject depObj)
+            {
+                var element = depObj as FrameworkElement;
+                while (element != null)
+                {
+                    if (ReferenceEquals(element.Parent, _contentDock))
+                    {
+                        foreach (var kvp in _mapFrameworkes)
+                        {
+                            if (kvp.Value == element)
+                            {
+                                var item = _mapResources[kvp.Key];
+                                SelectedItem = item;
+                                RaiseItemClick(item);
+                                return;
+                            }
+                        }
+                        break;
+                    }
+                    element = element.Parent as FrameworkElement;
+                }
+            }
+        }
+
+        private void CardCarousel_Loaded(object sender, RoutedEventArgs e)
+        {
+            BuildSlides();
+        }
+
+        private void CardCarousel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (_carouselSize == 0)
+                return;
+
+            StopAutoPlay();
+            BuildSlides();
+            if (AutoPlay)
+                StartAutoPlay();
+        }
+
+        private IList<object> GetItems()
+        {
+            var list = new List<object>();
+            if (Children.Count > 0)
+            {
+                list.AddRange(Children);
+            }
+            else if (ItemsSource != null)
+            {
+                foreach (var item in ItemsSource)
+                    list.Add(item);
+            }
+            return list;
+        }
+
+        private FrameworkElement CreateItemElement(object content, double width, double height)
+        {
+            FrameworkElement fe;
+
+            if (content is FrameworkElement element)
+            {
+                fe = element;
+                fe.Width = width;
+                fe.Height = height;
+            }
+            else if (content is string uri)
+            {
+                var bitmap = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
+                fe = new Image
+                {
+                    Source = bitmap,
+                    Width = width,
+                    Height = height
+                };
+            }
+            else if (!string.IsNullOrEmpty(DisplayMemberPath))
+            {
+                var imageUrl = GetDisplayValue(content, DisplayMemberPath);
+                if (!string.IsNullOrEmpty(imageUrl))
+                {
+                    var bitmap = ControlsHelper.CreateBitmapImage(imageUrl, (int)width, (int)height);
+                    if (bitmap != null)
+                    {
+                        fe = new Image
+                        {
+                            Source = bitmap,
+                            Width = width,
+                            Height = height
+                        };
+                    }
+                    else
+                    {
+                        fe = new ContentPresenter { Content = content, Width = width, Height = height };
+                    }
+                }
                 else
-                    control.Stop();
+                {
+                    fe = new ContentPresenter { Content = content, Width = width, Height = height };
+                }
             }
-        }
-
-        private static void OnPlaySpeedPropertyChangedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d == null)
-                return;
-
-            if (!(d is MasterCarousel control))
-                return;
-
-            if (!double.TryParse(e.NewValue?.ToString(), out var vResult))
-                return;
-
-            control.Stop();
-            control.ResetInterval(vResult);
-            control.Start();
-        }
-
-        private static void OnItemsSourcePropertyChangedCallBack(DependencyObject d,
-            DependencyPropertyChangedEventArgs e)
-        {
-            if (!(d is MasterCarousel carousel))
-                return;
-
-            var vOldEvent = e.OldValue?.GetType()?.GetEvent("CollectionChanged");
-            if (vOldEvent != null)
-                vOldEvent.RemoveEventHandler(e.OldValue,
-                    new NotifyCollectionChangedEventHandler(carousel.ChildrenPropertyChanged));
-
-            var vEvent = e.NewValue?.GetType()?.GetEvent("CollectionChanged");
-            if (vEvent != null)
-                vEvent.AddEventHandler(e.NewValue,
-                    new NotifyCollectionChangedEventHandler(carousel.ChildrenPropertyChanged));
-        }
-
-
-        private void ChildrenPropertyChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
+            else
             {
-                case NotifyCollectionChangedAction.Add:
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    break;
-                case NotifyCollectionChangedAction.Move:
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-                    break;
+                fe = new ContentPresenter
+                {
+                    Content = content,
+                    Width = width,
+                    Height = height
+                };
             }
+
+            return fe;
         }
 
-
-        private bool LoadeTimer()
+        private void BuildSlides()
         {
-            _playTimer.Interval = PlaySpeed;
-            _playTimer.Elapsed += PlayTimer_Elapsed;
+            if (_contentDock == null) return;
 
-            return true;
+            StopAutoPlay();
+            _mapCarouselLocationFramewokes.Clear();
+            _mapResources.Clear();
+            _BufferLinkedList.Clear();
+
+            _contentDock.Children.Clear();
+
+            var items = GetItems();
+            _carouselSize = items.Count;
+            if (_carouselSize == 0) return;
+
+            if (!TryCalculateShellProperties()) return;
+
+            double width = _ElementWidth;
+            double height = _ElementHeight;
+
+            for (var i = 0; i < _carouselSize; i++)
+            {
+                var item = items[i];
+                var frameworkElement = CreateItemElement(item, width, height);
+
+                frameworkElement.RenderTransformOrigin = new Point(0.5, 1);
+                var vTransformGroup = new TransformGroup
+                {
+                    Children =
+                    {
+                        new ScaleTransform { ScaleY = _ScaleRatio },
+                        new SkewTransform(),
+                        new RotateTransform(),
+                        new TranslateTransform()
+                    }
+                };
+                frameworkElement.RenderTransform = vTransformGroup;
+
+                _mapResources[i] = item;
+                _mapFrameworkes[i] = frameworkElement;
+
+                _contentDock.Children.Add(frameworkElement);
+
+                if (i == 0)
+                {
+                    var vScaleTransform = vTransformGroup.Children[0] as ScaleTransform;
+                    vScaleTransform.ScaleY = _ScaleRatioEx;
+                    frameworkElement.SetValue(Canvas.LeftProperty, _CenterDockLeft);
+                    Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Center);
+                    _mapCarouselLocationFramewokes[CarouselLoacation.Center] = i;
+                }
+                else if (i == 1)
+                {
+                    frameworkElement.SetValue(Canvas.LeftProperty, _RightDockLeft);
+                    Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Right);
+                    _mapCarouselLocationFramewokes[CarouselLoacation.Right] = i;
+                }
+                else if (i == _carouselSize - 1)
+                {
+                    frameworkElement.SetValue(Canvas.LeftProperty, _LeftDockLeft);
+                    Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Left);
+                    _mapCarouselLocationFramewokes[CarouselLoacation.Left] = i;
+                }
+                else
+                {
+                    _BufferLinkedList.AddLast(i);
+                    frameworkElement.SetValue(Canvas.LeftProperty, _CenterDockLeft);
+                    Panel.SetZIndex(frameworkElement, i);
+                }
+            }
+
+            _isLoaded = true;
+            UpdateDots();
+            if (AutoPlay)
+                StartAutoPlay();
         }
 
-        private bool ResetInterval(double interval)
+        private bool TryCalculateShellProperties()
         {
-            if (interval <= 0)
-                return false;
-
-            _playTimer.Interval = interval;
-
-            return true;
-        }
-
-        private bool CalculationShellReletiveProperty()
-        {
-            //计算当前目标区域的尺寸
             if (_contentDock == null)
                 return false;
 
@@ -219,278 +369,58 @@ namespace WPFDevelopers.Controls
             if (vWidth == 0 || vHeight == 0)
                 return false;
 
-            if (vWidth == _ShellWidth && vHeight == _ShellHeight)
-                return false;
-
             _ShellWidth = vWidth;
             _ShellHeight = vHeight;
-
-            //计算 元素的默认长度和宽度
             _ElementWidth = _ShellWidth * _ElementScale;
             _ElementHeight = _ShellHeight;
-
             _LeftDockLeft = 0;
-            _CenterDockLeft = 0 + _ShellWidth * _DockOffset;
+            _CenterDockLeft = _ShellWidth * _DockOffset;
             _RightDockLeft = _ShellWidth - _ElementWidth;
 
             return true;
         }
 
-        private bool LoadCarousel()
-        {
-            if (Children.Count <= 0 && ItemsSource == null)
-                return false;
-
-            if (_buttonDock != null)
-                foreach (var item in _buttonDock.Children)
-                    if (item is FrameworkElement frameworkElement)
-                    {
-                        frameworkElement.MouseEnter -= Border_MouseEnter;
-                        //frameworkElement.PreviewMouseDown -= Border_PreviewMouseDown;
-                    }
-
-            _mapFrameworkes.Clear();
-            _mapCarouselLocationFramewokes.Clear();
-            _BufferLinkedList.Clear();
-
-            _contentDock?.Children.Clear();
-            _buttonDock?.Children.Clear();
-
-
-            if (Children.Count > 0)
-            {
-                _CarouselSize = Children.Count;
-
-                for (var i = 0; i < _CarouselSize; i++)
-                {
-                    var vItem = Children[i];
-                    FrameworkElement frameworkElement;
-                    if (vItem is FrameworkElement)
-                    {
-                        frameworkElement = vItem as FrameworkElement;
-                    }
-                    else
-                    {
-                        var vContent = new ContentControl();
-                        vContent.HorizontalContentAlignment = HorizontalAlignment.Center;
-                        vContent.VerticalContentAlignment = VerticalAlignment.Center;
-                        vContent.Content = vItem;
-                        frameworkElement = vContent;
-                    }
-
-                    frameworkElement.Width = _ElementWidth;
-                    frameworkElement.Height = _ElementHeight;
-
-                    frameworkElement.RenderTransformOrigin = new Point(0.5, 1);
-                    var vTransformGroup = new TransformGroup
-                    {
-                        Children =
-                        {
-                            new ScaleTransform { ScaleY = _ScaleRatio },
-                            new SkewTransform(),
-                            new RotateTransform(),
-                            new TranslateTransform()
-                        }
-                    };
-                    frameworkElement.RenderTransform = vTransformGroup;
-
-                    var border = CreateBorder(i);
-                    border.MouseEnter += Border_MouseEnter;
-                    //border.PreviewMouseDown += Border_PreviewMouseDown;
-
-                    _mapResources[i] = vItem;
-                    _mapFrameworkes[i] = frameworkElement;
-
-                    _contentDock?.Children.Add(frameworkElement);
-                    _buttonDock?.Children.Add(border);
-
-                    //第一个元素居中并且放大显示
-                    if (i == 0)
-                    {
-                        var vScaleTransform = vTransformGroup.Children[0] as ScaleTransform;
-                        vScaleTransform.ScaleY = _ScaleRatioEx;
-                        frameworkElement.SetValue(Canvas.LeftProperty, _CenterDockLeft);
-                        Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Center);
-                        _mapCarouselLocationFramewokes.Add(CarouselLoacation.Center, i);
-                    }
-                    else if (i == 1)
-                    {
-                        frameworkElement.SetValue(Canvas.LeftProperty, _RightDockLeft);
-                        Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Right);
-                        _mapCarouselLocationFramewokes.Add(CarouselLoacation.Right, i);
-                    }
-                    else if (i == _CarouselSize - 1)
-                    {
-                        frameworkElement.SetValue(Canvas.LeftProperty, _LeftDockLeft);
-                        Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Left);
-                        _mapCarouselLocationFramewokes.Add(CarouselLoacation.Left, i);
-                    }
-                    else
-                    {
-                        _BufferLinkedList.AddLast(i);
-                        frameworkElement.SetValue(Canvas.LeftProperty, _CenterDockLeft);
-                        Panel.SetZIndex(frameworkElement, i);
-                    }
-                }
-            }
-            else
-            {
-                _CarouselSize = ItemsSource.Count();
-
-                var nIndex = 0;
-                foreach (var item in ItemsSource)
-                {
-                    FrameworkElement frameworkElement;
-                    if (item is FrameworkElement)
-                    {
-                        frameworkElement = item as FrameworkElement;
-                    }
-                    else
-                    {
-                        var vContent = new ContentControl();
-                        vContent.HorizontalContentAlignment = HorizontalAlignment.Center;
-                        vContent.VerticalContentAlignment = VerticalAlignment.Center;
-                        vContent.Content = item;
-                        frameworkElement = vContent;
-                    }
-
-                    frameworkElement.Width = _ElementWidth;
-                    frameworkElement.Height = _ElementHeight;
-
-                    frameworkElement.RenderTransformOrigin = new Point(0.5, 1);
-                    var vTransformGroup = new TransformGroup
-                    {
-                        Children =
-                        {
-                            new ScaleTransform { ScaleY = _ScaleRatio },
-                            new SkewTransform(),
-                            new RotateTransform(),
-                            new TranslateTransform()
-                        }
-                    };
-                    frameworkElement.RenderTransform = vTransformGroup;
-                    var border = CreateBorder(nIndex);
-                    border.MouseEnter += Border_MouseEnter;
-                    //border.PreviewMouseDown += Border_PreviewMouseDown;
-
-                    _mapResources[nIndex] = item;
-                    _mapFrameworkes[nIndex] = frameworkElement;
-
-                    _contentDock?.Children.Add(frameworkElement);
-                    _buttonDock?.Children.Add(border);
-
-                    //第一个元素居中并且放大显示
-                    if (nIndex == 0)
-                    {
-                        var vScaleTransform = vTransformGroup.Children[0] as ScaleTransform;
-                        vScaleTransform.ScaleY = _ScaleRatioEx;
-                        frameworkElement.SetValue(Canvas.LeftProperty, _CenterDockLeft);
-                        Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Center);
-                        _mapCarouselLocationFramewokes.Add(CarouselLoacation.Center, nIndex);
-                    }
-                    else if (nIndex == 1)
-                    {
-                        frameworkElement.SetValue(Canvas.LeftProperty, _RightDockLeft);
-                        Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Right);
-                        _mapCarouselLocationFramewokes.Add(CarouselLoacation.Right, nIndex);
-                    }
-                    else if (nIndex == _CarouselSize - 1)
-                    {
-                        frameworkElement.SetValue(Canvas.LeftProperty, _LeftDockLeft);
-                        Panel.SetZIndex(frameworkElement, (int)CarouselZIndex.Left);
-                        _mapCarouselLocationFramewokes.Add(CarouselLoacation.Left, nIndex);
-                    }
-                    else
-                    {
-                        _BufferLinkedList.AddLast(nIndex);
-                        frameworkElement.SetValue(Canvas.LeftProperty, _CenterDockLeft);
-                        Panel.SetZIndex(frameworkElement, nIndex);
-                    }
-                }
-            }
-
-            return true;
-        }
-
-        Border CreateBorder(int nIndex)
-        {
-            var brushKey = nIndex == 0 ? "WD.PrimaryBrush" : "WD.RegularTextBrush";
-            var border = new Border
-            {
-                Margin = new Thickness(5),
-                Width = 30,
-                Height = 2,
-                Background = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>(brushKey),
-                Tag = nIndex
-            };
-            return border;
-        }
-
         private void Storyboard_Completed(object sender, EventArgs e)
         {
-            _IsStoryboardWorking = false;
+            _isStoryboardWorking = false;
         }
 
-        private void PlayTimer_Elapsed(object sender, ElapsedEventArgs e)
+        private void Dots_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Dispatcher?.BeginInvoke(new Action(() => PlayCarouselRightToLeft()),
-                DispatcherPriority.Background);
-        }
-
-        private void Border_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton != MouseButton.Left)
-                return;
-
-            if (sender is FrameworkElement frameworkElement)
-                if (int.TryParse(frameworkElement.Tag?.ToString(), out var nResult))
-                    PlayCarouselWithIndex(nResult);
-        }
-
-        private void Border_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (sender is FrameworkElement frameworkElement)
+            if (e.OriginalSource is DependencyObject clicked && _dots != null)
             {
-                var nResult = 0;
-                if (int.TryParse(frameworkElement.Tag?.ToString(), out nResult))
-                    PlayCarouselWithIndex(nResult);
-                SelectedBorder(nResult + 1);
-            }
-                
-        }
-
-        private void MasterCarousel_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            Stop();
-
-            if (CalculationShellReletiveProperty())
-            {
-                LoadCarousel();
-                Start();
+                var container = _dots.ContainerFromElement(clicked);
+                if (container != null)
+                {
+                    var idx = _dots.ItemContainerGenerator.IndexFromContainer(container);
+                    if (idx >= 0) SelectedIndex = idx;
+                }
             }
         }
 
-        private void MasterCarousel_Loaded(object sender, RoutedEventArgs e)
+        public void GoToNext()
         {
-            if (_isLoaded)
-                return;
+            if (_carouselSize == 0) return;
+            int next = SelectedIndex + 1;
+            if (next >= _carouselSize) next = 0;
+            SelectedIndex = next;
+        }
 
-            Stop();
-
-            if (CalculationShellReletiveProperty())
-            {
-                LoadCarousel();
-                Start();
-            }
-
-            _isLoaded = true;
+        public void GoToPrevious()
+        {
+            if (_carouselSize == 0) return;
+            int prev = SelectedIndex - 1;
+            if (prev < 0) prev = _carouselSize - 1;
+            SelectedIndex = prev;
         }
 
         #region feild
 
         private bool _isLoaded;
         private Canvas _contentDock;
-        private StackPanel _buttonDock;
+        private ItemsControl _dots;
+        private Button _prevButton;
+        private Button _nextButton;
 
         #endregion
 
@@ -511,7 +441,7 @@ namespace WPFDevelopers.Controls
         private double _RightDockLeft;
         private readonly double _DockOffset = 0.2;
 
-        private int _CarouselSize;
+        private int _carouselSize;
 
         #endregion
 
@@ -529,12 +459,11 @@ namespace WPFDevelopers.Controls
 
         #region StoryBoard
 
-        private Storyboard _Storyboard;
-        private readonly double _AnimationTime = 0.5;
-        private readonly double _DelayAnimationTime = 0.7;
+        private Storyboard _storyboard;
+        private readonly double _animationTime = 0.5;
+        private readonly double _delayAnimationTime = 0.7;
 
-        private bool _IsAinimationStart;
-        private bool _IsStoryboardWorking;
+        private bool _isStoryboardWorking;
 
         #endregion
 
@@ -544,18 +473,19 @@ namespace WPFDevelopers.Controls
         //从左边向右依次播放
         private bool PlayCarouselLeftToRight()
         {
-            if (_Storyboard == null)
+            if (_storyboard == null)
             {
-                _Storyboard = new Storyboard();
-                _Storyboard.Completed += Storyboard_Completed;
+                _storyboard = new Storyboard();
+                _storyboard.Completed += Storyboard_Completed;
             }
 
-            if (_IsStoryboardWorking)
+            if (_isStoryboardWorking)
                 return false;
 
-            _IsStoryboardWorking = true;
+            _isStoryboardWorking = true;
 
-            _Storyboard?.Children.Clear();
+            _storyboard?.Stop();
+            _storyboard?.Children.Clear();
 
             var nNextIndex = -1;
 
@@ -567,32 +497,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //置于后层
                     var animation1 = new Int32Animation
                     {
                         To = vResult + 1,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //右边移动到中间
                     var animation2 = new DoubleAnimation
                     {
                         To = _CenterDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -600,7 +527,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _BufferLinkedList.AddFirst(vResult);
                 }
@@ -616,33 +543,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //置于左边上层
                     var animation1 = new Int32Animation
                     {
                         To = (int)CarouselZIndex.Right,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //从中间到左边
                     var animation2 = new DoubleAnimation
                     {
-                        //BeginTime = TimeSpan.FromSeconds(_DelayAnimationTime),
                         To = _RightDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -650,7 +573,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _mapCarouselLocationFramewokes[CarouselLoacation.Right] = vResult;
                 }
@@ -666,32 +589,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //置于上层
                     var animation1 = new Int32Animation
                     {
                         To = (int)CarouselZIndex.Center,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //从左到中
                     var animation2 = new DoubleAnimation
                     {
                         To = _CenterDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatioEx,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -699,13 +619,15 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _mapCarouselLocationFramewokes[CarouselLoacation.Center] = vResult;
 
+                    SelectedIndex = vResult;
+
                     nNextIndex = vResult - 1;
                     if (nNextIndex < 0)
-                        nNextIndex = _CarouselSize - 1;
+                        nNextIndex = _carouselSize - 1;
                 }
 
                 _mapCarouselLocationFramewokes[CarouselLoacation.Left] = -1;
@@ -721,31 +643,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //右侧置顶
                     var animation1 = new Int32Animation
                     {
                         To = (int)CarouselZIndex.Left,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //从中间移动到右侧
                     var animation2 = new DoubleAnimation
                     {
                         To = _LeftDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -753,7 +673,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _mapCarouselLocationFramewokes[CarouselLoacation.Left] = nNextIndex;
                 }
@@ -769,31 +689,29 @@ namespace WPFDevelopers.Controls
 
                     if (vFrameworker != null)
                     {
-                        //右侧置顶
                         var animation1 = new Int32Animation
                         {
                             To = (int)CarouselZIndex.Left,
-                            Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                            Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
                         Storyboard.SetTarget(animation1, vFrameworker);
                         Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                        _Storyboard.Children.Add(animation1);
+                        _storyboard.Children.Add(animation1);
 
-                        //从中间移动到右侧
                         var animation2 = new DoubleAnimation
                         {
                             To = _LeftDockLeft,
-                            Duration = TimeSpan.FromSeconds(_AnimationTime),
+                            Duration = TimeSpan.FromSeconds(_animationTime),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
                         Storyboard.SetTarget(animation2, vFrameworker);
                         Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                        _Storyboard.Children.Add(animation2);
+                        _storyboard.Children.Add(animation2);
 
                         var animation3 = new DoubleAnimation
                         {
-                            Duration = TimeSpan.FromSeconds(_AnimationTime),
+                            Duration = TimeSpan.FromSeconds(_animationTime),
                             To = _ScaleRatio,
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
@@ -801,14 +719,14 @@ namespace WPFDevelopers.Controls
                         Storyboard.SetTargetProperty(animation3,
                             new PropertyPath(
                                 "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                        _Storyboard.Children.Add(animation3);
+                        _storyboard.Children.Add(animation3);
 
                         _mapCarouselLocationFramewokes[CarouselLoacation.Left] = vResult;
                     }
                 }
             }
 
-            _Storyboard?.Begin();
+            _storyboard?.Begin();
 
             return true;
         }
@@ -816,15 +734,16 @@ namespace WPFDevelopers.Controls
         //从右向左依次播放
         private bool PlayCarouselRightToLeft()
         {
-            if (_Storyboard == null)
+            if (_storyboard == null)
             {
-                _Storyboard = new Storyboard();
-                _Storyboard.Completed += Storyboard_Completed;
+                _storyboard = new Storyboard();
+                _storyboard.Completed += Storyboard_Completed;
             }
 
-            _IsStoryboardWorking = true;
+            _isStoryboardWorking = true;
 
-            _Storyboard?.Children.Clear();
+            _storyboard?.Stop();
+            _storyboard?.Children.Clear();
 
             int nNextIndex = -1;
 
@@ -836,32 +755,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //置于后层
                     var animation1 = new Int32Animation
                     {
                         To = vResult + 1,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //从左到中
                     var animation2 = new DoubleAnimation
                     {
                         To = _CenterDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -869,7 +785,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _BufferLinkedList.AddLast(vResult);
                 }
@@ -885,32 +801,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //置于左边上层
                     var animation1 = new Int32Animation
                     {
                         To = (int)CarouselZIndex.Left,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //从中间到左边
                     var animation2 = new DoubleAnimation
                     {
                         To = _LeftDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -918,7 +831,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _mapCarouselLocationFramewokes[CarouselLoacation.Left] = vResult;
                 }
@@ -934,32 +847,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //置于上层
                     var animation1 = new Int32Animation
                     {
                         To = (int)CarouselZIndex.Center,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //右边移动到中间
                     var animation2 = new DoubleAnimation
                     {
                         To = _CenterDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatioEx,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -967,12 +877,14 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _mapCarouselLocationFramewokes[CarouselLoacation.Center] = vResult;
 
+                    SelectedIndex = vResult;
+
                     nNextIndex = vResult + 1;
-                    if (nNextIndex >= _CarouselSize)
+                    if (nNextIndex >= _carouselSize)
                         nNextIndex = 0;
                 }
                 _mapCarouselLocationFramewokes[CarouselLoacation.Right] = -1;
@@ -988,31 +900,29 @@ namespace WPFDevelopers.Controls
 
                 if (vFrameworker != null)
                 {
-                    //右侧置顶
                     var animation1 = new Int32Animation
                     {
                         To = (int)CarouselZIndex.Right,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //从中间移动到右侧
                     var animation2 = new DoubleAnimation
                     {
                         To = _RightDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -1020,7 +930,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
 
                     _mapCarouselLocationFramewokes[CarouselLoacation.Right] = nNextIndex;
                 }
@@ -1036,31 +946,29 @@ namespace WPFDevelopers.Controls
 
                     if (vFrameworker != null)
                     {
-                        //右侧置顶
                         var animation1 = new Int32Animation
                         {
                             To = (int)CarouselZIndex.Right,
-                            Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                            Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
                         Storyboard.SetTarget(animation1, vFrameworker);
                         Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                        _Storyboard.Children.Add(animation1);
+                        _storyboard.Children.Add(animation1);
 
-                        //从中间移动到右侧
                         var animation2 = new DoubleAnimation
                         {
                             To = _RightDockLeft,
-                            Duration = TimeSpan.FromSeconds(_AnimationTime),
+                            Duration = TimeSpan.FromSeconds(_animationTime),
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
                         Storyboard.SetTarget(animation2, vFrameworker);
                         Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                        _Storyboard.Children.Add(animation2);
+                        _storyboard.Children.Add(animation2);
 
                         var animation3 = new DoubleAnimation
                         {
-                            Duration = TimeSpan.FromSeconds(_AnimationTime),
+                            Duration = TimeSpan.FromSeconds(_animationTime),
                             To = _ScaleRatio,
                             EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                         };
@@ -1068,130 +976,110 @@ namespace WPFDevelopers.Controls
                         Storyboard.SetTargetProperty(animation3,
                             new PropertyPath(
                                 "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                        _Storyboard.Children.Add(animation3);
+                        _storyboard.Children.Add(animation3);
 
                         _mapCarouselLocationFramewokes[CarouselLoacation.Right] = vResult;
                     }
                 }
             }
 
-            _Storyboard?.Begin();
-            SelectedBorder(nNextIndex);
+            _storyboard?.Begin();
+
             return true;
         }
 
-        void SelectedBorder(int index)
+        void UpdateDots()
         {
-            index = index == 0 ? 0 : index - 1;
-            if (_buttonDock != null)
-            {
-
-                var border = _buttonDock.Children.Cast<Border>().FirstOrDefault(x => Convert.ToInt32(x.Tag) == index);
-                if (border != null)
-                    border.Background = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PrimaryBrush");
-                foreach (var item in _buttonDock.Children.Cast<Border>().Where(x => Convert.ToInt32(x.Tag) != index))
-                {
-                    item.Background = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.RegularTextBrush");
-                }
-            }
+            _dotsItems.Clear();
+            for (int i = 0; i < _carouselSize; i++)
+                _dotsItems.Add(i);
         }
 
         //当用户点击其中某个位置的动画时
         private bool PlayCarouselWithIndex(int nIndex)
         {
-            //检查 nIndex是否有效
-            if (nIndex < 0 || nIndex >= _CarouselSize)
+            if (nIndex < 0 || nIndex >= _carouselSize)
                 return false;
 
-            //判断当前选中的是否处于中间播放位置
             {
                 var vResult = _mapCarouselLocationFramewokes.GetValueOrDefault(CarouselLoacation.Center, -1);
                 if (vResult == nIndex)
                     return true;
             }
 
-            //判断如果当前选中的在左侧等待区 播放顺序是从左向右
             {
                 var vResult = _mapCarouselLocationFramewokes.GetValueOrDefault(CarouselLoacation.Left, -1);
                 if (vResult == nIndex)
                     return PlayCarouselLeftToRight();
             }
 
-            //判断如果当前选中的在右侧等待区 播放顺序是从右向左
             {
                 var vResult = _mapCarouselLocationFramewokes.GetValueOrDefault(CarouselLoacation.Right, -1);
                 if (vResult == nIndex)
                     return PlayCarouselRightToLeft();
             }
 
-            //其他情况 
             return PlayCarouselWithIndexOutRange(nIndex);
         }
 
         private bool PlayCarouselWithIndexOutRange(int nIndex)
         {
-            //检查 nIndex是否有效
-            if (nIndex < 0 || nIndex >= _CarouselSize)
+            if (nIndex < 0 || nIndex >= _carouselSize)
                 return false;
 
-            //计算前后动画位置
             var vPre = nIndex - 1;
             if (vPre < 0)
-                vPre = _CarouselSize - 1;
+                vPre = _carouselSize - 1;
 
             var vNext = nIndex + 1;
-            if (vNext >= _CarouselSize)
+            if (vNext >= _carouselSize)
                 vNext = 0;
 
-            if (_Storyboard == null)
+            if (_storyboard == null)
             {
-                _Storyboard = new Storyboard();
-                _Storyboard.Completed += Storyboard_Completed;
+                _storyboard = new Storyboard();
+                _storyboard.Completed += Storyboard_Completed;
             }
 
-            if (_IsStoryboardWorking)
+            if (_isStoryboardWorking)
                 return false;
 
-            _IsStoryboardWorking = true;
+            _isStoryboardWorking = true;
 
-            _Storyboard?.Children.Clear();
+            _storyboard?.Stop();
+            _storyboard?.Children.Clear();
 
-            //清空队列
             _BufferLinkedList.Clear();
 
-            //先将队列归位 全部置于中间后面隐藏
             {
                 var vResult = _mapCarouselLocationFramewokes.GetValueOrDefault(CarouselLoacation.Right, -1);
 
                 var vFrameworker = _mapFrameworkes.GetValueOrDefault(vResult);
                 if (vFrameworker != null)
                 {
-                    //置于后层
                     var animation1 = new Int32Animation
                     {
                         To = vResult + 1,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //回到中间
                     var animation2 = new DoubleAnimation
                     {
                         To = _CenterDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -1199,7 +1087,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
                 }
 
                 _mapCarouselLocationFramewokes[CarouselLoacation.Right] = -1;
@@ -1211,32 +1099,29 @@ namespace WPFDevelopers.Controls
                 var vFrameworker = _mapFrameworkes.GetValueOrDefault(vResult);
                 if (vFrameworker != null)
                 {
-                    //置于后层
                     var animation1 = new Int32Animation
                     {
                         To = vResult + 1,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //回到中间
                     var animation2 = new DoubleAnimation
                     {
                         To = _CenterDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -1244,7 +1129,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
                 }
 
                 _mapCarouselLocationFramewokes[CarouselLoacation.Center] = -1;
@@ -1256,32 +1141,29 @@ namespace WPFDevelopers.Controls
                 var vFrameworker = _mapFrameworkes.GetValueOrDefault(vResult);
                 if (vFrameworker != null)
                 {
-                    //置于后层
                     var animation1 = new Int32Animation
                     {
                         To = vResult + 1,
-                        Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                        Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation1, vFrameworker);
                     Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                    _Storyboard.Children.Add(animation1);
+                    _storyboard.Children.Add(animation1);
 
-                    //回到中间
                     var animation2 = new DoubleAnimation
                     {
                         To = _CenterDockLeft,
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
                     Storyboard.SetTarget(animation2, vFrameworker);
                     Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                    _Storyboard.Children.Add(animation2);
+                    _storyboard.Children.Add(animation2);
 
-                    //缩放
                     var animation3 = new DoubleAnimation
                     {
-                        Duration = TimeSpan.FromSeconds(_AnimationTime),
+                        Duration = TimeSpan.FromSeconds(_animationTime),
                         To = _ScaleRatio,
                         EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                     };
@@ -1289,15 +1171,14 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTargetProperty(animation3,
                         new PropertyPath(
                             "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                    _Storyboard.Children.Add(animation3);
+                    _storyboard.Children.Add(animation3);
                 }
 
                 _mapCarouselLocationFramewokes[CarouselLoacation.Left] = -1;
             }
 
-            //再调出目标位置动画
-            for (var i = 0; i < _CarouselSize; i++)
-                if (i == vPre) //放左侧
+            for (var i = 0; i < _carouselSize; i++)
+                if (i == vPre)
                 {
                     if (_mapFrameworkes.ContainsKey(i))
                     {
@@ -1305,33 +1186,30 @@ namespace WPFDevelopers.Controls
 
                         if (vFrameworker != null)
                         {
-                            //置于左边上层
                             var animation1 = new Int32Animation
                             {
                                 To = (int)CarouselZIndex.Left,
-                                Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                                Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
                             Storyboard.SetTarget(animation1, vFrameworker);
                             Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                            _Storyboard.Children.Add(animation1);
+                            _storyboard.Children.Add(animation1);
 
-                            //从中间到左边
                             var animation2 = new DoubleAnimation
                             {
-                                BeginTime = TimeSpan.FromSeconds(_DelayAnimationTime),
+                                BeginTime = TimeSpan.FromSeconds(_delayAnimationTime),
                                 To = _LeftDockLeft,
-                                Duration = TimeSpan.FromSeconds(_AnimationTime),
+                                Duration = TimeSpan.FromSeconds(_animationTime),
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
                             Storyboard.SetTarget(animation2, vFrameworker);
                             Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                            _Storyboard.Children.Add(animation2);
+                            _storyboard.Children.Add(animation2);
 
-                            //缩放
                             var animation3 = new DoubleAnimation
                             {
-                                Duration = TimeSpan.FromSeconds(_AnimationTime),
+                                Duration = TimeSpan.FromSeconds(_animationTime),
                                 To = _ScaleRatio,
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
@@ -1339,13 +1217,13 @@ namespace WPFDevelopers.Controls
                             Storyboard.SetTargetProperty(animation3,
                                 new PropertyPath(
                                     "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                            _Storyboard.Children.Add(animation3);
+                            _storyboard.Children.Add(animation3);
 
                             _mapCarouselLocationFramewokes[CarouselLoacation.Left] = i;
                         }
                     }
                 }
-                else if (i == nIndex) //放中间
+                else if (i == nIndex)
                 {
                     if (_mapFrameworkes.ContainsKey(i))
                     {
@@ -1353,33 +1231,30 @@ namespace WPFDevelopers.Controls
 
                         if (vFrameworker != null)
                         {
-                            //置于中间上层
                             var animation1 = new Int32Animation
                             {
                                 To = (int)CarouselZIndex.Center,
-                                Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                                Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
                             Storyboard.SetTarget(animation1, vFrameworker);
                             Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                            _Storyboard.Children.Add(animation1);
+                            _storyboard.Children.Add(animation1);
 
-                            //到中间
                             var animation2 = new DoubleAnimation
                             {
-                                BeginTime = TimeSpan.FromSeconds(_DelayAnimationTime),
+                                BeginTime = TimeSpan.FromSeconds(_delayAnimationTime),
                                 To = _CenterDockLeft,
-                                Duration = TimeSpan.FromSeconds(_AnimationTime),
+                                Duration = TimeSpan.FromSeconds(_animationTime),
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
                             Storyboard.SetTarget(animation2, vFrameworker);
                             Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                            _Storyboard.Children.Add(animation2);
+                            _storyboard.Children.Add(animation2);
 
-                            //缩放
                             var animation3 = new DoubleAnimation
                             {
-                                Duration = TimeSpan.FromSeconds(_AnimationTime),
+                                Duration = TimeSpan.FromSeconds(_animationTime),
                                 To = _ScaleRatioEx,
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
@@ -1387,13 +1262,13 @@ namespace WPFDevelopers.Controls
                             Storyboard.SetTargetProperty(animation3,
                                 new PropertyPath(
                                     "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                            _Storyboard.Children.Add(animation3);
+                            _storyboard.Children.Add(animation3);
 
                             _mapCarouselLocationFramewokes[CarouselLoacation.Center] = i;
                         }
                     }
                 }
-                else if (i == vNext) //放右侧
+                else if (i == vNext)
                 {
                     if (_mapFrameworkes.ContainsKey(i))
                     {
@@ -1401,33 +1276,30 @@ namespace WPFDevelopers.Controls
 
                         if (vFrameworker != null)
                         {
-                            //置于右边上层
                             var animation1 = new Int32Animation
                             {
                                 To = (int)CarouselZIndex.Right,
-                                Duration = TimeSpan.FromSeconds(_DelayAnimationTime),
+                                Duration = TimeSpan.FromSeconds(_delayAnimationTime),
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
                             Storyboard.SetTarget(animation1, vFrameworker);
                             Storyboard.SetTargetProperty(animation1, new PropertyPath("(Panel.ZIndex)"));
-                            _Storyboard.Children.Add(animation1);
+                            _storyboard.Children.Add(animation1);
 
-                            //到右边
                             var animation2 = new DoubleAnimation
                             {
-                                BeginTime = TimeSpan.FromSeconds(_DelayAnimationTime),
+                                BeginTime = TimeSpan.FromSeconds(_delayAnimationTime),
                                 To = _RightDockLeft,
-                                Duration = TimeSpan.FromSeconds(_AnimationTime),
+                                Duration = TimeSpan.FromSeconds(_animationTime),
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
                             Storyboard.SetTarget(animation2, vFrameworker);
                             Storyboard.SetTargetProperty(animation2, new PropertyPath("(Canvas.Left)"));
-                            _Storyboard.Children.Add(animation2);
+                            _storyboard.Children.Add(animation2);
 
-                            //缩放
                             var animation3 = new DoubleAnimation
                             {
-                                Duration = TimeSpan.FromSeconds(_AnimationTime),
+                                Duration = TimeSpan.FromSeconds(_animationTime),
                                 To = _ScaleRatio,
                                 EasingFunction = new ExponentialEase { EasingMode = EasingMode.EaseOut }
                             };
@@ -1435,7 +1307,7 @@ namespace WPFDevelopers.Controls
                             Storyboard.SetTargetProperty(animation3,
                                 new PropertyPath(
                                     "(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"));
-                            _Storyboard.Children.Add(animation3);
+                            _storyboard.Children.Add(animation3);
 
                             _mapCarouselLocationFramewokes[CarouselLoacation.Right] = i;
                         }
@@ -1446,34 +1318,11 @@ namespace WPFDevelopers.Controls
                     _BufferLinkedList.AddLast(i);
                 }
 
-            _Storyboard?.Begin();
+            _storyboard?.Begin();
 
             return true;
         }
 
-        private bool Start()
-        {
-            if (!IsStartAinimation)
-                return true;
-
-            if (_IsAinimationStart)
-                return true;
-
-            _IsAinimationStart = true;
-            _playTimer.Start();
-            return true;
-        }
-
-        private bool Stop()
-        {
-            if (_IsAinimationStart)
-            {
-                _IsAinimationStart = false;
-                _playTimer.Stop();
-            }
-
-            return true;
-        }
 
         #endregion
     }
