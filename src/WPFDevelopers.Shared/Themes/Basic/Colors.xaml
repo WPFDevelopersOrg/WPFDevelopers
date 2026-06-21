@@ -28,7 +28,7 @@
     <SolidColorBrush
         x:Key="WD.PrimaryMouseOverBrush"
         po:Freeze="True"
-        Color="{DynamicResource WD.PrimaryMouseOverColor}" />
+        Color="{StaticResource WD.PrimaryMouseOverColor}" />
 
     <!--  SuccessColor  -->
     <Color x:Key="WD.SuccessColor" po:Freeze="True">#13CE67</Color>

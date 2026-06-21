@@ -12,8 +12,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationGrid\AnimationGrid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ScaleBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\StatefulControlBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\WDUserControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\Carousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\CarouselBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartPie.cs" />
@@ -35,9 +38,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\GestureUnlock\GestureItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\GestureUnlock\GestureUnlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\OtpBox\OtpBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SplitButton\SplitButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FirstLastMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\ProgressLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FilterVisibilityMultiConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\SelectedIndexToBoolConverter.cs" />
     <Compile Include="..\WPFDevelopers.Shared\Controls\Toast\ToastExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
@@ -80,6 +88,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DirectionalThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DataGridHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\OSVersionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PopupWindowHook.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SelectorHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\NumericBoxClickEventArgs.cs" />
@@ -108,8 +117,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\BaseControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreatheLight\BreathLamp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\EmphasizerCarousel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\MasterCarousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel\FocusCarousel.cs" />
+    <Compile Include="..\WPFDevelopers.Shared\Controls\Carousel\CardCarousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleMenu\CircleMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CircleProgressBar\CircleProgressBar.cs" />
@@ -503,7 +512,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\OtpBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Mask.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\SplitButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

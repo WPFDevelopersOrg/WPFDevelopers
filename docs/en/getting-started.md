@@ -264,6 +264,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `GroupBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Group box |
 | `TabControl` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Tab control (4 directions / closable) |
 | `Menu` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Menu bar |
+| `wd:SplitButton` | NuGet | [SplitButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SplitButtonExample.xaml) | Split button (main button + dropdown menu, supports text/icon options) |
 | `Calendar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Calendar |
 | `DatePicker` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Date picker (with time selection) |
 
@@ -286,6 +287,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:Dial` | NuGet | [DialExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DialExample.xaml) | Dial pad |
 | `wd:GestureUnlock` | NuGet | [GestureUnlockExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GestureUnlockExample.xaml) | Gesture pattern unlock |
 | `wd:SvgViewer` | NuGet | [SvgViewerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SvgViewerExample.xaml) | SVG viewer |
+| `wd:OtpBox` | NuGet | [OtpBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtpBoxExample.xaml) | OTP verification code input (auto-jump / backspace / paste) |
 
 ### Loading Animations
 
@@ -323,8 +325,9 @@ WD provides a set of theme resources you can reference in XAML:
 
 | Control | Source | Example File | Description |
 |---------|--------|-------------|-------------|
-| `wd:Carousel` | NuGet | [CarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExample.xaml) | Carousel |
-| `wd:CarouselEx` | NuGet | [CarouselExampleEx.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExampleEx.xaml) | Emphasizer carousel |
+| `wd:Carousel` | NuGet | [CarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExample.xaml) | Carousel (auto-play / dot indicators / arrows / click navigation) |
+| `wd:FocusCarousel` | NuGet | [FocusCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/FocusCarouselExample.xaml) | Emphasizer carousel (3D flip + zoom effect) |
+| `wd:CardCarousel` | NuGet | [CardCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CardCarouselExample.xaml) | Master carousel (multi-layer overlay animation) |
 | `wd:CircleMenu` | NuGet | [CircleMenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleMenuExample.xaml) | Circular menu |
 | `wd:SixGridView` | NuGet | [SixGirdViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SixGirdViewExample.xaml) | Six-column grid layout |
 | `wd:WaterfallPanel` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | Waterfall / masonry panel |
@@ -359,6 +362,12 @@ WD provides a set of theme resources you can reference in XAML:
 | <span style="color:#e6a23c">🟡 CanvasHandWriting</span> | Sample-only | [CanvasHandWritingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml) | Smooth canvas handwriting |
 | <span style="color:#e6a23c">🟡 Drawing</span> | Sample-only | [DrawingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawingExample.xaml) | Freehand drawing |
 | <span style="color:#e6a23c">🟡 DrawPrize</span> | Sample-only | [DrawPrizeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawPrizeExample.xaml) | Lottery wheel |
+
+### Effects & Filters
+
+| Control | Source | Example File | Description |
+|---------|--------|-------------|-------------|
+| `wd:GrayscaleEffect` | NuGet | [GrayscaleEffectExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GrayscaleEffectExample.xaml) | Grayscale filter effect (adjustable intensity) |
 
 ### Media & Image Processing
 
@@ -415,19 +424,19 @@ using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 ```csharp
 // 1. Message text only (default OK button, no icon)
-MessageBoxResult Show(string messageBoxText, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 2. Message text + caption
-MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 3. Message text + caption + buttons
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 4. Message text + caption + icon
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 5. Message text + caption + buttons + icon (full signature)
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 ```
 
 ### Parameters
@@ -439,7 +448,7 @@ MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton bu
 | `button` | MessageBoxButton | OK | Button set: `OK` / `OKCancel` / `YesNo` / `YesNoCancel` |
 | `icon` | MessageBoxImage | None | Icon type: `Information` / `Warning` / `Error` / `Question` |
 | `owner` | Window | null | Parent window. When provided, the dialog centers on the owner with an overlay mask |
-| `buttonRadius` | double | 0 | Button corner radius in pixels. Use `4` for rounded buttons |
+| `buttonRadius` | double? | null | Button corner radius in pixels. When null, auto-detects OS: Windows 11 defaults to 4px, Windows 10 defaults to 0px |
 | `isDefault` | bool | true | Whether the first button is the default button (triggered by Enter key) |
 
 ### Icon and Color Mapping
@@ -504,6 +513,344 @@ MessageBox.Show("Operation successful!", "Info", MessageBoxButton.OK, MessageBox
 - **Close methods**: Click the close button (top-right), press `Escape`, or click any button
 - **Owner window**: When `owner` is provided, the dialog centers on the parent window and displays a mask overlay. Without an owner, it auto-detects the current window or centers on screen
 - **Button text**: Automatically localized via `LanguageManager` (follows system language)
+
+---
+
+## SplitButton Usage Tutorial
+
+`SplitButton` is a split button control provided by WPFDevelopers. The left side is a clickable main button area, and the right side is a dropdown toggle button. It supports both text options and rich content options with icons.
+
+### Basic Usage (ItemsSource Data Binding)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    SelectionChanged="SplitButton_SelectionChanged" />
+```
+
+```csharp
+// ViewModel or Code-behind
+public ObservableCollection<string> MenuItems { get; } = new ObservableCollection<string>
+{
+    "Save in PDF",
+    "Save in Word",
+    "Save in Excel",
+    "Save in Image"
+};
+
+private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+{
+    // e.NewValue is the selected item
+}
+```
+
+### Default Style (Border + Transparent Background)
+
+```xml
+<wd:SplitButton Width="150" Content="File" ItemsSource="{Binding MenuItems}" />
+```
+
+### Primary Style (Solid Primary Color Background)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonPrimary}" />
+```
+
+### Custom Color + XAML Children (Supports MenuItem with Icons)
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Background="{StaticResource WD.SuccessBrush}"
+    BorderBrush="{StaticResource WD.SuccessBrush}"
+    Content="File"
+    Foreground="White">
+    <MenuItem Header="Copy">
+        <MenuItem.Icon>
+            <wd:PathIcon Kind="Copy" />
+        </MenuItem.Icon>
+    </MenuItem>
+    <MenuItem Header="Paste" />
+    <MenuItem Header="Cut" />
+</wd:SplitButton>
+```
+
+### Key Properties
+
+| Property | Type | Default | Description |
+|------|------|--------|------|
+| `Content` | object | null | Main button display content |
+| `ItemsSource` | object | null | Dropdown menu data source (IEnumerable) |
+| `IsDropDownOpen` | bool | false | Whether dropdown is open (two-way binding) |
+| `ContextMenuStyle` | Style | null | Custom ContextMenu style |
+
+### Events
+
+| Event | Description |
+|------|------|
+| `Click` | Fired when the main button area is clicked (clicking ToggleButton does NOT fire this) |
+| `SelectionChanged` | Fired when a dropdown menu item is selected |
+
+### Available Styles
+
+| Style Key | Description |
+|--------|------|
+| `WD.SplitButton` (default) | Border + transparent background, border turns primary color on hover |
+| `WD.SplitButtonPrimary` | No border + solid primary color background + white text |
+
+### Interaction Behavior
+
+| Action | Behavior |
+|------|------|
+| Click main button area | Fires `Click` event |
+| Click ToggleButton | Expands/collapses dropdown menu |
+| Click menu item | Button Content updates to selected item, fires `SelectionChanged` |
+| Click outside menu | Automatically closes dropdown |
+
+---
+
+## Carousel Usage Tutorial
+
+`Carousel` is a carousel control provided by WPFDevelopers, supporting auto-play, dot indicators, arrow navigation, click navigation, and more.
+
+### Basic Usage (XAML Declaration)
+
+```xml
+<wd:Carousel
+    Width="400" Height="200"
+    AutoPlay="True"
+    AutoPlayInterval="0:0:4"
+    ShowArrows="True"
+    ItemClick="Carousel_ItemClick">
+    <Border Background="#722ed1">
+        <TextBlock Text="Slide 1" Foreground="White" FontSize="24" />
+    </Border>
+    <Border Background="#eb2f96">
+        <TextBlock Text="Slide 2" Foreground="White" FontSize="24" />
+    </Border>
+    <Border Background="#1890ff">
+        <TextBlock Text="Slide 3" Foreground="White" FontSize="24" />
+    </Border>
+</wd:Carousel>
+```
+
+### Data Binding Usage (MVVM)
+
+```xml
+<wd:Carousel
+    ItemsSource="{Binding ImagePaths}"
+    DisplayMemberPath="URL"
+    AutoPlay="True"
+    ItemClickCommand="{Binding CarouselClickCommand}" />
+```
+
+```csharp
+// Data model
+public class CarouselSlideModel
+{
+    public string Title { get; set; }
+    public string URL { get; set; }
+}
+
+// ViewModel
+public ObservableCollection<CarouselSlideModel> ImagePaths { get; set; }
+
+public ICommand CarouselClickCommand => new RelayCommand(param =>
+{
+    if (param is CarouselSlideModel model)
+    {
+        Toast.Push($"Clicked image - {model.Title}", ToastImage.Success, true);
+    }
+});
+```
+
+### Key Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `ItemsSource` | IEnumerable | null | Data source |
+| `SelectedIndex` | int | 0 | Current selected item index |
+| `SelectedItem` | object | null | Current selected item |
+| `AutoPlay` | bool | false | Enable auto-play |
+| `AutoPlayInterval` | TimeSpan | 3 seconds | Auto-play interval |
+| `AnimationDuration` | double | 0.5 | Transition animation duration (seconds) |
+| `ShowDots` | bool | true | Show dot indicators |
+| `ShowArrows` | bool | true | Show left/right arrows |
+| `ItemTemplate` | DataTemplate | null | Data template |
+| `DisplayMemberPath` | string | null | Display member path (shows property value directly) |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `ItemClick` | Fired when a slide is clicked |
+| `SelectedItemChanged` | Fired when selected item changes |
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `GoToNext()` | Navigate to next slide |
+| `GoToPrevious()` | Navigate to previous slide |
+
+---
+
+## FocusCarousel / CardCarousel
+
+### FocusCarousel
+
+A carousel with 3D flip + zoom effects, where the center item is enlarged and highlighted:
+
+```xml
+<wd:FocusCarousel>
+    <Image Source="pack://application:,,,/Images/photo1.jpg" />
+    <Image Source="pack://application:,,,/Images/photo2.jpg" />
+    <Image Source="pack://application:,,,/Images/photo3.jpg" />
+</wd:FocusCarousel>
+```
+
+### CardCarousel
+
+A carousel with multi-layer overlay animation and auto-play/interval control:
+
+```xml
+<wd:CardCarousel AutoPlay="True" AutoPlayInterval="0:0:5">
+    <Image Source="pack://application:,,,/Images/photo1.jpg" />
+    <Image Source="pack://application:,,,/Images/photo2.jpg" />
+    <Image Source="pack://application:,,,/Images/photo3.jpg" />
+</wd:CardCarousel>
+```
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `AutoPlay` | bool | false | Enable auto-play |
+| `AutoPlayInterval` | TimeSpan | 0:0:3 | Playback interval (TimeSpan) |
+
+---
+
+## GrayscaleEffect Usage Tutorial
+
+`GrayscaleEffect` is a pixel shader effect that converts any visual element to grayscale display, commonly used for global grayscale mode (e.g., memorial days).
+
+### Apply to a Single Control
+
+```xml
+<Image Source="photo.jpg">
+    <Image.Effect>
+        <wd:GrayscaleEffect Factor="1" />
+    </Image.Effect>
+</Image>
+```
+
+### Apply to the Entire Window
+
+```xml
+<wd:Window>
+    <wd:Window.Effect>
+        <wd:GrayscaleEffect x:Name="grayscaleEffect" Factor="0" />
+    </wd:Window.Effect>
+</wd:Window>
+```
+
+```csharp
+// Enable grayscale
+var animation = new DoubleAnimation
+{
+    To = 1,
+    Duration = TimeSpan.FromMilliseconds(1000),
+    EasingFunction = new SineEase { EasingMode = EasingMode.EaseOut }
+};
+grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, animation);
+
+// Disable grayscale
+animation.To = 0;
+grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, animation);
+```
+
+### Key Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `Factor` | double | 0 | Grayscale intensity, 0 = original color, 1 = full grayscale |
+| `Brightness` | double | 0 | Brightness adjustment |
+
+---
+
+## OtpBox OTP Input Control Usage Tutorial
+
+`OtpBox` is a control designed for OTP (One-Time Password) input scenarios, supporting auto-focus jump, backspace retreat, paste fill, and more.
+
+### Basic Usage
+
+```xml
+<wd:OtpBox Length="6" Completed="OtpBoxCompleted" />
+```
+
+### MVVM Binding
+
+```xml
+<wd:OtpBox
+    Length="6"
+    Value="{Binding OtpCode, Mode=TwoWay}"
+    CompletedCommand="{Binding VerifyCommand}" />
+```
+
+```csharp
+// Event approach
+private void OtpBoxCompleted(object sender, RoutedEventArgs e)
+{
+    var otpBox = e.OriginalSource as OtpBox;
+    var pwd = otpBox?.Value ?? string.Empty;
+
+    if (pwd != _otpPassword)
+    {
+        myOtpBox.State = ControlState.Error;
+        return;
+    }
+
+    myOtpBox.State = ControlState.Success;
+}
+
+// Command approach
+public ICommand CompletedCommand => new RelayCommand(param =>
+{
+    var pwd = param.ToString();
+    // Validation logic...
+});
+```
+
+### Key Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `Length` | int | 4 | Number of OTP digits |
+| `Value` | string | "" | Current value (supports two-way binding) |
+| `State` | ControlState | None | Validation state (None/Success/Error) |
+| `CompletedCommand` | ICommand | null | Command executed on completion |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `Completed` | Fired when all digits are filled |
+
+### Interaction Features
+
+| Action | Behavior |
+|--------|----------|
+| Enter a digit | Auto-jump to next input box |
+| Backspace (empty box) | Jump to previous box and delete last character |
+| Ctrl+V Paste | Auto-fill digit by digit, filter non-numeric characters |
+| Arrow keys ← → | Switch between input boxes |
+| Enter / Tab | Jump to next input box |
+| Error state | Auto-clear and refocus after 1.5 seconds |
+| Success state | Auto-reset to default state after 1.5 seconds |
 
 ---
 

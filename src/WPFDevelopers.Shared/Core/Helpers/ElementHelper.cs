@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Helpers
 {
@@ -12,6 +9,17 @@ namespace WPFDevelopers.Helpers
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementHelper),
                 new PropertyMetadata(new CornerRadius(0)));
+
+        private static bool _isMetadataOverridden;
+        internal static bool IsMetadataOverridden => _isMetadataOverridden;
+
+        internal static void OverrideCornerRadius(double radius)
+        {
+            if (_isMetadataOverridden) return;
+            _isMetadataOverridden = true;
+            var meta = new PropertyMetadata(new CornerRadius(radius));
+            CornerRadiusProperty.OverrideMetadata(typeof(FrameworkElement), meta);
+        }
 
         public static readonly DependencyProperty WatermarkProperty =
             DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ElementHelper),

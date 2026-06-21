@@ -1,0 +1,51 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.SplitButtonExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <StackPanel
+            Margin="0,20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            wd:PanelHelper.Spacing="4"
+            Orientation="Vertical">
+            <wd:SplitButton
+                Width="150"
+                Click="SplitButton_Click"
+                Content="File"
+                ItemsSource="{Binding MenuItems}"
+                SelectionChanged="SplitButton_SelectionChanged" />
+            <wd:SplitButton
+                Width="150"
+                Content="File"
+                ItemsSource="{Binding MenuItems}"
+                SelectionChanged="SplitButton_SelectionChanged"
+                Style="{StaticResource WD.SplitButtonPrimary}" />
+            <wd:SplitButton
+                Width="150"
+                Background="{StaticResource WD.SuccessBrush}"
+                BorderBrush="{StaticResource WD.SuccessBrush}"
+                Content="File"
+                Foreground="White">
+                <MenuItem Header="Copy">
+                    <MenuItem.Icon>
+                        <wd:PathIcon Kind="Copy" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Paste" />
+                <MenuItem Header="Cut" />
+            </wd:SplitButton>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SplitButtonExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SplitButtonExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

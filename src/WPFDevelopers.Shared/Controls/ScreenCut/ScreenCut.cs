@@ -216,6 +216,9 @@ namespace WPFDevelopers.Controls
         private Bitmap _screenCapture;
         private ScreenDPI _screenDPI;
         private RenderTargetBitmap _imageSnapshot;
+        private byte[] _screenPixels;
+        private int _screenWidth;
+        private int _screenHeight;
         private Path _currentStrokeContainer = null;
         private List<Rectangle> _currentStrokeRectangles = new List<Rectangle>();
         private Stack<UIElement> _strokeHistory = new Stack<UIElement>();
@@ -327,15 +330,26 @@ namespace WPFDevelopers.Controls
             Loaded += ScreenCut_Loaded;
             _controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
             _screenCapture = CopyScreen();
+
+            _screenWidth = _screenCapture.Width;
+            _screenHeight = _screenCapture.Height;
+            var rect = new System.Drawing.Rectangle(0, 0, _screenWidth, _screenHeight);
+            var bmpData = _screenCapture.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            int byteCount = _screenWidth * _screenHeight * 4;
+            _screenPixels = new byte[byteCount];
+            Marshal.Copy(bmpData.Scan0, _screenPixels, 0, byteCount);
+            _screenCapture.UnlockBits(bmpData);
+
             using (var tempBitmap = _screenCapture)
             {
                 var imageSource = ImagingHelper.CreateBitmapSourceFromBitmap(tempBitmap);
                 imageSource.Freeze();
                 var writeableBitmap = new WriteableBitmap(imageSource);
-                writeableBitmap.Freeze(); 
+                writeableBitmap.Freeze();
                 _canvas.Background = new ImageBrush(writeableBitmap);
             }
-            _screenCapture?.Dispose();
+
             _screenCapture = null;
             TakeSnapshot();
         }
@@ -845,13 +859,14 @@ namespace WPFDevelopers.Controls
                         Width = mosaicSize,
                         Height = mosaicSize,
                         Fill = new SolidColorBrush(color),
-                        IsHitTestVisible = false
+                        IsHitTestVisible = false,
+                        SnapsToDevicePixels = true
                     };
 
-                    Canvas.SetLeft(block, x);
-                    Canvas.SetTop(block, y);
+                    Canvas.SetLeft(block, Math.Round(x));
+                    Canvas.SetTop(block, Math.Round(y));
 
-                   _canvas.Children.Add(block);
+                    _canvas.Children.Add(block);
                     SetUndoEnabled();
                     _currentStrokeRectangles.Add(block);
                 }
@@ -953,8 +968,8 @@ namespace WPFDevelopers.Controls
         {
             try
             {
-                double scaleX = _imageSnapshot.PixelWidth / _canvas.ActualWidth;
-                double scaleY = _imageSnapshot.PixelHeight / _canvas.ActualHeight;
+                double scaleX = _screenWidth / _canvas.ActualWidth;
+                double scaleY = _screenHeight / _canvas.ActualHeight;
                 int pixelX = (int)(center.X * scaleX);
                 int pixelY = (int)(center.Y * scaleY);
                 int halfSize = areaSize / 2;
@@ -967,15 +982,12 @@ namespace WPFDevelopers.Controls
                         int x = pixelX + dx;
                         int y = pixelY + dy;
 
-                        if (x >= 0 && x < _imageSnapshot.PixelWidth &&
-                            y >= 0 && y < _imageSnapshot.PixelHeight)
+                        if (x >= 0 && x < _screenWidth && y >= 0 && y < _screenHeight)
                         {
-                            byte[] pixels = new byte[4];
-                            _imageSnapshot.CopyPixels(new Int32Rect(x, y, 1, 1), pixels, 4, 0);
-
-                            totalR += pixels[2];
-                            totalG += pixels[1];
-                            totalB += pixels[0];
+                            int index = (y * _screenWidth + x) * 4;
+                            totalB += _screenPixels[index];
+                            totalG += _screenPixels[index + 1];
+                            totalR += _screenPixels[index + 2];
                             count++;
                         }
                     }

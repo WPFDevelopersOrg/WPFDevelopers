@@ -185,6 +185,22 @@ namespace WPFDevelopers.Helpers
             }
         }
 
+        public static BitmapImage CreateBitmapImage(string uri, int width, int height)
+        {
+            if (string.IsNullOrEmpty(uri)) return null;
+
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(uri);
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            if (width > 0)
+                bitmap.DecodePixelWidth = width;
+            else if (height > 0)
+                bitmap.DecodePixelHeight = height;
+            bitmap.EndInit();
+            bitmap.Freeze();
+            return bitmap;
+        }
     }
 
 

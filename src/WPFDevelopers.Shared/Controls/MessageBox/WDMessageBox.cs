@@ -49,17 +49,6 @@ namespace WPFDevelopers.Controls
 
         private TextBlock _title;
 
-
-        public CornerRadius ButtonCornerRadius
-        {
-            get { return (CornerRadius)GetValue(ButtonRadiusProperty); }
-            set { SetValue(ButtonRadiusProperty, value); }
-        }
-
-        public static readonly DependencyProperty ButtonRadiusProperty =
-            DependencyProperty.Register("ButtonCornerRadius", typeof(CornerRadius), typeof(WDMessageBox), new PropertyMetadata(null));
-
-
         public bool IsDefault
         {
             get { return (bool)GetValue(IsDefaultProperty); }
@@ -76,45 +65,44 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(WDMessageBox)));
         }
 
-        void SetResources(double buttonRadius = 0d)
+        void SetResources()
         {
             Resources = ThemeManager.Instance.Resources;
-            ButtonCornerRadius = new CornerRadius(buttonRadius);
         }
 
-        public WDMessageBox(string message, double buttonRadius = 0d)
+        public WDMessageBox(string message)
         {
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
         }
 
-        public WDMessageBox(string message, string caption, double buttonRadius = 0d)
-        {
-            _titleString = caption;
-            _messageString = message;
-            SetResources(buttonRadius);
-        }
-
-        public WDMessageBox(string message, string caption, MessageBoxButton button, double buttonRadius = 0d)
+        public WDMessageBox(string message, string caption)
         {
             _titleString = caption;
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
         }
 
-        public WDMessageBox(string message, string caption, MessageBoxImage image, double buttonRadius = 0d)
+        public WDMessageBox(string message, string caption, MessageBoxButton button)
         {
             _titleString = caption;
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
+        }
+
+        public WDMessageBox(string message, string caption, MessageBoxImage image)
+        {
+            _titleString = caption;
+            _messageString = message;
+            SetResources();
             DisplayImage(image);
         }
 
-        public WDMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image, double buttonRadius = 0d)
+        public WDMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image)
         {
             _titleString = caption;
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
             DisplayImage(image);
             DisplayButtons(button);
         }
@@ -179,7 +167,8 @@ namespace WPFDevelopers.Controls
             var chrome = new WindowChrome
             {
                 CaptionHeight = 40,
-                GlassFrameThickness = new Thickness(1),
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+                ResizeBorderThickness = new Thickness(0)
             };
             WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
             WindowChrome.SetWindowChrome(this, chrome);
@@ -187,8 +176,9 @@ namespace WPFDevelopers.Controls
             var chrome = new WindowChrome
             {
                 CaptionHeight = 40,
-                GlassFrameThickness = new Thickness(1),
-                UseAeroCaptionButtons = false
+                GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
+                UseAeroCaptionButtons = false,
+                ResizeBorderThickness = new Thickness(0)
             };
              WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
              WindowChrome.SetWindowChrome(this, chrome);
@@ -270,7 +260,7 @@ namespace WPFDevelopers.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.WarningGeometry");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.InfoGeometry");
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.WarningBrush");
                     break;
                 case MessageBoxImage.Error:
@@ -282,7 +272,7 @@ namespace WPFDevelopers.Controls
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.SuccessBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.InfoGeometry");
+                    _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.QuestionGeometry");
                     _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PrimaryBrush");
                     break;
             }

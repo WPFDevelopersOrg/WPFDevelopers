@@ -2,6 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
 VisualStudioVersion = 18.5.11626.173 insiders
+VisualStudioVersion = 18.5.11626.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Samples40", "WPFDevelopers.Samples40\WPFDevelopers.Samples40.csproj", "{31F881A8-9DDF-4FC2-999B-D47BC25CB47D}"
 EndProject

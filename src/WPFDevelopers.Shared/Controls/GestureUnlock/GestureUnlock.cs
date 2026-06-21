@@ -12,26 +12,13 @@ using WPFDevelopers.Helpers;
 namespace WPFDevelopers.Controls
 {
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
-    public class GestureUnlock : Control
+    public class GestureUnlock : StatefulControlBase
     {
         private const string CanvasTemplateName = "PART_GestureUnlockCanvas";
 
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.Register("Password", typeof(string), typeof(GestureUnlock),
                 new PropertyMetadata(string.Empty));
-
-        public static readonly DependencyProperty StateProperty =
-            DependencyProperty.Register("State", typeof(GestureState), typeof(GestureUnlock),
-                new PropertyMetadata(GestureState.None, OnIsErrorChanged));
-
-        public static readonly DependencyProperty GestureCompletedCommandProperty =
-            DependencyProperty.Register("GestureCompletedCommand", typeof(ICommand), typeof(GestureUnlock),
-                new PropertyMetadata(null));
-
-
-        public static readonly RoutedEvent GestureCompletedEvent =
-            EventManager.RegisterRoutedEvent("GestureCompleted", RoutingStrategy.Bubble, typeof(RoutedEventHandler),
-                typeof(GestureUnlock));
 
         private Canvas _canvas;
 
@@ -48,6 +35,8 @@ namespace WPFDevelopers.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(GestureUnlock),
                 new FrameworkPropertyMetadata(typeof(GestureUnlock)));
+            StateProperty.OverrideMetadata(typeof(GestureUnlock),
+                new PropertyMetadata(ControlState.None, OnIsErrorChanged));
         }
 
         public GestureUnlock()
@@ -58,20 +47,8 @@ namespace WPFDevelopers.Controls
 
         public string Password
         {
-            get => (string) GetValue(PasswordProperty);
+            get => (string)GetValue(PasswordProperty);
             set => SetValue(PasswordProperty, value);
-        }
-
-        public GestureState State
-        {
-            get => (GestureState) GetValue(StateProperty);
-            set => SetValue(StateProperty, value);
-        }
-
-        public ICommand GestureCompletedCommand
-        {
-            get => (ICommand) GetValue(GestureCompletedCommandProperty);
-            set => SetValue(GestureCompletedCommandProperty, value);
         }
 
         private static void OnIsErrorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -82,8 +59,8 @@ namespace WPFDevelopers.Controls
                 ctrl.UpdateLineStroke();
                 switch (ctrl.State)
                 {
-                    case GestureState.Success:
-                    case GestureState.Error:
+                    case ControlState.Success:
+                    case ControlState.Error:
                         if (ctrl._timer == null)
                         {
                             ctrl._timer = new DispatcherTimer
@@ -102,14 +79,6 @@ namespace WPFDevelopers.Controls
                 }
             }
         }
-
-
-        public event RoutedEventHandler GestureCompleted
-        {
-            add => AddHandler(GestureCompletedEvent, value);
-            remove => RemoveHandler(GestureCompletedEvent, value);
-        }
-
 
         public override void OnApplyTemplate()
         {
@@ -132,7 +101,7 @@ namespace WPFDevelopers.Controls
             base.OnMouseLeave(e);
             if (_tracking && !_isEventHandled)
             {
-                _isEventHandled = true; 
+                _isEventHandled = true;
                 CompleteGesture();
             }
             _tracking = false;
@@ -141,7 +110,7 @@ namespace WPFDevelopers.Controls
 
         private void CleraGestureAndLine()
         {
-            State = GestureState.None;
+            State = ControlState.None;
             _gestureItems.ForEach(x => { x.IsSelected = false; });
             _gestures.Clear();
             _line.Points.Clear();
@@ -172,9 +141,9 @@ namespace WPFDevelopers.Controls
             _gestureItems.Clear();
             _canvas.Children.Clear();
             double radius = 20d;
-            int cols = 3; 
-            int rows = 3; 
-            double gap = (300 - (3 * radius * 2)) / 4; 
+            int cols = 3;
+            int rows = 3;
+            double gap = (300 - (3 * radius * 2)) / 4;
             gap = Math.Max(gap, radius);
             double totalWidth = (3 * radius * 2) + (2 * gap);
             double totalHeight = (3 * radius * 2) + (2 * gap);
@@ -213,7 +182,7 @@ namespace WPFDevelopers.Controls
             if (!_isEventHandled)
             {
                 _tracking = false;
-                _isEventHandled = true; 
+                _isEventHandled = true;
                 CompleteGesture();
             }
         }
@@ -222,8 +191,7 @@ namespace WPFDevelopers.Controls
         {
             if (_gestures.Count == 0) return;
             Password = string.Join("", _gestures);
-            GestureCompletedCommand?.Execute(Password);
-            RaiseEvent(new RoutedEventArgs(GestureCompletedEvent, Password));
+            RaiseCompleted(Password);
             ResetMoveLine();
         }
 
@@ -269,7 +237,7 @@ namespace WPFDevelopers.Controls
                 var dist = (position - new Point(centerX, centerY)).Length;
                 if (dist <= gestureItem.Width / 2 && !_gestures.Contains(i))
                 {
-                    if(_gestures.Count == 1)
+                    if (_gestures.Count == 1)
                     {
                         var brush = _gestureItems.Count > 0 ? _gestureItems[0].BorderBrush : ThemeManager.Instance.PrimaryBrush;
                         _line.Stroke = brush;
@@ -278,12 +246,12 @@ namespace WPFDevelopers.Controls
                     _gestures.Add(i);
                     _line.Points.Add(new Point(centerX, centerY));
                     gestureItem.IsSelected = true;
-                    if (_moveLine.X1 == 0 
-                        && 
+                    if (_moveLine.X1 == 0
+                        &&
                         _moveLine.Y1 == 0
                         &&
-                        _moveLine.X2 == 0 
-                        && 
+                        _moveLine.X2 == 0
+                        &&
                         _moveLine.Y2 == 0)
                     {
                         _moveLine.X1 = centerX;
@@ -312,10 +280,10 @@ namespace WPFDevelopers.Controls
 
             switch (State)
             {
-                case GestureState.Success:
+                case ControlState.Success:
                     _line.Stroke = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.SuccessBrush");
                     break;
-                case GestureState.Error:
+                case ControlState.Error:
                     _line.Stroke = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.DangerBrush");
                     break;
                 default:

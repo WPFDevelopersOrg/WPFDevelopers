@@ -268,6 +268,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `GroupBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 分组框 |
 | `TabControl` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 标签控件（四方向/可关闭） |
 | `Menu` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 菜单 |
+| `wd:SplitButton` | NuGet | [SplitButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SplitButtonExample.xaml) | 分割按钮（主按钮+下拉菜单，支持文本/图标选项） |
 | `Calendar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 日历控件 |
 | `DatePicker` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 日期选择器（含时间选择） |
 
@@ -290,6 +291,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:Dial` | NuGet | [DialExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DialExample.xaml) | 拨号盘控件 |
 | `wd:GestureUnlock` | NuGet | [GestureUnlockExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GestureUnlockExample.xaml) | 手势解锁 |
 | `wd:SvgViewer` | NuGet | [SvgViewerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SvgViewerExample.xaml) | SVG 查看器 |
+| `wd:OtpBox` | NuGet | [OtpBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtpBoxExample.xaml) | OTP 验证码输入框（自动跳转/退格/粘贴） |
 
 ### 加载动画
 
@@ -327,8 +329,9 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 
 | 控件名 | 来源 | 示例文件 | 说明 |
 |--------|------|----------|------|
-| `wd:Carousel` | NuGet | [CarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExample.xaml) | 轮播图 |
-| `wd:CarouselEx`（EmphasizerCarousel） | NuGet | [CarouselExampleEx.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExampleEx.xaml) | 强调型轮播图 |
+| `wd:Carousel` | NuGet | [CarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CarouselExample.xaml) | 轮播图（自动播放/圆点指示器/箭头/点击跳转） |
+| `wd:FocusCarousel` | NuGet | [FocusCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/FocusCarouselExample.xaml) | 强调型轮播图（3D 翻转 + 缩放效果） |
+| `wd:CardCarousel` | NuGet | [CardCarouselExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CardCarouselExample.xaml) | 高级轮播图（多层叠加动画） |
 | `wd:CircleMenu` | NuGet | [CircleMenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleMenuExample.xaml) | 圆形菜单 |
 | `wd:SixGridView` | NuGet | [SixGirdViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SixGirdViewExample.xaml) | 六宫格布局 |
 | `wd:WaterfallPanel` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | 瀑布流面板 |
@@ -363,6 +366,12 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | <span style="color:#e6a23c">🟡 CanvasHandWriting</span> | 示例专属 | [CanvasHandWritingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CanvasHandWriting/CanvasHandWritingExample.xaml) | Canvas 平滑笔迹绘制 |
 | <span style="color:#e6a23c">🟡 Drawing</span> | 示例专属 | [DrawingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawingExample.xaml) | 自由手绘 |
 | <span style="color:#e6a23c">🟡 DrawPrize</span> | 示例专属 | [DrawPrizeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrawPrizeExample.xaml) | 大转盘抽奖 |
+
+### 特效与滤镜
+
+| 控件名 | 来源 | 示例文件 | 说明 |
+|--------|------|----------|------|
+| `wd:GrayscaleEffect` | NuGet | [GrayscaleEffectExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GrayscaleEffectExample.xaml) | 灰度滤镜效果（可控制灰度强度） |
 
 ### 媒体与图像处理
 
@@ -419,19 +428,19 @@ using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 ```csharp
 // 1. 仅消息文本（默认 OK 按钮，无图标）
-MessageBoxResult Show(string messageBoxText, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 2. 消息文本 + 标题
-MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 3. 消息文本 + 标题 + 按钮组合
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 4. 消息文本 + 标题 + 图标
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 
 // 5. 消息文本 + 标题 + 按钮组合 + 图标（完整参数）
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, double buttonRadius = 0d, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
 ```
 
 ### 参数说明
@@ -443,7 +452,7 @@ MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton bu
 | `button` | MessageBoxButton | OK | 按钮组合：`OK` / `OKCancel` / `YesNo` / `YesNoCancel` |
 | `icon` | MessageBoxImage | 无 | 图标类型：`Information` / `Warning` / `Error` / `Question` |
 | `owner` | Window | null | 父窗口。传入后对话框居中显示并带遮罩层 |
-| `buttonRadius` | double | 0 | 按钮圆角半径（像素），设为 4 可获得圆角按钮效果 |
+| `buttonRadius` | double? | null | 按钮圆角半径。不传时自动根据系统判断：Win11 默认 4px，Win10 默认 0px |
 | `isDefault` | bool | true | 是否将第一个按钮设为默认按钮（Enter 键触发） |
 
 ### 图标与配色映射
@@ -508,6 +517,344 @@ MessageBox.Show("操作成功！", "提示", MessageBoxButton.OK, MessageBoxImag
 - **关闭方式**：点击右上角关闭按钮、按 `Escape` 键、点击按钮
 - **父窗口**：传入 `owner` 时对话框居中于父窗口并显示遮罩；不传入时自动检测当前窗口或屏幕居中
 - **按钮文本**：自动跟随系统语言本地化（通过 `LanguageManager`）
+
+---
+
+## SplitButton 分割按钮使用教程
+
+`SplitButton` 是 WPFDevelopers 提供的分割按钮控件，左侧为可点击的主按钮区域，右侧为下拉菜单切换按钮，支持文本选项和带图标的富内容选项。
+
+### 基础用法（ItemsSource 数据绑定）
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    SelectionChanged="SplitButton_SelectionChanged" />
+```
+
+```csharp
+// ViewModel 或 Code-behind
+public ObservableCollection<string> MenuItems { get; } = new ObservableCollection<string>
+{
+    "Save in PDF",
+    "Save in Word",
+    "Save in Excel",
+    "Save in Image"
+};
+
+private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+{
+    // e.NewValue 为选中的项
+}
+```
+
+### 主样式（边框 + 透明背景）
+
+```xml
+<wd:SplitButton Width="150" Content="File" ItemsSource="{Binding MenuItems}" />
+```
+
+### Primary 样式（实心主色背景）
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Content="File"
+    ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonPrimary}" />
+```
+
+### 自定义颜色 + XAML 子元素（支持 MenuItem 带图标）
+
+```xml
+<wd:SplitButton
+    Width="150"
+    Background="{StaticResource WD.SuccessBrush}"
+    BorderBrush="{StaticResource WD.SuccessBrush}"
+    Content="File"
+    Foreground="White">
+    <MenuItem Header="Copy">
+        <MenuItem.Icon>
+            <wd:PathIcon Kind="Copy" />
+        </MenuItem.Icon>
+    </MenuItem>
+    <MenuItem Header="Paste" />
+    <MenuItem Header="Cut" />
+</wd:SplitButton>
+```
+
+### 主要属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `Content` | object | null | 主按钮显示内容 |
+| `ItemsSource` | object | null | 下拉菜单数据源（IEnumerable） |
+| `IsDropDownOpen` | bool | false | 下拉菜单是否展开（双向绑定） |
+| `ContextMenuStyle` | Style | null | ContextMenu 自定义样式 |
+
+### 事件
+
+| 事件 | 说明 |
+|------|------|
+| `Click` | 点击主按钮区域时触发（点击 ToggleButton 不会触发） |
+| `SelectionChanged` | 选择下拉菜单项时触发 |
+
+### 可用样式
+
+| 样式键 | 说明 |
+|--------|------|
+| `WD.SplitButton`（默认） | 边框 + 透明背景，鼠标悬停时边框变主题色 |
+| `WD.SplitButtonPrimary` | 无边框 + 主色实心背景 + 白色文字 |
+
+### 交互行为
+
+| 操作 | 行为 |
+|------|------|
+| 点击主按钮区域 | 触发 `Click` 事件 |
+| 点击右侧 ToggleButton | 展开/收起下拉菜单 |
+| 点击菜单项 | 按钮 Content 更新为选中项，触发 `SelectionChanged` |
+| 点击菜单外部区域 | 自动关闭下拉菜单 |
+
+---
+
+## Carousel 轮播图使用教程
+
+`Carousel` 是 WPFDevelopers 提供的轮播图控件，支持自动播放、圆点指示器、箭头导航、点击跳转等功能。
+
+### 基础用法（XAML 声明）
+
+```xml
+<wd:Carousel
+    Width="400" Height="200"
+    AutoPlay="True"
+    AutoPlayInterval="0:0:4"
+    ShowArrows="True"
+    ItemClick="Carousel_ItemClick">
+    <Border Background="#722ed1">
+        <TextBlock Text="Slide 1" Foreground="White" FontSize="24" />
+    </Border>
+    <Border Background="#eb2f96">
+        <TextBlock Text="Slide 2" Foreground="White" FontSize="24" />
+    </Border>
+    <Border Background="#1890ff">
+        <TextBlock Text="Slide 3" Foreground="White" FontSize="24" />
+    </Border>
+</wd:Carousel>
+```
+
+### 数据绑定用法（MVVM）
+
+```xml
+<wd:Carousel
+    ItemsSource="{Binding ImagePaths}"
+    DisplayMemberPath="URL"
+    AutoPlay="True"
+    ItemClickCommand="{Binding CarouselClickCommand}" />
+```
+
+```csharp
+// 数据模型
+public class CarouselSlideModel
+{
+    public string Title { get; set; }
+    public string URL { get; set; }
+}
+
+// ViewModel
+public ObservableCollection<CarouselSlideModel> ImagePaths { get; set; }
+
+public ICommand CarouselClickCommand => new RelayCommand(param =>
+{
+    if (param is CarouselSlideModel model)
+    {
+        Toast.Push($"点击了图片 - {model.Title}", ToastImage.Success, true);
+    }
+});
+```
+
+### 主要属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `ItemsSource` | IEnumerable | null | 数据源 |
+| `SelectedIndex` | int | 0 | 当前选中项索引 |
+| `SelectedItem` | object | null | 当前选中项 |
+| `AutoPlay` | bool | false | 是否自动播放 |
+| `AutoPlayInterval` | TimeSpan | 3秒 | 自动播放间隔 |
+| `AnimationDuration` | double | 0.5 | 切换动画时长（秒） |
+| `ShowDots` | bool | true | 是否显示圆点指示器 |
+| `ShowArrows` | bool | true | 是否显示左右箭头 |
+| `ItemTemplate` | DataTemplate | null | 数据模板 |
+| `DisplayMemberPath` | string | null | 显示成员路径（直接显示属性值） |
+
+### 事件
+
+| 事件 | 说明 |
+|------|------|
+| `ItemClick` | 点击幻灯片时触发 |
+| `SelectedItemChanged` | 选中项变化时触发 |
+
+### 方法
+
+| 方法 | 说明 |
+|------|------|
+| `GoToNext()` | 切换到下一张 |
+| `GoToPrevious()` | 切换到上一张 |
+
+---
+
+## FocusCarousel / CardCarousel
+
+### FocusCarousel（强调型轮播图）
+
+3D 翻转 + 缩放效果的轮播图，中间项放大突出显示：
+
+```xml
+<wd:FocusCarousel>
+    <Image Source="pack://application:,,,/Images/photo1.jpg" />
+    <Image Source="pack://application:,,,/Images/photo2.jpg" />
+    <Image Source="pack://application:,,,/Images/photo3.jpg" />
+</wd:FocusCarousel>
+```
+
+### CardCarousel（卡片轮播图）
+
+多层叠加动画效果的轮播图，支持自动播放和间隔控制：
+
+```xml
+<wd:CardCarousel AutoPlay="True" AutoPlayInterval="0:0:5">
+    <Image Source="pack://application:,,,/Images/photo1.jpg" />
+    <Image Source="pack://application:,,,/Images/photo2.jpg" />
+    <Image Source="pack://application:,,,/Images/photo3.jpg" />
+</wd:CardCarousel>
+```
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `AutoPlay` | bool | false | 是否自动播放 |
+| `AutoPlayInterval` | TimeSpan | 0:0:3 | 播放间隔（TimeSpan） |
+
+---
+
+## GrayscaleEffect 灰度滤镜使用教程
+
+`GrayscaleEffect` 是一个像素着色器效果，可以将任何视觉元素转换为灰度显示，常用于全局灰度模式（如纪念日）。
+
+### 应用于单个控件
+
+```xml
+<Image Source="photo.jpg">
+    <Image.Effect>
+        <wd:GrayscaleEffect Factor="1" />
+    </Image.Effect>
+</Image>
+```
+
+### 应用于整个窗口
+
+```xml
+<wd:Window>
+    <wd:Window.Effect>
+        <wd:GrayscaleEffect x:Name="grayscaleEffect" Factor="0" />
+    </wd:Window.Effect>
+</wd:Window>
+```
+
+```csharp
+// 开启灰度
+var animation = new DoubleAnimation
+{
+    To = 1,
+    Duration = TimeSpan.FromMilliseconds(1000),
+    EasingFunction = new SineEase { EasingMode = EasingMode.EaseOut }
+};
+grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, animation);
+
+// 关闭灰度
+animation.To = 0;
+grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, animation);
+```
+
+### 主要属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `Factor` | double | 0 | 灰度强度，0 = 原始彩色，1 = 完全灰度 |
+| `Brightness` | double | 0 | 亮度调节 |
+
+---
+
+## OtpBox OTP 验证码输入框使用教程
+
+`OtpBox` 是专为 OTP（一次性密码）输入场景设计的控件，支持自动聚焦跳转、退格回退、粘贴填充等功能。
+
+### 基础用法
+
+```xml
+<wd:OtpBox Length="6" Completed="OtpBoxCompleted" />
+```
+
+### MVVM 绑定
+
+```xml
+<wd:OtpBox
+    Length="6"
+    Value="{Binding OtpCode, Mode=TwoWay}"
+    CompletedCommand="{Binding VerifyCommand}" />
+```
+
+```csharp
+// Event 方式
+private void OtpBoxCompleted(object sender, RoutedEventArgs e)
+{
+    var otpBox = e.OriginalSource as OtpBox;
+    var pwd = otpBox?.Value ?? string.Empty;
+
+    if (pwd != _otpPassword)
+    {
+        myOtpBox.State = ControlState.Error;
+        return;
+    }
+
+    myOtpBox.State = ControlState.Success;
+}
+
+// Command 方式
+public ICommand CompletedCommand => new RelayCommand(param =>
+{
+    var pwd = param.ToString();
+    // 验证逻辑...
+});
+```
+
+### 主要属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `Length` | int | 4 | 验证码位数 |
+| `Value` | string | "" | 当前输入值（支持双向绑定） |
+| `State` | ControlState | None | 验证状态（None/Success/Error） |
+| `CompletedCommand` | ICommand | null | 完成时执行的命令 |
+
+### 事件
+
+| 事件 | 说明 |
+|------|------|
+| `Completed` | 所有位数填写完成后触发 |
+
+### 交互特性
+
+| 操作 | 行为 |
+|------|------|
+| 输入数字 | 自动跳到下一个输入框 |
+| 退格（空框） | 跳到上一个框并删除末尾字符 |
+| Ctrl+V 粘贴 | 自动逐位填充，非数字字符过滤 |
+| 方向键 ← → | 在输入框之间切换 |
+| Enter / Tab | 跳到下一个输入框 |
+| Error 状态 | 1.5 秒后自动清空并重新聚焦 |
+| Success 状态 | 1.5 秒后自动恢复默认状态 |
 
 ---
 

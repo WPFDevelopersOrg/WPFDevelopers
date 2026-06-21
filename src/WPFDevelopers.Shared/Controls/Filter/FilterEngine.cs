@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace WPFDevelopers.Controls
@@ -16,16 +19,125 @@ namespace WPFDevelopers.Controls
         void Refresh();
         HashSet<object> GetFilterValues(string propertyName);
         ObservableCollection<object> View { get; }
+        /// <summary>
+        /// The existence of this property only serves syntax completeness, one can safely return null.
+        /// </summary>
+        object FilterChangedNotification { get; }
     }
 
-    public class FilterEngine<T> : IFilterEngine, IDisposable
+    public struct FilterInfo
     {
-        public IList<T> Source { get; set; }
+        internal FilterInfo(string propertyName, IEnumerable values)
+        {
+            PropertyName = propertyName;
+            var objectValues = values?.Cast<object>();
+            var hashSet = objectValues is null ? null : new HashSet<object>(objectValues);
 
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
+            Values = hashSet;
+#else
+            Values = hashSet;
+#endif
+        }
+
+        public string PropertyName { get; internal set; }
+
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
+        public ICollection<object> Values { get; internal set; }
+#else
+        public IReadOnlyCollection<object> Values { get; internal set; }
+#endif
+    }
+
+    public class FilterRelatedEventArgs : EventArgs
+    {
+        internal FilterRelatedEventArgs(FilterInfo filter)
+        {
+            Filter = filter;
+        }
+        public FilterInfo Filter { get; set; }
+    }
+
+    public class FiltersRelatedEventArgs : EventArgs
+    {
+        internal FiltersRelatedEventArgs(IEnumerable<FilterInfo> filters)
+        {
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
+            Filters = new List<FilterInfo>(filters);
+#else
+        Filters = new List<FilterInfo>(filters);
+#endif
+        }
+
+#if NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471
+        public ICollection<FilterInfo> Filters { get; set; }
+#else
+    public IReadOnlyCollection<FilterInfo> Filters { get; set; }
+#endif
+    }
+
+    public class FilterAppliedEventArgs : FilterRelatedEventArgs
+    {
+        internal FilterAppliedEventArgs(FilterInfo filter) : base(filter)
+        {
+
+        }
+    }
+
+    public class FiltersClearedEventArgs : FiltersRelatedEventArgs
+    {
+        internal FiltersClearedEventArgs(IEnumerable<string> propertyNames) : base(
+            propertyNames.Select(t => new FilterInfo(t, null)))
+        {
+        }
+        internal FiltersClearedEventArgs(FilterInfo filter) : base(new FilterInfo[] { filter })
+        {
+        }
+    }
+
+    public class FiltersChangedEventArgs : FiltersRelatedEventArgs
+    {
+        internal FiltersChangedEventArgs(IEnumerable<FilterInfo> filters) : base(filters)
+        {
+        }
+        internal FiltersChangedEventArgs(IEnumerable<string> propertyNames) : base(
+            propertyNames.Select(t => new FilterInfo(t, null)))
+        {
+        }
+        internal FiltersChangedEventArgs(FilterInfo filter) : base(new FilterInfo[] { filter })
+        {
+        }
+    }
+
+    public class FilterEngine<T> : IFilterEngine, INotifyPropertyChanged, IDisposable
+    {
+        #region INotifyPropertyChanged implementations
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+        #region Dummy property FilterChangedNotification
+
+        /// <summary>
+        /// This is a dummy property to meet syntax completeness requirements.
+        /// </summary>
+        public object FilterChangedNotification => null;
+        protected virtual void NotifyFilterChanged()
+        {
+            OnPropertyChanged(nameof(FilterChangedNotification));
+        }
+
+        #endregion
+        public IList<T> Source { get; set; }
         IEnumerable IFilterEngine.Source => Source;
         Type IFilterEngine.ItemType => typeof(T);
 
         public ObservableCollection<T> TypedView { get; } = new ObservableCollection<T>();
+        public EventHandler<FilterAppliedEventArgs> OnFilterApplied;
+        public EventHandler<FiltersClearedEventArgs> OnFiltersCleared;
+        public EventHandler<FiltersChangedEventArgs> OnFiltersChanged;
 
         private ObservableCollection<object> _objectView;
         private readonly object _syncLock = new object();
@@ -119,22 +231,44 @@ namespace WPFDevelopers.Controls
 
         public void ApplyFilter(string propertyName, IEnumerable<object> values)
         {
+            HashSet<object> persist = new HashSet<object>(values);
             _filters[propertyName] = new FilterCondition
             {
                 PropertyName = propertyName,
-                Values = new HashSet<object>(values)
+                Values = persist
             };
 
             Refresh();
+            NotifyFilterChanged();
+            FilterInfo filter = new FilterInfo(propertyName, persist);
+            OnFilterApplied?.Invoke(this, new FilterAppliedEventArgs(filter));
+            OnFiltersChanged?.Invoke(this, new FiltersChangedEventArgs(filter));
         }
 
-        public void ClearFilter(string propertyName)
+        public void ClearFilters(IEnumerable<string> propertyNames)
         {
-            if (_filters.ContainsKey(propertyName))
+            if (propertyNames is null)
+            {
+                return;
+            }
+            propertyNames = new List<string>(propertyNames);
+            foreach (var propertyName in propertyNames)
+            {
                 _filters.Remove(propertyName);
+            }
 
             Refresh();
+            NotifyFilterChanged();
+            OnFiltersCleared?.Invoke(this, new FiltersClearedEventArgs(propertyNames));
+            OnFiltersChanged?.Invoke(this, new FiltersChangedEventArgs(propertyNames));
         }
+
+        /// <summary>
+        /// Remove the filter associated with the specified property name.
+        /// Use <seealso cref="ClearFilters"/> to remove multiple filters at once.
+        /// </summary>
+        /// <param name="propertyName"></param>
+        public void ClearFilter(string propertyName) => ClearFilters(new[] { propertyName });
 
         public void Refresh()
         {
@@ -200,84 +334,4 @@ namespace WPFDevelopers.Controls
             }
         }
     }
-
-    //public class FilterEngine<T> : IFilterEngine
-    //{
-    //    public IList<T> Source { get; set; }
-
-    //    IEnumerable IFilterEngine.Source => Source;
-
-    //    Type IFilterEngine.ItemType => typeof(T);
-
-    //    public ObservableCollection<T> TypedView { get; } = new ObservableCollection<T>();
-
-    //    ObservableCollection<object> IFilterEngine.View
-    //    {
-    //        get
-    //        {
-    //            var objectView = new ObservableCollection<object>();
-    //            foreach (var item in TypedView)
-    //                objectView.Add(item);
-    //            return objectView;
-    //        }
-    //    }
-
-    //    private readonly Dictionary<string, FilterCondition> _filters
-    //        = new Dictionary<string, FilterCondition>();
-
-    //    public void ApplyFilter(string propertyName, IEnumerable<object> values)
-    //    {
-    //        _filters[propertyName] = new FilterCondition
-    //        {
-    //            PropertyName = propertyName,
-    //            Values = new HashSet<object>(values)
-    //        };
-
-    //        Refresh();
-    //    }
-
-    //    public void ClearFilter(string propertyName)
-    //    {
-    //        if (_filters.ContainsKey(propertyName))
-    //            _filters.Remove(propertyName);
-
-    //        Refresh();
-    //    }
-
-    //    public void Refresh()
-    //    {
-    //        TypedView.Clear();
-
-    //        if (Source == null)
-    //            return;
-
-    //        foreach (var item in Source)
-    //        {
-    //            if (Match(item))
-    //                TypedView.Add(item);
-    //        }
-    //    }
-
-    //    private bool Match(T item)
-    //    {
-    //        foreach (var filter in _filters.Values)
-    //        {
-    //            var getter = PropertyAccessor<T>.Get(filter.PropertyName);
-    //            var value = getter(item);
-
-    //            if (!filter.Values.Contains(value))
-    //                return false;
-    //        }
-
-    //        return true;
-    //    }
-
-    //    public HashSet<object> GetFilterValues(string propertyName)
-    //    {
-    //        if (_filters.TryGetValue(propertyName, out var condition))
-    //            return condition.Values;
-
-    //        return null;
-    //    }
-    //}
 }

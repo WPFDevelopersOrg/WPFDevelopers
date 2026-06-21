@@ -16,7 +16,7 @@
                 <wd:GestureUnlock
                     x:Name="myGestureUnlock"
                     wd:ElementHelper.CornerRadius="5"
-                    GestureCompleted="GestureCompleted">
+                    Completed="GestureCompleted">
                     <wd:GestureUnlock.Background>
                         <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Right.jpg" />
                     </wd:GestureUnlock.Background>
@@ -33,7 +33,7 @@
                     Width="400"
                     Height="500"
                     wd:ElementHelper.CornerRadius="10"
-                    GestureCompletedCommand="{Binding GestureCompletedCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                    CompletedCommand="{Binding CompletedCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
                     <wd:GestureUnlock.Background>
                         <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/IconicThumbnail/LcupqA.jpg" />
                     </wd:GestureUnlock.Background>

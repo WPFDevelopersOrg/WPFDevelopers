@@ -82,7 +82,6 @@ namespace WPFDevelopers.Net40
             _windowChrome = new WindowChrome
             {
                 CaptionHeight = TitleHeight,
-                //ResizeBorderThickness = new Thickness(6),
                 GlassFrameThickness = new Thickness(0, 0, 0, 0.1),
             };
             WindowChrome.SetWindowChrome(this, _windowChrome);

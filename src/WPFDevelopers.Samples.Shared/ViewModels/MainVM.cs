@@ -129,6 +129,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.BasicControls:
                     ControlPanel = new BasicControlsExample();
                     break;
+                case MenuEnum.MessageBox:
+                    ControlPanel = new MessageBoxExample();
+                    break;
                 case MenuEnum.NotifyIcon:
                     ControlPanel = new NotifyIconExample();
                     break;
@@ -202,11 +205,11 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ScrollViewer:
                     ControlPanel = new ScrollViewerAnimationExample();
                     break;
-                case MenuEnum.Carousel:
-                    ControlPanel = new CarouselExample();
+                case MenuEnum.CardCarousel:
+                    ControlPanel = new CardCarouselExample();
                     break;
-                case MenuEnum.CarouselEx:
-                    ControlPanel = new CarouselExampleEx();
+                case MenuEnum.FocusCarousel:
+                    ControlPanel = new FocusCarouselExample();
                     break;
                 case MenuEnum.OtherControls:
                     ControlPanel = new OtherControlExample();
@@ -406,6 +409,19 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.DataGridFilter:
                     ControlPanel = new DataGridFilterExample();
                     break;
+                case MenuEnum.GrayscaleEffect:
+                    ControlPanel = new GrayscaleEffectExample();
+                    break;
+                case MenuEnum.OtpBox:
+                    ControlPanel = new OtpBoxExample();
+                    break;
+                case MenuEnum.Carousel:
+                    ControlPanel = new CarouselExample();
+                    break;
+                case MenuEnum.SplitButton:
+                    ControlPanel = new SplitButtonExample();
+                    break;
+                //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();
                     new VirtualizingWrapPanelExample().MaskShowDialog();
@@ -414,7 +430,6 @@ namespace WPFDevelopers.Samples.ViewModels
                     ControlPanel = new AcrylicBlurExample();
                     new AcrylicBlurWindowExample().MaskShowDialog();
                     break;
-                //将TaskbarInfo放到最后
                 case MenuEnum.TaskbarInfo:
                     ControlPanel = new TaskbarItemInfo();
                     var taskbar = new TaskbarItemInfoExample();

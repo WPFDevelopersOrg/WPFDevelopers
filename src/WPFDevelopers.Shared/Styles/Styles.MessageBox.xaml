@@ -14,7 +14,6 @@
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="SizeToContent" Value="WidthAndHeight" />
-        <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="ShowInTaskbar" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
@@ -91,7 +90,6 @@
                                     <Button
                                         x:Name="PART_ButtonYes"
                                         Width="60"
-                                        helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="{Binding [Yes], Source={x:Static resx:LanguageManager.Instance}}"
                                         IsDefault="{TemplateBinding IsDefault}"
                                         Style="{DynamicResource WD.PrimaryButton}"
@@ -100,14 +98,12 @@
                                         x:Name="PART_ButtonNo"
                                         Width="60"
                                         Margin="6,0,0,0"
-                                        helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="{Binding [No], Source={x:Static resx:LanguageManager.Instance}}"
                                         Visibility="Collapsed" />
                                     <Button
                                         x:Name="PART_ButtonOK"
                                         Width="60"
                                         Margin="6,0,0,0"
-                                        helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="{Binding [OK], Source={x:Static resx:LanguageManager.Instance}}"
                                         IsDefault="{TemplateBinding IsDefault}"
                                         Style="{DynamicResource WD.PrimaryButton}" />
@@ -115,7 +111,6 @@
                                         x:Name="PART_ButtonCancel"
                                         Width="60"
                                         Margin="6,0,0,0"
-                                        helpers:ElementHelper.CornerRadius="{Binding Path=(controls:WDMessageBox.ButtonCornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}"
                                         Visibility="Collapsed" />
                                 </UniformGrid>

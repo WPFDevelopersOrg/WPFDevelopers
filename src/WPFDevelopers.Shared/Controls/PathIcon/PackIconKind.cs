@@ -11,6 +11,7 @@ namespace WPFDevelopers.Controls
         [Description("WD.PreviousGeometry")] Previous,
         [Description("WD.NextGeometry")] Next,
         [Description("WD.DatePickerGeometry")] DatePicker,
+        [Description("WD.ChevronLeftGeometry")] ChevronLeft,
         [Description("WD.ChevronRightGeometry")] ChevronRight,
         [Description("WD.SortArrowGeometry")] SortArrow,
         [Description("WD.WindowMaximizeGeometry")] WindowMaximize,

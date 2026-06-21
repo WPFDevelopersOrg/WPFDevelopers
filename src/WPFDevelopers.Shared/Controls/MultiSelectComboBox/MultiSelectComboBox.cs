@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +12,6 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Threading;
 using WPFDevelopers.Helpers;
 
@@ -27,7 +25,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = ListViewTemplateNameSearch, Type = typeof(DataGrid))]
     [TemplatePart(Name = DropDownScrollViewer, Type = typeof(ScrollViewer))]
     [TemplatePart(Name = PART_Border, Type = typeof(Border))]
-
+    [TemplatePart(Name = PART_EditableTextBox, Type = typeof(TextBox))]
     public class MultiSelectComboBox : ListView
     {
         private const string PART_Popup = "PART_Popup";
@@ -38,6 +36,7 @@ namespace WPFDevelopers.Controls
         private const string ListViewTemplateNameSearch = "PART_SearchSelector";
         private const string DropDownScrollViewer = "DropDownScrollViewer";
         private const string PART_Border = "PART_Border";
+        private const string PART_EditableTextBox = "PART_EditableTextBox";
 
         public static readonly RoutedCommand ToggleDropDownCommand = new RoutedCommand();
 
@@ -89,7 +88,7 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("ShowType", typeof(ShowType), typeof(MultiSelectComboBox),
                 new PropertyMetadata(ShowType.Text));
 
-        private HwndSource _hwndSource;
+        private PopupWindowHook _popupWindowHook;
         private Window _window;
         private bool _ignoreTextValueChanged;
         private Popup _popup;
@@ -100,6 +99,7 @@ namespace WPFDevelopers.Controls
         private ScrollViewer _scrollViewer;
         private CheckBox _checkBox;
         private Border _border;
+        private TextBox _editableTextBox;
         private string _theLastText;
         private bool _isUpdating;
 
@@ -305,27 +305,24 @@ namespace WPFDevelopers.Controls
             selectedList = new List<object>();
             selectedSearchList = new List<object>();
             selectedItems = new List<object>();
+            _editableTextBox = GetTemplateChild(PART_EditableTextBox) as TextBox;
+            if (_editableTextBox != null)
+            {
+                _editableTextBox.AddHandler(UIElement.PreviewMouseUpEvent,
+                    new MouseButtonEventHandler(OnEditableTextBox_PreviewMouseUp), true);
+            }
+
             _textBox = GetTemplateChild(TextBoxTemplateName) as TextBox;
             if (_textBox != null)
                 ApplySearchLogic();
             _window = Window.GetWindow(this);
             if (_window != null)
-            {
-                if (_window.IsInitialized)
-                    WindowSourceInitialized(_window, EventArgs.Empty);
-                else
-                {
-                    _window.SourceInitialized -= WindowSourceInitialized;
-                    _window.SourceInitialized += WindowSourceInitialized;
-                }
-            }
+                _popupWindowHook = new PopupWindowHook(_window, () => IsDropDownOpen = false);
             _panelDropDown = GetTemplateChild(PART_DropDownPanel) as Panel;
 
             _popup = GetTemplateChild(PART_Popup) as Popup;
             if (_popup != null && _window != null)
             {
-                _popup.Closed += OnPopup_Closed;
-                _popup.Closed -= OnPopup_Closed;
                 _popup.Opened -= OnPopup_Opened;
                 _popup.Opened += OnPopup_Opened;
                 _popup.GotFocus -= OnPopup_GotFocus;
@@ -359,18 +356,33 @@ namespace WPFDevelopers.Controls
             SyncListViewViews();
             Loaded += OnMultiSelectComboBox_Loaded;
             _border = GetTemplateChild(PART_Border) as Border;
-            if(_border != null)
+            if (_border != null)
                 _border.MouseUp += OnBorder_MouseUp;
 
         }
-      
+
         private void OnBorder_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            IsDropDownOpen = !IsDropDownOpen;
-            e.Handled = true;
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                IsDropDownOpen = !IsDropDownOpen;
+                e.Handled = true;
+            }
+            else if (e.ChangedButton == MouseButton.Right)
+            {
+                if (IsDropDownOpen)
+                    IsDropDownOpen = false;
+
+                if (ContextMenu != null)
+                {
+                    ContextMenu.PlacementTarget = this;
+                    ContextMenu.IsOpen = true;
+                }
+                e.Handled = true;
+            }
         }
 
-       
+
         private void OnMultiSelectComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateText();
@@ -429,32 +441,16 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private void OnPopup_Closed(object sender, EventArgs e)
+        private void OnEditableTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
-        }
-
-        private void WindowSourceInitialized(object sender, EventArgs e)
-        {
-            var window = sender as Window;
-            if (window != null)
+            if (string.IsNullOrEmpty(_editableTextBox.SelectedText))
             {
-                _hwndSource = PresentationSource.FromVisual(window) as HwndSource;
-                if (_hwndSource != null)
+                Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    _hwndSource.AddHook(WndProc);
-                }
+                    if (!IsDropDownOpen)
+                        IsDropDownOpen = true;
+                }), DispatcherPriority.Background);
             }
-        }
-
-        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            const int WM_NCLBUTTONDOWN = 0x00A1;
-            if (msg == WM_NCLBUTTONDOWN)
-            {
-                IsDropDownOpen = false;
-            }
-            return IntPtr.Zero;
         }
 
         private void OnPopup_Opened(object sender, EventArgs e)
@@ -758,10 +754,9 @@ namespace WPFDevelopers.Controls
             {
                 if (multiSelectComboBoxItem != null)
                 {
-                    if ((!string.IsNullOrEmpty(SelectedValuePath) || !string.IsNullOrEmpty(DisplayMemberPath)) && item != null)
+                    if (!string.IsNullOrEmpty(DisplayMemberPath) && item != null)
                     {
-                        var propertyInfo = item.GetType().GetProperty(SelectedValuePath);
-                        propertyInfo = propertyInfo == null ? item.GetType().GetProperty(DisplayMemberPath) : propertyInfo;
+                        var propertyInfo = item.GetType().GetProperty(DisplayMemberPath);
                         if (propertyInfo != null)
                         {
                             tag.Content = propertyInfo.GetValue(item, null);
@@ -787,13 +782,12 @@ namespace WPFDevelopers.Controls
             }
             else
             {
-                if (ItemsSource != null && (!string.IsNullOrEmpty(SelectedValuePath) || !string.IsNullOrEmpty(DisplayMemberPath)))
+                if (ItemsSource != null && !string.IsNullOrEmpty(DisplayMemberPath))
                 {
-                    var bindingPath = !string.IsNullOrEmpty(SelectedValuePath) ? SelectedValuePath : DisplayMemberPath;
-                    var property = item.GetType().GetProperty(bindingPath);
+                    var property = item.GetType().GetProperty(DisplayMemberPath);
                     if (property != null && property.GetValue(item, null) != null)
                     {
-                        var binding = new Binding(bindingPath) { Source = item };
+                        var binding = new Binding(DisplayMemberPath) { Source = item };
                         tag.SetBinding(ContentControl.ContentProperty, binding);
                     }
                     else

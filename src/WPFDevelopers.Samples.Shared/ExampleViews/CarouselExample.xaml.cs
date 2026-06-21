@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
-    /// <summary>
-    /// Interaction logic for CarouselExample.xaml
-    /// </summary>
     public partial class CarouselExample : UserControl
     {
+        public CarouselExampleViewModel ViewModel { get; }
+
         public CarouselExample()
         {
             InitializeComponent();
+            ViewModel = new CarouselExampleViewModel();
+            DataContext = ViewModel;
+        }
+
+        private void Carousel_ItemClick(object sender, RoutedEventArgs e)
+        {
+            if (sender is Carousel carousel)
+                Toast.Push($"Event: 点击了第 {carousel.SelectedIndex} 个", ToastImage.Success, true);
         }
     }
 }

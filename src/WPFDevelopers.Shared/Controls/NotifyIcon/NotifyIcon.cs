@@ -280,6 +280,8 @@ namespace WPFDevelopers.Controls
         {
             s_NotifyIcon?.Dispose();
             s_NotifyIcon = default;
+            NotifyIconCache?.Dispose();
+            NotifyIconCache = null;
         }
 
 
@@ -641,6 +643,15 @@ namespace WPFDevelopers.Controls
             bool result;
             lock (this)
             {
+                var hideData = new NOTIFYICONDATA();
+                hideData.cbSize = (uint)Marshal.SizeOf(hideData);
+                hideData.hWnd = _NOTIFYICONDATA.hWnd;
+                hideData.uTaskbarIconId = _NOTIFYICONDATA.uTaskbarIconId;
+                hideData.uFlags = NIFFlags.NIF_STATE;
+                hideData.dwState = NISFlags.NIS_HIDDEN;
+                hideData.dwStateMask = NISFlags.NIS_HIDDEN;
+                Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref hideData);
+
                 result = Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Delete, ref _NOTIFYICONDATA);
             }
 

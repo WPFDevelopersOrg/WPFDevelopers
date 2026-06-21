@@ -388,6 +388,7 @@ namespace WPFDevelopers.Controls
             {
                 throw new NullReferenceException(string.Format("You have missed to specify {0}, {1} or {2} in your template", NumericUpTemplateName, NumericDownTemplateName, TextBoxTemplateName));
             }
+            _valueTextBox.TextChanged += OnValueTextBoxChanged;
             _repeatUp.PreviewMouseUp += OnRepeatButtonPreviewMouseUp;
             _repeatDown.PreviewMouseUp += OnRepeatButtonPreviewMouseUp;
             ToggleReadOnlyMode(IsReadOnly);
@@ -531,6 +532,22 @@ namespace WPFDevelopers.Controls
         #endregion
 
         #region Private
+        private void OnValueTextBoxChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_isBusy || _valueTextBox == null) return;
+            var text = _valueTextBox.Text;
+            double convertedValue;
+            if (double.TryParse(text, out convertedValue))
+            {
+                convertedValue = Math.Max(Minimum, Math.Min(Maximum, convertedValue));
+                convertedValue = CorrectPrecision(Precision, convertedValue);
+                if (!DoubleUtil.AreClose(Value ?? 0, convertedValue))
+                {
+                    _isManual = true;
+                    Value = convertedValue;
+                }
+            }
+        }
 
         private void UnsubscribeEvents()
         {
@@ -588,7 +605,7 @@ namespace WPFDevelopers.Controls
                 else
                     Value = convertedValue;
             }
-            else
+            else if(Value.HasValue)
                 InternalSetText(Value.Value);
         }
 
@@ -648,7 +665,7 @@ namespace WPFDevelopers.Controls
 
         private void ContinueChangeValue(bool isIncrease, bool isContinue = true, bool isSkipStep = false)
         {
-            if (IsReadOnly || !IsEnabled)
+            if (IsReadOnly || !IsEnabled || !Value.HasValue)
                 return;
 
             if (isIncrease && DoubleUtil.LessThan(Value.Value, Maximum))
