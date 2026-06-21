@@ -54,7 +54,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircleMenu\*.png">
 			<Link>Resources\Images\CircleMenu\%(Filename)%(Extension)</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\*.jpg">
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\*.png">
 			<Link>Resources\Images\Craouse\%(Filename)%(Extension)</Link>
 		</Resource>
 			<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Crop\0.jpg">
