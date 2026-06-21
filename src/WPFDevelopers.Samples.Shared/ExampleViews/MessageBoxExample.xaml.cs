@@ -16,7 +16,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         private void btnInformation_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("文件删除成功。", "消息", MessageBoxButton.OK, MessageBoxImage.Information, buttonRadius: 4);
+            MessageBox.Show("文件删除成功。", "消息", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnWarning_Click(object sender, RoutedEventArgs e)
@@ -31,7 +31,7 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void btnQuestion_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question, buttonRadius: 4);
+            MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question);
         }
         private void btnMsgBoxYesNoCancel_Click(object sender, RoutedEventArgs e)
         {
