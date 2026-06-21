@@ -49,17 +49,6 @@ namespace WPFDevelopers.Controls
 
         private TextBlock _title;
 
-
-        public CornerRadius ButtonCornerRadius
-        {
-            get { return (CornerRadius)GetValue(ButtonRadiusProperty); }
-            set { SetValue(ButtonRadiusProperty, value); }
-        }
-
-        public static readonly DependencyProperty ButtonRadiusProperty =
-            DependencyProperty.Register("ButtonCornerRadius", typeof(CornerRadius), typeof(WDMessageBox), new PropertyMetadata(null));
-
-
         public bool IsDefault
         {
             get { return (bool)GetValue(IsDefaultProperty); }
@@ -76,45 +65,44 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(WDMessageBox)));
         }
 
-        void SetResources(double buttonRadius = 0d)
+        void SetResources()
         {
             Resources = ThemeManager.Instance.Resources;
-            ButtonCornerRadius = new CornerRadius(buttonRadius);
         }
 
-        public WDMessageBox(string message, double buttonRadius = 0d)
+        public WDMessageBox(string message)
         {
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
         }
 
-        public WDMessageBox(string message, string caption, double buttonRadius = 0d)
-        {
-            _titleString = caption;
-            _messageString = message;
-            SetResources(buttonRadius);
-        }
-
-        public WDMessageBox(string message, string caption, MessageBoxButton button, double buttonRadius = 0d)
+        public WDMessageBox(string message, string caption)
         {
             _titleString = caption;
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
         }
 
-        public WDMessageBox(string message, string caption, MessageBoxImage image, double buttonRadius = 0d)
+        public WDMessageBox(string message, string caption, MessageBoxButton button)
         {
             _titleString = caption;
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
+        }
+
+        public WDMessageBox(string message, string caption, MessageBoxImage image)
+        {
+            _titleString = caption;
+            _messageString = message;
+            SetResources();
             DisplayImage(image);
         }
 
-        public WDMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image, double buttonRadius = 0d)
+        public WDMessageBox(string message, string caption, MessageBoxButton button, MessageBoxImage image)
         {
             _titleString = caption;
             _messageString = message;
-            SetResources(buttonRadius);
+            SetResources();
             DisplayImage(image);
             DisplayButtons(button);
         }

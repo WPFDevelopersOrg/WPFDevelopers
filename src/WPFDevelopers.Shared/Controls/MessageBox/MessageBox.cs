@@ -6,40 +6,39 @@ namespace WPFDevelopers.Controls
 {
     public static class MessageBox
     {
-        public static double DefaultButtonRadius => OSVersionHelper.IsWindows11OrLater() ? 4d : 0d;
 
-        public static MessageBoxResult Show(string messageBoxText, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+        public static MessageBoxResult Show(string messageBoxText, Window owner = null, bool isDefault = true)
         {
-            var msg = new WDMessageBox(messageBoxText, buttonRadius ?? DefaultButtonRadius);
+            var msg = new WDMessageBox(messageBoxText);
             msg.IsDefault = isDefault;
             return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+        public static MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, bool isDefault = true)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, buttonRadius ?? DefaultButtonRadius);
+            var msg = new WDMessageBox(messageBoxText, caption);
             msg.IsDefault = isDefault;
             return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, bool isDefault = true)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, button, buttonRadius ?? DefaultButtonRadius);
+            var msg = new WDMessageBox(messageBoxText, caption, button);
             msg.IsDefault = isDefault;
             return GetWindow(msg, owner);
         }
 
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, bool isDefault = true)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, icon, buttonRadius ?? DefaultButtonRadius);
+            var msg = new WDMessageBox(messageBoxText, caption, icon);
             msg.IsDefault = isDefault;
             return GetWindow(msg, owner);
         }
 
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button,
-            MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+            MessageBoxImage icon, Window owner = null, bool isDefault = true)
         {
-            var msg = new WDMessageBox(messageBoxText, caption, button, icon, buttonRadius ?? DefaultButtonRadius);
+            var msg = new WDMessageBox(messageBoxText, caption, button, icon);
             msg.IsDefault = isDefault;
             return GetWindow(msg, owner);
         }
