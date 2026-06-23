@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -19,7 +20,10 @@ namespace WPFDevelopers.Helpers
     public class ControlsHelper : DependencyObject
     {
         private static Win32.DeskTopSize size;
-        
+        private static readonly Dictionary<string, BitmapImage> _bitmapCache
+            = new Dictionary<string, BitmapImage>();
+
+        private static readonly object _bitmapCacheLock = new object();
         public static void WindowShake(Window window = null)
         {
             if (window == null)
@@ -185,9 +189,23 @@ namespace WPFDevelopers.Helpers
             }
         }
 
+        public static void ClearBitmapCache()
+        {
+            lock (_bitmapCacheLock)
+                _bitmapCache.Clear();
+        }
+
         public static BitmapImage CreateBitmapImage(string uri, int width, int height)
         {
             if (string.IsNullOrEmpty(uri)) return null;
+
+            var key = $"{uri}|{width}|{height}";
+
+            lock (_bitmapCacheLock)
+            {
+                if (_bitmapCache.TryGetValue(key, out var cached) && cached.IsFrozen)
+                    return cached;
+            }
 
             var bitmap = new BitmapImage();
             bitmap.BeginInit();
@@ -199,6 +217,10 @@ namespace WPFDevelopers.Helpers
                 bitmap.DecodePixelHeight = height;
             bitmap.EndInit();
             bitmap.Freeze();
+
+            lock (_bitmapCacheLock)
+                _bitmapCache[key] = bitmap;
+
             return bitmap;
         }
     }
