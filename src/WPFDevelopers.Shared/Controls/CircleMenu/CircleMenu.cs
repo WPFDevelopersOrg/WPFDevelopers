@@ -20,6 +20,8 @@ namespace WPFDevelopers.Controls
 
         private ItemsControl _itemsControl;
         private ToggleButton _toggleButton;
+        private Storyboard _openStoryboard;
+        private Storyboard _closeStoryboard;
 
         static CircleMenu()
         {
@@ -32,68 +34,108 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
             AlternationCount = 8;
             _itemsControl = GetTemplateChild(ItemsControlTemplateName) as ItemsControl;
-            if (_itemsControl != null) _itemsControl.MouseLeftButtonDown += _itemsControl_MouseLeftButtonDown;
+            if (_itemsControl != null)
+                _itemsControl.MouseLeftButtonDown += OnItemsControl_MouseLeftButtonDown;
             _ellipseGeometry = GetTemplateChild(EllipseGeometryTemplateName) as EllipseGeometry;
-            if (_ellipseGeometry != null)
-                _ellipseGeometry.Center = new Point(Width / 2, Height / 2);
             _toggleButton = GetTemplateChild(ToggleButtonTemplateName) as ToggleButton;
             if (_toggleButton != null)
             {
-                _toggleButton.Checked -= _toggleButton_Checked;
-                _toggleButton.Checked += _toggleButton_Checked;
-                _toggleButton.Unchecked -= _toggleButton_Unchecked;
-                _toggleButton.Unchecked += _toggleButton_Unchecked;
+                _toggleButton.Checked -= OnToggleButton_Checked;
+                _toggleButton.Checked += OnToggleButton_Checked;
+                _toggleButton.Unchecked -= OnToggleButton_Unchecked;
+                _toggleButton.Unchecked += OnToggleButton_Unchecked;
             }
+            UpdateCenter();
+            BuildStoryboards();
         }
 
-        private void _itemsControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void UpdateCenter()
+        {
+            if (_ellipseGeometry != null)
+                _ellipseGeometry.Center = new Point(Width / 2, Height / 2);
+        }
+
+        private void BuildStoryboards()
+        {
+            if (_itemsControl == null) return;
+
+            var openRx = new DoubleAnimation
+            {
+                To = Width,
+                Duration = new Duration(TimeSpan.FromSeconds(0.4)),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+            Storyboard.SetTarget(openRx, _itemsControl);
+            Storyboard.SetTargetProperty(openRx, new PropertyPath("Clip.RadiusX"));
+
+            var openRy = new DoubleAnimation
+            {
+                To = Height,
+                Duration = new Duration(TimeSpan.FromSeconds(0.4)),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+            Storyboard.SetTarget(openRy, _itemsControl);
+            Storyboard.SetTargetProperty(openRy, new PropertyPath("Clip.RadiusY"));
+
+            _openStoryboard = new Storyboard();
+            _openStoryboard.Children.Add(openRx);
+            _openStoryboard.Children.Add(openRy);
+
+            var closeRx = new DoubleAnimation
+            {
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(0.3)),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+            Storyboard.SetTarget(closeRx, _itemsControl);
+            Storyboard.SetTargetProperty(closeRx, new PropertyPath("Clip.RadiusX"));
+
+            var closeRy = new DoubleAnimation
+            {
+                To = 0,
+                Duration = new Duration(TimeSpan.FromSeconds(0.3)),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+            Storyboard.SetTarget(closeRy, _itemsControl);
+            Storyboard.SetTargetProperty(closeRy, new PropertyPath("Clip.RadiusY"));
+
+            _closeStoryboard = new Storyboard();
+            _closeStoryboard.Children.Add(closeRx);
+            _closeStoryboard.Children.Add(closeRy);
+        }
+
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            UpdateCenter();
+        }
+
+        private void OnItemsControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var item = (e.OriginalSource as FrameworkElement).DataContext;
             SelectedItem = item;
         }
 
-        private void _toggleButton_Checked(object sender, RoutedEventArgs e)
+        private void OnToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            var radiusXAnimation = new DoubleAnimation
+            if (_openStoryboard == null) return;
+            if (_ellipseGeometry != null)
             {
-                To = Width,
-                Duration = new Duration(TimeSpan.FromSeconds(0.4))
-            };
-            Storyboard.SetTarget(radiusXAnimation, _itemsControl);
-            Storyboard.SetTargetProperty(radiusXAnimation, new PropertyPath("Clip.RadiusX"));
-            var radiusYAnimation = new DoubleAnimation
-            {
-                To = Height,
-                Duration = new Duration(TimeSpan.FromSeconds(0.4))
-            };
-            Storyboard.SetTarget(radiusYAnimation, _itemsControl);
-            Storyboard.SetTargetProperty(radiusYAnimation, new PropertyPath("Clip.RadiusY"));
-            var storyboard = new Storyboard();
-            storyboard.Children.Add(radiusXAnimation);
-            storyboard.Children.Add(radiusYAnimation);
-            storyboard.Begin();
+                _ellipseGeometry.RadiusX = Width;
+                _ellipseGeometry.RadiusY = Height;
+            }
+            _openStoryboard.Begin();
         }
 
-        private void _toggleButton_Unchecked(object sender, RoutedEventArgs e)
+        private void OnToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            var radiusXAnimation = new DoubleAnimation
+            if (_closeStoryboard == null) return;
+            if (_ellipseGeometry != null)
             {
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(0.3))
-            };
-            Storyboard.SetTarget(radiusXAnimation, _itemsControl);
-            Storyboard.SetTargetProperty(radiusXAnimation, new PropertyPath("Clip.RadiusX"));
-            var radiusYAnimation = new DoubleAnimation
-            {
-                To = 0,
-                Duration = new Duration(TimeSpan.FromSeconds(0.3))
-            };
-            Storyboard.SetTarget(radiusYAnimation, _itemsControl);
-            Storyboard.SetTargetProperty(radiusYAnimation, new PropertyPath("Clip.RadiusY"));
-            var storyboard = new Storyboard();
-            storyboard.Children.Add(radiusXAnimation);
-            storyboard.Children.Add(radiusYAnimation);
-            storyboard.Begin();
+                _ellipseGeometry.RadiusX = 0;
+                _ellipseGeometry.RadiusY = 0;
+            }
+            _closeStoryboard.Begin();
         }
     }
 }
