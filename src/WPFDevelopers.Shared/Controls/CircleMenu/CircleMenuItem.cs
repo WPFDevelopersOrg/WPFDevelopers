@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,16 +14,20 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("Angle", typeof(double), typeof(CircleMenuItem),
                 new UIPropertyMetadata(OnAngleChanged));
 
-        public static readonly DependencyProperty MenuTxtProperty =
-            DependencyProperty.Register("MenuTxt", typeof(string), typeof(CircleMenuItem),
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(CircleMenuItem),
                 new PropertyMetadata(string.Empty));
 
-        public static readonly DependencyProperty BackgroundColorProperty =
-            DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(CircleMenuItem),
+        public static readonly DependencyProperty AlternationIndexProperty =
+            DependencyProperty.Register("AlternationIndex", typeof(int), typeof(CircleMenuItem),
+                new PropertyMetadata(0));
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(object), typeof(CircleMenuItem),
                 new PropertyMetadata(null));
 
-        public static readonly DependencyProperty IconImageProperty =
-            DependencyProperty.Register("IconImage", typeof(ImageSource), typeof(CircleMenuItem),
+        public static readonly DependencyProperty SectorGeometryProperty =
+            DependencyProperty.Register(nameof(SectorGeometry), typeof(Geometry), typeof(CircleMenuItem),
                 new PropertyMetadata(null));
 
         private RotateTransform _angleRotateTransform;
@@ -33,29 +37,41 @@ namespace WPFDevelopers.Controls
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
         }
 
+        #region Properties
+
         public double Angle
         {
             get => (double)GetValue(AngleProperty);
             set => SetValue(AngleProperty, value);
         }
 
-        public string MenuTxt
+        public string Text
         {
-            get => (string)GetValue(MenuTxtProperty);
-            set => SetValue(MenuTxtProperty, value);
+            get => (string)GetValue(TextProperty);
+            set => SetValue(TextProperty, value);
         }
 
-        public Brush BackgroundColor
+        public int AlternationIndex
         {
-            get => (Brush)GetValue(BackgroundColorProperty);
-            set => SetValue(BackgroundColorProperty, value);
+            get => (int)GetValue(AlternationIndexProperty);
+            set => SetValue(AlternationIndexProperty, value);
         }
 
-        public ImageSource IconImage
+        public object Icon
         {
-            get => (ImageSource)GetValue(IconImageProperty);
-            set => SetValue(IconImageProperty, value);
+            get => GetValue(IconProperty);
+            set => SetValue(IconProperty, value);
         }
+
+        public Geometry SectorGeometry
+        {
+            get => (Geometry)GetValue(SectorGeometryProperty);
+            set => SetValue(SectorGeometryProperty, value);
+        }
+
+        #endregion
+
+        #region Angle → RotateTransform
 
         private static void OnAngleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -75,5 +91,7 @@ namespace WPFDevelopers.Controls
             _angleRotateTransform = GetTemplateChild(RotateTransformTemplateName) as RotateTransform;
             UpdateAngle();
         }
+
+        #endregion
     }
 }
