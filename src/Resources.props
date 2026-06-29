@@ -51,7 +51,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Chat\UserImages\*.png">
 			<Link>Resources\Images\Chat\UserImages\%(Filename)%(Extension)</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircleMenu\*.png">
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\CircleMenu\*.svg">
 			<Link>Resources\Images\CircleMenu\%(Filename)%(Extension)</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\Craouse\*.png">
