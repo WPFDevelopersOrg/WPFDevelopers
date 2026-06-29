@@ -102,11 +102,11 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
         });
 
 
-        public ICommand IsOpenCommand => new RelayCommand(obj =>
+        public ICommand IsExpandedCommand => new RelayCommand(obj =>
         {
-            if(obj is bool isOpen)
+            if(obj is bool isExpanded)
             {
-                Toast.Push(isOpen ? "打开": "关闭", ToastImage.Info);
+                Toast.Push(isExpanded ? "打开": "关闭", ToastImage.Info);
             }
         });
 

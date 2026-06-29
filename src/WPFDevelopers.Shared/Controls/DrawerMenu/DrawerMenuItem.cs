@@ -9,7 +9,7 @@ namespace WPFDevelopers.Controls
     public class DrawerMenuItem : HeaderedItemsControl
     {
         private const string ToggleButtonTemplateName = "PART_ToggleButton";
-        private bool _isOpen;
+        private bool _isExpanded;
         private ToggleButton _toggleButton;
 
         public static readonly DependencyProperty TextProperty =
@@ -131,8 +131,8 @@ namespace WPFDevelopers.Controls
             var navMenu = FindParent<DrawerMenu>(this);
             if (navMenu != null)
             {
-                _isOpen = navMenu.IsOpen;
-                navMenu.AddHandler(DrawerMenu.IsOpenChangedEvent, new RoutedEventHandler(OnDrawerMenuIsOpenChanged));
+                _isExpanded = navMenu.IsExpanded;
+                navMenu.AddHandler(DrawerMenu.IsExpandedChangedEvent, new RoutedEventHandler(OnDrawerMenuIsExpandedChanged));
             }
         }
 
@@ -156,10 +156,10 @@ namespace WPFDevelopers.Controls
 
         protected override bool IsItemItsOwnContainerOverride(object item) => item is DrawerMenuItem;
 
-        private void OnDrawerMenuIsOpenChanged(object sender, RoutedEventArgs e)
+        private void OnDrawerMenuIsExpandedChanged(object sender, RoutedEventArgs e)
         {
-            var DrawerMenu = sender as DrawerMenu;
-            _isOpen = DrawerMenu.IsOpen;
+            var drawerMenu = sender as DrawerMenu;
+            _isExpanded = drawerMenu.IsExpanded;
         }
 
     }
