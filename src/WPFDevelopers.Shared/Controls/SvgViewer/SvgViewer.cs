@@ -303,6 +303,21 @@ namespace WPFDevelopers.Controls
                     return;
 
                 CreateDrawingBrush(drawingGroup, bounds);
+
+                double width = 0;
+                double height = 0;
+                var widthAttr = svgRoot.GetAttribute("width");
+                var heightAttr = svgRoot.GetAttribute("height");
+                if (!string.IsNullOrEmpty(widthAttr))
+                    double.TryParse(widthAttr, NumberStyles.Float, CultureInfo.InvariantCulture, out width);
+
+                if (!string.IsNullOrEmpty(heightAttr))
+                    double.TryParse(heightAttr, NumberStyles.Float, CultureInfo.InvariantCulture, out height);
+                const double defaultMaxSize = 100.0;
+                if (double.IsNaN(Width))
+                    SetCurrentValue(WidthProperty, Math.Min(width, defaultMaxSize));
+                if (double.IsNaN(Height))
+                    SetCurrentValue(HeightProperty, Math.Min(height, defaultMaxSize));
             }
             catch
             {
