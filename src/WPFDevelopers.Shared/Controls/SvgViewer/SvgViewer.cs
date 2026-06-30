@@ -245,6 +245,7 @@ namespace WPFDevelopers.Controls
             if (_svgBrush.CanFreeze)
                 _svgBrush.Freeze();
             Background = _svgBrush;
+            InvalidateVisual();
         }
 
         private void LoadAndRenderSvg()
