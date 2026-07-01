@@ -74,19 +74,6 @@
         po:Freeze="True"
         Color="{StaticResource WD.BlackColor}" />
 
-    <!--  CircularMenu  -->
-    <Color x:Key="WD.CircleMenuColor" po:Freeze="True">#BAE766</Color>
-    <SolidColorBrush
-        x:Key="WD.CircleMenuBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.CircleMenuColor}" />
-
-    <Color x:Key="WD.CircleMenuDualColor" po:Freeze="True">#B0D440</Color>
-    <SolidColorBrush
-        x:Key="WD.CircleMenuDualBrush"
-        po:Freeze="True"
-        Color="{StaticResource WD.CircleMenuDualColor}" />
-
     <RadialGradientBrush x:Key="WD.StarrySkyBrush" po:Freeze="True" Center="0.5,0.3" GradientOrigin="0.5,0" RadiusX="0.7">
         <GradientStop Offset="0" Color="#FF04040E" />
         <GradientStop Offset="1" Color="#FF24315D" />
