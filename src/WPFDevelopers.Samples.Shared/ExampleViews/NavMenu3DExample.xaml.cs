@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
@@ -17,13 +18,13 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void GithubHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            BrowserHelper.OpenUrl(e.Uri.AbsoluteUri);
             e.Handled = true;
         }
 
         private void GiteeHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            BrowserHelper.OpenUrl(e.Uri.AbsoluteUri);
             e.Handled = true;
         }
 
