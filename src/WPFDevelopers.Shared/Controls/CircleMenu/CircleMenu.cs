@@ -36,6 +36,26 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register(nameof(ItemClickCommand), typeof(ICommand), typeof(CircleMenu),
                 new PropertyMetadata(null));
 
+        public static readonly DependencyProperty IsExpandedProperty =
+            DependencyProperty.Register(nameof(IsExpanded), typeof(bool), typeof(CircleMenu),
+                new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsExpandedChanged));
+
+        public static readonly DependencyProperty SectorBackgroundProperty =
+            DependencyProperty.Register(nameof(SectorBackground), typeof(Brush), typeof(CircleMenu),
+                new PropertyMetadata(null));
+
+        public static readonly DependencyProperty SectorDualBackgroundProperty =
+            DependencyProperty.Register(nameof(SectorDualBackground), typeof(Brush), typeof(CircleMenu),
+                new PropertyMetadata(null));
+
+        public static readonly DependencyProperty SelectedBackgroundProperty =
+            DependencyProperty.Register(nameof(SelectedBackground), typeof(Brush), typeof(CircleMenu),
+                new PropertyMetadata(null));
+
+        public static readonly DependencyProperty MinItemsProperty =
+            DependencyProperty.Register(nameof(MinItems), typeof(int), typeof(CircleMenu),
+                new PropertyMetadata(2));
+
 
         public static readonly RoutedEvent ItemClickEvent =
             EventManager.RegisterRoutedEvent(nameof(ItemClick), RoutingStrategy.Bubble,
@@ -80,6 +100,36 @@ namespace WPFDevelopers.Controls
             set => SetValue(ItemClickCommandProperty, value);
         }
 
+        public bool IsExpanded
+        {
+            get => (bool)GetValue(IsExpandedProperty);
+            set => SetValue(IsExpandedProperty, value);
+        }
+
+        public Brush SectorBackground
+        {
+            get => (Brush)GetValue(SectorBackgroundProperty);
+            set => SetValue(SectorBackgroundProperty, value);
+        }
+
+        public Brush SectorDualBackground
+        {
+            get => (Brush)GetValue(SectorDualBackgroundProperty);
+            set => SetValue(SectorDualBackgroundProperty, value);
+        }
+
+        public Brush SelectedBackground
+        {
+            get => (Brush)GetValue(SelectedBackgroundProperty);
+            set => SetValue(SelectedBackgroundProperty, value);
+        }
+
+        public int MinItems
+        {
+            get => (int)GetValue(MinItemsProperty);
+            set => SetValue(MinItemsProperty, value);
+        }
+
         #endregion
 
         #region Template
@@ -119,14 +169,13 @@ namespace WPFDevelopers.Controls
             {
                 if (item is CircleMenuItem sourceItem && sourceItem != menuItem)
                 {
-                    menuItem.Text = sourceItem.Text;
-                    menuItem.Icon = sourceItem.Icon;
+                    menuItem.Content = sourceItem.Content;
                     menuItem.SectorGeometry = sourceItem.SectorGeometry;
                 }
                 else if (!(item is CircleMenuItem))
                 {
-                    menuItem.SetBinding(CircleMenuItem.TextProperty, new Binding("Text"));
-                    menuItem.SetBinding(CircleMenuItem.IconProperty, new Binding("Icon"));
+                    var path = string.IsNullOrEmpty(DisplayMemberPath) ? "Content" : DisplayMemberPath;
+                    menuItem.SetBinding(CircleMenuItem.ContentProperty, new Binding(path));
                 }
 
                 menuItem.AlternationIndex = Items.IndexOf(item);
@@ -155,28 +204,77 @@ namespace WPFDevelopers.Controls
 
         private void UpdateAllAnglesCore()
         {
-            if (Items.Count == 0) return;
+            if (Items.Count < MinItems)
+            {
+                Visibility = Visibility.Collapsed;
+                return;
+            }
+            Visibility = Visibility.Visible;
 
+            var radius = Math.Min(Width, Height) / 2.0;
+            if (radius <= 0) radius = 200.0;
             var step = 360.0 / Items.Count;
-            var startAngle = -180;
-            var halfStepRad = step / 2 * Math.PI / 180;
-            var left = 200 * Math.Sin(halfStepRad) - 20;
+            var startAngle = -180.0;
+            var iconDistance = radius * 0.75;
+            var iconHalfSize = radius * 0.1;
+
+            var isOdd = Items.Count % 2 == 1;
+
             for (int i = 0; i < Items.Count; i++)
             {
                 if (ItemContainerGenerator.ContainerFromIndex(i) is CircleMenuItem menuItem)
                 {
-                    menuItem.Angle = startAngle + i * step;
+                    var panelAngle = startAngle + i * step;
+                    menuItem.Angle = panelAngle;
                     menuItem.AlternationIndex = i;
-                    menuItem.SectorGeometry = BuildSectorGeometry(step);
-                    menuItem.Padding = new Thickness(left, 60, 0, 0);
+                    menuItem.SectorGeometry = BuildSectorGeometry(step, radius);
+                    menuItem.RotateCenter = radius;
+
+                    if (i % 2 == 1)
+                    {
+                        if (SectorDualBackground != null)
+                            menuItem.SectorBackground = SectorDualBackground;
+                        else if (isOdd && SectorBackground != null)
+                            menuItem.SectorBackground = SectorBackground;
+                        else
+                            menuItem.SetResourceReference(CircleMenuItem.SectorBackgroundProperty, "WD.BackgroundBrush");
+                    }
+                    else
+                    {
+                        if (SectorBackground != null)
+                            menuItem.SectorBackground = SectorBackground;
+                        else
+                            menuItem.SetResourceReference(CircleMenuItem.SectorBackgroundProperty, "WD.ChartXAxisBrush");
+                    }
+
+                    if (SelectedBackground != null)
+                        menuItem.SelectedBackground = SelectedBackground;
+                    else
+                        menuItem.SetResourceReference(CircleMenuItem.SelectedBackgroundProperty, "WD.PrimaryBrush");
+                    menuItem.IsSelected = (i == SelectedIndex);
+
+                    Thickness padding;
+                    if (Items.Count == 2)
+                    {
+                        var left = radius - iconHalfSize;
+                        var top = radius - iconDistance - iconHalfSize;
+                        padding = new Thickness(left, top, 0, 0);
+                    }
+                    else
+                    {
+                        var halfStepRad = step / 2.0 * Math.PI / 180.0;
+                        var left = iconDistance * Math.Sin(halfStepRad) - iconHalfSize;
+                        var top = iconDistance * Math.Cos(halfStepRad) - iconHalfSize;
+                        padding = new Thickness(left, top, 0, 0);
+                    }
+                    menuItem.Padding = padding;
                 }
             }
         }
 
-        private Geometry BuildSectorGeometry(double stepAngle)
+        private Geometry BuildSectorGeometry(double stepAngle, double radius)
         {
             var rad = stepAngle * Math.PI / 180;
-            var radius = 200.0;
             var cx = radius;
             var cy = radius;
             var ex = cx - radius * Math.Cos(rad);
@@ -200,12 +298,29 @@ namespace WPFDevelopers.Controls
             menu.SelectedItem = index >= 0 && index < menu.Items.Count
                 ? menu.Items[index]
                 : null;
+            menu.UpdateSelectedItems();
+        }
+
+        private void UpdateSelectedItems()
+        {
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (ItemContainerGenerator.ContainerFromIndex(i) is CircleMenuItem menuItem)
+                    menuItem.IsSelected = (i == SelectedIndex);
+            }
         }
 
         private static void OnSelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var menu = (CircleMenu)d;
             menu.SelectedIndex = e.NewValue != null ? menu.Items.IndexOf(e.NewValue) : -1;
+        }
+
+        private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var menu = (CircleMenu)d;
+            if (menu._toggleButton != null)
+                menu._toggleButton.IsChecked = (bool)e.NewValue;
         }
 
 
@@ -233,14 +348,16 @@ namespace WPFDevelopers.Controls
 
         private void UpdateCenter()
         {
+            var radius = Math.Min(Width, Height) / 2.0;
             if (_ellipseGeometry != null)
-                _ellipseGeometry.Center = new Point(Width / 2, Height / 2);
+                _ellipseGeometry.Center = new Point(radius, radius);
         }
 
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             base.OnRenderSizeChanged(sizeInfo);
             UpdateCenter();
+            UpdateAllAngles();
         }
 
         private void BuildStoryboards()
@@ -293,11 +410,13 @@ namespace WPFDevelopers.Controls
 
         private void OnToggleButton_Checked(object sender, RoutedEventArgs e)
         {
+            IsExpanded = true;
             _openStoryboard?.Begin();
         }
 
         private void OnToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            IsExpanded = false;
             _closeStoryboard?.Begin();
         }
 

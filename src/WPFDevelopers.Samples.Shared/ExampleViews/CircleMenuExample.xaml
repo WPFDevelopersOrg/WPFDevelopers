@@ -13,42 +13,37 @@
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <TabControl>
             <TabItem Header="XAML">
-                <Grid Background="Black">
+                <wd:SmallPanel>
                     <wd:CircleMenu
-                        Width="400"
-                        Height="400"
+                        Width="100"
+                        Height="100"
                         ItemClick="CircleMenu_ItemClick">
-                        <wd:CircleMenuItem Text="Home">
-                            <wd:CircleMenuItem.Icon>
-                                <wd:PathIcon Kind="Home" />
-                            </wd:CircleMenuItem.Icon>
+                        <wd:CircleMenuItem Tag="Home">
+                            <wd:PathIcon Kind="Home" />
                         </wd:CircleMenuItem>
-                        <wd:CircleMenuItem Text="菜单2">
-                            <wd:CircleMenuItem.Icon>
-                                <wd:PathIcon Kind="Home" />
-                            </wd:CircleMenuItem.Icon>
+                        <wd:CircleMenuItem Tag="Date">
+                            <wd:PathIcon Kind="Date" />
                         </wd:CircleMenuItem>
-                        <wd:CircleMenuItem Text="菜单3">
-                            <wd:CircleMenuItem.Icon>
-                                <wd:PathIcon Kind="Home" />
-                            </wd:CircleMenuItem.Icon>
+                        <wd:CircleMenuItem Tag="Copy">
+                            <wd:PathIcon Kind="Copy" />
                         </wd:CircleMenuItem>
-                        <wd:CircleMenuItem Text="菜单4">
-                            <wd:CircleMenuItem.Icon>
-                                <wd:PathIcon Kind="Home" />
-                            </wd:CircleMenuItem.Icon>
+                        <wd:CircleMenuItem Tag="Undo">
+                            <wd:PathIcon Kind="Undo" />
                         </wd:CircleMenuItem>
                     </wd:CircleMenu>
-                </Grid>
+                </wd:SmallPanel>
             </TabItem>
             <TabItem Header="MVVM">
-                <Grid Background="Black">
+                <wd:SmallPanel>
                     <wd:CircleMenu
-                        Width="400"
-                        Height="400"
+                        Background="DeepPink"
+                        DisplayMemberPath="Icon"
+                        ItemClickCommand="{Binding ItemClickCommand}"
                         ItemsSource="{Binding MenuItems}"
-                        ItemClick="CircleMenu_ItemClick" />
-                </Grid>
+                        SectorBackground="Pink"
+                        SectorDualBackground="HotPink"
+                        SelectedBackground="DeepPink" />
+                </wd:SmallPanel>
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>

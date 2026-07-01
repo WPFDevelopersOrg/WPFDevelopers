@@ -1,11 +1,12 @@
-using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using WPFDevelopers.Controls;
-using WPFDevelopers.Samples.Models;
+using WPFDevelopers.Helpers;
+using WPFDevelopers.Samples.Helpers;
+using MenuItemModel = WPFDevelopers.Samples.Models.MenuItemModel;
 using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -20,31 +21,34 @@ namespace WPFDevelopers.Samples.ExampleViews
         public CircleMenuExample()
         {
             InitializeComponent();
+            DataContext = this;
+            Loaded += OnCircleMenuExample_Loaded;
+        }
 
-            for (int i = 1; i <= 8; i++)
+        private void OnCircleMenuExample_Loaded(object sender, RoutedEventArgs e)
+        {
+            var resourceUris = ResourceHelper.GetResourceUris("Resources/Images/CircleMenu/");
+            foreach (var uri in resourceUris)
             {
                 MenuItems.Add(new MenuItemModel
                 {
-                    Text = $"菜单{i}",
-                    Icon = new Image
-                    {
-                        Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/{i}.png")),
-                        Stretch = System.Windows.Media.Stretch.Uniform,
-                        Width = 30,
-                        Height = 30
-                    }
+                    Text = $"{Path.GetFileNameWithoutExtension(uri)}",
+                    Icon = new SvgViewer { Source = uri}
                 });
             }
-
-            DataContext = this;
         }
+
+        public ICommand ItemClickCommand => new RelayCommand(param =>
+        {
+            var menuItemModel = param as MenuItemModel;
+            if (menuItemModel != null)
+                Toast.Push($"点击了{menuItemModel.Text}",ToastImage.Info);
+        });
 
         private void CircleMenu_ItemClick(object sender, RoutedEventArgs e)
         {
-            var circularMenu = sender as CircleMenu;
-            var menuItemModel = circularMenu.SelectedItem as MenuItemModel;
-            if (menuItemModel != null)
-                MessageBox.Show($"点击了{menuItemModel.Text}", "info", MessageBoxImage.Information);
+            var menuItem = (CircleMenuItem)e.OriginalSource;
+            Toast.Push($"点击了：{menuItem.Tag}", ToastImage.Info);
         }
     }
 }
