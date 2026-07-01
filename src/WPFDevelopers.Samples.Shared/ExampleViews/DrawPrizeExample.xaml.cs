@@ -50,7 +50,7 @@ namespace WPFDevelopers.Samples.ExampleViews
                 angle += 45;
                 anglePrize += 45;
                 ListAngle.Add(anglePrize);
-                menuItemModels.Add(new MenuItemModel { Text = prizeTitle});
+                menuItemModels.Add(new MenuItemModel { Angle = angle, Title = prizeTitle});
             }
 
             MenuArray = menuItemModels;
