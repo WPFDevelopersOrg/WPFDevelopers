@@ -47,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\ProgressLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FilterVisibilityMultiConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\SelectedIndexToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ResourceHelper.cs" />
     <Compile Include="..\WPFDevelopers.Shared\Controls\Toast\ToastExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
@@ -189,7 +190,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\AngleToPointConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\StepIndexConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\IndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\ColorUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
