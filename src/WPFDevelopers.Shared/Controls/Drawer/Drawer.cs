@@ -16,11 +16,15 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty PositionProperty =
             DependencyProperty.Register("Position", typeof(Position), typeof(Drawer),
-                new PropertyMetadata(Position.Left));
+                new PropertyMetadata(Position.Left, OnPositionChanged));
 
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register("IsOpen", typeof(bool), typeof(Drawer),
                 new PropertyMetadata(false, OnIsOpenChanged));
+
+        public static readonly DependencyProperty HeaderWidthProperty =
+            DependencyProperty.Register("HeaderWidth", typeof(double), typeof(Drawer),
+                new PropertyMetadata(0.0, OnHeaderWidthChanged));
 
         private Storyboard _enterStoryboard;
         private Storyboard _exitStoryboard;
@@ -37,31 +41,52 @@ namespace WPFDevelopers.Controls
 
         public Position Position
         {
-            get => (Position) GetValue(PositionProperty);
+            get => (Position)GetValue(PositionProperty);
             set => SetValue(PositionProperty, value);
         }
 
         public bool IsOpen
         {
-            get => (bool) GetValue(IsOpenProperty);
+            get => (bool)GetValue(IsOpenProperty);
             set => SetValue(IsOpenProperty, value);
+        }
+
+        public double HeaderWidth
+        {
+            get => (double)GetValue(HeaderWidthProperty);
+            set => SetValue(HeaderWidthProperty, value);
         }
 
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Drawer;
-            if (ctrl != null)
+            if (ctrl == null || ctrl._headerBorder == null || ctrl._enterStoryboard == null) return;
+            if (ctrl.IsOpen)
             {
-                if (ctrl.IsOpen)
-                {
-                    ctrl._headerBorder.Visibility = Visibility.Visible;
-                    ctrl._enterStoryboard.Begin();
-                }
-                else
-                {
-                    ctrl._exitStoryboard.Begin();
-                }
+                ctrl._headerBorder.Visibility = Visibility.Visible;
+                ctrl._enterStoryboard.Begin();
             }
+            else
+            {
+                ctrl._exitStoryboard?.Begin();
+            }
+        }
+
+        private static void OnHeaderWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Drawer;
+            if (ctrl?._headerBorder == null) return;
+            var width = (double)e.NewValue;
+            ctrl._headerBorder.MaxWidth = width > 0 ? width : double.PositiveInfinity;
+        }
+
+        private static void OnPositionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = d as Drawer;
+            if (ctrl == null) return;
+            var pos = (Position)e.NewValue;
+            if (pos == Position.Top || pos == Position.Bottom)
+                ctrl.HeaderWidth = 0;
         }
 
         public override void OnApplyTemplate()
@@ -82,6 +107,30 @@ namespace WPFDevelopers.Controls
 
         private void HeaderBorder_Loaded(object sender, RoutedEventArgs e)
         {
+            _headerBorder.Loaded -= HeaderBorder_Loaded;
+            if (HeaderWidth <= 0)
+                HeaderWidth = _headerBorder.ActualWidth / 3.0 * 2.0;
+            BuildStoryboards();
+            if (IsOpen)
+            {
+                _headerBorder.Visibility = Visibility.Visible;
+                _enterStoryboard.Begin();
+            }
+            else
+            {
+                _headerBorder.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            if (HeaderWidth <= 0)
+                HeaderWidth = ActualWidth / 3.0 * 2.0;
+        }
+
+        private void BuildStoryboards()
+        {
             TranslateTransform translateTransform;
             DoubleAnimation animation, exitAnimation;
             switch (Position)
@@ -95,7 +144,7 @@ namespace WPFDevelopers.Controls
                         translateTransform = new TranslateTransform(_headerWidth, 0);
                     _headerBorder.RenderTransform = new TransformGroup
                     {
-                        Children = new TransformCollection {translateTransform}
+                        Children = new TransformCollection { translateTransform }
                     };
                     animation = new DoubleAnimation
                     {
@@ -119,11 +168,7 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTarget(exitAnimation, _headerBorder);
                     Storyboard.SetTargetProperty(exitAnimation, new PropertyPath("RenderTransform.Children[0].X"));
                     _exitStoryboard = new Storyboard();
-                    _exitStoryboard.Completed += delegate
-                    {
-                        if (!IsOpen)
-                            _headerBorder.Visibility = Visibility.Collapsed;
-                    };
+                    _exitStoryboard.Completed += OnExitStoryboardCompleted;
                     _exitStoryboard.Children.Add(exitAnimation);
                     break;
                 case Position.Top:
@@ -135,7 +180,7 @@ namespace WPFDevelopers.Controls
                         translateTransform = new TranslateTransform(0, _headerHeight);
                     _headerBorder.RenderTransform = new TransformGroup
                     {
-                        Children = new TransformCollection {translateTransform}
+                        Children = new TransformCollection { translateTransform }
                     };
                     animation = new DoubleAnimation
                     {
@@ -159,17 +204,16 @@ namespace WPFDevelopers.Controls
                     Storyboard.SetTarget(exitAnimation, _headerBorder);
                     Storyboard.SetTargetProperty(exitAnimation, new PropertyPath("RenderTransform.Children[0].Y"));
                     _exitStoryboard = new Storyboard();
-                    _exitStoryboard.Completed += delegate
-                    {
-                        if (!IsOpen)
-                            _headerBorder.Visibility = Visibility.Collapsed;
-                    };
+                    _exitStoryboard.Completed += OnExitStoryboardCompleted;
                     _exitStoryboard.Children.Add(exitAnimation);
                     break;
             }
+        }
 
-            _headerBorder.Visibility = Visibility.Collapsed;
-            _headerBorder.Loaded -= HeaderBorder_Loaded;
+        private void OnExitStoryboardCompleted(object sender, EventArgs e)
+        {
+            if (!IsOpen && _headerBorder != null)
+                _headerBorder.Visibility = Visibility.Collapsed;
         }
     }
 }
