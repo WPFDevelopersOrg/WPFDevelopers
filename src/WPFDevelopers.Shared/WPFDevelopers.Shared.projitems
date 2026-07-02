@@ -525,6 +525,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\SwitchButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Toast.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
