@@ -40,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\OtpBox\OtpBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SplitButton\SplitButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SwitchButton\SwitchButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FirstLastMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />

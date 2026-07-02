@@ -70,6 +70,7 @@ Drawer.xaml
 DateRangePicker.xaml
 Tag.xaml
 SplitButton.xaml
+SwitchButton.xaml
 NavScrollPanel.xaml
 GestureUnlock.xaml
 WDUserControl.xaml
