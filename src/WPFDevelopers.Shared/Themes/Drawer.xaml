@@ -17,7 +17,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:Drawer}">
                     <controls:WDBorder
-                        x:Name="Border"
+                        x:Name="PART_Border"
                         Margin="{TemplateBinding Margin}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -25,7 +25,10 @@
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
                         <controls:SmallPanel Clip="{Binding RelativeSource={RelativeSource AncestorType=controls:WDBorder}, Path=ContentClip}">
-                            <Border x:Name="PART_Content">
+                            <Border
+                                x:Name="PART_Content"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
                                 <ContentPresenter Content="{TemplateBinding Content}" />
                             </Border>
                             <Border
