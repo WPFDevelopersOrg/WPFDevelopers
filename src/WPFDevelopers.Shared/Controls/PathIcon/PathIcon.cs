@@ -50,7 +50,7 @@ namespace WPFDevelopers.Controls
             if (e.Property == ForegroundProperty)
             {
                 if (Parent is null && ReadLocalValue(ForegroundProperty) == DependencyProperty.UnsetValue)
-                    Foreground = ThemeManager.Instance.PrimaryTextBrush;
+                    SetResourceReference(ForegroundProperty, "WD.PrimaryTextBrush");
             }
         }
     }
