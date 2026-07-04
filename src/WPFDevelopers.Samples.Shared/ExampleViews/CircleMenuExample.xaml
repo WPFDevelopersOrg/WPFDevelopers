@@ -11,39 +11,35 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
-        <TabControl>
+        <TabControl ClipToBounds="False">
             <TabItem Header="XAML">
-                <wd:SmallPanel>
-                    <wd:CircleMenu
-                        Width="100"
-                        Height="100"
-                        ItemClick="CircleMenu_ItemClick">
-                        <wd:CircleMenuItem Tag="Home">
-                            <wd:PathIcon Kind="Home" />
-                        </wd:CircleMenuItem>
-                        <wd:CircleMenuItem Tag="Date">
-                            <wd:PathIcon Kind="Date" />
-                        </wd:CircleMenuItem>
-                        <wd:CircleMenuItem Tag="Copy">
-                            <wd:PathIcon Kind="Copy" />
-                        </wd:CircleMenuItem>
-                        <wd:CircleMenuItem Tag="Undo">
-                            <wd:PathIcon Kind="Undo" />
-                        </wd:CircleMenuItem>
-                    </wd:CircleMenu>
-                </wd:SmallPanel>
+                <wd:CircleMenu
+                    Width="100"
+                    Height="100"
+                    ItemClick="CircleMenu_ItemClick">
+                    <wd:CircleMenuItem Tag="Home">
+                        <wd:PathIcon Kind="Home" />
+                    </wd:CircleMenuItem>
+                    <wd:CircleMenuItem Tag="Date">
+                        <wd:PathIcon Kind="Date" />
+                    </wd:CircleMenuItem>
+                    <wd:CircleMenuItem Tag="Copy">
+                        <wd:PathIcon Kind="Copy" />
+                    </wd:CircleMenuItem>
+                    <wd:CircleMenuItem Tag="Undo">
+                        <wd:PathIcon Kind="Undo" />
+                    </wd:CircleMenuItem>
+                </wd:CircleMenu>
             </TabItem>
             <TabItem Header="MVVM">
-                <wd:SmallPanel>
-                    <wd:CircleMenu
-                        Background="DeepPink"
-                        DisplayMemberPath="Icon"
-                        ItemClickCommand="{Binding ItemClickCommand}"
-                        ItemsSource="{Binding MenuItems}"
-                        SectorBackground="Pink"
-                        SectorDualBackground="HotPink"
-                        SelectedBackground="DeepPink" />
-                </wd:SmallPanel>
+                <wd:CircleMenu
+                    Background="DeepPink"
+                    DisplayMemberPath="Icon"
+                    ItemClickCommand="{Binding ItemClickCommand}"
+                    ItemsSource="{Binding MenuItems}"
+                    SectorBackground="Pink"
+                    SectorDualBackground="HotPink"
+                    SelectedBackground="DeepPink" />
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>

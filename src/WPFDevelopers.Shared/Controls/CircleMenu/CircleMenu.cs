@@ -15,12 +15,12 @@ namespace WPFDevelopers.Controls
     [ContentProperty(nameof(Items))]
     [TemplatePart(Name = EllipseGeometryTemplateName, Type = typeof(EllipseGeometry))]
     [TemplatePart(Name = ItemsPresenterTemplateName, Type = typeof(ItemsPresenter))]
-    [TemplatePart(Name = ToggleButtonTemplateName, Type = typeof(ToggleButton))]
+    [TemplatePart(Name = ThumbTemplateName, Type = typeof(Thumb))]
     public class CircleMenu : ItemsControl
     {
         private const string EllipseGeometryTemplateName = "PART_EllipseGeometry";
         private const string ItemsPresenterTemplateName = "PART_ItemsPresenter";
-        private const string ToggleButtonTemplateName = "PART_ToggleButton";
+        private const string ThumbTemplateName = "PART_Thumb";
 
         public static readonly DependencyProperty SelectedIndexProperty =
             DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(CircleMenu),
@@ -56,6 +56,10 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register(nameof(MinItems), typeof(int), typeof(CircleMenu),
                 new PropertyMetadata(2));
 
+        public static readonly DependencyProperty CanDragProperty =
+            DependencyProperty.Register(nameof(CanDrag), typeof(bool), typeof(CircleMenu),
+                new PropertyMetadata(true));
+
 
         public static readonly RoutedEvent ItemClickEvent =
             EventManager.RegisterRoutedEvent(nameof(ItemClick), RoutingStrategy.Bubble,
@@ -69,9 +73,11 @@ namespace WPFDevelopers.Controls
 
         private EllipseGeometry _ellipseGeometry;
         private ItemsPresenter _itemsPresenter;
-        private ToggleButton _toggleButton;
+        private Thumb _thumb;
         private Storyboard _openStoryboard;
         private Storyboard _closeStoryboard;
+        private TranslateTransform _translateTransform;
+        private double _minX, _maxX, _minY, _maxY;
 
 
         static CircleMenu()
@@ -79,8 +85,6 @@ namespace WPFDevelopers.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CircleMenu),
                 new FrameworkPropertyMetadata(typeof(CircleMenu)));
         }
-
-        #region CLR Properties
 
         public int SelectedIndex
         {
@@ -130,9 +134,11 @@ namespace WPFDevelopers.Controls
             set => SetValue(MinItemsProperty, value);
         }
 
-        #endregion
-
-        #region Template
+        public bool CanDrag
+        {
+            get => (bool)GetValue(CanDragProperty);
+            set => SetValue(CanDragProperty, value);
+        }
 
         public override void OnApplyTemplate()
         {
@@ -140,14 +146,18 @@ namespace WPFDevelopers.Controls
 
             _ellipseGeometry = GetTemplateChild(EllipseGeometryTemplateName) as EllipseGeometry;
             _itemsPresenter = GetTemplateChild(ItemsPresenterTemplateName) as ItemsPresenter;
-            _toggleButton = GetTemplateChild(ToggleButtonTemplateName) as ToggleButton;
+            _thumb = GetTemplateChild(ThumbTemplateName) as Thumb;
 
-            if (_toggleButton != null)
+            if (_thumb != null && CanDrag)
             {
-                _toggleButton.Checked -= OnToggleButton_Checked;
-                _toggleButton.Checked += OnToggleButton_Checked;
-                _toggleButton.Unchecked -= OnToggleButton_Unchecked;
-                _toggleButton.Unchecked += OnToggleButton_Unchecked;
+                _translateTransform = new TranslateTransform();
+                RenderTransform = _translateTransform;
+                _thumb.DragStarted -= OnThumb_DragStarted;
+                _thumb.DragStarted += OnThumb_DragStarted;
+                _thumb.DragDelta -= OnThumb_DragDelta;
+                _thumb.DragDelta += OnThumb_DragDelta;
+                _thumb.DragCompleted -= OnThumb_DragCompleted;
+                _thumb.DragCompleted += OnThumb_DragCompleted;
             }
 
             MouseLeftButtonDown += OnCircleMenu_MouseLeftButtonDown;
@@ -155,8 +165,6 @@ namespace WPFDevelopers.Controls
             BuildStoryboards();
             UpdateAllAngles();
         }
-
-        #endregion
 
         protected override DependencyObject GetContainerForItemOverride()
             => new CircleMenuItem();
@@ -319,8 +327,10 @@ namespace WPFDevelopers.Controls
         private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var menu = (CircleMenu)d;
-            if (menu._toggleButton != null)
-                menu._toggleButton.IsChecked = (bool)e.NewValue;
+            if ((bool)e.NewValue)
+                menu._openStoryboard?.Begin();
+            else
+                menu._closeStoryboard?.Begin();
         }
 
 
@@ -408,16 +418,39 @@ namespace WPFDevelopers.Controls
             _closeStoryboard.Children.Add(closeRy);
         }
 
-        private void OnToggleButton_Checked(object sender, RoutedEventArgs e)
+        private void OnThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
-            IsExpanded = true;
-            _openStoryboard?.Begin();
+            Cursor = Cursors.SizeAll;
+            var parent = FindStableParent();
+            if (parent == null) return;
+            var visualPos = TranslatePoint(new Point(0, 0), parent);
+            var layoutX = visualPos.X - _translateTransform.X;
+            var layoutY = visualPos.Y - _translateTransform.Y;
+            _minX = -layoutX;
+            _maxX = parent.ActualWidth - ActualWidth - layoutX;
+            _minY = -layoutY;
+            _maxY = parent.ActualHeight - ActualHeight - layoutY;
         }
 
-        private void OnToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        private FrameworkElement FindStableParent()
         {
-            IsExpanded = false;
-            _closeStoryboard?.Begin();
+            var p = Parent as FrameworkElement;
+            while (p != null && (p.ActualWidth <= 0 || p.ActualHeight <= 0))
+                p = p.Parent as FrameworkElement;
+            return p;
+        }
+
+        private void OnThumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            _translateTransform.X = Math.Max(_minX, Math.Min(_maxX, _translateTransform.X + e.HorizontalChange));
+            _translateTransform.Y = Math.Max(_minY, Math.Min(_maxY, _translateTransform.Y + e.VerticalChange));
+        }
+
+        private void OnThumb_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            Cursor = null;
+            if (Math.Abs(e.HorizontalChange) < 3 && Math.Abs(e.VerticalChange) < 3)
+                IsExpanded = !IsExpanded;
         }
 
     }

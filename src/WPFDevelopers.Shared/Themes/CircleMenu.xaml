@@ -37,6 +37,7 @@
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
+                            TextElement.Foreground="{TemplateBinding Foreground}"
                             Content="{TemplateBinding Content}"
                             RenderTransformOrigin="0.5,0.5">
                             <ContentPresenter.RenderTransform>
@@ -56,16 +57,16 @@
     </Style>
 
     <Style
-        x:Key="WD.CircleMenuToggleButton"
+        x:Key="WD.CircleMenuThumb"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="ToggleButton">
+        TargetType="Thumb">
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="ToggleButton">
+                <ControlTemplate TargetType="Thumb">
                     <controls:SmallPanel>
                         <Ellipse
-                            x:Name="PART_ToggleButtonEllipse"
+                            x:Name="PART_ThumbEllipse"
                             Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Converter={StaticResource WD.HalfValueConverter}, ConverterParameter=0.3}"
                             Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Converter={StaticResource WD.HalfValueConverter}, ConverterParameter=0.3}"
                             Fill="{Binding Background, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}}"
@@ -82,8 +83,8 @@
                         </Border>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Trigger.EnterActions>
+                        <DataTrigger Binding="{Binding IsExpanded, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}}" Value="True">
+                            <DataTrigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
@@ -94,8 +95,8 @@
                                             Duration="0:0:0.4" />
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
@@ -106,8 +107,8 @@
                                             Duration="0:0:0.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -143,10 +144,9 @@
                                     RadiusY="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Converter={StaticResource WD.HalfValueConverter}}" />
                             </ItemsPresenter.Clip>
                         </ItemsPresenter>
-                        <ToggleButton
-                            x:Name="PART_ToggleButton"
-                            IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Mode=TwoWay}"
-                            Style="{StaticResource WD.CircleMenuToggleButton}" />
+                        <Thumb
+                            x:Name="PART_Thumb"
+                            Style="{StaticResource WD.CircleMenuThumb}" />
                     </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
