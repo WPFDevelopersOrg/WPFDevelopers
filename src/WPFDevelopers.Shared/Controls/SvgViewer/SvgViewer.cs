@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -141,6 +140,8 @@ namespace WPFDevelopers.Controls
                 try
                 {
                     geometry = Geometry.Parse(dAttr.Value);
+                    if (geometry is PathGeometry pathGeometry)
+                        pathGeometry.FillRule = System.Windows.Media.FillRule.Nonzero;
                 }
                 catch
                 {
@@ -152,8 +153,17 @@ namespace WPFDevelopers.Controls
                 var strokeWidthAttr = node.Attributes?["stroke-width"]?.Value;
                 var lineCapAttr = node.Attributes?["stroke-linecap"]?.Value;
                 var lineJoinAttr = node.Attributes?["stroke-linejoin"]?.Value;
+                var opacityAttr = node.Attributes?["opacity"]?.Value;
                 Brush fillBrush = ParseBrush(fillAttr);
                 Brush strokeBrush = ParseBrush(strokeAttr);
+                double opacity = 1.0;
+                if (!string.IsNullOrWhiteSpace(opacityAttr))
+                {
+                    if (double.TryParse(opacityAttr, NumberStyles.Float, CultureInfo.InvariantCulture, out double parsedOpacity))
+                    {
+                        opacity = Math.Max(0.2, Math.Min(1, parsedOpacity));
+                    }
+                }
                 if (fillBrush == null && strokeBrush == null && Foreground != null)
                 {
                     fillBrush = Foreground;
@@ -219,6 +229,12 @@ namespace WPFDevelopers.Controls
                         pen.Freeze();
                 }
 
+                if (opacity < 1.0 && fillBrush is SolidColorBrush solidFillBrush)
+                {
+                    var c = solidFillBrush.Color;
+                    fillBrush = new SolidColorBrush(Color.FromArgb(
+                        (byte)(c.A * opacity), c.R, c.G, c.B));
+                }
                 if (fillBrush is SolidColorBrush fill && fill.CanFreeze)
                     fill.Freeze();
                 if (strokeBrush is SolidColorBrush stroke && stroke.CanFreeze)
@@ -226,10 +242,10 @@ namespace WPFDevelopers.Controls
                 if (geometry.CanFreeze)
                     geometry.Freeze();
 
-                var drawing = new GeometryDrawing(fillBrush, pen, geometry);
-                drawingGroup.Children.Add(drawing);
+                drawingGroup.Children.Add(new GeometryDrawing(fillBrush, pen, geometry));
             }
-            drawingGroup.Freeze();
+            if (drawingGroup.CanFreeze)
+                drawingGroup.Freeze();
             return drawingGroup;
         }
 

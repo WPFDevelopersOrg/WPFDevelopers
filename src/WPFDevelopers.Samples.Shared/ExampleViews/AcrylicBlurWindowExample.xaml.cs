@@ -4,7 +4,6 @@ using Microsoft.Windows.Shell;
 using System.Windows.Shell;
 # endif
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDevelopers.Samples.Helpers;
 
