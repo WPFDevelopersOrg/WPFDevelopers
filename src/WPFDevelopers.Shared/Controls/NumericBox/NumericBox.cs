@@ -360,7 +360,8 @@ namespace WPFDevelopers.Controls
         {
             if (double.IsNaN(newValue))
                 return;
-            InternalSetText(newValue);
+            if (!_isManual)
+                InternalSetText(newValue);
             InvalidateRequerySuggested(newValue);
 
             if ((!_isBusy || !DisabledValueChangedWhileBusy) && !DoubleUtil.AreClose(oldValue, newValue))
@@ -640,7 +641,14 @@ namespace WPFDevelopers.Controls
         {
             var text = IsAutoCapture ? newValue.ToString() : newValue.ToString(GetPrecisionFormat());
             if (_valueTextBox != null && !Equals(text, _valueTextBox.Text))
+            {
+                var caret = _valueTextBox.CaretIndex;
+                var selLen = _valueTextBox.SelectionLength;
                 _valueTextBox.Text = text;
+                var maxLen = text.Length;
+                _valueTextBox.SelectionLength = Math.Min(selLen, maxLen);
+                _valueTextBox.CaretIndex = Math.Min(caret, maxLen);
+            }
         }
 
         private string GetPrecisionFormat()
