@@ -434,10 +434,14 @@ namespace WPFDevelopers.Controls
 
         private FrameworkElement FindStableParent()
         {
-            var p = Parent as FrameworkElement;
-            while (p != null && (p.ActualWidth <= 0 || p.ActualHeight <= 0))
-                p = p.Parent as FrameworkElement;
-            return p;
+            DependencyObject p = VisualTreeHelper.GetParent(this);
+            while (p != null)
+            {
+                if (p is FrameworkElement fe && fe.ActualWidth > 0 && fe.ActualHeight > 0)
+                    return fe;
+                p = VisualTreeHelper.GetParent(p);
+            }
+            return null;
         }
 
         private void OnThumb_DragDelta(object sender, DragDeltaEventArgs e)
