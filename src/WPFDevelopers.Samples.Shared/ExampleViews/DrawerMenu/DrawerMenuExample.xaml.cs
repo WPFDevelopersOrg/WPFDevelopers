@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Samples.Helpers;
@@ -48,9 +47,9 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
         {
             InitializeComponent();
             var items = new List<DrawerMenuItem>();
-            items.Add(new DrawerMenuItem { Text = "Menu01", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/1.png")) } });
-            items.Add(new DrawerMenuItem { Text = "Menu02", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/2.png")) } });
-            items.Add(new DrawerMenuItem { Text = "Menu03", Icon = new Image() { Source = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/3.png")) } });
+            items.Add(new DrawerMenuItem { Text = "Menu01", Icon = new SvgViewer() { Source = "pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/classroom.svg" } });
+            items.Add(new DrawerMenuItem { Text = "Menu02", Icon = new SvgViewer() { Source = "pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/vote.svg" } });
+            items.Add(new DrawerMenuItem { Text = "Menu03", Icon = new SvgViewer() { Source = "pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/whiteboard.svg" } });
             DrawerMenuItems = items;
 
             var list = new List<MenuItemModel>();
@@ -71,31 +70,10 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
             MenuItems = new ObservableCollection<MenuItemModel>(list);
         }
 
-        //public ICommand HomeCommand => new RelayCommand(obj =>
-        //{
-        //    myFrame.Navigate(_uriList[0]);
-        //});
-        //public ICommand EdgeCommand => new RelayCommand(obj =>
-        //{
-        //    myFrame.Navigate(_uriList[1]);
-        //});
-        //public ICommand CloudCommand => new RelayCommand(obj =>
-        //{
-        //    WPFDevelopers.Controls.MessageBox.Show("点击了云盘","提示");
-        //});
-        //public ICommand MailCommand => new RelayCommand(obj =>
-        //{
-        //    WPFDevelopers.Controls.MessageBox.Show("点击了邮件","提示");
-        //});
-        //public ICommand VideoCommand => new RelayCommand(obj =>
-        //{
-        //    WPFDevelopers.Controls.MessageBox.Show("点击了视频","提示");
-        //});
-
-        public ICommand SelectionCommand => new RelayCommand(obj => 
+        public ICommand SelectionCommand => new RelayCommand(obj =>
         {
             var selection = obj as DrawerMenuItem;
-            if (selection != null) 
+            if (selection != null)
             {
                 Toast.Push($"当前选中{selection.Text}", ToastImage.Info);
             }
@@ -104,9 +82,9 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
 
         public ICommand IsExpandedCommand => new RelayCommand(obj =>
         {
-            if(obj is bool isExpanded)
+            if (obj is bool isExpanded)
             {
-                Toast.Push(isExpanded ? "打开": "关闭", ToastImage.Info);
+                Toast.Push(isExpanded ? "打开" : "关闭", ToastImage.Info);
             }
         });
 
@@ -119,15 +97,15 @@ namespace WPFDevelopers.Samples.ExampleViews.DrawerMenu
             if (item == null) return;
             switch (item.Text)
             {
-                case "主页":
+                case "Classroom":
                     myFrame.Navigate(_uriList[0]);
                     break;
-                case "Edge":
+                case "Whiteboard":
                     myFrame.Navigate(_uriList[1]);
                     break;
-                case "云盘":
-                case "邮件":
-                case "视频":
+                case "Vote":
+                case "Check-in":
+                case "Class":
                 case "Bus":
                     WPFDevelopers.Controls.MessageBox.Show($"点击了{item.Text}", "提示");
                     break;
