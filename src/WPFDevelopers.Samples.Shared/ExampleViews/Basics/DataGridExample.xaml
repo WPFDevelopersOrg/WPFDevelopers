@@ -1,0 +1,142 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.Basics.DataGridExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:basics="clr-namespace:WPFDevelopers.Samples.ExampleViews.Basics"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="DataGrid">
+        <StackPanel Margin="20,10">
+            <TextBlock Margin="0,20,0,0" FontSize="20" Text="DataGrid" />
+            <TabControl Height="200" Margin="0,10" FontSize="20">
+                <TabItem Height="38" Padding="20,0" Header="Mode 1">
+                    <DataGrid
+                        wd:ElementHelper.CornerRadius="3"
+                        AutoGenerateColumns="False"
+                        FontSize="20"
+                        HeadersVisibility="All"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        RowHeaderWidth="40">
+                        <DataGrid.RowHeaderTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
+                            </DataTemplate>
+                        </DataGrid.RowHeaderTemplate>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Date" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Address}" Header="Address" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Padding="20,0" Header="Mode 2">
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn CanUserResize="False">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=AllSelected}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding IsChecked}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Date" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Address}" Header="Address" IsReadOnly="True" />
+                            <DataGridTemplateColumn Width="*" Header="ContactMethod">
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{x:Static basics:BasicDataHelper.ContactMethods}" SelectedItem="{Binding ContactMethod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ContactMethod}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Padding="20,0" Header="Mode 3">
+                    <DataGrid ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Address}" Header="Address" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Padding="20,0" Header="Mode 4">
+                    <DataGrid
+                        Margin="0,10"
+                        IsEnabled="False"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn CanUserResize="False">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=AllSelected}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding IsChecked}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Date" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Address}" Header="Address" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Padding="20,0" Header="VerticalGrid">
+                    <DataGrid
+                        GridLinesVisibility="Vertical"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        VerticalGridLinesBrush="DodgerBlue">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Address}" Header="Address" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Padding="20,0" Header="HorizontalGrid">
+                    <DataGrid
+                        GridLinesVisibility="Horizontal"
+                        HorizontalGridLinesBrush="DodgerBlue"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Address}" Header="Address" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Padding="20,0" Header="AllGrid">
+                    <DataGrid
+                        GridLinesVisibility="All"
+                        HorizontalGridLinesBrush="Green"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        VerticalGridLinesBrush="Red">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                            <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding Address}" Header="Address" IsReadOnly="True" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/DataGridExample.xaml" CodeType="Xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

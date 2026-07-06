@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.Basics.TabControlExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="TabControl">
+        <StackPanel Margin="20,10">
+            <TextBlock Margin="0,20,0,0" FontSize="20" Text="TabControl" />
+            <UniformGrid Margin="0,10" Columns="2" Rows="2">
+                <TabControl Margin="4" wd:ElementHelper.CornerRadius="3">
+                    <TabItem Padding="10" Header="TabItem1">
+                        <Rectangle Fill="{DynamicResource WD.DangerBrush}" />
+                    </TabItem>
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem2">
+                        <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
+                    </TabItem>
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem3">
+                        <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
+                    </TabItem>
+                </TabControl>
+                <TabControl Margin="4" TabStripPlacement="Bottom">
+                    <TabItem Padding="10" Header="Home">
+                        <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
+                    </TabItem>
+                    <TabItem
+                        x:Name="MyTabItem"
+                        MaxWidth="120"
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem2LongLongLongLongLongLongLongLong"
+                        ToolTip="{Binding ElementName=MyTabItem, Path=Header}">
+                        <Rectangle Fill="{DynamicResource WD.DangerBrush}" />
+                    </TabItem>
+                    <TabItem
+                        MaxWidth="120"
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True">
+                        <TabItem.Header>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="TabItem3LongLongLongLongLongLongLongLong"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="NoWrap"
+                                ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
+                        </TabItem.Header>
+                        <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
+                    </TabItem>
+                </TabControl>
+                <TabControl Margin="4" TabStripPlacement="Left">
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem1">
+                        <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
+                    </TabItem>
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem2">
+                        <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
+                    </TabItem>
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem3">
+                        <Rectangle Fill="{DynamicResource WD.DangerBrush}" />
+                    </TabItem>
+                </TabControl>
+                <TabControl
+                    Margin="4"
+                    IsEnabled="False"
+                    TabStripPlacement="Right">
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem1">
+                        <Rectangle Fill="{DynamicResource WD.SuccessBrush}" />
+                    </TabItem>
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem2">
+                        <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
+                    </TabItem>
+                    <TabItem
+                        Padding="10"
+                        wd:ElementHelper.IsClear="True"
+                        Header="TabItem3">
+                        <Rectangle Fill="{DynamicResource WD.WarningBrush}" />
+                    </TabItem>
+                </TabControl>
+            </UniformGrid>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/TabControlExample.xaml" CodeType="Xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>
