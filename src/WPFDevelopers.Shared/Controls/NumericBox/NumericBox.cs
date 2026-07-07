@@ -38,6 +38,7 @@ namespace WPFDevelopers.Controls
 
         private bool _isManual;
         private bool _isBusy;
+        private bool _isUserTyping;
         static NumericBox()
         {
             InitializeCommands();
@@ -360,8 +361,7 @@ namespace WPFDevelopers.Controls
         {
             if (double.IsNaN(newValue))
                 return;
-            if (!_isManual)
-                InternalSetText(newValue);
+            InternalSetText(newValue);
             InvalidateRequerySuggested(newValue);
 
             if ((!_isBusy || !DisabledValueChangedWhileBusy) && !DoubleUtil.AreClose(oldValue, newValue))
@@ -545,7 +545,9 @@ namespace WPFDevelopers.Controls
                 if (!DoubleUtil.AreClose(Value ?? 0, convertedValue))
                 {
                     _isManual = true;
+                    _isUserTyping = true;
                     Value = convertedValue;
+                    _isUserTyping = false;
                 }
             }
         }
@@ -578,6 +580,7 @@ namespace WPFDevelopers.Controls
 
         private void DealInputText(string inputText)
         {
+            _isUserTyping = false;
             double convertedValue;
             if (double.TryParse(inputText, out convertedValue))
             {
@@ -639,6 +642,7 @@ namespace WPFDevelopers.Controls
 
         private void InternalSetText(double newValue)
         {
+            if (_isUserTyping) return;
             var text = IsAutoCapture ? newValue.ToString() : newValue.ToString(GetPrecisionFormat());
             if (_valueTextBox != null && !Equals(text, _valueTextBox.Text))
             {
