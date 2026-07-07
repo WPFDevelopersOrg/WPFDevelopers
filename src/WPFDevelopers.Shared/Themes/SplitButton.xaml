@@ -104,16 +104,40 @@
                                 Template="{StaticResource WD.DropDownToggleButton}" />
                         </Grid>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
-    <Style BasedOn="{StaticResource WD.SplitButton}" TargetType="{x:Type controls:SplitButton}" />
+    <Style
+        x:Key="WD.SplitButtonDefault"
+        BasedOn="{StaticResource WD.SplitButton}"
+        TargetType="{x:Type controls:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style
         x:Key="WD.SplitButtonPrimary"
         BasedOn="{StaticResource WD.SplitButton}"
@@ -121,5 +145,107 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.9" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Opacity" Value="0.9" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Opacity" Value="0.9" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
+    <Style
+        x:Key="WD.SplitButtonSuccess"
+        BasedOn="{StaticResource WD.SplitButton}"
+        TargetType="{x:Type controls:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.SuccessMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.SuccessMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.SuccessMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="WD.SplitButtonWarning"
+        BasedOn="{StaticResource WD.SplitButton}"
+        TargetType="{x:Type controls:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.WarningMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.WarningMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.WarningMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="WD.SplitButtonDanger"
+        BasedOn="{StaticResource WD.SplitButton}"
+        TargetType="{x:Type controls:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.DangerMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.DangerMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
+                <Setter Property="Background" Value="{DynamicResource WD.DangerMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="WD.SplitButtonSuccessPrimary"
+        BasedOn="{StaticResource WD.SplitButtonPrimary}"
+        TargetType="{x:Type controls:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource WD.SuccessBrush}" />
+    </Style>
+    <Style
+        x:Key="WD.SplitButtonWarningPrimary"
+        BasedOn="{StaticResource WD.SplitButtonPrimary}"
+        TargetType="{x:Type controls:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource WD.WarningBrush}" />
+    </Style>
+    <Style
+        x:Key="WD.SplitButtonDangerPrimary"
+        BasedOn="{StaticResource WD.SplitButtonPrimary}"
+        TargetType="{x:Type controls:SplitButton}">
+        <Setter Property="Background" Value="{DynamicResource WD.DangerBrush}" />
+    </Style>
+    <Style BasedOn="{StaticResource WD.SplitButtonDefault}" TargetType="{x:Type controls:SplitButton}" />
 </ResourceDictionary>
