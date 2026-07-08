@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationGrid\AnimationGrid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ItemsControlBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ScaleBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\StatefulControlBase.cs" />
@@ -182,6 +183,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\Step.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\StepItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Segmented\Segmented.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Segmented\SegmentedItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
@@ -546,6 +549,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Step.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Segmented.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

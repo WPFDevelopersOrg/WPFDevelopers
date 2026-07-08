@@ -55,6 +55,7 @@ CropAvatar.xaml
 StarrySky.xaml
 Magnifier.xaml
 Step.xaml
+Segmented.xaml
 MultiSelectComboBox.xaml
 Mask.xaml
 BreadCrumbBar.xaml

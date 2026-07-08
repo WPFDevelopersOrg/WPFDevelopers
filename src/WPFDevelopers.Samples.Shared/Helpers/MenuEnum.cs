@@ -104,6 +104,7 @@
         OtpBox,
         Carousel,
         SplitButton,
+        Segmented,
         VirtualizingWrapPanel,
         AcrylicBlur,
         Theme,

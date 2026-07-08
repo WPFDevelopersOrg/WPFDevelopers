@@ -548,6 +548,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.SplitButton:
                     ControlPanel = new SplitButtonExample();
                     break;
+                case MenuEnum.Segmented:
+                    ControlPanel = new SegmentedExample();
+                    break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:
                     ControlPanel = new VirtualizingWrapPanel();

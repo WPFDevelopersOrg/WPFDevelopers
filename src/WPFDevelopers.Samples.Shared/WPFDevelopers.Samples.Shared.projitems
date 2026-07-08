@@ -78,6 +78,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SplitButtonExample.xaml.cs">
       <DependentUpon>SplitButtonExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SegmentedExample.xaml.cs">
+      <DependentUpon>SegmentedExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CarouselExampleViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\DataGridFilterExample.xaml.cs">
       <DependentUpon>DataGridFilterExample.xaml</DependentUpon>
@@ -941,6 +944,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\SplitButtonExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\SegmentedExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
