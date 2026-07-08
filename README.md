@@ -103,8 +103,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 		    -->
 
 		    <!--
-   				此外，通过 Radius 属性可控制控件的圆角大小（Windows 11 默认为 4），
-   				您可以根据需要调整该值，例如设置为 Radius="4" 以获得更大的圆角。
+   				此外，通过 Radius 属性可控制控件的圆角大小（Windows 11 默认为 4）。
 			 -->
 				<wd:Resources Radius="4" />
             </ResourceDictionary.MergedDictionaries>
@@ -117,6 +116,21 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### CircleMenu
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircleMenu.gif"/>  
+
+----------
+### Segmented
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Segmented.gif"/>  
+
+----------
+### SplitButton
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SplitButton.gif"/>  
+
+----------   
 ### Carousel
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Carousel.gif"/>   
