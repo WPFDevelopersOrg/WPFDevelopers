@@ -9,7 +9,11 @@ namespace WPFDevelopers.Converts
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is double actualValue)
+            {
+                if (parameter != null && double.TryParse(parameter.ToString(), out var multiplier))
+                    return actualValue * multiplier;
                 return actualValue / 2;
+            }
             return value;
         }
 

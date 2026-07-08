@@ -15,6 +15,8 @@
             <TabItem Header="Card">
                 <wd:Carousel
                     x:Name="myCarousel2"
+                    Width="400"
+                    Height="200"
                     AutoPlay="True"
                     AutoPlayInterval="0:0:3"
                     DisplayMemberPath="URL"

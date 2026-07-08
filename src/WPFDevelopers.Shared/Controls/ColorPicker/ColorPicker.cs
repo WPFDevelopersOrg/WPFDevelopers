@@ -51,6 +51,8 @@ namespace WPFDevelopers.Controls
 
         private bool _isInnerUpdateSelectedColor;
 
+        private bool _hasPendingSelectedColor;
+
         private Thumb _thumb;
 
         private ColorTypeEnum[] colorTypeEnums;
@@ -64,20 +66,20 @@ namespace WPFDevelopers.Controls
                 new FrameworkPropertyMetadata(typeof(ColorPicker)));
         }
 
-        public Color HueColor => (Color) GetValue(HueColorProperty);
+        public Color HueColor => (Color)GetValue(HueColorProperty);
 
         public Color SelectedColor
         {
-            get => (Color) GetValue(SelectedColorProperty);
+            get => (Color)GetValue(SelectedColorProperty);
             set => SetValue(SelectedColorProperty, value);
         }
 
-        public HSB HSB => (HSB) GetValue(HSBHProperty);
+        public HSB HSB => (HSB)GetValue(HSBHProperty);
 
 
         public ColorTypeEnum ColorType
         {
-            get => (ColorTypeEnum) GetValue(ColorTypeProperty);
+            get => (ColorTypeEnum)GetValue(ColorTypeProperty);
             set => SetValue(ColorTypeProperty, value);
         }
 
@@ -89,14 +91,20 @@ namespace WPFDevelopers.Controls
                 ctrl._isInnerUpdateSelectedColor = false;
                 return;
             }
-            if (ctrl._hueSliderColor == null) return;
+            if (ctrl._hueSliderColor == null)
+            {
+                ctrl._hasPendingSelectedColor = true;
+                return;
+            }
             var color = (Color)e.NewValue;
             double h = 0, s = 0, b = 0;
             ColorUtil.HsbFromColor(color, ref h, ref s, ref b);
             var hsb = new HSB { H = h, S = s, B = b };
             ctrl.SetValue(HueColorPropertyKey, ColorUtil.ColorFromHsb(hsb.H, 1, 1));
             ctrl.SetValue(HSBPropertyKey, hsb);
+            ctrl._hueSliderColor.ValueChanged -= ctrl.HueSliderColor_OnValueChanged;
             ctrl._hueSliderColor.Value = 1 - h;
+            ctrl._hueSliderColor.ValueChanged += ctrl.HueSliderColor_OnValueChanged;
             ctrl.UpdateThumbPosition();
         }
 
@@ -196,13 +204,19 @@ namespace WPFDevelopers.Controls
         private void LoadedColor()
         {
             if (_canvas == null || _thumb == null || _hueSliderColor == null) return;
-            var width = (int)_canvas.ActualWidth;
-            var height = (int)_canvas.ActualHeight;
-            var point = new Point(width - _thumb.ActualWidth / 2, -_thumb.ActualHeight / 2);
-            Canvas.SetLeft(_thumb, point.X);
-            Canvas.SetTop(_thumb, point.Y);
-            var hsb = new HSB { H = _hueSliderColor.Value, S = HSB.S, B = HSB.B };
-            SetValue(HSBPropertyKey, hsb);
+            if (_hasPendingSelectedColor)
+            {
+                _hasPendingSelectedColor = false;
+                var color = SelectedColor;
+                double h = 0, s = 0, b = 0;
+                ColorUtil.HsbFromColor(color, ref h, ref s, ref b);
+                SetValue(HueColorPropertyKey, ColorUtil.ColorFromHsb(h, 1, 1));
+                SetValue(HSBPropertyKey, new HSB { H = h, S = s, B = b });
+                _hueSliderColor.ValueChanged -= HueSliderColor_OnValueChanged;
+                _hueSliderColor.Value = 1 - h;
+                _hueSliderColor.ValueChanged += HueSliderColor_OnValueChanged;
+            }
+            UpdateThumbPosition();
         }
 
         private void HueSliderColor_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

@@ -23,11 +23,10 @@
             </TabItem>
             <TabItem Header="XAML">
                 <wd:FocusCarousel AutoPlay="True" ItemClick="Carousel_ItemClick">
-                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/0.jpg" />
-                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/1.jpg" />
-                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/2.jpg" />
-                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/3.jpg" />
-                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/4.jpg" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide0.png" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide1.png" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide2.png" />
+                    <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide3.png" />
                 </wd:FocusCarousel>
             </TabItem>
         </TabControl>

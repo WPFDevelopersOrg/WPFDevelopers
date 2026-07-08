@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -170,7 +171,7 @@ namespace WPFDevelopers.Controls
         public static readonly RoutedEvent SelectionChangedEvent =
             EventManager.RegisterRoutedEvent("SelectionChanged", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<object>), typeof(SplitButton));
 
-        private System.Collections.ObjectModel.ObservableCollection<object> _children;
+        private ObservableCollection<object> _children;
 
         public object ItemsSource
         {
@@ -184,13 +185,13 @@ namespace WPFDevelopers.Controls
             set => SetValue(ItemTemplateProperty, value);
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<object> Children
+        public ObservableCollection<object> Children
         {
             get
             {
                 if (_children == null)
                 {
-                    _children = new System.Collections.ObjectModel.ObservableCollection<object>();
+                    _children = new ObservableCollection<object>();
                 }
                 return _children;
             }

@@ -19,6 +19,58 @@
     TitleBarMode="High"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <wd:Window.TitleBarLayout>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <wd:SwitchButton x:Name="ThemeSwitchBtn">
+                <wd:SwitchButton.UncheckedContent>
+                    <wd:PathIcon
+                        Width="20"
+                        Height="20"
+                        Data="M198,56.74A99.31,99.31,0,0,0,128,28h-1A100,100,0,0,0,28,128c0,41.22,25.55,75.85,66.69,90.38a28.34,28.34,0,0,0,9.42,1.63A28,28,0,0,0,132,192a20,20,0,0,1,20-20h46.21a27.84,27.84,0,0,0,27.3-21.76,100.37,100.37,0,0,0,2.49-23.1A99.26,99.26,0,0,0,198,56.74Zm19.74,91.72A19.89,19.89,0,0,1,198.21,164H152a28,28,0,0,0-28,28,20,20,0,0,1-26.64,18.83C59.51,197.46,36,165.72,36,128a92,92,0,0,1,91.05-92H128a92,92,0,0,1,89.72,112.46ZM136,76a8,8,0,1,1-8-8A8,8,0,0,1,136,76ZM92,100a8,8,0,1,1-8-8A8,8,0,0,1,92,100Zm0,56a8,8,0,1,1-8-8A8,8,0,0,1,92,156Zm88-56a8,8,0,1,1-8-8A8,8,0,0,1,180,100Z"
+                        Foreground="White" />
+                </wd:SwitchButton.UncheckedContent>
+                <wd:SwitchButton.CheckedContent>
+                    <wd:PathIcon
+                        Width="20"
+                        Height="20"
+                        Data="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89ZM84,168a12,12,0,1,1,12-12A12,12,0,0,1,84,168Zm0-56a12,12,0,1,1,12-12A12,12,0,0,1,84,112Zm44-24a12,12,0,1,1,12-12A12,12,0,0,1,128,88Zm44,24a12,12,0,1,1,12-12A12,12,0,0,1,172,112Z"
+                        Foreground="White" />
+                </wd:SwitchButton.CheckedContent>
+            </wd:SwitchButton>
+            <Popup
+                AllowsTransparency="True"
+                HorizontalOffset="-200"
+                IsOpen="{Binding IsChecked, ElementName=ThemeSwitchBtn, Mode=TwoWay}"
+                Placement="Bottom"
+                PlacementTarget="{Binding ElementName=ThemeSwitchBtn}"
+                StaysOpen="False">
+                <Border
+                    Margin="10"
+                    Background="{DynamicResource WD.BackgroundBrush}"
+                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Effect="{StaticResource WD.PopupShadowDepth}">
+                    <StackPanel Margin="4">
+                        <wd:ColorPicker x:Name="ThemeColorPicker" />
+                        <StackPanel
+                            HorizontalAlignment="Right"
+                            wd:PanelHelper.Spacing="4"
+                            Orientation="Horizontal">
+                            <Button
+                                Click="ColorPicker_Apply"
+                                Content="Apply"
+                                Style="{StaticResource WD.PrimaryButton}" />
+                            <Button
+                                Click="ColorPicker_Cancel"
+                                Content="Cancel"
+                                Style="{StaticResource WD.DefaultButton}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Popup>
+        </StackPanel>
+    </wd:Window.TitleBarLayout>
     <wd:Window.Effect>
         <wd:GrayscaleEffect x:Name="grayscaleEffect" Factor="1" />
     </wd:Window.Effect>
@@ -68,22 +120,30 @@
             <Grid Margin="0,0,3,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBox
                     Name="PART_MenuTextBox"
                     wd:ElementHelper.IsClear="True"
-                    wd:ElementHelper.Watermark="Please input">
+                    wd:ElementHelper.Watermark="Search Control">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
+                <wd:Segmented
+                    Grid.Row="1"
+                    Margin="0,3"
+                    wd:ElementHelper.CornerRadius="15"
+                    SelectedIndex="{Binding SegmentedSelectedIndex, Mode=TwoWay}">
+                    <wd:SegmentedItem Content="Custom" />
+                    <wd:SegmentedItem Content="Basic" />
+                </wd:Segmented>
                 <controls:NavigateMenu
                     x:Name="NavigateMenu"
-                    Grid.Row="1"
-                    Margin="0,3,0,0"
+                    Grid.Row="2"
                     DisplayMemberPath="Name"
                     ItemsSource="{Binding NavigateMenuModelList}">
                     <i:Interaction.Triggers>
@@ -99,13 +159,57 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 ShowsPreview="True" />
-            <Border
+
+            <wd:Drawer
+                x:Name="CodeDrawer"
                 Grid.Column="2"
                 Margin="3,0,0,0"
-                Background="{DynamicResource WD.BackgroundBrush}">
+                BorderThickness="0"
+                Position="Right">
+                <wd:Drawer.Header>
+                    <controls:CodeViewer Header="MainWindow">
+                        <controls:CodeViewer.SourceCodes>
+                            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MainWindow.xaml" CodeType="Xaml" />
+                            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MainWindow.xaml.cs" CodeType="CSharp" />
+                            <controls:SourceCodeModel
+                                CodeSource="/WPFDevelopers.SamplesCode;component/ViewModels/MainVM.cs"
+                                CodeType="CSharp"
+                                Haader="ViewModel" />
+                        </controls:CodeViewer.SourceCodes>
+                    </controls:CodeViewer>
+                </wd:Drawer.Header>
                 <ContentControl Content="{Binding ControlPanel}" />
-                <!--  DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType=local:MainWindow}}"  -->
-            </Border>
+            </wd:Drawer>
+            <wd:CircleMenu
+                Grid.Column="2"
+                Width="100"
+                Height="100"
+                Margin="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                ItemClickCommand="{Binding CircleMenuItemClickCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                <wd:CircleMenuItem x:Name="ScreenShot" ToolTip="ScreenShot">
+                    <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/ScreenShot.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Github" ToolTip="Github">
+                    <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Github.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Grayscale" ToolTip="Grayscale">
+                    <wd:SvgViewer x:Name="GrayscaleSvg" Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/EnableGrayscale.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Theme" ToolTip="Theme">
+                    <wd:SvgViewer x:Name="ThemeSvg" Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Sun.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Code" ToolTip="MainWindow Code">
+                    <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Code.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="ClearToast" ToolTip="Clear Toast">
+                    <wd:PathIcon
+                        Width="10"
+                        Height="10"
+                        Kind="WindowClose" />
+                </wd:CircleMenuItem>
+            </wd:CircleMenu>
         </Grid>
     </Grid>
 </wd:Window>

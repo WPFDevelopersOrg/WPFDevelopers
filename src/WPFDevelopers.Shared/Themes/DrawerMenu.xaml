@@ -156,7 +156,7 @@
                                             <Path.Visibility>
                                                 <MultiBinding Converter="{StaticResource WD.MultiBoolToVisibilityConverter}">
                                                     <Binding Path="HasItems" RelativeSource="{RelativeSource AncestorType=controls:DrawerMenuItem}" />
-                                                    <Binding Path="IsOpen" RelativeSource="{RelativeSource AncestorType=controls:DrawerMenu}" />
+                                                    <Binding Path="IsExpanded" RelativeSource="{RelativeSource AncestorType=controls:DrawerMenu}" />
                                                 </MultiBinding>
                                             </Path.Visibility>
                                         </Path>
@@ -282,7 +282,7 @@
                                 Padding="16,0,0,0"
                                 HorizontalContentAlignment="Left"
                                 Background="Transparent"
-                                IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsOpen}"
+                                IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:DrawerMenu}}, Path=IsExpanded}"
                                 Style="{StaticResource WD.DrawerMenuToggleButton}">
                                 <ContentPresenter
                                     HorizontalAlignment="Left"
@@ -304,7 +304,7 @@
                         </Grid>
                     </controls:WDBorder>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsOpen" Value="False">
+                        <Trigger Property="IsExpanded" Value="False">
                             <Setter TargetName="PART_ToggleButton" Property="Content" Value="{Binding ClosedIcon, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -319,7 +319,7 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsOpen" Value="True">
+            <Trigger Property="IsExpanded" Value="True">
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>

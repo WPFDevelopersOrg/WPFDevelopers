@@ -1,0 +1,88 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.Basics.ThemeExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="Theme">
+        <ScrollViewer>
+            <StackPanel Margin="20,10">
+                <WrapPanel Margin="0,10">
+                    <Image
+                        Width="100"
+                        Height="100"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Source="/WPFDevelopers.Samples;component/WPFDevelopers.ico" />
+                    <StackPanel Margin="10,0">
+                        <TextBlock
+                            Padding="0,4"
+                            HorizontalAlignment="Center"
+                            FontSize="20"
+                            Foreground="{DynamicResource WD.PrimaryBrush}"
+                            Text="WPFDevelopers" />
+                        <TextBlock
+                            Padding="0,4"
+                            HorizontalAlignment="Center"
+                            FontSize="20"
+                            Foreground="{DynamicResource WD.PrimaryBrush}"
+                            Text="微信号公众号:WPFDevelopers" />
+                        <TextBlock
+                            Padding="0,10"
+                            FontSize="20"
+                            Foreground="{DynamicResource WD.PrimaryBrush}">
+                            <Hyperlink NavigateUri="https://github.com/WPFDevelopersOrg/WPFDevelopers" RequestNavigate="GithubHyperlink_RequestNavigate">Github 源码</Hyperlink>
+                            <Run />
+                            <Run />
+                            <Run />
+                            <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers" RequestNavigate="GiteeHyperlink_RequestNavigate">码云源码</Hyperlink>
+                            <Run />
+                            <Run />
+                            <Run />
+                            <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers" RequestNavigate="QQHyperlink_RequestNavigate">加入QQ群：458041663</Hyperlink>
+                            <Hyperlink>、340500857、929469013</Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+
+                </WrapPanel>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Theme" />
+                <controls:Theme Margin="0,10" />
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Light | Dark" />
+                <WrapPanel Margin="10">
+                    <TextBlock Text="Light" />
+                    <ToggleButton
+                        x:Name="tbLightDark"
+                        Margin="10,0"
+                        Checked="LightDark_Checked"
+                        Unchecked="LightDark_Checked" />
+                    <TextBlock Text="Dark" />
+                </WrapPanel>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Languages" />
+                <WrapPanel Margin="10" wd:PanelHelper.Spacing="4">
+                    <TextBlock VerticalAlignment="Center" Text="Languages:" />
+                    <ComboBox
+                        SelectedIndex="0"
+                        SelectionChanged="ComboBoxLanguages_SelectionChanged"
+                        ToolTip="目前翻译只是针对WD的自定义控件进行了多语言翻译">
+                        <ComboBoxItem Tag="zh-cn">中文</ComboBoxItem>
+                        <ComboBoxItem Tag="en-US">English</ComboBoxItem>
+                        <ComboBoxItem Tag="ko-KR">한국어</ComboBoxItem>
+                    </ComboBox>
+                </WrapPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/ThemeExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/ThemeExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

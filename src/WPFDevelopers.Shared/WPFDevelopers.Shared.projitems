@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationGrid\AnimationGrid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ItemsControlBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\ScaleBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\SliderRepeatButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BaseControls\StatefulControlBase.cs" />
@@ -40,12 +41,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IPEditBox\IPEditBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\OtpBox\OtpBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SplitButton\SplitButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SwitchButton\SwitchButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FirstLastMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loadings\LoadingBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\LoadingExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\ProgressLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\FilterVisibilityMultiConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\SelectedIndexToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ResourceHelper.cs" />
     <Compile Include="..\WPFDevelopers.Shared\Controls\Toast\ToastExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectComboBox\MultiSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
@@ -180,6 +183,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\Step.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Step\StepItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Segmented\Segmented.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Segmented\SegmentedItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Thermometer\Thermometer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VerifyCode\VerifyCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
@@ -188,7 +193,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\AngleToPointConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\StepIndexConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\IndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Utilities\ColorUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
@@ -524,6 +528,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\SwitchButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Toast.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -541,6 +549,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Step.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Segmented.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

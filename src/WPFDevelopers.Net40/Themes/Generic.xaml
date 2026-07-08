@@ -39,36 +39,42 @@
                             <control:SmallPanel x:Name="PART_Normal" Grid.Row="0">
                                 <Grid Height="{TemplateBinding TitleHeight}">
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button
-                                            x:Name="PART_TitleBarIcon"
-                                            Margin="5,0,0,0"
-                                            VerticalAlignment="Center"
-                                            shell:WindowChrome.IsHitTestVisibleInChrome="True"
-                                            Background="Transparent"
-                                            BorderThickness="0"
-                                            Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ObjectNullToVisibilityConverter}}">
-                                            <Image
-                                                Width="{x:Static SystemParameters.SmallIconWidth}"
-                                                Height="{x:Static SystemParameters.SmallIconHeight}"
-                                                IsHitTestVisible="False"
-                                                RenderOptions.BitmapScalingMode="HighQuality"
-                                                Source="{TemplateBinding Icon}" />
-                                        </Button>
-
-                                        <ContentControl
-                                            Margin="5,0,0,0"
-                                            VerticalAlignment="Center"
-                                            Content="{TemplateBinding Title}"
-                                            FontSize="{DynamicResource {x:Static SystemFonts.CaptionFontSizeKey}}"
-                                            Foreground="{DynamicResource WD.WindowTextBrush}"
-                                            IsTabStop="False" />
-                                    </StackPanel>
-                                    <StackPanel
+                                    <Button
+                                        x:Name="PART_TitleBarIcon"
+                                        Margin="5,0,0,0"
+                                        VerticalAlignment="Center"
+                                        shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Visibility="{Binding Icon, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ObjectNullToVisibilityConverter}}">
+                                        <Image
+                                            Width="{x:Static SystemParameters.SmallIconWidth}"
+                                            Height="{x:Static SystemParameters.SmallIconHeight}"
+                                            IsHitTestVisible="False"
+                                            RenderOptions.BitmapScalingMode="HighQuality"
+                                            Source="{TemplateBinding Icon}" />
+                                    </Button>
+                                    <ContentControl
                                         Grid.Column="1"
+                                        Margin="5,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Content="{TemplateBinding Title}"
+                                        FontSize="{DynamicResource {x:Static SystemFonts.CaptionFontSizeKey}}"
+                                        Foreground="{DynamicResource WD.WindowTextBrush}"
+                                        IsTabStop="False" />
+                                    <ContentPresenter
+                                        Grid.Column="2"
+                                        VerticalAlignment="Center"
+                                        shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                        Content="{Binding TitleBarLayout, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Visibility="{Binding TitleBarLayout, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ObjectNullToVisibilityConverter}}" />
+                                    <StackPanel
+                                        Grid.Column="3"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
                                         shell:WindowChrome.IsHitTestVisibleInChrome="True"
@@ -159,6 +165,7 @@
                                     Margin="10,0,0,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" MinWidth="30" />
                                     </Grid.ColumnDefinitions>
@@ -178,8 +185,14 @@
                                         FontSize="{DynamicResource WD.TitleFontSize}"
                                         Foreground="{DynamicResource WD.WindowTextBrush}"
                                         Text="{TemplateBinding Title}" />
-                                    <StackPanel
+                                    <ContentPresenter
                                         Grid.Column="2"
+                                        VerticalAlignment="Center"
+                                        shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                        Content="{Binding TitleBarLayout, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Visibility="{Binding TitleBarLayout, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ObjectNullToVisibilityConverter}}" />
+                                    <StackPanel
+                                        Grid.Column="3"
                                         Margin="0,6"
                                         shell:WindowChrome.IsHitTestVisibleInChrome="True"
                                         Orientation="Horizontal">

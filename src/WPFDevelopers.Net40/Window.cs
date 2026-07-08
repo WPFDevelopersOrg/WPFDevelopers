@@ -62,7 +62,8 @@ namespace WPFDevelopers.Net40
         public static readonly DependencyProperty TitleBarModeProperty =
             DependencyProperty.Register("TitleBarMode", typeof(TitleBarMode), typeof(Window), new PropertyMetadata(TitleBarMode.Normal, OnTitleBarModeChanged));
 
-        
+        public static readonly DependencyProperty TitleBarLayoutProperty =
+            DependencyProperty.Register("TitleBarLayout", typeof(object), typeof(Window), new PropertyMetadata(null));
 
         static Window()
         {
@@ -163,6 +164,12 @@ namespace WPFDevelopers.Net40
         {
             get => (TitleBarMode)GetValue(TitleBarModeProperty);
             set => SetValue(TitleBarModeProperty, value);
+        }
+
+        public object TitleBarLayout
+        {
+            get => GetValue(TitleBarLayoutProperty);
+            set => SetValue(TitleBarLayoutProperty, value);
         }
 
         protected override void OnSourceInitialized(EventArgs e)

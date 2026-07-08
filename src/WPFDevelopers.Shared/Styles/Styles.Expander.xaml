@@ -584,17 +584,6 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <!--<MultiTrigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_Content"
-                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
-                                            To="0"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -642,17 +631,6 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <!--<MultiTrigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_Content"
-                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
-                                            To="0"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -701,17 +679,6 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <!--<MultiTrigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_Content"
-                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
-                                            To="0"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -759,19 +726,7 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
-                            <!--<MultiTrigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_Content"
-                                            Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
-                                            To="0"
-                                            Duration="0:0:0.2" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsExpanded" Value="False" />

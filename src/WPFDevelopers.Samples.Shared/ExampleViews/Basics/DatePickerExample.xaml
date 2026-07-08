@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.Basics.DatePickerExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="DatePicker">
+        <StackPanel Margin="20,10">
+            <TextBlock Margin="0,20,0,0" FontSize="20" Text="DatePicker" />
+            <UniformGrid Margin="0,10" Rows="1">
+                <DatePicker wd:DatePickerHelper.Watermark="日期 yyyy/MM/dd" wd:ElementHelper.CornerRadius="3" />
+                <DatePicker
+                    Margin="10,0"
+                    wd:DatePickerHelper.Watermark="DatePicker"
+                    SelectedDateFormat="Long" />
+                <DatePicker wd:DatePickerHelper.Watermark="{x:Null}">
+                    <DatePicker.BlackoutDates>
+                        <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
+                    </DatePicker.BlackoutDates>
+                </DatePicker>
+                <DatePicker Margin="10,0" wd:DatePickerHelper.IsMonthYear="True" />
+            </UniformGrid>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/DatePickerExample.xaml" CodeType="Xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

@@ -97,18 +97,16 @@
                         </StackPanel>
                     </Grid>
                 </wd:Drawer.Header>
-                <wd:Drawer.Content>
-                    <StackPanel HorizontalAlignment="Center">
-                        <TextBlock Text="抽屉从左侧滑出，点击遮罩区关闭。" />
-                        <Button
-                            Margin="0,10"
-                            HorizontalAlignment="Center"
-                            wd:ElementHelper.CornerRadius="3"
-                            Click="ButtonLeft_Click"
-                            Content="Open"
-                            Style="{StaticResource WD.SuccessPrimaryButton}" />
-                    </StackPanel>
-                </wd:Drawer.Content>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="抽屉从左侧滑出，点击遮罩区关闭。" />
+                    <Button
+                        Margin="0,10"
+                        HorizontalAlignment="Center"
+                        wd:ElementHelper.CornerRadius="3"
+                        Click="ButtonLeft_Click"
+                        Content="Open"
+                        Style="{StaticResource WD.SuccessPrimaryButton}" />
+                </StackPanel>
             </wd:Drawer>
             <wd:Drawer
                 x:Name="MyDrawerRight"
@@ -130,17 +128,15 @@
                         </StackPanel>
                     </Grid>
                 </wd:Drawer.Header>
-                <wd:Drawer.Content>
-                    <StackPanel HorizontalAlignment="Center">
-                        <TextBlock Text="抽屉从右侧滑出，点击遮罩区关闭。" />
-                        <Button
-                            Margin="0,10"
-                            HorizontalAlignment="Center"
-                            Click="ButtonRight_Click"
-                            Content="Open"
-                            Style="{StaticResource WD.WarningPrimaryButton}" />
-                    </StackPanel>
-                </wd:Drawer.Content>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="抽屉从右侧滑出，点击遮罩区关闭。" />
+                    <Button
+                        Margin="0,10"
+                        HorizontalAlignment="Center"
+                        Click="ButtonRight_Click"
+                        Content="Open"
+                        Style="{StaticResource WD.WarningPrimaryButton}" />
+                </StackPanel>
             </wd:Drawer>
         </Grid>
         <controls:CodeViewer.SourceCodes>

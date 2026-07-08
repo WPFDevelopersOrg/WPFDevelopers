@@ -182,6 +182,33 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CarouselExample.xaml.cs" Link="ExampleViews\CarouselExample.xaml.cs" DependentUpon="CarouselExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\CarouselExampleViewModel.cs" Link="ViewModels\CarouselExampleViewModel.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SplitButtonExample.xaml.cs" Link="ExampleViews\SplitButtonExample.xaml.cs" DependentUpon="SplitButtonExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SegmentedExample.xaml.cs" Link="ExampleViews\SegmentedExample.xaml.cs" DependentUpon="SegmentedExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\MainVM.cs" Link="ViewModels\MainVM.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\BasicExampleBase.cs" Link="ExampleViews\Basics\BasicExampleBase.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\BasicDataHelper.cs" Link="ExampleViews\Basics\BasicDataHelper.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ThemeExample.xaml.cs" Link="ExampleViews\Basics\ThemeExample.xaml.cs" DependentUpon="ThemeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\MenuExample.xaml.cs" Link="ExampleViews\Basics\MenuExample.xaml.cs" DependentUpon="MenuExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\WindowBasicExample.xaml.cs" Link="ExampleViews\Basics\WindowBasicExample.xaml.cs" DependentUpon="WindowBasicExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\LoadingBasicExample.xaml.cs" Link="ExampleViews\Basics\LoadingBasicExample.xaml.cs" DependentUpon="LoadingBasicExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ButtonExample.xaml.cs" Link="ExampleViews\Basics\ButtonExample.xaml.cs" DependentUpon="ButtonExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\RadioButtonExample.xaml.cs" Link="ExampleViews\Basics\RadioButtonExample.xaml.cs" DependentUpon="RadioButtonExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\CheckboxExample.xaml.cs" Link="ExampleViews\Basics\CheckboxExample.xaml.cs" DependentUpon="CheckboxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\TextBoxExample.xaml.cs" Link="ExampleViews\Basics\TextBoxExample.xaml.cs" DependentUpon="TextBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\PasswordBoxExample.xaml.cs" Link="ExampleViews\Basics\PasswordBoxExample.xaml.cs" DependentUpon="PasswordBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ComboBoxExample.xaml.cs" Link="ExampleViews\Basics\ComboBoxExample.xaml.cs" DependentUpon="ComboBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ToggleButtonExample.xaml.cs" Link="ExampleViews\Basics\ToggleButtonExample.xaml.cs" DependentUpon="ToggleButtonExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\DatePickerExample.xaml.cs" Link="ExampleViews\Basics\DatePickerExample.xaml.cs" DependentUpon="DatePickerExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\DateTimePickerExample.xaml.cs" Link="ExampleViews\Basics\DateTimePickerExample.xaml.cs" DependentUpon="DateTimePickerExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\CalendarExample.xaml.cs" Link="ExampleViews\Basics\CalendarExample.xaml.cs" DependentUpon="CalendarExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\SliderExample.xaml.cs" Link="ExampleViews\Basics\SliderExample.xaml.cs" DependentUpon="SliderExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ProgressBarExample.xaml.cs" Link="ExampleViews\Basics\ProgressBarExample.xaml.cs" DependentUpon="ProgressBarExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\DataGridExample.xaml.cs" Link="ExampleViews\Basics\DataGridExample.xaml.cs" DependentUpon="DataGridExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ListBoxExample.xaml.cs" Link="ExampleViews\Basics\ListBoxExample.xaml.cs" DependentUpon="ListBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ListViewExample.xaml.cs" Link="ExampleViews\Basics\ListViewExample.xaml.cs" DependentUpon="ListViewExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\TreeViewExample.xaml.cs" Link="ExampleViews\Basics\TreeViewExample.xaml.cs" DependentUpon="TreeViewExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ExpanderExample.xaml.cs" Link="ExampleViews\Basics\ExpanderExample.xaml.cs" DependentUpon="ExpanderExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\GroupBoxExample.xaml.cs" Link="ExampleViews\Basics\GroupBoxExample.xaml.cs" DependentUpon="GroupBoxExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\TabControlExample.xaml.cs" Link="ExampleViews\Basics\TabControlExample.xaml.cs" DependentUpon="TabControlExample.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml">
@@ -600,6 +627,78 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SplitButtonExample.xaml">
 			<Link>ExampleViews\SplitButtonExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SegmentedExample.xaml">
+			<Link>ExampleViews\SegmentedExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ThemeExample.xaml">
+			<Link>ExampleViews\Basics\ThemeExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\MenuExample.xaml">
+			<Link>ExampleViews\Basics\MenuExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\WindowBasicExample.xaml">
+			<Link>ExampleViews\Basics\WindowBasicExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\LoadingBasicExample.xaml">
+			<Link>ExampleViews\Basics\LoadingBasicExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ButtonExample.xaml">
+			<Link>ExampleViews\Basics\ButtonExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\RadioButtonExample.xaml">
+			<Link>ExampleViews\Basics\RadioButtonExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\CheckboxExample.xaml">
+			<Link>ExampleViews\Basics\CheckboxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\TextBoxExample.xaml">
+			<Link>ExampleViews\Basics\TextBoxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\PasswordBoxExample.xaml">
+			<Link>ExampleViews\Basics\PasswordBoxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ComboBoxExample.xaml">
+			<Link>ExampleViews\Basics\ComboBoxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ToggleButtonExample.xaml">
+			<Link>ExampleViews\Basics\ToggleButtonExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\DatePickerExample.xaml">
+			<Link>ExampleViews\Basics\DatePickerExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\DateTimePickerExample.xaml">
+			<Link>ExampleViews\Basics\DateTimePickerExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\CalendarExample.xaml">
+			<Link>ExampleViews\Basics\CalendarExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\SliderExample.xaml">
+			<Link>ExampleViews\Basics\SliderExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ProgressBarExample.xaml">
+			<Link>ExampleViews\Basics\ProgressBarExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\DataGridExample.xaml">
+			<Link>ExampleViews\Basics\DataGridExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ListBoxExample.xaml">
+			<Link>ExampleViews\Basics\ListBoxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ListViewExample.xaml">
+			<Link>ExampleViews\Basics\ListViewExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\TreeViewExample.xaml">
+			<Link>ExampleViews\Basics\TreeViewExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ExpanderExample.xaml">
+			<Link>ExampleViews\Basics\ExpanderExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\GroupBoxExample.xaml">
+			<Link>ExampleViews\Basics\GroupBoxExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\TabControlExample.xaml">
+			<Link>ExampleViews\Basics\TabControlExample.xaml</Link>
 		</Resource>
 	</ItemGroup>
 </Project>

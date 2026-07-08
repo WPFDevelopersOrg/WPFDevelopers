@@ -52,7 +52,7 @@ Install-Package WPFDevelopers
                 <!-- 1. 必须先引入主题 -->
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
                 <!-- 2. wd:Resources 必须在 Theme.xaml 之后 -->
-                <wd:Resources />
+                <wd:Resources Radius="4" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -65,10 +65,12 @@ Install-Package WPFDevelopers
 
 | 配置方式 | 效果 |
 |----------|------|
-| `<wd:Resources />` | 默认 Light 主题（Windows 10+ 跟随系统 Light/Dark 切换） |
-| `<wd:Resources Theme="Light" />` | 固定浅色主题 |
-| `<wd:Resources Theme="Dark" />` | 固定深色主题 |
-| `<wd:Resources Color="Fuchsia" />` | 自定义主题色 |
+| `<wd:Resources Radius="4" />` | 默认 Light 主题，控件圆角 4px（Windows 10+ 跟随系统 Light/Dark 切换） |
+| `<wd:Resources Theme="Light" Radius="4" />` | 固定浅色主题，控件圆角 4px |
+| `<wd:Resources Theme="Dark" Radius="4" />` | 固定深色主题，控件圆角 4px |
+| `<wd:Resources Color="Fuchsia" Radius="4" />` | 自定义主题色，控件圆角 4px |
+
+> **提示**：`Radius` 属性控制控件圆角大小，Windows 11 默认为 4px，Windows 10 默认为 0px。可根据需要调整。
 
 > **重要**：`wd:Resources` 必须放在 `Theme.xaml` 之后，否则主题无法正确加载。
 
@@ -252,25 +254,31 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 
 | 控件名 | 示例文件 | 说明 |
 |--------|----------|------|
-| `TextBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 文本框（水印/清除按钮/圆角） |
-| `PasswordBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 密码框（水印/清除/监控/明文切换） |
-| `ComboBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 下拉框（水印/可编辑/圆角） |
-| `CheckBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 复选框 |
-| `RadioButton` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 单选按钮 |
-| `ToggleButton` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 切换按钮 |
-| `Slider` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 滑块（水平/垂直） |
-| `ProgressBar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 进度条（条纹/不确定/垂直） |
-| `DataGrid` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 数据表格（多选行头/模板列/网格线） |
-| `ListBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 列表框 |
-| `ListView` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 列表视图（GridView） |
-| `TreeView` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 树形视图（滚动动画） |
-| `Expander` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 折叠面板（四方向） |
-| `GroupBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 分组框 |
-| `TabControl` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 标签控件（四方向/可关闭） |
-| `Menu` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 菜单 |
+| `Theme` | [ThemeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ThemeExample.xaml) | 主题切换（Light/Dark/多语言） |
+| `Window` | [WindowBasicExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/WindowBasicExample.xaml) | 基础窗口（ToolWindow/NoneTitleBar） |
+| `Loading` | [LoadingBasicExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/LoadingBasicExample.xaml) | 加载状态（按钮Loading/LoadingTask） |
+| `Button` | [ButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ButtonExample.xaml) | 按钮样式 |
+| `TextBox` | [TextBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/TextBoxExample.xaml) | 文本框（水印/清除按钮/圆角） |
+| `PasswordBox` | [PasswordBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/PasswordBoxExample.xaml) | 密码框（水印/清除/监控/明文切换） |
+| `ComboBox` | [ComboBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ComboBoxExample.xaml) | 下拉框（水印/可编辑/圆角） |
+| `CheckBox` | [CheckboxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/CheckboxExample.xaml) | 复选框 |
+| `RadioButton` | [RadioButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/RadioButtonExample.xaml) | 单选按钮 |
+| `ToggleButton` | [ToggleButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ToggleButtonExample.xaml) | 切换按钮 |
+| `DatePicker` | [DatePickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/DatePickerExample.xaml) | 日期选择器（含时间选择） |
+| `DateTimePicker` | [DateTimePickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/DateTimePickerExample.xaml) | 日期时间选择器 |
+| `Slider` | [SliderExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/SliderExample.xaml) | 滑块（水平/垂直） |
+| `ProgressBar` | [ProgressBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ProgressBarExample.xaml) | 进度条（条纹/不确定/垂直） |
+| `DataGrid` | [DataGridExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/DataGridExample.xaml) | 数据表格（多选行头/模板列/网格线） |
+| `ListBox` | [ListBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ListBoxExample.xaml) | 列表框 |
+| `ListView` | [ListViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ListViewExample.xaml) | 列表视图（GridView） |
+| `TreeView` | [TreeViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/TreeViewExample.xaml) | 树形视图（滚动动画） |
+| `Expander` | [ExpanderExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ExpanderExample.xaml) | 折叠面板（四方向） |
+| `GroupBox` | [GroupBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/GroupBoxExample.xaml) | 分组框 |
+| `TabControl` | [TabControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/TabControlExample.xaml) | 标签控件（四方向/可关闭） |
+| `Menu` | [MenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/MenuExample.xaml) | 菜单 |
 | `wd:SplitButton` | NuGet | [SplitButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SplitButtonExample.xaml) | 分割按钮（主按钮+下拉菜单，支持文本/图标选项） |
-| `Calendar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 日历控件 |
-| `DatePicker` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | 日期选择器（含时间选择） |
+| `Calendar` | [CalendarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/CalendarExample.xaml) | 日历控件 |
+| `wd:Segmented` | NuGet | [SegmentedExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SegmentedExample.xaml) | 分段控制器（多选项切换） |
 
 ### 输入控件
 
@@ -550,31 +558,39 @@ private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEv
 }
 ```
 
-### 主样式（边框 + 透明背景）
+### Default 样式变体（边框 + 背景）
 
 ```xml
-<wd:SplitButton Width="150" Content="File" ItemsSource="{Binding MenuItems}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonSuccess}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonWarning}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonDanger}" />
 ```
 
-### Primary 样式（实心主色背景）
+### Primary 样式变体（实心背景）
+
+```xml
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonPrimary}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonSuccessPrimary}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonWarningPrimary}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonDangerPrimary}" />
+```
+
+### XAML 子元素（支持 MenuItem 带图标）
 
 ```xml
 <wd:SplitButton
     Width="150"
     Content="File"
     ItemsSource="{Binding MenuItems}"
-    Style="{StaticResource WD.SplitButtonPrimary}" />
-```
-
-### 自定义颜色 + XAML 子元素（支持 MenuItem 带图标）
-
-```xml
-<wd:SplitButton
-    Width="150"
-    Background="{StaticResource WD.SuccessBrush}"
-    BorderBrush="{StaticResource WD.SuccessBrush}"
-    Content="File"
-    Foreground="White">
+    Style="{StaticResource WD.SplitButtonSuccess}">
     <MenuItem Header="Copy">
         <MenuItem.Icon>
             <wd:PathIcon Kind="Copy" />
@@ -606,7 +622,14 @@ private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEv
 | 样式键 | 说明 |
 |--------|------|
 | `WD.SplitButton`（默认） | 边框 + 透明背景，鼠标悬停时边框变主题色 |
-| `WD.SplitButtonPrimary` | 无边框 + 主色实心背景 + 白色文字 |
+| `WD.SplitButtonDefault` | 边框 + 背景，完整的悬停/按下/聚焦主题色反馈 |
+| `WD.SplitButtonPrimary` | 无边框 + 主色实心背景 + 白色文字，悬停时透明度 0.9 |
+| `WD.SplitButtonSuccess` | 边框 + 背景，完整的悬停/按下/聚焦成功色反馈 |
+| `WD.SplitButtonSuccessPrimary` | 无边框 + 成功色实心背景 + 白色文字 |
+| `WD.SplitButtonWarning` | 边框 + 背景，完整的悬停/按下/聚焦警告色反馈 |
+| `WD.SplitButtonWarningPrimary` | 无边框 + 警告色实心背景 + 白色文字 |
+| `WD.SplitButtonDanger` | 边框 + 背景，完整的悬停/按下/聚焦危险色反馈 |
+| `WD.SplitButtonDangerPrimary` | 无边框 + 危险色实心背景 + 白色文字 |
 
 ### 交互行为
 
@@ -869,7 +892,30 @@ src/WPFDevelopers.Samples.Shared/
 │   ├── MainWindow.xaml                   # 主窗口（左侧菜单 + 右侧内容）
 │   ├── UsageGuide.xaml                   # 使用指南页
 │   ├── UsageColor.xaml                   # 颜色使用指南
-│   ├── BasicControlsExample.xaml         # 基础控件示例
+│   ├── Basics/                           # 基础控件示例（23 个独立页面）
+│   │   ├── ThemeExample.xaml
+│   │   ├── MenuExample.xaml
+│   │   ├── WindowBasicExample.xaml
+│   │   ├── LoadingBasicExample.xaml
+│   │   ├── ButtonExample.xaml
+│   │   ├── RadioButtonExample.xaml
+│   │   ├── CheckboxExample.xaml
+│   │   ├── TextBoxExample.xaml
+│   │   ├── PasswordBoxExample.xaml
+│   │   ├── ComboBoxExample.xaml
+│   │   ├── ToggleButtonExample.xaml
+│   │   ├── DatePickerExample.xaml
+│   │   ├── DateTimePickerExample.xaml
+│   │   ├── CalendarExample.xaml
+│   │   ├── SliderExample.xaml
+│   │   ├── ProgressBarExample.xaml
+│   │   ├── DataGridExample.xaml
+│   │   ├── ListBoxExample.xaml
+│   │   ├── ListViewExample.xaml
+│   │   ├── TreeViewExample.xaml
+│   │   ├── ExpanderExample.xaml
+│   │   ├── GroupBoxExample.xaml
+│   │   └── TabControlExample.xaml
 │   ├── Loading/                          # 加载动画系列
 │   │   ├── BallLoadingExample.xaml
 │   │   ├── RingLoadingExample.xaml

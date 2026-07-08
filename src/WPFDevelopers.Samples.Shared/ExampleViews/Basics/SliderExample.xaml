@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.Basics.SliderExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="Slider">
+        <StackPanel Margin="20,10">
+            <TextBlock Margin="0,20,0,0" FontSize="20" Text="Slider" />
+            <WrapPanel Margin="0,10">
+                <Slider Width="200" wd:ElementHelper.CornerRadius="3" />
+                <Slider
+                    Width="200"
+                    Margin="10,0"
+                    Maximum="100"
+                    Value="50" />
+                <Slider
+                    Width="200"
+                    IsEnabled="False"
+                    Maximum="100"
+                    Value="50" />
+                <Slider
+                    Height="200"
+                    Maximum="10"
+                    Minimum="0"
+                    Orientation="Vertical"
+                    Value="3" />
+            </WrapPanel>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/SliderExample.xaml" CodeType="Xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

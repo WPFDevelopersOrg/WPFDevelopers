@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.Basics.TreeViewExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="TreeView">
+        <StackPanel Margin="20,10">
+            <TextBlock Margin="0,20,0,0" FontSize="20" Text="TreeView" />
+            <UniformGrid Height="400" Margin="0,10" Columns="2">
+                <TreeView
+                    wd:ElementHelper.CornerRadius="3"
+                    wd:TreeViewHelper.IsScrollAnimation="true"
+                    FontSize="20"
+                    ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <Border>
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </Border>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+                <TreeView
+                    Margin="10,0"
+                    BorderThickness="0"
+                    ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <Border>
+                                <TextBlock Text="{Binding Path=Name}" />
+                            </Border>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </UniformGrid>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/TreeViewExample.xaml" CodeType="Xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>
