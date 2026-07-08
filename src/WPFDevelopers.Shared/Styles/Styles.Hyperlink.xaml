@@ -17,7 +17,7 @@
         <Setter Property="TextBlock.TextDecorations" Value="{x:Null}" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
                 <Setter Property="TextBlock.TextDecorations">
                     <Setter.Value>
                         <TextDecorationCollection>

@@ -165,8 +165,12 @@ namespace WPFDevelopers.Controls
                 OnSizeChangedCallback();
         }
 
+        private bool _isAnimating;
+
         protected override void OnSelectedIndexChangedCore(int oldIndex, int newIndex)
         {
+            if (_isAnimating) return;
+
             if (newIndex >= 0 && newIndex < Children.Count)
             {
                 var newItem = Children[newIndex];
@@ -700,8 +704,15 @@ namespace WPFDevelopers.Controls
             ReplaceImageBitmap(vFrameWorker, _displayWidth, _displayHeight);
             ReplaceImageBitmap(_displayItem, _simpleWidth, _simpleHeight);
 
-            _displayItem = vFrameWorker;
-            storyboard.Begin(vFrameWorker);
+            var oldDisplayItem = _displayItem;
+
+            _isAnimating = true;
+            storyboard.Completed += (s, _) =>
+            {
+                _displayItem = vFrameWorker;
+                _isAnimating = false;
+            };
+            storyboard.Begin();
 
             SetSelectedIndexSilent(nLeaveIndex);
             var clickedItem = GetItemByIndex(nLeaveIndex);

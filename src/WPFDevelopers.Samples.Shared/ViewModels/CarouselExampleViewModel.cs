@@ -15,11 +15,10 @@ namespace WPFDevelopers.Samples.ExampleViews
         {
             var imgs = new List<CarouselSlideModel>
             {
-                new CarouselSlideModel{ Title ="Slide0", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/0.jpg" },
-                new CarouselSlideModel{ Title ="Slide1", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/1.jpg" },
-                new CarouselSlideModel{ Title ="Slide2", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/2.jpg" },
-                new CarouselSlideModel{ Title ="Slide3", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/3.jpg" },
-                new CarouselSlideModel{ Title ="Slide4", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/4.jpg" },
+                new CarouselSlideModel{ Title ="Slide0", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide0.png" },
+                new CarouselSlideModel{ Title ="Slide1", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide1.png" },
+                new CarouselSlideModel{ Title ="Slide2", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide2.png" },
+                new CarouselSlideModel{ Title ="Slide3", URL="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Craouse/Slide3.png" },
             };
             ImagePaths = new ObservableCollection<CarouselSlideModel>(imgs);
         }

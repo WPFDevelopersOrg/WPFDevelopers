@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="WPFDevelopers.Samples.ExampleViews.Basics.CalendarExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="Calendar">
+        <StackPanel Margin="20,10">
+            <TextBlock Margin="0,20,0,0" FontSize="20" Text="Calendar" />
+            <WrapPanel Margin="0,10">
+                <Calendar wd:ElementHelper.CornerRadius="3" />
+                <Calendar Margin="10,0" SelectionMode="SingleRange" />
+                <Calendar SelectionMode="MultipleRange">
+                    <Calendar.BlackoutDates>
+                        <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
+                    </Calendar.BlackoutDates>
+                </Calendar>
+            </WrapPanel>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Basics/CalendarExample.xaml" CodeType="Xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

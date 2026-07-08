@@ -52,7 +52,7 @@ Add the WD namespace and theme resources in `App.xaml`:
                 <!-- 1. Theme must be imported first -->
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
                 <!-- 2. wd:Resources must come AFTER Theme.xaml -->
-                <wd:Resources />
+                <wd:Resources Radius="4" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -65,10 +65,12 @@ Add the WD namespace and theme resources in `App.xaml`:
 
 | Configuration | Effect |
 |---------------|--------|
-| `<wd:Resources />` | Default Light theme (follows system Light/Dark on Windows 10+) |
-| `<wd:Resources Theme="Light" />` | Fixed light theme |
-| `<wd:Resources Theme="Dark" />` | Fixed dark theme |
-| `<wd:Resources Color="Fuchsia" />` | Custom theme color |
+| `<wd:Resources Radius="4" />` | Default Light theme, 4px control corner radius (follows system Light/Dark on Windows 10+) |
+| `<wd:Resources Theme="Light" Radius="4" />` | Fixed light theme, 4px corner radius |
+| `<wd:Resources Theme="Dark" Radius="4" />` | Fixed dark theme, 4px corner radius |
+| `<wd:Resources Color="Fuchsia" Radius="4" />` | Custom theme color, 4px corner radius |
+
+> **Tip**: The `Radius` property controls the corner radius of controls. Windows 11 defaults to 4px, Windows 10 defaults to 0px. Adjust as needed.
 
 > **Important**: `wd:Resources` must be placed **after** `Theme.xaml` in MergedDictionaries, otherwise the theme will not load correctly.
 
@@ -248,25 +250,31 @@ WD provides a set of theme resources you can reference in XAML:
 
 | Control | Example File | Description |
 |---------|-------------|-------------|
-| `TextBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | TextBox (watermark / clear button / corner radius) |
-| `PasswordBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | PasswordBox (watermark / clear / monitor / plain text toggle) |
-| `ComboBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | ComboBox (watermark / editable / corner radius) |
-| `CheckBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Checkbox |
-| `RadioButton` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Radio button |
-| `ToggleButton` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Toggle button |
-| `Slider` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Slider (horizontal / vertical) |
-| `ProgressBar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Progress bar (striped / indeterminate / vertical) |
-| `DataGrid` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Data grid (row header selection / template columns / grid lines) |
-| `ListBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | List box |
-| `ListView` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | List view (GridView) |
-| `TreeView` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Tree view (scroll animation) |
-| `Expander` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Expander (4 directions) |
-| `GroupBox` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Group box |
-| `TabControl` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Tab control (4 directions / closable) |
-| `Menu` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Menu bar |
+| `Theme` | [ThemeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ThemeExample.xaml) | Theme switching (Light/Dark/Languages) |
+| `Window` | [WindowBasicExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/WindowBasicExample.xaml) | Basic windows (ToolWindow/NoneTitleBar) |
+| `Loading` | [LoadingBasicExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/LoadingBasicExample.xaml) | Loading states (button loading/loading task) |
+| `Button` | [ButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ButtonExample.xaml) | Button styles |
+| `TextBox` | [TextBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/TextBoxExample.xaml) | TextBox (watermark / clear button / corner radius) |
+| `PasswordBox` | [PasswordBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/PasswordBoxExample.xaml) | PasswordBox (watermark / clear / monitor / plain text toggle) |
+| `ComboBox` | [ComboBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ComboBoxExample.xaml) | ComboBox (watermark / editable / corner radius) |
+| `CheckBox` | [CheckboxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/CheckboxExample.xaml) | Checkbox |
+| `RadioButton` | [RadioButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/RadioButtonExample.xaml) | Radio button |
+| `ToggleButton` | [ToggleButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ToggleButtonExample.xaml) | Toggle button |
+| `DatePicker` | [DatePickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/DatePickerExample.xaml) | Date picker (with time selection) |
+| `DateTimePicker` | [DateTimePickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/DateTimePickerExample.xaml) | DateTime picker |
+| `Slider` | [SliderExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/SliderExample.xaml) | Slider (horizontal / vertical) |
+| `ProgressBar` | [ProgressBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ProgressBarExample.xaml) | Progress bar (striped / indeterminate / vertical) |
+| `DataGrid` | [DataGridExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/DataGridExample.xaml) | Data grid (row header selection / template columns / grid lines) |
+| `ListBox` | [ListBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ListBoxExample.xaml) | List box |
+| `ListView` | [ListViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ListViewExample.xaml) | List view (GridView) |
+| `TreeView` | [TreeViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/TreeViewExample.xaml) | Tree view (scroll animation) |
+| `Expander` | [ExpanderExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/ExpanderExample.xaml) | Expander (4 directions) |
+| `GroupBox` | [GroupBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/GroupBoxExample.xaml) | Group box |
+| `TabControl` | [TabControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/TabControlExample.xaml) | Tab control (4 directions / closable) |
+| `Menu` | [MenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/MenuExample.xaml) | Menu bar |
 | `wd:SplitButton` | NuGet | [SplitButtonExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SplitButtonExample.xaml) | Split button (main button + dropdown menu, supports text/icon options) |
-| `Calendar` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Calendar |
-| `DatePicker` | [BasicControlsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BasicControlsExample.xaml) | Date picker (with time selection) |
+| `Calendar` | [CalendarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/CalendarExample.xaml) | Calendar |
+| `wd:Segmented` | NuGet | [SegmentedExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SegmentedExample.xaml) | Segmented control (multi-option toggle) |
 
 ### Input Controls
 
@@ -546,31 +554,39 @@ private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEv
 }
 ```
 
-### Default Style (Border + Transparent Background)
+### Default Style Variants (Border + Background)
 
 ```xml
-<wd:SplitButton Width="150" Content="File" ItemsSource="{Binding MenuItems}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonSuccess}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonWarning}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonDanger}" />
 ```
 
-### Primary Style (Solid Primary Color Background)
+### Primary Style Variants (Solid Background)
+
+```xml
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonPrimary}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonSuccessPrimary}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonWarningPrimary}" />
+<wd:SplitButton Width="120" Content="File" ItemsSource="{Binding MenuItems}"
+    Style="{StaticResource WD.SplitButtonDangerPrimary}" />
+```
+
+### XAML Children (Supports MenuItem with Icons)
 
 ```xml
 <wd:SplitButton
     Width="150"
     Content="File"
     ItemsSource="{Binding MenuItems}"
-    Style="{StaticResource WD.SplitButtonPrimary}" />
-```
-
-### Custom Color + XAML Children (Supports MenuItem with Icons)
-
-```xml
-<wd:SplitButton
-    Width="150"
-    Background="{StaticResource WD.SuccessBrush}"
-    BorderBrush="{StaticResource WD.SuccessBrush}"
-    Content="File"
-    Foreground="White">
+    Style="{StaticResource WD.SplitButtonSuccess}">
     <MenuItem Header="Copy">
         <MenuItem.Icon>
             <wd:PathIcon Kind="Copy" />
@@ -602,7 +618,14 @@ private void SplitButton_SelectionChanged(object sender, RoutedPropertyChangedEv
 | Style Key | Description |
 |--------|------|
 | `WD.SplitButton` (default) | Border + transparent background, border turns primary color on hover |
-| `WD.SplitButtonPrimary` | No border + solid primary color background + white text |
+| `WD.SplitButtonDefault` | Border + background, full hover/pressed/focused feedback with primary color |
+| `WD.SplitButtonPrimary` | No border + solid primary color background + white text, opacity 0.9 on hover |
+| `WD.SplitButtonSuccess` | Border + background, full hover/pressed/focused feedback with success color |
+| `WD.SplitButtonSuccessPrimary` | No border + solid success background + white text |
+| `WD.SplitButtonWarning` | Border + background, full hover/pressed/focused feedback with warning color |
+| `WD.SplitButtonWarningPrimary` | No border + solid warning background + white text |
+| `WD.SplitButtonDanger` | Border + background, full hover/pressed/focused feedback with danger color |
+| `WD.SplitButtonDangerPrimary` | No border + solid danger background + white text |
 
 ### Interaction Behavior
 
@@ -865,7 +888,30 @@ src/WPFDevelopers.Samples.Shared/
 │   ├── MainWindow.xaml                   # Main window (left menu + right content)
 │   ├── UsageGuide.xaml                   # Usage guide page
 │   ├── UsageColor.xaml                   # Color usage guide
-│   ├── BasicControlsExample.xaml         # Basic control examples
+│   ├── Basics/                           # Basic control examples (23 individual pages)
+│   │   ├── ThemeExample.xaml
+│   │   ├── MenuExample.xaml
+│   │   ├── WindowBasicExample.xaml
+│   │   ├── LoadingBasicExample.xaml
+│   │   ├── ButtonExample.xaml
+│   │   ├── RadioButtonExample.xaml
+│   │   ├── CheckboxExample.xaml
+│   │   ├── TextBoxExample.xaml
+│   │   ├── PasswordBoxExample.xaml
+│   │   ├── ComboBoxExample.xaml
+│   │   ├── ToggleButtonExample.xaml
+│   │   ├── DatePickerExample.xaml
+│   │   ├── DateTimePickerExample.xaml
+│   │   ├── CalendarExample.xaml
+│   │   ├── SliderExample.xaml
+│   │   ├── ProgressBarExample.xaml
+│   │   ├── DataGridExample.xaml
+│   │   ├── ListBoxExample.xaml
+│   │   ├── ListViewExample.xaml
+│   │   ├── TreeViewExample.xaml
+│   │   ├── ExpanderExample.xaml
+│   │   ├── GroupBoxExample.xaml
+│   │   └── TabControlExample.xaml
 │   ├── Loading/                          # Loading animation series
 │   │   ├── BallLoadingExample.xaml
 │   │   ├── RingLoadingExample.xaml

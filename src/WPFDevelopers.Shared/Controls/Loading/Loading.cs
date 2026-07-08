@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Media;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Utilities;
@@ -15,6 +17,7 @@ namespace WPFDevelopers.Controls
 
         private static readonly Dictionary<UIElement, Grid> _wrapperMap = new Dictionary<UIElement, Grid>();
         private static readonly Dictionary<UIElement, UIElement> _loadingMap = new Dictionary<UIElement, UIElement>();
+        private static readonly Dictionary<UIElement, LoadingAdorner> _adornerMap = new Dictionary<UIElement, LoadingAdorner>();
 
         public static readonly DependencyProperty IsShowProperty =
             DependencyProperty.RegisterAttached("IsShow", typeof(bool), typeof(Loading),
@@ -118,12 +121,14 @@ namespace WPFDevelopers.Controls
                 return;
             }
 
-            if (_wrapperMap.ContainsKey(uIElement))
+            if (_wrapperMap.ContainsKey(uIElement) || _adornerMap.ContainsKey(uIElement) || _loadingMap.ContainsKey(uIElement))
                 return;
 
             var type = GetLoadingType(uIElement);
             var isLoading = GetIsShow(uIElement);
             if (!isLoading) return;
+
+            _loadingMap[uIElement] = null;
 
             UIElement value = null;
             var w = (double) uIElement.GetValue(FrameworkElement.ActualWidthProperty);
@@ -192,8 +197,55 @@ namespace WPFDevelopers.Controls
             if (parent == null)
                 return;
 
-            var cornerRadius = ElementHelper.GetCornerRadius(target);
-            var mask = new MaskControl(target)
+            if (parent is ContentPresenter)
+            {
+                var cornerRadius = ElementHelper.GetCornerRadius(target);
+                var mask = new MaskControl(target)
+                {
+                    Content = loadingContent,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    Visibility = Visibility.Visible
+                };
+
+                mask.SetBinding(MaskControl.CornerRadiusProperty, new Binding
+                {
+                    Path = new PropertyPath("(0)", ElementHelper.CornerRadiusProperty),
+                    Source = target
+                });
+
+                var adorner = new LoadingAdorner(target, mask);
+                _loadingMap[target] = mask;
+
+                if (target is FrameworkElement targetFe && !targetFe.IsLoaded)
+                {
+                    RoutedEventHandler loadedHandler = null;
+                    loadedHandler = (s, e) =>
+                    {
+                        var layer = AdornerLayer.GetAdornerLayer(target);
+                        if (layer != null)
+                        {
+                            layer.Add(adorner);
+                            _adornerMap[target] = adorner;
+                        }
+                        targetFe.Loaded -= loadedHandler;
+                    };
+                    targetFe.Loaded += loadedHandler;
+                }
+                else
+                {
+                    var layer = AdornerLayer.GetAdornerLayer(target);
+                    if (layer != null)
+                    {
+                        layer.Add(adorner);
+                        _adornerMap[target] = adorner;
+                    }
+                }
+                return;
+            }
+
+            var cornerRadius2 = ElementHelper.GetCornerRadius(target);
+            var mask2 = new MaskControl(target)
             {
                 Content = loadingContent,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -201,7 +253,7 @@ namespace WPFDevelopers.Controls
                 Visibility = Visibility.Visible
             };
 
-            mask.SetBinding(MaskControl.CornerRadiusProperty, new Binding
+            mask2.SetBinding(MaskControl.CornerRadiusProperty, new Binding
             {
                 Path = new PropertyPath("(0)", ElementHelper.CornerRadiusProperty),
                 Source = target
@@ -234,14 +286,14 @@ namespace WPFDevelopers.Controls
                 fe.Margin = new Thickness();
             }
             _wrapperMap[target] = grid;
-            _loadingMap[target] = mask;
-            if (cornerRadius != new CornerRadius(0))
+            _loadingMap[target] = mask2;
+            if (cornerRadius2 != new CornerRadius(0))
             {
                 var clip = new RectangleGeometry
                 {
                     Rect = new Rect(0, 0, grid.ActualWidth, grid.ActualHeight),
-                    RadiusX = cornerRadius.TopLeft,
-                    RadiusY = cornerRadius.TopLeft
+                    RadiusX = cornerRadius2.TopLeft,
+                    RadiusY = cornerRadius2.TopLeft
                 };
                 grid.Clip = clip;
             }
@@ -272,7 +324,7 @@ namespace WPFDevelopers.Controls
                 if (index < 0) return;
                 panel.Children.RemoveAt(index);
                 grid.Children.Add(target);
-                grid.Children.Add(mask);
+                grid.Children.Add(mask2);
                 panel.Children.Insert(index, grid);
             }
             else if (parent is Decorator decorator)
@@ -280,7 +332,7 @@ namespace WPFDevelopers.Controls
                 if (decorator.Child != target) return;
                 decorator.Child = null;
                 grid.Children.Add(target);
-                grid.Children.Add(mask);
+                grid.Children.Add(mask2);
                 decorator.Child = grid;
             }
             else if (parent is ContentControl contentControl)
@@ -288,7 +340,7 @@ namespace WPFDevelopers.Controls
                 if (contentControl.Content != target) return;
                 contentControl.Content = null;
                 grid.Children.Add(target);
-                grid.Children.Add(mask);
+                grid.Children.Add(mask2);
                 contentControl.Content = grid;
             }
             else
@@ -301,6 +353,16 @@ namespace WPFDevelopers.Controls
 
         private static void UnwrapElement(UIElement target)
         {
+            if (_adornerMap.TryGetValue(target, out var adorner))
+            {
+                var layer = AdornerLayer.GetAdornerLayer(target);
+                if (layer != null)
+                    layer.Remove(adorner);
+                _adornerMap.Remove(target);
+                _loadingMap.Remove(target);
+                return;
+            }
+
             if (!_wrapperMap.TryGetValue(target, out var grid))
                 return;
 
@@ -383,5 +445,38 @@ namespace WPFDevelopers.Controls
         ///     进度
         /// </summary>
         Progress
+    }
+
+    internal class LoadingAdorner : Adorner
+    {
+        private readonly UIElement _overlay;
+
+        public LoadingAdorner(UIElement adornedElement, UIElement overlay)
+            : base(adornedElement)
+        {
+            _overlay = overlay;
+            AddVisualChild(_overlay);
+            AddLogicalChild(_overlay);
+        }
+
+        protected override int VisualChildrenCount => 1;
+
+        protected override Visual GetVisualChild(int childIndex)
+        {
+            if (childIndex == 0) return _overlay;
+            throw new ArgumentOutOfRangeException(nameof(childIndex));
+        }
+
+        protected override Size MeasureOverride(Size constraint)
+        {
+            _overlay.Measure(AdornedElement.RenderSize);
+            return AdornedElement.RenderSize;
+        }
+
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            _overlay.Arrange(new Rect(finalSize));
+            return finalSize;
+        }
     }
 }

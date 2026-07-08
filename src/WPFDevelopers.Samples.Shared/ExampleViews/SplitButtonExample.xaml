@@ -14,34 +14,101 @@
             Margin="0,20"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            wd:PanelHelper.Spacing="4"
             Orientation="Vertical">
-            <wd:SplitButton
-                Width="150"
-                Click="SplitButton_Click"
-                Content="File"
-                ItemsSource="{Binding MenuItems}"
-                SelectionChanged="SplitButton_SelectionChanged" />
-            <wd:SplitButton
-                Width="150"
-                Content="File"
-                ItemsSource="{Binding MenuItems}"
-                SelectionChanged="SplitButton_SelectionChanged"
-                Style="{StaticResource WD.SplitButtonPrimary}" />
-            <wd:SplitButton
-                Width="150"
-                Background="{StaticResource WD.SuccessBrush}"
-                BorderBrush="{StaticResource WD.SuccessBrush}"
-                Content="File"
-                Foreground="White">
-                <MenuItem Header="Copy">
-                    <MenuItem.Icon>
-                        <wd:PathIcon Kind="Copy" />
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="Paste" />
-                <MenuItem Header="Cut" />
-            </wd:SplitButton>
+            <!--  Default variants  -->
+            <StackPanel
+                HorizontalAlignment="Center"
+                wd:PanelHelper.Spacing="10"
+                Orientation="Horizontal">
+                <wd:SplitButton
+                    Width="120"
+                    Click="SplitButton_Click"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged" />
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonSuccess}" />
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonWarning}" />
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonDanger}" />
+            </StackPanel>
+            <!--  Primary variants  -->
+            <StackPanel
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                wd:PanelHelper.Spacing="10"
+                Orientation="Horizontal">
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonPrimary}" />
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonSuccessPrimary}" />
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonWarningPrimary}" />
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    ItemsSource="{Binding MenuItems}"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonDangerPrimary}" />
+            </StackPanel>
+            <!--  XAML children with icons  -->
+            <StackPanel
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                wd:PanelHelper.Spacing="10"
+                Orientation="Horizontal">
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonPrimary}">
+                    <MenuItem Header="Copy">
+                        <MenuItem.Icon>
+                            <wd:PathIcon Kind="Copy" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Paste" />
+                    <MenuItem Header="Cut" />
+                </wd:SplitButton>
+                <wd:SplitButton
+                    Width="120"
+                    Content="File"
+                    SelectionChanged="SplitButton_SelectionChanged"
+                    Style="{StaticResource WD.SplitButtonSuccessPrimary}">
+                    <MenuItem Header="Copy">
+                        <MenuItem.Icon>
+                            <wd:PathIcon Kind="Copy" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Paste" />
+                    <MenuItem Header="Cut" />
+                </wd:SplitButton>
+            </StackPanel>
         </StackPanel>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SplitButtonExample.xaml" CodeType="Xaml" />

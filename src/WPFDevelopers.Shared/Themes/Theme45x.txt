@@ -56,6 +56,7 @@ CropAvatar.xaml
 StarrySky.xaml
 Magnifier.xaml
 Step.xaml
+Segmented.xaml
 MultiSelectComboBox.xaml
 Mask.xaml
 BreadCrumbBar.xaml
@@ -71,6 +72,7 @@ Drawer.xaml
 DateRangePicker.xaml
 Tag.xaml
 SplitButton.xaml
+SwitchButton.xaml
 NavScrollPanel.xaml
 GestureUnlock.xaml
 WDUserControl.xaml

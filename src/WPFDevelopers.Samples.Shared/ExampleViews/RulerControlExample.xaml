@@ -28,7 +28,7 @@
                 <Grid
                     Height="51"
                     Margin="40,0"
-                    Background="{StaticResource WD.CircleMenuDualBrush}">
+                    Background="{DynamicResource WD.BlackBrush}">
                     <Path
                         Data="{Binding ElementName=PART_Ruler, Path=Geometry, Mode=TwoWay}"
                         Fill="{StaticResource WD.SuccessBrush}"

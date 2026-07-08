@@ -6,43 +6,43 @@ namespace WPFDevelopers.Controls
 {
     public class DrawerMenu : ItemsControl
     {
-        public static readonly RoutedEvent IsOpenChangedEvent = EventManager.RegisterRoutedEvent("IsOpenChanged", RoutingStrategy.Bubble,
+        public static readonly RoutedEvent IsExpandedChangedEvent = EventManager.RegisterRoutedEvent("IsExpandedChanged", RoutingStrategy.Bubble,
          typeof(RoutedEventHandler), typeof(DrawerMenu));
 
-        public event RoutedEventHandler IsOpenChanged
+        public event RoutedEventHandler IsExpandedChanged
         {
-            add => AddHandler(IsOpenChangedEvent, value);
-            remove => RemoveHandler(IsOpenChangedEvent, value);
+            add => AddHandler(IsExpandedChangedEvent, value);
+            remove => RemoveHandler(IsExpandedChangedEvent, value);
         }
 
-        public bool IsOpen
+        public bool IsExpanded
         {
-            get { return (bool)GetValue(IsOpenProperty); }
-            set { SetValue(IsOpenProperty, value); }
+            get { return (bool)GetValue(IsExpandedProperty); }
+            set { SetValue(IsExpandedProperty, value); }
         }
-        public static readonly DependencyProperty IsOpenProperty =
-           DependencyProperty.Register("IsOpen", typeof(bool), typeof(DrawerMenu), new PropertyMetadata(false, OnIsOpenChanged));
+        public static readonly DependencyProperty IsExpandedProperty =
+           DependencyProperty.Register("IsExpanded", typeof(bool), typeof(DrawerMenu), new PropertyMetadata(false, OnIsExpandedChanged));
 
-        private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is DrawerMenu ctrl)
             {
-                ctrl.RaiseEvent(new RoutedEventArgs(IsOpenChangedEvent));
-                if (ctrl.IsOpenCommand?.CanExecute(e.NewValue) == true)
+                ctrl.RaiseEvent(new RoutedEventArgs(IsExpandedChangedEvent));
+                if (ctrl.IsExpandedCommand?.CanExecute(e.NewValue) == true)
                 {
-                    ctrl.IsOpenCommand?.Execute(e.NewValue);
+                    ctrl.IsExpandedCommand?.Execute(e.NewValue);
                 }
             }
         }
 
-        public ICommand IsOpenCommand
+        public ICommand IsExpandedCommand
         {
-            get => (ICommand)GetValue(IsOpenCommandProperty);
-            set => SetValue(IsOpenCommandProperty, value);
+            get => (ICommand)GetValue(IsExpandedCommandProperty);
+            set => SetValue(IsExpandedCommandProperty, value);
         }
 
-        public static readonly DependencyProperty IsOpenCommandProperty =
-            DependencyProperty.Register("IsOpenCommand", typeof(ICommand), typeof(DrawerMenu),
+        public static readonly DependencyProperty IsExpandedCommandProperty =
+            DependencyProperty.Register("IsExpandedCommand", typeof(ICommand), typeof(DrawerMenu),
                 new PropertyMetadata(null));
         public object OpenIcon
         {

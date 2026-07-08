@@ -23,29 +23,29 @@
                         Grid.Column="1"
                         NavigationUIVisibility="Hidden" />
                     <wd:DrawerMenu SelectedItemChanged="DrawerMenu_SelectedItemChanged">
-                        <wd:DrawerMenuItem Text="主页">
+                        <wd:DrawerMenuItem Text="Class">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/2.png" />
+                                <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/class.svg" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
-                        <wd:DrawerMenuItem Text="Edge">
+                        <wd:DrawerMenuItem Text="Classroom">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/4.png" />
+                                <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/classroom.svg" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
-                        <wd:DrawerMenuItem Text="云盘">
+                        <wd:DrawerMenuItem Text="Vote">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/1.png" />
+                                <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/vote.svg" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
-                        <wd:DrawerMenuItem Text="邮件">
+                        <wd:DrawerMenuItem Text="Whiteboard">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/8.png" />
+                                <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/whiteboard.svg" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
-                        <wd:DrawerMenuItem Text="视频">
+                        <wd:DrawerMenuItem Text="Check-in">
                             <wd:DrawerMenuItem.Icon>
-                                <Image Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/6.png" />
+                                <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/check-in.svg" />
                             </wd:DrawerMenuItem.Icon>
                         </wd:DrawerMenuItem>
                         <wd:DrawerMenuItem Text="Bus">
@@ -65,7 +65,7 @@
             </TabItem>
             <TabItem Header="DrawerMenu binding">
                 <wd:DrawerMenu
-                    IsOpenCommand="{Binding IsOpenCommand, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"
+                    IsExpandedCommand="{Binding IsExpandedCommand, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"
                     ItemsSource="{Binding DrawerMenuItems, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}"
                     SelectionCommand="{Binding SelectionCommand, RelativeSource={RelativeSource AncestorType=local:DrawerMenuExample}}">
                     <wd:DrawerMenu.OpenIcon>

@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -56,6 +57,8 @@ namespace WPFDevelopers.Controls
         private int _itemCount;
         private TranslateTransform _translateTransform;
         private readonly List<object> _cachedItems = new List<object>();
+        private readonly Dictionary<FrameworkElement, string> _imageUrlMap = new Dictionary<FrameworkElement, string>();
+        private const double _thumbnailScale = 0.3; 
 
         static Carousel()
         {
@@ -234,7 +237,8 @@ namespace WPFDevelopers.Controls
             for (int i = 0; i < _itemCount; i++)
             {
                 var content = _cachedItems[i];
-                FrameworkElement fe = CreateSlideElement(content, width, height);
+                bool isActive = (i == SelectedIndex);
+                FrameworkElement fe = CreateSlideElement(content, width, height, isActive);
                 if (fe == null) continue;
                 Canvas.SetLeft(fe, i * width);
                 Canvas.SetTop(fe, 0);
@@ -244,7 +248,8 @@ namespace WPFDevelopers.Controls
             if (_itemCount > 1)
             {
                 var firstContent = _cachedItems[0];
-                FrameworkElement clone = CreateCloneElement(firstContent, width, height);
+                bool isFirstActive = (0 == SelectedIndex);
+                FrameworkElement clone = CreateCloneElement(firstContent, width, height, isFirstActive);
                 if (clone != null)
                 {
                     Canvas.SetLeft(clone, _itemCount * width);
@@ -256,7 +261,7 @@ namespace WPFDevelopers.Controls
             AnimateToIndex(SelectedIndex, false);
         }
 
-        private FrameworkElement CreateCloneElement(object content, double width, double height)
+        private FrameworkElement CreateCloneElement(object content, double width, double height, bool loadFullRes)
         {
             if (content is Image img && img.Source != null)
             {
@@ -277,12 +282,11 @@ namespace WPFDevelopers.Controls
                     Height = height
                 };
             }
-            return CreateSlideElement(content, width, height);
+            return CreateSlideElement(content, width, height, loadFullRes);
         }
 
-        private FrameworkElement CreateSlideElement(object content, double width, double height)
+        private FrameworkElement CreateSlideElement(object content, double width, double height, bool loadFullRes = true)
         {
-            FrameworkElement fe;
             if (ItemTemplate != null)
             {
                 return new ContentPresenter
@@ -303,27 +307,39 @@ namespace WPFDevelopers.Controls
 
             if (content is string uri)
             {
-                var bitmap = ControlsHelper.CreateBitmapImage(uri, (int)width, (int)height);
-                return new Image
+                var thumbnailWidth = loadFullRes ? (int)width : Math.Max(1, (int)(width * _thumbnailScale));
+                var thumbnailHeight = loadFullRes ? (int)height : Math.Max(1, (int)(height * _thumbnailScale));
+                var bitmap = ControlsHelper.CreateBitmapImage(uri, thumbnailWidth, thumbnailHeight);
+                var image = new Image
                 {
                     Source = bitmap,
                     Stretch = Stretch.UniformToFill,
                     Width = width,
-                    Height = height
+                    Height = height,
+                    Tag = content
                 };
+                if (!loadFullRes)
+                    _imageUrlMap[image] = uri;
+                return image;
             }
 
             if (!string.IsNullOrEmpty(DisplayMemberPath))
             {
                 var imageUrl = GetDisplayValue(content, DisplayMemberPath);
-                var bitmap = ControlsHelper.CreateBitmapImage(imageUrl, (int)width, (int)height);
-                return new Image
+                var thumbnailWidth = loadFullRes ? (int)width : Math.Max(1, (int)(width * _thumbnailScale));
+                var thumbnailHeight = loadFullRes ? (int)height : Math.Max(1, (int)(height * _thumbnailScale));
+                var bitmap = ControlsHelper.CreateBitmapImage(imageUrl, thumbnailWidth, thumbnailHeight);
+                var image = new Image
                 {
                     Source = bitmap,
                     Stretch = Stretch.UniformToFill,
                     Width = width,
-                    Height = height
+                    Height = height,
+                    Tag = content
                 };
+                if (!loadFullRes)
+                    _imageUrlMap[image] = imageUrl;
+                return image;
             }
 
             return new ContentPresenter
@@ -341,6 +357,50 @@ namespace WPFDevelopers.Controls
                 _dotsItems.Add(i);
         }
 
+        private void LoadSlideAtFullRes(int index)
+        {
+            if (_contentCanvas == null || index < 0 || index >= _contentCanvas.Children.Count)
+                return;
+            var fe = _contentCanvas.Children[index] as Image;
+            if (fe != null && _imageUrlMap.TryGetValue(fe, out var uri))
+            {
+                fe.Source = ControlsHelper.CreateBitmapImage(uri, (int)_slideWidth, (int)fe.ActualHeight);
+                _imageUrlMap.Remove(fe);
+            }
+        }
+
+        private void DowngradeAllExcept(int activeIndex)
+        {
+            if (_contentCanvas == null) return;
+            for (int i = 0; i < _contentCanvas.Children.Count; i++)
+            {
+                if (i == activeIndex || i == _itemCount)
+                    continue;
+                var fe = _contentCanvas.Children[i] as Image;
+                if (fe == null) continue;
+                if (!_imageUrlMap.ContainsKey(fe))
+                {
+                    var uri = GetUriFromElement(fe);
+                    if (uri != null)
+                    {
+                        var tw = Math.Max(1, (int)(_slideWidth * _thumbnailScale));
+                        var th = Math.Max(1, (int)(fe.ActualHeight * _thumbnailScale));
+                        fe.Source = ControlsHelper.CreateBitmapImage(uri, tw, th);
+                        _imageUrlMap[fe] = uri;
+                    }
+                }
+            }
+        }
+
+        private string GetUriFromElement(FrameworkElement fe)
+        {
+            if (fe is Image img && img.Source is BitmapImage bi)
+                return bi.UriSource?.ToString();
+            if (fe.Tag is string uri)
+                return uri;
+            return null;
+        }
+
         private void AnimateToIndex(int index, bool animate = true)
         {
             if (_contentCanvas == null) return;
@@ -353,6 +413,8 @@ namespace WPFDevelopers.Controls
             if (_slideWidth <= 0) return;
 
             if (_translateTransform == null) return;
+
+            LoadSlideAtFullRes(index);
 
             if (animate)
             {
@@ -374,12 +436,14 @@ namespace WPFDevelopers.Controls
                         _translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
                         _translateTransform.X = 0;
                     }
+                    DowngradeAllExcept(index);
                 };
                 _translateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
             }
             else
             {
                 _translateTransform.X = offset;
+                DowngradeAllExcept(index);
             }
         }
 
@@ -392,6 +456,8 @@ namespace WPFDevelopers.Controls
             int next = SelectedIndex + 1;
             if (next >= _itemCount)
             {
+                LoadSlideAtFullRes(0);
+
                 double cloneOffset = -_itemCount * _slideWidth;
                 _isAnimating = true;
 
@@ -408,6 +474,7 @@ namespace WPFDevelopers.Controls
                     _translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
                     _translateTransform.X = 0;
                     SelectedIndex = 0;
+                    DowngradeAllExcept(0);
                 };
                 _translateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
             }

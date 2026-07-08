@@ -10,6 +10,7 @@ using WPFDevelopers.Controls;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
+using WPFDevelopers.Samples.ExampleViews.Basics;
 using WPFDevelopers.Samples.ExampleViews.CanvasHandWriting;
 using WPFDevelopers.Samples.ExampleViews.DrawerMenu;
 using WPFDevelopers.Samples.ExampleViews.LoginWindow;
@@ -23,12 +24,44 @@ namespace WPFDevelopers.Samples.ViewModels
 {
     public class MainVM : ViewModelBase
     {
+        private static readonly HashSet<string> BasicEnumSet = new HashSet<string>
+        {
+            nameof(MenuEnum.Theme),
+            nameof(MenuEnum.Menu),
+            nameof(MenuEnum.BasicWindow),
+            nameof(MenuEnum.BasicLoading),
+            nameof(MenuEnum.Button),
+            nameof(MenuEnum.RadioButton),
+            nameof(MenuEnum.Checkbox),
+            nameof(MenuEnum.TextBox),
+            nameof(MenuEnum.PasswordBox),
+            nameof(MenuEnum.ComboBox),
+            nameof(MenuEnum.ToggleButton),
+            nameof(MenuEnum.DatePicker),
+            nameof(MenuEnum.DateTimePicker),
+            nameof(MenuEnum.Calendar),
+            nameof(MenuEnum.Slider),
+            nameof(MenuEnum.ProgressBar),
+            nameof(MenuEnum.DataGrid),
+            nameof(MenuEnum.ListBox),
+            nameof(MenuEnum.ListView),
+            nameof(MenuEnum.TreeView),
+            nameof(MenuEnum.Expander),
+            nameof(MenuEnum.GroupBox),
+            nameof(MenuEnum.TabControl),
+            nameof(MenuEnum.TaskbarInfo),
+        };
+
         private IList<NavigateMenuModel> _navigateMenuModelList;
 
         public IList<NavigateMenuModel> NavigateMenuModelList
         {
             get { return _navigateMenuModelList; }
-            set { _navigateMenuModelList = value; }
+            set
+            {
+                _navigateMenuModelList = value;
+                NotifyPropertyChange("NavigateMenuModelList");
+            }
         }
 
         private NavigateMenuModel _navigateMenuItem;
@@ -45,6 +78,26 @@ namespace WPFDevelopers.Samples.ViewModels
             }
         }
         private object _controlPanel;
+        private ObservableCollection<NavigateMenuModel> _customMenuModelList;
+        private ObservableCollection<NavigateMenuModel> _basicMenuModelList;
+
+        private int _segmentedSelectedIndex;
+        private string _searchText = string.Empty;
+
+        public int SegmentedSelectedIndex
+        {
+            get { return _segmentedSelectedIndex; }
+            set
+            {
+                _segmentedSelectedIndex = value;
+                NotifyPropertyChange("SegmentedSelectedIndex");
+                NavigateMenuModelList = value == 1 ? _basicMenuModelList : _customMenuModelList;
+                ApplySearchFilter();
+                if (NavigateMenuModelList.Count > 0)
+                    NavigateMenuItem = NavigateMenuModelList.FirstOrDefault(y => y.IsVisible);
+            }
+        }
+
         /// <summary>
         /// 更换右侧面板
         /// </summary>
@@ -59,13 +112,19 @@ namespace WPFDevelopers.Samples.ViewModels
         }
         public MainVM()
         {
-            NavigateMenuModelList = new ObservableCollection<NavigateMenuModel>();
+            _customMenuModelList = new ObservableCollection<NavigateMenuModel>();
+            _basicMenuModelList = new ObservableCollection<NavigateMenuModel>();
             foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
             {
-                NavigateMenuModelList.Add(new NavigateMenuModel { Name = menuEnum.ToString() });
+                var name = menuEnum.ToString();
+                if (BasicEnumSet.Contains(name))
+                    _basicMenuModelList.Add(new NavigateMenuModel { Name = name });
+                else
+                    _customMenuModelList.Add(new NavigateMenuModel { Name = name });
             }
+            NavigateMenuModelList = _customMenuModelList;
             _navigateMenuItem = NavigateMenuModelList.First();
-            NavigateMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
+            _customMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
             ControlPanel = new NavMenu3DExample();
         }
 
@@ -77,23 +136,25 @@ namespace WPFDevelopers.Samples.ViewModels
 
         public ICommand MenuSearchTextChanged => new RelayCommand(obj =>
         {
-            var search = obj.ToString();
-            if (string.IsNullOrEmpty(search))
+            _searchText = obj.ToString();
+            ApplySearchFilter();
+        });
+
+        private void ApplySearchFilter()
+        {
+            if (string.IsNullOrEmpty(_searchText))
             {
                 NavigateMenuModelList.ForEach(y => y.IsVisible = true);
             }
             else
             {
-                var key = search.ToLower();
+                var key = _searchText.ToLower();
                 foreach (var item in NavigateMenuModelList)
                 {
-                    if (item.Name.ToLower().Contains(key))
-                        item.IsVisible = true;
-                    else
-                        item.IsVisible = false;
+                    item.IsVisible = item.Name.ToLower().Contains(key);
                 }
             }
-        });
+        }
 
         public ICommand MenuSelectionChangedCommand => new RelayCommand(obj =>
         {
@@ -126,8 +187,74 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.UsageColor:
                     ControlPanel = new UsageColor();
                     break;
-                case MenuEnum.BasicControls:
-                    ControlPanel = new BasicControlsExample();
+                case MenuEnum.Theme:
+                    ControlPanel = new ThemeExample();
+                    break;
+                case MenuEnum.Menu:
+                    ControlPanel = new MenuExample();
+                    break;
+                case MenuEnum.BasicWindow:
+                    ControlPanel = new WindowBasicExample();
+                    break;
+                case MenuEnum.BasicLoading:
+                    ControlPanel = new LoadingBasicExample();
+                    break;
+                case MenuEnum.Button:
+                    ControlPanel = new ButtonExample();
+                    break;
+                case MenuEnum.RadioButton:
+                    ControlPanel = new RadioButtonExample();
+                    break;
+                case MenuEnum.Checkbox:
+                    ControlPanel = new CheckboxExample();
+                    break;
+                case MenuEnum.TextBox:
+                    ControlPanel = new TextBoxExample();
+                    break;
+                case MenuEnum.PasswordBox:
+                    ControlPanel = new PasswordBoxExample();
+                    break;
+                case MenuEnum.ComboBox:
+                    ControlPanel = new ComboBoxExample();
+                    break;
+                case MenuEnum.ToggleButton:
+                    ControlPanel = new ToggleButtonExample();
+                    break;
+                case MenuEnum.DatePicker:
+                    ControlPanel = new DatePickerExample();
+                    break;
+                case MenuEnum.DateTimePicker:
+                    ControlPanel = new DateTimePickerExample();
+                    break;
+                case MenuEnum.Calendar:
+                    ControlPanel = new CalendarExample();
+                    break;
+                case MenuEnum.Slider:
+                    ControlPanel = new SliderExample();
+                    break;
+                case MenuEnum.ProgressBar:
+                    ControlPanel = new ProgressBarExample();
+                    break;
+                case MenuEnum.DataGrid:
+                    ControlPanel = new DataGridExample();
+                    break;
+                case MenuEnum.ListBox:
+                    ControlPanel = new ListBoxExample();
+                    break;
+                case MenuEnum.ListView:
+                    ControlPanel = new ListViewExample();
+                    break;
+                case MenuEnum.TreeView:
+                    ControlPanel = new TreeViewExample();
+                    break;
+                case MenuEnum.Expander:
+                    ControlPanel = new ExpanderExample();
+                    break;
+                case MenuEnum.GroupBox:
+                    ControlPanel = new GroupBoxExample();
+                    break;
+                case MenuEnum.TabControl:
+                    ControlPanel = new TabControlExample();
                     break;
                 case MenuEnum.MessageBox:
                     ControlPanel = new MessageBoxExample();
@@ -420,6 +547,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.SplitButton:
                     ControlPanel = new SplitButtonExample();
+                    break;
+                case MenuEnum.Segmented:
+                    ControlPanel = new SegmentedExample();
                     break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:

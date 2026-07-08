@@ -38,6 +38,7 @@ namespace WPFDevelopers.Controls
 
         private bool _isManual;
         private bool _isBusy;
+        private bool _isUserTyping;
         static NumericBox()
         {
             InitializeCommands();
@@ -544,7 +545,9 @@ namespace WPFDevelopers.Controls
                 if (!DoubleUtil.AreClose(Value ?? 0, convertedValue))
                 {
                     _isManual = true;
+                    _isUserTyping = true;
                     Value = convertedValue;
+                    _isUserTyping = false;
                 }
             }
         }
@@ -577,6 +580,7 @@ namespace WPFDevelopers.Controls
 
         private void DealInputText(string inputText)
         {
+            _isUserTyping = false;
             double convertedValue;
             if (double.TryParse(inputText, out convertedValue))
             {
@@ -638,9 +642,17 @@ namespace WPFDevelopers.Controls
 
         private void InternalSetText(double newValue)
         {
+            if (_isUserTyping) return;
             var text = IsAutoCapture ? newValue.ToString() : newValue.ToString(GetPrecisionFormat());
             if (_valueTextBox != null && !Equals(text, _valueTextBox.Text))
+            {
+                var caret = _valueTextBox.CaretIndex;
+                var selLen = _valueTextBox.SelectionLength;
                 _valueTextBox.Text = text;
+                var maxLen = text.Length;
+                _valueTextBox.SelectionLength = Math.Min(selLen, maxLen);
+                _valueTextBox.CaretIndex = Math.Min(caret, maxLen);
+            }
         }
 
         private string GetPrecisionFormat()

@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
@@ -6,117 +6,153 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    <convert:IndexToColor x:Key="WD.IndexToColor" />
+    <convert:HalfValueConverter x:Key="WD.HalfValueConverter" />
+
     <Style
         x:Key="WD.CircleMenuItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:CircleMenuItem}">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="SectorBackground" Value="{DynamicResource WD.ChartFillBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Padding" Value="60,100,0,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircleMenuItem}">
                     <controls:SmallPanel VerticalAlignment="Top">
                         <controls:SmallPanel.RenderTransform>
-                            <RotateTransform x:Name="PART_RotateTransform" Angle="{TemplateBinding Angle}" CenterX="200" CenterY="200" />
+                            <RotateTransform x:Name="PART_RotateTransform" Angle="{TemplateBinding Angle}" CenterX="{TemplateBinding RotateCenter}" CenterY="{TemplateBinding RotateCenter}" />
                         </controls:SmallPanel.RenderTransform>
                         <Path
                             x:Name="PART_Path"
                             VerticalAlignment="Center"
-                            Data="{StaticResource WD.CircularGeometry}"
-                            Fill="{TemplateBinding BackgroundColor}" />
-                        <Image
-                            Width="40"
-                            Height="40"
-                            Margin="60,100,0,0"
+                            Data="{TemplateBinding SectorGeometry}"
+                            Fill="{TemplateBinding SectorBackground}"
+                            Opacity="1"
+                            Stroke="{TemplateBinding BorderBrush}"
+                            StrokeThickness="1" />
+                        <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            RenderTransformOrigin="0.5,0.5"
-                            Source="{TemplateBinding IconImage}">
-                            <Image.RenderTransform>
+                            VerticalAlignment="Top"
+                            TextElement.Foreground="{TemplateBinding Foreground}"
+                            Content="{TemplateBinding Content}"
+                            RenderTransformOrigin="0.5,0.5">
+                            <ContentPresenter.RenderTransform>
                                 <RotateTransform Angle="-70" />
-                            </Image.RenderTransform>
-                        </Image>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
                     </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_Path" Property="Fill" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter TargetName="PART_Path" Property="Fill" Value="{Binding SelectedBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="PART_Path" Property="Opacity" Value=".8" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style
+        x:Key="WD.CircleMenuThumb"
+        BasedOn="{StaticResource WD.ControlBasicStyle}"
+        TargetType="Thumb">
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <controls:SmallPanel>
+                        <Ellipse
+                            x:Name="PART_ThumbEllipse"
+                            Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Converter={StaticResource WD.HalfValueConverter}, ConverterParameter=0.3}"
+                            Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Converter={StaticResource WD.HalfValueConverter}, ConverterParameter=0.3}"
+                            Fill="{Binding Background, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}}"
+                            Stroke="{TemplateBinding BorderBrush}"
+                            StrokeThickness="1" />
+                        <Border
+                            x:Name="PART_PathBorder"
+                            RenderOptions.BitmapScalingMode="HighQuality"
+                            RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <RotateTransform Angle="0" />
+                            </Border.RenderTransform>
+                            <controls:PathIcon x:Name="PART_Path" Kind="Add" />
+                        </Border>
+                    </controls:SmallPanel>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsExpanded, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            EasingFunction="{StaticResource WD.CubicEaseInOut}"
+                                            Storyboard.TargetName="PART_PathBorder"
+                                            Storyboard.TargetProperty="RenderTransform.Angle"
+                                            To="45"
+                                            Duration="0:0:0.4" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            EasingFunction="{StaticResource WD.CubicEaseInOut}"
+                                            Storyboard.TargetName="PART_PathBorder"
+                                            Storyboard.TargetProperty="RenderTransform.Angle"
+                                            To="0"
+                                            Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style
         x:Key="WD.CircleMenu"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:CircleMenu}">
-        <Setter Property="Width" Value="400" />
-        <Setter Property="Height" Value="400" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Height" Value="200" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <controls:SmallPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CircleMenu}">
                     <controls:SmallPanel>
-                        <ItemsControl
-                            x:Name="PART_ItemsControl"
+                        <ItemsPresenter
+                            x:Name="PART_ItemsPresenter"
                             Width="{TemplateBinding Width}"
-                            Height="{TemplateBinding Height}"
-                            AlternationCount="{TemplateBinding AlternationCount}"
-                            ItemsSource="{TemplateBinding ItemsSource}">
-                            <ItemsControl.Clip>
+                            Height="{TemplateBinding Height}">
+                            <ItemsPresenter.Clip>
                                 <EllipseGeometry
                                     x:Name="PART_EllipseGeometry"
-                                    Center="200,200"
-                                    RadiusX="0"
-                                    RadiusY="0" />
-                            </ItemsControl.Clip>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <controls:CircleMenuItem
-                                        Angle="{Binding Angle}"
-                                        BackgroundColor="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.IndexToColor}}"
-                                        IconImage="{Binding IconImage}"
-                                        MenuTxt="{Binding MenuTxt}" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <controls:SmallPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                        <ToggleButton x:Name="PART_ToggleButton" Cursor="Hand">
-                            <ToggleButton.Template>
-                                <ControlTemplate TargetType="ToggleButton">
-                                    <controls:SmallPanel>
-                                        <Ellipse
-                                            x:Name="PART_Ellipse"
-                                            Width="100"
-                                            Height="100"
-                                            Fill="{DynamicResource WD.PrimaryBrush}" />
-                                        <controls:PathIcon
-                                            x:Name="PART_Path"
-                                            Width="20"
-                                            Height="20"
-                                            Foreground="{DynamicResource WD.BackgroundBrush}"
-                                            Kind="Add"
-                                            RenderTransformOrigin="0.5,0.5" />
-                                    </controls:SmallPanel>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsChecked" Value="True">
-                                            <Setter TargetName="PART_Path" Property="RenderTransform">
-                                                <Setter.Value>
-                                                    <RotateTransform Angle="45" />
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </ToggleButton.Template>
-                        </ToggleButton>
+                                    RadiusX="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Converter={StaticResource WD.HalfValueConverter}}"
+                                    RadiusY="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=controls:CircleMenu}, Converter={StaticResource WD.HalfValueConverter}}" />
+                            </ItemsPresenter.Clip>
+                        </ItemsPresenter>
+                        <Thumb
+                            x:Name="PART_Thumb"
+                            Style="{StaticResource WD.CircleMenuThumb}" />
                     </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style BasedOn="{StaticResource WD.CircleMenuItem}" TargetType="{x:Type controls:CircleMenuItem}" />
     <Style BasedOn="{StaticResource WD.CircleMenu}" TargetType="{x:Type controls:CircleMenu}" />
 </ResourceDictionary>

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -90,14 +91,14 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void GiteeHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            BrowserHelper.OpenUrl(e.Uri.AbsoluteUri);
             e.Handled = true;
         }
 
         private void QQHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             var uri = new Uri(@"https://qm.qq.com/cgi-bin/qm/qr?k=f2zl3nvoetItho8kGfe1eys0jDkqvvcL&jump_from=webapi");
-            Process.Start(new ProcessStartInfo(uri.AbsoluteUri));
+            BrowserHelper.OpenUrl(uri);
             e.Handled = true;
         }
 

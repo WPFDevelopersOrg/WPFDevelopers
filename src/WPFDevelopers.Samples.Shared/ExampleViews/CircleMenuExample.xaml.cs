@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
+using System.Windows.Input;
 using WPFDevelopers.Controls;
-using WPFDevelopers.Samples.Models;
+using WPFDevelopers.Helpers;
+using WPFDevelopers.Samples.Helpers;
+using MenuItemModel = WPFDevelopers.Samples.Models.MenuItemModel;
 using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -15,34 +16,39 @@ namespace WPFDevelopers.Samples.ExampleViews
     /// </summary>
     public partial class CircleMenuExample : UserControl
     {
-        public IEnumerable MenuArray
-        {
-            get { return (IEnumerable)GetValue(MenuArrayProperty); }
-            set { SetValue(MenuArrayProperty, value); }
-        }
+        public ObservableCollection<MenuItemModel> MenuItems { get; } = new ObservableCollection<MenuItemModel>();
 
-        public static readonly DependencyProperty MenuArrayProperty =
-            DependencyProperty.Register("MenuArray", typeof(IEnumerable), typeof(CircleMenuExample), new PropertyMetadata(null));
         public CircleMenuExample()
         {
             InitializeComponent();
-            
-            var angle = 0;
-            var menuItemModels = new List<MenuItemModel>();
-            for (int i = 1; i <= 8; i++)
-            {
-                menuItemModels.Add(new MenuItemModel { Angle = angle, Title = $"菜单{i}", IconImage = new BitmapImage(new Uri($"pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/{i}.png")) });
-                angle += 45;
-            }
-            MenuArray = menuItemModels;
+            DataContext = this;
+            Loaded += OnCircleMenuExample_Loaded;
         }
 
-        private void CircleMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnCircleMenuExample_Loaded(object sender, RoutedEventArgs e)
         {
-            var circularMenu = sender as CircleMenu;
-            var menuItemModel = circularMenu.SelectedItem as MenuItemModel;
-            MessageBox.Show($"点击了{menuItemModel.Title}");
+            var resourceUris = ResourceHelper.GetResourceUris("Resources/Images/CircleMenu/");
+            foreach (var uri in resourceUris)
+            {
+                MenuItems.Add(new MenuItemModel
+                {
+                    Text = $"{Path.GetFileNameWithoutExtension(uri)}",
+                    Icon = new SvgViewer { Source = uri}
+                });
+            }
         }
-        
+
+        public ICommand ItemClickCommand => new RelayCommand(param =>
+        {
+            var menuItemModel = param as MenuItemModel;
+            if (menuItemModel != null)
+                Toast.Push($"点击了{menuItemModel.Text}",ToastImage.Info);
+        });
+
+        private void CircleMenu_ItemClick(object sender, RoutedEventArgs e)
+        {
+            var menuItem = (CircleMenuItem)e.OriginalSource;
+            Toast.Push($"点击了：{menuItem.Tag}", ToastImage.Info);
+        }
     }
 }
