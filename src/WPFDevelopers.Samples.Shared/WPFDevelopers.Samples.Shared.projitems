@@ -557,9 +557,81 @@
       <SubType>Code</SubType>
       <DependentUpon>BadgeExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\BasicExampleBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\BasicDataHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ThemeExample.xaml.cs">
+      <DependentUpon>ThemeExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\MenuExample.xaml.cs">
+      <DependentUpon>MenuExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\WindowBasicExample.xaml.cs">
+      <DependentUpon>WindowBasicExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\LoadingBasicExample.xaml.cs">
+      <DependentUpon>LoadingBasicExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ButtonExample.xaml.cs">
+      <DependentUpon>ButtonExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\RadioButtonExample.xaml.cs">
+      <DependentUpon>RadioButtonExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\CheckboxExample.xaml.cs">
+      <DependentUpon>CheckboxExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\TextBoxExample.xaml.cs">
+      <DependentUpon>TextBoxExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\PasswordBoxExample.xaml.cs">
+      <DependentUpon>PasswordBoxExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ComboBoxExample.xaml.cs">
+      <DependentUpon>ComboBoxExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ToggleButtonExample.xaml.cs">
+      <DependentUpon>ToggleButtonExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\DatePickerExample.xaml.cs">
+      <DependentUpon>DatePickerExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\DateTimePickerExample.xaml.cs">
+      <DependentUpon>DateTimePickerExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\CalendarExample.xaml.cs">
+      <DependentUpon>CalendarExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\SliderExample.xaml.cs">
+      <DependentUpon>SliderExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ProgressBarExample.xaml.cs">
+      <DependentUpon>ProgressBarExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\DataGridExample.xaml.cs">
+      <DependentUpon>DataGridExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ListBoxExample.xaml.cs">
+      <DependentUpon>ListBoxExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ListViewExample.xaml.cs">
+      <DependentUpon>ListViewExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\TreeViewExample.xaml.cs">
+      <DependentUpon>TreeViewExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ExpanderExample.xaml.cs">
+      <DependentUpon>ExpanderExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\GroupBoxExample.xaml.cs">
+      <DependentUpon>GroupBoxExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\TabControlExample.xaml.cs">
+      <DependentUpon>TabControlExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementVisualTreeHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BrowserHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HospitalList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItemModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NavigateMenuModel.cs" />
@@ -1196,6 +1268,98 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BadgeExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ThemeExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\MenuExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\WindowBasicExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\LoadingBasicExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ButtonExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\RadioButtonExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\CheckboxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\TextBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\PasswordBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ComboBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ToggleButtonExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\DatePickerExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\DateTimePickerExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\CalendarExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\SliderExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ProgressBarExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\DataGridExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ListBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ListViewExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\TreeViewExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ExpanderExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\GroupBoxExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\TabControlExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
