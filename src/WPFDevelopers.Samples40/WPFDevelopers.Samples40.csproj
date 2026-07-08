@@ -12,7 +12,6 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="0.1.0-preview2" />
 	  <PackageReference Include="WPFDevelopers" Version="0.1.0" />
 	</ItemGroup>
 	<ItemGroup>
