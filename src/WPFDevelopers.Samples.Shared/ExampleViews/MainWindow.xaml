@@ -120,22 +120,30 @@
             <Grid Margin="0,0,3,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBox
                     Name="PART_MenuTextBox"
                     wd:ElementHelper.IsClear="True"
-                    wd:ElementHelper.Watermark="Please input">
+                    wd:ElementHelper.Watermark="Search Control">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
+                <wd:Segmented
+                    Grid.Row="1"
+                    Margin="0,3"
+                    wd:ElementHelper.CornerRadius="15"
+                    SelectedIndex="{Binding SegmentedSelectedIndex, Mode=TwoWay}">
+                    <wd:SegmentedItem Content="Custom" />
+                    <wd:SegmentedItem Content="Basic" />
+                </wd:Segmented>
                 <controls:NavigateMenu
                     x:Name="NavigateMenu"
-                    Grid.Row="1"
-                    Margin="0,3,0,0"
+                    Grid.Row="2"
                     DisplayMemberPath="Name"
                     ItemsSource="{Binding NavigateMenuModelList}">
                     <i:Interaction.Triggers>
@@ -151,13 +159,57 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 ShowsPreview="True" />
-            <Border
+
+            <wd:Drawer
+                x:Name="CodeDrawer"
                 Grid.Column="2"
                 Margin="3,0,0,0"
-                Background="{DynamicResource WD.BackgroundBrush}">
+                BorderThickness="0"
+                Position="Right">
+                <wd:Drawer.Header>
+                    <controls:CodeViewer Header="MainWindow">
+                        <controls:CodeViewer.SourceCodes>
+                            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MainWindow.xaml" CodeType="Xaml" />
+                            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MainWindow.xaml.cs" CodeType="CSharp" />
+                            <controls:SourceCodeModel
+                                CodeSource="/WPFDevelopers.SamplesCode;component/ViewModels/MainVM.cs"
+                                CodeType="CSharp"
+                                Haader="ViewModel" />
+                        </controls:CodeViewer.SourceCodes>
+                    </controls:CodeViewer>
+                </wd:Drawer.Header>
                 <ContentControl Content="{Binding ControlPanel}" />
-                <!--  DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType=local:MainWindow}}"  -->
-            </Border>
+            </wd:Drawer>
+            <wd:CircleMenu
+                Grid.Column="2"
+                Width="100"
+                Height="100"
+                Margin="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                ItemClickCommand="{Binding CircleMenuItemClickCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                <wd:CircleMenuItem x:Name="ScreenShot" ToolTip="ScreenShot">
+                    <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/ScreenShot.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Github" ToolTip="Github">
+                    <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Github.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Grayscale" ToolTip="Grayscale">
+                    <wd:SvgViewer x:Name="GrayscaleSvg" Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/EnableGrayscale.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Theme" ToolTip="Theme">
+                    <wd:SvgViewer x:Name="ThemeSvg" Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Sun.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="Code" ToolTip="MainWindow Code">
+                    <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Code.svg" />
+                </wd:CircleMenuItem>
+                <wd:CircleMenuItem x:Name="ClearToast" ToolTip="Clear Toast">
+                    <wd:PathIcon
+                        Width="10"
+                        Height="10"
+                        Kind="WindowClose" />
+                </wd:CircleMenuItem>
+            </wd:CircleMenu>
         </Grid>
     </Grid>
 </wd:Window>
