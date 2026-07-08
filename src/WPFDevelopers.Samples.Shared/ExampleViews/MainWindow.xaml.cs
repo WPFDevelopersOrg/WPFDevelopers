@@ -16,7 +16,14 @@ namespace WPFDevelopers.Samples
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += OnMainWindow_Loaded;
             Closing += MainWindow_Closing;
+        }
+
+        private void OnMainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetThemeSource();
+            ThemeColorPicker.SelectedColor = ThemeManager.Instance.PrimaryColor;
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -83,6 +90,16 @@ namespace WPFDevelopers.Samples
         {
             WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;
             menuItemTwink.IsChecked = WpfNotifyIcon.IsTwink;
+        }
+        private void ColorPicker_Apply(object sender, RoutedEventArgs e)
+        {
+            ThemeSwitchBtn.IsChecked = false;
+            ThemeManager.Instance.SetColor(ThemeColorPicker.SelectedColor);
+        }
+
+        private void ColorPicker_Cancel(object sender, RoutedEventArgs e)
+        {
+            ThemeSwitchBtn.IsChecked = false;
         }
     }
 }
