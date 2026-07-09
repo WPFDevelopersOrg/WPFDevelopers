@@ -139,6 +139,21 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>    
 
 ----------
+### CircleMenu
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/CircleMenu.gif"/>  
+
+----------
+### Segmented
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Segmented.gif"/>  
+
+----------
+### SplitButton
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/SplitButton.gif"/>  
+
+---------- 
 ### Carousel
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Carousel.gif"/>   
