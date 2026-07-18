@@ -28,7 +28,7 @@ namespace WPFDevelopers.Samples.ViewModels
         {
             nameof(MenuEnum.Theme),
             nameof(MenuEnum.Menu),
-            nameof(MenuEnum.BasicWindow),
+            nameof(MenuEnum.Window),
             nameof(MenuEnum.BasicLoading),
             nameof(MenuEnum.Button),
             nameof(MenuEnum.RadioButton),
@@ -193,8 +193,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Menu:
                     ControlPanel = new MenuExample();
                     break;
-                case MenuEnum.BasicWindow:
-                    ControlPanel = new WindowBasicExample();
+                case MenuEnum.Window:
+                    ControlPanel = new WindowExample();
                     break;
                 case MenuEnum.BasicLoading:
                     ControlPanel = new LoadingBasicExample();
@@ -283,9 +283,6 @@ namespace WPFDevelopers.Samples.ViewModels
                 //case MenuEnum.CutImage:
                 //    ControlPanel = new CutImageExample();
                 //    break;
-                case MenuEnum.Window:
-                    ControlPanel = new WindowExample();
-                    break;
                 case MenuEnum.CropAvatar:
                     ControlPanel = new CropAvatarExample();
                     break;

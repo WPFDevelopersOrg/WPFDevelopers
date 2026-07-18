@@ -188,7 +188,6 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\BasicDataHelper.cs" Link="ExampleViews\Basics\BasicDataHelper.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ThemeExample.xaml.cs" Link="ExampleViews\Basics\ThemeExample.xaml.cs" DependentUpon="ThemeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\MenuExample.xaml.cs" Link="ExampleViews\Basics\MenuExample.xaml.cs" DependentUpon="MenuExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\WindowBasicExample.xaml.cs" Link="ExampleViews\Basics\WindowBasicExample.xaml.cs" DependentUpon="WindowBasicExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\LoadingBasicExample.xaml.cs" Link="ExampleViews\Basics\LoadingBasicExample.xaml.cs" DependentUpon="LoadingBasicExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\ButtonExample.xaml.cs" Link="ExampleViews\Basics\ButtonExample.xaml.cs" DependentUpon="ButtonExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\RadioButtonExample.xaml.cs" Link="ExampleViews\Basics\RadioButtonExample.xaml.cs" DependentUpon="RadioButtonExample.xaml" />
@@ -636,9 +635,6 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\MenuExample.xaml">
 			<Link>ExampleViews\Basics\MenuExample.xaml</Link>
-		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\WindowBasicExample.xaml">
-			<Link>ExampleViews\Basics\WindowBasicExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Basics\LoadingBasicExample.xaml">
 			<Link>ExampleViews\Basics\LoadingBasicExample.xaml</Link>

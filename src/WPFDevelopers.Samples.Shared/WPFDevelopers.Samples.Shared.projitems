@@ -565,9 +565,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\MenuExample.xaml.cs">
       <DependentUpon>MenuExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\WindowBasicExample.xaml.cs">
-      <DependentUpon>WindowBasicExample.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\LoadingBasicExample.xaml.cs">
       <DependentUpon>LoadingBasicExample.xaml</DependentUpon>
     </Compile>
@@ -1276,10 +1273,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\MenuExample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\WindowBasicExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
