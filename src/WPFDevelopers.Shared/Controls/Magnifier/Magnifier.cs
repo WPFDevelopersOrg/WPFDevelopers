@@ -90,7 +90,20 @@ namespace WPFDevelopers.Controls
         private void Element_Unloaded(object sender, RoutedEventArgs e)
         {
             if (sender is FrameworkElement element)
+            {
                 element.Unloaded -= Element_Unloaded;
+                element.MouseEnter -= Element_MouseEnter;
+                element.MouseLeave -= Element_MouseLeave;
+                element.MouseMove -= Element_MouseMove;
+                element.MouseWheel -= Element_MouseWheel;
+            }
+            if (_adornerContainer != null)
+            {
+                var layer = AdornerLayer.GetAdornerLayer(ParentTarget);
+                layer?.Remove(_adornerContainer);
+                _adornerContainer.Child = null;
+                _adornerContainer = null;
+            }
         }
 
         private void Element_MouseMove(object sender, MouseEventArgs e)
