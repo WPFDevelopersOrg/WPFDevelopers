@@ -82,6 +82,30 @@
                     Maximum="90"
                     Minimum="30" />
             </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <wd:Gauge
+                    Title="Offset"
+                    Width="150"
+                    Height="150"
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#293950"
+                    Foreground="LightGreen"
+                    FontSize="10"
+                    OffsetX="-30"
+                    OffsetY="-20"
+                    Value="{Binding ElementName=MySlider4, Path=Value}" />
+                <Slider
+                    Name="MySlider4"
+                    Width="200"
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Maximum="100"
+                    Minimum="0"
+                    Value="50" />
+            </StackPanel>
         </WrapPanel>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/GaugeExample.xaml" CodeType="Xaml" />

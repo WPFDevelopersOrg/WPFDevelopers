@@ -55,6 +55,7 @@ DrawerMenu.xaml
 CropAvatar.xaml
 StarrySky.xaml
 Magnifier.xaml
+Gauge.xaml
 Step.xaml
 Segmented.xaml
 MultiSelectComboBox.xaml

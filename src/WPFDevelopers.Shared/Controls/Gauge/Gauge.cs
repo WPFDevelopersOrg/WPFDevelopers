@@ -8,20 +8,32 @@ namespace WPFDevelopers.Controls
     public class Gauge : RangeBase
     {
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("TitleProperty", typeof(string), typeof(Gauge), new PropertyMetadata("WD"));
+            DependencyProperty.Register("Title", typeof(string), typeof(Gauge),
+                new PropertyMetadata("WD", OnAppearanceChanged));
 
         public static readonly DependencyProperty ValueFormatProperty =
             DependencyProperty.Register("ValueFormat", typeof(string), typeof(Gauge),
-                new PropertyMetadata("{0:0}%", OnValueFormatChanged));
+                new PropertyMetadata("{0:0}%", OnAppearanceChanged));
 
         public static readonly DependencyProperty ThicknessProperty =
             DependencyProperty.Register("Thickness", typeof(double), typeof(Gauge),
-                new PropertyMetadata(10.0, OnValueFormatChanged));
+                new PropertyMetadata(10.0, OnAppearanceChanged));
 
+        public static readonly DependencyProperty OffsetXProperty =
+            DependencyProperty.Register("OffsetX", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty OffsetYProperty =
+            DependencyProperty.Register("OffsetY", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
 
         static Gauge()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Gauge), new FrameworkPropertyMetadata(typeof(Gauge)));
+            BackgroundProperty.OverrideMetadata(typeof(Gauge),
+                new FrameworkPropertyMetadata(null, OnAppearanceChanged));
+            ForegroundProperty.OverrideMetadata(typeof(Gauge),
+                new FrameworkPropertyMetadata(null, OnAppearanceChanged));
         }
 
         public Gauge()
@@ -49,7 +61,19 @@ namespace WPFDevelopers.Controls
             set => SetValue(ThicknessProperty, value);
         }
 
-        private static void OnValueFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public double OffsetX
+        {
+            get => (double) GetValue(OffsetXProperty);
+            set => SetValue(OffsetXProperty, value);
+        }
+
+        public double OffsetY
+        {
+            get => (double) GetValue(OffsetYProperty);
+            set => SetValue(OffsetYProperty, value);
+        }
+
+        private static void OnAppearanceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var gauge = d as Gauge;
             gauge?.InvalidateVisual();
@@ -146,11 +170,11 @@ namespace WPFDevelopers.Controls
                 var tickStartY = height / 2 + (radius - tickLength) * Math.Sin(angle * Math.PI / 180);
                 var tickEndX = width / 2 + (radius + Thickness / 2) * Math.Cos(angle * Math.PI / 180);
                 var tickEndY = height / 2 + (radius + Thickness / 2) * Math.Sin(angle * Math.PI / 180);
-                drawingContext.DrawLine(new Pen(Brushes.White, 2), new Point(tickStartX, tickStartY),
+                drawingContext.DrawLine(new Pen(Foreground, 2), new Point(tickStartX, tickStartY),
                     new Point(tickEndX, tickEndY));
 
                 var labelValue = Minimum + step * i;
-                var formattedText = DrawingContextHelper.GetFormattedText(labelValue.ToString(), Brushes.White,
+                var formattedText = DrawingContextHelper.GetFormattedText(labelValue.ToString(), Foreground,
                     FlowDirection.LeftToRight, FontSize);
 
                 var labelRadius = radius - tickLength * 2;
@@ -169,13 +193,13 @@ namespace WPFDevelopers.Controls
                 throw new InvalidOperationException("Formatting failed ", ex);
             }
 
-            var currentValueText = DrawingContextHelper.GetFormattedText(formattedValue, Brushes.White,
+            var currentValueText = DrawingContextHelper.GetFormattedText(formattedValue, Foreground,
                 FlowDirection.LeftToRight, FontSize * 2);
-            var valueX = width / 2 - currentValueText.Width / 2;
-            var valueY = height / 2 + radius * 0.4;
+            var valueX = width / 2 - currentValueText.Width / 2 + OffsetX;
+            var valueY = height / 2 + radius * 0.4 + OffsetY;
             drawingContext.DrawText(currentValueText, new Point(valueX, valueY));
             var titleValue =
-                DrawingContextHelper.GetFormattedText(Title, Brushes.White, FlowDirection.LeftToRight, FontSize);
+                DrawingContextHelper.GetFormattedText(Title, Foreground, FlowDirection.LeftToRight, FontSize);
             valueX = width / 2 - titleValue.Width / 2;
             valueY = height / 2 + radius * 0.8;
             drawingContext.DrawText(titleValue, new Point(valueX, valueY));
