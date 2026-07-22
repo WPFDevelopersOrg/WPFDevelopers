@@ -95,6 +95,10 @@
                     FontSize="10"
                     OffsetX="-30"
                     OffsetY="-20"
+                    TickFontSize="10"
+                    TitleFontSize="12"
+                    TitleSpacing="6"
+                    ValueFontSize="14"
                     Value="{Binding ElementName=MySlider4, Path=Value}" />
                 <Slider
                     Name="MySlider4"

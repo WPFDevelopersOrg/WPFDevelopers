@@ -27,6 +27,22 @@ namespace WPFDevelopers.Controls
             DependencyProperty.Register("OffsetY", typeof(double), typeof(Gauge),
                 new PropertyMetadata(0.0, OnAppearanceChanged));
 
+        public static readonly DependencyProperty TitleSpacingProperty =
+            DependencyProperty.Register("TitleSpacing", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty TickFontSizeProperty =
+            DependencyProperty.Register("TickFontSize", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty ValueFontSizeProperty =
+            DependencyProperty.Register("ValueFontSize", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty TitleFontSizeProperty =
+            DependencyProperty.Register("TitleFontSize", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
         static Gauge()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Gauge), new FrameworkPropertyMetadata(typeof(Gauge)));
@@ -71,6 +87,30 @@ namespace WPFDevelopers.Controls
         {
             get => (double) GetValue(OffsetYProperty);
             set => SetValue(OffsetYProperty, value);
+        }
+
+        public double TitleSpacing
+        {
+            get => (double) GetValue(TitleSpacingProperty);
+            set => SetValue(TitleSpacingProperty, value);
+        }
+
+        public double TickFontSize
+        {
+            get => (double) GetValue(TickFontSizeProperty);
+            set => SetValue(TickFontSizeProperty, value);
+        }
+
+        public double ValueFontSize
+        {
+            get => (double) GetValue(ValueFontSizeProperty);
+            set => SetValue(ValueFontSizeProperty, value);
+        }
+
+        public double TitleFontSize
+        {
+            get => (double) GetValue(TitleFontSizeProperty);
+            set => SetValue(TitleFontSizeProperty, value);
         }
 
         private static void OnAppearanceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -174,8 +214,9 @@ namespace WPFDevelopers.Controls
                     new Point(tickEndX, tickEndY));
 
                 var labelValue = Minimum + step * i;
+                var tickFontSize = TickFontSize > 0 ? TickFontSize : FontSize;
                 var formattedText = DrawingContextHelper.GetFormattedText(labelValue.ToString(), Foreground,
-                    FlowDirection.LeftToRight, FontSize);
+                    FlowDirection.LeftToRight, tickFontSize);
 
                 var labelRadius = radius - tickLength * 2;
                 var labelX = width / 2 + labelRadius * Math.Cos(angle * Math.PI / 180) - formattedText.Width / 2;
@@ -193,15 +234,17 @@ namespace WPFDevelopers.Controls
                 throw new InvalidOperationException("Formatting failed ", ex);
             }
 
+            var valueFontSize = ValueFontSize > 0 ? ValueFontSize : FontSize * 2;
             var currentValueText = DrawingContextHelper.GetFormattedText(formattedValue, Foreground,
-                FlowDirection.LeftToRight, FontSize * 2);
+                FlowDirection.LeftToRight, valueFontSize);
             var valueX = width / 2 - currentValueText.Width / 2 + OffsetX;
             var valueY = height / 2 + radius * 0.4 + OffsetY;
             drawingContext.DrawText(currentValueText, new Point(valueX, valueY));
+            var titleFontSize = TitleFontSize > 0 ? TitleFontSize : FontSize;
             var titleValue =
-                DrawingContextHelper.GetFormattedText(Title, Foreground, FlowDirection.LeftToRight, FontSize);
-            valueX = width / 2 - titleValue.Width / 2;
-            valueY = height / 2 + radius * 0.8;
+                DrawingContextHelper.GetFormattedText(Title, Foreground, FlowDirection.LeftToRight, titleFontSize);
+            valueX = width / 2 - titleValue.Width / 2 + OffsetX;
+            valueY = height / 2 + radius * 0.8 + OffsetY + TitleSpacing;
             drawingContext.DrawText(titleValue, new Point(valueX, valueY));
         }
     }
