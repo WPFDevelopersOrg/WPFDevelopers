@@ -55,13 +55,32 @@
                     FontSize="20"
                     Text="Light | Dark" />
                 <WrapPanel Margin="10">
-                    <TextBlock Text="Light" />
-                    <ToggleButton
-                        x:Name="tbLightDark"
-                        Margin="10,0"
-                        Checked="LightDark_Checked"
-                        Unchecked="LightDark_Checked" />
-                    <TextBlock Text="Dark" />
+                    <wd:Segmented
+                        x:Name="PART_Segmented"
+                        Width="100"
+                        wd:ElementHelper.CornerRadius="14"
+                        ItemClick="Segmented_ItemClick">
+                        <wd:SegmentedItem x:Name="SegmentedLight">
+                            <wd:PathIcon
+                                Width="18"
+                                Height="18"
+                                Data="M12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 1 0 0 11Zm-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0ZM3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06ZM12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0ZM4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12Zm8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20Zm12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12Zm-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061Zm2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0Z"
+                                Foreground="{DynamicResource WD.PrimaryTextBrush}" />
+                        </wd:SegmentedItem>
+                        <wd:SegmentedItem x:Name="SegmentedDark">
+                            <Border
+                                Width="18"
+                                Height="18"
+                                Background="{DynamicResource WD.BackgroundBrush}"
+                                CornerRadius="10">
+                                <wd:PathIcon
+                                    Width="16"
+                                    Height="16"
+                                    Data="M12 2a10 10 0 1 0 10 10A7 7 0 0 1 12 2Z"
+                                    Foreground="{DynamicResource WD.PrimaryTextBrush}" />
+                            </Border>
+                        </wd:SegmentedItem>
+                    </wd:Segmented>
                 </WrapPanel>
                 <TextBlock
                     Margin="0,20,0,0"
