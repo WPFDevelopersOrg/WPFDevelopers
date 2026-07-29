@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Samples.ExampleViews;
@@ -14,7 +16,7 @@ namespace WPFDevelopers.Samples
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow
     {
         public MainWindow()
         {
@@ -27,6 +29,15 @@ namespace WPFDevelopers.Samples
         {
             SetThemeSource();
             ThemeColorPicker.SelectedColor = ThemeManager.Instance.PrimaryColor;
+        }
+
+        private void ThemeSwitchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var targetTheme = App.Theme == ThemeType.Dark ? ThemeType.Light : ThemeType.Dark;
+            ThemeManager.Instance.SwitchTheme(ThemeSwitchBtn, targetTheme);
+            App.Theme = targetTheme;
+            SetThemeSource();
+            ThemeSwitchBtn.IsChecked = targetTheme == ThemeType.Dark;
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -63,7 +74,7 @@ namespace WPFDevelopers.Samples
                 menuItemGrayscale.Header = "关闭灰度";
                 CreateGrayscale(0);
             }
-               
+
             else
             {
                 menuItemGrayscale.Header = "开启灰度";
@@ -167,13 +178,13 @@ namespace WPFDevelopers.Samples
 
         private void ColorPicker_Apply(object sender, RoutedEventArgs e)
         {
-            ThemeSwitchBtn.IsChecked = false;
+            ColorSwitchBtn.IsChecked = false;
             ThemeManager.Instance.SetColor(ThemeColorPicker.SelectedColor);
         }
 
         private void ColorPicker_Cancel(object sender, RoutedEventArgs e)
         {
-            ThemeSwitchBtn.IsChecked = false;
+            ColorSwitchBtn.IsChecked = false;
         }
     }
 }
