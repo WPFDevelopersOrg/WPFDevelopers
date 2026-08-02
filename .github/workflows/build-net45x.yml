@@ -1,0 +1,61 @@
+name: Build Net45x
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Clean output directory
+        shell: pwsh
+        run: |
+          if (Test-Path OutPut) {
+            Remove-Item OutPut -Recurse -Force
+          }
+          New-Item -ItemType Directory -Path OutPut | Out-Null
+
+      - name: Restore and build target frameworks
+        shell: pwsh
+        run: |
+          [xml]$targetFrameworkConfig = Get-Content src/TargetFrameworks.props
+          $frameworks = $targetFrameworkConfig.Project.PropertyGroup.TargetFrameworks.Split(';') | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+          $solutionDir = "$(Resolve-Path src)\\"
+
+          Write-Host "Frameworks to build: $($frameworks -join ', ')"
+
+          foreach ($framework in $frameworks) {
+            dotnet restore src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:TargetFramework=$framework
+            if ($LASTEXITCODE -ne 0) {
+              exit $LASTEXITCODE
+            }
+
+            msbuild src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFramework=$framework /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
+            if ($LASTEXITCODE -ne 0) {
+              exit $LASTEXITCODE
+            }
+          }
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wpfdevelopers-net45x
+          path: OutPut/**/WPFDevelopers.dll
+          if-no-files-found: error
