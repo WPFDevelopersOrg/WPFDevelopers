@@ -3,9 +3,10 @@ name: Build Net40
 on:
   push:
     branches:
-      - main
       - master
   pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
