@@ -3,9 +3,10 @@ name: Build Net45x
 on:
   push:
     branches:
-      - main
       - master
   pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
