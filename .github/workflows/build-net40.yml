@@ -1,0 +1,38 @@
+name: Build Net40
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-net40:
+    runs-on:
+      - self-hosted
+      - windows
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Clean output directory
+        shell: pwsh
+        run: |
+          if (Test-Path OutPut) {
+            Remove-Item OutPut -Recurse -Force
+          }
+          New-Item -ItemType Directory -Path OutPut | Out-Null
+
+      - name: Build .NET 4.0 library
+        shell: pwsh
+        run: |
+          $solutionDir = "$(Resolve-Path src)\\"
+          msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wpfdevelopers-net40
+          path: OutPut/**/WPFDevelopers.dll
+          if-no-files-found: error
