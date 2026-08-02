@@ -42,6 +42,7 @@ jobs:
         shell: pwsh
         run: |
           $frameworks = @('net48', 'net8.0-windows', 'net10.0-windows')
+          $solutionDir = "$(Resolve-Path src)\\"
 
           foreach ($framework in $frameworks) {
             dotnet restore src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:TargetFramework=$framework
@@ -49,7 +50,7 @@ jobs:
               exit $LASTEXITCODE
             }
 
-            msbuild src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFramework=$framework /p:SignAssembly=false /m
+            msbuild src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFramework=$framework /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
             if ($LASTEXITCODE -ne 0) {
               exit $LASTEXITCODE
             }
@@ -84,7 +85,10 @@ jobs:
           New-Item -ItemType Directory -Path OutPut | Out-Null
 
       - name: Build .NET 4.0 library
-        run: msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /m
+        shell: pwsh
+        run: |
+          $solutionDir = "$(Resolve-Path src)\\"
+          msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
 
       - name: Upload .NET 4.0 DLL artifact
         uses: actions/upload-artifact@v4
