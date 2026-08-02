@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using WPFDevelopers.Controls;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
@@ -28,7 +26,7 @@ namespace WPFDevelopers.Samples.ViewModels
         {
             nameof(MenuEnum.Theme),
             nameof(MenuEnum.Menu),
-            nameof(MenuEnum.BasicWindow),
+            nameof(MenuEnum.Window),
             nameof(MenuEnum.BasicLoading),
             nameof(MenuEnum.Button),
             nameof(MenuEnum.RadioButton),
@@ -193,8 +191,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Menu:
                     ControlPanel = new MenuExample();
                     break;
-                case MenuEnum.BasicWindow:
-                    ControlPanel = new WindowBasicExample();
+                case MenuEnum.Window:
+                    ControlPanel = new WindowExample();
                     break;
                 case MenuEnum.BasicLoading:
                     ControlPanel = new LoadingBasicExample();
@@ -283,9 +281,6 @@ namespace WPFDevelopers.Samples.ViewModels
                 //case MenuEnum.CutImage:
                 //    ControlPanel = new CutImageExample();
                 //    break;
-                case MenuEnum.Window:
-                    ControlPanel = new WindowExample();
-                    break;
                 case MenuEnum.CropAvatar:
                     ControlPanel = new CropAvatarExample();
                     break;
@@ -550,6 +545,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Segmented:
                     ControlPanel = new SegmentedExample();
+                    break;
+                case MenuEnum.MarkdownViewer:
+                    ControlPanel = new MarkdownViewerExample();
                     break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:

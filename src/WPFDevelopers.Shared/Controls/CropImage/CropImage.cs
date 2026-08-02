@@ -16,7 +16,7 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = RectangleRightTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = RectangleBottomTemplateName, Type = typeof(Rectangle))]
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
-    public class CropImage : Control
+    public class CropImage : Control, IDisposable
     {
         private const string CanvasTemplateName = "PART_Canvas";
         private const string RectangleLeftTemplateName = "PART_RectangleLeft";
@@ -81,6 +81,8 @@ namespace WPFDevelopers.Controls
         private ScreenCutAdorner _screenCutAdorner;
         private bool _isInitialized = false;
         private bool _isUnloaded = false;
+        private int _lastRenderTick;
+        private const int RenderThrottleMs = 16;
 
         static CropImage()
         {
@@ -206,21 +208,19 @@ namespace WPFDevelopers.Controls
                             brush.ImageSource = null;
                             _canvas.Background = null;
                         }
+                        _canvas.UpdateLayout();
                     }
 
                     if (CurrentAreaBitmap != null)
                     {
                         CurrentAreaBitmap = null;
                     }
-
                     _border = null;
                     _canvas = null;
                     _isInitialized = false;
                     _isDragging = false;
                 }
 
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
             }
             catch (Exception ex)
             {
@@ -374,8 +374,24 @@ namespace WPFDevelopers.Controls
 
                 Canvas.SetLeft(draggableControl, x);
                 Canvas.SetTop(draggableControl, y);
-                Render();
+                RequestRender();
             }
+        }
+
+        private void RequestRender(bool force = false)
+        {
+            if (force)
+            {
+                Render();
+                return;
+            }
+
+            var now = Environment.TickCount;
+            if (unchecked(now - _lastRenderTick) < RenderThrottleMs)
+                return;
+
+            _lastRenderTick = now;
+            Render();
         }
 
         private void Render()
@@ -415,7 +431,7 @@ namespace WPFDevelopers.Controls
 
         private void Border_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Render();
+            RequestRender(true);
         }
 
         private WriteableBitmap CutBitmap()
@@ -438,13 +454,18 @@ namespace WPFDevelopers.Controls
 
                 if (width <= 0 || height <= 0) return null;
 
-                var croppedBitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Pbgra32, null);
-                var stride = (int)(_bitmapFrame.PixelWidth * (_bitmapFrame.Format.BitsPerPixel / 8.0));
-                var pixelData = new byte[stride * _bitmapFrame.PixelHeight];
-                _bitmapFrame.CopyPixels(pixelData, stride, 0);
+                var bitsPerPixel = _bitmapFrame.Format.BitsPerPixel;
+                if (bitsPerPixel <= 0) return null;
 
-                var sourceOffset = left * (_bitmapFrame.Format.BitsPerPixel / 8) + top * stride;
-                croppedBitmap.WritePixels(new Int32Rect(0, 0, width, height), pixelData, stride, sourceOffset);
+                var bytesPerPixel = (bitsPerPixel + 7) / 8;
+                var rowStride = width * bytesPerPixel;
+                var pixelData = new byte[rowStride * height];
+
+                _bitmapFrame.CopyPixels(new Int32Rect(left, top, width, height), pixelData, rowStride, 0);
+
+                var croppedBitmap = new WriteableBitmap(width, height, _bitmapFrame.DpiX, _bitmapFrame.DpiY,
+                    _bitmapFrame.Format, _bitmapFrame.Palette);
+                croppedBitmap.WritePixels(new Int32Rect(0, 0, width, height), pixelData, rowStride, 0);
 
                 return croppedBitmap;
             }
@@ -453,6 +474,11 @@ namespace WPFDevelopers.Controls
                 System.Diagnostics.Debug.WriteLine($"CutBitmap error: {ex.Message}");
                 return null;
             }
+        }
+
+        public void Dispose()
+        {
+            CleanupResources(true);
         }
     }
 }

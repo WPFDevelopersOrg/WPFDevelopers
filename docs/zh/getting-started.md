@@ -98,6 +98,24 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 </Window>
 ```
 
+### MarkdownViewer 示例
+
+`wd:MarkdownViewer` 用于渲染 Markdown 内容（标题、列表、引用、代码块、表格、链接、图片等）。
+
+```xml
+<Grid>
+    <wd:MarkdownViewer
+        Margin="12"
+        Padding="12"
+        Markdown="## Hello Markdown&#10;&#10;This is **WPFDevelopers** MarkdownViewer." />
+</Grid>
+```
+
+完整示例可参考：
+
+- `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml`
+- `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml.cs`
+
 ---
 
 ## 三种使用方式
