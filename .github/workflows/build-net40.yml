@@ -1,17 +1,25 @@
 name: Build Net40
 
 on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
   workflow_dispatch:
 
 jobs:
   build-net40:
-    runs-on:
-      - self-hosted
-      - windows
+    runs-on: windows-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -28,7 +36,7 @@ jobs:
         shell: pwsh
         run: |
           $solutionDir = "$(Resolve-Path src)\\"
-          msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
+          msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /restore /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
