@@ -1,0 +1,108 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.MarkdownViewerExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border
+                Grid.Row="0"
+                Margin="0,6"
+                Background="{DynamicResource WD.BackgroundBrush}"
+                BorderBrush="{DynamicResource WD.BaseBrush}"
+                BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="OpenFile_Click"
+                        Content="Open" />
+                    <Button
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="SaveFile_Click"
+                        Content="Save" />
+                    <Button
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="LoadSample_Click"
+                        Content="Sample" />
+                    <Button
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="ZoomIn_Click"
+                        Content="Zoom In" />
+                    <Button
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="ZoomOut_Click"
+                        Content="Zoom Out" />
+                    <TextBlock
+                        x:Name="ZoomTextBlock"
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="100%" />
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="8" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock FontWeight="SemiBold" Text="Markdown Input" />
+
+                    <TextBox
+                        x:Name="EditorTextBox"
+                        Grid.Row="2"
+                        AcceptsReturn="True"
+                        FontFamily="Consolas"
+                        HorizontalScrollBarVisibility="Auto"
+                        TextChanged="EditorTextBox_OnTextChanged"
+                        TextWrapping="NoWrap"
+                        VerticalScrollBarVisibility="Auto" />
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="8" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock FontWeight="SemiBold" Text="Markdown Preview" />
+
+                    <wd:MarkdownViewer
+                        x:Name="PreviewViewer"
+                        Grid.Row="2"
+                        Margin="0"
+                        Padding="12"
+                        Markdown="" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MarkdownViewerExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/MarkdownViewerExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

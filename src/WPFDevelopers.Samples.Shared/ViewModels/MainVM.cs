@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using WPFDevelopers.Controls;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
@@ -547,6 +545,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Segmented:
                     ControlPanel = new SegmentedExample();
+                    break;
+                case MenuEnum.MarkdownViewer:
+                    ControlPanel = new MarkdownViewerExample();
                     break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:

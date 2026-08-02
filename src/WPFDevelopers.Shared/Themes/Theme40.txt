@@ -9,7 +9,6 @@ Basic\ControlBasic.xaml
 
 ..\Styles\Styles.Menu.xaml
 ..\Styles\Styles.ContextMenu.xaml
-..\Styles\Styles.Buttons.xaml
 ..\Styles\Styles.RadioButton.xaml
 ..\Styles\Styles.ScrollBar.xaml
 ..\Styles\Styles.Slider.xaml
@@ -75,5 +74,6 @@ SplitButton.xaml
 SwitchButton.xaml
 NavScrollPanel.xaml
 GestureUnlock.xaml
+MarkdownViewer.xaml
 WDUserControl.xaml
 Filter.xaml

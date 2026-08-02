@@ -97,6 +97,7 @@
         AnimationGrid,
         AllPathIcon,
         Dial,
+        MarkdownViewer,
         SvgViewer,
         DataGridFilter,
         GrayscaleEffect,
