@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      CI_TARGET_FRAMEWORKS: net48;net8.0-windows;net10.0-windows
 
     steps:
       - name: Checkout
@@ -20,9 +22,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
-
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v2
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
@@ -35,14 +34,11 @@ jobs:
           }
           New-Item -ItemType Directory -Path OutPut | Out-Null
 
-      - name: Restore SDK-style dependencies
-        run: dotnet restore src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj
-
-      - name: Build .NET 4.0 library
-        run: msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /m
+      - name: Restore dependencies
+        run: dotnet restore src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:TargetFrameworks="${{ env.CI_TARGET_FRAMEWORKS }}"
 
       - name: Build multi-target library
-        run: msbuild src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:Configuration=Release /p:Platform="Any CPU" /m
+        run: msbuild src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFrameworks="${{ env.CI_TARGET_FRAMEWORKS }}" /p:SignAssembly=false /m
 
       - name: Upload DLL artifacts
         uses: actions/upload-artifact@v4
