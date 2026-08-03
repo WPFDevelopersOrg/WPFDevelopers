@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<RestoreProjectStyle>None</RestoreProjectStyle>
 		<TargetFramework>net40</TargetFramework>
-		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
 	<Import Project="..\WPFDevelopers.Shared\WPFDevelopers.Shared.projitems" Label="Shared" />
 	<Import Project="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems" Label="Shared" />
