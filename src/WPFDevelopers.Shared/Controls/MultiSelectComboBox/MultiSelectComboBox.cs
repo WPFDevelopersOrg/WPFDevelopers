@@ -102,6 +102,7 @@ namespace WPFDevelopers.Controls
         private TextBox _editableTextBox;
         private string _theLastText;
         private bool _isUpdating;
+        private bool _needApplySelectedItems;
 
         private List<object> selectedItems;
         private List<object> selectedList;
@@ -225,64 +226,110 @@ namespace WPFDevelopers.Controls
             if (!IsLoaded) return;
             if (SelectedItems != null)
             {
-                foreach (var item in e.AddedItems)
+                if (SelectionMode == SelectionMode.Single)
                 {
-                    if (!SelectedItems.Contains(item))
+                    if (!_isUpdating && SelectedItemsExt != null)
                     {
-                        TrySelectItem(item);
+                        _isUpdating = true;
+                        try
+                        {
+                            if (SelectedItemsExt is IList list && SelectedItemsExt is INotifyCollectionChanged notifier)
+                            {
+                                var eventField = notifier.GetType().GetField("CollectionChanged",
+                                    BindingFlags.NonPublic | BindingFlags.Instance);
+                                var originalHandler = eventField?.GetValue(notifier) as NotifyCollectionChangedEventHandler;
+                                if (eventField != null)
+                                    eventField.SetValue(notifier, null);
+                                try
+                                {
+                                    list.Clear();
+                                    if (SelectedItem != null)
+                                        list.Add(SelectedItem);
+                                }
+                                finally
+                                {
+                                    if (eventField != null && originalHandler != null)
+                                    {
+                                        eventField.SetValue(notifier, originalHandler);
+                                        originalHandler(notifier,
+                                            new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                                    }
+                                }
+                            }
+                            else if (SelectedItemsExt is IList list2)
+                            {
+                                list2.Clear();
+                                if (SelectedItem != null)
+                                    list2.Add(SelectedItem);
+                            }
+                        }
+                        finally
+                        {
+                            _isUpdating = false;
+                        }
                     }
                 }
-                foreach (var item in e.RemovedItems)
+                else
                 {
-                    TryUnselectItem(item);
-                }
-                if (!_isUpdating && SelectedItemsExt != null)
-                {
-                    _isUpdating = true;
-                    try
+                    foreach (var item in e.AddedItems)
                     {
-                        if (SelectedItemsExt is IList list && SelectedItemsExt is INotifyCollectionChanged notifier)
+                        if (!SelectedItems.Contains(item))
                         {
-                            var eventField = notifier.GetType().GetField("CollectionChanged",
-                                BindingFlags.NonPublic | BindingFlags.Instance);
-
-                            var originalHandler = eventField?.GetValue(notifier) as NotifyCollectionChangedEventHandler;
-
-                            if (eventField != null)
+                            TrySelectItem(item);
+                        }
+                    }
+                    foreach (var item in e.RemovedItems)
+                    {
+                        TryUnselectItem(item);
+                    }
+                    if (!_isUpdating && SelectedItemsExt != null)
+                    {
+                        _isUpdating = true;
+                        try
+                        {
+                            if (SelectedItemsExt is IList list && SelectedItemsExt is INotifyCollectionChanged notifier)
                             {
-                                eventField.SetValue(notifier, null);
+                                var eventField = notifier.GetType().GetField("CollectionChanged",
+                                    BindingFlags.NonPublic | BindingFlags.Instance);
+
+                                var originalHandler = eventField?.GetValue(notifier) as NotifyCollectionChangedEventHandler;
+
+                                if (eventField != null)
+                                {
+                                    eventField.SetValue(notifier, null);
+                                }
+
+                                try
+                                {
+                                    list.Clear();
+                                    foreach (var item in SelectedItems.Cast<object>())
+                                    {
+                                        list.Add(item);
+                                    }
+                                }
+                                finally
+                                {
+                                    if (eventField != null && originalHandler != null)
+                                    {
+                                        eventField.SetValue(notifier, originalHandler);
+                                        var args = new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset);
+                                        originalHandler(notifier, args);
+                                    }
+                                }
                             }
-
-                            try
+                            else if (SelectedItemsExt is IList list2)
                             {
-                                list.Clear();
+                                list2.Clear();
                                 foreach (var item in SelectedItems.Cast<object>())
                                 {
-                                    list.Add(item);
-                                }
-                            }
-                            finally
-                            {
-                                if (eventField != null && originalHandler != null)
-                                {
-                                    eventField.SetValue(notifier, originalHandler);
-                                    var args = new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset);
-                                    originalHandler(notifier, args);
+                                    list2.Add(item);
                                 }
                             }
                         }
-                        else if (SelectedItemsExt is IList list2)
+                        finally
                         {
-                            list2.Clear();
-                            foreach (var item in SelectedItems.Cast<object>())
-                            {
-                                list2.Add(item);
-                            }
+                            _isUpdating = false;
                         }
-                    }
-                    finally
-                    {
-                        _isUpdating = false;
                     }
                 }
                 SelectionChecked(this);
@@ -295,6 +342,59 @@ namespace WPFDevelopers.Controls
             base.OnItemsSourceChanged(oldValue, newValue);
             if (_textBox != null)
                 ApplySearchLogic();
+            if (SelectedItemsExt is IList list && list.Count > 0)
+                ScheduleApplySelectedItemsExt();
+        }
+
+        private void ApplySelectedItemsExt()
+        {
+            if (SelectedItemsExt == null || ItemsSource == null) return;
+            var collection = SelectedItemsExt as IEnumerable;
+            if (collection == null) return;
+            var itemsToSelect = collection.Cast<object>().ToList();
+            _isUpdating = true;
+            try
+            {
+                if (SelectionMode == SelectionMode.Single)
+                {
+                    foreach (var item in itemsToSelect)
+                    {
+                        var name = this.GetDisplayAndSelectedValue(item)?.ToString();
+                        object model = null;
+                        if (!string.IsNullOrWhiteSpace(name))
+                            model = Items.OfType<object>().FirstOrDefault(h =>
+                                this.GetDisplayAndSelectedValue(h)?.ToString() == name);
+                        if (model == null)
+                            model = Items.OfType<object>().FirstOrDefault(h => h == item);
+                        if (model != null)
+                        {
+                            SelectedItem = model;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    SelectedItems.Clear();
+                    foreach (var item in itemsToSelect)
+                    {
+                        var name = this.GetDisplayAndSelectedValue(item)?.ToString();
+                        object model = null;
+                        if (!string.IsNullOrWhiteSpace(name))
+                            model = Items.OfType<object>().FirstOrDefault(h =>
+                                this.GetDisplayAndSelectedValue(h)?.ToString() == name);
+                        if (model == null)
+                            model = Items.OfType<object>().FirstOrDefault(h => h == item);
+                        if (model != null && !SelectedItems.Contains(model))
+                            TrySelectItem(model);
+                    }
+                }
+            }
+            finally
+            {
+                _isUpdating = false;
+            }
+            UpdateText();
         }
 
 
@@ -352,6 +452,7 @@ namespace WPFDevelopers.Controls
             {
                 AddHandler(Controls.Tag.CloseEvent, new RoutedEventHandler(Tags_Close));
                 _panel = GetTemplateChild(PART_SimpleWrapPanel) as Panel;
+                UpdateTags();
             }
             SyncListViewViews();
             Loaded += OnMultiSelectComboBox_Loaded;
@@ -385,7 +486,11 @@ namespace WPFDevelopers.Controls
 
         private void OnMultiSelectComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateText();
+            var hasSelection = SelectionMode == SelectionMode.Single
+                ? SelectedItem != null
+                : SelectedItems.Count > 0;
+            if (hasSelection)
+                UpdateText();
         }
 
         public MultiSelectComboBox()
@@ -400,7 +505,10 @@ namespace WPFDevelopers.Controls
                 InvalidateMeasure();
                 InvalidateArrange();
                 UpdateLayout();
+                if (SelectedItems.Count == 0 && SelectedItemsExt != null)
+                    ApplySelectedItemsExt();
                 UpdateText();
+                SelectionChecked(this);
             }
         }
 
@@ -673,29 +781,6 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private string GetPropertyValue(object item)
-        {
-            if (string.IsNullOrEmpty(DisplayMemberPath))
-            {
-                if (item is ContentControl contentControl && contentControl.Content != null)
-                {
-                    return contentControl.Content.ToString() ?? string.Empty;
-                }
-                return item?.ToString() ?? string.Empty;
-            }
-            var result = string.Empty;
-            var nameParts = DisplayMemberPath.Split('.');
-            if (nameParts.Length == 1)
-            {
-                var property = item.GetType().GetProperty(DisplayMemberPath);
-                if (property != null)
-                {
-                    return (property.GetValue(item, null) ?? string.Empty).ToString();
-                }
-            }
-            return result.ToUpperInvariant();
-        }
-
         private void Instance_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             SelectAllContent = LanguageManager.Instance["SelectAll"];
@@ -721,8 +806,13 @@ namespace WPFDevelopers.Controls
 
         protected virtual void UpdateText()
         {
-            if (_ignoreTextValueChanged) return;
-            var newValue = string.Join(Delimiter, SelectedItems.Cast<object>().Select(x => this.GetDisplayAndSelectedValue(x).ToString()));
+            if (_ignoreTextValueChanged || _isUpdating) return;
+            IEnumerable<object> selected;
+            if (SelectionMode == SelectionMode.Single)
+                selected = SelectedItem != null ? new[] { SelectedItem } : Enumerable.Empty<object>();
+            else
+                selected = SelectedItems.Cast<object>();
+            var newValue = string.Join(Delimiter, selected.Select(x => this.GetDisplayAndSelectedValue(x)?.ToString() ?? string.Empty));
             if (string.IsNullOrWhiteSpace(Text) || !Text.Equals(newValue))
             {
                 _ignoreTextValueChanged = true;
@@ -737,7 +827,12 @@ namespace WPFDevelopers.Controls
         {
             if (_panel == null) return;
             _panel.Children.Clear();
-            foreach (var item in SelectedItems)
+            IEnumerable selected;
+            if (SelectionMode == SelectionMode.Single)
+                selected = SelectedItem != null ? new[] { SelectedItem } : new object[0];
+            else
+                selected = SelectedItems;
+            foreach (var item in selected)
             {
                 if (ItemContainerGenerator.ContainerFromItem(item) is MultiSelectComboBoxItem multiSelectComboBoxItem)
                     CreateTag(item, multiSelectComboBoxItem);
@@ -840,35 +935,31 @@ namespace WPFDevelopers.Controls
             if (ctrl == null) return;
             if (e.OldValue is INotifyCollectionChanged oldCollection)
                 oldCollection.CollectionChanged -= ctrl.OnSelectedItemsExtCollectionChanged;
+            if (e.NewValue is INotifyCollectionChanged newCollection)
+                newCollection.CollectionChanged += ctrl.OnSelectedItemsExtCollectionChanged;
             if (e.NewValue != null && ctrl.ItemsSource != null)
-            {
-                if (e.NewValue is INotifyCollectionChanged newCollection)
-                {
-                    ctrl.SelectedItemsExt = (IList)newCollection;
-                    newCollection.CollectionChanged += ctrl.OnSelectedItemsExtCollectionChanged;
-                }
-                ctrl.SelectedItems.Clear();
-                var collection = e.NewValue as IList;
-                if (collection.Count <= 0)
-                    return;
-                ctrl._isUpdating = true;
-                foreach (var item in collection)
-                {
-                    var name = ctrl.GetDisplayAndSelectedValue(item).ToString();
-                    object model = null;
-                    if (!string.IsNullOrWhiteSpace(name))
-                        model = ctrl.ItemsSource.OfType<object>().FirstOrDefault(h =>
-                            ctrl.GetDisplayAndSelectedValue(h).ToString() == name);
-                    else
-                        model = ctrl.ItemsSource.OfType<object>()
-                            .FirstOrDefault(h => h == item);
-                    if (model != null && !ctrl.SelectedItems.Contains(item))
-                        ctrl.TrySelectItem(model);
+                ctrl.ScheduleApplySelectedItemsExt();
+        }
 
-                }
-                ctrl._isUpdating = false;
-                if (ctrl.IsLoaded)
-                    ctrl.UpdateText();
+        private void ScheduleApplySelectedItemsExt()
+        {
+            if (_needApplySelectedItems) return;
+            _needApplySelectedItems = true;
+            if (IsLoaded)
+            {
+                _needApplySelectedItems = false;
+                ApplySelectedItemsExt();
+            }
+            else
+            {
+                RoutedEventHandler handler = null;
+                handler = (s, e) =>
+                {
+                    Loaded -= handler;
+                    _needApplySelectedItems = false;
+                    ApplySelectedItemsExt();
+                };
+                Loaded += handler;
             }
         }
 
@@ -876,14 +967,18 @@ namespace WPFDevelopers.Controls
         {
             if (_isUpdating) return;
             if (e.Action == NotifyCollectionChangedAction.Reset)
-                SelectedItems.Clear();
+            {
+                if (SelectionMode == SelectionMode.Single)
+                    SelectedItem = null;
+                else
+                    SelectedItems.Clear();
+            }
             _isUpdating = true;
             if (e.OldItems != null)
             {
                 foreach (var item in e.OldItems)
                 {
-                    if (SelectedItems.Contains(item))
-                        TryUnselectItem(item);
+                    TryUnselectItem(item);
                 }
             }
 
@@ -891,8 +986,7 @@ namespace WPFDevelopers.Controls
             {
                 foreach (var item in e.NewItems)
                 {
-                    if (!SelectedItems.Contains(item))
-                        TrySelectItem(item);
+                    TrySelectItem(item);
                 }
             }
             _isUpdating = false;
