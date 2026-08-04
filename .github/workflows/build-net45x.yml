@@ -54,9 +54,33 @@ jobs:
             }
           }
 
+      - name: Add windows7 alias folders
+        shell: pwsh
+        run: |
+          if (-not (Test-Path OutPut)) {
+            exit 0
+          }
+
+          Get-ChildItem OutPut -Directory |
+            Where-Object { $_.Name -match '^net\d+\.\d+-windows$' } |
+            ForEach-Object {
+              $source = $_.FullName
+              $alias = Join-Path $_.Parent.FullName ($_.Name + '7')
+
+              if (Test-Path $alias) {
+                Remove-Item $alias -Recurse -Force
+              }
+
+              Copy-Item $source $alias -Recurse -Force
+              Write-Host "Created alias folder: $alias"
+            }
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: wpfdevelopers-net45x
-          path: OutPut/**/WPFDevelopers.dll
+          path: |
+            OutPut/**/WPFDevelopers.dll
+            OutPut/**/en-US/WPFDevelopers.resources.dll
+            OutPut/**/ko-KR/WPFDevelopers.resources.dll
           if-no-files-found: error
