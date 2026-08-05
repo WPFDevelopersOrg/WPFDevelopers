@@ -3,9 +3,10 @@ name: Build Net45x
 on:
   push:
     branches:
-      - main
       - master
   pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -53,9 +54,33 @@ jobs:
             }
           }
 
+      - name: Rename windows folders to windows7
+        shell: pwsh
+        run: |
+          if (-not (Test-Path OutPut)) {
+            exit 0
+          }
+
+          Get-ChildItem OutPut -Directory |
+            Where-Object { $_.Name -match '^net\d+\.\d+-windows$' } |
+            ForEach-Object {
+              $source = $_.FullName
+              $alias = Join-Path $_.Parent.FullName ($_.Name + '7')
+
+              if (Test-Path $alias) {
+                Remove-Item $alias -Recurse -Force
+              }
+
+              Move-Item $source $alias
+              Write-Host "Renamed folder: $source -> $alias"
+            }
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: wpfdevelopers-net45x
-          path: OutPut/**/WPFDevelopers.dll
+          path: |
+            OutPut/**/WPFDevelopers.dll
+            OutPut/**/en-US/WPFDevelopers.resources.dll
+            OutPut/**/ko-KR/WPFDevelopers.resources.dll
           if-no-files-found: error

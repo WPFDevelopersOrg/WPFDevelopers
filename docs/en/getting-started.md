@@ -98,6 +98,24 @@ Then use WD controls:
 </Window>
 ```
 
+### MarkdownViewer Example
+
+`wd:MarkdownViewer` is used to render Markdown content (headings, lists, quotes, code blocks, tables, links, and images).
+
+```xml
+<Grid>
+    <wd:MarkdownViewer
+        Margin="12"
+        Padding="12"
+        Markdown="## Hello Markdown&#10;&#10;This is **WPFDevelopers** MarkdownViewer." />
+</Grid>
+```
+
+You can find the complete sample here:
+
+- `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml`
+- `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml.cs`
+
 ---
 
 ## Three Usage Patterns

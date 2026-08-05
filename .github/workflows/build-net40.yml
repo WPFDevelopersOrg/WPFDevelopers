@@ -3,9 +3,10 @@ name: Build Net40
 on:
   push:
     branches:
-      - main
       - master
   pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -42,5 +43,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wpfdevelopers-net40
-          path: OutPut/**/WPFDevelopers.dll
+          path: |
+            OutPut/**/WPFDevelopers.dll
+            OutPut/**/en-US/WPFDevelopers.resources.dll
+            OutPut/**/ko-KR/WPFDevelopers.resources.dll
           if-no-files-found: error

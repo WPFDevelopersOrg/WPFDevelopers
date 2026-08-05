@@ -8,20 +8,48 @@ namespace WPFDevelopers.Controls
     public class Gauge : RangeBase
     {
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("TitleProperty", typeof(string), typeof(Gauge), new PropertyMetadata("WD"));
+            DependencyProperty.Register("Title", typeof(string), typeof(Gauge),
+                new PropertyMetadata("WD", OnAppearanceChanged));
 
         public static readonly DependencyProperty ValueFormatProperty =
             DependencyProperty.Register("ValueFormat", typeof(string), typeof(Gauge),
-                new PropertyMetadata("{0:0}%", OnValueFormatChanged));
+                new PropertyMetadata("{0:0}%", OnAppearanceChanged));
 
         public static readonly DependencyProperty ThicknessProperty =
             DependencyProperty.Register("Thickness", typeof(double), typeof(Gauge),
-                new PropertyMetadata(10.0, OnValueFormatChanged));
+                new PropertyMetadata(10.0, OnAppearanceChanged));
 
+        public static readonly DependencyProperty OffsetXProperty =
+            DependencyProperty.Register("OffsetX", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty OffsetYProperty =
+            DependencyProperty.Register("OffsetY", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty TitleSpacingProperty =
+            DependencyProperty.Register("TitleSpacing", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty TickFontSizeProperty =
+            DependencyProperty.Register("TickFontSize", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty ValueFontSizeProperty =
+            DependencyProperty.Register("ValueFontSize", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
+
+        public static readonly DependencyProperty TitleFontSizeProperty =
+            DependencyProperty.Register("TitleFontSize", typeof(double), typeof(Gauge),
+                new PropertyMetadata(0.0, OnAppearanceChanged));
 
         static Gauge()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Gauge), new FrameworkPropertyMetadata(typeof(Gauge)));
+            BackgroundProperty.OverrideMetadata(typeof(Gauge),
+                new FrameworkPropertyMetadata(null, OnAppearanceChanged));
+            ForegroundProperty.OverrideMetadata(typeof(Gauge),
+                new FrameworkPropertyMetadata(null, OnAppearanceChanged));
         }
 
         public Gauge()
@@ -49,7 +77,43 @@ namespace WPFDevelopers.Controls
             set => SetValue(ThicknessProperty, value);
         }
 
-        private static void OnValueFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public double OffsetX
+        {
+            get => (double) GetValue(OffsetXProperty);
+            set => SetValue(OffsetXProperty, value);
+        }
+
+        public double OffsetY
+        {
+            get => (double) GetValue(OffsetYProperty);
+            set => SetValue(OffsetYProperty, value);
+        }
+
+        public double TitleSpacing
+        {
+            get => (double) GetValue(TitleSpacingProperty);
+            set => SetValue(TitleSpacingProperty, value);
+        }
+
+        public double TickFontSize
+        {
+            get => (double) GetValue(TickFontSizeProperty);
+            set => SetValue(TickFontSizeProperty, value);
+        }
+
+        public double ValueFontSize
+        {
+            get => (double) GetValue(ValueFontSizeProperty);
+            set => SetValue(ValueFontSizeProperty, value);
+        }
+
+        public double TitleFontSize
+        {
+            get => (double) GetValue(TitleFontSizeProperty);
+            set => SetValue(TitleFontSizeProperty, value);
+        }
+
+        private static void OnAppearanceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var gauge = d as Gauge;
             gauge?.InvalidateVisual();
@@ -146,12 +210,13 @@ namespace WPFDevelopers.Controls
                 var tickStartY = height / 2 + (radius - tickLength) * Math.Sin(angle * Math.PI / 180);
                 var tickEndX = width / 2 + (radius + Thickness / 2) * Math.Cos(angle * Math.PI / 180);
                 var tickEndY = height / 2 + (radius + Thickness / 2) * Math.Sin(angle * Math.PI / 180);
-                drawingContext.DrawLine(new Pen(Brushes.White, 2), new Point(tickStartX, tickStartY),
+                drawingContext.DrawLine(new Pen(Foreground, 2), new Point(tickStartX, tickStartY),
                     new Point(tickEndX, tickEndY));
 
                 var labelValue = Minimum + step * i;
-                var formattedText = DrawingContextHelper.GetFormattedText(labelValue.ToString(), Brushes.White,
-                    FlowDirection.LeftToRight, FontSize);
+                var tickFontSize = TickFontSize > 0 ? TickFontSize : FontSize;
+                var formattedText = DrawingContextHelper.GetFormattedText(labelValue.ToString(), Foreground,
+                    FlowDirection.LeftToRight, tickFontSize);
 
                 var labelRadius = radius - tickLength * 2;
                 var labelX = width / 2 + labelRadius * Math.Cos(angle * Math.PI / 180) - formattedText.Width / 2;
@@ -169,15 +234,17 @@ namespace WPFDevelopers.Controls
                 throw new InvalidOperationException("Formatting failed ", ex);
             }
 
-            var currentValueText = DrawingContextHelper.GetFormattedText(formattedValue, Brushes.White,
-                FlowDirection.LeftToRight, FontSize * 2);
-            var valueX = width / 2 - currentValueText.Width / 2;
-            var valueY = height / 2 + radius * 0.4;
+            var valueFontSize = ValueFontSize > 0 ? ValueFontSize : FontSize * 2;
+            var currentValueText = DrawingContextHelper.GetFormattedText(formattedValue, Foreground,
+                FlowDirection.LeftToRight, valueFontSize);
+            var valueX = width / 2 - currentValueText.Width / 2 + OffsetX;
+            var valueY = height / 2 + radius * 0.4 + OffsetY;
             drawingContext.DrawText(currentValueText, new Point(valueX, valueY));
+            var titleFontSize = TitleFontSize > 0 ? TitleFontSize : FontSize;
             var titleValue =
-                DrawingContextHelper.GetFormattedText(Title, Brushes.White, FlowDirection.LeftToRight, FontSize);
-            valueX = width / 2 - titleValue.Width / 2;
-            valueY = height / 2 + radius * 0.8;
+                DrawingContextHelper.GetFormattedText(Title, Foreground, FlowDirection.LeftToRight, titleFontSize);
+            valueX = width / 2 - titleValue.Width / 2 + OffsetX;
+            valueY = height / 2 + radius * 0.8 + OffsetY + TitleSpacing;
             drawingContext.DrawText(titleValue, new Point(valueX, valueY));
         }
     }

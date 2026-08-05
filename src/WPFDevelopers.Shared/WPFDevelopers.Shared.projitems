@@ -139,6 +139,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\DefaultLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\Magnifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\MagnifierDesktop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Markdown\MarkdownViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\Mask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\MaskControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
@@ -585,6 +586,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Magnifier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\MarkdownViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Gauge.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

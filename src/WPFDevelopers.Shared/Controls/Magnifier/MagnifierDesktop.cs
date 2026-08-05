@@ -26,6 +26,16 @@ namespace WPFDevelopers.Controls
         }
         public void Dispose()
         {
+            if (_border != null)
+            {
+                if (_border.Background is ImageBrush brush)
+                    brush.ImageSource = null;
+                _border.Background = null;
+                _border.UpdateLayout();
+            }
+            _border = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.SuppressFinalize(this);
         }
     }

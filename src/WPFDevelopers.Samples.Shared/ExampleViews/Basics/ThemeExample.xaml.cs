@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Helpers;
@@ -21,18 +20,9 @@ namespace WPFDevelopers.Samples.ExampleViews.Basics
         private void ThemeExample_Loaded(object sender, RoutedEventArgs e)
         {
             App.Theme = ThemeManager.Instance.Resources.Theme;
-            tbLightDark.IsChecked = App.Theme == ThemeType.Dark;
+            PART_Segmented.SelectedIndex = ThemeManager.Instance.Resources.Theme == ThemeType.Light ? 0 : 1;
         }
-
-        private void LightDark_Checked(object sender, RoutedEventArgs e)
-        {
-            if (!(sender is ToggleButton lightDark)) return;
-            var theme = lightDark.IsChecked.Value ? ThemeType.Dark : ThemeType.Light;
-            if (App.Theme == theme) return;
-            App.Theme = theme;
-            ThemeManager.Instance.SetTheme(theme);
-        }
-
+        
         private void ComboBoxLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!(sender is ComboBox cBox)) return;
@@ -58,6 +48,14 @@ namespace WPFDevelopers.Samples.ExampleViews.Basics
             var uri = new Uri(@"https://qm.qq.com/cgi-bin/qm/qr?k=f2zl3nvoetItho8kGfe1eys0jDkqvvcL&jump_from=webapi");
             BrowserHelper.OpenUrl(uri);
             e.Handled = true;
+        }
+
+        private void Segmented_ItemClick(object sender, RoutedEventArgs e)
+        {
+            var segmented = sender as Segmented;
+            var theme = segmented.SelectedIndex == 0 ? ThemeType.Light : ThemeType.Dark;
+            App.Theme = theme;
+            ThemeManager.Instance.SwitchTheme(PART_Segmented, theme);
         }
     }
 }
