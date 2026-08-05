@@ -12,7 +12,9 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<ProjectReference Include="..\WPFDevelopers.Net40\WPFDevelopers.Net40.csproj" />
+	  <PackageReference Include="WPFDevelopers" Version="0.1.0" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
 	</ItemGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -91,10 +91,21 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
             <ResourceDictionary.MergedDictionaries>
                      <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
  			<!--  需要注意 wd:Resources 必须在Theme.xaml后  -->
- 			<!--  默认情况下，Theme 会跟随系统主题（适用于 Windows 10 及以上版本），自动切换为 Light 或 Dark 模式。
-                              若要手动设置为 Light 模式，可以使用 Theme="Light"。
-                              你还可以自定义主题色，使用 Color="Fuchsia"（例如设置为 Fuchsia）-->
- 		     <wd:Resources />
+ 			<!--
+    			默认情况下，Theme 为 Light（适用于 Windows 10 及以上版本），
+   				并会自动根据系统主题切换 Light 或 Dark 模式。
+   				若设置为 Default，则会跟随系统主题。
+   			-->
+
+		    <!--
+   				如需手动指定为 Light 模式，可使用 Theme="Light"。
+   				您还可以通过 Color 属性自定义主题色，例如设置为 Color="Fuchsia"。
+		    -->
+
+		    <!--
+   				此外，通过 Radius 属性可控制控件的圆角大小（Windows 11 默认为 4）。
+			 -->
+				<wd:Resources Radius="4" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -103,6 +114,36 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ###  Step 3: Add the namespace;
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
+----------
+### CircleMenu
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircleMenu.gif"/>  
+
+----------
+### Segmented
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Segmented.gif"/>  
+
+----------
+### SplitButton
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SplitButton.gif"/>  
+
+----------   
+### Carousel
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Carousel.gif"/>   
+
+----------
+### OtpBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/OtpBox.gif"/>   
+
+----------
+### GrayscaleEffect
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
 
 ----------
 ### DataGridFilter
@@ -187,7 +228,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 ### NotifyIcon
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon2.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
 
 ----------
 ### ChartRadar
@@ -559,9 +600,9 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### Carousel 
+### MasterCarousel 
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Carousel.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MasterCarousel.gif"/>  
 
 ----------
 

@@ -16,7 +16,7 @@
 
 # __最新请使用 Nuget 预览版包__  |[下载可执行程序EXE](https://foruda.gitee.com/attach_file/1688956477367725173/net40.zip?token=71326e788298fd73e4e1dfd46558a23e&ts=1688956652&attname=net40.zip) |[项目模板下载VSIX](resources/WPFDevelopersResource/WPFDevelopers.vsix)
 
-# [最新 WPFDevelopers .Net4.5 至 Net8.0 版本如何编译 👀](https://mp.weixin.qq.com/s/M8as_AsVAFsiImDhaX7TKQ)
+# [最新 WPFDevelopers .Net4.5 至 Net10.0 版本如何编译 👀](https://mp.weixin.qq.com/s/M8as_AsVAFsiImDhaX7TKQ)
 
 # [下载完 WPFDevelopers 项目如何编译通过 👀](https://b23.tv/RTijGF8  )
 
@@ -102,10 +102,22 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
             <ResourceDictionary.MergedDictionaries>
                      <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
  			<!--  需要注意 wd:Resources 必须在Theme.xaml后  -->
- 			<!--  默认情况下，Theme 会跟随系统主题（适用于 Windows 10 及以上版本），自动切换为 Light 或 Dark 模式。
-                              若要手动设置为 Light 模式，可以使用 Theme="Light"。
-                              你还可以自定义主题色，使用 Color="Fuchsia"（例如设置为 Fuchsia）-->
- 		     <wd:Resources />
+ 			<!--
+    			默认情况下，Theme 为 Light（适用于 Windows 10 及以上版本），
+   				并会自动根据系统主题切换 Light 或 Dark 模式。
+   				若设置为 Default，则会跟随系统主题。
+   			-->
+
+		    <!--
+   				如需手动指定为 Light 模式，可使用 Theme="Light"。
+   				您还可以通过 Color 属性自定义主题色，例如设置为 Color="Fuchsia"。
+		    -->
+
+		    <!--
+   				此外，通过 Radius 属性可控制控件的圆角大小（Windows 11 默认为 4），
+   				您可以根据需要调整该值，例如设置为 Radius="4" 以获得更大的圆角。
+			 -->
+				<wd:Resources Radius="4" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
@@ -125,6 +137,36 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls02.gif"/>    
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls03.gif"/>    
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>    
+
+----------
+### CircleMenu
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/CircleMenu.gif"/>  
+
+----------
+### Segmented
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Segmented.gif"/>  
+
+----------
+### SplitButton
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/SplitButton.gif"/>  
+
+---------- 
+### Carousel
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Carousel.gif"/>   
+
+----------
+### OtpBox
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/OtpBox.gif"/>   
+
+----------
+### GrayscaleEffect
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
 
 ----------
 ### DataGridFilter
@@ -211,7 +253,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 ### NotifyIcon
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/NotifyIcon2.gif"/>   
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
 
 ----------
 ### ChartRadar
@@ -586,9 +628,9 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### Carousel （轮播图）
+### MasterCarousel （轮播图）
 
-<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Carousel.gif"/>  
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/MasterCarousel.gif"/>  
 
 ----------
 
