@@ -54,7 +54,7 @@ jobs:
             }
           }
 
-      - name: Add windows7 alias folders
+      - name: Rename windows folders to windows7
         shell: pwsh
         run: |
           if (-not (Test-Path OutPut)) {
@@ -71,8 +71,8 @@ jobs:
                 Remove-Item $alias -Recurse -Force
               }
 
-              Copy-Item $source $alias -Recurse -Force
-              Write-Host "Created alias folder: $alias"
+              Move-Item $source $alias
+              Write-Host "Renamed folder: $source -> $alias"
             }
 
       - name: Upload artifacts
