@@ -40,6 +40,7 @@ jobs:
           msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /restore /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
 
       - name: Upload unsigned artifacts
+        id: upload-unsigned
         uses: actions/upload-artifact@v4
         with:
           name: wpfdevelopers-net40-unsigned
@@ -53,9 +54,16 @@ jobs:
         uses: SignPath/github-action-submit-signing-request@v1
         with:
           api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+          organization-id: '5553cb31-6326-4371-932c-4dbac4366244'
           project-slug: 'WPFDevelopers'
           signing-policy-slug: 'test-signing'
           artifact-configuration-slug: 'default'
-          input-artifact-name: 'wpfdevelopers-net40-unsigned'
-          github-output-artifact-name: 'wpfdevelopers-net40-signed'
+          github-artifact-id: '${{ steps.upload-unsigned.outputs.artifact-id }}'
           wait-for-completion: true
+          output-artifact-directory: '${{ github.workspace }}/signed'
+
+      - name: Upload signed artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wpfdevelopers-net40-signed
+          path: '${{ github.workspace }}/signed/**'
