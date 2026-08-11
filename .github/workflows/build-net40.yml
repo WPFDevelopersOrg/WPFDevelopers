@@ -39,12 +39,23 @@ jobs:
           $solutionDir = "$(Resolve-Path src)\\"
           msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /restore /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
 
-      - name: Upload artifacts
+      - name: Upload unsigned artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: wpfdevelopers-net40
+          name: wpfdevelopers-net40-unsigned
           path: |
             OutPut/**/WPFDevelopers.dll
             OutPut/**/en-US/WPFDevelopers.resources.dll
             OutPut/**/ko-KR/WPFDevelopers.resources.dll
           if-no-files-found: error
+
+      - name: Submit signing request to SignPath
+        uses: SignPath/github-action-submit-signing-request@v1
+        with:
+          api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+          project-slug: 'WPFDevelopers'
+          signing-policy-slug: 'test-signing'
+          artifact-configuration-slug: 'default'
+          input-artifact-name: 'wpfdevelopers-net40-unsigned'
+          github-output-artifact-name: 'wpfdevelopers-net40-signed'
+          wait-for-completion: true
