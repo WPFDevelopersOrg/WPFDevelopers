@@ -10,7 +10,40 @@ on:
   workflow_dispatch:
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      frameworks: ${{ steps.read-frameworks.outputs.frameworks }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read target frameworks
+        id: read-frameworks
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content 'src/TargetFrameworks.props'
+          $value = ($props.Project.PropertyGroup | Where-Object { $_.TargetFrameworks } | Select-Object -First 1).TargetFrameworks
+          $frameworks = @($value -split ';' | Where-Object { $_ -and $_.Trim() })
+          $entries = foreach ($framework in $frameworks) {
+            $displayName = if ($framework -match '^net\d+\.\d+-windows$') { $framework + '7' } else { $framework }
+            [pscustomobject]@{
+              name = $displayName
+              framework = $framework
+            }
+          }
+          $json = $entries | ConvertTo-Json -Compress -Depth 10
+          "frameworks=$json" >> $env:GITHUB_OUTPUT
+          Write-Host "Detected frameworks: $json"
+
   build:
+    needs: prepare
+    name: Build ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.prepare.outputs.frameworks) }}
+
     runs-on: windows-latest
 
     steps:
@@ -33,25 +66,22 @@ jobs:
           }
           New-Item -ItemType Directory -Path OutPut | Out-Null
 
-      - name: Restore and build target frameworks
+      - name: Build target framework
         shell: pwsh
         run: |
-          [xml]$targetFrameworkConfig = Get-Content src/TargetFrameworks.props
-          $frameworks = $targetFrameworkConfig.Project.PropertyGroup.TargetFrameworks.Split(';') | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+          $framework = '${{ matrix.framework }}'
           $solutionDir = "$(Resolve-Path src)\\"
 
-          Write-Host "Frameworks to build: $($frameworks -join ', ')"
+          Write-Host "Building framework: $framework"
 
-          foreach ($framework in $frameworks) {
-            dotnet restore src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:TargetFramework=$framework
-            if ($LASTEXITCODE -ne 0) {
-              exit $LASTEXITCODE
-            }
+          dotnet restore src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:TargetFramework=$framework
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }
 
-            msbuild src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFramework=$framework /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
-            if ($LASTEXITCODE -ne 0) {
-              exit $LASTEXITCODE
-            }
+          msbuild src/WPFDevelopers.Net45x/WPFDevelopers.Net45x.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:TargetFramework=$framework /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
           }
 
       - name: Rename windows folders to windows7
@@ -75,15 +105,44 @@ jobs:
               Write-Host "Renamed folder: $source -> $alias"
             }
 
-      - name: Upload unsigned artifacts
+      - name: Prepare framework package folder
+        shell: pwsh
+        run: |
+          $framework = '${{ matrix.framework }}'
+          $displayName = '${{ matrix.name }}'
+          $outputFolder = if ($framework -match '^net\d+\.\d+-windows$') { $framework + '7' } else { $framework }
+          $sourceDir = Join-Path '${{ github.workspace }}' "OutPut/$outputFolder"
+          $packageRoot = Join-Path '${{ github.workspace }}' 'pack'
+
+          if (Test-Path $packageRoot) {
+            Remove-Item $packageRoot -Recurse -Force
+          }
+          New-Item -ItemType Directory -Path $packageRoot -Force | Out-Null
+
+          if (-not (Test-Path (Join-Path $sourceDir 'WPFDevelopers.dll'))) {
+            throw "Missing WPFDevelopers.dll in $sourceDir"
+          }
+
+          $stagingDir = Join-Path $packageRoot $outputFolder
+          New-Item -ItemType Directory -Path $stagingDir -Force | Out-Null
+
+          Copy-Item (Join-Path $sourceDir 'WPFDevelopers.dll') (Join-Path $stagingDir 'WPFDevelopers.dll') -Force
+
+          foreach ($culture in @('en-US', 'ko-KR')) {
+            $cultureDir = Join-Path $sourceDir $culture
+            if (Test-Path $cultureDir) {
+              Copy-Item $cultureDir $stagingDir -Recurse -Force
+            }
+          }
+
+          Write-Host "Prepared package folder: $stagingDir"
+
+      - name: Upload unsigned artifact
         id: upload-unsigned
         uses: actions/upload-artifact@v4
         with:
-          name: wpfdevelopers-net45x-unsigned
-          path: |
-            OutPut/**/WPFDevelopers.dll
-            OutPut/**/en-US/WPFDevelopers.resources.dll
-            OutPut/**/ko-KR/WPFDevelopers.resources.dll
+          name: wpfdevelopers-${{ matrix.name }}-unsigned
+          path: '${{ github.workspace }}/pack'
           if-no-files-found: error
 
       - name: Submit signing request to SignPath
@@ -100,5 +159,5 @@ jobs:
       - name: Upload signed artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: wpfdevelopers-net45x-signed
+          name: wpfdevelopers-${{ matrix.name }}-signed
           path: '${{ github.workspace }}/signed/**'
