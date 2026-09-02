@@ -4,17 +4,9 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'src/**'
-      - '.github/workflows/build-net40.yml'
-      - '.github/workflows/build-net45x.yml'
   pull_request:
     branches:
       - master
-    paths:
-      - 'src/**'
-      - '.github/workflows/build-net40.yml'
-      - '.github/workflows/build-net45x.yml'
   workflow_dispatch:
 
 jobs:
@@ -25,15 +17,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect build-related changes
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            build:
+              - 'src/**'
+              - '.github/workflows/build-net40.yml'
+              - '.github/workflows/build-net45x.yml'
+
       - name: Setup .NET SDK
+        if: steps.changes.outputs.build == 'true'
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
 
       - name: Setup MSBuild
+        if: steps.changes.outputs.build == 'true'
         uses: microsoft/setup-msbuild@v2
 
       - name: Clean output directory
+        if: steps.changes.outputs.build == 'true'
         shell: pwsh
         run: |
           if (Test-Path OutPut) {
@@ -42,6 +47,7 @@ jobs:
           New-Item -ItemType Directory -Path OutPut | Out-Null
 
       - name: Restore and build target frameworks
+        if: steps.changes.outputs.build == 'true'
         shell: pwsh
         run: |
           [xml]$targetFrameworkConfig = Get-Content src/TargetFrameworks.props
@@ -63,6 +69,7 @@ jobs:
           }
 
       - name: Rename windows folders to windows7
+        if: steps.changes.outputs.build == 'true'
         shell: pwsh
         run: |
           if (-not (Test-Path OutPut)) {
@@ -83,7 +90,13 @@ jobs:
               Write-Host "Renamed folder: $source -> $alias"
             }
 
+      - name: Skip build for docs-only changes
+        if: steps.changes.outputs.build != 'true'
+        shell: pwsh
+        run: Write-Host "No source/workflow changes detected. Skipping build."
+
       - name: Upload artifacts
+        if: steps.changes.outputs.build == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: wpfdevelopers-net45x
