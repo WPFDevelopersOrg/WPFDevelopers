@@ -4,9 +4,17 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'src/**'
+      - '.github/workflows/build-net40.yml'
+      - '.github/workflows/build-net45x.yml'
   pull_request:
     branches:
       - master
+    paths:
+      - 'src/**'
+      - '.github/workflows/build-net40.yml'
+      - '.github/workflows/build-net45x.yml'
   workflow_dispatch:
 
 jobs:
