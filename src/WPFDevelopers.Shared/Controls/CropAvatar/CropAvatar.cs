@@ -333,6 +333,7 @@ namespace WPFDevelopers.Controls
                         _image.MouseUp -= OnImage_MouseUp;
                         _image.MouseLeave -= OnImage_MouseLeave;
                     }
+                    _image.UpdateLayout();
                     if (_replaceButton != null)
                     {
                         _replaceButton.Click -= OnReplaceButton_Click;

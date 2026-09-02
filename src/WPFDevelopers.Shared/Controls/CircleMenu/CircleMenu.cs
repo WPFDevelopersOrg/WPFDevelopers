@@ -21,6 +21,7 @@ namespace WPFDevelopers.Controls
         private const string EllipseGeometryTemplateName = "PART_EllipseGeometry";
         private const string ItemsPresenterTemplateName = "PART_ItemsPresenter";
         private const string ThumbTemplateName = "PART_Thumb";
+        private const string ThumbEllipseTemplateName = "PART_ThumbEllipse";
 
         public static readonly DependencyProperty SelectedIndexProperty =
             DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(CircleMenu),
@@ -58,7 +59,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty CanDragProperty =
             DependencyProperty.Register(nameof(CanDrag), typeof(bool), typeof(CircleMenu),
-                new PropertyMetadata(true));
+                new PropertyMetadata(true, OnCanDragChanged));
 
 
         public static readonly RoutedEvent ItemClickEvent =
@@ -74,6 +75,7 @@ namespace WPFDevelopers.Controls
         private EllipseGeometry _ellipseGeometry;
         private ItemsPresenter _itemsPresenter;
         private Thumb _thumb;
+        private FrameworkElement _thumbEllipse;
         private Storyboard _openStoryboard;
         private Storyboard _closeStoryboard;
         private TranslateTransform _translateTransform;
@@ -144,22 +146,27 @@ namespace WPFDevelopers.Controls
         {
             base.OnApplyTemplate();
 
+            var oldThumb = _thumb;
+            if (oldThumb != null)
+                DetachThumbDragHandlers(oldThumb);
+
             _ellipseGeometry = GetTemplateChild(EllipseGeometryTemplateName) as EllipseGeometry;
             _itemsPresenter = GetTemplateChild(ItemsPresenterTemplateName) as ItemsPresenter;
             _thumb = GetTemplateChild(ThumbTemplateName) as Thumb;
 
-            if (_thumb != null && CanDrag)
+            if (_thumb != null)
             {
-                _translateTransform = new TranslateTransform();
-                RenderTransform = _translateTransform;
-                _thumb.DragStarted -= OnThumb_DragStarted;
-                _thumb.DragStarted += OnThumb_DragStarted;
-                _thumb.DragDelta -= OnThumb_DragDelta;
-                _thumb.DragDelta += OnThumb_DragDelta;
-                _thumb.DragCompleted -= OnThumb_DragCompleted;
-                _thumb.DragCompleted += OnThumb_DragCompleted;
+                _thumb.ApplyTemplate();
+                _thumbEllipse = _thumb.Template?.FindName(ThumbEllipseTemplateName, _thumb) as FrameworkElement;
+            }
+            else
+            {
+                _thumbEllipse = null;
             }
 
+            UpdateDragBehavior();
+
+            MouseLeftButtonDown -= OnCircleMenu_MouseLeftButtonDown;
             MouseLeftButtonDown += OnCircleMenu_MouseLeftButtonDown;
             UpdateCenter();
             BuildStoryboards();
@@ -333,6 +340,57 @@ namespace WPFDevelopers.Controls
                 menu._closeStoryboard?.Begin();
         }
 
+        private static void OnCanDragChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var menu = (CircleMenu)d;
+            menu.UpdateDragBehavior();
+        }
+
+        private void UpdateDragBehavior()
+        {
+            EnsureTranslateTransform();
+
+            if (_thumb == null)
+                return;
+
+            DetachThumbDragHandlers(_thumb);
+            if (CanDrag)
+                AttachThumbDragHandlers(_thumb);
+        }
+
+        private void EnsureTranslateTransform()
+        {
+            if (_translateTransform != null)
+                return;
+
+            _translateTransform = RenderTransform as TranslateTransform;
+            if (_translateTransform == null)
+            {
+                _translateTransform = new TranslateTransform();
+                RenderTransform = _translateTransform;
+            }
+        }
+
+        private void AttachThumbDragHandlers(Thumb thumb)
+        {
+            if (thumb == null)
+                return;
+
+            thumb.DragStarted += OnThumb_DragStarted;
+            thumb.DragDelta += OnThumb_DragDelta;
+            thumb.DragCompleted += OnThumb_DragCompleted;
+        }
+
+        private void DetachThumbDragHandlers(Thumb thumb)
+        {
+            if (thumb == null)
+                return;
+
+            thumb.DragStarted -= OnThumb_DragStarted;
+            thumb.DragDelta -= OnThumb_DragDelta;
+            thumb.DragCompleted -= OnThumb_DragCompleted;
+        }
+
 
 
         private void OnCircleMenu_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -394,6 +452,7 @@ namespace WPFDevelopers.Controls
             _openStoryboard = new Storyboard();
             _openStoryboard.Children.Add(openRx);
             _openStoryboard.Children.Add(openRy);
+            _openStoryboard.Completed += OnOpenStoryboardCompleted;
 
             var closeRx = new DoubleAnimation
             {
@@ -418,18 +477,68 @@ namespace WPFDevelopers.Controls
             _closeStoryboard.Children.Add(closeRy);
         }
 
+        private void OnOpenStoryboardCompleted(object sender, EventArgs e)
+        {
+            if (!IsExpanded)
+                return;
+
+            ClampToParentVisibleBounds();
+        }
+
         private void OnThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
             Cursor = Cursors.SizeAll;
             var parent = FindStableParent();
             if (parent == null) return;
+
+            var visibleBounds = GetVisibleBoundsInSelf();
             var visualPos = TranslatePoint(new Point(0, 0), parent);
             var layoutX = visualPos.X - _translateTransform.X;
             var layoutY = visualPos.Y - _translateTransform.Y;
-            _minX = -layoutX;
-            _maxX = parent.ActualWidth - ActualWidth - layoutX;
-            _minY = -layoutY;
-            _maxY = parent.ActualHeight - ActualHeight - layoutY;
+            _minX = -layoutX - visibleBounds.X;
+            _maxX = parent.ActualWidth - layoutX - (visibleBounds.X + visibleBounds.Width);
+            _minY = -layoutY - visibleBounds.Y;
+            _maxY = parent.ActualHeight - layoutY - (visibleBounds.Y + visibleBounds.Height);
+        }
+
+        private Rect GetVisibleBoundsInSelf()
+        {
+            var bounds = Rect.Empty;
+
+            if (_thumbEllipse != null && _thumbEllipse.ActualWidth > 0 && _thumbEllipse.ActualHeight > 0)
+            {
+                var thumbRect = new Rect(0, 0, _thumbEllipse.ActualWidth, _thumbEllipse.ActualHeight);
+                var thumbBounds = _thumbEllipse.TransformToAncestor(this).TransformBounds(thumbRect);
+                bounds = bounds.IsEmpty ? thumbBounds : Rect.Union(bounds, thumbBounds);
+            }
+
+            if (_itemsPresenter != null && _ellipseGeometry != null)
+            {
+                var radiusX = Math.Max(0, _ellipseGeometry.RadiusX);
+                var radiusY = Math.Max(0, _ellipseGeometry.RadiusY);
+                if (radiusX > 0 && radiusY > 0)
+                {
+                    var clipRect = new Rect(
+                        _ellipseGeometry.Center.X - radiusX,
+                        _ellipseGeometry.Center.Y - radiusY,
+                        radiusX * 2,
+                        radiusY * 2);
+
+                    var presenterRect = new Rect(0, 0, _itemsPresenter.ActualWidth, _itemsPresenter.ActualHeight);
+                    var visiblePresenterRect = Rect.Intersect(clipRect, presenterRect);
+
+                    if (!visiblePresenterRect.IsEmpty && visiblePresenterRect.Width > 0 && visiblePresenterRect.Height > 0)
+                    {
+                        var presenterBounds = _itemsPresenter.TransformToAncestor(this).TransformBounds(visiblePresenterRect);
+                        bounds = bounds.IsEmpty ? presenterBounds : Rect.Union(bounds, presenterBounds);
+                    }
+                }
+            }
+
+            if (bounds.IsEmpty || bounds.Width <= 0 || bounds.Height <= 0)
+                return new Rect(0, 0, ActualWidth, ActualHeight);
+
+            return bounds;
         }
 
         private FrameworkElement FindStableParent()
@@ -442,6 +551,42 @@ namespace WPFDevelopers.Controls
                 p = VisualTreeHelper.GetParent(p);
             }
             return null;
+        }
+
+        private void ClampToParentVisibleBounds()
+        {
+            if (_translateTransform == null)
+                return;
+
+            var parent = FindStableParent();
+            if (parent == null)
+                return;
+
+            var visibleBounds = GetVisibleBoundsInSelf();
+            var visibleBoundsInParent = TransformToAncestor(parent).TransformBounds(visibleBounds);
+
+            double offsetX;
+            if (visibleBoundsInParent.Width >= parent.ActualWidth)
+                offsetX = -visibleBoundsInParent.Left;
+            else if (visibleBoundsInParent.Left < 0)
+                offsetX = -visibleBoundsInParent.Left;
+            else if (visibleBoundsInParent.Right > parent.ActualWidth)
+                offsetX = parent.ActualWidth - visibleBoundsInParent.Right;
+            else
+                offsetX = 0;
+
+            double offsetY;
+            if (visibleBoundsInParent.Height >= parent.ActualHeight)
+                offsetY = -visibleBoundsInParent.Top;
+            else if (visibleBoundsInParent.Top < 0)
+                offsetY = -visibleBoundsInParent.Top;
+            else if (visibleBoundsInParent.Bottom > parent.ActualHeight)
+                offsetY = parent.ActualHeight - visibleBoundsInParent.Bottom;
+            else
+                offsetY = 0;
+
+            _translateTransform.X += offsetX;
+            _translateTransform.Y += offsetY;
         }
 
         private void OnThumb_DragDelta(object sender, DragDeltaEventArgs e)

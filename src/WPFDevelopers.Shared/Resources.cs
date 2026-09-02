@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
@@ -24,6 +25,7 @@ namespace WPFDevelopers
         public static event ThemeChangedEvent ThemeChanged;
 
         private static bool _hasRadiusSetByUser;
+        private static int _publishInProgress;
 
         private int _initCount;
 
@@ -127,7 +129,11 @@ namespace WPFDevelopers
             MergedDictionaries.Insert(0, newResourceDictionary);
             ThemeChanged?.Invoke(themeType);
             UpdateColorOnThemeChange();
-            Task.Factory.StartNew(PublishWPFDevelopersExt);
+            _ = Task.Factory.StartNew(
+                PublishWPFDevelopersExtSafe,
+                System.Threading.CancellationToken.None,
+                TaskCreationOptions.None,
+                TaskScheduler.Default);
         }
 
         bool IsDarkMode()
@@ -161,54 +167,114 @@ namespace WPFDevelopers
             }
         }
 
+        void PublishWPFDevelopersExtSafe()
+        {
+            try
+            {
+                PublishWPFDevelopersExt();
+            }
+            catch
+            {
+                
+            }
+        }
+
         void PublishWPFDevelopersExt()
         {
+            if (Interlocked.Exchange(ref _publishInProgress, 1) == 1)
+                return;
+
             lock (typeof(Resources))
             {
                 try
                 {
                     string exePath = Helper.GetTempPathVersionExt;
-                    if (File.Exists(exePath))
-                    {
-                        KillExistingProcess("WPFDevelopersExt");
-                        File.Delete(exePath);
-                    }
                     if (!File.Exists(exePath))
                         ExportResource(exePath, "GZ.WPFDevelopersExt.exe.gz");
+
+                    CleanupOldPublishedVersions();
                 }
                 catch (Exception ex)
                 {
                     throw new ApplicationException($"An error occurred while publishing WPFDevelopersExt {ex.Message}");
                 }
+                finally
+                {
+                    Interlocked.Exchange(ref _publishInProgress, 0);
+                }
             }
         }
 
-        void KillExistingProcess(string processName)
+        void CleanupOldPublishedVersions()
         {
-            foreach (var process in Process.GetProcessesByName(processName))
+            try
             {
-                try
+                if (!Directory.Exists(Helper.GetTempPath))
+                    return;
+
+                var currentVersionPath = Path.GetFullPath(Helper.GetTempPathVersion)
+                    .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
+                foreach (var versionDir in Directory.GetDirectories(Helper.GetTempPath))
                 {
-                    process.Kill();
-                    process.WaitForExit();
+                    var fullVersionDir = Path.GetFullPath(versionDir)
+                        .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
+                    if (string.Equals(fullVersionDir, currentVersionPath, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
+                    TryDeleteDirectorySilently(fullVersionDir);
                 }
-                catch { }
+            }
+            catch
+            {
+            }
+        }
+
+        void TryDeleteDirectorySilently(string directory)
+        {
+            try
+            {
+                if (!Directory.Exists(directory))
+                    return;
+
+                Directory.Delete(directory, true);
+            }
+            catch
+            {
             }
         }
 
         void ExportResource(string path, string source)
         {
-            if (!File.Exists(path))
+            if (File.Exists(path))
+                return;
+
+            var directory = Path.GetDirectoryName(path);
+            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            var projectName = Assembly.GetExecutingAssembly().GetName().Name.ToString();
+            var resourceName = projectName + "." + source;
+            using (var gzStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
             {
-                Helper.DeleteFilesAndFolders(Helper.GetTempPath);
-                if (!Directory.Exists(Helper.GetTempPathVersion))
-                    Directory.CreateDirectory(Helper.GetTempPathVersion);
-                var projectName = Assembly.GetExecutingAssembly().GetName().Name.ToString();
-                using (var gzStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(projectName + "." + source))
+                if (gzStream == null)
+                    throw new FileNotFoundException($"Embedded resource not found: {resourceName}");
+
+                var tempPath = path + ".tmp";
                 using (var stream = new GZipStream(gzStream, CompressionMode.Decompress))
-                using (var decompressedFile = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                using (var decompressedFile = new FileStream(tempPath, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     stream.CopyTo(decompressedFile);
+                }
+
+                if (File.Exists(path))
+                {
+                    File.Delete(tempPath);
+                }
+                else
+                {
+                    File.Move(tempPath, path);
                 }
             }
         }

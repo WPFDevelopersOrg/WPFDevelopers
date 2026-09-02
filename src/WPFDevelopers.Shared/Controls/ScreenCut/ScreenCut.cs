@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -213,9 +214,8 @@ namespace WPFDevelopers.Controls
         private double _y1;
         private int _screenIndex;
         public static int CaptureScreenID = -1;
-        private Bitmap _screenCapture;
+        private BitmapSource _screenBitmapSource;
         private ScreenDPI _screenDPI;
-        private RenderTargetBitmap _imageSnapshot;
         private byte[] _screenPixels;
         private int _screenWidth;
         private int _screenHeight;
@@ -238,6 +238,7 @@ namespace WPFDevelopers.Controls
         private List<Point> _inkPoints = new List<Point>();
         private const double MIN_DISTANCE = 2.0;
         private const double SMOOTH_FACTOR = 0.3;
+        private bool _isDisposed;
 
         public ScreenCut(int index)
         {
@@ -259,17 +260,86 @@ namespace WPFDevelopers.Controls
 
         public void Dispose()
         {
-            _canvas.Background = null;
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
+            if (_isDisposed)
+                return;
+
+            _isDisposed = true;
+
+            Loaded -= ScreenCut_Loaded;
+
+            if (_border != null)
+            {
+                _border.MouseLeftButtonDown -= Border_MouseLeftButtonDown;
+                _border.SizeChanged -= _border_SizeChanged;
+            }
+
+            if (_saveButton != null)
+                _saveButton.Click -= ButtonSave_Click;
+            if (_cancelButton != null)
+                _cancelButton.Click -= ButtonCancel_Click;
+            if (_completeButton != null)
+                _completeButton.Click -= ButtonComplete_Click;
+            if (_undoButton != null)
+                _undoButton.Click -= OnUndoButton_Click;
+
+            if (_rectangleRadioButton != null)
+                _rectangleRadioButton.Click -= RadioButtonRectangle_Click;
+            if (_radioButtonEllipse != null)
+                _radioButtonEllipse.Click -= RadioButtonEllipse_Click;
+            if (_arrowRadioButton != null)
+                _arrowRadioButton.Click -= RadioButtonArrow_Click;
+            if (_inkRadioButton != null)
+                _inkRadioButton.Click -= RadioButtonInk_Click;
+            if (_mosaicRadioButton != null)
+                _mosaicRadioButton.Click -= RadioButtonMosaic_Click;
+            if (_textRadioButton != null)
+                _textRadioButton.Click -= RadioButtonText_Click;
+
+            if (_wrapPanel != null)
+                _wrapPanel.PreviewMouseDown -= WrapPanel_PreviewMouseDown;
+
+            if (_screenCutAdorner != null)
+            {
+                _screenCutAdorner.PreviewMouseDown -= OnScreenCutAdornerPreviewMouseDown;
+            }
+
+            if (_adornerLayer != null && _screenCutAdorner != null)
+            {
+                _adornerLayer.Remove(_screenCutAdorner);
+            }
+
+            if (_canvas != null)
+            {
+                if (_canvas.Background is ImageBrush brush)
+                {
+                    brush.ImageSource = null;
+                }
+                _canvas.Background = null;
+                _canvas.Children.Clear();
+                _canvas.UpdateLayout();
+            }
+
+            _screenBitmapSource = null;
+            _screenPixels = null;
+            _currentStrokeContainer = null;
+            _frameworkElement = null;
+            _polyLine = null;
+            _textBorder = null;
+            _borderRectangle = null;
+            _drawEllipse = null;
+            _controlArrow = null;
+            _currentStrokeRectangles.Clear();
+            _strokeHistory.Clear();
+
+            _screenCutAdorner = null;
+            _adornerLayer = null;
         }
 
         public static void ClearCaptureScreenID()
         {
             CaptureScreenID = -1;
         }
-        
+
         ~ScreenCut()
         {
             Debug.WriteLine("~ScreenCut");
@@ -329,29 +399,15 @@ namespace WPFDevelopers.Controls
                 _wrapPanel.PreviewMouseDown += WrapPanel_PreviewMouseDown;
             Loaded += ScreenCut_Loaded;
             _controlTemplate = (ControlTemplate)FindResource("WD.PART_DrawArrow");
-            _screenCapture = CopyScreen();
-
-            _screenWidth = _screenCapture.Width;
-            _screenHeight = _screenCapture.Height;
-            var rect = new System.Drawing.Rectangle(0, 0, _screenWidth, _screenHeight);
-            var bmpData = _screenCapture.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly,
-                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-            int byteCount = _screenWidth * _screenHeight * 4;
-            _screenPixels = new byte[byteCount];
-            Marshal.Copy(bmpData.Scan0, _screenPixels, 0, byteCount);
-            _screenCapture.UnlockBits(bmpData);
-
-            using (var tempBitmap = _screenCapture)
+            using (var screenCapture = CopyScreen())
             {
-                var imageSource = ImagingHelper.CreateBitmapSourceFromBitmap(tempBitmap);
+                _screenWidth = screenCapture.Width;
+                _screenHeight = screenCapture.Height;
+                var imageSource = ImagingHelper.CreateBitmapSourceFromBitmap(screenCapture);
                 imageSource.Freeze();
-                var writeableBitmap = new WriteableBitmap(imageSource);
-                writeableBitmap.Freeze();
-                _canvas.Background = new ImageBrush(writeableBitmap);
+                _screenBitmapSource = imageSource;
+                _canvas.Background = new ImageBrush(_screenBitmapSource);
             }
-
-            _screenCapture = null;
-            TakeSnapshot();
         }
 
         private void OnUndoButton_Click(object sender, RoutedEventArgs e)
@@ -361,26 +417,11 @@ namespace WPFDevelopers.Controls
 
         protected override void OnClosed(EventArgs e)
         {
-            base.OnClosed(e);
-            if (_adornerLayer != null && _screenCutAdorner != null)
-            {
-                _adornerLayer.Remove(_screenCutAdorner);
-                _screenCutAdorner = null;
-                _adornerLayer = null;
-            }
-            if (_canvas != null)
-            {
-                if (_canvas.Background is ImageBrush brush)
-                {
-                    brush.ImageSource = null;
-                }
-                _canvas.Background = null;
-                _canvas.Children.Clear();
-            }
-            _imageSnapshot = null;
+            ClearCaptureScreenID();
             Dispose();
+            base.OnClosed(e);
         }
-       
+
         private void ScreenCut_Loaded(object sender, RoutedEventArgs e)
         {
             Loaded -= ScreenCut_Loaded;
@@ -526,12 +567,14 @@ namespace WPFDevelopers.Controls
             if (dlg.ShowDialog() == true)
             {
                 BitmapEncoder pngEncoder = new PngBitmapEncoder();
-                pngEncoder.Frames.Add(BitmapFrame.Create(CutBitmap()));
+                var bitmap = CutBitmap();
+                pngEncoder.Frames.Add(BitmapFrame.Create(bitmap));
                 using (var fs = File.OpenWrite(dlg.FileName))
                 {
                     pngEncoder.Save(fs);
                     fs.Dispose();
                     fs.Close();
+                    ReleaseCaptureBuffersForCompletion();
                     Close();
                     if (CutFullPath != null)
                         CutFullPath(dlg.FileName);
@@ -545,6 +588,7 @@ namespace WPFDevelopers.Controls
             bitmap.Freeze();
             if (CutCompleted != null)
                 CutCompleted(bitmap);
+            ReleaseCaptureBuffersForCompletion();
             Close();
         }
 
@@ -556,15 +600,60 @@ namespace WPFDevelopers.Controls
             _topRectangle.Visibility = Visibility.Collapsed;
             _rightRectangle.Visibility = Visibility.Collapsed;
             _bottomRectangle.Visibility = Visibility.Collapsed;
-            var renderTargetBitmap = new RenderTargetBitmap((int)(_canvas.Width * _screenDPI.scaleX),
-                (int)(_canvas.Height * _screenDPI.scaleY), _screenDPI.dpiX, _screenDPI.dpiY, PixelFormats.Default);
-            renderTargetBitmap.Render(_canvas);
-            var realrect = new Int32Rect(
-                (int)(_rect.X * _screenDPI.scaleX),
-                (int)(_rect.Y * _screenDPI.scaleY),
-                (int)(_rect.Width * _screenDPI.scaleX),
-                (int)(_rect.Height * _screenDPI.scaleY));
-            return new CroppedBitmap(renderTargetBitmap, realrect);
+
+            var outputWidth = Math.Max(1, (int)Math.Round(_rect.Width * _screenDPI.scaleX));
+            var outputHeight = Math.Max(1, (int)Math.Round(_rect.Height * _screenDPI.scaleY));
+
+            var renderTargetBitmap = new RenderTargetBitmap(outputWidth, outputHeight,
+                _screenDPI.dpiX, _screenDPI.dpiY, PixelFormats.Pbgra32);
+
+            var drawingVisual = new DrawingVisual();
+            using (var drawingContext = drawingVisual.RenderOpen())
+            {
+                var visualBrush = new VisualBrush(_canvas)
+                {
+                    ViewboxUnits = BrushMappingMode.Absolute,
+                    Viewbox = _rect,
+                    Stretch = Stretch.Fill,
+                    AlignmentX = AlignmentX.Left,
+                    AlignmentY = AlignmentY.Top
+                };
+                drawingContext.DrawRectangle(visualBrush, null, new Rect(0, 0, outputWidth, outputHeight));
+            }
+            renderTargetBitmap.Render(drawingVisual);
+
+            var outputRect = new Int32Rect(0, 0, outputWidth, outputHeight);
+            var result = new CroppedBitmap(renderTargetBitmap, outputRect);
+            if (result.CanFreeze)
+                result.Freeze();
+            return result;
+        }
+
+        private void ReleaseCaptureBuffersForCompletion()
+        {
+            _screenPixels = null;
+            _screenBitmapSource = null;
+
+            if (_canvas != null)
+            {
+                if (_canvas.Background is ImageBrush brush)
+                    brush.ImageSource = null;
+                _canvas.Background = null;
+                _canvas.Children.Clear();
+            }
+
+            _currentStrokeRectangles.Clear();
+            _strokeHistory.Clear();
+            _currentStrokeContainer = null;
+
+#if NET40 || NET45
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+            GC.WaitForPendingFinalizers();
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+#else
+            GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+#endif
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
@@ -823,23 +912,22 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private void TakeSnapshot()
+        private void EnsureScreenPixelsLoaded()
         {
-            _canvas.Measure(new System.Windows.Size(_canvas.ActualWidth, _canvas.ActualHeight));
-            _canvas.Arrange(new Rect(0, 0, _canvas.ActualWidth, _canvas.ActualHeight));
+            if (_screenPixels != null || _screenBitmapSource == null)
+                return;
 
-            _imageSnapshot = new RenderTargetBitmap(
-                (int)_canvas.ActualWidth,
-                (int)_canvas.ActualHeight,
-                96, 96, PixelFormats.Pbgra32);
-
-            _imageSnapshot.Render(_canvas);
-            _imageSnapshot.Freeze();
+            _screenWidth = _screenBitmapSource.PixelWidth;
+            _screenHeight = _screenBitmapSource.PixelHeight;
+            int stride = Math.Max(1, (_screenBitmapSource.Format.BitsPerPixel * _screenWidth + 7) / 8);
+            _screenPixels = new byte[stride * _screenHeight];
+            _screenBitmapSource.CopyPixels(_screenPixels, stride, 0);
         }
 
         private void DrawMosaicBlock(Point center, int blockSize, int brushSize)
         {
-            if (_imageSnapshot == null) return;
+            EnsureScreenPixelsLoaded();
+            if (_screenPixels == null) return;
 
             int mosaicSize = blockSize;
             int blocksPerRow = brushSize / mosaicSize;
@@ -884,7 +972,7 @@ namespace WPFDevelopers.Controls
             _currentStrokeContainer = null;
             _currentStrokeRectangles.Clear();
         }
-        
+
         private void CreateStrokeContainer()
         {
             if (_currentStrokeRectangles.Count == 0) return;
@@ -1516,13 +1604,16 @@ namespace WPFDevelopers.Controls
             _border.Opacity = 1;
             _adornerLayer = AdornerLayer.GetAdornerLayer(_border);
             _screenCutAdorner = new ScreenCutAdorner(_border);
-            _screenCutAdorner.PreviewMouseDown += (s, e) =>
-            {
-                Restore();
-                ResoreRadioButton();
-            };
+            _screenCutAdorner.PreviewMouseDown -= OnScreenCutAdornerPreviewMouseDown;
+            _screenCutAdorner.PreviewMouseDown += OnScreenCutAdornerPreviewMouseDown;
             _adornerLayer.Add(_screenCutAdorner);
             _border.SizeChanged += _border_SizeChanged;
+        }
+
+        private void OnScreenCutAdornerPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Restore();
+            ResoreRadioButton();
         }
 
     }

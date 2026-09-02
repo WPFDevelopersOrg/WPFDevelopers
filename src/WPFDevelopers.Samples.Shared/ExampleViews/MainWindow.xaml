@@ -20,19 +20,51 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <wd:Window.TitleBarLayout>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-            <wd:SwitchButton x:Name="ThemeSwitchBtn">
+        <StackPanel
+            HorizontalAlignment="Right"
+            wd:PanelHelper.Spacing="2"
+            Orientation="Horizontal">
+            <wd:SwitchButton
+                x:Name="ThemeSwitchBtn"
+                Width="30"
+                Height="30"
+                Click="ThemeSwitchBtn_Click">
+                <wd:SwitchButton.UncheckedContent>
+                    <Border
+                        Width="18"
+                        Height="18"
+                        Background="White"
+                        CornerRadius="10">
+                        <wd:PathIcon
+                            Width="16"
+                            Height="16"
+                            Data="M12 2a10 10 0 1 0 10 10A7 7 0 0 1 12 2Z"
+                            Foreground="{DynamicResource WD.WindowBorderBrush}" />
+                    </Border>
+                </wd:SwitchButton.UncheckedContent>
+                <wd:SwitchButton.CheckedContent>
+                    <wd:PathIcon
+                        Width="18"
+                        Height="18"
+                        Data="M12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 1 0 0 11Zm-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0ZM3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06ZM12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0ZM4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12Zm8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20Zm12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12Zm-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061Zm2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0Z"
+                        Foreground="White" />
+                </wd:SwitchButton.CheckedContent>
+            </wd:SwitchButton>
+            <wd:SwitchButton
+                x:Name="ColorSwitchBtn"
+                Width="30"
+                Height="30">
                 <wd:SwitchButton.UncheckedContent>
                     <wd:PathIcon
-                        Width="20"
-                        Height="20"
+                        Width="18"
+                        Height="18"
                         Data="M198,56.74A99.31,99.31,0,0,0,128,28h-1A100,100,0,0,0,28,128c0,41.22,25.55,75.85,66.69,90.38a28.34,28.34,0,0,0,9.42,1.63A28,28,0,0,0,132,192a20,20,0,0,1,20-20h46.21a27.84,27.84,0,0,0,27.3-21.76,100.37,100.37,0,0,0,2.49-23.1A99.26,99.26,0,0,0,198,56.74Zm19.74,91.72A19.89,19.89,0,0,1,198.21,164H152a28,28,0,0,0-28,28,20,20,0,0,1-26.64,18.83C59.51,197.46,36,165.72,36,128a92,92,0,0,1,91.05-92H128a92,92,0,0,1,89.72,112.46ZM136,76a8,8,0,1,1-8-8A8,8,0,0,1,136,76ZM92,100a8,8,0,1,1-8-8A8,8,0,0,1,92,100Zm0,56a8,8,0,1,1-8-8A8,8,0,0,1,92,156Zm88-56a8,8,0,1,1-8-8A8,8,0,0,1,180,100Z"
                         Foreground="White" />
                 </wd:SwitchButton.UncheckedContent>
                 <wd:SwitchButton.CheckedContent>
                     <wd:PathIcon
-                        Width="20"
-                        Height="20"
+                        Width="18"
+                        Height="18"
                         Data="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89ZM84,168a12,12,0,1,1,12-12A12,12,0,0,1,84,168Zm0-56a12,12,0,1,1,12-12A12,12,0,0,1,84,112Zm44-24a12,12,0,1,1,12-12A12,12,0,0,1,128,88Zm44,24a12,12,0,1,1,12-12A12,12,0,0,1,172,112Z"
                         Foreground="White" />
                 </wd:SwitchButton.CheckedContent>
@@ -40,9 +72,9 @@
             <Popup
                 AllowsTransparency="True"
                 HorizontalOffset="-200"
-                IsOpen="{Binding IsChecked, ElementName=ThemeSwitchBtn, Mode=TwoWay}"
+                IsOpen="{Binding IsChecked, ElementName=ColorSwitchBtn, Mode=TwoWay}"
                 Placement="Bottom"
-                PlacementTarget="{Binding ElementName=ThemeSwitchBtn}"
+                PlacementTarget="{Binding ElementName=ColorSwitchBtn}"
                 StaysOpen="False">
                 <Border
                     Margin="10"
