@@ -4,17 +4,9 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'src/**'
-      - '.github/workflows/build-net40.yml'
-      - '.github/workflows/build-net45x.yml'
   pull_request:
     branches:
       - master
-    paths:
-      - 'src/**'
-      - '.github/workflows/build-net40.yml'
-      - '.github/workflows/build-net45x.yml'
   workflow_dispatch:
 
 jobs:
@@ -25,15 +17,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect build-related changes
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            build:
+              - 'src/**'
+              - '.github/workflows/build-net40.yml'
+              - '.github/workflows/build-net45x.yml'
+
       - name: Setup .NET SDK
+        if: steps.changes.outputs.build == 'true'
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
 
       - name: Setup MSBuild
+        if: steps.changes.outputs.build == 'true'
         uses: microsoft/setup-msbuild@v2
 
       - name: Clean output directory
+        if: steps.changes.outputs.build == 'true'
         shell: pwsh
         run: |
           if (Test-Path OutPut) {
@@ -42,12 +47,19 @@ jobs:
           New-Item -ItemType Directory -Path OutPut | Out-Null
 
       - name: Build .NET 4.0 library
+        if: steps.changes.outputs.build == 'true'
         shell: pwsh
         run: |
           $solutionDir = "$(Resolve-Path src)\\"
           msbuild src/WPFDevelopers.Net40/WPFDevelopers.Net40.csproj /restore /p:Configuration=Release-.NET40 /p:Platform="Any CPU" /p:SignAssembly=false /p:SolutionDir="$solutionDir" /m
 
+      - name: Skip build for docs-only changes
+        if: steps.changes.outputs.build != 'true'
+        shell: pwsh
+        run: Write-Host "No source/workflow changes detected. Skipping build."
+
       - name: Upload artifacts
+        if: steps.changes.outputs.build == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: wpfdevelopers-net40
