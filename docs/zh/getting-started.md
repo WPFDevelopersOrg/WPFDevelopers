@@ -98,24 +98,47 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 </Window>
 ```
 
-### MarkdownViewer 示例
+### MarkdownViewer 使用方式
 
-`wd:MarkdownViewer` 用于渲染 Markdown 内容（标题、列表、引用、代码块、表格、链接、图片等）。
+`wd:MarkdownViewer` 用于将 Markdown 文本渲染为 WPF 中的富文本展示，适合展示说明文档、README、日志、知识库内容等。它支持标题、列表、引用、代码块、表格、链接、图片等常见 Markdown 语法。
+
+最常用的属性是 `Markdown`，直接设置字符串即可：
 
 ```xml
 <Grid>
     <wd:MarkdownViewer
         Margin="12"
         Padding="12"
+        FontSize="14"
         Markdown="## Hello Markdown&#10;&#10;This is **WPFDevelopers** MarkdownViewer." />
 </Grid>
 ```
 
-完整示例可参考：
+也可以通过绑定内容：
+
+```xml
+<wd:MarkdownViewer
+    Margin="12"
+    Padding="12"
+    Markdown="{Binding MarkdownText}" />
+```
+
+```csharp
+public string MarkdownText { get; } = "# WPFDevelopers\n\n- 支持标题\n- 支持列表\n- 支持代码块";
+```
+
+常见用法说明：
+
+- `Markdown`：要渲染的 Markdown 文本
+- `Padding`：内容区的内边距
+- `FontSize` / `FontFamily` / `Foreground`：文本样式控制
+
+完整示例和交互式演示可参考：
 
 - `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml`
 - `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml.cs`
 
+如果你需要展示 README、帮助文档、更新日志或内部说明，`MarkdownViewer` 是最直接的选择。
 ---
 
 ## 三种使用方式
@@ -454,19 +477,19 @@ using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 ```csharp
 // 1. 仅消息文本（默认 OK 按钮，无图标）
-MessageBoxResult Show(string messageBoxText, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, Window owner = null, bool isDefault = true)
 
 // 2. 消息文本 + 标题
-MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, bool isDefault = true)
 
 // 3. 消息文本 + 标题 + 按钮组合
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, bool isDefault = true)
 
 // 4. 消息文本 + 标题 + 图标
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, bool isDefault = true)
 
 // 5. 消息文本 + 标题 + 按钮组合 + 图标（完整参数）
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, bool isDefault = true)
 ```
 
 ### 参数说明
@@ -478,7 +501,6 @@ MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton bu
 | `button` | MessageBoxButton | OK | 按钮组合：`OK` / `OKCancel` / `YesNo` / `YesNoCancel` |
 | `icon` | MessageBoxImage | 无 | 图标类型：`Information` / `Warning` / `Error` / `Question` |
 | `owner` | Window | null | 父窗口。传入后对话框居中显示并带遮罩层 |
-| `buttonRadius` | double? | null | 按钮圆角半径。不传时自动根据系统判断：Win11 默认 4px，Win10 默认 0px |
 | `isDefault` | bool | true | 是否将第一个按钮设为默认按钮（Enter 键触发） |
 
 ### 图标与配色映射
@@ -495,8 +517,8 @@ MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton bu
 #### 1. 信息提示对话框
 
 ```csharp
-// 文件删除成功提示，带圆角按钮
-MessageBox.Show("文件删除成功。", "消息", MessageBoxButton.OK, MessageBoxImage.Information, buttonRadius: 4);
+// 文件删除成功提示
+MessageBox.Show("文件删除成功。", "消息", MessageBoxButton.OK, MessageBoxImage.Information);
 ```
 
 #### 2. 警告对话框
@@ -535,7 +557,7 @@ switch (result)
 
 ```csharp
 // 传入 owner 参数后，对话框会显示在父窗口中央并覆盖遮罩层
-MessageBox.Show("操作成功！", "提示", MessageBoxButton.OK, MessageBoxImage.Information, owner: this, buttonRadius: 4);
+MessageBox.Show("操作成功！", "提示", MessageBoxButton.OK, MessageBoxImage.Information, owner: this);
 ```
 
 ### 交互行为

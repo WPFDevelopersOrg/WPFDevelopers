@@ -98,24 +98,47 @@ Then use WD controls:
 </Window>
 ```
 
-### MarkdownViewer Example
+### MarkdownViewer Usage
 
-`wd:MarkdownViewer` is used to render Markdown content (headings, lists, quotes, code blocks, tables, links, and images).
+`wd:MarkdownViewer` renders Markdown content as rich text in WPF, which is ideal for README files, help documentation, changelogs, and in-app knowledge content. It supports common Markdown elements such as headings, lists, blockquotes, code blocks, tables, links, and images.
+
+The most commonly used property is `Markdown`, which accepts the Markdown text directly:
 
 ```xml
 <Grid>
     <wd:MarkdownViewer
         Margin="12"
         Padding="12"
+        FontSize="14"
         Markdown="## Hello Markdown&#10;&#10;This is **WPFDevelopers** MarkdownViewer." />
 </Grid>
 ```
 
-You can find the complete sample here:
+You can also bind the content dynamically:
+
+```xml
+<wd:MarkdownViewer
+    Margin="12"
+    Padding="12"
+    Markdown="{Binding MarkdownText}" />
+```
+
+```csharp
+public string MarkdownText { get; } = "# WPFDevelopers\n\n- Supports headings\n- Supports lists\n- Supports code blocks";
+```
+
+Common usage notes:
+
+- `Markdown`: the Markdown text to render
+- `Padding`: spacing inside the content area
+- `FontSize`, `FontFamily`, `Foreground`: text style customization
+
+The complete sample and interactive demo are available here:
 
 - `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml`
 - `src/WPFDevelopers.Samples.Shared/ExampleViews/MarkdownViewerExample.xaml.cs`
 
+If you need to display a README, help document, release notes, or internal documentation in your app, `MarkdownViewer` is the most direct option.
 ---
 
 ## Three Usage Patterns
@@ -450,19 +473,19 @@ using MessageBox = WPFDevelopers.Controls.MessageBox;
 
 ```csharp
 // 1. Message text only (default OK button, no icon)
-MessageBoxResult Show(string messageBoxText, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, Window owner = null, bool isDefault = true)
 
 // 2. Message text + caption
-MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, Window owner = null, bool isDefault = true)
 
 // 3. Message text + caption + buttons
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, Window owner = null, bool isDefault = true)
 
 // 4. Message text + caption + icon
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon, Window owner = null, bool isDefault = true)
 
 // 5. Message text + caption + buttons + icon (full signature)
-MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, double? buttonRadius = null, bool isDefault = true)
+MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, Window owner = null, bool isDefault = true)
 ```
 
 ### Parameters
@@ -474,7 +497,6 @@ MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton bu
 | `button` | MessageBoxButton | OK | Button set: `OK` / `OKCancel` / `YesNo` / `YesNoCancel` |
 | `icon` | MessageBoxImage | None | Icon type: `Information` / `Warning` / `Error` / `Question` |
 | `owner` | Window | null | Parent window. When provided, the dialog centers on the owner with an overlay mask |
-| `buttonRadius` | double? | null | Button corner radius in pixels. When null, auto-detects OS: Windows 11 defaults to 4px, Windows 10 defaults to 0px |
 | `isDefault` | bool | true | Whether the first button is the default button (triggered by Enter key) |
 
 ### Icon and Color Mapping
@@ -491,8 +513,8 @@ MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton bu
 #### 1. Information Dialog
 
 ```csharp
-// File deleted successfully, with rounded buttons
-MessageBox.Show("File deleted successfully.", "Message", MessageBoxButton.OK, MessageBoxImage.Information, buttonRadius: 4);
+// File deleted successfully
+MessageBox.Show("File deleted successfully.", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
 ```
 
 #### 2. Warning Dialog
@@ -531,7 +553,7 @@ switch (result)
 
 ```csharp
 // When owner is passed, the dialog centers on the parent window and shows an overlay mask
-MessageBox.Show("Operation successful!", "Info", MessageBoxButton.OK, MessageBoxImage.Information, owner: this, buttonRadius: 4);
+MessageBox.Show("Operation successful!", "Info", MessageBoxButton.OK, MessageBoxImage.Information, owner: this);
 ```
 
 ### Interaction Behavior
