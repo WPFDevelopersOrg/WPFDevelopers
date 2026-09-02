@@ -116,6 +116,16 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### MarkdownViewer
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MarkdownViewer.gif"/>  
+
+----------
+### SwitchTheme
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SwitchTheme.gif"/>  
+
+----------
 ### CircleMenu
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircleMenu.gif"/>  
