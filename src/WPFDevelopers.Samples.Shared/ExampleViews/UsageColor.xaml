@@ -16,14 +16,28 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="2,0" />
+            <Setter Property="Cursor" Value="IBeam" />
             <Setter Property="Foreground" Value="{DynamicResource WD.BackgroundBrush}" />
             <Setter Property="IsReadOnly" Value="True" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="BorderBrush" Value="#66000000" />
+                    <Setter Property="Background" Value="#10FFFFFF" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="BorderBrush" Value="#CC409EFF" />
+                    <Setter Property="Background" Value="#16FFFFFF" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </UserControl.Resources>
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <ItemsControl
-                Width="700"
+                Width="760"
                 VerticalAlignment="Center"
                 ItemsSource="{Binding Colors}">
                 <ItemsControl.ItemsPanel>
@@ -33,23 +47,39 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="6">
+                        <StackPanel Margin="8">
                             <Border
-                                Width="147"
-                                Height="74"
+                                Width="176"
+                                Height="96"
                                 Background="{Binding Brush}"
-                                CornerRadius="3,3,0,0">
+                                CornerRadius="6,6,0,0">
                                 <wd:SmallPanel>
-                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel Margin="8,8,8,8" VerticalAlignment="Center">
                                         <TextBlock
+                                            HorizontalAlignment="Center"
                                             FontSize="{StaticResource WD.TitleFontSize}"
-                                            Foreground="{DynamicResource WD.BackgroundBrush}"
+                                            FontWeight="SemiBold"
+                                            Foreground="{Binding ForegroundBrush, Mode=OneWay}"
                                             Text="{Binding Name}" />
-                                        <TextBox Text="{Binding ColorCode, Mode=OneWay}" />
+                                        <TextBox
+                                            Margin="0,4,0,0"
+                                            HorizontalAlignment="Center"
+                                            FontSize="19"
+                                            FontWeight="Bold"
+                                            Foreground="{Binding ForegroundBrush, Mode=OneWay}"
+                                            Text="{Binding ColorCode, Mode=OneWay}" />
+                                        <TextBox
+                                            Margin="0,3,0,0"
+                                            HorizontalAlignment="Center"
+                                            FontSize="11"
+                                            Foreground="{Binding ForegroundBrush, Mode=OneWay}"
+                                            Opacity="0.95"
+                                            Text="{Binding BrushKey, Mode=OneWay}" />
                                     </StackPanel>
                                     <Button
-                                        Width="30"
-                                        Height="30"
+                                        Width="24"
+                                        Height="24"
+                                        Margin="0,6,6,0"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
                                         Click="BtnPrimary_Click"
@@ -64,29 +94,56 @@
                                     </Button>
                                 </wd:SmallPanel>
                             </Border>
-                            <Border Background="{Binding MouseOverBrush}" CornerRadius="0,0,3,3">
+                            <Border
+                                Width="176"
+                                Height="64"
+                                Background="{Binding MouseOverBrush}"
+                                BorderBrush="{Binding MouseOverBorderBrush, Mode=OneWay}"
+                                BorderThickness="{Binding MouseOverBorderThickness, Mode=OneWay}"
+                                CornerRadius="0,0,6,6">
                                 <wd:SmallPanel>
-                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                        <TextBlock
-                                            VerticalAlignment="Center"
-                                            FontSize="12"
-                                            Foreground="Black"
-                                            Text="{Binding MouseOver, Mode=OneWay}" />
+                                    <StackPanel
+                                        Margin="8,6,8,6"
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                FontSize="12"
+                                                FontWeight="SemiBold"
+                                                Foreground="{Binding MouseOverForegroundBrush, Mode=OneWay}"
+                                                Opacity="0.85"
+                                                Text="{Binding MouseOver, Mode=OneWay}"
+                                                Visibility="{Binding ShowMouseOverSection, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
+                                            <TextBox
+                                                Margin="4,0,0,0"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{Binding MouseOverForegroundBrush, Mode=OneWay}"
+                                                Opacity="0.95"
+                                                Text="{Binding MouseOverColorCode, Mode=OneWay}"
+                                                Visibility="{Binding ShowMouseOverSection, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
+                                        </StackPanel>
                                         <TextBox
-                                            Foreground="Black"
-                                            IsReadOnly="True"
-                                            Text="{Binding MouseOverColorCode, Mode=OneWay}" />
+                                            Margin="0,2,0,0"
+                                            FontSize="11"
+                                            Foreground="{Binding MouseOverForegroundBrush, Mode=OneWay}"
+                                            Opacity="0.85"
+                                            Text="{Binding MouseOverKey, Mode=OneWay}"
+                                            Visibility="{Binding HasMouseOverKey, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
                                     </StackPanel>
                                     <Button
-                                        Width="20"
-                                        Height="20"
+                                        Width="24"
+                                        Height="24"
+                                        Margin="0,0,6,0"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Click="BtnMouseOver_Click"
                                         Style="{StaticResource WD.NormalButton}"
                                         Tag="{Binding MouseOverKey}"
                                         ToolTip="Copy Key"
-                                        Visibility="{Binding IsMouseOver, Converter={StaticResource WD.Bool2VisibilityConverter}}">
+                                        Visibility="{Binding HasMouseOverKey, Converter={StaticResource WD.Bool2VisibilityConverter}}">
                                         <wd:PathIcon
                                             Width="10"
                                             Height="6"

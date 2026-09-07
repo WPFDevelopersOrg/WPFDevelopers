@@ -90,6 +90,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\NullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Converts\DirectionalThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\DataGridHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\ClipboardHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\PopupWindowHook.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SelectorHelper.cs" />
