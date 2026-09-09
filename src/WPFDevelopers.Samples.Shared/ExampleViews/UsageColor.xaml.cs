@@ -39,13 +39,29 @@ namespace WPFDevelopers.Samples.ExampleViews
             var regularTextBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.RegularTextBrush");
             var placeholderTextBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PlaceholderTextBrush");
             var baseBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.BaseBrush");
+            var baseMoveBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.BaseMoveBrush");
             var lighterBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.LighterBrush");
 
             Colors.Add(new ColorItem { Name = "Primary Text", BrushKey = "WD.PrimaryTextBrush", IsMouseOver = true, Brush = primaryTextBrush, MouseOverBrush = CreateTransparentMouseOverBrush(primaryTextBrush) });
             Colors.Add(new ColorItem { Name = "Regular Text", BrushKey = "WD.RegularTextBrush", IsMouseOver = true, Brush = regularTextBrush, MouseOverBrush = CreateTransparentMouseOverBrush(regularTextBrush) });
             Colors.Add(new ColorItem { Name = "Placeholder Text", BrushKey = "WD.PlaceholderTextBrush", IsMouseOver = true, Brush = placeholderTextBrush, MouseOverBrush = CreateTransparentMouseOverBrush(placeholderTextBrush) });
-            Colors.Add(new ColorItem { Name = "Border Base", BrushKey = "WD.BaseBrush", IsMouseOver = true, Brush = baseBrush, MouseOverBrush = CreateTransparentMouseOverBrush(baseBrush) });
+            Colors.Add(new ColorItem { Name = "Border Base", BrushKey = "WD.BaseBrush", IsMouseOver = true, Brush = baseBrush, MouseOverKey = "WD.BaseMoveBrush", MouseOverBrush = baseMoveBrush ?? CreateTransparentMouseOverBrush(baseBrush) });
             Colors.Add(new ColorItem { Name = "Lighter", BrushKey = "WD.LighterBrush", IsMouseOver = true, Brush = lighterBrush, MouseOverBrush = CreateTransparentMouseOverBrush(lighterBrush) });
+
+            var windowBorderBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.WindowBorderBrush");
+            var backgroundBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.BackgroundBrush");
+            var lightBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.LightBrush");
+            var chartXAxisBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.ChartXAxisBrush");
+            var chartFillBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.ChartFillBrush");
+            var blackBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.BlackBrush");
+            var shadowDepthColor = ThemeManager.Instance.Resources.TryFindResource<Color>("WD.ShadowDepthColor");
+
+            Colors.Add(new ColorItem { Name = "Background", BrushKey = "WD.BackgroundBrush", IsMouseOver = false, Brush = backgroundBrush, MouseOverBrush = CreateTransparentMouseOverBrush(backgroundBrush) });
+            Colors.Add(new ColorItem { Name = "Light", BrushKey = "WD.LightBrush", IsMouseOver = true, Brush = lightBrush, MouseOverBrush = CreateTransparentMouseOverBrush(lightBrush) });
+            Colors.Add(new ColorItem { Name = "Chart XAxis", BrushKey = "WD.ChartXAxisBrush", IsMouseOver = true, Brush = chartXAxisBrush, MouseOverBrush = CreateTransparentMouseOverBrush(chartXAxisBrush) });
+            Colors.Add(new ColorItem { Name = "Chart Fill", BrushKey = "WD.ChartFillBrush", IsMouseOver = true, Brush = chartFillBrush, MouseOverBrush = CreateTransparentMouseOverBrush(chartFillBrush) });
+            Colors.Add(new ColorItem { Name = "Black", BrushKey = "WD.BlackBrush", IsMouseOver = true, Brush = blackBrush, MouseOverBrush = CreateTransparentMouseOverBrush(blackBrush) });
+            Colors.Add(new ColorItem { Name = "Shadow Depth", BrushKey = "WD.ShadowDepthColor", IsMouseOver = true, Brush = shadowDepthColor == default ? null : new SolidColorBrush(shadowDepthColor), MouseOverBrush = shadowDepthColor == default ? null : new SolidColorBrush(Color.FromArgb(0x19, shadowDepthColor.R, shadowDepthColor.G, shadowDepthColor.B)) });
         }
 
         private static SolidColorBrush CreateTransparentMouseOverBrush(SolidColorBrush brush)
@@ -111,13 +127,13 @@ namespace WPFDevelopers.Samples.ExampleViews
         public SolidColorBrush ForegroundBrush => GetReadableForegroundBrush(Brush);
         public SolidColorBrush MouseOverBrush { get; set; }
         public bool IsMouseOver { get; set; } = true;
-        public bool ShowMouseOverSection => IsMouseOver && MouseOverBrush != null;
+        public bool ShowMouseOverSection => IsMouseOver && MouseOverBrush != null && !IsWhiteLike(Brush);
         public bool HasMouseOverKey => ShowMouseOverSection && !string.IsNullOrWhiteSpace(MouseOverKey);
         public SolidColorBrush MouseOverBorderBrush => NeedsMouseOverBorder(MouseOverBrush) ? LightPanelBorderBrush : null;
         public Thickness MouseOverBorderThickness => NeedsMouseOverBorder(MouseOverBrush) ? ThinBorderThickness : NoBorderThickness;
         public string MouseOver => IsMouseOver == true ? "MouseOver" : string.Empty;
         public string MouseOverKey { get; set; }
-        public string MouseOverColorCode => IsMouseOver == true ? MouseOverBrush?.Color.ToString() : string.Empty;
+        public string MouseOverColorCode => ShowMouseOverSection ? MouseOverBrush?.Color.ToString() : string.Empty;
         public SolidColorBrush MouseOverForegroundBrush => GetReadableForegroundBrush(MouseOverBrush);
 
         private static SolidColorBrush GetReadableForegroundBrush(SolidColorBrush backgroundBrush)
@@ -150,6 +166,22 @@ namespace WPFDevelopers.Samples.ExampleViews
             var blendedB = (byte)Math.Round((color.B * alpha) + (255 * (1 - alpha)));
             var luminance = (0.299 * blendedR) + (0.587 * blendedG) + (0.114 * blendedB);
             return luminance >= 230;
+        }
+
+        private static bool IsWhiteLike(SolidColorBrush backgroundBrush)
+        {
+            if (backgroundBrush == null)
+            {
+                return false;
+            }
+
+            var color = backgroundBrush.Color;
+            var alpha = color.A / 255.0;
+            var blendedR = (byte)Math.Round((color.R * alpha) + (255 * (1 - alpha)));
+            var blendedG = (byte)Math.Round((color.G * alpha) + (255 * (1 - alpha)));
+            var blendedB = (byte)Math.Round((color.B * alpha) + (255 * (1 - alpha)));
+            var luminance = (0.299 * blendedR) + (0.587 * blendedG) + (0.114 * blendedB);
+            return luminance >= 245;
         }
     }
 }
