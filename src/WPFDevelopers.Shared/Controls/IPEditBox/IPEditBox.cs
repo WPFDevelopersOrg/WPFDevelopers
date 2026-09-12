@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -156,7 +157,7 @@ namespace WPFDevelopers.Controls
             else if (e.Command == ApplicationCommands.Copy)
             {
                 var ip = $"{_textBox1.Text}.{_textBox2.Text}.{_textBox3.Text}.{_textBox4.Text}";
-                Clipboard.SetText(ip);
+                ClipboardHelper.TrySetText(ip);
                 e.Handled = true;
             }
         }
