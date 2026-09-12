@@ -14,10 +14,6 @@
 			<SpecificVersion>False</SpecificVersion>
 			<HintPath>..\..\Reference\ICSharpCode.AvalonEdit.dll</HintPath>
 		</Reference>
-		<Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\..\Reference\Microsoft.Maps.MapControl.WPF.dll</HintPath>
-		</Reference>
 		<Reference Include="System.Windows.Interactivity">
 			<HintPath>..\..\Reference\System.Windows.Interactivity.dll</HintPath>
 		</Reference>
