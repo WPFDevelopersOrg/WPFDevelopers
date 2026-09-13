@@ -19,6 +19,16 @@ WPFDevelopers covers the full spectrum from .NET Framework 4.0 to .NET 10:
 
 ---
 
+## MapView Guide
+
+If you need to use the map control, start with:
+
+- [MapView Usage Guide](./mapview.md)
+
+This guide is separated from the general quick-start content because MapView is a larger, feature-rich component with dedicated examples and configuration guidance.
+
+---
+
 ## Step 1: Install the NuGet Package
 
 Install via **NuGet Package Manager** or **Package Manager Console**:
@@ -994,7 +1004,12 @@ src/WPFDevelopers.Samples.Shared/
 │   │   ├── PasswordExample.xaml
 │   │   └── PasswordWithPlainText.xaml
 │   ├── Map/                              # Map
-│   │   └── BingAMapExample.xaml
+│   │   ├── MapViewExample.xaml
+│   │   ├── MapViewExample.xaml.cs
+│   │   ├── MapViewFeaturesWindow.xaml
+│   │   ├── MapViewFeaturesWindow.xaml.cs
+│   │   ├── TiandituTileSource.cs
+│   │   └── AMapTileSource.cs
 │   ├── DrapView/                         # Drag view
 │   │   └── DrapViewExample.xaml
 │   └── ... (more example files)

@@ -19,6 +19,16 @@ WPFDevelopers 覆盖从 .NET Framework 4.0 到 .NET 10 的完整版本线：
 
 ---
 
+## MapView 专题文档
+
+如果你要使用地图控件，建议直接阅读：
+
+- [MapView 使用指南](./mapview.md)
+
+该文档单独拆分，重点说明 MapView 的使用方式、底图配置、图层和聚合示例，以及车辆轨迹场景。
+
+---
+
 ## 第一步：安装 NuGet 包
 
 通过 **NuGet 包管理器** 或 **包管理器控制台** 安装：
@@ -998,7 +1008,12 @@ src/WPFDevelopers.Samples.Shared/
 │   │   ├── PasswordExample.xaml
 │   │   └── PasswordWithPlainText.xaml
 │   ├── Map/                              # 地图
-│   │   └── BingAMapExample.xaml
+│   │   ├── MapViewExample.xaml
+│   │   ├── MapViewExample.xaml.cs
+│   │   ├── MapViewFeaturesWindow.xaml
+│   │   ├── MapViewFeaturesWindow.xaml.cs
+│   │   ├── TiandituTileSource.cs
+│   │   └── AMapTileSource.cs
 │   ├── DrapView/                         # 拖拽视图
 │   │   └── DrapViewExample.xaml
 │   └── ...（更多示例文件）
