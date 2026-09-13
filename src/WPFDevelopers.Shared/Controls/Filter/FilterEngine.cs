@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
@@ -109,15 +110,8 @@ namespace WPFDevelopers.Controls
         }
     }
 
-    public class FilterEngine<T> : IFilterEngine, INotifyPropertyChanged, IDisposable
+    public class FilterEngine<T> : ObservableObject, IFilterEngine, IDisposable
     {
-        #region INotifyPropertyChanged implementations
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
         #region Dummy property FilterChangedNotification
 
         /// <summary>

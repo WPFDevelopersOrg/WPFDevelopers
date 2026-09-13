@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
 {
@@ -56,10 +55,58 @@ namespace WPFDevelopers.Controls
             get { return _nextCommand; }
         }
 
+        public static readonly DependencyProperty PrevClickCommandProperty =
+            DependencyProperty.Register(nameof(PrevClickCommand), typeof(ICommand), _typeofSelf, new PropertyMetadata(null));
+
+        public ICommand PrevClickCommand
+        {
+            get { return (ICommand)GetValue(PrevClickCommandProperty); }
+            set { SetValue(PrevClickCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty NextClickCommandProperty =
+            DependencyProperty.Register(nameof(NextClickCommand), typeof(ICommand), _typeofSelf, new PropertyMetadata(null));
+
+        public ICommand NextClickCommand
+        {
+            get { return (ICommand)GetValue(NextClickCommandProperty); }
+            set { SetValue(NextClickCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty PageClickCommandProperty =
+            DependencyProperty.Register(nameof(PageClickCommand), typeof(ICommand), _typeofSelf, new PropertyMetadata(null));
+
+        public ICommand PageClickCommand
+        {
+            get { return (ICommand)GetValue(PageClickCommandProperty); }
+            set { SetValue(PageClickCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty JumpPageClickCommandProperty =
+            DependencyProperty.Register(nameof(JumpPageClickCommand), typeof(ICommand), _typeofSelf, new PropertyMetadata(null));
+
+        public ICommand JumpPageClickCommand
+        {
+            get { return (ICommand)GetValue(JumpPageClickCommandProperty); }
+            set { SetValue(JumpPageClickCommandProperty, value); }
+        }
+
         private static void OnPrevCommand(object sender, RoutedEventArgs e)
         {
             var ctrl = sender as Pagination;
+            if (ctrl == null)
+                return;
+
             ctrl.Current--;
+            var current = ctrl.Current;
+
+            var eventArgs = new RoutedEventArgs(PrevClickEvent, ctrl);
+            ctrl.RaiseEvent(eventArgs);
+            if (eventArgs.Handled)
+                return;
+
+            if (ctrl.PrevClickCommand != null && ctrl.PrevClickCommand.CanExecute(current))
+                ctrl.PrevClickCommand.Execute(current);
         }
 
         private static void OnCanPrevCommand(object sender, CanExecuteRoutedEventArgs e)
@@ -71,13 +118,61 @@ namespace WPFDevelopers.Controls
         private static void OnNextCommand(object sender, RoutedEventArgs e)
         {
             var ctrl = sender as Pagination;
+            if (ctrl == null)
+                return;
+
             ctrl.Current++;
+            var current = ctrl.Current;
+
+            var eventArgs = new RoutedEventArgs(NextClickEvent, ctrl);
+            ctrl.RaiseEvent(eventArgs);
+            if (eventArgs.Handled)
+                return;
+
+            if (ctrl.NextClickCommand != null && ctrl.NextClickCommand.CanExecute(current))
+                ctrl.NextClickCommand.Execute(current);
         }
 
         private static void OnCanNextCommand(object sender, CanExecuteRoutedEventArgs e)
         {
             var ctrl = sender as Pagination;
             e.CanExecute = ctrl.Current < ctrl.PageCount;
+        }
+
+        #endregion
+
+        #region RouteEvent
+
+        public static readonly RoutedEvent PrevClickEvent = EventManager.RegisterRoutedEvent("PrevClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+
+        public event RoutedEventHandler PrevClick
+        {
+            add { AddHandler(PrevClickEvent, value); }
+            remove { RemoveHandler(PrevClickEvent, value); }
+        }
+
+        public static readonly RoutedEvent NextClickEvent = EventManager.RegisterRoutedEvent("NextClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+
+        public event RoutedEventHandler NextClick
+        {
+            add { AddHandler(NextClickEvent, value); }
+            remove { RemoveHandler(NextClickEvent, value); }
+        }
+
+        public static readonly RoutedEvent PageClickEvent = EventManager.RegisterRoutedEvent("PageClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+
+        public event RoutedEventHandler PageClick
+        {
+            add { AddHandler(PageClickEvent, value); }
+            remove { RemoveHandler(PageClickEvent, value); }
+        }
+
+        public static readonly RoutedEvent JumpPageClickEvent = EventManager.RegisterRoutedEvent("JumpPageClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), _typeofSelf);
+
+        public event RoutedEventHandler JumpPageClick
+        {
+            add { AddHandler(JumpPageClickEvent, value); }
+            remove { RemoveHandler(JumpPageClickEvent, value); }
         }
 
         #endregion
@@ -114,6 +209,13 @@ namespace WPFDevelopers.Controls
         {
             get { return (bool)GetValue(IsLiteProperty); }
             set { SetValue(IsLiteProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowCountPerPageProperty = DependencyProperty.Register("ShowCountPerPage", typeof(bool), _typeofSelf, new PropertyMetadata(true));
+        public bool ShowCountPerPage
+        {
+            get { return (bool)GetValue(ShowCountPerPageProperty); }
+            set { SetValue(ShowCountPerPageProperty, value); }
         }
 
         public static readonly DependencyProperty CountProperty = DependencyProperty.Register("Count", typeof(int), _typeofSelf, new PropertyMetadata(0, OnCountPropertyChanged, CoerceCount));
@@ -232,7 +334,16 @@ namespace WPFDevelopers.Controls
         /// </summary>
         private void OnJumpPageTextBoxChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Current = (int)e.NewValue;
+            var page = (int)e.NewValue;
+            if (page == Current)
+                return;
+
+            Current = page;
+
+            var eventArgs = new RoutedEventArgs(JumpPageClickEvent, this);
+            RaiseEvent(eventArgs);
+            if (!eventArgs.Handled && JumpPageClickCommand != null && JumpPageClickCommand.CanExecute(page))
+                JumpPageClickCommand.Execute(page);
         }
 
         /// <summary>
@@ -243,7 +354,16 @@ namespace WPFDevelopers.Controls
             if (_listBox.SelectedItem == null)
                 return;
 
-            Current = int.Parse(_listBox.SelectedItem.ToString());
+            var page = int.Parse(_listBox.SelectedItem.ToString());
+            if (page == Current)
+                return;
+
+            Current = page;
+
+            var eventArgs = new RoutedEventArgs(PageClickEvent, this);
+            RaiseEvent(eventArgs);
+            if (!eventArgs.Handled && PageClickCommand != null && PageClickCommand.CanExecute(page))
+                PageClickCommand.Execute(page);
         }
 
         #endregion

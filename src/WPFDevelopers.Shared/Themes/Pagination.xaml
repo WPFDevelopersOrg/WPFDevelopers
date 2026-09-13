@@ -116,11 +116,13 @@
                     Maximum="100000"
                     Minimum="1"
                     TextAlignment="Center"
-                    UpDownButtonsWidth="0" />
+                    UpDownButtonsWidth="0"
+                    Visibility="{Binding ShowCountPerPage, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
                 <WrapPanel
                     Grid.Column="3"
                     Margin="3,0,0,0"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Visibility="{Binding ShowCountPerPage, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.Bool2VisibilityConverter}}">
                     <TextBlock Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
                     <TextBlock Text=" /  " />
                     <TextBlock Text="{Binding [Page], Source={x:Static resx:LanguageManager.Instance}}" />
@@ -191,7 +193,8 @@
                             <StackPanel
                                 Grid.Column="1"
                                 Margin="0,0,15,0"
-                                Orientation="Horizontal">
+                                Orientation="Horizontal"
+                                Visibility="{Binding ShowCountPerPage, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.Bool2VisibilityConverter}}">
                                 <TextBlock
                                     Margin="0,0,3,0"
                                     VerticalAlignment="Center"

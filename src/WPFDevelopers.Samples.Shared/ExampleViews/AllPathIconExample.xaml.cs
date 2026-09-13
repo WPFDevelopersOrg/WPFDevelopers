@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Helpers;
 using ListBox = System.Windows.Controls.ListBox;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -84,12 +85,17 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
         private void BtnCopyGeometry_Click(object sender, RoutedEventArgs e)
         {
-            SetClipboard(Data.ToString());   
+            SetClipboard(Data?.ToString());
         }
         void SetClipboard(string text)
         {
-            Clipboard.SetText(text);
-            Toast.Push("已复制剪切板");
+            if (ClipboardHelper.TrySetText(text))
+            {
+                Toast.Push("已复制到剪贴板");
+                return;
+            }
+
+            Toast.Push("复制失败，请稍后重试", ToastImage.Error, true);
         }
     }
 }

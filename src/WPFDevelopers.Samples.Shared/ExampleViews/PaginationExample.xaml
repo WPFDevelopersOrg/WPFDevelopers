@@ -11,54 +11,125 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition />
-                <RowDefinition Height="30" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="30" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Text="正常模式分页" />
-            <TextBlock
-                Grid.Column="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Text="精简模式分页" />
+        <TabControl TabStripPlacement="Bottom">
+            <TabItem Header="Event">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="正常模式分页" />
+                    <TextBlock
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="精简模式分页" />
 
-            <ListBox
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="0,0,0,10"
-                ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-            <ListBox
-                Grid.Row="1"
-                Grid.Column="2"
-                Margin="0,0,0,10"
-                ItemsSource="{Binding LitePaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                    <ListBox
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,0,0,10"
+                        ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                    <ListBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0,0,0,10"
+                        ItemsSource="{Binding LitePaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
 
-            <wd:Pagination
-                Grid.Row="2"
-                Grid.Column="0"
-                Count="{Binding NormalPaginationViewModel.Count, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"
-                CountPerPage="{Binding NormalPaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                Current="{Binding NormalPaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                IsLite="False" />
+                    <wd:Pagination
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Count="{Binding NormalPaginationViewModel.Count, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"
+                        CountPerPage="{Binding NormalPaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Current="{Binding NormalPaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        IsLite="False"
+                        JumpPageClick="PaginationJumpPageClick"
+                        NextClick="PaginationNextClick"
+                        PageClick="PaginationPageClick"
+                        PrevClick="PaginationPrevClick" />
 
-            <wd:Pagination
-                Grid.Row="2"
-                Grid.Column="2"
-                Count="{Binding LitePaginationViewModel.Count, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                CountPerPage="{Binding LitePaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                Current="{Binding LitePaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                IsLite="true" />
-        </Grid>
+                    <wd:Pagination
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Count="{Binding LitePaginationViewModel.Count, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CountPerPage="{Binding LitePaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Current="{Binding LitePaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        IsLite="true"
+                        JumpPageClick="PaginationJumpPageClick"
+                        NextClick="PaginationNextClick"
+                        PageClick="PaginationPageClick"
+                        PrevClick="PaginationPrevClick"
+                        ShowCountPerPage="False" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Command">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="正常模式分页" />
+                    <TextBlock
+                        Grid.Column="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="精简模式分页" />
+
+                    <ListBox
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,0,0,10"
+                        ItemsSource="{Binding NormalPaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                    <ListBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0,0,0,10"
+                        ItemsSource="{Binding LitePaginationViewModel.PaginationCollection, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
+                    <wd:Pagination
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Count="{Binding NormalPaginationViewModel.Count, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"
+                        CountPerPage="{Binding NormalPaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Current="{Binding NormalPaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        IsLite="False"
+                        JumpPageClickCommand="{Binding JumpPageClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        NextClickCommand="{Binding NextClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        PageClickCommand="{Binding PageClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        PrevClickCommand="{Binding PrevClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
+                    <wd:Pagination
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Count="{Binding LitePaginationViewModel.Count, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CountPerPage="{Binding LitePaginationViewModel.CountPerPage, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        Current="{Binding LitePaginationViewModel.Current, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        IsLite="true"
+                        JumpPageClickCommand="{Binding JumpPageClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        NextClickCommand="{Binding NextClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        PageClickCommand="{Binding PageClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        PrevClickCommand="{Binding PrevClickCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                </Grid>
+            </TabItem>
+        </TabControl>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PaginationExample.xaml.cs" CodeType="CSharp" />

@@ -37,10 +37,12 @@ namespace WPFDevelopers
             get => Resources.TryFindResource<Brush>("WD.PrimaryBrush");
 
         }
+
         public Brush BackgroundBrush
         {
             get => Resources.TryFindResource<Brush>("WD.BackgroundBrush");
         }
+
         public Brush PrimaryTextBrush
         {
             get => Resources.TryFindResource<Brush>("WD.PrimaryTextBrush");
