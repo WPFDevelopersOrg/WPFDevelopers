@@ -335,41 +335,21 @@ namespace WPFDevelopers.Controls
                 copyButton.Style = copyButtonStyle;
             copyButton.Click += (sender, args) =>
             {
-                try
-                {
-                    Clipboard.SetText(codeText);
-                    copyButton.Content = "Copied";
-                    copyButton.IsEnabled = false;
+                var copied = ClipboardHelper.TrySetText(codeText);
+                copyButton.Content = copied ? "Copied" : "Copy failed";
+                copyButton.IsEnabled = false;
 
-                    var resetTimer = new DispatcherTimer
-                    {
-                        Interval = TimeSpan.FromMilliseconds(1200)
-                    };
-                    resetTimer.Tick += (s, e) =>
-                    {
-                        resetTimer.Stop();
-                        copyButton.Content = "Copy";
-                        copyButton.IsEnabled = true;
-                    };
-                    resetTimer.Start();
-                }
-                catch
+                var resetTimer = new DispatcherTimer
                 {
-                    copyButton.Content = "Copy failed";
-                    copyButton.IsEnabled = false;
-
-                    var resetTimer = new DispatcherTimer
-                    {
-                        Interval = TimeSpan.FromMilliseconds(1200)
-                    };
-                    resetTimer.Tick += (s, e) =>
-                    {
-                        resetTimer.Stop();
-                        copyButton.Content = "Copy";
-                        copyButton.IsEnabled = true;
-                    };
-                    resetTimer.Start();
-                }
+                    Interval = TimeSpan.FromMilliseconds(1200)
+                };
+                resetTimer.Tick += (s, e) =>
+                {
+                    resetTimer.Stop();
+                    copyButton.Content = "Copy";
+                    copyButton.IsEnabled = true;
+                };
+                resetTimer.Start();
             };
 
             var langBadge = new Border();
