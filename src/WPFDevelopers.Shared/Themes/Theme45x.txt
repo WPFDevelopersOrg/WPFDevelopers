@@ -62,6 +62,7 @@ Mask.xaml
 BreadCrumbBar.xaml
 CropImage.xaml
 Toast.xaml
+MapView.xaml
 PathIcon.xaml
 NumericBox.xaml
 ColorPicker.xaml

@@ -32,9 +32,6 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Fonts\fixedsys.ttf">
 			<Link>Resources\Fonts\fixedsys.ttf</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\AMap\Car2.png">
-			<Link>Resources\Images\AMap\Car2.png</Link>
-		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\NavMenu3D\background.png">
 			<Link>Resources\Images\NavMenu3D\background.png</Link>
 		</Resource>
