@@ -1,30 +1,30 @@
-<div align="center"><img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png"/></div>   
+<div align="center"><img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png"/></div>
 
-[中文](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README-zh.md)   
+[中文](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README-zh.md)
 
  ![dotnet-version](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)  ![Visual Studio 2026](https://img.shields.io/badge/Visual%20Studio-2026-blueviolet)  [![Github](https://img.shields.io/badge/%20-github-%2324292e)](https://github.com/yanjinhuagood/WPFDevelopers)   <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
     </a>   <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers"></img>
-    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  
+    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)
 
 
-## Welcome to WPFDevelopers    
+## Welcome to WPFDevelopers
 
 # __Please use the preview Nuget package for the latest__
 
 # [How to compile 👀](https://b23.tv/RTijGF8  )
 
 
-### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg  
+### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg
 
-### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
+### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg
 
-###  [Documentation Center → Quick Start](docs/en/getting-started.md)   
+###  [Documentation Center → Quick Start](docs/en/getting-started.md)
 
 ###  Visual Studio 2026
 
-<h1 align="center">System Design</h1>   
+<h1 align="center">System Design</h1>
 
 ![System Design](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WPFDevelopersFrameworkDiagram.svg)
 
@@ -58,29 +58,29 @@ If you think our open source software is helpful to you, please scan the QR code
 |----|-----|
 |  <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Alipay.png"/>   |   <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WeChatPay.png"/>   |
 
-### Backers   
+### Backers
 
-<a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%!important" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%!important" width="64px" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>    <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%!important" width="64px" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%!important" width="64px" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>   <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%!important" width="64px" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a> 
-   <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a> 
+<a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>    <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>   <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a>
+   <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>
 
-### Contributors  
-<a href="https://github.com/yanjinhuagood" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/23089734?v=4"></a>
-<a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%!important" width="64px" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>   <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%!important" width="64px" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>  <a href="https://github.com/githowe" target="_blank"><img style="border-radius:50%!important" width="64px" alt="githowe" src="https://avatars.githubusercontent.com/u/31241366?v=4"></a>  <a href="https://github.com/LuGuangguang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="LuGuangguang" src="https://avatars.githubusercontent.com/u/34500722?v=4"></a> <a href="https://github.com/DinoChan" target="_blank"><img style="border-radius:50%!important" width="64px" alt="DinoChan" src="https://avatars.githubusercontent.com/u/6076257?v=4"></a> <a href="https://github.com/mingyaodagege" target="_blank"><img style="border-radius:50%!important" width="64px" alt="mingyaodagege" src="https://avatars.githubusercontent.com/u/48346030?v=4"></a>   <a href="https://github.com/SFlyers" target="_blank"><img style="border-radius:50%!important" width="64px" alt="PettyHandSome" src="https://avatars.githubusercontent.com/u/16127328?v=4"></a>  <a href="https://github.com/choumengqizhigou" target="_blank"><img style="border-radius:50%!important" width="64px" alt="丑萌气质狗" src="https://avatars.githubusercontent.com/u/19163316?v=4"></a>  <a href="https://github.com/ptddqr" target="_blank"><img style="border-radius:50%!important" width="64px" alt="李伟" src="https://avatars.githubusercontent.com/u/24642606?v=4"></a>  <a href="https://github.com/SwaggyMacro" target="_blank"><img style="border-radius:50%!important" width="64px" alt="SwaggyMacro" src="https://avatars.githubusercontent.com/u/38845682?v=4"></a>  <a href="https://github.com/guanguanchuangyu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="guanguanchuangyu" src="https://avatars.githubusercontent.com/u/25916858?v=4"></a>
+### Contributors
+<a href="https://github.com/yanjinhuagood" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/23089734?v=4"></a>
+<a href="https://github.com/ChisterWu" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/28770378?v=4"></a>  <a href="https://github.com/huangjia2107" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="huangjia2107" src="https://avatars.githubusercontent.com/u/13675358?v=4"></a>  <a href="https://github.com/liukaishuang" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="liukaishuang" src="https://avatars.githubusercontent.com/u/25221289?v=4"></a>   <a href="https://github.com/TwilightLemon" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="TwilightLemon" src="https://avatars.githubusercontent.com/u/25076044?v=4"></a>  <a href="https://github.com/githowe" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="githowe" src="https://avatars.githubusercontent.com/u/31241366?v=4"></a>  <a href="https://github.com/LuGuangguang" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="LuGuangguang" src="https://avatars.githubusercontent.com/u/34500722?v=4"></a> <a href="https://github.com/DinoChan" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="DinoChan" src="https://avatars.githubusercontent.com/u/6076257?v=4"></a> <a href="https://github.com/mingyaodagege" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="mingyaodagege" src="https://avatars.githubusercontent.com/u/48346030?v=4"></a>   <a href="https://github.com/SFlyers" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="PettyHandSome" src="https://avatars.githubusercontent.com/u/16127328?v=4"></a>  <a href="https://github.com/choumengqizhigou" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="丑萌气质狗" src="https://avatars.githubusercontent.com/u/19163316?v=4"></a>  <a href="https://github.com/ptddqr" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="李伟" src="https://avatars.githubusercontent.com/u/24642606?v=4"></a>  <a href="https://github.com/SwaggyMacro" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="SwaggyMacro" src="https://avatars.githubusercontent.com/u/38845682?v=4"></a>  <a href="https://github.com/guanguanchuangyu" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="guanguanchuangyu" src="https://avatars.githubusercontent.com/u/25916858?v=4"></a>
 
 | contributor | contribution |
 | :--- | :--- |
 | [@HaHa-ZYK](https://github.com/HaHa-ZYK) | **Project Quality Guardian** :shield: - Thank you for continuously submitting a large number of extremely valuable and high-quality issue reports. Your meticulous observation skills are the cornerstone of project stability. |
 | [@wanghaodong24](https://github.com/wanghaodong24) | Thank you for consistently submitting high-quality issues |
 
-###  This is a UI library for WPF developers based on WPF custom advanced controls. Welcome to use..
+### This is a UI library for WPF developers based on WPF custom advanced controls. Welcome to use..
 
-###  how to use：
+### How to use
 
-###  Step 1: Add nuget;
+### Step 1: Add NuGet
 ```
 Install-Package WPFDevelopers
 ```
-###  Step 2: Add nodes to App.xaml;
+### Step 2: Add nodes to App.xaml
 ``` XML
 xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ```
@@ -111,7 +111,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     </Application.Resources>
 ```
 
-###  Step 3: Add the namespace;
+### Step 3: Add the namespace
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
@@ -128,607 +128,607 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 ### CircleMenu
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircleMenu.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircleMenu.gif"/>
 
 ----------
 ### Segmented
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Segmented.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Segmented.gif"/>
 
 ----------
 ### SplitButton
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SplitButton.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SplitButton.gif"/>
 
-----------   
+----------
 ### Carousel
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Carousel.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Carousel.gif"/>
 
 ----------
 ### OtpBox
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/OtpBox.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/OtpBox.gif"/>
 
 ----------
 ### GrayscaleEffect
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>
 
 ----------
 ### DataGridFilter
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DataGridFilter.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DataGridFilter.gif"/>
 
 ----------
 ### SvgViewer
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SvgViewer.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SvgViewer.gif"/>
 
 ----------
 ### Dial
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Dial.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Dial.gif"/>
 
 ----------
 ### MultiSelectComboBox
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.jpg"/>   
-
-----------
-### ScreenCaptureExt‎
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCaptureExt.jpg"/>  
-
-----------
-### AllPath
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AllPath.gif"/>   
-
-----------
-### AnimatedGrid
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimatedGrid.gif"/>   
-
-----------
-### GestureUnlock
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GestureUnlock.gif"/>   
-
-----------
-### IconicThumbnail
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IconicThumbnail.gif"/>   
-
-----------
-### Snap
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Snap.gif"/>   
-
-----------
-### NavScrollPanel
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NavScrollPanel.gif"/>   
-
-----------
-### Gauge
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Gauge.gif"/>   
-
-----------
-### Toast
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Message.png"/>   
-
-----------
-### DateRangePicker
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DateRangePicker.gif"/>   
-
-----------
-### Drawer
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Drawer.gif"/>   
-
-----------
-### Spacing
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Spacing.gif"/>   
-
-----------
-### NotifyIcon
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
-
-----------
-### ChartRadar
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartRadar.gif"/>   
-
-----------
-### ChartLine
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartLine.gif"/>   
-
-----------
-### ChartBar
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartBar.gif"/>   
-
-----------
-### SearchText
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SearchText.gif"/>   
-
-----------
-### ClearButton
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ClearButton.gif"/>   
-
-----------
-### IPEditBox
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>   
-
-----------
-### TransformLayout
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransformLayout.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.jpg"/>
 
 ----------
 ### ScreenCaptureExt
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCutNew.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCaptureExt.jpg"/>
+
+----------
+### AllPath
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AllPath.gif"/>
+
+----------
+### AnimatedGrid
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimatedGrid.gif"/>
+
+----------
+### GestureUnlock
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GestureUnlock.gif"/>
+
+----------
+### IconicThumbnail
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IconicThumbnail.gif"/>
+
+----------
+### Snap
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Snap.gif"/>
+
+----------
+### NavScrollPanel
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NavScrollPanel.gif"/>
+
+----------
+### Gauge
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Gauge.gif"/>
+
+----------
+### Toast
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Message.png"/>
+
+----------
+### DateRangePicker
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DateRangePicker.gif"/>
+
+----------
+### Drawer
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Drawer.gif"/>
+
+----------
+### Spacing
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Spacing.gif"/>
+
+----------
+### NotifyIcon
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>
+
+----------
+### ChartRadar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartRadar.gif"/>
+
+----------
+### ChartLine
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartLine.gif"/>
+
+----------
+### ChartBar
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChartBar.gif"/>
+
+----------
+### SearchText
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SearchText.gif"/>
+
+----------
+### ClearButton
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ClearButton.gif"/>
+
+----------
+### IPEditBox
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/IPEditBox.gif"/>
+
+----------
+### TransformLayout
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransformLayout.gif"/>
+
+----------
+### ScreenCaptureExt
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScreenCutNew.gif"/>
 
 ----------
 ### TimePicker
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimePicker.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimePicker.gif"/>
 
 ----------
 ### ColorPicker
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ColorPicker.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ColorPicker.gif"/>
 
 ----------
 ### NumericBox
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NumericBox.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NumericBox.gif"/>
 
 ----------
 ### PathIcon
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PathIcon.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PathIcon.gif"/>
 
 ----------
 ### Window
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/window.jpg"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/window.jpg"/>
 
 ----------
 ### Badge
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Badge.gif"/>
 
 ----------
 ### GrayscaleEffect
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>
 
 ----------
 
 ### CropImage
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropImage.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropImage.gif"/>
 
 ----------
 ### BreakCrumbBar
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BreakCrumbBar.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BreakCrumbBar.gif"/>
 
 ----------
 ### MultiSelectionSearchComboBox
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectionSearchComboBox.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectionSearchComboBox.gif"/>
 
 ----------
 ### ScrollIntoView.IsPosition
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollIntoViewPosition.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollIntoViewPosition.gif"/>
 
 ----------
 ### ControlLoading
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlLoading.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlLoading.gif"/>
 
 ----------
 ### BasicControlLoading
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BasicControlLoading.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BasicControlLoading.gif"/>
 
 ----------
 ### WindowMask
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowMask.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowMask.gif"/>
 
 ----------
 ### ControlMask
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlMask.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ControlMask.gif"/>
 
 ----------
 ### MultiSelectComboBox
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MultiSelectComboBox.gif"/>
 
 ----------
 ### Step
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/step.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/step.gif"/>
 
 ----------
 ### Magnifier
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Magnifier.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Magnifier.gif"/>
 
 ----------
 ### GrayscaleEffect
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/GrayscaleEffect.gif"/>
 
 ----------
 ### NineGridView
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NineGridView.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NineGridView.gif"/>
 
 ----------
-### CodeViewer 
+### CodeViewer
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CodeViewer.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CodeViewer.gif"/>
 
 ----------
-### NotifyIcon 
+### NotifyIcon
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif"/>
 
 ----------
 ### WindowAcrylicBlur
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowAcrylicBlur.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WindowAcrylicBlur.gif"/>
 
 ----------
 ### Barrage
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Barrage.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Barrage.gif"/>
 
 
 ----------
 ### CanvasHandWriting
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CanvasHandWriting.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CanvasHandWriting.gif"/>
 
 
 ----------
-### Bubblle
+### Bubble
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Bubblle.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Bubblle.gif"/>
 
 
 ----------
 ### PanningItems
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PanningItems.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PanningItems.gif"/>
 
 
 ----------
 ### Shake
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Shake.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Shake.gif"/>
 
 
 ----------
 ### StarrySky
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/StarrySky.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/StarrySky.gif"/>
 
 
 ----------
 ### CropAvatar
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropAvatar.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropAvatar.gif"/>
 
 
 ----------
 
-### ScreenCut 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawInk.gif"/> 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawArrow.gif"/>   
+### ScreenCut
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawInk.gif"/>
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawArrow.gif"/>
 
 ----------
 
 ### AnimationAudio
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationAudio.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationAudio.gif"/>
 
 ----------
 
 ### VerifyCode
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CheckCode.gif"/>
 
 ----------
 
-### EdgeLight  
+### EdgeLight
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>   
-
-----------
-
-### DrawPrize  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawPrize.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/EdgeLight.gif"/>
 
 ----------
 
-### DesktopPlayVideo  
+### DrawPrize
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DrawPrize.gif"/>
+
+----------
+
+### DesktopPlayVideo
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/DesktopPlayVideo.gif"/>
 
 ----------
 
-### CropControl  
+### CropControl
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropControl.gif"/>
 
 ----------
 
-### NumberCard  
+### NumberCard
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NumberCard.gif"/>   
-
-----------
-
-### CountdownTimer  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CountdownTimer.gif"/>   
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CountdownTimerMultiColor.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NumberCard.gif"/>
 
 ----------
 
-### SpeedRockets  
+### CountdownTimer
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SpeedRockets.gif"/>   
-
-----------
-
-### SnowCanvas  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SnowCanvas.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CountdownTimer.gif"/>
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CountdownTimerMultiColor.gif"/>
 
 ----------
 
-### WPFBreatheLight  
+### SpeedRockets
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BreatheLight.gif"/>   
-
-----------
-
-### Thermometer  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Thermometer.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SpeedRockets.gif"/>
 
 ----------
 
-### RingLoading  
+### SnowCanvas
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RingLoading.gif"/>  
-
-----------
-
-### RoundPicker  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RoundPicker.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SnowCanvas.gif"/>
 
 ----------
 
-### LogoAnimation    
+### WPFBreatheLight
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/LogoAnimation.gif"/>  
-
-----------
-
-### LineChart   
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/LineChart.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BreatheLight.gif"/>
 
 ----------
 
+### Thermometer
 
-### RainbowButtons  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RainbowButtons.gif"/>  
-
-----------
-
-### Ruler  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Ruler.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Thermometer.gif"/>
 
 ----------
 
-### ZooSemy    
+### RingLoading
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ZooSemy.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RingLoading.gif"/>
 
 ----------
 
-### BasicBarChart  
+### RoundPicker
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BasicBarChart.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RoundPicker.gif"/>
+
+----------
+
+### LogoAnimation
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/LogoAnimation.gif"/>
+
+----------
+
+### LineChart
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/LineChart.gif"/>
+
+----------
+
+
+### RainbowButtons
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RainbowButtons.gif"/>
+
+----------
+
+### Ruler
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Ruler.gif"/>
+
+----------
+
+### ZooSemy
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ZooSemy.gif"/>
+
+----------
+
+### BasicBarChart
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BasicBarChart.gif"/>
 
 ----------
 
 ### RadarChart
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RadarCha.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RadarCha.gif"/>
 
 ----------
 
-### DrawerMenu  
+### DrawerMenu
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Win10Menu.gif"/>  
-
-----------
-
-### SpotLight  
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SpotLight.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Win10Menu.gif"/>
 
 ----------
 
-### TransitionPanel  
+### SpotLight
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransitionPanel.gif"/>  
-
-----------
-
-### OtherControl 
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TorchControl.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SpotLight.gif"/>
 
 ----------
 
-### FocusCarousel 
+### TransitionPanel
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/FocusCarousel.gif"/>  
-
-----------
-
-### CardCarousel 
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CardCarousel.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TransitionPanel.gif"/>
 
 ----------
 
-### MasterCarousel 
+### OtherControl
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MasterCarousel.gif"/>  
-
-----------
-
-### ScrollViewerAnimation 
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollViewer.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TorchControl.gif"/>
 
 ----------
 
-### RollLoading 
+### FocusCarousel
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RollLoading.gif"/>  
-
-----------
-
-### CycleLoading 
-
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CycleLoading.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/FocusCarousel.gif"/>
 
 ----------
 
-### Pagination 
+### CardCarousel
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Pagination.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CardCarousel.gif"/>
 
 ----------
 
-### TaskbarItemInfo 
+### MasterCarousel
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TaskbarItemInfo.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MasterCarousel.gif"/>
+
+----------
+
+### ScrollViewerAnimation
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollViewer.gif"/>
+
+----------
+
+### RollLoading
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RollLoading.gif"/>
+
+----------
+
+### CycleLoading
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CycleLoading.gif"/>
+
+----------
+
+### Pagination
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Pagination.gif"/>
+
+----------
+
+### TaskbarItemInfo
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TaskbarItemInfo.gif"/>
 
 ----------
 
 ### BallLoading
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BallLoading.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BallLoading.gif"/>
 
 ----------
 
 ### WpfPieControl
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PieControl.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PieControl.gif"/>
 
 ----------
 
 ### WpfDashboard
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Dashboard.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Dashboard.gif"/>
 
 ----------
 
 ### WpfTimeLineControl
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimeLine.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/TimeLine.gif"/>
 
 ----------
 
 ### WpfCircularProgressBar
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircularProgressBar.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircularProgressBar.gif"/>
 
 ----------
 
 ### WpfCircularMenu
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircularMenu.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircularMenu.gif"/>
 
 ----------
 
-### WpfPasswrod
+### WpfPassword
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Passwrod.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Passwrod.gif"/>
 
 ----------
 
 ### WpfChatEmojiText
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChatEmojiText.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ChatEmojiText.gif"/>
 
 ----------
 
 ### WPFSongWords
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SongWords.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SongWords.gif"/>
 
 ----------
 
-### ThumbDragAndAngleExample.xaml  
+### ThumbDragAndAngleExample.xaml
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ElementAdorner.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ElementAdorner.gif"/>
 
 ----------
 
-### WpfBingMap 
+### WpfBingMap
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BingAMap.gif"/>     
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/BingAMap.gif"/>
 
 ----------
 
 ### NavMenu3D
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationNavigationBar3D.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/AnimationNavigationBar3D.gif"/>
 
 ----------
 
 ### WpfRoundMenu
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RoundMenu.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/RoundMenu.gif"/>
 
 ----------
 
 ### CutImageSolution
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CutImage.gif"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CutImage.gif"/>
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CutImage1.gif"/>   
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CutImage1.gif"/>
 
 ----------
 
