@@ -58,6 +58,7 @@ namespace WPFDevelopers.Controls
 
         private static bool s_Loaded = false;
 
+        private static long s_TrayIconIdSeed;
         private static NotifyIcon s_NotifyIcon;
 
         //这是窗口名称
@@ -93,12 +94,14 @@ namespace WPFDevelopers.Controls
 
         private bool disposedValue;
 
+        private readonly uint _trayIconId;
         private IntPtr _tempIconHandle;
         //闪烁定时器
         private DispatcherTimer _dispatcherTimerTwink;
 
         public NotifyIcon()
         {
+            _trayIconId = (uint)Interlocked.Increment(ref s_TrayIconIdSeed);
             _TrayWndClassName = $"WPFDevelopers_{Guid.NewGuid()}";
             _TrayWndProc = WndProc_CallBack;
             _TrayWndMessage = "TrayWndMessageName";
@@ -393,6 +396,7 @@ namespace WPFDevelopers.Controls
             lock (this)
             {
                 _NOTIFYICONDATA = NOTIFYICONDATA.GetDefaultNotifyData(_TrayWindowHandle);
+                _NOTIFYICONDATA.uTaskbarIconId = _trayIconId;
 
                 if (_TrayMouseMessage != 0)
                     _NOTIFYICONDATA.uCallbackMessage = (uint)_TrayMouseMessage;
@@ -643,16 +647,17 @@ namespace WPFDevelopers.Controls
             bool result;
             lock (this)
             {
-                var hideData = new NOTIFYICONDATA();
-                hideData.cbSize = (uint)Marshal.SizeOf(hideData);
-                hideData.hWnd = _NOTIFYICONDATA.hWnd;
-                hideData.uTaskbarIconId = _NOTIFYICONDATA.uTaskbarIconId;
+                var hideData = _NOTIFYICONDATA;
                 hideData.uFlags = NIFFlags.NIF_STATE;
                 hideData.dwState = NISFlags.NIS_HIDDEN;
                 hideData.dwStateMask = NISFlags.NIS_HIDDEN;
-                Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref hideData);
+                hideData.cbSize = (uint)Marshal.SizeOf(hideData);
 
-                result = Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Delete, ref _NOTIFYICONDATA);
+                result = Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref hideData);
+                if (result)
+                {
+                    result = Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Delete, ref hideData);
+                }
             }
 
             _NOTIFYICONDATA = default;
