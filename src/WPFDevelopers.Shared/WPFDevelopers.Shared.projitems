@@ -163,6 +163,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\Magnifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Magnifier\MagnifierDesktop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapClickEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapFeatureClickEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Markdown\MarkdownViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\Mask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Mask\MaskControl.cs" />

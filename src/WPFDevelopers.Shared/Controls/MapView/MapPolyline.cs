@@ -11,6 +11,7 @@ namespace WPFDevelopers.Controls
         private Brush _stroke;
         private double _strokeThickness;
         private double _opacity;
+        private bool _isClosed;
 
         public MapPolyline()
         {
@@ -19,6 +20,7 @@ namespace WPFDevelopers.Controls
             _stroke = new SolidColorBrush(Color.FromRgb(0x22, 0xC5, 0x5E));
             _strokeThickness = 3d;
             _opacity = 0.9d;
+            _isClosed = false;
         }
 
         public bool IsVisible
@@ -57,6 +59,12 @@ namespace WPFDevelopers.Controls
                 var bounded = value < 0 ? 0 : (value > 1 ? 1 : value);
                 SetProperty(ref _opacity, bounded, nameof(Opacity));
             }
+        }
+
+        public bool IsClosed
+        {
+            get { return _isClosed; }
+            set { SetProperty(ref _isClosed, value, nameof(IsClosed)); }
         }
     }
 }
