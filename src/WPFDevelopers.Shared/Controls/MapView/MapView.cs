@@ -22,6 +22,50 @@ namespace WPFDevelopers.Controls
     [ContentProperty(nameof(InlinePushpins))]
     public class MapView : FrameworkElement
     {
+        public static readonly RoutedEvent MapClickedEvent = EventManager.RegisterRoutedEvent(
+            nameof(MapClicked),
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler),
+            typeof(MapView));
+
+        public static readonly RoutedEvent MapFeatureClickedEvent = EventManager.RegisterRoutedEvent(
+            nameof(MapFeatureClicked),
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler),
+            typeof(MapView));
+
+        public static readonly DependencyProperty MapClickCommandProperty =
+            DependencyProperty.Register(nameof(MapClickCommand), typeof(ICommand), typeof(MapView),
+                new PropertyMetadata(null));
+
+        public static readonly DependencyProperty MapFeatureClickCommandProperty =
+            DependencyProperty.Register(nameof(MapFeatureClickCommand), typeof(ICommand), typeof(MapView),
+                new PropertyMetadata(null));
+
+        public event RoutedEventHandler MapClicked
+        {
+            add => AddHandler(MapClickedEvent, value);
+            remove => RemoveHandler(MapClickedEvent, value);
+        }
+
+        public event RoutedEventHandler MapFeatureClicked
+        {
+            add => AddHandler(MapFeatureClickedEvent, value);
+            remove => RemoveHandler(MapFeatureClickedEvent, value);
+        }
+
+        public ICommand MapClickCommand
+        {
+            get { return (ICommand)GetValue(MapClickCommandProperty); }
+            set { SetValue(MapClickCommandProperty, value); }
+        }
+
+        public ICommand MapFeatureClickCommand
+        {
+            get { return (ICommand)GetValue(MapFeatureClickCommandProperty); }
+            set { SetValue(MapFeatureClickCommandProperty, value); }
+        }
+
         private const int TileSize = 256;
         private const int AbsoluteMinZoom = 1;
         private const int AbsoluteMaxZoom = 22;
@@ -1131,7 +1175,9 @@ namespace WPFDevelopers.Controls
 
             if (!_hasDragged)
             {
-                var clickedPushpin = GetPushpinAt(e.GetPosition(this));
+                var clickedPosition = e.GetPosition(this);
+                var clickedPushpin = GetPushpinAt(clickedPosition);
+                var featureClickArgs = CreateFeatureClickEventArgs(clickedPosition, clickedPushpin);
                 if (clickedPushpin != null)
                 {
                     SelectPushpin(clickedPushpin, true);
@@ -1141,6 +1187,40 @@ namespace WPFDevelopers.Controls
                     {
                         ZoomLevel = Math.Max(ZoomLevel, PushpinClickZoomLevel);
                     }
+                }
+
+                if (featureClickArgs != null && featureClickArgs.FeatureType != MapFeatureType.None)
+                {
+                    RaiseEvent(featureClickArgs);
+                    if (MapFeatureClickCommand != null && MapFeatureClickCommand.CanExecute(featureClickArgs))
+                    {
+                        MapFeatureClickCommand.Execute(featureClickArgs);
+                    }
+                }
+
+                var clickedLatLon = GetLatLonFromScreen(clickedPosition);
+                var isEmptyAreaClick = featureClickArgs == null || featureClickArgs.FeatureType == MapFeatureType.None;
+
+                var mapClickArgs = new MapClickEventArgs(MapClickedEvent, this)
+                {
+                    Latitude = clickedLatLon.X,
+                    Longitude = clickedLatLon.Y,
+                    ScreenX = clickedPosition.X,
+                    ScreenY = clickedPosition.Y,
+                    IsEmptyAreaClick = isEmptyAreaClick,
+                    ClickedPushpin = clickedPushpin
+                };
+
+                if (clickedPushpin != null)
+                {
+                    mapClickArgs.Latitude = clickedPushpin.Latitude;
+                    mapClickArgs.Longitude = clickedPushpin.Longitude;
+                }
+
+                RaiseEvent(mapClickArgs);
+                if (MapClickCommand != null && MapClickCommand.CanExecute(mapClickArgs))
+                {
+                    MapClickCommand.Execute(mapClickArgs);
                 }
             }
 
@@ -2241,6 +2321,16 @@ namespace WPFDevelopers.Controls
                     layout.Points.Add(new Point(pixel.X - viewTopLeft.X, pixel.Y - viewTopLeft.Y));
                 }
 
+                if (polyline.IsClosed && layout.Points.Count >= 2)
+                {
+                    var firstPoint = layout.Points[0];
+                    var lastPoint = layout.Points[layout.Points.Count - 1];
+                    if (Math.Abs(firstPoint.X - lastPoint.X) > 0.0001 || Math.Abs(firstPoint.Y - lastPoint.Y) > 0.0001)
+                    {
+                        layout.Points.Add(firstPoint);
+                    }
+                }
+
                 if (layout.Points.Count >= 2)
                 {
                     polylineLayouts.Add(layout);
@@ -2476,7 +2566,6 @@ namespace WPFDevelopers.Controls
 
                 if (usesDefaultPinVisual)
                 {
-                    // Default pin is anchored at bottom-center, so hit-test the full marker body.
                     var hitRect = new Rect(
                         x - (defaultPinWidth / 2.0) - 2.0,
                         y - defaultPinHeight - 2.0,
@@ -2515,6 +2604,264 @@ namespace WPFDevelopers.Controls
             }
 
             return nearest;
+        }
+
+        private MapFeatureClickEventArgs CreateFeatureClickEventArgs(Point mousePosition, Pushpin clickedPushpin)
+        {
+            var latLon = GetLatLonFromScreen(mousePosition);
+            var featureClickArgs = new MapFeatureClickEventArgs(MapFeatureClickedEvent, this)
+            {
+                FeatureType = MapFeatureType.None,
+                Latitude = latLon.X,
+                Longitude = latLon.Y,
+                ScreenX = mousePosition.X,
+                ScreenY = mousePosition.Y
+            };
+
+            if (clickedPushpin != null)
+            {
+                featureClickArgs.FeatureType = MapFeatureType.Pushpin;
+                featureClickArgs.ClickedPushpin = clickedPushpin;
+                featureClickArgs.Latitude = clickedPushpin.Latitude;
+                featureClickArgs.Longitude = clickedPushpin.Longitude;
+                return featureClickArgs;
+            }
+
+            if (TryGetPolylineHit(mousePosition, out var hitPolyline))
+            {
+                featureClickArgs.FeatureType = MapFeatureType.Polyline;
+                featureClickArgs.ClickedPolyline = hitPolyline;
+                return featureClickArgs;
+            }
+
+            if (TryGetPolygonHit(mousePosition, out var hitPolygon))
+            {
+                featureClickArgs.FeatureType = MapFeatureType.Polygon;
+                featureClickArgs.ClickedPolygon = hitPolygon;
+                return featureClickArgs;
+            }
+
+            return featureClickArgs;
+        }
+
+        private Point GetLatLonFromScreen(Point screenPosition)
+        {
+            var centerPixel = ToPixel(CenterLatitude, CenterLongitude, ZoomLevel);
+            var worldPixelX = centerPixel.X - (ActualWidth / 2.0) + screenPosition.X;
+            var worldPixelY = centerPixel.Y - (ActualHeight / 2.0) + screenPosition.Y;
+            return ToLatLon(worldPixelX, worldPixelY, ZoomLevel);
+        }
+
+        private bool TryGetPolylineHit(Point mousePosition, out MapPolyline hitPolyline)
+        {
+            hitPolyline = null;
+            if (double.IsNaN(mousePosition.X) || double.IsNaN(mousePosition.Y) || ActualWidth <= 0 || ActualHeight <= 0)
+            {
+                return false;
+            }
+
+            var polylines = GetActivePolylinesSnapshot();
+            if (polylines.Count == 0)
+            {
+                return false;
+            }
+
+            var zoom = (int)CoerceZoom(this, ZoomLevel);
+            var centerPixel = ToPixel(CenterLatitude, CenterLongitude, zoom);
+            var viewTopLeft = new Point(centerPixel.X - ActualWidth / 2.0, centerPixel.Y - ActualHeight / 2.0);
+
+            var nearestDistanceSquared = double.MaxValue;
+            for (var i = 0; i < polylines.Count; i++)
+            {
+                var polyline = polylines[i];
+                if (polyline == null || polyline.Points == null || polyline.Points.Count < 2)
+                {
+                    continue;
+                }
+
+                var tolerance = Math.Max(6d, polyline.StrokeThickness + 2d);
+                var toleranceSquared = tolerance * tolerance;
+
+                var previousPoint = default(Point);
+                var previousLocation = default(MapLocation);
+                var hasPrevious = false;
+
+                for (var j = 0; j < polyline.Points.Count; j++)
+                {
+                    var currentLocation = polyline.Points[j];
+                    if (currentLocation == null)
+                    {
+                        continue;
+                    }
+
+                    var currentPixel = ToPixel(currentLocation.Latitude, currentLocation.Longitude, zoom);
+                    var currentPoint = new Point(
+                        WrapViewportXToNearest(currentPixel.X - viewTopLeft.X, zoom, mousePosition.X),
+                        currentPixel.Y - viewTopLeft.Y);
+
+                    if (!hasPrevious)
+                    {
+                        previousPoint = currentPoint;
+                        previousLocation = currentLocation;
+                        hasPrevious = true;
+                        continue;
+                    }
+
+                    var distanceSquared = DistanceToSegmentSquared(mousePosition, previousPoint, currentPoint);
+                    if (distanceSquared > toleranceSquared || distanceSquared >= nearestDistanceSquared)
+                    {
+                        previousPoint = currentPoint;
+                        previousLocation = currentLocation;
+                        continue;
+                    }
+
+                    nearestDistanceSquared = distanceSquared;
+                    hitPolyline = polyline;
+
+                    previousPoint = currentPoint;
+                    previousLocation = currentLocation;
+                }
+            }
+
+            return hitPolyline != null;
+        }
+
+        private bool TryGetPolygonHit(Point mousePosition, out MapPolygon hitPolygon)
+        {
+            hitPolygon = null;
+            if (double.IsNaN(mousePosition.X) || double.IsNaN(mousePosition.Y) || ActualWidth <= 0 || ActualHeight <= 0)
+            {
+                return false;
+            }
+
+            var polygons = GetActivePolygonsSnapshot();
+            if (polygons.Count == 0)
+            {
+                return false;
+            }
+
+            var zoom = (int)CoerceZoom(this, ZoomLevel);
+            var centerPixel = ToPixel(CenterLatitude, CenterLongitude, zoom);
+            var viewTopLeft = new Point(centerPixel.X - ActualWidth / 2.0, centerPixel.Y - ActualHeight / 2.0);
+
+            for (var i = polygons.Count - 1; i >= 0; i--)
+            {
+                var polygon = polygons[i];
+                if (polygon == null || polygon.Points == null || polygon.Points.Count < 3)
+                {
+                    continue;
+                }
+
+                var screenPoints = new List<Point>();
+                for (var j = 0; j < polygon.Points.Count; j++)
+                {
+                    var location = polygon.Points[j];
+                    if (location == null)
+                    {
+                        continue;
+                    }
+
+                    var pixel = ToPixel(location.Latitude, location.Longitude, zoom);
+                    screenPoints.Add(new Point(
+                        WrapViewportXToNearest(pixel.X - viewTopLeft.X, zoom, mousePosition.X),
+                        pixel.Y - viewTopLeft.Y));
+                }
+
+                if (screenPoints.Count < 3)
+                {
+                    continue;
+                }
+
+                if (IsPointInPolygon(mousePosition, screenPoints))
+                {
+                    hitPolygon = polygon;
+                    return true;
+                }
+
+                var strokeTolerance = Math.Max(6d, polygon.StrokeThickness + 2d);
+                var strokeToleranceSquared = strokeTolerance * strokeTolerance;
+                for (var j = 0; j < screenPoints.Count; j++)
+                {
+                    var start = screenPoints[j];
+                    var end = screenPoints[(j + 1) % screenPoints.Count];
+                    if (DistanceToSegmentSquared(mousePosition, start, end) <= strokeToleranceSquared)
+                    {
+                        hitPolygon = polygon;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private double WrapViewportXToNearest(double x, int zoom, double targetX)
+        {
+            var worldWidth = TileSize * (double)(1 << zoom);
+            if (worldWidth <= 0)
+            {
+                return x;
+            }
+
+            var wrapped = x;
+            while (wrapped - targetX > worldWidth / 2d)
+            {
+                wrapped -= worldWidth;
+            }
+
+            while (targetX - wrapped > worldWidth / 2d)
+            {
+                wrapped += worldWidth;
+            }
+
+            return wrapped;
+        }
+
+        private static double DistanceToSegmentSquared(Point p, Point a, Point b)
+        {
+            var dx = b.X - a.X;
+            var dy = b.Y - a.Y;
+            if (Math.Abs(dx) < double.Epsilon && Math.Abs(dy) < double.Epsilon)
+            {
+                var pointDx = p.X - a.X;
+                var pointDy = p.Y - a.Y;
+                return pointDx * pointDx + pointDy * pointDy;
+            }
+
+            var lengthSquared = dx * dx + dy * dy;
+            var t = ((p.X - a.X) * dx + (p.Y - a.Y) * dy) / lengthSquared;
+            if (t < 0d)
+            {
+                t = 0d;
+            }
+            else if (t > 1d)
+            {
+                t = 1d;
+            }
+
+            var projectionX = a.X + t * dx;
+            var projectionY = a.Y + t * dy;
+            var diffX = p.X - projectionX;
+            var diffY = p.Y - projectionY;
+            return diffX * diffX + diffY * diffY;
+        }
+
+        private static bool IsPointInPolygon(Point point, IList<Point> polygon)
+        {
+            var inside = false;
+            for (int i = 0, j = polygon.Count - 1; i < polygon.Count; j = i++)
+            {
+                var pi = polygon[i];
+                var pj = polygon[j];
+                var intersects = ((pi.Y > point.Y) != (pj.Y > point.Y))
+                                 && (point.X < (pj.X - pi.X) * (point.Y - pi.Y) / ((pj.Y - pi.Y) + double.Epsilon) + pi.X);
+                if (intersects)
+                {
+                    inside = !inside;
+                }
+            }
+
+            return inside;
         }
 
         private void QueueViewportTiles(int zoom, Point viewTopLeft, Size viewportSize, MapTileSource source, string cacheKeyPrefix)
