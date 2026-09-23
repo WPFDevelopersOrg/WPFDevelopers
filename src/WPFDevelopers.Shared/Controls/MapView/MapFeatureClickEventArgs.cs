@@ -7,7 +7,9 @@ namespace WPFDevelopers.Controls
         None = 0,
         Pushpin = 1,
         Polyline = 2,
-        Polygon = 3
+        Polygon = 3,
+        Circle = 4,
+        Rectangle = 5
     }
 
     public class MapFeatureClickEventArgs : RoutedEventArgs
@@ -24,6 +26,10 @@ namespace WPFDevelopers.Controls
         public MapPolyline ClickedPolyline { get; set; }
 
         public MapPolygon ClickedPolygon { get; set; }
+
+        public MapCircle ClickedCircle { get; set; }
+
+        public MapRectangle ClickedRectangle { get; set; }
 
         public double Latitude { get; set; }
 

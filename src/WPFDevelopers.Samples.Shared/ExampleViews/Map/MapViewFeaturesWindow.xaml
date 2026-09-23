@@ -338,10 +338,108 @@
                                 LineHeight="22"
                                 Text="默认 Pushpin与自定义 Pushpin&#x0a;ClusterTemplate 与 99+ 数量显示&#x0a;折线、多边形与动态点集合&#x0a;比例尺、诊断信息与点击缩放" />
 
+                            <Border
+                                Margin="0,16,0,0"
+                                Padding="10"
+                                Background="#F8FAFC"
+                                BorderBrush="#FFE2E8F0"
+                                BorderThickness="1"
+                                CornerRadius="8">
+                                <StackPanel>
+                                    <TextBlock
+                                        Margin="0,0,0,8"
+                                        FontWeight="SemiBold"
+                                        Foreground="#FF334155"
+                                        Text="坐标转换演示" />
+
+                                    <TextBlock
+                                        Margin="0,0,0,6"
+                                        Foreground="#FF475569"
+                                        Text="来源坐标系" />
+                                    <wd:Segmented x:Name="CoordinateSourceSegmented" SelectedIndex="0">
+                                        <wd:SegmentedItem Content="WGS84" />
+                                        <wd:SegmentedItem Content="GCJ02" />
+                                        <wd:SegmentedItem Content="BD09" />
+                                    </wd:Segmented>
+
+                                    <TextBlock
+                                        Margin="0,10,0,6"
+                                        Foreground="#FF475569"
+                                        Text="目标坐标系" />
+                                    <wd:Segmented x:Name="CoordinateTargetSegmented" SelectedIndex="1">
+                                        <wd:SegmentedItem Content="WGS84" />
+                                        <wd:SegmentedItem Content="GCJ02" />
+                                        <wd:SegmentedItem Content="BD09" />
+                                    </wd:Segmented>
+
+                                    <Grid Margin="0,12,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="0,0,6,0">
+                                            <TextBlock
+                                                Margin="0,0,0,4"
+                                                Foreground="#FF475569"
+                                                Text="经度" />
+                                            <TextBox x:Name="CoordinateLongitudeTextBox" Text="116.397428" />
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="6,0,0,0">
+                                            <TextBlock
+                                                Margin="0,0,0,4"
+                                                Foreground="#FF475569"
+                                                Text="纬度" />
+                                            <TextBox x:Name="CoordinateLatitudeTextBox" Text="39.909230" />
+                                        </StackPanel>
+
+                                        <Button
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="2"
+                                            Margin="0,10,0,0"
+                                            Click="ConvertCoordinateButton_Click"
+                                            Content="转换"
+                                            Style="{StaticResource WD.PrimaryButton}" />
+                                    </Grid>
+
+                                    <TextBlock
+                                        Margin="0,12,0,0"
+                                        FontWeight="SemiBold"
+                                        Foreground="#FF334155"
+                                        Text="结果" />
+                                    <TextBlock
+                                        x:Name="CoordinateConvertResultTextBlock"
+                                        Margin="0,6,0,0"
+                                        Foreground="#FF0F172A"
+                                        LineHeight="20"
+                                        Text="WGS84 -&gt; GCJ02" />
+                                </StackPanel>
+                            </Border>
+
                             <Button
                                 Margin="0,20,0,0"
                                 Click="MovePushpinButton_Click"
                                 Content="移动首个动态点位" />
+                            <Separator Margin="0,16" />
+
+                            <TextBlock
+                                Margin="0,0,0,8"
+                                FontWeight="SemiBold"
+                                Foreground="#FF334155"
+                                Text="ShapeZIndex 演示" />
+                            <Button
+                                Margin="0,0,0,8"
+                                Click="BringCircleToFrontButton_Click"
+                                Content="Circle 置顶（动态修改）" />
+                            <Button
+                                Margin="0,0,0,8"
+                                Click="ResetShapeZIndexButton_Click"
+                                Content="恢复默认层级" />
                             <Separator Margin="0,16" />
 
                             <TextBlock
@@ -386,6 +484,8 @@
                             ClusterRadius="42"
                             ClusterTemplate="{StaticResource CustomClusterTemplate}"
                             EnableClustering="True"
+                            MapClicked="DemoMap_MapClicked"
+                            MapFeatureClicked="DemoMap_MapFeatureClicked"
                             PushpinClickZoomLevel="15"
                             ShowScaleBar="True"
                             ShowZoomControls="True"
@@ -400,16 +500,19 @@
                                         <wd:MapLocation Latitude="39.942" Longitude="116.274" />
                                     </wd:MapPolyline.Points>
                                 </wd:MapPolyline>
-                                <wd:MapPolyline Stroke="#FFF97316" StrokeThickness="3">
+                                <wd:MapPolyline
+                                    IsClosed="True"
+                                    Stroke="#FFF97316"
+                                    StrokeThickness="3">
                                     <wd:MapPolyline.Points>
-                                        <wd:MapLocation Latitude="39.9172" Longitude="116.1688" />
-                                        <wd:MapLocation Latitude="39.9208" Longitude="116.1795" />
-                                        <wd:MapLocation Latitude="39.9194" Longitude="116.1926" />
-                                        <wd:MapLocation Latitude="39.9116" Longitude="116.1984" />
-                                        <wd:MapLocation Latitude="39.9052" Longitude="116.1910" />
-                                        <wd:MapLocation Latitude="39.9043" Longitude="116.1776" />
-                                        <wd:MapLocation Latitude="39.9101" Longitude="116.1681" />
-                                        <wd:MapLocation Latitude="39.9172" Longitude="116.1688" />
+                                        <wd:MapLocation Latitude="39.918694" Longitude="116.148180" />
+                                        <wd:MapLocation Latitude="39.920537" Longitude="116.156420" />
+                                        <wd:MapLocation Latitude="39.915797" Longitude="116.162256" />
+                                        <wd:MapLocation Latitude="39.908292" Longitude="116.167578" />
+                                        <wd:MapLocation Latitude="39.900391" Longitude="116.175474" />
+                                        <wd:MapLocation Latitude="39.898284" Longitude="116.166548" />
+                                        <wd:MapLocation Latitude="39.904342" Longitude="116.156248" />
+                                        <wd:MapLocation Latitude="39.911320" Longitude="116.150240" />
                                     </wd:MapPolyline.Points>
                                 </wd:MapPolyline>
                             </wd:MapView.Polylines>
@@ -426,6 +529,29 @@
                                     </wd:MapPolygon.Points>
                                 </wd:MapPolygon>
                             </wd:MapView.Polygons>
+                            <wd:MapView.Circles>
+                                <wd:MapCircle
+                                    x:Name="DemoCircle"
+                                    CenterLatitude="39.9042"
+                                    CenterLongitude="116.4074"
+                                    Fill="#33EF4444"
+                                    RadiusMeters="300000"
+                                    ShapeZIndex="10"
+                                    Stroke="#FFEF4444"
+                                    StrokeThickness="2" />
+                            </wd:MapView.Circles>
+                            <wd:MapView.Rectangles>
+                                <wd:MapRectangle
+                                    x:Name="DemoRectangle"
+                                    Fill="#334F46E5"
+                                    MaxLatitude="40.2200"
+                                    MaxLongitude="117.5000"
+                                    MinLatitude="39.4500"
+                                    MinLongitude="115.7000"
+                                    ShapeZIndex="20"
+                                    Stroke="#FF4F46E5"
+                                    StrokeThickness="2" />
+                            </wd:MapView.Rectangles>
                             <wd:Pushpin
                                 Title="自定义中心点"
                                 AnchorPoint="0.5,1"
@@ -460,6 +586,28 @@
                                     FontSize="12"
                                     Foreground="#FF64748B"
                                     Text="拖动、滚轮缩放并点击点位查看效果" />
+                                <TextBlock
+                                    Margin="0,8,0,0"
+                                    FontSize="11"
+                                    Foreground="#FF334155"
+                                    Text="要素点击" />
+                                <TextBlock
+                                    x:Name="FeatureClickInfoTextBlock"
+                                    Margin="0,8,0,0"
+                                    FontSize="11"
+                                    Foreground="#FF0F172A"
+                                    Text="点击点、线、面查看命中结果" />
+                                <TextBlock
+                                    Margin="0,8,0,0"
+                                    FontSize="11"
+                                    Foreground="#FF334155"
+                                    Text="地图点击" />
+                                <TextBlock
+                                    x:Name="MapClickInfoTextBlock"
+                                    Margin="0,4,0,0"
+                                    FontSize="11"
+                                    Foreground="#FF0F172A"
+                                    Text="点击地图获取坐标" />
                             </StackPanel>
                         </Border>
 

@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
     public partial class MapViewFeaturesWindow
     {
+        private const int DefaultCircleZIndex = 10;
+        private const int DefaultRectangleZIndex = 20;
         private readonly ObservableCollection<Pushpin> _pushpins = new ObservableCollection<Pushpin>();
         private readonly MapPushpinLayer _alertLayer = new MapPushpinLayer { Name = "告警图层" };
         private readonly MapPushpinLayer _runningLayer = new MapPushpinLayer { Name = "跑步图层", EnableClustering = false };
@@ -74,14 +78,15 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void CreateRunningRoute()
         {
             _runningRoute.Clear();
-            _runningRoute.Add(new MapLocation { Latitude = 39.9172, Longitude = 116.1688 });
-            _runningRoute.Add(new MapLocation { Latitude = 39.9208, Longitude = 116.1795 });
-            _runningRoute.Add(new MapLocation { Latitude = 39.9194, Longitude = 116.1926 });
-            _runningRoute.Add(new MapLocation { Latitude = 39.9116, Longitude = 116.1984 });
-            _runningRoute.Add(new MapLocation { Latitude = 39.9052, Longitude = 116.1910 });
-            _runningRoute.Add(new MapLocation { Latitude = 39.9043, Longitude = 116.1776 });
-            _runningRoute.Add(new MapLocation { Latitude = 39.9101, Longitude = 116.1681 });
-            _runningRoute.Add(new MapLocation { Latitude = 39.9172, Longitude = 116.1688 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.918694, Longitude = 116.148180 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.920537, Longitude = 116.156420 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.915797, Longitude = 116.162256 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.908292, Longitude = 116.167578 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.900391, Longitude = 116.175474 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.898284, Longitude = 116.166548 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.904342, Longitude = 116.156248 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.911320, Longitude = 116.150240 });
+            _runningRoute.Add(new MapLocation { Latitude = 39.918694, Longitude = 116.148180 });
         }
 
         private void EnsureRunningPushpin()
@@ -92,7 +97,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             }
 
             var template = Resources["RunningPushpinTemplate"] as DataTemplate;
-            var start = _runningRoute.Count > 0 ? _runningRoute[0] : new MapLocation { Latitude = 39.9172, Longitude = 116.1688 };
+            var start = _runningRoute.Count > 0 ? _runningRoute[0] : new MapLocation { Latitude = 39.918694, Longitude = 116.148180 };
 
             _runningPushpin = new Pushpin
             {
@@ -225,6 +230,195 @@ namespace WPFDevelopers.Samples.ExampleViews
             DemoMap.CenterLatitude = _pushpins[0].Latitude;
             DemoMap.CenterLongitude = _pushpins[0].Longitude;
             DemoMap.ZoomLevel = Math.Max(DemoMap.ZoomLevel, 12);
+        }
+
+        private void BringCircleToFrontButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DemoMap == null || DemoCircle == null)
+            {
+                return;
+            }
+
+            var maxZIndex = int.MinValue;
+
+            if (DemoMap.Polylines != null)
+            {
+                for (var i = 0; i < DemoMap.Polylines.Count; i++)
+                {
+                    var item = DemoMap.Polylines[i];
+                    if (item != null && item.ShapeZIndex > maxZIndex)
+                    {
+                        maxZIndex = item.ShapeZIndex;
+                    }
+                }
+            }
+
+            if (DemoMap.Polygons != null)
+            {
+                for (var i = 0; i < DemoMap.Polygons.Count; i++)
+                {
+                    var item = DemoMap.Polygons[i];
+                    if (item != null && item.ShapeZIndex > maxZIndex)
+                    {
+                        maxZIndex = item.ShapeZIndex;
+                    }
+                }
+            }
+
+            if (DemoMap.Circles != null)
+            {
+                for (var i = 0; i < DemoMap.Circles.Count; i++)
+                {
+                    var item = DemoMap.Circles[i];
+                    if (item != null && item.ShapeZIndex > maxZIndex)
+                    {
+                        maxZIndex = item.ShapeZIndex;
+                    }
+                }
+            }
+
+            if (DemoMap.Rectangles != null)
+            {
+                for (var i = 0; i < DemoMap.Rectangles.Count; i++)
+                {
+                    var item = DemoMap.Rectangles[i];
+                    if (item != null && item.ShapeZIndex > maxZIndex)
+                    {
+                        maxZIndex = item.ShapeZIndex;
+                    }
+                }
+            }
+
+            if (maxZIndex == int.MinValue)
+            {
+                maxZIndex = 0;
+            }
+
+            DemoCircle.ShapeZIndex = maxZIndex + 1;
+            FeatureClickInfoTextBlock.Text = $"Circle 已置顶，当前 ShapeZIndex={DemoCircle.ShapeZIndex}";
+        }
+
+        private void ResetShapeZIndexButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DemoCircle != null)
+            {
+                DemoCircle.ShapeZIndex = DefaultCircleZIndex;
+            }
+
+            if (DemoRectangle != null)
+            {
+                DemoRectangle.ShapeZIndex = DefaultRectangleZIndex;
+            }
+
+            FeatureClickInfoTextBlock.Text = $"已恢复默认层级：Circle={DefaultCircleZIndex}, Rectangle={DefaultRectangleZIndex}";
+        }
+
+        private void DemoMap_MapClicked(object sender, RoutedEventArgs e)
+        {
+            if (DemoMap == null)
+            {
+                return;
+            }
+
+            var clickArgs = e as MapClickEventArgs;
+            if (clickArgs == null)
+            {
+                return;
+            }
+
+            var text = $"点击坐标: Latitude={clickArgs.Latitude:F6}, Longitude={clickArgs.Longitude:F6}";
+            var mapClickInfoTextBlock = FindName("MapClickInfoTextBlock") as TextBlock;
+            if (mapClickInfoTextBlock != null)
+            {
+                mapClickInfoTextBlock.Text = text;
+            }
+
+            Debug.WriteLine(text);
+        }
+
+        private void DemoMap_MapFeatureClicked(object sender, RoutedEventArgs e)
+        {
+            var featureArgs = e as MapFeatureClickEventArgs;
+            if (featureArgs == null)
+            {
+                return;
+            }
+
+            var featureClickInfoTextBlock = FindName("FeatureClickInfoTextBlock") as TextBlock;
+            if (featureClickInfoTextBlock == null)
+            {
+                return;
+            }
+
+            var text = string.Empty;
+            if (featureArgs.FeatureType == MapFeatureType.Pushpin && featureArgs.ClickedPushpin != null)
+            {
+                text = $"点击 Pushpin: {featureArgs.ClickedPushpin.Title} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})";
+            }
+            else if (featureArgs.FeatureType == MapFeatureType.Polyline && featureArgs.ClickedPolyline != null)
+            {
+                text = $"点击 Polyline: 点数={featureArgs.ClickedPolyline.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})";
+            }
+            else if (featureArgs.FeatureType == MapFeatureType.Polygon && featureArgs.ClickedPolygon != null)
+            {
+                text = $"点击 Polygon: 点数={featureArgs.ClickedPolygon.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})";
+            }
+            else if (featureArgs.FeatureType == MapFeatureType.Circle && featureArgs.ClickedCircle != null)
+            {
+                text = $"点击 Circle: 半径={featureArgs.ClickedCircle.RadiusMeters:F0}m ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})";
+            }
+            else if (featureArgs.FeatureType == MapFeatureType.Rectangle && featureArgs.ClickedRectangle != null)
+            {
+                text = $"点击 Rectangle: [{featureArgs.ClickedRectangle.MinLatitude:F4},{featureArgs.ClickedRectangle.MinLongitude:F4}]~[{featureArgs.ClickedRectangle.MaxLatitude:F4},{featureArgs.ClickedRectangle.MaxLongitude:F4}]";
+            }
+
+            if (!string.IsNullOrEmpty(text))
+            {
+                featureClickInfoTextBlock.Text = text;
+                Debug.WriteLine(text);
+            }
+        }
+
+        private void ConvertCoordinateButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sourceSegmented = FindName("CoordinateSourceSegmented") as Segmented;
+            var targetSegmented = FindName("CoordinateTargetSegmented") as Segmented;
+            var longitudeTextBox = FindName("CoordinateLongitudeTextBox") as TextBox;
+            var latitudeTextBox = FindName("CoordinateLatitudeTextBox") as TextBox;
+            var resultTextBlock = FindName("CoordinateConvertResultTextBlock") as TextBlock;
+
+            if (sourceSegmented == null || targetSegmented == null || longitudeTextBox == null || latitudeTextBox == null || resultTextBlock == null)
+            {
+                return;
+            }
+
+            if (!double.TryParse(longitudeTextBox.Text, out var longitude) ||
+                !double.TryParse(latitudeTextBox.Text, out var latitude))
+            {
+                resultTextBlock.Text = "请输入有效的经度/纬度";
+                return;
+            }
+
+            var sourceType = ParseCoordinateType(sourceSegmented.SelectedIndex);
+            var targetType = ParseCoordinateType(targetSegmented.SelectedIndex);
+            var point = new MapGeoPoint(longitude, latitude, sourceType);
+            var converted = MapCoordinateHelper.Convert(point, targetType);
+
+            resultTextBlock.Text =
+                $"{sourceType} -> {targetType}\nLongitude={converted.Longitude:F6}\nLatitude={converted.Latitude:F6}";
+        }
+
+        private static MapCoordinateType ParseCoordinateType(int index)
+        {
+            switch (index)
+            {
+                case 1:
+                    return MapCoordinateType.Gcj02;
+                case 2:
+                    return MapCoordinateType.Bd09;
+                default:
+                    return MapCoordinateType.Wgs84;
+            }
         }
 
         private void StartRunningButton_Click(object sender, RoutedEventArgs e)

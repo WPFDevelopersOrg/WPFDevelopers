@@ -12,6 +12,7 @@ namespace WPFDevelopers.Controls
         private double _strokeThickness;
         private double _opacity;
         private bool _isClosed;
+        private int _shapeZIndex;
 
         public MapPolyline()
         {
@@ -21,6 +22,7 @@ namespace WPFDevelopers.Controls
             _strokeThickness = 3d;
             _opacity = 0.9d;
             _isClosed = false;
+            _shapeZIndex = 0;
         }
 
         public bool IsVisible
@@ -65,6 +67,12 @@ namespace WPFDevelopers.Controls
         {
             get { return _isClosed; }
             set { SetProperty(ref _isClosed, value, nameof(IsClosed)); }
+        }
+
+        public int ShapeZIndex
+        {
+            get { return _shapeZIndex; }
+            set { SetProperty(ref _shapeZIndex, value, nameof(ShapeZIndex)); }
         }
     }
 }

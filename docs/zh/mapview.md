@@ -3,6 +3,8 @@
 > 这是 WPFDevelopers 中地图控件的使用说明，重点放在「如何使用」「如何配置底图」「如何绑定业务对象」以及「常见示例」上。
 > 这份文档是实际使用手册，不是背景说明文档；如果需要了解为什么不依赖 Bing Map，以及为什么要自行封装 MapView，请参考项目背景说明。
 
+补充说明：WD 早期使用过 `Microsoft.Maps.MapControl.WPF`（Bing Map WPF 控件），但该路线当前已无法继续作为稳定依赖，因此后续统一迁移为 `wd:MapView` 的瓦片化实现。
+
 ## 1. 简介
 
 `wd:MapView` 是一个面向 WPF 桌面端的地图控件，适合在企业应用中展示：
@@ -178,9 +180,215 @@ var pushpin = new Pushpin
 </wd:MapView.Polygons>
 ```
 
+### 4.4 圆形和矩形
+
+```xml
+<wd:MapView.Circles>
+    <wd:MapCircle
+        CenterLatitude="39.912"
+        CenterLongitude="116.205"
+        RadiusMeters="1200"
+        Fill="#33EF4444"
+        Stroke="#FFEF4444"
+        StrokeThickness="2" />
+</wd:MapView.Circles>
+
+<wd:MapView.Rectangles>
+    <wd:MapRectangle
+        MinLatitude="39.902"
+        MinLongitude="116.248"
+        MaxLatitude="39.936"
+        MaxLongitude="116.288"
+        Fill="#334F46E5"
+        Stroke="#FF4F46E5"
+        StrokeThickness="2" />
+</wd:MapView.Rectangles>
+```
+
+`MapCircle` 和 `MapRectangle` 内部按多边形路径渲染，并已接入 `MapFeatureClicked` 命中回传。
+
+### 4.5 线段闭合与 XAML 写法注意事项
+
+`MapPolyline` 支持显式闭合：
+
+```xml
+<wd:MapPolyline
+    IsClosed="True"
+    Stroke="#FFF97316"
+    StrokeThickness="3">
+    <wd:MapPolyline.Points>
+        <wd:MapLocation Latitude="39.918694" Longitude="116.148180" />
+        <wd:MapLocation Latitude="39.920537" Longitude="116.156420" />
+        <wd:MapLocation Latitude="39.918694" Longitude="116.148180" />
+    </wd:MapPolyline.Points>
+</wd:MapPolyline>
+```
+
+默认值为 `false`，这意味着地图控件会按普通开放折线渲染；只有在 `IsClosed="True"` 时才会自动补回首点。这个行为通常适合区域边界、闭合路径、路线封口等场景。
+
+另外，`MapView` 的默认内容属性是 `InlinePushpins`，因此直接写在 `<wd:MapView>...</wd:MapView>` 里的普通子元素，会被当成内联推针。为了避免解析冲突，建议把 `MapView.Polylines`、`MapView.Polygons` 和直接的 `Pushpin` 子项分开写，不要混合插入：
+
+```xml
+<wd:MapView ...>
+    <wd:MapView.Polylines>
+        ...
+    </wd:MapView.Polylines>
+
+    <wd:MapView.Polygons>
+        ...
+    </wd:MapView.Polygons>
+
+    <wd:Pushpin ... />
+    <wd:Pushpin ... />
+</wd:MapView>
+```
+
+也就是说：集合型属性元素和普通 `Pushpin` 子项最好分组放置，而不要在中间交叉混用。
+
 ---
 
-## 5. 图层使用方式
+## 5. 点击事件与命令
+
+MapView 提供了地图点击的统一入口：
+
+- `MapClicked` 路由事件
+- `MapClickCommand` 命令
+
+```xml
+<wd:MapView
+    x:Name="DemoMap"
+    MapClicked="DemoMap_MapClicked"
+    MapClickCommand="{Binding MapClickCommand}" />
+```
+
+事件参数对象是 `MapClickEventArgs`，其中包含：
+
+- `Latitude`
+- `Longitude`
+- `ScreenX`
+- `ScreenY`
+- `IsEmptyAreaClick`
+- `ClickedPushpin`
+
+示例：
+
+```csharp
+private void DemoMap_MapClicked(object sender, RoutedEventArgs e)
+{
+    var args = e as MapClickEventArgs;
+    if (args == null)
+    {
+        return;
+    }
+
+    var lat = args.Latitude;
+    var lon = args.Longitude;
+    var isEmpty = args.IsEmptyAreaClick;
+}
+```
+
+命令绑定也同样接收 `MapClickEventArgs`，适合在 MVVM 场景中把点击位置转成业务逻辑：
+
+```csharp
+public ICommand MapClickCommand { get; }
+
+public MainViewModel()
+{
+    MapClickCommand = new RelayCommand<MapClickEventArgs>(args =>
+    {
+        if (args == null)
+        {
+            return;
+        }
+
+        // 处理点击坐标
+    });
+}
+```
+
+> 这类事件适合放在 MapView 层处理，而不是在业务页里反复手工计算屏幕坐标到经纬度。这样可以降低样例代码重复，也更符合控件职责边界。
+
+### 5.1 要素点击事件与命令（Pushpin / Polyline / Polygon）
+
+从当前版本开始，MapView 还提供了“要素级”的点击入口：
+
+- `MapFeatureClicked` 路由事件
+- `MapFeatureClickCommand` 命令
+
+```xml
+<wd:MapView
+    x:Name="DemoMap"
+    MapFeatureClicked="DemoMap_MapFeatureClicked"
+    MapFeatureClickCommand="{Binding MapFeatureClickCommand}" />
+```
+
+事件参数为 `MapFeatureClickEventArgs`，包含：
+
+- `FeatureType`（`None` / `Pushpin` / `Polyline` / `Polygon`）
+- `ClickedPushpin`
+- `ClickedPolyline`
+- `ClickedPolygon`
+- `Latitude`
+- `Longitude`
+- `ScreenX`
+- `ScreenY`
+
+示例：
+
+```csharp
+private void DemoMap_MapFeatureClicked(object sender, RoutedEventArgs e)
+{
+    var args = e as MapFeatureClickEventArgs;
+    if (args == null)
+    {
+        return;
+    }
+
+    if (args.FeatureType == MapFeatureType.Pushpin && args.ClickedPushpin != null)
+    {
+        // 点位点击
+    }
+    else if (args.FeatureType == MapFeatureType.Polyline && args.ClickedPolyline != null)
+    {
+        // 折线点击
+    }
+    else if (args.FeatureType == MapFeatureType.Polygon && args.ClickedPolygon != null)
+    {
+        // 面点击
+    }
+}
+```
+
+MVVM 命令写法：
+
+```csharp
+public ICommand MapFeatureClickCommand { get; }
+
+public MainViewModel()
+{
+    MapFeatureClickCommand = new RelayCommand<MapFeatureClickEventArgs>(args =>
+    {
+        if (args == null)
+        {
+            return;
+        }
+
+        // 根据 FeatureType 打开不同业务面板
+    });
+}
+```
+
+行为说明：
+
+- 一次点击最多命中一个要素（用于避免重叠对象同时弹出多个面板）。
+- 如果你同时订阅了 `MapFeatureClicked` 和 `MapClicked`，同一次点击可能会收到两次回调：
+  - 一次是要素点击（`MapFeatureClicked`）
+  - 一次是地图点击（`MapClicked`）
+- `MapClicked.IsEmptyAreaClick` 在命中任意要素（点/线/面）时为 `false`。
+
+---
+
+## 6. 图层使用方式
 
 MapView 支持多个图层，业务上通常分成以下几类：
 
@@ -221,17 +429,28 @@ var layer = new MapPushpinLayer
 {
     Name = "ClusterLayer",
     EnableClustering = true,
-    ClusterRadius = 35,
-    ClusterMinimumCount = 2
+    Pushpins = new ObservableCollection<Pushpin>()
 };
+
+mapView.PushpinLayers.Add(layer);
+```
+
+当前实现中，聚合开关在 `MapPushpinLayer` 上，而聚合样式和阈值配置在 `MapView` 上：
+
+```csharp
+mapView.ClusterRadius = 35;
+mapView.ClusterMinimumCount = 2;
+mapView.ClusterTemplate = (DataTemplate)Application.Current.FindResource("ClusterTemplate");
 ```
 
 相关配置常见包括：
 
-- `EnableClustering`
-- `ClusterRadius`
-- `ClusterMinimumCount`
-- `ClusterTemplate`
+- `MapPushpinLayer.EnableClustering`
+- `MapView.ClusterRadius`
+- `MapView.ClusterMinimumCount`
+- `MapView.ClusterTemplate`
+
+> `ClusterTemplate` 不是 `MapPushpinLayer` 的属性，而是 `MapView` 的属性。
 
 如果没有自定义聚合模板，可以提供默认样式兜底。
 
@@ -267,7 +486,11 @@ var car = new Pushpin
     Template = (DataTemplate)Application.Current.FindResource("CarPushpinTemplate"),
     Tag = 90
 };
+
+mapView.Pushpins.Add(car);
 ```
+
+如果希望所有点都走同一套默认样式，可以直接设置 `mapView.PushpinTemplate`。
 
 ### 6.2 自定义聚合模板
 
@@ -281,7 +504,7 @@ var car = new Pushpin
 ```
 
 ```csharp
-layer.ClusterTemplate = (DataTemplate)Application.Current.FindResource("ClusterTemplate");
+mapView.ClusterTemplate = (DataTemplate)Application.Current.FindResource("ClusterTemplate");
 ```
 
 这让你可以用业务数据直接决定聚合节点样式，而不必绑定死在默认渲染。
@@ -340,6 +563,10 @@ private static double CalculateHeading(PushpinModel from, PushpinModel to)
 申请地址：
 
 https://oauth.tianditu.gov.cn/login?service=https%3A%2F%2Fcloudcenter.tianditu.gov.cn%2Fapi%2Fsvc%2Flogin%3Furl%3Dhttps%25253A%25252F%25252Fcloudcenter.tianditu.gov.cn%25252Fcenter%25252Fdevelopment%25252FmyApp
+
+API 文档：
+
+[天地图API](http://lbs.tianditu.gov.cn/server/MapService.html)
 
 推荐做法：
 

@@ -1,27 +1,29 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
 using System.Windows.Media;
 using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
-    public class MapPolygon : ObservableObject
+    public class MapRectangle : ObservableObject
     {
         private bool _isVisible;
-        private ObservableCollection<MapLocation> _points;
+        private double _minLatitude;
+        private double _minLongitude;
+        private double _maxLatitude;
+        private double _maxLongitude;
         private Brush _fill;
         private Brush _stroke;
         private double _strokeThickness;
         private double _opacity;
         private int _shapeZIndex;
 
-        public MapPolygon()
+        public MapRectangle()
         {
             _isVisible = true;
-            _points = new ObservableCollection<MapLocation>();
-            _fill = new SolidColorBrush(Color.FromArgb(0x55, 0x22, 0xC5, 0x5E));
+            _fill = new SolidColorBrush(Color.FromArgb(0x44, 0x16, 0xA3, 0x4A));
             _stroke = new SolidColorBrush(Color.FromRgb(0x16, 0xA3, 0x4A));
             _strokeThickness = 2d;
-            _opacity = 0.8d;
+            _opacity = 0.85d;
             _shapeZIndex = 0;
         }
 
@@ -31,14 +33,28 @@ namespace WPFDevelopers.Controls
             set { SetProperty(ref _isVisible, value, nameof(IsVisible)); }
         }
 
-        public ObservableCollection<MapLocation> Points
+        public double MinLatitude
         {
-            get { return _points; }
-            set
-            {
-                var next = value ?? new ObservableCollection<MapLocation>();
-                SetProperty(ref _points, next, nameof(Points));
-            }
+            get { return _minLatitude; }
+            set { SetProperty(ref _minLatitude, ClampLatitude(value), nameof(MinLatitude)); }
+        }
+
+        public double MinLongitude
+        {
+            get { return _minLongitude; }
+            set { SetProperty(ref _minLongitude, NormalizeLongitude(value), nameof(MinLongitude)); }
+        }
+
+        public double MaxLatitude
+        {
+            get { return _maxLatitude; }
+            set { SetProperty(ref _maxLatitude, ClampLatitude(value), nameof(MaxLatitude)); }
+        }
+
+        public double MaxLongitude
+        {
+            get { return _maxLongitude; }
+            set { SetProperty(ref _maxLongitude, NormalizeLongitude(value), nameof(MaxLongitude)); }
         }
 
         public Brush Fill
@@ -73,6 +89,27 @@ namespace WPFDevelopers.Controls
         {
             get { return _shapeZIndex; }
             set { SetProperty(ref _shapeZIndex, value, nameof(ShapeZIndex)); }
+        }
+
+        private static double ClampLatitude(double latitude)
+        {
+            return latitude < -85 ? -85 : (latitude > 85 ? 85 : latitude);
+        }
+
+        private static double NormalizeLongitude(double longitude)
+        {
+            var lon = longitude;
+            while (lon < -180)
+            {
+                lon += 360;
+            }
+
+            while (lon > 180)
+            {
+                lon -= 360;
+            }
+
+            return lon;
         }
     }
 }

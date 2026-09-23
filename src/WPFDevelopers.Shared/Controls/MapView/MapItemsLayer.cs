@@ -268,6 +268,9 @@ namespace WPFDevelopers.Controls
         {
             Children.Clear();
 
+            var drawItems = new List<Tuple<int, int, bool, MapPolygonLayoutInfo, MapPolylineLayoutInfo>>();
+            var sequence = 0;
+
             if (polygons != null)
             {
                 for (var i = 0; i < polygons.Count; i++)
@@ -278,6 +281,36 @@ namespace WPFDevelopers.Controls
                         continue;
                     }
 
+                    drawItems.Add(Tuple.Create(polygonLayout.ShapeZIndex, sequence++, true, polygonLayout, (MapPolylineLayoutInfo)null));
+                }
+            }
+
+            if (polylines != null)
+            {
+                for (var i = 0; i < polylines.Count; i++)
+                {
+                    var lineLayout = polylines[i];
+                    if (lineLayout?.Polyline == null || lineLayout.Points == null || lineLayout.Points.Count < 2)
+                    {
+                        continue;
+                    }
+
+                    drawItems.Add(Tuple.Create(lineLayout.ShapeZIndex, sequence++, false, (MapPolygonLayoutInfo)null, lineLayout));
+                }
+            }
+
+            drawItems.Sort((a, b) =>
+            {
+                var zCompare = a.Item1.CompareTo(b.Item1);
+                return zCompare != 0 ? zCompare : a.Item2.CompareTo(b.Item2);
+            });
+
+            for (var i = 0; i < drawItems.Count; i++)
+            {
+                var drawItem = drawItems[i];
+                if (drawItem.Item3)
+                {
+                    var polygonLayout = drawItem.Item4;
                     var polygon = new Polygon
                     {
                         IsHitTestVisible = false,
@@ -292,18 +325,9 @@ namespace WPFDevelopers.Controls
                     SetPositionOrigin(polygon, new Point(0, 0));
                     Children.Add(polygon);
                 }
-            }
-
-            if (polylines != null)
-            {
-                for (var i = 0; i < polylines.Count; i++)
+                else
                 {
-                    var lineLayout = polylines[i];
-                    if (lineLayout?.Polyline == null || lineLayout.Points == null || lineLayout.Points.Count < 2)
-                    {
-                        continue;
-                    }
-
+                    var lineLayout = drawItem.Item5;
                     var polyline = new Polyline
                     {
                         IsHitTestVisible = false,
