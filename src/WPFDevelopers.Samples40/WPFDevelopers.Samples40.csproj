@@ -10,9 +10,8 @@
 			<Install>false</Install>
 		</BootstrapperPackage>
 	</ItemGroup>
-	
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="0.2.0" />
+	  <PackageReference Include="WPFDevelopers" Version="0.3.0-preview" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
