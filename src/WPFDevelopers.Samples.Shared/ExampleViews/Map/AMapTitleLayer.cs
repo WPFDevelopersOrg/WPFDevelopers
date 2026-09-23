@@ -1,39 +1,26 @@
-﻿using Microsoft.Maps.MapControl.WPF;
-using System;
+﻿using WPFDevelopers.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
-    public class AMapTitleLayer : MapTileLayer
+    public sealed class AMapTitleLayer : MapTileLayer
     {
-        private AMapTileSource tileSource;
+        private readonly AMapTileSource _tileSource;
+
         public AMapTitleLayer()
         {
-            tileSource = new AMapTileSource();
-            TileSource = tileSource;
+            _tileSource = new AMapTileSource();
+            TileSource = _tileSource;
         }
 
-        public string UriFormat
+        public int Style
         {
-            get { return TileSource.UriFormat; }
-            set { TileSource.UriFormat = value; }
+            get { return _tileSource.Style; }
+            set { _tileSource.Style = value; }
         }
+
         public void UpdateTileSourceStyle(int style)
         {
-            tileSource.UpdateStyle(style);
-        }
-    }
-    public class AMapTileSource : TileSource
-    {
-        private int style = 7;
-        public override Uri GetUri(int x, int y, int zoomLevel)
-        {
-            string url = string.Format("http://wprd01.is.autonavi.com/appmaptile?x={0}&y={1}&z={2}&lang=zh_cn&size=1&scl=1&style={3}", x, y, zoomLevel, style);
-            return new Uri(url, UriKind.Absolute);
-        }
-        public void UpdateStyle(int newStyle)
-        {
-            if (newStyle == style) return;
-            style = newStyle;
+            _tileSource.Style = style;
         }
     }
 }

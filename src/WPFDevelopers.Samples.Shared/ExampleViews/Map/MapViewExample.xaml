@@ -1,0 +1,466 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.MapViewExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="ToolTip">
+                    <Setter Property="Foreground" Value="#FF0F172A" />
+                    <Setter Property="Background" Value="#FDFDFE" />
+                    <Setter Property="BorderBrush" Value="#FFD8DEE9" />
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Padding" Value="14,9" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="HasDropShadow" Value="False" />
+                    <Setter Property="Placement" Value="Mouse" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ToolTip">
+                                <Grid Margin="10">
+                                    <Border
+                                        Padding="{TemplateBinding Padding}"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="8">
+                                        <Border.Effect>
+                                            <DropShadowEffect
+                                                BlurRadius="14"
+                                                Direction="270"
+                                                Opacity="0.18"
+                                                ShadowDepth="2"
+                                                Color="#330F172A" />
+                                        </Border.Effect>
+                                        <ContentPresenter
+                                            Content="{TemplateBinding Content}"
+                                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                                            RecognizesAccessKey="True" />
+                                    </Border>
+                                </Grid>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}}" Value="">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Storyboard
+                    x:Key="AnimateRound"
+                    RepeatBehavior="Forever"
+                    Timeline.DesiredFrameRate="24">
+                    <DoubleAnimation
+                        Storyboard.TargetName="Scale"
+                        Storyboard.TargetProperty="ScaleX"
+                        From="0.9"
+                        To="1.5"
+                        Duration="0:0:2.2" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="Scale"
+                        Storyboard.TargetProperty="ScaleY"
+                        From="0.9"
+                        To="1.5"
+                        Duration="0:0:2.2" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="AlarmEllipse"
+                        Storyboard.TargetProperty="Opacity"
+                        From="0.6"
+                        To="0"
+                        Duration="0:0:2.2" />
+                </Storyboard>
+                <DataTemplate x:Key="AlarmPushpinTemplate">
+                    <Grid Width="60" Height="60">
+                        <Ellipse
+                            x:Name="AlarmEllipse"
+                            Width="40"
+                            Height="40"
+                            Fill="Red"
+                            RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.OpacityMask>
+                                <RadialGradientBrush>
+                                    <GradientStop Offset="0" Color="Transparent" />
+                                    <GradientStop Offset="1" Color="Black" />
+                                </RadialGradientBrush>
+                            </Ellipse.OpacityMask>
+                            <Ellipse.RenderTransform>
+                                <ScaleTransform x:Name="Scale" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <Viewbox
+                            Width="30"
+                            Height="30"
+                            Margin="20,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top">
+                            <Path Data="{StaticResource WD.FlagGeometry}" Fill="{StaticResource WD.WarningBrush}" />
+                        </Viewbox>
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard Storyboard="{StaticResource AnimateRound}" />
+                            </EventTrigger>
+                        </Grid.Triggers>
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate x:Key="SichuanPushpinTemplate">
+                    <Grid>
+                        <wd:SvgViewer
+                            Width="40"
+                            Height="40"
+                            Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/A.svg" />
+                        <TextBlock
+                            Margin="0,0,0,13"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="Green"
+                            Text="A" />
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate x:Key="JindongPushpinTemplate">
+                    <Grid>
+                        <wd:SvgViewer
+                            Width="40"
+                            Height="40"
+                            Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/B.svg" />
+                        <TextBlock
+                            Margin="0,0,0,13"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="Red"
+                            Text="B" />
+                    </Grid>
+                </DataTemplate>
+                <DataTemplate x:Key="CarPushpinTemplate">
+                    <Grid RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <RotateTransform Angle="{Binding Tag}" />
+                        </Grid.RenderTransform>
+                        <wd:SvgViewer
+                            Width="40"
+                            Height="40"
+                            Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Car.svg" />
+                    </Grid>
+                </DataTemplate>
+            </Grid.Resources>
+            <wd:MapView
+                x:Name="mapView"
+                CenterLatitude="39.9132801985722"
+                CenterLongitude="116.392009995601"
+                MapFeatureClicked="MapView_MapFeatureClicked"
+                TileStyle="7"
+                ZoomControlPosition="TopLeft"
+                ZoomLevel="5">
+                <wd:MapView.Polylines>
+                    <wd:MapPolyline
+                        Opacity="0.9"
+                        Stroke="#FF22C55E"
+                        StrokeThickness="3">
+                        <wd:MapPolyline.Points>
+                            <wd:MapLocation Latitude="39.785633" Longitude="116.557292" />
+                            <wd:MapLocation Latitude="36.6797276003243" Longitude="118.495410536117" />
+                            <wd:MapLocation Latitude="31.915951" Longitude="107.240750" />
+                        </wd:MapPolyline.Points>
+                    </wd:MapPolyline>
+                </wd:MapView.Polylines>
+                <wd:MapView.Circles>
+                    <wd:MapCircle
+                        x:Name="DemoCircle"
+                        CenterLatitude="39.9042"
+                        CenterLongitude="116.4074"
+                        Fill="#33EF4444"
+                        RadiusMeters="300000"
+                        ShapeZIndex="10"
+                        Stroke="#FFEF4444"
+                        StrokeThickness="2" />
+                </wd:MapView.Circles>
+                <wd:Pushpin
+                    Title="Shandong Province"
+                    Location="36.6797276003243,118.495410536117"
+                    Template="{StaticResource AlarmPushpinTemplate}" />
+                <wd:Pushpin
+                    Title="Sichuan Province"
+                    AnchorPoint="0.5,1"
+                    Location="31.915951,107.240750"
+                    Template="{StaticResource SichuanPushpinTemplate}" />
+                <wd:Pushpin
+                    Title="Jindong Province"
+                    AnchorPoint="0.5,1"
+                    Location="39.785633,116.557292"
+                    Template="{StaticResource JindongPushpinTemplate}" />
+                <wd:MapView.Polygons>
+                    <wd:MapPolygon
+                        Fill="#553B82F6"
+                        Opacity="0.8"
+                        Stroke="#FF1D4ED8"
+                        StrokeThickness="2">
+                        <wd:MapPolygon.Points>
+                            <wd:MapLocation Latitude="34.960425" Longitude="107.923137" />
+                            <wd:MapLocation Latitude="34.703700" Longitude="110.245209" />
+                            <wd:MapLocation Latitude="31.832828" Longitude="109.496231" />
+                            <wd:MapLocation Latitude="32.730635" Longitude="106.387506" />
+                        </wd:MapPolygon.Points>
+                    </wd:MapPolygon>
+                </wd:MapView.Polygons>
+            </wd:MapView>
+
+            <DockPanel>
+                <Border
+                    Width="220"
+                    Margin="0,10,0,0"
+                    Padding="10,8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Background="#B3203045"
+                    BorderBrush="#66C6D4FF"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    DockPanel.Dock="Top">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            BlurRadius="18"
+                            Direction="270"
+                            Opacity="0.36"
+                            ShadowDepth="3"
+                            Color="#FF0B1220" />
+                    </Border.Effect>
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="10"
+                            Foreground="#FFBFD3FF"
+                            Text="MAP OVERVIEW" />
+                        <TextBlock
+                            Margin="0,1,0,0"
+                            HorizontalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="SemiBold"
+                            Foreground="#FFF8FAFC"
+                            Text="地图总览" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    Width="240"
+                    Margin="10,12,0,50"
+                    Padding="10"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Stretch"
+                    Background="#B30B1220"
+                    BorderBrush="#66B9C8FF"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    DockPanel.Dock="Left">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            BlurRadius="20"
+                            Direction="270"
+                            Opacity="0.35"
+                            ShadowDepth="3"
+                            Color="#FF020617" />
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel>
+                            <TextBlock
+                                FontSize="12"
+                                Foreground="#FF9CA3AF"
+                                Text="TRACKING DATA" />
+                            <TextBlock
+                                Margin="0,2,0,0"
+                                FontSize="22"
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                Text="数据信息" />
+                        </StackPanel>
+
+                        <ScrollViewer
+                            Grid.Row="1"
+                            Margin="0,10,0,10"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding PushpinArray, RelativeSource={RelativeSource AncestorType=local:MapViewExample}}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            x:Name="PART_Grid"
+                                            Margin="0,0,0,8"
+                                            Padding="8,6"
+                                            Background="#1AFFFFFF"
+                                            BorderBrush="#26FFFFFF"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            MouseLeftButtonDown="PART_Grid_MouseLeftButtonDown"
+                                            Tag="{Binding ID}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Border
+                                                    Width="22"
+                                                    Height="22"
+                                                    VerticalAlignment="Center"
+                                                    Background="#FFFF5A1F"
+                                                    CornerRadius="11">
+                                                    <TextBlock
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="13"
+                                                        FontWeight="Bold"
+                                                        Foreground="White"
+                                                        Text="{Binding ID}" />
+                                                </Border>
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Margin="8,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="18"
+                                                    Foreground="White"
+                                                    Text="{Binding Title}" />
+                                            </Grid>
+                                        </Border>
+                                        <DataTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="PART_Grid" Property="Background" Value="#2EFFFFFF" />
+                                                <Setter TargetName="PART_Grid" Property="BorderBrush" Value="#73BFDBFE" />
+                                            </Trigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
+                        <Button
+                            Grid.Row="2"
+                            Height="42"
+                            Click="BtnCar_Click"
+                            Content="车辆轨迹"
+                            Style="{StaticResource WD.PrimaryButton}" />
+                    </Grid>
+                </Border>
+            </DockPanel>
+            <Border
+                Width="280"
+                Margin="0,10,10,0"
+                Padding="12"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Background="#BF0F172A"
+                BorderBrush="#66FFFFFF"
+                BorderThickness="1"
+                CornerRadius="12">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="20"
+                        Direction="270"
+                        Opacity="0.45"
+                        ShadowDepth="4"
+                        Color="#FF0F172A" />
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock
+                        Margin="2,0,0,10"
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Foreground="#FFD1D5DB"
+                        Text="地图控制" />
+
+                    <Button
+                        Margin="0,0,0,10"
+                        Click="OpenMapViewDemo_Click"
+                        Content="打开功能演示"
+                        Style="{StaticResource WD.PrimaryButton}" />
+
+                    <!--<Border
+                        Padding="10"
+                        Background="#1FFFFFFF"
+                        CornerRadius="8">
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,0,6"
+                                FontSize="12"
+                                Foreground="#FFE5E7EB"
+                                Text="地图源" />
+                            <wd:Segmented
+                                x:Name="MapSourceSegmented"
+                                ItemClick="MapSourceSegmented_ItemClick"
+                                SelectedIndex="1">
+                                <wd:SegmentedItem Content="高德" />
+                                <wd:SegmentedItem Content="天地图" />
+                            </wd:Segmented>
+                        </StackPanel>
+                    </Border>-->
+
+                    <Border
+                        x:Name="MapTokenBorder"
+                        Margin="0,10,0,0"
+                        Padding="10"
+                        Background="#1FFFFFFF"
+                        CornerRadius="8">
+                        <StackPanel>
+                            <TextBlock
+                                x:Name="MapTokenTitle"
+                                Margin="0,0,0,6"
+                                FontSize="12"
+                                Foreground="#FFE5E7EB"
+                                Text="天地图 Token" />
+                            <TextBox
+                                x:Name="MapTokenTextBox"
+                                Height="34"
+                                HorizontalAlignment="Stretch"
+                                wd:ElementHelper.Watermark="请输入 token"
+                                TextChanged="MapTokenTextBox_TextChanged" />
+                        </StackPanel>
+                    </Border>
+
+                    <Border
+                        Margin="0,10,0,0"
+                        Padding="10"
+                        Background="#1FFFFFFF"
+                        CornerRadius="8">
+                        <StackPanel>
+                            <TextBlock
+                                Margin="0,0,0,6"
+                                FontSize="12"
+                                Foreground="#FFE5E7EB"
+                                Text="底图样式" />
+                            <wd:Segmented ItemClick="StyleSegmented_ItemClick" SelectedIndex="1">
+                                <wd:SegmentedItem Content="卫星地图" />
+                                <wd:SegmentedItem Content="标准地图" />
+                                <wd:SegmentedItem Content="主道路名称" />
+                            </wd:Segmented>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Map/MapViewExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Map/MapViewExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Map/PushpinModel.cs"
+                CodeType="CSharp"
+                Haader="Pushpin" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

@@ -14,10 +14,6 @@
 			<SpecificVersion>False</SpecificVersion>
 			<HintPath>..\..\Reference\ICSharpCode.AvalonEdit.dll</HintPath>
 		</Reference>
-		<Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\..\Reference\Microsoft.Maps.MapControl.WPF.dll</HintPath>
-		</Reference>
 		<Reference Include="System.Windows.Interactivity">
 			<HintPath>..\..\Reference\System.Windows.Interactivity.dll</HintPath>
 		</Reference>
@@ -35,9 +31,6 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Fonts\fixedsys.ttf">
 			<Link>Resources\Fonts\fixedsys.ttf</Link>
-		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\AMap\Car2.png">
-			<Link>Resources\Images\AMap\Car2.png</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Images\NavMenu3D\background.png">
 			<Link>Resources\Images\NavMenu3D\background.png</Link>

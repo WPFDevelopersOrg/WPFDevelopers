@@ -1,12 +1,12 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Globalization;
 using System.Resources;
 using System.Threading;
+using WPFDevelopers.Core;
 
 namespace WPFDevelopers
 {
-    public class LanguageManager : INotifyPropertyChanged
+    public class LanguageManager : ObservableObject
     {
         private readonly ResourceManager _resourceManager;
 #pragma warning disable CA1416
@@ -14,17 +14,12 @@ namespace WPFDevelopers
 #pragma warning restore CA1416
         private CultureInfo _currentCulture;
         public static LanguageManager Instance => _lazy.Value;
-        public event PropertyChangedEventHandler PropertyChanged;
         public CultureInfo CurrentCulture
         {
             get => _currentCulture;
             private set
             {
-                if (_currentCulture != value)
-                {
-                    _currentCulture = value;
-                    OnPropertyChanged(nameof(CurrentCulture));
-                }
+                SetProperty(ref _currentCulture, value, nameof(CurrentCulture));
             }
         }
 
@@ -52,10 +47,6 @@ namespace WPFDevelopers
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             CurrentCulture = cultureInfo;
             OnPropertyChanged("Item[]");
-        }
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

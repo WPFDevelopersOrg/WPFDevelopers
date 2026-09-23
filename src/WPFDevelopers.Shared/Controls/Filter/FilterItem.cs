@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
+﻿using WPFDevelopers.Core;
 
 namespace WPFDevelopers.Controls
 {
-    public class FilterItem : INotifyPropertyChanged
+    public class FilterItem : ObservableObject
     {
         private bool _isChecked = true;
         public object Value { get; set; }
@@ -12,15 +12,8 @@ namespace WPFDevelopers.Controls
             get => _isChecked;
             set
             {
-                if (_isChecked != value)
-                {
-                    _isChecked = value;
-                    PropertyChanged?.Invoke(this,
-                        new PropertyChangedEventArgs(nameof(IsChecked)));
-                }
+                SetProperty(ref _isChecked, value, nameof(IsChecked));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

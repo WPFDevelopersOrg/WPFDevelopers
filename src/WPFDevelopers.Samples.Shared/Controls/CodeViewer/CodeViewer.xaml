@@ -4,11 +4,12 @@
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls">
     <Style TargetType="{x:Type controls:CodeViewer}">
         <Setter Property="FontSize" Value="{StaticResource WD.PrimaryFontSize}" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controls:CodeViewer}">
                     <Grid>
-                        <TabControl x:Name="PART_TabControl">
+                        <TabControl x:Name="PART_TabControl" Padding="{TemplateBinding Padding}">
                             <TabControl.Resources>
                                 <Style TargetType="TabPanel">
                                     <Setter Property="HorizontalAlignment" Value="Right" />

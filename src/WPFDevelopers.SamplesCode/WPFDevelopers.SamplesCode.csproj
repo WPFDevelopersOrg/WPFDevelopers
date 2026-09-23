@@ -65,7 +65,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\LogoAnimationExample.xaml.cs" Link="ExampleViews\LogoAnimationExample.xaml.cs" DependentUpon="LogoAnimationExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MainWindow.xaml.cs" Link="ExampleViews\MainWindow.xaml.cs" DependentUpon="MainWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\AMapTitleLayer.cs" Link="ExampleViews\Map\AMapTitleLayer.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\BingAMapExample.xaml.cs" Link="ExampleViews\Map\BingAMapExample.xaml.cs" DependentUpon="BingAMapExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\MapViewExample.xaml.cs" Link="ExampleViews\Map\MapViewExample.xaml.cs" DependentUpon="MapViewExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\MapViewFeaturesWindow.xaml.cs" Link="ExampleViews\Map\MapViewFeaturesWindow.xaml.cs" DependentUpon="MapViewFeaturesWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\PushpinModel.cs" Link="ExampleViews\Map\PushpinModel.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumberCard\NumberCardControl.xaml.cs" Link="ExampleViews\NumberCard\NumberCardControl.xaml.cs" DependentUpon="NumberCardControl.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumberCard\NumberCardExample.xaml.cs" Link="ExampleViews\NumberCard\NumberCardExample.xaml.cs" DependentUpon="NumberCardExample.xaml" />
@@ -354,8 +355,11 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MainWindow.xaml">
 			<Link>ExampleViews\MainWindow.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\BingAMapExample.xaml">
-			<Link>ExampleViews\Map\BingAMapExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\MapViewExample.xaml">
+			<Link>ExampleViews\Map\MapViewExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\MapViewFeaturesWindow.xaml">
+			<Link>ExampleViews\Map\MapViewFeaturesWindow.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumberCard\NumberCardControl.xaml">
 			<Link>ExampleViews\NumberCard\NumberCardControl.xaml</Link>

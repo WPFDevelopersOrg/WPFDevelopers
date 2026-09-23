@@ -287,9 +287,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.AnimationAudio:
                     ControlPanel = new AnimationAudioExample();
                     break;
-                case MenuEnum.AMap:
-                    ControlPanel = new BingAMapExample();
-                    break;
+
                 case MenuEnum.TransformLayout:
                     ControlPanel = new TransformLayoutExample();
                     break;
@@ -548,6 +546,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.MarkdownViewer:
                     ControlPanel = new MarkdownViewerExample();
+                    break;
+                case MenuEnum.MapView:
+                    ControlPanel = new MapViewExample();
                     break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:

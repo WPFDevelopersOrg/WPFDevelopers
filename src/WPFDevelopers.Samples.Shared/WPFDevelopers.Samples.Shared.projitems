@@ -317,12 +317,20 @@
       <SubType>Code</SubType>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\AMapTileSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\AMapTitleLayer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\BingAMapExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\MapViewFeaturesWindow.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>BingAMapExample.xaml</DependentUpon>
+      <DependentUpon>MapViewFeaturesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\MapViewExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MapViewExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\OSMTileSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\PushpinModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\TencentTileSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Map\TiandituTileSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MaskExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>MaskExample.xaml</DependentUpon>
@@ -1003,7 +1011,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Map\BingAMapExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Map\MapViewFeaturesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Map\MapViewExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
