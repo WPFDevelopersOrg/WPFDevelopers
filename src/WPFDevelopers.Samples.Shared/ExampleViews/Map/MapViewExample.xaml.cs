@@ -389,5 +389,19 @@ namespace WPFDevelopers.Samples.ExampleViews
             window.Show();
         }
 
+        private void MapView_MapFeatureClicked(object sender, RoutedEventArgs e)
+        {
+            var featureArgs = e as MapFeatureClickEventArgs;
+            if (featureArgs == null)
+            {
+                return;
+            }
+
+            if (featureArgs.FeatureType == MapFeatureType.Circle && featureArgs.ClickedCircle != null)
+            {
+                Toast.Push("此为空域管制区",ToastImage.Warning,true);
+            }
+        }
+
     }
 }

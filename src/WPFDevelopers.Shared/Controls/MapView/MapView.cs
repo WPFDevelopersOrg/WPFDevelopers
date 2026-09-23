@@ -71,6 +71,7 @@ namespace WPFDevelopers.Controls
         private const int AbsoluteMaxZoom = 22;
         private const int DefaultMinZoom = 4;
         private const int DefaultMaxZoom = 19;
+        private const double MercatorMaxLatitude = 85.05112878d;
         private const string BaseTileCachePrefix = "B:";
         private const string AnnotationTileCachePrefix = "A:";
         private const double EarthRadiusMeters = 6378137d;
@@ -150,6 +151,8 @@ namespace WPFDevelopers.Controls
             PushpinLayers = new ObservableCollection<MapPushpinLayer>();
             Polylines = new ObservableCollection<MapPolyline>();
             Polygons = new ObservableCollection<MapPolygon>();
+            Circles = new ObservableCollection<MapCircle>();
+            Rectangles = new ObservableCollection<MapRectangle>();
             InlinePushpins = new ObservableCollection<Pushpin>();
             _tileSource = CreateCompatibilityTileSource();
             _usingTemplateCompatibilitySource = true;
@@ -235,6 +238,26 @@ namespace WPFDevelopers.Controls
         public static readonly DependencyProperty PolygonsProperty =
             DependencyProperty.Register(nameof(Polygons), typeof(ObservableCollection<MapPolygon>), typeof(MapView),
                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnPolygonsChanged));
+
+        public ObservableCollection<MapCircle> Circles
+        {
+            get { return (ObservableCollection<MapCircle>)GetValue(CirclesProperty); }
+            set { SetValue(CirclesProperty, value); }
+        }
+
+        public static readonly DependencyProperty CirclesProperty =
+            DependencyProperty.Register(nameof(Circles), typeof(ObservableCollection<MapCircle>), typeof(MapView),
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnCirclesChanged));
+
+        public ObservableCollection<MapRectangle> Rectangles
+        {
+            get { return (ObservableCollection<MapRectangle>)GetValue(RectanglesProperty); }
+            set { SetValue(RectanglesProperty, value); }
+        }
+
+        public static readonly DependencyProperty RectanglesProperty =
+            DependencyProperty.Register(nameof(Rectangles), typeof(ObservableCollection<MapRectangle>), typeof(MapView),
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender, OnRectanglesChanged));
 
         public double CenterLatitude
         {
@@ -1076,11 +1099,35 @@ namespace WPFDevelopers.Controls
         {
             base.OnMouseWheel(e);
 
-            Focus();
-            var zoomDelta = e.Delta > 0 ? 1 : (e.Delta < 0 ? -1 : 0);
-            if (zoomDelta == 0)
+            if (HandleMouseWheelZoom(e.GetPosition(this), e.Delta))
+            {
+                e.Handled = true;
+            }
+        }
+
+        protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
+        {
+            base.OnPreviewMouseWheel(e);
+
+            // In many sample pages MapView is hosted in scrollable containers; preview handling prevents wheel events from being swallowed.
+            if (e.Handled || !IsMouseOver)
             {
                 return;
+            }
+
+            if (HandleMouseWheelZoom(e.GetPosition(this), e.Delta))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private bool HandleMouseWheelZoom(Point mousePosition, int wheelDelta)
+        {
+            Focus();
+            var zoomDelta = wheelDelta > 0 ? 1 : (wheelDelta < 0 ? -1 : 0);
+            if (zoomDelta == 0)
+            {
+                return false;
             }
 
             var oldZoom = (int)CoerceZoom(this, ZoomLevel);
@@ -1089,10 +1136,9 @@ namespace WPFDevelopers.Controls
             var newZoom = Math.Max(minZoom, Math.Min(maxZoom, oldZoom + zoomDelta));
             if (newZoom == oldZoom || ActualWidth <= 0 || ActualHeight <= 0)
             {
-                return;
+                return false;
             }
 
-            var mousePosition = e.GetPosition(this);
             var oldCenterPixel = ToPixel(CenterLatitude, CenterLongitude, oldZoom);
 
             var worldPixelX = oldCenterPixel.X - (ActualWidth / 2.0) + mousePosition.X;
@@ -1108,8 +1154,7 @@ namespace WPFDevelopers.Controls
             CenterLatitude = newCenterLatLon.X;
             CenterLongitude = newCenterLatLon.Y;
             RefreshOverlay();
-
-            e.Handled = true;
+            return true;
         }
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
@@ -1285,7 +1330,7 @@ namespace WPFDevelopers.Controls
         private static object CoerceLatitude(DependencyObject d, object baseValue)
         {
             var value = (double)baseValue;
-            return Math.Max(-85.05112878, Math.Min(85.05112878, value));
+            return Math.Max(-MercatorMaxLatitude, Math.Min(MercatorMaxLatitude, value));
         }
 
         private static object CoerceLongitude(DependencyObject d, object baseValue)
@@ -1506,6 +1551,52 @@ namespace WPFDevelopers.Controls
             control.RefreshOverlay();
         }
 
+        private static void OnCirclesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as MapView;
+            if (control == null)
+            {
+                return;
+            }
+
+            if (e.OldValue is ObservableCollection<MapCircle> oldCollection)
+            {
+                oldCollection.CollectionChanged -= control.Circles_CollectionChanged;
+                control.UnsubscribeCircles(oldCollection);
+            }
+
+            if (e.NewValue is ObservableCollection<MapCircle> newCollection)
+            {
+                newCollection.CollectionChanged += control.Circles_CollectionChanged;
+                control.SubscribeCircles(newCollection);
+            }
+
+            control.RefreshOverlay();
+        }
+
+        private static void OnRectanglesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as MapView;
+            if (control == null)
+            {
+                return;
+            }
+
+            if (e.OldValue is ObservableCollection<MapRectangle> oldCollection)
+            {
+                oldCollection.CollectionChanged -= control.Rectangles_CollectionChanged;
+                control.UnsubscribeRectangles(oldCollection);
+            }
+
+            if (e.NewValue is ObservableCollection<MapRectangle> newCollection)
+            {
+                newCollection.CollectionChanged += control.Rectangles_CollectionChanged;
+                control.SubscribeRectangles(newCollection);
+            }
+
+            control.RefreshOverlay();
+        }
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             if (Pushpins != null)
@@ -1535,6 +1626,20 @@ namespace WPFDevelopers.Controls
                 SubscribePolygons(Polygons);
             }
 
+            if (Circles != null)
+            {
+                Circles.CollectionChanged -= Circles_CollectionChanged;
+                Circles.CollectionChanged += Circles_CollectionChanged;
+                SubscribeCircles(Circles);
+            }
+
+            if (Rectangles != null)
+            {
+                Rectangles.CollectionChanged -= Rectangles_CollectionChanged;
+                Rectangles.CollectionChanged += Rectangles_CollectionChanged;
+                SubscribeRectangles(Rectangles);
+            }
+
             RefreshOverlay();
         }
 
@@ -1561,6 +1666,18 @@ namespace WPFDevelopers.Controls
             {
                 Polygons.CollectionChanged -= Polygons_CollectionChanged;
                 UnsubscribePolygons(Polygons);
+            }
+
+            if (Circles != null)
+            {
+                Circles.CollectionChanged -= Circles_CollectionChanged;
+                UnsubscribeCircles(Circles);
+            }
+
+            if (Rectangles != null)
+            {
+                Rectangles.CollectionChanged -= Rectangles_CollectionChanged;
+                UnsubscribeRectangles(Rectangles);
             }
 
             _renderThrottleTimer.Stop();
@@ -1838,6 +1955,74 @@ namespace WPFDevelopers.Controls
             RefreshOverlay();
         }
 
+        private void Circles_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems != null)
+            {
+                for (var i = 0; i < e.OldItems.Count; i++)
+                {
+                    var circle = e.OldItems[i] as MapCircle;
+                    if (circle == null)
+                    {
+                        continue;
+                    }
+
+                    circle.PropertyChanged -= Circle_PropertyChanged;
+                }
+            }
+
+            if (e.NewItems != null)
+            {
+                for (var i = 0; i < e.NewItems.Count; i++)
+                {
+                    var circle = e.NewItems[i] as MapCircle;
+                    if (circle == null)
+                    {
+                        continue;
+                    }
+
+                    circle.PropertyChanged -= Circle_PropertyChanged;
+                    circle.PropertyChanged += Circle_PropertyChanged;
+                }
+            }
+
+            RefreshOverlay();
+        }
+
+        private void Rectangles_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems != null)
+            {
+                for (var i = 0; i < e.OldItems.Count; i++)
+                {
+                    var rectangle = e.OldItems[i] as MapRectangle;
+                    if (rectangle == null)
+                    {
+                        continue;
+                    }
+
+                    rectangle.PropertyChanged -= Rectangle_PropertyChanged;
+                }
+            }
+
+            if (e.NewItems != null)
+            {
+                for (var i = 0; i < e.NewItems.Count; i++)
+                {
+                    var rectangle = e.NewItems[i] as MapRectangle;
+                    if (rectangle == null)
+                    {
+                        continue;
+                    }
+
+                    rectangle.PropertyChanged -= Rectangle_PropertyChanged;
+                    rectangle.PropertyChanged += Rectangle_PropertyChanged;
+                }
+            }
+
+            RefreshOverlay();
+        }
+
         private void Polyline_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (string.Equals(e.PropertyName, nameof(MapPolyline.Points), StringComparison.Ordinal))
@@ -1863,6 +2048,16 @@ namespace WPFDevelopers.Controls
                 }
             }
 
+            RefreshOverlay();
+        }
+
+        private void Circle_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            RefreshOverlay();
+        }
+
+        private void Rectangle_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
             RefreshOverlay();
         }
 
@@ -2171,6 +2366,80 @@ namespace WPFDevelopers.Controls
             }
         }
 
+        private void SubscribeCircles(IEnumerable<MapCircle> circles)
+        {
+            if (circles == null)
+            {
+                return;
+            }
+
+            foreach (var circle in circles)
+            {
+                if (circle == null)
+                {
+                    continue;
+                }
+
+                circle.PropertyChanged -= Circle_PropertyChanged;
+                circle.PropertyChanged += Circle_PropertyChanged;
+            }
+        }
+
+        private void UnsubscribeCircles(IEnumerable<MapCircle> circles)
+        {
+            if (circles == null)
+            {
+                return;
+            }
+
+            foreach (var circle in circles)
+            {
+                if (circle == null)
+                {
+                    continue;
+                }
+
+                circle.PropertyChanged -= Circle_PropertyChanged;
+            }
+        }
+
+        private void SubscribeRectangles(IEnumerable<MapRectangle> rectangles)
+        {
+            if (rectangles == null)
+            {
+                return;
+            }
+
+            foreach (var rectangle in rectangles)
+            {
+                if (rectangle == null)
+                {
+                    continue;
+                }
+
+                rectangle.PropertyChanged -= Rectangle_PropertyChanged;
+                rectangle.PropertyChanged += Rectangle_PropertyChanged;
+            }
+        }
+
+        private void UnsubscribeRectangles(IEnumerable<MapRectangle> rectangles)
+        {
+            if (rectangles == null)
+            {
+                return;
+            }
+
+            foreach (var rectangle in rectangles)
+            {
+                if (rectangle == null)
+                {
+                    continue;
+                }
+
+                rectangle.PropertyChanged -= Rectangle_PropertyChanged;
+            }
+        }
+
         private void SubscribePolylineLocations(IEnumerable<MapLocation> points)
         {
             if (points == null)
@@ -2264,7 +2533,7 @@ namespace WPFDevelopers.Controls
                 result.Add(polyline);
             }
 
-            return result;
+            return result.OrderBy(x => x.ShapeZIndex).ToList();
         }
 
         private List<MapPolygon> GetActivePolygonsSnapshot()
@@ -2286,7 +2555,125 @@ namespace WPFDevelopers.Controls
                 result.Add(polygon);
             }
 
-            return result;
+            return result.OrderBy(x => x.ShapeZIndex).ToList();
+        }
+
+        private List<MapCircle> GetActiveCirclesSnapshot()
+        {
+            var result = new List<MapCircle>();
+            if (Circles == null)
+            {
+                return result;
+            }
+
+            for (var i = 0; i < Circles.Count; i++)
+            {
+                var circle = Circles[i];
+                if (circle == null || !circle.IsVisible || circle.RadiusMeters <= 0)
+                {
+                    continue;
+                }
+
+                result.Add(circle);
+            }
+
+            return result.OrderBy(x => x.ShapeZIndex).ToList();
+        }
+
+        private List<MapRectangle> GetActiveRectanglesSnapshot()
+        {
+            var result = new List<MapRectangle>();
+            if (Rectangles == null)
+            {
+                return result;
+            }
+
+            for (var i = 0; i < Rectangles.Count; i++)
+            {
+                var rectangle = Rectangles[i];
+                if (rectangle == null || !rectangle.IsVisible)
+                {
+                    continue;
+                }
+
+                if (Math.Abs(rectangle.MaxLatitude - rectangle.MinLatitude) < 0.000001 ||
+                    Math.Abs(rectangle.MaxLongitude - rectangle.MinLongitude) < 0.000001)
+                {
+                    continue;
+                }
+
+                result.Add(rectangle);
+            }
+
+            return result.OrderBy(x => x.ShapeZIndex).ToList();
+        }
+
+        private static List<MapLocation> BuildCirclePoints(MapCircle circle)
+        {
+            var points = new List<MapLocation>();
+            if (circle == null || circle.RadiusMeters <= 0)
+            {
+                return points;
+            }
+
+            var latRad = circle.CenterLatitude * Math.PI / 180d;
+            var cosLat = Math.Cos(latRad);
+            if (Math.Abs(cosLat) < 0.000001)
+            {
+                cosLat = 0.000001;
+            }
+
+            var angularDistance = circle.RadiusMeters / EarthRadiusMeters;
+            var deltaLatDeg = angularDistance * 180d / Math.PI;
+            var deltaLonDeg = angularDistance * 180d / Math.PI / cosLat;
+            var segments = Math.Max(12, circle.SegmentCount);
+
+            for (var i = 0; i < segments; i++)
+            {
+                var angle = (2d * Math.PI * i) / segments;
+                var latitude = circle.CenterLatitude + Math.Sin(angle) * deltaLatDeg;
+                var longitude = circle.CenterLongitude + Math.Cos(angle) * deltaLonDeg;
+                points.Add(new MapLocation
+                {
+                    Latitude = latitude,
+                    Longitude = longitude
+                });
+            }
+
+            return points;
+        }
+
+        private static List<MapLocation> BuildRectanglePoints(MapRectangle rectangle)
+        {
+            var points = new List<MapLocation>();
+            if (rectangle == null)
+            {
+                return points;
+            }
+
+            var minLatitude = Math.Min(rectangle.MinLatitude, rectangle.MaxLatitude);
+            var maxLatitude = Math.Max(rectangle.MinLatitude, rectangle.MaxLatitude);
+            var minLongitude = Math.Min(rectangle.MinLongitude, rectangle.MaxLongitude);
+            var maxLongitude = Math.Max(rectangle.MinLongitude, rectangle.MaxLongitude);
+
+            points.Add(new MapLocation { Latitude = minLatitude, Longitude = minLongitude });
+            points.Add(new MapLocation { Latitude = minLatitude, Longitude = maxLongitude });
+            points.Add(new MapLocation { Latitude = maxLatitude, Longitude = maxLongitude });
+            points.Add(new MapLocation { Latitude = maxLatitude, Longitude = minLongitude });
+
+            return points;
+        }
+
+        private static MapPolygon CreateShapePolygon(Brush fill, Brush stroke, double strokeThickness, double opacity, int shapeZIndex)
+        {
+            return new MapPolygon
+            {
+                Fill = fill,
+                Stroke = stroke,
+                StrokeThickness = strokeThickness,
+                Opacity = opacity,
+                ShapeZIndex = shapeZIndex
+            };
         }
 
         private void UpdateMapShapesLayer(int zoom, Point viewTopLeft, Size viewportSize)
@@ -2298,7 +2685,9 @@ namespace WPFDevelopers.Controls
 
             var polylines = GetActivePolylinesSnapshot();
             var polygons = GetActivePolygonsSnapshot();
-            if (polylines.Count == 0 && polygons.Count == 0)
+            var circles = GetActiveCirclesSnapshot();
+            var rectangles = GetActiveRectanglesSnapshot();
+            if (polylines.Count == 0 && polygons.Count == 0 && circles.Count == 0 && rectangles.Count == 0)
             {
                 _shapeLayer.ClearShapes();
                 return;
@@ -2351,6 +2740,52 @@ namespace WPFDevelopers.Controls
                     }
 
                     var pixel = ToPixel(location.Latitude, location.Longitude, zoom);
+                    layout.Points.Add(new Point(pixel.X - viewTopLeft.X, pixel.Y - viewTopLeft.Y));
+                }
+
+                if (layout.Points.Count >= 3)
+                {
+                    polygonLayouts.Add(layout);
+                }
+            }
+
+            for (var i = 0; i < circles.Count; i++)
+            {
+                var circle = circles[i];
+                var points = BuildCirclePoints(circle);
+                if (points.Count < 3)
+                {
+                    continue;
+                }
+
+                var layout = new MapPolygonLayoutInfo(CreateShapePolygon(circle.Fill, circle.Stroke, circle.StrokeThickness, circle.Opacity, circle.ShapeZIndex));
+                for (var j = 0; j < points.Count; j++)
+                {
+                    var point = points[j];
+                    var pixel = ToPixel(point.Latitude, point.Longitude, zoom);
+                    layout.Points.Add(new Point(pixel.X - viewTopLeft.X, pixel.Y - viewTopLeft.Y));
+                }
+
+                if (layout.Points.Count >= 3)
+                {
+                    polygonLayouts.Add(layout);
+                }
+            }
+
+            for (var i = 0; i < rectangles.Count; i++)
+            {
+                var rectangle = rectangles[i];
+                var points = BuildRectanglePoints(rectangle);
+                if (points.Count < 3)
+                {
+                    continue;
+                }
+
+                var layout = new MapPolygonLayoutInfo(CreateShapePolygon(rectangle.Fill, rectangle.Stroke, rectangle.StrokeThickness, rectangle.Opacity, rectangle.ShapeZIndex));
+                for (var j = 0; j < points.Count; j++)
+                {
+                    var point = points[j];
+                    var pixel = ToPixel(point.Latitude, point.Longitude, zoom);
                     layout.Points.Add(new Point(pixel.X - viewTopLeft.X, pixel.Y - viewTopLeft.Y));
                 }
 
@@ -2627,17 +3062,68 @@ namespace WPFDevelopers.Controls
                 return featureClickArgs;
             }
 
-            if (TryGetPolylineHit(mousePosition, out var hitPolyline))
+            MapFeatureType bestFeatureType = MapFeatureType.None;
+            object bestFeature = null;
+            var bestZIndex = int.MinValue;
+
+            if (TryGetPolygonHit(mousePosition, out var hitPolygon, out var polygonZIndex))
+            {
+                bestFeatureType = MapFeatureType.Polygon;
+                bestFeature = hitPolygon;
+                bestZIndex = polygonZIndex;
+            }
+
+            if (TryGetCircleHit(mousePosition, out var hitCircle, out var circleZIndex)
+                && (circleZIndex > bestZIndex || (circleZIndex == bestZIndex && bestFeatureType == MapFeatureType.Polygon)))
+            {
+                bestFeatureType = MapFeatureType.Circle;
+                bestFeature = hitCircle;
+                bestZIndex = circleZIndex;
+            }
+
+            if (TryGetRectangleHit(mousePosition, out var hitRectangle, out var rectangleZIndex)
+                && (rectangleZIndex > bestZIndex
+                    || (rectangleZIndex == bestZIndex
+                        && (bestFeatureType == MapFeatureType.Polygon || bestFeatureType == MapFeatureType.Circle))))
+            {
+                bestFeatureType = MapFeatureType.Rectangle;
+                bestFeature = hitRectangle;
+                bestZIndex = rectangleZIndex;
+            }
+
+            if (TryGetPolylineHit(mousePosition, out var hitPolyline, out var polylineZIndex)
+                && (polylineZIndex >= bestZIndex))
+            {
+                bestFeatureType = MapFeatureType.Polyline;
+                bestFeature = hitPolyline;
+                bestZIndex = polylineZIndex;
+            }
+
+            if (bestFeatureType == MapFeatureType.Polyline)
             {
                 featureClickArgs.FeatureType = MapFeatureType.Polyline;
-                featureClickArgs.ClickedPolyline = hitPolyline;
+                featureClickArgs.ClickedPolyline = bestFeature as MapPolyline;
                 return featureClickArgs;
             }
 
-            if (TryGetPolygonHit(mousePosition, out var hitPolygon))
+            if (bestFeatureType == MapFeatureType.Rectangle)
+            {
+                featureClickArgs.FeatureType = MapFeatureType.Rectangle;
+                featureClickArgs.ClickedRectangle = bestFeature as MapRectangle;
+                return featureClickArgs;
+            }
+
+            if (bestFeatureType == MapFeatureType.Circle)
+            {
+                featureClickArgs.FeatureType = MapFeatureType.Circle;
+                featureClickArgs.ClickedCircle = bestFeature as MapCircle;
+                return featureClickArgs;
+            }
+
+            if (bestFeatureType == MapFeatureType.Polygon)
             {
                 featureClickArgs.FeatureType = MapFeatureType.Polygon;
-                featureClickArgs.ClickedPolygon = hitPolygon;
+                featureClickArgs.ClickedPolygon = bestFeature as MapPolygon;
                 return featureClickArgs;
             }
 
@@ -2652,9 +3138,10 @@ namespace WPFDevelopers.Controls
             return ToLatLon(worldPixelX, worldPixelY, ZoomLevel);
         }
 
-        private bool TryGetPolylineHit(Point mousePosition, out MapPolyline hitPolyline)
+        private bool TryGetPolylineHit(Point mousePosition, out MapPolyline hitPolyline, out int hitZIndex)
         {
             hitPolyline = null;
+            hitZIndex = int.MinValue;
             if (double.IsNaN(mousePosition.X) || double.IsNaN(mousePosition.Y) || ActualWidth <= 0 || ActualHeight <= 0)
             {
                 return false;
@@ -2671,6 +3158,7 @@ namespace WPFDevelopers.Controls
             var viewTopLeft = new Point(centerPixel.X - ActualWidth / 2.0, centerPixel.Y - ActualHeight / 2.0);
 
             var nearestDistanceSquared = double.MaxValue;
+            var highestZIndex = int.MinValue;
             for (var i = 0; i < polylines.Count; i++)
             {
                 var polyline = polylines[i];
@@ -2708,15 +3196,25 @@ namespace WPFDevelopers.Controls
                     }
 
                     var distanceSquared = DistanceToSegmentSquared(mousePosition, previousPoint, currentPoint);
-                    if (distanceSquared > toleranceSquared || distanceSquared >= nearestDistanceSquared)
+                    if (distanceSquared > toleranceSquared)
                     {
                         previousPoint = currentPoint;
                         previousLocation = currentLocation;
                         continue;
                     }
 
+                    var zIndex = polyline.ShapeZIndex;
+                    if (zIndex < highestZIndex || (zIndex == highestZIndex && distanceSquared >= nearestDistanceSquared))
+                    {
+                        previousPoint = currentPoint;
+                        previousLocation = currentLocation;
+                        continue;
+                    }
+
+                    highestZIndex = zIndex;
                     nearestDistanceSquared = distanceSquared;
                     hitPolyline = polyline;
+                    hitZIndex = zIndex;
 
                     previousPoint = currentPoint;
                     previousLocation = currentLocation;
@@ -2726,9 +3224,10 @@ namespace WPFDevelopers.Controls
             return hitPolyline != null;
         }
 
-        private bool TryGetPolygonHit(Point mousePosition, out MapPolygon hitPolygon)
+        private bool TryGetPolygonHit(Point mousePosition, out MapPolygon hitPolygon, out int hitZIndex)
         {
             hitPolygon = null;
+            hitZIndex = int.MinValue;
             if (double.IsNaN(mousePosition.X) || double.IsNaN(mousePosition.Y) || ActualWidth <= 0 || ActualHeight <= 0)
             {
                 return false;
@@ -2775,6 +3274,7 @@ namespace WPFDevelopers.Controls
                 if (IsPointInPolygon(mousePosition, screenPoints))
                 {
                     hitPolygon = polygon;
+                    hitZIndex = polygon.ShapeZIndex;
                     return true;
                 }
 
@@ -2787,6 +3287,121 @@ namespace WPFDevelopers.Controls
                     if (DistanceToSegmentSquared(mousePosition, start, end) <= strokeToleranceSquared)
                     {
                         hitPolygon = polygon;
+                        hitZIndex = polygon.ShapeZIndex;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private bool TryGetCircleHit(Point mousePosition, out MapCircle hitCircle, out int hitZIndex)
+        {
+            hitCircle = null;
+            hitZIndex = int.MinValue;
+            if (double.IsNaN(mousePosition.X) || double.IsNaN(mousePosition.Y) || ActualWidth <= 0 || ActualHeight <= 0)
+            {
+                return false;
+            }
+
+            var circles = GetActiveCirclesSnapshot();
+            if (circles.Count == 0)
+            {
+                return false;
+            }
+
+            var zoom = (int)CoerceZoom(this, ZoomLevel);
+            var centerPixel = ToPixel(CenterLatitude, CenterLongitude, zoom);
+            var viewTopLeft = new Point(centerPixel.X - ActualWidth / 2.0, centerPixel.Y - ActualHeight / 2.0);
+
+            for (var i = circles.Count - 1; i >= 0; i--)
+            {
+                var circle = circles[i];
+                var circleCenterPixel = ToPixel(circle.CenterLatitude, circle.CenterLongitude, zoom);
+                var screenCenterX = WrapViewportXToNearest(circleCenterPixel.X - viewTopLeft.X, zoom, mousePosition.X);
+                var screenCenterY = circleCenterPixel.Y - viewTopLeft.Y;
+
+                var latRad = circle.CenterLatitude * Math.PI / 180d;
+                var cosLat = Math.Cos(latRad);
+                if (Math.Abs(cosLat) < 0.000001)
+                {
+                    cosLat = 0.000001;
+                }
+
+                var deltaLon = (circle.RadiusMeters / (EarthRadiusMeters * cosLat)) * 180d / Math.PI;
+                var edgePixel = ToPixel(circle.CenterLatitude, circle.CenterLongitude + deltaLon, zoom);
+                var radiusPixels = Math.Abs(edgePixel.X - circleCenterPixel.X);
+                radiusPixels = Math.Max(6d, radiusPixels);
+
+                var dx = mousePosition.X - screenCenterX;
+                var dy = mousePosition.Y - screenCenterY;
+                if ((dx * dx) + (dy * dy) <= radiusPixels * radiusPixels)
+                {
+                    hitCircle = circle;
+                    hitZIndex = circle.ShapeZIndex;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool TryGetRectangleHit(Point mousePosition, out MapRectangle hitRectangle, out int hitZIndex)
+        {
+            hitRectangle = null;
+            hitZIndex = int.MinValue;
+            if (double.IsNaN(mousePosition.X) || double.IsNaN(mousePosition.Y) || ActualWidth <= 0 || ActualHeight <= 0)
+            {
+                return false;
+            }
+
+            var rectangles = GetActiveRectanglesSnapshot();
+            if (rectangles.Count == 0)
+            {
+                return false;
+            }
+
+            var zoom = (int)CoerceZoom(this, ZoomLevel);
+            var centerPixel = ToPixel(CenterLatitude, CenterLongitude, zoom);
+            var viewTopLeft = new Point(centerPixel.X - ActualWidth / 2.0, centerPixel.Y - ActualHeight / 2.0);
+
+            for (var i = rectangles.Count - 1; i >= 0; i--)
+            {
+                var rectangle = rectangles[i];
+                var locations = BuildRectanglePoints(rectangle);
+                if (locations.Count < 3)
+                {
+                    continue;
+                }
+
+                var points = new List<Point>();
+                for (var j = 0; j < locations.Count; j++)
+                {
+                    var location = locations[j];
+                    var pixel = ToPixel(location.Latitude, location.Longitude, zoom);
+                    points.Add(new Point(
+                        WrapViewportXToNearest(pixel.X - viewTopLeft.X, zoom, mousePosition.X),
+                        pixel.Y - viewTopLeft.Y));
+                }
+
+                if (IsPointInPolygon(mousePosition, points))
+                {
+                    hitRectangle = rectangle;
+                    hitZIndex = rectangle.ShapeZIndex;
+                    return true;
+                }
+
+                var strokeTolerance = Math.Max(6d, rectangle.StrokeThickness + 2d);
+                var strokeToleranceSquared = strokeTolerance * strokeTolerance;
+                for (var j = 0; j < points.Count; j++)
+                {
+                    var start = points[j];
+                    var end = points[(j + 1) % points.Count];
+                    if (DistanceToSegmentSquared(mousePosition, start, end) <= strokeToleranceSquared)
+                    {
+                        hitRectangle = rectangle;
+                        hitZIndex = rectangle.ShapeZIndex;
                         return true;
                     }
                 }
@@ -3792,7 +4407,8 @@ namespace WPFDevelopers.Controls
 
         private static Point ToPixel(double latitude, double longitude, int zoom)
         {
-            var sinLatitude = Math.Sin(latitude * Math.PI / 180.0);
+            var clampedLatitude = Math.Max(-MercatorMaxLatitude, Math.Min(MercatorMaxLatitude, latitude));
+            var sinLatitude = Math.Sin(clampedLatitude * Math.PI / 180.0);
             var scale = TileSize * Math.Pow(2, zoom);
 
             var x = (NormalizeLongitude(longitude) + 180.0) / 360.0 * scale;
@@ -3803,10 +4419,23 @@ namespace WPFDevelopers.Controls
         private static Point ToLatLon(double pixelX, double pixelY, int zoom)
         {
             var scale = TileSize * Math.Pow(2, zoom);
-            var lon = NormalizeLongitude((pixelX / scale) * 360.0 - 180.0);
-            var n = Math.PI - (2.0 * Math.PI * pixelY) / scale;
+            if (scale <= 0)
+            {
+                return new Point(0, 0);
+            }
+
+            var wrappedPixelX = pixelX % scale;
+            if (wrappedPixelX < 0)
+            {
+                wrappedPixelX += scale;
+            }
+
+            var clampedPixelY = Math.Max(0d, Math.Min(scale, pixelY));
+            var lon = NormalizeLongitude((wrappedPixelX / scale) * 360.0 - 180.0);
+            var n = Math.PI - (2.0 * Math.PI * clampedPixelY) / scale;
             var lat = 180.0 / Math.PI * Math.Atan(0.5 * (Math.Exp(n) - Math.Exp(-n)));
-            return new Point(lat, lon);
+            var boundedLat = Math.Max(-MercatorMaxLatitude, Math.Min(MercatorMaxLatitude, lat));
+            return new Point(boundedLat, lon);
         }
 
         private static double NormalizeLongitude(double longitude)

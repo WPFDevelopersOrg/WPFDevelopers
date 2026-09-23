@@ -52,6 +52,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapProjectionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapPolyline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapPolygon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapCircle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapRectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapTrackAnimatorOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapTrackAnimator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MapView\MapCluster.cs" />

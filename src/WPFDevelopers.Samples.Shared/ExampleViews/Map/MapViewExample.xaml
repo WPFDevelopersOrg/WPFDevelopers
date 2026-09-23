@@ -161,6 +161,7 @@
                 x:Name="mapView"
                 CenterLatitude="39.9132801985722"
                 CenterLongitude="116.392009995601"
+                MapFeatureClicked="MapView_MapFeatureClicked"
                 TileStyle="7"
                 ZoomControlPosition="TopLeft"
                 ZoomLevel="5">
@@ -176,6 +177,17 @@
                         </wd:MapPolyline.Points>
                     </wd:MapPolyline>
                 </wd:MapView.Polylines>
+                <wd:MapView.Circles>
+                    <wd:MapCircle
+                        x:Name="DemoCircle"
+                        CenterLatitude="39.9042"
+                        CenterLongitude="116.4074"
+                        Fill="#33EF4444"
+                        RadiusMeters="300000"
+                        ShapeZIndex="10"
+                        Stroke="#FFEF4444"
+                        StrokeThickness="2" />
+                </wd:MapView.Circles>
                 <wd:Pushpin
                     Title="Shandong Province"
                     Location="36.6797276003243,118.495410536117"

@@ -80,9 +80,11 @@
         public MapPolylineLayoutInfo(MapPolyline polyline)
         {
             Polyline = polyline;
+            ShapeZIndex = polyline != null ? polyline.ShapeZIndex : 0;
         }
 
         public MapPolyline Polyline { get; private set; }
+        public int ShapeZIndex { get; private set; }
         public System.Collections.Generic.List<System.Windows.Point> Points { get; } = new System.Collections.Generic.List<System.Windows.Point>();
     }
 
@@ -91,9 +93,11 @@
         public MapPolygonLayoutInfo(MapPolygon polygon)
         {
             Polygon = polygon;
+            ShapeZIndex = polygon != null ? polygon.ShapeZIndex : 0;
         }
 
         public MapPolygon Polygon { get; private set; }
+        public int ShapeZIndex { get; private set; }
         public System.Collections.Generic.List<System.Windows.Point> Points { get; } = new System.Collections.Generic.List<System.Windows.Point>();
     }
 }
