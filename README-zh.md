@@ -6,7 +6,7 @@
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
     </a>  <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers"></img>
-    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  <a href="resources/WPFDevelopersResource/WPFDevelopers.vsix">
+    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 [![AtomGIt Star](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers/star/badge.svg)](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers)![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  <a href="resources/WPFDevelopersResource/WPFDevelopers.vsix">
         <img alt=".NET6VSIX" src="https://img.shields.io/badge/.NET6-VSIX-ff69b4"></img>
     </a>
 
@@ -21,6 +21,8 @@
 # [下载完 WPFDevelopers 项目如何编译通过 👀](https://b23.tv/RTijGF8  )
 
 ### [Github](https://github.com/WPFDevelopersOrg) https://github.com/WPFDevelopersOrg
+
+### [AtomGit](https://atomgit.com/WPFDevelopersOrg) https://atomgit.com/WPFDevelopersOrg
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg
 
