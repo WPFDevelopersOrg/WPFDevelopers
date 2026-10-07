@@ -2,7 +2,7 @@
 	<Import Project="../Resources.props" />
 	<Import Project="../TargetFrameworks.props" />
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="0.3.0-preview" />
+	  <PackageReference Include="WPFDevelopers" Version="0.3.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WPFDevelopers.SamplesCode\WPFDevelopers.SamplesCode.csproj" />
