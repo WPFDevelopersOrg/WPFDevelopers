@@ -120,6 +120,23 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
 ----------
+### MapView
+
+<video src="https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopersResource/MapView.mp4" controls width="600"></video>
+
+<video src="https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopersResource/MapView_N.mp4" controls width="600"></video>
+
+----------
+### MarkdownViewer
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MarkdownViewer.gif"/>
+
+----------
+### SwitchTheme
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SwitchTheme.gif"/>
+
+----------
 ### CircleMenu
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CircleMenu.gif"/>
