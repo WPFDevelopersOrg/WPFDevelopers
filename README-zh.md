@@ -139,6 +139,20 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>
 
 ----------
+### MapView
+[点击观看 Bilibili 视频教程](https://www.bilibili.com/video/BV1bVhf64EL3/)
+
+----------
+### MarkdownViewer
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MarkdownViewer.gif"/>
+
+----------
+### SwitchTheme
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SwitchTheme.gif"/>
+
+----------
 ### CircleMenu
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/CircleMenu.gif"/>
