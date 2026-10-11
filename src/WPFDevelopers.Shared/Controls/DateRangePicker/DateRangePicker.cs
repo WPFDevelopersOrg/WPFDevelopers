@@ -514,8 +514,8 @@ namespace WPFDevelopers.Controls
 
                 if (clickedDate < _startDate.Value.Date)
                 {
-                    clickedDateTime = clickedDate + startTime; 
-                    otherDateTime = _startDate.Value.Date + endTime; 
+                    clickedDateTime = clickedDate + startTime;
+                    otherDateTime = _startDate.Value.Date + endTime;
 
                     _startDate = clickedDateTime;
                     _endDate = otherDateTime;
@@ -527,7 +527,7 @@ namespace WPFDevelopers.Controls
                 }
                 else
                 {
-                    clickedDateTime = clickedDate + endTime; 
+                    clickedDateTime = clickedDate + endTime;
                     _endDate = clickedDateTime;
 
                     if (isStartCalendar)
@@ -571,6 +571,7 @@ namespace WPFDevelopers.Controls
                 if (string.IsNullOrWhiteSpace(_endTextBox.Text))
                 {
                     _endDate = null;
+                    EndDate = null;
                     SetIsHighlightFalse(_startCalendarDayButtons);
                     return;
                 }
@@ -581,8 +582,17 @@ namespace WPFDevelopers.Controls
                         return;
                     if (StartDate.HasValue && dateTime < StartDate.Value.Date)
                     {
-                        EndDate = _endDate;
-                        _endTextBox.Text = _endDate.Value.ToString(DateTimeFormat);
+                        var previousEndDate = _endDate ?? EndDate;
+                        if (previousEndDate.HasValue)
+                        {
+                            EndDate = previousEndDate;
+                            _endTextBox.Text = previousEndDate.Value.ToString(DateTimeFormat);
+                        }
+                        else
+                        {
+                            EndDate = null;
+                            _endTextBox.Text = string.Empty;
+                        }
                         return;
                     }
 
@@ -592,8 +602,17 @@ namespace WPFDevelopers.Controls
                 }
                 else
                 {
-                    EndDate = _endDate;
-                    _endTextBox.Text = _endDate.Value.ToString(DateTimeFormat);
+                    var previousEndDate = _endDate ?? EndDate;
+                    if (previousEndDate.HasValue)
+                    {
+                        EndDate = previousEndDate;
+                        _endTextBox.Text = previousEndDate.Value.ToString(DateTimeFormat);
+                    }
+                    else
+                    {
+                        EndDate = null;
+                        _endTextBox.Text = string.Empty;
+                    }
                 }
             }
         }
@@ -610,6 +629,7 @@ namespace WPFDevelopers.Controls
                 if (string.IsNullOrWhiteSpace(_startTextBox.Text))
                 {
                     _startDate = null;
+                    StartDate = null;
                     SetIsHighlightFalse(_startCalendarDayButtons);
                     return;
                 }
@@ -618,10 +638,34 @@ namespace WPFDevelopers.Controls
                 {
                     if (StartDate.HasValue && dateTime.ToString(DateTimeFormat) == StartDate.Value.ToString(DateTimeFormat))
                         return;
+                    if (EndDate.HasValue && dateTime > EndDate.Value.Date)
+                    {
+                        var previousStartDate = _startDate ?? StartDate;
+                        if (previousStartDate.HasValue)
+                        {
+                            StartDate = previousStartDate;
+                            _startTextBox.Text = previousStartDate.Value.ToString(DateTimeFormat);
+                        }
+                        else
+                        {
+                            StartDate = null;
+                            _startTextBox.Text = string.Empty;
+                        }
+                        return;
+                    }
                     if (EndDate.HasValue && dateTime < EndDate.Value.Date)
                     {
-                        StartDate = _startDate;
-                        _startTextBox.Text = _startDate.Value.ToString(DateTimeFormat);
+                        var previousStartDate = _startDate ?? StartDate;
+                        if (previousStartDate.HasValue)
+                        {
+                            StartDate = previousStartDate;
+                            _startTextBox.Text = previousStartDate.Value.ToString(DateTimeFormat);
+                        }
+                        else
+                        {
+                            StartDate = null;
+                            _startTextBox.Text = string.Empty;
+                        }
                         return;
                     }
 
@@ -631,8 +675,17 @@ namespace WPFDevelopers.Controls
                 }
                 else
                 {
-                    StartDate = _startDate;
-                    _startTextBox.Text = _startDate.Value.ToString(DateTimeFormat);
+                    var previousStartDate = _startDate ?? StartDate;
+                    if (previousStartDate.HasValue)
+                    {
+                        StartDate = previousStartDate;
+                        _startTextBox.Text = previousStartDate.Value.ToString(DateTimeFormat);
+                    }
+                    else
+                    {
+                        StartDate = null;
+                        _startTextBox.Text = string.Empty;
+                    }
                 }
             }
         }

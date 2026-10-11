@@ -209,6 +209,7 @@
                                     Background="Transparent"
                                     Focusable="True"
                                     Foreground="{TemplateBinding Foreground}"
+                                    IsReadOnly="True"
                                     SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
                                 <controls:PathIcon
                                     Grid.Column="2"
@@ -225,6 +226,7 @@
                                     Background="Transparent"
                                     Focusable="True"
                                     Foreground="{TemplateBinding Foreground}"
+                                    IsReadOnly="True"
                                     SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
                                 <Button
                                     x:Name="PART_CloseButton"
