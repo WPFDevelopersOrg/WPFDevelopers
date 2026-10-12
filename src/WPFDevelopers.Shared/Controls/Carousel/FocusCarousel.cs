@@ -166,6 +166,7 @@ namespace WPFDevelopers.Controls
         }
 
         private bool _isAnimating;
+        private Storyboard _activeStoryboard;
 
         protected override void OnSelectedIndexChangedCore(int oldIndex, int newIndex)
         {
@@ -399,6 +400,19 @@ namespace WPFDevelopers.Controls
 
         private void FocusCarousel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (_isAnimating)
+            {
+                if (_activeStoryboard != null)
+                {
+                    _activeStoryboard.Stop();
+                    _activeStoryboard = null;
+                }
+
+                _isAnimating = false;
+                if (_displayItem != null)
+                    OnSizeChangedCallback();
+            }
+
             if (sender == _displayItem)
                 return;
 
@@ -419,7 +433,7 @@ namespace WPFDevelopers.Controls
             var vLeft = (_displayWidth - _simpleWidth) / 2d;
             var vTop = (_displayHeight - _simpleHeight) / 2d;
 
-            //一系列计算 计算得到当前展示页要回到的Dock位置  
+            //一系列计算 计算得到当前展示页要回到的Dock位置
             //一系列计算 计算得到当前点击页要移除的Dock位置
 
             var nTargertIndex = nIndex;
@@ -469,7 +483,7 @@ namespace WPFDevelopers.Controls
 
             var point = _mapCanvasPoint.GetValueOrDefault(nTargertIndex);
 
-            //定义动画 
+            //定义动画
             var storyboard = new Storyboard
             {
                 SpeedRatio = 2
@@ -704,11 +718,13 @@ namespace WPFDevelopers.Controls
             ReplaceImageBitmap(vFrameWorker, _displayWidth, _displayHeight);
             ReplaceImageBitmap(_displayItem, _simpleWidth, _simpleHeight);
 
-            var oldDisplayItem = _displayItem;
-
+            _activeStoryboard = storyboard;
             _isAnimating = true;
             storyboard.Completed += (s, _) =>
             {
+                if (_activeStoryboard == s)
+                    _activeStoryboard = null;
+
                 _displayItem = vFrameWorker;
                 _isAnimating = false;
             };
