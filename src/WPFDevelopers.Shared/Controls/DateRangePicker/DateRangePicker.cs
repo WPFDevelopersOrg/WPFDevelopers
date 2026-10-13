@@ -836,6 +836,8 @@ namespace WPFDevelopers.Controls
 
         private void OnPreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (e.ChangedButton != MouseButton.Left)
+                return;
             if (e.OriginalSource is Button button)
                 return;
             if (_popup != null && !_popup.IsOpen)
