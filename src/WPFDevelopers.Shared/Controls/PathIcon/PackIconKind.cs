@@ -61,5 +61,6 @@ namespace WPFDevelopers.Controls
         [Description("WD.CopyGeometry")] Copy,
         [Description("WD.UndoGeometry")] Undo,
         [Description("WD.FilterGeometry")] Filter,
+        [Description("WD.ConfirmGeometry")] Confirm,
     }
 }
