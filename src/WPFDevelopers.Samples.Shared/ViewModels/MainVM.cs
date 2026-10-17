@@ -84,6 +84,50 @@ namespace WPFDevelopers.Samples.ViewModels
 
         private int _segmentedSelectedIndex;
         private string _searchText = string.Empty;
+        private string _searchWatermark;
+        private string _customMenuLabel;
+        private string _basicMenuLabel;
+
+        public bool IsChineseLanguage
+        {
+            get { return LanguageManager.Instance.CurrentCulture.TwoLetterISOLanguageName == "zh"; }
+            set
+            {
+                var cultureName = value ? "zh-CN" : "en-US";
+                if (LanguageManager.Instance.CurrentCulture.Name != cultureName)
+                    LanguageManager.Instance.ChangeLanguage(new CultureInfo(cultureName));
+            }
+        }
+
+        public string SearchWatermark
+        {
+            get { return _searchWatermark; }
+            private set
+            {
+                _searchWatermark = value;
+                NotifyPropertyChange(nameof(SearchWatermark));
+            }
+        }
+
+        public string CustomMenuLabel
+        {
+            get { return _customMenuLabel; }
+            private set
+            {
+                _customMenuLabel = value;
+                NotifyPropertyChange(nameof(CustomMenuLabel));
+            }
+        }
+
+        public string BasicMenuLabel
+        {
+            get { return _basicMenuLabel; }
+            private set
+            {
+                _basicMenuLabel = value;
+                NotifyPropertyChange(nameof(BasicMenuLabel));
+            }
+        }
 
         public int SegmentedSelectedIndex
         {

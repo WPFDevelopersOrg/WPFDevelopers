@@ -25,6 +25,23 @@
             wd:PanelHelper.Spacing="2"
             Orientation="Horizontal">
             <wd:SwitchButton
+                x:Name="LanguageSwitchBtn"
+                Width="30"
+                Height="30"
+                IsChecked="{Binding DataContext.IsChineseLanguage, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"
+                ToolTip="中文 / English">
+                <wd:SwitchButton.UncheckedContent>
+                    <TextBlock
+                        Foreground="White"
+                        Text="EN" />
+                </wd:SwitchButton.UncheckedContent>
+                <wd:SwitchButton.CheckedContent>
+                    <TextBlock
+                        Foreground="White"
+                        Text="中" />
+                </wd:SwitchButton.CheckedContent>
+            </wd:SwitchButton>
+            <wd:SwitchButton
                 x:Name="ThemeSwitchBtn"
                 Width="30"
                 Height="30"
@@ -170,13 +187,13 @@
                     Margin="0,3"
                     wd:ElementHelper.CornerRadius="15"
                     SelectedIndex="{Binding SegmentedSelectedIndex, Mode=TwoWay}">
-                    <wd:SegmentedItem Content="Custom" />
-                    <wd:SegmentedItem Content="Basic" />
+                    <wd:SegmentedItem Content="{Binding CustomMenuLabel}" />
+                    <wd:SegmentedItem Content="{Binding BasicMenuLabel}" />
                 </wd:Segmented>
                 <controls:NavigateMenu
                     x:Name="NavigateMenu"
                     Grid.Row="2"
-                    DisplayMemberPath="Name"
+                    DisplayMemberPath="DisplayName"
                     ItemsSource="{Binding NavigateMenuModelList}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
