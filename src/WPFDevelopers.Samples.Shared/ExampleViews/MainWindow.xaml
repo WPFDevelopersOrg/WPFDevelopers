@@ -158,7 +158,7 @@
                 <TextBox
                     Name="PART_MenuTextBox"
                     wd:ElementHelper.IsClear="True"
-                    wd:ElementHelper.Watermark="Search Control">
+                    wd:ElementHelper.Watermark="{Binding SearchWatermark}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />

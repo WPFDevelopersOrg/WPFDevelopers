@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
+using WPFDevelopers;
 
 namespace WPFDevelopers.Samples
 {
@@ -7,6 +9,12 @@ namespace WPFDevelopers.Samples
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            LanguageManager.Instance.ChangeLanguage(new CultureInfo("en-US"));
+            base.OnStartup(e);
+        }
+
         public static double Wdith
         {
             get { return SystemParameters.WorkArea.Width / 1.5; }

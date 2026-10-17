@@ -638,6 +638,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementVisualTreeHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuNameLocalizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\BrowserHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HospitalList.cs" />

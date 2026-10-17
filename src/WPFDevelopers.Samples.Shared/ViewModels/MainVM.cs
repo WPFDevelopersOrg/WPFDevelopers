@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using WPFDevelopers;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
@@ -123,7 +126,30 @@ namespace WPFDevelopers.Samples.ViewModels
             NavigateMenuModelList = _customMenuModelList;
             _navigateMenuItem = NavigateMenuModelList.First();
             _customMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
+            LanguageManager.Instance.PropertyChanged += LanguageManager_PropertyChanged;
+            UpdateMenuDisplayNames();
             ControlPanel = new NavMenu3DExample();
+        }
+
+        private void LanguageManager_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LanguageManager.CurrentCulture))
+                UpdateMenuDisplayNames();
+        }
+
+        private void UpdateMenuDisplayNames()
+        {
+            var culture = LanguageManager.Instance.CurrentCulture;
+            var isChinese = culture.TwoLetterISOLanguageName == "zh";
+            NotifyPropertyChange(nameof(IsChineseLanguage));
+            SearchWatermark = isChinese ? "搜索控件" : "Search Control";
+            CustomMenuLabel = isChinese ? "自定义" : "Custom";
+            BasicMenuLabel = isChinese ? "基础控件" : "Basic";
+
+            foreach (var item in _customMenuModelList.Concat(_basicMenuModelList))
+                item.DisplayName = MenuNameLocalizer.GetDisplayName(item.Name, culture);
+
+            ApplySearchFilter();
         }
 
         public ICommand ViewLoaded => new RelayCommand(obj =>
@@ -149,7 +175,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 var key = _searchText.ToLower();
                 foreach (var item in NavigateMenuModelList)
                 {
-                    item.IsVisible = item.Name.ToLower().Contains(key);
+                    item.IsVisible = item.Name.ToLower().Contains(key) ||
+                                     item.DisplayName.ToLower().Contains(key);
                 }
             }
         }
