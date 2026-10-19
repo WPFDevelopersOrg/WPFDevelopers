@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -102,7 +102,7 @@ namespace WPFDevelopers.Helpers
 
             internal void Update()
             {
-                if (_updating) return;
+                if (_updating || !_panel.IsLoaded) return;
                 _updating = true;
                 try
                 {
@@ -138,7 +138,6 @@ namespace WPFDevelopers.Helpers
                             };
                             _margins.Add(child, margin);
                         }
-                        // Bindings and application code can change Margin after spacing has been applied.
                         if (child.Margin != margin.Applied)
                         {
                             margin.Original = child.Margin;
@@ -156,7 +155,6 @@ namespace WPFDevelopers.Helpers
                             }
                             else if (_panel is WrapPanel || _panel is UniformGrid)
                             {
-                                // Half-spacing on each side gives an exact gap on both axes, including wrapped rows.
                                 gap = new Thickness(spacing / 2);
                             }
                             else
