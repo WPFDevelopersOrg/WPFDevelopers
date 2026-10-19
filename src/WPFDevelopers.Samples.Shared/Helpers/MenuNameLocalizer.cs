@@ -72,7 +72,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.Mask] = "遮罩",
             [MenuEnum.Loading] = "加载动画",
             [MenuEnum.Selector] = "列表定位",
-            [MenuEnum.MultiSelectSearchComboBox] = "多选搜索下拉框",
+            //[MenuEnum.MultiSelectSearchComboBox] = "示例多选下拉框",
             [MenuEnum.BreadCrumbBar] = "面包屑导航",
             [MenuEnum.CropImage] = "图片裁剪",
             [MenuEnum.Badge] = "徽标",

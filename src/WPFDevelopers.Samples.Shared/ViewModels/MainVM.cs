@@ -518,9 +518,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Selector:
                     ControlPanel = new SelectorExample();
                     break;
-                case MenuEnum.MultiSelectSearchComboBox:
-                    ControlPanel = new MultiSelectSearchComboBoxExample();
-                    break;
+                //case MenuEnum.MultiSelectSearchComboBox:
+                //    ControlPanel = new MultiSelectSearchComboBoxExample();
+                //    break;
                 case MenuEnum.BreadCrumbBar:
                     ControlPanel = new BreadCrumbBarExample();
                     break;

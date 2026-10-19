@@ -71,7 +71,7 @@
         Mask,
         Loading,
         Selector,
-        MultiSelectSearchComboBox,
+        //MultiSelectSearchComboBox,
         BreadCrumbBar,
         CropImage,
         Badge,
