@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Controls;
 using System.Windows;
 
@@ -8,36 +7,68 @@ namespace WPFDevelopers.Controls
 {
     public class WaterfallPanel : VirtualizingPanel
     {
-        private List<double> columnHeights = new List<double>();
+        private double[] _columnHeights = new double[0];
+        private bool[] _columnHasChildren = new bool[0];
+        private readonly List<Rect> _childLayouts = new List<Rect>();
+
         protected override Size MeasureOverride(Size availableSize)
         {
-            columnHeights.Clear();
+            var columns = Math.Max(1, Columns);
+            if (_columnHeights.Length != columns)
+            {
+                _columnHeights = new double[columns];
+                _columnHasChildren = new bool[columns];
+            }
+
+            Array.Clear(_columnHeights, 0, _columnHeights.Length);
+            Array.Clear(_columnHasChildren, 0, _columnHasChildren.Length);
+            _childLayouts.Clear();
+
+            var spacing = Math.Max(0, Spacing);
+            var width = Math.Max(0, (availableSize.Width - (columns - 1) * spacing) / columns);
             var panelDesiredSize = new Size(0, 0);
-            columnHeights = new double[Columns].ToList();
-            double currentX = 0;
-            var width = availableSize.Width / Columns - (Columns * Spacing);
+
             for (int i = 0; i < InternalChildren.Count; i++)
             {
-                var child = InternalChildren[i] as FrameworkElement;
-                if (child == null)
-                    continue;
-                child.Measure(availableSize);
-                child.Width = width;
-                int columnIndex = i % Columns;
-                double x = columnIndex != 0 ? currentX + Spacing : 0;
-                double y = columnHeights[columnIndex];
-                if (i >= Columns)
-                    y = y + Spacing;
-                var size = new Size(width, child.DesiredSize.Height);
-                child.Arrange(new Rect(new Point(x, y), size));
-                panelDesiredSize.Width = Math.Max(panelDesiredSize.Width, x + child.DesiredSize.Width);
-                panelDesiredSize.Height = Math.Max(panelDesiredSize.Height, y + child.DesiredSize.Height);
-                currentX = x + size.Width;
-                if (currentX >= Width)
-                    currentX = 0;
-                columnHeights[columnIndex] += child.DesiredSize.Height + (i >= Columns ? Spacing : 0);
+                var child = InternalChildren[i];
+                child.Measure(new Size(width, double.PositiveInfinity));
+
+                var columnIndex = 0;
+                for (var column = 1; column < columns; column++)
+                {
+                    if (_columnHeights[column] < _columnHeights[columnIndex])
+                    {
+                        columnIndex = column;
+                    }
+                }
+
+                var x = columnIndex * (width + spacing);
+                var y = _columnHeights[columnIndex];
+                if (_columnHasChildren[columnIndex])
+                {
+                    y += spacing;
+                }
+
+                var childHeight = child.DesiredSize.Height;
+                _childLayouts.Add(new Rect(x, y, width, childHeight));
+                _columnHeights[columnIndex] = y + childHeight;
+                _columnHasChildren[columnIndex] = true;
+
+                panelDesiredSize.Width = Math.Max(panelDesiredSize.Width, x + width);
+                panelDesiredSize.Height = Math.Max(panelDesiredSize.Height, _columnHeights[columnIndex]);
             }
+
             return panelDesiredSize;
+        }
+
+        protected override Size ArrangeOverride(Size finalSize)
+        {
+            for (var i = 0; i < InternalChildren.Count; i++)
+            {
+                InternalChildren[i].Arrange(_childLayouts[i]);
+            }
+
+            return finalSize;
         }
 
         public void AddChild(UIElement element)
@@ -52,7 +83,11 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty ColumnsProperty =
-            DependencyProperty.Register("Columns", typeof(int), typeof(WaterfallPanel), new PropertyMetadata(3));
+            DependencyProperty.Register(
+                "Columns",
+                typeof(int),
+                typeof(WaterfallPanel),
+                new FrameworkPropertyMetadata(3, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         public double Spacing
         {
@@ -61,6 +96,10 @@ namespace WPFDevelopers.Controls
         }
 
         public static readonly DependencyProperty SpacingProperty =
-            DependencyProperty.Register("Spacing", typeof(double), typeof(WaterfallPanel), new PropertyMetadata(5.0));
+            DependencyProperty.Register(
+                "Spacing",
+                typeof(double),
+                typeof(WaterfallPanel),
+                new FrameworkPropertyMetadata(5.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
     }
 }
