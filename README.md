@@ -119,6 +119,26 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
+### Back to top
+
+Set `ScrollViewerBehavior.IsBackToTopEnabled` to `True` on a scrollable control. After the user scrolls down, a button appears at the bottom-right and hides again when the content returns to the top.
+
+```xml
+<ListBox
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<ListView
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<DataGrid
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+```
+
+The behavior can also be set directly on `ScrollViewer`, `WDScrollViewer`, or `TreeView`. For a `Panel`, set it on the containing `ScrollViewer` because panels do not provide scrolling themselves.
+
 ----------
 ### MapView
 
@@ -745,4 +765,3 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 
 							~~end~~
-

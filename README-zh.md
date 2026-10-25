@@ -128,6 +128,26 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
+### 回到顶部
+
+在可滚动控件上将 `ScrollViewerBehavior.IsBackToTopEnabled` 设置为 `True`。用户向下滚动后，控件右下角会显示回到顶部按钮；内容回到顶部后，按钮自动隐藏。
+
+```xml
+<ListBox
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<ListView
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<DataGrid
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+```
+
+该附加属性也可直接用于 `ScrollViewer`、`WDScrollViewer` 和 `TreeView`。`Panel` 本身不提供滚动能力，应将属性设置在包裹它的 `ScrollViewer` 上。
+
 ***
 ### BasicControls
 

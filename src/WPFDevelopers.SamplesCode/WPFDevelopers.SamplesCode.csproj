@@ -84,6 +84,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RulerControlExample.xaml.cs" Link="ExampleViews\RulerControlExample.xaml.cs" DependentUpon="RulerControlExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScreenCutExample.xaml.cs" Link="ExampleViews\ScreenCutExample.xaml.cs" DependentUpon="ScreenCutExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScrollViewerAnimationExample.xaml.cs" Link="ExampleViews\ScrollViewerAnimationExample.xaml.cs" DependentUpon="ScrollViewerAnimationExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BackToTopExample.xaml.cs" Link="ExampleViews\BackToTopExample.xaml.cs" DependentUpon="BackToTopExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ShakeExample.xaml.cs" Link="ExampleViews\ShakeExample.xaml.cs" DependentUpon="ShakeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SnowCanvasExample.xaml.cs" Link="ExampleViews\SnowCanvasExample.xaml.cs" DependentUpon="SnowCanvasExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SongWordsExample.xaml.cs" Link="ExampleViews\SongWordsExample.xaml.cs" DependentUpon="SongWordsExample.xaml" />
@@ -403,6 +404,9 @@
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScrollViewerAnimationExample.xaml">
 			<Link>ExampleViews\ScrollViewerAnimationExample.xaml</Link>
+		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BackToTopExample.xaml">
+			<Link>ExampleViews\BackToTopExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ShakeExample.xaml">
 			<Link>ExampleViews\ShakeExample.xaml</Link>

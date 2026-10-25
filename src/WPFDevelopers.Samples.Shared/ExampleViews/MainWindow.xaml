@@ -189,8 +189,47 @@
                 <controls:NavigateMenu
                     x:Name="NavigateMenu"
                     Grid.Row="2"
-                    DisplayMemberPath="DisplayName"
                     ItemsSource="{Binding NavigateMenuModelList}">
+                    <controls:NavigateMenu.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Text="{Binding DisplayName}" />
+                                <Border
+                                    x:Name="ChangeBadge"
+                                    Grid.Column="1"
+                                    Margin="8,0,0,0"
+                                    Padding="5,2"
+                                    Background="#FFE5484D"
+                                    CornerRadius="3"
+                                    Visibility="Collapsed">
+                                    <TextBlock
+                                        x:Name="ChangeBadgeText"
+                                        FontSize="10"
+                                        FontWeight="SemiBold"
+                                        Foreground="White"
+                                        Text="" />
+                                </Border>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ChangeType}" Value="New">
+                                    <Setter TargetName="ChangeBadge" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="ChangeBadgeText" Property="Text" Value="NEW" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ChangeType}" Value="Updated">
+                                    <Setter TargetName="ChangeBadge" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="ChangeBadge" Property="Background" Value="#FFFFC857" />
+                                    <Setter TargetName="ChangeBadgeText" Property="Foreground" Value="#FF493500" />
+                                    <Setter TargetName="ChangeBadgeText" Property="Text" Value="UPDATE" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </controls:NavigateMenu.ItemTemplate>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSelectionChangedCommand}" CommandParameter="{Binding ElementName=NavigateMenu, Path=SelectedItem}" />

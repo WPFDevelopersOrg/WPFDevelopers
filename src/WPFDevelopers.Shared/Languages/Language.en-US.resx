@@ -207,4 +207,7 @@
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>Back to top</value>
+  </data>
 </root>

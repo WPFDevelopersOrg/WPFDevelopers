@@ -396,6 +396,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ScrollViewer:
                     ControlPanel = new ScrollViewerAnimationExample();
                     break;
+                case MenuEnum.BackToTop:
+                    ControlPanel = new BackToTopExample();
+                    break;
                 case MenuEnum.CardCarousel:
                     ControlPanel = new CardCarouselExample();
                     break;

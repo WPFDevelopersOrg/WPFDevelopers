@@ -237,7 +237,19 @@ If you need to display a README, help document, release notes, or internal docum
 
 <!-- TreeView scroll animation -->
 <TreeView wd:TreeViewHelper.IsScrollAnimation="true" />
+
+<!-- Back-to-top button for lists and scrollable content -->
+<ListBox wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
+<ListView wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
+<DataGrid wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
+<ScrollViewer wd:ScrollViewerBehavior.IsBackToTopEnabled="True">
+    <!-- long content -->
+</ScrollViewer>
 ```
+
+Set `IsBackToTopEnabled` on a list control or its outer `ScrollViewer`. The button appears at the bottom-right after scrolling and hides when the content returns to the top. It does not replace the `ItemsPanel`, so list virtualization is preserved.
+
+Open the **Attached Properties** menu in the sample application to see an interactive example.
 
 ### 3. Static Resource Styles
 

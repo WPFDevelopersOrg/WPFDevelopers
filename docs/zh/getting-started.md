@@ -239,9 +239,21 @@ public string MarkdownText { get; } = "# WPFDevelopers\n\n- 支持标题\n- 支�
 <!-- TreeView 滚动动画 -->
 <TreeView wd:TreeViewHelper.IsScrollAnimation="true" />
 
+<!-- 列表/滚动区域回到顶部 -->
+<ListBox wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
+<ListView wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
+<DataGrid wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
+<ScrollViewer wd:ScrollViewerBehavior.IsBackToTopEnabled="True">
+    <!-- long content -->
+</ScrollViewer>
+
 <!-- ScrollIntoView 定位 -->
 <ListBoxItem wd:ScrollIntoView.IsPosition="True" />
 ```
+
+`IsBackToTopEnabled` 应设置在列表控件或外层 `ScrollViewer` 上。向下滚动后，按钮会显示在右下角；回到顶部后自动隐藏。该行为不会修改 `ItemsPanel`，因此不会影响列表虚拟化。
+
+示例程序中可打开 **附加属性** 菜单查看交互示例。
 
 ### 3. 静态资源样式
 

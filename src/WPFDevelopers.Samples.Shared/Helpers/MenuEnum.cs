@@ -105,6 +105,7 @@
         Segmented,
         MarkdownViewer,
         MapView,
+        BackToTop,
         VirtualizingWrapPanel,
         AcrylicBlur,
         Theme,
