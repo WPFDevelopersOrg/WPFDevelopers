@@ -53,6 +53,23 @@ namespace WPFDevelopers.Samples.ViewModels
             nameof(MenuEnum.TaskbarInfo),
         };
 
+        private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
+        {
+            MenuEnum.BackToTop,
+        };
+
+        private static readonly HashSet<MenuEnum> UpdatedMenuItems = new HashSet<MenuEnum>
+        {
+            MenuEnum.ComboBox,
+            MenuEnum.DataGrid,
+            MenuEnum.ListBox,
+            MenuEnum.ListView,
+            MenuEnum.ScrollViewer,
+            MenuEnum.ActivityFeed,
+            MenuEnum.VirtualizingWrapPanel,
+            MenuEnum.WaterfallPanel,
+        };
+
         private IList<NavigateMenuModel> _navigateMenuModelList;
 
         public IList<NavigateMenuModel> NavigateMenuModelList
@@ -162,10 +179,16 @@ namespace WPFDevelopers.Samples.ViewModels
             foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
             {
                 var name = menuEnum.ToString();
+                var menuModel = new NavigateMenuModel { Name = name };
+                if (NewMenuItems.Contains(menuEnum))
+                    menuModel.ChangeType = "New";
+                else if (UpdatedMenuItems.Contains(menuEnum))
+                    menuModel.ChangeType = "Updated";
+
                 if (BasicEnumSet.Contains(name))
-                    _basicMenuModelList.Add(new NavigateMenuModel { Name = name });
+                    _basicMenuModelList.Add(menuModel);
                 else
-                    _customMenuModelList.Add(new NavigateMenuModel { Name = name });
+                    _customMenuModelList.Add(menuModel);
             }
             NavigateMenuModelList = _customMenuModelList;
             _navigateMenuItem = NavigateMenuModelList.First();
