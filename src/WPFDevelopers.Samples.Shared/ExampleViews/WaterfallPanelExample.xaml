@@ -4,144 +4,95 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:WPFDevelopers.Samples.ViewModels"
     xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <vm:WaterfallPanelExampleVM x:Key="WaterfallPanelViewModel" />
+        <Style x:Key="MasonryImage" TargetType="Image">
+            <EventSetter Event="ImageFailed" Handler="Image_Failed" />
+            <Setter Property="Stretch" Value="Uniform" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+    </UserControl.Resources>
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
-        <ScrollViewer>
-            <wd:WaterfallPanel Width="750">
-                <wd:WaterfallPanel.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10" />
-                        <Setter Property="BorderBrush" Value="LightGray" />
-                        <Setter Property="BorderThickness" Value="1" />
-                    </Style>
-                    <Style TargetType="ImageBrush">
-                        <Setter Property="Stretch" Value="Fill" />
-                    </Style>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Margin" Value="4,10" />
-                        <Setter Property="Foreground" Value="White" />
-                    </Style>
-                    <Style x:Key="BorderContent" TargetType="Border">
-                        <Setter Property="Height" Value="40" />
-                        <Setter Property="CornerRadius" Value="10,10,0,0" />
-                        <Setter Property="VerticalAlignment" Value="Top" />
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <LinearGradientBrush Opacity=".3" StartPoint="0,.5" EndPoint="0,1">
-                                    <GradientStop Offset="0" Color="DimGray" />
-                                    <GradientStop Offset="0.9" Color="Gray" />
-                                    <GradientStop Offset="1" Color="Transparent" />
-                                </LinearGradientBrush>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </wd:WaterfallPanel.Resources>
-                <Border Height="340">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse2-mm.cn.bing.net/th/id/OIP-C.WVAYTzW5VMZgAErg-y6EgwAAAA" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="WVAYTzW5VMZgAErg" />
-                    </Border>
-                </Border>
-                <Border Height="300">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse1-mm.cn.bing.net/th/id/OIP-C.e51iwDiqzatju6Bf50lJ2QHaMW" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="e51iwDiqzatju6Bf50lJ2QHaMW" />
-                    </Border>
-                </Border>
-                <Border Height="280">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse1-mm.cn.bing.net/th/id/OIP-C.dB2fWdfqfr8w3sP7wiboHgHaNK" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="dB2fWdfqfr8w3sP7wiboHgHaNK" />
-                    </Border>
-                </Border>
-                <Border Height="350">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse4-mm.cn.bing.net/th/id/OIP-C.IzGLt2NgGhakuvbk008FOwHaK9" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="IzGLt2NgGhakuvbk008FOwHaK9" />
-                    </Border>
-                </Border>
-                <Border Height="400">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://pic4.zhimg.com/v2-6233e57a364dcb3b6c5f066f8b30dab4_r.jpg" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="6233e57a364dcb3b6c5f066f8b30dab4_r" />
-                    </Border>
-                </Border>
-                <Border Height="240">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse1-mm.cn.bing.net/th/id/OIP-C.ivs2k5Q7Zx7WRZVuSDUJqQHaJ4" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="ivs2k5Q7Zx7WRZVuSDUJqQHaJ4" />
-                    </Border>
-                </Border>
-                <Border Height="290">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse3-mm.cn.bing.net/th/id/OIP-C.sTVQljOS9ntgkUyvDXk68AHaKe" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="sTVQljOS9ntgkUyvDXk68AHaKe" />
-                    </Border>
-                </Border>
-                <Border Height="207">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse2-mm.cn.bing.net/th/id/OIP-C.caVFPs_YGiHH-7vOpQ7GqwHaHY" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="7vOpQ7GqwHaHY" />
-                    </Border>
-                </Border>
-                <Border Height="200">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse2-mm.cn.bing.net/th/id/OIP-C.T_Zi1o-AYSCp4c00D_zCVAHaHa" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="AYSCp4c00D_zCVAHaHa" />
-                    </Border>
-                </Border>
-                <Border Height="220">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse2-mm.cn.bing.net/th/id/OIP-C.-EGv7Ycl5Zu46_YIGjNuDgHaH4" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="EGv7Ycl5Zu46_YIGjNuDgHaH4" />
-                    </Border>
-                </Border>
-                <Border Height="200">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://tse4-mm.cn.bing.net/th/id/OIP-C.TQ1f0BMQ7Bo7PuRKnCJAMAHaHa" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="TQ1f0BMQ7Bo7PuRKnCJAMAHaHa" />
-                    </Border>
-                </Border>
-                <Border Height="450">
-                    <Border.Background>
-                        <ImageBrush ImageSource="http://img.zcool.cn/community/01493f5d11d9cca801205e4b24e764.jpg" />
-                    </Border.Background>
-                    <Border Style="{StaticResource BorderContent}">
-                        <TextBlock Text="01493f5d11d9cca801205e4b24e764" />
-                    </Border>
-                </Border>
-            </wd:WaterfallPanel>
-        </ScrollViewer>
+        <TabControl>
+            <TabItem Header="XAML">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <wd:WaterfallPanel
+                        Margin="16"
+                        MinColumnWidth="200"
+                        Spacing="16">
+                        <Image Source="https://images.unsplash.com/photo-1510001618818-4b4e3d86bf0f?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1507513319174-e556268bb244?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1492778297155-7be4c83960c7?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1508062878650-88b52897f298?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1506158278516-d720e72406fc?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1552203274-e3c7bd771d26?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1528163186890-de9b86b54b51?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1727423304224-6d2fd99b864c?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1675090391405-432434e23595?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1554196967-97a8602084d9?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1491961865842-98f7befd1a60?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1721728613411-d56d2ddda959?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1731901245099-20ac7f85dbaa?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1617694455303-59af55af7e58?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                        <Image Source="https://images.unsplash.com/photo-1709198165282-1dab551df890?w=523&amp;auto=format" Style="{StaticResource MasonryImage}" />
+                    </wd:WaterfallPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="MVVM">
+                <wd:WaterfallItemsControl
+                    Margin="16"
+                    ItemsSource="{Binding Items, Source={StaticResource WaterfallPanelViewModel}}"
+                    MinColumnWidth="200"
+                    Spacing="16">
+                    <wd:WaterfallItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImageUri}" Style="{StaticResource MasonryImage}" />
+                        </DataTemplate>
+                    </wd:WaterfallItemsControl.ItemTemplate>
+                </wd:WaterfallItemsControl>
+            </TabItem>
+            <TabItem Header="Virtualization (5000)">
+                <wd:WaterfallItemsControl
+                    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+                    EstimatedItemHeight="210"
+                    ItemsSource="{Binding LargeItems, Source={StaticResource WaterfallPanelViewModel}}"
+                    MinColumnWidth="200"
+                    Spacing="16">
+                    <wd:WaterfallItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Height="{Binding Height}"
+                                Padding="16"
+                                Background="{DynamicResource WD.PrimaryMouseOverBrush}"
+                                BorderBrush="{DynamicResource WD.PrimaryBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    Text="{Binding Title}" />
+                            </Border>
+                        </DataTemplate>
+                    </wd:WaterfallItemsControl.ItemTemplate>
+                </wd:WaterfallItemsControl>
+            </TabItem>
+        </TabControl>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/WaterfallPanelExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/WaterfallPanelExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ViewModels/WaterfallPanelExampleVM.cs"
+                CodeType="CSharp"
+                Haader="ViewModel" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
