@@ -11,6 +11,7 @@
             <UniformGrid Height="300" Margin="0,10" Columns="2">
                 <ListView
                     wd:ElementHelper.CornerRadius="3"
+                    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
                     FontSize="20"
                     ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=UserControl}}">
                     <ListView.View>
