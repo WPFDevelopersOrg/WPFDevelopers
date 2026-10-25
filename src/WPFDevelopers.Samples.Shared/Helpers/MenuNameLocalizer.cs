@@ -69,7 +69,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.SixGridView] = "六宫格",
             [MenuEnum.Magnifier] = "放大镜",
             [MenuEnum.Step] = "步骤条",
-            [MenuEnum.MultiSelectComboBox] = "多选下拉框",
+            [MenuEnum.MultiSelectComboBox] = "多选下拉框(带搜索)",
             [MenuEnum.Mask] = "遮罩",
             [MenuEnum.Loading] = "加载动画",
             [MenuEnum.Selector] = "列表定位",
