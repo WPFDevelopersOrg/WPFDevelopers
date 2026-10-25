@@ -31,14 +31,10 @@
                 IsChecked="{Binding DataContext.IsChineseLanguage, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"
                 ToolTip="中文 / English">
                 <wd:SwitchButton.UncheckedContent>
-                    <TextBlock
-                        Foreground="White"
-                        Text="EN" />
+                    <TextBlock Foreground="White" Text="中" />
                 </wd:SwitchButton.UncheckedContent>
                 <wd:SwitchButton.CheckedContent>
-                    <TextBlock
-                        Foreground="White"
-                        Text="中" />
+                    <TextBlock Foreground="White" Text="EN" />
                 </wd:SwitchButton.CheckedContent>
             </wd:SwitchButton>
             <wd:SwitchButton
