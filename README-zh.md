@@ -130,8 +130,6 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
-回到顶部功能的使用说明和 XAML 示例，请参阅[快速开始文档](docs/zh/getting-started.md#回到顶部)。
-
 ***
 ### BasicControls
 
