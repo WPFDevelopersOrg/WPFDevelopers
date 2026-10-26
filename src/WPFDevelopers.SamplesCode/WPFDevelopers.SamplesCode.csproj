@@ -38,7 +38,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CountdownTimerExample.xaml.cs" Link="ExampleViews\CountdownTimerExample.xaml.cs" DependentUpon="CountdownTimerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarExample.xaml.cs" DependentUpon="CropAvatarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" Link="ExampleViews\CropAvatar\CropAvatarWindow.xaml.cs" DependentUpon="CropAvatarWindow.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropControlExample.xaml.cs" Link="ExampleViews\CropControlExample.xaml.cs" DependentUpon="CropControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ImageCropExample.xaml.cs" Link="ExampleViews\ImageCropExample.xaml.cs" DependentUpon="ImageCropExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CutImageExample.xaml.cs" Link="ExampleViews\CutImageExample.xaml.cs" DependentUpon="CutImageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\DashboardExample.xaml.cs" Link="ExampleViews\DashboardExample.xaml.cs" DependentUpon="DashboardExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Desktop\DesktopBackground.xaml.cs" Link="ExampleViews\Desktop\DesktopBackground.xaml.cs" DependentUpon="DesktopBackground.xaml" />
