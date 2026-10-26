@@ -5,6 +5,7 @@
         private bool _isVisible = true;
         private string _displayName;
         private string _changeType = string.Empty;
+        public bool IsDemo { get; set; }
         public string Name { get; set; }
         public string DisplayName
         {
