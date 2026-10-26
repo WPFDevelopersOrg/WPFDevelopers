@@ -396,8 +396,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RoundPickerExample.xaml">
 			<Link>ExampleViews\RoundPickerExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RulerControlExample.xaml">
-			<Link>ExampleViews\RulerControlExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RulerExample.xaml">
+			<Link>ExampleViews\RulerExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScreenCutExample.xaml">
 			<Link>ExampleViews\ScreenCutExample.xaml</Link>
