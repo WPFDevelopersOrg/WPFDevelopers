@@ -121,8 +121,6 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
-For the back-to-top behavior and XAML examples, see [Back-to-top usage](docs/en/getting-started.md#back-to-top).
-
 ----------
 ### MapView
 
