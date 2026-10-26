@@ -118,7 +118,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TimeLine\TimeLine.cs" Link="Controls\TimeLine\TimeLine.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\DrawingPanel.cs" Link="Controls\Drawing\DrawingPanel.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\DrawingControl.cs" Link="Controls\Drawing\DrawingControl.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Others\FireControl.cs" Link="Controls\Others\FireControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Others\Flame.cs" Link="Controls\Others\Flame.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ChatEmoji\ChatEmoji.cs" Link="Controls\ChatEmoji\ChatEmoji.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ChatEmoji\EmojiHelper.cs" Link="Controls\ChatEmoji\EmojiHelper.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\RoundPicker\RoundPicker.cs" Link="Controls\RoundPicker\RoundPicker.cs" />
