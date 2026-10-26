@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="WPFDevelopers.Samples.ExampleViews.OtherControlExample"
+    x:Class="WPFDevelopers.Samples.ExampleViews.FlameExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
@@ -20,7 +20,7 @@
                 Margin="0,10"
                 VerticalAlignment="Bottom"
                 Orientation="Vertical">
-                <controls:FireControl
+                <controls:Flame
                     Width="100"
                     Height="100"
                     IsStart="True"
@@ -51,16 +51,16 @@
 
         </Border>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/OtherControlExample.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/OtherControlExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/FlameExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/FlameExample.xaml.cs" CodeType="CSharp" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Others/OtherControl.xaml"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Others/Flame.xaml"
                 CodeType="Xaml"
-                Haader="OtherControl" />
+                Haader="Flame.xaml" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Others/FireControl.cs"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/Others/Flame.cs"
                 CodeType="CSharp"
-                Haader="FireControl.cs" />
+                Haader="Flame.cs" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
