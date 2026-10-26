@@ -28,6 +28,8 @@
 
 ### [ 文档中心 → 快速开始](docs/zh/getting-started.md)
 
+示例导航中的蓝灰色 `DEMO` 标识表示示例专属实现或组合效果，并非 WD 内置控件，请参考示例源码。`DEMO` 与表示更新状态的 `NEW / UPDATE` 独立，同一项可以同时显示两类标识。
+
 ### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。
 
 ### 运行环境 Visual Studio 2026
@@ -66,7 +68,7 @@
 
 ### 支持者
 
-<a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>     <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>  <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a>   <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>
+<a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>     <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>  <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a>   <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>   <a href="https://gitee.com/ZJHome" target="_blank">左全</a>
 
 ### 贡献者
 <a href="https://github.com/yanjinhuagood" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/23089734?v=4"></a>
@@ -128,25 +130,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
-### 回到顶部
-
-在可滚动控件上将 `ScrollViewerBehavior.IsBackToTopEnabled` 设置为 `True`。用户向下滚动后，控件右下角会显示回到顶部按钮；内容回到顶部后，按钮自动隐藏。
-
-```xml
-<ListBox
-    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
-    ItemsSource="{Binding Items}" />
-
-<ListView
-    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
-    ItemsSource="{Binding Items}" />
-
-<DataGrid
-    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
-    ItemsSource="{Binding Items}" />
-```
-
-该附加属性也可直接用于 `ScrollViewer`、`WDScrollViewer` 和 `TreeView`。`Panel` 本身不提供滚动能力，应将属性设置在包裹它的 `ScrollViewer` 上。
+回到顶部功能的使用说明和 XAML 示例，请参阅[快速开始文档](docs/zh/getting-started.md#回到顶部)。
 
 ***
 ### BasicControls
@@ -534,7 +518,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### CropControl（WPF实现图片切成九宫格控件）
+### ImageCrop（WPF实现图片九宫格分块效果）
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/CropControl.gif"/>
 
@@ -703,7 +687,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### WpfPieControl（WPF实现统计图（饼图仿LiveCharts））
+### PieSegment（WPF实现分段饼图示例）
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/PieControl.gif"/>
 
