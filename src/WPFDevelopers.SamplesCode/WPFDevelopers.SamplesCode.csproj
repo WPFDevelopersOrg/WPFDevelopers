@@ -25,7 +25,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartBarExample.xaml.cs" Link="ExampleViews\ChartBarExample.xaml.cs" DependentUpon="ChartBarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BasicControlsExample.xaml.cs" Link="ExampleViews\BasicControlsExample.xaml.cs" DependentUpon="BasicControlsExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreatheLightExample.xaml.cs" Link="ExampleViews\BreatheLightExample.xaml.cs" DependentUpon="BreatheLightExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BubblleControlExample.xaml.cs" Link="ExampleViews\BubblleControlExample.xaml.cs" DependentUpon="BubblleControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BubbleSelectionExample.xaml.cs" Link="ExampleViews\BubbleSelectionExample.xaml.cs" DependentUpon="BubbleSelectionExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs" Link="ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs" DependentUpon="CanvasHandWritingExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CanvasHandWriting\ComputingHelper.cs" Link="ExampleViews\CanvasHandWriting\ComputingHelper.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CanvasHandWriting\LineB.cs" Link="ExampleViews\CanvasHandWriting\LineB.cs" />
