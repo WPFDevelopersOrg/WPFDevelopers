@@ -141,7 +141,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TransformLayout\ElementAdorner.cs" Link="Controls\TransformLayout\ElementAdorner.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TransformLayout\ThumbAngle.cs" Link="Controls\TransformLayout\ThumbAngle.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TransformLayout\TransformLayout.cs" Link="Controls\TransformLayout\TransformLayout.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CropControl\CropControl.cs" Link="Controls\CropControl\CropControl.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ImageCrop\ImageCrop.cs" Link="Controls\ImageCrop\ImageCrop.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CropImageExample.xaml.cs" Link="ExampleViews\CropImageExample.xaml.cs" DependentUpon="CropImageExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BadgeExample.xaml.cs" Link="ExampleViews\BadgeExample.xaml.cs" DependentUpon="BadgeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ToastExample.xaml.cs" Link="ExampleViews\ToastExample.xaml.cs" DependentUpon="ToastExample.xaml" />
