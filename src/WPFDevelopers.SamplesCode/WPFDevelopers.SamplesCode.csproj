@@ -126,8 +126,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\CutImage\DragDrop.cs" Link="Controls\CutImage\DragDrop.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Dashboard\Dashboard.cs" Link="Controls\Dashboard\Dashboard.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Dashboard\ScaleItem.cs" Link="Controls\Dashboard\ScaleItem.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\PieControl\PieControl.cs" Link="Controls\PieControl\PieControl.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\PieControl\PieSegmentModel.cs" Link="Controls\PieControl\PieSegmentModel.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\PieSegment\PieSegment.cs" Link="Controls\PieSegment\PieSegment.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\PieSegment\PieSegmentModel.cs" Link="Controls\PieSegment\PieSegmentModel.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Prize\DrawPrize.cs" Link="Controls\Prize\DrawPrize.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Prize\PrizeItemControl.cs" Link="Controls\Prize\PrizeItemControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\RainbowButtons\RainbowAppleButton.cs" Link="Controls\RainbowButtons\RainbowAppleButton.cs" />
