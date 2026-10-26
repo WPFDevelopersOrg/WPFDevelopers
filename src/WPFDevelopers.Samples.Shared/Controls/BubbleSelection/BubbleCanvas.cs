@@ -4,7 +4,7 @@ using WPFDevelopers.Utilities;
 
 namespace WPFDevelopers.Samples.Controls
 {
-    public class BubblleCanvas : Canvas
+    public class BubbleCanvas : Canvas
     {
         private double _bubbleItemX;
         private double _bubbleItemY;

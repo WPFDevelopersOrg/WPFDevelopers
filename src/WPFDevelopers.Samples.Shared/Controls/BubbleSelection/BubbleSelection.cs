@@ -12,16 +12,16 @@ namespace WPFDevelopers.Samples.Controls
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = EllipseTemplateName, Type = typeof(Ellipse))]
     [TemplatePart(Name = RotateTransformTemplateName, Type = typeof(RotateTransform))]
-    public class BubblleControl : Control
+    public class BubbleSelection : Control
     {
         private const string BorderTemplateName = "PART_Border";
         private const string EllipseTemplateName = "PART_Ellipse";
         private const string RotateTransformTemplateName = "PART_EllipseRotateTransform";
         private const string ListBoxTemplateName = "PART_ListBox";
 
-        private static readonly Type _typeofSelf = typeof(BubblleControl);
+        private static readonly Type _typeofSelf = typeof(BubbleSelection);
 
-        private ObservableCollection<BubblleItem> _items = new ObservableCollection<BubblleItem>();
+        private ObservableCollection<BubbleItem> _items = new ObservableCollection<BubbleItem>();
 
 
         private Border _border;
@@ -31,13 +31,13 @@ namespace WPFDevelopers.Samples.Controls
         private ItemsControl _listBox;
         private static RoutedCommand _clieckCommand;
 
-        class BubblleItem
+        class BubbleItem
         {
             public string Text { get; set; }
             public Brush Bg { get; set; }
         }
 
-        static BubblleControl()
+        static BubbleSelection()
         {
             InitializeCommands();
             DefaultStyleKeyProperty.OverrideMetadata(_typeofSelf, new FrameworkPropertyMetadata(_typeofSelf));
@@ -72,7 +72,7 @@ namespace WPFDevelopers.Samples.Controls
 
         private static void OnClickCommand(object sender, ExecutedRoutedEventArgs e)
         {
-            var ctrl = sender as BubblleControl;
+            var ctrl = sender as BubbleSelection;
 
             ctrl.SetValue(SelectedTextPropertyKey, e.Parameter?.ToString());
             ctrl.RaiseEvent(new RoutedEventArgs(ClickEvent));
@@ -95,11 +95,11 @@ namespace WPFDevelopers.Samples.Controls
             get { return (string)GetValue(SelectedTextProperty); }
         }
         public static readonly DependencyProperty BorderBackgroundProperty =
-            DependencyProperty.Register("BorderBackground", typeof(Brush), typeof(BubblleControl),
+            DependencyProperty.Register("BorderBackground", typeof(Brush), typeof(BubbleSelection),
                 new PropertyMetadata(null));
 
         public static readonly DependencyProperty EarthBackgroundProperty =
-            DependencyProperty.Register("EarthBackground", typeof(Brush), typeof(BubblleControl),
+            DependencyProperty.Register("EarthBackground", typeof(Brush), typeof(BubbleSelection),
                 new PropertyMetadata(Brushes.DarkOrchid));
         public Brush BorderBackground
         {
@@ -116,7 +116,7 @@ namespace WPFDevelopers.Samples.Controls
         #region Property
 
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(IEnumerable<string>), typeof(BubblleControl), new PropertyMetadata(null, OnItemsSourcePropertyChanged));
+            DependencyProperty.Register("ItemsSource", typeof(IEnumerable<string>), typeof(BubbleSelection), new PropertyMetadata(null, OnItemsSourcePropertyChanged));
         public IEnumerable<string> ItemsSource
         {
             get { return (IEnumerable<string>)GetValue(ItemsSourceProperty); }
@@ -125,7 +125,7 @@ namespace WPFDevelopers.Samples.Controls
 
         private static void OnItemsSourcePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
-            var ctrl = obj as BubblleControl;
+            var ctrl = obj as BubbleSelection;
             var newValue = e.NewValue as IEnumerable<string>;
 
             if (newValue == null)
@@ -136,7 +136,7 @@ namespace WPFDevelopers.Samples.Controls
 
             foreach (var item in newValue)
             {
-                ctrl._items.Add(new BubblleItem { Text = item, Bg = Helper.RandomBrush() });
+                ctrl._items.Add(new BubbleItem { Text = item, Bg = Helper.RandomBrush() });
             }
         }
 

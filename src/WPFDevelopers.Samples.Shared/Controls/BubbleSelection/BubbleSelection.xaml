@@ -5,9 +5,9 @@
     xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
 
     <Style
-        x:Key="WD.BubblleControl"
+        x:Key="Samples.BubbleSelection"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="controls:BubblleControl">
+        TargetType="controls:BubbleSelection">
         <Setter Property="Width" Value="400" />
         <Setter Property="Height" Value="400" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -16,7 +16,7 @@
         <Setter Property="BorderBackground" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:BubblleControl">
+                <ControlTemplate TargetType="controls:BubbleSelection">
                     <wd:SmallPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
                         <Border
                             x:Name="PART_Border"
@@ -67,7 +67,7 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
                                             <Hyperlink
-                                                Command="{x:Static controls:BubblleControl.ClickCommand}"
+                                                Command="{x:Static controls:BubbleSelection.ClickCommand}"
                                                 CommandParameter="{Binding Text}"
                                                 FontWeight="Normal"
                                                 Foreground="{Binding Bg}">
@@ -83,7 +83,7 @@
                             </ItemsControl.ItemTemplate>
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <controls:BubblleCanvas />
+                                    <controls:BubbleCanvas />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
@@ -92,5 +92,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.BubblleControl}" TargetType="{x:Type controls:BubblleControl}" />
+    <Style BasedOn="{StaticResource Samples.BubbleSelection}" TargetType="{x:Type controls:BubbleSelection}" />
 </ResourceDictionary>
