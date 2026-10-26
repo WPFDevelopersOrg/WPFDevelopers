@@ -70,7 +70,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Map\PushpinModel.cs" Link="ExampleViews\Map\PushpinModel.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumberCard\NumberCardControl.xaml.cs" Link="ExampleViews\NumberCard\NumberCardControl.xaml.cs" DependentUpon="NumberCardControl.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\NumberCard\NumberCardExample.xaml.cs" Link="ExampleViews\NumberCard\NumberCardExample.xaml.cs" DependentUpon="NumberCardExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\OtherControlExample.xaml.cs" Link="ExampleViews\OtherControlExample.xaml.cs" DependentUpon="OtherControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\FlameExample.xaml.cs" Link="ExampleViews\FlameExample.xaml.cs" DependentUpon="FlameExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PaginationExample.xaml.cs" Link="ExampleViews\PaginationExample.xaml.cs" DependentUpon="PaginationExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PanningItemsExample.xaml.cs" Link="ExampleViews\PanningItemsExample.xaml.cs" DependentUpon="PanningItemsExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Passwrod\ImageRadioButton.cs" Link="ExampleViews\Passwrod\ImageRadioButton.cs" />
