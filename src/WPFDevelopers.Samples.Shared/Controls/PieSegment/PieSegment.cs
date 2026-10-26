@@ -5,14 +5,14 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Samples.Controls
 {
-    public class PieControl : Control
+    public class PieSegment : Control
     {
         public static readonly DependencyProperty PieSegmentModelsProperty =
             DependencyProperty.Register("PieSegmentModels", typeof(ObservableCollection<PieSegmentModel>),
-                typeof(PieControl), new UIPropertyMetadata(OnPieSegmentModelChanged));
+                typeof(PieSegment), new UIPropertyMetadata(OnPieSegmentModelChanged));
 
         public static readonly DependencyProperty ArcThicknessProperty =
-            DependencyProperty.Register("ArcThickness", typeof(double), typeof(PieControl), new PropertyMetadata(1.0));
+            DependencyProperty.Register("ArcThickness", typeof(double), typeof(PieSegment), new PropertyMetadata(1.0));
 
         /// <summary>
         ///     colors
@@ -20,10 +20,10 @@ namespace WPFDevelopers.Samples.Controls
         private readonly string[] ColorArray = { "#FDC006", "#607E89", "#2095F2", "#F34336" };
 
 
-        static PieControl()
+        static PieSegment()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(PieControl),
-                new FrameworkPropertyMetadata(typeof(PieControl)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(PieSegment),
+                new FrameworkPropertyMetadata(typeof(PieSegment)));
         }
 
         public ObservableCollection<PieSegmentModel> PieSegmentModels
@@ -44,7 +44,7 @@ namespace WPFDevelopers.Samples.Controls
 
         private static void OnPieSegmentModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var pieControl = d as PieControl;
+            var pieSegment = d as PieSegment;
             if (e.NewValue != null)
             {
                 var array = e.NewValue as ObservableCollection<PieSegmentModel>;
@@ -52,7 +52,7 @@ namespace WPFDevelopers.Samples.Controls
                 foreach (var item in array)
                 {
                     var color = new SolidColorBrush(
-                        (Color)ColorConverter.ConvertFromString(pieControl.ColorArray[array.IndexOf(item)]));
+                        (Color)ColorConverter.ConvertFromString(pieSegment.ColorArray[array.IndexOf(item)]));
                     item.Color = color;
                     item.StartAngle = angleNum;
                     item.EndAngle = angleNum + item.Value / 100 * 360;

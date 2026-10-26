@@ -7,9 +7,9 @@ using WPFDevelopers.Samples.Controls;
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// PieControlExample.xaml 的交互逻辑
+    /// PieSegmentExample.xaml 的交互逻辑
     /// </summary>
-    public partial class PieControlExample : UserControl
+    public partial class PieSegmentExample : UserControl
     {
         public ObservableCollection<PieSegmentModel> PieSegmentModels
         {
@@ -18,10 +18,10 @@ namespace WPFDevelopers.Samples.ExampleViews
         }
 
         public static readonly DependencyProperty PieSegmentModelsProperty =
-            DependencyProperty.Register("PieSegmentModels", typeof(ObservableCollection<PieSegmentModel>), typeof(PieControlExample), new PropertyMetadata(null));
+            DependencyProperty.Register("PieSegmentModels", typeof(ObservableCollection<PieSegmentModel>), typeof(PieSegmentExample), new PropertyMetadata(null));
 
         List<ObservableCollection<PieSegmentModel>> collectionList = new List<ObservableCollection<PieSegmentModel>>();
-        public PieControlExample()
+        public PieSegmentExample()
         {
             InitializeComponent();
 

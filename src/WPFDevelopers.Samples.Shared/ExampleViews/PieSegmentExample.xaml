@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="WPFDevelopers.Samples.ExampleViews.PieControlExample"
+    x:Class="WPFDevelopers.Samples.ExampleViews.PieSegmentExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
@@ -12,12 +12,12 @@
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <StackPanel HorizontalAlignment="Center">
             <WrapPanel Margin="10">
-                <controls:PieControl ArcThickness="1" PieSegmentModels="{Binding PieSegmentModels, RelativeSource={RelativeSource AncestorType=local:PieControlExample}}" />
-                <controls:PieControl
+                <controls:PieSegment ArcThickness="1" PieSegmentModels="{Binding PieSegmentModels, RelativeSource={RelativeSource AncestorType=local:PieSegmentExample}}" />
+                <controls:PieSegment
                     Margin="4,0"
                     ArcThickness="{Binding ElementName=PRAT_Slider, Path=Value}"
-                    PieSegmentModels="{Binding PieSegmentModels, RelativeSource={RelativeSource AncestorType=local:PieControlExample}}" />
-                <controls:PieControl ArcThickness="0.65" PieSegmentModels="{Binding PieSegmentModels, RelativeSource={RelativeSource AncestorType=local:PieControlExample}}" />
+                    PieSegmentModels="{Binding PieSegmentModels, RelativeSource={RelativeSource AncestorType=local:PieSegmentExample}}" />
+                <controls:PieSegment ArcThickness="0.65" PieSegmentModels="{Binding PieSegmentModels, RelativeSource={RelativeSource AncestorType=local:PieSegmentExample}}" />
             </WrapPanel>
             <Slider
                 x:Name="PRAT_Slider"
@@ -33,18 +33,18 @@
                 Style="{StaticResource WD.PrimaryButton}" />
         </StackPanel>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PieControlExample.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PieControlExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PieSegmentExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/PieSegmentExample.xaml.cs" CodeType="CSharp" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/PieControl/PieControl.xaml"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/PieSegment/PieSegment.xaml"
                 CodeType="Xaml"
-                Haader="PieControl" />
+                Haader="PieSegment.xaml" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/PieControl/PieControl.cs"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/PieSegment/PieSegment.cs"
                 CodeType="CSharp"
-                Haader="PieControl.cs" />
+                Haader="PieSegment.cs" />
             <controls:SourceCodeModel
-                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/PieControl/PieSegmentModel.cs"
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/PieSegment/PieSegmentModel.cs"
                 CodeType="CSharp"
                 Haader="PieSegmentModel.cs" />
         </controls:CodeViewer.SourceCodes>

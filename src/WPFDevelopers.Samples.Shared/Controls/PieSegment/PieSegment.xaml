@@ -6,15 +6,15 @@
     xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
 
     <Style
-        x:Key="WD.PieControl"
+        x:Key="Samples.PieSegment"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:PieControl}">
+        TargetType="{x:Type controls:PieSegment}">
         <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
         <Setter Property="Width" Value="250" />
         <Setter Property="Height" Value="250" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:PieControl}">
+                <ControlTemplate TargetType="{x:Type controls:PieSegment}">
                     <ItemsControl
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
@@ -30,7 +30,7 @@
                                 <ed:Arc
                                     Width="{TemplateBinding Width}"
                                     Height="{TemplateBinding Height}"
-                                    ArcThickness="{Binding ArcThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:PieControl}}"
+                                    ArcThickness="{Binding ArcThickness, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:PieSegment}}"
                                     ArcThicknessUnit="Percent"
                                     EndAngle="{Binding EndAngle}"
                                     Fill="{Binding Color}"
@@ -46,5 +46,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.PieControl}" TargetType="{x:Type controls:PieControl}" />
+    <Style BasedOn="{StaticResource Samples.PieSegment}" TargetType="{x:Type controls:PieSegment}" />
 </ResourceDictionary>
