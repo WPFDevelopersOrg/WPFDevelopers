@@ -26,6 +26,8 @@
 
 ###  [Documentation Center → Quick Start](docs/en/getting-started.md)
 
+The sample navigation marks sample-only implementations and composed effects with a blue-gray `DEMO` badge. These are not built-in WD controls; refer to the sample source. `DEMO` is independent of `NEW` / `UPDATE`, so both badges can appear on the same item.
+
 ###  Visual Studio 2026
 
 <h1 align="center">System Design</h1>
@@ -65,7 +67,7 @@ If you think our open source software is helpful to you, please scan the QR code
 ### Backers
 
 <a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>    <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>   <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a>
-   <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>
+    <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>   <a href="https://gitee.com/ZJHome" target="_blank">左全</a>
 
 ### Contributors
 <a href="https://github.com/yanjinhuagood" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/23089734?v=4"></a>
@@ -119,25 +121,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
 
-### Back to top
-
-Set `ScrollViewerBehavior.IsBackToTopEnabled` to `True` on a scrollable control. After the user scrolls down, a button appears at the bottom-right and hides again when the content returns to the top.
-
-```xml
-<ListBox
-    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
-    ItemsSource="{Binding Items}" />
-
-<ListView
-    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
-    ItemsSource="{Binding Items}" />
-
-<DataGrid
-    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
-    ItemsSource="{Binding Items}" />
-```
-
-The behavior can also be set directly on `ScrollViewer`, `WDScrollViewer`, or `TreeView`. For a `Panel`, set it on the containing `ScrollViewer` because panels do not provide scrolling themselves.
+For the back-to-top behavior and XAML examples, see [Back-to-top usage](docs/en/getting-started.md#back-to-top).
 
 ----------
 ### MapView
@@ -507,7 +491,7 @@ The behavior can also be set directly on `ScrollViewer`, `WDScrollViewer`, or `T
 
 ----------
 
-### CropControl
+### ImageCrop
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/CropControl.gif"/>
 
@@ -683,7 +667,7 @@ The behavior can also be set directly on `ScrollViewer`, `WDScrollViewer`, or `T
 
 ----------
 
-### WpfPieControl
+### PieSegment
 
 <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/PieControl.gif"/>
 
