@@ -3,11 +3,11 @@
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// CropControlExample.xaml 的交互逻辑
+    /// ImageCropExample.xaml 的交互逻辑
     /// </summary>
-    public partial class CropControlExample : UserControl
+    public partial class ImageCropExample : UserControl
     {
-        public CropControlExample()
+        public ImageCropExample()
         {
             InitializeComponent();
         }
