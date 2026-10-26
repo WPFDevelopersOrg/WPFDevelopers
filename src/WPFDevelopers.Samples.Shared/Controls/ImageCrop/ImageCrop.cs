@@ -11,23 +11,23 @@ using System.Windows.Shapes;
 namespace WPFDevelopers.Samples.Controls
 {
     [TemplatePart(Name = UniformGridTemplateName, Type = typeof(UniformGrid))]
-    public class CropControl : Control
+    public class ImageCrop : Control
     {
         private const string UniformGridTemplateName = "PART_UniformGrid";
 
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(CropControl),
+            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(ImageCrop),
                 new PropertyMetadata(null));
 
         public static readonly DependencyProperty RowColumnProperty =
-            DependencyProperty.Register("RowColumn", typeof(int), typeof(CropControl), new PropertyMetadata(3));
+            DependencyProperty.Register("RowColumn", typeof(int), typeof(ImageCrop), new PropertyMetadata(3));
 
         private UniformGrid _uniformGrid;
 
-        static CropControl()
+        static ImageCrop()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CropControl),
-                new FrameworkPropertyMetadata(typeof(CropControl)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ImageCrop),
+                new FrameworkPropertyMetadata(typeof(ImageCrop)));
         }
 
         public ImageSource ImageSource
