@@ -53,6 +53,39 @@ namespace WPFDevelopers.Samples.ViewModels
             nameof(MenuEnum.TaskbarInfo),
         };
 
+        private static readonly HashSet<MenuEnum> DemoMenuItems = new HashSet<MenuEnum>
+        {
+            MenuEnum.StreamerLoading,
+            MenuEnum.TransformLayout,
+            MenuEnum.ChatEmoji,
+            MenuEnum.Dashboard,
+            MenuEnum.PieSegment,
+            MenuEnum.Password,
+            MenuEnum.SongWords,
+            MenuEnum.ActivityFeed,
+            MenuEnum.Flame,
+            MenuEnum.TransitionPanel,
+            MenuEnum.ZooSemy,
+            MenuEnum.RainbowBtn,
+            MenuEnum.RoundPicker,
+            MenuEnum.LineChart,
+            MenuEnum.SnowCanvas,
+            MenuEnum.LoginWindow,
+            MenuEnum.Drawing,
+            MenuEnum.SpeedRockets,
+            MenuEnum.CountdownTimer,
+            MenuEnum.NumberCard,
+            MenuEnum.ImageCrop,
+            MenuEnum.Desktop,
+            MenuEnum.DrawPrize,
+            MenuEnum.BubbleSelection,
+            MenuEnum.CanvasHandWriting,
+            MenuEnum.Barrage,
+            MenuEnum.SixGridView,
+            MenuEnum.Drap,
+            MenuEnum.TaskbarInfo,
+        };
+
         private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
         {
             MenuEnum.BackToTop,
@@ -104,6 +137,7 @@ namespace WPFDevelopers.Samples.ViewModels
         private string _searchWatermark;
         private string _customMenuLabel;
         private string _basicMenuLabel;
+        private string _demoBadgeToolTip;
 
         public bool IsChineseLanguage
         {
@@ -146,6 +180,16 @@ namespace WPFDevelopers.Samples.ViewModels
             }
         }
 
+        public string DemoBadgeToolTip
+        {
+            get { return _demoBadgeToolTip; }
+            private set
+            {
+                _demoBadgeToolTip = value;
+                NotifyPropertyChange(nameof(DemoBadgeToolTip));
+            }
+        }
+
         public int SegmentedSelectedIndex
         {
             get { return _segmentedSelectedIndex; }
@@ -179,7 +223,11 @@ namespace WPFDevelopers.Samples.ViewModels
             foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
             {
                 var name = menuEnum.ToString();
-                var menuModel = new NavigateMenuModel { Name = name };
+                var menuModel = new NavigateMenuModel
+                {
+                    Name = name,
+                    IsDemo = DemoMenuItems.Contains(menuEnum)
+                };
                 if (NewMenuItems.Contains(menuEnum))
                     menuModel.ChangeType = "New";
                 else if (UpdatedMenuItems.Contains(menuEnum))
@@ -212,6 +260,9 @@ namespace WPFDevelopers.Samples.ViewModels
             SearchWatermark = isChinese ? "搜索控件" : "Search Control";
             CustomMenuLabel = isChinese ? "自定义" : "Custom";
             BasicMenuLabel = isChinese ? "基础控件" : "Basic";
+            DemoBadgeToolTip = isChinese
+                ? "示例专属实现或组合效果，非 WD 内置控件；请参考示例源码。"
+                : "Sample-only implementation or composition, not a built-in WD control. See the sample source.";
 
             foreach (var item in _customMenuModelList.Concat(_basicMenuModelList))
                 item.DisplayName = MenuNameLocalizer.GetDisplayName(item.Name, culture);
@@ -404,8 +455,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Dashboard:
                     ControlPanel = new DashboardExample();
                     break;
-                case MenuEnum.PieControl:
-                    ControlPanel = new PieControlExample();
+                case MenuEnum.PieSegment:
+                    ControlPanel = new PieSegmentExample();
                     break;
                 case MenuEnum.Password:
                     ControlPanel = new PasswordExample();
@@ -428,8 +479,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.FocusCarousel:
                     ControlPanel = new FocusCarouselExample();
                     break;
-                case MenuEnum.OtherControls:
-                    ControlPanel = new OtherControlExample();
+                case MenuEnum.Flame:
+                    ControlPanel = new FlameExample();
                     break;
                 case MenuEnum.ScreenCut:
                     ControlPanel = new ScreenCutExample();
@@ -460,8 +511,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ZooSemy:
                     ControlPanel = new ZooSemyExample();
                     break;
-                case MenuEnum.RulerControl:
-                    ControlPanel = new RulerControlExample();
+                case MenuEnum.Ruler:
+                    ControlPanel = new RulerExample();
                     break;
                 case MenuEnum.RainbowBtn:
                     ControlPanel = new RainbowButtonsExample();
@@ -493,8 +544,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.NumberCard:
                     ControlPanel = new NumberCardExample();
                     break;
-                case MenuEnum.CropControl:
-                    ControlPanel = new CropControlExample();
+                case MenuEnum.ImageCrop:
+                    ControlPanel = new ImageCropExample();
                     break;
                 case MenuEnum.Desktop:
                     ControlPanel = new DesktopBackground();
@@ -514,8 +565,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.PanningItems:
                     ControlPanel = new PanningItemsExample();
                     break;
-                case MenuEnum.BubblleControl:
-                    ControlPanel = new BubblleControlExample();
+                case MenuEnum.BubbleSelection:
+                    ControlPanel = new BubbleSelectionExample();
                     break;
                 case MenuEnum.CanvasHandWriting:
                     ControlPanel = new CanvasHandWritingExample();
