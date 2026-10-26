@@ -6,11 +6,11 @@ using WPFDevelopers.Samples.Helpers;
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// BubbleControlExample.xaml 的交互逻辑
+    /// BubbleSelectionExample.xaml 的交互逻辑
     /// </summary>
-    public partial class BubblleControlExample : UserControl
+    public partial class BubbleSelectionExample : UserControl
     {
-        public BubblleControlExample()
+        public BubbleSelectionExample()
         {
             InitializeComponent();
         }
@@ -19,9 +19,9 @@ namespace WPFDevelopers.Samples.ExampleViews
            WPFDevelopers.Controls.MessageBox.Show("点击完成。");
         });
 
-        private void BubblleControl_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BubbleSelection_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            MessageBox.Show($"点击了“ {MyBubblleControl.SelectedText}开发者 ”.", "提示",MessageBoxButton.OK,MessageBoxImage.Information);
+            MessageBox.Show($"点击了“ {MyBubbleSelection.SelectedText}开发者 ”.", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
