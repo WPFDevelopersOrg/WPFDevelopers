@@ -101,6 +101,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ZooSemy\VolumeControl.xaml.cs" Link="ExampleViews\ZooSemy\VolumeControl.xaml.cs" DependentUpon="VolumeControl.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" Link="ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" DependentUpon="ZooSemyExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\PaginationExampleVM.cs" Link="ViewModels\PaginationExampleVM.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\WaterfallPanelExampleVM.cs" Link="ViewModels\WaterfallPanelExampleVM.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\DrawingExampleVM.cs" Link="ViewModels\DrawingExampleVM.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Models\HospitalList.cs" Link="Models\HospitalList.cs" />
