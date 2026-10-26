@@ -210,4 +210,7 @@
   <data name="BackToTop" xml:space="preserve">
     <value>Back to top</value>
   </data>
+  <data name="BackToBottom" xml:space="preserve">
+    <value>Back to bottom</value>
+  </data>
 </root>

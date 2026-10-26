@@ -2,9 +2,9 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
-    public partial class BackToTopExample : UserControl
+    public partial class ScrollNavigationExample : UserControl
     {
-        public BackToTopExample()
+        public ScrollNavigationExample()
         {
             InitializeComponent();
         }

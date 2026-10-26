@@ -210,4 +210,7 @@
   <data name="BackToTop" xml:space="preserve">
     <value>맨 위로</value>
   </data>
+  <data name="BackToBottom" xml:space="preserve">
+    <value>맨 아래로</value>
+  </data>
 </root>
