@@ -81,7 +81,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartRadarExample.xaml.cs" Link="ExampleViews\ChartRadarExample.xaml.cs" DependentUpon="ChartRadarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RainbowButtonsExample.xaml.cs" Link="ExampleViews\RainbowButtonsExample.xaml.cs" DependentUpon="RainbowButtonsExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RoundPickerExample.xaml.cs" Link="ExampleViews\RoundPickerExample.xaml.cs" DependentUpon="RoundPickerExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RulerControlExample.xaml.cs" Link="ExampleViews\RulerControlExample.xaml.cs" DependentUpon="RulerControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RulerExample.xaml.cs" Link="ExampleViews\RulerExample.xaml.cs" DependentUpon="RulerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScreenCutExample.xaml.cs" Link="ExampleViews\ScreenCutExample.xaml.cs" DependentUpon="ScreenCutExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScrollViewerAnimationExample.xaml.cs" Link="ExampleViews\ScrollViewerAnimationExample.xaml.cs" DependentUpon="ScrollViewerAnimationExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BackToTopExample.xaml.cs" Link="ExampleViews\BackToTopExample.xaml.cs" DependentUpon="BackToTopExample.xaml" />
