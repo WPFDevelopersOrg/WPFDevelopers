@@ -3,16 +3,16 @@ using System.Windows.Controls;
 
 namespace WPFDevelopers.Samples.Controls
 {
-    public class FireControl : Control
+    public class Flame : Control
     {
         public static readonly DependencyProperty IsStartProperty =
-            DependencyProperty.Register("IsStart", typeof(bool), typeof(FireControl),
+            DependencyProperty.Register("IsStart", typeof(bool), typeof(Flame),
                 new PropertyMetadata(default(bool)));
 
-        static FireControl()
+        static Flame()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FireControl),
-                new FrameworkPropertyMetadata(typeof(FireControl)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Flame),
+                new FrameworkPropertyMetadata(typeof(Flame)));
         }
 
         public bool IsStart

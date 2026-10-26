@@ -4,16 +4,16 @@
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
     xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
     <Style
-        x:Key="WD.FireControl"
+        x:Key="WD.Flame"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="controls:FireControl">
+        TargetType="controls:Flame">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:FireControl">
+                <ControlTemplate TargetType="controls:Flame">
                     <ControlTemplate.Resources>
                         <Storyboard
-                            x:Key="PART_Fire_Storyboard"
+                            x:Key="PART_Flame_Storyboard"
                             RepeatBehavior="Forever"
                             Duration="0:0:0.1">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Container" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
@@ -112,7 +112,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsStart" Value="True">
                             <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="part_fire_storyboard" Storyboard="{StaticResource PART_Fire_Storyboard}" />
+                                <BeginStoryboard x:Name="part_flame_storyboard" Storyboard="{StaticResource PART_Flame_Storyboard}" />
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <StopStoryboard BeginStoryboardName="part_fire_storyboard" />
@@ -123,5 +123,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.FireControl}" TargetType="{x:Type controls:FireControl}" />
+    <Style BasedOn="{StaticResource WD.Flame}" TargetType="{x:Type controls:Flame}" />
 </ResourceDictionary>
