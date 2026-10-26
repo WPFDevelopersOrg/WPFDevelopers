@@ -77,7 +77,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Passwrod\PasswordBoxHelper.cs" Link="ExampleViews\Passwrod\PasswordBoxHelper.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Passwrod\PasswordExample.xaml.cs" Link="ExampleViews\Passwrod\PasswordExample.xaml.cs" DependentUpon="PasswordExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" Link="ExampleViews\Passwrod\PasswordWithPlainText.xaml.cs" DependentUpon="PasswordWithPlainText.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PieControlExample.xaml.cs" Link="ExampleViews\PieControlExample.xaml.cs" DependentUpon="PieControlExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\PieSegmentExample.xaml.cs" Link="ExampleViews\PieSegmentExample.xaml.cs" DependentUpon="PieSegmentExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ChartRadarExample.xaml.cs" Link="ExampleViews\ChartRadarExample.xaml.cs" DependentUpon="ChartRadarExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RainbowButtonsExample.xaml.cs" Link="ExampleViews\RainbowButtonsExample.xaml.cs" DependentUpon="RainbowButtonsExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RoundPickerExample.xaml.cs" Link="ExampleViews\RoundPickerExample.xaml.cs" DependentUpon="RoundPickerExample.xaml" />
