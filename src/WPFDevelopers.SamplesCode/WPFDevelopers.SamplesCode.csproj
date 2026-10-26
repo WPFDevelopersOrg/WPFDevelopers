@@ -237,8 +237,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreatheLightExample.xaml">
 			<Link>ExampleViews\BreatheLightExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BubblleControlExample.xaml">
-			<Link>ExampleViews\BubblleControlExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BubbleSelectionExample.xaml">
+			<Link>ExampleViews\BubbleSelectionExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml">
 			<Link>ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml</Link>
