@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="WPFDevelopers.Samples.ExampleViews.RulerControlExample"
+    x:Class="WPFDevelopers.Samples.ExampleViews.RulerExample"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
@@ -79,8 +79,8 @@
             </UniformGrid>
         </Grid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RulerControlExample.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RulerControlExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RulerExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/RulerExample.xaml.cs" CodeType="CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

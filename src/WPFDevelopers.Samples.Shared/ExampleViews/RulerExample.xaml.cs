@@ -3,11 +3,11 @@
 namespace WPFDevelopers.Samples.ExampleViews
 {
     /// <summary>
-    /// RulerControlExample.xaml 的交互逻辑
+    /// RulerExample.xaml 的交互逻辑
     /// </summary>
-    public partial class RulerControlExample : UserControl
+    public partial class RulerExample : UserControl
     {
-        public RulerControlExample()
+        public RulerExample()
         {
             InitializeComponent();
         }
