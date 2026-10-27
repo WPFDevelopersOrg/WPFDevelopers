@@ -40,10 +40,18 @@
                         <Rectangle
                             x:Name="PART_Rectangle"
                             Height="{TemplateBinding Height}"
-                            Fill="{DynamicResource WD.RegularTextBrush}"
+                            Fill="{DynamicResource WD.ScrollBarThumbBrush}"
                             RadiusX="1"
                             RadiusY="1" />
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbPointerOverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbPointerOverBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -61,10 +69,18 @@
                         <Rectangle
                             x:Name="PART_Rectangle"
                             Height="{TemplateBinding Height}"
-                            Fill="{DynamicResource WD.PrimaryTextBrush}"
+                            Fill="{DynamicResource WD.ScrollBarThumbBrush}"
                             RadiusX="1"
                             RadiusY="1" />
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbPointerOverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbPointerOverBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
