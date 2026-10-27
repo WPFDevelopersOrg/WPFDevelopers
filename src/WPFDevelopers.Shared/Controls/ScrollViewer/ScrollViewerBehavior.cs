@@ -4,7 +4,9 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Controls
@@ -138,13 +140,16 @@ namespace WPFDevelopers.Controls
             private Button _backToTopButton;
             private Button _backToBottomButton;
             private Window _ownerWindow;
-            private Point? _lastTargetScreenPosition;
-            private int _stablePlacementFrameCount;
-            private bool _isTrackingPlacement;
+            private readonly DispatcherTimer _hideTimer;
 
             public BackToTopState(FrameworkElement target)
             {
                 _target = target;
+                _hideTimer = new DispatcherTimer
+                {
+                    Interval = TimeSpan.FromMilliseconds(150)
+                };
+                _hideTimer.Tick += OnHideTimerTick;
             }
 
             public void Start()
@@ -155,6 +160,9 @@ namespace WPFDevelopers.Controls
                 _target.IsEnabledChanged += OnTargetStateChanged;
                 _target.LayoutUpdated += OnTargetLayoutUpdated;
                 _target.SizeChanged += OnTargetSizeChanged;
+                _target.MouseEnter += OnPointerEntered;
+                _target.MouseLeave += OnPointerLeft;
+                _target.IsKeyboardFocusWithinChanged += OnKeyboardFocusWithinChanged;
 
                 if (_target.IsLoaded)
                     Attach();
@@ -168,6 +176,9 @@ namespace WPFDevelopers.Controls
                 _target.IsEnabledChanged -= OnTargetStateChanged;
                 _target.LayoutUpdated -= OnTargetLayoutUpdated;
                 _target.SizeChanged -= OnTargetSizeChanged;
+                _target.MouseEnter -= OnPointerEntered;
+                _target.MouseLeave -= OnPointerLeft;
+                _target.IsKeyboardFocusWithinChanged -= OnKeyboardFocusWithinChanged;
                 Detach();
             }
 
@@ -195,7 +206,30 @@ namespace WPFDevelopers.Controls
             private void OnTargetSizeChanged(object sender, SizeChangedEventArgs e)
             {
                 UpdateButton();
-                StartPlacementTracking();
+            }
+
+            private void OnPointerEntered(object sender, MouseEventArgs e)
+            {
+                _hideTimer.Stop();
+                UpdateButton();
+            }
+
+            private void OnPointerLeft(object sender, MouseEventArgs e)
+            {
+                ScheduleHide();
+            }
+
+            private void OnKeyboardFocusWithinChanged(object sender, DependencyPropertyChangedEventArgs e)
+            {
+                if ((bool)e.NewValue)
+                {
+                    _hideTimer.Stop();
+                    UpdateButton();
+                }
+                else
+                {
+                    ScheduleHide();
+                }
             }
 
             private void Attach()
@@ -226,6 +260,9 @@ namespace WPFDevelopers.Controls
                 {
                     Orientation = Orientation.Horizontal
                 };
+                _buttonPanel.MouseEnter += OnPointerEntered;
+                _buttonPanel.MouseLeave += OnPointerLeft;
+                _buttonPanel.IsKeyboardFocusWithinChanged += OnKeyboardFocusWithinChanged;
                 if (_backToTopButton != null)
                     _buttonPanel.Children.Add(_backToTopButton);
                 if (_backToBottomButton != null)
@@ -251,7 +288,7 @@ namespace WPFDevelopers.Controls
 
             private void Detach()
             {
-                StopPlacementTracking();
+                _hideTimer.Stop();
 
                 if (_scrollViewer != null)
                     _scrollViewer.ScrollChanged -= OnScrollChanged;
@@ -260,6 +297,13 @@ namespace WPFDevelopers.Controls
 
                 if (_popup != null)
                     _popup.IsOpen = false;
+
+                if (_buttonPanel != null)
+                {
+                    _buttonPanel.MouseEnter -= OnPointerEntered;
+                    _buttonPanel.MouseLeave -= OnPointerLeft;
+                    _buttonPanel.IsKeyboardFocusWithinChanged -= OnKeyboardFocusWithinChanged;
+                }
 
                 DetachOwnerWindow();
                 _scrollViewer = null;
@@ -312,14 +356,14 @@ namespace WPFDevelopers.Controls
 
             private void OnOwnerWindowDeactivated(object sender, EventArgs e)
             {
-                StopPlacementTracking();
+                _hideTimer.Stop();
                 if (_popup != null)
                     _popup.IsOpen = false;
             }
 
             private void OnOwnerWindowClosed(object sender, EventArgs e)
             {
-                StopPlacementTracking();
+                _hideTimer.Stop();
                 if (_popup != null)
                     _popup.IsOpen = false;
             }
@@ -347,6 +391,7 @@ namespace WPFDevelopers.Controls
                     _target.ActualHeight <= 0 ||
                     PresentationSource.FromVisual(_target) == null)
                 {
+                    _hideTimer.Stop();
                     _popup.IsOpen = false;
                     return;
                 }
@@ -378,83 +423,35 @@ namespace WPFDevelopers.Controls
                                             _ownerWindow.WindowState != WindowState.Minimized);
                 var shouldOpen = _target.IsVisible &&
                                  isOwnerWindowVisible &&
+                                 IsInteractionActive() &&
                                  visibleButtonCount > 0;
                 if (!shouldOpen)
                 {
-                    StopPlacementTracking();
                     _popup.IsOpen = false;
                     return;
                 }
 
-                if (!_popup.IsOpen)
-                {
-                    _popup.IsOpen = true;
-                    StartPlacementTracking();
-                }
+                _popup.IsOpen = true;
             }
 
-            private void StartPlacementTracking()
+            private bool IsInteractionActive()
             {
-                if (_popup == null || !_popup.IsOpen)
-                    return;
-
-                _lastTargetScreenPosition = null;
-                _stablePlacementFrameCount = 0;
-                if (_isTrackingPlacement)
-                    return;
-
-                CompositionTarget.Rendering += OnPlacementRendering;
-                _isTrackingPlacement = true;
+                return _target.IsMouseOver ||
+                       _target.IsKeyboardFocusWithin ||
+                       (_buttonPanel != null &&
+                        (_buttonPanel.IsMouseOver || _buttonPanel.IsKeyboardFocusWithin));
             }
 
-            private void StopPlacementTracking()
+            private void ScheduleHide()
             {
-                if (!_isTrackingPlacement)
-                    return;
-
-                CompositionTarget.Rendering -= OnPlacementRendering;
-                _isTrackingPlacement = false;
-                _lastTargetScreenPosition = null;
-                _stablePlacementFrameCount = 0;
+                _hideTimer.Stop();
+                _hideTimer.Start();
             }
 
-            private void OnPlacementRendering(object sender, EventArgs e)
+            private void OnHideTimerTick(object sender, EventArgs e)
             {
-                if (_popup == null ||
-                    !_popup.IsOpen ||
-                    PresentationSource.FromVisual(_target) == null)
-                {
-                    StopPlacementTracking();
-                    return;
-                }
-
-                var currentPosition = _target.PointToScreen(new Point());
-                if (!_lastTargetScreenPosition.HasValue)
-                {
-                    _lastTargetScreenPosition = currentPosition;
-                    return;
-                }
-
-                var previousPosition = _lastTargetScreenPosition.Value;
-                if (Math.Abs(currentPosition.X - previousPosition.X) > 0.1 ||
-                    Math.Abs(currentPosition.Y - previousPosition.Y) > 0.1)
-                {
-                    _lastTargetScreenPosition = currentPosition;
-                    _stablePlacementFrameCount = 0;
-                    ForcePopupReposition();
-                    return;
-                }
-
-                _stablePlacementFrameCount++;
-                if (_stablePlacementFrameCount >= 10)
-                    StopPlacementTracking();
-            }
-
-            private void ForcePopupReposition()
-            {
-                var horizontalOffset = _popup.HorizontalOffset;
-                _popup.HorizontalOffset = horizontalOffset + 0.1;
-                _popup.HorizontalOffset = horizontalOffset;
+                _hideTimer.Stop();
+                UpdateButton();
             }
 
             private void ScrollToTop()
