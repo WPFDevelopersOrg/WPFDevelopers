@@ -16,6 +16,18 @@
         x:Key="WD.RegularTextBrush"
         po:Freeze="True"
         Color="{StaticResource WD.RegularTextColor}" />
+
+    <Color x:Key="WD.ScrollBarThumbColor" po:Freeze="True">#C0C4CC</Color>
+    <SolidColorBrush
+        x:Key="WD.ScrollBarThumbBrush"
+        po:Freeze="True"
+        Color="{StaticResource WD.ScrollBarThumbColor}" />
+    <Color x:Key="WD.ScrollBarThumbMouseOverColor" po:Freeze="True">#909399</Color>
+    <SolidColorBrush
+        x:Key="WD.ScrollBarThumbMouseOverBrush"
+        po:Freeze="True"
+        Color="{StaticResource WD.ScrollBarThumbMouseOverColor}" />
+
     <!--  背景色  -->
     <Color x:Key="WD.BackgroundColor" po:Freeze="True">#FFFFFF</Color>
     <SolidColorBrush
