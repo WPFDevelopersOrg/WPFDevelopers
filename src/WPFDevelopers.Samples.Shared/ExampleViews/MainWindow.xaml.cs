@@ -21,6 +21,7 @@ namespace WPFDevelopers.Samples
         public MainWindow()
         {
             InitializeComponent();
+            VersionText.Text = "v" + typeof(MainWindow).BaseType.Assembly.GetName().Version.ToString(3);
             Loaded += OnMainWindow_Loaded;
             Closing += MainWindow_Closing;
         }

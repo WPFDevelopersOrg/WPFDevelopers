@@ -24,6 +24,18 @@
             HorizontalAlignment="Right"
             wd:PanelHelper.Spacing="2"
             Orientation="Horizontal">
+            <Border
+                Margin="4,0,6,0"
+                VerticalAlignment="Center"
+                Background="#33FFFFFF"
+                CornerRadius="9"
+                Padding="8,3">
+                <TextBlock
+                    x:Name="VersionText"
+                    FontSize="11"
+                    FontWeight="SemiBold"
+                    Foreground="White" />
+            </Border>
             <wd:SwitchButton
                 x:Name="LanguageSwitchBtn"
                 Width="30"
