@@ -63,5 +63,6 @@ namespace WPFDevelopers.Controls
         [Description("WD.FilterGeometry")] Filter,
         [Description("WD.ConfirmGeometry")] Confirm,
         [Description("WD.UpArrowGeometry")] UpArrow,
+        [Description("WD.DownArrowGeometry")] DownArrow,
     }
 }
