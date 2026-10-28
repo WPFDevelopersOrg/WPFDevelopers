@@ -47,9 +47,11 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+                            <Setter Property="Opacity" Value="0.5" />
                         </Trigger>
                         <Trigger Property="IsDragging" Value="True">
                             <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+                            <Setter Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -76,9 +78,11 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+                            <Setter Property="Opacity" Value="0.5" />
                         </Trigger>
                         <Trigger Property="IsDragging" Value="True">
                             <Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+                            <Setter Property="Opacity" Value="0.5" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
