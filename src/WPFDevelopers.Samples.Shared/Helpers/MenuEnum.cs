@@ -106,6 +106,7 @@
         MarkdownViewer,
         MapView,
         BackToTop,
+        ScrollNavigation,
         VirtualizingWrapPanel,
         AcrylicBlur,
         Theme,
