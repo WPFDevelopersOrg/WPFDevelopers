@@ -64,5 +64,6 @@ namespace WPFDevelopers.Controls
         [Description("WD.ConfirmGeometry")] Confirm,
         [Description("WD.UpArrowGeometry")] UpArrow,
         [Description("WD.DownArrowGeometry")] DownArrow,
+        [Description("WD.SplitterGeometry")] Splitter,
     }
 }
