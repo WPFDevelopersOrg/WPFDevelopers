@@ -7,6 +7,7 @@
         private string _changeType = string.Empty;
         public bool IsDemo { get; set; }
         public string Name { get; set; }
+        public string IconSource { get; set; }
         public string DisplayName
         {
             get { return _displayName; }

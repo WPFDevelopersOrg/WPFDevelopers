@@ -243,10 +243,287 @@ namespace WPFDevelopers.Samples.ViewModels
             }
             NavigateMenuModelList = _customMenuModelList;
             _navigateMenuItem = NavigateMenuModelList.First();
-            _customMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
+            _customMenuModelList.Add(new NavigateMenuModel
+            {
+                Name = "持续更新中",
+                IconSource = GetMenuIconSource("Navigation")
+            });
             LanguageManager.Instance.PropertyChanged += LanguageManager_PropertyChanged;
             UpdateMenuDisplayNames();
             ControlPanel = new NavMenu3DExample();
+        }
+
+        private static string GetMenuIconSource(MenuEnum menuEnum)
+        {
+            string iconName;
+            switch (menuEnum)
+            {
+                case MenuEnum.NavMenu3D:
+                    iconName = "NavMenu3D";
+                    break;
+                case MenuEnum.MapView:
+                    iconName = "Map";
+                    break;
+                case MenuEnum.UsageGuide:
+                case MenuEnum.MarkdownViewer:
+                    iconName = "Book";
+                    break;
+                case MenuEnum.UsageColor:
+                case MenuEnum.ColorPicker:
+                case MenuEnum.Theme:
+                    iconName = "Palette";
+                    break;
+                case MenuEnum.MessageBox:
+                case MenuEnum.Toast:
+                case MenuEnum.ChatEmoji:
+                case MenuEnum.Barrage:
+                    iconName = "Chat";
+                    break;
+                case MenuEnum.NotifyIcon:
+                case MenuEnum.Badge:
+                    iconName = "Activity";
+                    break;
+                case MenuEnum.PanningItems:
+                case MenuEnum.Drap:
+                    iconName = "Hand";
+                    break;
+                case MenuEnum.BreatheLight:
+                case MenuEnum.SpotLight:
+                case MenuEnum.EdgeLight:
+                case MenuEnum.AcrylicBlur:
+                    iconName = "Sparkle";
+                    break;
+                case MenuEnum.RingLoading:
+                case MenuEnum.Loading:
+                case MenuEnum.BasicLoading:
+                case MenuEnum.CircleProgressBar:
+                    iconName = "Spinner";
+                    break;
+                case MenuEnum.ProgressBar:
+                    iconName = "Progress";
+                    break;
+                case MenuEnum.BallLoading:
+                case MenuEnum.RoundPicker:
+                case MenuEnum.Gauge:
+                case MenuEnum.Dial:
+                    iconName = "Circle";
+                    break;
+                case MenuEnum.StreamerLoading:
+                case MenuEnum.WaitLoading:
+                case MenuEnum.CycleLoading:
+                case MenuEnum.RollLoading:
+                    iconName = "Hourglass";
+                    break;
+                case MenuEnum.CropAvatar:
+                case MenuEnum.CropImage:
+                case MenuEnum.ImageCrop:
+                case MenuEnum.ScreenCut:
+                    iconName = "Crop";
+                    break;
+                case MenuEnum.AnimationAudio:
+                case MenuEnum.SongWords:
+                    iconName = "Music";
+                    break;
+                case MenuEnum.TransformLayout:
+                case MenuEnum.WaterfallPanel:
+                case MenuEnum.VirtualizingWrapPanel:
+                case MenuEnum.SixGridView:
+                    iconName = "Grid";
+                    break;
+                case MenuEnum.GridSplitter:
+                    iconName = "GridSplitter";
+                    break;
+                case MenuEnum.VerifyCode:
+                case MenuEnum.OtpBox:
+                case MenuEnum.GestureUnlock:
+                    iconName = "Shield";
+                    break;
+                case MenuEnum.CircleMenu:
+                case MenuEnum.DrawerMenu:
+                case MenuEnum.Drawer:
+                case MenuEnum.Menu:
+                case MenuEnum.NavScrollPanel:
+                case MenuEnum.ScrollNavigation:
+                    iconName = "Navigation";
+                    break;
+                case MenuEnum.Dashboard:
+                case MenuEnum.NumberCard:
+                case MenuEnum.DataGridFilter:
+                    iconName = "Dashboard";
+                    break;
+                case MenuEnum.DataGrid:
+                    iconName = "DataGrid";
+                    break;
+                case MenuEnum.PieSegment:
+                case MenuEnum.ChartPie:
+                case MenuEnum.ChartRadar:
+                case MenuEnum.ChartBar:
+                case MenuEnum.ChartLine:
+                case MenuEnum.LineChart:
+                    iconName = "Chart";
+                    break;
+                case MenuEnum.Password:
+                case MenuEnum.PasswordBox:
+                    iconName = "Lock";
+                    break;
+                case MenuEnum.ActivityFeed:
+                case MenuEnum.Timeline:
+                    iconName = "Activity";
+                    break;
+                case MenuEnum.CardCarousel:
+                case MenuEnum.FocusCarousel:
+                case MenuEnum.Carousel:
+                case MenuEnum.Pagination:
+                    iconName = "Cards";
+                    break;
+                case MenuEnum.ScrollViewer:
+                    iconName = "Scroll";
+                    break;
+                case MenuEnum.Flame:
+                    iconName = "Flame";
+                    break;
+                case MenuEnum.ZooSemy:
+                    iconName = "Animal";
+                    break;
+                case MenuEnum.Ruler:
+                case MenuEnum.Spacing:
+                    iconName = "Ruler";
+                    break;
+                case MenuEnum.RainbowBtn:
+                    iconName = "Rainbow";
+                    break;
+                case MenuEnum.Thermometer:
+                    iconName = "Thermometer";
+                    break;
+                case MenuEnum.SnowCanvas:
+                    iconName = "Snow";
+                    break;
+                case MenuEnum.LoginWindow:
+                case MenuEnum.Desktop:
+                case MenuEnum.Window:
+                    iconName = "Window";
+                    break;
+                case MenuEnum.Drawing:
+                case MenuEnum.CanvasHandWriting:
+                    iconName = "Pen";
+                    break;
+                case MenuEnum.SpeedRockets:
+                    iconName = "Rocket";
+                    break;
+                case MenuEnum.CountdownTimer:
+                case MenuEnum.DateRangePicker:
+                case MenuEnum.Calendar:
+                    iconName = "Calendar";
+                    break;
+                case MenuEnum.TimePicker:
+                case MenuEnum.DateTimePicker:
+                    iconName = "DateTimePicker";
+                    break;
+                case MenuEnum.DatePicker:
+                    iconName = "DatePicker";
+                    break;
+                case MenuEnum.DrawPrize:
+                    iconName = "Gift";
+                    break;
+                case MenuEnum.StarrySky:
+                    iconName = "Stars";
+                    break;
+                case MenuEnum.Shake:
+                case MenuEnum.TransitionPanel:
+                case MenuEnum.AnimationGrid:
+                    iconName = "Activity";
+                    break;
+                case MenuEnum.BubbleSelection:
+                    iconName = "Circle";
+                    break;
+                case MenuEnum.Magnifier:
+                    iconName = "Search";
+                    break;
+                case MenuEnum.Step:
+                    iconName = "Steps";
+                    break;
+                case MenuEnum.MultiSelectComboBox:
+                case MenuEnum.Selector:
+                case MenuEnum.Segmented:
+                case MenuEnum.SplitButton:
+                    iconName = "Selection";
+                    break;
+                case MenuEnum.ToggleButton:
+                    iconName = "ToggleButton";
+                    break;
+                case MenuEnum.RadioButton:
+                    iconName = "RadioButton";
+                    break;
+                case MenuEnum.Checkbox:
+                    iconName = "Checkbox";
+                    break;
+                case MenuEnum.Mask:
+                case MenuEnum.GrayscaleEffect:
+                    iconName = "Image";
+                    break;
+                case MenuEnum.BreadCrumbBar:
+                    iconName = "Navigation";
+                    break;
+                case MenuEnum.PathIcon:
+                case MenuEnum.AllPathIcon:
+                case MenuEnum.SvgViewer:
+                    iconName = "Vector";
+                    break;
+                case MenuEnum.NumericBox:
+                case MenuEnum.TextBox:
+                    iconName = "Text";
+                    break;
+                case MenuEnum.IPEditBox:
+                    iconName = "Network";
+                    break;
+                case MenuEnum.Tag:
+                    iconName = "Tag";
+                    break;
+                case MenuEnum.IconicThumbnail:
+                    iconName = "Image";
+                    break;
+                case MenuEnum.Slider:
+                    iconName = "Slider";
+                    break;
+                case MenuEnum.Button:
+                    iconName = "Button";
+                    break;
+                case MenuEnum.ComboBox:
+                    iconName = "ComboBox";
+                    break;
+                case MenuEnum.ListBox:
+                    iconName = "ListBox";
+                    break;
+                case MenuEnum.ListView:
+                    iconName = "ListView";
+                    break;
+                case MenuEnum.TreeView:
+                    iconName = "TreeView";
+                    break;
+                case MenuEnum.GroupBox:
+                    iconName = "GroupBox";
+                    break;
+                case MenuEnum.TabControl:
+                    iconName = "TabControl";
+                    break;
+                case MenuEnum.Expander:
+                    iconName = "Expander";
+                    break;
+                case MenuEnum.TaskbarInfo:
+                    iconName = "TaskbarInfo";
+                    break;
+                default:
+                    iconName = "Navigation";
+                    break;
+            }
+
+            return GetMenuIconSource(iconName);
+        }
+
+        private static string GetMenuIconSource(string iconName)
+        {
+            return "pack://application:,,,/WPFDevelopers.Samples;component/Resources/MenuIcons/"
+                + iconName + ".svg";
         }
 
         private void LanguageManager_PropertyChanged(object sender, PropertyChangedEventArgs e)

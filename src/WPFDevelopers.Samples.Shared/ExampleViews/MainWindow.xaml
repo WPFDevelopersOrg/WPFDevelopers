@@ -174,7 +174,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Grid Margin="0,0,3,0">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -206,15 +206,40 @@
                         <DataTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
+                                <wd:SvgViewer
+                                    Width="16"
+                                    Height="16"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
+                                    Source="{Binding IconSource}" />
                                 <TextBlock
+                                    Grid.Column="1"
                                     VerticalAlignment="Center"
                                     Text="{Binding DisplayName}" />
                                 <Border
+                                    x:Name="DemoBadge"
+                                    Grid.Column="2"
+                                    Margin="8,0,0,0"
+                                    Padding="5,2"
+                                    Background="#FF526D82"
+                                    CornerRadius="3"
+                                    ToolTip="{Binding DataContext.DemoBadgeToolTip, RelativeSource={RelativeSource AncestorType=controls:NavigateMenu}}"
+                                    Visibility="Collapsed">
+                                    <TextBlock
+                                        FontSize="10"
+                                        FontWeight="SemiBold"
+                                        Foreground="White"
+                                        Text="DEMO" />
+                                </Border>
+                                <Border
                                     x:Name="ChangeBadge"
-                                    Grid.Column="1"
+                                    Grid.Column="3"
                                     Margin="8,0,0,0"
                                     Padding="5,2"
                                     Background="#FFE5484D"
@@ -229,6 +254,9 @@
                                 </Border>
                             </Grid>
                             <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsDemo}" Value="True">
+                                    <Setter TargetName="DemoBadge" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
                                 <DataTrigger Binding="{Binding ChangeType}" Value="New">
                                     <Setter TargetName="ChangeBadge" Property="Visibility" Value="Visible" />
                                     <Setter TargetName="ChangeBadgeText" Property="Text" Value="NEW" />
@@ -252,6 +280,7 @@
             <GridSplitter
                 Grid.Column="1"
                 Width="5"
+                Margin="2,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 ShowsPreview="True" />
@@ -259,7 +288,6 @@
             <wd:Drawer
                 x:Name="CodeDrawer"
                 Grid.Column="2"
-                Margin="3,0,0,0"
                 BorderThickness="0"
                 Position="Right">
                 <wd:Drawer.Header>
