@@ -37,7 +37,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.FocusCarousel] = "聚焦轮播",
             [MenuEnum.Pagination] = "分页",
             [MenuEnum.ScrollViewer] = "滚动视图",
-            [MenuEnum.BackToTop] = "回到顶部",
+            [MenuEnum.ScrollNavigation] = "滚动导航",
             [MenuEnum.Flame] = "火苗",
             [MenuEnum.ScreenCut] = "屏幕截图",
             [MenuEnum.TransitionPanel] = "过渡面板",
