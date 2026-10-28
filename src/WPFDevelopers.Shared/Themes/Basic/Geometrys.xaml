@@ -86,4 +86,6 @@
     <Geometry x:Key="WD.FilterGeometry" po:Freeze="True">M0,0 L10,0 L6,5 L6,10 L4,10 L4,5 L0,0</Geometry>
     <Geometry x:Key="WD.ConfirmGeometry" po:Freeze="True">M396 712 L233 512 L178 580 L396 848 L861 272 L807 204 Z</Geometry>
     <Geometry x:Key="WD.UpArrowGeometry" po:Freeze="True">M854,346 512,0 170,346 232,404 470,166 470,684 554,684 554,166 794,404z</Geometry>
+    <Geometry x:Key="WD.DownArrowGeometry" po:Freeze="True">M170,678 512,1024 854,678 792,620 554,858 554,340 470,340 470,858 232,620z</Geometry>
+    <Geometry x:Key="WD.SplitterGeometry" po:Freeze="True">M1.5,0 A1.5,1.5 0 1 1 1.5,3 A1.5,1.5 0 1 1 1.5,0 Z M1.5,6 A1.5,1.5 0 1 1 1.5,9 A1.5,1.5 0 1 1 1.5,6 Z M1.5,12 A1.5,1.5 0 1 1 1.5,15 A1.5,1.5 0 1 1 1.5,12 Z</Geometry>
 </ResourceDictionary>
