@@ -1,3 +1,67 @@
+<div align="center">
+  <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png" alt="WPFDevelopers" width="128" />
+  <h1>WPFDevelopers</h1>
+  <p>An open-source control and theme library for building modern WPF desktop applications.</p>
+  <p>
+    <a href="docs/en/getting-started.md">Quick start</a> ·
+    <a href="docs/en/mapview.md">MapView guide</a> ·
+    <a href="https://github.com/WPFDevelopersOrg/WPFDevelopers">GitHub</a> ·
+    <a href="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers">AtomGit</a> ·
+    <a href="https://gitee.com/WPFDevelopersOrg/WPFDevelopers">Gitee</a> ·
+    <a href="README-zh.md">中文</a>
+  </p>
+  <p>
+    <a href="https://www.nuget.org/packages/WPFDevelopers"><img alt="NuGet version" src="https://img.shields.io/nuget/v/WPFDevelopers?label=NuGet" /></a>
+    <a href="https://www.nuget.org/packages/WPFDevelopers"><img alt="NuGet downloads" src="https://img.shields.io/nuget/dt/WPFDevelopers?label=downloads" /></a>
+    <a href="https://github.com/WPFDevelopersOrg/WPFDevelopers/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/WPFDevelopersOrg/WPFDevelopers" /></a>
+    <a href="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers"><img alt="AtomGit stars" src="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers/star/badge.svg" /></a>
+    <a href="https://gitee.com/WPFDevelopersOrg/WPFDevelopers"><img alt="Gitee stars" src="https://gitee.com/WPFDevelopersOrg/WPFDevelopers/badge/star.svg?theme=dark" /></a>
+    <img alt="Visual Studio 2026" src="https://img.shields.io/badge/Visual%20Studio-2026-5C2D91" />
+    <img alt=".NET Framework 4.0–.NET 10" src="https://img.shields.io/badge/.NET-Framework%204.0%20%E2%80%93%2010-512BD4" />
+  </p>
+</div>
+
+## About
+
+WPFDevelopers provides reusable controls, application-wide themes, and interactive samples for WPF projects. It supports target frameworks from .NET Framework 4.0 through .NET 10. See the [quick start guide](docs/en/getting-started.md) for framework and environment details.
+
+| Themes | Controls | Samples |
+| --- | --- | --- |
+| Light / Dark themes and customizable accent colors | Buttons, inputs, navigation, charts, windows, and more | Sample applications with implementation and composition examples |
+
+## Quick start
+
+Install the stable NuGet package:
+
+```powershell
+Install-Package WPFDevelopers
+```
+
+To try the latest features, install the preview package:
+
+```powershell
+Install-Package WPFDevelopers -Pre
+```
+
+Then follow the [quick start guide](docs/en/getting-started.md) to configure `App.xaml` and use the controls.
+
+## Documentation and resources
+
+- [Quick start and supported .NET versions](docs/en/getting-started.md)
+- [MapView guide](docs/en/mapview.md)
+- [Sample project source](src/WPFDevelopers.Samples.Shared/ExampleViews/)
+- [GitHub](https://github.com/WPFDevelopersOrg/WPFDevelopers) · [AtomGit](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers) · [Gitee](https://gitee.com/WPFDevelopersOrg/WPFDevelopers)
+- [中文 README](README-zh.md)
+
+## Control preview
+
+![WPFDevelopers control preview](https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls.png)
+
+The full collection of control demos and animated previews is preserved below. Items marked `DEMO` may be sample-only implementations or compositions rather than built-in WD controls; refer to the corresponding source.
+
+<details>
+<summary>Show the full demo gallery and community information</summary>
+
 <div align="center"><img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png"/></div>
 
 [中文](https://gitee.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README-zh.md)
@@ -67,7 +131,7 @@ If you think our open source software is helpful to you, please scan the QR code
 ### Backers
 
 <a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>    <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>   <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a>
-    <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>   <a href="https://gitee.com/ZJHome" target="_blank">左全</a>
+    <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>   <a href="https://gitee.com/ZJHome" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="左全" src="https://github.com/identicons/ZJHome.png"></a>
 
 ### Contributors
 <a href="https://github.com/yanjinhuagood" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/23089734?v=4"></a>
@@ -746,4 +810,4 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 
 
-							~~end~~
+</details>
