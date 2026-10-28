@@ -107,6 +107,7 @@
         MapView,
         BackToTop,
         ScrollNavigation,
+        WaterfallPanel,
         VirtualizingWrapPanel,
         AcrylicBlur,
         Theme,
