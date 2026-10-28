@@ -123,6 +123,7 @@
         DateTimePicker,
         Calendar,
         Slider,
+        GridSplitter,
         ProgressBar,
         DataGrid,
         ListBox,

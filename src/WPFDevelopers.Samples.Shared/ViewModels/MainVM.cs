@@ -42,6 +42,7 @@ namespace WPFDevelopers.Samples.ViewModels
             nameof(MenuEnum.DateTimePicker),
             nameof(MenuEnum.Calendar),
             nameof(MenuEnum.Slider),
+            nameof(MenuEnum.GridSplitter),
             nameof(MenuEnum.ProgressBar),
             nameof(MenuEnum.DataGrid),
             nameof(MenuEnum.ListBox),
@@ -376,6 +377,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Slider:
                     ControlPanel = new SliderExample();
+                    break;
+                case MenuEnum.GridSplitter:
+                    ControlPanel = new GridSplitterExample();
                     break;
                 case MenuEnum.ProgressBar:
                     ControlPanel = new ProgressBarExample();

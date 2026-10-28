@@ -124,6 +124,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.DateTimePicker] = "日期时间选择器",
             [MenuEnum.Calendar] = "日历",
             [MenuEnum.Slider] = "滑块",
+            [MenuEnum.GridSplitter] = "网格分隔条",
             [MenuEnum.ProgressBar] = "进度条",
             [MenuEnum.DataGrid] = "数据表格",
             [MenuEnum.ListBox] = "列表框",
