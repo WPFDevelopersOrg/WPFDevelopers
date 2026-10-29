@@ -89,7 +89,7 @@ namespace WPFDevelopers.Samples.ViewModels
 
         private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
         {
-            MenuEnum.BackToTop,
+            MenuEnum.ScrollNavigation,
             MenuEnum.Timeline,
         };
 
