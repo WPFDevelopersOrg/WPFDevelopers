@@ -141,6 +141,8 @@ namespace WPFDevelopers.Controls
             private Button _backToBottomButton;
             private Window _ownerWindow;
             private readonly DispatcherTimer _hideTimer;
+            private DispatcherOperation _openOperation;
+            private DispatcherOperation _revealOperation;
 
             public BackToTopState(FrameworkElement target)
             {
@@ -289,6 +291,7 @@ namespace WPFDevelopers.Controls
             private void Detach()
             {
                 _hideTimer.Stop();
+                CancelPendingPopupOperations();
 
                 if (_scrollViewer != null)
                     _scrollViewer.ScrollChanged -= OnScrollChanged;
@@ -357,15 +360,13 @@ namespace WPFDevelopers.Controls
             private void OnOwnerWindowDeactivated(object sender, EventArgs e)
             {
                 _hideTimer.Stop();
-                if (_popup != null)
-                    _popup.IsOpen = false;
+                ClosePopup();
             }
 
             private void OnOwnerWindowClosed(object sender, EventArgs e)
             {
                 _hideTimer.Stop();
-                if (_popup != null)
-                    _popup.IsOpen = false;
+                ClosePopup();
             }
 
             private void OnScrollChanged(object sender, ScrollChangedEventArgs e)
@@ -392,7 +393,7 @@ namespace WPFDevelopers.Controls
                     PresentationSource.FromVisual(_target) == null)
                 {
                     _hideTimer.Stop();
-                    _popup.IsOpen = false;
+                    ClosePopup();
                     return;
                 }
 
@@ -414,9 +415,7 @@ namespace WPFDevelopers.Controls
                                           _backToTopButton.Visibility == Visibility.Visible ? 1 : 0) +
                                          (_backToBottomButton != null &&
                                           _backToBottomButton.Visibility == Visibility.Visible ? 1 : 0);
-                var panelWidth = visibleButtonCount * 36 + Math.Max(0, visibleButtonCount - 1) * 6;
-                _popup.HorizontalOffset = Math.Max(0, _target.ActualWidth - panelWidth - 16);
-                _popup.VerticalOffset = Math.Max(0, _target.ActualHeight - 52);
+                UpdatePopupOffsets(visibleButtonCount);
                 var isOwnerWindowVisible = _ownerWindow == null ||
                                            (_ownerWindow.IsVisible &&
                                             _ownerWindow.IsActive &&
@@ -427,11 +426,111 @@ namespace WPFDevelopers.Controls
                                  visibleButtonCount > 0;
                 if (!shouldOpen)
                 {
-                    _popup.IsOpen = false;
+                    ClosePopup();
                     return;
                 }
 
+                if (!_popup.IsOpen)
+                    ScheduleOpenPopup();
+            }
+
+            private void UpdatePopupOffsets(int visibleButtonCount)
+            {
+                var panelWidth = visibleButtonCount * 36 + Math.Max(0, visibleButtonCount - 1) * 6;
+                _popup.HorizontalOffset = Math.Max(0, _target.ActualWidth - panelWidth - 16);
+                _popup.VerticalOffset = Math.Max(0, _target.ActualHeight - 52);
+            }
+
+            private void ScheduleOpenPopup()
+            {
+                if (_openOperation != null || _revealOperation != null)
+                    return;
+
+                _openOperation = _target.Dispatcher.BeginInvoke(
+                    DispatcherPriority.Loaded,
+                    new Action(OpenPopup));
+            }
+
+            private void OpenPopup()
+            {
+                _openOperation = null;
+                if (!CanOpenPopup())
+                    return;
+
+                var visibleButtonCount = GetVisibleButtonCount();
+                UpdatePopupOffsets(visibleButtonCount);
+                _buttonPanel.Opacity = 0;
                 _popup.IsOpen = true;
+
+                var horizontalOffset = _popup.HorizontalOffset;
+                _popup.HorizontalOffset = horizontalOffset + 0.1;
+                _popup.HorizontalOffset = horizontalOffset;
+
+                _revealOperation = _target.Dispatcher.BeginInvoke(
+                    DispatcherPriority.Render,
+                    new Action(RevealPopup));
+            }
+
+            private void RevealPopup()
+            {
+                _revealOperation = null;
+                if (!CanOpenPopup() || !_popup.IsOpen)
+                {
+                    ClosePopup();
+                    return;
+                }
+
+                _buttonPanel.Opacity = 1;
+            }
+
+            private bool CanOpenPopup()
+            {
+                var isOwnerWindowVisible = _ownerWindow == null ||
+                                           (_ownerWindow.IsVisible &&
+                                            _ownerWindow.IsActive &&
+                                            _ownerWindow.WindowState != WindowState.Minimized);
+                return _popup != null &&
+                       _buttonPanel != null &&
+                       _target.IsLoaded &&
+                       _target.IsVisible &&
+                       _target.ActualWidth > 0 &&
+                       _target.ActualHeight > 0 &&
+                       PresentationSource.FromVisual(_target) != null &&
+                       isOwnerWindowVisible &&
+                       IsInteractionActive() &&
+                       GetVisibleButtonCount() > 0;
+            }
+
+            private int GetVisibleButtonCount()
+            {
+                return (_backToTopButton != null &&
+                        _backToTopButton.Visibility == Visibility.Visible ? 1 : 0) +
+                       (_backToBottomButton != null &&
+                        _backToBottomButton.Visibility == Visibility.Visible ? 1 : 0);
+            }
+
+            private void ClosePopup()
+            {
+                CancelPendingPopupOperations();
+                if (_buttonPanel != null)
+                    _buttonPanel.Opacity = 0;
+                if (_popup != null)
+                    _popup.IsOpen = false;
+            }
+
+            private void CancelPendingPopupOperations()
+            {
+                if (_openOperation != null)
+                {
+                    _openOperation.Abort();
+                    _openOperation = null;
+                }
+
+                if (_revealOperation != null)
+                {
+                    _revealOperation.Abort();
+                    _revealOperation = null;
+                }
             }
 
             private bool IsInteractionActive()
