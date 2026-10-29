@@ -101,6 +101,7 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum.ListView,
             MenuEnum.ScrollViewer,
             MenuEnum.ScreenCut,
+            MenuEnum.ColorPicker,
             MenuEnum.TimePicker,
             MenuEnum.VirtualizingWrapPanel,
             MenuEnum.WaterfallPanel,
