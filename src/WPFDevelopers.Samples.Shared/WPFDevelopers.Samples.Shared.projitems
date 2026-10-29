@@ -8,19 +8,33 @@
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>WPFDevelopers.Samples</Import_RootNamespace>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
+    <ApplicationManifest>$(MSBuildThisFileDirectory)app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.Runtime.Serialization" Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\HomeExample.xaml.cs">
+      <DependentUpon>HomeExample.xaml</DependentUpon>
+    </Compile>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\HomeExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="$(MSBuildThisFileDirectory)Resources\Assets\wxgzh.jpg">
+      <Link>Resources\Assets\wxgzh.jpg</Link>
+    </Resource>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleCanvas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubbleSelection\BubbleSelection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\BubbleSelection\BubbleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\ChatEmoji.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ChatEmoji\EmojiHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\CodeViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer\SourceCodeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CountdownTimer\CountdownTimer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CropControl\CropControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ImageCrop\ImageCrop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\CutImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CutImage\DragDrop.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Dashboard\Dashboard.cs" />
@@ -36,9 +50,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ElementAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ThumbAngle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\TransformLayout.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\FireControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieSegmentModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Others\Flame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieSegment\PieSegment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PieSegment\PieSegmentModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\DrawPrize.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Prize\PrizeItemControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\RainbowButtons\RainbowAppleButton.cs" />
@@ -120,9 +134,9 @@
       <SubType>Code</SubType>
       <DependentUpon>BreatheLightExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BubblleControlExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\BubbleSelectionExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>BubblleControlExample.xaml</DependentUpon>
+      <DependentUpon>BubbleSelectionExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CanvasHandWriting\CanvasHandWritingExample.xaml.cs">
       <SubType>Code</SubType>
@@ -176,9 +190,9 @@
       <SubType>Code</SubType>
       <DependentUpon>CropAvatarWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CropControlExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ImageCropExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>CropControlExample.xaml</DependentUpon>
+      <DependentUpon>ImageCropExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\CutImageExample.xaml.cs">
       <SubType>Code</SubType>
@@ -408,9 +422,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NumericBoxExample.xaml.cs">
       <DependentUpon>NumericBoxExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\OtherControlExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\FlameExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>OtherControlExample.xaml</DependentUpon>
+      <DependentUpon>FlameExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\PaginationExample.xaml.cs">
       <SubType>Code</SubType>
@@ -433,9 +447,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\PathIconExample.xaml.cs">
       <DependentUpon>PathIconExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\PieControlExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\PieSegmentExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>PieControlExample.xaml</DependentUpon>
+      <DependentUpon>PieSegmentExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ChartRadarExample.xaml.cs">
       <SubType>Code</SubType>
@@ -449,9 +463,9 @@
       <SubType>Code</SubType>
       <DependentUpon>RoundPickerExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\RulerControlExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\RulerExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>RulerControlExample.xaml</DependentUpon>
+      <DependentUpon>RulerExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ScreenCutExample.xaml.cs">
       <SubType>Code</SubType>
@@ -460,6 +474,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ScrollViewerAnimationExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>ScrollViewerAnimationExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ScrollNavigationExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ScrollNavigationExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\SelectorExample.xaml.cs">
       <SubType>Code</SubType>
@@ -616,6 +634,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\SliderExample.xaml.cs">
       <DependentUpon>SliderExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\GridSplitterExample.xaml.cs">
+      <DependentUpon>GridSplitterExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\ProgressBarExample.xaml.cs">
       <DependentUpon>ProgressBarExample.xaml</DependentUpon>
     </Compile>
@@ -653,10 +674,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PaginationExampleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimelineExampleVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\WaterfallPanelExampleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\BubblleControl\BubblleControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Controls\BubbleSelection\BubbleSelection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -668,7 +690,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\CropControl\CropControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ImageCrop\ImageCrop.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -704,11 +726,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\Others\OtherControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Others\Flame.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\PieControl\PieControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Controls\PieSegment\PieSegment.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -800,7 +822,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BubblleControlExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\BubbleSelectionExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -856,7 +878,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\CropControlExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ImageCropExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1129,7 +1151,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\OtherControlExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\FlameExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1153,7 +1175,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\PieControlExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\PieSegmentExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1169,7 +1191,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\RulerControlExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\RulerExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1178,6 +1200,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ScrollViewerAnimationExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ScrollNavigationExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1350,6 +1376,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\SliderExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Basics\GridSplitterExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
