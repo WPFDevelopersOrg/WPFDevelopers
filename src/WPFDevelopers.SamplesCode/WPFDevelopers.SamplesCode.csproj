@@ -17,6 +17,8 @@
 		<Reference Include="Microsoft.CSharp" />
 	</ItemGroup>
 	<ItemGroup>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\HomeExample.xaml.cs" Link="ExampleViews\HomeExample.xaml.cs" DependentUpon="HomeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\HomeExample.xaml" Link="ExampleViews\HomeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml.cs" Link="ExampleViews\AboutWindow.xaml.cs" DependentUpon="AboutWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AcrylicBlurWindowExample.xaml.cs" Link="ExampleViews\AcrylicBlurWindowExample.xaml.cs" DependentUpon="AcrylicBlurWindowExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AnimationAudioExample.xaml.cs" Link="ExampleViews\AnimationAudioExample.xaml.cs" DependentUpon="AnimationAudioExample.xaml" />
@@ -84,7 +86,7 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\RulerExample.xaml.cs" Link="ExampleViews\RulerExample.xaml.cs" DependentUpon="RulerExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScreenCutExample.xaml.cs" Link="ExampleViews\ScreenCutExample.xaml.cs" DependentUpon="ScreenCutExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScrollViewerAnimationExample.xaml.cs" Link="ExampleViews\ScrollViewerAnimationExample.xaml.cs" DependentUpon="ScrollViewerAnimationExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BackToTopExample.xaml.cs" Link="ExampleViews\BackToTopExample.xaml.cs" DependentUpon="BackToTopExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScrollNavigationExample.xaml.cs" Link="ExampleViews\ScrollNavigationExample.xaml.cs" DependentUpon="ScrollNavigationExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ShakeExample.xaml.cs" Link="ExampleViews\ShakeExample.xaml.cs" DependentUpon="ShakeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SnowCanvasExample.xaml.cs" Link="ExampleViews\SnowCanvasExample.xaml.cs" DependentUpon="SnowCanvasExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SongWordsExample.xaml.cs" Link="ExampleViews\SongWordsExample.xaml.cs" DependentUpon="SongWordsExample.xaml" />
@@ -94,13 +96,16 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\StarrySkyExample.xaml.cs" Link="ExampleViews\StarrySkyExample.xaml.cs" DependentUpon="StarrySkyExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TaskbarItemInfoExample.xaml.cs" Link="ExampleViews\TaskbarItemInfoExample.xaml.cs" DependentUpon="TaskbarItemInfoExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ThermometerExample.xaml.cs" Link="ExampleViews\ThermometerExample.xaml.cs" DependentUpon="ThermometerExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimeLineExample.xaml.cs" Link="ExampleViews\TimeLineExample.xaml.cs" DependentUpon="TimeLineExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ActivityFeedExample.xaml.cs" Link="ExampleViews\ActivityFeedExample.xaml.cs" DependentUpon="ActivityFeedExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimelineExample.xaml.cs" Link="ExampleViews\TimelineExample.xaml.cs" DependentUpon="TimelineExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimelineExample.xaml" Link="ExampleViews\TimelineExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TransitionPanelExample.xaml.cs" Link="ExampleViews\TransitionPanelExample.xaml.cs" DependentUpon="TransitionPanelExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\VerifyCodeExample.xaml.cs" Link="ExampleViews\VerifyCodeExample.xaml.cs" DependentUpon="VerifyCodeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\VirtualizingWrapPanelExample.xaml.cs" Link="ExampleViews\VirtualizingWrapPanelExample.xaml.cs" DependentUpon="VirtualizingWrapPanelExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ZooSemy\VolumeControl.xaml.cs" Link="ExampleViews\ZooSemy\VolumeControl.xaml.cs" DependentUpon="VolumeControl.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" Link="ExampleViews\ZooSemy\ZooSemyExample.xaml.cs" DependentUpon="ZooSemyExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\PaginationExampleVM.cs" Link="ViewModels\PaginationExampleVM.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\TimelineExampleVM.cs" Link="ViewModels\TimelineExampleVM.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\WaterfallPanelExampleVM.cs" Link="ViewModels\WaterfallPanelExampleVM.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\DrawingExampleVM.cs" Link="ViewModels\DrawingExampleVM.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\ViewModelBase.cs" Link="ViewModels\ViewModelBase.cs" />
@@ -115,8 +120,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\SelectorExample.xaml.cs" Link="ExampleViews\SelectorExample.xaml.cs" DependentUpon="SelectorExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs" Link="ExampleViews\MultiSelectSearchComboBoxExample.xaml.cs" DependentUpon="MultiSelectSearchComboBoxExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreadCrumbBarExample.xaml.cs" Link="ExampleViews\BreadCrumbBarExample.xaml.cs" DependentUpon="BreadCrumbBarExample.xaml" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TimeLine\TimeLineItem.cs" Link="Controls\TimeLine\TimeLineItem.cs" />
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TimeLine\TimeLine.cs" Link="Controls\TimeLine\TimeLine.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ActivityFeed\ActivityFeedItem.cs" Link="Controls\ActivityFeed\ActivityFeedItem.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ActivityFeed\ActivityFeed.cs" Link="Controls\ActivityFeed\ActivityFeed.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\DrawingPanel.cs" Link="Controls\Drawing\DrawingPanel.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\DrawingControl.cs" Link="Controls\Drawing\DrawingControl.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Others\Flame.cs" Link="Controls\Others\Flame.cs" />
@@ -406,8 +411,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScrollViewerAnimationExample.xaml">
 			<Link>ExampleViews\ScrollViewerAnimationExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BackToTopExample.xaml">
-			<Link>ExampleViews\BackToTopExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ScrollNavigationExample.xaml">
+			<Link>ExampleViews\ScrollNavigationExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ShakeExample.xaml">
 			<Link>ExampleViews\ShakeExample.xaml</Link>
@@ -440,8 +445,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TransformLayoutExample.xaml">
 			<Link>ExampleViews\TransformLayoutExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TimeLineExample.xaml">
-			<Link>ExampleViews\TimeLineExample.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\ActivityFeedExample.xaml">
+			<Link>ExampleViews\ActivityFeedExample.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TransitionPanelExample.xaml">
 			<Link>ExampleViews\TransitionPanelExample.xaml</Link>
@@ -487,8 +492,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\BreadCrumbBarExample.xaml">
 			<Link>ExampleViews\BreadCrumbBarExample.xaml</Link>
 		</Resource>
-		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\TimeLine\TimeLine.xaml">
-			<Link>Controls\TimeLine\TimeLine.xaml</Link>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\ActivityFeed\ActivityFeed.xaml">
+			<Link>Controls\ActivityFeed\ActivityFeed.xaml</Link>
 		</Resource>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Drawing\Drawing.xaml">
 			<Link>Controls\Drawing\Drawing.xaml</Link>
