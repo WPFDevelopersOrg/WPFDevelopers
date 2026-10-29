@@ -29,24 +29,24 @@
                 <!--  下方不用拷贝  -->
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/LoginWindow/Generic.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CodeViewer/CodeViewer.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/TimeLine/TimeLine.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/ActivityFeed/ActivityFeed.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Drawing/Drawing.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Others/OtherControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Others/Flame.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/ChatEmoji/ChatEmoji.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/RoundPicker/RoundPicker.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CutImage/CutImage.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Dashboard/Dashboard.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/PieControl/PieControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/PieSegment/PieSegment.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Prize/PrizeItemControl.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/RainbowButtons/RainbowButtons.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/SnowCanvas/SnowCanvas.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/CropControl/CropControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/ImageCrop/ImageCrop.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/TransformLayout/TransformLayout.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/ExampleViews/DrapView/Controls/TransformThumb.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/NavigateMenu/NavigateMenu.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Loadings/StreamerLoading.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/Theme/Theme.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/BubblleControl/BubblleControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/BubbleSelection/BubbleSelection.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Samples;component/Controls/MultiSelectionSearchComboBox/MultiSelectSearchComboBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="avalonedit:TextEditor">
