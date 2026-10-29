@@ -13,6 +13,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         public AboutWindow()
         {
             InitializeComponent();
+            VersionText.Text = "v" + typeof(AboutWindow).BaseType.Assembly.GetName().Version.ToString(3);
         }
 
         private void GithubHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

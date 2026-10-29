@@ -14,7 +14,7 @@
     TitleBackground="{DynamicResource WD.WindowBorderBrush}"
     TitleBarMode="None"
     TitleHeight="30"
-    WindowStartupLocation="CenterScreen"
+    WindowStartupLocation="CenterOwner"
     WindowStyle="ToolWindow"
     mc:Ignorable="d">
     <wd:Window.TitleBar>
@@ -70,12 +70,19 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TextBlock
-                Padding="0,4"
+            <StackPanel
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                FontSize="20"
-                Text="WPFDevelopers" />
+                VerticalAlignment="Bottom">
+                <TextBlock
+                    Padding="0,4"
+                    HorizontalAlignment="Center"
+                    FontSize="20"
+                    Text="WPFDevelopers" />
+                <TextBlock
+                    x:Name="VersionText"
+                    Padding="0,4"
+                    HorizontalAlignment="Center" />
+            </StackPanel>
             <TextBlock
                 Grid.Row="1"
                 Padding="0,4"
