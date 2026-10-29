@@ -159,21 +159,32 @@ namespace WPFDevelopers.Controls
 
         private static void OnStartDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var ctrl = d as DateRangePicker;
-            if (ctrl != null && ctrl._startTextBox != null)
-            {
-                ctrl._startTextBox.Text = e.NewValue?.ToString();
-                ctrl.UpdateStartDateFromTextBox();
-            }
+            var ctrl = (DateRangePicker)d;
+            ctrl._startDate = (DateTime?)e.NewValue;
+            ctrl.UpdateDateTextBox(ctrl._startTextBox, ctrl._startDate, ctrl.TextBoxStart_TextChanged);
         }
 
         private static void OnEndDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var ctrl = d as DateRangePicker;
-            if (ctrl != null && ctrl._endTextBox != null)
+            var ctrl = (DateRangePicker)d;
+            ctrl._endDate = (DateTime?)e.NewValue;
+            ctrl.UpdateDateTextBox(ctrl._endTextBox, ctrl._endDate, ctrl.TextBoxEnd_TextChanged);
+        }
+
+        private void UpdateDateTextBox(DatePickerTextBox textBox, DateTime? date,
+            TextChangedEventHandler handler)
+        {
+            if (textBox == null)
+                return;
+
+            textBox.TextChanged -= handler;
+            try
             {
-                ctrl._endTextBox.Text = e.NewValue?.ToString();
-                ctrl.UpdateEndDateFromTextBox();
+                textBox.Text = date.HasValue ? date.Value.ToString(DateTimeFormat) : string.Empty;
+            }
+            finally
+            {
+                textBox.TextChanged += handler;
             }
         }
 
@@ -218,14 +229,30 @@ namespace WPFDevelopers.Controls
             var ctrl = (DateRangePicker)d;
             if (ctrl == null) return;
             ctrl.UpdateTimeFormatDetection();
+            ctrl.UpdateDateTextBox(ctrl._startTextBox, ctrl.StartDate, ctrl.TextBoxStart_TextChanged);
+            ctrl.UpdateDateTextBox(ctrl._endTextBox, ctrl.EndDate, ctrl.TextBoxEnd_TextChanged);
         }
 
         static void OnMinAndMaxChanged(DateRangePicker control)
         {
-            control._startCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, control.MinDate.Value.AddDays(-1)));
-            control._endCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, control.MinDate.Value.AddDays(-1)));
-            control._startCalendar.BlackoutDates.Add(new CalendarDateRange(control.MaxDate.Value.AddDays(1), DateTime.MaxValue));
-            control._endCalendar.BlackoutDates.Add(new CalendarDateRange(control.MaxDate.Value.AddDays(1), DateTime.MaxValue));
+            control.UpdateBlackoutDates(control._startCalendar);
+            control.UpdateBlackoutDates(control._endCalendar);
+        }
+
+        private void UpdateBlackoutDates(Calendar calendar)
+        {
+            if (calendar == null)
+                return;
+
+            if (calendar.SelectedDates.Any(date =>
+                (MinDate.HasValue && date.Date < MinDate.Value.Date) ||
+                (MaxDate.HasValue && date.Date > MaxDate.Value.Date)))
+                calendar.SelectedDates.Clear();
+            calendar.BlackoutDates.Clear();
+            if (MinDate.HasValue && MinDate.Value.Date > DateTime.MinValue.Date)
+                calendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, MinDate.Value.Date.AddDays(-1)));
+            if (MaxDate.HasValue && MaxDate.Value.Date < DateTime.MaxValue.Date)
+                calendar.BlackoutDates.Add(new CalendarDateRange(MaxDate.Value.Date.AddDays(1), DateTime.MaxValue));
         }
 
         public override void OnApplyTemplate()
@@ -240,8 +267,8 @@ namespace WPFDevelopers.Controls
             {
                 _popup.Focusable = true;
                 _popup.PlacementTarget = this;
-                _popup.Closed += OnPopup_Closed;
                 _popup.Closed -= OnPopup_Closed;
+                _popup.Closed += OnPopup_Closed;
                 _popup.Opened -= OnPopup_Opened;
                 _popup.Opened += OnPopup_Opened;
             }
@@ -270,20 +297,7 @@ namespace WPFDevelopers.Controls
                 _endCalendar.PreviewMouseUp += OnEndCalendar_PreviewMouseUp;
             }
 
-            if (_startCalendar != null)
-            {
-                if (MinDate != null)
-                    _startCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, MinDate.Value.AddDays(-1)));
-                if (MaxDate != null)
-                    _startCalendar.BlackoutDates.Add(new CalendarDateRange(MaxDate.Value.AddDays(1), DateTime.MaxValue));
-            }
-            if (_endCalendar != null)
-            {
-                if (MinDate != null)
-                    _endCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, MinDate.Value.AddDays(-1)));
-                if (MaxDate != null)
-                    _endCalendar.BlackoutDates.Add(new CalendarDateRange(MaxDate.Value.AddDays(1), DateTime.MaxValue));
-            }
+            OnMinAndMaxChanged(this);
             var now = MinDate == null ? DateTime.Now : MinDate.Value;
             var firstDayOfNextMonth = new DateTime(now.Year, now.Month, 1).AddMonths(1);
             _startCalendar.DisplayDate = now;
@@ -302,13 +316,13 @@ namespace WPFDevelopers.Controls
             _endTextBox = (DatePickerTextBox)GetTemplateChild(EndTextBoxTemplateName);
             if (_endTextBox != null)
                 _endTextBox.TextChanged += TextBoxEnd_TextChanged;
-            UpdateTimeFormatDetection();
             _startTimePicker = (TimePicker)GetTemplateChild(StartTimePickerTemplateName);
             if (_startTimePicker != null)
                 _startTimePicker.SelectedTimeChanged += OnStartTimePicker_SelectedTimeChanged;
             _endTimePicker = (TimePicker)GetTemplateChild(EndTimePickerTemplateName);
             if (_endTimePicker != null)
                 _endTimePicker.SelectedTimeChanged += OnEndTimePicker_SelectedTimeChanged;
+            UpdateTimeFormatDetection();
             Loaded += DateRangePicker_Loaded;
             _oKButton = (Button)GetTemplateChild(OKButtonTemplateName);
             if (_oKButton != null)
@@ -329,8 +343,8 @@ namespace WPFDevelopers.Controls
 
         public void ClearDates()
         {
-            StartDate = null;
-            EndDate = null;
+            SetCurrentValue(StartDateProperty, null);
+            SetCurrentValue(EndDateProperty, null);
             _startDate = null;
             _endDate = null;
 
@@ -358,8 +372,8 @@ namespace WPFDevelopers.Controls
 
         private void RestoreBackupDates()
         {
-            StartDate = _backupStartDate;
-            EndDate = _backupEndDate;
+            SetCurrentValue(StartDateProperty, _backupStartDate);
+            SetCurrentValue(EndDateProperty, _backupEndDate);
             _startDate = _backupStartDate;
             _endDate = _backupEndDate;
             if (_startTextBox != null && StartDate.HasValue)
@@ -435,8 +449,8 @@ namespace WPFDevelopers.Controls
 
         private void OnEndTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
-            if (_isHandlingSelectionChange || !HasTimeFormat || !_endDate.HasValue) return;
-            var date = _endDate.Value.Date + _endTimePicker.SelectedTime.Value.TimeOfDay;
+            if (_isHandlingSelectionChange || !HasTimeFormat || !_endDate.HasValue || !e.NewValue.HasValue) return;
+            var date = _endDate.Value.Date + e.NewValue.Value.TimeOfDay;
             _endDate = date;
             SetSelectedDates();
             SetDate();
@@ -444,8 +458,8 @@ namespace WPFDevelopers.Controls
 
         private void OnStartTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
-            if (_isHandlingSelectionChange || !HasTimeFormat || !_startDate.HasValue) return;
-            var date = _startDate.Value.Date + _startTimePicker.SelectedTime.Value.TimeOfDay;
+            if (_isHandlingSelectionChange || !HasTimeFormat || !_startDate.HasValue || !e.NewValue.HasValue) return;
+            var date = _startDate.Value.Date + e.NewValue.Value.TimeOfDay;
             _startDate = date;
             SetSelectedDates();
             SetDate();
@@ -478,8 +492,9 @@ namespace WPFDevelopers.Controls
             {
                 if (e.OriginalSource is FrameworkElement fe)
                 {
-                    var dayButton = ControlsHelper.FindParent<CalendarDayButton>(fe);
-                    if (dayButton != null && dayButton.DataContext is DateTime clickedDate)
+                    var dayButton = fe as CalendarDayButton ?? ControlsHelper.FindParent<CalendarDayButton>(fe);
+                    if (dayButton != null && dayButton.IsEnabled && !dayButton.IsBlackedOut &&
+                        dayButton.DataContext is DateTime clickedDate)
                     {
                         HandleDateSelection(clickedDate, isStartCalendar);
                     }
@@ -580,7 +595,7 @@ namespace WPFDevelopers.Controls
                 {
                     if (EndDate.HasValue && dateTime.ToString(DateTimeFormat) == EndDate.Value.ToString(DateTimeFormat))
                         return;
-                    if (StartDate.HasValue && dateTime < StartDate.Value.Date)
+                    if (StartDate.HasValue && dateTime < StartDate.Value)
                     {
                         var previousEndDate = _endDate ?? EndDate;
                         if (previousEndDate.HasValue)
@@ -638,7 +653,7 @@ namespace WPFDevelopers.Controls
                 {
                     if (StartDate.HasValue && dateTime.ToString(DateTimeFormat) == StartDate.Value.ToString(DateTimeFormat))
                         return;
-                    if (EndDate.HasValue && dateTime > EndDate.Value.Date)
+                    if (EndDate.HasValue && dateTime > EndDate.Value)
                     {
                         var previousStartDate = _startDate ?? StartDate;
                         if (previousStartDate.HasValue)
@@ -653,22 +668,6 @@ namespace WPFDevelopers.Controls
                         }
                         return;
                     }
-                    if (EndDate.HasValue && dateTime < EndDate.Value.Date)
-                    {
-                        var previousStartDate = _startDate ?? StartDate;
-                        if (previousStartDate.HasValue)
-                        {
-                            StartDate = previousStartDate;
-                            _startTextBox.Text = previousStartDate.Value.ToString(DateTimeFormat);
-                        }
-                        else
-                        {
-                            StartDate = null;
-                            _startTextBox.Text = string.Empty;
-                        }
-                        return;
-                    }
-
                     SetIsHighlightFalse(_startCalendarDayButtons);
                     StartDate = dateTime;
                     PopupOpened();
@@ -692,15 +691,14 @@ namespace WPFDevelopers.Controls
 
         private void DateRangePicker_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_startTextBox != null && StartDate.HasValue)
-                _startTextBox.Text = StartDate.Value.ToString(DateTimeFormat);
-            if (_endTextBox != null && EndDate.HasValue)
-                _endTextBox.Text = EndDate.Value.ToString(DateTimeFormat);
+            UpdateDateTextBox(_startTextBox, StartDate, TextBoxStart_TextChanged);
+            UpdateDateTextBox(_endTextBox, EndDate, TextBoxEnd_TextChanged);
         }
 
         private void OnPopup_Closed(object sender, EventArgs e)
         {
-            _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
+            if (_window != null)
+                _window.PreviewMouseDown -= OnWindowPreviewMouseDown;
             _startDate = null;
             _endDate = null;
             if (_startCalendar != null) _startCalendar.SelectedDate = null;
@@ -711,13 +709,14 @@ namespace WPFDevelopers.Controls
         {
             _backupStartDate = StartDate;
             _backupEndDate = EndDate;
-            _window.PreviewMouseDown += OnWindowPreviewMouseDown;
+            if (_window != null)
+                _window.PreviewMouseDown += OnWindowPreviewMouseDown;
             PopupOpened();
         }
 
         private void OnWindowPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!IsMouseOver)
+            if (!IsMouseOver && (_popup.Child == null || !_popup.Child.IsMouseOver))
             {
                 _popup.IsOpen = false;
                 _startDate = null;
@@ -814,7 +813,7 @@ namespace WPFDevelopers.Controls
 
         private void OnWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (_popup != null && _popup.IsOpen)
+            if (_popup != null && _popup.IsOpen && (_popup.Child == null || !_popup.Child.IsMouseOver))
             {
                 _popup.IsOpen = false;
                 _startDate = null;
@@ -826,19 +825,23 @@ namespace WPFDevelopers.Controls
 
         private void SetDate()
         {
-            StartDate = _startDate;
-            EndDate = _endDate;
-            if (_startDate.HasValue)
-                _startTextBox.Text = _startDate.Value.ToString(DateTimeFormat);
-            if (_endDate.HasValue)
-                _endTextBox.Text = _endDate.Value.ToString(DateTimeFormat);
+            var startDate = _startDate;
+            var endDate = _endDate;
+            SetCurrentValue(StartDateProperty, startDate);
+            SetCurrentValue(EndDateProperty, endDate);
+            UpdateDateTextBox(_startTextBox, startDate, TextBoxStart_TextChanged);
+            UpdateDateTextBox(_endTextBox, endDate, TextBoxEnd_TextChanged);
         }
 
         private void OnPreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton != MouseButton.Left)
                 return;
-            if (e.OriginalSource is Button button)
+            if (e.OriginalSource is ButtonBase ||
+                (e.OriginalSource is FrameworkElement source &&
+                 ControlsHelper.FindParent<ButtonBase>(source) != null))
+                return;
+            if (_popup != null && _popup.Child != null && _popup.Child.IsMouseOver)
                 return;
             if (_popup != null && !_popup.IsOpen)
                 _popup.IsOpen = true;
@@ -895,29 +898,23 @@ namespace WPFDevelopers.Controls
                     actualStartDate = actualEndDate;
                 }
 
-                try
-                {
-                    _startCalendar.SelectedDates.AddRange(actualStartDate, actualEndDate);
-                    _endCalendar.SelectedDates.AddRange(actualStartDate, actualEndDate);
-                    SetIsHighlight(actualEndDate);
-                    SetDate();
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    throw;
-                }
-                SetIsHighlight(eDate.Value);
+                _startDate = actualStartDate;
+                _endDate = actualEndDate;
+                // Calendar ranges contain days, not the time selected by the time pickers.
+                _startCalendar.SelectedDates.AddRange(actualStartDate.Date, actualEndDate.Date);
+                _endCalendar.SelectedDates.AddRange(actualStartDate.Date, actualEndDate.Date);
+                SetIsHighlight(actualEndDate);
                 SetDate();
             }
         }
 
         private DateTime GetBoundedDate(DateTime date)
         {
-            if (MinDate.HasValue && date < MinDate.Value)
-                return MinDate.Value;
+            if (MinDate.HasValue && date.Date < MinDate.Value.Date)
+                return MinDate.Value.Date + date.TimeOfDay;
 
-            if (MaxDate.HasValue && date > MaxDate.Value)
-                return MaxDate.Value;
+            if (MaxDate.HasValue && date.Date > MaxDate.Value.Date)
+                return MaxDate.Value.Date + date.TimeOfDay;
 
             return date;
         }
