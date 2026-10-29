@@ -17,8 +17,6 @@ WPFDevelopers 覆盖从 .NET Framework 4.0 到 .NET 10 的完整版本线：
 - Visual Studio 2026
 - .NET Framework 4.0 或更高 / .NET Core 3.0 或更高
 
----
-
 ## MapView 专题文档
 
 如果你要使用地图控件，建议直接阅读：
@@ -107,6 +105,107 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
     </Grid>
 </Window>
 ```
+
+### ColorPicker 使用方式
+
+`ColorPicker` 保留内嵌面板用法，底部下拉框可直接选择 RGB、HSL 或 HEX，支持通过 `ColorType` 设置初始格式。
+
+```xml
+<wd:ColorPicker SelectedColor="{Binding AccentColor}" ColorType="HEX" />
+```
+
+同一个 `ColorPicker` 设置 `DisplayMode="Popup"` 后，提供点击色块打开面板的用法；默认 `DisplayMode="Inline"` 保留现有内嵌展示：
+
+```xml
+<wd:ColorPicker DisplayMode="Popup" SelectedColor="{Binding AccentColor}" />
+<wd:ColorPicker DisplayMode="Popup" SelectedColor="{Binding AccentColor}"
+                     ShowColorText="True"
+                     SwatchSize="24"
+                     ColorType="HEX" />
+```
+
+- `SelectedColor` 为 `Color`，默认双向绑定，修改颜色时立即同步，无需确认。
+- `ShowColorText` 默认为 `False`；启用后在色块右侧显示 HEX，不透明颜色为 `#RRGGBB`，带透明度颜色为 `#AARRGGBB`。
+- `SwatchSize` 为色块边长，默认为 18，可设置为 24、32 等正数；触发器总尺寸还包含 `Padding` 和边框。
+- `IsDropDownOpen` 支持双向绑定；点击外部或按 Esc 关闭，F4 或 Alt+下箭头切换打开状态，也可通过聚焦触发器后按空格打开。
+- 鼠标点击触发器时，在松开后展开面板，以保证外部点击关闭所需的鼠标捕获；切换格式后仍可点击外部关闭。
+- `ShowColorText`、`SwatchSize` 和 `IsDropDownOpen` 用于 Popup 模式，Inline 模式不会打开弹窗。运行时切换 `DisplayMode` 会关闭弹窗并保留颜色和格式。
+- `SelectedColorChanged` 为颜色改变时触发的冒泡事件。两种模式共用取色逻辑及主题资源，控件的 `Width`、`Height` 和 `Padding` 在 Popup 模式下设置触发器尺寸，不影响内部面板。
+
+### GridSplitter 使用方式
+
+`GridSplitter` 是标准 WPF 控件，不需要 `wd:` 前缀。完成上述主题配置后即可使用默认样式：背景透明、居中显示三个圆点，鼠标进入时隐藏圆点并显示主题色分隔条，移出后恢复。
+
+> 三点手柄样式需要使用包含此改动的控件库版本；较早的 NuGet 包可能尚未包含该样式。
+
+#### 垂直分隔条：左右分栏
+
+使用独立的 `Auto` 列放置分隔条，设置 `Width` 和 `ResizeDirection="Columns"`：
+
+```xml
+<Grid Height="180">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" MinWidth="60" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" MinWidth="60" />
+    </Grid.ColumnDefinitions>
+    <Border Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="左侧" />
+    </Border>
+    <GridSplitter
+        Grid.Column="1"
+        Width="5"
+        Margin="2,0"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        ResizeDirection="Columns"
+        ResizeBehavior="PreviousAndNext"
+        ShowsPreview="True" />
+    <Border Grid.Column="2" Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="右侧" />
+    </Border>
+</Grid>
+```
+
+#### 水平分隔条：上下分栏
+
+使用独立的 `Auto` 行放置分隔条，设置 `Height` 和 `ResizeDirection="Rows"`；此时三个圆点会旋转为水平排列：
+
+```xml
+<Grid Height="240">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" MinHeight="40" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" MinHeight="40" />
+    </Grid.RowDefinitions>
+    <Border Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="上方" />
+    </Border>
+    <GridSplitter
+        Grid.Row="1"
+        Height="5"
+        Margin="0,2"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        ResizeDirection="Rows"
+        ResizeBehavior="PreviousAndNext"
+        ShowsPreview="False" />
+    <Border Grid.Row="2" Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="下方" />
+    </Border>
+</Grid>
+```
+
+配置要点：
+
+- 显式设置 `ResizeDirection`：`Columns` 调整左右列宽，`Rows` 调整上下行高。当前手柄样式通过 `Rows` 触发器旋转三点，不会根据 `Auto` 的实际拖动方向自动旋转。
+- `ResizeBehavior="PreviousAndNext"` 调整分隔条两侧的行或列，适合上述独立行/列布局。
+- `ShowsPreview="True"` 拖动时显示预览，松开后应用尺寸；`False` 则实时调整。预览模式需要所在的可视树中存在 `AdornerLayer`，标准 WPF 窗口通常已提供。
+- 为内容行/列设置 `MinWidth` / `MinHeight`，避免拖动后内容区过小。
+- `Margin="2,0"` 表示左右各留 2 DIP；`Margin="0,2"` 表示上下各留 2 DIP。相邻容器的外边距会叠加，建议统一在分隔条上配置间距。透明背景仍保留拖动命中区域。
+- `Foreground` 控制圆点颜色；悬停背景使用主题资源 `WD.PrimaryBrush`。
+
+交互示例位于示例程序的 **基础控件 → GridSplitter（网格分隔条）**，源码参见 [GridSplitterExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/GridSplitterExample.xaml)。
 
 ### MarkdownViewer 使用方式
 
@@ -239,19 +338,36 @@ public string MarkdownText { get; } = "# WPFDevelopers\n\n- 支持标题\n- 支�
 <!-- TreeView 滚动动画 -->
 <TreeView wd:TreeViewHelper.IsScrollAnimation="true" />
 
-<!-- 列表/滚动区域回到顶部 -->
-<ListBox wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
-<ListView wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
-<DataGrid wd:ScrollViewerBehavior.IsBackToTopEnabled="True" />
-<ScrollViewer wd:ScrollViewerBehavior.IsBackToTopEnabled="True">
-    <!-- long content -->
-</ScrollViewer>
-
 <!-- ScrollIntoView 定位 -->
 <ListBoxItem wd:ScrollIntoView.IsPosition="True" />
 ```
 
-`IsBackToTopEnabled` 应设置在列表控件或外层 `ScrollViewer` 上。向下滚动后，按钮会显示在右下角；回到顶部后自动隐藏。该行为不会修改 `ItemsPanel`，因此不会影响列表虚拟化。
+#### 回到顶部和回到底部
+
+在可滚动控件上将 `ScrollViewerBehavior.IsBackToTopEnabled` 和/或 `ScrollViewerBehavior.IsBackToBottomEnabled` 设置为 `True`。当光标或键盘焦点进入控件时，对应按钮会显示在控件右下角；到达目标位置后自动隐藏。
+
+```xml
+<ListBox
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<ListView
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<DataGrid
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    wd:ScrollViewerBehavior.IsBackToBottomEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<ScrollViewer
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    wd:ScrollViewerBehavior.IsBackToBottomEnabled="True">
+    <!-- 长内容 -->
+</ScrollViewer>
+```
+
+该附加属性也可直接用于 `ScrollViewer`、`WDScrollViewer` 和 `TreeView`。`Panel` 本身不提供滚动能力，应将属性设置在包裹它的 `ScrollViewer` 上。该行为不会修改 `ItemsPanel`，因此不会影响列表虚拟化。
 
 示例程序中可打开 **附加属性** 菜单查看交互示例。
 
@@ -296,7 +412,9 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 
 ## 控件全览
 
-> **重要说明**：以下列表中带有 <span style="color:#e6a23c">🟡 示例专属</span> 标记的控件定义在 `WPFDevelopers.Samples.Shared/Controls/` 目录中，**不**属于 NuGet 包（`wd:` 命名空间），仅在示例项目中可用。其余控件均可通过 NuGet 安装后以 `wd:` 前缀直接使用。
+> **重要说明**：以下列表中带有 <span style="color:#e6a23c">🟡 示例专属</span> 标记的实现位于示例项目的 `Controls/` 或 `ExampleViews/` 中，不作为 WD 内置控件随 NuGet 包提供。示例可能组合使用 WPF 原生控件及 WD 样式、控件或辅助功能。
+
+示例导航使用蓝灰色 `DEMO` 标识这些示例专属实现或组合效果。悬停可查看说明，中英文切换时提示同步更新。`NEW`（新增）和 `UPDATE`（更新）仍只表示更新状态，与 `DEMO` 独立，可同时显示；例如“活动记录”可以同时显示 `DEMO` 和 `UPDATE`。WD 内置控件及辅助功能的常规用法示例不加 `DEMO`。
 
 ### 窗口与导航
 
@@ -354,11 +472,11 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:IPEditBox` | NuGet | [IPEditBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/IPEditBoxExample.xaml) | IP 地址输入框 |
 | `wd:MultiSelectComboBox` | NuGet | [MultiSelectComboBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MultiSelectComboBoxExample.xaml) | 下拉多选框 |
 | <span style="color:#e6a23c">🟡 MultiSelectSearchComboBox</span> | 示例专属 | [MultiSelectSearchComboBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MultiSelectSearchComboBoxExample.xaml) | 下拉搜索多选框 |
-| `wd:Password` | NuGet | [PasswordExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Passwrod/PasswordExample.xaml) | 密码显示/隐藏切换 |
+| <span style="color:#e6a23c">🟡 Password</span> | 示例专属 | [PasswordExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Passwrod/PasswordExample.xaml) | 密码显示/隐藏组合示例 |
 | `wd:VerifyCode` | NuGet | [VerifyCodeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/VerifyCodeExample.xaml) | 验证码绘制 |
 | <span style="color:#e6a23c">🟡 RoundPicker</span> | 示例专属 | [RoundPickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RoundPickerExample.xaml) | 圆形颜色选择器 |
-| `wd:RulerControl` | NuGet | [RulerControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RulerControlExample.xaml) | 刻度尺控件 |
-| <span style="color:#e6a23c">🟡 Selector</span> | 示例专属 | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | 选择器控件 |
+| `wd:RulerControl` | NuGet | [RulerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RulerExample.xaml) | 刻度尺控件 |
+| `wd:ScrollIntoView` | NuGet | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | 列表定位辅助功能 |
 | `wd:Dial` | NuGet | [DialExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DialExample.xaml) | 拨号盘控件 |
 | `wd:GestureUnlock` | NuGet | [GestureUnlockExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GestureUnlockExample.xaml) | 手势解锁 |
 | `wd:SvgViewer` | NuGet | [SvgViewerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SvgViewerExample.xaml) | SVG 查看器 |
@@ -385,14 +503,14 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:ChartLine` | NuGet | [ChartLineExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ChartLineExample.xaml) | 折线图 |
 | `wd:ChartPie` | NuGet | [ChartPieExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ChartPieExample.xaml) | 饼图 |
 | <span style="color:#e6a23c">🟡 Dashboard</span> | 示例专属 | [DashboardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DashboardExample.xaml) | 仪表盘（刻度跟随进度） |
-| <span style="color:#e6a23c">🟡 PieControl</span> | 示例专属 | [PieControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PieControlExample.xaml) | 统计饼图 |
+| <span style="color:#e6a23c">🟡 PieSegment</span> | 示例专属 | [PieSegmentExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PieSegmentExample.xaml) | 分段饼图示例（区别于 `wd:ChartPie`） |
 | `wd:Gauge` | NuGet | [GaugeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GaugeExample.xaml) | 仪表盘 |
 | <span style="color:#e6a23c">🟡 LineChart</span> | 示例专属 | [LineChartExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LineChartExample.xaml) | 折线图（另一实现） |
 | `wd:CircleProgressBar` | NuGet | [CircleProgressBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleProgressBarExample.xaml) | 环形进度条 |
 | `wd:Step` | NuGet | [StepExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StepExample.xaml) | 步骤条向导 |
 | `wd:BreadCrumbBar` | NuGet | [BreadCrumbBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BreadCrumbBarExample.xaml) | 面包屑导航栏 |
 | `wd:Pagination` | NuGet | [PaginationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PaginationExample.xaml) | 分页控件 |
-| <span style="color:#e6a23c">🟡 TimeLineControl</span> | 示例专属 | [TimeLineExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TimeLineExample.xaml) | 时间轴（仿 Gitee） |
+| <span style="color:#e6a23c">🟡 ActivityFeed</span> | 示例专属 | [ActivityFeedExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ActivityFeedExample.xaml) | 活动记录（仿 Gitee） |
 | `wd:Thermometer` | NuGet | [ThermometerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ThermometerExample.xaml) | 温度计 |
 | `wd:DataGridFilter` | NuGet | [DataGridFilterExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DataGridFilterExample.xaml) | DataGrid 列过滤引擎 |
 
@@ -406,13 +524,79 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:CircleMenu` | NuGet | [CircleMenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleMenuExample.xaml) | 圆形菜单 |
 | `wd:SixGridView` | NuGet | [SixGirdViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SixGirdViewExample.xaml) | 六宫格布局 |
 | `wd:WaterfallPanel` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | 瀑布流面板 |
+| `wd:WaterfallItemsControl` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | 内置滚动模板的瀑布流集合控件 |
 | `wd:VirtualizingWrapPanel` | NuGet | [VirtualizingWrapPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/VirtualizingWrapPanelExample.xaml) | 虚拟化 WrapPanel |
 | <span style="color:#e6a23c">🟡 TransformLayout</span> | 示例专属 | [TransformLayoutExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TransformLayoutExample.xaml) | 可拖拽旋转缩放控件 |
 | `wd:DrapView` | NuGet | [DrapViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrapView/DrapViewExample.xaml) | 拖拽视图控件 |
 | `wd:Spacing`（附加属性） | NuGet | [SpacingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpacingExample.xaml) | 面板子元素间距 |
 | `wd:PanningItems` | NuGet | [PanningItemsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PanningItemsExample.xaml) | 平移控件 |
-| <span style="color:#e6a23c">🟡 ScrollViewerAnimation</span> | 示例专属 | [ScrollViewerAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ScrollViewerAnimationExample.xaml) | 带动画的滚动条 |
+| `wd:WDScrollViewer` / `wd:ScrollViewerBehavior` | NuGet | [ScrollViewerAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ScrollViewerAnimationExample.xaml) | 动画滚动视图与回到顶部辅助功能 |
 | `wd:IconicThumbnail` | NuGet | [IconicThumbnailExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/IconicThumbnailExample.xaml) | 图标缩略图 |
+
+#### WaterfallPanel：响应式列数与虚拟化
+
+瀑布流滚动复用项目位置缓存，并通过列内二分查找选择视口附近的项目；
+宽度、数据或已实现项目的测量高度变化时才重建位置。
+`WDScrollViewer` 保留平滑滚动，连续同向滚轮输入累计目标位置，反向输入从当前位置开始，
+动画时长为 250ms，不再固定限制为 40 FPS。实际流畅度取决于项目模板和设备性能。
+这些优化只使用 .NET Framework 4.0 已有 API；Win7 应选择兼容的 .NET Framework 构建，
+不能因此认为现代 .NET 目标也支持 Win7。
+
+数据绑定场景推荐使用 `WaterfallItemsControl`，不需要再套外层 `ScrollViewer`：
+
+```xml
+<wd:WaterfallItemsControl MinColumnWidth="200" Spacing="16" ItemsSource="{Binding Items}">
+    <wd:WaterfallItemsControl.ItemTemplate>
+        <DataTemplate>
+            <Image Source="{Binding ImageUri}" Stretch="Uniform" />
+        </DataTemplate>
+    </wd:WaterfallItemsControl.ItemTemplate>
+</wd:WaterfallItemsControl>
+```
+
+它继承 `ItemsControl` 的 `ItemsSource`、`ItemTemplate`、`ItemTemplateSelector`，
+默认启用容器回收，并提供 `Columns`、`MinColumnWidth`、`Spacing`、`EstimatedItemHeight`。
+通过 `ScrollViewer.VerticalScrollBarVisibility` 控制滚动条，仍需由父布局提供有限高度才能虚拟化。
+直接 XAML 子项或自行配置宿主时继续使用 `WaterfallPanel`。
+
+`Columns` 默认为 3；`MinColumnWidth` 默认为 0，保留固定列数。
+设置 `MinColumnWidth="200"` 后，列数按 `floor((可用宽度 + Spacing) / (MinColumnWidth + Spacing))`
+计算，最少一列。容器不足最小列宽时，单列会缩小到容器宽度；`ActualColumns` 可读取当前列数。
+无限宽度下使用 `Columns`，按子项最大自然宽度（且不小于 `MinColumnWidth`）计算列宽。
+
+同一个 `WaterfallPanel` 支持直接 XAML 子元素和 `ItemsControl.ItemsSource`。
+真正的 UI 虚拟化需要有限视口，并由 `ScrollViewer` 通过 `CanContentScroll="True"`
+将滚动交给面板。例如：
+
+```xml
+<ItemsControl ItemsSource="{Binding Items}"
+              VirtualizingStackPanel.IsVirtualizing="True"
+              VirtualizingStackPanel.VirtualizationMode="Recycling">
+    <ItemsControl.Template>
+        <ControlTemplate TargetType="ItemsControl">
+            <ScrollViewer CanContentScroll="True"
+                          HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollBarVisibility="Auto">
+                <ItemsPresenter />
+            </ScrollViewer>
+        </ControlTemplate>
+    </ItemsControl.Template>
+    <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+            <wd:WaterfallPanel MinColumnWidth="200" Spacing="16"
+                               EstimatedItemHeight="210" ClipToBounds="True" />
+        </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+    <!-- 通过 ItemTemplate 定义每个数据项的内容。 -->
+</ItemsControl>
+```
+
+不要将该虚拟化宿主放入垂直 `StackPanel` 或另一个提供无限高度的外层滚动容器；
+缺少有限视口或滚动协作时会退回全部容器布局。`IsVirtualizing="False"` 也会生成全部容器。
+未测量项使用 `EstimatedItemHeight`（默认 200），测得真实高度后会修正布局与滚动范围，
+因此远距离跳转、图片异步加载时位置可能变化。异步内容应预留合理高度。
+这是容器虚拟化，不是数据虚拟化：布局元数据仍随项目数增长，布局计算为 O(项目数 × 列数)。
+示例包含 XAML、MVVM 和 5000 个不同高度卡片的虚拟化演示。
 
 ### 动画与特效
 
@@ -423,7 +607,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:EdgeLight` | NuGet | [EdgeLightExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/EdgeLightExample.xaml) | 边框跑马灯 |
 | <span style="color:#e6a23c">🟡 RainbowButtons</span> | 示例专属 | [RainbowButtonsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RainbowButtonsExample.xaml) | 彩虹按钮 |
 | `wd:Shake` | NuGet | [ShakeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ShakeExample.xaml) | 窗体抖动 |
-| <span style="color:#e6a23c">🟡 BubblleControl</span> | 示例专属 | [BubblleControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BubblleControlExample.xaml) | 泡泡动画控件 |
+| <span style="color:#e6a23c">🟡 BubbleSelection</span> | 示例专属 | [BubbleSelectionExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BubbleSelectionExample.xaml) | 气泡选择示例 |
 | `wd:StarrySky` | NuGet | [StarrySkyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StarrySkyExample.xaml) | 星空动画 |
 | <span style="color:#e6a23c">🟡 SnowCanvas</span> | 示例专属 | [SnowCanvasExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SnowCanvasExample.xaml) | 圣诞树雪花 Canvas |
 | <span style="color:#e6a23c">🟡 SpeedRockets</span> | 示例专属 | [SpeedRocketsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpeedRockets/SpeedRocketsExample.xaml) | 加速火箭动画 |
@@ -451,7 +635,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:ScreenCut` | NuGet | [ScreenCutExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ScreenCutExample.xaml) | 截屏工具（画笔/箭头标注） |
 | `wd:CropImage` | NuGet | [CropImageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CropImageExample.xaml) | 图片裁剪 |
 | `wd:CropAvatar` | NuGet | [CropAvatarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CropAvatar/CropAvatarExample.xaml) | 头像裁剪选择器 |
-| <span style="color:#e6a23c">🟡 CropControl</span> | 示例专属 | [CropControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CropControlExample.xaml) | 图片切九宫格控件 |
+| <span style="color:#e6a23c">🟡 ImageCrop</span> | 示例专属 | [ImageCropExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ImageCropExample.xaml) | 图片九宫格分块效果示例 |
 | <span style="color:#e6a23c">🟡 CutImage</span> | 示例专属 | [CutImageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CutImageExample.xaml) | 用户头像裁剪方案 |
 | `wd:Magnifier` | NuGet | [MagnifierExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MagnifierExample.xaml) | 放大镜 |
 
@@ -471,7 +655,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | 控件名 | 来源 | 示例文件 | 说明 |
 |--------|------|----------|------|
 | <span style="color:#e6a23c">🟡 ZooSemy</span> | 示例专属 | [ZooSemyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ZooSemy/ZooSemyExample.xaml) | 拟物旋转按钮（音量旋钮） |
-| <span style="color:#e6a23c">🟡 OtherControl</span> | 示例专属 | [OtherControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtherControlExample.xaml) | 火炬等趣味控件 |
+| <span style="color:#e6a23c">🟡 Flame</span> | 示例专属 | [FlameExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/FlameExample.xaml) | 火苗动画 |
 | <span style="color:#e6a23c">🟡 Desktop</span> | 示例专属 | [DesktopBackground.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Desktop/DesktopBackground.xaml) | 动态桌面壁纸（视频播放） |
 | <span style="color:#e6a23c">🟡 AMap</span> | 示例专属 | [BingAMapExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/BingAMapExample.xaml) | 地图集成（Bing/高德） |
 | <span style="color:#e6a23c">🟡 LoginWindow</span> | 示例专属 | [LoginExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LoginWindow/LoginExample.xaml) | 登录窗口模板 |
