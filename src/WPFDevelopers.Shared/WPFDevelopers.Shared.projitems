@@ -78,6 +78,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleWrapPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel\WaterfallPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel\WaterfallPanel.Virtualization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel\WaterfallItemsControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\WDScrollViewer.cs" />
@@ -238,6 +241,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SnowCanvasHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Win32.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowStartupHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LanguageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ChangedPathLayoutProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Distribution.cs" />
@@ -590,6 +594,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Timeline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\WaterfallItemsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Segmented.xaml">
