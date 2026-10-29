@@ -4,36 +4,36 @@ using System.Windows.Media;
 
 namespace WPFDevelopers.Samples.Controls
 {
-    public class TimeLineItem : Control
+    public class ActivityFeedItem : Control
     {
         public static readonly DependencyProperty IsBottomProperty =
-            DependencyProperty.Register("IsBottom", typeof(bool), typeof(TimeLineItem), new PropertyMetadata(false));
+            DependencyProperty.Register("IsBottom", typeof(bool), typeof(ActivityFeedItem), new PropertyMetadata(false));
 
         public static readonly DependencyProperty ItemTypeProperty =
-            DependencyProperty.Register("ItemType", typeof(ItemTypeEnum), typeof(TimeLineItem));
+            DependencyProperty.Register("ItemType", typeof(ItemTypeEnum), typeof(ActivityFeedItem));
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(TimeLineItem),
+            DependencyProperty.Register("Text", typeof(string), typeof(ActivityFeedItem),
                 new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty HeadProperty =
-            DependencyProperty.Register("Head", typeof(string), typeof(TimeLineItem),
+            DependencyProperty.Register("Head", typeof(string), typeof(ActivityFeedItem),
                 new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty CommonTemplateProperty =
-            DependencyProperty.Register("CommonTemplate", typeof(DataTemplate), typeof(TimeLineItem));
+            DependencyProperty.Register("CommonTemplate", typeof(DataTemplate), typeof(ActivityFeedItem));
 
         public static readonly DependencyProperty TextTemplateProperty =
-            DependencyProperty.Register("TextTemplate", typeof(DataTemplate), typeof(TimeLineItem));
+            DependencyProperty.Register("TextTemplate", typeof(DataTemplate), typeof(ActivityFeedItem));
 
         public static readonly DependencyProperty BackgroundColorProperty =
-            DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(TimeLineItem),
+            DependencyProperty.Register("BackgroundColor", typeof(Brush), typeof(ActivityFeedItem),
                 new PropertyMetadata(null));
 
-        static TimeLineItem()
+        static ActivityFeedItem()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(TimeLineItem),
-                new FrameworkPropertyMetadata(typeof(TimeLineItem)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ActivityFeedItem),
+                new FrameworkPropertyMetadata(typeof(ActivityFeedItem)));
         }
 
         public bool IsBottom

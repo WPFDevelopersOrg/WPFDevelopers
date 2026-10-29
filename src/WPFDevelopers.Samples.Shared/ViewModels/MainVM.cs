@@ -90,6 +90,7 @@ namespace WPFDevelopers.Samples.ViewModels
         private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
         {
             MenuEnum.BackToTop,
+            MenuEnum.Timeline,
         };
 
         private static readonly HashSet<MenuEnum> UpdatedMenuItems = new HashSet<MenuEnum>
@@ -101,7 +102,6 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum.ScrollViewer,
             MenuEnum.ScreenCut,
             MenuEnum.TimePicker,
-            MenuEnum.ActivityFeed,
             MenuEnum.VirtualizingWrapPanel,
             MenuEnum.WaterfallPanel,
         };
@@ -747,8 +747,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.SongWords:
                     ControlPanel = new SongWordsExample();
                     break;
-                case MenuEnum.TimeLine:
-                    ControlPanel = new TimeLineExample();
+                case MenuEnum.ActivityFeed:
+                    ControlPanel = new ActivityFeedExample();
                     break;
                 case MenuEnum.ScrollViewer:
                     ControlPanel = new ScrollViewerAnimationExample();
@@ -980,6 +980,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.MapView:
                     ControlPanel = new MapViewExample();
+                    break;
+                case MenuEnum.Timeline:
+                    ControlPanel = new TimelineExample();
                     break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:

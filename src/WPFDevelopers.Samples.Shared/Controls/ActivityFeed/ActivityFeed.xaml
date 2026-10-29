@@ -6,7 +6,7 @@
     xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
 
     <SolidColorBrush
-        x:Key="WD.TimeLineForeground"
+        x:Key="Samples.ActivityFeedForeground"
         po:Freeze="True"
         Color="#005980" />
     <DataTemplate x:Key="WD.TimeContent">
@@ -23,35 +23,35 @@
             <Ellipse
                 Width="30"
                 Height="30"
-                Fill="{Binding BackgroundColor, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
+                Fill="{Binding BackgroundColor, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}" />
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="16"
                 Foreground="White"
-                Text="{Binding Head, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
+                Text="{Binding Head, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}" />
         </wd:SmallPanel>
     </DataTemplate>
     <DataTemplate x:Key="WD.TextTime">
         <TextBlock
-            Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
+            Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}"
             VerticalAlignment="Top"
             FontSize="16"
             FontWeight="Black"
             Foreground="Black"
-            Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
+            Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}" />
     </DataTemplate>
     <DataTemplate x:Key="WD.TextName">
         <TextBlock
-            Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}"
+            Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}"
             VerticalAlignment="Center"
             FontSize="16"
             FontWeight="Black"
-            Foreground="{StaticResource WD.TimeLineForeground}"
-            Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
+            Foreground="{StaticResource Samples.ActivityFeedForeground}"
+            Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}" />
     </DataTemplate>
     <DataTemplate x:Key="WD.TextStar">
-        <WrapPanel Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}">
+        <WrapPanel Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}">
             <Path
                 Width="15"
                 Height="15"
@@ -66,29 +66,29 @@
             <TextBlock
                 VerticalAlignment="Center"
                 FontSize="12"
-                Foreground="{StaticResource WD.TimeLineForeground}"
-                Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLineItem}}}" />
+                Foreground="{StaticResource Samples.ActivityFeedForeground}"
+                Text="{Binding Text, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeedItem}}}" />
         </WrapPanel>
     </DataTemplate>
     <Style
-        x:Key="WD.TimeLineItem"
+        x:Key="Samples.ActivityFeedItem"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:TimeLineItem}">
+        TargetType="{x:Type controls:ActivityFeedItem}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeed}}}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeed}}}" />
         <Setter Property="Padding" Value="15,0,15,0" />
         <Setter Property="MinHeight" Value="50" />
-        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:TimeLine}}}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeed}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type controls:ActivityFeed}}}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="CommonTemplate" Value="{StaticResource WD.TimeContent}" />
         <Setter Property="TextTemplate" Value="{StaticResource WD.TextTime}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:TimeLineItem}">
+                <ControlTemplate TargetType="{x:Type controls:ActivityFeedItem}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -135,9 +135,9 @@
         </Setter>
     </Style>
     <Style
-        x:Key="WD.TimeLine"
+        x:Key="Samples.ActivityFeed"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
-        TargetType="{x:Type controls:TimeLine}">
+        TargetType="{x:Type controls:ActivityFeed}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Gray" />
         <Setter Property="BorderThickness" Value="0" />
@@ -147,7 +147,7 @@
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:TimeLine}">
+                <ControlTemplate TargetType="{x:Type controls:ActivityFeed}">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -162,6 +162,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style BasedOn="{StaticResource WD.TimeLineItem}" TargetType="{x:Type controls:TimeLineItem}" />
-    <Style BasedOn="{StaticResource WD.TimeLine}" TargetType="{x:Type controls:TimeLine}" />
+    <Style BasedOn="{StaticResource Samples.ActivityFeedItem}" TargetType="{x:Type controls:ActivityFeedItem}" />
+    <Style BasedOn="{StaticResource Samples.ActivityFeed}" TargetType="{x:Type controls:ActivityFeed}" />
 </ResourceDictionary>

@@ -49,8 +49,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\SnowCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowCanvas\Snowflake.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SongWords\SongWords.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLine.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLineItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ActivityFeed\ActivityFeed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ActivityFeed\ActivityFeedItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\DrawPrizeIndexToColor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\StateConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AboutWindow.xaml.cs">
@@ -527,9 +527,13 @@
       <SubType>Code</SubType>
       <DependentUpon>TransformLayoutExample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TimeLineExample.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\ActivityFeedExample.xaml.cs">
       <SubType>Code</SubType>
-      <DependentUpon>TimeLineExample.xaml</DependentUpon>
+      <DependentUpon>ActivityFeedExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TimelineExample.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>TimelineExample.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\TransitionPanelExample.xaml.cs">
       <SubType>Code</SubType>
@@ -648,6 +652,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DrawingExampleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PaginationExampleVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TimelineExampleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -723,7 +728,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Controls\TimeLine\TimeLine.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ActivityFeed\ActivityFeed.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -1244,7 +1249,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TimeLineExample.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\ActivityFeedExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\TimelineExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

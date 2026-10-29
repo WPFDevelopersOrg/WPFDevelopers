@@ -55,6 +55,7 @@ StarrySky.xaml
 Magnifier.xaml
 Gauge.xaml
 Step.xaml
+Timeline.xaml
 WaterfallItemsControl.xaml
 Segmented.xaml
 MultiSelectComboBox.xaml
