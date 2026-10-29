@@ -180,16 +180,28 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBox
-                    Name="PART_MenuTextBox"
-                    wd:ElementHelper.IsClear="True"
-                    wd:ElementHelper.Watermark="{Binding SearchWatermark}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="TextChanged">
-                            <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </TextBox>
+                <DockPanel>
+                    <Button
+                        Width="34"
+                        Height="34"
+                        Margin="0,0,6,0"
+                        Command="{Binding ShowHomeCommand}"
+                        Style="{StaticResource WD.DefaultButton}"
+                        ToolTip="首页 / Home"
+                        AutomationProperties.Name="首页 / Home">
+                        <wd:PathIcon Width="18" Height="18" Kind="Home" Foreground="{DynamicResource WD.PrimaryBrush}" />
+                    </Button>
+                    <TextBox
+                        Name="PART_MenuTextBox"
+                        wd:ElementHelper.IsClear="True"
+                        wd:ElementHelper.Watermark="{Binding SearchWatermark}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </DockPanel>
                 <wd:Segmented
                     Grid.Row="1"
                     Margin="0,3"
@@ -201,6 +213,7 @@
                 <controls:NavigateMenu
                     x:Name="NavigateMenu"
                     Grid.Row="2"
+                    SelectedItem="{Binding NavigateMenuItem, Mode=TwoWay}"
                     ItemsSource="{Binding NavigateMenuModelList}">
                     <controls:NavigateMenu.ItemTemplate>
                         <DataTemplate>

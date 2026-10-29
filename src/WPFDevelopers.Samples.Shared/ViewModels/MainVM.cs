@@ -137,6 +137,7 @@ namespace WPFDevelopers.Samples.ViewModels
             }
         }
         private object _controlPanel;
+        private HomeExample _homePage;
         private ObservableCollection<NavigateMenuModel> _customMenuModelList;
         private ObservableCollection<NavigateMenuModel> _basicMenuModelList;
 
@@ -234,7 +235,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 var menuModel = new NavigateMenuModel
                 {
                     Name = name,
-                    IsDemo = DemoMenuItems.Contains(menuEnum)
+                    IsDemo = DemoMenuItems.Contains(menuEnum),
+                    IconSource = GetMenuIconSource(menuEnum)
                 };
                 if (NewMenuItems.Contains(menuEnum))
                     menuModel.ChangeType = "New";
@@ -255,7 +257,7 @@ namespace WPFDevelopers.Samples.ViewModels
             });
             LanguageManager.Instance.PropertyChanged += LanguageManager_PropertyChanged;
             UpdateMenuDisplayNames();
-            ControlPanel = new NavMenu3DExample();
+            ShowHome();
         }
 
         private static string GetMenuIconSource(MenuEnum menuEnum)
@@ -557,9 +559,18 @@ namespace WPFDevelopers.Samples.ViewModels
 
         public ICommand ViewLoaded => new RelayCommand(obj =>
         {
-
-
+            ShowHome();
         });
+
+        public ICommand ShowHomeCommand => new RelayCommand(obj => ShowHome());
+
+        private void ShowHome()
+        {
+            NavigateMenuItem = null;
+            if (_homePage == null)
+                _homePage = new HomeExample();
+            ControlPanel = _homePage;
+        }
 
         public ICommand MenuSearchTextChanged => new RelayCommand(obj =>
         {
