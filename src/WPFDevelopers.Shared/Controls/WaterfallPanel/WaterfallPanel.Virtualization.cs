@@ -21,6 +21,8 @@ namespace WPFDevelopers.Controls
         private double _layoutWidth = double.NaN;
         private int _layoutColumns;
         private bool _hasLayout;
+        private bool _layoutsDirty = true;
+        private List<int>[] _columnItems = new List<int>[0];
         private bool _hasExtent;
         private bool _correctionQueued;
         private int _bringIntoViewIndex = -1;
@@ -136,6 +138,7 @@ namespace WPFDevelopers.Controls
             _itemHeights.Clear();
             _collapsedItems.Clear();
             _itemLayouts.Clear();
+            _layoutsDirty = true;
             _hasLayout = false;
         }
 
@@ -196,8 +199,10 @@ namespace WPFDevelopers.Controls
             UpdateExtent(width, viewportHeight);
             ClampVerticalOffset();
             EnsurePendingItemVisible(viewportHeight);
-            for (int i = 0; i < itemCount; i++)
+            SelectRealizationItems(itemCount, viewportHeight);
+            for (int index = 0; index < _realizationIndices.Count; index++)
             {
+                int i = _realizationIndices[index];
                 var layout = _itemLayouts[i];
                 if (!layout.IsEmpty && layout.Bottom >= _scrollOffset.Y &&
                     layout.Top <= _scrollOffset.Y + viewportHeight &&
@@ -228,6 +233,7 @@ namespace WPFDevelopers.Controls
 
         private void ResetItemMeasurementsForCount(int itemCount)
         {
+            _layoutsDirty = true;
             EnsureItemState(itemCount);
             for (int i = 0; i < itemCount; i++)
             {
@@ -238,21 +244,29 @@ namespace WPFDevelopers.Controls
 
         private void BuildItemLayouts(int itemCount, int columns, double columnWidth)
         {
+            if (!_layoutsDirty && _itemLayouts.Count == itemCount)
+                return;
             EnsureItemState(itemCount);
             _itemLayouts.Clear();
             if (_columnHeights.Length != columns)
             {
                 _columnHeights = new double[columns];
                 _columnHasItems = new bool[columns];
+                _columnItems = new List<int>[columns];
+                for (int column = 0; column < columns; column++)
+                    _columnItems[column] = new List<int>();
             }
             Array.Clear(_columnHeights, 0, columns);
             Array.Clear(_columnHasItems, 0, columns);
+            for (int column = 0; column < columns; column++)
+                _columnItems[column].Clear();
 
             for (int i = 0; i < itemCount; i++)
             {
                 if (_collapsedItems[i])
                 {
                     _itemLayouts.Add(new Rect(0, _columnHeights[0], columnWidth, 0));
+                    _columnItems[0].Add(i);
                     continue;
                 }
 
@@ -271,9 +285,11 @@ namespace WPFDevelopers.Controls
 
                 Rect layout = new Rect(shortestColumn * (columnWidth + Spacing), y, columnWidth, _itemHeights[i]);
                 _itemLayouts.Add(layout);
+                _columnItems[shortestColumn].Add(i);
                 _columnHeights[shortestColumn] = y + _itemHeights[i];
                 _columnHasItems[shortestColumn] = true;
             }
+            _layoutsDirty = false;
         }
 
         private void UpdateExtent(double width, double viewportHeight)
@@ -282,12 +298,8 @@ namespace WPFDevelopers.Controls
             bool wasAtBottom = _hasExtent && oldMaxOffset > 0 &&
                 Math.Abs(_scrollOffset.Y - oldMaxOffset) < 0.5;
             double height = 0;
-            for (int i = 0; i < _itemLayouts.Count; i++)
-            {
-                Rect layout = _itemLayouts[i];
-                if (!layout.IsEmpty)
-                    height = Math.Max(height, layout.Bottom);
-            }
+            for (int i = 0; i < _columnHeights.Length; i++)
+                height = Math.Max(height, _columnHeights[i]);
 
             _extentSize = new Size(width, Math.Max(viewportHeight, height));
             if (wasAtBottom)
@@ -317,12 +329,28 @@ namespace WPFDevelopers.Controls
             double cacheTop = Math.Max(0, _scrollOffset.Y - viewportHeight);
             double cacheBottom = _scrollOffset.Y + viewportHeight * 2;
 
-            for (int i = 0; i < itemCount; i++)
+            for (int column = 0; column < _columnItems.Length; column++)
             {
-                Rect layout = _itemLayouts[i];
-                if (!layout.IsEmpty && layout.Bottom >= cacheTop && layout.Top <= cacheBottom)
-                    _realizationIndices.Add(i);
+                var items = _columnItems[column];
+                int low = 0;
+                int high = items.Count;
+                while (low < high)
+                {
+                    int middle = low + (high - low) / 2;
+                    if (_itemLayouts[items[middle]].Bottom < cacheTop)
+                        low = middle + 1;
+                    else
+                        high = middle;
+                }
+                for (int index = low; index < items.Count; index++)
+                {
+                    int itemIndex = items[index];
+                    if (_itemLayouts[itemIndex].Top > cacheBottom)
+                        break;
+                    _realizationIndices.Add(itemIndex);
+                }
             }
+            _realizationIndices.Sort();
         }
 
         private bool IsSelected(int itemIndex)
@@ -426,6 +454,7 @@ namespace WPFDevelopers.Controls
                 {
                     _collapsedItems[itemIndex] = collapsed;
                     _itemHeights[itemIndex] = measuredHeight;
+                    _layoutsDirty = true;
                     changed = true;
                 }
             }
