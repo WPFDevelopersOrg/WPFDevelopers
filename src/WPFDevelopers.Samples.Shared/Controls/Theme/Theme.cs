@@ -8,6 +8,11 @@ namespace WPFDevelopers.Samples.Controls
 {
     public class Theme : ListBox
     {
+        private static readonly DependencyProperty CurrentPrimaryColorProperty =
+            DependencyProperty.Register("CurrentPrimaryColor", typeof(Color), typeof(Theme),
+                new PropertyMetadata(default(Color), OnCurrentPrimaryColorChanged));
+
+        private bool _synchronizingSelection;
        
         private readonly List<Brush> themes = new List<Brush>
         {
@@ -49,7 +54,38 @@ namespace WPFDevelopers.Samples.Controls
                 });
             }
             ItemsSource = ThemeItems;
-            
+            SetResourceReference(CurrentPrimaryColorProperty, "WD.PrimaryColor");
+            Loaded += (sender, e) => SynchronizeSelection();
+        }
+
+        private static void OnCurrentPrimaryColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((Theme)d).SynchronizeSelection();
+        }
+
+        private void SynchronizeSelection()
+        {
+            var color = (Color)GetValue(CurrentPrimaryColorProperty);
+            ThemeItem selectedItem = null;
+            foreach (var item in ThemeItems)
+            {
+                var brush = item.Background as SolidColorBrush;
+                if (brush != null && brush.Color == color)
+                {
+                    selectedItem = item;
+                    break;
+                }
+            }
+
+            _synchronizingSelection = true;
+            try
+            {
+                SelectedItem = selectedItem;
+            }
+            finally
+            {
+                _synchronizingSelection = false;
+            }
         }
         public override void OnApplyTemplate()
         {
@@ -68,6 +104,7 @@ namespace WPFDevelopers.Samples.Controls
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
+            if (_synchronizingSelection) return;
             if (SelectedItem == null) return;
             var item = SelectedItem as ThemeItem;
             if (item == null) return;
