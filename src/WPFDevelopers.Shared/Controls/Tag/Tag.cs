@@ -1,11 +1,21 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
 {
     public class Tag : ContentControl
     {
+        public static readonly DependencyProperty LabelProperty =
+            DependencyProperty.Register("Label", typeof(string), typeof(Tag), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty LabelBackgroundProperty =
+            DependencyProperty.Register("LabelBackground", typeof(Brush), typeof(Tag), new PropertyMetadata(Brushes.DimGray));
+
+        public static readonly DependencyProperty LabelForegroundProperty =
+            DependencyProperty.Register("LabelForeground", typeof(Brush), typeof(Tag), new PropertyMetadata(Brushes.White));
+
         public static readonly DependencyProperty IsCloseProperty =
             DependencyProperty.Register("IsClose", typeof(bool), typeof(Tag), new PropertyMetadata(true));
 
@@ -23,6 +33,24 @@ namespace WPFDevelopers.Controls
         {
             get => (bool) GetValue(IsCloseProperty);
             set => SetValue(IsCloseProperty, value);
+        }
+
+        public string Label
+        {
+            get => (string)GetValue(LabelProperty);
+            set => SetValue(LabelProperty, value);
+        }
+
+        public Brush LabelBackground
+        {
+            get => (Brush)GetValue(LabelBackgroundProperty);
+            set => SetValue(LabelBackgroundProperty, value);
+        }
+
+        public Brush LabelForeground
+        {
+            get => (Brush)GetValue(LabelForegroundProperty);
+            set => SetValue(LabelForegroundProperty, value);
         }
 
         public static RoutedCommand CloseCommand { get; }
