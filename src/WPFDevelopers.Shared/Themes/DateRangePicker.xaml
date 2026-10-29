@@ -319,7 +319,7 @@
                                             HorizontalAlignment="Right"
                                             Orientation="Horizontal">
                                             <Button
-                                                x:Name="PART_Button"
+                                                x:Name="PART_ButtonOK"
                                                 Width="60"
                                                 helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                                                 Content="{Binding [OK], Source={x:Static resx:LanguageManager.Instance}}"

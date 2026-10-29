@@ -24,7 +24,7 @@
                 wd:ElementHelper.CornerRadius="3"
                 EndWatermark="EndDate"
                 StartWatermark="StartDate" />
-            <StackPanel wd:PanelHelper.Spacing="3">
+            <StackPanel wd:PanelHelper.Spacing="2">
                 <TextBlock HorizontalAlignment="Center">
                     <Run Text="MinDate:" />
                     <Run Text="{Binding ElementName=MyDateRangePicker, Path=MinDate, StringFormat=yyyy-MM-dd HH:mm:ss}" />
