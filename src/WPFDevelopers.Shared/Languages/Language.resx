@@ -187,4 +187,10 @@
   <data name="Next" xml:space="preserve">
     <value>下一页</value>
   </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>返回顶部</value>
+  </data>
+  <data name="BackToBottom" xml:space="preserve">
+    <value>返回底部</value>
+  </data>
 </root>

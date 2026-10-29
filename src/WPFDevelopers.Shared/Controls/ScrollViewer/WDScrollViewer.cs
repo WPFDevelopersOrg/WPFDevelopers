@@ -8,7 +8,9 @@ namespace WPFDevelopers.Controls
 {
     public class WDScrollViewer : ScrollViewer
     {
-        private static double _lastLocation;
+        private double _animationTarget;
+        private bool _isAnimating;
+        private int _animationVersion;
 
         public bool IsScrollAnimation
         {
@@ -23,21 +25,8 @@ namespace WPFDevelopers.Controls
         {
             var ctrl = d as WDScrollViewer;
             if (ctrl == null) return;
-            if (ctrl.IsScrollAnimation)
-            {
-                ctrl.ScrollChanged -= OnScrollChanged;
-                ctrl.ScrollChanged += OnScrollChanged;
-            }
-            else
-                ctrl.ScrollChanged -= OnScrollChanged;
-        }
-       
-        private static void OnScrollChanged(object sender, ScrollChangedEventArgs e)
-        {
-            var ctrl = sender as WDScrollViewer;
-            if (ctrl == null) return;
-            if (e.VerticalChange != 0)
-                _lastLocation = ctrl.VerticalOffset;
+            if (!ctrl.IsScrollAnimation)
+                ctrl.StopScrollAnimation();
         }
 
         protected override void OnMouseWheel(MouseWheelEventArgs e)
@@ -47,31 +36,68 @@ namespace WPFDevelopers.Controls
                 base.OnMouseWheel(e);
                 return;
             }
-            var WheelChange = e.Delta;
-            var newOffset = _lastLocation - WheelChange * 2;
-            ScrollToVerticalOffset(_lastLocation);
-            if (newOffset < 0)
-                newOffset = 0;
-            if (newOffset > ScrollableHeight)
-                newOffset = ScrollableHeight;
+            if (e.Handled)
+                return;
+            var change = -e.Delta * 2.0;
+            var start = _isAnimating && (_animationTarget - VerticalOffset) * change > 0
+                ? _animationTarget
+                : VerticalOffset;
+            var newOffset = Math.Max(0, Math.Min(start + change, ScrollableHeight));
             AnimateScroll(newOffset);
-            _lastLocation = newOffset;
             e.Handled = true;
         }
 
         public void AnimateScroll(double toValue, Action onCompleted = null)
         {
-            BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, null);
+            if (double.IsNaN(toValue))
+                throw new ArgumentOutOfRangeException("toValue");
+
+            var from = VerticalOffset;
+            _animationTarget = Math.Max(0, Math.Min(toValue, ScrollableHeight));
+            _isAnimating = true;
+            var version = ++_animationVersion;
             var animation = new DoubleAnimation
             {
                 EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut },
-                From = VerticalOffset,
-                To = toValue,
-                Duration = TimeSpan.FromMilliseconds(800)
+                From = from,
+                To = _animationTarget,
+                Duration = TimeSpan.FromMilliseconds(250)
             };
-            Timeline.SetDesiredFrameRate(animation, 40);
-            animation.Completed += (s, e) => onCompleted?.Invoke();
-            BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, animation);
+            animation.Completed += (s, e) =>
+            {
+                if (version != _animationVersion)
+                    return;
+                var target = _animationTarget;
+                StopScrollAnimation();
+                ScrollToVerticalOffset(target);
+                onCompleted?.Invoke();
+            };
+            BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, animation,
+                HandoffBehavior.SnapshotAndReplace);
+        }
+
+        private void StopScrollAnimation()
+        {
+            ++_animationVersion;
+            _isAnimating = false;
+            SetValue(ScrollViewerBehavior.VerticalOffsetProperty, VerticalOffset);
+            BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, null);
+        }
+
+        protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
+        {
+            if (_isAnimating)
+                StopScrollAnimation();
+            base.OnPreviewMouseDown(e);
+        }
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if (_isAnimating && (e.Key == Key.Up || e.Key == Key.Down ||
+                e.Key == Key.PageUp || e.Key == Key.PageDown ||
+                e.Key == Key.Home || e.Key == Key.End))
+                StopScrollAnimation();
+            base.OnPreviewKeyDown(e);
         }
     }
 }

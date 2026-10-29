@@ -319,13 +319,13 @@ namespace Microsoft.Windows.Shell
             {
                 Point point = new Point((double)Utility.GET_X_LPARAM(lParam), (double)Utility.GET_Y_LPARAM(lParam));
                 Rect deviceRectangle = this._GetWindowRect();
-                HT ht = this._HitTestNca(DpiHelper.DeviceRectToLogical(deviceRectangle), DpiHelper.DevicePixelsToLogical(point));
+                Point windowOrigin = this._window.PointFromScreen(deviceRectangle.TopLeft);
+                Point windowEnd = this._window.PointFromScreen(deviceRectangle.BottomRight);
+                Point logicalPoint = this._window.PointFromScreen(point);
+                HT ht = this._HitTestNca(new Rect(windowOrigin, windowEnd), logicalPoint);
                 if (ht != HT.CLIENT)
                 {
-                    Point point2 = point;
-                    point2.Offset(-deviceRectangle.X, -deviceRectangle.Y);
-                    point2 = DpiHelper.DevicePixelsToLogical(point2);
-                    IInputElement inputElement = this._window.InputHitTest(point2);
+                    IInputElement inputElement = this._window.InputHitTest(logicalPoint);
                     if (inputElement != null && WindowChrome.GetIsHitTestVisibleInChrome(inputElement))
                     {
                         ht = HT.CLIENT;
@@ -578,7 +578,7 @@ namespace Microsoft.Windows.Shell
             try
             {
                 double num3 = Math.Min(size.Width, size.Height);
-                double num4 = DpiHelper.LogicalPixelsToDevice(new Point(this._chromeInfo.CornerRadius.TopLeft, 0.0)).X;
+                double num4 = this._hwndSource.CompositionTarget.TransformToDevice.Transform(new Point(this._chromeInfo.CornerRadius.TopLeft, 0.0)).X;
                 num4 = Math.Min(num4, num3 / 2.0);
                 if (WindowChromeWorker._IsUniform(this._chromeInfo.CornerRadius))
                 {
@@ -587,17 +587,17 @@ namespace Microsoft.Windows.Shell
                 else
                 {
                     intPtr = WindowChromeWorker._CreateRoundRectRgn(new Rect(0.0, 0.0, size.Width / 2.0 + num4, size.Height / 2.0 + num4), num4);
-                    double num5 = DpiHelper.LogicalPixelsToDevice(new Point(this._chromeInfo.CornerRadius.TopRight, 0.0)).X;
+                    double num5 = this._hwndSource.CompositionTarget.TransformToDevice.Transform(new Point(this._chromeInfo.CornerRadius.TopRight, 0.0)).X;
                     num5 = Math.Min(num5, num3 / 2.0);
                     Rect region = new Rect(0.0, 0.0, size.Width / 2.0 + num5, size.Height / 2.0 + num5);
                     region.Offset(size.Width / 2.0 - num5, 0.0);
                     WindowChromeWorker._CreateAndCombineRoundRectRgn(intPtr, region, num5);
-                    double num6 = DpiHelper.LogicalPixelsToDevice(new Point(this._chromeInfo.CornerRadius.BottomLeft, 0.0)).X;
+                    double num6 = this._hwndSource.CompositionTarget.TransformToDevice.Transform(new Point(this._chromeInfo.CornerRadius.BottomLeft, 0.0)).X;
                     num6 = Math.Min(num6, num3 / 2.0);
                     Rect region2 = new Rect(0.0, 0.0, size.Width / 2.0 + num6, size.Height / 2.0 + num6);
                     region2.Offset(0.0, size.Height / 2.0 - num6);
                     WindowChromeWorker._CreateAndCombineRoundRectRgn(intPtr, region2, num6);
-                    double num7 = DpiHelper.LogicalPixelsToDevice(new Point(this._chromeInfo.CornerRadius.BottomRight, 0.0)).X;
+                    double num7 = this._hwndSource.CompositionTarget.TransformToDevice.Transform(new Point(this._chromeInfo.CornerRadius.BottomRight, 0.0)).X;
                     num7 = Math.Min(num7, num3 / 2.0);
                     Rect region3 = new Rect(0.0, 0.0, size.Width / 2.0 + num7, size.Height / 2.0 + num7);
                     region3.Offset(size.Width / 2.0 - num7, size.Height / 2.0 - num7);
@@ -661,8 +661,8 @@ namespace Microsoft.Windows.Shell
                 return;
             }
             this._hwndSource.CompositionTarget.BackgroundColor = Colors.Transparent;
-            Point point = DpiHelper.LogicalPixelsToDevice(new Point(this._chromeInfo.GlassFrameThickness.Left, this._chromeInfo.GlassFrameThickness.Top));
-            Point point2 = DpiHelper.LogicalPixelsToDevice(new Point(this._chromeInfo.GlassFrameThickness.Right, this._chromeInfo.GlassFrameThickness.Bottom));
+            Point point = this._hwndSource.CompositionTarget.TransformToDevice.Transform(new Point(this._chromeInfo.GlassFrameThickness.Left, this._chromeInfo.GlassFrameThickness.Top));
+            Point point2 = this._hwndSource.CompositionTarget.TransformToDevice.Transform(new Point(this._chromeInfo.GlassFrameThickness.Right, this._chromeInfo.GlassFrameThickness.Bottom));
             MARGINS margins = new MARGINS
             {
                 cxLeftWidth = (int)Math.Ceiling(point.X),

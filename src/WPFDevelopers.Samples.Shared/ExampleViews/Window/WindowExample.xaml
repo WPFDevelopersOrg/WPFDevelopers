@@ -20,13 +20,11 @@
                 Rows="2">
                 <TextBlock VerticalAlignment="Center" Text="TitleBarMode:" />
                 <Button
-                    Width="100"
                     wd:ElementHelper.CornerRadius="3"
                     Click="BtnNormal_Click"
                     Content="Normal"
                     Style="{DynamicResource WD.PrimaryButton}" />
                 <Button
-                    Width="100"
                     wd:ElementHelper.CornerRadius="3"
                     Click="BtnHighTitleBar_Click"
                     Content="HighTitleBar"
@@ -38,7 +36,6 @@
                     Content="ToolWindow"
                     Style="{DynamicResource WD.PrimaryButton}" />
                 <Button
-                    Margin="10,0"
                     wd:ElementHelper.CornerRadius="3"
                     Click="ButtonNone_Click"
                     Content="NoneTitleBarWindow"

@@ -62,5 +62,60 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style
+        x:Key="WD.Tag.Badge"
+        BasedOn="{StaticResource WD.Tag}"
+        TargetType="{x:Type controls:Tag}">
+        <Setter Property="IsClose" Value="False" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Padding" Value="7,3" />
+        <Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Tag}">
+                    <controls:WDBorder
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Grid Clip="{Binding ContentClip, RelativeSource={RelativeSource AncestorType=controls:WDBorder}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="LabelBorder" Background="{TemplateBinding LabelBackground}">
+                                <TextBlock
+                                    Margin="{TemplateBinding Padding}"
+                                    VerticalAlignment="Center"
+                                    Foreground="{TemplateBinding LabelForeground}"
+                                    Text="{TemplateBinding Label}" />
+                            </Border>
+                            <ContentPresenter
+                                x:Name="PART_Content"
+                                Grid.Column="1"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+                        </Grid>
+                    </controls:WDBorder>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Label" Value="{x:Null}">
+                            <Setter TargetName="LabelBorder" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Label" Value="">
+                            <Setter TargetName="LabelBorder" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style BasedOn="{StaticResource WD.Tag}" TargetType="{x:Type controls:Tag}" />
 </ResourceDictionary>

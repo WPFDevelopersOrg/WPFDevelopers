@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
+using WPFDevelopers;
 
 namespace WPFDevelopers.Samples
 {
@@ -7,6 +9,18 @@ namespace WPFDevelopers.Samples
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+#if NETFRAMEWORK
+            // Older framework targets default to protocols rejected by modern HTTPS image hosts.
+            // 3072 is TLS 1.2, whose enum name is unavailable in the .NET 4.0 reference assemblies.
+            if (System.Net.ServicePointManager.SecurityProtocol != (System.Net.SecurityProtocolType)0)
+                System.Net.ServicePointManager.SecurityProtocol |= (System.Net.SecurityProtocolType)3072;
+#endif
+            LanguageManager.Instance.ChangeLanguage(new CultureInfo("en-US"));
+            base.OnStartup(e);
+        }
+
         public static double Wdith
         {
             get { return SystemParameters.WorkArea.Width / 1.5; }

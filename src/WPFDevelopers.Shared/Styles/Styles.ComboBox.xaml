@@ -12,6 +12,7 @@
         <Border
             x:Name="PART_Border"
             Padding="6,1.2"
+            Background="Transparent"
             BorderThickness="0"
             SnapsToDevicePixels="true">
             <Grid HorizontalAlignment="Right" Background="Transparent">

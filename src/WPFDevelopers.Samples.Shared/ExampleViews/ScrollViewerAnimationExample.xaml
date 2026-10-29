@@ -15,7 +15,10 @@
         <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <TextBlock Margin="10" Text="ScrollViewer" />
-                <ScrollViewer Width="200" MaxHeight="300">
+                <ScrollViewer
+                    Width="200"
+                    MaxHeight="300"
+                    wd:ScrollViewerBehavior.IsBackToTopEnabled="True">
                     <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -46,7 +49,8 @@
                 <wd:WDScrollViewer
                     Width="200"
                     MaxHeight="300"
-                    IsScrollAnimation="True">
+                    IsScrollAnimation="True"
+                    wd:ScrollViewerBehavior.IsBackToTopEnabled="True">
                     <ItemsControl ItemsSource="{Binding NavigateMenuModelList}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>

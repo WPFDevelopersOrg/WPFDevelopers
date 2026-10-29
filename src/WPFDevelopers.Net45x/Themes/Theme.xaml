@@ -56,6 +56,7 @@
 	<Geometry x:Key="WD.WindowMaximizeGeometry" po:Freeze="True">M0.99999994,0.99999994 L0.99999994,9 9,9 9,0.99999994 z M0,0 L10,0 10,10 0,10 z</Geometry>
 	<Geometry x:Key="WD.WindowRestoreGeometry" po:Freeze="True">M1,3 L1,9 7,9 7,3 z M3,0.99999994 L3,2 8,2 8,7 9,7 9,0.99999994 z M2,0 L10,0 10,8 8,8 8,10 0,10 0,2 2,2 z</Geometry>
 	<Geometry x:Key="WD.WindowCloseGeometry" po:Freeze="True">M 1301 69.6875 L 1305.3049 74 L 1300.9375 78.5313 L 1301.6324 79.2263 L 1306 74.735 L 1310.4263 79.2613 L 1311.1563 78.5313 L 1306.7 74 L 1310.9375 69.6875 L 1310.2075 68.9575 L 1306 73.265 L 1301.6949 68.9925 L 1301 69.6875 Z</Geometry>
+	<Geometry x:Key="WD.MapPinGeometry" po:Freeze="True">M10,31 C10,31 1.8,21.6 1.8,13.2 C1.8,7.1 5.3,3.2 10,3.2 C14.7,3.2 18.2,7.1 18.2,13.2 C18.2,21.6 10,31 10,31 Z</Geometry>
 	<Geometry x:Key="WD.SuccessGeometry">M 426 726 L 810 342 L 750 280 L 426 666 L 274 514 L 214 574 Z M 512 86 C 748 86 938 276 938 512 C 938 748 748 938 512 938 C 276 938 86 748 86 512 C 86 276 276 86 512 86 Z</Geometry>
 	<Geometry x:Key="WD.InfoGeometry">M512 960c-281.6 0-512-230.4-512-512s230.4-512 512-512 512 230.4 512 512-230.4 512-512 512zM576 128h-128v128h128v-128zM576 320h-128v448h128v-448z</Geometry>
 	<Geometry x:Key="WD.WarningGeometry">M512 960c-281.6 0-512-230.4-512-512s230.4-512 512-512 512 230.4 512 512-230.4 512-512 512zM576 128h-128v448h128v-448zM576 640h-128v128h128v-128z</Geometry>
@@ -101,6 +102,11 @@
 	<Geometry x:Key="WD.DateGeometry" po:Freeze="True">M13 2h-1v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H6v1.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5V2H2c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 12H2V5h11v9zM5 3H4V1h1v2zm6 0h-1V1h1v2zM6 7H5V6h1v1zm2 0H7V6h1v1zm2 0H9V6h1v1zm2 0h-1V6h1v1zM4 9H3V8h1v1zm2 0H5V8h1v1zm2 0H7V8h1v1zm2 0H9V8h1v1zm2 0h-1V8h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1zm2 0h-1v-1h1v1zm-8 2H3v-1h1v1zm2 0H5v-1h1v1zm2 0H7v-1h1v1zm2 0H9v-1h1v1z</Geometry>
 	<Geometry x:Key="WD.CopyGeometry" po:Freeze="True">M20 109.9988C20 93.43 33.4314 79.998 50 79.998H80L80 99.998H50C44.4772 99.998 40 104.476 40 109.9988L40 249.9988C40 255.5216 44.4772 259.9988 50 259.9988L190 259.9988C195.5228 259.9988 200 255.5216 200 249.9988V219.9996H110C93.4316 219.9996 80 206.5682 80 189.9996V50C80 33.432 93.4316 20 110 20H250C266.568 20 280 33.432 280 50V189.9996C280 206.5682 266.568 219.9996 250 219.9996H220V249.9988C220 266.5674 206.568 279.9988 190 279.9988H50C33.4314 279.9988 20 266.5674 20 249.9988V109.9988zM100 189.9996C100 195.5224 104.4772 199.9996 110 199.9996H250C255.522 199.9996 260 195.5224 260 189.9996V50C260 44.476 255.522 40 250 40H110C104.4772 40 100 44.476 100 50V189.9996z</Geometry>
 	<Geometry x:Key="WD.FilterGeometry" po:Freeze="True">M0,0 L10,0 L6,5 L6,10 L4,10 L4,5 L0,0</Geometry>
+	<Geometry x:Key="WD.ConfirmGeometry" po:Freeze="True">M396 712 L233 512 L178 580 L396 848 L861 272 L807 204 Z</Geometry>
+	<Geometry x:Key="WD.SemicircleGeometry" po:Freeze="True">M 1,7 A 6,6 0 0 0 13,7</Geometry>
+	<Geometry x:Key="WD.UpArrowGeometry" po:Freeze="True">M854,346 512,0 170,346 232,404 470,166 470,684 554,684 554,166 794,404z</Geometry>
+	<Geometry x:Key="WD.DownArrowGeometry" po:Freeze="True">M170,678 512,1024 854,678 792,620 554,858 554,340 470,340 470,858 232,620z</Geometry>
+	<Geometry x:Key="WD.SplitterGeometry" po:Freeze="True">M1.5,0 A1.5,1.5 0 1 1 1.5,3 A1.5,1.5 0 1 1 1.5,0 Z M1.5,6 A1.5,1.5 0 1 1 1.5,9 A1.5,1.5 0 1 1 1.5,6 Z M1.5,12 A1.5,1.5 0 1 1 1.5,15 A1.5,1.5 0 1 1 1.5,12 Z</Geometry>
 	<CubicEase x:Key="WD.CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="WD.PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="WD.ExponentialEaseOut" EasingMode="EaseOut" />
@@ -368,6 +374,21 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
 	</Style>
+	<SolidColorBrush x:Key="WD.MapPinShadowBrush" po:Freeze="True" Color="#24000000" />
+	<LinearGradientBrush x:Key="WD.MapPinFillBrush" po:Freeze="True" StartPoint="0.5,0" EndPoint="0.5,1">
+		<GradientStop Offset="0" Color="#FF7373" />
+		<GradientStop Offset="1" Color="#D93838" />
+	</LinearGradientBrush>
+	<SolidColorBrush x:Key="WD.MapPinStrokeBrush" po:Freeze="True" Color="#9F2020" />
+	<SolidColorBrush x:Key="WD.MapPinInnerFillBrush" po:Freeze="True" Color="White" />
+	<SolidColorBrush x:Key="WD.MapPinInnerStrokeBrush" po:Freeze="True" Color="#B52B2B" />
+	<SolidColorBrush x:Key="WD.MapPinHighlightBrush" po:Freeze="True" Color="#70FFFFFF" />
+	<SolidColorBrush x:Key="WD.MapClusterShadowBrush" po:Freeze="True" Color="#2A000000" />
+	<SolidColorBrush x:Key="WD.MapClusterHaloBrush" po:Freeze="True" Color="#55E74A4A" />
+	<SolidColorBrush x:Key="WD.MapClusterStrokeBrush" po:Freeze="True" Color="White" />
+	<SolidColorBrush x:Key="WD.MapClusterHighlightBrush" po:Freeze="True" Color="#66FFFFFF" />
+	<SolidColorBrush x:Key="WD.MapClusterBodyBrush" po:Freeze="True" Color="#E74A4A" />
+	<SolidColorBrush x:Key="WD.MapClusterTextBrush" po:Freeze="True" Color="White" />
 	<converts:ColorToBrushConverter x:Key="WD.ColorToBrushConverter" />
 	<converts:ColorToRedConverter x:Key="WD.ColorToRedConverter" />
 	<converts:ColorToGreenConverter x:Key="WD.ColorToGreenConverter" />
@@ -1204,8 +1225,18 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
 					<Border x:Name="PART_Thumbborder">
-						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{DynamicResource WD.RegularTextBrush}" RadiusX="1" RadiusY="1" />
+						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{DynamicResource WD.ScrollBarThumbBrush}" RadiusX="1" RadiusY="1" />
 					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+							<Setter Property="Opacity" Value="0.5" />
+						</Trigger>
+						<Trigger Property="IsDragging" Value="True">
+							<Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+							<Setter Property="Opacity" Value="0.5" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -1217,8 +1248,18 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
 					<Border x:Name="PART_Thumbborder">
-						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{DynamicResource WD.PrimaryTextBrush}" RadiusX="1" RadiusY="1" />
+						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{DynamicResource WD.ScrollBarThumbBrush}" RadiusX="1" RadiusY="1" />
 					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+							<Setter Property="Opacity" Value="0.5" />
+						</Trigger>
+						<Trigger Property="IsDragging" Value="True">
+							<Setter TargetName="PART_Rectangle" Property="Fill" Value="{DynamicResource WD.ScrollBarThumbMouseOverBrush}" />
+							<Setter Property="Opacity" Value="0.5" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -1742,7 +1783,7 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.DefaultTextBox}" TargetType="{x:Type TextBox}" />
 	<ControlTemplate x:Key="WD.ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
-		<Border x:Name="PART_Border" Padding="6,1.2" BorderThickness="0" SnapsToDevicePixels="true">
+		<Border x:Name="PART_Border" Padding="6,1.2" Background="Transparent" BorderThickness="0" SnapsToDevicePixels="true">
 			<Grid HorizontalAlignment="Right" Background="Transparent">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
@@ -2346,6 +2387,15 @@
 	<Style x:Key="WD.DefaultDatePickerTextBox" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type DatePickerTextBox}">
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+		<Setter Property="ContextMenu">
+			<Setter.Value>
+				<ContextMenu>
+					<MenuItem Command="Copy" />
+					<MenuItem Command="Paste" />
+					<MenuItem Command="Cut" />
+				</ContextMenu>
+			</Setter.Value>
+		</Setter>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="DatePickerTextBox">
@@ -4118,12 +4168,28 @@
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultGridSplitter" TargetType="{x:Type GridSplitter}">
-		<Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
 		<Setter Property="PreviewStyle" Value="{StaticResource WD.GridSplitterPreviewStyle}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type GridSplitter}">
-					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+					<Border x:Name="SplitterBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<controls:PathIcon x:Name="SplitterGrip" Width="3" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" IsHitTestVisible="False" Kind="Splitter" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="ResizeDirection" Value="Rows">
+							<Setter TargetName="SplitterGrip" Property="LayoutTransform">
+								<Setter.Value>
+									<RotateTransform Angle="90" />
+								</Setter.Value>
+							</Setter>
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="SplitterBorder" Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+							<Setter TargetName="SplitterGrip" Property="Visibility" Value="Hidden" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -5808,6 +5874,12 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.Magnifier}" TargetType="{x:Type controls:Magnifier}" />
 	<Style BasedOn="{StaticResource WD.MagnifierDesktop}" TargetType="{x:Type controls:MagnifierDesktop}" />
+	<Style x:Key="WD.Gauge" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:Gauge}">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="Width" Value="200" />
+		<Setter Property="Height" Value="200" />
+	</Style>
+	<Style BasedOn="{StaticResource WD.Gauge}" TargetType="{x:Type controls:Gauge}" />
 	<Style x:Key="WD.StepItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:StepItem}">
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -5909,6 +5981,125 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.StepItem}" TargetType="{x:Type controls:StepItem}" />
 	<Style BasedOn="{StaticResource WD.Step}" TargetType="{x:Type controls:Step}" />
+	<Style x:Key="WD.TimelineItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:TimelineItem}">
+		<Setter Property="DotBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+		<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		<Setter Property="VerticalContentAlignment" Value="Top" />
+		<Setter Property="Focusable" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:TimelineItem}">
+					<controls:TimelineItemPanel x:Name="PART_Layout">
+						<ContentPresenter Content="{TemplateBinding Label}" ContentTemplate="{TemplateBinding LabelTemplate}" TextElement.Foreground="{DynamicResource WD.RegularTextBrush}" />
+						<Grid VerticalAlignment="Top">
+							<Ellipse x:Name="PART_DefaultDot" Width="10" Height="10" Margin="0,4" Stroke="{TemplateBinding DotBrush}" StrokeThickness="2" />
+							<Path x:Name="PART_LoadingDot" Width="14" Height="14" Margin="0,2" Data="{StaticResource WD.SemicircleGeometry}" RenderTransformOrigin="0.5,0.5" Stroke="{TemplateBinding DotBrush}" StrokeEndLineCap="Round" StrokeStartLineCap="Round" StrokeThickness="2" Visibility="Collapsed">
+								<Path.RenderTransform>
+									<RotateTransform />
+								</Path.RenderTransform>
+							</Path>
+							<ContentPresenter x:Name="PART_CustomDot" Content="{TemplateBinding Dot}" ContentTemplate="{TemplateBinding DotTemplate}" TextElement.Foreground="{TemplateBinding DotBrush}" />
+						</Grid>
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" TextElement.Foreground="{TemplateBinding Foreground}" />
+					</controls:TimelineItemPanel>
+					<ControlTemplate.Triggers>
+						<Trigger Property="Orientation" Value="Horizontal">
+							<Setter TargetName="PART_DefaultDot" Property="Margin" Value="4,0" />
+							<Setter TargetName="PART_LoadingDot" Property="Margin" Value="2,0" />
+						</Trigger>
+						<Trigger Property="IsLoading" Value="True">
+							<Setter TargetName="PART_DefaultDot" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_LoadingDot" Property="Visibility" Value="Visible" />
+							<Setter TargetName="PART_CustomDot" Property="Visibility" Value="Collapsed" />
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="LoadingStoryboard">
+									<Storyboard>
+										<DoubleAnimation RepeatBehavior="Forever" Storyboard.TargetName="PART_LoadingDot" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:1" />
+									</Storyboard>
+								</BeginStoryboard>
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<RemoveStoryboard BeginStoryboardName="LoadingStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="Dot" Value="{x:Null}" />
+								<Condition Property="DotTemplate" Value="{x:Null}" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="PART_CustomDot" Property="Visibility" Value="Collapsed" />
+						</MultiTrigger>
+						<Trigger SourceName="PART_CustomDot" Property="Visibility" Value="Visible">
+							<Setter TargetName="PART_DefaultDot" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.TimelineItem}" TargetType="{x:Type controls:TimelineItem}" />
+	<Style x:Key="WD.Timeline" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:Timeline}">
+		<Setter Property="LineBrush" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="ItemContainerStyle" Value="{StaticResource WD.TimelineItem}" />
+		<Setter Property="Focusable" Value="False" />
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<controls:TimelinePanel />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:Timeline}">
+					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<ScrollViewer x:Name="PART_ScrollViewer" CanContentScroll="False" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+							<ItemsPresenter />
+						</ScrollViewer>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="Orientation" Value="Horizontal">
+				<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+				<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style BasedOn="{StaticResource WD.Timeline}" TargetType="{x:Type controls:Timeline}" />
+	<Style x:Key="WD.WaterfallItemsControl" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:WaterfallItemsControl}">
+		<Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True" />
+		<Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="Padding" Value="{StaticResource WD.Padding}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="ItemsPanel">
+			<Setter.Value>
+				<ItemsPanelTemplate>
+					<controls:WaterfallPanel ClipToBounds="True" Columns="{Binding Columns, RelativeSource={RelativeSource AncestorType={x:Type controls:WaterfallItemsControl}}}" EstimatedItemHeight="{Binding EstimatedItemHeight, RelativeSource={RelativeSource AncestorType={x:Type controls:WaterfallItemsControl}}}" MinColumnWidth="{Binding MinColumnWidth, RelativeSource={RelativeSource AncestorType={x:Type controls:WaterfallItemsControl}}}" Spacing="{Binding Spacing, RelativeSource={RelativeSource AncestorType={x:Type controls:WaterfallItemsControl}}}" />
+				</ItemsPanelTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:WaterfallItemsControl}">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+						<controls:WDScrollViewer x:Name="PART_ScrollViewer" CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsScrollAnimation="True" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+							<ItemsPresenter Margin="{TemplateBinding Padding}" />
+						</controls:WDScrollViewer>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.WaterfallItemsControl}" TargetType="{x:Type controls:WaterfallItemsControl}" />
 	<Style x:Key="WD.SegmentedItem" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:SegmentedItem}">
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderThickness" Value="0" />
@@ -5941,11 +6132,12 @@
 		<Setter Property="BorderBrush" Value="Transparent" />
 		<Setter Property="BorderThickness" Value="0" />
 		<Setter Property="Orientation" Value="Horizontal" />
+		<Setter Property="Padding" Value="0" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:Segmented}">
 					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
-						<Grid ClipToBounds="True">
+						<Grid Margin="{TemplateBinding Padding}" ClipToBounds="True">
 							<Border x:Name="PART_Indicator" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="{TemplateBinding IndicatorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
 								<Border.RenderTransform>
 									<TranslateTransform x:Name="PART_IndicatorTransform" />
@@ -6338,6 +6530,73 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.ToastListBoxItem}" TargetType="{x:Type controls:ToastListBoxItem}" />
 	<Style BasedOn="{StaticResource WD.ToastListBox}" TargetType="{x:Type controls:ToastListBox}" />
+	<Style x:Key="WD.MapPinStyle" TargetType="{x:Type controls:MapPin}">
+		<Setter Property="IsHitTestVisible" Value="False" />
+		<Setter Property="Focusable" Value="False" />
+		<Setter Property="Width" Value="30" />
+		<Setter Property="Height" Value="40" />
+		<Setter Property="RenderTransformOrigin" Value="0.5,1" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MapPin}">
+					<Viewbox IsHitTestVisible="False" RenderTransformOrigin="0.5,1" Stretch="Fill">
+						<Canvas Width="30" Height="40">
+							<Ellipse Canvas.Left="9" Canvas.Top="34" Width="12" Height="3" Fill="{DynamicResource WD.MapPinShadowBrush}" IsHitTestVisible="False" />
+							<Path Canvas.Left="5" Canvas.Top="3" Width="30" Height="40" Data="{DynamicResource WD.MapPinGeometry}" Fill="{DynamicResource WD.MapPinFillBrush}" Stroke="{DynamicResource WD.MapPinStrokeBrush}" StrokeThickness="1.1" />
+							<Ellipse Canvas.Left="10.25" Canvas.Top="11" Width="9.5" Height="9.5" Fill="{DynamicResource WD.MapPinInnerFillBrush}" Stroke="{DynamicResource WD.MapPinInnerStrokeBrush}" StrokeThickness="0.9" />
+							<Ellipse Canvas.Left="10.9" Canvas.Top="8" Width="5.5" Height="2.0" Fill="{DynamicResource WD.MapPinHighlightBrush}">
+								<Ellipse.RenderTransform>
+									<RotateTransform Angle="-18" />
+								</Ellipse.RenderTransform>
+							</Ellipse>
+						</Canvas>
+					</Viewbox>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsSelected" Value="True">
+				<Setter Property="RenderTransform">
+					<Setter.Value>
+						<ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+			<Trigger Property="IsSelected" Value="False">
+				<Setter Property="RenderTransform">
+					<Setter.Value>
+						<ScaleTransform ScaleX="1" ScaleY="1" />
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="WD.MapClusterStyle" TargetType="{x:Type controls:MapCluster}">
+		<Setter Property="IsHitTestVisible" Value="False" />
+		<Setter Property="Focusable" Value="False" />
+		<Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MapCluster}">
+					<Viewbox IsHitTestVisible="False" Stretch="Fill">
+						<Grid Width="60" Height="60">
+							<Ellipse Width="52" Height="52" Margin="0,0,0,1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Fill="{DynamicResource WD.MapClusterShadowBrush}" />
+							<Ellipse Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="{DynamicResource WD.MapClusterHaloBrush}" />
+							<Ellipse Width="44" Height="44" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="{TemplateBinding ClusterFill}" Stroke="{DynamicResource WD.MapClusterStrokeBrush}" StrokeThickness="1.6" />
+							<Ellipse Width="34" Height="10" Margin="0,6,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="{DynamicResource WD.MapClusterHighlightBrush}" RenderTransformOrigin="0.5,0.5">
+								<Ellipse.RenderTransform>
+									<RotateTransform Angle="-14" />
+								</Ellipse.RenderTransform>
+							</Ellipse>
+							<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="{TemplateBinding ClusterTextBrush}" Text="{TemplateBinding CountText}" />
+						</Grid>
+					</Viewbox>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.MapPinStyle}" TargetType="{x:Type controls:MapPin}" />
+	<Style BasedOn="{StaticResource WD.MapClusterStyle}" TargetType="{x:Type controls:MapCluster}" />
 	<Style x:Key="WD.PathIcon" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:PathIcon}">
 		<Setter Property="Padding" Value="0" />
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -6455,17 +6714,17 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="WD.ColorPicker" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:ColorPicker}">
+	<Style x:Key="WD.ColorPicker.Inline" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:ColorPicker}">
 		<Setter Property="Width" Value="260" />
 		<Setter Property="Height" Value="200" />
-		<Setter Property="Margin" Value="2" />
+		<Setter Property="Padding" Value="{StaticResource WD.Padding}" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type controls:ColorPicker}">
-					<Border Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+					<Border Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
 						<Grid>
 							<Grid.RowDefinitions>
 								<RowDefinition />
@@ -6557,9 +6816,15 @@
 										<Setter Property="FontSize" Value="10" />
 									</Style>
 								</Grid.Resources>
-								<Button Name="PART_Button" Grid.Column="0" Width="30" Height="30" Margin="0,0,4,0" helpers:ElementHelper.IsRound="True" Style="{StaticResource WD.NormalButton}">
-									<controls:PathIcon Kind="UnfoldMore" />
-								</Button>
+								<ComboBox x:Name="PART_ColorTypeSelector" Grid.Column="0" Width="60" Height="32" Margin="0,0,4,0" VerticalAlignment="Top" SelectedItem="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+									<ComboBox.ItemsSource>
+										<x:Array Type="{x:Type controls:ColorTypeEnum}">
+											<x:Static Member="controls:ColorTypeEnum.RGB" />
+											<x:Static Member="controls:ColorTypeEnum.HSL" />
+											<x:Static Member="controls:ColorTypeEnum.HEX" />
+										</x:Array>
+									</ComboBox.ItemsSource>
+								</ComboBox>
 								<UniformGrid Grid.Column="1" Rows="1" Visibility="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorTypeToVisibilityConverter}, ConverterParameter={x:Static controls:ColorTypeEnum.RGB}}">
 									<StackPanel>
 										<controls:NumericBox Value="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorToRedConverter}}" />
@@ -6598,6 +6863,57 @@
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
+	</Style>
+	<ControlTemplate x:Key="WD.ColorPicker.PopupTemplate" TargetType="{x:Type controls:ColorPicker}">
+		<Grid>
+			<ToggleButton x:Name="PART_ToggleButton" Padding="{TemplateBinding Padding}" AutomationProperties.Name="{TemplateBinding ColorText}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClickMode="Release" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ToolTip="{TemplateBinding ColorText}">
+				<ToggleButton.Template>
+					<ControlTemplate TargetType="{x:Type ToggleButton}">
+						<Border x:Name="TriggerBorder" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type controls:ColorPicker}}}">
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="TriggerBorder" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+							</Trigger>
+							<Trigger Property="IsKeyboardFocused" Value="True">
+								<Setter TargetName="TriggerBorder" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+							</Trigger>
+							<Trigger Property="IsChecked" Value="True">
+								<Setter TargetName="TriggerBorder" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</ToggleButton.Template>
+				<StackPanel Orientation="Horizontal">
+					<Border Width="{TemplateBinding SwatchSize}" Height="{TemplateBinding SwatchSize}" Background="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorToBrushConverter}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="2" />
+					<TextBlock x:Name="ColorText" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding ColorText}" />
+				</StackPanel>
+			</ToggleButton>
+			<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_ToggleButton}" StaysOpen="False" VerticalOffset="4">
+				<controls:ColorPicker x:Name="PART_ColorPicker" helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" ColorType="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" DisplayMode="Inline" SelectedColor="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource WD.ColorPicker.Inline}" />
+			</Popup>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="ShowColorText" Value="False">
+				<Setter TargetName="ColorText" Property="Visibility" Value="Collapsed" />
+			</Trigger>
+			<Trigger Property="IsDropDownOpen" Value="True">
+				<Setter TargetName="PART_ToggleButton" Property="IsHitTestVisible" Value="False" />
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<Style x:Key="WD.ColorPicker" BasedOn="{StaticResource WD.ColorPicker.Inline}" TargetType="{x:Type controls:ColorPicker}">
+		<Style.Triggers>
+			<Trigger Property="DisplayMode" Value="Popup">
+				<Setter Property="Width" Value="NaN" />
+				<Setter Property="Height" Value="NaN" />
+				<Setter Property="Padding" Value="4" />
+				<Setter Property="Focusable" Value="False" />
+				<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+				<Setter Property="Template" Value="{StaticResource WD.ColorPicker.PopupTemplate}" />
+			</Trigger>
+		</Style.Triggers>
 	</Style>
 	<Style BasedOn="{StaticResource WD.ColorPicker}" TargetType="{x:Type controls:ColorPicker}" />
 	<Style x:Key="WD.IPEditBox" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:IPEditBox}">
@@ -6781,11 +7097,18 @@
 				<ControlTemplate TargetType="{x:Type controls:TimeSelector}">
 					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
 						<controls:SmallPanel SnapsToDevicePixels="True">
-							<UniformGrid Rows="1">
-								<controls:TimeSelectorListBox x:Name="PART_ListBoxHour" Style="{StaticResource WD.TimeListStyle}" />
-								<controls:TimeSelectorListBox x:Name="PART_ListBoxMinute" Style="{StaticResource WD.TimeListStyle}" />
-								<controls:TimeSelectorListBox x:Name="PART_ListBoxSecond" Style="{StaticResource WD.TimeListStyle}" />
-							</UniformGrid>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition x:Name="PART_SecondColumn" Width="*" />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions>
+								<controls:TimeSelectorListBox x:Name="PART_ListBoxHour" Grid.Column="0" Style="{StaticResource WD.TimeListStyle}" />
+								<controls:TimeSelectorListBox x:Name="PART_ListBoxMinute" Grid.Column="1" Style="{StaticResource WD.TimeListStyle}" />
+								<controls:TimeSelectorListBox x:Name="PART_ListBoxSecond" Grid.Column="2" Style="{StaticResource WD.TimeListStyle}" />
+								<controls:TimeSelectorListBox x:Name="PART_ListBoxPeriod" Grid.Column="3" Style="{StaticResource WD.TimeListStyle}" />
+							</Grid>
 							<Line />
 							<Path />
 							<Border Height="{TemplateBinding ItemHeight}" Margin="{TemplateBinding SelectorMargin}" VerticalAlignment="Top" BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="0,1" IsHitTestVisible="False" />
@@ -6815,7 +7138,15 @@
 					</ControlTemplate.Resources>
 					<controls:SmallPanel SnapsToDevicePixels="True">
 						<Border Name="PART_Border" Grid.ColumnSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" />
-						<TextBox x:Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}" />
+						<TextBox x:Name="PART_EditableTextBox" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Panel.ZIndex="1" Background="Transparent" Focusable="True" Foreground="{DynamicResource WD.PrimaryTextBrush}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" Style="{x:Null}" Template="{StaticResource WD.ComboBoxTextBox}">
+							<TextBox.ContextMenu>
+								<ContextMenu>
+									<MenuItem Command="Copy" />
+									<MenuItem Command="Paste" />
+									<MenuItem Command="Cut" />
+								</ContextMenu>
+							</TextBox.ContextMenu>
+						</TextBox>
 						<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" Padding="1,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="Transparent" FontSize="{StaticResource WD.PrimaryFontSize}" Foreground="{DynamicResource WD.RegularTextBrush}" IsHitTestVisible="False" Text="{Binding Path=(helpers:ElementHelper.Watermark), RelativeSource={RelativeSource TemplatedParent}}" TextTrimming="CharacterEllipsis" Visibility="Collapsed" />
 						<ToggleButton x:Name="PART_ToggleButton" Grid.Column="1" Background="{TemplateBinding Background}" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{x:Null}" Template="{StaticResource WD.TimePickerToggleButton}" />
 						<Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Placement="Bottom" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" StaysOpen="False">
@@ -6823,8 +7154,22 @@
 								<controls:SmallPanel.RenderTransform>
 									<ScaleTransform ScaleY="0" />
 								</controls:SmallPanel.RenderTransform>
-								<Border Name="PART_DropDownBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{StaticResource WD.PopupShadowDepth}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
-								<controls:TimeSelector x:Name="PART_TimeSelector" />
+								<Grid>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="*" />
+										<RowDefinition Height="Auto" />
+									</Grid.RowDefinitions>
+									<Border Name="PART_DropDownBorder" Grid.RowSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" Effect="{StaticResource WD.PopupShadowDepth}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+									<controls:TimeSelector x:Name="PART_TimeSelector" Grid.Row="0" />
+									<UniformGrid Grid.Row="1" HorizontalAlignment="Stretch" Columns="2">
+										<Button x:Name="PART_ButtonConfirm" Margin="0,0,2,0" Style="{StaticResource WD.NormalButton}">
+											<controls:PathIcon Width="20" Height="14" Kind="Confirm" />
+										</Button>
+										<Button x:Name="PART_ButtonCancel" Margin="2,0,0,0" Style="{StaticResource WD.NormalButton}">
+											<controls:PathIcon Width="11" Height="11" Kind="Cancel" />
+										</Button>
+									</UniformGrid>
+								</Grid>
 							</controls:SmallPanel>
 						</Popup>
 					</controls:SmallPanel>
@@ -6904,6 +7249,25 @@
 		</Setter>
 	</Style>
 	<Style BasedOn="{StaticResource WD.Drawer}" TargetType="{x:Type controls:Drawer}" />
+	<Style x:Key="WD.DateRangePickerTextBox" BasedOn="{StaticResource WD.DefaultDatePickerTextBox}" TargetType="{x:Type DatePickerTextBox}">
+		<Setter Property="Width" Value="Auto" />
+		<Setter Property="HorizontalAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" />
+		<Setter Property="VerticalAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Focusable" Value="True" />
+		<Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+		<Setter Property="SelectionBrush" Value="{DynamicResource WD.WindowBorderBrush}" />
+		<Setter Property="IsReadOnly" Value="True" />
+		<Setter Property="ContextMenu">
+			<Setter.Value>
+				<ContextMenu>
+					<MenuItem Command="Copy" />
+					<MenuItem Command="Paste" />
+					<MenuItem Command="Cut" />
+				</ContextMenu>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<Style x:Key="WD.NoShadowCalendarItemStyle" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type CalendarItem}">
 		<Setter Property="Template">
 			<Setter.Value>
@@ -7012,9 +7376,9 @@
 									<ColumnDefinition Width="Auto" />
 								</Grid.ColumnDefinitions>
 								<controls:PathIcon Margin="6,0" HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="Date" />
-								<DatePickerTextBox x:Name="PART_StartTextBox" Grid.Column="1" Width="Auto" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:DatePickerHelper.Watermark="{Binding StartWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Background="Transparent" Focusable="True" Foreground="{TemplateBinding Foreground}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
+								<DatePickerTextBox x:Name="PART_StartTextBox" Grid.Column="1" helpers:DatePickerHelper.Watermark="{Binding StartWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Style="{StaticResource WD.DateRangePickerTextBox}" />
 								<controls:PathIcon Grid.Column="2" Margin="6,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Kind="DateRangeRight" />
-								<DatePickerTextBox x:Name="PART_EndTextBox" Grid.Column="3" Width="Auto" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Background="Transparent" Focusable="True" Foreground="{TemplateBinding Foreground}" SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
+								<DatePickerTextBox x:Name="PART_EndTextBox" Grid.Column="3" helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Style="{StaticResource WD.DateRangePickerTextBox}" />
 								<Button x:Name="PART_CloseButton" Grid.Column="4" Width="20" Height="20" Margin="0,0,4,0" HorizontalAlignment="Right" helpers:ElementHelper.IsClear="{Binding Path=(helpers:ElementHelper.IsClear), RelativeSource={RelativeSource TemplatedParent}}" helpers:ElementHelper.IsRound="True" Style="{StaticResource WD.NormalButton}" ToolTip="{Binding [Clear], Source={x:Static resx:LanguageManager.Instance}}" Visibility="Collapsed">
 									<controls:PathIcon Width="10" Height="10" Foreground="{DynamicResource WD.PrimaryTextBrush}" Kind="WindowClose" />
 								</Button>
@@ -7100,6 +7464,41 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsClose" Value="False">
 							<Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="WD.Tag.Badge" BasedOn="{StaticResource WD.Tag}" TargetType="{x:Type controls:Tag}">
+		<Setter Property="IsClose" Value="False" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="11" />
+		<Setter Property="Padding" Value="7,3" />
+		<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:Tag}">
+					<controls:WDBorder Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+						<Grid Clip="{Binding ContentClip, RelativeSource={RelativeSource AncestorType=controls:WDBorder}}">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<Border x:Name="LabelBorder" Background="{TemplateBinding LabelBackground}">
+								<TextBlock Margin="{TemplateBinding Padding}" VerticalAlignment="Center" Foreground="{TemplateBinding LabelForeground}" Text="{TemplateBinding Label}" />
+							</Border>
+							<ContentPresenter x:Name="PART_Content" Grid.Column="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+						</Grid>
+					</controls:WDBorder>
+					<ControlTemplate.Triggers>
+						<Trigger Property="Label" Value="{x:Null}">
+							<Setter TargetName="LabelBorder" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="Label" Value="">
+							<Setter TargetName="LabelBorder" Property="Visibility" Value="Collapsed" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -7437,6 +7836,30 @@
 	</Style>
 	<Style BasedOn="{StaticResource WD.GestureItem}" TargetType="{x:Type controls:GestureItem}" />
 	<Style BasedOn="{StaticResource WD.GestureUnlock}" TargetType="{x:Type controls:GestureUnlock}" />
+	<Style x:Key="WD.MarkdownViewer" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:MarkdownViewer}">
+		<Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Padding" Value="10" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type controls:MarkdownViewer}">
+					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
+						<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" CanContentScroll="False">
+							<RichTextBox x:Name="PART_DocumentHost" Background="Transparent" BorderThickness="0" Foreground="{TemplateBinding Foreground}" IsReadOnly="True" IsDocumentEnabled="True" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" />
+						</ScrollViewer>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="0.7" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style BasedOn="{StaticResource WD.MarkdownViewer}" TargetType="{x:Type controls:MarkdownViewer}" />
 	<Style x:Key="WD.WDUserControl" BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:WDUserControl}">
 		<Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
 		<Setter Property="Template">
@@ -7528,8 +7951,8 @@
 					<TextBlock Text="{Binding Count, StringFormat=' {0} ', RelativeSource={RelativeSource TemplatedParent}}" />
 					<TextBlock Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
 				</WrapPanel>
-				<controls:NumericBox x:Name="PART_CountPerPageNumericBox" Grid.Column="2" Width="32" VerticalContentAlignment="Center" Maximum="100000" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
-				<WrapPanel Grid.Column="3" Margin="3,0,0,0" VerticalAlignment="Center">
+				<controls:NumericBox x:Name="PART_CountPerPageNumericBox" Grid.Column="2" Width="32" VerticalContentAlignment="Center" Maximum="100000" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" Visibility="{Binding ShowCountPerPage, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.Bool2VisibilityConverter}}" />
+				<WrapPanel Grid.Column="3" Margin="3,0,0,0" VerticalAlignment="Center" Visibility="{Binding ShowCountPerPage, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.Bool2VisibilityConverter}}">
 					<TextBlock Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
 					<TextBlock Text=" /  " />
 					<TextBlock Text="{Binding [Page], Source={x:Static resx:LanguageManager.Instance}}" />
@@ -7574,7 +7997,7 @@
 								<TextBlock Text="{Binding Count, StringFormat=' {0} ', RelativeSource={RelativeSource TemplatedParent}}" />
 								<TextBlock Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />
 							</WrapPanel>
-							<StackPanel Grid.Column="1" Margin="0,0,15,0" Orientation="Horizontal">
+							<StackPanel Grid.Column="1" Margin="0,0,15,0" Orientation="Horizontal" Visibility="{Binding ShowCountPerPage, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.Bool2VisibilityConverter}}">
 								<TextBlock Margin="0,0,3,0" VerticalAlignment="Center" Text="{Binding [Page], Source={x:Static resx:LanguageManager.Instance}}" />
 								<controls:NumericBox x:Name="PART_CountPerPageNumericBox" Grid.Column="2" Width="32" VerticalContentAlignment="Center" FontSize="{TemplateBinding FontSize}" Minimum="1" TextAlignment="Center" UpDownButtonsWidth="0" />
 								<TextBlock Margin="3,0,0,0" VerticalAlignment="Center" Text="{Binding [Items], Source={x:Static resx:LanguageManager.Instance}}" />

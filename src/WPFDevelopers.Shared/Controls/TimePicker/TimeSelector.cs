@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,11 +9,15 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = ListBoxHourTemplateName, Type = typeof(ListBox))]
     [TemplatePart(Name = ListBoxMinuteTemplateName, Type = typeof(ListBox))]
     [TemplatePart(Name = ListBoxSecondTemplateName, Type = typeof(ListBox))]
+    [TemplatePart(Name = ListBoxPeriodTemplateName, Type = typeof(ListBox))]
+    [TemplatePart(Name = SecondColumnTemplateName, Type = typeof(ColumnDefinition))]
     public class TimeSelector : Control
     {
         private const string ListBoxHourTemplateName = "PART_ListBoxHour";
         private const string ListBoxMinuteTemplateName = "PART_ListBoxMinute";
         private const string ListBoxSecondTemplateName = "PART_ListBoxSecond";
+        private const string ListBoxPeriodTemplateName = "PART_ListBoxPeriod";
+        private const string SecondColumnTemplateName = "PART_SecondColumn";
         private const int VisibleItemCount = 10;
         private const int CenterIndex = 4;
         private int _hour;
@@ -22,6 +27,8 @@ namespace WPFDevelopers.Controls
         private ListBox _listBoxHour;
         private ListBox _listBoxMinute;
         private ListBox _listBoxSecond;
+        private ListBox _listBoxPeriod;
+        private ColumnDefinition _secondColumn;
 
         public static readonly RoutedEvent SelectedTimeChangedEvent =
             EventManager.RegisterRoutedEvent(
@@ -36,6 +43,20 @@ namespace WPFDevelopers.Controls
                 typeof(DateTime?),
                 typeof(TimeSelector),
                 new PropertyMetadata(null, OnSelectedTimeChanged));
+
+        public static readonly DependencyProperty IsTwelveHourFormatProperty =
+            DependencyProperty.Register(
+                "IsTwelveHourFormat",
+                typeof(bool),
+                typeof(TimeSelector),
+                new PropertyMetadata(false, OnIsTwelveHourFormatChanged));
+
+        public static readonly DependencyProperty ShowSecondsProperty =
+            DependencyProperty.Register(
+                "ShowSeconds",
+                typeof(bool),
+                typeof(TimeSelector),
+                new PropertyMetadata(true, OnShowSecondsChanged));
 
         public static readonly DependencyProperty ItemHeightProperty =
             DependencyProperty.Register(
@@ -63,6 +84,18 @@ namespace WPFDevelopers.Controls
         {
             get => (DateTime?)GetValue(SelectedTimeProperty);
             set => SetValue(SelectedTimeProperty, value);
+        }
+
+        public bool IsTwelveHourFormat
+        {
+            get => (bool)GetValue(IsTwelveHourFormatProperty);
+            set => SetValue(IsTwelveHourFormatProperty, value);
+        }
+
+        public bool ShowSeconds
+        {
+            get => (bool)GetValue(ShowSecondsProperty);
+            set => SetValue(ShowSecondsProperty, value);
         }
 
         public double ItemHeight
@@ -105,6 +138,35 @@ namespace WPFDevelopers.Controls
             }
         }
 
+        private static void OnIsTwelveHourFormatChanged(
+            DependencyObject d,
+            DependencyPropertyChangedEventArgs e
+        )
+        {
+            if (d is TimeSelector ctrl)
+            {
+                if (ctrl._listBoxPeriod != null)
+                    ctrl._listBoxPeriod.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+                ctrl.RefreshHourItems();
+                ctrl.RefreshPeriodItems();
+            }
+        }
+
+        private static void OnShowSecondsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is TimeSelector ctrl)
+            {
+                var showSeconds = (bool)e.NewValue;
+                if (ctrl._listBoxSecond != null)
+                    ctrl._listBoxSecond.Visibility = showSeconds ? Visibility.Visible : Visibility.Collapsed;
+                if (ctrl._secondColumn != null)
+                    ctrl._secondColumn.Width = showSeconds ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
+                if (!showSeconds)
+                    ctrl._second = 0;
+                ctrl.RefreshSecondItems();
+            }
+        }
+
         private void HandleSelectedTimeChanged(DateTime? oldValue, DateTime? newValue)
         {
             if (_isRefreshing)
@@ -115,7 +177,7 @@ namespace WPFDevelopers.Controls
 
             _hour = newValue.Value.Hour;
             _minute = newValue.Value.Minute;
-            _second = newValue.Value.Second;
+            _second = ShowSeconds ? newValue.Value.Second : 0;
 
             if (_listBoxHour != null && _listBoxMinute != null && _listBoxSecond != null)
             {
@@ -130,6 +192,8 @@ namespace WPFDevelopers.Controls
             _listBoxHour = GetTemplateChild(ListBoxHourTemplateName) as ListBox;
             _listBoxMinute = GetTemplateChild(ListBoxMinuteTemplateName) as ListBox;
             _listBoxSecond = GetTemplateChild(ListBoxSecondTemplateName) as ListBox;
+            _listBoxPeriod = GetTemplateChild(ListBoxPeriodTemplateName) as ListBox;
+            _secondColumn = GetTemplateChild(SecondColumnTemplateName) as ColumnDefinition;
 
             if (_listBoxHour != null)
             {
@@ -148,22 +212,32 @@ namespace WPFDevelopers.Controls
 
             if (_listBoxSecond != null)
             {
+                _listBoxSecond.Visibility = ShowSeconds ? Visibility.Visible : Visibility.Collapsed;
                 _listBoxSecond.SelectionChanged -= ListBoxSecond_SelectionChanged;
                 _listBoxSecond.SelectionChanged += ListBoxSecond_SelectionChanged;
+            }
+            if (_secondColumn != null)
+                _secondColumn.Width = ShowSeconds ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
+
+            if (_listBoxPeriod != null)
+            {
+                _listBoxPeriod.Visibility = IsTwelveHourFormat ? Visibility.Visible : Visibility.Collapsed;
+                _listBoxPeriod.SelectionChanged -= ListBoxPeriod_SelectionChanged;
+                _listBoxPeriod.SelectionChanged += ListBoxPeriod_SelectionChanged;
             }
 
             if (SelectedTime.HasValue)
             {
                 _hour = SelectedTime.Value.Hour;
                 _minute = SelectedTime.Value.Minute;
-                _second = SelectedTime.Value.Second;
+                _second = ShowSeconds ? SelectedTime.Value.Second : 0;
             }
             else
             {
                 var now = DateTime.Now;
                 _hour = now.Hour;
                 _minute = now.Minute;
-                _second = now.Second;
+                _second = ShowSeconds ? now.Second : 0;
 
                 _isRefreshing = true;
                 SelectedTime = new DateTime(
@@ -192,6 +266,8 @@ namespace WPFDevelopers.Controls
             ItemHeight = h;
             Height = h * VisibleItemCount;
             SelectorMargin = new Thickness(0, CenterIndex * h, 0, 0);
+            if (_listBoxPeriod != null)
+                _listBoxPeriod.Height = h * VisibleItemCount;
         }
 
         private double GetItemHeight(ListBox listBox)
@@ -209,7 +285,7 @@ namespace WPFDevelopers.Controls
 
             return 0;
         }
-        
+
         private List<string> BuildCyclicItems(int current, int maxValue)
         {
             var list = new List<string>(VisibleItemCount);
@@ -226,11 +302,30 @@ namespace WPFDevelopers.Controls
             return list;
         }
 
+        private List<string> BuildTwelveHourItems(int hour)
+        {
+            var list = new List<string>(VisibleItemCount);
+            var current = hour % 12;
+            if (current == 0)
+                current = 12;
+
+            for (int i = 0; i < VisibleItemCount; i++)
+            {
+                int value = (current - 1 - CenterIndex + i) % 12;
+                if (value < 0)
+                    value += 12;
+                list.Add((value + 1).ToString("D2"));
+            }
+
+            return list;
+        }
+
         private void RefreshAllColumns()
         {
             RefreshHourItems();
             RefreshMinuteItems();
             RefreshSecondItems();
+            RefreshPeriodItems();
         }
 
         private void RefreshSecondItems()
@@ -250,9 +345,32 @@ namespace WPFDevelopers.Controls
                 return;
 
             _listBoxHour.SelectionChanged -= ListBoxHour_SelectionChanged;
-            _listBoxHour.ItemsSource = BuildCyclicItems(_hour, 24);
+            _listBoxHour.ItemsSource = IsTwelveHourFormat
+                ? BuildTwelveHourItems(_hour)
+                : BuildCyclicItems(_hour, 24);
             _listBoxHour.SelectedIndex = CenterIndex;
             _listBoxHour.SelectionChanged += ListBoxHour_SelectionChanged;
+        }
+
+        private void RefreshPeriodItems()
+        {
+            if (_listBoxPeriod == null || !IsTwelveHourFormat)
+                return;
+
+            var dateTimeFormat = CultureInfo.CurrentCulture.DateTimeFormat;
+            var am = string.IsNullOrEmpty(dateTimeFormat.AMDesignator) ? "AM" : dateTimeFormat.AMDesignator;
+            var pm = string.IsNullOrEmpty(dateTimeFormat.PMDesignator) ? "PM" : dateTimeFormat.PMDesignator;
+            var isPm = _hour >= 12;
+            var items = new List<string>(VisibleItemCount);
+            for (int i = 0; i < VisibleItemCount; i++)
+                items.Add(string.Empty);
+            items[CenterIndex] = isPm ? pm : am;
+            items[CenterIndex + 1] = isPm ? am : pm;
+
+            _listBoxPeriod.SelectionChanged -= ListBoxPeriod_SelectionChanged;
+            _listBoxPeriod.ItemsSource = items;
+            _listBoxPeriod.SelectedIndex = CenterIndex;
+            _listBoxPeriod.SelectionChanged += ListBoxPeriod_SelectionChanged;
         }
 
         private void RefreshMinuteItems()
@@ -309,9 +427,30 @@ namespace WPFDevelopers.Controls
             if (!int.TryParse(_listBoxHour.SelectedItem.ToString(), out var value))
                 return;
 
+            if (IsTwelveHourFormat)
+            {
+                value %= 12;
+                if (_hour >= 12)
+                    value += 12;
+            }
             _hour = value;
             UpdateSelectedTimeFromFields();
             RefreshHourItems();
+        }
+
+        private void ListBoxPeriod_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_isRefreshing || _listBoxPeriod == null || _listBoxPeriod.SelectedIndex < 0)
+                return;
+
+            var periodIsPm = _hour >= 12 ^ ((_listBoxPeriod.SelectedIndex - CenterIndex) % 2 != 0);
+            var hour = (_hour % 12) + (periodIsPm ? 12 : 0);
+            if (hour != _hour)
+            {
+                _hour = hour;
+                UpdateSelectedTimeFromFields();
+            }
+            RefreshPeriodItems();
         }
 
         private void UpdateSelectedTimeFromFields()
@@ -337,7 +476,7 @@ namespace WPFDevelopers.Controls
 
             _hour = SelectedTime.Value.Hour;
             _minute = SelectedTime.Value.Minute;
-            _second = SelectedTime.Value.Second;
+            _second = ShowSeconds ? SelectedTime.Value.Second : 0;
             RefreshAllColumns();
         }
     }

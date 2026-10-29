@@ -1,3 +1,65 @@
+<div align="center">
+  <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png" alt="WPFDevelopers" width="128" />
+  <h1>WPFDevelopers</h1>
+  <p>面向 WPF 应用的开源控件与主题库，帮助你更轻松地构建现代 Windows 桌面界面。</p>
+  <p>
+    <a href="docs/zh/getting-started.md">快速开始</a> ·
+    <a href="docs/zh/mapview.md">MapView 指南</a> ·
+    <a href="https://github.com/WPFDevelopersOrg/WPFDevelopers">GitHub</a> ·
+    <a href="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers">AtomGit</a> ·
+    <a href="https://gitee.com/WPFDevelopersOrg/WPFDevelopers">Gitee</a>
+  </p>
+  <p>
+    <a href="https://www.nuget.org/packages/WPFDevelopers"><img alt="NuGet version" src="https://img.shields.io/nuget/v/WPFDevelopers?label=NuGet" /></a>
+    <a href="https://www.nuget.org/packages/WPFDevelopers"><img alt="NuGet downloads" src="https://img.shields.io/nuget/dt/WPFDevelopers?label=downloads" /></a>
+    <a href="https://github.com/WPFDevelopersOrg/WPFDevelopers/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/WPFDevelopersOrg/WPFDevelopers" /></a>
+    <a href="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers"><img alt="AtomGit stars" src="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers/star/badge.svg" /></a>
+    <a href="https://gitee.com/WPFDevelopersOrg/WPFDevelopers"><img alt="Gitee stars" src="https://gitee.com/WPFDevelopersOrg/WPFDevelopers/badge/star.svg?theme=dark" /></a>
+    <img alt="Visual Studio 2026" src="https://img.shields.io/badge/Visual%20Studio-2026-5C2D91" />
+    <img alt=".NET Framework 4.0–.NET 10" src="https://img.shields.io/badge/.NET-Framework%204.0%20%E2%80%93%2010-512BD4" />
+  </p>
+</div>
+
+## 项目简介
+
+WPFDevelopers 为 WPF 项目提供常用控件、统一主题和丰富的交互示例。项目覆盖 .NET Framework 4.0 至 .NET 10；各目标框架与环境要求请查看[快速开始文档](docs/zh/getting-started.md)。
+
+| 主题与样式 | 常用控件 | 示例与扩展 |
+| --- | --- | --- |
+| Light / Dark 主题及主题色配置 | 按钮、输入、导航、图表、窗口等控件 | 配套示例项目，便于查看实现与组合方式 |
+
+## 快速开始
+
+从 NuGet 安装稳定版：
+
+```powershell
+Install-Package WPFDevelopers
+```
+
+体验最新功能可安装预览版：
+
+```powershell
+Install-Package WPFDevelopers -Pre
+```
+
+随后按[快速开始文档](docs/zh/getting-started.md)配置 `App.xaml`，并查看主题选项、控件用法和环境说明。
+
+## 文档与资源
+
+- [快速开始与 .NET 支持范围](docs/zh/getting-started.md)
+- [MapView 地图控件指南](docs/zh/mapview.md)
+- [示例项目源码](src/WPFDevelopers.Samples.Shared/ExampleViews/)
+- [GitHub 仓库](https://github.com/WPFDevelopersOrg/WPFDevelopers) · [AtomGit](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers) · [Gitee](https://gitee.com/WPFDevelopersOrg/WPFDevelopers)
+
+## 控件预览
+
+![WPFDevelopers 控件预览](https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls.png)
+
+完整控件与效果示例仍保留在下方图集中。示例中标注为 `DEMO` 的内容可能是示例专属实现或组合效果，不一定是库内置控件，请以对应源码为准。
+
+<details>
+<summary>展开完整示例图集及社区信息</summary>
+
 <div align="center"><img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/Logo.png"/></div>
 
 [English](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/README.md)
@@ -6,15 +68,13 @@
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.svg?color=%23409EF"></img>
     </a>  <a href="https://www.nuget.org/packages/WPFDevelopers/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers"></img>
-    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 [![AtomGIt Star](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers/star/badge.svg)](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers)![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)  <a href="resources/WPFDevelopersResource/WPFDevelopers.vsix">
-        <img alt=".NET6VSIX" src="https://img.shields.io/badge/.NET6-VSIX-ff69b4"></img>
-    </a>
+    </a>  [![Github stars](https://img.shields.io/github/stars/yanjinhuagood/WPFDevelopers)](https://github.com/yanjinhuagood/WPFDevelopers/stargazers)	 [![AtomGIt Star](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers/star/badge.svg)](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers)![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers?color=%23409EF)
 
 
 
 ## Welcome to WPFDevelopers
 
-# __最新请使用 Nuget 预览版包__  |[下载可执行程序EXE](https://foruda.gitee.com/attach_file/1688956477367725173/net40.zip?token=71326e788298fd73e4e1dfd46558a23e&ts=1688956652&attname=net40.zip) |[项目模板下载VSIX](resources/WPFDevelopersResource/WPFDevelopers.vsix)
+# 最新请使用 NuGet 预览版包
 
 # [最新 WPFDevelopers .Net4.5 至 Net10.0 版本如何编译 👀](https://mp.weixin.qq.com/s/M8as_AsVAFsiImDhaX7TKQ)
 
@@ -27,6 +87,8 @@
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg
 
 ### [ 文档中心 → 快速开始](docs/zh/getting-started.md)
+
+示例导航中的蓝灰色 `DEMO` 标识表示示例专属实现或组合效果，并非 WD 内置控件，请参考示例源码。`DEMO` 与表示更新状态的 `NEW / UPDATE` 独立，同一项可以同时显示两类标识。
 
 ### 此项目包含了 微信公众号 《 WPF开发者》 日常开发分享，欢迎<kbd>Star</kbd>。
 
@@ -66,7 +128,7 @@
 
 ### 支持者
 
-<a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>     <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>  <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a>   <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>
+<a href="https://github.com/Conscientious" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="Conscientious" src="https://avatars.githubusercontent.com/u/10725479?s=64&v=4"></a>   <a href="https://github.com/loridoo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="loridoo" src="https://avatars.githubusercontent.com/u/5158233?v=4"></a>   <a href="https://github.com/yaunchen" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="yaunchen" src="https://avatars.githubusercontent.com/u/85333100?v=4"></a>   <a href="https://gitee.com/wang1170634186" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="王菅物" src="https://avatars.githubusercontent.com/u/45306236?v=4"></a>     <a href="https://github.com/brief103" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="清梦" src="https://avatars.githubusercontent.com/u/93604415?v=4"></a>    <a href="https://gitee.com/zhang_123456abc" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="zhangjingcheng" src="https://avatars.githubusercontent.com/u/93604433?v=4"></a>  <a href="https://github.com/dotnet9" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="dotnet9" src="https://avatars.githubusercontent.com/u/19390373?v=4"></a>   <a href="https://github.com/haijunluo" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="罗海钧" src="https://avatars.githubusercontent.com/u/38817861?v=4"></a>   <a href="https://gitee.com/ZJHome" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="左全" src="https://github.com/identicons/ZJHome.png"></a>
 
 ### 贡献者
 <a href="https://github.com/yanjinhuagood" target="_blank"><img style="border-radius:50%; width:64px; height:64px; object-fit:cover;" width="64px" alt="ChisterWu" src="https://avatars.githubusercontent.com/u/23089734?v=4"></a>
@@ -514,7 +576,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### CropControl（WPF实现图片切成九宫格控件）
+### ImageCrop（WPF实现图片九宫格分块效果）
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/CropControl.gif"/>
 
@@ -683,7 +745,7 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 
 ----------
 
-### WpfPieControl（WPF实现统计图（饼图仿LiveCharts））
+### PieSegment（WPF实现分段饼图示例）
 
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/PieControl.gif"/>
 
@@ -764,4 +826,4 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ----------
 
 
-										~~底线~~
+</details>

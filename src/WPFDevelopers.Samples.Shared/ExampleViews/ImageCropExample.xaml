@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.ImageCropExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Samples.ExampleViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <controls:ImageCrop ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Crop/0.jpg" />
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ImageCropExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ImageCropExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ImageCrop/ImageCrop.xaml"
+                CodeType="Xaml"
+                Haader="ImageCrop.xaml" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/Controls/ImageCrop/ImageCrop.cs"
+                CodeType="CSharp"
+                Haader="ImageCrop.cs" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

@@ -26,10 +26,17 @@
                 Height="40"
                 Padding="20,0"
                 Header="WrapPanel">
-                <WrapPanel wd:PanelHelper.Spacing="3">
+                <WrapPanel
+                    Width="260"
+                    HorizontalAlignment="Left"
+                    wd:PanelHelper.Spacing="4"
+                    ToolTip="Spacing=4 adds a 4px gap between items and wrapped rows, plus 2px around the panel edges. Existing child margins are added to this gap.">
                     <Button Content="Content 1" Style="{StaticResource WD.DangerPrimaryButton}" />
                     <Button Content="Content 2" Style="{StaticResource WD.DangerPrimaryButton}" />
                     <Button Content="Content 3" Style="{StaticResource WD.DangerPrimaryButton}" />
+                    <Button Content="Content 4" Style="{StaticResource WD.DangerPrimaryButton}" />
+                    <Button Content="Content 5" Style="{StaticResource WD.DangerPrimaryButton}" />
+                    <Button Content="Content 6" Style="{StaticResource WD.DangerPrimaryButton}" />
                 </WrapPanel>
             </TabItem>
             <TabItem

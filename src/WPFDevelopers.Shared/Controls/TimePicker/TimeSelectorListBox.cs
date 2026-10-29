@@ -49,6 +49,11 @@ namespace WPFDevelopers.Controls
         {
             if (Items == null || Items.Count == 0)
                 return;
+            if (Items.Count <= CenterIndex)
+            {
+                e.Handled = true;
+                return;
+            }
             int step = e.Delta > 0 ? -1 : 1;
             MoveSelection(step);
             e.Handled = true;

@@ -13,14 +13,17 @@
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <TabControl TabStripPlacement="Bottom">
             <TabItem Header="Event">
-                <wd:GestureUnlock
-                    x:Name="myGestureUnlock"
-                    wd:ElementHelper.CornerRadius="5"
-                    Completed="GestureCompleted">
-                    <wd:GestureUnlock.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Right.jpg" />
-                    </wd:GestureUnlock.Background>
-                </wd:GestureUnlock>
+                <StackPanel>
+                    <TextBlock Text="绘制图案0→ 4 → 2 → 6 解锁。" />
+                    <wd:GestureUnlock
+                        x:Name="myGestureUnlock"
+                        wd:ElementHelper.CornerRadius="5"
+                        Completed="GestureCompleted">
+                        <wd:GestureUnlock.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/Chat/Right.jpg" />
+                        </wd:GestureUnlock.Background>
+                    </wd:GestureUnlock>
+                </StackPanel>
             </TabItem>
             <TabItem Header="Command">
                 <TabItem.Resources>
@@ -28,16 +31,19 @@
                         <Setter Property="BorderBrush" Value="Yellow" />
                     </Style>
                 </TabItem.Resources>
-                <wd:GestureUnlock
-                    x:Name="myGestureUnlock2"
-                    Width="400"
-                    Height="500"
-                    wd:ElementHelper.CornerRadius="10"
-                    CompletedCommand="{Binding CompletedCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                    <wd:GestureUnlock.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/IconicThumbnail/LcupqA.jpg" />
-                    </wd:GestureUnlock.Background>
-                </wd:GestureUnlock>
+                <StackPanel>
+                    <TextBlock Text="绘制图案0→ 4 → 2 → 6 解锁。" />
+                    <wd:GestureUnlock
+                        x:Name="myGestureUnlock2"
+                        Width="400"
+                        Height="500"
+                        wd:ElementHelper.CornerRadius="10"
+                        CompletedCommand="{Binding CompletedCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                        <wd:GestureUnlock.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/IconicThumbnail/LcupqA.jpg" />
+                        </wd:GestureUnlock.Background>
+                    </wd:GestureUnlock>
+                </StackPanel>
             </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>

@@ -126,13 +126,15 @@ namespace WPFDevelopers.Controls
 #if NET40
             UpdateDefaultStyle();
 #else
-            ContextMenu.UpdateDefaultStyle();
+            ContextMenu?.UpdateDefaultStyle();
 #endif
         }
 
         void UpdateDefaultStyle()
         {
             var currentContextMenu = ContextMenu;
+            if (currentContextMenu == null) return;
+
             var newContextMenu = new ContextMenu();
             var itemsToMove = currentContextMenu.Items.OfType<MenuItem>().ToList();
             currentContextMenu.Items.Clear();
@@ -730,6 +732,14 @@ namespace WPFDevelopers.Controls
 
         private void OpenMenu()
         {
+            if (ContextContent == null && (ContextMenu == null || ContextMenu.Items.Count == 0))
+                return;
+
+            var owner = Window.GetWindow(this) ?? Application.Current?.MainWindow;
+            var ownerHandle = owner != null && owner.IsVisible && owner.WindowState != WindowState.Minimized
+                ? owner.GetHandle()
+                : IntPtr.Zero;
+            var ownerIsForeground = ownerHandle != IntPtr.Zero && User32Interop.SetForegroundWindow(ownerHandle);
             if (ContextContent != null)
             {
                 _contextContent = new Popup
@@ -747,12 +757,11 @@ namespace WPFDevelopers.Controls
                 };
                 UpdateDataContext(_contextContent, null, DataContext);
                 _contextContent.IsOpen = true;
-                User32Interop.SetForegroundWindow(_contextContent.Child.GetHandle());
+                if (!ownerIsForeground)
+                    User32Interop.SetForegroundWindow(_contextContent.Child.GetHandle());
             }
             else if (ContextMenu != null)
             {
-                if (ContextMenu.Items.Count == 0) return;
-
                 ContextMenu.InvalidateProperty(StyleProperty);
                 foreach (var item in ContextMenu.Items)
                     if (item is MenuItem menuItem)
@@ -767,7 +776,8 @@ namespace WPFDevelopers.Controls
                 ContextMenu.Placement = PlacementMode.Mouse;
                 ContextMenu.IsOpen = true;
 
-                User32Interop.SetForegroundWindow(ContextMenu.GetHandle());
+                if (!ownerIsForeground)
+                    User32Interop.SetForegroundWindow(ContextMenu.GetHandle());
             }
         }
 

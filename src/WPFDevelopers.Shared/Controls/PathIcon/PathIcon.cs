@@ -7,15 +7,15 @@ namespace WPFDevelopers.Controls
     public class PathIcon : Control
     {
         public static readonly DependencyProperty KindProperty =
-            DependencyProperty.Register(nameof(Kind), typeof(string), typeof(PathIcon),
-                new PropertyMetadata(string.Empty, OnKindChanged));
+            DependencyProperty.Register(nameof(Kind), typeof(PackIconKind?), typeof(PathIcon),
+                new PropertyMetadata(null, OnKindChanged));
 
         public static readonly DependencyProperty DataProperty =
             DependencyProperty.Register(nameof(Data), typeof(Geometry), typeof(PathIcon));
 
-        public PackIconKind Kind
+        public PackIconKind? Kind
         {
-            get { return (PackIconKind)GetValue(KindProperty); }
+            get { return (PackIconKind?)GetValue(KindProperty); }
             set { SetValue(KindProperty, value); }
         }
 
@@ -28,14 +28,10 @@ namespace WPFDevelopers.Controls
         private static void OnKindChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var pathIcon = (PathIcon)d;
-            var kind = (string)e.NewValue;
-            if (!string.IsNullOrWhiteSpace(kind))
-            {
-                kind = $"WD.{kind}Geometry";
-                pathIcon.Data = (Geometry)pathIcon.FindResource(kind);
-            }
+            if (e.NewValue is PackIconKind kind)
+                pathIcon.SetResourceReference(DataProperty, $"WD.{kind}Geometry");
             else
-                pathIcon.Data = null;
+                pathIcon.ClearValue(DataProperty);
         }
 
         static PathIcon()

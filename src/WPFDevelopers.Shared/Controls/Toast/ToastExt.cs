@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
 using WPFDevelopers.Helpers;
 
@@ -57,6 +58,26 @@ namespace WPFDevelopers.Controls
                 IsPosition = false;
                 return WindowHelpers.GetWindowBounds(windowHandle);
             }
+
+            IsPosition = false;
+            var mainWindow = Application.Current?.MainWindow;
+            if (mainWindow != null && mainWindow.IsLoaded)
+            {
+                var mainWindowHandle = new WindowInteropHelper(mainWindow).Handle;
+                if (mainWindowHandle != IntPtr.Zero)
+                {
+                    var screen = System.Windows.Forms.Screen.FromHandle(mainWindowHandle);
+                    var dpi = Win32.GetDpiForWindow(mainWindowHandle);
+                    var scale = dpi > 0 ? dpi / 96.0 : 1.0;
+                    var workArea = screen.WorkingArea;
+                    return new Rect(
+                        workArea.Left / scale,
+                        workArea.Top / scale,
+                        workArea.Width / scale,
+                        workArea.Height / scale);
+                }
+            }
+
             return SystemParameters.WorkArea;
         }
 

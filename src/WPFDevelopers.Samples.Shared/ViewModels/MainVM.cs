@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using WPFDevelopers;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Sample.ExampleViews;
 using WPFDevelopers.Samples.ExampleViews;
@@ -39,6 +42,7 @@ namespace WPFDevelopers.Samples.ViewModels
             nameof(MenuEnum.DateTimePicker),
             nameof(MenuEnum.Calendar),
             nameof(MenuEnum.Slider),
+            nameof(MenuEnum.GridSplitter),
             nameof(MenuEnum.ProgressBar),
             nameof(MenuEnum.DataGrid),
             nameof(MenuEnum.ListBox),
@@ -48,6 +52,63 @@ namespace WPFDevelopers.Samples.ViewModels
             nameof(MenuEnum.GroupBox),
             nameof(MenuEnum.TabControl),
             nameof(MenuEnum.TaskbarInfo),
+        };
+
+        private static readonly HashSet<MenuEnum> DemoMenuItems = new HashSet<MenuEnum>
+        {
+            MenuEnum.StreamerLoading,
+            MenuEnum.TransformLayout,
+            MenuEnum.ChatEmoji,
+            MenuEnum.Dashboard,
+            MenuEnum.PieSegment,
+            MenuEnum.Password,
+            MenuEnum.SongWords,
+            MenuEnum.ActivityFeed,
+            MenuEnum.Flame,
+            MenuEnum.TransitionPanel,
+            MenuEnum.ZooSemy,
+            MenuEnum.RainbowBtn,
+            MenuEnum.RoundPicker,
+            MenuEnum.LineChart,
+            MenuEnum.SnowCanvas,
+            MenuEnum.LoginWindow,
+            MenuEnum.Drawing,
+            MenuEnum.SpeedRockets,
+            MenuEnum.CountdownTimer,
+            MenuEnum.NumberCard,
+            MenuEnum.ImageCrop,
+            MenuEnum.Desktop,
+            MenuEnum.DrawPrize,
+            MenuEnum.BubbleSelection,
+            MenuEnum.CanvasHandWriting,
+            MenuEnum.Barrage,
+            MenuEnum.SixGridView,
+            MenuEnum.Drap,
+            MenuEnum.TaskbarInfo,
+        };
+
+        private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
+        {
+            MenuEnum.ScrollNavigation,
+            MenuEnum.Timeline,
+        };
+
+        private static readonly HashSet<MenuEnum> UpdatedMenuItems = new HashSet<MenuEnum>
+        {
+            MenuEnum.ComboBox,
+            MenuEnum.DatePicker,
+            MenuEnum.DateTimePicker,
+            MenuEnum.DataGrid,
+            MenuEnum.ListBox,
+            MenuEnum.ListView,
+            MenuEnum.GridSplitter,
+            MenuEnum.ScrollViewer,
+            MenuEnum.ScreenCut,
+            MenuEnum.ColorPicker,
+            MenuEnum.TimePicker,
+            MenuEnum.DateRangePicker,
+            MenuEnum.VirtualizingWrapPanel,
+            MenuEnum.WaterfallPanel,
         };
 
         private IList<NavigateMenuModel> _navigateMenuModelList;
@@ -76,11 +137,67 @@ namespace WPFDevelopers.Samples.ViewModels
             }
         }
         private object _controlPanel;
+        private HomeExample _homePage;
         private ObservableCollection<NavigateMenuModel> _customMenuModelList;
         private ObservableCollection<NavigateMenuModel> _basicMenuModelList;
 
         private int _segmentedSelectedIndex;
         private string _searchText = string.Empty;
+        private string _searchWatermark;
+        private string _customMenuLabel;
+        private string _basicMenuLabel;
+        private string _demoBadgeToolTip;
+
+        public bool IsChineseLanguage
+        {
+            get { return LanguageManager.Instance.CurrentCulture.TwoLetterISOLanguageName == "zh"; }
+            set
+            {
+                var cultureName = value ? "zh-CN" : "en-US";
+                if (LanguageManager.Instance.CurrentCulture.Name != cultureName)
+                    LanguageManager.Instance.ChangeLanguage(new CultureInfo(cultureName));
+            }
+        }
+
+        public string SearchWatermark
+        {
+            get { return _searchWatermark; }
+            private set
+            {
+                _searchWatermark = value;
+                NotifyPropertyChange(nameof(SearchWatermark));
+            }
+        }
+
+        public string CustomMenuLabel
+        {
+            get { return _customMenuLabel; }
+            private set
+            {
+                _customMenuLabel = value;
+                NotifyPropertyChange(nameof(CustomMenuLabel));
+            }
+        }
+
+        public string BasicMenuLabel
+        {
+            get { return _basicMenuLabel; }
+            private set
+            {
+                _basicMenuLabel = value;
+                NotifyPropertyChange(nameof(BasicMenuLabel));
+            }
+        }
+
+        public string DemoBadgeToolTip
+        {
+            get { return _demoBadgeToolTip; }
+            private set
+            {
+                _demoBadgeToolTip = value;
+                NotifyPropertyChange(nameof(DemoBadgeToolTip));
+            }
+        }
 
         public int SegmentedSelectedIndex
         {
@@ -115,22 +232,345 @@ namespace WPFDevelopers.Samples.ViewModels
             foreach (MenuEnum menuEnum in Enum.GetValues(typeof(MenuEnum)))
             {
                 var name = menuEnum.ToString();
+                var menuModel = new NavigateMenuModel
+                {
+                    Name = name,
+                    IsDemo = DemoMenuItems.Contains(menuEnum),
+                    IconSource = GetMenuIconSource(menuEnum)
+                };
+                if (NewMenuItems.Contains(menuEnum))
+                    menuModel.ChangeType = "New";
+                else if (UpdatedMenuItems.Contains(menuEnum))
+                    menuModel.ChangeType = "Updated";
+
                 if (BasicEnumSet.Contains(name))
-                    _basicMenuModelList.Add(new NavigateMenuModel { Name = name });
+                    _basicMenuModelList.Add(menuModel);
                 else
-                    _customMenuModelList.Add(new NavigateMenuModel { Name = name });
+                    _customMenuModelList.Add(menuModel);
             }
             NavigateMenuModelList = _customMenuModelList;
             _navigateMenuItem = NavigateMenuModelList.First();
-            _customMenuModelList.Add(new NavigateMenuModel { Name = "持续更新中" });
-            ControlPanel = new NavMenu3DExample();
+            _customMenuModelList.Add(new NavigateMenuModel
+            {
+                Name = "持续更新中",
+                IconSource = GetMenuIconSource("Navigation")
+            });
+            LanguageManager.Instance.PropertyChanged += LanguageManager_PropertyChanged;
+            UpdateMenuDisplayNames();
+            ShowHome();
+        }
+
+        private static string GetMenuIconSource(MenuEnum menuEnum)
+        {
+            string iconName;
+            switch (menuEnum)
+            {
+                case MenuEnum.NavMenu3D:
+                    iconName = "NavMenu3D";
+                    break;
+                case MenuEnum.MapView:
+                    iconName = "Map";
+                    break;
+                case MenuEnum.UsageGuide:
+                case MenuEnum.MarkdownViewer:
+                    iconName = "Book";
+                    break;
+                case MenuEnum.UsageColor:
+                case MenuEnum.ColorPicker:
+                case MenuEnum.Theme:
+                    iconName = "Palette";
+                    break;
+                case MenuEnum.MessageBox:
+                case MenuEnum.Toast:
+                case MenuEnum.ChatEmoji:
+                case MenuEnum.Barrage:
+                    iconName = "Chat";
+                    break;
+                case MenuEnum.NotifyIcon:
+                case MenuEnum.Badge:
+                    iconName = "Activity";
+                    break;
+                case MenuEnum.PanningItems:
+                case MenuEnum.Drap:
+                    iconName = "Hand";
+                    break;
+                case MenuEnum.BreatheLight:
+                case MenuEnum.SpotLight:
+                case MenuEnum.EdgeLight:
+                case MenuEnum.AcrylicBlur:
+                    iconName = "Sparkle";
+                    break;
+                case MenuEnum.RingLoading:
+                case MenuEnum.Loading:
+                case MenuEnum.BasicLoading:
+                case MenuEnum.CircleProgressBar:
+                    iconName = "Spinner";
+                    break;
+                case MenuEnum.ProgressBar:
+                    iconName = "Progress";
+                    break;
+                case MenuEnum.BallLoading:
+                case MenuEnum.RoundPicker:
+                case MenuEnum.Gauge:
+                case MenuEnum.Dial:
+                    iconName = "Circle";
+                    break;
+                case MenuEnum.StreamerLoading:
+                case MenuEnum.WaitLoading:
+                case MenuEnum.CycleLoading:
+                case MenuEnum.RollLoading:
+                    iconName = "Hourglass";
+                    break;
+                case MenuEnum.CropAvatar:
+                case MenuEnum.CropImage:
+                case MenuEnum.ImageCrop:
+                case MenuEnum.ScreenCut:
+                    iconName = "Crop";
+                    break;
+                case MenuEnum.AnimationAudio:
+                case MenuEnum.SongWords:
+                    iconName = "Music";
+                    break;
+                case MenuEnum.TransformLayout:
+                case MenuEnum.WaterfallPanel:
+                case MenuEnum.VirtualizingWrapPanel:
+                case MenuEnum.SixGridView:
+                    iconName = "Grid";
+                    break;
+                case MenuEnum.GridSplitter:
+                    iconName = "GridSplitter";
+                    break;
+                case MenuEnum.VerifyCode:
+                case MenuEnum.OtpBox:
+                case MenuEnum.GestureUnlock:
+                    iconName = "Shield";
+                    break;
+                case MenuEnum.CircleMenu:
+                case MenuEnum.DrawerMenu:
+                case MenuEnum.Drawer:
+                case MenuEnum.Menu:
+                case MenuEnum.NavScrollPanel:
+                case MenuEnum.ScrollNavigation:
+                    iconName = "Navigation";
+                    break;
+                case MenuEnum.Dashboard:
+                case MenuEnum.NumberCard:
+                case MenuEnum.DataGridFilter:
+                    iconName = "Dashboard";
+                    break;
+                case MenuEnum.DataGrid:
+                    iconName = "DataGrid";
+                    break;
+                case MenuEnum.PieSegment:
+                case MenuEnum.ChartPie:
+                case MenuEnum.ChartRadar:
+                case MenuEnum.ChartBar:
+                case MenuEnum.ChartLine:
+                case MenuEnum.LineChart:
+                    iconName = "Chart";
+                    break;
+                case MenuEnum.Password:
+                case MenuEnum.PasswordBox:
+                    iconName = "Lock";
+                    break;
+                case MenuEnum.ActivityFeed:
+                case MenuEnum.Timeline:
+                    iconName = "Activity";
+                    break;
+                case MenuEnum.CardCarousel:
+                case MenuEnum.FocusCarousel:
+                case MenuEnum.Carousel:
+                case MenuEnum.Pagination:
+                    iconName = "Cards";
+                    break;
+                case MenuEnum.ScrollViewer:
+                    iconName = "Scroll";
+                    break;
+                case MenuEnum.Flame:
+                    iconName = "Flame";
+                    break;
+                case MenuEnum.ZooSemy:
+                    iconName = "Animal";
+                    break;
+                case MenuEnum.Ruler:
+                case MenuEnum.Spacing:
+                    iconName = "Ruler";
+                    break;
+                case MenuEnum.RainbowBtn:
+                    iconName = "Rainbow";
+                    break;
+                case MenuEnum.Thermometer:
+                    iconName = "Thermometer";
+                    break;
+                case MenuEnum.SnowCanvas:
+                    iconName = "Snow";
+                    break;
+                case MenuEnum.LoginWindow:
+                case MenuEnum.Desktop:
+                case MenuEnum.Window:
+                    iconName = "Window";
+                    break;
+                case MenuEnum.Drawing:
+                case MenuEnum.CanvasHandWriting:
+                    iconName = "Pen";
+                    break;
+                case MenuEnum.SpeedRockets:
+                    iconName = "Rocket";
+                    break;
+                case MenuEnum.CountdownTimer:
+                case MenuEnum.DateRangePicker:
+                case MenuEnum.Calendar:
+                    iconName = "Calendar";
+                    break;
+                case MenuEnum.TimePicker:
+                case MenuEnum.DateTimePicker:
+                    iconName = "DateTimePicker";
+                    break;
+                case MenuEnum.DatePicker:
+                    iconName = "DatePicker";
+                    break;
+                case MenuEnum.DrawPrize:
+                    iconName = "Gift";
+                    break;
+                case MenuEnum.StarrySky:
+                    iconName = "Stars";
+                    break;
+                case MenuEnum.Shake:
+                case MenuEnum.TransitionPanel:
+                case MenuEnum.AnimationGrid:
+                    iconName = "Activity";
+                    break;
+                case MenuEnum.BubbleSelection:
+                    iconName = "Circle";
+                    break;
+                case MenuEnum.Magnifier:
+                    iconName = "Search";
+                    break;
+                case MenuEnum.Step:
+                    iconName = "Steps";
+                    break;
+                case MenuEnum.MultiSelectComboBox:
+                case MenuEnum.Selector:
+                case MenuEnum.Segmented:
+                case MenuEnum.SplitButton:
+                    iconName = "Selection";
+                    break;
+                case MenuEnum.ToggleButton:
+                    iconName = "ToggleButton";
+                    break;
+                case MenuEnum.RadioButton:
+                    iconName = "RadioButton";
+                    break;
+                case MenuEnum.Checkbox:
+                    iconName = "Checkbox";
+                    break;
+                case MenuEnum.Mask:
+                case MenuEnum.GrayscaleEffect:
+                    iconName = "Image";
+                    break;
+                case MenuEnum.BreadCrumbBar:
+                    iconName = "Navigation";
+                    break;
+                case MenuEnum.PathIcon:
+                case MenuEnum.AllPathIcon:
+                case MenuEnum.SvgViewer:
+                    iconName = "Vector";
+                    break;
+                case MenuEnum.NumericBox:
+                case MenuEnum.TextBox:
+                    iconName = "Text";
+                    break;
+                case MenuEnum.IPEditBox:
+                    iconName = "Network";
+                    break;
+                case MenuEnum.Tag:
+                    iconName = "Tag";
+                    break;
+                case MenuEnum.IconicThumbnail:
+                    iconName = "Image";
+                    break;
+                case MenuEnum.Slider:
+                    iconName = "Slider";
+                    break;
+                case MenuEnum.Button:
+                    iconName = "Button";
+                    break;
+                case MenuEnum.ComboBox:
+                    iconName = "ComboBox";
+                    break;
+                case MenuEnum.ListBox:
+                    iconName = "ListBox";
+                    break;
+                case MenuEnum.ListView:
+                    iconName = "ListView";
+                    break;
+                case MenuEnum.TreeView:
+                    iconName = "TreeView";
+                    break;
+                case MenuEnum.GroupBox:
+                    iconName = "GroupBox";
+                    break;
+                case MenuEnum.TabControl:
+                    iconName = "TabControl";
+                    break;
+                case MenuEnum.Expander:
+                    iconName = "Expander";
+                    break;
+                case MenuEnum.TaskbarInfo:
+                    iconName = "TaskbarInfo";
+                    break;
+                default:
+                    iconName = "Navigation";
+                    break;
+            }
+
+            return GetMenuIconSource(iconName);
+        }
+
+        private static string GetMenuIconSource(string iconName)
+        {
+            return "pack://application:,,,/WPFDevelopers.Samples;component/Resources/MenuIcons/"
+                + iconName + ".svg";
+        }
+
+        private void LanguageManager_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LanguageManager.CurrentCulture))
+                UpdateMenuDisplayNames();
+        }
+
+        private void UpdateMenuDisplayNames()
+        {
+            var culture = LanguageManager.Instance.CurrentCulture;
+            var isChinese = culture.TwoLetterISOLanguageName == "zh";
+            NotifyPropertyChange(nameof(IsChineseLanguage));
+            SearchWatermark = isChinese ? "搜索控件" : "Search Control";
+            CustomMenuLabel = isChinese ? "自定义" : "Custom";
+            BasicMenuLabel = isChinese ? "基础控件" : "Basic";
+            DemoBadgeToolTip = isChinese
+                ? "示例专属实现或组合效果，非 WD 内置控件；请参考示例源码。"
+                : "Sample-only implementation or composition, not a built-in WD control. See the sample source.";
+
+            foreach (var item in _customMenuModelList.Concat(_basicMenuModelList))
+                item.DisplayName = MenuNameLocalizer.GetDisplayName(item.Name, culture);
+
+            ApplySearchFilter();
         }
 
         public ICommand ViewLoaded => new RelayCommand(obj =>
         {
-
-
+            ShowHome();
         });
+
+        public ICommand ShowHomeCommand => new RelayCommand(obj => ShowHome());
+
+        private void ShowHome()
+        {
+            NavigateMenuItem = null;
+            if (_homePage == null)
+                _homePage = new HomeExample();
+            ControlPanel = _homePage;
+        }
 
         public ICommand MenuSearchTextChanged => new RelayCommand(obj =>
         {
@@ -149,7 +589,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 var key = _searchText.ToLower();
                 foreach (var item in NavigateMenuModelList)
                 {
-                    item.IsVisible = item.Name.ToLower().Contains(key);
+                    item.IsVisible = item.Name.ToLower().Contains(key) ||
+                                     item.DisplayName.ToLower().Contains(key);
                 }
             }
         }
@@ -229,6 +670,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Slider:
                     ControlPanel = new SliderExample();
+                    break;
+                case MenuEnum.GridSplitter:
+                    ControlPanel = new GridSplitterExample();
                     break;
                 case MenuEnum.ProgressBar:
                     ControlPanel = new ProgressBarExample();
@@ -310,8 +754,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Dashboard:
                     ControlPanel = new DashboardExample();
                     break;
-                case MenuEnum.PieControl:
-                    ControlPanel = new PieControlExample();
+                case MenuEnum.PieSegment:
+                    ControlPanel = new PieSegmentExample();
                     break;
                 case MenuEnum.Password:
                     ControlPanel = new PasswordExample();
@@ -319,11 +763,14 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.SongWords:
                     ControlPanel = new SongWordsExample();
                     break;
-                case MenuEnum.TimeLine:
-                    ControlPanel = new TimeLineExample();
+                case MenuEnum.ActivityFeed:
+                    ControlPanel = new ActivityFeedExample();
                     break;
                 case MenuEnum.ScrollViewer:
                     ControlPanel = new ScrollViewerAnimationExample();
+                    break;
+                case MenuEnum.ScrollNavigation:
+                    ControlPanel = new ScrollNavigationExample();
                     break;
                 case MenuEnum.CardCarousel:
                     ControlPanel = new CardCarouselExample();
@@ -331,8 +778,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.FocusCarousel:
                     ControlPanel = new FocusCarouselExample();
                     break;
-                case MenuEnum.OtherControls:
-                    ControlPanel = new OtherControlExample();
+                case MenuEnum.Flame:
+                    ControlPanel = new FlameExample();
                     break;
                 case MenuEnum.ScreenCut:
                     ControlPanel = new ScreenCutExample();
@@ -363,8 +810,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.ZooSemy:
                     ControlPanel = new ZooSemyExample();
                     break;
-                case MenuEnum.RulerControl:
-                    ControlPanel = new RulerControlExample();
+                case MenuEnum.Ruler:
+                    ControlPanel = new RulerExample();
                     break;
                 case MenuEnum.RainbowBtn:
                     ControlPanel = new RainbowButtonsExample();
@@ -396,8 +843,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.NumberCard:
                     ControlPanel = new NumberCardExample();
                     break;
-                case MenuEnum.CropControl:
-                    ControlPanel = new CropControlExample();
+                case MenuEnum.ImageCrop:
+                    ControlPanel = new ImageCropExample();
                     break;
                 case MenuEnum.Desktop:
                     ControlPanel = new DesktopBackground();
@@ -417,8 +864,8 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.PanningItems:
                     ControlPanel = new PanningItemsExample();
                     break;
-                case MenuEnum.BubblleControl:
-                    ControlPanel = new BubblleControlExample();
+                case MenuEnum.BubbleSelection:
+                    ControlPanel = new BubbleSelectionExample();
                     break;
                 case MenuEnum.CanvasHandWriting:
                     ControlPanel = new CanvasHandWritingExample();
@@ -447,9 +894,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.Selector:
                     ControlPanel = new SelectorExample();
                     break;
-                case MenuEnum.MultiSelectSearchComboBox:
-                    ControlPanel = new MultiSelectSearchComboBoxExample();
-                    break;
+                //case MenuEnum.MultiSelectSearchComboBox:
+                //    ControlPanel = new MultiSelectSearchComboBoxExample();
+                //    break;
                 case MenuEnum.BreadCrumbBar:
                     ControlPanel = new BreadCrumbBarExample();
                     break;
@@ -549,6 +996,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.MapView:
                     ControlPanel = new MapViewExample();
+                    break;
+                case MenuEnum.Timeline:
+                    ControlPanel = new TimelineExample();
                     break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:

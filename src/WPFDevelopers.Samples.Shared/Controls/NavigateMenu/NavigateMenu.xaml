@@ -20,6 +20,7 @@
                     Background="Transparent"
                     DisplayMemberPath="{Binding DisplayMemberPath, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}"
                     ItemsSource="{TemplateBinding ItemsSource}"
+                    ItemTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}"
                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
                     SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}"
                     SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type controls:NavigateMenu}}}">

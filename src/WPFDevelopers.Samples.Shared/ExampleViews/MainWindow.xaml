@@ -24,6 +24,31 @@
             HorizontalAlignment="Right"
             wd:PanelHelper.Spacing="2"
             Orientation="Horizontal">
+            <Border
+                Margin="4,0,6,0"
+                VerticalAlignment="Center"
+                Background="#33FFFFFF"
+                CornerRadius="9"
+                Padding="8,3">
+                <TextBlock
+                    x:Name="VersionText"
+                    FontSize="11"
+                    FontWeight="SemiBold"
+                    Foreground="White" />
+            </Border>
+            <wd:SwitchButton
+                x:Name="LanguageSwitchBtn"
+                Width="30"
+                Height="30"
+                IsChecked="{Binding DataContext.IsChineseLanguage, RelativeSource={RelativeSource AncestorType=Window}, Mode=TwoWay}"
+                ToolTip="中文 / English">
+                <wd:SwitchButton.UncheckedContent>
+                    <TextBlock Foreground="White" Text="中" />
+                </wd:SwitchButton.UncheckedContent>
+                <wd:SwitchButton.CheckedContent>
+                    <TextBlock Foreground="White" Text="EN" />
+                </wd:SwitchButton.CheckedContent>
+            </wd:SwitchButton>
             <wd:SwitchButton
                 x:Name="ThemeSwitchBtn"
                 Width="30"
@@ -149,35 +174,115 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Grid Margin="0,0,3,0">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBox
-                    Name="PART_MenuTextBox"
-                    wd:ElementHelper.IsClear="True"
-                    wd:ElementHelper.Watermark="Search Control">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="TextChanged">
-                            <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </TextBox>
+                <DockPanel>
+                    <Button
+                        Width="34"
+                        Height="34"
+                        Margin="0,0,6,0"
+                        Command="{Binding ShowHomeCommand}"
+                        Style="{StaticResource WD.DefaultButton}"
+                        ToolTip="首页 / Home"
+                        AutomationProperties.Name="首页 / Home">
+                        <wd:PathIcon Width="18" Height="18" Kind="Home" Foreground="{DynamicResource WD.PrimaryBrush}" />
+                    </Button>
+                    <TextBox
+                        Name="PART_MenuTextBox"
+                        wd:ElementHelper.IsClear="True"
+                        wd:ElementHelper.Watermark="{Binding SearchWatermark}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding MenuSearchTextChanged}" CommandParameter="{Binding ElementName=PART_MenuTextBox, Path=Text}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </DockPanel>
                 <wd:Segmented
                     Grid.Row="1"
                     Margin="0,3"
                     wd:ElementHelper.CornerRadius="15"
                     SelectedIndex="{Binding SegmentedSelectedIndex, Mode=TwoWay}">
-                    <wd:SegmentedItem Content="Custom" />
-                    <wd:SegmentedItem Content="Basic" />
+                    <wd:SegmentedItem Content="{Binding CustomMenuLabel}" />
+                    <wd:SegmentedItem Content="{Binding BasicMenuLabel}" />
                 </wd:Segmented>
                 <controls:NavigateMenu
                     x:Name="NavigateMenu"
                     Grid.Row="2"
-                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding NavigateMenuItem, Mode=TwoWay}"
                     ItemsSource="{Binding NavigateMenuModelList}">
+                    <controls:NavigateMenu.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <wd:SvgViewer
+                                    Width="16"
+                                    Height="16"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ListBoxItem}}"
+                                    Source="{Binding IconSource}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding DisplayName}" />
+                                <Border
+                                    x:Name="DemoBadge"
+                                    Grid.Column="2"
+                                    Margin="8,0,0,0"
+                                    Padding="5,2"
+                                    Background="#FF526D82"
+                                    CornerRadius="3"
+                                    ToolTip="{Binding DataContext.DemoBadgeToolTip, RelativeSource={RelativeSource AncestorType=controls:NavigateMenu}}"
+                                    Visibility="Collapsed">
+                                    <TextBlock
+                                        FontSize="10"
+                                        FontWeight="SemiBold"
+                                        Foreground="White"
+                                        Text="DEMO" />
+                                </Border>
+                                <Border
+                                    x:Name="ChangeBadge"
+                                    Grid.Column="3"
+                                    Margin="8,0,0,0"
+                                    Padding="5,2"
+                                    Background="#FFE5484D"
+                                    CornerRadius="3"
+                                    Visibility="Collapsed">
+                                    <TextBlock
+                                        x:Name="ChangeBadgeText"
+                                        FontSize="10"
+                                        FontWeight="SemiBold"
+                                        Foreground="White"
+                                        Text="" />
+                                </Border>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsDemo}" Value="True">
+                                    <Setter TargetName="DemoBadge" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ChangeType}" Value="New">
+                                    <Setter TargetName="ChangeBadge" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="ChangeBadgeText" Property="Text" Value="NEW" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ChangeType}" Value="Updated">
+                                    <Setter TargetName="ChangeBadge" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="ChangeBadge" Property="Background" Value="#FFFFC857" />
+                                    <Setter TargetName="ChangeBadgeText" Property="Foreground" Value="#FF493500" />
+                                    <Setter TargetName="ChangeBadgeText" Property="Text" Value="UPDATE" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </controls:NavigateMenu.ItemTemplate>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding MenuSelectionChangedCommand}" CommandParameter="{Binding ElementName=NavigateMenu, Path=SelectedItem}" />
@@ -188,6 +293,7 @@
             <GridSplitter
                 Grid.Column="1"
                 Width="5"
+                Margin="2,0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 ShowsPreview="True" />
@@ -195,7 +301,6 @@
             <wd:Drawer
                 x:Name="CodeDrawer"
                 Grid.Column="2"
-                Margin="3,0,0,0"
                 BorderThickness="0"
                 Position="Right">
                 <wd:Drawer.Header>
