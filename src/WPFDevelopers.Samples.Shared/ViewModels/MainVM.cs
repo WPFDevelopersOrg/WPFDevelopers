@@ -96,13 +96,17 @@ namespace WPFDevelopers.Samples.ViewModels
         private static readonly HashSet<MenuEnum> UpdatedMenuItems = new HashSet<MenuEnum>
         {
             MenuEnum.ComboBox,
+            MenuEnum.DatePicker,
+            MenuEnum.DateTimePicker,
             MenuEnum.DataGrid,
             MenuEnum.ListBox,
             MenuEnum.ListView,
+            MenuEnum.GridSplitter,
             MenuEnum.ScrollViewer,
             MenuEnum.ScreenCut,
             MenuEnum.ColorPicker,
             MenuEnum.TimePicker,
+            MenuEnum.DateRangePicker,
             MenuEnum.VirtualizingWrapPanel,
             MenuEnum.WaterfallPanel,
         };
