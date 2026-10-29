@@ -77,7 +77,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleWrapPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\WaterfallPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\WDScrollViewer.cs" />
