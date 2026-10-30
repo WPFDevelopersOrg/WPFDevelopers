@@ -91,6 +91,9 @@ namespace WPFDevelopers.Samples.ViewModels
         {
             MenuEnum.ScrollNavigation,
             MenuEnum.Timeline,
+            MenuEnum.Carousel,
+            MenuEnum.CardCarousel,
+            MenuEnum.FocusCarousel
         };
 
         private static readonly HashSet<MenuEnum> UpdatedMenuItems = new HashSet<MenuEnum>
@@ -101,6 +104,7 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum.DataGrid,
             MenuEnum.ListBox,
             MenuEnum.ListView,
+            MenuEnum.Window,
             MenuEnum.GridSplitter,
             MenuEnum.ScrollViewer,
             MenuEnum.ScreenCut,
