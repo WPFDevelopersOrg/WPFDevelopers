@@ -103,7 +103,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.DataGridFilter] = "数据表格筛选",
             [MenuEnum.GrayscaleEffect] = "灰度效果",
             [MenuEnum.OtpBox] = "一次性验证码输入框",
-            [MenuEnum.Carousel] = "轮播",
+            [MenuEnum.Carousel] = "走马灯",
             [MenuEnum.SplitButton] = "分割按钮",
             [MenuEnum.Segmented] = "分段选择器",
             [MenuEnum.MarkdownViewer] = "Markdown 查看器",
