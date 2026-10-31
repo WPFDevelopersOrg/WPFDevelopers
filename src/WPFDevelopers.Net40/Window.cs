@@ -185,6 +185,9 @@ namespace WPFDevelopers.Net40
             hWnd = new WindowInteropHelper(this).Handle;
             var source = HwndSource.FromHwnd(hWnd);
             source.AddHook(WindowProc);
+            var resources = ThemeManager.Instance.Resources;
+            if (resources != null)
+                Win32.EnableDarkModeForWindow(source, resources.Theme == ThemeType.Dark);
         }
 
         protected override void OnContentRendered(EventArgs e)
@@ -192,6 +195,12 @@ namespace WPFDevelopers.Net40
             base.OnContentRendered(e);
             if (SizeToContent == SizeToContent.WidthAndHeight)
                 InvalidateMeasure();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
+            base.OnClosed(e);
         }
 
         #region Window Commands
