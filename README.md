@@ -55,7 +55,8 @@ Then follow the [quick start guide](docs/en/getting-started.md) to configure `Ap
 
 ## Control preview
 
-![WPFDevelopers control preview](https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls.png)
+![WPFDevelopers control preview](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Light.png)
+![WPFDevelopers control preview](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Dark.png)
 
 The full collection of control demos and animated previews is preserved below. Items marked `DEMO` may be sample-only implementations or compositions rather than built-in WD controls; refer to the corresponding source.
 
@@ -184,6 +185,21 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 ### Step 3: Add the namespace
 
 `xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"`
+
+----------
+### Timeline
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/Timeline.gif"/>
+
+----------
+### WaterfallPanel
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/WaterfallPanel.png"/>
+
+----------
+### ScrollNavigation
+
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/ScrollNavigation.png"/>
 
 ----------
 ### MapView
