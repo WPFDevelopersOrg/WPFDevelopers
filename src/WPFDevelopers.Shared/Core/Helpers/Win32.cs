@@ -178,6 +178,8 @@ namespace WPFDevelopers.Helpers
 
         public static bool EnableDarkModeForWindow(HwndSource source, bool enable)
         {
+            if (source == null || source.Handle == IntPtr.Zero)
+                return false;
             int darkMode = enable ? 1 : 0;
             int hr = DwmSetWindowAttribute(source.Handle, DwmWindowAttributes.UseImmersiveDarkMode, ref darkMode, sizeof(int));
             return hr >= 0;
