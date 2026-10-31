@@ -900,6 +900,15 @@ namespace WPFDevelopers.Controls
             return finalSize;
         }
 
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            if (_overlayLayer != null)
+            {
+                _overlayLayer.InvalidateVisual();
+            }
+        }
+
         private void RefreshOverlay()
         {
             if (_shapeLayer == null || _itemsLayer == null || _templatedItemsLayer == null || _overlayLayer == null)

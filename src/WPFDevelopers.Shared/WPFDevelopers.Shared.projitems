@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartRect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Charts\ChartRound.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\ColorPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\ColorPicker.Popup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker\HSL.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DateRangePicker\DateRangePicker.cs" />
@@ -77,7 +78,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavScrollPanel\NavScrollPanelItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleWrapPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\WaterfallPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel\WaterfallPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel\WaterfallPanel.Virtualization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WaterfallPanel\WaterfallItemsControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScreenCut\ScreenCaptureExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollViewer\WDScrollViewer.cs" />
@@ -85,6 +88,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SvgViewer\SvgViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Tag\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline\Timeline.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline\TimelineItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline\TimelineItemPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline\TimelinePanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelectorItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimePicker\TimeSelectorListBox.cs" />
@@ -234,6 +241,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\SnowCanvasHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\Win32.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Core\Helpers\WindowStartupHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LanguageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\ChangedPathLayoutProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microsoft.Expression.Controls\Distribution.cs" />
@@ -584,6 +592,14 @@
     <Page Include="$(MSBuildThisFileDirectory)Themes\Step.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Timeline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\WaterfallItemsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Segmented.xaml">
       <SubType>Designer</SubType>

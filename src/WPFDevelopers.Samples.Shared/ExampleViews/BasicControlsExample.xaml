@@ -78,7 +78,7 @@
                     <WrapPanel Margin="10" wd:PanelHelper.Spacing="4">
                         <TextBlock VerticalAlignment="Center" Text="Languages:" />
                         <ComboBox
-                            SelectedIndex="0"
+                            SelectedIndex="1"
                             SelectionChanged="ComboBoxLanguages_SelectionChanged"
                             ToolTip="目前翻译只是针对WD的自定义控件进行了多语言翻译">
                             <ComboBoxItem Tag="zh-cn">中文</ComboBoxItem>

@@ -179,11 +179,22 @@ namespace WPFDevelopers.Net45x
                 return resource;
             return default;
         }
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            if (WindowStartupLocation == WindowStartupLocation.CenterScreen)
+                WindowStartupHelper.CenterOnCursorMonitor(this);
+        }
+
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
             hWnd = new WindowInteropHelper(this).Handle;
-            HwndSource.FromHwnd(hWnd).AddHook(WindowProc);
+            var source = HwndSource.FromHwnd(hWnd);
+            source.AddHook(WindowProc);
+            var resources = ThemeManager.Instance.Resources;
+            if (resources != null)
+                Win32.EnableDarkModeForWindow(source, resources.Theme == ThemeType.Dark);
         }
 
         protected override void OnContentRendered(EventArgs e)
@@ -191,6 +202,12 @@ namespace WPFDevelopers.Net45x
             base.OnContentRendered(e);
             if (SizeToContent == SizeToContent.WidthAndHeight)
                 InvalidateMeasure();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
+            base.OnClosed(e);
         }
 
         #region Window Commands
@@ -249,61 +266,40 @@ namespace WPFDevelopers.Net45x
                     break;
                 #region SnapLayouts
                 case WindowsMessageCodes.WM_NCHITTEST:
-                    try
+                    if (OSVersionHelper.IsSnapLayoutSupported() && ResizeMode != ResizeMode.NoResize && ResizeMode != ResizeMode.CanMinimize)
                     {
-                        if (OSVersionHelper.IsSnapLayoutSupported() && ResizeMode != ResizeMode.NoResize && ResizeMode != ResizeMode.CanMinimize)
+                        var button = TitleBarMode == TitleBarMode.Normal
+                            ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
+                            : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
+                        if (button != null)
                         {
-                            int x = lParam.ToInt32() & 0xffff;
-                            int y = lParam.ToInt32() >> 16;
-                            var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
-                            var button = TitleBarMode == TitleBarMode.Normal
-                                ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
-                                : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
-                            if (button != null)
+                            var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
+                            if (contentPresenter != null)
                             {
-                                var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
-                                if (contentPresenter != null)
+                                bool isOverButton = IsPointOverButton(button, lParam);
+                                contentPresenter.Opacity = isOverButton ? 1 : 0.7;
+                                if (isOverButton)
                                 {
-                                    var rect = new Rect(button.PointToScreen(new Point()), new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
-                                    if (rect.Contains(new Point(x, y)))
-                                    {
-                                        handled = true;
-                                        contentPresenter.Opacity = 1;
-                                    }
-                                    else
-                                    {
-                                        contentPresenter.Opacity = 0.7;
-                                    }
+                                    handled = true;
                                     return new IntPtr(OSVersionHelper.HTMAXBUTTON);
                                 }
-
                             }
                         }
-                    }
-                    catch (OverflowException)
-                    {
-                        handled = true;
                     }
                     break;
                 case WindowsMessageCodes.WM_NCLBUTTONDOWN:
                     if (OSVersionHelper.IsSnapLayoutSupported()
                         &&
                         (ResizeMode != ResizeMode.NoResize
-                        ||
+                        &&
                         ResizeMode != ResizeMode.CanMinimize))
                     {
-                        int x = lParam.ToInt32() & 0xffff;
-                        int y = lParam.ToInt32() >> 16;
-                        var dpiX = OSVersionHelper.DeviceUnitsScalingFactorX;
                         Button button = TitleBarMode == TitleBarMode.Normal
                             ? (WindowState != WindowState.Maximized ? _titleBarMaximizeButton : _titleBarRestoreButton)
                             : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
                         if (button != null)
                         {
-                            var rect = new Rect(button.PointToScreen(
-                            new Point()),
-                            new Size(button.ActualWidth * dpiX, button.ActualHeight * dpiX));
-                            if (rect.Contains(new Point(x, y)))
+                            if (IsPointOverButton(button, lParam))
                             {
                                 handled = true;
                                 IInvokeProvider invokeProv = new ButtonAutomationPeer(button).GetPattern(PatternInterface.Invoke) as IInvokeProvider;
@@ -322,16 +318,24 @@ namespace WPFDevelopers.Net45x
 
 
 
+        private static bool IsPointOverButton(Button button, IntPtr lParam)
+        {
+            long coordinates = lParam.ToInt64();
+            var screenPoint = new Point(
+                unchecked((short)(coordinates & 0xffff)),
+                unchecked((short)((coordinates >> 16) & 0xffff)));
+            return new Rect(button.RenderSize).Contains(button.PointFromScreen(screenPoint));
+        }
+
         private void ShowSystemMenu(object sender, ExecutedRoutedEventArgs e)
         {
             var element = e.OriginalSource as FrameworkElement;
             if (element == null)
                 return;
 
-            var point = WindowState == WindowState.Maximized
-                ? new Point(0, element.ActualHeight)
-                : new Point(Left + BorderThickness.Left, element.ActualHeight + Top + BorderThickness.Top);
-            point = element.TransformToAncestor(this).Transform(point);
+            var screenPoint = element.PointToScreen(new Point(0, element.ActualHeight));
+            var source = HwndSource.FromHwnd(hWnd);
+            var point = source.CompositionTarget.TransformFromDevice.Transform(screenPoint);
             SystemCommands.ShowSystemMenu(this, point);
         }
 

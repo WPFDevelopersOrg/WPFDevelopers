@@ -1,0 +1,274 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.HomeExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <UserControl.Resources>
+        <Style
+            x:Key="RepositoryButton"
+            BasedOn="{StaticResource WD.NormalButton}"
+            TargetType="Button">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <EventSetter Event="Click" Handler="RepositoryButton_Click" />
+        </Style>
+        <Style x:Key="SectionTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </UserControl.Resources>
+    <controls:CodeViewer Header="Home">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20" wd:PanelHelper.Spacing="24">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Width="72"
+                        Height="72"
+                        Margin="0,0,16,0"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="WPFDevelopers Logo"
+                        Source="/WPFDevelopers.Samples;component/WPFDevelopers.ico" />
+                    <StackPanel Grid.Column="1" wd:PanelHelper.Spacing="10">
+                        <TextBlock
+                            FontSize="28"
+                            FontWeight="Bold"
+                            Text="WPFDevelopers"
+                            TextWrapping="Wrap" />
+                        <TextBlock
+                            FontSize="15"
+                            Text="开源的 WPF UI 组件库"
+                            TextWrapping="Wrap" />
+                        <TextBlock
+                            Foreground="{DynamicResource WD.RegularTextBrush}"
+                            Text="丰富的控件主题与实用组件，让 Windows 桌面应用开发更简单。"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+                <StackPanel wd:PanelHelper.Spacing="10">
+                    <TextBlock Style="{StaticResource SectionTitle}" Text="项目概览" />
+                    <WrapPanel>
+                        <wd:Tag
+                            x:Name="VersionTag"
+                            Margin="0,0,8,8"
+                            Background="#E05D44"
+                            Label="version"
+                            Style="{StaticResource WD.Tag.Badge}"
+                            ToolTip="当前运行的控件库版本" />
+                        <wd:Tag
+                            x:Name="StarsTag"
+                            Margin="0,0,8,8"
+                            Background="#DFB317"
+                            Content="加载中"
+                            Label="GitHub stars"
+                            Style="{StaticResource WD.Tag.Badge}" />
+                        <wd:Tag
+                            x:Name="DownloadsTag"
+                            Margin="0,0,8,8"
+                            Background="#007EC6"
+                            Content="加载中"
+                            Label="NuGet downloads"
+                            Style="{StaticResource WD.Tag.Badge}" />
+                        <wd:Tag
+                            Margin="0,0,8,8"
+                            Background="#4C1"
+                            Content="MIT"
+                            Label="license"
+                            Style="{StaticResource WD.Tag.Badge}" />
+                    </WrapPanel>
+                    <TextBlock
+                        x:Name="StatisticsStatus"
+                        Foreground="{DynamicResource WD.RegularTextBrush}"
+                        TextWrapping="Wrap" />
+                    <Button
+                        x:Name="RefreshButton"
+                        HorizontalAlignment="Left"
+                        Click="RefreshButton_Click"
+                        Content="刷新统计"
+                        Style="{StaticResource WD.DefaultButton}" />
+                </StackPanel>
+                <StackPanel wd:PanelHelper.Spacing="10">
+                    <TextBlock Style="{StaticResource SectionTitle}" Text="代码仓库" />
+                    <TextBlock Text="点击标签，在浏览器中打开项目。" TextWrapping="Wrap" />
+                    <WrapPanel>
+                        <Button
+                            AutomationProperties.Name="打开 WPF 版本 GitHub 仓库"
+                            Style="{StaticResource RepositoryButton}"
+                            Tag="https://github.com/WPFDevelopersOrg/WPFDevelopers">
+                            <wd:Tag
+                                Background="#181717"
+                                Content="WPFDevelopers"
+                                Label="GitHub"
+                                LabelBackground="#24292F"
+                                Style="{StaticResource WD.Tag.Badge}" />
+                        </Button>
+                        <Button
+                            AutomationProperties.Name="打开 WPF 版本 AtomGit 仓库"
+                            Style="{StaticResource RepositoryButton}"
+                            Tag="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers">
+                            <wd:Tag
+                                Background="#1677FF"
+                                Content="WPFDevelopers"
+                                Label="AtomGit"
+                                Style="{StaticResource WD.Tag.Badge}" />
+                        </Button>
+                        <Button
+                            AutomationProperties.Name="打开 WPF 版本 Gitee 仓库"
+                            Style="{StaticResource RepositoryButton}"
+                            Tag="https://gitee.com/WPFDevelopersOrg/WPFDevelopers">
+                            <wd:Tag
+                                Background="#C71D23"
+                                Content="WPFDevelopers"
+                                Label="Gitee"
+                                Style="{StaticResource WD.Tag.Badge}" />
+                        </Button>
+                        <Button
+                            AutomationProperties.Name="打开 WPF 版本 NuGet 包"
+                            Style="{StaticResource RepositoryButton}"
+                            Tag="https://www.nuget.org/packages/WPFDevelopers/">
+                            <wd:Tag
+                                Background="#004880"
+                                Content="WPFDevelopers"
+                                Label="NuGet"
+                                Style="{StaticResource WD.Tag.Badge}" />
+                        </Button>
+                    </WrapPanel>
+                </StackPanel>
+                <Border
+                    Padding="16"
+                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <StackPanel wd:PanelHelper.Spacing="12">
+                        <TextBlock Style="{StaticResource SectionTitle}" Text="个性化" />
+                        <TextBlock Text="主题色" />
+                        <controls:Theme HorizontalAlignment="Left" />
+                        <wd:Segmented
+                            x:Name="PART_Segmented"
+                            Width="100"
+                            HorizontalAlignment="Left"
+                            wd:ElementHelper.CornerRadius="14"
+                            ItemClick="Segmented_ItemClick">
+                            <wd:SegmentedItem x:Name="SegmentedLight">
+                                <wd:PathIcon
+                                    Width="18"
+                                    Height="18"
+                                    Data="M12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 1 0 0 11Zm-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0ZM3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06ZM12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0ZM4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12Zm8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20Zm12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12Zm-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061Zm2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0Z"
+                                    Foreground="{DynamicResource WD.PrimaryTextBrush}" />
+                            </wd:SegmentedItem>
+                            <wd:SegmentedItem x:Name="SegmentedDark">
+                                <Border
+                                    Width="18"
+                                    Height="18"
+                                    Background="{DynamicResource WD.BackgroundBrush}"
+                                    CornerRadius="10">
+                                    <wd:PathIcon
+                                        Width="16"
+                                        Height="16"
+                                        Data="M12 2a10 10 0 1 0 10 10A7 7 0 0 1 12 2Z"
+                                        Foreground="{DynamicResource WD.PrimaryTextBrush}" />
+                                </Border>
+                            </wd:SegmentedItem>
+                        </wd:Segmented>
+                    </StackPanel>
+                </Border>
+                <Border
+                    Padding="16"
+                    Background="{DynamicResource WD.PrimaryMouseOverBrush}"
+                    CornerRadius="8">
+                    <StackPanel wd:PanelHelper.Spacing="10">
+                        <TextBlock Style="{StaticResource SectionTitle}" Text="也想开发跨平台应用？" />
+                        <TextBlock Text="欢迎体验 WPFDevelopers.Avalonia，使用 Avalonia 为 Windows、macOS 和 Linux 构建桌面应用。" TextWrapping="Wrap" />
+                        <WrapPanel>
+                            <Button
+                                AutomationProperties.Name="打开 Avalonia 版本 GitHub 仓库"
+                                Style="{StaticResource RepositoryButton}"
+                                Tag="https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia">
+                                <wd:Tag
+                                    Background="#181717"
+                                    Content="WPFDevelopers.Avalonia"
+                                    Label="GitHub"
+                                    LabelBackground="#24292F"
+                                    Style="{StaticResource WD.Tag.Badge}" />
+                            </Button>
+                            <Button
+                                AutomationProperties.Name="打开 Avalonia 版本 AtomGit 仓库"
+                                Style="{StaticResource RepositoryButton}"
+                                Tag="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers.Avalonia">
+                                <wd:Tag
+                                    Background="#1677FF"
+                                    Content="WPFDevelopers.Avalonia"
+                                    Label="AtomGit"
+                                    Style="{StaticResource WD.Tag.Badge}" />
+                            </Button>
+                            <Button
+                                AutomationProperties.Name="打开 Avalonia 版本 Gitee 仓库"
+                                Style="{StaticResource RepositoryButton}"
+                                Tag="https://gitee.com/WPFDevelopersOrg/WPFDevelopers.Avalonia">
+                                <wd:Tag
+                                    Background="#C71D23"
+                                    Content="WPFDevelopers.Avalonia"
+                                    Label="Gitee"
+                                    Style="{StaticResource WD.Tag.Badge}" />
+                            </Button>
+                            <Button
+                                AutomationProperties.Name="打开 Avalonia 版本 NuGet 包"
+                                Style="{StaticResource RepositoryButton}"
+                                Tag="https://www.nuget.org/packages/WPFDevelopers.Avalonia/">
+                                <wd:Tag
+                                    Background="#004880"
+                                    Content="WPFDevelopers.Avalonia"
+                                    Label="NuGet"
+                                    Style="{StaticResource WD.Tag.Badge}" />
+                            </Button>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+                <TextBlock
+                    x:Name="LinkError"
+                    Foreground="{DynamicResource WD.DangerBrush}"
+                    TextWrapping="Wrap"
+                    Visibility="Collapsed" />
+                <StackPanel wd:PanelHelper.Spacing="10">
+                    <TextBlock Style="{StaticResource SectionTitle}" Text="快速开始" />
+                    <TextBlock Text="安装 NuGet 包后，在 App.xaml 中引入主题和 wd:Resources；从左侧菜单浏览控件和示例源码。" TextWrapping="Wrap" />
+                    <TextBox
+                        FontFamily="Consolas"
+                        IsReadOnly="True"
+                        Text="Install-Package WPFDevelopers" />
+                </StackPanel>
+                <Border
+                    Padding="16"
+                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <StackPanel wd:PanelHelper.Spacing="12">
+                        <TextBlock Style="{StaticResource SectionTitle}" Text="关注公众号" />
+                        <TextBlock Text="微信扫一扫，关注 WPFDevelopers，获取项目动态与开发分享。" TextWrapping="Wrap" />
+                        <Border
+                            Padding="12"
+                            HorizontalAlignment="Center"
+                            Background="White">
+                            <Image
+                                Width="258"
+                                Height="258"
+                                AutomationProperties.Name="WPFDevelopers 微信公众号二维码"
+                                Source="/WPFDevelopers.Samples;component/Resources/Assets/wxgzh.jpg"
+                                Stretch="Uniform" />
+                        </Border>
+                        <TextBlock HorizontalAlignment="Center" Text="微信扫码关注" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/HomeExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/HomeExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

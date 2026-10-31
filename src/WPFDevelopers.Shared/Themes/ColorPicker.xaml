@@ -100,12 +100,12 @@
     </Style>
 
     <Style
-        x:Key="WD.ColorPicker"
+        x:Key="WD.ColorPicker.Inline"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type controls:ColorPicker}">
         <Setter Property="Width" Value="260" />
         <Setter Property="Height" Value="200" />
-        <Setter Property="Margin" Value="2" />
+        <Setter Property="Padding" Value="{StaticResource WD.Padding}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -114,9 +114,11 @@
                 <ControlTemplate TargetType="{x:Type controls:ColorPicker}">
                     <Border
                         Margin="{TemplateBinding Margin}"
+                        Padding="{TemplateBinding Padding}"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition />
@@ -243,16 +245,22 @@
                                     </Style>
                                 </Grid.Resources>
 
-                                <Button
-                                    Name="PART_Button"
+                                <ComboBox
+                                    x:Name="PART_ColorTypeSelector"
                                     Grid.Column="0"
-                                    Width="30"
-                                    Height="30"
+                                    Width="60"
+                                    Height="32"
                                     Margin="0,0,4,0"
-                                    helpers:ElementHelper.IsRound="True"
-                                    Style="{StaticResource WD.NormalButton}">
-                                    <controls:PathIcon Kind="UnfoldMore" />
-                                </Button>
+                                    VerticalAlignment="Top"
+                                    SelectedItem="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <ComboBox.ItemsSource>
+                                        <x:Array Type="{x:Type controls:ColorTypeEnum}">
+                                            <x:Static Member="controls:ColorTypeEnum.RGB" />
+                                            <x:Static Member="controls:ColorTypeEnum.HSL" />
+                                            <x:Static Member="controls:ColorTypeEnum.HEX" />
+                                        </x:Array>
+                                    </ComboBox.ItemsSource>
+                                </ComboBox>
 
                                 <UniformGrid
                                     Grid.Column="1"
@@ -322,6 +330,101 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <ControlTemplate x:Key="WD.ColorPicker.PopupTemplate" TargetType="{x:Type controls:ColorPicker}">
+        <Grid>
+            <ToggleButton
+                x:Name="PART_ToggleButton"
+                Padding="{TemplateBinding Padding}"
+                AutomationProperties.Name="{TemplateBinding ColorText}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                ClickMode="Release"
+                Foreground="{TemplateBinding Foreground}"
+                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                ToolTip="{TemplateBinding ColorText}">
+                <ToggleButton.Template>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border
+                            x:Name="TriggerBorder"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource AncestorType={x:Type controls:ColorPicker}}}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="TriggerBorder" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="TriggerBorder" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="TriggerBorder" Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+                <StackPanel Orientation="Horizontal">
+                    <Border
+                        Width="{TemplateBinding SwatchSize}"
+                        Height="{TemplateBinding SwatchSize}"
+                        Background="{Binding SelectedColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.ColorToBrushConverter}}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="2" />
+                    <TextBlock
+                        x:Name="ColorText"
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Foreground="{TemplateBinding Foreground}"
+                        Text="{TemplateBinding ColorText}" />
+                </StackPanel>
+            </ToggleButton>
+            <Popup
+                x:Name="PART_Popup"
+                AllowsTransparency="True"
+                IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                Placement="Bottom"
+                PlacementTarget="{Binding ElementName=PART_ToggleButton}"
+                StaysOpen="False"
+                VerticalOffset="4">
+                <controls:ColorPicker
+                    x:Name="PART_ColorPicker"
+                    helpers:ElementHelper.CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                    ColorType="{Binding ColorType, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                    DisplayMode="Inline"
+                    SelectedColor="{Binding SelectedColor, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                    Style="{StaticResource WD.ColorPicker.Inline}" />
+            </Popup>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ShowColorText" Value="False">
+                <Setter TargetName="ColorText" Property="Visibility" Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="IsDropDownOpen" Value="True">
+                <Setter TargetName="PART_ToggleButton" Property="IsHitTestVisible" Value="False" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style
+        x:Key="WD.ColorPicker"
+        BasedOn="{StaticResource WD.ColorPicker.Inline}"
+        TargetType="{x:Type controls:ColorPicker}">
+        <Style.Triggers>
+            <Trigger Property="DisplayMode" Value="Popup">
+                <Setter Property="Width" Value="NaN" />
+                <Setter Property="Height" Value="NaN" />
+                <Setter Property="Padding" Value="4" />
+                <Setter Property="Focusable" Value="False" />
+                <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+                <Setter Property="Template" Value="{StaticResource WD.ColorPicker.PopupTemplate}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource WD.ColorPicker}" TargetType="{x:Type controls:ColorPicker}" />
 </ResourceDictionary>

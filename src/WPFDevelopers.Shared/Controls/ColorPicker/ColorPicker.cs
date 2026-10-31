@@ -11,8 +11,8 @@ namespace WPFDevelopers.Controls
     [TemplatePart(Name = HueSliderColorTemplateName, Type = typeof(Slider))]
     [TemplatePart(Name = CanvasTemplateName, Type = typeof(Canvas))]
     [TemplatePart(Name = ThumbTemplateName, Type = typeof(Thumb))]
-    [TemplatePart(Name = ButtonTemplateName, Type = typeof(Button))]
-    public class ColorPicker : Control
+    [TemplatePart(Name = ColorTypeSelectorTemplateName, Type = typeof(ComboBox))]
+    public partial class ColorPicker : Control
     {
         private const string HueSliderColorTemplateName = "PART_HueSlider";
 
@@ -20,7 +20,7 @@ namespace WPFDevelopers.Controls
 
         private const string ThumbTemplateName = "PART_Thumb";
 
-        private const string ButtonTemplateName = "PART_Button";
+        internal const string ColorTypeSelectorTemplateName = "PART_ColorTypeSelector";
 
         private static readonly DependencyPropertyKey HueColorPropertyKey =
             DependencyProperty.RegisterReadOnly("HueColor", typeof(Color), typeof(ColorPicker),
@@ -41,9 +41,7 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty ColorTypeProperty =
             DependencyProperty.Register("ColorType", typeof(ColorTypeEnum), typeof(ColorPicker),
-                new PropertyMetadata(ColorTypeEnum.RGB));
-
-        private Button _button;
+                new FrameworkPropertyMetadata(ColorTypeEnum.RGB, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         private Canvas _canvas;
 
@@ -51,13 +49,9 @@ namespace WPFDevelopers.Controls
 
         private bool _isInnerUpdateSelectedColor;
 
-        private bool _hasPendingSelectedColor;
+        private bool _hasPendingSelectedColor = true;
 
         private Thumb _thumb;
-
-        private ColorTypeEnum[] colorTypeEnums;
-
-        private int currentGridStateIndex;
 
 
         static ColorPicker()
@@ -85,34 +79,49 @@ namespace WPFDevelopers.Controls
 
         private static void OnSelectedColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var ctrl = d as ColorPicker;
-            if (ctrl._isInnerUpdateSelectedColor)
-            {
-                ctrl._isInnerUpdateSelectedColor = false;
-                return;
-            }
-            if (ctrl._hueSliderColor == null)
-            {
-                ctrl._hasPendingSelectedColor = true;
-                return;
-            }
+            var ctrl = (ColorPicker)d;
+            ctrl.UpdateSelectedColor((Color)e.NewValue);
             var color = (Color)e.NewValue;
+            ctrl.SetValue(ColorTextPropertyKey, color.A == 255
+                ? $"#{color.R:X2}{color.G:X2}{color.B:X2}"
+                : color.ToString());
+            ctrl.RaiseEvent(new RoutedPropertyChangedEventArgs<Color>(
+                (Color)e.OldValue, color, SelectedColorChangedEvent));
+        }
+
+        private void UpdateSelectedColor(Color color)
+        {
+            if (_isInnerUpdateSelectedColor)
+            {
+                _isInnerUpdateSelectedColor = false;
+                return;
+            }
+            if (_hueSliderColor == null)
+            {
+                _hasPendingSelectedColor = true;
+                return;
+            }
             double h = 0, s = 0, b = 0;
             ColorUtil.HsbFromColor(color, ref h, ref s, ref b);
             var hsb = new HSB { H = h, S = s, B = b };
-            ctrl.SetValue(HueColorPropertyKey, ColorUtil.ColorFromHsb(hsb.H, 1, 1));
-            ctrl.SetValue(HSBPropertyKey, hsb);
-            ctrl._hueSliderColor.ValueChanged -= ctrl.HueSliderColor_OnValueChanged;
-            ctrl._hueSliderColor.Value = 1 - h;
-            ctrl._hueSliderColor.ValueChanged += ctrl.HueSliderColor_OnValueChanged;
-            ctrl.UpdateThumbPosition();
+            SetValue(HueColorPropertyKey, ColorUtil.ColorFromHsb(hsb.H, 1, 1));
+            SetValue(HSBPropertyKey, hsb);
+            _hueSliderColor.ValueChanged -= HueSliderColor_OnValueChanged;
+            _hueSliderColor.Value = 1 - h;
+            _hueSliderColor.ValueChanged += HueSliderColor_OnValueChanged;
+            UpdateThumbPosition();
         }
 
         public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
+            DetachPopupTemplate();
             if (_hueSliderColor != null)
                 _hueSliderColor.ValueChanged -= HueSliderColor_OnValueChanged;
+            if (_canvas != null)
+                _canvas.MouseUp -= Canvas_MouseUp;
+            if (_thumb != null)
+                _thumb.DragDelta -= Thumb_DragDelta;
+            base.OnApplyTemplate();
             _canvas = GetTemplateChild(CanvasTemplateName) as Canvas;
             if (_canvas != null)
             {
@@ -127,18 +136,9 @@ namespace WPFDevelopers.Controls
             if (_hueSliderColor != null)
                 _hueSliderColor.ValueChanged += HueSliderColor_OnValueChanged;
 
-            _button = GetTemplateChild(ButtonTemplateName) as Button;
-            currentGridStateIndex = 0;
-            colorTypeEnums = (ColorTypeEnum[])Enum.GetValues(typeof(ColorTypeEnum));
-            if (_button != null)
-                _button.Click += Button_Click;
+            _hasPendingSelectedColor = true;
             LoadedColor();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            currentGridStateIndex = (currentGridStateIndex + 1) % colorTypeEnums.Length;
-            ColorType = colorTypeEnums[currentGridStateIndex];
+            ApplyPopupTemplate();
         }
 
         private void Canvas_MouseUp(object sender, MouseButtonEventArgs e)
@@ -190,7 +190,7 @@ namespace WPFDevelopers.Controls
             if (SelectedColor != currentColor)
             {
                 _isInnerUpdateSelectedColor = true;
-                SelectedColor = currentColor;
+                SetCurrentValue(SelectedColorProperty, currentColor);
             }
         }
 

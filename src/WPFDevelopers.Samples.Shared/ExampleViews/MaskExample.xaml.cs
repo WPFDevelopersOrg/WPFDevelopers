@@ -15,12 +15,12 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            new AboutWindow().MaskShowDialog();
+            new AboutWindow { Owner = System.Windows.Window.GetWindow(this) }.MaskShowDialog();
         }
 
         private void Button_Click_1(object sender, System.Windows.RoutedEventArgs e)
         {
-            new AboutWindow().MaskShow();
+            new AboutWindow { Owner = System.Windows.Window.GetWindow(this) }.MaskShow();
         }
     }
 }

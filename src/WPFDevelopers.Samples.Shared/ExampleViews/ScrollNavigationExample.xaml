@@ -1,0 +1,70 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.ScrollNavigationExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock FontSize="20" Text="Scroll Navigation" />
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Margin="0,0,6,0" Header="ListBox">
+                    <ListBox
+                        wd:ScrollViewerBehavior.IsBackToBottomEnabled="True"
+                        wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+                        DisplayMemberPath="DisplayName"
+                        ItemsSource="{Binding NavigateMenuModelList}" />
+                </GroupBox>
+
+                <GroupBox
+                    Grid.Column="1"
+                    Margin="6,0"
+                    Header="ListView">
+                    <ListView wd:ScrollViewerBehavior.IsBackToBottomEnabled="True" ItemsSource="{Binding NavigateMenuModelList}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+                                    Width="180"
+                                    DisplayMemberBinding="{Binding DisplayName}"
+                                    Header="Name" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
+
+                <GroupBox
+                    Grid.Column="2"
+                    Margin="6,0,0,0"
+                    Header="DataGrid">
+                    <DataGrid
+                        wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        ItemsSource="{Binding NavigateMenuModelList}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="*"
+                                Binding="{Binding DisplayName}"
+                                Header="Name" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+        </Grid>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ScrollNavigationExample.xaml" CodeType="Xaml" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

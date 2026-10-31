@@ -104,28 +104,27 @@ namespace WPFDevelopers.Controls
             _indicator = GetTemplateChild(IndicatorTemplateName) as Border;
             _indicatorTransform = GetTemplateChild(IndicatorTransformTemplateName) as TranslateTransform;
             _itemsPresenter = GetTemplateChild(ItemsPresenterTemplateName) as FrameworkElement;
+            SizeChanged -= Segmented_SizeChanged;
             SizeChanged += Segmented_SizeChanged;
         }
 
         private void Segmented_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (SelectedIndex >= 0)
-                AnimateIndicator(SelectedIndex, false);
+                QueueIndicatorUpdate(false);
         }
 
         protected override void OnSelectedIndexChanged(int oldIndex, int newIndex)
         {
             base.OnSelectedIndexChanged(oldIndex, newIndex);
-            Dispatcher.BeginInvoke(new Action(() => AnimateIndicator(newIndex)),
-                System.Windows.Threading.DispatcherPriority.Render);
+            QueueIndicatorUpdate();
         }
 
         private static void OnOrientationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = (Segmented)d;
             if (ctrl.SelectedIndex >= 0)
-                ctrl.Dispatcher.BeginInvoke(new Action(() => ctrl.AnimateIndicator(ctrl.SelectedIndex, false)),
-                    System.Windows.Threading.DispatcherPriority.Render);
+                ctrl.QueueIndicatorUpdate(false);
         }
 
         private void ItemContainerGenerator_StatusChanged(object sender, EventArgs e)
@@ -133,8 +132,7 @@ namespace WPFDevelopers.Controls
             if (ItemContainerGenerator.Status == System.Windows.Controls.Primitives.GeneratorStatus.ContainersGenerated)
             {
                 SyncSelectedIndexToContainer();
-                Dispatcher.BeginInvoke(new Action(() => AnimateIndicator(SelectedIndex, false)),
-                    System.Windows.Threading.DispatcherPriority.Loaded);
+                QueueIndicatorUpdate(false);
             }
         }
 
@@ -147,10 +145,15 @@ namespace WPFDevelopers.Controls
             if (idx >= 0)
             {
                 SyncSelectedIndex(idx);
-                Dispatcher.BeginInvoke(new Action(() => AnimateIndicator(idx)),
-                    System.Windows.Threading.DispatcherPriority.Render);
+                QueueIndicatorUpdate();
                 RaiseItemClick(container.Content);
             }
+        }
+
+        private void QueueIndicatorUpdate(bool animate = true)
+        {
+            Dispatcher.BeginInvoke(new Action(() => AnimateIndicator(SelectedIndex, animate)),
+                System.Windows.Threading.DispatcherPriority.Loaded);
         }
 
         private void SyncSelectedIndexToContainer()
@@ -188,6 +191,7 @@ namespace WPFDevelopers.Controls
                 _indicator.Height = double.NaN;
                 _indicator.HorizontalAlignment = HorizontalAlignment.Left;
                 _indicator.VerticalAlignment = VerticalAlignment.Stretch;
+                _indicatorTransform.BeginAnimation(TranslateTransform.YProperty, null);
                 if (animate)
                 {
                     var anim = new DoubleAnimation(pos.X, TimeSpan.FromSeconds(AnimationDuration))
@@ -198,6 +202,7 @@ namespace WPFDevelopers.Controls
                 }
                 else
                 {
+                    _indicatorTransform.BeginAnimation(TranslateTransform.XProperty, null);
                     _indicatorTransform.X = pos.X;
                 }
             }
@@ -207,6 +212,7 @@ namespace WPFDevelopers.Controls
                 _indicator.Height = container.ActualHeight;
                 _indicator.HorizontalAlignment = HorizontalAlignment.Stretch;
                 _indicator.VerticalAlignment = VerticalAlignment.Top;
+                _indicatorTransform.BeginAnimation(TranslateTransform.XProperty, null);
                 if (animate)
                 {
                     var anim = new DoubleAnimation(pos.Y, TimeSpan.FromSeconds(AnimationDuration))
@@ -217,6 +223,7 @@ namespace WPFDevelopers.Controls
                 }
                 else
                 {
+                    _indicatorTransform.BeginAnimation(TranslateTransform.YProperty, null);
                     _indicatorTransform.Y = pos.Y;
                 }
             }

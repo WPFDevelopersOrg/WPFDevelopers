@@ -98,7 +98,6 @@
         </Style.Triggers>
     </Style>
 
-
     <Style
         x:Key="WD.TimeSelector"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
@@ -116,11 +115,30 @@
                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                         UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
                         <controls:SmallPanel SnapsToDevicePixels="True">
-                            <UniformGrid Rows="1">
-                                <controls:TimeSelectorListBox x:Name="PART_ListBoxHour" Style="{StaticResource WD.TimeListStyle}" />
-                                <controls:TimeSelectorListBox x:Name="PART_ListBoxMinute" Style="{StaticResource WD.TimeListStyle}" />
-                                <controls:TimeSelectorListBox x:Name="PART_ListBoxSecond" Style="{StaticResource WD.TimeListStyle}" />
-                            </UniformGrid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition x:Name="PART_SecondColumn" Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <controls:TimeSelectorListBox
+                                    x:Name="PART_ListBoxHour"
+                                    Grid.Column="0"
+                                    Style="{StaticResource WD.TimeListStyle}" />
+                                <controls:TimeSelectorListBox
+                                    x:Name="PART_ListBoxMinute"
+                                    Grid.Column="1"
+                                    Style="{StaticResource WD.TimeListStyle}" />
+                                <controls:TimeSelectorListBox
+                                    x:Name="PART_ListBoxSecond"
+                                    Grid.Column="2"
+                                    Style="{StaticResource WD.TimeListStyle}" />
+                                <controls:TimeSelectorListBox
+                                    x:Name="PART_ListBoxPeriod"
+                                    Grid.Column="3"
+                                    Style="{StaticResource WD.TimeListStyle}" />
+                            </Grid>
                             <Line />
                             <Path />
                             <Border
@@ -188,7 +206,15 @@
                             Foreground="{DynamicResource WD.PrimaryTextBrush}"
                             SelectionBrush="{DynamicResource WD.WindowBorderBrush}"
                             Style="{x:Null}"
-                            Template="{StaticResource WD.ComboBoxTextBox}" />
+                            Template="{StaticResource WD.ComboBoxTextBox}">
+                            <TextBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Command="Copy" />
+                                    <MenuItem Command="Paste" />
+                                    <MenuItem Command="Cut" />
+                                </ContextMenu>
+                            </TextBox.ContextMenu>
+                        </TextBox>
                         <TextBlock
                             x:Name="PART_Watermark"
                             Margin="{TemplateBinding Padding}"
@@ -228,16 +254,47 @@
                                 <controls:SmallPanel.RenderTransform>
                                     <ScaleTransform ScaleY="0" />
                                 </controls:SmallPanel.RenderTransform>
-                                <Border
-                                    Name="PART_DropDownBorder"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                                    Effect="{StaticResource WD.PopupShadowDepth}"
-                                    SnapsToDevicePixels="True"
-                                    UseLayoutRounding="True" />
-                                <controls:TimeSelector x:Name="PART_TimeSelector" />
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Border
+                                        Name="PART_DropDownBorder"
+                                        Grid.RowSpan="2"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                                        Effect="{StaticResource WD.PopupShadowDepth}"
+                                        SnapsToDevicePixels="True"
+                                        UseLayoutRounding="True" />
+                                    <controls:TimeSelector x:Name="PART_TimeSelector" Grid.Row="0" />
+
+                                    <UniformGrid
+                                        Grid.Row="1"
+                                        HorizontalAlignment="Stretch"
+                                        Columns="2">
+                                        <Button
+                                            x:Name="PART_ButtonConfirm"
+                                            Margin="0,0,2,0"
+                                            Style="{StaticResource WD.NormalButton}">
+                                            <controls:PathIcon
+                                                Width="20"
+                                                Height="14"
+                                                Kind="Confirm" />
+                                        </Button>
+                                        <Button
+                                            x:Name="PART_ButtonCancel"
+                                            Margin="2,0,0,0"
+                                            Style="{StaticResource WD.NormalButton}">
+                                            <controls:PathIcon
+                                                Width="11"
+                                                Height="11"
+                                                Kind="Cancel" />
+                                        </Button>
+                                    </UniformGrid>
+                                </Grid>
                             </controls:SmallPanel>
                         </Popup>
                     </controls:SmallPanel>

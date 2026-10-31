@@ -8,6 +8,28 @@
         <ResourceDictionary Source="Basic/ControlBasic.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style
+        x:Key="WD.DateRangePickerTextBox"
+        BasedOn="{StaticResource WD.DefaultDatePickerTextBox}"
+        TargetType="{x:Type DatePickerTextBox}">
+        <Setter Property="Width" Value="Auto" />
+        <Setter Property="HorizontalAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" />
+        <Setter Property="VerticalAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource WD.WindowBorderBrush}" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem Command="Copy" />
+                    <MenuItem Command="Paste" />
+                    <MenuItem Command="Cut" />
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style
         x:Key="WD.NoShadowCalendarItemStyle"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type CalendarItem}">
@@ -202,14 +224,8 @@
                                 <DatePickerTextBox
                                     x:Name="PART_StartTextBox"
                                     Grid.Column="1"
-                                    Width="Auto"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     helpers:DatePickerHelper.Watermark="{Binding StartWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                    Background="Transparent"
-                                    Focusable="True"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
+                                    Style="{StaticResource WD.DateRangePickerTextBox}" />
                                 <controls:PathIcon
                                     Grid.Column="2"
                                     Margin="6,0"
@@ -218,14 +234,8 @@
                                 <DatePickerTextBox
                                     x:Name="PART_EndTextBox"
                                     Grid.Column="3"
-                                    Width="Auto"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     helpers:DatePickerHelper.Watermark="{Binding EndWatermark, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                    Background="Transparent"
-                                    Focusable="True"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    SelectionBrush="{DynamicResource WD.WindowBorderBrush}" />
+                                    Style="{StaticResource WD.DateRangePickerTextBox}" />
                                 <Button
                                     x:Name="PART_CloseButton"
                                     Grid.Column="4"

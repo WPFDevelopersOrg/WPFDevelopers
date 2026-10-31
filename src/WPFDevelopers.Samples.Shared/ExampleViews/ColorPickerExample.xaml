@@ -11,7 +11,48 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
-        <wd:ColorPicker />
+        <StackPanel HorizontalAlignment="Center">
+            <wd:ColorPicker x:Name="InlinePicker" SelectedColor="#1677FF" />
+            <UniformGrid Margin="0,24,0,0" Columns="2" Rows="3">
+                <wd:ColorPicker
+                    Margin="8"
+                    HorizontalAlignment="Left"
+                    DisplayMode="Popup"
+                    SelectedColor="{Binding SelectedColor, ElementName=InlinePicker}" />
+                <wd:ColorPicker
+                    Margin="8"
+                    HorizontalAlignment="Left"
+                    DisplayMode="Popup"
+                    SelectedColor="{Binding SelectedColor, ElementName=InlinePicker}"
+                    ShowColorText="True" />
+                <wd:ColorPicker
+                    Margin="8"
+                    HorizontalAlignment="Left"
+                    DisplayMode="Popup"
+                    SelectedColor="{Binding SelectedColor, ElementName=InlinePicker}"
+                    SwatchSize="24" />
+                <wd:ColorPicker
+                    Margin="8"
+                    HorizontalAlignment="Left"
+                    DisplayMode="Popup"
+                    SelectedColor="{Binding SelectedColor, ElementName=InlinePicker}"
+                    ShowColorText="True"
+                    SwatchSize="24" />
+                <wd:ColorPicker
+                    Margin="8"
+                    HorizontalAlignment="Left"
+                    DisplayMode="Popup"
+                    SelectedColor="{Binding SelectedColor, ElementName=InlinePicker}"
+                    SwatchSize="32" />
+                <wd:ColorPicker
+                    Margin="8"
+                    HorizontalAlignment="Left"
+                    DisplayMode="Popup"
+                    SelectedColor="{Binding SelectedColor, ElementName=InlinePicker}"
+                    ShowColorText="True"
+                    SwatchSize="32" />
+            </UniformGrid>
+        </StackPanel>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ColorPickerExample.xaml" CodeType="Xaml" />
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/ColorPickerExample.xaml.cs" CodeType="CSharp" />

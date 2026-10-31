@@ -13,6 +13,7 @@
                 <TabItem Height="38" Padding="20,0" Header="Mode 1">
                     <DataGrid
                         wd:ElementHelper.CornerRadius="3"
+                        wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
                         AutoGenerateColumns="False"
                         FontSize="20"
                         HeadersVisibility="All"

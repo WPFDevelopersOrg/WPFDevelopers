@@ -1,68 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WPFDevelopers.Samples.Controls;
+using WPFDevelopers.Controls;
+using WPFDevelopers.Samples.ViewModels;
 
 namespace WPFDevelopers.Samples.ExampleViews
 {
-    /// <summary>
-    /// TimeLineExample.xaml 的交互逻辑
-    /// </summary>
-    public partial class TimeLineExample : UserControl
+    public partial class TimelineExample : UserControl
     {
-        public TimeLineExample()
+        private int _eventNumber;
+
+        public ObservableCollection<TimelineEvent> CodeEvents { get; private set; }
+        public Array Orientations { get; private set; }
+        public Array Modes { get; private set; }
+
+        public TimelineExample()
         {
+            CodeEvents = new ObservableCollection<TimelineEvent>();
+            Orientations = Enum.GetValues(typeof(Orientation));
+            Modes = Enum.GetValues(typeof(TimelineMode));
+            ResetEvents();
             InitializeComponent();
         }
 
-        int num = 0;
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
-            num++;
-            switch (num)
+            AddEvent();
+        }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            CompleteEvents(false);
+            AddEvent(true);
+        }
+
+        private void AddEvent(bool isLoading = false)
+        {
+            CodeEvents.Add(new TimelineEvent
             {
-                case 1:
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = DateTime.Now.ToString("yyyy-MM-dd"), ItemType = ItemTypeEnum.Time });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "我是骗人布010", Head = "我", ItemType = ItemTypeEnum.Name, BackgroundColor = new SolidColorBrush(GetRandomColor()) });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "闫驚鏵/WPFDevelopers", ItemType = ItemTypeEnum.Star });
-                    break;
-                case 2:
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd"), ItemType = ItemTypeEnum.Time });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "风云大陆", Head = "风", ItemType = ItemTypeEnum.Name, BackgroundColor = new SolidColorBrush(GetRandomColor()) });
-                    break;
-                case 3:
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = DateTime.Now.AddDays(-2).ToString("yyyy-MM-dd"), ItemType = ItemTypeEnum.Time });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "王羲之", Head = "王", ItemType = ItemTypeEnum.Name, BackgroundColor = new SolidColorBrush(GetRandomColor()) });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "闫驚鏵/WPFDevelopers", ItemType = ItemTypeEnum.Star });
-                    break;
-                case 4:
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = DateTime.Now.AddDays(-3).ToString("yyyy-MM-dd"), ItemType = ItemTypeEnum.Time });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "花雨", Head = "花", ItemType = ItemTypeEnum.Name, BackgroundColor = new SolidColorBrush(GetRandomColor()) });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "闫驚鏵/WPFDevelopers", ItemType = ItemTypeEnum.Star });
-                    break;
-                case 5:
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = DateTime.Now.AddDays(-6).ToString("yyyy-MM-dd"), ItemType = ItemTypeEnum.Time });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "纪春庆", Head = "纪", ItemType = ItemTypeEnum.Name, BackgroundColor = new SolidColorBrush(GetRandomColor()) });
-                    this.TimeLine.Items.Add(new TimeLineItem() { Text = "闫驚鏵/WPFDevelopers", ItemType = ItemTypeEnum.Star });
-                    break;
-                default:
-                    break;
+                Time = DateTime.Now.ToString("HH:mm:ss"),
+                Title = "Event " + ++_eventNumber,
+                Description = "Added by a C# click event.",
+                Brush = Brushes.DodgerBlue,
+                IsLoading = isLoading
+            });
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            if (CodeEvents.Count > 0) CodeEvents.RemoveAt(CodeEvents.Count - 1);
+        }
+
+        private void Complete_Click(object sender, RoutedEventArgs e)
+        {
+            CompleteEvents(true);
+        }
+
+        private void CompleteEvents(bool onlyLoading)
+        {
+            foreach (var item in CodeEvents)
+            {
+                if (onlyLoading && !item.IsLoading) continue;
+                item.IsLoading = false;
+                item.Title = "Completed";
+                item.Description = "Updated by a C# click event.";
+                item.Brush = Brushes.SeaGreen;
             }
         }
-        Color GetRandomColor()
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            var random = new Random();
-            return Color.FromRgb((byte)random.Next(0, 255), (byte)random.Next(0, 255), (byte)random.Next(0, 255));
+            ResetEvents();
+        }
+
+        private void ResetEvents()
+        {
+            CodeEvents.Clear();
+            _eventNumber = 3;
+            CodeEvents.Add(new TimelineEvent
+            {
+                Time = "09:00", Title = "Created",
+                Description = "Create a service site.", Brush = Brushes.DodgerBlue
+            });
+            CodeEvents.Add(new TimelineEvent
+            {
+                Time = "10:00", Title = "Completed",
+                Description = "Solve initial network problems.", Brush = Brushes.SeaGreen
+            });
+            CodeEvents.Add(new TimelineEvent
+            {
+                Time = "11:00", Title = "In progress",
+                Description = "Technical testing is in progress.", Brush = Brushes.DodgerBlue,
+                IsLoading = true
+            });
         }
     }
 }

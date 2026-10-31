@@ -17,8 +17,6 @@ WPFDevelopers covers the full spectrum from .NET Framework 4.0 to .NET 10:
 - Visual Studio 2026
 - .NET Framework 4.0 or later / .NET Core 3.0 or later
 
----
-
 ## MapView Guide
 
 If you need to use the map control, start with:
@@ -107,6 +105,107 @@ Then use WD controls:
     </Grid>
 </Window>
 ```
+
+### ColorPicker Usage
+
+`ColorPicker` remains an inline panel. Its format dropdown selects RGB, HSL, or HEX directly; set `ColorType` to choose the initial format.
+
+```xml
+<wd:ColorPicker SelectedColor="{Binding AccentColor}" ColorType="HEX" />
+```
+
+Set `DisplayMode="Popup"` on the same `ColorPicker` to show a clickable swatch that opens the panel. The default, `DisplayMode="Inline"`, preserves the existing inline display:
+
+```xml
+<wd:ColorPicker DisplayMode="Popup" SelectedColor="{Binding AccentColor}" />
+<wd:ColorPicker DisplayMode="Popup" SelectedColor="{Binding AccentColor}"
+                     ShowColorText="True"
+                     SwatchSize="24"
+                     ColorType="HEX" />
+```
+
+- `SelectedColor` is a `Color` and binds two-way by default. Changes are applied immediately, without confirmation.
+- `ShowColorText` defaults to `False`. Enable it to display HEX beside the swatch: `#RRGGBB` for opaque colors, or `#AARRGGBB` otherwise.
+- `SwatchSize` is the swatch side length, defaulting to 18. Use positive values such as 24 or 32; trigger dimensions also include padding and borders.
+- `IsDropDownOpen` supports two-way binding. Click outside or press Esc to close; F4 or Alt+Down toggles the popup. Space opens it when the trigger has focus.
+- Mouse activation opens the panel on release so the popup can capture outside clicks. Outside-click dismissal remains available after changing formats.
+- `ShowColorText`, `SwatchSize`, and `IsDropDownOpen` apply to Popup mode; Inline mode cannot open a popup. Switching `DisplayMode` at runtime closes the popup and preserves the color and format.
+- `SelectedColorChanged` is a bubbling color-change event. Both modes share the color panel and theme resources. In Popup mode, `Width`, `Height`, and `Padding` configure the trigger, not the inner panel.
+
+### GridSplitter Usage
+
+`GridSplitter` is a standard WPF control and does not require the `wd:` prefix. After configuring the theme above, its default style has a transparent background and a centered three-dot grip. Hovering hides the dots and highlights the splitter with the theme color; leaving restores the grip.
+
+> The three-dot grip requires a library version containing this change. Earlier NuGet packages may not include this style.
+
+#### Vertical Splitter: Side-by-Side Panes
+
+Place the splitter in a dedicated `Auto` column and set `Width` and `ResizeDirection="Columns"`:
+
+```xml
+<Grid Height="180">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" MinWidth="60" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" MinWidth="60" />
+    </Grid.ColumnDefinitions>
+    <Border Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Left" />
+    </Border>
+    <GridSplitter
+        Grid.Column="1"
+        Width="5"
+        Margin="2,0"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        ResizeDirection="Columns"
+        ResizeBehavior="PreviousAndNext"
+        ShowsPreview="True" />
+    <Border Grid.Column="2" Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Right" />
+    </Border>
+</Grid>
+```
+
+#### Horizontal Splitter: Stacked Panes
+
+Place the splitter in a dedicated `Auto` row and set `Height` and `ResizeDirection="Rows"`. The three-dot grip rotates to a horizontal arrangement:
+
+```xml
+<Grid Height="240">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" MinHeight="40" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" MinHeight="40" />
+    </Grid.RowDefinitions>
+    <Border Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Top" />
+    </Border>
+    <GridSplitter
+        Grid.Row="1"
+        Height="5"
+        Margin="0,2"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        ResizeDirection="Rows"
+        ResizeBehavior="PreviousAndNext"
+        ShowsPreview="False" />
+    <Border Grid.Row="2" Background="{DynamicResource WD.PrimaryMouseOverBrush}">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bottom" />
+    </Border>
+</Grid>
+```
+
+Configuration notes:
+
+- Set `ResizeDirection` explicitly: `Columns` resizes adjacent columns; `Rows` resizes adjacent rows. The current grip style rotates through the `Rows` trigger, not through the effective direction inferred by `Auto`.
+- `ResizeBehavior="PreviousAndNext"` resizes the rows or columns on either side of the splitter, matching the dedicated row/column layouts above.
+- `ShowsPreview="True"` previews the resize and applies it on release; `False` resizes immediately. Preview mode requires an `AdornerLayer` in the visual tree, which standard WPF windows normally provide.
+- Set `MinWidth` / `MinHeight` on content columns/rows to prevent panes from becoming too small.
+- `Margin="2,0"` adds 2 DIPs on each side; `Margin="0,2"` adds 2 DIPs above and below. Margins on neighboring containers add to this spacing, so prefer configuring the gap on the splitter alone. The transparent background remains hit-testable for dragging.
+- `Foreground` controls the dot color; the hover background uses the theme resource `WD.PrimaryBrush`.
+
+Find the interactive demo under **Basic → GridSplitter** in the sample application. See [GridSplitterExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Basics/GridSplitterExample.xaml) for the source.
 
 ### MarkdownViewer Usage
 
@@ -239,6 +338,35 @@ If you need to display a README, help document, release notes, or internal docum
 <TreeView wd:TreeViewHelper.IsScrollAnimation="true" />
 ```
 
+#### Back-to-top and back-to-bottom
+
+Set `ScrollViewerBehavior.IsBackToTopEnabled` and/or `ScrollViewerBehavior.IsBackToBottomEnabled` to `True` on a scrollable control. The corresponding button appears at the bottom-right while the pointer or keyboard focus is within the control, and hides when the content reaches its destination.
+
+```xml
+<ListBox
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<ListView
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<DataGrid
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    wd:ScrollViewerBehavior.IsBackToBottomEnabled="True"
+    ItemsSource="{Binding Items}" />
+
+<ScrollViewer
+    wd:ScrollViewerBehavior.IsBackToTopEnabled="True"
+    wd:ScrollViewerBehavior.IsBackToBottomEnabled="True">
+    <!-- long content -->
+</ScrollViewer>
+```
+
+The behavior can also be set directly on `ScrollViewer`, `WDScrollViewer`, or `TreeView`. For a `Panel`, set it on the containing `ScrollViewer` because panels do not provide scrolling themselves. It does not replace the `ItemsPanel`, so list virtualization is preserved.
+
+Open the **Attached Properties** menu in the sample application to see an interactive example.
+
 ### 3. Static Resource Styles
 
 ```xml
@@ -280,7 +408,9 @@ WD provides a set of theme resources you can reference in XAML:
 
 ## Complete Control Catalog
 
-> **Important**: Controls marked <span style="color:#e6a23c">🟡 Sample-only</span> are defined in `WPFDevelopers.Samples.Shared/Controls/` and are **NOT** part of the NuGet package (`wd:` namespace). They are only available in the sample project. All other controls can be used directly via the `wd:` prefix after NuGet installation.
+> **Important**: Implementations marked <span style="color:#e6a23c">🟡 Sample-only</span> live in the sample project's `Controls/` or `ExampleViews/` folders and are not shipped as built-in WD controls in the NuGet package. They may compose native WPF controls with WD styles, controls, or helpers.
+
+The sample navigation identifies these implementations and composed effects with a blue-gray `DEMO` badge. Hover for an explanation; the tooltip follows the selected language. `NEW` and `UPDATE` remain independent change-status badges and can appear alongside `DEMO`; for example, ActivityFeed can show both `DEMO` and `UPDATE`. Ordinary usage samples for built-in WD controls and helpers do not receive `DEMO`.
 
 ### Windows & Navigation
 
@@ -338,11 +468,11 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:IPEditBox` | NuGet | [IPEditBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/IPEditBoxExample.xaml) | IP address input |
 | `wd:MultiSelectComboBox` | NuGet | [MultiSelectComboBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MultiSelectComboBoxExample.xaml) | Multi-select combo box |
 | <span style="color:#e6a23c">🟡 MultiSelectSearchComboBox</span> | Sample-only | [MultiSelectSearchComboBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MultiSelectSearchComboBoxExample.xaml) | Searchable multi-select combo box |
-| `wd:Password` | NuGet | [PasswordExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Passwrod/PasswordExample.xaml) | Password show/hide toggle |
+| <span style="color:#e6a23c">🟡 Password</span> | Sample-only | [PasswordExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Passwrod/PasswordExample.xaml) | Composed password show/hide sample |
 | `wd:VerifyCode` | NuGet | [VerifyCodeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/VerifyCodeExample.xaml) | CAPTCHA drawing |
 | <span style="color:#e6a23c">🟡 RoundPicker</span> | Sample-only | [RoundPickerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RoundPickerExample.xaml) | Circular color picker |
-| `wd:RulerControl` | NuGet | [RulerControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RulerControlExample.xaml) | Ruler control |
-| <span style="color:#e6a23c">🟡 Selector</span> | Sample-only | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | Selector control |
+| `wd:RulerControl` | NuGet | [RulerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RulerExample.xaml) | Ruler control |
+| `wd:ScrollIntoView` | NuGet | [SelectorExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SelectorExample.xaml) | List positioning helper |
 | `wd:Dial` | NuGet | [DialExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DialExample.xaml) | Dial pad |
 | `wd:GestureUnlock` | NuGet | [GestureUnlockExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GestureUnlockExample.xaml) | Gesture pattern unlock |
 | `wd:SvgViewer` | NuGet | [SvgViewerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SvgViewerExample.xaml) | SVG viewer |
@@ -369,14 +499,14 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:ChartLine` | NuGet | [ChartLineExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ChartLineExample.xaml) | Line chart |
 | `wd:ChartPie` | NuGet | [ChartPieExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ChartPieExample.xaml) | Pie chart |
 | <span style="color:#e6a23c">🟡 Dashboard</span> | Sample-only | [DashboardExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DashboardExample.xaml) | Dashboard gauge (tick marks follow progress) |
-| <span style="color:#e6a23c">🟡 PieControl</span> | Sample-only | [PieControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PieControlExample.xaml) | Pie chart statistics |
+| <span style="color:#e6a23c">🟡 PieSegment</span> | Sample-only | [PieSegmentExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PieSegmentExample.xaml) | Segmented pie chart sample (distinct from `wd:ChartPie`) |
 | `wd:Gauge` | NuGet | [GaugeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GaugeExample.xaml) | Gauge control |
 | <span style="color:#e6a23c">🟡 LineChart</span> | Sample-only | [LineChartExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LineChartExample.xaml) | Line chart (alternate implementation) |
 | `wd:CircleProgressBar` | NuGet | [CircleProgressBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleProgressBarExample.xaml) | Circular progress bar |
 | `wd:Step` | NuGet | [StepExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StepExample.xaml) | Step wizard |
 | `wd:BreadCrumbBar` | NuGet | [BreadCrumbBarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BreadCrumbBarExample.xaml) | Breadcrumb navigation |
 | `wd:Pagination` | NuGet | [PaginationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PaginationExample.xaml) | Pagination control |
-| <span style="color:#e6a23c">🟡 TimeLineControl</span> | Sample-only | [TimeLineExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TimeLineExample.xaml) | Timeline (Gitee-style) |
+| <span style="color:#e6a23c">🟡 ActivityFeed</span> | Sample-only | [ActivityFeedExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ActivityFeedExample.xaml) | Activity feed (Gitee-style) |
 | `wd:Thermometer` | NuGet | [ThermometerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ThermometerExample.xaml) | Thermometer |
 | `wd:DataGridFilter` | NuGet | [DataGridFilterExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DataGridFilterExample.xaml) | DataGrid column filter engine |
 
@@ -390,13 +520,63 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:CircleMenu` | NuGet | [CircleMenuExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CircleMenuExample.xaml) | Circular menu |
 | `wd:SixGridView` | NuGet | [SixGirdViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SixGirdViewExample.xaml) | Six-column grid layout |
 | `wd:WaterfallPanel` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | Waterfall / masonry panel |
+| `wd:WaterfallItemsControl` | NuGet | [WaterfallPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/WaterfallPanelExample.xaml) | Masonry items control with a scrolling template |
 | `wd:VirtualizingWrapPanel` | NuGet | [VirtualizingWrapPanelExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/VirtualizingWrapPanelExample.xaml) | Virtualizing WrapPanel |
 | <span style="color:#e6a23c">🟡 TransformLayout</span> | Sample-only | [TransformLayoutExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/TransformLayoutExample.xaml) | Draggable, resizable, rotatable control |
 | `wd:DrapView` | NuGet | [DrapViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/DrapView/DrapViewExample.xaml) | Drag-and-drop view |
 | `wd:Spacing` (attached) | NuGet | [SpacingExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpacingExample.xaml) | Panel child spacing |
 | `wd:PanningItems` | NuGet | [PanningItemsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/PanningItemsExample.xaml) | Panning control (touch swipe) |
-| <span style="color:#e6a23c">🟡 ScrollViewerAnimation</span> | Sample-only | [ScrollViewerAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ScrollViewerAnimationExample.xaml) | Animated scrollbar |
+| `wd:WDScrollViewer` / `wd:ScrollViewerBehavior` | NuGet | [ScrollViewerAnimationExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ScrollViewerAnimationExample.xaml) | Animated scrolling and back-to-top helper |
 | `wd:IconicThumbnail` | NuGet | [IconicThumbnailExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/IconicThumbnailExample.xaml) | Iconic thumbnail |
+
+#### WaterfallPanel: responsive columns and virtualization
+
+Scrolling reuses cached item positions and uses per-column binary searches to select nearby items.
+Positions are rebuilt when width, data, or measured realized-item heights change.
+`WDScrollViewer` retains smooth scrolling: consecutive wheel input accumulates its target,
+while direction changes restart from the current offset. Animations last 250ms without a fixed
+40 FPS cap. Actual smoothness depends on item templates and hardware.
+These changes use APIs available in .NET Framework 4.0. Windows 7 requires a compatible
+.NET Framework build; this does not imply Windows 7 support for modern .NET targets.
+
+For data binding, use `WaterfallItemsControl` without an outer `ScrollViewer`:
+
+```xml
+<wd:WaterfallItemsControl MinColumnWidth="200" Spacing="16" ItemsSource="{Binding Items}">
+    <wd:WaterfallItemsControl.ItemTemplate>
+        <DataTemplate>
+            <Image Source="{Binding ImageUri}" Stretch="Uniform" />
+        </DataTemplate>
+    </wd:WaterfallItemsControl.ItemTemplate>
+</wd:WaterfallItemsControl>
+```
+
+It inherits `ItemsSource`, `ItemTemplate`, and `ItemTemplateSelector`, enables recycling by default,
+and exposes `Columns`, `MinColumnWidth`, `Spacing`, and `EstimatedItemHeight`.
+Use `ScrollViewer.VerticalScrollBarVisibility` to control the scrollbar.
+A finite host height is still required for virtualization. Use `WaterfallPanel` for direct XAML
+children or custom hosts.
+
+`Columns` defaults to 3. `MinColumnWidth` defaults to 0 (fixed columns).
+A positive `MinColumnWidth` selects `max(1, floor((availableWidth + Spacing) / (MinColumnWidth + Spacing)))`
+columns. A narrow container still has one column, which may be narrower than the minimum.
+`ActualColumns` reports the selected count. With infinite available width, `Columns` is used,
+and the widest natural item width (at least `MinColumnWidth`) determines the column width.
+
+The same panel supports direct XAML children and `ItemsControl.ItemsSource`.
+For UI virtualization, give the host a finite viewport and use an `ItemsControl` template containing
+`ScrollViewer CanContentScroll="True"` with an `ItemsPresenter` as its content.
+Set `VirtualizingStackPanel.IsVirtualizing="True"` and `VirtualizingStackPanel.VirtualizationMode="Recycling"`
+on the `ItemsControl`, and use `WaterfallPanel` as its `ItemsPanel`.
+Do not wrap this host in a vertical `StackPanel` or an outer scroller providing infinite height.
+Without a finite scrolling viewport the panel generates all containers; setting `IsVirtualizing="False"`
+also generates all containers.
+
+Unmeasured items use `EstimatedItemHeight` (default 200). Actual measurements update positions and
+the scroll extent, so distant jumps and asynchronously loaded images may cause layout shifts.
+Reserve a suitable initial height for asynchronous content.
+This is UI, not data, virtualization: metadata storage is O(item count), and layout calculation is
+O(item count × columns). The example includes XAML, MVVM, and a 5000-card virtualization tab.
 
 ### Animation & Effects
 
@@ -407,7 +587,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:EdgeLight` | NuGet | [EdgeLightExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/EdgeLightExample.xaml) | Edge marquee light |
 | <span style="color:#e6a23c">🟡 RainbowButtons</span> | Sample-only | [RainbowButtonsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/RainbowButtonsExample.xaml) | Rainbow buttons |
 | `wd:Shake` | NuGet | [ShakeExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ShakeExample.xaml) | Window shake |
-| <span style="color:#e6a23c">🟡 BubblleControl</span> | Sample-only | [BubblleControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BubblleControlExample.xaml) | Bubble animation |
+| <span style="color:#e6a23c">🟡 BubbleSelection</span> | Sample-only | [BubbleSelectionExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/BubbleSelectionExample.xaml) | Bubble selection sample |
 | `wd:StarrySky` | NuGet | [StarrySkyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/StarrySkyExample.xaml) | Starry sky animation |
 | <span style="color:#e6a23c">🟡 SnowCanvas</span> | Sample-only | [SnowCanvasExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SnowCanvasExample.xaml) | Christmas tree & snow canvas |
 | <span style="color:#e6a23c">🟡 SpeedRockets</span> | Sample-only | [SpeedRocketsExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SpeedRockets/SpeedRocketsExample.xaml) | Speed rocket animation |
@@ -435,7 +615,7 @@ WD provides a set of theme resources you can reference in XAML:
 | `wd:ScreenCut` | NuGet | [ScreenCutExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ScreenCutExample.xaml) | Screen capture (pen / arrow annotation) |
 | `wd:CropImage` | NuGet | [CropImageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CropImageExample.xaml) | Image cropping |
 | `wd:CropAvatar` | NuGet | [CropAvatarExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CropAvatar/CropAvatarExample.xaml) | Avatar cropping selector |
-| <span style="color:#e6a23c">🟡 CropControl</span> | Sample-only | [CropControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CropControlExample.xaml) | Image nine-grid cutter |
+| <span style="color:#e6a23c">🟡 ImageCrop</span> | Sample-only | [ImageCropExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ImageCropExample.xaml) | Image nine-grid tiling effect sample |
 | <span style="color:#e6a23c">🟡 CutImage</span> | Sample-only | [CutImageExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/CutImageExample.xaml) | User avatar cropping solution |
 | `wd:Magnifier` | NuGet | [MagnifierExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MagnifierExample.xaml) | Magnifier |
 
@@ -455,7 +635,7 @@ WD provides a set of theme resources you can reference in XAML:
 | Control | Source | Example File | Description |
 |---------|--------|-------------|-------------|
 | <span style="color:#e6a23c">🟡 ZooSemy</span> | Sample-only | [ZooSemyExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/ZooSemy/ZooSemyExample.xaml) | Skeuomorphic rotary knob (volume) |
-| <span style="color:#e6a23c">🟡 OtherControl</span> | Sample-only | [OtherControlExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtherControlExample.xaml) | Torch & other fun controls |
+| <span style="color:#e6a23c">🟡 Flame</span> | Sample-only | [FlameExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/FlameExample.xaml) | Flame animation |
 | <span style="color:#e6a23c">🟡 Desktop</span> | Sample-only | [DesktopBackground.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Desktop/DesktopBackground.xaml) | Dynamic desktop wallpaper |
 | <span style="color:#e6a23c">🟡 AMap</span> | Sample-only | [BingAMapExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/BingAMapExample.xaml) | Map integration (Bing / AutoNavi) |
 | <span style="color:#e6a23c">🟡 LoginWindow</span> | Sample-only | [LoginExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/LoginWindow/LoginExample.xaml) | Login window template |

@@ -12,6 +12,7 @@ namespace WPFDevelopers.Controls
     public class SvgViewer : Control
     {
         private DrawingBrush _svgBrush;
+        private bool _usesCurrentColor;
         public string Source
         {
             get => (string)GetValue(SourceProperty);
@@ -34,6 +35,11 @@ namespace WPFDevelopers.Controls
         {
             if (string.IsNullOrWhiteSpace(value) || value == "none")
                 return null;
+            if (string.Equals(value, "currentColor", StringComparison.OrdinalIgnoreCase))
+            {
+                _usesCurrentColor = true;
+                return Foreground?.CloneCurrentValue();
+            }
 
             try
             {
@@ -266,6 +272,7 @@ namespace WPFDevelopers.Controls
 
         private void LoadAndRenderSvg()
         {
+            _usesCurrentColor = false;
             if (string.IsNullOrWhiteSpace(Source)) return;
             var extension = Path.GetExtension(Source)?.ToLower();
             if (extension != ".svg")
@@ -359,8 +366,16 @@ namespace WPFDevelopers.Controls
 
         static SvgViewer()
         {
+            ForegroundProperty.OverrideMetadata(typeof(SvgViewer), new FrameworkPropertyMetadata(OnForegroundChanged));
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SvgViewer), new FrameworkPropertyMetadata(typeof(SvgViewer)));
         }
+
+        private static void OnForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is SvgViewer viewer && viewer._usesCurrentColor && !string.IsNullOrWhiteSpace(viewer.Source))
+                viewer.LoadAndRenderSvg();
+        }
+
         protected override void OnRender(DrawingContext dc)
         {
             base.OnRender(dc);

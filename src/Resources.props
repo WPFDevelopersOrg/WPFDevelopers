@@ -80,6 +80,9 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\Svg\*.svg">
 			<Link>Resources\Svg\%(Filename)%(Extension)</Link>
 		</Resource>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Resources\MenuIcons\*.svg">
+			<Link>Resources\MenuIcons\%(Filename)%(Extension)</Link>
+		</Resource>
 	</ItemGroup>
 	<PropertyGroup>
 		<RootNamespace>WPFDevelopers.Samples</RootNamespace>

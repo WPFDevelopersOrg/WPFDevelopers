@@ -7,6 +7,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Helpers;
 using WPFDevelopers.Samples.ExampleViews;
 using WPFDevelopers.Samples.Helpers;
 using MessageBox = WPFDevelopers.Controls.MessageBox;
@@ -21,6 +22,7 @@ namespace WPFDevelopers.Samples
         public MainWindow()
         {
             InitializeComponent();
+            VersionText.Text = "v" + typeof(MainWindow).BaseType.Assembly.GetName().Version.ToString(3);
             Loaded += OnMainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
@@ -33,8 +35,13 @@ namespace WPFDevelopers.Samples
 
         private void ThemeSwitchBtn_Click(object sender, RoutedEventArgs e)
         {
-            var targetTheme = App.Theme == ThemeType.Dark ? ThemeType.Light : ThemeType.Dark;
-            ThemeManager.Instance.SwitchTheme(ThemeSwitchBtn, targetTheme);
+            ToggleTheme(ThemeSwitchBtn);
+        }
+
+        public void ToggleTheme(FrameworkElement source)
+        {
+            var targetTheme = ThemeManager.Instance.Resources.Theme == ThemeType.Dark ? ThemeType.Light : ThemeType.Dark;
+            ThemeManager.Instance.SwitchTheme(source, targetTheme);
             App.Theme = targetTheme;
             SetThemeSource();
             ThemeSwitchBtn.IsChecked = targetTheme == ThemeType.Dark;
@@ -56,7 +63,7 @@ namespace WPFDevelopers.Samples
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            new AboutWindow().Show();
+            new AboutWindow().MaskShowDialog();
         }
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
