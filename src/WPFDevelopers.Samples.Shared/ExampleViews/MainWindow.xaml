@@ -26,10 +26,10 @@
             Orientation="Horizontal">
             <Border
                 Margin="4,0,6,0"
+                Padding="8,3"
                 VerticalAlignment="Center"
                 Background="#33FFFFFF"
-                CornerRadius="9"
-                Padding="8,3">
+                CornerRadius="9">
                 <TextBlock
                     x:Name="VersionText"
                     FontSize="11"
@@ -108,9 +108,10 @@
                     BorderThickness="1"
                     CornerRadius="4"
                     Effect="{StaticResource WD.PopupShadowDepth}">
-                    <StackPanel Margin="4">
+                    <StackPanel Margin="2">
                         <wd:ColorPicker x:Name="ThemeColorPicker" />
                         <StackPanel
+                            Margin="2"
                             HorizontalAlignment="Right"
                             wd:PanelHelper.Spacing="4"
                             Orientation="Horizontal">
@@ -185,11 +186,15 @@
                         Width="34"
                         Height="34"
                         Margin="0,0,6,0"
+                        AutomationProperties.Name="首页 / Home"
                         Command="{Binding ShowHomeCommand}"
                         Style="{StaticResource WD.DefaultButton}"
-                        ToolTip="首页 / Home"
-                        AutomationProperties.Name="首页 / Home">
-                        <wd:PathIcon Width="18" Height="18" Kind="Home" Foreground="{DynamicResource WD.PrimaryBrush}" />
+                        ToolTip="首页 / Home">
+                        <wd:PathIcon
+                            Width="18"
+                            Height="18"
+                            Foreground="{DynamicResource WD.PrimaryBrush}"
+                            Kind="Home" />
                     </Button>
                     <TextBox
                         Name="PART_MenuTextBox"
@@ -213,8 +218,8 @@
                 <controls:NavigateMenu
                     x:Name="NavigateMenu"
                     Grid.Row="2"
-                    SelectedItem="{Binding NavigateMenuItem, Mode=TwoWay}"
-                    ItemsSource="{Binding NavigateMenuModelList}">
+                    ItemsSource="{Binding NavigateMenuModelList}"
+                    SelectedItem="{Binding NavigateMenuItem, Mode=TwoWay}">
                     <controls:NavigateMenu.ItemTemplate>
                         <DataTemplate>
                             <Grid>
