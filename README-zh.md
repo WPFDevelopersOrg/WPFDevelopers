@@ -53,7 +53,8 @@ Install-Package WPFDevelopers -Pre
 
 ## 控件预览
 
-![WPFDevelopers 控件预览](https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls.png)
+![WPFDevelopers 控件预览](https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Light.png)
+![WPFDevelopers 控件预览](https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Dark.png)
 
 完整控件与效果示例仍保留在下方图集中。示例中标注为 `DEMO` 的内容可能是示例专属实现或组合效果，不一定是库内置控件，请以对应源码为准。
 
@@ -201,18 +202,35 @@ xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
 <img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/BasicControls04.gif"/>
 
 ----------
+### Timeline
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/Timeline.gif"/>
+
+----------
+### WaterfallPanel
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/WaterfallPanel.png"/>
+
+----------
+### ScrollNavigation
+
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/ScrollNavigation.png"/>
+
+----------
 ### MapView
 [点击观看 Bilibili 视频教程](https://www.bilibili.com/video/BV1bVhf64EL3/)
+
+[点击观看 Bilibili 视频教程](https://www.bilibili.com/video/BV1Gupn6TEHm/?share_source=copy_web&vd_source=bc7c9998f5e2839230e0b66110ee1268)
 
 ----------
 ### MarkdownViewer
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/MarkdownViewer.gif"/>
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/MarkdownViewer.gif"/>
 
 ----------
 ### SwitchTheme
 
-<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/SwitchTheme.gif"/>
+<img src="https://gitee.com/WPFDevelopersOrg/MarkDownBlog/raw/master/resources/WPFDevelopersResource/SwitchTheme.gif"/>
 
 ----------
 ### CircleMenu
