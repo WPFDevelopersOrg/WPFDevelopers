@@ -12,39 +12,46 @@
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <Grid>
-            <UniformGrid
-                Grid.Row="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                wd:PanelHelper.Spacing="10"
-                Rows="2">
-                <TextBlock VerticalAlignment="Center" Text="TitleBarMode:" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="BtnNormal_Click"
-                    Content="Normal"
-                    Style="{DynamicResource WD.PrimaryButton}" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="BtnHighTitleBar_Click"
-                    Content="HighTitleBar"
-                    Style="{DynamicResource WD.SuccessDefaultButton}" />
-                <TextBlock VerticalAlignment="Center" Text="HighTitleBar &amp; NoChrome = True:" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="Button_Click"
-                    Content="ToolWindow"
-                    Style="{DynamicResource WD.PrimaryButton}" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="ButtonNone_Click"
-                    Content="NoneTitleBarWindow"
-                    Style="{DynamicResource WD.DangerPrimaryButton}" />
-            </UniformGrid>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock
+                    Margin="0,0,0,16"
+                    HorizontalAlignment="Center"
+                    Text="Normal / HighTitleBar: TitleBarLayout + Light / Dark" />
+                <UniformGrid
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    wd:PanelHelper.Spacing="10"
+                    Rows="2">
+                    <TextBlock VerticalAlignment="Center" Text="TitleBarMode:" />
+                    <Button
+                        wd:ElementHelper.CornerRadius="3"
+                        Click="BtnNormal_Click"
+                        Content="Normal"
+                        Style="{DynamicResource WD.PrimaryButton}" />
+                    <Button
+                        wd:ElementHelper.CornerRadius="3"
+                        Click="BtnHighTitleBar_Click"
+                        Content="HighTitleBar"
+                        Style="{DynamicResource WD.SuccessDefaultButton}" />
+                    <TextBlock VerticalAlignment="Center" Text="HighTitleBar &amp; NoChrome = True:" />
+                    <Button
+                        wd:ElementHelper.CornerRadius="3"
+                        Click="Button_Click"
+                        Content="ToolWindow"
+                        Style="{DynamicResource WD.PrimaryButton}" />
+                    <Button
+                        wd:ElementHelper.CornerRadius="3"
+                        Click="ButtonNone_Click"
+                        Content="NoneTitleBarWindow"
+                        Style="{DynamicResource WD.DangerPrimaryButton}" />
+                </UniformGrid>
+            </StackPanel>
         </Grid>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml" CodeType="Xaml" Haader="Normal Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml.cs" CodeType="CSharp" Haader="Normal CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml" CodeType="Xaml" Haader="HighTitleBar Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml.cs" CodeType="CSharp" Haader="HighTitleBar CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>
