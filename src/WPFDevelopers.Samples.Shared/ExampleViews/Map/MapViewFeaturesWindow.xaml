@@ -209,27 +209,18 @@
             IsOpen="True"
             Position="Right">
             <wd:Drawer.Header>
-                <Border
-                    Width="292"
-                    Background="White"
-                    BorderBrush="#FFDCE3EC"
-                    BorderThickness="1,0,0,0">
+                <Border Width="292" BorderThickness="1,0,0,0">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="10,0">
                             <TextBlock
                                 FontSize="20"
                                 FontWeight="SemiBold"
-                                Foreground="#FF111827"
                                 Text="功能设置" />
-                            <TextBlock
-                                Margin="0,4,0,18"
-                                Foreground="#FF64748B"
-                                Text="实时切换 MapView 常用能力" />
+                            <TextBlock Margin="0,4,0,18" Text="实时切换 MapView 常用能力" />
 
                             <TextBlock
                                 Margin="0,0,0,8"
                                 FontWeight="SemiBold"
-                                Foreground="#FF334155"
                                 Text="地图源" />
                             <wd:Segmented
                                 x:Name="MapStyleSegmented"
@@ -285,7 +276,7 @@
 
                             <Separator Margin="0,18" />
 
-                            <TextBlock Foreground="#FF334155" Text="聚合半径" />
+                            <TextBlock Text="聚合半径" />
                             <Grid Margin="0,6,0,16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -302,11 +293,10 @@
                                     Grid.Column="1"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Center"
-                                    Foreground="#FF475569"
                                     Text="{Binding Value, ElementName=ClusterRadiusSlider, StringFormat={}{0:0}}" />
                             </Grid>
 
-                            <TextBlock Foreground="#FF334155" Text="最小聚合数量" />
+                            <TextBlock Text="最小聚合数量" />
                             <Grid Margin="0,6,0,18">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -324,48 +314,34 @@
                                     Grid.Column="1"
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Center"
-                                    Foreground="#FF475569"
                                     Text="{Binding Value, ElementName=ClusterMinimumSlider, StringFormat={}{0:0}}" />
                             </Grid>
 
                             <TextBlock
                                 Margin="0,0,0,8"
                                 FontWeight="SemiBold"
-                                Foreground="#FF334155"
                                 Text="示例包含" />
-                            <TextBlock
-                                Foreground="#FF64748B"
-                                LineHeight="22"
-                                Text="默认 Pushpin与自定义 Pushpin&#x0a;ClusterTemplate 与 99+ 数量显示&#x0a;折线、多边形与动态点集合&#x0a;比例尺、诊断信息与点击缩放" />
+                            <TextBlock LineHeight="22" Text="默认 Pushpin与自定义 Pushpin&#x0a;ClusterTemplate 与 99+ 数量显示&#x0a;折线、多边形与动态点集合&#x0a;比例尺、诊断信息与点击缩放" />
 
                             <Border
                                 Margin="0,16,0,0"
                                 Padding="10"
-                                Background="#F8FAFC"
-                                BorderBrush="#FFE2E8F0"
                                 BorderThickness="1"
                                 CornerRadius="8">
                                 <StackPanel>
                                     <TextBlock
                                         Margin="0,0,0,8"
                                         FontWeight="SemiBold"
-                                        Foreground="#FF334155"
                                         Text="坐标转换演示" />
 
-                                    <TextBlock
-                                        Margin="0,0,0,6"
-                                        Foreground="#FF475569"
-                                        Text="来源坐标系" />
+                                    <TextBlock Margin="0,0,0,6" Text="来源坐标系" />
                                     <wd:Segmented x:Name="CoordinateSourceSegmented" SelectedIndex="0">
                                         <wd:SegmentedItem Content="WGS84" />
                                         <wd:SegmentedItem Content="GCJ02" />
                                         <wd:SegmentedItem Content="BD09" />
                                     </wd:Segmented>
 
-                                    <TextBlock
-                                        Margin="0,10,0,6"
-                                        Foreground="#FF475569"
-                                        Text="目标坐标系" />
+                                    <TextBlock Margin="0,10,0,6" Text="目标坐标系" />
                                     <wd:Segmented x:Name="CoordinateTargetSegmented" SelectedIndex="1">
                                         <wd:SegmentedItem Content="WGS84" />
                                         <wd:SegmentedItem Content="GCJ02" />
@@ -383,18 +359,12 @@
                                         </Grid.RowDefinitions>
 
                                         <StackPanel Grid.Column="0" Margin="0,0,6,0">
-                                            <TextBlock
-                                                Margin="0,0,0,4"
-                                                Foreground="#FF475569"
-                                                Text="经度" />
+                                            <TextBlock Margin="0,0,0,4" Text="经度" />
                                             <TextBox x:Name="CoordinateLongitudeTextBox" Text="116.397428" />
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="1" Margin="6,0,0,0">
-                                            <TextBlock
-                                                Margin="0,0,0,4"
-                                                Foreground="#FF475569"
-                                                Text="纬度" />
+                                            <TextBlock Margin="0,0,0,4" Text="纬度" />
                                             <TextBox x:Name="CoordinateLatitudeTextBox" Text="39.909230" />
                                         </StackPanel>
 
@@ -410,12 +380,10 @@
                                     <TextBlock
                                         Margin="0,12,0,0"
                                         FontWeight="SemiBold"
-                                        Foreground="#FF334155"
                                         Text="结果" />
                                     <TextBlock
                                         x:Name="CoordinateConvertResultTextBlock"
                                         Margin="0,6,0,0"
-                                        Foreground="#FF0F172A"
                                         LineHeight="20"
                                         Text="WGS84 -&gt; GCJ02" />
                                 </StackPanel>
@@ -430,7 +398,6 @@
                             <TextBlock
                                 Margin="0,0,0,8"
                                 FontWeight="SemiBold"
-                                Foreground="#FF334155"
                                 Text="ShapeZIndex 演示" />
                             <Button
                                 Margin="0,0,0,8"
@@ -445,7 +412,6 @@
                             <TextBlock
                                 Margin="0,0,0,8"
                                 FontWeight="SemiBold"
-                                Foreground="#FF334155"
                                 Text="跑步演示" />
                             <Button
                                 Margin="0,0,0,8"
@@ -474,7 +440,7 @@
             </wd:Drawer.Header>
 
             <wd:Drawer.Content>
-                <Grid Background="#FFF3F6FA">
+                <Grid>
                     <Grid>
                         <wd:MapView
                             x:Name="DemoMap"
@@ -579,12 +545,12 @@
                                 <TextBlock
                                     FontSize="16"
                                     FontWeight="SemiBold"
-                                    Foreground="#FF111827"
+                                    Foreground="#FF334155"
                                     Text="MapView 综合功能" />
                                 <TextBlock
                                     Margin="0,3,0,0"
                                     FontSize="12"
-                                    Foreground="#FF64748B"
+                                    Foreground="#FF334155"
                                     Text="拖动、滚轮缩放并点击点位查看效果" />
                                 <TextBlock
                                     Margin="0,8,0,0"
@@ -595,7 +561,7 @@
                                     x:Name="FeatureClickInfoTextBlock"
                                     Margin="0,8,0,0"
                                     FontSize="11"
-                                    Foreground="#FF0F172A"
+                                    Foreground="#FF334155"
                                     Text="点击点、线、面查看命中结果" />
                                 <TextBlock
                                     Margin="0,8,0,0"
@@ -606,7 +572,7 @@
                                     x:Name="MapClickInfoTextBlock"
                                     Margin="0,4,0,0"
                                     FontSize="11"
-                                    Foreground="#FF0F172A"
+                                    Foreground="#FF334155"
                                     Text="点击地图获取坐标" />
                             </StackPanel>
                         </Border>
