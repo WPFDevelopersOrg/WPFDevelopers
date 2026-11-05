@@ -75,6 +75,7 @@
                                         MaxWidth="500"
                                         Padding="10,0"
                                         VerticalAlignment="Center"
+                                        Background="{DynamicResource WD.BackgroundBrush}"
                                         BorderThickness="0"
                                         FontSize="{DynamicResource WD.PrimaryFontSize}"
                                         Foreground="{DynamicResource WD.RegularTextBrush}"
