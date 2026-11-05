@@ -92,7 +92,7 @@
                     <Border
                         x:Name="SubmenuBorder"
                         Background="{DynamicResource WD.BackgroundBrush}"
-                        BorderBrush="{DynamicResource WD.ControlBorderBrush}"
+                        BorderBrush="{DynamicResource WD.BaseBrush}"
                         BorderThickness="1"
                         CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
@@ -311,7 +311,7 @@
                         <Border
                             x:Name="SubmenuBorder"
                             Background="{DynamicResource WD.BackgroundBrush}"
-                            BorderBrush="{DynamicResource WD.ControlBorderBrush}"
+                            BorderBrush="{DynamicResource WD.BaseBrush}"
                             BorderThickness="1"
                             CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                             SnapsToDevicePixels="True">
