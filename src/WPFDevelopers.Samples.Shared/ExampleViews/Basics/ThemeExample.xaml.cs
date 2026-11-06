@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using WPFDevelopers.Controls;
+using WPFDevelopers.Core;
 using WPFDevelopers.Helpers;
 
 namespace WPFDevelopers.Samples.ExampleViews.Basics
@@ -14,13 +14,6 @@ namespace WPFDevelopers.Samples.ExampleViews.Basics
         public ThemeExample()
         {
             InitializeComponent();
-            Loaded += ThemeExample_Loaded;
-        }
-
-        private void ThemeExample_Loaded(object sender, RoutedEventArgs e)
-        {
-            App.Theme = ThemeManager.Instance.Resources.Theme;
-            PART_Segmented.SelectedIndex = ThemeManager.Instance.Resources.Theme == ThemeType.Light ? 0 : 1;
         }
         
         private void ComboBoxLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -50,12 +43,5 @@ namespace WPFDevelopers.Samples.ExampleViews.Basics
             e.Handled = true;
         }
 
-        private void Segmented_ItemClick(object sender, RoutedEventArgs e)
-        {
-            var segmented = sender as Segmented;
-            var theme = segmented.SelectedIndex == 0 ? ThemeType.Light : ThemeType.Dark;
-            App.Theme = theme;
-            ThemeManager.Instance.SwitchTheme(PART_Segmented, theme);
-        }
     }
 }

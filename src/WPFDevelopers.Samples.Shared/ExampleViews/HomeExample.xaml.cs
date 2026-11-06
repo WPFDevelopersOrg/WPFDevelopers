@@ -19,7 +19,6 @@ namespace WPFDevelopers.Samples.ExampleViews
     {
         private CancellationTokenSource _statisticsRequest;
         private bool _statisticsLoaded;
-        private bool _synchronizingTheme;
 
         public HomeExample()
         {
@@ -31,16 +30,12 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void HomeExample_Loaded(object sender, RoutedEventArgs e)
         {
-            WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
-            WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
-            SynchronizeTheme();
             if (!_statisticsLoaded)
                 RefreshStatistics();
         }
 
         private void HomeExample_Unloaded(object sender, RoutedEventArgs e)
         {
-            WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
             if (_statisticsRequest == null)
                 return;
 
@@ -194,38 +189,6 @@ namespace WPFDevelopers.Samples.ExampleViews
         {
             LinkError.Text = "无法打开链接：" + error.Message;
             LinkError.Visibility = Visibility.Visible;
-        }
-
-        private void Segmented_ItemClick(object sender, RoutedEventArgs e)
-        {
-            if (_synchronizingTheme) return;
-            var segmented = sender as Segmented;
-            var theme = segmented.SelectedIndex == 0 ? ThemeType.Light : ThemeType.Dark;
-            if (ThemeManager.Instance.Resources.Theme == theme) return;
-            App.Theme = theme;
-            ThemeManager.Instance.SwitchTheme(PART_Segmented, theme);
-            SynchronizeTheme();
-        }
-
-        private void Resources_ThemeChanged(ThemeType currentTheme)
-        {
-            SynchronizeTheme();
-        }
-
-        private void SynchronizeTheme()
-        {
-            var theme = ThemeManager.Instance.Resources.Theme;
-            _synchronizingTheme = true;
-            try
-            {
-                PART_Segmented.SelectedIndex = theme == ThemeType.Dark ? 1 : 0;
-                SegmentedLight.IsChecked = theme != ThemeType.Dark;
-                SegmentedDark.IsChecked = theme == ThemeType.Dark;
-            }
-            finally
-            {
-                _synchronizingTheme = false;
-            }
         }
 
         private sealed class MetricResult
