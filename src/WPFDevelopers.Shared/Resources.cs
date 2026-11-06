@@ -24,7 +24,6 @@ namespace WPFDevelopers
 
         public static event ThemeChangedEvent ThemeChanged;
 
-        private static bool _hasRadiusSetByUser;
         private static int _publishInProgress;
 
         private int _initCount;
@@ -40,6 +39,8 @@ namespace WPFDevelopers
                 InitializeTheme(value);
             }
         }
+
+        public bool IsDarkTheme => Theme == ThemeType.Dark;
 
         private Color _color;
         public Color Color
@@ -67,7 +68,6 @@ namespace WPFDevelopers
             {
                 _radius = value;
                 _radiusSet = true;
-                _hasRadiusSetByUser = true;
                 ElementHelper.OverrideCornerRadius(value);
             }
         }
@@ -380,7 +380,7 @@ namespace WPFDevelopers
                             &&
                             TryFindResource<Color>(GenerateColorResourceKey("Base")) is Color colorBase
                             &&
-                            Theme == ThemeType.Dark)
+                            IsDarkTheme)
                             tempColor = colorBase;
                         ThemeManager.Instance.ColorCache[newColor][keyTuple] = tempColor;
                         newColor = tempColor;
@@ -393,10 +393,10 @@ namespace WPFDevelopers
         void SetResourceColorAndBrush(string key, Color color)
         {
             UpdateResource(key, color);
-            var newBrush = new SolidColorBrush(color);
+            var brushKey = key.Replace("Color", "Brush");
+            Brush newBrush = new SolidColorBrush(color);
             newBrush.Freeze();
-            var keyBrush = key.Replace("Color", "Brush");
-            UpdateResource(keyBrush, newBrush);
+            UpdateResource(brushKey, newBrush);
         }
 
         void UpdateResource(string key, object value)
