@@ -90,7 +90,7 @@ namespace WPFDevelopers.Net40
 
         private void Resources_ThemeChanged(ThemeType currentTheme)
         {
-            var isDark = currentTheme == ThemeType.Dark ? true : false;
+            var isDark = currentTheme == ThemeType.Dark;
             var source = (HwndSource)PresentationSource.FromVisual(this);
             Win32.EnableDarkModeForWindow(source, isDark);
         }
@@ -187,7 +187,7 @@ namespace WPFDevelopers.Net40
             source.AddHook(WindowProc);
             var resources = ThemeManager.Instance.Resources;
             if (resources != null)
-                Win32.EnableDarkModeForWindow(source, resources.Theme == ThemeType.Dark);
+                Win32.EnableDarkModeForWindow(source, resources.IsDarkTheme);
         }
 
         protected override void OnContentRendered(EventArgs e)
