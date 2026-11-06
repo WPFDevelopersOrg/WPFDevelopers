@@ -48,8 +48,8 @@ namespace WPFDevelopers.Controls
             msg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             if (owner != null)
             {
-                msg.CreateMask();
                 msg.Owner = owner;
+                msg.CreateMask();
                 msg.ShowDialog();
             }
             else
@@ -59,8 +59,8 @@ namespace WPFDevelopers.Controls
                 {
                     if (win.WindowState == WindowState.Minimized)
                         msg.BorderThickness = new Thickness(1);
-                    msg.CreateMask();
                     msg.Owner = win;
+                    msg.CreateMask();
                     msg.ShowDialog();
                 }
                 else
