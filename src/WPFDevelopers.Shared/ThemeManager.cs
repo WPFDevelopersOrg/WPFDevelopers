@@ -72,8 +72,7 @@ namespace WPFDevelopers
         {
             if (_themeAnimating) return;
             _themeAnimating = true;
-
-            var window = Application.Current.MainWindow;
+            var window = Window.GetWindow(source);
             if (window == null) { _themeAnimating = false; return; }
 
             var layoutRoot = ControlsHelper.FindVisualChild<Grid>(window);
