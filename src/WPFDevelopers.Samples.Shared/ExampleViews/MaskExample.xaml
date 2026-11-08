@@ -12,7 +12,15 @@
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
         <StackPanel Margin="10">
-            <ToggleButton Name="ToggleButtonMask" />
+            <TextBlock
+                Margin="0,0,0,8"
+                FontSize="16"
+                FontWeight="SemiBold"
+                Text="控件遮罩（Mask.IsShow）" />
+            <ToggleButton
+                Name="ToggleButtonMask"
+                HorizontalAlignment="Left"
+                Content="显示控件遮罩" />
             <Border
                 Height="200"
                 Margin="10"
@@ -28,15 +36,23 @@
                     VerticalAlignment="Center"
                     Content="Mask" />
             </Border>
+            <TextBlock
+                Margin="0,12,0,4"
+                FontSize="16"
+                FontWeight="SemiBold"
+                Text="窗口遮罩" />
+            <TextBlock
+                Margin="0,0,0,10"
+                Text="分别以模态和非模态方式打开窗口，并在当前窗口上显示遮罩。" />
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button
                     Click="Button_Click"
-                    Content="MaskShowDialog"
+                    Content="模态显示（MaskShowDialog）"
                     Style="{StaticResource WD.DangerPrimaryButton}" />
                 <Button
                     Margin="10,0"
                     Click="Button_Click_1"
-                    Content="MaskShow" />
+                    Content="非模态显示（MaskShow）" />
             </StackPanel>
 
         </StackPanel>
