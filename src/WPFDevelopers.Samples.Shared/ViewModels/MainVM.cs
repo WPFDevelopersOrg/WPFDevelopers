@@ -51,6 +51,7 @@ namespace WPFDevelopers.Samples.ViewModels
             nameof(MenuEnum.Expander),
             nameof(MenuEnum.GroupBox),
             nameof(MenuEnum.TabControl),
+            nameof(MenuEnum.ScrollViewer),
             nameof(MenuEnum.TaskbarInfo),
         };
 
