@@ -1,0 +1,107 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Controls"
+    xmlns:resx="clr-namespace:WPFDevelopers">
+    <Style x:Key="WD.Dialog" TargetType="{x:Type controls:Dialog}">
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Padding" Value="28,20" />
+        <Setter Property="FontSize" Value="{StaticResource WD.MediumFontSize}" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:Dialog}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Margin="28,28,28,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Margin="0,0,10,0"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Text="{TemplateBinding Title}"
+                                TextTrimming="CharacterEllipsis" />
+                            <Button
+                                x:Name="PART_CloseButton"
+                                Grid.Column="1"
+                                Width="32"
+                                Height="32"
+                                Padding="0"
+                                VerticalAlignment="Center"
+                                Command="{x:Static controls:Dialog.CloseCommand}"
+                                Style="{DynamicResource WD.NormalButton}"
+                                ToolTip="{Binding [Close], Source={x:Static resx:LanguageManager.Instance}}">
+                                <Path
+                                    Width="14"
+                                    Height="14"
+                                    Data="{StaticResource WD.WindowCloseGeometry}"
+                                    Fill="{TemplateBinding Foreground}"
+                                    Stretch="Fill" />
+                            </Button>
+                        </Grid>
+                        <ScrollViewer
+                            Grid.Row="1"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalScrollBarVisibility="Auto"
+                            VerticalScrollBarVisibility="Auto">
+                            <ContentPresenter
+                                x:Name="PART_ContentPresenter"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding DisplayContent}" />
+                        </ScrollViewer>
+                        <Border
+                            x:Name="PART_Footer"
+                            Grid.Row="2"
+                            Padding="20,0,20,16">
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <Button
+                                    x:Name="PART_ConfirmButton"
+                                    Height="34"
+                                    MinWidth="76"
+                                    Padding="12,0"
+                                    Command="{x:Static controls:Dialog.ConfirmCommand}"
+                                    Content="{TemplateBinding ConfirmText}"
+                                    IsDefault="True"
+                                    IsEnabled="{TemplateBinding IsConfirmEnabled}"
+                                    Style="{DynamicResource WD.PrimaryButton}" />
+                                <Button
+                                    x:Name="PART_CancelButton"
+                                    Height="34"
+                                    MinWidth="76"
+                                    Margin="10,0,0,0"
+                                    Padding="12,0"
+                                    Command="{x:Static controls:Dialog.CancelCommand}"
+                                    Content="{TemplateBinding CancelText}" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ConfirmText" Value="{x:Null}">
+                            <Setter TargetName="PART_ConfirmButton" Property="Content" Value="{Binding [OK], Source={x:Static resx:LanguageManager.Instance}}" />
+                        </Trigger>
+                        <Trigger Property="CancelText" Value="{x:Null}">
+                            <Setter TargetName="PART_CancelButton" Property="Content" Value="{Binding [Cancel], Source={x:Static resx:LanguageManager.Instance}}" />
+                        </Trigger>
+                        <Trigger Property="ShowFooter" Value="False">
+                            <Setter TargetName="PART_Footer" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource WD.Dialog}" TargetType="{x:Type controls:Dialog}" />
+
+</ResourceDictionary>

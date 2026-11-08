@@ -89,6 +89,7 @@ namespace WPFDevelopers.Samples.ViewModels
 
         private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
         {
+            MenuEnum.Dialog,
             MenuEnum.ScrollNavigation,
             MenuEnum.Timeline,
             MenuEnum.Carousel,
@@ -1003,6 +1004,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.Timeline:
                     ControlPanel = new TimelineExample();
+                    break;
+                case MenuEnum.Dialog:
+                    ControlPanel = new DialogExample();
                     break;
                 //新的添加到上方
                 case MenuEnum.VirtualizingWrapPanel:

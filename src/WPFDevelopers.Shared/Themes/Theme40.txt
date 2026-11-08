@@ -71,6 +71,7 @@ IPEditBox.xaml
 OtpBox.xaml
 TimePicker.xaml
 Drawer.xaml
+Dialog.xaml
 DateRangePicker.xaml
 Tag.xaml
 SplitButton.xaml
