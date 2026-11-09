@@ -1,4 +1,4 @@
-﻿using Microsoft.Expression.Drawing.Core;
+using Microsoft.Expression.Drawing.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -210,12 +210,12 @@ namespace WPFDevelopers.Samples.ViewModels
             get { return _segmentedSelectedIndex; }
             set
             {
+                if (_segmentedSelectedIndex == value) return;
                 _segmentedSelectedIndex = value;
                 NotifyPropertyChange("SegmentedSelectedIndex");
+                ShowHome();
                 NavigateMenuModelList = value == 1 ? _basicMenuModelList : _customMenuModelList;
                 ApplySearchFilter();
-                if (NavigateMenuModelList.Count > 0)
-                    NavigateMenuItem = NavigateMenuModelList.FirstOrDefault(y => y.IsVisible);
             }
         }
 
@@ -287,6 +287,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     iconName = "Palette";
                     break;
                 case MenuEnum.MessageBox:
+                case MenuEnum.Dialog:
                 case MenuEnum.Toast:
                 case MenuEnum.ChatEmoji:
                 case MenuEnum.Barrage:
@@ -547,18 +548,15 @@ namespace WPFDevelopers.Samples.ViewModels
 
         private void UpdateMenuDisplayNames()
         {
-            var culture = LanguageManager.Instance.CurrentCulture;
-            var isChinese = culture.TwoLetterISOLanguageName == "zh";
+            var localizer = SampleLanguageManager.Instance;
             NotifyPropertyChange(nameof(IsChineseLanguage));
-            SearchWatermark = isChinese ? "搜索控件" : "Search Control";
-            CustomMenuLabel = isChinese ? "自定义" : "Custom";
-            BasicMenuLabel = isChinese ? "基础控件" : "Basic";
-            DemoBadgeToolTip = isChinese
-                ? "示例专属实现或组合效果，非 WD 内置控件；请参考示例源码。"
-                : "Sample-only implementation or composition, not a built-in WD control. See the sample source.";
+            SearchWatermark = localizer.TranslateText("搜索控件");
+            CustomMenuLabel = localizer.TranslateText("自定义");
+            BasicMenuLabel = localizer.TranslateText("基础控件");
+            DemoBadgeToolTip = localizer.TranslateText("示例专属实现或组合效果，非 WD 内置控件；请参考示例源码。");
 
             foreach (var item in _customMenuModelList.Concat(_basicMenuModelList))
-                item.DisplayName = MenuNameLocalizer.GetDisplayName(item.Name, culture);
+                item.DisplayName = MenuNameLocalizer.GetDisplayName(item.Name);
 
             ApplySearchFilter();
         }
@@ -707,6 +705,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.MessageBox:
                     ControlPanel = new MessageBoxExample();
                     break;
+               
                 case MenuEnum.NotifyIcon:
                     ControlPanel = new NotifyIconExample();
                     break;

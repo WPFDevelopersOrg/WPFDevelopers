@@ -3,31 +3,50 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:resx="clr-namespace:WPFDevelopers;assembly=WPFDevelopers"
     xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
     <StackPanel wd:PanelHelper.Spacing="12">
         <TextBlock
+            x:Name="PersonalizationLabel"
             FontSize="18"
             FontWeight="SemiBold"
             Text="个性化" />
-        <TextBlock Text="主题色" />
+        <TextBlock x:Name="ThemeColorLabel" Text="主题色" />
         <controls:Theme HorizontalAlignment="Left" />
         <wd:Segmented
             x:Name="ThemeSelector"
             HorizontalAlignment="Left"
             wd:ElementHelper.CornerRadius="18"
             ItemClick="ThemeSelector_ItemClick">
-            <wd:SegmentedItem Padding="14,8" ToolTip="Light">
-                <wd:PathIcon
-                    Width="18"
-                    Height="18"
-                    Data="F0 M12,5 A7,7 0 1 1 12,19 A7,7 0 1 1 12,5 Z M12,6.5 A5.5,5.5 0 1 1 12,17.5 A5.5,5.5 0 1 1 12,6.5 Z M11.25,0 H12.75 V3 H11.25 Z M11.25,21 H12.75 V24 H11.25 Z M0,11.25 H3 V12.75 H0 Z M21,11.25 H24 V12.75 H21 Z M3,4 L4,3 6,5 5,6 Z M18,19 L19,18 21,20 20,21 Z M3,20 L5,18 6,19 4,21 Z M18,5 L20,3 21,4 19,6 Z" />
+            <wd:SegmentedItem Padding="14,8" ToolTip="{Binding [FollowSystem], Source={x:Static resx:LanguageManager.Instance}}">
+                <Path Width="18" Height="18" Data="{DynamicResource WD.SystemThemeGeometry}" Stroke="{DynamicResource WD.PrimaryTextBrush}" StrokeThickness="1.1" Stretch="Uniform" />
             </wd:SegmentedItem>
-            <wd:SegmentedItem Padding="14,8" ToolTip="Dark">
+            <wd:SegmentedItem Padding="14,8" ToolTip="{Binding [LightMode], Source={x:Static resx:LanguageManager.Instance}}">
                 <wd:PathIcon
                     Width="18"
                     Height="18"
-                    Data="M12 2a10 10 0 1 0 10 10A7 7 0 0 1 12 2Z" />
+                    Kind="Sun" />
+            </wd:SegmentedItem>
+            <wd:SegmentedItem Padding="14,8" ToolTip="{Binding [DarkMode], Source={x:Static resx:LanguageManager.Instance}}">
+                <Path
+                    Width="18"
+                    Height="18"
+                    Data="{DynamicResource WD.MoonGeometry}"
+                    Stroke="{DynamicResource WD.PrimaryTextBrush}"
+                    StrokeThickness="1.1"
+                    StrokeLineJoin="Round"
+                    Stretch="Uniform" />
             </wd:SegmentedItem>
         </wd:Segmented>
+        <TextBlock x:Name="LanguageLabel" Text="Languages" />
+        <ComboBox
+            x:Name="LanguageSelector"
+            MinWidth="140"
+            HorizontalAlignment="Left"
+            SelectionChanged="LanguageSelector_SelectionChanged">
+            <ComboBoxItem Tag="zh-CN">中文</ComboBoxItem>
+            <ComboBoxItem Tag="en-US">English</ComboBoxItem>
+            <ComboBoxItem Tag="ko-KR">한국어</ComboBoxItem>
+        </ComboBox>
     </StackPanel>
 </UserControl>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -14,16 +13,9 @@ namespace WPFDevelopers.Samples.ExampleViews.Basics
         public ThemeExample()
         {
             InitializeComponent();
+            SampleLanguageManager.Instance.RegisterExampleView(this);
         }
         
-        private void ComboBoxLanguages_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (!(sender is ComboBox cBox)) return;
-            if (!(cBox.SelectedItem is ComboBoxItem item)) return;
-            var tag = item.Tag.ToString();
-            if (LanguageManager.Instance.CurrentCulture.Name != tag)
-                LanguageManager.Instance.ChangeLanguage(new CultureInfo(tag));
-        }
         private void GithubHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));

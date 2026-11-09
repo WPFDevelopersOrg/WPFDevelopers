@@ -1,0 +1,2511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="安装 NuGet 包后，在 App.xaml 中引入主题和 wd:Resources；从左侧菜单浏览控件和示例源码。" xml:space="preserve">
+    <value>NuGet 패키지를 설치한 뒤 App.xaml에 테마와 wd:Resources를 추가하고 왼쪽 메뉴에서 컨트롤과 샘플 소스 코드를 살펴보세요.</value>
+  </data>
+  <data name="按钮样式 --" xml:space="preserve">
+    <value>버튼 스타일 --</value>
+  </data>
+  <data name="按下加速~喵 (゜-゜)つロ" xml:space="preserve">
+    <value>길게 눌러 가속~ 야옹 (゜-゜)つロ</value>
+  </data>
+  <data name="保存" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="保存图片" xml:space="preserve">
+    <value>이미지 저장</value>
+  </data>
+  <data name="背景色 --" xml:space="preserve">
+    <value>배경색 --</value>
+  </data>
+  <data name="背景图 --" xml:space="preserve">
+    <value>배경 이미지 --</value>
+  </data>
+  <data name="本页只创建一个示例图标，与主窗口图标独立。离开页面会自动移除，重新进入不会累积。" xml:space="preserve">
+    <value>이 페이지는 기본 창 아이콘과 별도로 샘플 아이콘 하나를 만듭니다. 페이지를 나가면 자동으로 제거되므로 다시 들어와도 중복되지 않습니다.</value>
+  </data>
+  <data name="标识 --" xml:space="preserve">
+    <value>식별자 --</value>
+  </data>
+  <data name="标题栏 --" xml:space="preserve">
+    <value>제목 표시줄 --</value>
+  </data>
+  <data name="标题栏工具区" xml:space="preserve">
+    <value>제목 표시줄 도구 영역</value>
+  </data>
+  <data name="标准" xml:space="preserve">
+    <value>표준</value>
+  </data>
+  <data name="标准菜单 ContextMenu" xml:space="preserve">
+    <value>표준 ContextMenu</value>
+  </data>
+  <data name="标准地图" xml:space="preserve">
+    <value>일반 지도</value>
+  </data>
+  <data name="标准音质" xml:space="preserve">
+    <value>표준 음질</value>
+  </data>
+  <data name="播放/暂停" xml:space="preserve">
+    <value>재생/일시 정지</value>
+  </data>
+  <data name="播放相关" xml:space="preserve">
+    <value>재생</value>
+  </data>
+  <data name="不显示按钮组" xml:space="preserve">
+    <value>버튼 그룹 숨기기</value>
+  </data>
+  <data name="裁剪区域比例:" xml:space="preserve">
+    <value>자르기 영역 비율:</value>
+  </data>
+  <data name="操作反馈" xml:space="preserve">
+    <value>작업 피드백</value>
+  </data>
+  <data name="车辆轨迹" xml:space="preserve">
+    <value>차량 경로</value>
+  </data>
+  <data name="抽屉从底部滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>서랍이 아래쪽에서 나타납니다. 오버레이를 클릭하면 닫힙니다.</value>
+  </data>
+  <data name="抽屉从顶部置滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>서랍이 위쪽에서 나타납니다. 오버레이를 클릭하면 닫힙니다.</value>
+  </data>
+  <data name="抽屉从右侧滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>서랍이 오른쪽에서 나타납니다. 오버레이를 클릭하면 닫힙니다.</value>
+  </data>
+  <data name="抽屉从左侧滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>서랍이 왼쪽에서 나타납니다. 오버레이를 클릭하면 닫힙니다.</value>
+  </data>
+  <data name="触发器 --" xml:space="preserve">
+    <value>트리거 --</value>
+  </data>
+  <data name="窗口样式 --" xml:space="preserve">
+    <value>창 스타일 --</value>
+  </data>
+  <data name="窗口遮罩" xml:space="preserve">
+    <value>창 오버레이</value>
+  </data>
+  <data name="窗体抖动" xml:space="preserve">
+    <value>창 흔들기</value>
+  </data>
+  <data name="创建示例图标" xml:space="preserve">
+    <value>샘플 아이콘 만들기</value>
+  </data>
+  <data name="此外，通过 Radius 属性可控制控件的圆角大小（Windows 11 默认为 4），" xml:space="preserve">
+    <value>Radius 속성으로 컨트롤 모서리의 둥근 정도를 조절할 수도 있습니다(Windows 11 기본값은 4).</value>
+  </data>
+  <data name="错误 Error" xml:space="preserve">
+    <value>오류</value>
+  </data>
+  <data name="打开 Avalonia 版本 AtomGit 仓库" xml:space="preserve">
+    <value>Avalonia AtomGit 저장소 열기</value>
+  </data>
+  <data name="打开 Avalonia 版本 Gitee 仓库" xml:space="preserve">
+    <value>Avalonia Gitee 저장소 열기</value>
+  </data>
+  <data name="打开 Avalonia 版本 GitHub 仓库" xml:space="preserve">
+    <value>Avalonia GitHub 저장소 열기</value>
+  </data>
+  <data name="打开 Avalonia 版本 NuGet 包" xml:space="preserve">
+    <value>Avalonia NuGet 패키지 열기</value>
+  </data>
+  <data name="打开 WPF 版本 AtomGit 仓库" xml:space="preserve">
+    <value>WPF AtomGit 저장소 열기</value>
+  </data>
+  <data name="打开 WPF 版本 Gitee 仓库" xml:space="preserve">
+    <value>WPF Gitee 저장소 열기</value>
+  </data>
+  <data name="打开 WPF 版本 GitHub 仓库" xml:space="preserve">
+    <value>WPF GitHub 저장소 열기</value>
+  </data>
+  <data name="打开 WPF 版本 NuGet 包" xml:space="preserve">
+    <value>WPF NuGet 패키지 열기</value>
+  </data>
+  <data name="打开高标题栏窗口" xml:space="preserve">
+    <value>높은 제목 표시줄 창 열기</value>
+  </data>
+  <data name="打开工具窗口" xml:space="preserve">
+    <value>도구 창 열기</value>
+  </data>
+  <data name="打开功能演示" xml:space="preserve">
+    <value>기능 데모 열기</value>
+  </data>
+  <data name="打开普通窗口" xml:space="preserve">
+    <value>일반 창 열기</value>
+  </data>
+  <data name="打开自定义标题栏窗口" xml:space="preserve">
+    <value>사용자 지정 제목 표시줄 창 열기</value>
+  </data>
+  <data name="大话西游之大圣娶亲" xml:space="preserve">
+    <value>大话西游之大圣娶亲</value>
+  </data>
+  <data name="代码" xml:space="preserve">
+    <value>코드</value>
+  </data>
+  <data name="代码仓库" xml:space="preserve">
+    <value>소스 저장소</value>
+  </data>
+  <data name="当UI线程阻塞时使用" xml:space="preserve">
+    <value>UI 스레드가 차단된 경우 사용</value>
+  </data>
+  <data name="当前运行的控件库版本" xml:space="preserve">
+    <value>현재 실행 중인 컨트롤 라이브러리 버전</value>
+  </data>
+  <data name="导出" xml:space="preserve">
+    <value>내보내기</value>
+  </data>
+  <data name="导入" xml:space="preserve">
+    <value>가져오기</value>
+  </data>
+  <data name="道路" xml:space="preserve">
+    <value>도로</value>
+  </data>
+  <data name="地图点击" xml:space="preserve">
+    <value>지도 클릭</value>
+  </data>
+  <data name="地图控制" xml:space="preserve">
+    <value>지도 컨트롤</value>
+  </data>
+  <data name="地图源" xml:space="preserve">
+    <value>지도 소스</value>
+  </data>
+  <data name="地图总览" xml:space="preserve">
+    <value>지도 개요</value>
+  </data>
+  <data name="登 录" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="登录" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="登录/注册按钮 --" xml:space="preserve">
+    <value>로그인/가입 버튼 --</value>
+  </data>
+  <data name="登录按钮 --" xml:space="preserve">
+    <value>로그인 버튼 --</value>
+  </data>
+  <data name="等待操作。" xml:space="preserve">
+    <value>작업을 기다리는 중입니다.</value>
+  </data>
+  <data name="底图样式" xml:space="preserve">
+    <value>기본 지도 스타일</value>
+  </data>
+  <data name="第二块：客户区 --" xml:space="preserve">
+    <value>두 번째 영역: 클라이언트 영역 --</value>
+  </data>
+  <data name="第一块：标题栏 --" xml:space="preserve">
+    <value>첫 번째 영역: 제목 표시줄 --</value>
+  </data>
+  <data name="点" xml:space="preserve">
+    <value>점</value>
+  </data>
+  <data name="点击「注册」即表示您已阅读并同意" xml:space="preserve">
+    <value>“가입”을 클릭하면 다음 내용을 읽고 동의한 것으로 간주됩니다:</value>
+  </data>
+  <data name="点击标签，在浏览器中打开项目。" xml:space="preserve">
+    <value>레이블을 클릭해 브라우저에서 프로젝트를 여세요.</value>
+  </data>
+  <data name="点击地图获取坐标" xml:space="preserve">
+    <value>지도를 클릭해 좌표 가져오기</value>
+  </data>
+  <data name="点击点、线、面查看命中结果" xml:space="preserve">
+    <value>점, 선 또는 다각형을 클릭해 적중 결과 확인</value>
+  </data>
+  <data name="点击点位时自动缩放" xml:space="preserve">
+    <value>포인트를 클릭하면 자동 확대/축소</value>
+  </data>
+  <data name="点击事件与右键菜单" xml:space="preserve">
+    <value>클릭 이벤트 및 컨텍스트 메뉴</value>
+  </data>
+  <data name="定位跑步点" xml:space="preserve">
+    <value>러닝 포인트 찾기</value>
+  </data>
+  <data name="定位行" xml:space="preserve">
+    <value>행 찾기</value>
+  </data>
+  <data name="多边形" xml:space="preserve">
+    <value>다각형</value>
+  </data>
+  <data name="发射弹幕" xml:space="preserve">
+    <value>실시간 댓글 보내기</value>
+  </data>
+  <data name="发送" xml:space="preserve">
+    <value>보내기</value>
+  </data>
+  <data name="发送托盘消息" xml:space="preserve">
+    <value>트레이 알림 보내기</value>
+  </data>
+  <data name="反对率" xml:space="preserve">
+    <value>반대율</value>
+  </data>
+  <data name="反应盘" xml:space="preserve">
+    <value>반응 디스크</value>
+  </data>
+  <data name="仿宋" xml:space="preserve">
+    <value>방송체</value>
+  </data>
+  <data name="放大镜" xml:space="preserve">
+    <value>돋보기</value>
+  </data>
+  <data name="飞机.png" xml:space="preserve">
+    <value>비행기.png</value>
+  </data>
+  <data name="非模态显示（MaskShow）" xml:space="preserve">
+    <value>비모달 표시(MaskShow)</value>
+  </data>
+  <data name="分别以模态和非模态方式打开窗口，并在当前窗口上显示遮罩。" xml:space="preserve">
+    <value>현재 창에 오버레이를 표시하고 모달 및 비모달 방식으로 창을 엽니다.</value>
+  </data>
+  <data name="分区 --" xml:space="preserve">
+    <value>섹션 --</value>
+  </data>
+  <data name="丰富的控件主题与实用组件，让 Windows 桌面应用开发更简单。" xml:space="preserve">
+    <value>풍부한 컨트롤 테마와 실용적인 구성 요소로 Windows 데스크톱 앱 개발을 더 쉽게 할 수 있습니다.</value>
+  </data>
+  <data name="高德" xml:space="preserve">
+    <value>Amap</value>
+  </data>
+  <data name="更新" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="工具窗口" xml:space="preserve">
+    <value>도구 창</value>
+  </data>
+  <data name="功能" xml:space="preserve">
+    <value>기능</value>
+  </data>
+  <data name="功能设置" xml:space="preserve">
+    <value>기능 설정</value>
+  </data>
+  <data name="功能演示" xml:space="preserve">
+    <value>기능 데모</value>
+  </data>
+  <data name="关闭" xml:space="preserve">
+    <value>닫기</value>
+  </data>
+  <data name="关闭按钮 --" xml:space="preserve">
+    <value>닫기 버튼 --</value>
+  </data>
+  <data name="关于" xml:space="preserve">
+    <value>정보</value>
+  </data>
+  <data name="关于本示例" xml:space="preserve">
+    <value>이 샘플 정보</value>
+  </data>
+  <data name="关于我们" xml:space="preserve">
+    <value>소개</value>
+  </data>
+  <data name="关注公众号" xml:space="preserve">
+    <value>WeChat 공식 계정 팔로우</value>
+  </data>
+  <data name="关注和粉丝列表" xml:space="preserve">
+    <value>팔로잉 및 팔로워</value>
+  </data>
+  <data name="黑名单" xml:space="preserve">
+    <value>차단 목록</value>
+  </data>
+  <data name="横向 (Horizontal)" xml:space="preserve">
+    <value>가로(Horizontal)</value>
+  </data>
+  <data name="欢迎使用 WPFDevelopers！" xml:space="preserve">
+    <value>WPFDevelopers에 오신 것을 환영합니다!</value>
+  </data>
+  <data name="欢迎体验 WPFDevelopers.Avalonia，使用 Avalonia 为 Windows、macOS 和 Linux 构建桌面应用。" xml:space="preserve">
+    <value>WPFDevelopers.Avalonia에 오신 것을 환영합니다. Avalonia로 Windows, macOS 및 Linux용 데스크톱 앱을 만들어 보세요.</value>
+  </data>
+  <data name="灰度强度：" xml:space="preserve">
+    <value>회색조 강도:</value>
+  </data>
+  <data name="恢复默认层级" xml:space="preserve">
+    <value>기본 Z 순서 복원</value>
+  </data>
+  <data name="会员专属音质" xml:space="preserve">
+    <value>멤버 전용 음질</value>
+  </data>
+  <data name="绘制图案0→ 4 → 2 → 6 解锁。" xml:space="preserve">
+    <value>0 → 4 → 2 → 6 패턴을 그려 잠금을 해제하세요.</value>
+  </data>
+  <data name="获取" xml:space="preserve">
+    <value>가져오기</value>
+  </data>
+  <data name="获取IP地址" xml:space="preserve">
+    <value>IP 주소 가져오기</value>
+  </data>
+  <data name="获取焦点 --" xml:space="preserve">
+    <value>포커스됨 --</value>
+  </data>
+  <data name="获取选中" xml:space="preserve">
+    <value>선택 항목 가져오기</value>
+  </data>
+  <data name="极高音质" xml:space="preserve">
+    <value>최고 음질</value>
+  </data>
+  <data name="即将跳转至Edge浏览器" xml:space="preserve">
+    <value>Microsoft Edge에서 엽니다…</value>
+  </data>
+  <data name="继续跑步" xml:space="preserve">
+    <value>러닝 계속하기</value>
+  </data>
+  <data name="加入QQ群：458041663" xml:space="preserve">
+    <value>QQ 그룹 가입: 458041663</value>
+  </data>
+  <data name="加载中" xml:space="preserve">
+    <value>로드 중…</value>
+  </data>
+  <data name="建筑" xml:space="preserve">
+    <value>건물</value>
+  </data>
+  <data name="较高音质" xml:space="preserve">
+    <value>높은 음질</value>
+  </data>
+  <data name="结果" xml:space="preserve">
+    <value>결과</value>
+  </data>
+  <data name="结束日期" xml:space="preserve">
+    <value>종료 날짜</value>
+  </data>
+  <data name="截屏" xml:space="preserve">
+    <value>스크린샷</value>
+  </data>
+  <data name="截屏Ext" xml:space="preserve">
+    <value>확장 스크린샷</value>
+  </data>
+  <data name="截图时隐藏当前窗口" xml:space="preserve">
+    <value>스크린샷을 찍는 동안 현재 창 숨기기</value>
+  </data>
+  <data name="进入直播" xml:space="preserve">
+    <value>라이브 시작</value>
+  </data>
+  <data name="禁用 --" xml:space="preserve">
+    <value>사용 안 함 --</value>
+  </data>
+  <data name="禁用时 --" xml:space="preserve">
+    <value>사용하지 않을 때 --</value>
+  </data>
+  <data name="经度" xml:space="preserve">
+    <value>경도</value>
+  </data>
+  <data name="精简模式分页" xml:space="preserve">
+    <value>간단한 페이지 매김</value>
+  </data>
+  <data name="警告 Warning" xml:space="preserve">
+    <value>경고</value>
+  </data>
+  <data name="矩形" xml:space="preserve">
+    <value>직사각형</value>
+  </data>
+  <data name="聚合半径" xml:space="preserve">
+    <value>클러스터 반경</value>
+  </data>
+  <data name="开发者" xml:space="preserve">
+    <value>개발자</value>
+  </data>
+  <data name="开发者-头像选择器" xml:space="preserve">
+    <value>개발자 - 아바타 선택기</value>
+  </data>
+  <data name="开启等比缩放" xml:space="preserve">
+    <value>비율 유지하여 크기 조정</value>
+  </data>
+  <data name="开启灰度" xml:space="preserve">
+    <value>회색조 켜기</value>
+  </data>
+  <data name="开启加速[仿电脑管家火箭加速]" xml:space="preserve">
+    <value>가속 켜기[PC 관리자 로켓 가속 방식]</value>
+  </data>
+  <data name="开启图标闪烁（每 500 毫秒切换）" xml:space="preserve">
+    <value>아이콘 깜박임 켜기(500ms마다 전환)</value>
+  </data>
+  <data name="开始跑步" xml:space="preserve">
+    <value>러닝 시작</value>
+  </data>
+  <data name="开始日期" xml:space="preserve">
+    <value>시작 날짜</value>
+  </data>
+  <data name="开源的 WPF UI 组件库" xml:space="preserve">
+    <value>오픈 소스 WPF UI 구성 요소 라이브러리</value>
+  </data>
+  <data name="开源软件声明" xml:space="preserve">
+    <value>오픈 소스 소프트웨어 고지</value>
+  </data>
+  <data name="可点击文本 --" xml:space="preserve">
+    <value>클릭 가능한 텍스트 --</value>
+  </data>
+  <data name="可通过 TitleBarLayout 在标题与窗口按钮之间添加交互内容。" xml:space="preserve">
+    <value>TitleBarLayout을 사용해 제목과 창 버튼 사이에 상호작용 콘텐츠를 추가할 수 있습니다.</value>
+  </data>
+  <data name="客户区 --" xml:space="preserve">
+    <value>클라이언트 영역 --</value>
+  </data>
+  <data name="空格" xml:space="preserve">
+    <value>스페이스</value>
+  </data>
+  <data name="控件遮罩（Mask.IsShow）" xml:space="preserve">
+    <value>컨트롤 오버레이(Mask.IsShow)</value>
+  </data>
+  <data name="快捷键" xml:space="preserve">
+    <value>키보드 바로 가기</value>
+  </data>
+  <data name="快速开始" xml:space="preserve">
+    <value>빠른 시작</value>
+  </data>
+  <data name="来源坐标系" xml:space="preserve">
+    <value>원본 좌표계</value>
+  </data>
+  <data name="类型" xml:space="preserve">
+    <value>유형</value>
+  </data>
+  <data name="例如设置为 Fuchsia 色调）--&gt;" xml:space="preserve">
+    <value>예를 들어 Fuchsia 색조로 설정합니다.) --&gt;</value>
+  </data>
+  <data name="连线倍率:" xml:space="preserve">
+    <value>연결 배율:</value>
+  </data>
+  <data name="码云源代码" xml:space="preserve">
+    <value>Gitee 소스 코드</value>
+  </data>
+  <data name="码云源码" xml:space="preserve">
+    <value>Gitee 소스</value>
+  </data>
+  <data name="密码" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="密码框 --" xml:space="preserve">
+    <value>비밀번호 상자 --</value>
+  </data>
+  <data name="密码框样式 --" xml:space="preserve">
+    <value>비밀번호 상자 스타일 --</value>
+  </data>
+  <data name="密码输入框 --" xml:space="preserve">
+    <value>비밀번호 입력란 --</value>
+  </data>
+  <data name="名称" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="模板 --" xml:space="preserve">
+    <value>템플릿 --</value>
+  </data>
+  <data name="模式：" xml:space="preserve">
+    <value>모드:</value>
+  </data>
+  <data name="模态显示（MaskShowDialog）" xml:space="preserve">
+    <value>모달 표시(MaskShowDialog)</value>
+  </data>
+  <data name="默认 Pushpin与自定义 Pushpin ClusterTemplate 与 99+ 数量显示 折线、多边形与动态点集合 比例尺、诊断信息与点击缩放" xml:space="preserve">
+    <value>기본 및 사용자 지정 푸시핀; 99+ 개수 표시가 있는 ClusterTemplate; 폴리라인, 다각형 및 동적 포인트 집합; 축척 막대, 진단 정보 및 클릭 확대</value>
+  </data>
+  <data name="默认情况下，Theme 会跟随系统主题（适用于 Windows 10 及以上版本），自动切换为 Light 或 Dark 模式。" xml:space="preserve">
+    <value>기본적으로 Theme은 시스템 테마(Windows 10 이상)를 따르며 Light 또는 Dark 모드로 자동 전환됩니다.</value>
+  </data>
+  <data name="目标坐标系" xml:space="preserve">
+    <value>대상 좌표계</value>
+  </data>
+  <data name="目前翻译只是针对WD的自定义控件进行了多语言翻译" xml:space="preserve">
+    <value>현재 WD 사용자 지정 컨트롤만 다국어로 번역되어 있습니다.</value>
+  </data>
+  <data name="内容 --" xml:space="preserve">
+    <value>콘텐츠 --</value>
+  </data>
+  <data name="能力图" xml:space="preserve">
+    <value>레이더 차트</value>
+  </data>
+  <data name="你还可以自定义主题色，使用 Color=" xml:space="preserve">
+    <value>Color=를 사용해 테마 색상을 직접 설정할 수도 있습니다.</value>
+  </data>
+  <data name="您可以根据需要调整该值, 以获得更大的圆角。--&gt;" xml:space="preserve">
+    <value>필요에 따라 값을 조정해 모서리를 더 둥글게 만들 수 있습니다. --&gt;</value>
+  </data>
+  <data name="盘1" xml:space="preserve">
+    <value>디스크 1</value>
+  </data>
+  <data name="盘2" xml:space="preserve">
+    <value>디스크 2</value>
+  </data>
+  <data name="盘3" xml:space="preserve">
+    <value>디스크 3</value>
+  </data>
+  <data name="盘4" xml:space="preserve">
+    <value>디스크 4</value>
+  </data>
+  <data name="盘5" xml:space="preserve">
+    <value>디스크 5</value>
+  </data>
+  <data name="跑步演示" xml:space="preserve">
+    <value>러닝 데모</value>
+  </data>
+  <data name="平滑采样:" xml:space="preserve">
+    <value>부드럽게 처리:</value>
+  </data>
+  <data name="普通标题栏" xml:space="preserve">
+    <value>기본 제목 표시줄</value>
+  </data>
+  <data name="启动 Loading 动画" xml:space="preserve">
+    <value>로딩 애니메이션 시작</value>
+  </data>
+  <data name="启动放大镜时隐藏当前窗口" xml:space="preserve">
+    <value>돋보기를 열 때 현재 창 숨기기</value>
+  </data>
+  <data name="启用" xml:space="preserve">
+    <value>사용</value>
+  </data>
+  <data name="启用点位聚合" xml:space="preserve">
+    <value>포인트 클러스터링 사용</value>
+  </data>
+  <data name="切换图标闪烁" xml:space="preserve">
+    <value>아이콘 깜박임 전환</value>
+  </data>
+  <data name="清除文本按钮 --" xml:space="preserve">
+    <value>텍스트 지우기 버튼 --</value>
+  </data>
+  <data name="清空画板" xml:space="preserve">
+    <value>그림판 지우기</value>
+  </data>
+  <data name="清空画布" xml:space="preserve">
+    <value>캔버스 지우기</value>
+  </data>
+  <data name="请弹幕内容" xml:space="preserve">
+    <value>실시간 댓글 내용</value>
+  </data>
+  <data name="请输入 token" xml:space="preserve">
+    <value>토큰 입력</value>
+  </data>
+  <data name="请输入IP地址" xml:space="preserve">
+    <value>IP 주소 입력</value>
+  </data>
+  <data name="请输入内容" xml:space="preserve">
+    <value>내용 입력</value>
+  </data>
+  <data name="请输入搜索内容" xml:space="preserve">
+    <value>검색어 입력</value>
+  </data>
+  <data name="请输入用户密码" xml:space="preserve">
+    <value>비밀번호 입력</value>
+  </data>
+  <data name="请选择股票代码" xml:space="preserve">
+    <value>주식 코드 선택</value>
+  </data>
+  <data name="请选择内容" xml:space="preserve">
+    <value>항목 선택</value>
+  </data>
+  <data name="请选择任意时间" xml:space="preserve">
+    <value>시간 선택</value>
+  </data>
+  <data name="群：340500857" xml:space="preserve">
+    <value>그룹: 340500857</value>
+  </data>
+  <data name="群：340500857 | QQ群：458041663" xml:space="preserve">
+    <value>그룹: 340500857 | QQ 그룹: 458041663</value>
+  </data>
+  <data name="群：458041663" xml:space="preserve">
+    <value>그룹: 458041663</value>
+  </data>
+  <data name="让音乐更懂你" xml:space="preserve">
+    <value>음악이 당신을 더 잘 이해하도록</value>
+  </data>
+  <data name="日期 yyyy/MM/dd" xml:space="preserve">
+    <value>날짜 yyyy/MM/dd</value>
+  </data>
+  <data name="日期 yyyy-MM-dd HH:mm:ss" xml:space="preserve">
+    <value>날짜 yyyy-MM-dd HH:mm:ss</value>
+  </data>
+  <data name="若要手动设置为 Light 模式，可以使用 Theme=" xml:space="preserve">
+    <value>Light 모드를 수동으로 설정하려면 Theme=를 사용하세요.</value>
+  </data>
+  <data name="三角形" xml:space="preserve">
+    <value>삼각형</value>
+  </data>
+  <data name="删除选中" xml:space="preserve">
+    <value>선택 항목 삭제</value>
+  </data>
+  <data name="闪烁" xml:space="preserve">
+    <value>깜박임</value>
+  </data>
+  <data name="上一步" xml:space="preserve">
+    <value>이전 단계</value>
+  </data>
+  <data name="上一首" xml:space="preserve">
+    <value>이전 곡</value>
+  </data>
+  <data name="设置新密码" xml:space="preserve">
+    <value>새 비밀번호 설정</value>
+  </data>
+  <data name="身份验证" xml:space="preserve">
+    <value>인증</value>
+  </data>
+  <data name="生成" xml:space="preserve">
+    <value>생성</value>
+  </data>
+  <data name="生命周期：Loaded 创建实例，Unloaded 调用 Dispose；不在切换选项卡时销毁图标。源码见 CodeViewer 中的 XAML / CSharp。" xml:space="preserve">
+    <value>수명 주기: Loaded에서 인스턴스를 만들고 Unloaded에서 Dispose를 호출합니다. 탭을 전환할 때 아이콘을 제거하지 않습니다. CodeViewer에서 XAML / CSharp 소스를 확인하세요.</value>
+  </data>
+  <data name="实时切换 MapView 常用能力" xml:space="preserve">
+    <value>MapView의 주요 기능을 실시간으로 전환</value>
+  </data>
+  <data name="使用默认标题栏高度和标准窗口按钮。" xml:space="preserve">
+    <value>기본 제목 표시줄 높이와 표준 창 버튼을 사용합니다.</value>
+  </data>
+  <data name="使用自定义标题栏，并设置为工具窗口样式和不可调整大小。" xml:space="preserve">
+    <value>사용자 지정 제목 표시줄을 사용하고 도구 창 스타일 및 크기 조정 불가로 설정합니다.</value>
+  </data>
+  <data name="使用自定义聚合模板" xml:space="preserve">
+    <value>사용자 지정 클러스터 템플릿 사용</value>
+  </data>
+  <data name="示例" xml:space="preserve">
+    <value>샘플</value>
+  </data>
+  <data name="示例包含" xml:space="preserve">
+    <value>샘플 구성:</value>
+  </data>
+  <data name="示例图标未创建" xml:space="preserve">
+    <value>샘플 아이콘이 생성되지 않았습니다</value>
+  </data>
+  <data name="试剂仓" xml:space="preserve">
+    <value>시약 보관소</value>
+  </data>
+  <data name="收藏歌曲" xml:space="preserve">
+    <value>곡 즐겨찾기</value>
+  </data>
+  <data name="首次的歌单和专辑" xml:space="preserve">
+    <value>첫 번째 재생 목록 및 앨범</value>
+  </data>
+  <data name="首页 / Home" xml:space="preserve">
+    <value>홈</value>
+  </data>
+  <data name="输入内容" xml:space="preserve">
+    <value>내용 입력</value>
+  </data>
+  <data name="输入数字0~199" xml:space="preserve">
+    <value>0~199 사이의 숫자 입력</value>
+  </data>
+  <data name="鼠标按下时 --" xml:space="preserve">
+    <value>마우스를 눌렀을 때 --</value>
+  </data>
+  <data name="鼠标悬停 --" xml:space="preserve">
+    <value>마우스 오버 --</value>
+  </data>
+  <data name="鼠标悬停时 --" xml:space="preserve">
+    <value>마우스를 올렸을 때 --</value>
+  </data>
+  <data name="竖向 (Vertical)" xml:space="preserve">
+    <value>세로(Vertical)</value>
+  </data>
+  <data name="数据信息" xml:space="preserve">
+    <value>데이터 정보</value>
+  </data>
+  <data name="刷新" xml:space="preserve">
+    <value>새로 고침</value>
+  </data>
+  <data name="刷新统计" xml:space="preserve">
+    <value>통계 새로 고침</value>
+  </data>
+  <data name="双击：" xml:space="preserve">
+    <value>두 번 클릭:</value>
+  </data>
+  <data name="私密账号" xml:space="preserve">
+    <value>비공개 계정</value>
+  </data>
+  <data name="随机" xml:space="preserve">
+    <value>무작위</value>
+  </data>
+  <data name="提交" xml:space="preserve">
+    <value>제출</value>
+  </data>
+  <data name="提示文本 --" xml:space="preserve">
+    <value>힌트 텍스트 --</value>
+  </data>
+  <data name="天地图" xml:space="preserve">
+    <value>천지도</value>
+  </data>
+  <data name="天地图 Token" xml:space="preserve">
+    <value>천지도 토큰</value>
+  </data>
+  <data name="填写账号" xml:space="preserve">
+    <value>계정 입력</value>
+  </data>
+  <data name="通过 TitleBar 和 TitleHeight 自定义标题栏及窗口操作按钮。" xml:space="preserve">
+    <value>TitleBar와 TitleHeight로 제목 표시줄과 창 제어 버튼을 사용자 지정합니다.</value>
+  </data>
+  <data name="通知标题" xml:space="preserve">
+    <value>알림 제목</value>
+  </data>
+  <data name="通知内容" xml:space="preserve">
+    <value>알림 내용</value>
+  </data>
+  <data name="图标 --" xml:space="preserve">
+    <value>아이콘 --</value>
+  </data>
+  <data name="图标闪烁" xml:space="preserve">
+    <value>아이콘 깜박임</value>
+  </data>
+  <data name="图标与生命周期" xml:space="preserve">
+    <value>아이콘 및 수명 주기</value>
+  </data>
+  <data name="图像选择器" xml:space="preserve">
+    <value>이미지 선택기</value>
+  </data>
+  <data name="退出" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="托盘消息" xml:space="preserve">
+    <value>트레이 알림</value>
+  </data>
+  <data name="拖动、滚轮缩放并点击点位查看效果" xml:space="preserve">
+    <value>드래그하고 휠로 확대/축소한 다음 포인트를 클릭해 결과를 확인하세요.</value>
+  </data>
+  <data name="外观 --" xml:space="preserve">
+    <value>모양 --</value>
+  </data>
+  <data name="完成" xml:space="preserve">
+    <value>완료</value>
+  </data>
+  <data name="忘记密码" xml:space="preserve">
+    <value>비밀번호 찾기</value>
+  </data>
+  <data name="微信公众号 WPFDevelopers" xml:space="preserve">
+    <value>WPFDevelopers WeChat 공식 계정</value>
+  </data>
+  <data name="微信公众号：WPFDevelopers" xml:space="preserve">
+    <value>WeChat 공식 계정: WPFDevelopers</value>
+  </data>
+  <data name="微信公众号二维码" xml:space="preserve">
+    <value>WeChat 공식 계정 QR 코드</value>
+  </data>
+  <data name="微信号公众号:WPFDevelopers" xml:space="preserve">
+    <value>WeChat 공식 계정: WPFDevelopers</value>
+  </data>
+  <data name="微信扫码关注" xml:space="preserve">
+    <value>QR 코드를 스캔해 팔로우</value>
+  </data>
+  <data name="微信扫一扫，关注 WPFDevelopers，获取项目动态与开发分享。" xml:space="preserve">
+    <value>WeChat으로 스캔해 WPFDevelopers를 팔로우하고 프로젝트 소식과 개발 정보를 확인하세요.</value>
+  </data>
+  <data name="纬度" xml:space="preserve">
+    <value>위도</value>
+  </data>
+  <data name="卫星" xml:space="preserve">
+    <value>위성</value>
+  </data>
+  <data name="卫星地图" xml:space="preserve">
+    <value>위성 지도</value>
+  </data>
+  <data name="文本垂直居中 --" xml:space="preserve">
+    <value>텍스트 세로 가운데 정렬 --</value>
+  </data>
+  <data name="文本框 --" xml:space="preserve">
+    <value>텍스트 상자 --</value>
+  </data>
+  <data name="文本框样式 --" xml:space="preserve">
+    <value>텍스트 상자 스타일 --</value>
+  </data>
+  <data name="文本色 --" xml:space="preserve">
+    <value>텍스트 색 --</value>
+  </data>
+  <data name="我是蒙板输入框" xml:space="preserve">
+    <value>마스킹 입력란입니다</value>
+  </data>
+  <data name="无图标 None" xml:space="preserve">
+    <value>아이콘 없음</value>
+  </data>
+  <data name="无信号" xml:space="preserve">
+    <value>신호 없음</value>
+  </data>
+  <data name="系统托盘 NotifyIcon" xml:space="preserve">
+    <value>시스템 트레이 NotifyIcon</value>
+  </data>
+  <data name="下拉多选搜索" xml:space="preserve">
+    <value>검색 가능한 다중 선택 드롭다운</value>
+  </data>
+  <data name="下一步" xml:space="preserve">
+    <value>다음 단계</value>
+  </data>
+  <data name="下一首" xml:space="preserve">
+    <value>다음 곡</value>
+  </data>
+  <data name="显示Badge" xml:space="preserve">
+    <value>배지 표시</value>
+  </data>
+  <data name="显示比例尺" xml:space="preserve">
+    <value>축척 막대 표시</value>
+  </data>
+  <data name="显示独立业务图层" xml:space="preserve">
+    <value>독립 데이터 레이어 표시</value>
+  </data>
+  <data name="显示控件遮罩" xml:space="preserve">
+    <value>컨트롤 오버레이 표시</value>
+  </data>
+  <data name="显示缩放控制" xml:space="preserve">
+    <value>확대/축소 컨트롤 표시</value>
+  </data>
+  <data name="显示诊断信息" xml:space="preserve">
+    <value>진단 정보 표시</value>
+  </data>
+  <data name="线" xml:space="preserve">
+    <value>선</value>
+  </data>
+  <data name="项目概览" xml:space="preserve">
+    <value>프로젝트 개요</value>
+  </data>
+  <data name="橡皮擦" xml:space="preserve">
+    <value>지우개</value>
+  </data>
+  <data name="消息由当前示例图标的 ShowBalloonTips 实例方法发送。Windows 通知设置或勿扰模式可能阻止通知显示。" xml:space="preserve">
+    <value>메시지는 샘플 아이콘의 ShowBalloonTips 인스턴스 메서드로 전송됩니다. Windows 알림 설정이나 방해 금지 모드로 인해 알림이 표시되지 않을 수 있습니다.</value>
+  </data>
+  <data name="信号源1" xml:space="preserve">
+    <value>신호 소스 1</value>
+  </data>
+  <data name="信息 Info" xml:space="preserve">
+    <value>정보</value>
+  </data>
+  <data name="星星个数:" xml:space="preserve">
+    <value>별 개수:</value>
+  </data>
+  <data name="需要注意 wd:Resources 必须在Theme.xaml后 --&gt;" xml:space="preserve">
+    <value>wd:Resources는 Theme.xaml 뒤에 와야 합니다. --&gt;</value>
+  </data>
+  <data name="悬停图标时提示为“WPFDevelopers - NotifyIcon 示例”。可在 Windows 托盘折叠区中找到它。" xml:space="preserve">
+    <value>아이콘 위에 마우스를 올리면 “WPFDevelopers - NotifyIcon 샘플”이라는 설명이 표시됩니다. Windows 트레이의 숨겨진 아이콘 영역에서 찾을 수 있습니다.</value>
+  </data>
+  <data name="选择视频" xml:space="preserve">
+    <value>동영상 선택</value>
+  </data>
+  <data name="选择图片" xml:space="preserve">
+    <value>이미지 선택</value>
+  </data>
+  <data name="选中索引：" xml:space="preserve">
+    <value>선택된 인덱스:</value>
+  </data>
+  <data name="演示" xml:space="preserve">
+    <value>데모</value>
+  </data>
+  <data name="演示普通标题栏、高标题栏以及自定义标题栏窗口。点击按钮打开窗口，可查看对应标题栏样式。" xml:space="preserve">
+    <value>기본, 높은 및 사용자 지정 제목 표시줄 창을 보여 줍니다. 버튼을 클릭해 창을 열고 각 스타일을 확인하세요.</value>
+  </data>
+  <data name="要素点击" xml:space="preserve">
+    <value>피처 클릭</value>
+  </data>
+  <data name="也想开发跨平台应用？" xml:space="preserve">
+    <value>크로스 플랫폼 앱도 개발하고 싶으신가요?</value>
+  </data>
+  <data name="移除" xml:space="preserve">
+    <value>제거</value>
+  </data>
+  <data name="移动首个动态点位" xml:space="preserve">
+    <value>첫 번째 동적 포인트 이동</value>
+  </data>
+  <data name="音量 -" xml:space="preserve">
+    <value>볼륨 -</value>
+  </data>
+  <data name="音量 +" xml:space="preserve">
+    <value>볼륨 +</value>
+  </data>
+  <data name="隐藏所有--" xml:space="preserve">
+    <value>모두 숨기기 --</value>
+  </data>
+  <data name="隐私设置" xml:space="preserve">
+    <value>개인정보 설정</value>
+  </data>
+  <data name="隐私政策" xml:space="preserve">
+    <value>개인정보 처리방침</value>
+  </data>
+  <data name="用户名" xml:space="preserve">
+    <value>사용자 이름</value>
+  </data>
+  <data name="用户名输入框 --" xml:space="preserve">
+    <value>사용자 이름 입력란 --</value>
+  </data>
+  <data name="用户协议" xml:space="preserve">
+    <value>이용 약관</value>
+  </data>
+  <data name="邮箱" xml:space="preserve">
+    <value>이메일</value>
+  </data>
+  <data name="邮箱输入框 --" xml:space="preserve">
+    <value>이메일 입력란 --</value>
+  </data>
+  <data name="右键菜单和自定义面板中的“切换图标闪烁”与这里同步。停止后恢复原图标。" xml:space="preserve">
+    <value>컨텍스트 메뉴와 사용자 지정 패널의 “아이콘 깜박임 전환”은 이 설정과 동기화됩니다. 중지하면 원래 아이콘으로 돌아갑니다.</value>
+  </data>
+  <data name="右键显示：" xml:space="preserve">
+    <value>마우스 오른쪽 버튼을 클릭해 표시:</value>
+  </data>
+  <data name="预览120x120" xml:space="preserve">
+    <value>120x120 미리 보기</value>
+  </data>
+  <data name="源代码" xml:space="preserve">
+    <value>소스 코드</value>
+  </data>
+  <data name="源码" xml:space="preserve">
+    <value>소스</value>
+  </data>
+  <data name="在系统托盘中单击或双击示例图标，计数和下方操作反馈会更新。" xml:space="preserve">
+    <value>시스템 트레이에서 샘플 아이콘을 한 번 또는 두 번 클릭하면 횟수와 아래 작업 피드백이 업데이트됩니다.</value>
+  </data>
+  <data name="在线播放音频" xml:space="preserve">
+    <value>오디오 스트리밍</value>
+  </data>
+  <data name="暂停跑步" xml:space="preserve">
+    <value>러닝 일시 정지</value>
+  </data>
+  <data name="增加" xml:space="preserve">
+    <value>추가</value>
+  </data>
+  <data name="张力:" xml:space="preserve">
+    <value>장력:</value>
+  </data>
+  <data name="账户" xml:space="preserve">
+    <value>계정</value>
+  </data>
+  <data name="正常模式分页" xml:space="preserve">
+    <value>기본 페이지 매김</value>
+  </data>
+  <data name="正在直播" xml:space="preserve">
+    <value>라이브 중</value>
+  </data>
+  <data name="证券代码:" xml:space="preserve">
+    <value>주식 코드:</value>
+  </data>
+  <data name="值" xml:space="preserve">
+    <value>값</value>
+  </data>
+  <data name="置顶（动态修改）" xml:space="preserve">
+    <value>항상 위(실행 중 변경)</value>
+  </data>
+  <data name="中" xml:space="preserve">
+    <value>중간</value>
+  </data>
+  <data name="中华人民共和国国歌" xml:space="preserve">
+    <value>의용군 행진곡</value>
+  </data>
+  <data name="中文" xml:space="preserve">
+    <value>중국어</value>
+  </data>
+  <data name="中文 / English" xml:space="preserve">
+    <value>중국어 / 영어</value>
+  </data>
+  <data name="重置地图视图" xml:space="preserve">
+    <value>지도 보기 재설정</value>
+  </data>
+  <data name="周星星|达叔" xml:space="preserve">
+    <value>주성치 | 달숙</value>
+  </data>
+  <data name="主道路名称" xml:space="preserve">
+    <value>주요 도로 이름</value>
+  </data>
+  <data name="注册" xml:space="preserve">
+    <value>가입</value>
+  </data>
+  <data name="注册按钮 --" xml:space="preserve">
+    <value>가입 버튼 --</value>
+  </data>
+  <data name="注册账号" xml:space="preserve">
+    <value>계정 만들기</value>
+  </data>
+  <data name="转换" xml:space="preserve">
+    <value>변환</value>
+  </data>
+  <data name="桌面歌词" xml:space="preserve">
+    <value>바탕 화면 가사</value>
+  </data>
+  <data name="自定义" xml:space="preserve">
+    <value>사용자 지정</value>
+  </data>
+  <data name="自定义 Marker" xml:space="preserve">
+    <value>사용자 지정 마커</value>
+  </data>
+  <data name="自定义标题栏" xml:space="preserve">
+    <value>사용자 지정 제목 표시줄</value>
+  </data>
+  <data name="自定义步长" xml:space="preserve">
+    <value>사용자 지정 단계 크기</value>
+  </data>
+  <data name="自定义面板 ContextContent" xml:space="preserve">
+    <value>사용자 지정 패널 ContextContent</value>
+  </data>
+  <data name="自定义托盘面板" xml:space="preserve">
+    <value>사용자 지정 트레이 패널</value>
+  </data>
+  <data name="自定义右键菜单" xml:space="preserve">
+    <value>사용자 지정 컨텍스트 메뉴</value>
+  </data>
+  <data name="自定义增加和减少事件" xml:space="preserve">
+    <value>사용자 지정 증가 및 감소 이벤트</value>
+  </data>
+  <data name="自定义中心点" xml:space="preserve">
+    <value>사용자 지정 중심점</value>
+  </data>
+  <data name="综合功能" xml:space="preserve">
+    <value>종합 기능</value>
+  </data>
+  <data name="最大尺寸:" xml:space="preserve">
+    <value>최대 크기:</value>
+  </data>
+  <data name="最大速度:" xml:space="preserve">
+    <value>최대 속도:</value>
+  </data>
+  <data name="最大转速:" xml:space="preserve">
+    <value>최대 회전 속도:</value>
+  </data>
+  <data name="最小尺寸:" xml:space="preserve">
+    <value>최소 크기:</value>
+  </data>
+  <data name="最小聚合数量" xml:space="preserve">
+    <value>최소 클러스터 크기</value>
+  </data>
+  <data name="最小速度:" xml:space="preserve">
+    <value>최소 속도:</value>
+  </data>
+  <data name="最小转速:" xml:space="preserve">
+    <value>최소 회전 속도:</value>
+  </data>
+  <data name="左键单击：" xml:space="preserve">
+    <value>마우스 왼쪽 버튼 클릭:</value>
+  </data>
+  <data name="坐标转换演示" xml:space="preserve">
+    <value>좌표 변환 데모</value>
+  </data>
+  <data name="切换语言会同时更新示例界面与 WD 控件的翻译" xml:space="preserve">
+    <value>언어를 전환하면 샘플과 WPFDevelopers 컨트롤의 번역이 함께 변경됩니다.</value>
+  </data>
+  <data name="Circle 置顶（动态修改）" xml:space="preserve">
+    <value>Circle을 맨 위로 고정 (동적으로 변경)</value>
+  </data>
+  <data name="Github 源代码" xml:space="preserve">
+    <value>GitHub 소스 코드</value>
+  </data>
+  <data name="Github 源码" xml:space="preserve">
+    <value>GitHub 소스 코드</value>
+  </data>
+  <data name="QQ群：340500857" xml:space="preserve">
+    <value>QQ 그룹: 340500857</value>
+  </data>
+  <data name="QQ群：458041663" xml:space="preserve">
+    <value>QQ 그룹: 458041663</value>
+  </data>
+  <data name="QQ群：340500857 | QQ群：458041663" xml:space="preserve">
+    <value>QQ 그룹: 340500857 | 458041663</value>
+  </data>
+  <data name="WPF开发者" xml:space="preserve">
+    <value>WPFDevelopers</value>
+  </data>
+  <data name="WPF 开发者-头像选择器" xml:space="preserve">
+    <value>WPFDevelopers - 아바타 선택기</value>
+  </data>
+  <data name="LoadingExt 当UI线程阻塞时使用" xml:space="preserve">
+    <value>UI 스레드가 차단될 때 LoadingExt 사용</value>
+  </data>
+  <data name="WPFDevelopers - NotifyIcon 示例" xml:space="preserve">
+    <value>WPFDevelopers - NotifyIcon 샘플</value>
+  </data>
+  <data name="MapView 功能演示" xml:space="preserve">
+    <value>MapView 기능 데모</value>
+  </data>
+  <data name="ShapeZIndex 演示" xml:space="preserve">
+    <value>ShapeZIndex 데모</value>
+  </data>
+  <data name="MapView 综合功能" xml:space="preserve">
+    <value>MapView 기능 종합</value>
+  </data>
+  <data name="XAML 模式：" xml:space="preserve">
+    <value>XAML 모드:</value>
+  </data>
+  <data name="MVVM 模式：" xml:space="preserve">
+    <value>MVVM 모드:</value>
+  </data>
+  <data name="Normal · 普通标题栏" xml:space="preserve">
+    <value>Normal · 기본 제목 표시줄</value>
+  </data>
+  <data name="TitleBarMode=Normal，使用默认标题栏高度和标准窗口按钮。" xml:space="preserve">
+    <value>TitleBarMode=Normal은 기본 제목 표시줄 높이와 표준 창 버튼을 사용합니다.</value>
+  </data>
+  <data name="High · 标题栏工具区" xml:space="preserve">
+    <value>High · 제목 표시줄 도구 영역</value>
+  </data>
+  <data name="TitleBarMode=High，可通过 TitleBarLayout 在标题与窗口按钮之间添加交互内容。" xml:space="preserve">
+    <value>TitleBarMode=High에서는 TitleBarLayout으로 제목과 창 버튼 사이에 상호작용 콘텐츠를 추가할 수 있습니다.</value>
+  </data>
+  <data name="ToolWindow · 工具窗口" xml:space="preserve">
+    <value>ToolWindow · 도구 창</value>
+  </data>
+  <data name="None · 自定义标题栏" xml:space="preserve">
+    <value>None · 사용자 지정 제목 표시줄</value>
+  </data>
+  <data name="TitleBarMode=None，通过 TitleBar 和 TitleHeight 自定义标题栏及窗口操作按钮。" xml:space="preserve">
+    <value>TitleBarMode=None은 TitleBar와 TitleHeight로 제목 표시줄과 창 버튼을 사용자 지정합니다.</value>
+  </data>
+  <data name="WPFDevelopers 微信公众号二维码" xml:space="preserve">
+    <value>WPFDevelopers 위챗 공식 계정 QR 코드</value>
+  </data>
+  <data name="{}{0:0}值" xml:space="preserve">
+    <value>{0:0} 값</value>
+  </data>
+  <data name="。请点击“刷新统计”重试。" xml:space="preserve">
+    <value>을 눌러 “통계 새로 고침”을 다시 시도하세요.</value>
+  </data>
+  <data name="{DateTime.Now} 取消截图" xml:space="preserve">
+    <value>{DateTime.Now} 스크린샷 취소</value>
+  </data>
+  <data name="{i}等奖" xml:space="preserve">
+    <value>{i}등 경품</value>
+  </data>
+  <data name="{key} 已复制到剪贴板" xml:space="preserve">
+    <value>{key} 클립보드에 복사됨</value>
+  </data>
+  <data name="{MyMultiSelectComboBox.Text} 总共选中:{MyMultiSelectComboBox.SelectedItems.Count} 条" xml:space="preserve">
+    <value>{MyMultiSelectComboBox.Text} 총 선택: {MyMultiSelectComboBox.SelectedItems.Count}개</value>
+  </data>
+  <data name="{MyMultiSelectionSearchComboBox2.Text} 总共选中:{SelectedItems.Count} 条" xml:space="preserve">
+    <value>{MyMultiSelectionSearchComboBox2.Text} 총 선택: {SelectedItems.Count}개</value>
+  </data>
+  <data name="{p.Name}（{(int)p.GetValue(player, null)}分）" xml:space="preserve">
+    <value>{p.Name} ({(int)p.GetValue(player, null)}점)</value>
+  </data>
+  <data name="· 下载量为 NuGet 所有版本累计下载量" xml:space="preserve">
+    <value>· 다운로드 수는 모든 NuGet 패키지 버전의 누적 합계입니다.</value>
+  </data>
+  <data name="Circle 已置顶，当前 ShapeZIndex={DemoCircle.ShapeZIndex}" xml:space="preserve">
+    <value>Circle이 맨 위에 표시됩니다. 현재 ShapeZIndex={DemoCircle.ShapeZIndex}</value>
+  </data>
+  <data name="Event: 点击了第 {carousel.SelectedIndex} 个" xml:space="preserve">
+    <value>Event: {carousel.SelectedIndex}번째 항목을 클릭함</value>
+  </data>
+  <data name="map加载" xml:space="preserve">
+    <value>지도 로딩 중</value>
+  </data>
+  <data name="MVVM 模式点击: {obj}" xml:space="preserve">
+    <value>MVVM 모드 클릭: {obj}</value>
+  </data>
+  <data name="NuGet 未返回 WPFDevelopers 包统计" xml:space="preserve">
+    <value>NuGet에서 WPFDevelopers 패키지 통계를 반환하지 않았습니다.</value>
+  </data>
+  <data name="OTP错误，请重试!" xml:space="preserve">
+    <value>OTP가 올바르지 않습니다. 다시 시도하세요!</value>
+  </data>
+  <data name="OTP正确!" xml:space="preserve">
+    <value>OTP가 확인되었습니다!</value>
+  </data>
+  <data name="把我们的血肉，筑成我们新的长城！" xml:space="preserve">
+    <value>우리의 살과 피로 새로운 만리장성을 쌓자!</value>
+  </data>
+  <data name="包龙星" xml:space="preserve">
+    <value>包龙星</value>
+  </data>
+  <data name="包有为" xml:space="preserve">
+    <value>包有为</value>
+  </data>
+  <data name="本示例使用一个 NotifyIcon 演示点击事件、右键菜单、气泡消息和图标闪烁。" xml:space="preserve">
+    <value>이 샘플은 NotifyIcon으로 클릭 이벤트, 컨텍스트 메뉴, 풍선 알림 및 아이콘 깜박임을 보여 줍니다.</value>
+  </data>
+  <data name="编辑" xml:space="preserve">
+    <value>편집</value>
+  </data>
+  <data name="不愿做奴隶的人们！！" xml:space="preserve">
+    <value>노예 되기를 거부하는 사람들이여!</value>
+  </data>
+  <data name="测试弹幕" xml:space="preserve">
+    <value>실시간 댓글 테스트</value>
+  </data>
+  <data name="常威" xml:space="preserve">
+    <value>常威</value>
+  </data>
+  <data name="此为空域管制区" xml:space="preserve">
+    <value>이곳은 비행 금지 구역입니다.</value>
+  </data>
+  <data name="错误" xml:space="preserve">
+    <value>오류</value>
+  </data>
+  <data name="打开" xml:space="preserve">
+    <value>열기</value>
+  </data>
+  <data name="当前文件不存在,是否继续?" xml:space="preserve">
+    <value>현재 파일이 없습니다. 계속하시겠습니까?</value>
+  </data>
+  <data name="当前文件不存在。" xml:space="preserve">
+    <value>현재 파일이 없습니다.</value>
+  </data>
+  <data name="当前选中{selection.Text}" xml:space="preserve">
+    <value>현재 선택됨: {selection.Text}</value>
+  </data>
+  <data name="到访数" xml:space="preserve">
+    <value>방문 수</value>
+  </data>
+  <data name="地图" xml:space="preserve">
+    <value>지도</value>
+  </data>
+  <data name="点击 Circle: 半径={featureArgs.ClickedCircle.RadiusMeters:F0}m ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Circle 클릭: 반경={featureArgs.ClickedCircle.RadiusMeters:F0}m ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Polygon: 点数={featureArgs.ClickedPolygon.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Polygon 클릭: 점 수={featureArgs.ClickedPolygon.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Polyline: 点数={featureArgs.ClickedPolyline.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Polyline 클릭: 점 수={featureArgs.ClickedPolyline.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Pushpin: {featureArgs.ClickedPushpin.Title} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Pushpin 클릭: {featureArgs.ClickedPushpin.Title} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Rectangle: [{featureArgs.ClickedRectangle.MinLatitude:F4},{featureArgs.ClickedRectangle.MinLongitude:F4}]~[{featureArgs.ClickedRectangle.MaxLatitude:F4},{featureArgs.ClickedRectangle.MaxLongitude:F4}]" xml:space="preserve">
+    <value>Rectangle 클릭: [{featureArgs.ClickedRectangle.MinLatitude:F4},{featureArgs.ClickedRectangle.MinLongitude:F4}]~[{featureArgs.ClickedRectangle.MaxLatitude:F4},{featureArgs.ClickedRectangle.MaxLongitude:F4}]</value>
+  </data>
+  <data name="点击: {e.OriginalSource.ToString()}" xml:space="preserve">
+    <value>클릭: {e.OriginalSource.ToString()}</value>
+  </data>
+  <data name="点击了：{menuItem.Tag}" xml:space="preserve">
+    <value>클릭함: {menuItem.Tag}</value>
+  </data>
+  <data name="点击了{item.Text}" xml:space="preserve">
+    <value>{item.Text} 클릭함</value>
+  </data>
+  <data name="点击了{menuItemModel.Text}" xml:space="preserve">
+    <value>{menuItemModel.Text} 클릭함</value>
+  </data>
+  <data name="点击了“ {MyBubbleSelection.SelectedText}开发者 ”." xml:space="preserve">
+    <value>“{MyBubbleSelection.SelectedText} 개발자”를 클릭했습니다.</value>
+  </data>
+  <data name="点击完成。" xml:space="preserve">
+    <value>클릭 완료.</value>
+  </data>
+  <data name="点击坐标: Latitude={clickArgs.Latitude:F6}, Longitude={clickArgs.Longitude:F6}" xml:space="preserve">
+    <value>클릭 좌표: 위도={clickArgs.Latitude:F6}, 경도={clickArgs.Longitude:F6}</value>
+  </data>
+  <data name="东侧业务点" xml:space="preserve">
+    <value>동쪽 업무 지점</value>
+  </data>
+  <data name="动态点位" xml:space="preserve">
+    <value>동적 포인트</value>
+  </data>
+  <data name="二" xml:space="preserve">
+    <value>둘</value>
+  </data>
+  <data name="方唐镜" xml:space="preserve">
+    <value>方唐镜</value>
+  </data>
+  <data name="非选中" xml:space="preserve">
+    <value>선택 안 됨</value>
+  </data>
+  <data name="风" xml:space="preserve">
+    <value>바람</value>
+  </data>
+  <data name="风云大陆" xml:space="preserve">
+    <value>风云大陆</value>
+  </data>
+  <data name="复制失败，请稍后重试" xml:space="preserve">
+    <value>복사하지 못했습니다. 나중에 다시 시도하세요.</value>
+  </data>
+  <data name="告警图层" xml:space="preserve">
+    <value>경보 레이어</value>
+  </data>
+  <data name="更新于" xml:space="preserve">
+    <value>업데이트 날짜</value>
+  </data>
+  <data name="关闭灰度" xml:space="preserve">
+    <value>회색조 끄기</value>
+  </data>
+  <data name="关于 NotifyIcon 示例" xml:space="preserve">
+    <value>NotifyIcon 샘플 정보</value>
+  </data>
+  <data name="很难开心" xml:space="preserve">
+    <value>행복하기란 참 어렵다</value>
+  </data>
+  <data name="沪Ａ" xml:space="preserve">
+    <value>상하이 A</value>
+  </data>
+  <data name="花" xml:space="preserve">
+    <value>꽃</value>
+  </data>
+  <data name="花雨" xml:space="preserve">
+    <value>花雨</value>
+  </data>
+  <data name="获取到验证码如下：" xml:space="preserve">
+    <value>받은 인증 코드:</value>
+  </data>
+  <data name="获取日期" xml:space="preserve">
+    <value>날짜 가져오기</value>
+  </data>
+  <data name="纪" xml:space="preserve">
+    <value>纪</value>
+  </data>
+  <data name="纪春庆" xml:space="preserve">
+    <value>纪春庆</value>
+  </data>
+  <data name="加载失败" xml:space="preserve">
+    <value>로드 실패</value>
+  </data>
+  <data name="节点：{transform.Id} 节点按下" xml:space="preserve">
+    <value>노드: {transform.Id} 누름</value>
+  </data>
+  <data name="节点：{transform.Id} 节点状态：{status}" xml:space="preserve">
+    <value>노드: {transform.Id}, 상태: {status}</value>
+  </data>
+  <data name="截图路径：{text}" xml:space="preserve">
+    <value>스크린샷 경로: {text}</value>
+  </data>
+  <data name="警告" xml:space="preserve">
+    <value>경고</value>
+  </data>
+  <data name="开始时间：{MyDateRangePicker.StartDate} 结束时间：{MyDateRangePicker.EndDate}" xml:space="preserve">
+    <value>시작 날짜: {MyDateRangePicker.StartDate} 종료 날짜: {MyDateRangePicker.EndDate}</value>
+  </data>
+  <data name="来福" xml:space="preserve">
+    <value>来福</value>
+  </data>
+  <data name="狼行" xml:space="preserve">
+    <value>狼行</value>
+  </data>
+  <data name="雷豹" xml:space="preserve">
+    <value>雷豹</value>
+  </data>
+  <data name="冒着敌人的炮火前进！" xml:space="preserve">
+    <value>적의 포화를 뚫고 전진하라!</value>
+  </data>
+  <data name="每个人被迫着发出最后的吼声。" xml:space="preserve">
+    <value>모든 이가 마지막 외침을 터뜨리도록 강요받았다.</value>
+  </data>
+  <data name="能力值" xml:space="preserve">
+    <value>능력치</value>
+  </data>
+  <data name="跑步图层" xml:space="preserve">
+    <value>러닝 레이어</value>
+  </data>
+  <data name="平安银行" xml:space="preserve">
+    <value>핑안 은행</value>
+  </data>
+  <data name="浦发银行" xml:space="preserve">
+    <value>푸동개발은행</value>
+  </data>
+  <data name="起来！" xml:space="preserve">
+    <value>일어나라!</value>
+  </data>
+  <data name="前进！" xml:space="preserve">
+    <value>전진!</value>
+  </data>
+  <data name="前进！进！" xml:space="preserve">
+    <value>전진하라! 나아가라!</value>
+  </data>
+  <data name="请输入天地图 token" xml:space="preserve">
+    <value>천지도 토큰을 입력하세요</value>
+  </data>
+  <data name="请输入有效的经度/纬度" xml:space="preserve">
+    <value>올바른 경도/위도를 입력하세요</value>
+  </data>
+  <data name="请先填写通知标题和内容。" xml:space="preserve">
+    <value>먼저 알림 제목과 내용을 입력하세요.</value>
+  </data>
+  <data name="请选择图片" xml:space="preserve">
+    <value>이미지를 선택하세요</value>
+  </data>
+  <data name="蛐蛐" xml:space="preserve">
+    <value>蛐蛐</value>
+  </data>
+  <data name="三" xml:space="preserve">
+    <value>셋</value>
+  </data>
+  <data name="上证指数" xml:space="preserve">
+    <value>상하이 종합 지수</value>
+  </data>
+  <data name="深Ａ" xml:space="preserve">
+    <value>선전 A</value>
+  </data>
+  <data name="圣枪哥" xml:space="preserve">
+    <value>圣枪哥</value>
+  </data>
+  <data name="时间：" xml:space="preserve">
+    <value>시간:</value>
+  </data>
+  <data name="示例图标和闪烁计时器已释放，主窗口托盘图标不受影响。" xml:space="preserve">
+    <value>샘플 아이콘과 깜박임 타이머가 해제되었습니다. 기본 창의 트레이 아이콘에는 영향이 없습니다.</value>
+  </data>
+  <data name="示例图标已创建（1 个）" xml:space="preserve">
+    <value>샘플 아이콘 생성됨(1개)</value>
+  </data>
+  <data name="示例图标已移除" xml:space="preserve">
+    <value>샘플 아이콘 제거됨</value>
+  </data>
+  <data name="视频文件(.MP4)|*.mp4;" xml:space="preserve">
+    <value>동영상 파일(.MP4)|*.mp4;</value>
+  </data>
+  <data name="是否退出当前系统?" xml:space="preserve">
+    <value>현재 애플리케이션을 종료하시겠습니까?</value>
+  </data>
+  <data name="收到托盘图标双击事件（双击前的第一次单击也会计数）。" xml:space="preserve">
+    <value>트레이 아이콘 더블 클릭 이벤트를 받았습니다(더블 클릭 전 첫 클릭도 횟수에 포함됩니다).</value>
+  </data>
+  <data name="收到托盘图标左键单击事件。" xml:space="preserve">
+    <value>트레이 아이콘 왼쪽 클릭 이벤트를 받았습니다.</value>
+  </data>
+  <data name="手势错误，请重新解锁!" xml:space="preserve">
+    <value>패턴이 올바르지 않습니다. 다시 시도하세요!</value>
+  </data>
+  <data name="手势错误，最少 4 个节点!" xml:space="preserve">
+    <value>패턴이 올바르지 않습니다. 노드를 4개 이상 사용하세요!</value>
+  </data>
+  <data name="手势正确!" xml:space="preserve">
+    <value>패턴이 올바릅니다!</value>
+  </data>
+  <data name="鼠标移动绘制几何" xml:space="preserve">
+    <value>마우스를 움직여 도형 그리기</value>
+  </data>
+  <data name="鼠标左键按下" xml:space="preserve">
+    <value>마우스 왼쪽 버튼 누름</value>
+  </data>
+  <data name="鼠标左键键起" xml:space="preserve">
+    <value>마우스 왼쪽 버튼 놓음</value>
+  </data>
+  <data name="数量：" xml:space="preserve">
+    <value>개수:</value>
+  </data>
+  <data name="四" xml:space="preserve">
+    <value>넷</value>
+  </data>
+  <data name="提示" xml:space="preserve">
+    <value>알림</value>
+  </data>
+  <data name="统计加载失败：" xml:space="preserve">
+    <value>통계를 불러오지 못했습니다:</value>
+  </data>
+  <data name="统计响应缺少有效的计数" xml:space="preserve">
+    <value>통계 응답에 유효한 개수가 없습니다.</value>
+  </data>
+  <data name="统计响应为空" xml:space="preserve">
+    <value>통계 응답이 비어 있습니다.</value>
+  </data>
+  <data name="图片不能大于 1M" xml:space="preserve">
+    <value>이미지는 1MB를 초과할 수 없습니다.</value>
+  </data>
+  <data name="图像文件(*.jpg;*.jpeg;*.png;)|*.jpg;*.jpeg;*.png;" xml:space="preserve">
+    <value>이미지 파일(*.jpg;*.jpeg;*.png;)|*.jpg;*.jpeg;*.png;</value>
+  </data>
+  <data name="王" xml:space="preserve">
+    <value>王</value>
+  </data>
+  <data name="王羲之" xml:space="preserve">
+    <value>왕희지</value>
+  </data>
+  <data name="文件删除成功。" xml:space="preserve">
+    <value>파일을 삭제했습니다.</value>
+  </data>
+  <data name="我" xml:space="preserve">
+    <value>나</value>
+  </data>
+  <data name="我们万众一心，冒着敌人的炮火前进！" xml:space="preserve">
+    <value>우리 모두 한마음으로 적의 포화를 뚫고 전진하자!</value>
+  </data>
+  <data name="我是骗人布010" xml:space="preserve">
+    <value>我是骗人布010</value>
+  </data>
+  <data name="无法打开链接：" xml:space="preserve">
+    <value>링크를 열 수 없습니다:</value>
+  </data>
+  <data name="西侧业务点" xml:space="preserve">
+    <value>서쪽 업무 지점</value>
+  </data>
+  <data name="消息" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="销户" xml:space="preserve">
+    <value>계정 해지</value>
+  </data>
+  <data name="谢谢参与" xml:space="preserve">
+    <value>참여해 주셔서 감사합니다</value>
+  </data>
+  <data name="新的数组必须比原有的要小!" xml:space="preserve">
+    <value>새 배열은 기존 배열보다 작아야 합니다!</value>
+  </data>
+  <data name="修改成功" xml:space="preserve">
+    <value>수정했습니다.</value>
+  </data>
+  <data name="旋转" xml:space="preserve">
+    <value>회전</value>
+  </data>
+  <data name="选择了: {e.NewValue}" xml:space="preserve">
+    <value>선택됨: {e.NewValue}</value>
+  </data>
+  <data name="选中" xml:space="preserve">
+    <value>선택됨</value>
+  </data>
+  <data name="选中内容" xml:space="preserve">
+    <value>선택 항목</value>
+  </data>
+  <data name="询问" xml:space="preserve">
+    <value>질문</value>
+  </data>
+  <data name="闫驚鏵/WPFDevelopers" xml:space="preserve">
+    <value>闫驚鏵/WPFDevelopers</value>
+  </data>
+  <data name="验证码" xml:space="preserve">
+    <value>인증 코드</value>
+  </data>
+  <data name="一" xml:space="preserve">
+    <value>하나</value>
+  </data>
+  <data name="移除示例图标" xml:space="preserve">
+    <value>샘플 아이콘 제거</value>
+  </data>
+  <data name="已创建示例图标，可在系统托盘中单击、双击或右键操作。" xml:space="preserve">
+    <value>샘플 아이콘을 만들었습니다. 시스템 트레이에서 한 번 클릭, 두 번 클릭 또는 오른쪽 클릭해 보세요.</value>
+  </data>
+  <data name="已打开关于对话框。" xml:space="preserve">
+    <value>정보 대화 상자를 열었습니다.</value>
+  </data>
+  <data name="已复制到剪贴板" xml:space="preserve">
+    <value>클립보드에 복사됨</value>
+  </data>
+  <data name="已恢复默认层级：Circle={DefaultCircleZIndex}, Rectangle={DefaultRectangleZIndex}" xml:space="preserve">
+    <value>기본 Z 순서를 복원했습니다: Circle={DefaultCircleZIndex}, Rectangle={DefaultRectangleZIndex}</value>
+  </data>
+  <data name="已开启图标闪烁。" xml:space="preserve">
+    <value>아이콘 깜박임을 켰습니다.</value>
+  </data>
+  <data name="已停止闪烁并恢复图标。" xml:space="preserve">
+    <value>깜박임을 중지하고 아이콘을 복원했습니다.</value>
+  </data>
+  <data name="已向 Windows 提交通知；若未显示，请检查系统通知设置和勿扰模式。" xml:space="preserve">
+    <value>Windows에 알림을 보냈습니다. 표시되지 않으면 시스템 알림 설정과 방해 금지 모드를 확인하세요.</value>
+  </data>
+  <data name="邮件" xml:space="preserve">
+    <value>메일</value>
+  </data>
+  <data name="右键示例图标将显示标准菜单。" xml:space="preserve">
+    <value>샘플 아이콘을 오른쪽 클릭하면 표준 메뉴가 표시됩니다.</value>
+  </data>
+  <data name="右键示例图标将显示自定义面板。" xml:space="preserve">
+    <value>샘플 아이콘을 오른쪽 클릭하면 사용자 지정 패널이 표시됩니다.</value>
+  </data>
+  <data name="这是一条很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长消息" xml:space="preserve">
+    <value>매우 긴 메시지입니다</value>
+  </data>
+  <data name="正在读取 GitHub Star 和 NuGet 累计下载量..." xml:space="preserve">
+    <value>GitHub 스타와 NuGet 누적 다운로드 수를 불러오는 중...</value>
+  </data>
+  <data name="执行此操作可能导致文件无法打开！" xml:space="preserve">
+    <value>이 작업으로 파일을 열지 못할 수 있습니다!</value>
+  </data>
+  <data name="指数" xml:space="preserve">
+    <value>지수</value>
+  </data>
+  <data name="中华民族到了最危险的时候，" xml:space="preserve">
+    <value>중화민족은 가장 위태로운 순간에 놓였고,</value>
+  </data>
+  <data name="主页" xml:space="preserve">
+    <value>홈</value>
+  </data>
+  <data name="总共选中:{MyMultiSelectComboBox.SelectedItems.Count} 条" xml:space="preserve">
+    <value>총 선택: {MyMultiSelectComboBox.SelectedItems.Count}개</value>
+  </data>
+  <data name="作词 : 田汉" xml:space="preserve">
+    <value>작사: 田汉</value>
+  </data>
+  <data name="作曲 : 聂耳" xml:space="preserve">
+    <value>작곡: 聂耳</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="IP 地址输入框" xml:space="preserve">
+    <value>IP 주소 입력란</value>
+  </data>
+  <data name="Markdown 查看器" xml:space="preserve">
+    <value>Markdown 뷰어</value>
+  </data>
+  <data name="SVG 查看器" xml:space="preserve">
+    <value>SVG 뷰어</value>
+  </data>
+  <data name="Welcome to WPFDevelopers" xml:space="preserve">
+    <value>WPFDevelopers에 오신 것을 환영합니다</value>
+  </data>
+  <data name="按钮" xml:space="preserve">
+    <value>버튼</value>
+  </data>
+  <data name="边缘光" xml:space="preserve">
+    <value>가장자리 광 효과</value>
+  </data>
+  <data name="变换布局" xml:space="preserve">
+    <value>변환 레이아웃</value>
+  </data>
+  <data name="标尺控件" xml:space="preserve">
+    <value>눈금자</value>
+  </data>
+  <data name="标签" xml:space="preserve">
+    <value>레이블</value>
+  </data>
+  <data name="饼图" xml:space="preserve">
+    <value>원형 차트</value>
+  </data>
+  <data name="拨盘" xml:space="preserve">
+    <value>다이얼</value>
+  </data>
+  <data name="布局间距" xml:space="preserve">
+    <value>레이아웃 간격</value>
+  </data>
+  <data name="步骤条" xml:space="preserve">
+    <value>단계 표시기</value>
+  </data>
+  <data name="彩虹按钮" xml:space="preserve">
+    <value>레인보우 버튼</value>
+  </data>
+  <data name="菜单" xml:space="preserve">
+    <value>메뉴</value>
+  </data>
+  <data name="持续更新中" xml:space="preserve">
+    <value>계속 업데이트 중</value>
+  </data>
+  <data name="抽奖" xml:space="preserve">
+    <value>추첨</value>
+  </data>
+  <data name="抽屉" xml:space="preserve">
+    <value>서랍</value>
+  </data>
+  <data name="抽屉菜单" xml:space="preserve">
+    <value>서랍 메뉴</value>
+  </data>
+  <data name="窗口" xml:space="preserve">
+    <value>창</value>
+  </data>
+  <data name="单选按钮" xml:space="preserve">
+    <value>라디오 버튼</value>
+  </data>
+  <data name="弹幕" xml:space="preserve">
+    <value>실시간 댓글</value>
+  </data>
+  <data name="导航滚动面板" xml:space="preserve">
+    <value>탐색 스크롤 패널</value>
+  </data>
+  <data name="倒计时" xml:space="preserve">
+    <value>카운트다운</value>
+  </data>
+  <data name="登录窗口" xml:space="preserve">
+    <value>로그인 창</value>
+  </data>
+  <data name="等待加载" xml:space="preserve">
+    <value>로딩 대기</value>
+  </data>
+  <data name="动画网格" xml:space="preserve">
+    <value>애니메이션 그리드</value>
+  </data>
+  <data name="抖动" xml:space="preserve">
+    <value>흔들기</value>
+  </data>
+  <data name="多选下拉框(带搜索)" xml:space="preserve">
+    <value>검색 가능한 다중 선택 콤보 상자</value>
+  </data>
+  <data name="分段饼图" xml:space="preserve">
+    <value>분할 원형 차트</value>
+  </data>
+  <data name="分段选择器" xml:space="preserve">
+    <value>분할 선택 컨트롤</value>
+  </data>
+  <data name="分割按钮" xml:space="preserve">
+    <value>분할 버튼</value>
+  </data>
+  <data name="分页" xml:space="preserve">
+    <value>페이지 매김</value>
+  </data>
+  <data name="分组框" xml:space="preserve">
+    <value>그룹 상자</value>
+  </data>
+  <data name="复选框" xml:space="preserve">
+    <value>체크 상자</value>
+  </data>
+  <data name="歌词" xml:space="preserve">
+    <value>가사</value>
+  </data>
+  <data name="滚动导航" xml:space="preserve">
+    <value>스크롤 탐색</value>
+  </data>
+  <data name="滚动加载" xml:space="preserve">
+    <value>스크롤 로딩</value>
+  </data>
+  <data name="滚动视图" xml:space="preserve">
+    <value>스크롤 뷰</value>
+  </data>
+  <data name="过渡面板" xml:space="preserve">
+    <value>전환 패널</value>
+  </data>
+  <data name="呼吸灯" xml:space="preserve">
+    <value>브리딩 라이트</value>
+  </data>
+  <data name="滑块" xml:space="preserve">
+    <value>슬라이더</value>
+  </data>
+  <data name="环形加载动画" xml:space="preserve">
+    <value>링 로딩 애니메이션</value>
+  </data>
+  <data name="灰度效果" xml:space="preserve">
+    <value>회색조 효과</value>
+  </data>
+  <data name="徽标" xml:space="preserve">
+    <value>배지</value>
+  </data>
+  <data name="绘图" xml:space="preserve">
+    <value>그리기</value>
+  </data>
+  <data name="活动记录（示例控件）" xml:space="preserve">
+    <value>활동 피드(샘플 컨트롤)</value>
+  </data>
+  <data name="火箭动画" xml:space="preserve">
+    <value>로켓 애니메이션</value>
+  </data>
+  <data name="火苗" xml:space="preserve">
+    <value>불꽃</value>
+  </data>
+  <data name="基础加载动画" xml:space="preserve">
+    <value>기본 로딩 애니메이션</value>
+  </data>
+  <data name="基础控件" xml:space="preserve">
+    <value>기본 컨트롤</value>
+  </data>
+  <data name="加载动画" xml:space="preserve">
+    <value>로딩 애니메이션</value>
+  </data>
+  <data name="进度条" xml:space="preserve">
+    <value>진행 표시줄</value>
+  </data>
+  <data name="聚光灯" xml:space="preserve">
+    <value>스포트라이트</value>
+  </data>
+  <data name="聚焦轮播" xml:space="preserve">
+    <value>포커스 캐러셀</value>
+  </data>
+  <data name="卡片轮播" xml:space="preserve">
+    <value>카드 캐러셀</value>
+  </data>
+  <data name="雷达图" xml:space="preserve">
+    <value>레이더 차트</value>
+  </data>
+  <data name="聊天表情" xml:space="preserve">
+    <value>채팅 이모지</value>
+  </data>
+  <data name="列表定位" xml:space="preserve">
+    <value>목록 위치 지정</value>
+  </data>
+  <data name="列表框" xml:space="preserve">
+    <value>목록 상자</value>
+  </data>
+  <data name="列表视图" xml:space="preserve">
+    <value>목록 보기</value>
+  </data>
+  <data name="流光加载动画" xml:space="preserve">
+    <value>쉬머 로딩 애니메이션</value>
+  </data>
+  <data name="六宫格" xml:space="preserve">
+    <value>6분할 보기</value>
+  </data>
+  <data name="路径图标" xml:space="preserve">
+    <value>경로 아이콘</value>
+  </data>
+  <data name="密码框" xml:space="preserve">
+    <value>비밀번호 상자</value>
+  </data>
+  <data name="面包屑导航" xml:space="preserve">
+    <value>이동 경로 탐색</value>
+  </data>
+  <data name="拟物音量调节" xml:space="preserve">
+    <value>스큐어모픽 볼륨 조절</value>
+  </data>
+  <data name="平移列表" xml:space="preserve">
+    <value>이동 목록</value>
+  </data>
+  <data name="屏幕截图" xml:space="preserve">
+    <value>화면 캡처</value>
+  </data>
+  <data name="瀑布流" xml:space="preserve">
+    <value>벽돌형 레이아웃</value>
+  </data>
+  <data name="气泡选择" xml:space="preserve">
+    <value>말풍선 선택</value>
+  </data>
+  <data name="切换按钮" xml:space="preserve">
+    <value>토글 버튼</value>
+  </data>
+  <data name="球形加载动画" xml:space="preserve">
+    <value>구형 로딩 애니메이션</value>
+  </data>
+  <data name="任务栏缩略图" xml:space="preserve">
+    <value>작업 표시줄 미리 보기</value>
+  </data>
+  <data name="任务栏信息" xml:space="preserve">
+    <value>작업 표시줄 항목 정보</value>
+  </data>
+  <data name="日历" xml:space="preserve">
+    <value>달력</value>
+  </data>
+  <data name="日期范围选择器" xml:space="preserve">
+    <value>날짜 범위 선택기</value>
+  </data>
+  <data name="日期时间选择器" xml:space="preserve">
+    <value>날짜/시간 선택기</value>
+  </data>
+  <data name="日期选择器" xml:space="preserve">
+    <value>날짜 선택기</value>
+  </data>
+  <data name="三维导航菜单" xml:space="preserve">
+    <value>3D 탐색 메뉴</value>
+  </data>
+  <data name="色彩指南" xml:space="preserve">
+    <value>색상 안내</value>
+  </data>
+  <data name="时间选择器" xml:space="preserve">
+    <value>시간 선택기</value>
+  </data>
+  <data name="时间轴" xml:space="preserve">
+    <value>타임라인</value>
+  </data>
+  <data name="使用指南" xml:space="preserve">
+    <value>사용 안내</value>
+  </data>
+  <data name="示例多选下拉框" xml:space="preserve">
+    <value>샘플 다중 선택 콤보 상자</value>
+  </data>
+  <data name="示例专属实现或组合效果，非 WD 内置控件；请参考示例源码。" xml:space="preserve">
+    <value>샘플 전용 구현 또는 조합 효과이며 WD 기본 컨트롤이 아닙니다. 샘플 소스 코드를 참조하세요.</value>
+  </data>
+  <data name="手势解锁" xml:space="preserve">
+    <value>제스처 잠금 해제</value>
+  </data>
+  <data name="手写画布" xml:space="preserve">
+    <value>손글씨 캔버스</value>
+  </data>
+  <data name="树视图" xml:space="preserve">
+    <value>트리 보기</value>
+  </data>
+  <data name="数据表格" xml:space="preserve">
+    <value>데이터 그리드</value>
+  </data>
+  <data name="数据表格筛选" xml:space="preserve">
+    <value>데이터 그리드 필터링</value>
+  </data>
+  <data name="数字卡片" xml:space="preserve">
+    <value>숫자 카드</value>
+  </data>
+  <data name="数字输入框" xml:space="preserve">
+    <value>숫자 입력란</value>
+  </data>
+  <data name="搜索控件" xml:space="preserve">
+    <value>검색 컨트롤</value>
+  </data>
+  <data name="头像裁剪" xml:space="preserve">
+    <value>아바타 자르기</value>
+  </data>
+  <data name="图标库" xml:space="preserve">
+    <value>아이콘 라이브러리</value>
+  </data>
+  <data name="图片裁剪" xml:space="preserve">
+    <value>이미지 자르기</value>
+  </data>
+  <data name="托盘图标" xml:space="preserve">
+    <value>시스템 트레이 아이콘</value>
+  </data>
+  <data name="拖拽" xml:space="preserve">
+    <value>끌어서 놓기</value>
+  </data>
+  <data name="网格分隔条" xml:space="preserve">
+    <value>그리드 분할 막대</value>
+  </data>
+  <data name="温度计" xml:space="preserve">
+    <value>온도계</value>
+  </data>
+  <data name="文本框" xml:space="preserve">
+    <value>텍스트 상자</value>
+  </data>
+  <data name="下拉框" xml:space="preserve">
+    <value>콤보 상자</value>
+  </data>
+  <data name="消息框" xml:space="preserve">
+    <value>메시지 상자</value>
+  </data>
+  <data name="消息提示" xml:space="preserve">
+    <value>토스트 알림</value>
+  </data>
+  <data name="星空" xml:space="preserve">
+    <value>별이 빛나는 밤하늘</value>
+  </data>
+  <data name="虚拟化换行面板" xml:space="preserve">
+    <value>가상화 줄 바꿈 패널</value>
+  </data>
+  <data name="选项卡" xml:space="preserve">
+    <value>탭 컨트롤</value>
+  </data>
+  <data name="雪花画布" xml:space="preserve">
+    <value>눈송이 캔버스</value>
+  </data>
+  <data name="循环加载" xml:space="preserve">
+    <value>반복 로더</value>
+  </data>
+  <data name="亚克力效果" xml:space="preserve">
+    <value>아크릴 효과</value>
+  </data>
+  <data name="颜色选择器" xml:space="preserve">
+    <value>색상 선택기</value>
+  </data>
+  <data name="一次性验证码输入框" xml:space="preserve">
+    <value>일회용 인증 코드 입력란</value>
+  </data>
+  <data name="仪表" xml:space="preserve">
+    <value>게이지</value>
+  </data>
+  <data name="仪表盘" xml:space="preserve">
+    <value>대시보드</value>
+  </data>
+  <data name="音频动画" xml:space="preserve">
+    <value>오디오 애니메이션</value>
+  </data>
+  <data name="圆形菜单" xml:space="preserve">
+    <value>원형 메뉴</value>
+  </data>
+  <data name="圆形进度条" xml:space="preserve">
+    <value>원형 진행 표시줄</value>
+  </data>
+  <data name="圆形选择器" xml:space="preserve">
+    <value>원형 선택기</value>
+  </data>
+  <data name="遮罩与窗口遮罩" xml:space="preserve">
+    <value>컨트롤 및 창 마스크</value>
+  </data>
+  <data name="折叠面板" xml:space="preserve">
+    <value>확장 패널</value>
+  </data>
+  <data name="折线图" xml:space="preserve">
+    <value>선 그래프</value>
+  </data>
+  <data name="主题" xml:space="preserve">
+    <value>테마</value>
+  </data>
+  <data name="柱状图" xml:space="preserve">
+    <value>막대 차트</value>
+  </data>
+  <data name="桌面背景" xml:space="preserve">
+    <value>바탕 화면 배경</value>
+  </data>
+  <data name="走马灯" xml:space="preserve">
+    <value>마키</value>
+  </data>
+  <data name="对话框" xml:space="preserve">
+    <value>대화 상자</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="A" xml:space="preserve"><value>A</value></data>
+  <data name="ASP.NET" xml:space="preserve"><value>ASP.NET</value></data>
+  <data name="Add" xml:space="preserve"><value>추가</value></data>
+  <data name="Add Item" xml:space="preserve"><value>항목 추가</value></data>
+  <data name="Add nuget;" xml:space="preserve"><value>NuGet 패키지 설치;</value></data>
+  <data name="Add the Namespace in App.xaml" xml:space="preserve"><value>App.xaml에 네임스페이스 추가</value></data>
+  <data name="Add the Resources to App.xaml" xml:space="preserve"><value>App.xaml에 리소스 추가</value></data>
+  <data name="AddLoading" xml:space="preserve"><value>로딩 표시 추가</value></data>
+  <data name="Address" xml:space="preserve"><value>주소</value></data>
+  <data name="Age" xml:space="preserve"><value>나이</value></data>
+  <data name="AllGrid" xml:space="preserve"><value>모든 그리드</value></data>
+  <data name="Apple!" xml:space="preserve"><value>Apple!</value></data>
+  <data name="AtomGit" xml:space="preserve"><value>AtomGit</value></data>
+  <data name="B" xml:space="preserve"><value>B</value></data>
+  <data name="BD09" xml:space="preserve"><value>BD09</value></data>
+  <data name="Binding" xml:space="preserve"><value>데이터 바인딩</value></data>
+  <data name="Binding Source" xml:space="preserve"><value>바인딩 소스</value></data>
+  <data name="Binding:" xml:space="preserve"><value>데이터 바인딩:</value></data>
+  <data name="Blazor" xml:space="preserve"><value>Blazor</value></data>
+  <data name="Bottom" xml:space="preserve"><value>Bottom</value></data>
+  <data name="Bus" xml:space="preserve"><value>버스</value></data>
+  <data name="Bus 1" xml:space="preserve"><value>버스 1</value></data>
+  <data name="Bus 2" xml:space="preserve"><value>버스 2</value></data>
+  <data name="Busy" xml:space="preserve"><value>사용 중</value></data>
+  <data name="Button" xml:space="preserve"><value>Button</value></data>
+  <data name="C#" xml:space="preserve"><value>C#</value></data>
+  <data name="C# + XAML / Events" xml:space="preserve"><value>C# + XAML / 이벤트</value></data>
+  <data name="Calendar" xml:space="preserve"><value>Calendar</value></data>
+  <data name="Card" xml:space="preserve"><value>카드</value></data>
+  <data name="Check-in" xml:space="preserve"><value>출석 확인</value></data>
+  <data name="Checkbox" xml:space="preserve"><value>체크박스</value></data>
+  <data name="City" xml:space="preserve"><value>도시</value></data>
+  <data name="Class" xml:space="preserve"><value>학급</value></data>
+  <data name="Classroom" xml:space="preserve"><value>교실</value></data>
+  <data name="Clear" xml:space="preserve"><value>지우기</value></data>
+  <data name="Clear Toast" xml:space="preserve"><value>토스트 알림 지우기</value></data>
+  <data name="Clock" xml:space="preserve"><value>시계</value></data>
+  <data name="Code CSharp" xml:space="preserve"><value>C# 코드</value></data>
+  <data name="ComboBox" xml:space="preserve"><value>ComboBox</value></data>
+  <data name="Command" xml:space="preserve"><value>명령</value></data>
+  <data name="Commit" xml:space="preserve"><value>제출</value></data>
+  <data name="Complete all existing nodes and append a loading node." xml:space="preserve"><value>기존 노드를 모두 완료하고 로딩 중인 노드를 추가합니다.</value></data>
+  <data name="Complete pending" xml:space="preserve"><value>대기 중인 노드 완료</value></data>
+  <data name="ContactMethod" xml:space="preserve"><value>연락 방법</value></data>
+  <data name="Content" xml:space="preserve"><value>내용</value></data>
+  <data name="Content 1" xml:space="preserve"><value>내용 1</value></data>
+  <data name="Content 2" xml:space="preserve"><value>내용 2</value></data>
+  <data name="Content 3" xml:space="preserve"><value>내용 3</value></data>
+  <data name="Content 4" xml:space="preserve"><value>내용 4</value></data>
+  <data name="Content 5" xml:space="preserve"><value>내용 5</value></data>
+  <data name="Content 6" xml:space="preserve"><value>내용 6</value></data>
+  <data name="Copy" xml:space="preserve"><value>복사</value></data>
+  <data name="Copy Key" xml:space="preserve"><value>리소스 키 복사</value></data>
+  <data name="Copyright © 2022 WPFDevelopers. All rights reserved." xml:space="preserve"><value>저작권 © 2022 WPFDevelopers. 모든 권리 보유.</value></data>
+  <data name="Count：" xml:space="preserve"><value>개수:</value></data>
+  <data name="Create" xml:space="preserve"><value>생성</value></data>
+  <data name="Create a service site" xml:space="preserve"><value>서비스 사이트 생성</value></data>
+  <data name="Ctrl + L" xml:space="preserve"><value>Ctrl + L</value></data>
+  <data name="Ctrl + ←" xml:space="preserve"><value>Ctrl + ←</value></data>
+  <data name="Ctrl + ↑" xml:space="preserve"><value>Ctrl + ↑</value></data>
+  <data name="Ctrl + →" xml:space="preserve"><value>Ctrl + →</value></data>
+  <data name="Ctrl + ↓" xml:space="preserve"><value>Ctrl + ↓</value></data>
+  <data name="Cut" xml:space="preserve"><value>잘라내기</value></data>
+  <data name="DEMO" xml:space="preserve"><value>데모</value></data>
+  <data name="Danger" xml:space="preserve"><value>위험</value></data>
+  <data name="Dark" xml:space="preserve"><value>어둡게</value></data>
+  <data name="DataGrid" xml:space="preserve"><value>DataGrid</value></data>
+  <data name="Date" xml:space="preserve"><value>날짜</value></data>
+  <data name="DatePicker" xml:space="preserve"><value>DatePicker</value></data>
+  <data name="DateTime" xml:space="preserve"><value>날짜 및 시간</value></data>
+  <data name="DateTimePicker" xml:space="preserve"><value>DateTimePicker</value></data>
+  <data name="Default" xml:space="preserve"><value>기본값</value></data>
+  <data name="Deploy" xml:space="preserve"><value>배포</value></data>
+  <data name="Desktop" xml:space="preserve"><value>데스크톱</value></data>
+  <data name="Develop" xml:space="preserve"><value>개발</value></data>
+  <data name="Dialog" xml:space="preserve"><value>대화 상자</value></data>
+  <data name="Drawer" xml:space="preserve"><value>드로어</value></data>
+  <data name="DrawerMenu - Xaml" xml:space="preserve"><value>DrawerMenu - XAML</value></data>
+  <data name="DrawerMenu binding" xml:space="preserve"><value>DrawerMenu 데이터 바인딩</value></data>
+  <data name="EN" xml:space="preserve"><value>EN</value></data>
+  <data name="EdgeLight" xml:space="preserve"><value>EdgeLight</value></data>
+  <data name="EdgeLight2" xml:space="preserve"><value>EdgeLight2</value></data>
+  <data name="EdgePage" xml:space="preserve"><value>EdgePage</value></data>
+  <data name="Email" xml:space="preserve"><value>이메일</value></data>
+  <data name="EmailPage" xml:space="preserve"><value>EmailPage</value></data>
+  <data name="Emoji" xml:space="preserve"><value>이모지</value></data>
+  <data name="Enable" xml:space="preserve"><value>사용</value></data>
+  <data name="English" xml:space="preserve"><value>English</value></data>
+  <data name="Error" xml:space="preserve"><value>오류</value></data>
+  <data name="Error Toast" xml:space="preserve"><value>오류 토스트 알림</value></data>
+  <data name="Event" xml:space="preserve"><value>이벤트</value></data>
+  <data name="Expander" xml:space="preserve"><value>Expander</value></data>
+  <data name="Expander1" xml:space="preserve"><value>Expander1</value></data>
+  <data name="False" xml:space="preserve"><value>False</value></data>
+  <data name="File" xml:space="preserve"><value>파일</value></data>
+  <data name="Friend" xml:space="preserve"><value>친구</value></data>
+  <data name="GCJ02" xml:space="preserve"><value>GCJ02</value></data>
+  <data name="Geometry:" xml:space="preserve"><value>Geometry:</value></data>
+  <data name="GitHub" xml:space="preserve"><value>GitHub</value></data>
+  <data name="GitHub stars" xml:space="preserve"><value>GitHub 스타 수</value></data>
+  <data name="Gitee" xml:space="preserve"><value>Gitee</value></data>
+  <data name="Grayscale" xml:space="preserve"><value>회색조 효과</value></data>
+  <data name="Grid" xml:space="preserve"><value>Grid</value></data>
+  <data name="GridSplitter" xml:space="preserve"><value>GridSplitter</value></data>
+  <data name="GroupBox" xml:space="preserve"><value>GroupBox</value></data>
+  <data name="GroupBox1" xml:space="preserve"><value>GroupBox1</value></data>
+  <data name="HD" xml:space="preserve"><value>고화질</value></data>
+  <data name="HighTitleBar" xml:space="preserve"><value>HighTitleBar</value></data>
+  <data name="Home" xml:space="preserve"><value>홈</value></data>
+  <data name="HomePage" xml:space="preserve"><value>HomePage</value></data>
+  <data name="Horizontal" xml:space="preserve"><value>Horizontal</value></data>
+  <data name="Horizontal / Alternate / Labels" xml:space="preserve"><value>가로 / 교차 배치 / 레이블</value></data>
+  <data name="Horizontal ScrollViewer" xml:space="preserve"><value>가로 ScrollViewer</value></data>
+  <data name="Horizontal splitter - resize rows" xml:space="preserve"><value>가로 분할선 - 행 높이 조절</value></data>
+  <data name="HorizontalGrid" xml:space="preserve"><value>가로 그리드</value></data>
+  <data name="ID" xml:space="preserve"><value>ID</value></data>
+  <data name="IconicThumbnailWindowExample" xml:space="preserve"><value>IconicThumbnailWindowExample</value></data>
+  <data name="Idle" xml:space="preserve"><value>유휴 상태</value></data>
+  <data name="Info" xml:space="preserve"><value>정보</value></data>
+  <data name="Info Toast" xml:space="preserve"><value>정보 토스트 알림</value></data>
+  <data name="IntPtr Window" xml:space="preserve"><value>IntPtr 창</value></data>
+  <data name="IsLoading" xml:space="preserve"><value>IsLoading</value></data>
+  <data name="IsOpen" xml:space="preserve"><value>IsOpen</value></data>
+  <data name="IsVisible" xml:space="preserve"><value>IsVisible</value></data>
+  <data name="Item 1" xml:space="preserve"><value>항목 1</value></data>
+  <data name="Item 2" xml:space="preserve"><value>항목 2</value></data>
+  <data name="Item 3" xml:space="preserve"><value>항목 3</value></data>
+  <data name="Item 6" xml:space="preserve"><value>항목 6</value></data>
+  <data name="Jindong Province" xml:space="preserve"><value>진둥 지역</value></data>
+  <data name="Languages" xml:space="preserve"><value>언어</value></data>
+  <data name="Languages:" xml:space="preserve"><value>언어:</value></data>
+  <data name="Large" xml:space="preserve"><value>큼</value></data>
+  <data name="Left" xml:space="preserve"><value>Left</value></data>
+  <data name="Light" xml:space="preserve"><value>밝게</value></data>
+  <data name="Light | Dark" xml:space="preserve"><value>밝게 | 어둡게</value></data>
+  <data name="ListBox" xml:space="preserve"><value>ListBox</value></data>
+  <data name="ListView" xml:space="preserve"><value>ListView</value></data>
+  <data name="Loading" xml:space="preserve"><value>로딩 중</value></data>
+  <data name="Loading activity..." xml:space="preserve"><value>활동 내용을 불러오는 중...</value></data>
+  <data name="LoadingTask" xml:space="preserve"><value>작업 로딩</value></data>
+  <data name="Login" xml:space="preserve"><value>로그인</value></data>
+  <data name="Long Toast" xml:space="preserve"><value>긴 토스트 알림</value></data>
+  <data name="MAP OVERVIEW" xml:space="preserve"><value>지도 개요</value></data>
+  <data name="MAUI" xml:space="preserve"><value>MAUI</value></data>
+  <data name="MIT" xml:space="preserve"><value>MIT</value></data>
+  <data name="MVVM" xml:space="preserve"><value>MVVM</value></data>
+  <data name="MVVM / Commands" xml:space="preserve"><value>MVVM / 명령</value></data>
+  <data name="MainWindow" xml:space="preserve"><value>MainWindow</value></data>
+  <data name="MainWindow Code" xml:space="preserve"><value>MainWindow 소스 코드</value></data>
+  <data name="Markdown Input" xml:space="preserve"><value>Markdown 입력</value></data>
+  <data name="Markdown Preview" xml:space="preserve"><value>Markdown 미리 보기</value></data>
+  <data name="Mask" xml:space="preserve"><value>마스크</value></data>
+  <data name="Mask 0" xml:space="preserve"><value>마스크 0</value></data>
+  <data name="Mask 1" xml:space="preserve"><value>마스크 1</value></data>
+  <data name="Mask 2" xml:space="preserve"><value>마스크 2</value></data>
+  <data name="Max" xml:space="preserve"><value>최댓값</value></data>
+  <data name="MaxDate:" xml:space="preserve"><value>최대 날짜:</value></data>
+  <data name="Medium" xml:space="preserve"><value>중간</value></data>
+  <data name="Menu" xml:space="preserve"><value>메뉴</value></data>
+  <data name="Menu1" xml:space="preserve"><value>메뉴 1</value></data>
+  <data name="Menu2" xml:space="preserve"><value>메뉴 2</value></data>
+  <data name="Menu3" xml:space="preserve"><value>메뉴 3</value></data>
+  <data name="MenuItem 1" xml:space="preserve"><value>메뉴 항목 1</value></data>
+  <data name="MenuItem 1.1" xml:space="preserve"><value>메뉴 항목 1.1</value></data>
+  <data name="MenuItem 1.1.1" xml:space="preserve"><value>메뉴 항목 1.1.1</value></data>
+  <data name="MenuItem 1.1.1.1" xml:space="preserve"><value>메뉴 항목 1.1.1.1</value></data>
+  <data name="MenuItem 1.1.1.2" xml:space="preserve"><value>메뉴 항목 1.1.1.2</value></data>
+  <data name="MenuItem 1.1.2" xml:space="preserve"><value>메뉴 항목 1.1.2</value></data>
+  <data name="MenuItem 1.2" xml:space="preserve"><value>메뉴 항목 1.2</value></data>
+  <data name="MenuItem 1.3" xml:space="preserve"><value>메뉴 항목 1.3</value></data>
+  <data name="MenuItem 1.4" xml:space="preserve"><value>메뉴 항목 1.4</value></data>
+  <data name="MenuItem 1.5" xml:space="preserve"><value>메뉴 항목 1.5</value></data>
+  <data name="MenuItem 2" xml:space="preserve"><value>메뉴 항목 2</value></data>
+  <data name="MenuItem 3" xml:space="preserve"><value>메뉴 항목 3</value></data>
+  <data name="MenuItem 4" xml:space="preserve"><value>메뉴 항목 4</value></data>
+  <data name="Min" xml:space="preserve"><value>최솟값</value></data>
+  <data name="MinDate:" xml:space="preserve"><value>최소 날짜:</value></data>
+  <data name="Mode" xml:space="preserve"><value>모드</value></data>
+  <data name="Mode 1" xml:space="preserve"><value>모드 1</value></data>
+  <data name="Mode 2" xml:space="preserve"><value>모드 2</value></data>
+  <data name="Mode 3" xml:space="preserve"><value>모드 3</value></data>
+  <data name="Mode 4" xml:space="preserve"><value>모드 4</value></data>
+  <data name="MultiColor" xml:space="preserve"><value>다중 색상</value></data>
+  <data name="MultiSelectComboBox" xml:space="preserve"><value>MultiSelectComboBox</value></data>
+  <data name="MultiSelectionSearchComboBox" xml:space="preserve"><value>MultiSelectionSearchComboBox</value></data>
+  <data name="Multiline content keeps the nodes aligned." xml:space="preserve"><value>여러 줄의 내용에서도 노드 정렬이 유지됩니다.</value></data>
+  <data name="NEW" xml:space="preserve"><value>신규</value></data>
+  <data name="Name" xml:space="preserve"><value>이름</value></data>
+  <data name="Network problems being solved" xml:space="preserve"><value>네트워크 문제 해결 중</value></data>
+  <data name="Next" xml:space="preserve"><value>다음</value></data>
+  <data name="Next step" xml:space="preserve"><value>다음 단계</value></data>
+  <data name="NoneTitleBarWindow" xml:space="preserve"><value>NoneTitleBarWindow</value></data>
+  <data name="Normal" xml:space="preserve"><value>일반</value></data>
+  <data name="NormalLoading" xml:space="preserve"><value>일반 로딩 표시</value></data>
+  <data name="NuGet" xml:space="preserve"><value>NuGet</value></data>
+  <data name="NuGet downloads" xml:space="preserve"><value>NuGet 다운로드 수</value></data>
+  <data name="Off Task" xml:space="preserve"><value>작업 닫기</value></data>
+  <data name="Offset" xml:space="preserve"><value>오프셋</value></data>
+  <data name="Open" xml:space="preserve"><value>열기</value></data>
+  <data name="Open MVVM dialog" xml:space="preserve"><value>MVVM 대화 상자 열기</value></data>
+  <data name="Option 1" xml:space="preserve"><value>옵션 1</value></data>
+  <data name="Option 2" xml:space="preserve"><value>옵션 2</value></data>
+  <data name="Option 3" xml:space="preserve"><value>옵션 3</value></data>
+  <data name="Option 4" xml:space="preserve"><value>옵션 4</value></data>
+  <data name="Option 5" xml:space="preserve"><value>옵션 5</value></data>
+  <data name="Option A" xml:space="preserve"><value>옵션 A</value></data>
+  <data name="Option B" xml:space="preserve"><value>옵션 B</value></data>
+  <data name="Option C" xml:space="preserve"><value>옵션 C</value></data>
+  <data name="Option D" xml:space="preserve"><value>옵션 D</value></data>
+  <data name="Orientation" xml:space="preserve"><value>방향</value></data>
+  <data name="PasswordBox" xml:space="preserve"><value>PasswordBox</value></data>
+  <data name="Paste" xml:space="preserve"><value>붙여넣기</value></data>
+  <data name="PathIcon:" xml:space="preserve"><value>PathIcon:</value></data>
+  <data name="Progress" xml:space="preserve"><value>진행률</value></data>
+  <data name="ProgressBar" xml:space="preserve"><value>ProgressBar</value></data>
+  <data name="Question" xml:space="preserve"><value>질문</value></data>
+  <data name="RadioButton" xml:space="preserve"><value>RadioButton</value></data>
+  <data name="Regular" xml:space="preserve"><value>일반</value></data>
+  <data name="Remove last" xml:space="preserve"><value>마지막 항목 제거</value></data>
+  <data name="Reset" xml:space="preserve"><value>초기화</value></data>
+  <data name="Reverse" xml:space="preserve"><value>역순 정렬</value></data>
+  <data name="Right" xml:space="preserve"><value>Right</value></data>
+  <data name="Sample" xml:space="preserve"><value>예제</value></data>
+  <data name="Save" xml:space="preserve"><value>저장</value></data>
+  <data name="ScreenShot" xml:space="preserve"><value>화면 캡처</value></data>
+  <data name="Scroll Navigation" xml:space="preserve"><value>스크롤 탐색</value></data>
+  <data name="ScrollViewer" xml:space="preserve"><value>ScrollViewer</value></data>
+  <data name="Shandong Province" xml:space="preserve"><value>산둥성</value></data>
+  <data name="ShowTheme: Light / Dark" xml:space="preserve"><value>테마: 밝게 / 어둡게</value></data>
+  <data name="Sichuan Province" xml:space="preserve"><value>쓰촨성</value></data>
+  <data name="Single select" xml:space="preserve"><value>단일 선택</value></data>
+  <data name="Single:" xml:space="preserve"><value>단일 선택:</value></data>
+  <data name="Slide 1" xml:space="preserve"><value>슬라이드 1</value></data>
+  <data name="Slide 2" xml:space="preserve"><value>슬라이드 2</value></data>
+  <data name="Slide 3" xml:space="preserve"><value>슬라이드 3</value></data>
+  <data name="Slide 4" xml:space="preserve"><value>슬라이드 4</value></data>
+  <data name="Slide 5" xml:space="preserve"><value>슬라이드 5</value></data>
+  <data name="Slider" xml:space="preserve"><value>Slider</value></data>
+  <data name="Slightly Idle" xml:space="preserve"><value>비교적 한가함</value></data>
+  <data name="Small" xml:space="preserve"><value>작음</value></data>
+  <data name="Solve initial network problems" xml:space="preserve"><value>초기 네트워크 문제 해결</value></data>
+  <data name="Spacing=4 adds a 4px gap between items and wrapped rows, plus 2px around the panel edges. Existing child margins are added to this gap." xml:space="preserve"><value>Spacing=4는 항목 사이와 줄바꿈된 행 사이에 4px 간격을, 패널 가장자리에는 2px 간격을 추가합니다. 자식 요소의 기존 여백은 이 간격에 더해집니다.</value></data>
+  <data name="StackPanel" xml:space="preserve"><value>StackPanel</value></data>
+  <data name="Star" xml:space="preserve"><value>스타</value></data>
+  <data name="Step 1:" xml:space="preserve"><value>1단계:</value></data>
+  <data name="Step 2:" xml:space="preserve"><value>2단계:</value></data>
+  <data name="Step 3:" xml:space="preserve"><value>3단계:</value></data>
+  <data name="Style1" xml:space="preserve"><value>스타일 1</value></data>
+  <data name="Style2" xml:space="preserve"><value>스타일 2</value></data>
+  <data name="Style3" xml:space="preserve"><value>스타일 3</value></data>
+  <data name="Success" xml:space="preserve"><value>성공</value></data>
+  <data name="Success Toast" xml:space="preserve"><value>성공 토스트 알림</value></data>
+  <data name="System V1.0" xml:space="preserve"><value>시스템 V1.0</value></data>
+  <data name="TRACKING DATA" xml:space="preserve"><value>추적 데이터</value></data>
+  <data name="TabControl" xml:space="preserve"><value>TabControl</value></data>
+  <data name="TabItem1" xml:space="preserve"><value>탭 1</value></data>
+  <data name="TabItem2" xml:space="preserve"><value>탭 2</value></data>
+  <data name="TabItem2LongLongLongLongLongLongLongLong" xml:space="preserve"><value>탭 2긴긴긴긴긴긴긴긴제목</value></data>
+  <data name="TabItem3" xml:space="preserve"><value>탭 3</value></data>
+  <data name="TabItem3LongLongLongLongLongLongLongLong" xml:space="preserve"><value>탭 3긴긴긴긴긴긴긴긴제목</value></data>
+  <data name="Tag1" xml:space="preserve"><value>태그 1</value></data>
+  <data name="Tag2" xml:space="preserve"><value>태그 2</value></data>
+  <data name="Tag3" xml:space="preserve"><value>태그 3</value></data>
+  <data name="Tag4" xml:space="preserve"><value>태그 4</value></data>
+  <data name="Tag5" xml:space="preserve"><value>태그 5</value></data>
+  <data name="TaskbarItemInfoExample" xml:space="preserve"><value>TaskbarItemInfoExample</value></data>
+  <data name="Technical testing" xml:space="preserve"><value>기술 테스트</value></data>
+  <data name="Test" xml:space="preserve"><value>테스트</value></data>
+  <data name="TextBlock:" xml:space="preserve"><value>TextBlock:</value></data>
+  <data name="TextBox" xml:space="preserve"><value>TextBox</value></data>
+  <data name="Theme" xml:space="preserve"><value>테마</value></data>
+  <data name="Toast Position" xml:space="preserve"><value>토스트 알림 위치</value></data>
+  <data name="ToggleButton" xml:space="preserve"><value>ToggleButton</value></data>
+  <data name="ToolWindow" xml:space="preserve"><value>ToolWindow</value></data>
+  <data name="Top" xml:space="preserve"><value>Top</value></data>
+  <data name="TreeView" xml:space="preserve"><value>TreeView</value></data>
+  <data name="UPDATE" xml:space="preserve"><value>업데이트</value></data>
+  <data name="UWP" xml:space="preserve"><value>UWP</value></data>
+  <data name="UniformGrid" xml:space="preserve"><value>UniformGrid</value></data>
+  <data name="Use the mouse wheel or touchpad to scroll horizontally." xml:space="preserve"><value>마우스 휠이나 터치패드로 가로 스크롤하세요.</value></data>
+  <data name="Vertical" xml:space="preserve"><value>Vertical</value></data>
+  <data name="Vertical / Start" xml:space="preserve"><value>세로 / 시작 쪽</value></data>
+  <data name="Vertical splitter - resize columns" xml:space="preserve"><value>세로 분할선 - 열 너비 조절</value></data>
+  <data name="VerticalGrid" xml:space="preserve"><value>세로 그리드</value></data>
+  <data name="Virtualization (5000)" xml:space="preserve"><value>가상화 (5000개 항목)</value></data>
+  <data name="Vote" xml:space="preserve"><value>투표</value></data>
+  <data name="WGS84" xml:space="preserve"><value>WGS84</value></data>
+  <data name="WGS84 -&gt; GCJ02" xml:space="preserve"><value>WGS84 -&gt; GCJ02</value></data>
+  <data name="WPF" xml:space="preserve"><value>WPF</value></data>
+  <data name="WPFDevelopers" xml:space="preserve"><value>WPFDevelopers</value></data>
+  <data name="WPFDevelopers Logo" xml:space="preserve"><value>WPFDevelopers 로고</value></data>
+  <data name="WPFDevelopers.Avalonia" xml:space="preserve"><value>WPFDevelopers.Avalonia</value></data>
+  <data name="Warning" xml:space="preserve"><value>경고</value></data>
+  <data name="Warning Toast" xml:space="preserve"><value>경고 토스트 알림</value></data>
+  <data name="WebAPI" xml:space="preserve"><value>WebAPI</value></data>
+  <data name="Whiteboard" xml:space="preserve"><value>화이트보드</value></data>
+  <data name="WinForm" xml:space="preserve"><value>WinForm</value></data>
+  <data name="WinUI" xml:space="preserve"><value>WinUI</value></data>
+  <data name="Window" xml:space="preserve"><value>Window</value></data>
+  <data name="WrapPanel" xml:space="preserve"><value>WrapPanel</value></data>
+  <data name="X" xml:space="preserve"><value>X</value></data>
+  <data name="XAML" xml:space="preserve"><value>XAML</value></data>
+  <data name="XXXYYY" xml:space="preserve"><value>XXXYYY</value></data>
+  <data name="Xamarin" xml:space="preserve"><value>Xamarin</value></data>
+  <data name="YanJinHua" xml:space="preserve"><value>YanJinHua</value></data>
+  <data name="YesNoCancel" xml:space="preserve"><value>예 / 아니요 / 취소</value></data>
+  <data name="Zoom In" xml:space="preserve"><value>확대</value></data>
+  <data name="Zoom Out" xml:space="preserve"><value>축소</value></data>
+  <data name="activity" xml:space="preserve"><value>활동</value></data>
+  <data name="contents..." xml:space="preserve"><value>내용...</value></data>
+  <data name="license" xml:space="preserve"><value>라이선스</value></data>
+  <data name="selection time" xml:space="preserve"><value>시간 선택</value></data>
+  <data name="tags" xml:space="preserve"><value>태그</value></data>
+  <data name="version" xml:space="preserve"><value>버전</value></data>
+  <data name="wd:WDScrollViewer" xml:space="preserve"><value>wd:WDScrollViewer</value></data>
+  <data name="한국어" xml:space="preserve"><value>한국어</value></data>
+  <data name="343DST.com" xml:space="preserve"><value>343DST.com</value></data>
+  <data name="ABCV.wang" xml:space="preserve"><value>ABCV.wang</value></data>
+  <data name="Added by a C# click event." xml:space="preserve"><value>C# 클릭 이벤트로 추가되었습니다.</value></data>
+  <data name="Alibaba" xml:space="preserve"><value>알리바바</value></data>
+  <data name="Apple" xml:space="preserve"><value>Apple</value></data>
+  <data name="Background" xml:space="preserve"><value>배경</value></data>
+  <data name="Baidu" xml:space="preserve"><value>바이두</value></data>
+  <data name="Beijing" xml:space="preserve"><value>베이징</value></data>
+  <data name="Bing" xml:space="preserve"><value>Bing</value></data>
+  <data name="Black" xml:space="preserve"><value>검정</value></data>
+  <data name="Border Base" xml:space="preserve"><value>기본 테두리</value></data>
+  <data name="Canceled" xml:space="preserve"><value>취소됨</value></data>
+  <data name="Car" xml:space="preserve"><value>차량</value></data>
+  <data name="Chart Fill" xml:space="preserve"><value>차트 채우기</value></data>
+  <data name="Chart XAxis" xml:space="preserve"><value>차트 X축</value></data>
+  <data name="Command jump page click: {page}" xml:space="preserve"><value>페이지 이동 명령 클릭: {page}</value></data>
+  <data name="Command next click: {param}" xml:space="preserve"><value>다음 페이지 명령 클릭: {param}</value></data>
+  <data name="Command page click: {page}" xml:space="preserve"><value>페이지 명령 클릭: {page}</value></data>
+  <data name="Command prev click: {param}" xml:space="preserve"><value>이전 페이지 명령 클릭: {param}</value></data>
+  <data name="Completed" xml:space="preserve"><value>완료됨</value></data>
+  <data name="Confirmed: name:{model.Name} - email:{model.Email}" xml:space="preserve"><value>확인됨: 이름: {model.Name} - 이메일: {model.Email}</value></data>
+  <data name="Create a service site." xml:space="preserve"><value>서비스 사이트를 생성합니다.</value></data>
+  <data name="Created" xml:space="preserve"><value>생성됨</value></data>
+  <data name="Day" xml:space="preserve"><value>일</value></data>
+  <data name="Dual" xml:space="preserve"><value>듀얼 화면</value></data>
+  <data name="Edge" xml:space="preserve"><value>Edge</value></data>
+  <data name="Event {_eventNumber}" xml:space="preserve"><value>이벤트 {_eventNumber}</value></data>
+  <data name="F2" xml:space="preserve"><value>F2</value></data>
+  <data name="Fax" xml:space="preserve"><value>팩스</value></data>
+  <data name="Fri" xml:space="preserve"><value>금</value></data>
+  <data name="Google" xml:space="preserve"><value>Google</value></data>
+  <data name="In progress" xml:space="preserve"><value>진행 중</value></data>
+  <data name="Item {i}" xml:space="preserve"><value>항목 {i}</value></data>
+  <data name="Jump page click: Current={pagination.Current}" xml:space="preserve"><value>페이지 이동 클릭: 현재 페이지={pagination.Current}</value></data>
+  <data name="Lighter" xml:space="preserve"><value>더 밝게</value></data>
+  <data name="MB" xml:space="preserve"><value>MB</value></data>
+  <data name="Markdown Files (*.md)|*.md|All Files (*.*)|*.*" xml:space="preserve"><value>Markdown 파일 (*.md)|*.md|모든 파일 (*.*)|*.*</value></data>
+  <data name="Menu01" xml:space="preserve"><value>메뉴 01</value></data>
+  <data name="Menu02" xml:space="preserve"><value>메뉴 02</value></data>
+  <data name="Menu03" xml:space="preserve"><value>메뉴 03</value></data>
+  <data name="Microsoft" xml:space="preserve"><value>Microsoft</value></data>
+  <data name="Mon" xml:space="preserve"><value>월</value></data>
+  <data name="Month" xml:space="preserve"><value>월</value></data>
+  <data name="MouseOver" xml:space="preserve"><value>마우스 오버</value></data>
+  <data name="Name{i}" xml:space="preserve"><value>이름{i}</value></data>
+  <data name="Next click: Current={pagination.Current}" xml:space="preserve"><value>다음 클릭: 현재 페이지={pagination.Current}</value></data>
+  <data name="One Microsoft Way, Redmond" xml:space="preserve"><value>레드먼드 마이크로소프트 웨이 1번지</value></data>
+  <data name="Open AI" xml:space="preserve"><value>Open AI</value></data>
+  <data name="Open AI2" xml:space="preserve"><value>Open AI2</value></data>
+  <data name="Open AI3" xml:space="preserve"><value>Open AI3</value></data>
+  <data name="Open AI4" xml:space="preserve"><value>Open AI4</value></data>
+  <data name="OpenAI.com" xml:space="preserve"><value>OpenAI.com</value></data>
+  <data name="PPOI.xu" xml:space="preserve"><value>PPOI.xu</value></data>
+  <data name="Page click: Current={pagination.Current}" xml:space="preserve"><value>페이지 클릭: 현재 페이지={pagination.Current}</value></data>
+  <data name="Placeholder Text" xml:space="preserve"><value>자리 표시자 텍스트</value></data>
+  <data name="Prev click: Current={pagination.Current}" xml:space="preserve"><value>이전 클릭: 현재 페이지={pagination.Current}</value></data>
+  <data name="Primary" xml:space="preserve"><value>기본 색상</value></data>
+  <data name="Primary Text" xml:space="preserve"><value>주요 텍스트</value></data>
+  <data name="Regular Text" xml:space="preserve"><value>일반 텍스트</value></data>
+  <data name="Runner" xml:space="preserve"><value>달리는 사람</value></data>
+  <data name="Runoob" xml:space="preserve"><value>Runoob</value></data>
+  <data name="Sat" xml:space="preserve"><value>토</value></data>
+  <data name="Save in Excel" xml:space="preserve"><value>Excel로 저장</value></data>
+  <data name="Save in Image" xml:space="preserve"><value>이미지로 저장</value></data>
+  <data name="Save in PDF" xml:space="preserve"><value>PDF로 저장</value></data>
+  <data name="Save in Word" xml:space="preserve"><value>Word로 저장</value></data>
+  <data name="Shadow Depth" xml:space="preserve"><value>그림자 깊이</value></data>
+  <data name="Shanghai" xml:space="preserve"><value>상하이</value></data>
+  <data name="Single" xml:space="preserve"><value>단일 화면</value></data>
+  <data name="Solve initial network problems." xml:space="preserve"><value>초기 네트워크 문제를 해결합니다.</value></data>
+  <data name="Stack Overflow" xml:space="preserve"><value>Stack Overflow</value></data>
+  <data name="Step 1" xml:space="preserve"><value>1단계</value></data>
+  <data name="Step 2" xml:space="preserve"><value>2단계</value></data>
+  <data name="Step 3" xml:space="preserve"><value>3단계</value></data>
+  <data name="Step 4" xml:space="preserve"><value>4단계</value></data>
+  <data name="Sun" xml:space="preserve"><value>일</value></data>
+  <data name="Technical testing is in progress." xml:space="preserve"><value>기술 테스트가 진행 중입니다.</value></data>
+  <data name="Tel" xml:space="preserve"><value>전화</value></data>
+  <data name="The Shy" xml:space="preserve"><value>The Shy</value></data>
+  <data name="This is a Handle toast" xml:space="preserve"><value>창 핸들로 표시한 토스트 알림입니다</value></data>
+  <data name="This is a Success toast" xml:space="preserve"><value>성공 토스트 알림입니다</value></data>
+  <data name="This is a error toast" xml:space="preserve"><value>오류 토스트 알림입니다</value></data>
+  <data name="This is a info toast" xml:space="preserve"><value>정보 토스트 알림입니다</value></data>
+  <data name="This is a question toast" xml:space="preserve"><value>질문 토스트 알림입니다</value></data>
+  <data name="This is a warning toast" xml:space="preserve"><value>경고 토스트 알림입니다</value></data>
+  <data name="Three" xml:space="preserve"><value>삼중 화면</value></data>
+  <data name="Thu" xml:space="preserve"><value>목</value></data>
+  <data name="Tue" xml:space="preserve"><value>화</value></data>
+  <data name="Updated by a C# click event." xml:space="preserve"><value>C# 클릭 이벤트로 업데이트되었습니다.</value></data>
+  <data name="WD.BackgroundBrush" xml:space="preserve"><value>WD.BackgroundBrush</value></data>
+  <data name="WD.BaseBrush" xml:space="preserve"><value>WD.BaseBrush</value></data>
+  <data name="WD.BaseMoveBrush" xml:space="preserve"><value>WD.BaseMoveBrush</value></data>
+  <data name="WD.BlackBrush" xml:space="preserve"><value>WD.BlackBrush</value></data>
+  <data name="WD.ChartFillBrush" xml:space="preserve"><value>WD.ChartFillBrush</value></data>
+  <data name="WD.ChartXAxisBrush" xml:space="preserve"><value>WD.ChartXAxisBrush</value></data>
+  <data name="WD.DangerBrush" xml:space="preserve"><value>WD.DangerBrush</value></data>
+  <data name="WD.DangerMouseOverBrush" xml:space="preserve"><value>WD.DangerMouseOverBrush</value></data>
+  <data name="WD.LightBrush" xml:space="preserve"><value>WD.LightBrush</value></data>
+  <data name="WD.LighterBrush" xml:space="preserve"><value>WD.LighterBrush</value></data>
+  <data name="WD.PlaceholderTextBrush" xml:space="preserve"><value>WD.PlaceholderTextBrush</value></data>
+  <data name="WD.PrimaryBrush" xml:space="preserve"><value>WD.PrimaryBrush</value></data>
+  <data name="WD.PrimaryMouseOverBrush" xml:space="preserve"><value>WD.PrimaryMouseOverBrush</value></data>
+  <data name="WD.PrimaryTextBrush" xml:space="preserve"><value>WD.PrimaryTextBrush</value></data>
+  <data name="WD.RegularTextBrush" xml:space="preserve"><value>WD.RegularTextBrush</value></data>
+  <data name="WD.ShadowDepthColor" xml:space="preserve"><value>WD.ShadowDepthColor</value></data>
+  <data name="WD.SuccessBrush" xml:space="preserve"><value>WD.SuccessBrush</value></data>
+  <data name="WD.SuccessMouseOverBrush" xml:space="preserve"><value>WD.SuccessMouseOverBrush</value></data>
+  <data name="WD.WarningBrush" xml:space="preserve"><value>WD.WarningBrush</value></data>
+  <data name="WD.WarningMouseOverBrush" xml:space="preserve"><value>WD.WarningMouseOverBrush</value></data>
+  <data name="WPFDevelopers1.1" xml:space="preserve"><value>WPFDevelopers1.1</value></data>
+  <data name="WPFDevelopers1.1.1" xml:space="preserve"><value>WPFDevelopers1.1.1</value></data>
+  <data name="WPFDevelopers1.2" xml:space="preserve"><value>WPFDevelopers1.2</value></data>
+  <data name="WPFDevelopers1.3" xml:space="preserve"><value>WPFDevelopers1.3</value></data>
+  <data name="WPFDevelopers1.4" xml:space="preserve"><value>WPFDevelopers1.4</value></data>
+  <data name="WPFDevelopers1.5" xml:space="preserve"><value>WPFDevelopers1.5</value></data>
+  <data name="WPFDevelopers1.6" xml:space="preserve"><value>WPFDevelopers1.6</value></data>
+  <data name="Wed" xml:space="preserve"><value>수</value></data>
+  <data name="Week" xml:space="preserve"><value>주</value></data>
+  <data name="Xiaomi" xml:space="preserve"><value>샤오미</value></data>
+  <data name="Year" xml:space="preserve"><value>년</value></data>
+  <data name="click main {btn.Content.ToString()}" xml:space="preserve"><value>기본 버튼 클릭: {btn.Content.ToString()}</value></data>
+  <data name="image file|*.jpg" xml:space="preserve"><value>이미지 파일|*.jpg</value></data>
+  <data name="josh.peng" xml:space="preserve"><value>josh.peng</value></data>
+  <data name="map" xml:space="preserve"><value>지도</value></data>
+  <data name="{sourceType} -&gt; {targetType} Longitude={converted.Longitude:F6} Latitude={converted.Latitude:F6}" xml:space="preserve"><value>{sourceType} -&gt; {targetType} 경도={converted.Longitude:F6} 위도={converted.Latitude:F6}</value></data>
+  <data name="Start" xml:space="preserve"><value>Start</value></data>
+  <data name="Alternate" xml:space="preserve"><value>Alternate</value></data>
+  <data name="End" xml:space="preserve"><value>End</value></data>
+  <data name="Added by a ViewModel command." xml:space="preserve"><value>ViewModel 명령으로 추가되었습니다.</value></data>
+  <data name="Updated through INotifyPropertyChanged." xml:space="preserve"><value>INotifyPropertyChanged를 통해 업데이트되었습니다.</value></data>
+  <data name="Confirmed: name:{Name} - email:{Email}" xml:space="preserve"><value>확인됨: 이름: {Name} - 이메일: {Email}</value></data>
+  <data name="Command: 点击了图片 - {model.Title}" xml:space="preserve"><value>명령: 이미지 클릭 - {model.Title}</value></data>
+  <data name="Slide0" xml:space="preserve"><value>슬라이드 0</value></data>
+  <data name="Slide1" xml:space="preserve"><value>슬라이드 1</value></data>
+  <data name="Slide2" xml:space="preserve"><value>슬라이드 2</value></data>
+  <data name="Slide3" xml:space="preserve"><value>슬라이드 3</value></data>
+  <data name="仓{(i + 1).ToString()}" xml:space="preserve"><value>창고 {(i + 1).ToString()}</value></data>
+  <data name="CheckMark" xml:space="preserve"><value>CheckMark</value></data>
+  <data name="ChevronUp" xml:space="preserve"><value>ChevronUp</value></data>
+  <data name="ChevronDown" xml:space="preserve"><value>ChevronDown</value></data>
+  <data name="Blackout" xml:space="preserve"><value>Blackout</value></data>
+  <data name="Previous" xml:space="preserve"><value>Previous</value></data>
+  <data name="ChevronLeft" xml:space="preserve"><value>ChevronLeft</value></data>
+  <data name="ChevronRight" xml:space="preserve"><value>ChevronRight</value></data>
+  <data name="SortArrow" xml:space="preserve"><value>SortArrow</value></data>
+  <data name="WindowMaximize" xml:space="preserve"><value>WindowMaximize</value></data>
+  <data name="WindowRestore" xml:space="preserve"><value>WindowRestore</value></data>
+  <data name="WindowClose" xml:space="preserve"><value>WindowClose</value></data>
+  <data name="SmileyOutline" xml:space="preserve"><value>SmileyOutline</value></data>
+  <data name="BuildingRegular" xml:space="preserve"><value>BuildingRegular</value></data>
+  <data name="AlarmClock" xml:space="preserve"><value>AlarmClock</value></data>
+  <data name="Flag" xml:space="preserve"><value>Flag</value></data>
+  <data name="Circular" xml:space="preserve"><value>Circular</value></data>
+  <data name="ChatLeft" xml:space="preserve"><value>ChatLeft</value></data>
+  <data name="ChatRight" xml:space="preserve"><value>ChatRight</value></data>
+  <data name="Complete" xml:space="preserve"><value>Complete</value></data>
+  <data name="MapPin" xml:space="preserve"><value>MapPin</value></data>
+  <data name="Sector" xml:space="preserve"><value>Sector</value></data>
+  <data name="Replace" xml:space="preserve"><value>Replace</value></data>
+  <data name="AudioOne" xml:space="preserve"><value>AudioOne</value></data>
+  <data name="AudioTwo" xml:space="preserve"><value>AudioTwo</value></data>
+  <data name="AudioThree" xml:space="preserve"><value>AudioThree</value></data>
+  <data name="Rectangle" xml:space="preserve"><value>Rectangle</value></data>
+  <data name="Ellipse" xml:space="preserve"><value>Ellipse</value></data>
+  <data name="UpperTriangle" xml:space="preserve"><value>UpperTriangle</value></data>
+  <data name="Arrow" xml:space="preserve"><value>Arrow</value></data>
+  <data name="ArrowRightTop" xml:space="preserve"><value>ArrowRightTop</value></data>
+  <data name="ArrowBranches" xml:space="preserve"><value>ArrowBranches</value></data>
+  <data name="Text" xml:space="preserve"><value>Text</value></data>
+  <data name="Pencil" xml:space="preserve"><value>Pencil</value></data>
+  <data name="Mosaic" xml:space="preserve"><value>Mosaic</value></data>
+  <data name="StarSky" xml:space="preserve"><value>StarSky</value></data>
+  <data name="Return" xml:space="preserve"><value>Return</value></data>
+  <data name="UnfoldMore" xml:space="preserve"><value>UnfoldMore</value></data>
+  <data name="Time" xml:space="preserve"><value>Time</value></data>
+  <data name="DateRangeRight" xml:space="preserve"><value>DateRangeRight</value></data>
+  <data name="Undo" xml:space="preserve"><value>Undo</value></data>
+  <data name="Filter" xml:space="preserve"><value>Filter</value></data>
+  <data name="Confirm" xml:space="preserve"><value>Confirm</value></data>
+  <data name="Semicircle" xml:space="preserve"><value>Semicircle</value></data>
+  <data name="UpArrow" xml:space="preserve"><value>UpArrow</value></data>
+  <data name="DownArrow" xml:space="preserve"><value>DownArrow</value></data>
+  <data name="Splitter" xml:space="preserve"><value>Splitter</value></data>
+  <data name="Moon" xml:space="preserve"><value>Moon</value></data>
+  <data name="SystemTheme" xml:space="preserve"><value>SystemTheme</value></data>
+  <data name="Waterfall image loading failed" xml:space="preserve"><value>워터폴 이미지 로딩 실패</value></data>
+  <data name="GitHub 统计加载失败：{error}。请点击“刷新统计”重试。" xml:space="preserve"><value>GitHub 통계를 불러오지 못했습니다: {error}. "통계 새로 고침"을 클릭해 다시 시도하세요.</value></data>
+  <data name="NuGet 统计加载失败：{error}。请点击“刷新统计”重试。" xml:space="preserve"><value>NuGet 통계를 불러오지 못했습니다: {error}. "통계 새로 고침"을 클릭해 다시 시도하세요.</value></data>
+  <data name="统计加载失败：{error}。请点击“刷新统计”重试。" xml:space="preserve"><value>통계를 불러오지 못했습니다: {error}. "통계 새로 고침"을 클릭해 다시 시도하세요.</value></data>
+  <data name="更新于 {time} · 下载量为 NuGet 所有版本累计下载量" xml:space="preserve"><value>업데이트: {time} · NuGet 전체 버전의 누적 다운로드 수</value></data>
+  <data name="无法打开链接：{error}" xml:space="preserve"><value>링크를 열 수 없습니다: {error}</value></data>
+  <data name="个性化" xml:space="preserve"><value>개인 설정</value></data>
+  <data name="主题色" xml:space="preserve"><value>테마 색상</value></data>
+  <data name="Yes" xml:space="preserve"><value>예</value></data>
+</root>

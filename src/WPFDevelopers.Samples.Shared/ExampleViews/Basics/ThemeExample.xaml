@@ -19,18 +19,13 @@
                             Padding="0,4"
                             HorizontalAlignment="Center"
                             FontSize="20"
-                            Foreground="{DynamicResource WD.AccentTextBrush}"
                             Text="WPFDevelopers" />
                         <TextBlock
                             Padding="0,4"
                             HorizontalAlignment="Center"
                             FontSize="20"
-                            Foreground="{DynamicResource WD.AccentTextBrush}"
                             Text="微信号公众号:WPFDevelopers" />
-                        <TextBlock
-                            Padding="0,10"
-                            FontSize="20"
-                            Foreground="{DynamicResource WD.AccentTextBrush}">
+                        <TextBlock Padding="0,10" FontSize="20">
                             <Hyperlink NavigateUri="https://github.com/WPFDevelopersOrg/WPFDevelopers" RequestNavigate="GithubHyperlink_RequestNavigate">Github 源码</Hyperlink>
                             <Run />
                             <Run />
@@ -46,21 +41,6 @@
 
                 </WrapPanel>
                 <controls:ThemeSettings Margin="0,20,0,0" />
-                <TextBlock
-                    Margin="0,20,0,0"
-                    FontSize="20"
-                    Text="Languages" />
-                <WrapPanel Margin="10" wd:PanelHelper.Spacing="4">
-                    <TextBlock VerticalAlignment="Center" Text="Languages:" />
-                    <ComboBox
-                        SelectedIndex="1"
-                        SelectionChanged="ComboBoxLanguages_SelectionChanged"
-                        ToolTip="目前翻译只是针对WD的自定义控件进行了多语言翻译">
-                        <ComboBoxItem Tag="zh-cn">中文</ComboBoxItem>
-                        <ComboBoxItem Tag="en-US">English</ComboBoxItem>
-                        <ComboBoxItem Tag="ko-KR">한국어</ComboBoxItem>
-                    </ComboBox>
-                </WrapPanel>
             </StackPanel>
         </ScrollViewer>
         <controls:CodeViewer.SourceCodes>

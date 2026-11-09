@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using WPFDevelopers;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Helpers;
 using WPFDevelopers.Samples.ExampleViews;
@@ -25,6 +26,11 @@ namespace WPFDevelopers.Samples
             VersionText.Text = "v" + typeof(MainWindow).BaseType.Assembly.GetName().Version.ToString(3);
             Loaded += OnMainWindow_Loaded;
             Closing += MainWindow_Closing;
+            WPFDevelopers.Resources.ThemeChanged += OnThemeChanged;
+            LanguageManager.Instance.PropertyChanged += LanguageManager_PropertyChanged;
+            Closed += (sender, e) => WPFDevelopers.Resources.ThemeChanged -= OnThemeChanged;
+            Closed += (sender, e) => LanguageManager.Instance.PropertyChanged -= LanguageManager_PropertyChanged;
+            UpdateShellDisplayNames();
         }
 
         private void OnMainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -33,23 +39,58 @@ namespace WPFDevelopers.Samples
             ThemeColorPicker.SelectedColor = ThemeManager.Instance.PrimaryColor;
         }
 
-        private void ThemeSwitchBtn_Click(object sender, RoutedEventArgs e)
+        private void OnThemeChanged(ThemeType theme)
         {
-            ToggleTheme(ThemeSwitchBtn);
+            SetThemeSource();
+        }
+
+        private void LanguageManager_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LanguageManager.CurrentCulture))
+            {
+                UpdateShellDisplayNames();
+            }
+        }
+
+        private void UpdateShellDisplayNames()
+        {
+            var localizer = SampleLanguageManager.Instance;
+            ToolTipService.SetToolTip(HomeButton, localizer.TranslateText("首页 / Home"));
+            ColorPickerApplyButton.Content = localizer.TranslateText("Apply");
+            ColorPickerCancelButton.Content = localizer.TranslateText("Cancel");
+            WpfNotifyIcon.Title = localizer.TranslateText("WPF开发者");
+            menuItemGrayscale.Header = localizer.TranslateText(grayscaleEffect.Factor == 1 ? "开启灰度" : "关闭灰度");
+            menuItemSendMessage.Header = localizer.TranslateText("托盘消息");
+            menuItemTwink.Header = localizer.TranslateText("闪烁");
+            menuItemAbout.Header = localizer.TranslateText("关于");
+            menuItemQuit.Header = localizer.TranslateText("退出");
+        }
+
+        private void TrayMenu_Opened(object sender, RoutedEventArgs e)
+        {
+            UpdateShellDisplayNames();
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateMenu.SelectedIndex = -1;
         }
 
         public void ToggleTheme(FrameworkElement source)
         {
             var targetTheme = ThemeManager.Instance.Resources.Theme == ThemeType.Dark ? ThemeType.Light : ThemeType.Dark;
             ThemeManager.Instance.SwitchTheme(source, targetTheme);
-            App.Theme = targetTheme;
             SetThemeSource();
-            ThemeSwitchBtn.IsChecked = targetTheme == ThemeType.Dark;
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (MessageBox.Show("是否退出当前系统?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
+            var localizer = SampleLanguageManager.Instance;
+            if (MessageBox.Show(
+                    localizer.TranslateText("是否退出当前系统?"),
+                    localizer.TranslateText("询问"),
+                    MessageBoxButton.OKCancel,
+                    MessageBoxImage.Question) != MessageBoxResult.OK)
             {
                 e.Cancel = true;
             }
@@ -67,7 +108,11 @@ namespace WPFDevelopers.Samples
         }
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
-            NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers ", NotifyIconInfoType.None);
+            var localizer = SampleLanguageManager.Instance;
+            NotifyIcon.ShowBalloonTip(
+                localizer.TranslateText("Message"),
+                localizer.TranslateText("Welcome to WPFDevelopers"),
+                NotifyIconInfoType.None);
         }
         private void Twink_Click(object sender, RoutedEventArgs e)
         {
@@ -78,13 +123,13 @@ namespace WPFDevelopers.Samples
         {
             if(grayscaleEffect.Factor == 1)
             {
-                menuItemGrayscale.Header = "关闭灰度";
+                menuItemGrayscale.Header = SampleLanguageManager.Instance.TranslateText("关闭灰度");
                 CreateGrayscale(0);
             }
 
             else
             {
-                menuItemGrayscale.Header = "开启灰度";
+                menuItemGrayscale.Header = SampleLanguageManager.Instance.TranslateText("开启灰度");
                 CreateGrayscale(1);
 
             }

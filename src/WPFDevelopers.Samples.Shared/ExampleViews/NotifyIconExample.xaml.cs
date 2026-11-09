@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using WPFDevelopers.Controls;
@@ -19,19 +20,45 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void NotifyIconExample_Loaded(object sender, RoutedEventArgs e)
         {
+            LanguageManager.Instance.PropertyChanged -= LanguageManager_PropertyChanged;
+            LanguageManager.Instance.PropertyChanged += LanguageManager_PropertyChanged;
             if (_notifyIcon == null)
                 CreateIcon();
+            UpdateTrayTranslations();
         }
 
         private void NotifyIconExample_Unloaded(object sender, RoutedEventArgs e)
         {
+            LanguageManager.Instance.PropertyChanged -= LanguageManager_PropertyChanged;
             RemoveIcon();
+        }
+
+        private void LanguageManager_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LanguageManager.CurrentCulture))
+                UpdateTrayTranslations();
+        }
+
+        private void UpdateTrayTranslations()
+        {
+            if (_notifyIcon == null) return;
+            var localizer = SampleLanguageManager.Instance;
+            _notifyIcon.Title = localizer.TranslateText("WPFDevelopers - NotifyIcon 示例");
+            localizer.LocalizeTree(_notifyIcon.ContextMenu);
+            localizer.LocalizeTree(_trayPanel);
+        }
+
+        private void TrayMenu_Opened(object sender, RoutedEventArgs e)
+        {
+            UpdateTrayTranslations();
         }
 
         private void CreateIcon()
         {
             _notifyIcon = (NotifyIcon)((DataTemplate)Resources["TrayIconTemplate"]).LoadContent();
             _trayPanel = (FrameworkElement)((DataTemplate)Resources["TrayPanelTemplate"]).LoadContent();
+            _notifyIcon.ContextMenu.Opened += TrayMenu_Opened;
+            UpdateTrayTranslations();
             TrayIconHost.Children.Add(_notifyIcon);
             ApplyMenuMode();
             InteractionPanel.IsEnabled = true;
@@ -43,6 +70,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void RemoveIcon()
         {
             if (_notifyIcon == null) return;
+            _notifyIcon.ContextMenu.Opened -= TrayMenu_Opened;
             _notifyIcon.Dispose();
             TrayIconHost.Children.Clear();
             _notifyIcon = null;
@@ -90,12 +118,21 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void BtnNotifyIconMessage_Click(object sender, RoutedEventArgs e)
         {
+            if (_notifyIcon == null)
+            {
+                FeedbackText.Text = "请先创建示例图标。";
+                return;
+            }
             if (string.IsNullOrWhiteSpace(MessageTitle.Text) || string.IsNullOrWhiteSpace(MessageContent.Text))
             {
                 FeedbackText.Text = "请先填写通知标题和内容。";
                 return;
             }
-            var type = (NotifyIconInfoType)((ComboBoxItem)MessageType.SelectedItem).Tag;
+            if (!(MessageType.SelectedItem is ComboBoxItem item) || !(item.Tag is NotifyIconInfoType type))
+            {
+                FeedbackText.Text = "请先选择通知类型。";
+                return;
+            }
             _notifyIcon.ShowBalloonTips(MessageTitle.Text, MessageContent.Text, type);
             FeedbackText.Text = "已向 Windows 提交通知；若未显示，请检查系统通知设置和勿扰模式。";
         }
@@ -115,8 +152,12 @@ namespace WPFDevelopers.Samples.ExampleViews
         private void About_Click(object sender, RoutedEventArgs e)
         {
             FeedbackText.Text = "已打开关于对话框。";
-            MessageBox.Show("本示例使用一个 NotifyIcon 演示点击事件、右键菜单、气泡消息和图标闪烁。",
-                "关于 NotifyIcon 示例", MessageBoxButton.OK, MessageBoxImage.Information);
+            var localizer = SampleLanguageManager.Instance;
+            MessageBox.Show(
+                localizer.TranslateText("本示例使用一个 NotifyIcon 演示点击事件、右键菜单、气泡消息和图标闪烁。"),
+                localizer.TranslateText("关于 NotifyIcon 示例"),
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
         }
     }
 }

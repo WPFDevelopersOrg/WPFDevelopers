@@ -1,4 +1,4 @@
-﻿<wd:Window
+<wd:Window
     x:Class="WPFDevelopers.Samples.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -36,6 +36,7 @@
                     FontWeight="SemiBold"
                     Foreground="White" />
             </Border>
+            <!--
             <wd:SwitchButton
                 x:Name="LanguageSwitchBtn"
                 Width="30"
@@ -91,10 +92,12 @@
                             wd:PanelHelper.Spacing="4"
                             Orientation="Horizontal">
                             <Button
+                                x:Name="ColorPickerApplyButton"
                                 Click="ColorPicker_Apply"
                                 Content="Apply"
                                 Style="{StaticResource WD.PrimaryButton}" />
                             <Button
+                                x:Name="ColorPickerCancelButton"
                                 Click="ColorPicker_Cancel"
                                 Content="Cancel"
                                 Style="{StaticResource WD.DefaultButton}" />
@@ -118,17 +121,17 @@
     <Grid>
         <wd:NotifyIcon Name="WpfNotifyIcon" Title="WPF开发者">
             <wd:NotifyIcon.ContextMenu>
-                <ContextMenu>
+                <ContextMenu Opened="TrayMenu_Opened">
                     <MenuItem
                         Name="menuItemGrayscale"
                         Click="Grayscale_Click"
                         Header="开启灰度" />
-                    <MenuItem Click="SendMessage_Click" Header="托盘消息" />
+                    <MenuItem x:Name="menuItemSendMessage" Click="SendMessage_Click" Header="托盘消息" />
                     <MenuItem
                         Name="menuItemTwink"
                         Click="Twink_Click"
                         Header="闪烁" />
-                    <MenuItem Click="About_Click" Header="关于">
+                    <MenuItem x:Name="menuItemAbout" Click="About_Click" Header="关于">
                         <MenuItem.Icon>
                             <Path
                                 Width="20"
@@ -138,7 +141,7 @@
                                 Stretch="Uniform" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Click="Quit_Click" Header="退出" />
+                    <MenuItem x:Name="menuItemQuit" Click="Quit_Click" Header="退出" />
                 </ContextMenu>
             </wd:NotifyIcon.ContextMenu>
         </wd:NotifyIcon>
@@ -158,10 +161,12 @@
                 </Grid.RowDefinitions>
                 <DockPanel>
                     <Button
+                        x:Name="HomeButton"
                         Width="34"
                         Height="34"
                         Margin="0,0,6,0"
                         AutomationProperties.Name="首页 / Home"
+                        Click="HomeButton_Click"
                         Command="{Binding ShowHomeCommand}"
                         Style="{StaticResource WD.DefaultButton}"
                         ToolTip="首页 / Home">
