@@ -29,22 +29,22 @@
                             <TextBlock
                                 Margin="0,0,10,0"
                                 VerticalAlignment="Center"
-                                FontSize="20"
+                                FontSize="{StaticResource WD.TitleFontSize}"
                                 Text="{TemplateBinding Title}"
                                 TextTrimming="CharacterEllipsis" />
                             <Button
                                 x:Name="PART_CloseButton"
                                 Grid.Column="1"
-                                Width="32"
-                                Height="32"
+                                Width="28"
+                                Height="28"
                                 Padding="0"
                                 VerticalAlignment="Center"
                                 Command="{x:Static controls:Dialog.CloseCommand}"
                                 Style="{DynamicResource WD.NormalButton}"
                                 ToolTip="{Binding [Close], Source={x:Static resx:LanguageManager.Instance}}">
                                 <Path
-                                    Width="14"
-                                    Height="14"
+                                    Width="12"
+                                    Height="12"
                                     Data="{StaticResource WD.WindowCloseGeometry}"
                                     Fill="{TemplateBinding Foreground}"
                                     Stretch="Fill" />
