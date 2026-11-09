@@ -120,6 +120,18 @@
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="FollowSystem" xml:space="preserve">
+    <value>Follow system</value>
+  </data>
+  <data name="LightMode" xml:space="preserve">
+    <value>Light mode</value>
+  </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>Dark mode</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>

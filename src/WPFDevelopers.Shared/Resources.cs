@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Collections.Generic;
@@ -23,10 +23,12 @@ namespace WPFDevelopers
         private string[] resourceKeys = { "WindowBorderColor", "PrimaryColor" };
 
         public static event ThemeChangedEvent ThemeChanged;
+        public event Action<ThemeMode> ThemeModeChanged;
 
         private static int _publishInProgress;
 
         private int _initCount;
+        private readonly string _themePreferenceKey;
 
         private ThemeType _theme = ThemeType.Light;
         public ThemeType Theme
@@ -34,9 +36,49 @@ namespace WPFDevelopers
             get => _theme;
             set
             {
-                if (_theme == value) return;
-                _theme = value;
-                InitializeTheme(value);
+                switch (value)
+                {
+                    case ThemeType.Default: ThemeMode = ThemeMode.System; break;
+                    case ThemeType.Light: ThemeMode = ThemeMode.Light; break;
+                    case ThemeType.Dark: ThemeMode = ThemeMode.Dark; break;
+                    default: throw new ArgumentOutOfRangeException(nameof(value));
+                }
+            }
+        }
+
+        private ThemeMode _themeMode = ThemeMode.Light;
+        public ThemeMode ThemeMode
+        {
+            get => _themeMode;
+            set
+            {
+                if (!Enum.IsDefined(typeof(ThemeMode), value))
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                ThemePreferenceStore.Save(_themePreferenceKey, value);
+                SetThemeMode(value);
+            }
+        }
+
+        private void SetThemeMode(ThemeMode value)
+        {
+            if (_themeMode == value) return;
+            SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
+            _themeMode = value;
+            if (value == ThemeMode.System && OSVersionHelper.IsWindows10OrLater())
+                SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
+            ApplyTheme();
+            ThemeModeChanged?.Invoke(value);
+        }
+
+        internal ThemeType ResolveTheme(ThemeMode mode)
+        {
+            switch (mode)
+            {
+                case ThemeMode.System:
+                    return OSVersionHelper.IsWindows10OrLater() && IsDarkMode() ? ThemeType.Dark : ThemeType.Light;
+                case ThemeMode.Light: return ThemeType.Light;
+                case ThemeMode.Dark: return ThemeType.Dark;
+                default: throw new ArgumentOutOfRangeException(nameof(mode));
             }
         }
 
@@ -72,9 +114,16 @@ namespace WPFDevelopers
             }
         }
 
-        public Resources()
+        public Resources() : this(ThemePreferenceStore.GetApplicationKey())
         {
+        }
+
+        internal Resources(string themePreferenceKey)
+        {
+            _themePreferenceKey = themePreferenceKey;
+            var mode = ThemePreferenceStore.Load(_themePreferenceKey);
             AddTheme();
+            SetThemeMode(mode);
         }
 
         void ISupportInitialize.BeginInit()
@@ -103,18 +152,6 @@ namespace WPFDevelopers
        
         protected void InitializeTheme(ThemeType themeType,bool isInit = false)
         {
-            if(!isInit)
-            {
-                if (themeType == ThemeType.Default && OSVersionHelper.IsWindows10OrLater())
-                {
-                    SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
-                    SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
-                    ApplyTheme();
-                    return;
-                }
-                if (themeType == ThemeType.Default)
-                    Theme = ThemeType.Light;
-            }
             _theme = themeType;
             Uri oldUri = themeType == ThemeType.Default || themeType == ThemeType.Light ? GetResourceUri("Dark.Color") : GetResourceUri("Light.Color");
             if (oldUri != null)
@@ -153,17 +190,23 @@ namespace WPFDevelopers
 
         void ApplyTheme()
         {
-            var isDarkMode = IsDarkMode();
-            var theme = isDarkMode == true ? ThemeType.Dark : ThemeType.Light;
+            var theme = ResolveTheme(ThemeMode);
             if (Theme != theme)
-                Theme = theme;
+                InitializeTheme(theme);
         }
 
         private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
-            if (e.Category == UserPreferenceCategory.General)
+            if (ThemeMode == ThemeMode.System && e.Category == UserPreferenceCategory.General)
             {
-                ApplyTheme();
+                var dispatcher = Application.Current?.Dispatcher;
+                if (dispatcher != null && !dispatcher.CheckAccess())
+                    dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        if (ThemeMode == ThemeMode.System) ApplyTheme();
+                    }));
+                else
+                    ApplyTheme();
             }
         }
 
@@ -408,6 +451,14 @@ namespace WPFDevelopers
             }
         }
     }
+
+    public enum ThemeMode
+    {
+        System,
+        Light,
+        Dark,
+    }
+
     public enum ThemeType
     {
         Default,

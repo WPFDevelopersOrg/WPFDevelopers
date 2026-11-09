@@ -79,16 +79,18 @@
                                     <StackPanel
                                         Grid.Column="3"
                                         HorizontalAlignment="Right"
-                                        VerticalAlignment="Top"
                                         Orientation="Horizontal"
                                         WindowChrome.IsHitTestVisibleInChrome="True">
+                                        <Button
+                                            x:Name="PART_TitleBarThemeSwitchButton"
+                                            Style="{DynamicResource WD.WindowThemeButton}" />
                                         <StackPanel x:Name="PART_TitleBarMinAndMax" Orientation="Horizontal">
                                             <Button
                                                 Name="PART_TitleBarMinimizeButton"
                                                 Padding="0"
                                                 Command="SystemCommands.MinimizeWindowCommand"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                Style="{DynamicResource WD.WindowCaptionButtonStyle}"
                                                 ToolTip="{Binding [Minimize], Source={x:Static resx:LanguageManager.Instance}}">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <Rectangle
@@ -104,7 +106,7 @@
                                                 Padding="0"
                                                 Command="SystemCommands.MaximizeWindowCommand"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                Style="{DynamicResource WD.WindowCaptionButtonStyle}"
                                                 ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <Path
@@ -123,7 +125,7 @@
                                                 Padding="0"
                                                 Command="SystemCommands.RestoreWindowCommand"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                Style="{DynamicResource WD.WindowCaptionButtonStyle}"
                                                 ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}"
                                                 Visibility="Collapsed">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -144,7 +146,7 @@
                                             Name="PART_TitleBarCloseButton"
                                             Command="SystemCommands.CloseWindowCommand"
                                             IsTabStop="False"
-                                            Style="{DynamicResource WD.WindowButtonStyle}"
+                                            Style="{DynamicResource WD.WindowCaptionCloseButtonStyle}"
                                             ToolTip="{Binding [Close], Source={x:Static resx:LanguageManager.Instance}}">
                                             <Path
                                                 Width="10"
@@ -152,7 +154,7 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 Data="{DynamicResource WD.WindowCloseGeometry}"
-                                                Fill="{DynamicResource WD.WindowTextBrush}"
+                                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
                                                 Stretch="Uniform" />
                                         </Button>
                                     </StackPanel>
@@ -196,16 +198,18 @@
                                         WindowChrome.IsHitTestVisibleInChrome="True" />
                                     <StackPanel
                                         Grid.Column="3"
-                                        Margin="0,6"
                                         Orientation="Horizontal"
                                         WindowChrome.IsHitTestVisibleInChrome="True">
+                                        <Button
+                                            x:Name="PART_ThemeSwitchButton"
+                                            Style="{DynamicResource WD.WindowThemeButton}" />
                                         <StackPanel x:Name="PART_MinAndMax" Orientation="Horizontal">
                                             <Button
                                                 Name="PART_MinimizeButton"
                                                 Padding="0"
                                                 Command="SystemCommands.MinimizeWindowCommand"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                Style="{DynamicResource WD.WindowCaptionButtonStyle}"
                                                 ToolTip="{Binding [Minimize], Source={x:Static resx:LanguageManager.Instance}}">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <Rectangle
@@ -222,7 +226,7 @@
                                                 Padding="0"
                                                 Command="SystemCommands.MaximizeWindowCommand"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                Style="{DynamicResource WD.WindowCaptionButtonStyle}"
                                                 ToolTip="{Binding [Maximize], Source={x:Static resx:LanguageManager.Instance}}">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <Path
@@ -241,7 +245,7 @@
                                                 Padding="0"
                                                 Command="SystemCommands.RestoreWindowCommand"
                                                 IsTabStop="False"
-                                                Style="{DynamicResource WD.WindowButtonStyle}"
+                                                Style="{DynamicResource WD.WindowCaptionButtonStyle}"
                                                 ToolTip="{Binding [Restore], Source={x:Static resx:LanguageManager.Instance}}"
                                                 Visibility="Collapsed">
                                                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -262,7 +266,7 @@
                                             Name="PART_CloseButton"
                                             Command="SystemCommands.CloseWindowCommand"
                                             IsTabStop="False"
-                                            Style="{DynamicResource WD.WindowButtonStyle}"
+                                            Style="{DynamicResource WD.WindowCaptionCloseButtonStyle}"
                                             ToolTip="{Binding [Close], Source={x:Static resx:LanguageManager.Instance}}">
                                             <Path
                                                 Width="10"
@@ -270,7 +274,7 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 Data="{DynamicResource WD.WindowCloseGeometry}"
-                                                Fill="{DynamicResource WD.WindowTextBrush}"
+                                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
                                                 Stretch="Uniform" />
                                         </Button>
                                     </StackPanel>
@@ -297,6 +301,10 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="ShowTheme" Value="True">
+                            <Setter TargetName="PART_TitleBarThemeSwitchButton" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="PART_ThemeSwitchButton" Property="Visibility" Value="Visible" />
+                        </Trigger>
                         <Trigger Property="TitleBarMode" Value="High">
                             <Setter TargetName="PART_HighTitleBar" Property="Visibility" Value="Visible" />
                             <Setter TargetName="PART_Normal" Property="Visibility" Value="Collapsed" />

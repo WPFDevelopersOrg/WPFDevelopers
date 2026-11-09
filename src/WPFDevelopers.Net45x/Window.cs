@@ -18,6 +18,8 @@ namespace WPFDevelopers.Net45x
     [TemplatePart(Name = HighTitleRestoreButton, Type = typeof(Button))]
     [TemplatePart(Name = TitleBarMaximizeButton, Type = typeof(Button))]
     [TemplatePart(Name = TitleBarRestoreButton, Type = typeof(Button))]
+    [TemplatePart(Name = TitleBarThemeSwitchButton, Type = typeof(Button))]
+    [TemplatePart(Name = ThemeSwitchButton, Type = typeof(Button))]
     public class Window : System.Windows.Window
     {
         private const string TitleBarIcon = "PART_TitleBarIcon";
@@ -25,6 +27,10 @@ namespace WPFDevelopers.Net45x
         private const string HighTitleRestoreButton = "PART_RestoreButton";
         private const string TitleBarMaximizeButton = "PART_TitleBarMaximizeButton";
         private const string TitleBarRestoreButton = "PART_TitleBarRestoreButton";
+        private const string TitleBarThemeSwitchButton = "PART_TitleBarThemeSwitchButton";
+        private const string ThemeSwitchButton = "PART_ThemeSwitchButton";
+        private Button _titleBarThemeSwitchButton;
+        private Button _themeSwitchButton;
         private WindowStyle _windowStyle;
         private Button _titleBarIcon;
         private Button _highTitleMaximizeButton;
@@ -48,6 +54,9 @@ namespace WPFDevelopers.Net45x
 
         public static readonly DependencyProperty TitleBarLayoutProperty =
             DependencyProperty.Register("TitleBarLayout", typeof(object), typeof(Window), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty ShowThemeProperty =
+            DependencyProperty.Register("ShowTheme", typeof(bool), typeof(Window), new PropertyMetadata(false));
 
         static Window()
         {
@@ -99,9 +108,24 @@ namespace WPFDevelopers.Net45x
             Win32.EnableDarkModeForWindow(source, isDark);
         }
 
+        protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
+        {
+            DetachThemeSwitchButtons();
+            base.OnTemplateChanged(oldTemplate, newTemplate);
+        }
+
         public override void OnApplyTemplate()
         {
+            DetachThemeSwitchButtons();
             base.OnApplyTemplate();
+            _titleBarThemeSwitchButton = GetTemplateChild(TitleBarThemeSwitchButton) as Button;
+            _themeSwitchButton = GetTemplateChild(ThemeSwitchButton) as Button;
+            if (_titleBarThemeSwitchButton != null)
+                _titleBarThemeSwitchButton.Click += ThemeSwitchButton_Click;
+            if (_themeSwitchButton != null)
+                _themeSwitchButton.Click += ThemeSwitchButton_Click;
+            WindowThemeMenu.Attach(_titleBarThemeSwitchButton);
+            WindowThemeMenu.Attach(_themeSwitchButton);
             _windowStyle = WindowStyle;
             _titleBarIcon = GetTemplateChild(TitleBarIcon) as Button;
             if (_titleBarIcon != null)
@@ -115,6 +139,22 @@ namespace WPFDevelopers.Net45x
             _titleBarRestoreButton = GetTemplateChild(TitleBarRestoreButton) as Button;
             SetTitleHeight();
         }
+
+        private void DetachThemeSwitchButtons()
+        {
+            WindowThemeMenu.Detach(_titleBarThemeSwitchButton);
+            WindowThemeMenu.Detach(_themeSwitchButton);
+            if (_titleBarThemeSwitchButton != null)
+                _titleBarThemeSwitchButton.Click -= ThemeSwitchButton_Click;
+            if (_themeSwitchButton != null)
+                _themeSwitchButton.Click -= ThemeSwitchButton_Click;
+        }
+
+        private void ThemeSwitchButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowThemeMenu.Open((Button)sender);
+        }
+
         private static void OnTitleBarModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var ctrl = d as Window;
@@ -172,6 +212,12 @@ namespace WPFDevelopers.Net45x
             set => SetValue(TitleBarLayoutProperty, value);
         }
 
+        public bool ShowTheme
+        {
+            get => (bool)GetValue(ShowThemeProperty);
+            set => SetValue(ShowThemeProperty, value);
+        }
+
         private static T GetResourceKey<T>(string key)
         {
             var t = ThemeManager.Instance.Resources.TryFindResource<T>(key);
@@ -206,6 +252,7 @@ namespace WPFDevelopers.Net45x
 
         protected override void OnClosed(EventArgs e)
         {
+            DetachThemeSwitchButtons();
             WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
             base.OnClosed(e);
         }
@@ -273,17 +320,17 @@ namespace WPFDevelopers.Net45x
                             : (WindowState != WindowState.Maximized ? _highTitleMaximizeButton : _highTitleRestoreButton);
                         if (button != null)
                         {
-                            var contentPresenter = button.Template.FindName("PART_ContentPresenter", button) as ContentPresenter;
-                            if (contentPresenter != null)
+                            bool isOverButton = IsPointOverButton(button, lParam);
+                            if (isOverButton)
                             {
-                                bool isOverButton = IsPointOverButton(button, lParam);
-                                contentPresenter.Opacity = isOverButton ? 1 : 0.7;
-                                if (isOverButton)
-                                {
-                                    handled = true;
-                                    return new IntPtr(OSVersionHelper.HTMAXBUTTON);
-                                }
+                                button.SetCurrentValue(
+                                    Button.BackgroundProperty,
+                                    (Brush)button.FindResource("WD.WindowCaptionButtonHoverBrush"));
+                                handled = true;
+                                return new IntPtr(OSVersionHelper.HTMAXBUTTON);
                             }
+
+                            button.ClearValue(Button.BackgroundProperty);
                         }
                     }
                     break;

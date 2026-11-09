@@ -4,6 +4,7 @@
     xmlns:controls="clr-namespace:WPFDevelopers.Controls"
     xmlns:convert="clr-namespace:WPFDevelopers.Converts"
     xmlns:helpers="clr-namespace:WPFDevelopers.Helpers"
+    xmlns:resx="clr-namespace:WPFDevelopers"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
@@ -315,49 +316,206 @@
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            Opacity="0.7" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_ContentPresenter"
-                                            Storyboard.TargetProperty="(UIElement.Opacity)"
-                                            To="1"
-                                            Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_ContentPresenter"
-                                            Storyboard.TargetProperty="(UIElement.Opacity)"
-                                            To="1"
-                                            Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="PART_ContentPresenter"
-                                            Storyboard.TargetProperty="(UIElement.Opacity)"
-                                            To="0.3"
-                                            Duration="0" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused" />
-                                <VisualState x:Name="Unfocused" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
                     </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <SolidColorBrush x:Key="WD.WindowCaptionButtonHoverBrush" Color="#40FFFFFF" />
+    <Style
+        x:Key="WD.WindowCaptionButtonStyle"
+        BasedOn="{StaticResource WD.WindowButtonStyle}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
+        <Setter Property="Width" Value="45" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="PART_ButtonBackground" Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                            x:Name="PART_ContentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource WD.WindowCaptionButtonHoverBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#40000000" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.4" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="WD.WindowCaptionCloseButtonStyle"
+        BasedOn="{StaticResource WD.WindowCaptionButtonStyle}"
+        TargetType="{x:Type Button}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#E81123" />
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#C50F1F" />
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+        x:Key="WD.WindowThemeButton"
+        BasedOn="{StaticResource WD.WindowCaptionButtonStyle}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="ToolTip" Value="{Binding [Theme], Source={x:Static resx:LanguageManager.Instance}}" />
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="PART_ButtonBackground" Background="{TemplateBinding Background}">
+                        <controls:SmallPanel>
+                            <Path
+                                x:Name="PART_ThemeIcon"
+                                Width="18"
+                                Height="18"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Data="{DynamicResource WD.MoonGeometry}"
+                                Stretch="Uniform"
+                                Stroke="{TemplateBinding Foreground}"
+                                StrokeLineJoin="Round"
+                                StrokeThickness="1.1" />
+                            <Popup
+                                x:Name="PART_ThemePopup"
+                                AllowsTransparency="True"
+                                Placement="Bottom"
+                                PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                StaysOpen="True"
+                                VerticalOffset="4">
+                                <Border Style="{DynamicResource WD.WindowThemePopupBorder}">
+                                    <StackPanel x:Name="PART_ThemeItems" Margin="4">
+                                        <ToggleButton
+                                            Content="{Binding [FollowSystem], Source={x:Static resx:LanguageManager.Instance}}"
+                                            Style="{DynamicResource WD.WindowThemePopupItem}"
+                                            Tag="{x:Static resx:ThemeMode.System}" />
+                                        <ToggleButton
+                                            Content="{Binding [LightMode], Source={x:Static resx:LanguageManager.Instance}}"
+                                            Style="{DynamicResource WD.WindowThemePopupItem}"
+                                            Tag="{x:Static resx:ThemeMode.Light}" />
+                                        <ToggleButton
+                                            Content="{Binding [DarkMode], Source={x:Static resx:LanguageManager.Instance}}"
+                                            Style="{DynamicResource WD.WindowThemePopupItem}"
+                                            Tag="{x:Static resx:ThemeMode.Dark}" />
+                                    </StackPanel>
+                                </Border>
+                            </Popup>
+                        </controls:SmallPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="{x:Static resx:ThemeMode.Light}">
+                            <Setter TargetName="PART_ThemeIcon" Property="StrokeThickness" Value="0" />
+                            <Setter TargetName="PART_ThemeIcon" Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="PART_ThemeIcon" Property="Data" Value="{DynamicResource WD.SunGeometry}" />
+                        </Trigger>
+                        <Trigger Property="Tag" Value="{x:Static resx:ThemeMode.System}">
+                            <Setter TargetName="PART_ThemeIcon" Property="Data" Value="{DynamicResource WD.SystemThemeGeometry}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WD.WindowThemePopupBorder" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="4" />
+    </Style>
+
+    <Style x:Key="WD.WindowThemePopupItem" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="MinWidth" Value="150" />
+        <Setter Property="Padding" Value="8,7" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border
+                        x:Name="PART_Row"
+                        Padding="{TemplateBinding Padding}"
+                        Background="Transparent"
+                        CornerRadius="3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="16" />
+                            </Grid.ColumnDefinitions>
+                            <Path
+                                x:Name="PART_ModeIcon"
+                                Width="16"
+                                Height="16"
+                                VerticalAlignment="Center"
+                                Data="{DynamicResource WD.MoonGeometry}"
+                                Stretch="Uniform"
+                                Stroke="{TemplateBinding Foreground}"
+                                StrokeLineJoin="Round"
+                                StrokeThickness="1.1" />
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Margin="10,0,14,0"
+                                VerticalAlignment="Center" />
+                            <Path
+                                x:Name="PART_Check"
+                                Grid.Column="2"
+                                Width="12"
+                                Height="12"
+                                Data="{DynamicResource WD.CheckMarkGeometry}"
+                                Fill="{TemplateBinding Foreground}"
+                                Stretch="Uniform"
+                                Visibility="Hidden" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="{x:Static resx:ThemeMode.System}">
+                            <Setter TargetName="PART_ModeIcon" Property="Data" Value="{DynamicResource WD.SystemThemeGeometry}" />
+                        </Trigger>
+                        <Trigger Property="Tag" Value="{x:Static resx:ThemeMode.Light}">
+                            <Setter TargetName="PART_ModeIcon" Property="Data" Value="{DynamicResource WD.SunGeometry}" />
+                            <Setter TargetName="PART_ModeIcon" Property="StrokeThickness" Value="0" />
+                            <Setter TargetName="PART_ModeIcon" Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+                            <Setter TargetName="PART_Check" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Row" Property="Background" Value="{DynamicResource WD.BaseBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="PART_Row" Property="Background" Value="{DynamicResource WD.BaseBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style
         x:Key="WD.PathBarButton"
         BasedOn="{StaticResource WD.BaseButton}"

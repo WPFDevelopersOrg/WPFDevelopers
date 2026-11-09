@@ -70,7 +70,23 @@ namespace WPFDevelopers
 
         public void SwitchTheme(FrameworkElement source, ThemeType targetTheme)
         {
+            SwitchThemeCore(source, targetTheme, () => SetTheme(targetTheme));
+        }
+
+        public void SwitchThemeMode(FrameworkElement source, ThemeMode mode)
+        {
+            var targetTheme = Resources.ResolveTheme(mode);
+            SwitchThemeCore(source, targetTheme, () => Resources.ThemeMode = mode);
+        }
+
+        private void SwitchThemeCore(FrameworkElement source, ThemeType targetTheme, Action applyTheme)
+        {
             if (_themeAnimating) return;
+            if (Resources.Theme == targetTheme)
+            {
+                applyTheme();
+                return;
+            }
             _themeAnimating = true;
             var window = Window.GetWindow(source);
             if (window == null) { _themeAnimating = false; return; }
@@ -116,7 +132,7 @@ namespace WPFDevelopers
 
             layoutRoot.Children.Add(overlay);
 
-            SetTheme(targetTheme);
+            applyTheme();
 
             double duration = 400;
             var easing = new CubicEase { EasingMode = EasingMode.EaseOut };
