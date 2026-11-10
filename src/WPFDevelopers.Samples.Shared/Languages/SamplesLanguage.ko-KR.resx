@@ -930,6 +930,9 @@
   <data name="邮箱" xml:space="preserve">
     <value>이메일</value>
   </data>
+  <data name="邮箱格式错误" xml:space="preserve">
+    <value>이메일 형식이 올바르지 않습니다</value>
+  </data>
   <data name="邮箱输入框 --" xml:space="preserve">
     <value>이메일 입력란 --</value>
   </data>

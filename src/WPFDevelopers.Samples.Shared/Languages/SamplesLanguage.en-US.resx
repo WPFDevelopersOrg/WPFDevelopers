@@ -930,6 +930,9 @@
   <data name="邮箱" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="邮箱格式错误" xml:space="preserve">
+    <value>Invalid email format</value>
+  </data>
   <data name="邮箱输入框 --" xml:space="preserve">
     <value>Email input --</value>
   </data>

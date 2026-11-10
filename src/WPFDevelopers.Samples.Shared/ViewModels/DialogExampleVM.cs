@@ -39,6 +39,7 @@ namespace WPFDevelopers.Samples.ViewModels
                 {
                     Source = this
                 });
+                dialog.Closing += diaUser.OnDialogClosing;
                 dialog.ClosedCommand = DialogClosedCommand;
                 dialog.ShowAsync();
             });

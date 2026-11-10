@@ -930,6 +930,9 @@
   <data name="邮箱" xml:space="preserve">
     <value>邮箱</value>
   </data>
+  <data name="邮箱格式错误" xml:space="preserve">
+    <value>邮箱格式错误</value>
+  </data>
   <data name="邮箱输入框 --" xml:space="preserve">
     <value>邮箱输入框 --</value>
   </data>

@@ -23,6 +23,7 @@
             VerticalAlignment="Center"
             Text="Email " />
         <TextBox
+            x:Name="EmailTextBox"
             Grid.Row="1"
             Grid.Column="1"
             VerticalAlignment="Center"

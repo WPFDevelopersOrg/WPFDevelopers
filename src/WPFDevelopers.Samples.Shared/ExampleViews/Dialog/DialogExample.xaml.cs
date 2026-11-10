@@ -30,6 +30,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             {
                 Source = model
             });
+            dialog.Closing += diaUser.OnDialogClosing;
             dialog.ShowAsync().ContinueWith(task =>
             {
                 var result = task.Result == DialogResult.Confirmed;
