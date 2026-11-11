@@ -28,7 +28,6 @@ namespace WPFDevelopers
         private static int _publishInProgress;
 
         private int _initCount;
-        private readonly string _themePreferenceKey;
 
         private ThemeType _theme = ThemeType.Light;
         public ThemeType Theme
@@ -54,7 +53,7 @@ namespace WPFDevelopers
             {
                 if (!Enum.IsDefined(typeof(ThemeMode), value))
                     throw new ArgumentOutOfRangeException(nameof(value));
-                ThemePreferenceStore.Save(_themePreferenceKey, value);
+                ThemePreferenceStore.Save(value);
                 SetThemeMode(value);
             }
         }
@@ -114,14 +113,9 @@ namespace WPFDevelopers
             }
         }
 
-        public Resources() : this(ThemePreferenceStore.GetApplicationKey())
+        public Resources()
         {
-        }
-
-        internal Resources(string themePreferenceKey)
-        {
-            _themePreferenceKey = themePreferenceKey;
-            var mode = ThemePreferenceStore.Load(_themePreferenceKey);
+            var mode = ThemePreferenceStore.Load();
             AddTheme();
             SetThemeMode(mode);
         }

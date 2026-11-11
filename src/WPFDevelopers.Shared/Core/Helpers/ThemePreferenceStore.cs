@@ -1,45 +1,56 @@
-using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace WPFDevelopers.Helpers
 {
     internal static class ThemePreferenceStore
     {
-        internal static string GetApplicationKey()
-        {
-            var assembly = Assembly.GetEntryAssembly();
-            var name = assembly == null ? AppDomain.CurrentDomain.FriendlyName : assembly.GetName().Name;
-            return @"Software\WPFDevelopers\Applications\" + name.Replace('\\', '_').Replace('/', '_');
-        }
+        private const string PreferenceFileName = "theme-mode.txt";
 
-        internal static ThemeMode Load(string path)
+        internal static ThemeMode Load()
         {
-            using (var key = Registry.CurrentUser.OpenSubKey(path))
+            var path = GetPreferencePath();
+            if (!File.Exists(path))
+                return ThemeMode.System;
+
+            switch (File.ReadAllText(path).Trim())
             {
-                var value = key?.GetValue("ThemeMode");
-                if (value == null) return ThemeMode.System;
-                switch (value)
-                {
-                    case "System": return ThemeMode.System;
-                    case "Light": return ThemeMode.Light;
-                    case "Dark": return ThemeMode.Dark;
-                    default: throw new InvalidDataException("Invalid ThemeMode in HKCU\\" + path + ".");
-                }
+                case "System": return ThemeMode.System;
+                case "Light": return ThemeMode.Light;
+                case "Dark": return ThemeMode.Dark;
+                default: throw new InvalidDataException("Invalid theme mode in '" + path + "'.");
             }
         }
 
-        internal static void Save(string path, ThemeMode mode)
+        internal static void Save(ThemeMode mode)
         {
             if (!Enum.IsDefined(typeof(ThemeMode), mode))
                 throw new ArgumentOutOfRangeException(nameof(mode));
-            using (var key = Registry.CurrentUser.CreateSubKey(path))
-            {
-                if (key == null)
-                    throw new IOException("Unable to open theme preferences at HKCU\\" + path + ".");
-                key.SetValue("ThemeMode", mode.ToString(), RegistryValueKind.String);
-            }
+
+            var path = GetPreferencePath();
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            File.WriteAllText(path, mode.ToString());
+        }
+
+        private static string GetPreferencePath()
+        {
+            var applicationName = Assembly.GetEntryAssembly()?.GetName().Name
+                ?? AppDomain.CurrentDomain.FriendlyName;
+            var invalidCharacters = Path.GetInvalidFileNameChars();
+            var safeApplicationName = string.Concat(applicationName.Select(character =>
+                invalidCharacters.Contains(character) || character == '/' || character == '\\'
+                    ? '_'
+                    : character));
+            if (string.IsNullOrWhiteSpace(safeApplicationName))
+                throw new InvalidOperationException("The application name cannot be used for theme preferences.");
+
+            var localApplicationData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            if (string.IsNullOrWhiteSpace(localApplicationData))
+                throw new IOException("The local application data directory is unavailable.");
+
+            return Path.Combine(localApplicationData, "WPFDevelopers", safeApplicationName, PreferenceFileName);
         }
     }
 }
