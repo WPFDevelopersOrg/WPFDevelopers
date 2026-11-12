@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -33,10 +33,8 @@ namespace WPFDevelopers.Controls
            
         }
 
-        internal void Push(string message, ToastImage type = ToastImage.Info,
-                  bool center = false, IntPtr intPtr = default)
+        internal void Push(string message, ToastImage type, bool center, Rect targetArea)
         {
-            Rect targetArea = GetTargetArea(intPtr);
             var messageItem = new ToastListBoxItem
             {
                 Content = message,
@@ -51,19 +49,35 @@ namespace WPFDevelopers.Controls
             }
         }
 
-        private Rect GetTargetArea(IntPtr windowHandle)
+        internal static Rect GetTargetArea(IntPtr windowHandle)
         {
             if (windowHandle != IntPtr.Zero)
-            {
-                IsPosition = false;
                 return WindowHelpers.GetWindowBounds(windowHandle);
+
+            var application = Application.Current;
+            var mainWindow = application?.MainWindow;
+            if (mainWindow is ToastExt || mainWindow == null)
+            {
+                if (application != null)
+                {
+                    foreach (Window window in application.Windows)
+                    {
+                        if (window != null && !(window is ToastExt))
+                        {
+                            mainWindow = window;
+                            break;
+                        }
+                    }
+                }
             }
 
-            IsPosition = false;
-            var mainWindow = Application.Current?.MainWindow;
-            if (mainWindow != null && mainWindow.IsLoaded)
+            if (mainWindow != null)
             {
-                var mainWindowHandle = new WindowInteropHelper(mainWindow).Handle;
+                var interopHelper = new WindowInteropHelper(mainWindow);
+                var mainWindowHandle = interopHelper.Handle;
+                if (mainWindowHandle == IntPtr.Zero)
+                    mainWindowHandle = interopHelper.EnsureHandle();
+
                 if (mainWindowHandle != IntPtr.Zero)
                 {
                     var screen = System.Windows.Forms.Screen.FromHandle(mainWindowHandle);
