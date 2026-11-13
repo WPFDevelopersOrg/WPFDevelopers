@@ -189,8 +189,7 @@
                                     Height="2"
                                     Margin="0,0,0,1"
                                     VerticalAlignment="Bottom"
-                                    IsEnabled="{TemplateBinding IsMouseOver}"
-                                    Visibility="Hidden">
+                                    IsEnabled="{TemplateBinding IsMouseOver}">
                                     <Track.DecreaseRepeatButton>
                                         <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{StaticResource WD.RepeatButtonTransparent}" />
                                     </Track.DecreaseRepeatButton>
@@ -348,6 +347,8 @@
         x:Key="WD.DefaultScrollViewer"
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type ScrollViewer}">
+        <Setter Property="PanningMode" Value="Both" />
+        <Setter Property="controls:ScrollViewerBehavior.IsHorizontalMouseWheelEnabled" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">

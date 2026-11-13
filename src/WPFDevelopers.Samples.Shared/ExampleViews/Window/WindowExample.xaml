@@ -11,40 +11,125 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
-        <Grid>
-            <UniformGrid
-                Grid.Row="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                wd:PanelHelper.Spacing="10"
-                Rows="2">
-                <TextBlock VerticalAlignment="Center" Text="TitleBarMode:" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="BtnNormal_Click"
-                    Content="Normal"
-                    Style="{DynamicResource WD.PrimaryButton}" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="BtnHighTitleBar_Click"
-                    Content="HighTitleBar"
-                    Style="{DynamicResource WD.SuccessDefaultButton}" />
-                <TextBlock VerticalAlignment="Center" Text="HighTitleBar &amp; NoChrome = True:" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="Button_Click"
-                    Content="ToolWindow"
-                    Style="{DynamicResource WD.PrimaryButton}" />
-                <Button
-                    wd:ElementHelper.CornerRadius="3"
-                    Click="ButtonNone_Click"
-                    Content="NoneTitleBarWindow"
-                    Style="{DynamicResource WD.DangerPrimaryButton}" />
-            </UniformGrid>
-        </Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="16">
+                <TextBlock
+                    Margin="0,0,0,8"
+                    FontSize="20"
+                    FontWeight="SemiBold"
+                    Text="Window" />
+                <TextBlock
+                    Margin="0,0,0,16"
+                    Foreground="{DynamicResource WD.RegularTextBrush}"
+                    Text="演示普通标题栏、高标题栏以及自定义标题栏窗口。点击按钮打开窗口，可查看对应标题栏样式。"
+                    TextWrapping="Wrap" />
+
+                <Border
+                    Margin="0,0,0,12"
+                    Padding="16"
+                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Text="Normal · 普通标题栏" />
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            Text="TitleBarMode=Normal，使用默认标题栏高度和标准窗口按钮。"
+                            TextWrapping="Wrap" />
+                        <Button
+                            HorizontalAlignment="Left"
+                            wd:ElementHelper.CornerRadius="3"
+                            Click="BtnNormal_Click"
+                            Content="打开普通窗口"
+                            Style="{DynamicResource WD.PrimaryButton}" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    Margin="0,0,0,12"
+                    Padding="16"
+                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Text="High · 标题栏工具区" />
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            Text="TitleBarMode=High，可通过 TitleBarLayout 在标题与窗口按钮之间添加交互内容。"
+                            TextWrapping="Wrap" />
+                        <Button
+                            HorizontalAlignment="Left"
+                            wd:ElementHelper.CornerRadius="3"
+                            Click="BtnHighTitleBar_Click"
+                            Content="打开高标题栏窗口"
+                            Style="{DynamicResource WD.SuccessDefaultButton}" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    Margin="0,0,0,12"
+                    Padding="16"
+                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Text="ToolWindow · 工具窗口" />
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            Text="使用自定义标题栏，并设置为工具窗口样式和不可调整大小。"
+                            TextWrapping="Wrap" />
+                        <Button
+                            HorizontalAlignment="Left"
+                            wd:ElementHelper.CornerRadius="3"
+                            Click="Button_Click"
+                            Content="打开工具窗口"
+                            Style="{DynamicResource WD.PrimaryButton}" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    Margin="0,0,0,12"
+                    Padding="16"
+                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Text="None · 自定义标题栏" />
+                        <TextBlock
+                            Margin="0,0,0,8"
+                            Text="TitleBarMode=None，通过 TitleBar 和 TitleHeight 自定义标题栏及窗口操作按钮。"
+                            TextWrapping="Wrap" />
+                        <Button
+                            HorizontalAlignment="Left"
+                            wd:ElementHelper.CornerRadius="3"
+                            Click="ButtonNone_Click"
+                            Content="打开自定义标题栏窗口"
+                            Style="{DynamicResource WD.DangerPrimaryButton}" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml" CodeType="Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/BadgeExample.xaml.cs" CodeType="CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml" CodeType="Xaml" Haader="Normal Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml.cs" CodeType="CSharp" Haader="Normal CSharp" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml" CodeType="Xaml" Haader="HighTitleBar Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml.cs" CodeType="CSharp" Haader="HighTitleBar CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

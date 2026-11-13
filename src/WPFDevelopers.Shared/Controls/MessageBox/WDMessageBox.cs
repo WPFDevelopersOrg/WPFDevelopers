@@ -45,7 +45,7 @@ namespace WPFDevelopers.Controls
         private TextBox _message;
         private Visibility _okVisibility;
         private Path _path;
-        private SolidColorBrush _solidColorBrush;
+        private Brush _imageBrush;
 
         private TextBlock _title;
 
@@ -124,7 +124,7 @@ namespace WPFDevelopers.Controls
             if (_path != null)
             {
                 _path.Data = _geometry;
-                _path.Fill = _solidColorBrush;
+                _path.Fill = _imageBrush;
             }
 
             _closeButton = GetTemplateChild(CloseButtonTemplateName) as Button;
@@ -261,19 +261,19 @@ namespace WPFDevelopers.Controls
             {
                 case MessageBoxImage.Warning:
                     _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.InfoGeometry");
-                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.WarningBrush");
+                    _imageBrush = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.WarningBrush");
                     break;
                 case MessageBoxImage.Error:
                     _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.ErrorGeometry");
-                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.DangerBrush");
+                    _imageBrush = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.DangerBrush");
                     break;
                 case MessageBoxImage.Information:
                     _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.WarningGeometry");
-                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.SuccessBrush");
+                    _imageBrush = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.SuccessBrush");
                     break;
                 case MessageBoxImage.Question:
                     _geometry = ThemeManager.Instance.Resources.TryFindResource<Geometry>("WD.QuestionGeometry");
-                    _solidColorBrush = ThemeManager.Instance.Resources.TryFindResource<SolidColorBrush>("WD.PrimaryBrush");
+                    _imageBrush = ThemeManager.Instance.Resources.TryFindResource<Brush>("WD.PrimaryBrush");
                     break;
             }
         }

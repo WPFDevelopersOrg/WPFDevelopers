@@ -11,6 +11,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using WPFDevelopers.Controls;
+using WPFDevelopers.Samples;
 using Tag = WPFDevelopers.Controls.Tag;
 
 namespace WPFDevelopers.Samples.ExampleViews
@@ -19,11 +20,11 @@ namespace WPFDevelopers.Samples.ExampleViews
     {
         private CancellationTokenSource _statisticsRequest;
         private bool _statisticsLoaded;
-        private bool _synchronizingTheme;
 
         public HomeExample()
         {
             InitializeComponent();
+            SampleLanguageManager.Instance.RegisterExampleView(this);
             VersionTag.Content = typeof(Tag).Assembly.GetName().Version.ToString(3);
             Loaded += HomeExample_Loaded;
             Unloaded += HomeExample_Unloaded;
@@ -31,16 +32,12 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void HomeExample_Loaded(object sender, RoutedEventArgs e)
         {
-            WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
-            WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
-            SynchronizeTheme();
             if (!_statisticsLoaded)
                 RefreshStatistics();
         }
 
         private void HomeExample_Unloaded(object sender, RoutedEventArgs e)
         {
-            WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
             if (_statisticsRequest == null)
                 return;
 
@@ -61,9 +58,11 @@ namespace WPFDevelopers.Samples.ExampleViews
 
             var request = new CancellationTokenSource();
             _statisticsRequest = request;
+            var localizer = SampleLanguageManager.Instance;
             RefreshButton.IsEnabled = false;
-            StarsTag.Content = DownloadsTag.Content = "加载中";
-            StatisticsStatus.Text = "正在读取 GitHub Star 和 NuGet 累计下载量...";
+            localizer.SetLocalizedText(StarsTag, ContentControl.ContentProperty, "加载中");
+            localizer.SetLocalizedText(DownloadsTag, ContentControl.ContentProperty, "加载中");
+            localizer.SetLocalizedText(StatisticsStatus, TextBlock.TextProperty, "正在读取 GitHub Star 和 NuGet 累计下载量...");
             var worker = new BackgroundWorker();
             worker.DoWork += (sender, e) =>
             {
@@ -95,19 +94,22 @@ namespace WPFDevelopers.Samples.ExampleViews
                 RefreshButton.IsEnabled = true;
                 if (e.Error != null)
                 {
-                    StarsTag.Content = DownloadsTag.Content = "加载失败";
-                    StatisticsStatus.Text = "统计加载失败：" + e.Error.Message + "。请点击“刷新统计”重试。";
+                    localizer.SetLocalizedText(StarsTag, ContentControl.ContentProperty, "加载失败");
+                    localizer.SetLocalizedText(DownloadsTag, ContentControl.ContentProperty, "加载失败");
+                    localizer.SetLocalizedText(StatisticsStatus, TextBlock.TextProperty,
+                        "统计加载失败：{error}。请点击“刷新统计”重试。".Replace("{error}", e.Error.Message));
                     return;
                 }
 
                 var metrics = (MetricResult[])e.Result;
-                StarsTag.Content = metrics[0].Content;
-                DownloadsTag.Content = metrics[1].Content;
+                localizer.SetLocalizedText(StarsTag, ContentControl.ContentProperty, metrics[0].Content);
+                localizer.SetLocalizedText(DownloadsTag, ContentControl.ContentProperty, metrics[1].Content);
                 var errors = metrics.Where(metric => metric.Error != null).Select(metric => metric.Error).ToArray();
                 _statisticsLoaded = errors.Length == 0;
-                StatisticsStatus.Text = _statisticsLoaded
-                    ? "更新于 " + DateTime.Now.ToString("HH:mm:ss") + " · 下载量为 NuGet 所有版本累计下载量"
-                    : string.Join(Environment.NewLine, errors);
+                localizer.SetLocalizedText(StatisticsStatus, TextBlock.TextProperty, _statisticsLoaded
+                    ? "更新于 {time} · 下载量为 NuGet 所有版本累计下载量"
+                        .Replace("{time}", DateTime.Now.ToString("HH:mm:ss", CultureInfo.CurrentCulture))
+                    : string.Join(Environment.NewLine, errors));
             };
             worker.RunWorkerAsync();
         }
@@ -137,7 +139,8 @@ namespace WPFDevelopers.Samples.ExampleViews
             return new MetricResult
             {
                 Content = "加载失败",
-                Error = source + " 统计加载失败：" + error.Message + "。请点击“刷新统计”重试。"
+                Error = (source + " 统计加载失败：{error}。请点击“刷新统计”重试。")
+                    .Replace("{error}", error.Message)
             };
         }
 
@@ -192,40 +195,9 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void ShowLinkError(Exception error)
         {
-            LinkError.Text = "无法打开链接：" + error.Message;
+            SampleLanguageManager.Instance.SetLocalizedText(LinkError, TextBlock.TextProperty,
+                "无法打开链接：{error}".Replace("{error}", error.Message));
             LinkError.Visibility = Visibility.Visible;
-        }
-
-        private void Segmented_ItemClick(object sender, RoutedEventArgs e)
-        {
-            if (_synchronizingTheme) return;
-            var segmented = sender as Segmented;
-            var theme = segmented.SelectedIndex == 0 ? ThemeType.Light : ThemeType.Dark;
-            if (ThemeManager.Instance.Resources.Theme == theme) return;
-            App.Theme = theme;
-            ThemeManager.Instance.SwitchTheme(PART_Segmented, theme);
-            SynchronizeTheme();
-        }
-
-        private void Resources_ThemeChanged(ThemeType currentTheme)
-        {
-            SynchronizeTheme();
-        }
-
-        private void SynchronizeTheme()
-        {
-            var theme = ThemeManager.Instance.Resources.Theme;
-            _synchronizingTheme = true;
-            try
-            {
-                PART_Segmented.SelectedIndex = theme == ThemeType.Dark ? 1 : 0;
-                SegmentedLight.IsChecked = theme != ThemeType.Dark;
-                SegmentedDark.IsChecked = theme == ThemeType.Dark;
-            }
-            finally
-            {
-                _synchronizingTheme = false;
-            }
         }
 
         private sealed class MetricResult

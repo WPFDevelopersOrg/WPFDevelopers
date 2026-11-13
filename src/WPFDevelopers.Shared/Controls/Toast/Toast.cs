@@ -111,6 +111,7 @@ namespace WPFDevelopers.Controls
 
         public static void PushDesktop(string message, ToastImage type = ToastImage.Info, bool center = false, IntPtr intPtr = default)
         {
+            var targetArea = ToastExt.GetTargetArea(intPtr);
             if (_toastExt == null)
             {
                 _toastExt = new ToastExt();
@@ -120,10 +121,10 @@ namespace WPFDevelopers.Controls
                 _toastExt.Show();
             if (_toastExt.Position != _position)
             {
-                _toastExt.IsPosition = false;
                 _toastExt.Position = _position;
             }
-            _toastExt.Push(message, type, center, intPtr);
+            _toastExt.IsPosition = false;
+            _toastExt.Push(message, type, center, targetArea);
         }
 
         public static void SetPosition(Position position = Position.Top)

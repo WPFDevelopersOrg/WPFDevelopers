@@ -145,6 +145,18 @@
   <data name="Close" xml:space="preserve">
     <value>关闭</value>
   </data>
+  <data name="Theme" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="FollowSystem" xml:space="preserve">
+    <value>跟随系统</value>
+  </data>
+  <data name="LightMode" xml:space="preserve">
+    <value>浅色模式</value>
+  </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>深色模式</value>
+  </data>
   <data name="Select" xml:space="preserve">
     <value>选择</value>
   </data>

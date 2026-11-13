@@ -25,6 +25,7 @@
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
                         Background="{TemplateBinding Background}"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
                         <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
@@ -54,7 +55,8 @@
             Padding="{TemplateBinding Padding}"
             Background="{TemplateBinding Background}"
             BorderBrush="{TemplateBinding BorderBrush}"
-            BorderThickness="1,1,1,0"
+            BorderThickness="1"
+            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
             SnapsToDevicePixels="True">
             <controls:SmallPanel Background="Transparent">
                 <Grid>
@@ -80,33 +82,30 @@
                         RecognizesAccessKey="True" />
                 </Grid>
                 <Popup
-                    x:Name="Popup"
+                    x:Name="PART_Popup"
                     AllowsTransparency="True"
                     Focusable="False"
                     IsOpen="{TemplateBinding IsSubmenuOpen}"
                     Placement="Bottom"
-                    PlacementTarget="{Binding ElementName=Border}">
-                    <Grid Margin="10,0,10,10">
-                        <Border
-                            x:Name="SubmenuBorder"
-                            Background="{DynamicResource WD.BackgroundBrush}"
-                            BorderBrush="{DynamicResource WD.BaseBrush}"
-                            BorderThickness="1"
-                            CornerRadius="0,0,3,3"
-                            Effect="{StaticResource WD.PopupShadowDepth}"
-                            SnapsToDevicePixels="True">
+                    PlacementTarget="{Binding ElementName=Border}"
+                    VerticalOffset="2">
+                    <Border
+                        x:Name="SubmenuBorder"
+                        Background="{DynamicResource WD.BackgroundBrush}"
+                        BorderBrush="{DynamicResource WD.BaseBrush}"
+                        BorderThickness="1"
+                        CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        SnapsToDevicePixels="True">
+                        <Grid>
+                            <Border
+                                Background="{DynamicResource WD.CyberpunkScanlineBrush}"
+                                CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=Border}}"
+                                IsHitTestVisible="False" />
                             <ScrollViewer Margin="0,4" CanContentScroll="True">
                                 <VirtualizingStackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                             </ScrollViewer>
-                        </Border>
-                        <Border
-                            Width="{Binding ElementName=Border, Path=ActualWidth}"
-                            Height="1.2"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Background="{DynamicResource WD.BackgroundBrush}"
-                            BorderThickness="1,0,0,0" />
-                    </Grid>
+                        </Grid>
+                    </Border>
                 </Popup>
             </controls:SmallPanel>
         </Border>
@@ -116,7 +115,7 @@
                 <Setter TargetName="Column2" Property="Width" Value="0" />
             </Trigger>
             <Trigger Property="IsSuspendingPopupAnimation" Value="True">
-                <Setter TargetName="Popup" Property="PopupAnimation" Value="None" />
+                <Setter TargetName="PART_Popup" Property="PopupAnimation" Value="None" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
                 <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
@@ -135,6 +134,7 @@
             Background="{TemplateBinding Background}"
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="1,1,1,0"
+            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
             SnapsToDevicePixels="True">
             <controls:SmallPanel Background="Transparent">
                 <Grid>
@@ -173,49 +173,55 @@
     <ControlTemplate x:Key="WD.SubmenuItemTemplateKey" TargetType="{x:Type MenuItem}">
         <Border
             x:Name="Border"
-            Background="{TemplateBinding Background}"
+            Background="Transparent"
             SnapsToDevicePixels="True">
-            <Grid Background="Transparent">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="Auto"
-                        MinWidth="24"
-                        SharedSizeGroup="Icon" />
-                    <ColumnDefinition Width="4" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
-                    <ColumnDefinition Width="20" />
-                </Grid.ColumnDefinitions>
-                <ContentPresenter
-                    x:Name="Icon"
-                    Margin="1"
-                    VerticalAlignment="Center"
-                    ContentSource="Icon"
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                <Path
-                    x:Name="CheckMark"
-                    Width="12"
-                    Height="10"
-                    Data="{StaticResource WD.CheckMarkGeometry}"
-                    Fill="{TemplateBinding Foreground}"
-                    FlowDirection="LeftToRight"
-                    Stretch="Uniform"
-                    Visibility="Hidden" />
-                <ContentPresenter
-                    x:Name="HeaderHost"
-                    Grid.Column="2"
-                    Margin="{TemplateBinding Padding}"
-                    VerticalAlignment="Center"
-                    ContentSource="Header"
-                    RecognizesAccessKey="True" />
-                <TextBlock
-                    x:Name="InputGestureText"
-                    Grid.Column="4"
-                    Margin="5,2,0,2"
-                    DockPanel.Dock="Right"
-                    Text="{TemplateBinding InputGestureText}" />
-            </Grid>
+            <Border
+                Margin="4,0"
+                Padding="0,0,8,0"
+                Background="{TemplateBinding Background}"
+                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto"
+                            MinWidth="24"
+                            SharedSizeGroup="Icon" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter
+                        x:Name="Icon"
+                        Margin="1"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    <Path
+                        x:Name="CheckMark"
+                        Width="12"
+                        Height="10"
+                        Data="{StaticResource WD.CheckMarkGeometry}"
+                        Fill="{TemplateBinding Foreground}"
+                        FlowDirection="LeftToRight"
+                        Stretch="Uniform"
+                        Visibility="Hidden" />
+                    <ContentPresenter
+                        x:Name="HeaderHost"
+                        Grid.Column="2"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                    <TextBlock
+                        x:Name="InputGestureText"
+                        Grid.Column="4"
+                        Margin="5,2,0,2"
+                        DockPanel.Dock="Right"
+                        Text="{TemplateBinding InputGestureText}" />
+                </Grid>
+            </Border>
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="ButtonBase.Command" Value="{x:Null}" />
@@ -235,81 +241,93 @@
     <ControlTemplate x:Key="WD.SubmenuHeaderTemplateKey" TargetType="{x:Type MenuItem}">
         <Border
             x:Name="Border"
-            Background="{TemplateBinding Background}"
+            Background="Transparent"
             SnapsToDevicePixels="True">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="Auto"
-                        MinWidth="24"
-                        SharedSizeGroup="Icon" />
-                    <ColumnDefinition Width="4" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
-                    <ColumnDefinition Width="20" />
-                </Grid.ColumnDefinitions>
-                <ContentPresenter
-                    x:Name="Icon"
-                    Margin="3,0,0,0"
-                    VerticalAlignment="Center"
-                    ContentSource="Icon" />
-                <Path
-                    x:Name="CheckMark"
-                    Width="12"
-                    Height="10"
-                    Margin="3,0,0,0"
-                    Data="{StaticResource WD.CheckMarkGeometry}"
-                    Fill="{TemplateBinding Foreground}"
-                    FlowDirection="LeftToRight"
-                    Stretch="Uniform"
-                    Visibility="Hidden" />
-                <ContentPresenter
-                    x:Name="HeaderHost"
-                    Grid.Column="2"
-                    Margin="{TemplateBinding Padding}"
-                    VerticalAlignment="Center"
-                    ContentSource="Header"
-                    RecognizesAccessKey="True" />
-                <TextBlock
-                    x:Name="InputGestureText"
-                    Grid.Column="3"
-                    Margin="5,2,2,2"
-                    DockPanel.Dock="Right"
-                    Text="{TemplateBinding InputGestureText}" />
-                <Path
-                    x:Name="PART_Path"
-                    Grid.Column="4"
-                    Width="10"
-                    Height="12"
-                    VerticalAlignment="Center"
-                    Data="{StaticResource WD.ChevronRightGeometry}"
-                    Fill="{TemplateBinding Foreground}"
-                    FlowDirection="LeftToRight"
-                    Stretch="Uniform" />
-                <Popup
-                    x:Name="Popup"
-                    AllowsTransparency="True"
-                    Focusable="False"
-                    HorizontalOffset="2"
-                    IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                    Placement="Right"
-                    PopupAnimation="Fade"
-                    VerticalOffset="-4">
-                    <Border
-                        x:Name="SubmenuBorder"
-                        Margin="10,0,10,10"
-                        Background="{DynamicResource WD.BackgroundBrush}"
-                        BorderBrush="{DynamicResource WD.BaseBrush}"
-                        BorderThickness="1"
-                        CornerRadius="0,0,3,3"
-                        Effect="{StaticResource WD.PopupShadowDepth}"
-                        SnapsToDevicePixels="True">
-                        <ScrollViewer Margin="0,4" CanContentScroll="True">
-                            <VirtualizingStackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
-                        </ScrollViewer>
-                    </Border>
-                </Popup>
-            </Grid>
+            <Border
+                Margin="4,0"
+                Padding="0,0,8,0"
+                Background="{TemplateBinding Background}"
+                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+                <Grid Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto"
+                            MinWidth="24"
+                            SharedSizeGroup="Icon" />
+                        <ColumnDefinition Width="4" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="Shortcut" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter
+                        x:Name="Icon"
+                        Margin="3,0,0,0"
+                        VerticalAlignment="Center"
+                        ContentSource="Icon" />
+                    <Path
+                        x:Name="CheckMark"
+                        Width="12"
+                        Height="10"
+                        Margin="3,0,0,0"
+                        Data="{StaticResource WD.CheckMarkGeometry}"
+                        Fill="{TemplateBinding Foreground}"
+                        FlowDirection="LeftToRight"
+                        Stretch="Uniform"
+                        Visibility="Hidden" />
+                    <ContentPresenter
+                        x:Name="HeaderHost"
+                        Grid.Column="2"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="Center"
+                        ContentSource="Header"
+                        RecognizesAccessKey="True" />
+                    <TextBlock
+                        x:Name="InputGestureText"
+                        Grid.Column="3"
+                        Margin="5,2,2,2"
+                        DockPanel.Dock="Right"
+                        Text="{TemplateBinding InputGestureText}" />
+                    <Path
+                        x:Name="PART_Path"
+                        Grid.Column="4"
+                        Width="10"
+                        Height="12"
+                        VerticalAlignment="Center"
+                        Data="{StaticResource WD.ChevronRightGeometry}"
+                        Fill="{TemplateBinding Foreground}"
+                        FlowDirection="LeftToRight"
+                        IsHitTestVisible="False"
+                        Stretch="Uniform" />
+                    <Popup
+                        x:Name="PART_Popup"
+                        AllowsTransparency="True"
+                        Focusable="False"
+                        HorizontalOffset="-12"
+                        IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                        Placement="Right"
+                        PlacementTarget="{Binding ElementName=Border}"
+                        PopupAnimation="Fade"
+                        VerticalOffset="-4">
+                        <Border
+                            x:Name="SubmenuBorder"
+                            Background="{DynamicResource WD.BackgroundBrush}"
+                            BorderBrush="{DynamicResource WD.BaseBrush}"
+                            BorderThickness="1"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                            SnapsToDevicePixels="True">
+                            <Grid>
+                                <Border
+                                    Background="{DynamicResource WD.CyberpunkScanlineBrush}"
+                                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=Border}}"
+                                    IsHitTestVisible="False" />
+                                <ScrollViewer Margin="0,4" CanContentScroll="True">
+                                    <VirtualizingStackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </Border>
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="Icon" Value="{x:Null}">

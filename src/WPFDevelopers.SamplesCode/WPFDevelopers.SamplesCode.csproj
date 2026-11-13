@@ -9,15 +9,15 @@
 		<BaseOutputPath></BaseOutputPath>
 		<Configurations>Debug;Release</Configurations>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'net45' Or
-                        '$(TargetFramework)' == 'net46' Or
-                        '$(TargetFramework)' == 'net47' Or
-                        '$(TargetFramework)' == 'net48' Or
-                        '$(TargetFramework)' == 'net481'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net45' Or&#xD;&#xA;                        '$(TargetFramework)' == 'net46' Or&#xD;&#xA;                        '$(TargetFramework)' == 'net47' Or&#xD;&#xA;                        '$(TargetFramework)' == 'net48' Or&#xD;&#xA;                        '$(TargetFramework)' == 'net481'">
 		<Reference Include="Microsoft.CSharp" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\HomeExample.xaml.cs" Link="ExampleViews\HomeExample.xaml.cs" DependentUpon="HomeExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Dialog\DialogExample.xaml" Link="ExampleViews\Dialog\DialogExample.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Dialog\DialogUserControl.xaml" Link="ExampleViews\Dialog\DialogUserControl.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Dialog\DialogExample.xaml.cs" Link="ExampleViews\Dialog\DialogExample.xaml.cs" DependentUpon="DialogExample.xaml"/>
+		<Resource Include="..\WPFDevelopers.Samples.Shared\ViewModels\DialogExampleVM.cs" Link="ViewModels\DialogExampleVM.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\HomeExample.xaml" Link="ExampleViews\HomeExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AboutWindow.xaml.cs" Link="ExampleViews\AboutWindow.xaml.cs" DependentUpon="AboutWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\AcrylicBlurWindowExample.xaml.cs" Link="ExampleViews\AcrylicBlurWindowExample.xaml.cs" DependentUpon="AcrylicBlurWindowExample.xaml" />
@@ -172,6 +172,8 @@
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\Window\HighTitleBarWindow.xaml.cs" Link="ExampleViews\Window\HighTitleBarWindow.xaml.cs" DependentUpon="HighTitleBarWindow.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\ExampleViews\TagExample.xaml.cs" Link="ExampleViews\TagExample.xaml.cs" DependentUpon="TagExample.xaml" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\Theme.cs" Link="Controls\Theme\Theme.cs" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeSettings.xaml" Link="Controls\Theme\ThemeSettings.xaml" />
+		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeSettings.xaml.cs" Link="Controls\Theme\ThemeSettings.xaml.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\Theme\ThemeItem.cs" Link="Controls\Theme\ThemeItem.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubbleSelection\BubbleSelection.cs" Link="Controls\BubbleSelection\BubbleSelection.cs" />
 		<Resource Include="..\WPFDevelopers.Samples.Shared\Controls\BubbleSelection\BubbleCanvas.cs" Link="Controls\BubbleSelection\BubbleCanvas.cs" />

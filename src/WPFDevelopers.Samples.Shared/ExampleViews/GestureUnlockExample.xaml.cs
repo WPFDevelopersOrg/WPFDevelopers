@@ -1,8 +1,9 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPFDevelopers.Controls;
 using WPFDevelopers.Samples.Helpers;
+using WPFDevelopers.Samples;
 
 namespace WPFDevelopers.Sample.ExampleViews
 {
@@ -20,6 +21,7 @@ namespace WPFDevelopers.Sample.ExampleViews
         public GestureUnlockExample()
         {
             InitializeComponent();
+            SampleLanguageManager.Instance.RegisterExampleView(this);
         }
 
         private void HandleGestureUnlock(string pwd, GestureUnlockType unlockType)
@@ -27,19 +29,28 @@ namespace WPFDevelopers.Sample.ExampleViews
             if (pwd.Length < 4)
             {
                 SetControlState(unlockType, ControlState.Error);
-                Toast.PushDesktop("手势错误，最少 4 个节点!", ToastImage.Error, true);
+                Toast.PushDesktop(
+                    SampleLanguageManager.Instance.TranslateText("手势错误，最少 4 个节点!"),
+                    ToastImage.Error,
+                    true);
                 return;
             }
 
             if (pwd != _password)
             {
                 SetControlState(unlockType, ControlState.Error);
-                Toast.PushDesktop("手势错误，请重新解锁!", ToastImage.Error, true);
+                Toast.PushDesktop(
+                    SampleLanguageManager.Instance.TranslateText("手势错误，请重新解锁!"),
+                    ToastImage.Error,
+                    true);
                 return;
             }
 
             SetControlState(unlockType, ControlState.Success);
-            Toast.Push("手势正确!", ToastImage.Success, true);
+            Toast.Push(
+                SampleLanguageManager.Instance.TranslateText("手势正确!"),
+                ToastImage.Success,
+                true);
         }
 
         private void SetControlState(GestureUnlockType unlockType, ControlState state)

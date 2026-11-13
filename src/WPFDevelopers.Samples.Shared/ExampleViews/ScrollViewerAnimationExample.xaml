@@ -45,6 +45,48 @@
 
 
             <StackPanel Margin="10,0">
+                <TextBlock Margin="10" Text="Horizontal ScrollViewer" />
+                <TextBlock Margin="10,0,10,8" Text="Use the mouse wheel or touchpad to scroll horizontally." />
+                <ScrollViewer
+                    Width="200"
+                    Height="90"
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Horizontal">
+                        <Border
+                            Width="140"
+                            Margin="0,0,8,0"
+                            Background="{StaticResource WD.SuccessBrush}"
+                            Padding="12">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource WD.PrimaryTextBrush}"
+                                Text="Item 1" />
+                        </Border>
+                        <Border
+                            Width="140"
+                            Margin="0,0,8,0"
+                            Background="{StaticResource WD.DangerBrush}"
+                            Padding="12">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource WD.PrimaryTextBrush}"
+                                Text="Item 2" />
+                        </Border>
+                        <Border
+                            Width="140"
+                            Background="{StaticResource WD.SuccessBrush}"
+                            Padding="12">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Foreground="{DynamicResource WD.PrimaryTextBrush}"
+                                Text="Item 3" />
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+
+            <StackPanel Margin="10,0">
                 <TextBlock Margin="10" Text="wd:WDScrollViewer" />
                 <wd:WDScrollViewer
                     Width="200"

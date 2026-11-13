@@ -1,4 +1,4 @@
-﻿# WPFDevelopers Getting Started
+# WPFDevelopers Getting Started
 
 > Get started with WPFDevelopers controls in your WPF project in three steps.
 
@@ -73,7 +73,7 @@ Add the WD namespace and theme resources in `App.xaml`:
 
 | Configuration | Effect |
 |---------------|--------|
-| `<wd:Resources Radius="4" />` | Default Light theme, 4px control corner radius (follows system Light/Dark on Windows 10+) |
+| `<wd:Resources Radius="4" />` | Restores the previous theme mode; follows the system on first use, 4px control corner radius |
 | `<wd:Resources Theme="Light" Radius="4" />` | Fixed light theme, 4px corner radius |
 | `<wd:Resources Theme="Dark" Radius="4" />` | Fixed dark theme, 4px corner radius |
 | `<wd:Resources Color="Fuchsia" Radius="4" />` | Custom theme color, 4px corner radius |
@@ -81,6 +81,22 @@ Add the WD namespace and theme resources in `App.xaml`:
 > **Tip**: The `Radius` property controls the corner radius of controls. Windows 11 defaults to 4px, Windows 10 defaults to 0px. Adjust as needed.
 
 > **Important**: `wd:Resources` must be placed **after** `Theme.xaml` in MergedDictionaries, otherwise the theme will not load correctly.
+
+### High-DPI Border Clipping on Older .NET Framework Targets
+
+Applications targeting .NET Framework versions below 4.6 can clip borders when fixed-width controls combine `Margin` with `UseLayoutRounding` at scaling factors such as 125%. `PanelHelper.Spacing` adjusts the margins of direct children, so it can also trigger this behavior.
+
+Enable the layout-rounding fix introduced in .NET Framework 4.6 in the application's `App.config`, without removing `Width` or `Spacing`:
+
+```xml
+<configuration>
+    <runtime>
+        <AppContextSwitchOverrides value="Switch.MS.Internal.DoNotApplyLayoutRoundingToMarginsAndBorderThickness=false" />
+    </runtime>
+</configuration>
+```
+
+If `AppContextSwitchOverrides` already exists, append this switch to its `value`, separated by a semicolon, rather than adding another element. The fix requires .NET Framework 4.6 or later at runtime and an application restart. On earlier runtimes, setting `UseLayoutRounding="False"` on the affected control is a local workaround.
 
 ---
 
@@ -413,6 +429,26 @@ WD provides a set of theme resources you can reference in XAML:
 The sample navigation identifies these implementations and composed effects with a blue-gray `DEMO` badge. Hover for an explanation; the tooltip follows the selected language. `NEW` and `UPDATE` remain independent change-status badges and can appear alongside `DEMO`; for example, ActivityFeed can show both `DEMO` and `UPDATE`. Ordinary usage samples for built-in WD controls and helpers do not receive `DEMO`.
 
 ### Windows & Navigation
+
+`wd:Window` includes a theme mode menu controlled by the `ShowTheme` dependency property (default: `False`):
+
+```xml
+<wd:Window ShowTheme="True" TitleBarMode="High">
+    <!-- Window content -->
+</wd:Window>
+```
+
+Supported in `Normal` and `High` title bars. Hovering opens a Follow system / Light mode / Dark mode popup; leaving both the entry and popup dismisses it. The entry icon reflects the selected mode, with a checkmark on the right of the selected row. Keyboard users can focus the entry and press Space to open, use Up/Down to navigate, Space to confirm, and Escape to dismiss. Actual light/dark changes retain the circular reveal animation. `TitleBarLayout` remains available for custom content. This property does not control the accent-color picker, and the button is hidden without a title bar.
+
+Read or set the user's preference through `ThemeManager.Instance.Resources.ThemeMode` (`System`, `Light`, or `Dark`). `Theme` / `IsDarkTheme` report the effective theme. System changes do not overwrite the System preference; setting the existing `ThemeType.Default` still enables following the system.
+
+Theme preferences are automatically saved to `HKEY_CURRENT_USER\Software\WPFDevelopers\Applications\<entry assembly name>` and restored on the next launch. The `ThemeMode` string value is `System` (follow system), `Light` (light mode), or `Dark` (dark mode). Each application stores its preference separately.
+
+Runtime verification (replace `net48` with `net40` for the .NET 4.0 build):
+
+```powershell
+powershell -NoProfile -STA -File .\tests\Window.Theme.SmokeTests.ps1 -AssemblyPath .\OutPut\net48\WPFDevelopers.dll
+```
 
 | Control | Source | Example File | Description |
 |---------|--------|-------------|-------------|
@@ -751,6 +787,96 @@ MessageBox.Show("Operation successful!", "Info", MessageBoxButton.OK, MessageBox
 - **Close methods**: Click the close button (top-right), press `Escape`, or click any button
 - **Owner window**: When `owner` is provided, the dialog centers on the parent window and displays a mask overlay. Without an owner, it auto-detects the current window or centers on screen
 - **Button text**: Automatically localized via `LanguageManager` (follows system language)
+
+---
+
+## Dialog
+
+`Dialog` displays custom forms or confirmation content using a `UserControl` or `Page`, with a mask, title, and confirm/cancel buttons.
+
+### Opening and validating input
+
+```csharp
+var editor = new UserEditor(); // Your custom UserControl
+var dialog = new WPFDevelopers.Controls.Dialog
+{
+    Title = "Edit user",
+    Content = editor,
+    Owner = this,
+    DialogWidth = 520
+};
+dialog.Closing += (sender, e) =>
+{
+    if (e.Reason == WPFDevelopers.Controls.DialogCloseReason.Confirm)
+        e.Cancel = !editor.Validate(); // Keep open when validation fails
+};
+if (await dialog.ShowAsync() == WPFDevelopers.Controls.DialogResult.Confirmed)
+{
+    Save(editor.DataContext);
+}
+```
+
+Implement `Validate()` and `Save()` in your application. Validate input in `Closing` when confirming, set `e.Cancel = true` to keep the dialog open, and display an error in the content. WPF binding validation errors also prevent confirmation automatically.
+
+### Common options
+
+| Property/method | Default | Description |
+|---|---|---|
+| `Content` | null | Required; a `UserControl` or `Page` not placed in another container |
+| `Title` | Empty string | Dialog title |
+| `CornerRadius` | `10` | Corner radius; use `new CornerRadius(0)` for square corners |
+| `Owner` | null | Parent window; finds the current window if omitted |
+| `DialogWidth` / `DialogHeight` | `440` / `double.NaN` | Width and height; `double.NaN` sizes automatically |
+| `ShowFooter` | true | Whether to show the footer buttons |
+| `ConfirmText` / `CancelText` | null | Button labels; follow language settings by default |
+| `IsConfirmEnabled` | true | Bindable confirmation button availability |
+| `IsOpen` | false | Two-way open state; false requests cancellation |
+| `ClosedCommand` | null | Runs after closure with a `DialogResult` parameter |
+| `ShowAsync(owner = null)` | — | Opens the dialog and awaits `Confirmed` or `Canceled` |
+| `Close(reason)` | `Cancel` | Requests closure, still running `Closing` validation |
+
+- Call on the UI thread. Only one dialog per owner is supported; do not change `Content` while open.
+- Cancel does not roll back ViewModel changes. Use a working copy if edits must be discarded.
+- Custom window templates need an `AdornerDecorator`. For a draggable independent window, use a custom `Window` with `MaskShowDialog()`.
+
+The example uses `await` (.NET 4.5+). On .NET 4.0 use the same API with a UI scheduler:
+
+```csharp
+dialog.ShowAsync().ContinueWith(task =>
+{
+    if (task.Result == WPFDevelopers.Controls.DialogResult.Confirmed)
+        Save(editor.DataContext);
+}, TaskScheduler.FromCurrentSynchronizationContext());
+```
+
+### MVVM
+
+Declare the dialog in `Resources`, not directly in the layout. Assign the ViewModel explicitly (`DialogViewModel` below is a previously declared resource):
+
+```xml
+<wd:Dialog x:Key="EditorDialog"
+           DataContext="{StaticResource DialogViewModel}"
+           Title="Edit user"
+           IsOpen="{Binding IsDialogOpen, Mode=TwoWay}"
+           IsConfirmEnabled="{Binding CanConfirm}"
+           ClosedCommand="{Binding DialogClosedCommand}">
+    <UserControl>
+        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+    </UserControl>
+</wd:Dialog>
+```
+
+Reference the dialog's DataContext from the opening button:
+
+```xml
+<Button Content="Open"
+        DataContext="{Binding DataContext, Source={StaticResource EditorDialog}}"
+        Command="{Binding OpenDialogCommand}" />
+```
+
+`OpenDialogCommand` sets `IsDialogOpen` to true; `CanConfirm` controls the confirm button. After closure, `DialogClosedCommand` receives `DialogResult.Confirmed` or `Canceled`.
+
+Full examples: [C# / MVVM](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Dialog).
 
 ---
 

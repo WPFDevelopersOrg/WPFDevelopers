@@ -44,18 +44,19 @@
                                         Foreground="{DynamicResource WD.PrimaryTextBrush}" />
                                     <Button
                                         Name="PART_CloseButton"
-                                        Margin="0,6"
+                                        Width="28"
+                                        Height="28"
+                                        Margin="4,6"
+                                        Padding="0"
                                         HorizontalAlignment="Right"
                                         IsTabStop="False"
-                                        Style="{DynamicResource WD.WindowButtonStyle}"
+                                        Style="{DynamicResource WD.NormalButton}"
                                         ToolTip="{Binding [Close], Source={x:Static resx:LanguageManager.Instance}}">
                                         <Path
-                                            Width="10"
-                                            Height="10"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
+                                            Width="12"
+                                            Height="12"
                                             Data="{StaticResource WD.WindowCloseGeometry}"
-                                            Fill="{DynamicResource WD.PrimaryTextBrush}"
+                                            Fill="{TemplateBinding Foreground}"
                                             Stretch="Fill" />
                                     </Button>
                                 </DockPanel>
@@ -75,6 +76,7 @@
                                         MaxWidth="500"
                                         Padding="10,0"
                                         VerticalAlignment="Center"
+                                        Background="{DynamicResource WD.BackgroundBrush}"
                                         BorderThickness="0"
                                         FontSize="{DynamicResource WD.PrimaryFontSize}"
                                         Foreground="{DynamicResource WD.RegularTextBrush}"

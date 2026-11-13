@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 
 namespace WPFDevelopers.Samples.Helpers
 {
@@ -12,6 +11,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.UsageGuide] = "使用指南",
             [MenuEnum.UsageColor] = "色彩指南",
             [MenuEnum.MessageBox] = "消息框",
+            [MenuEnum.Dialog] = "对话框",
             [MenuEnum.NotifyIcon] = "托盘图标",
             [MenuEnum.PanningItems] = "平移列表",
             [MenuEnum.BreatheLight] = "呼吸灯",
@@ -71,7 +71,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.Magnifier] = "放大镜",
             [MenuEnum.Step] = "步骤条",
             [MenuEnum.MultiSelectComboBox] = "多选下拉框(带搜索)",
-            [MenuEnum.Mask] = "遮罩",
+            [MenuEnum.Mask] = "遮罩与窗口遮罩",
             [MenuEnum.Loading] = "加载动画",
             [MenuEnum.Selector] = "列表定位",
             //[MenuEnum.MultiSelectSearchComboBox] = "示例多选下拉框",
@@ -137,17 +137,18 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.TaskbarInfo] = "任务栏信息"
         };
 
-        public static string GetDisplayName(string name, CultureInfo culture)
+        public static string GetDisplayName(string name)
         {
             if (name == "持续更新中")
-                return culture.TwoLetterISOLanguageName == "zh" ? name : "More updates coming";
+                return SampleLanguageManager.Instance.TranslateText(name);
 
-            if (culture.TwoLetterISOLanguageName != "zh" ||
-                !Enum.TryParse(name, out MenuEnum menu) ||
+            if (!Enum.TryParse(name, out MenuEnum menu) ||
                 !ChineseNames.TryGetValue(menu, out var chineseName))
+            {
                 return name;
+            }
 
-            return chineseName;
+            return SampleLanguageManager.Instance.TranslateText(chineseName);
         }
     }
 }

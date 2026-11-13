@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -17,33 +18,92 @@ namespace WPFDevelopers.Helpers
     {
         public static void MaskShow(this Window outputWindow)
         {
-            CreateMask(outputWindow);
-            outputWindow.Show();
+            var mask = AddMask(outputWindow);
+            try { outputWindow.Show(); }
+            catch
+            {
+                mask.Dispose();
+                throw;
+            }
         }
 
         public static bool? MaskShowDialog(this Window outputWindow)
         {
-            CreateMask(outputWindow);
-            return outputWindow.ShowDialog();
+            using (AddMask(outputWindow))
+                return outputWindow.ShowDialog();
         }
 
         public static void CreateMask(this Window outputWindow)
         {
-            Visual parent = ControlsHelper.GetDefaultWindow();
-            var _layer = ControlsHelper.GetAdornerLayer(parent);
-            if (_layer == null) return;
-            var _adornerContainer = new AdornerContainer(_layer)
+            AddMask(outputWindow);
+        }
+
+        private static MaskSession AddMask(Window outputWindow)
+        {
+            if (outputWindow == null)
+                throw new ArgumentNullException(nameof(outputWindow));
+            var owner = outputWindow.Owner ?? ControlsHelper.GetDefaultWindow();
+            if (owner == null || owner == outputWindow || !owner.IsVisible)
+                throw new InvalidOperationException("A mask requires a visible owner Window.");
+            var source = owner.Content as FrameworkElement;
+            var layer = source == null ? null : AdornerLayer.GetAdornerLayer(source);
+            if (layer == null)
+                throw new InvalidOperationException("The owner content requires an AdornerLayer.");
+            var adorner = new MaskAdorner(source) { Child = new MaskControl(owner) };
+            var session = new MaskSession(outputWindow, owner, layer, adorner);
+            try { layer.Add(adorner); }
+            catch
             {
-                Child = new MaskControl(parent)
-            };
-            _layer.Add(_adornerContainer);
-            if (outputWindow != null)
+                session.Dispose();
+                throw;
+            }
+            return session;
+        }
+
+        private sealed class MaskAdorner : AdornerContainer
+        {
+            internal MaskAdorner(UIElement source) : base(source) { }
+
+            protected override System.Windows.Size MeasureOverride(System.Windows.Size constraint)
             {
-                outputWindow.Closed += delegate
-                {
-                    if (parent != null)
-                        _layer.Remove(_adornerContainer);
-                };
+                var size = AdornedElement.RenderSize;
+                Child.Measure(size);
+                return size;
+            }
+        }
+
+        private sealed class MaskSession : IDisposable
+        {
+            private readonly Window _window;
+            private readonly Window _owner;
+            private readonly AdornerLayer _layer;
+            private readonly MaskAdorner _adorner;
+            private bool _disposed;
+
+            internal MaskSession(Window window, Window owner, AdornerLayer layer, MaskAdorner adorner)
+            {
+                _window = window;
+                _owner = owner;
+                _layer = layer;
+                _adorner = adorner;
+                window.Closed += OnClosed;
+                owner.Closed += OnClosed;
+            }
+
+            private void OnClosed(object sender, EventArgs e)
+            {
+                Dispose();
+            }
+
+            public void Dispose()
+            {
+                if (_disposed)
+                    return;
+                _disposed = true;
+                _window.Closed -= OnClosed;
+                _owner.Closed -= OnClosed;
+                _layer.Remove(_adorner);
+                _adorner.Child = null;
             }
         }
 

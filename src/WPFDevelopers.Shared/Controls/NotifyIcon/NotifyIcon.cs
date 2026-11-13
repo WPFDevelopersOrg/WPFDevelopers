@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,7 +25,8 @@ namespace WPFDevelopers.Controls
 {
     public class NotifyIcon : FrameworkElement, IDisposable
     {
-        private static NotifyIcon NotifyIconCache;
+        private static readonly object NotifyIconsLock = new object();
+        private static readonly List<WeakReference> NotifyIcons = new List<WeakReference>();
 
         public static readonly DependencyProperty ContextContentProperty = DependencyProperty.Register(
             "ContextContent", typeof(object), typeof(NotifyIcon), new PropertyMetadata(default));
@@ -77,6 +80,7 @@ namespace WPFDevelopers.Controls
         private IntPtr _hIcon = IntPtr.Zero;
         private ImageSource _icon;
         private IntPtr _iconHandle;
+        private IconHandle _imageIconHandle;
 
         private int _IsShowIn;
 
@@ -95,7 +99,6 @@ namespace WPFDevelopers.Controls
         private bool disposedValue;
 
         private readonly uint _trayIconId;
-        private IntPtr _tempIconHandle;
         //闪烁定时器
         private DispatcherTimer _dispatcherTimerTwink;
 
@@ -112,7 +115,7 @@ namespace WPFDevelopers.Controls
                 WPFDevelopers.Resources.ThemeChanged += Resources_ThemeChanged;
             }
             Start();
-            NotifyIconCache = this;
+            RegisterNotifyIcon(this);
         }
 
         static NotifyIcon()
@@ -212,7 +215,8 @@ namespace WPFDevelopers.Controls
             if (d is NotifyIcon trayService)
             {
                 var notifyIcon = (NotifyIcon)d;
-                notifyIcon._dispatcherTimerTwink.Interval = (TimeSpan)e.NewValue;
+                if (notifyIcon._dispatcherTimerTwink != null)
+                    notifyIcon._dispatcherTimerTwink.Interval = (TimeSpan)e.NewValue;
             }
         }
         private static void OnIsTwinkChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -231,17 +235,17 @@ namespace WPFDevelopers.Controls
                         };
                         notifyIcon._dispatcherTimerTwink.Tick += notifyIcon.DispatcherTimerTwinkTick;
                     }
-                    notifyIcon._tempIconHandle = notifyIcon._hIcon;
                     notifyIcon._dispatcherTimerTwink.Start();
                 }
                 else
                 {
-                    notifyIcon._dispatcherTimerTwink?.Stop();
-                    notifyIcon._dispatcherTimerTwink.Tick -= notifyIcon.DispatcherTimerTwinkTick;
-                    notifyIcon._dispatcherTimerTwink = null;
-                    notifyIcon._iconHandle = notifyIcon._tempIconHandle;
-                    notifyIcon.ChangeIcon(false, notifyIcon._iconHandle);
-                    notifyIcon._tempIconHandle = IntPtr.Zero;
+                    if (notifyIcon._dispatcherTimerTwink != null)
+                    {
+                        notifyIcon._dispatcherTimerTwink.Stop();
+                        notifyIcon._dispatcherTimerTwink.Tick -= notifyIcon.DispatcherTimerTwinkTick;
+                        notifyIcon._dispatcherTimerTwink = null;
+                    }
+                    notifyIcon.ChangeIcon(notifyIcon._hIcon);
                 }
             }
 
@@ -277,16 +281,57 @@ namespace WPFDevelopers.Controls
         private void DispatcherTimerTwinkTick(object sender, EventArgs e)
         {
             if (Visibility != Visibility.Visible) return;
-            _iconHandle = _iconHandle != IntPtr.Zero ? IntPtr.Zero : _tempIconHandle;
-            ChangeIcon(false, _iconHandle);
+            ChangeIcon(_iconHandle != IntPtr.Zero ? IntPtr.Zero : _hIcon);
         }
 
         private void OnCurrent_Exit(object sender, ExitEventArgs e)
         {
             s_NotifyIcon?.Dispose();
             s_NotifyIcon = default;
-            NotifyIconCache?.Dispose();
-            NotifyIconCache = null;
+            Dispose();
+        }
+
+        private static void RegisterNotifyIcon(NotifyIcon notifyIcon)
+        {
+            lock (NotifyIconsLock)
+            {
+                NotifyIcons.Add(new WeakReference(notifyIcon));
+            }
+        }
+
+        private static NotifyIcon GetLatestNotifyIcon()
+        {
+            lock (NotifyIconsLock)
+            {
+                for (var i = NotifyIcons.Count - 1; i >= 0; i--)
+                {
+                    var notifyIcon = NotifyIcons[i].Target as NotifyIcon;
+                    if (notifyIcon == null || notifyIcon.disposedValue)
+                    {
+                        NotifyIcons.RemoveAt(i);
+                        continue;
+                    }
+
+                    return notifyIcon;
+                }
+            }
+
+            return null;
+        }
+
+        private static void UnregisterNotifyIcon(NotifyIcon notifyIcon)
+        {
+            lock (NotifyIconsLock)
+            {
+                for (var i = NotifyIcons.Count - 1; i >= 0; i--)
+                {
+                    var registeredIcon = NotifyIcons[i].Target as NotifyIcon;
+                    if (registeredIcon == null || ReferenceEquals(registeredIcon, notifyIcon))
+                    {
+                        NotifyIcons.RemoveAt(i);
+                    }
+                }
+            }
         }
 
 
@@ -305,6 +350,7 @@ namespace WPFDevelopers.Controls
             if (_dispatcherTimerTwink != null)
             {
                 _dispatcherTimerTwink.Stop();
+                _dispatcherTimerTwink.Tick -= DispatcherTimerTwinkTick;
                 _dispatcherTimerTwink = null;
             }
 
@@ -313,23 +359,15 @@ namespace WPFDevelopers.Controls
                 Hide();
             }
 
-            if (_hIcon != IntPtr.Zero)
+            ReleaseIcon();
+            if (_contextContent != null)
             {
-                User32Interop.DestroyIcon(_hIcon);
-                _hIcon = IntPtr.Zero;
+                _contextContent.IsOpen = false;
+                _contextContent.Child = null;
+                _contextContent = null;
             }
-
-            if (_tempIconHandle != IntPtr.Zero)
-            {
-                User32Interop.DestroyIcon(_tempIconHandle);
-                _tempIconHandle = IntPtr.Zero;
-            }
-
-            if (_iconHandle != IntPtr.Zero)
-            {
-                User32Interop.DestroyIcon(_iconHandle);
-                _iconHandle = IntPtr.Zero;
-            }
+            if (ContextMenu != null)
+                ContextMenu.IsOpen = false;
 
             if (_TrayWindowHandle != IntPtr.Zero)
             {
@@ -365,7 +403,7 @@ namespace WPFDevelopers.Controls
             var wndClass = new WNDCLASSEX
             {
                 cbSize = Marshal.SizeOf(typeof(WNDCLASSEX)),
-                style = 0,
+                style = CS.DBLCLKS,
                 lpfnWndProc = wndproccallback,
                 cbClsExtra = 0,
                 cbWndExtra = 0,
@@ -524,70 +562,98 @@ namespace WPFDevelopers.Controls
         {
             var bits = IntPtr.Zero;
 
-            BitmapHandle colorBitmap = null;
             var bi = new BITMAPINFO(width, -height, 32)
             {
                 bmiHeader_biCompression = 0
             };
 
-            colorBitmap = Gdi32Interop.CreateDIBSection(new HandleRef(null, IntPtr.Zero), ref bi, 0, ref bits, null, 0);
-
-            if (colorBitmap.IsInvalid || bits == IntPtr.Zero) return IconHandle.GetInvalidIcon();
-            Marshal.Copy(xor, 0, bits, xor.Length);
-            var maskArray = GenerateMaskArray(width, height, xor);
-            var maskBitmap = Gdi32Interop.CreateBitmap(width, height, 1, 1, maskArray);
-            if (maskBitmap.IsInvalid) return IconHandle.GetInvalidIcon();
-            var iconInfo = new Gdi32Interop.ICONINFO
+            using (var colorBitmap = Gdi32Interop.CreateDIBSection(new HandleRef(null, IntPtr.Zero), ref bi, 0, ref bits, null, 0))
             {
-                fIcon = isIcon,
-                xHotspot = xHotspot,
-                yHotspot = yHotspot,
-                hbmMask = maskBitmap,
-                hbmColor = colorBitmap
-            };
-
-            return User32Interop.CreateIconIndirect(iconInfo);
+                if (colorBitmap.IsInvalid || bits == IntPtr.Zero) return IconHandle.GetInvalidIcon();
+                Marshal.Copy(xor, 0, bits, xor.Length);
+                var maskArray = GenerateMaskArray(width, height, xor);
+                using (var maskBitmap = Gdi32Interop.CreateBitmap(width, height, 1, 1, maskArray))
+                {
+                    if (maskBitmap.IsInvalid) return IconHandle.GetInvalidIcon();
+                    var iconInfo = new Gdi32Interop.ICONINFO
+                    {
+                        fIcon = isIcon,
+                        xHotspot = xHotspot,
+                        yHotspot = yHotspot,
+                        hbmMask = maskBitmap,
+                        hbmColor = colorBitmap
+                    };
+                    return User32Interop.CreateIconIndirect(iconInfo);
+                }
+            }
         }
 
-        private bool ChangeIcon(bool destroyOldIcon = false, IntPtr? newIntprt = null)
+        private void ReleaseIcon()
+        {
+            if (_imageIconHandle != null)
+            {
+                _imageIconHandle.Dispose();
+                _imageIconHandle = null;
+            }
+            else if (_hIcon != IntPtr.Zero)
+            {
+                User32Interop.DestroyIcon(_hIcon);
+            }
+            _hIcon = IntPtr.Zero;
+            _iconHandle = IntPtr.Zero;
+        }
+
+        private bool ChangeIcon(IntPtr? iconHandle = null)
         {
             if (DesignerHelper.IsInDesignMode == true) return false;
-            var bitmapFrame = _icon as BitmapFrame;
-            if (bitmapFrame != null && bitmapFrame.Decoder != null)
-                if (bitmapFrame.Decoder is IconBitmapDecoder)
+            if (!iconHandle.HasValue)
+            {
+                if (_icon != null)
                 {
-                    var w = bitmapFrame.PixelWidth;
-                    var h = bitmapFrame.PixelHeight;
-                    var bpp = bitmapFrame.Format.BitsPerPixel;
-                    var stride = (bpp * w + 31) / 32 * 4;
-                    var sizeCopyPixels = stride * h;
-                    var xor = new byte[sizeCopyPixels];
-                    bitmapFrame.CopyPixels(xor, stride, 0);
-
-                    var iconHandle = CreateIconCursor(xor, w, h, 0, 0, true);
-                    _iconHandle = iconHandle.CriticalGetHandle();
+                    var bitmap = _icon as BitmapSource;
+                    if (bitmap == null)
+                    {
+                        var visual = new DrawingVisual();
+                        using (var context = visual.RenderOpen())
+                            context.DrawImage(_icon, new Rect(0, 0, 32, 32));
+                        var rendered = new RenderTargetBitmap(32, 32, 96, 96, PixelFormats.Pbgra32);
+                        rendered.Render(visual);
+                        bitmap = rendered;
+                    }
+                    var converted = new FormatConvertedBitmap(bitmap, PixelFormats.Bgra32, null, 0);
+                    var stride = converted.PixelWidth * 4;
+                    var pixels = new byte[stride * converted.PixelHeight];
+                    converted.CopyPixels(pixels, stride, 0);
+                    var newIcon = CreateIconCursor(pixels, converted.PixelWidth, converted.PixelHeight, 0, 0, true);
+                    if (newIcon.IsInvalid)
+                    {
+                        newIcon.Dispose();
+                        throw new Win32Exception(Marshal.GetLastWin32Error(), "Unable to create the notification area icon.");
+                    }
+                    ReleaseIcon();
+                    _imageIconHandle = newIcon;
+                    _hIcon = newIcon.CriticalGetHandle();
                 }
+                else
+                {
+                    var index = IntPtr.Zero;
+                    var processPath = Kernel32Interop.GetModuleFileName(new HandleRef());
+                    var defaultIcon = Shell32Interop.ExtractAssociatedIcon(IntPtr.Zero, processPath, ref index);
+                    if (defaultIcon == IntPtr.Zero)
+                        throw new Win32Exception(Marshal.GetLastWin32Error(), "Unable to load the application icon.");
+                    ReleaseIcon();
+                    _hIcon = defaultIcon;
+                }
+                iconHandle = _hIcon;
+            }
 
             if (Thread.VolatileRead(ref _IsShowIn) != 1)
                 return false;
 
-            if (destroyOldIcon && _hIcon != IntPtr.Zero)
-            {
-                User32Interop.DestroyIcon(_hIcon);
-                _hIcon = IntPtr.Zero;
-            }
             lock (this)
             {
-                if (_iconHandle != IntPtr.Zero)
-                {
-                    var hIcon = _iconHandle;
-                    _NOTIFYICONDATA.hIcon = hIcon;
-                    _hIcon = hIcon;
-                }
-                else
-                {
-                    _NOTIFYICONDATA.hIcon = IntPtr.Zero;
-                }
+                _iconHandle = iconHandle.Value;
+                _NOTIFYICONDATA.hIcon = _iconHandle;
                 return Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref _NOTIFYICONDATA);
             }
         }
@@ -606,8 +672,7 @@ namespace WPFDevelopers.Controls
 
         public static void ShowBalloonTip(string title, string content, NotifyIconInfoType infoType)
         {
-            if (NotifyIconCache != null)
-                NotifyIconCache.ShowBalloonTips(title, content, infoType);
+            GetLatestNotifyIcon()?.ShowBalloonTips(title, content, infoType);
         }
 
         public void ShowBalloonTips(string title, string content, NotifyIconInfoType infoType)
@@ -615,6 +680,7 @@ namespace WPFDevelopers.Controls
             if (Thread.VolatileRead(ref _IsShowIn) != 1)
                 return;
             var _ShowNOTIFYICONDATA = NOTIFYICONDATA.GetDefaultNotifyData(_TrayWindowHandle);
+            _ShowNOTIFYICONDATA.uTaskbarIconId = _trayIconId;
             _ShowNOTIFYICONDATA.uFlags = NIFFlags.NIF_INFO;
             _ShowNOTIFYICONDATA.szInfoTitle = title ?? string.Empty;
             _ShowNOTIFYICONDATA.szInfo = content ?? string.Empty;
@@ -635,7 +701,8 @@ namespace WPFDevelopers.Controls
                     break;
             }
 
-            Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref _ShowNOTIFYICONDATA);
+            if (!Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref _ShowNOTIFYICONDATA))
+                throw new Win32Exception(Marshal.GetLastWin32Error(), "Unable to send the notification area message.");
         }
 
         private bool Hide()
@@ -742,19 +809,20 @@ namespace WPFDevelopers.Controls
             var ownerIsForeground = ownerHandle != IntPtr.Zero && User32Interop.SetForegroundWindow(ownerHandle);
             if (ContextContent != null)
             {
-                _contextContent = new Popup
+                if (_contextContent == null)
                 {
-                    Placement = PlacementMode.Mouse,
-                    AllowsTransparency = true,
-                    StaysOpen = false,
-                    UseLayoutRounding = true,
-                    SnapsToDevicePixels = true
-                };
+                    _contextContent = new Popup
+                    {
+                        Placement = PlacementMode.Mouse,
+                        AllowsTransparency = true,
+                        StaysOpen = false,
+                        UseLayoutRounding = true,
+                        SnapsToDevicePixels = true,
+                        Child = new ContentControl()
+                    };
+                }
 
-                _contextContent.Child = new ContentControl
-                {
-                    Content = ContextContent
-                };
+                ((ContentControl)_contextContent.Child).Content = ContextContent;
                 UpdateDataContext(_contextContent, null, DataContext);
                 _contextContent.IsOpen = true;
                 if (!ownerIsForeground)
@@ -796,6 +864,7 @@ namespace WPFDevelopers.Controls
 
                     if (Application.Current != null)
                     {
+                        Application.Current.Exit -= OnCurrent_Exit;
                         WPFDevelopers.Resources.ThemeChanged -= Resources_ThemeChanged;
                     }
 
@@ -809,29 +878,9 @@ namespace WPFDevelopers.Controls
                     Stop();
                 }
 
-                if (_hIcon != IntPtr.Zero)
-                {
-                    User32Interop.DestroyIcon(_hIcon);
-                    _hIcon = IntPtr.Zero;
-                }
+                ReleaseIcon();
 
-                if (_tempIconHandle != IntPtr.Zero)
-                {
-                    User32Interop.DestroyIcon(_tempIconHandle);
-                    _tempIconHandle = IntPtr.Zero;
-                }
-
-                if (_iconHandle != IntPtr.Zero)
-                {
-                    User32Interop.DestroyIcon(_iconHandle);
-                    _iconHandle = IntPtr.Zero;
-                }
-
-                if (ReferenceEquals(this, NotifyIconCache))
-                {
-                    NotifyIconCache = null;
-                }
-
+                UnregisterNotifyIcon(this);
                 disposedValue = true;
             }
         }
