@@ -11,7 +11,7 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="WPFDevelopers" Version="0.4.0-preview" />
+	  <PackageReference Include="WPFDevelopers" Version="0.4.0" />
 	</ItemGroup>
 	
 	<ItemGroup>

@@ -47,6 +47,10 @@
                                 <Run />
                                 <Run />
                                 <Run />
+                                <Hyperlink NavigateUri="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers" RequestNavigate="GiteeHyperlink_RequestNavigate">AtomGit 源码</Hyperlink>
+                                <Run />
+                                <Run />
+                                <Run />
                                 <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers" RequestNavigate="QQHyperlink_RequestNavigate">加入QQ群：458041663</Hyperlink>
                                 <Hyperlink>、340500857、929469013</Hyperlink>
                             </TextBlock>
