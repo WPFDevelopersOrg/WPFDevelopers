@@ -120,6 +120,18 @@
   <data name="OK" xml:space="preserve">
     <value>확인</value>
   </data>
+  <data name="Theme" xml:space="preserve">
+    <value>테마</value>
+  </data>
+  <data name="FollowSystem" xml:space="preserve">
+    <value>시스템 설정 따르기</value>
+  </data>
+  <data name="LightMode" xml:space="preserve">
+    <value>밝은 모드</value>
+  </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>어두운 모드</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>취소</value>
   </data>

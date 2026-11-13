@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Windows;
 using WPFDevelopers;
 
@@ -11,6 +11,7 @@ namespace WPFDevelopers.Samples
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            SampleLanguageManager.Instance.Initialize();
 #if NETFRAMEWORK
             // Older framework targets default to protocols rejected by modern HTTPS image hosts.
             // 3072 is TLS 1.2, whose enum name is unavailable in the .NET 4.0 reference assemblies.

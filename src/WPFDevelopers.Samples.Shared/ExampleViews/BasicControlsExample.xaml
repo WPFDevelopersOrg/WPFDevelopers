@@ -80,7 +80,7 @@
                         <ComboBox
                             SelectedIndex="1"
                             SelectionChanged="ComboBoxLanguages_SelectionChanged"
-                            ToolTip="目前翻译只是针对WD的自定义控件进行了多语言翻译">
+                            ToolTip="切换语言会同时更新示例界面与 WD 控件的翻译">
                             <ComboBoxItem Tag="zh-cn">中文</ComboBoxItem>
                             <ComboBoxItem Tag="en-US">English</ComboBoxItem>
                             <ComboBoxItem Tag="ko-KR">한국어</ComboBoxItem>

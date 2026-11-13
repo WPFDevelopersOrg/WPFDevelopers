@@ -9,6 +9,6 @@ namespace WPFDevelopers.Samples.ExampleViews
         public NormalWindow()
         {
             InitializeComponent();
-        } 
+        }
     }
 }

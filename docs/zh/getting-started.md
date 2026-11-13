@@ -1,4 +1,4 @@
-﻿# WPFDevelopers 快速开始
+# WPFDevelopers 快速开始
 
 > 三步即可在你的 WPF 项目中使用 WPFDevelopers 控件库
 
@@ -73,7 +73,7 @@ Install-Package WPFDevelopers
 
 | 配置方式 | 效果 |
 |----------|------|
-| `<wd:Resources Radius="4" />` | 默认 Light 主题，控件圆角 4px（Windows 10+ 跟随系统 Light/Dark 切换） |
+| `<wd:Resources Radius="4" />` | 恢复上次主题模式，首次使用跟随系统，控件圆角 4px |
 | `<wd:Resources Theme="Light" Radius="4" />` | 固定浅色主题，控件圆角 4px |
 | `<wd:Resources Theme="Dark" Radius="4" />` | 固定深色主题，控件圆角 4px |
 | `<wd:Resources Color="Fuchsia" Radius="4" />` | 自定义主题色，控件圆角 4px |
@@ -81,6 +81,23 @@ Install-Package WPFDevelopers
 > **提示**：`Radius` 属性控制控件圆角大小，Windows 11 默认为 4px，Windows 10 默认为 0px。可根据需要调整。
 
 > **重要**：`wd:Resources` 必须放在 `Theme.xaml` 之后，否则主题无法正确加载。
+
+
+### 旧版 .NET Framework 的高 DPI 边框裁剪
+
+目标框架低于 .NET Framework 4.6 的应用，在 125% 等缩放比例下，启用 `UseLayoutRounding` 后，固定宽度控件配合 `Margin` 可能出现边框裁剪。`PanelHelper.Spacing` 通过修改直接子元素的 `Margin` 实现间距，因此也可能触发此问题。
+
+在应用的 `App.config` 中启用 .NET Framework 4.6 引入的布局取整修复，无需删除 `Width` 或 `Spacing`：
+
+```xml
+<configuration>
+    <runtime>
+        <AppContextSwitchOverrides value="Switch.MS.Internal.DoNotApplyLayoutRoundingToMarginsAndBorderThickness=false" />
+    </runtime>
+</configuration>
+```
+
+如已有 `AppContextSwitchOverrides`，请将此开关以分号追加到现有 `value` 中，不要重复添加节点。该修复要求运行时为 .NET Framework 4.6 或更高，修改后需重新启动应用；更早的运行时可对受影响控件设置 `UseLayoutRounding="False"` 作为局部规避方案。
 
 ---
 
@@ -418,6 +435,26 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 
 ### 窗口与导航
 
+`wd:Window` 内置主题模式菜单，通过依赖属性 `ShowTheme` 控制入口显示（默认 `False`）：
+
+```xml
+<wd:Window ShowTheme="True" TitleBarMode="High">
+    <!-- 窗口内容 -->
+</wd:Window>
+```
+
+支持 `Normal` 和 `High` 标题栏；鼠标移入主题入口时展开“跟随系统 / 浅色模式 / 深色模式”弹层，移出入口和弹层后收起。入口图标随所选模式变化，选中项右侧显示对勾。键盘可聚焦入口并按空格打开，通过上下方向键选择、空格确认或 Esc 收起。实际明暗变化沿用圆形扩散动画。`TitleBarLayout` 仍可放置自定义内容；该属性不控制主题色调色板，无标题栏时不显示按钮。
+
+通过 `ThemeManager.Instance.Resources.ThemeMode` 获取或设置用户选择（`System`、`Light`、`Dark`），`Theme` / `IsDarkTheme` 表示实际显示的主题。“跟随系统”模式不会因系统明暗变化而变成固定模式；旧的 `ThemeType.Default` 设置仍可用于开启跟随系统。
+
+主题选择自动保存至 `HKEY_CURRENT_USER\Software\WPFDevelopers\Applications\<入口程序集名称>`，下次启动恢复。`ThemeMode` 字符串值：`System` 表示跟随系统，`Light` 表示浅色模式，`Dark` 表示深色模式；不同应用分别保存。
+
+运行时验证（将 `net48` 替换为 `net40` 可验证 .NET 4.0 版本）：
+
+```powershell
+powershell -NoProfile -STA -File .\tests\Window.Theme.SmokeTests.ps1 -AssemblyPath .\OutPut\net48\WPFDevelopers.dll
+```
+
 | 控件名 | 来源 | 示例文件 | 说明 |
 |--------|------|----------|------|
 | `wd:Window` | NuGet | [MainWindow.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/MainWindow.xaml) | 自定义窗体（ToolWindow/NoneTitleBar/Normal/HighTitleBar） |
@@ -481,6 +518,18 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 | `wd:GestureUnlock` | NuGet | [GestureUnlockExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/GestureUnlockExample.xaml) | 手势解锁 |
 | `wd:SvgViewer` | NuGet | [SvgViewerExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/SvgViewerExample.xaml) | SVG 查看器 |
 | `wd:OtpBox` | NuGet | [OtpBoxExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/OtpBoxExample.xaml) | OTP 验证码输入框（自动跳转/退格/粘贴） |
+
+`wd:NumericBox` 默认提供复制、粘贴、剪切右键菜单。设置 `ContextMenu` 可以替换默认菜单，内部输入框会通过 `TemplateBinding` 使用该菜单；设置 `ContextMenu="{x:Null}"` 可以禁用菜单。
+
+```xml
+<wd:NumericBox>
+    <wd:NumericBox.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="自定义操作" Command="{Binding CustomCommand}" />
+        </ContextMenu>
+    </wd:NumericBox.ContextMenu>
+</wd:NumericBox>
+```
 
 ### 加载动画
 
@@ -771,6 +820,96 @@ MessageBox.Show("操作成功！", "提示", MessageBoxButton.OK, MessageBoxImag
 - **关闭方式**：点击右上角关闭按钮、按 `Escape` 键、点击按钮
 - **父窗口**：传入 `owner` 时对话框居中于父窗口并显示遮罩；不传入时自动检测当前窗口或屏幕居中
 - **按钮文本**：自动跟随系统语言本地化（通过 `LanguageManager`）
+
+---
+
+## Dialog 通用弹窗
+
+`Dialog` 用于显示自定义表单或确认内容，支持 `UserControl` 和 `Page`，自带遮罩、标题及确定/取消按钮。
+
+### 打开弹窗与输入校验
+
+```csharp
+var editor = new UserEditor(); // 自定义 UserControl
+var dialog = new WPFDevelopers.Controls.Dialog
+{
+    Title = "编辑用户",
+    Content = editor,
+    Owner = this,
+    DialogWidth = 520
+};
+dialog.Closing += (sender, e) =>
+{
+    if (e.Reason == WPFDevelopers.Controls.DialogCloseReason.Confirm)
+        e.Cancel = !editor.Validate(); // 业务校验失败时保持打开
+};
+if (await dialog.ShowAsync() == WPFDevelopers.Controls.DialogResult.Confirmed)
+{
+    Save(editor.DataContext);
+}
+```
+
+`Validate()` 和 `Save()` 为业务方法，需自行实现。点击确定时，在 `Closing` 中校验输入，设置 `e.Cancel = true` 即可保持弹窗打开，并在内容中显示错误提示。WPF 绑定校验错误也会自动阻止确认。
+
+### 常用配置
+
+| 属性/方法 | 默认值 | 说明 |
+|---|---|---|
+| `Content` | null | 必填，使用未放入其他容器的 `UserControl` 或 `Page` |
+| `Title` | 空字符串 | 标题 |
+| `CornerRadius` | `10` | 圆角，设为 `new CornerRadius(0)` 使用直角 |
+| `Owner` | null | 父窗口，未指定时自动查找当前窗口 |
+| `DialogWidth` / `DialogHeight` | `440` / `double.NaN` | 宽高，`double.NaN` 表示自适应 |
+| `ShowFooter` | true | 是否显示底部按钮 |
+| `ConfirmText` / `CancelText` | null | 按钮文本，默认跟随语言设置 |
+| `IsConfirmEnabled` | true | 可绑定确认按钮启用状态 |
+| `IsOpen` | false | 双向绑定打开状态，false 请求取消 |
+| `ClosedCommand` | null | 关闭后执行，参数为 `DialogResult` |
+| `ShowAsync(owner = null)` | — | 打开弹窗，等待关闭结果：`Confirmed` 或 `Canceled` |
+| `Close(reason)` | `Cancel` | 请求关闭，仍会触发 `Closing` 校验 |
+
+- 在 UI 线程调用；同一父窗口只支持一个弹窗，打开期间不要更换 `Content`。
+- 取消不会回滚已更新的 ViewModel；需要撤销编辑时，请使用数据副本。
+- 自定义窗口模板需包含 `AdornerDecorator`。需要可拖动的独立窗口时，使用自定义 `Window` 配合 `MaskShowDialog()`。
+
+上例使用 `await`（.NET 4.5+）。.NET 4.0 使用同一个 API，通过 UI 线程调度器处理结果：
+
+```csharp
+dialog.ShowAsync().ContinueWith(task =>
+{
+    if (task.Result == WPFDevelopers.Controls.DialogResult.Confirmed)
+        Save(editor.DataContext);
+}, TaskScheduler.FromCurrentSynchronizationContext());
+```
+
+### MVVM
+
+将 Dialog 声明在 `Resources` 中，不要直接放入布局。显式指定 ViewModel（下例的 `DialogViewModel` 为已声明的资源）：
+
+```xml
+<wd:Dialog x:Key="EditorDialog"
+           DataContext="{StaticResource DialogViewModel}"
+           Title="编辑用户"
+           IsOpen="{Binding IsDialogOpen, Mode=TwoWay}"
+           IsConfirmEnabled="{Binding CanConfirm}"
+           ClosedCommand="{Binding DialogClosedCommand}">
+    <UserControl>
+        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+    </UserControl>
+</wd:Dialog>
+```
+
+打开按钮引用该 Dialog 的 DataContext：
+
+```xml
+<Button Content="打开"
+        DataContext="{Binding DataContext, Source={StaticResource EditorDialog}}"
+        Command="{Binding OpenDialogCommand}" />
+```
+
+`OpenDialogCommand` 将 `IsDialogOpen` 设为 true；`CanConfirm` 控制确定按钮是否可用。关闭后，`DialogClosedCommand` 接收 `DialogResult.Confirmed` 或 `Canceled`。
+
+完整示例：[C# / MVVM](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Dialog)。
 
 ---
 

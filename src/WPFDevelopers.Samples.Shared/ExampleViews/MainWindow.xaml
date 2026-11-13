@@ -1,4 +1,4 @@
-﻿<wd:Window
+<wd:Window
     x:Class="WPFDevelopers.Samples.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,7 +16,7 @@
     Width="{x:Static local:App.Wdith}"
     Height="{x:Static local:App.Height}"
     Icon="pack://application:,,,/WPFDevelopers.Samples;component/WPFDevelopers.ico"
-    TitleBarMode="High"
+    ShowTheme="True"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <wd:Window.TitleBarLayout>
@@ -36,6 +36,7 @@
                     FontWeight="SemiBold"
                     Foreground="White" />
             </Border>
+            <!--
             <wd:SwitchButton
                 x:Name="LanguageSwitchBtn"
                 Width="30"
@@ -49,32 +50,7 @@
                     <TextBlock Foreground="White" Text="EN" />
                 </wd:SwitchButton.CheckedContent>
             </wd:SwitchButton>
-            <wd:SwitchButton
-                x:Name="ThemeSwitchBtn"
-                Width="30"
-                Height="30"
-                Click="ThemeSwitchBtn_Click">
-                <wd:SwitchButton.UncheckedContent>
-                    <Border
-                        Width="18"
-                        Height="18"
-                        Background="White"
-                        CornerRadius="10">
-                        <wd:PathIcon
-                            Width="16"
-                            Height="16"
-                            Data="M12 2a10 10 0 1 0 10 10A7 7 0 0 1 12 2Z"
-                            Foreground="{DynamicResource WD.WindowBorderBrush}" />
-                    </Border>
-                </wd:SwitchButton.UncheckedContent>
-                <wd:SwitchButton.CheckedContent>
-                    <wd:PathIcon
-                        Width="18"
-                        Height="18"
-                        Data="M12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 1 0 0 11Zm-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0ZM3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06ZM12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0ZM4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12Zm8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20Zm12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12Zm-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061Zm2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0Z"
-                        Foreground="White" />
-                </wd:SwitchButton.CheckedContent>
-            </wd:SwitchButton>
+            -->
             <wd:SwitchButton
                 x:Name="ColorSwitchBtn"
                 Width="30"
@@ -116,10 +92,12 @@
                             wd:PanelHelper.Spacing="4"
                             Orientation="Horizontal">
                             <Button
+                                x:Name="ColorPickerApplyButton"
                                 Click="ColorPicker_Apply"
                                 Content="Apply"
                                 Style="{StaticResource WD.PrimaryButton}" />
                             <Button
+                                x:Name="ColorPickerCancelButton"
                                 Click="ColorPicker_Cancel"
                                 Content="Cancel"
                                 Style="{StaticResource WD.DefaultButton}" />
@@ -143,17 +121,17 @@
     <Grid>
         <wd:NotifyIcon Name="WpfNotifyIcon" Title="WPF开发者">
             <wd:NotifyIcon.ContextMenu>
-                <ContextMenu>
+                <ContextMenu Opened="TrayMenu_Opened">
                     <MenuItem
                         Name="menuItemGrayscale"
                         Click="Grayscale_Click"
                         Header="开启灰度" />
-                    <MenuItem Click="SendMessage_Click" Header="托盘消息" />
+                    <MenuItem x:Name="menuItemSendMessage" Click="SendMessage_Click" Header="托盘消息" />
                     <MenuItem
                         Name="menuItemTwink"
                         Click="Twink_Click"
                         Header="闪烁" />
-                    <MenuItem Click="About_Click" Header="关于">
+                    <MenuItem x:Name="menuItemAbout" Click="About_Click" Header="关于">
                         <MenuItem.Icon>
                             <Path
                                 Width="20"
@@ -163,7 +141,7 @@
                                 Stretch="Uniform" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Click="Quit_Click" Header="退出" />
+                    <MenuItem x:Name="menuItemQuit" Click="Quit_Click" Header="退出" />
                 </ContextMenu>
             </wd:NotifyIcon.ContextMenu>
         </wd:NotifyIcon>
@@ -183,10 +161,12 @@
                 </Grid.RowDefinitions>
                 <DockPanel>
                     <Button
+                        x:Name="HomeButton"
                         Width="34"
                         Height="34"
                         Margin="0,0,6,0"
                         AutomationProperties.Name="首页 / Home"
+                        Click="HomeButton_Click"
                         Command="{Binding ShowHomeCommand}"
                         Style="{StaticResource WD.DefaultButton}"
                         ToolTip="首页 / Home">

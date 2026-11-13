@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.DialogUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers">
+    <Grid wd:PanelHelper.Spacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" Text="Name " />
+        <TextBox
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            Text="Email " />
+        <TextBox
+            x:Name="EmailTextBox"
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            Text="Enable " />
+        <CheckBox
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            IsChecked="{Binding IsEnable, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+</UserControl>

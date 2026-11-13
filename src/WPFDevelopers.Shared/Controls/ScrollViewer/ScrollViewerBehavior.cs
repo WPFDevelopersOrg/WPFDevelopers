@@ -27,6 +27,23 @@ namespace WPFDevelopers.Controls
             return (double)target.GetValue(VerticalOffsetProperty);
         }
 
+        public static readonly DependencyProperty IsHorizontalMouseWheelEnabledProperty =
+            DependencyProperty.RegisterAttached(
+                "IsHorizontalMouseWheelEnabled",
+                typeof(bool),
+                typeof(ScrollViewerBehavior),
+                new PropertyMetadata(false, OnIsHorizontalMouseWheelEnabledChanged));
+
+        public static void SetIsHorizontalMouseWheelEnabled(DependencyObject target, bool value)
+        {
+            target.SetValue(IsHorizontalMouseWheelEnabledProperty, value);
+        }
+
+        public static bool GetIsHorizontalMouseWheelEnabled(DependencyObject target)
+        {
+            return (bool)target.GetValue(IsHorizontalMouseWheelEnabledProperty);
+        }
+
         public static readonly DependencyProperty IsBackToTopEnabledProperty =
             DependencyProperty.RegisterAttached(
                 "IsBackToTopEnabled",
@@ -71,6 +88,39 @@ namespace WPFDevelopers.Controls
         private static void OnVerticalOffsetChanged(DependencyObject target, DependencyPropertyChangedEventArgs e)
         {
             (target as WDScrollViewer)?.ScrollToVerticalOffset((double)e.NewValue);
+        }
+
+        private static void OnIsHorizontalMouseWheelEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var scrollViewer = d as ScrollViewer;
+            if (scrollViewer == null)
+                return;
+
+            if ((bool)e.NewValue)
+                scrollViewer.PreviewMouseWheel += OnPreviewMouseWheel;
+            else
+                scrollViewer.PreviewMouseWheel -= OnPreviewMouseWheel;
+        }
+
+        private static void OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            var scrollViewer = sender as ScrollViewer;
+            if (e.Handled || scrollViewer == null || scrollViewer.ScrollableWidth <= 0)
+                return;
+
+            var horizontal = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift ||
+                scrollViewer.ScrollableHeight <= 0;
+            if (!horizontal)
+                return;
+
+            var currentOffset = scrollViewer.HorizontalOffset;
+            var newOffset = Math.Max(0, Math.Min(
+                currentOffset - e.Delta, scrollViewer.ScrollableWidth));
+            if (newOffset == currentOffset)
+                return;
+
+            scrollViewer.ScrollToHorizontalOffset(newOffset);
+            e.Handled = true;
         }
 
         private static void OnIsBackToTopEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

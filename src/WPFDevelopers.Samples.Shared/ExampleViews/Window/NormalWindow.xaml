@@ -10,6 +10,7 @@
     Width="710"
     Height="520"
     Icon="pack://application:,,,/WPFDevelopers.Samples;component/WPFDevelopers.ico"
+    ShowTheme="True"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <controls:CodeViewer Header="{Binding NavigateMenuItem.Name}">
@@ -17,7 +18,7 @@
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Text="Content" />
+                Text="ShowTheme: Light / Dark" />
         </Grid>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml" CodeType="Xaml" />

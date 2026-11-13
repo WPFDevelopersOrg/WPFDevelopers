@@ -51,17 +51,27 @@ namespace WPFDevelopers.Samples.Controls
 
         public override void OnApplyTemplate()
         {
+            if (_listBox != null)
+                _listBox.SelectionChanged -= OnInnerSelectionChanged;
             base.OnApplyTemplate();
             if (ItemsSource == null)
                 return;
             _listBox = GetTemplateChild(ListBoxTemplateName) as ListBox;
+            if (_listBox != null)
+                _listBox.SelectionChanged += OnInnerSelectionChanged;
             _rectangle = GetTemplateChild(RectangleTemplateName) as Rectangle;
             _translateTransform = GetTemplateChild(TranslateTransformTemplateName) as TranslateTransform;
-            SelectedIndex = 0;
+        }
+
+        private void OnInnerSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            e.Handled = true;
         }
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
+            base.OnSelectionChanged(e);
+
             switch (TabStripPlacement)
             {
                 case Dock.Left:
@@ -94,7 +104,6 @@ namespace WPFDevelopers.Samples.Controls
                         Duration = TimeSpan.FromSeconds(0.3)
                     };
                     _translateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
-                    base.OnSelectionChanged(e);
                     break;
             }
         }

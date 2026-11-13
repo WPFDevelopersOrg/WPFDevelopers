@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -12,6 +12,7 @@
     <ApplicationManifest>$(MSBuildThisFileDirectory)app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)SampleLanguageManager.cs" />
     <Reference Include="System.Runtime.Serialization" Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\HomeExample.xaml.cs">
       <DependentUpon>HomeExample.xaml</DependentUpon>
@@ -46,6 +47,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiSelectionSearchComboBox\MultiSelectSearchComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigateMenu\NavigateMenu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeSettings.xaml.cs">
+      <DependentUpon>ThemeSettings.xaml</DependentUpon>
+    </Compile>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Theme\ThemeItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ElementAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformLayout\ThumbAngle.cs" />
@@ -111,6 +119,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MessageBoxExample.xaml.cs">
       <DependentUpon>MessageBoxExample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Dialog\DialogExample.xaml.cs">
+      <DependentUpon>DialogExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\Dialog\DialogUserControl.xaml.cs">
+      <DependentUpon>DialogUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DialogExampleVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>NavMenu3DExample.xaml</DependentUpon>
@@ -798,6 +813,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Dialog\DialogUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\Dialog\DialogExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\NavMenu3DExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1415,6 +1438,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Languages\SamplesLanguage.resx" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Languages\SamplesLanguage.en-US.resx" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Languages\SamplesLanguage.ko-KR.resx" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">

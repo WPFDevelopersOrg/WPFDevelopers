@@ -1,0 +1,2514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="安装 NuGet 包后，在 App.xaml 中引入主题和 wd:Resources；从左侧菜单浏览控件和示例源码。" xml:space="preserve">
+    <value>After installing the NuGet package, add the theme and wd:Resources in App.xaml, then browse controls and sample source from the left menu.</value>
+  </data>
+  <data name="按钮样式 --" xml:space="preserve">
+    <value>Button style --</value>
+  </data>
+  <data name="按下加速~喵 (゜-゜)つロ" xml:space="preserve">
+    <value>Hold to boost~ meow (゜-゜)つロ</value>
+  </data>
+  <data name="保存" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="保存图片" xml:space="preserve">
+    <value>Save image</value>
+  </data>
+  <data name="背景色 --" xml:space="preserve">
+    <value>Background color --</value>
+  </data>
+  <data name="背景图 --" xml:space="preserve">
+    <value>Background image --</value>
+  </data>
+  <data name="本页只创建一个示例图标，与主窗口图标独立。离开页面会自动移除，重新进入不会累积。" xml:space="preserve">
+    <value>This page creates one sample icon, separate from the main window icon. It is removed when you leave, so revisiting will not create duplicates.</value>
+  </data>
+  <data name="标识 --" xml:space="preserve">
+    <value>Identifier --</value>
+  </data>
+  <data name="标题栏 --" xml:space="preserve">
+    <value>Title bar --</value>
+  </data>
+  <data name="标题栏工具区" xml:space="preserve">
+    <value>Title bar toolbar</value>
+  </data>
+  <data name="标准" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="标准菜单 ContextMenu" xml:space="preserve">
+    <value>Standard ContextMenu</value>
+  </data>
+  <data name="标准地图" xml:space="preserve">
+    <value>Standard map</value>
+  </data>
+  <data name="标准音质" xml:space="preserve">
+    <value>Standard audio quality</value>
+  </data>
+  <data name="播放/暂停" xml:space="preserve">
+    <value>Play/Pause</value>
+  </data>
+  <data name="播放相关" xml:space="preserve">
+    <value>Playback</value>
+  </data>
+  <data name="不显示按钮组" xml:space="preserve">
+    <value>Hide button group</value>
+  </data>
+  <data name="裁剪区域比例:" xml:space="preserve">
+    <value>Crop area ratio:</value>
+  </data>
+  <data name="操作反馈" xml:space="preserve">
+    <value>Action feedback</value>
+  </data>
+  <data name="车辆轨迹" xml:space="preserve">
+    <value>Vehicle track</value>
+  </data>
+  <data name="抽屉从底部滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>The drawer slides in from the bottom; click the overlay to close it.</value>
+  </data>
+  <data name="抽屉从顶部置滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>The drawer slides in from the top; click the overlay to close it.</value>
+  </data>
+  <data name="抽屉从右侧滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>The drawer slides in from the right; click the overlay to close it.</value>
+  </data>
+  <data name="抽屉从左侧滑出，点击遮罩区关闭。" xml:space="preserve">
+    <value>The drawer slides in from the left; click the overlay to close it.</value>
+  </data>
+  <data name="触发器 --" xml:space="preserve">
+    <value>Trigger --</value>
+  </data>
+  <data name="窗口样式 --" xml:space="preserve">
+    <value>Window style --</value>
+  </data>
+  <data name="窗口遮罩" xml:space="preserve">
+    <value>Window overlay</value>
+  </data>
+  <data name="窗体抖动" xml:space="preserve">
+    <value>Window shake</value>
+  </data>
+  <data name="创建示例图标" xml:space="preserve">
+    <value>Create sample icon</value>
+  </data>
+  <data name="此外，通过 Radius 属性可控制控件的圆角大小（Windows 11 默认为 4），" xml:space="preserve">
+    <value>The Radius property also controls control corner rounding (default is 4 on Windows 11).</value>
+  </data>
+  <data name="错误 Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="打开 Avalonia 版本 AtomGit 仓库" xml:space="preserve">
+    <value>Open the Avalonia AtomGit repository</value>
+  </data>
+  <data name="打开 Avalonia 版本 Gitee 仓库" xml:space="preserve">
+    <value>Open the Avalonia Gitee repository</value>
+  </data>
+  <data name="打开 Avalonia 版本 GitHub 仓库" xml:space="preserve">
+    <value>Open the Avalonia GitHub repository</value>
+  </data>
+  <data name="打开 Avalonia 版本 NuGet 包" xml:space="preserve">
+    <value>Open the Avalonia NuGet package</value>
+  </data>
+  <data name="打开 WPF 版本 AtomGit 仓库" xml:space="preserve">
+    <value>Open the WPF AtomGit repository</value>
+  </data>
+  <data name="打开 WPF 版本 Gitee 仓库" xml:space="preserve">
+    <value>Open the WPF Gitee repository</value>
+  </data>
+  <data name="打开 WPF 版本 GitHub 仓库" xml:space="preserve">
+    <value>Open the WPF GitHub repository</value>
+  </data>
+  <data name="打开 WPF 版本 NuGet 包" xml:space="preserve">
+    <value>Open the WPF NuGet package</value>
+  </data>
+  <data name="打开高标题栏窗口" xml:space="preserve">
+    <value>Open tall title bar window</value>
+  </data>
+  <data name="打开工具窗口" xml:space="preserve">
+    <value>Open tool window</value>
+  </data>
+  <data name="打开功能演示" xml:space="preserve">
+    <value>Open feature demo</value>
+  </data>
+  <data name="打开普通窗口" xml:space="preserve">
+    <value>Open standard window</value>
+  </data>
+  <data name="打开自定义标题栏窗口" xml:space="preserve">
+    <value>Open custom title bar window</value>
+  </data>
+  <data name="大话西游之大圣娶亲" xml:space="preserve">
+    <value>大话西游之大圣娶亲</value>
+  </data>
+  <data name="代码" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="代码仓库" xml:space="preserve">
+    <value>Source repository</value>
+  </data>
+  <data name="当UI线程阻塞时使用" xml:space="preserve">
+    <value>Use when the UI thread is blocked</value>
+  </data>
+  <data name="当前运行的控件库版本" xml:space="preserve">
+    <value>Currently running control library version</value>
+  </data>
+  <data name="导出" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="导入" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="道路" xml:space="preserve">
+    <value>Road</value>
+  </data>
+  <data name="地图点击" xml:space="preserve">
+    <value>Map click</value>
+  </data>
+  <data name="地图控制" xml:space="preserve">
+    <value>Map controls</value>
+  </data>
+  <data name="地图源" xml:space="preserve">
+    <value>Map source</value>
+  </data>
+  <data name="地图总览" xml:space="preserve">
+    <value>Map overview</value>
+  </data>
+  <data name="登 录" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="登录" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="登录/注册按钮 --" xml:space="preserve">
+    <value>Log-in/sign-up button --</value>
+  </data>
+  <data name="登录按钮 --" xml:space="preserve">
+    <value>Log-in button --</value>
+  </data>
+  <data name="等待操作。" xml:space="preserve">
+    <value>Waiting for action.</value>
+  </data>
+  <data name="底图样式" xml:space="preserve">
+    <value>Basemap style</value>
+  </data>
+  <data name="第二块：客户区 --" xml:space="preserve">
+    <value>Section 2: Client area --</value>
+  </data>
+  <data name="第一块：标题栏 --" xml:space="preserve">
+    <value>Section 1: Title bar --</value>
+  </data>
+  <data name="点" xml:space="preserve">
+    <value>Point</value>
+  </data>
+  <data name="点击「注册」即表示您已阅读并同意" xml:space="preserve">
+    <value>By clicking “Sign up,” you confirm that you have read and agree to</value>
+  </data>
+  <data name="点击标签，在浏览器中打开项目。" xml:space="preserve">
+    <value>Click a label to open the project in your browser.</value>
+  </data>
+  <data name="点击地图获取坐标" xml:space="preserve">
+    <value>Click the map to get coordinates</value>
+  </data>
+  <data name="点击点、线、面查看命中结果" xml:space="preserve">
+    <value>Click a point, line, or polygon to see hit-test results</value>
+  </data>
+  <data name="点击点位时自动缩放" xml:space="preserve">
+    <value>Zoom automatically when a point is clicked</value>
+  </data>
+  <data name="点击事件与右键菜单" xml:space="preserve">
+    <value>Click event and context menu</value>
+  </data>
+  <data name="定位跑步点" xml:space="preserve">
+    <value>Locate running point</value>
+  </data>
+  <data name="定位行" xml:space="preserve">
+    <value>Locate row</value>
+  </data>
+  <data name="多边形" xml:space="preserve">
+    <value>Polygon</value>
+  </data>
+  <data name="发射弹幕" xml:space="preserve">
+    <value>Send bullet comment</value>
+  </data>
+  <data name="发送" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="发送托盘消息" xml:space="preserve">
+    <value>Send tray notification</value>
+  </data>
+  <data name="反对率" xml:space="preserve">
+    <value>Disapproval rate</value>
+  </data>
+  <data name="反应盘" xml:space="preserve">
+    <value>Reaction disk</value>
+  </data>
+  <data name="仿宋" xml:space="preserve">
+    <value>FangSong</value>
+  </data>
+  <data name="放大镜" xml:space="preserve">
+    <value>Magnifier</value>
+  </data>
+  <data name="飞机.png" xml:space="preserve">
+    <value>Plane.png</value>
+  </data>
+  <data name="非模态显示（MaskShow）" xml:space="preserve">
+    <value>Show non-modally (MaskShow)</value>
+  </data>
+  <data name="分别以模态和非模态方式打开窗口，并在当前窗口上显示遮罩。" xml:space="preserve">
+    <value>Open windows modally and non-modally, with an overlay on the current window.</value>
+  </data>
+  <data name="分区 --" xml:space="preserve">
+    <value>Section --</value>
+  </data>
+  <data name="丰富的控件主题与实用组件，让 Windows 桌面应用开发更简单。" xml:space="preserve">
+    <value>Rich control themes and practical components make Windows desktop development easier.</value>
+  </data>
+  <data name="高德" xml:space="preserve">
+    <value>Amap</value>
+  </data>
+  <data name="更新" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="工具窗口" xml:space="preserve">
+    <value>Tool window</value>
+  </data>
+  <data name="功能" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="功能设置" xml:space="preserve">
+    <value>Feature settings</value>
+  </data>
+  <data name="功能演示" xml:space="preserve">
+    <value>Feature demos</value>
+  </data>
+  <data name="关闭" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="关闭按钮 --" xml:space="preserve">
+    <value>Close button --</value>
+  </data>
+  <data name="关于" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="关于本示例" xml:space="preserve">
+    <value>About this sample</value>
+  </data>
+  <data name="关于我们" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="关注公众号" xml:space="preserve">
+    <value>Follow us on WeChat</value>
+  </data>
+  <data name="关注和粉丝列表" xml:space="preserve">
+    <value>Following and followers</value>
+  </data>
+  <data name="黑名单" xml:space="preserve">
+    <value>Blocked list</value>
+  </data>
+  <data name="横向 (Horizontal)" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="欢迎使用 WPFDevelopers！" xml:space="preserve">
+    <value>Welcome to WPFDevelopers!</value>
+  </data>
+  <data name="欢迎体验 WPFDevelopers.Avalonia，使用 Avalonia 为 Windows、macOS 和 Linux 构建桌面应用。" xml:space="preserve">
+    <value>Welcome to WPFDevelopers.Avalonia. Build desktop apps for Windows, macOS, and Linux with Avalonia.</value>
+  </data>
+  <data name="灰度强度：" xml:space="preserve">
+    <value>Grayscale intensity:</value>
+  </data>
+  <data name="恢复默认层级" xml:space="preserve">
+    <value>Restore default z-order</value>
+  </data>
+  <data name="会员专属音质" xml:space="preserve">
+    <value>Premium audio quality</value>
+  </data>
+  <data name="绘制图案0→ 4 → 2 → 6 解锁。" xml:space="preserve">
+    <value>Draw the pattern 0 → 4 → 2 → 6 to unlock.</value>
+  </data>
+  <data name="获取" xml:space="preserve">
+    <value>Get</value>
+  </data>
+  <data name="获取IP地址" xml:space="preserve">
+    <value>Get IP address</value>
+  </data>
+  <data name="获取焦点 --" xml:space="preserve">
+    <value>Focused --</value>
+  </data>
+  <data name="获取选中" xml:space="preserve">
+    <value>Get selected</value>
+  </data>
+  <data name="极高音质" xml:space="preserve">
+    <value>Highest audio quality</value>
+  </data>
+  <data name="即将跳转至Edge浏览器" xml:space="preserve">
+    <value>Opening in Microsoft Edge…</value>
+  </data>
+  <data name="继续跑步" xml:space="preserve">
+    <value>Resume run</value>
+  </data>
+  <data name="加入QQ群：458041663" xml:space="preserve">
+    <value>Join QQ group: 458041663</value>
+  </data>
+  <data name="加载中" xml:space="preserve">
+    <value>Loading…</value>
+  </data>
+  <data name="建筑" xml:space="preserve">
+    <value>Buildings</value>
+  </data>
+  <data name="较高音质" xml:space="preserve">
+    <value>High audio quality</value>
+  </data>
+  <data name="结果" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="结束日期" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="截屏" xml:space="preserve">
+    <value>Screenshot</value>
+  </data>
+  <data name="截屏Ext" xml:space="preserve">
+    <value>Extended screenshot</value>
+  </data>
+  <data name="截图时隐藏当前窗口" xml:space="preserve">
+    <value>Hide the current window while taking a screenshot</value>
+  </data>
+  <data name="进入直播" xml:space="preserve">
+    <value>Go live</value>
+  </data>
+  <data name="禁用 --" xml:space="preserve">
+    <value>Disabled --</value>
+  </data>
+  <data name="禁用时 --" xml:space="preserve">
+    <value>When disabled --</value>
+  </data>
+  <data name="经度" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="精简模式分页" xml:space="preserve">
+    <value>Compact pagination</value>
+  </data>
+  <data name="警告 Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="矩形" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="聚合半径" xml:space="preserve">
+    <value>Cluster radius</value>
+  </data>
+  <data name="开发者" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="开发者-头像选择器" xml:space="preserve">
+    <value>Developer - avatar selector</value>
+  </data>
+  <data name="开启等比缩放" xml:space="preserve">
+    <value>Enable proportional scaling</value>
+  </data>
+  <data name="开启灰度" xml:space="preserve">
+    <value>Enable grayscale</value>
+  </data>
+  <data name="开启加速[仿电脑管家火箭加速]" xml:space="preserve">
+    <value>Enable boost [PC Manager-style rocket boost]</value>
+  </data>
+  <data name="开启图标闪烁（每 500 毫秒切换）" xml:space="preserve">
+    <value>Enable icon flashing (switch every 500 ms)</value>
+  </data>
+  <data name="开始跑步" xml:space="preserve">
+    <value>Start run</value>
+  </data>
+  <data name="开始日期" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="开源的 WPF UI 组件库" xml:space="preserve">
+    <value>Open-source WPF UI component library</value>
+  </data>
+  <data name="开源软件声明" xml:space="preserve">
+    <value>Open-source software notice</value>
+  </data>
+  <data name="可点击文本 --" xml:space="preserve">
+    <value>Clickable text --</value>
+  </data>
+  <data name="可通过 TitleBarLayout 在标题与窗口按钮之间添加交互内容。" xml:space="preserve">
+    <value>Add interactive content between the title and window buttons with TitleBarLayout.</value>
+  </data>
+  <data name="客户区 --" xml:space="preserve">
+    <value>Client area --</value>
+  </data>
+  <data name="空格" xml:space="preserve">
+    <value>Space</value>
+  </data>
+  <data name="控件遮罩（Mask.IsShow）" xml:space="preserve">
+    <value>Control overlay (Mask.IsShow)</value>
+  </data>
+  <data name="快捷键" xml:space="preserve">
+    <value>Keyboard shortcuts</value>
+  </data>
+  <data name="快速开始" xml:space="preserve">
+    <value>Quick start</value>
+  </data>
+  <data name="来源坐标系" xml:space="preserve">
+    <value>Source coordinate system</value>
+  </data>
+  <data name="类型" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="例如设置为 Fuchsia 色调）--&gt;" xml:space="preserve">
+    <value>For example, set it to a Fuchsia hue.) --&gt;</value>
+  </data>
+  <data name="连线倍率:" xml:space="preserve">
+    <value>Connection multiplier:</value>
+  </data>
+  <data name="码云源代码" xml:space="preserve">
+    <value>Gitee source code</value>
+  </data>
+  <data name="码云源码" xml:space="preserve">
+    <value>Gitee source</value>
+  </data>
+  <data name="密码" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="密码框 --" xml:space="preserve">
+    <value>Password box --</value>
+  </data>
+  <data name="密码框样式 --" xml:space="preserve">
+    <value>Password box style --</value>
+  </data>
+  <data name="密码输入框 --" xml:space="preserve">
+    <value>Password input --</value>
+  </data>
+  <data name="名称" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="模板 --" xml:space="preserve">
+    <value>Template --</value>
+  </data>
+  <data name="模式：" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="模态显示（MaskShowDialog）" xml:space="preserve">
+    <value>Show modally (MaskShowDialog)</value>
+  </data>
+  <data name="默认 Pushpin与自定义 Pushpin ClusterTemplate 与 99+ 数量显示 折线、多边形与动态点集合 比例尺、诊断信息与点击缩放" xml:space="preserve">
+    <value>Default and custom pushpins; ClusterTemplate with 99+ count; polylines, polygons, and dynamic point sets; scale bar, diagnostics, and click-to-zoom</value>
+  </data>
+  <data name="默认情况下，Theme 会跟随系统主题（适用于 Windows 10 及以上版本），自动切换为 Light 或 Dark 模式。" xml:space="preserve">
+    <value>By default, Theme follows the system theme (Windows 10 and later) and switches automatically between Light and Dark modes.</value>
+  </data>
+  <data name="目标坐标系" xml:space="preserve">
+    <value>Target coordinate system</value>
+  </data>
+  <data name="目前翻译只是针对WD的自定义控件进行了多语言翻译" xml:space="preserve">
+    <value>Currently, only WD custom controls have been translated.</value>
+  </data>
+  <data name="内容 --" xml:space="preserve">
+    <value>Content --</value>
+  </data>
+  <data name="能力图" xml:space="preserve">
+    <value>Radar chart</value>
+  </data>
+  <data name="你还可以自定义主题色，使用 Color=" xml:space="preserve">
+    <value>You can also customize the theme color with Color=</value>
+  </data>
+  <data name="您可以根据需要调整该值, 以获得更大的圆角。--&gt;" xml:space="preserve">
+    <value>Adjust this value as needed to make the corners rounder. --&gt;</value>
+  </data>
+  <data name="盘1" xml:space="preserve">
+    <value>Disk 1</value>
+  </data>
+  <data name="盘2" xml:space="preserve">
+    <value>Disk 2</value>
+  </data>
+  <data name="盘3" xml:space="preserve">
+    <value>Disk 3</value>
+  </data>
+  <data name="盘4" xml:space="preserve">
+    <value>Disk 4</value>
+  </data>
+  <data name="盘5" xml:space="preserve">
+    <value>Disk 5</value>
+  </data>
+  <data name="跑步演示" xml:space="preserve">
+    <value>Running demo</value>
+  </data>
+  <data name="平滑采样:" xml:space="preserve">
+    <value>Smoothing:</value>
+  </data>
+  <data name="普通标题栏" xml:space="preserve">
+    <value>Standard title bar</value>
+  </data>
+  <data name="启动 Loading 动画" xml:space="preserve">
+    <value>Start loading animation</value>
+  </data>
+  <data name="启动放大镜时隐藏当前窗口" xml:space="preserve">
+    <value>Hide the current window when opening the magnifier</value>
+  </data>
+  <data name="启用" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="启用点位聚合" xml:space="preserve">
+    <value>Enable point clustering</value>
+  </data>
+  <data name="切换图标闪烁" xml:space="preserve">
+    <value>Toggle icon flashing</value>
+  </data>
+  <data name="清除文本按钮 --" xml:space="preserve">
+    <value>Clear text button --</value>
+  </data>
+  <data name="清空画板" xml:space="preserve">
+    <value>Clear drawing board</value>
+  </data>
+  <data name="清空画布" xml:space="preserve">
+    <value>Clear canvas</value>
+  </data>
+  <data name="请弹幕内容" xml:space="preserve">
+    <value>Bullet comment text</value>
+  </data>
+  <data name="请输入 token" xml:space="preserve">
+    <value>Enter token</value>
+  </data>
+  <data name="请输入IP地址" xml:space="preserve">
+    <value>Enter IP address</value>
+  </data>
+  <data name="请输入内容" xml:space="preserve">
+    <value>Enter text</value>
+  </data>
+  <data name="请输入搜索内容" xml:space="preserve">
+    <value>Enter search text</value>
+  </data>
+  <data name="请输入用户密码" xml:space="preserve">
+    <value>Enter your password</value>
+  </data>
+  <data name="请选择股票代码" xml:space="preserve">
+    <value>Select a stock ticker</value>
+  </data>
+  <data name="请选择内容" xml:space="preserve">
+    <value>Select an item</value>
+  </data>
+  <data name="请选择任意时间" xml:space="preserve">
+    <value>Select a time</value>
+  </data>
+  <data name="群：340500857" xml:space="preserve">
+    <value>Group: 340500857</value>
+  </data>
+  <data name="群：340500857 | QQ群：458041663" xml:space="preserve">
+    <value>Group: 340500857 | QQ group: 458041663</value>
+  </data>
+  <data name="群：458041663" xml:space="preserve">
+    <value>Group: 458041663</value>
+  </data>
+  <data name="让音乐更懂你" xml:space="preserve">
+    <value>Music that understands you</value>
+  </data>
+  <data name="日期 yyyy/MM/dd" xml:space="preserve">
+    <value>Date yyyy/MM/dd</value>
+  </data>
+  <data name="日期 yyyy-MM-dd HH:mm:ss" xml:space="preserve">
+    <value>Date yyyy-MM-dd HH:mm:ss</value>
+  </data>
+  <data name="若要手动设置为 Light 模式，可以使用 Theme=" xml:space="preserve">
+    <value>To set Light mode manually, use Theme=</value>
+  </data>
+  <data name="三角形" xml:space="preserve">
+    <value>Triangle</value>
+  </data>
+  <data name="删除选中" xml:space="preserve">
+    <value>Delete selected</value>
+  </data>
+  <data name="闪烁" xml:space="preserve">
+    <value>Flash</value>
+  </data>
+  <data name="上一步" xml:space="preserve">
+    <value>Previous step</value>
+  </data>
+  <data name="上一首" xml:space="preserve">
+    <value>Previous track</value>
+  </data>
+  <data name="设置新密码" xml:space="preserve">
+    <value>Set a new password</value>
+  </data>
+  <data name="身份验证" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="生成" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="生命周期：Loaded 创建实例，Unloaded 调用 Dispose；不在切换选项卡时销毁图标。源码见 CodeViewer 中的 XAML / CSharp。" xml:space="preserve">
+    <value>Lifecycle: create the instance on Loaded and call Dispose on Unloaded. The icon is not destroyed when switching tabs. See the XAML / CSharp in CodeViewer.</value>
+  </data>
+  <data name="实时切换 MapView 常用能力" xml:space="preserve">
+    <value>Toggle common MapView features in real time</value>
+  </data>
+  <data name="使用默认标题栏高度和标准窗口按钮。" xml:space="preserve">
+    <value>Use the default title bar height and standard window buttons.</value>
+  </data>
+  <data name="使用自定义标题栏，并设置为工具窗口样式和不可调整大小。" xml:space="preserve">
+    <value>Use a custom title bar and set the window to tool-window style and non-resizable.</value>
+  </data>
+  <data name="使用自定义聚合模板" xml:space="preserve">
+    <value>Use a custom cluster template</value>
+  </data>
+  <data name="示例" xml:space="preserve">
+    <value>Sample</value>
+  </data>
+  <data name="示例包含" xml:space="preserve">
+    <value>Sample includes</value>
+  </data>
+  <data name="示例图标未创建" xml:space="preserve">
+    <value>Sample icon has not been created</value>
+  </data>
+  <data name="试剂仓" xml:space="preserve">
+    <value>Reagent storage</value>
+  </data>
+  <data name="收藏歌曲" xml:space="preserve">
+    <value>Favorite song</value>
+  </data>
+  <data name="首次的歌单和专辑" xml:space="preserve">
+    <value>First playlist and album</value>
+  </data>
+  <data name="首页 / Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="输入内容" xml:space="preserve">
+    <value>Enter text</value>
+  </data>
+  <data name="输入数字0~199" xml:space="preserve">
+    <value>Enter a number from 0 to 199</value>
+  </data>
+  <data name="鼠标按下时 --" xml:space="preserve">
+    <value>On mouse press --</value>
+  </data>
+  <data name="鼠标悬停 --" xml:space="preserve">
+    <value>Mouse hover --</value>
+  </data>
+  <data name="鼠标悬停时 --" xml:space="preserve">
+    <value>On hover --</value>
+  </data>
+  <data name="竖向 (Vertical)" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="数据信息" xml:space="preserve">
+    <value>Data information</value>
+  </data>
+  <data name="刷新" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="刷新统计" xml:space="preserve">
+    <value>Refresh statistics</value>
+  </data>
+  <data name="双击：" xml:space="preserve">
+    <value>Double-click:</value>
+  </data>
+  <data name="私密账号" xml:space="preserve">
+    <value>Private account</value>
+  </data>
+  <data name="随机" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="提交" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="提示文本 --" xml:space="preserve">
+    <value>Hint text --</value>
+  </data>
+  <data name="天地图" xml:space="preserve">
+    <value>Tianditu</value>
+  </data>
+  <data name="天地图 Token" xml:space="preserve">
+    <value>Tianditu token</value>
+  </data>
+  <data name="填写账号" xml:space="preserve">
+    <value>Enter account</value>
+  </data>
+  <data name="通过 TitleBar 和 TitleHeight 自定义标题栏及窗口操作按钮。" xml:space="preserve">
+    <value>Customize the title bar and window control buttons with TitleBar and TitleHeight.</value>
+  </data>
+  <data name="通知标题" xml:space="preserve">
+    <value>Notification title</value>
+  </data>
+  <data name="通知内容" xml:space="preserve">
+    <value>Notification message</value>
+  </data>
+  <data name="图标 --" xml:space="preserve">
+    <value>Icon --</value>
+  </data>
+  <data name="图标闪烁" xml:space="preserve">
+    <value>Icon flashing</value>
+  </data>
+  <data name="图标与生命周期" xml:space="preserve">
+    <value>Icon and lifecycle</value>
+  </data>
+  <data name="图像选择器" xml:space="preserve">
+    <value>Image selector</value>
+  </data>
+  <data name="退出" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="托盘消息" xml:space="preserve">
+    <value>Tray notification</value>
+  </data>
+  <data name="拖动、滚轮缩放并点击点位查看效果" xml:space="preserve">
+    <value>Drag, zoom with the wheel, and click a point to see the result</value>
+  </data>
+  <data name="外观 --" xml:space="preserve">
+    <value>Appearance --</value>
+  </data>
+  <data name="完成" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="忘记密码" xml:space="preserve">
+    <value>Forgot password</value>
+  </data>
+  <data name="微信公众号 WPFDevelopers" xml:space="preserve">
+    <value>WPFDevelopers WeChat Official Account</value>
+  </data>
+  <data name="微信公众号：WPFDevelopers" xml:space="preserve">
+    <value>WeChat Official Account: WPFDevelopers</value>
+  </data>
+  <data name="微信公众号二维码" xml:space="preserve">
+    <value>WeChat Official Account QR code</value>
+  </data>
+  <data name="微信号公众号:WPFDevelopers" xml:space="preserve">
+    <value>WeChat Official Account: WPFDevelopers</value>
+  </data>
+  <data name="微信扫码关注" xml:space="preserve">
+    <value>Scan the QR code to follow</value>
+  </data>
+  <data name="微信扫一扫，关注 WPFDevelopers，获取项目动态与开发分享。" xml:space="preserve">
+    <value>Scan to follow WPFDevelopers on WeChat for project updates and developer tips.</value>
+  </data>
+  <data name="纬度" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="卫星" xml:space="preserve">
+    <value>Satellite</value>
+  </data>
+  <data name="卫星地图" xml:space="preserve">
+    <value>Satellite map</value>
+  </data>
+  <data name="文本垂直居中 --" xml:space="preserve">
+    <value>Vertically centered text --</value>
+  </data>
+  <data name="文本框 --" xml:space="preserve">
+    <value>Text box --</value>
+  </data>
+  <data name="文本框样式 --" xml:space="preserve">
+    <value>Text box style --</value>
+  </data>
+  <data name="文本色 --" xml:space="preserve">
+    <value>Text color --</value>
+  </data>
+  <data name="我是蒙板输入框" xml:space="preserve">
+    <value>I am a masked input box</value>
+  </data>
+  <data name="无图标 None" xml:space="preserve">
+    <value>No icon</value>
+  </data>
+  <data name="无信号" xml:space="preserve">
+    <value>No signal</value>
+  </data>
+  <data name="系统托盘 NotifyIcon" xml:space="preserve">
+    <value>System tray NotifyIcon</value>
+  </data>
+  <data name="下拉多选搜索" xml:space="preserve">
+    <value>Searchable multi-select dropdown</value>
+  </data>
+  <data name="下一步" xml:space="preserve">
+    <value>Next step</value>
+  </data>
+  <data name="下一首" xml:space="preserve">
+    <value>Next track</value>
+  </data>
+  <data name="显示Badge" xml:space="preserve">
+    <value>Show badge</value>
+  </data>
+  <data name="显示比例尺" xml:space="preserve">
+    <value>Show scale bar</value>
+  </data>
+  <data name="显示独立业务图层" xml:space="preserve">
+    <value>Show independent data layer</value>
+  </data>
+  <data name="显示控件遮罩" xml:space="preserve">
+    <value>Show control overlay</value>
+  </data>
+  <data name="显示缩放控制" xml:space="preserve">
+    <value>Show zoom controls</value>
+  </data>
+  <data name="显示诊断信息" xml:space="preserve">
+    <value>Show diagnostic information</value>
+  </data>
+  <data name="线" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="项目概览" xml:space="preserve">
+    <value>Project overview</value>
+  </data>
+  <data name="橡皮擦" xml:space="preserve">
+    <value>Eraser</value>
+  </data>
+  <data name="消息由当前示例图标的 ShowBalloonTips 实例方法发送。Windows 通知设置或勿扰模式可能阻止通知显示。" xml:space="preserve">
+    <value>Messages are sent by the sample icon’s ShowBalloonTips instance method. Windows notification settings or Do Not Disturb may prevent them from appearing.</value>
+  </data>
+  <data name="信号源1" xml:space="preserve">
+    <value>Signal source 1</value>
+  </data>
+  <data name="信息 Info" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="星星个数:" xml:space="preserve">
+    <value>Number of stars:</value>
+  </data>
+  <data name="需要注意 wd:Resources 必须在Theme.xaml后 --&gt;" xml:space="preserve">
+    <value>Note that wd:Resources must come after Theme.xaml. --&gt;</value>
+  </data>
+  <data name="悬停图标时提示为“WPFDevelopers - NotifyIcon 示例”。可在 Windows 托盘折叠区中找到它。" xml:space="preserve">
+    <value>Hover over the icon to see “WPFDevelopers - NotifyIcon Sample.” It may be in the Windows hidden icons area.</value>
+  </data>
+  <data name="选择视频" xml:space="preserve">
+    <value>Select video</value>
+  </data>
+  <data name="选择图片" xml:space="preserve">
+    <value>Select image</value>
+  </data>
+  <data name="选中索引：" xml:space="preserve">
+    <value>Selected index:</value>
+  </data>
+  <data name="演示" xml:space="preserve">
+    <value>Demo</value>
+  </data>
+  <data name="演示普通标题栏、高标题栏以及自定义标题栏窗口。点击按钮打开窗口，可查看对应标题栏样式。" xml:space="preserve">
+    <value>Demonstrates standard, tall, and custom title bar windows. Click a button to open a window and view each style.</value>
+  </data>
+  <data name="要素点击" xml:space="preserve">
+    <value>Feature click</value>
+  </data>
+  <data name="也想开发跨平台应用？" xml:space="preserve">
+    <value>Want to build cross-platform apps too?</value>
+  </data>
+  <data name="移除" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="移动首个动态点位" xml:space="preserve">
+    <value>Move the first dynamic point</value>
+  </data>
+  <data name="音量 -" xml:space="preserve">
+    <value>Volume -</value>
+  </data>
+  <data name="音量 +" xml:space="preserve">
+    <value>Volume +</value>
+  </data>
+  <data name="隐藏所有--" xml:space="preserve">
+    <value>Hide all --</value>
+  </data>
+  <data name="隐私设置" xml:space="preserve">
+    <value>Privacy settings</value>
+  </data>
+  <data name="隐私政策" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="用户名" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="用户名输入框 --" xml:space="preserve">
+    <value>Username input --</value>
+  </data>
+  <data name="用户协议" xml:space="preserve">
+    <value>User Agreement</value>
+  </data>
+  <data name="邮箱" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="邮箱格式错误" xml:space="preserve">
+    <value>Invalid email format</value>
+  </data>
+  <data name="邮箱输入框 --" xml:space="preserve">
+    <value>Email input --</value>
+  </data>
+  <data name="右键菜单和自定义面板中的“切换图标闪烁”与这里同步。停止后恢复原图标。" xml:space="preserve">
+    <value>“Toggle icon flashing” in the context menu and custom panel is synchronized with this setting. The original icon is restored when stopped.</value>
+  </data>
+  <data name="右键显示：" xml:space="preserve">
+    <value>Right-click to show:</value>
+  </data>
+  <data name="预览120x120" xml:space="preserve">
+    <value>Preview 120x120</value>
+  </data>
+  <data name="源代码" xml:space="preserve">
+    <value>Source code</value>
+  </data>
+  <data name="源码" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="在系统托盘中单击或双击示例图标，计数和下方操作反馈会更新。" xml:space="preserve">
+    <value>Click or double-click the sample icon in the system tray to update the count and feedback below.</value>
+  </data>
+  <data name="在线播放音频" xml:space="preserve">
+    <value>Stream audio</value>
+  </data>
+  <data name="暂停跑步" xml:space="preserve">
+    <value>Pause run</value>
+  </data>
+  <data name="增加" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="张力:" xml:space="preserve">
+    <value>Tension:</value>
+  </data>
+  <data name="账户" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="正常模式分页" xml:space="preserve">
+    <value>Standard pagination</value>
+  </data>
+  <data name="正在直播" xml:space="preserve">
+    <value>Live</value>
+  </data>
+  <data name="证券代码:" xml:space="preserve">
+    <value>Stock ticker:</value>
+  </data>
+  <data name="值" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="置顶（动态修改）" xml:space="preserve">
+    <value>Always on top (toggle at runtime)</value>
+  </data>
+  <data name="中" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="中华人民共和国国歌" xml:space="preserve">
+    <value>March of the Volunteers</value>
+  </data>
+  <data name="中文" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="中文 / English" xml:space="preserve">
+    <value>Chinese / English</value>
+  </data>
+  <data name="重置地图视图" xml:space="preserve">
+    <value>Reset map view</value>
+  </data>
+  <data name="周星星|达叔" xml:space="preserve">
+    <value>Stephen Chow | Uncle Tat</value>
+  </data>
+  <data name="主道路名称" xml:space="preserve">
+    <value>Main road name</value>
+  </data>
+  <data name="注册" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="注册按钮 --" xml:space="preserve">
+    <value>Sign-up button --</value>
+  </data>
+  <data name="注册账号" xml:space="preserve">
+    <value>Create account</value>
+  </data>
+  <data name="转换" xml:space="preserve">
+    <value>Convert</value>
+  </data>
+  <data name="桌面歌词" xml:space="preserve">
+    <value>Desktop lyrics</value>
+  </data>
+  <data name="自定义" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="自定义 Marker" xml:space="preserve">
+    <value>Custom marker</value>
+  </data>
+  <data name="自定义标题栏" xml:space="preserve">
+    <value>Custom title bar</value>
+  </data>
+  <data name="自定义步长" xml:space="preserve">
+    <value>Custom step size</value>
+  </data>
+  <data name="自定义面板 ContextContent" xml:space="preserve">
+    <value>Custom panel ContextContent</value>
+  </data>
+  <data name="自定义托盘面板" xml:space="preserve">
+    <value>Custom tray panel</value>
+  </data>
+  <data name="自定义右键菜单" xml:space="preserve">
+    <value>Custom context menu</value>
+  </data>
+  <data name="自定义增加和减少事件" xml:space="preserve">
+    <value>Custom increment and decrement events</value>
+  </data>
+  <data name="自定义中心点" xml:space="preserve">
+    <value>Custom center point</value>
+  </data>
+  <data name="综合功能" xml:space="preserve">
+    <value>Combined features</value>
+  </data>
+  <data name="最大尺寸:" xml:space="preserve">
+    <value>Maximum size:</value>
+  </data>
+  <data name="最大速度:" xml:space="preserve">
+    <value>Maximum speed:</value>
+  </data>
+  <data name="最大转速:" xml:space="preserve">
+    <value>Maximum rotation speed:</value>
+  </data>
+  <data name="最小尺寸:" xml:space="preserve">
+    <value>Minimum size:</value>
+  </data>
+  <data name="最小聚合数量" xml:space="preserve">
+    <value>Minimum cluster size</value>
+  </data>
+  <data name="最小速度:" xml:space="preserve">
+    <value>Minimum speed:</value>
+  </data>
+  <data name="最小转速:" xml:space="preserve">
+    <value>Minimum rotation speed:</value>
+  </data>
+  <data name="左键单击：" xml:space="preserve">
+    <value>Left-click:</value>
+  </data>
+  <data name="坐标转换演示" xml:space="preserve">
+    <value>Coordinate conversion demo</value>
+  </data>
+  <data name="切换语言会同时更新示例界面与 WD 控件的翻译" xml:space="preserve">
+    <value>Switching languages updates both the samples and WPFDevelopers controls.</value>
+  </data>
+  <data name="Circle 置顶（动态修改）" xml:space="preserve">
+    <value>Pin Circle to the top (update dynamically)</value>
+  </data>
+  <data name="Github 源代码" xml:space="preserve">
+    <value>GitHub source code</value>
+  </data>
+  <data name="Github 源码" xml:space="preserve">
+    <value>GitHub source code</value>
+  </data>
+  <data name="QQ群：340500857" xml:space="preserve">
+    <value>QQ group: 340500857</value>
+  </data>
+  <data name="QQ群：458041663" xml:space="preserve">
+    <value>QQ group: 458041663</value>
+  </data>
+  <data name="QQ群：340500857 | QQ群：458041663" xml:space="preserve">
+    <value>QQ groups: 340500857 | 458041663</value>
+  </data>
+  <data name="WPF开发者" xml:space="preserve">
+    <value>WPFDevelopers</value>
+  </data>
+  <data name="WPF 开发者-头像选择器" xml:space="preserve">
+    <value>WPFDevelopers - Avatar Picker</value>
+  </data>
+  <data name="LoadingExt 当UI线程阻塞时使用" xml:space="preserve">
+    <value>Use LoadingExt when the UI thread is blocked</value>
+  </data>
+  <data name="WPFDevelopers - NotifyIcon 示例" xml:space="preserve">
+    <value>WPFDevelopers - NotifyIcon sample</value>
+  </data>
+  <data name="MapView 功能演示" xml:space="preserve">
+    <value>MapView feature demo</value>
+  </data>
+  <data name="ShapeZIndex 演示" xml:space="preserve">
+    <value>ShapeZIndex demo</value>
+  </data>
+  <data name="MapView 综合功能" xml:space="preserve">
+    <value>MapView features overview</value>
+  </data>
+  <data name="XAML 模式：" xml:space="preserve">
+    <value>XAML mode:</value>
+  </data>
+  <data name="MVVM 模式：" xml:space="preserve">
+    <value>MVVM mode:</value>
+  </data>
+  <data name="Normal · 普通标题栏" xml:space="preserve">
+    <value>Normal · Standard title bar</value>
+  </data>
+  <data name="TitleBarMode=Normal，使用默认标题栏高度和标准窗口按钮。" xml:space="preserve">
+    <value>TitleBarMode=Normal uses the default title bar height and standard window buttons.</value>
+  </data>
+  <data name="High · 标题栏工具区" xml:space="preserve">
+    <value>High · Title bar toolbar area</value>
+  </data>
+  <data name="TitleBarMode=High，可通过 TitleBarLayout 在标题与窗口按钮之间添加交互内容。" xml:space="preserve">
+    <value>TitleBarMode=High lets you add interactive content between the title and window buttons with TitleBarLayout.</value>
+  </data>
+  <data name="ToolWindow · 工具窗口" xml:space="preserve">
+    <value>ToolWindow · Tool window</value>
+  </data>
+  <data name="None · 自定义标题栏" xml:space="preserve">
+    <value>None · Custom title bar</value>
+  </data>
+  <data name="TitleBarMode=None，通过 TitleBar 和 TitleHeight 自定义标题栏及窗口操作按钮。" xml:space="preserve">
+    <value>TitleBarMode=None customizes the title bar and window buttons with TitleBar and TitleHeight.</value>
+  </data>
+  <data name="WPFDevelopers 微信公众号二维码" xml:space="preserve">
+    <value>WPFDevelopers public WeChat account QR code</value>
+  </data>
+  <data name="{}{0:0}值" xml:space="preserve">
+    <value>{0:0} value</value>
+  </data>
+  <data name="。请点击“刷新统计”重试。" xml:space="preserve">
+    <value> Click “Refresh statistics” to try again.</value>
+  </data>
+  <data name="{DateTime.Now} 取消截图" xml:space="preserve">
+    <value>{DateTime.Now} Cancel screenshot</value>
+  </data>
+  <data name="{i}等奖" xml:space="preserve">
+    <value>Prize tier {i}</value>
+  </data>
+  <data name="{key} 已复制到剪贴板" xml:space="preserve">
+    <value>{key} copied to clipboard</value>
+  </data>
+  <data name="{MyMultiSelectComboBox.Text} 总共选中:{MyMultiSelectComboBox.SelectedItems.Count} 条" xml:space="preserve">
+    <value>{MyMultiSelectComboBox.Text} Total selected: {MyMultiSelectComboBox.SelectedItems.Count}</value>
+  </data>
+  <data name="{MyMultiSelectionSearchComboBox2.Text} 总共选中:{SelectedItems.Count} 条" xml:space="preserve">
+    <value>{MyMultiSelectionSearchComboBox2.Text} Total selected: {SelectedItems.Count}</value>
+  </data>
+  <data name="{p.Name}（{(int)p.GetValue(player, null)}分）" xml:space="preserve">
+    <value>{p.Name} ({(int)p.GetValue(player, null)} points)</value>
+  </data>
+  <data name="· 下载量为 NuGet 所有版本累计下载量" xml:space="preserve">
+    <value>· Downloads are cumulative across all NuGet package versions</value>
+  </data>
+  <data name="Circle 已置顶，当前 ShapeZIndex={DemoCircle.ShapeZIndex}" xml:space="preserve">
+    <value>Circle is now on top; current ShapeZIndex={DemoCircle.ShapeZIndex}</value>
+  </data>
+  <data name="Event: 点击了第 {carousel.SelectedIndex} 个" xml:space="preserve">
+    <value>Event: Clicked item {carousel.SelectedIndex}</value>
+  </data>
+  <data name="map加载" xml:space="preserve">
+    <value>Loading map</value>
+  </data>
+  <data name="MVVM 模式点击: {obj}" xml:space="preserve">
+    <value>MVVM mode click: {obj}</value>
+  </data>
+  <data name="NuGet 未返回 WPFDevelopers 包统计" xml:space="preserve">
+    <value>NuGet returned no WPFDevelopers package statistics</value>
+  </data>
+  <data name="OTP错误，请重试!" xml:space="preserve">
+    <value>Incorrect OTP. Please try again!</value>
+  </data>
+  <data name="OTP正确!" xml:space="preserve">
+    <value>OTP verified!</value>
+  </data>
+  <data name="把我们的血肉，筑成我们新的长城！" xml:space="preserve">
+    <value>Let us build our new Great Wall with our flesh and blood!</value>
+  </data>
+  <data name="包龙星" xml:space="preserve">
+    <value>包龙星</value>
+  </data>
+  <data name="包有为" xml:space="preserve">
+    <value>包有为</value>
+  </data>
+  <data name="本示例使用一个 NotifyIcon 演示点击事件、右键菜单、气泡消息和图标闪烁。" xml:space="preserve">
+    <value>This sample uses a NotifyIcon to demonstrate click events, context menus, balloon notifications, and icon flashing.</value>
+  </data>
+  <data name="编辑" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="不愿做奴隶的人们！！" xml:space="preserve">
+    <value>Arise, all who refuse to be slaves!</value>
+  </data>
+  <data name="测试弹幕" xml:space="preserve">
+    <value>Test bullet comment</value>
+  </data>
+  <data name="常威" xml:space="preserve">
+    <value>常威</value>
+  </data>
+  <data name="此为空域管制区" xml:space="preserve">
+    <value>This is a restricted airspace.</value>
+  </data>
+  <data name="错误" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="打开" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="当前文件不存在,是否继续?" xml:space="preserve">
+    <value>The current file does not exist. Continue?</value>
+  </data>
+  <data name="当前文件不存在。" xml:space="preserve">
+    <value>The current file does not exist.</value>
+  </data>
+  <data name="当前选中{selection.Text}" xml:space="preserve">
+    <value>Currently selected: {selection.Text}</value>
+  </data>
+  <data name="到访数" xml:space="preserve">
+    <value>Visits</value>
+  </data>
+  <data name="地图" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="点击 Circle: 半径={featureArgs.ClickedCircle.RadiusMeters:F0}m ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Clicked Circle: radius={featureArgs.ClickedCircle.RadiusMeters:F0}m ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Polygon: 点数={featureArgs.ClickedPolygon.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Clicked Polygon: points={featureArgs.ClickedPolygon.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Polyline: 点数={featureArgs.ClickedPolyline.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Clicked Polyline: points={featureArgs.ClickedPolyline.Points.Count} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Pushpin: {featureArgs.ClickedPushpin.Title} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})" xml:space="preserve">
+    <value>Clicked Pushpin: {featureArgs.ClickedPushpin.Title} ({featureArgs.Latitude:F6}, {featureArgs.Longitude:F6})</value>
+  </data>
+  <data name="点击 Rectangle: [{featureArgs.ClickedRectangle.MinLatitude:F4},{featureArgs.ClickedRectangle.MinLongitude:F4}]~[{featureArgs.ClickedRectangle.MaxLatitude:F4},{featureArgs.ClickedRectangle.MaxLongitude:F4}]" xml:space="preserve">
+    <value>Clicked Rectangle: [{featureArgs.ClickedRectangle.MinLatitude:F4},{featureArgs.ClickedRectangle.MinLongitude:F4}]~[{featureArgs.ClickedRectangle.MaxLatitude:F4},{featureArgs.ClickedRectangle.MaxLongitude:F4}]</value>
+  </data>
+  <data name="点击: {e.OriginalSource.ToString()}" xml:space="preserve">
+    <value>Clicked: {e.OriginalSource.ToString()}</value>
+  </data>
+  <data name="点击了：{menuItem.Tag}" xml:space="preserve">
+    <value>Clicked: {menuItem.Tag}</value>
+  </data>
+  <data name="点击了{item.Text}" xml:space="preserve">
+    <value>Clicked {item.Text}</value>
+  </data>
+  <data name="点击了{menuItemModel.Text}" xml:space="preserve">
+    <value>Clicked {menuItemModel.Text}</value>
+  </data>
+  <data name="点击了“ {MyBubbleSelection.SelectedText}开发者 ”." xml:space="preserve">
+    <value>Clicked “{MyBubbleSelection.SelectedText} Developer”.</value>
+  </data>
+  <data name="点击完成。" xml:space="preserve">
+    <value>Click complete.</value>
+  </data>
+  <data name="点击坐标: Latitude={clickArgs.Latitude:F6}, Longitude={clickArgs.Longitude:F6}" xml:space="preserve">
+    <value>Clicked coordinates: Latitude={clickArgs.Latitude:F6}, Longitude={clickArgs.Longitude:F6}</value>
+  </data>
+  <data name="东侧业务点" xml:space="preserve">
+    <value>East business point</value>
+  </data>
+  <data name="动态点位" xml:space="preserve">
+    <value>Dynamic point</value>
+  </data>
+  <data name="二" xml:space="preserve">
+    <value>Two</value>
+  </data>
+  <data name="方唐镜" xml:space="preserve">
+    <value>方唐镜</value>
+  </data>
+  <data name="非选中" xml:space="preserve">
+    <value>Unselected</value>
+  </data>
+  <data name="风" xml:space="preserve">
+    <value>Wind</value>
+  </data>
+  <data name="风云大陆" xml:space="preserve">
+    <value>风云大陆</value>
+  </data>
+  <data name="复制失败，请稍后重试" xml:space="preserve">
+    <value>Copy failed. Please try again later.</value>
+  </data>
+  <data name="告警图层" xml:space="preserve">
+    <value>Alert layer</value>
+  </data>
+  <data name="更新于" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="关闭灰度" xml:space="preserve">
+    <value>Disable grayscale</value>
+  </data>
+  <data name="关于 NotifyIcon 示例" xml:space="preserve">
+    <value>About the NotifyIcon sample</value>
+  </data>
+  <data name="很难开心" xml:space="preserve">
+    <value>Hard to be happy</value>
+  </data>
+  <data name="沪Ａ" xml:space="preserve">
+    <value>Shanghai A</value>
+  </data>
+  <data name="花" xml:space="preserve">
+    <value>Flower</value>
+  </data>
+  <data name="花雨" xml:space="preserve">
+    <value>花雨</value>
+  </data>
+  <data name="获取到验证码如下：" xml:space="preserve">
+    <value>Verification code received:</value>
+  </data>
+  <data name="获取日期" xml:space="preserve">
+    <value>Get dates</value>
+  </data>
+  <data name="纪" xml:space="preserve">
+    <value>纪</value>
+  </data>
+  <data name="纪春庆" xml:space="preserve">
+    <value>纪春庆</value>
+  </data>
+  <data name="加载失败" xml:space="preserve">
+    <value>Failed to load</value>
+  </data>
+  <data name="节点：{transform.Id} 节点按下" xml:space="preserve">
+    <value>Node: {transform.Id} pressed</value>
+  </data>
+  <data name="节点：{transform.Id} 节点状态：{status}" xml:space="preserve">
+    <value>Node: {transform.Id}, status: {status}</value>
+  </data>
+  <data name="截图路径：{text}" xml:space="preserve">
+    <value>Screenshot path: {text}</value>
+  </data>
+  <data name="警告" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="开始时间：{MyDateRangePicker.StartDate} 结束时间：{MyDateRangePicker.EndDate}" xml:space="preserve">
+    <value>Start date: {MyDateRangePicker.StartDate} End date: {MyDateRangePicker.EndDate}</value>
+  </data>
+  <data name="来福" xml:space="preserve">
+    <value>来福</value>
+  </data>
+  <data name="狼行" xml:space="preserve">
+    <value>狼行</value>
+  </data>
+  <data name="雷豹" xml:space="preserve">
+    <value>雷豹</value>
+  </data>
+  <data name="冒着敌人的炮火前进！" xml:space="preserve">
+    <value>Advance through the enemy’s fire!</value>
+  </data>
+  <data name="每个人被迫着发出最后的吼声。" xml:space="preserve">
+    <value>Everyone is forced to make one last cry.</value>
+  </data>
+  <data name="能力值" xml:space="preserve">
+    <value>Ability score</value>
+  </data>
+  <data name="跑步图层" xml:space="preserve">
+    <value>Running layer</value>
+  </data>
+  <data name="平安银行" xml:space="preserve">
+    <value>Ping An Bank</value>
+  </data>
+  <data name="浦发银行" xml:space="preserve">
+    <value>SPD Bank</value>
+  </data>
+  <data name="起来！" xml:space="preserve">
+    <value>Arise!</value>
+  </data>
+  <data name="前进！" xml:space="preserve">
+    <value>Advance!</value>
+  </data>
+  <data name="前进！进！" xml:space="preserve">
+    <value>Advance! Forward!</value>
+  </data>
+  <data name="请输入天地图 token" xml:space="preserve">
+    <value>Enter your Tianditu token</value>
+  </data>
+  <data name="请输入有效的经度/纬度" xml:space="preserve">
+    <value>Enter valid longitude/latitude values</value>
+  </data>
+  <data name="请先填写通知标题和内容。" xml:space="preserve">
+    <value>Enter a notification title and message first.</value>
+  </data>
+  <data name="请选择图片" xml:space="preserve">
+    <value>Please select an image</value>
+  </data>
+  <data name="蛐蛐" xml:space="preserve">
+    <value>蛐蛐</value>
+  </data>
+  <data name="三" xml:space="preserve">
+    <value>Three</value>
+  </data>
+  <data name="上证指数" xml:space="preserve">
+    <value>SSE Composite Index</value>
+  </data>
+  <data name="深Ａ" xml:space="preserve">
+    <value>Shenzhen A</value>
+  </data>
+  <data name="圣枪哥" xml:space="preserve">
+    <value>圣枪哥</value>
+  </data>
+  <data name="时间：" xml:space="preserve">
+    <value>Time:</value>
+  </data>
+  <data name="示例图标和闪烁计时器已释放，主窗口托盘图标不受影响。" xml:space="preserve">
+    <value>The sample icon and flashing timer have been disposed; the main window’s tray icon is unaffected.</value>
+  </data>
+  <data name="示例图标已创建（1 个）" xml:space="preserve">
+    <value>Sample icon created (1)</value>
+  </data>
+  <data name="示例图标已移除" xml:space="preserve">
+    <value>Sample icon removed</value>
+  </data>
+  <data name="视频文件(.MP4)|*.mp4;" xml:space="preserve">
+    <value>Video files (.MP4)|*.mp4;</value>
+  </data>
+  <data name="是否退出当前系统?" xml:space="preserve">
+    <value>Exit the current application?</value>
+  </data>
+  <data name="收到托盘图标双击事件（双击前的第一次单击也会计数）。" xml:space="preserve">
+    <value>Received tray icon double-click event (the first click is counted too).</value>
+  </data>
+  <data name="收到托盘图标左键单击事件。" xml:space="preserve">
+    <value>Received tray icon left-click event.</value>
+  </data>
+  <data name="手势错误，请重新解锁!" xml:space="preserve">
+    <value>Incorrect pattern. Please try again!</value>
+  </data>
+  <data name="手势错误，最少 4 个节点!" xml:space="preserve">
+    <value>Incorrect pattern. Use at least 4 nodes!</value>
+  </data>
+  <data name="手势正确!" xml:space="preserve">
+    <value>Correct pattern!</value>
+  </data>
+  <data name="鼠标移动绘制几何" xml:space="preserve">
+    <value>Move the mouse to draw shapes</value>
+  </data>
+  <data name="鼠标左键按下" xml:space="preserve">
+    <value>Left mouse button pressed</value>
+  </data>
+  <data name="鼠标左键键起" xml:space="preserve">
+    <value>Left mouse button released</value>
+  </data>
+  <data name="数量：" xml:space="preserve">
+    <value>Count:</value>
+  </data>
+  <data name="四" xml:space="preserve">
+    <value>Four</value>
+  </data>
+  <data name="提示" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="统计加载失败：" xml:space="preserve">
+    <value>Failed to load statistics:</value>
+  </data>
+  <data name="统计响应缺少有效的计数" xml:space="preserve">
+    <value>Statistics response contains no valid count</value>
+  </data>
+  <data name="统计响应为空" xml:space="preserve">
+    <value>Statistics response is empty</value>
+  </data>
+  <data name="图片不能大于 1M" xml:space="preserve">
+    <value>Image must be no larger than 1 MB</value>
+  </data>
+  <data name="图像文件(*.jpg;*.jpeg;*.png;)|*.jpg;*.jpeg;*.png;" xml:space="preserve">
+    <value>Image files (*.jpg;*.jpeg;*.png;)|*.jpg;*.jpeg;*.png;</value>
+  </data>
+  <data name="王" xml:space="preserve">
+    <value>王</value>
+  </data>
+  <data name="王羲之" xml:space="preserve">
+    <value>王羲之</value>
+  </data>
+  <data name="文件删除成功。" xml:space="preserve">
+    <value>File deleted successfully.</value>
+  </data>
+  <data name="我" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="我们万众一心，冒着敌人的炮火前进！" xml:space="preserve">
+    <value>With one heart, we advance through the enemy’s fire!</value>
+  </data>
+  <data name="我是骗人布010" xml:space="preserve">
+    <value>我是骗人布010</value>
+  </data>
+  <data name="无法打开链接：" xml:space="preserve">
+    <value>Unable to open link:</value>
+  </data>
+  <data name="西侧业务点" xml:space="preserve">
+    <value>West business point</value>
+  </data>
+  <data name="消息" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="销户" xml:space="preserve">
+    <value>Close account</value>
+  </data>
+  <data name="谢谢参与" xml:space="preserve">
+    <value>Thanks for participating</value>
+  </data>
+  <data name="新的数组必须比原有的要小!" xml:space="preserve">
+    <value>The new array must be smaller than the original!</value>
+  </data>
+  <data name="修改成功" xml:space="preserve">
+    <value>Updated successfully</value>
+  </data>
+  <data name="旋转" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="选择了: {e.NewValue}" xml:space="preserve">
+    <value>Selected: {e.NewValue}</value>
+  </data>
+  <data name="选中" xml:space="preserve">
+    <value>Selected</value>
+  </data>
+  <data name="选中内容" xml:space="preserve">
+    <value>Selected items</value>
+  </data>
+  <data name="询问" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="闫驚鏵/WPFDevelopers" xml:space="preserve">
+    <value>闫驚鏵/WPFDevelopers</value>
+  </data>
+  <data name="验证码" xml:space="preserve">
+    <value>Verification code</value>
+  </data>
+  <data name="一" xml:space="preserve">
+    <value>One</value>
+  </data>
+  <data name="移除示例图标" xml:space="preserve">
+    <value>Remove sample icon</value>
+  </data>
+  <data name="已创建示例图标，可在系统托盘中单击、双击或右键操作。" xml:space="preserve">
+    <value>Sample icon created. Click, double-click, or right-click it in the system tray.</value>
+  </data>
+  <data name="已打开关于对话框。" xml:space="preserve">
+    <value>About dialog opened.</value>
+  </data>
+  <data name="已复制到剪贴板" xml:space="preserve">
+    <value>Copied to clipboard</value>
+  </data>
+  <data name="已恢复默认层级：Circle={DefaultCircleZIndex}, Rectangle={DefaultRectangleZIndex}" xml:space="preserve">
+    <value>Restored default z-order: Circle={DefaultCircleZIndex}, Rectangle={DefaultRectangleZIndex}</value>
+  </data>
+  <data name="已开启图标闪烁。" xml:space="preserve">
+    <value>Icon flashing enabled.</value>
+  </data>
+  <data name="已停止闪烁并恢复图标。" xml:space="preserve">
+    <value>Flashing stopped and icon restored.</value>
+  </data>
+  <data name="已向 Windows 提交通知；若未显示，请检查系统通知设置和勿扰模式。" xml:space="preserve">
+    <value>Notification sent to Windows. If it does not appear, check notification settings and Do Not Disturb.</value>
+  </data>
+  <data name="邮件" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="右键示例图标将显示标准菜单。" xml:space="preserve">
+    <value>Right-click the sample icon to show the standard menu.</value>
+  </data>
+  <data name="右键示例图标将显示自定义面板。" xml:space="preserve">
+    <value>Right-click the sample icon to show the custom panel.</value>
+  </data>
+  <data name="这是一条很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长消息" xml:space="preserve">
+    <value>This is a very long message</value>
+  </data>
+  <data name="正在读取 GitHub Star 和 NuGet 累计下载量..." xml:space="preserve">
+    <value>Loading GitHub stars and cumulative NuGet downloads...</value>
+  </data>
+  <data name="执行此操作可能导致文件无法打开！" xml:space="preserve">
+    <value>This action may make the file impossible to open!</value>
+  </data>
+  <data name="指数" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="中华民族到了最危险的时候，" xml:space="preserve">
+    <value>The Chinese nation faces its greatest peril,</value>
+  </data>
+  <data name="主页" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="总共选中:{MyMultiSelectComboBox.SelectedItems.Count} 条" xml:space="preserve">
+    <value>Total selected: {MyMultiSelectComboBox.SelectedItems.Count}</value>
+  </data>
+  <data name="作词 : 田汉" xml:space="preserve">
+    <value>Lyrics: 田汉</value>
+  </data>
+  <data name="作曲 : 聂耳" xml:space="preserve">
+    <value>Music: 聂耳</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IP 地址输入框" xml:space="preserve">
+    <value>IP Address Input</value>
+  </data>
+  <data name="Markdown 查看器" xml:space="preserve">
+    <value>Markdown Viewer</value>
+  </data>
+  <data name="SVG 查看器" xml:space="preserve">
+    <value>SVG Viewer</value>
+  </data>
+  <data name="Welcome to WPFDevelopers" xml:space="preserve">
+    <value>Welcome to WPFDevelopers</value>
+  </data>
+  <data name="按钮" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="边缘光" xml:space="preserve">
+    <value>Edge Glow</value>
+  </data>
+  <data name="变换布局" xml:space="preserve">
+    <value>Transform Layout</value>
+  </data>
+  <data name="标尺控件" xml:space="preserve">
+    <value>Ruler</value>
+  </data>
+  <data name="标签" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="饼图" xml:space="preserve">
+    <value>Pie Chart</value>
+  </data>
+  <data name="拨盘" xml:space="preserve">
+    <value>Dial</value>
+  </data>
+  <data name="布局间距" xml:space="preserve">
+    <value>Layout Spacing</value>
+  </data>
+  <data name="步骤条" xml:space="preserve">
+    <value>Step Indicator</value>
+  </data>
+  <data name="彩虹按钮" xml:space="preserve">
+    <value>Rainbow Button</value>
+  </data>
+  <data name="菜单" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="持续更新中" xml:space="preserve">
+    <value>More updates coming</value>
+  </data>
+  <data name="抽奖" xml:space="preserve">
+    <value>Prize Draw</value>
+  </data>
+  <data name="抽屉" xml:space="preserve">
+    <value>Drawer</value>
+  </data>
+  <data name="抽屉菜单" xml:space="preserve">
+    <value>Drawer Menu</value>
+  </data>
+  <data name="窗口" xml:space="preserve">
+    <value>Window</value>
+  </data>
+  <data name="单选按钮" xml:space="preserve">
+    <value>Radio Button</value>
+  </data>
+  <data name="弹幕" xml:space="preserve">
+    <value>Bullet Comments</value>
+  </data>
+  <data name="导航滚动面板" xml:space="preserve">
+    <value>Navigation Scroll Panel</value>
+  </data>
+  <data name="倒计时" xml:space="preserve">
+    <value>Countdown</value>
+  </data>
+  <data name="登录窗口" xml:space="preserve">
+    <value>Login Window</value>
+  </data>
+  <data name="等待加载" xml:space="preserve">
+    <value>Loading Placeholder</value>
+  </data>
+  <data name="动画网格" xml:space="preserve">
+    <value>Animated Grid</value>
+  </data>
+  <data name="抖动" xml:space="preserve">
+    <value>Shake</value>
+  </data>
+  <data name="多选下拉框(带搜索)" xml:space="preserve">
+    <value>Searchable Multi-Select Combo Box</value>
+  </data>
+  <data name="分段饼图" xml:space="preserve">
+    <value>Segmented Pie Chart</value>
+  </data>
+  <data name="分段选择器" xml:space="preserve">
+    <value>Segmented Control</value>
+  </data>
+  <data name="分割按钮" xml:space="preserve">
+    <value>Split Button</value>
+  </data>
+  <data name="分页" xml:space="preserve">
+    <value>Pagination</value>
+  </data>
+  <data name="分组框" xml:space="preserve">
+    <value>Group Box</value>
+  </data>
+  <data name="复选框" xml:space="preserve">
+    <value>Check Box</value>
+  </data>
+  <data name="歌词" xml:space="preserve">
+    <value>Lyrics</value>
+  </data>
+  <data name="滚动导航" xml:space="preserve">
+    <value>Scroll Navigation</value>
+  </data>
+  <data name="滚动加载" xml:space="preserve">
+    <value>Scroll Loading</value>
+  </data>
+  <data name="滚动视图" xml:space="preserve">
+    <value>Scroll Viewer</value>
+  </data>
+  <data name="过渡面板" xml:space="preserve">
+    <value>Transition Panel</value>
+  </data>
+  <data name="呼吸灯" xml:space="preserve">
+    <value>Breathing Light</value>
+  </data>
+  <data name="滑块" xml:space="preserve">
+    <value>Slider</value>
+  </data>
+  <data name="环形加载动画" xml:space="preserve">
+    <value>Ring Loading Animation</value>
+  </data>
+  <data name="灰度效果" xml:space="preserve">
+    <value>Grayscale Effect</value>
+  </data>
+  <data name="徽标" xml:space="preserve">
+    <value>Badge</value>
+  </data>
+  <data name="绘图" xml:space="preserve">
+    <value>Drawing</value>
+  </data>
+  <data name="活动记录（示例控件）" xml:space="preserve">
+    <value>Activity Feed (Sample Control)</value>
+  </data>
+  <data name="火箭动画" xml:space="preserve">
+    <value>Rocket Animation</value>
+  </data>
+  <data name="火苗" xml:space="preserve">
+    <value>Flame</value>
+  </data>
+  <data name="基础加载动画" xml:space="preserve">
+    <value>Basic Loading Animation</value>
+  </data>
+  <data name="基础控件" xml:space="preserve">
+    <value>Basic Controls</value>
+  </data>
+  <data name="加载动画" xml:space="preserve">
+    <value>Loading Animation</value>
+  </data>
+  <data name="进度条" xml:space="preserve">
+    <value>Progress Bar</value>
+  </data>
+  <data name="聚光灯" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="聚焦轮播" xml:space="preserve">
+    <value>Focus Carousel</value>
+  </data>
+  <data name="卡片轮播" xml:space="preserve">
+    <value>Card Carousel</value>
+  </data>
+  <data name="雷达图" xml:space="preserve">
+    <value>Radar Chart</value>
+  </data>
+  <data name="聊天表情" xml:space="preserve">
+    <value>Chat Emoji</value>
+  </data>
+  <data name="列表定位" xml:space="preserve">
+    <value>List Locator</value>
+  </data>
+  <data name="列表框" xml:space="preserve">
+    <value>List Box</value>
+  </data>
+  <data name="列表视图" xml:space="preserve">
+    <value>List View</value>
+  </data>
+  <data name="流光加载动画" xml:space="preserve">
+    <value>Shimmer Loading Animation</value>
+  </data>
+  <data name="六宫格" xml:space="preserve">
+    <value>Six-Grid View</value>
+  </data>
+  <data name="路径图标" xml:space="preserve">
+    <value>Path Icon</value>
+  </data>
+  <data name="密码框" xml:space="preserve">
+    <value>Password Box</value>
+  </data>
+  <data name="面包屑导航" xml:space="preserve">
+    <value>Breadcrumb Navigation</value>
+  </data>
+  <data name="拟物音量调节" xml:space="preserve">
+    <value>Skeuomorphic Volume Control</value>
+  </data>
+  <data name="平移列表" xml:space="preserve">
+    <value>Panning List</value>
+  </data>
+  <data name="屏幕截图" xml:space="preserve">
+    <value>Screen Capture</value>
+  </data>
+  <data name="瀑布流" xml:space="preserve">
+    <value>Masonry Layout</value>
+  </data>
+  <data name="气泡选择" xml:space="preserve">
+    <value>Bubble Selection</value>
+  </data>
+  <data name="切换按钮" xml:space="preserve">
+    <value>Toggle Button</value>
+  </data>
+  <data name="球形加载动画" xml:space="preserve">
+    <value>Sphere Loading Animation</value>
+  </data>
+  <data name="任务栏缩略图" xml:space="preserve">
+    <value>Taskbar Thumbnail</value>
+  </data>
+  <data name="任务栏信息" xml:space="preserve">
+    <value>Taskbar Item Info</value>
+  </data>
+  <data name="日历" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="日期范围选择器" xml:space="preserve">
+    <value>Date Range Picker</value>
+  </data>
+  <data name="日期时间选择器" xml:space="preserve">
+    <value>Date-Time Picker</value>
+  </data>
+  <data name="日期选择器" xml:space="preserve">
+    <value>Date Picker</value>
+  </data>
+  <data name="三维导航菜单" xml:space="preserve">
+    <value>3D Navigation Menu</value>
+  </data>
+  <data name="色彩指南" xml:space="preserve">
+    <value>Color Guide</value>
+  </data>
+  <data name="时间选择器" xml:space="preserve">
+    <value>Time Picker</value>
+  </data>
+  <data name="时间轴" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="使用指南" xml:space="preserve">
+    <value>Usage Guide</value>
+  </data>
+  <data name="示例多选下拉框" xml:space="preserve">
+    <value>Sample Multi-Select Combo Box</value>
+  </data>
+  <data name="示例专属实现或组合效果，非 WD 内置控件；请参考示例源码。" xml:space="preserve">
+    <value>Sample-specific implementation or composition, not a built-in WD control; see the sample source.</value>
+  </data>
+  <data name="手势解锁" xml:space="preserve">
+    <value>Gesture Unlock</value>
+  </data>
+  <data name="手写画布" xml:space="preserve">
+    <value>Handwriting Canvas</value>
+  </data>
+  <data name="树视图" xml:space="preserve">
+    <value>Tree View</value>
+  </data>
+  <data name="数据表格" xml:space="preserve">
+    <value>Data Grid</value>
+  </data>
+  <data name="数据表格筛选" xml:space="preserve">
+    <value>Data Grid Filtering</value>
+  </data>
+  <data name="数字卡片" xml:space="preserve">
+    <value>Number Card</value>
+  </data>
+  <data name="数字输入框" xml:space="preserve">
+    <value>Numeric Input</value>
+  </data>
+  <data name="搜索控件" xml:space="preserve">
+    <value>Search Controls</value>
+  </data>
+  <data name="头像裁剪" xml:space="preserve">
+    <value>Avatar Cropper</value>
+  </data>
+  <data name="图标库" xml:space="preserve">
+    <value>Icon Library</value>
+  </data>
+  <data name="图片裁剪" xml:space="preserve">
+    <value>Image Cropper</value>
+  </data>
+  <data name="托盘图标" xml:space="preserve">
+    <value>System Tray Icon</value>
+  </data>
+  <data name="拖拽" xml:space="preserve">
+    <value>Drag and Drop</value>
+  </data>
+  <data name="网格分隔条" xml:space="preserve">
+    <value>Grid Splitter</value>
+  </data>
+  <data name="温度计" xml:space="preserve">
+    <value>Thermometer</value>
+  </data>
+  <data name="文本框" xml:space="preserve">
+    <value>Text Box</value>
+  </data>
+  <data name="下拉框" xml:space="preserve">
+    <value>Combo Box</value>
+  </data>
+  <data name="消息框" xml:space="preserve">
+    <value>Message Box</value>
+  </data>
+  <data name="消息提示" xml:space="preserve">
+    <value>Toast Notification</value>
+  </data>
+  <data name="星空" xml:space="preserve">
+    <value>Starry Sky</value>
+  </data>
+  <data name="虚拟化换行面板" xml:space="preserve">
+    <value>Virtualizing Wrap Panel</value>
+  </data>
+  <data name="选项卡" xml:space="preserve">
+    <value>Tab Control</value>
+  </data>
+  <data name="雪花画布" xml:space="preserve">
+    <value>Snowflake Canvas</value>
+  </data>
+  <data name="循环加载" xml:space="preserve">
+    <value>Looping Loader</value>
+  </data>
+  <data name="亚克力效果" xml:space="preserve">
+    <value>Acrylic Effect</value>
+  </data>
+  <data name="颜色选择器" xml:space="preserve">
+    <value>Color Picker</value>
+  </data>
+  <data name="一次性验证码输入框" xml:space="preserve">
+    <value>One-Time Password Input</value>
+  </data>
+  <data name="仪表" xml:space="preserve">
+    <value>Gauge</value>
+  </data>
+  <data name="仪表盘" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="音频动画" xml:space="preserve">
+    <value>Audio Animation</value>
+  </data>
+  <data name="圆形菜单" xml:space="preserve">
+    <value>Circle Menu</value>
+  </data>
+  <data name="圆形进度条" xml:space="preserve">
+    <value>Circular Progress Bar</value>
+  </data>
+  <data name="圆形选择器" xml:space="preserve">
+    <value>Round Picker</value>
+  </data>
+  <data name="遮罩与窗口遮罩" xml:space="preserve">
+    <value>Control and Window Masks</value>
+  </data>
+  <data name="折叠面板" xml:space="preserve">
+    <value>Expander</value>
+  </data>
+  <data name="折线图" xml:space="preserve">
+    <value>Line Chart</value>
+  </data>
+  <data name="主题" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="柱状图" xml:space="preserve">
+    <value>Bar Chart</value>
+  </data>
+  <data name="桌面背景" xml:space="preserve">
+    <value>Desktop Background</value>
+  </data>
+  <data name="走马灯" xml:space="preserve">
+    <value>Marquee</value>
+  </data>
+  <data name="对话框" xml:space="preserve">
+    <value>Dialog</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="A" xml:space="preserve"><value>A</value></data>
+  <data name="ASP.NET" xml:space="preserve"><value>ASP.NET</value></data>
+  <data name="Add" xml:space="preserve"><value>Add</value></data>
+  <data name="Add Item" xml:space="preserve"><value>Add item</value></data>
+  <data name="Add nuget;" xml:space="preserve"><value>Install the NuGet package;</value></data>
+  <data name="Add the Namespace in App.xaml" xml:space="preserve"><value>Add the namespace to App.xaml</value></data>
+  <data name="Add the Resources to App.xaml" xml:space="preserve"><value>Add the resources to App.xaml</value></data>
+  <data name="AddLoading" xml:space="preserve"><value>Add loading indicator</value></data>
+  <data name="Address" xml:space="preserve"><value>Address</value></data>
+  <data name="Age" xml:space="preserve"><value>Age</value></data>
+  <data name="AllGrid" xml:space="preserve"><value>All grids</value></data>
+  <data name="Apple!" xml:space="preserve"><value>Apple!</value></data>
+  <data name="AtomGit" xml:space="preserve"><value>AtomGit</value></data>
+  <data name="B" xml:space="preserve"><value>B</value></data>
+  <data name="BD09" xml:space="preserve"><value>BD09</value></data>
+  <data name="Binding" xml:space="preserve"><value>Data binding</value></data>
+  <data name="Binding Source" xml:space="preserve"><value>Binding source</value></data>
+  <data name="Binding:" xml:space="preserve"><value>Data binding:</value></data>
+  <data name="Blazor" xml:space="preserve"><value>Blazor</value></data>
+  <data name="Bottom" xml:space="preserve"><value>Bottom</value></data>
+  <data name="Bus" xml:space="preserve"><value>Bus</value></data>
+  <data name="Bus 1" xml:space="preserve"><value>Bus 1</value></data>
+  <data name="Bus 2" xml:space="preserve"><value>Bus 2</value></data>
+  <data name="Busy" xml:space="preserve"><value>Busy</value></data>
+  <data name="Button" xml:space="preserve"><value>Button</value></data>
+  <data name="C#" xml:space="preserve"><value>C#</value></data>
+  <data name="C# + XAML / Events" xml:space="preserve"><value>C# + XAML / Events</value></data>
+  <data name="Calendar" xml:space="preserve"><value>Calendar</value></data>
+  <data name="Card" xml:space="preserve"><value>Card</value></data>
+  <data name="Check-in" xml:space="preserve"><value>Check-in</value></data>
+  <data name="Checkbox" xml:space="preserve"><value>Checkbox</value></data>
+  <data name="City" xml:space="preserve"><value>City</value></data>
+  <data name="Class" xml:space="preserve"><value>Class</value></data>
+  <data name="Classroom" xml:space="preserve"><value>Classroom</value></data>
+  <data name="Clear" xml:space="preserve"><value>Clear</value></data>
+  <data name="Clear Toast" xml:space="preserve"><value>Clear toasts</value></data>
+  <data name="Clock" xml:space="preserve"><value>Clock</value></data>
+  <data name="Code CSharp" xml:space="preserve"><value>C# code</value></data>
+  <data name="ComboBox" xml:space="preserve"><value>ComboBox</value></data>
+  <data name="Command" xml:space="preserve"><value>Command</value></data>
+  <data name="Commit" xml:space="preserve"><value>Submit</value></data>
+  <data name="Complete all existing nodes and append a loading node." xml:space="preserve"><value>Complete all existing nodes and append a loading node.</value></data>
+  <data name="Complete pending" xml:space="preserve"><value>Complete pending nodes</value></data>
+  <data name="ContactMethod" xml:space="preserve"><value>Contact method</value></data>
+  <data name="Content" xml:space="preserve"><value>Content</value></data>
+  <data name="Content 1" xml:space="preserve"><value>Content 1</value></data>
+  <data name="Content 2" xml:space="preserve"><value>Content 2</value></data>
+  <data name="Content 3" xml:space="preserve"><value>Content 3</value></data>
+  <data name="Content 4" xml:space="preserve"><value>Content 4</value></data>
+  <data name="Content 5" xml:space="preserve"><value>Content 5</value></data>
+  <data name="Content 6" xml:space="preserve"><value>Content 6</value></data>
+  <data name="Copy" xml:space="preserve"><value>Copy</value></data>
+  <data name="Copy Key" xml:space="preserve"><value>Copy resource key</value></data>
+  <data name="Copyright © 2022 WPFDevelopers. All rights reserved." xml:space="preserve"><value>Copyright © 2022 WPFDevelopers. All rights reserved.</value></data>
+  <data name="Count：" xml:space="preserve"><value>Count:</value></data>
+  <data name="Create" xml:space="preserve"><value>Create</value></data>
+  <data name="Create a service site" xml:space="preserve"><value>Create a service site</value></data>
+  <data name="Ctrl + L" xml:space="preserve"><value>Ctrl + L</value></data>
+  <data name="Ctrl + ←" xml:space="preserve"><value>Ctrl + ←</value></data>
+  <data name="Ctrl + ↑" xml:space="preserve"><value>Ctrl + ↑</value></data>
+  <data name="Ctrl + →" xml:space="preserve"><value>Ctrl + →</value></data>
+  <data name="Ctrl + ↓" xml:space="preserve"><value>Ctrl + ↓</value></data>
+  <data name="Cut" xml:space="preserve"><value>Cut</value></data>
+  <data name="DEMO" xml:space="preserve"><value>DEMO</value></data>
+  <data name="Danger" xml:space="preserve"><value>Danger</value></data>
+  <data name="Dark" xml:space="preserve"><value>Dark</value></data>
+  <data name="DataGrid" xml:space="preserve"><value>DataGrid</value></data>
+  <data name="Date" xml:space="preserve"><value>Date</value></data>
+  <data name="DatePicker" xml:space="preserve"><value>DatePicker</value></data>
+  <data name="DateTime" xml:space="preserve"><value>Date and time</value></data>
+  <data name="DateTimePicker" xml:space="preserve"><value>DateTimePicker</value></data>
+  <data name="Default" xml:space="preserve"><value>Default</value></data>
+  <data name="Deploy" xml:space="preserve"><value>Deploy</value></data>
+  <data name="Desktop" xml:space="preserve"><value>Desktop</value></data>
+  <data name="Develop" xml:space="preserve"><value>Develop</value></data>
+  <data name="Dialog" xml:space="preserve"><value>Dialog</value></data>
+  <data name="Drawer" xml:space="preserve"><value>Drawer</value></data>
+  <data name="DrawerMenu - Xaml" xml:space="preserve"><value>DrawerMenu - XAML</value></data>
+  <data name="DrawerMenu binding" xml:space="preserve"><value>DrawerMenu data binding</value></data>
+  <data name="EN" xml:space="preserve"><value>EN</value></data>
+  <data name="EdgeLight" xml:space="preserve"><value>EdgeLight</value></data>
+  <data name="EdgeLight2" xml:space="preserve"><value>EdgeLight2</value></data>
+  <data name="EdgePage" xml:space="preserve"><value>EdgePage</value></data>
+  <data name="Email" xml:space="preserve"><value>Email</value></data>
+  <data name="EmailPage" xml:space="preserve"><value>EmailPage</value></data>
+  <data name="Emoji" xml:space="preserve"><value>Emoji</value></data>
+  <data name="Enable" xml:space="preserve"><value>Enable</value></data>
+  <data name="English" xml:space="preserve"><value>English</value></data>
+  <data name="Error" xml:space="preserve"><value>Error</value></data>
+  <data name="Error Toast" xml:space="preserve"><value>Error toast</value></data>
+  <data name="Event" xml:space="preserve"><value>Event</value></data>
+  <data name="Expander" xml:space="preserve"><value>Expander</value></data>
+  <data name="Expander1" xml:space="preserve"><value>Expander1</value></data>
+  <data name="False" xml:space="preserve"><value>False</value></data>
+  <data name="File" xml:space="preserve"><value>File</value></data>
+  <data name="Friend" xml:space="preserve"><value>Friend</value></data>
+  <data name="GCJ02" xml:space="preserve"><value>GCJ02</value></data>
+  <data name="Geometry:" xml:space="preserve"><value>Geometry:</value></data>
+  <data name="GitHub" xml:space="preserve"><value>GitHub</value></data>
+  <data name="GitHub stars" xml:space="preserve"><value>GitHub stars</value></data>
+  <data name="Gitee" xml:space="preserve"><value>Gitee</value></data>
+  <data name="Grayscale" xml:space="preserve"><value>Grayscale</value></data>
+  <data name="Grid" xml:space="preserve"><value>Grid</value></data>
+  <data name="GridSplitter" xml:space="preserve"><value>GridSplitter</value></data>
+  <data name="GroupBox" xml:space="preserve"><value>GroupBox</value></data>
+  <data name="GroupBox1" xml:space="preserve"><value>GroupBox1</value></data>
+  <data name="HD" xml:space="preserve"><value>HD</value></data>
+  <data name="HighTitleBar" xml:space="preserve"><value>HighTitleBar</value></data>
+  <data name="Home" xml:space="preserve"><value>Home</value></data>
+  <data name="HomePage" xml:space="preserve"><value>HomePage</value></data>
+  <data name="Horizontal" xml:space="preserve"><value>Horizontal</value></data>
+  <data name="Horizontal / Alternate / Labels" xml:space="preserve"><value>Horizontal / Alternate / Labels</value></data>
+  <data name="Horizontal ScrollViewer" xml:space="preserve"><value>Horizontal ScrollViewer</value></data>
+  <data name="Horizontal splitter - resize rows" xml:space="preserve"><value>Horizontal splitter - resize rows</value></data>
+  <data name="HorizontalGrid" xml:space="preserve"><value>Horizontal grid</value></data>
+  <data name="ID" xml:space="preserve"><value>ID</value></data>
+  <data name="IconicThumbnailWindowExample" xml:space="preserve"><value>IconicThumbnailWindowExample</value></data>
+  <data name="Idle" xml:space="preserve"><value>Idle</value></data>
+  <data name="Info" xml:space="preserve"><value>Information</value></data>
+  <data name="Info Toast" xml:space="preserve"><value>Information toast</value></data>
+  <data name="IntPtr Window" xml:space="preserve"><value>IntPtr window</value></data>
+  <data name="IsLoading" xml:space="preserve"><value>IsLoading</value></data>
+  <data name="IsOpen" xml:space="preserve"><value>IsOpen</value></data>
+  <data name="IsVisible" xml:space="preserve"><value>IsVisible</value></data>
+  <data name="Item 1" xml:space="preserve"><value>Item 1</value></data>
+  <data name="Item 2" xml:space="preserve"><value>Item 2</value></data>
+  <data name="Item 3" xml:space="preserve"><value>Item 3</value></data>
+  <data name="Item 6" xml:space="preserve"><value>Item 6</value></data>
+  <data name="Jindong Province" xml:space="preserve"><value>Jindong region</value></data>
+  <data name="Languages" xml:space="preserve"><value>Languages</value></data>
+  <data name="Languages:" xml:space="preserve"><value>Languages:</value></data>
+  <data name="Large" xml:space="preserve"><value>Large</value></data>
+  <data name="Left" xml:space="preserve"><value>Left</value></data>
+  <data name="Light" xml:space="preserve"><value>Light</value></data>
+  <data name="Light | Dark" xml:space="preserve"><value>Light | Dark</value></data>
+  <data name="ListBox" xml:space="preserve"><value>ListBox</value></data>
+  <data name="ListView" xml:space="preserve"><value>ListView</value></data>
+  <data name="Loading" xml:space="preserve"><value>Loading</value></data>
+  <data name="Loading activity..." xml:space="preserve"><value>Loading activity...</value></data>
+  <data name="LoadingTask" xml:space="preserve"><value>Load task</value></data>
+  <data name="Login" xml:space="preserve"><value>Log in</value></data>
+  <data name="Long Toast" xml:space="preserve"><value>Long toast</value></data>
+  <data name="MAP OVERVIEW" xml:space="preserve"><value>MAP OVERVIEW</value></data>
+  <data name="MAUI" xml:space="preserve"><value>MAUI</value></data>
+  <data name="MIT" xml:space="preserve"><value>MIT</value></data>
+  <data name="MVVM" xml:space="preserve"><value>MVVM</value></data>
+  <data name="MVVM / Commands" xml:space="preserve"><value>MVVM / Commands</value></data>
+  <data name="MainWindow" xml:space="preserve"><value>MainWindow</value></data>
+  <data name="MainWindow Code" xml:space="preserve"><value>MainWindow source code</value></data>
+  <data name="Markdown Input" xml:space="preserve"><value>Markdown input</value></data>
+  <data name="Markdown Preview" xml:space="preserve"><value>Markdown preview</value></data>
+  <data name="Mask" xml:space="preserve"><value>Mask</value></data>
+  <data name="Mask 0" xml:space="preserve"><value>Mask 0</value></data>
+  <data name="Mask 1" xml:space="preserve"><value>Mask 1</value></data>
+  <data name="Mask 2" xml:space="preserve"><value>Mask 2</value></data>
+  <data name="Max" xml:space="preserve"><value>Maximum</value></data>
+  <data name="MaxDate:" xml:space="preserve"><value>Maximum date:</value></data>
+  <data name="Medium" xml:space="preserve"><value>Medium</value></data>
+  <data name="Menu" xml:space="preserve"><value>Menu</value></data>
+  <data name="Menu1" xml:space="preserve"><value>Menu 1</value></data>
+  <data name="Menu2" xml:space="preserve"><value>Menu 2</value></data>
+  <data name="Menu3" xml:space="preserve"><value>Menu 3</value></data>
+  <data name="MenuItem 1" xml:space="preserve"><value>Menu item 1</value></data>
+  <data name="MenuItem 1.1" xml:space="preserve"><value>Menu item 1.1</value></data>
+  <data name="MenuItem 1.1.1" xml:space="preserve"><value>Menu item 1.1.1</value></data>
+  <data name="MenuItem 1.1.1.1" xml:space="preserve"><value>Menu item 1.1.1.1</value></data>
+  <data name="MenuItem 1.1.1.2" xml:space="preserve"><value>Menu item 1.1.1.2</value></data>
+  <data name="MenuItem 1.1.2" xml:space="preserve"><value>Menu item 1.1.2</value></data>
+  <data name="MenuItem 1.2" xml:space="preserve"><value>Menu item 1.2</value></data>
+  <data name="MenuItem 1.3" xml:space="preserve"><value>Menu item 1.3</value></data>
+  <data name="MenuItem 1.4" xml:space="preserve"><value>Menu item 1.4</value></data>
+  <data name="MenuItem 1.5" xml:space="preserve"><value>Menu item 1.5</value></data>
+  <data name="MenuItem 2" xml:space="preserve"><value>Menu item 2</value></data>
+  <data name="MenuItem 3" xml:space="preserve"><value>Menu item 3</value></data>
+  <data name="MenuItem 4" xml:space="preserve"><value>Menu item 4</value></data>
+  <data name="Min" xml:space="preserve"><value>Minimum</value></data>
+  <data name="MinDate:" xml:space="preserve"><value>Minimum date:</value></data>
+  <data name="Mode" xml:space="preserve"><value>Mode</value></data>
+  <data name="Mode 1" xml:space="preserve"><value>Mode 1</value></data>
+  <data name="Mode 2" xml:space="preserve"><value>Mode 2</value></data>
+  <data name="Mode 3" xml:space="preserve"><value>Mode 3</value></data>
+  <data name="Mode 4" xml:space="preserve"><value>Mode 4</value></data>
+  <data name="MultiColor" xml:space="preserve"><value>Multicolor</value></data>
+  <data name="MultiSelectComboBox" xml:space="preserve"><value>MultiSelectComboBox</value></data>
+  <data name="MultiSelectionSearchComboBox" xml:space="preserve"><value>MultiSelectionSearchComboBox</value></data>
+  <data name="Multiline content keeps the nodes aligned." xml:space="preserve"><value>Multiline content keeps the nodes aligned.</value></data>
+  <data name="NEW" xml:space="preserve"><value>NEW</value></data>
+  <data name="Name" xml:space="preserve"><value>Name</value></data>
+  <data name="Network problems being solved" xml:space="preserve"><value>Resolving network problems</value></data>
+  <data name="Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Next step" xml:space="preserve"><value>Next step</value></data>
+  <data name="NoneTitleBarWindow" xml:space="preserve"><value>NoneTitleBarWindow</value></data>
+  <data name="Normal" xml:space="preserve"><value>Normal</value></data>
+  <data name="NormalLoading" xml:space="preserve"><value>Normal loading indicator</value></data>
+  <data name="NuGet" xml:space="preserve"><value>NuGet</value></data>
+  <data name="NuGet downloads" xml:space="preserve"><value>NuGet downloads</value></data>
+  <data name="Off Task" xml:space="preserve"><value>Close task</value></data>
+  <data name="Offset" xml:space="preserve"><value>Offset</value></data>
+  <data name="Open" xml:space="preserve"><value>Open</value></data>
+  <data name="Open MVVM dialog" xml:space="preserve"><value>Open MVVM dialog</value></data>
+  <data name="Option 1" xml:space="preserve"><value>Option 1</value></data>
+  <data name="Option 2" xml:space="preserve"><value>Option 2</value></data>
+  <data name="Option 3" xml:space="preserve"><value>Option 3</value></data>
+  <data name="Option 4" xml:space="preserve"><value>Option 4</value></data>
+  <data name="Option 5" xml:space="preserve"><value>Option 5</value></data>
+  <data name="Option A" xml:space="preserve"><value>Option A</value></data>
+  <data name="Option B" xml:space="preserve"><value>Option B</value></data>
+  <data name="Option C" xml:space="preserve"><value>Option C</value></data>
+  <data name="Option D" xml:space="preserve"><value>Option D</value></data>
+  <data name="Orientation" xml:space="preserve"><value>Orientation</value></data>
+  <data name="PasswordBox" xml:space="preserve"><value>PasswordBox</value></data>
+  <data name="Paste" xml:space="preserve"><value>Paste</value></data>
+  <data name="PathIcon:" xml:space="preserve"><value>PathIcon:</value></data>
+  <data name="Progress" xml:space="preserve"><value>Progress</value></data>
+  <data name="ProgressBar" xml:space="preserve"><value>ProgressBar</value></data>
+  <data name="Question" xml:space="preserve"><value>Question</value></data>
+  <data name="RadioButton" xml:space="preserve"><value>RadioButton</value></data>
+  <data name="Regular" xml:space="preserve"><value>Regular</value></data>
+  <data name="Remove last" xml:space="preserve"><value>Remove last</value></data>
+  <data name="Reset" xml:space="preserve"><value>Reset</value></data>
+  <data name="Reverse" xml:space="preserve"><value>Reverse</value></data>
+  <data name="Right" xml:space="preserve"><value>Right</value></data>
+  <data name="Sample" xml:space="preserve"><value>Sample</value></data>
+  <data name="Save" xml:space="preserve"><value>Save</value></data>
+  <data name="ScreenShot" xml:space="preserve"><value>Screenshot</value></data>
+  <data name="Scroll Navigation" xml:space="preserve"><value>Scroll navigation</value></data>
+  <data name="ScrollViewer" xml:space="preserve"><value>ScrollViewer</value></data>
+  <data name="Shandong Province" xml:space="preserve"><value>Shandong Province</value></data>
+  <data name="ShowTheme: Light / Dark" xml:space="preserve"><value>Theme: Light / Dark</value></data>
+  <data name="Sichuan Province" xml:space="preserve"><value>Sichuan Province</value></data>
+  <data name="Single select" xml:space="preserve"><value>Single selection</value></data>
+  <data name="Single:" xml:space="preserve"><value>Single selection:</value></data>
+  <data name="Slide 1" xml:space="preserve"><value>Slide 1</value></data>
+  <data name="Slide 2" xml:space="preserve"><value>Slide 2</value></data>
+  <data name="Slide 3" xml:space="preserve"><value>Slide 3</value></data>
+  <data name="Slide 4" xml:space="preserve"><value>Slide 4</value></data>
+  <data name="Slide 5" xml:space="preserve"><value>Slide 5</value></data>
+  <data name="Slider" xml:space="preserve"><value>Slider</value></data>
+  <data name="Slightly Idle" xml:space="preserve"><value>Mostly idle</value></data>
+  <data name="Small" xml:space="preserve"><value>Small</value></data>
+  <data name="Solve initial network problems" xml:space="preserve"><value>Solve initial network problems</value></data>
+  <data name="Spacing=4 adds a 4px gap between items and wrapped rows, plus 2px around the panel edges. Existing child margins are added to this gap." xml:space="preserve"><value>Spacing=4 adds a 4px gap between items and wrapped rows, plus 2px around the panel edges. Existing child margins are added to this gap.</value></data>
+  <data name="StackPanel" xml:space="preserve"><value>StackPanel</value></data>
+  <data name="Star" xml:space="preserve"><value>Star</value></data>
+  <data name="Step 1:" xml:space="preserve"><value>Step 1:</value></data>
+  <data name="Step 2:" xml:space="preserve"><value>Step 2:</value></data>
+  <data name="Step 3:" xml:space="preserve"><value>Step 3:</value></data>
+  <data name="Style1" xml:space="preserve"><value>Style 1</value></data>
+  <data name="Style2" xml:space="preserve"><value>Style 2</value></data>
+  <data name="Style3" xml:space="preserve"><value>Style 3</value></data>
+  <data name="Success" xml:space="preserve"><value>Success</value></data>
+  <data name="Success Toast" xml:space="preserve"><value>Success toast</value></data>
+  <data name="System V1.0" xml:space="preserve"><value>System V1.0</value></data>
+  <data name="TRACKING DATA" xml:space="preserve"><value>TRACKING DATA</value></data>
+  <data name="TabControl" xml:space="preserve"><value>TabControl</value></data>
+  <data name="TabItem1" xml:space="preserve"><value>Tab 1</value></data>
+  <data name="TabItem2" xml:space="preserve"><value>Tab 2</value></data>
+  <data name="TabItem2LongLongLongLongLongLongLongLong" xml:space="preserve"><value>Tab 2LongLongLongLongLongLongLongLong</value></data>
+  <data name="TabItem3" xml:space="preserve"><value>Tab 3</value></data>
+  <data name="TabItem3LongLongLongLongLongLongLongLong" xml:space="preserve"><value>Tab 3LongLongLongLongLongLongLongLong</value></data>
+  <data name="Tag1" xml:space="preserve"><value>Tag 1</value></data>
+  <data name="Tag2" xml:space="preserve"><value>Tag 2</value></data>
+  <data name="Tag3" xml:space="preserve"><value>Tag 3</value></data>
+  <data name="Tag4" xml:space="preserve"><value>Tag 4</value></data>
+  <data name="Tag5" xml:space="preserve"><value>Tag 5</value></data>
+  <data name="TaskbarItemInfoExample" xml:space="preserve"><value>TaskbarItemInfoExample</value></data>
+  <data name="Technical testing" xml:space="preserve"><value>Technical testing</value></data>
+  <data name="Test" xml:space="preserve"><value>Test</value></data>
+  <data name="TextBlock:" xml:space="preserve"><value>TextBlock:</value></data>
+  <data name="TextBox" xml:space="preserve"><value>TextBox</value></data>
+  <data name="Theme" xml:space="preserve"><value>Theme</value></data>
+  <data name="Toast Position" xml:space="preserve"><value>Toast position</value></data>
+  <data name="ToggleButton" xml:space="preserve"><value>ToggleButton</value></data>
+  <data name="ToolWindow" xml:space="preserve"><value>ToolWindow</value></data>
+  <data name="Top" xml:space="preserve"><value>Top</value></data>
+  <data name="TreeView" xml:space="preserve"><value>TreeView</value></data>
+  <data name="UPDATE" xml:space="preserve"><value>UPDATE</value></data>
+  <data name="UWP" xml:space="preserve"><value>UWP</value></data>
+  <data name="UniformGrid" xml:space="preserve"><value>UniformGrid</value></data>
+  <data name="Use the mouse wheel or touchpad to scroll horizontally." xml:space="preserve"><value>Use the mouse wheel or touchpad to scroll horizontally.</value></data>
+  <data name="Vertical" xml:space="preserve"><value>Vertical</value></data>
+  <data name="Vertical / Start" xml:space="preserve"><value>Vertical / Start</value></data>
+  <data name="Vertical splitter - resize columns" xml:space="preserve"><value>Vertical splitter - resize columns</value></data>
+  <data name="VerticalGrid" xml:space="preserve"><value>Vertical grid</value></data>
+  <data name="Virtualization (5000)" xml:space="preserve"><value>Virtualization (5000 items)</value></data>
+  <data name="Vote" xml:space="preserve"><value>Vote</value></data>
+  <data name="WGS84" xml:space="preserve"><value>WGS84</value></data>
+  <data name="WGS84 -&gt; GCJ02" xml:space="preserve"><value>WGS84 -&gt; GCJ02</value></data>
+  <data name="WPF" xml:space="preserve"><value>WPF</value></data>
+  <data name="WPFDevelopers" xml:space="preserve"><value>WPFDevelopers</value></data>
+  <data name="WPFDevelopers Logo" xml:space="preserve"><value>WPFDevelopers logo</value></data>
+  <data name="WPFDevelopers.Avalonia" xml:space="preserve"><value>WPFDevelopers.Avalonia</value></data>
+  <data name="Warning" xml:space="preserve"><value>Warning</value></data>
+  <data name="Warning Toast" xml:space="preserve"><value>Warning toast</value></data>
+  <data name="WebAPI" xml:space="preserve"><value>WebAPI</value></data>
+  <data name="Whiteboard" xml:space="preserve"><value>Whiteboard</value></data>
+  <data name="WinForm" xml:space="preserve"><value>WinForm</value></data>
+  <data name="WinUI" xml:space="preserve"><value>WinUI</value></data>
+  <data name="Window" xml:space="preserve"><value>Window</value></data>
+  <data name="WrapPanel" xml:space="preserve"><value>WrapPanel</value></data>
+  <data name="X" xml:space="preserve"><value>X</value></data>
+  <data name="XAML" xml:space="preserve"><value>XAML</value></data>
+  <data name="XXXYYY" xml:space="preserve"><value>XXXYYY</value></data>
+  <data name="Xamarin" xml:space="preserve"><value>Xamarin</value></data>
+  <data name="YanJinHua" xml:space="preserve"><value>YanJinHua</value></data>
+  <data name="YesNoCancel" xml:space="preserve"><value>Yes / No / Cancel</value></data>
+  <data name="Zoom In" xml:space="preserve"><value>Zoom in</value></data>
+  <data name="Zoom Out" xml:space="preserve"><value>Zoom out</value></data>
+  <data name="activity" xml:space="preserve"><value>Activity</value></data>
+  <data name="contents..." xml:space="preserve"><value>Content...</value></data>
+  <data name="license" xml:space="preserve"><value>License</value></data>
+  <data name="selection time" xml:space="preserve"><value>Select time</value></data>
+  <data name="tags" xml:space="preserve"><value>Tags</value></data>
+  <data name="version" xml:space="preserve"><value>Version</value></data>
+  <data name="wd:WDScrollViewer" xml:space="preserve"><value>wd:WDScrollViewer</value></data>
+  <data name="한국어" xml:space="preserve"><value>한국어</value></data>
+  <data name="343DST.com" xml:space="preserve"><value>343DST.com</value></data>
+  <data name="ABCV.wang" xml:space="preserve"><value>ABCV.wang</value></data>
+  <data name="Added by a C# click event." xml:space="preserve"><value>Added by a C# click event.</value></data>
+  <data name="Alibaba" xml:space="preserve"><value>Alibaba</value></data>
+  <data name="Apple" xml:space="preserve"><value>Apple</value></data>
+  <data name="Background" xml:space="preserve"><value>Background</value></data>
+  <data name="Baidu" xml:space="preserve"><value>Baidu</value></data>
+  <data name="Beijing" xml:space="preserve"><value>Beijing</value></data>
+  <data name="Bing" xml:space="preserve"><value>Bing</value></data>
+  <data name="Black" xml:space="preserve"><value>Black</value></data>
+  <data name="Border Base" xml:space="preserve"><value>Base border</value></data>
+  <data name="Canceled" xml:space="preserve"><value>Canceled</value></data>
+  <data name="Car" xml:space="preserve"><value>Car</value></data>
+  <data name="Chart Fill" xml:space="preserve"><value>Chart fill</value></data>
+  <data name="Chart XAxis" xml:space="preserve"><value>Chart X axis</value></data>
+  <data name="Command jump page click: {page}" xml:space="preserve"><value>Jump-to-page command clicked: {page}</value></data>
+  <data name="Command next click: {param}" xml:space="preserve"><value>Next-page command clicked: {param}</value></data>
+  <data name="Command page click: {page}" xml:space="preserve"><value>Page command clicked: {page}</value></data>
+  <data name="Command prev click: {param}" xml:space="preserve"><value>Previous-page command clicked: {param}</value></data>
+  <data name="Completed" xml:space="preserve"><value>Completed</value></data>
+  <data name="Confirmed: name:{model.Name} - email:{model.Email}" xml:space="preserve"><value>Confirmed: name: {model.Name} - email: {model.Email}</value></data>
+  <data name="Create a service site." xml:space="preserve"><value>Create a service site.</value></data>
+  <data name="Created" xml:space="preserve"><value>Created</value></data>
+  <data name="Day" xml:space="preserve"><value>Day</value></data>
+  <data name="Dual" xml:space="preserve"><value>Dual screen</value></data>
+  <data name="Edge" xml:space="preserve"><value>Edge</value></data>
+  <data name="Event {_eventNumber}" xml:space="preserve"><value>Event {_eventNumber}</value></data>
+  <data name="F2" xml:space="preserve"><value>F2</value></data>
+  <data name="Fax" xml:space="preserve"><value>Fax</value></data>
+  <data name="Fri" xml:space="preserve"><value>Fri</value></data>
+  <data name="Google" xml:space="preserve"><value>Google</value></data>
+  <data name="In progress" xml:space="preserve"><value>In progress</value></data>
+  <data name="Item {i}" xml:space="preserve"><value>Item {i}</value></data>
+  <data name="Jump page click: Current={pagination.Current}" xml:space="preserve"><value>Jump-to-page clicked: current page={pagination.Current}</value></data>
+  <data name="Lighter" xml:space="preserve"><value>Lighter</value></data>
+  <data name="MB" xml:space="preserve"><value>MB</value></data>
+  <data name="Markdown Files (*.md)|*.md|All Files (*.*)|*.*" xml:space="preserve"><value>Markdown files (*.md)|*.md|All files (*.*)|*.*</value></data>
+  <data name="Menu01" xml:space="preserve"><value>Menu 01</value></data>
+  <data name="Menu02" xml:space="preserve"><value>Menu 02</value></data>
+  <data name="Menu03" xml:space="preserve"><value>Menu 03</value></data>
+  <data name="Microsoft" xml:space="preserve"><value>Microsoft</value></data>
+  <data name="Mon" xml:space="preserve"><value>Mon</value></data>
+  <data name="Month" xml:space="preserve"><value>Month</value></data>
+  <data name="MouseOver" xml:space="preserve"><value>Mouse over</value></data>
+  <data name="Name{i}" xml:space="preserve"><value>Name{i}</value></data>
+  <data name="Next click: Current={pagination.Current}" xml:space="preserve"><value>Next clicked: current page={pagination.Current}</value></data>
+  <data name="One Microsoft Way, Redmond" xml:space="preserve"><value>One Microsoft Way, Redmond</value></data>
+  <data name="Open AI" xml:space="preserve"><value>Open AI</value></data>
+  <data name="Open AI2" xml:space="preserve"><value>Open AI2</value></data>
+  <data name="Open AI3" xml:space="preserve"><value>Open AI3</value></data>
+  <data name="Open AI4" xml:space="preserve"><value>Open AI4</value></data>
+  <data name="OpenAI.com" xml:space="preserve"><value>OpenAI.com</value></data>
+  <data name="PPOI.xu" xml:space="preserve"><value>PPOI.xu</value></data>
+  <data name="Page click: Current={pagination.Current}" xml:space="preserve"><value>Page clicked: current page={pagination.Current}</value></data>
+  <data name="Placeholder Text" xml:space="preserve"><value>Placeholder text</value></data>
+  <data name="Prev click: Current={pagination.Current}" xml:space="preserve"><value>Previous clicked: current page={pagination.Current}</value></data>
+  <data name="Primary" xml:space="preserve"><value>Primary</value></data>
+  <data name="Primary Text" xml:space="preserve"><value>Primary text</value></data>
+  <data name="Regular Text" xml:space="preserve"><value>Regular text</value></data>
+  <data name="Runner" xml:space="preserve"><value>Runner</value></data>
+  <data name="Runoob" xml:space="preserve"><value>Runoob</value></data>
+  <data name="Sat" xml:space="preserve"><value>Sat</value></data>
+  <data name="Save in Excel" xml:space="preserve"><value>Save as Excel</value></data>
+  <data name="Save in Image" xml:space="preserve"><value>Save as an image</value></data>
+  <data name="Save in PDF" xml:space="preserve"><value>Save as PDF</value></data>
+  <data name="Save in Word" xml:space="preserve"><value>Save as Word</value></data>
+  <data name="Shadow Depth" xml:space="preserve"><value>Shadow depth</value></data>
+  <data name="Shanghai" xml:space="preserve"><value>Shanghai</value></data>
+  <data name="Single" xml:space="preserve"><value>Single screen</value></data>
+  <data name="Solve initial network problems." xml:space="preserve"><value>Solve initial network problems.</value></data>
+  <data name="Stack Overflow" xml:space="preserve"><value>Stack Overflow</value></data>
+  <data name="Step 1" xml:space="preserve"><value>Step 1</value></data>
+  <data name="Step 2" xml:space="preserve"><value>Step 2</value></data>
+  <data name="Step 3" xml:space="preserve"><value>Step 3</value></data>
+  <data name="Step 4" xml:space="preserve"><value>Step 4</value></data>
+  <data name="Sun" xml:space="preserve"><value>Sun</value></data>
+  <data name="Technical testing is in progress." xml:space="preserve"><value>Technical testing is in progress.</value></data>
+  <data name="Tel" xml:space="preserve"><value>Telephone</value></data>
+  <data name="The Shy" xml:space="preserve"><value>The Shy</value></data>
+  <data name="This is a Handle toast" xml:space="preserve"><value>This is a toast shown using a window handle</value></data>
+  <data name="This is a Success toast" xml:space="preserve"><value>This is a success toast</value></data>
+  <data name="This is a error toast" xml:space="preserve"><value>This is an error toast</value></data>
+  <data name="This is a info toast" xml:space="preserve"><value>This is an information toast</value></data>
+  <data name="This is a question toast" xml:space="preserve"><value>This is a question toast</value></data>
+  <data name="This is a warning toast" xml:space="preserve"><value>This is a warning toast</value></data>
+  <data name="Three" xml:space="preserve"><value>Triple screen</value></data>
+  <data name="Thu" xml:space="preserve"><value>Thu</value></data>
+  <data name="Tue" xml:space="preserve"><value>Tue</value></data>
+  <data name="Updated by a C# click event." xml:space="preserve"><value>Updated by a C# click event.</value></data>
+  <data name="WD.BackgroundBrush" xml:space="preserve"><value>WD.BackgroundBrush</value></data>
+  <data name="WD.BaseBrush" xml:space="preserve"><value>WD.BaseBrush</value></data>
+  <data name="WD.BaseMoveBrush" xml:space="preserve"><value>WD.BaseMoveBrush</value></data>
+  <data name="WD.BlackBrush" xml:space="preserve"><value>WD.BlackBrush</value></data>
+  <data name="WD.ChartFillBrush" xml:space="preserve"><value>WD.ChartFillBrush</value></data>
+  <data name="WD.ChartXAxisBrush" xml:space="preserve"><value>WD.ChartXAxisBrush</value></data>
+  <data name="WD.DangerBrush" xml:space="preserve"><value>WD.DangerBrush</value></data>
+  <data name="WD.DangerMouseOverBrush" xml:space="preserve"><value>WD.DangerMouseOverBrush</value></data>
+  <data name="WD.LightBrush" xml:space="preserve"><value>WD.LightBrush</value></data>
+  <data name="WD.LighterBrush" xml:space="preserve"><value>WD.LighterBrush</value></data>
+  <data name="WD.PlaceholderTextBrush" xml:space="preserve"><value>WD.PlaceholderTextBrush</value></data>
+  <data name="WD.PrimaryBrush" xml:space="preserve"><value>WD.PrimaryBrush</value></data>
+  <data name="WD.PrimaryMouseOverBrush" xml:space="preserve"><value>WD.PrimaryMouseOverBrush</value></data>
+  <data name="WD.PrimaryTextBrush" xml:space="preserve"><value>WD.PrimaryTextBrush</value></data>
+  <data name="WD.RegularTextBrush" xml:space="preserve"><value>WD.RegularTextBrush</value></data>
+  <data name="WD.ShadowDepthColor" xml:space="preserve"><value>WD.ShadowDepthColor</value></data>
+  <data name="WD.SuccessBrush" xml:space="preserve"><value>WD.SuccessBrush</value></data>
+  <data name="WD.SuccessMouseOverBrush" xml:space="preserve"><value>WD.SuccessMouseOverBrush</value></data>
+  <data name="WD.WarningBrush" xml:space="preserve"><value>WD.WarningBrush</value></data>
+  <data name="WD.WarningMouseOverBrush" xml:space="preserve"><value>WD.WarningMouseOverBrush</value></data>
+  <data name="WPFDevelopers1.1" xml:space="preserve"><value>WPFDevelopers1.1</value></data>
+  <data name="WPFDevelopers1.1.1" xml:space="preserve"><value>WPFDevelopers1.1.1</value></data>
+  <data name="WPFDevelopers1.2" xml:space="preserve"><value>WPFDevelopers1.2</value></data>
+  <data name="WPFDevelopers1.3" xml:space="preserve"><value>WPFDevelopers1.3</value></data>
+  <data name="WPFDevelopers1.4" xml:space="preserve"><value>WPFDevelopers1.4</value></data>
+  <data name="WPFDevelopers1.5" xml:space="preserve"><value>WPFDevelopers1.5</value></data>
+  <data name="WPFDevelopers1.6" xml:space="preserve"><value>WPFDevelopers1.6</value></data>
+  <data name="Wed" xml:space="preserve"><value>Wed</value></data>
+  <data name="Week" xml:space="preserve"><value>Week</value></data>
+  <data name="Xiaomi" xml:space="preserve"><value>Xiaomi</value></data>
+  <data name="Year" xml:space="preserve"><value>Year</value></data>
+  <data name="click main {btn.Content.ToString()}" xml:space="preserve"><value>Main button clicked: {btn.Content.ToString()}</value></data>
+  <data name="image file|*.jpg" xml:space="preserve"><value>Image files|*.jpg</value></data>
+  <data name="josh.peng" xml:space="preserve"><value>josh.peng</value></data>
+  <data name="map" xml:space="preserve"><value>Map</value></data>
+  <data name="{sourceType} -&gt; {targetType} Longitude={converted.Longitude:F6} Latitude={converted.Latitude:F6}" xml:space="preserve"><value>{sourceType} -&gt; {targetType} Longitude={converted.Longitude:F6} Latitude={converted.Latitude:F6}</value></data>
+  <data name="Start" xml:space="preserve"><value>Start</value></data>
+  <data name="Alternate" xml:space="preserve"><value>Alternate</value></data>
+  <data name="End" xml:space="preserve"><value>End</value></data>
+  <data name="Added by a ViewModel command." xml:space="preserve"><value>Added by a ViewModel command.</value></data>
+  <data name="Updated through INotifyPropertyChanged." xml:space="preserve"><value>Updated through INotifyPropertyChanged.</value></data>
+  <data name="Confirmed: name:{Name} - email:{Email}" xml:space="preserve"><value>Confirmed: name: {Name} - email: {Email}</value></data>
+  <data name="Command: 点击了图片 - {model.Title}" xml:space="preserve"><value>Command: image clicked - {model.Title}</value></data>
+  <data name="Slide0" xml:space="preserve"><value>Slide 0</value></data>
+  <data name="Slide1" xml:space="preserve"><value>Slide 1</value></data>
+  <data name="Slide2" xml:space="preserve"><value>Slide 2</value></data>
+  <data name="Slide3" xml:space="preserve"><value>Slide 3</value></data>
+  <data name="仓{(i + 1).ToString()}" xml:space="preserve"><value>Warehouse {(i + 1).ToString()}</value></data>
+  <data name="CheckMark" xml:space="preserve"><value>CheckMark</value></data>
+  <data name="ChevronUp" xml:space="preserve"><value>ChevronUp</value></data>
+  <data name="ChevronDown" xml:space="preserve"><value>ChevronDown</value></data>
+  <data name="Blackout" xml:space="preserve"><value>Blackout</value></data>
+  <data name="Previous" xml:space="preserve"><value>Previous</value></data>
+  <data name="ChevronLeft" xml:space="preserve"><value>ChevronLeft</value></data>
+  <data name="ChevronRight" xml:space="preserve"><value>ChevronRight</value></data>
+  <data name="SortArrow" xml:space="preserve"><value>SortArrow</value></data>
+  <data name="WindowMaximize" xml:space="preserve"><value>WindowMaximize</value></data>
+  <data name="WindowRestore" xml:space="preserve"><value>WindowRestore</value></data>
+  <data name="WindowClose" xml:space="preserve"><value>WindowClose</value></data>
+  <data name="SmileyOutline" xml:space="preserve"><value>SmileyOutline</value></data>
+  <data name="BuildingRegular" xml:space="preserve"><value>BuildingRegular</value></data>
+  <data name="AlarmClock" xml:space="preserve"><value>AlarmClock</value></data>
+  <data name="Flag" xml:space="preserve"><value>Flag</value></data>
+  <data name="Circular" xml:space="preserve"><value>Circular</value></data>
+  <data name="ChatLeft" xml:space="preserve"><value>ChatLeft</value></data>
+  <data name="ChatRight" xml:space="preserve"><value>ChatRight</value></data>
+  <data name="Complete" xml:space="preserve"><value>Complete</value></data>
+  <data name="MapPin" xml:space="preserve"><value>MapPin</value></data>
+  <data name="Sector" xml:space="preserve"><value>Sector</value></data>
+  <data name="Replace" xml:space="preserve"><value>Replace</value></data>
+  <data name="AudioOne" xml:space="preserve"><value>AudioOne</value></data>
+  <data name="AudioTwo" xml:space="preserve"><value>AudioTwo</value></data>
+  <data name="AudioThree" xml:space="preserve"><value>AudioThree</value></data>
+  <data name="Rectangle" xml:space="preserve"><value>Rectangle</value></data>
+  <data name="Ellipse" xml:space="preserve"><value>Ellipse</value></data>
+  <data name="UpperTriangle" xml:space="preserve"><value>UpperTriangle</value></data>
+  <data name="Arrow" xml:space="preserve"><value>Arrow</value></data>
+  <data name="ArrowRightTop" xml:space="preserve"><value>ArrowRightTop</value></data>
+  <data name="ArrowBranches" xml:space="preserve"><value>ArrowBranches</value></data>
+  <data name="Text" xml:space="preserve"><value>Text</value></data>
+  <data name="Pencil" xml:space="preserve"><value>Pencil</value></data>
+  <data name="Mosaic" xml:space="preserve"><value>Mosaic</value></data>
+  <data name="StarSky" xml:space="preserve"><value>StarSky</value></data>
+  <data name="Return" xml:space="preserve"><value>Return</value></data>
+  <data name="UnfoldMore" xml:space="preserve"><value>UnfoldMore</value></data>
+  <data name="Time" xml:space="preserve"><value>Time</value></data>
+  <data name="DateRangeRight" xml:space="preserve"><value>DateRangeRight</value></data>
+  <data name="Undo" xml:space="preserve"><value>Undo</value></data>
+  <data name="Filter" xml:space="preserve"><value>Filter</value></data>
+  <data name="Confirm" xml:space="preserve"><value>Confirm</value></data>
+  <data name="Semicircle" xml:space="preserve"><value>Semicircle</value></data>
+  <data name="UpArrow" xml:space="preserve"><value>UpArrow</value></data>
+  <data name="DownArrow" xml:space="preserve"><value>DownArrow</value></data>
+  <data name="Splitter" xml:space="preserve"><value>Splitter</value></data>
+  <data name="Moon" xml:space="preserve"><value>Moon</value></data>
+  <data name="SystemTheme" xml:space="preserve"><value>SystemTheme</value></data>
+  <data name="Waterfall image loading failed" xml:space="preserve"><value>Waterfall image loading failed</value></data>
+  <data name="GitHub 统计加载失败：{error}。请点击“刷新统计”重试。" xml:space="preserve"><value>GitHub statistics failed to load: {error}. Click "Refresh statistics" to try again.</value></data>
+  <data name="NuGet 统计加载失败：{error}。请点击“刷新统计”重试。" xml:space="preserve"><value>NuGet statistics failed to load: {error}. Click "Refresh statistics" to try again.</value></data>
+  <data name="统计加载失败：{error}。请点击“刷新统计”重试。" xml:space="preserve"><value>Statistics failed to load: {error}. Click "Refresh statistics" to try again.</value></data>
+  <data name="更新于 {time} · 下载量为 NuGet 所有版本累计下载量" xml:space="preserve"><value>Updated at {time} · Downloads are cumulative across all NuGet versions</value></data>
+  <data name="无法打开链接：{error}" xml:space="preserve"><value>Unable to open link: {error}</value></data>
+  <data name="个性化" xml:space="preserve"><value>Personalization</value></data>
+  <data name="主题色" xml:space="preserve"><value>Theme color</value></data>
+  <data name="Yes" xml:space="preserve"><value>Yes</value></data>
+</root>

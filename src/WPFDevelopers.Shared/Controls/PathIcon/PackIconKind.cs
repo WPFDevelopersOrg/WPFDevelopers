@@ -66,5 +66,8 @@ namespace WPFDevelopers.Controls
         [Description("WD.UpArrowGeometry")] UpArrow,
         [Description("WD.DownArrowGeometry")] DownArrow,
         [Description("WD.SplitterGeometry")] Splitter,
+        [Description("WD.MoonGeometry")] Moon,
+        [Description("WD.SunGeometry")] Sun,
+        [Description("WD.SystemThemeGeometry")] SystemTheme,
     }
 }

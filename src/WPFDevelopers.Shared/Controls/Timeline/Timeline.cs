@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 
 namespace WPFDevelopers.Controls
@@ -25,7 +26,9 @@ namespace WPFDevelopers.Controls
     public class Timeline : ItemsControl
     {
         private const string ScrollViewerPartName = "PART_ScrollViewer";
+        private const int MouseHorizontalWheelMessage = 0x020E;
         private ScrollViewer _scrollViewer;
+        private HwndSource _hwndSource;
 
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(Timeline),
@@ -56,6 +59,12 @@ namespace WPFDevelopers.Controls
         static Timeline()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata(typeof(Timeline)));
+        }
+
+        public Timeline()
+        {
+            Loaded += OnTimelineLoaded;
+            Unloaded += OnTimelineUnloaded;
         }
 
         public Orientation Orientation
@@ -106,9 +115,73 @@ namespace WPFDevelopers.Controls
                 _scrollViewer.PreviewMouseWheel += OnScrollViewerPreviewMouseWheel;
         }
 
+        private void OnTimelineLoaded(object sender, RoutedEventArgs e)
+        {
+            var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
+            if (ReferenceEquals(_hwndSource, hwndSource))
+                return;
+            if (_hwndSource != null)
+                _hwndSource.RemoveHook(OnWindowMessage);
+            _hwndSource = hwndSource;
+            if (_hwndSource != null)
+                _hwndSource.AddHook(OnWindowMessage);
+        }
+
+        private void OnTimelineUnloaded(object sender, RoutedEventArgs e)
+        {
+            if (_hwndSource != null)
+            {
+                _hwndSource.RemoveHook(OnWindowMessage);
+                _hwndSource = null;
+            }
+        }
+
+        private IntPtr OnWindowMessage(IntPtr hwnd, int message, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (message != MouseHorizontalWheelMessage || _scrollViewer == null ||
+                Orientation != Orientation.Horizontal || !_scrollViewer.IsVisible)
+                return IntPtr.Zero;
+
+            var delta = unchecked((short)((long)wParam >> 16));
+            if (delta == 0 || _scrollViewer.ScrollableWidth <= 0)
+                return IntPtr.Zero;
+
+            var screenPoint = new Point(
+                unchecked((short)(long)lParam),
+                unchecked((short)((long)lParam >> 16)));
+            var point = _scrollViewer.PointFromScreen(screenPoint);
+            if (point.X < 0 || point.Y < 0 ||
+                point.X > _scrollViewer.ActualWidth || point.Y > _scrollViewer.ActualHeight)
+                return IntPtr.Zero;
+
+            var currentOffset = _scrollViewer.HorizontalOffset;
+            var targetOffset = Math.Max(0, Math.Min(currentOffset + delta, _scrollViewer.ScrollableWidth));
+            if (targetOffset == currentOffset)
+                return IntPtr.Zero;
+
+            _scrollViewer.ScrollToHorizontalOffset(targetOffset);
+            handled = true;
+            return IntPtr.Zero;
+        }
+
         private void OnScrollViewerPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (e.Handled || e.Delta == 0) return;
+            if (Orientation == Orientation.Horizontal &&
+                _scrollViewer.HorizontalScrollBarVisibility != ScrollBarVisibility.Disabled)
+            {
+                var canScrollHorizontally = e.Delta > 0
+                    ? _scrollViewer.HorizontalOffset > 0
+                    : _scrollViewer.HorizontalOffset < _scrollViewer.ScrollableWidth;
+                if (canScrollHorizontally)
+                {
+                    e.Handled = true;
+                    _scrollViewer.ScrollToHorizontalOffset(
+                        _scrollViewer.HorizontalOffset - e.Delta);
+                    return;
+                }
+            }
+
             var canScroll = _scrollViewer.VerticalScrollBarVisibility != ScrollBarVisibility.Disabled &&
                 (e.Delta > 0 ? _scrollViewer.VerticalOffset > 0 :
                     _scrollViewer.VerticalOffset < _scrollViewer.ScrollableHeight);
