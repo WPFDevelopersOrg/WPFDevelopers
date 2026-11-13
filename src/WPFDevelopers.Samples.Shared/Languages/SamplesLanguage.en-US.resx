@@ -2014,6 +2014,8 @@
   <data name="AllGrid" xml:space="preserve"><value>All grids</value></data>
   <data name="Apple!" xml:space="preserve"><value>Apple!</value></data>
   <data name="AtomGit" xml:space="preserve"><value>AtomGit</value></data>
+  <data name="AtomGit 源码" xml:space="preserve"><value>AtomGit source</value></data>
+  <data name="AtomGit 源代码" xml:space="preserve"><value>AtomGit source code</value></data>
   <data name="B" xml:space="preserve"><value>B</value></data>
   <data name="BD09" xml:space="preserve"><value>BD09</value></data>
   <data name="Binding" xml:space="preserve"><value>Data binding</value></data>
