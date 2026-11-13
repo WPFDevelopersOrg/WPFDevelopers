@@ -26,6 +26,11 @@
             <Run/>
             <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git"
                        RequestNavigate="GiteeHyperlink_RequestNavigate"> 码云源代码</Hyperlink>
+            <Run/>
+            <Run/>
+            <Run/>
+            <Hyperlink NavigateUri="https://atomgit.com/WPFDevelopersOrg/WPFDevelopers"
+                       RequestNavigate="GiteeHyperlink_RequestNavigate"> AtomGit 源代码</Hyperlink>
         </TextBlock>
     </Grid>
 </Page>
