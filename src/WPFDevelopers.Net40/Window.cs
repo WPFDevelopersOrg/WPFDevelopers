@@ -99,9 +99,9 @@ namespace WPFDevelopers.Net40
             WindowChrome.SetWindowChrome(this, _windowChrome);
         }
 
-        private void Resources_ThemeChanged(ThemeType currentTheme)
+        private void Resources_ThemeChanged(ThemeMode currentTheme)
         {
-            var isDark = currentTheme == ThemeType.Dark;
+            var isDark = currentTheme == ThemeMode.Dark;
             var source = (HwndSource)PresentationSource.FromVisual(this);
             Win32.EnableDarkModeForWindow(source, isDark);
         }
@@ -142,7 +142,7 @@ namespace WPFDevelopers.Net40
                 _themeResources = ThemeManager.Instance.Resources;
                 _themeResources.ThemeModeChanged += ThemeMode_Changed;
                 Deactivated += ThemeWindow_Deactivated;
-                ThemeMode_Changed(_themeResources.ThemeMode);
+                ThemeMode_Changed(_themeResources.Theme);
             }
             _windowStyle = WindowStyle;
             _titleBarIcon = GetTemplateChild(TitleBarIcon) as Button;
@@ -242,7 +242,7 @@ namespace WPFDevelopers.Net40
                 return;
 
             CloseThemePopup();
-            ThemeManager.Instance.SwitchThemeMode(_titleBarThemeSwitchButton, (ThemeMode)item.Tag);
+            ThemeManager.Instance.SwitchTheme(_titleBarThemeSwitchButton, (ThemeMode)item.Tag);
             e.Handled = true;
         }
 

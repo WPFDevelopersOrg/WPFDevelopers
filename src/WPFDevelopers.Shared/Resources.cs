@@ -29,26 +29,10 @@ namespace WPFDevelopers
 
         private int _initCount;
 
-        private ThemeType _theme = ThemeType.Light;
-        public ThemeType Theme
+        private ThemeMode _theme = ThemeMode.Light;
+        public ThemeMode Theme
         {
             get => _theme;
-            set
-            {
-                switch (value)
-                {
-                    case ThemeType.Default: ThemeMode = ThemeMode.System; break;
-                    case ThemeType.Light: ThemeMode = ThemeMode.Light; break;
-                    case ThemeType.Dark: ThemeMode = ThemeMode.Dark; break;
-                    default: throw new ArgumentOutOfRangeException(nameof(value));
-                }
-            }
-        }
-
-        private ThemeMode _themeMode = ThemeMode.Light;
-        public ThemeMode ThemeMode
-        {
-            get => _themeMode;
             set
             {
                 if (!Enum.IsDefined(typeof(ThemeMode), value))
@@ -58,30 +42,32 @@ namespace WPFDevelopers
             }
         }
 
+        public ThemeMode ActualTheme { get; private set; } = ThemeMode.Light;
+
         private void SetThemeMode(ThemeMode value)
         {
-            if (_themeMode == value) return;
+            if (_theme == value) return;
             SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
-            _themeMode = value;
+            _theme = value;
             if (value == ThemeMode.System && OSVersionHelper.IsWindows10OrLater())
                 SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
             ApplyTheme();
             ThemeModeChanged?.Invoke(value);
         }
 
-        internal ThemeType ResolveTheme(ThemeMode mode)
+        internal static ThemeMode ResolveTheme(ThemeMode mode)
         {
             switch (mode)
             {
                 case ThemeMode.System:
-                    return OSVersionHelper.IsWindows10OrLater() && IsDarkMode() ? ThemeType.Dark : ThemeType.Light;
-                case ThemeMode.Light: return ThemeType.Light;
-                case ThemeMode.Dark: return ThemeType.Dark;
+                    return OSVersionHelper.IsWindows10OrLater() && IsDarkMode() ? ThemeMode.Dark : ThemeMode.Light;
+                case ThemeMode.Light: return ThemeMode.Light;
+                case ThemeMode.Dark: return ThemeMode.Dark;
                 default: throw new ArgumentOutOfRangeException(nameof(mode));
             }
         }
 
-        public bool IsDarkTheme => Theme == ThemeType.Dark;
+        public bool IsDarkTheme => ActualTheme == ThemeMode.Dark;
 
         private Color _color;
         public Color Color
@@ -144,21 +130,22 @@ namespace WPFDevelopers
             InitializeTheme(Theme,isInit: true);
         }
        
-        protected void InitializeTheme(ThemeType themeType,bool isInit = false)
+        protected void InitializeTheme(ThemeMode theme,bool isInit = false)
         {
-            _theme = themeType;
-            Uri oldUri = themeType == ThemeType.Default || themeType == ThemeType.Light ? GetResourceUri("Dark.Color") : GetResourceUri("Light.Color");
+            theme = ResolveTheme(theme);
+            ActualTheme = theme;
+            Uri oldUri = theme == ThemeMode.Light ? GetResourceUri("Dark.Color") : GetResourceUri("Light.Color");
             if (oldUri != null)
             {
                 var existingResourceDictionary = MergedDictionaries.FirstOrDefault(x => x.Source != null && x.Source.Equals(oldUri));
                 if (existingResourceDictionary != null)
                     MergedDictionaries.Remove(existingResourceDictionary);
             }
-            var path = GetResourceUri(GetThemeResourceName(themeType));
+            var path = GetResourceUri(GetThemeResourceName(theme));
             var newResourceDictionary = new ResourceDictionary { Source = path };
 
             MergedDictionaries.Insert(0, newResourceDictionary);
-            ThemeChanged?.Invoke(themeType);
+            ThemeChanged?.Invoke(theme);
             UpdateColorOnThemeChange();
             _ = Task.Factory.StartNew(
                 PublishWPFDevelopersExtSafe,
@@ -167,7 +154,7 @@ namespace WPFDevelopers
                 TaskScheduler.Default);
         }
 
-        bool IsDarkMode()
+        static bool IsDarkMode()
         {
             const string registryKey = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
             const string registryValue = "AppsUseLightTheme";
@@ -184,20 +171,20 @@ namespace WPFDevelopers
 
         void ApplyTheme()
         {
-            var theme = ResolveTheme(ThemeMode);
-            if (Theme != theme)
+            var theme = ResolveTheme(Theme);
+            if (ActualTheme != theme)
                 InitializeTheme(theme);
         }
 
         private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
-            if (ThemeMode == ThemeMode.System && e.Category == UserPreferenceCategory.General)
+            if (Theme == ThemeMode.System && e.Category == UserPreferenceCategory.General)
             {
                 var dispatcher = Application.Current?.Dispatcher;
                 if (dispatcher != null && !dispatcher.CheckAccess())
                     dispatcher.BeginInvoke(new Action(() =>
                     {
-                        if (ThemeMode == ThemeMode.System) ApplyTheme();
+                        if (Theme == ThemeMode.System) ApplyTheme();
                     }));
                 else
                     ApplyTheme();
@@ -322,9 +309,9 @@ namespace WPFDevelopers
             return new Uri($"pack://application:,,,/WPFDevelopers;component/Themes/Basic/{path}.xaml", UriKind.Absolute);
         }
 
-        protected string GetThemeResourceName(ThemeType themeType)
+        protected string GetThemeResourceName(ThemeMode theme)
         {
-            return themeType == ThemeType.Light ? "Light.Color" : "Dark.Color";
+            return theme == ThemeMode.Light ? "Light.Color" : "Dark.Color";
         }
 
         void UpdateColorOnThemeChange()
@@ -384,9 +371,9 @@ namespace WPFDevelopers
                     newColor = color;
                 if (!ThemeManager.Instance.ColorCache.ContainsKey(newColor))
                 {
-                    ThemeManager.Instance.ColorCache[newColor] = new Dictionary<Tuple<ThemeType, string>, Color>();
+                    ThemeManager.Instance.ColorCache[newColor] = new Dictionary<Tuple<ThemeMode, string>, Color>();
                 }
-                var keyTuple = Tuple.Create(Theme, newKey);
+                var keyTuple = Tuple.Create(ActualTheme, newKey);
                 if (ThemeManager.Instance.ColorCache.ContainsKey(newColor)
                     &&
                     ThemeManager.Instance.ColorCache[newColor].ContainsKey(keyTuple)
@@ -453,10 +440,4 @@ namespace WPFDevelopers
         Dark,
     }
 
-    public enum ThemeType
-    {
-        Default,
-        Light,
-        Dark,
-    }
 }

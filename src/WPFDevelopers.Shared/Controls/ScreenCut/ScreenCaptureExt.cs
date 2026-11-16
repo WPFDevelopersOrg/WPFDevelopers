@@ -11,7 +11,7 @@ namespace WPFDevelopers.Controls
 {
     public class ScreenCaptureExt : Window
     {
-        private ThemeType? _theme;
+        private ThemeMode _theme;
         /// <summary>
         /// 截图完成委托
         /// </summary>
@@ -33,13 +33,11 @@ namespace WPFDevelopers.Controls
         /// </summary>
         public event Action<string> SnapSaveFullPath;
 
-        public ScreenCaptureExt(ThemeType? themeType = null)
+        public ScreenCaptureExt(ThemeMode? theme = null)
         {
-            if (themeType == null)
-            {
-                themeType = ThemeManager.Instance.Resources.Theme;
-            }
-            _theme = themeType;
+            _theme = theme.HasValue
+                ? WPFDevelopers.Resources.ResolveTheme(theme.Value)
+                : ThemeManager.Instance.Resources.ActualTheme;
             Width = 0;
             Height = 0;
             Left = int.MinValue;

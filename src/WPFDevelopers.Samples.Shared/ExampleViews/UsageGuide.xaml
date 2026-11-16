@@ -44,7 +44,8 @@
                         &lt;ResourceDictionary.MergedDictionaries&gt;
                             &lt;ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" /&gt;
                             &lt;!--  需要注意 wd:Resources 必须在Theme.xaml后  --&gt;
-                            &lt;!--默认情况下，Theme 会跟随系统主题（适用于 Windows 10 及以上版本），自动切换为 Light 或 Dark 模式。
+                            &lt;!--不设置 Theme 时恢复上次选择，首次使用默认跟随系统。
+                              设置 Theme="System" 可明确跟随系统主题（适用于 Windows 10 及以上版本）。
                               若要手动设置为 Light 模式，可以使用 Theme="Light"。
                               你还可以自定义主题色，使用 Color="Fuchsia"（例如设置为 Fuchsia 色调）--&gt;
                              &lt;!--  此外，通过 Radius 属性可控制控件的圆角大小（Windows 11 默认为 4），

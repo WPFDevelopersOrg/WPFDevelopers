@@ -84,7 +84,7 @@ namespace WPFDevelopers.Samples.Controls
                 LanguageManager.Instance.ChangeLanguage(culture);
         }
 
-        private void OnThemeChanged(ThemeType theme)
+        private void OnThemeChanged(ThemeMode theme)
         {
             SynchronizeTheme();
         }
@@ -101,11 +101,11 @@ namespace WPFDevelopers.Samples.Controls
             _synchronizingTheme = true;
             try
             {
-                var index = (int)resources.ThemeMode;
+                var index = (int)resources.Theme;
                 ThemeSelector.SelectedIndex = index;
                 for (var i = 0; i < ThemeSelector.Items.Count; i++)
                     ((SegmentedItem)ThemeSelector.Items[i]).IsChecked = i == index;
-                App.Theme = resources.Theme;
+                App.Theme = resources.ActualTheme;
             }
             finally
             {
@@ -117,7 +117,7 @@ namespace WPFDevelopers.Samples.Controls
         {
             if (_synchronizingTheme) return;
             var mode = (ThemeMode)ThemeSelector.SelectedIndex;
-            ThemeManager.Instance.SwitchThemeMode(ThemeSelector, mode);
+            ThemeManager.Instance.SwitchTheme(ThemeSelector, mode);
             SynchronizeTheme();
         }
     }
