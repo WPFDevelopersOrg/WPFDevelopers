@@ -74,6 +74,7 @@ Add the WD namespace and theme resources in `App.xaml`:
 | Configuration | Effect |
 |---------------|--------|
 | `<wd:Resources Radius="4" />` | Restores the previous theme mode; follows the system on first use, 4px control corner radius |
+| `<wd:Resources Theme="System" Radius="4" />` | Follows the system theme, 4px corner radius |
 | `<wd:Resources Theme="Light" Radius="4" />` | Fixed light theme, 4px corner radius |
 | `<wd:Resources Theme="Dark" Radius="4" />` | Fixed dark theme, 4px corner radius |
 | `<wd:Resources Color="Fuchsia" Radius="4" />` | Custom theme color, 4px corner radius |
@@ -430,7 +431,7 @@ The sample navigation identifies these implementations and composed effects with
 
 ### Windows & Navigation
 
-`wd:Window` includes a theme mode menu controlled by the `ShowTheme` dependency property (default: `False`):
+Set `ShowTheme="True"` to display the window theme menu (hidden by default), offering Follow system / Light / Dark in `Normal` and `High` title bars:
 
 ```xml
 <wd:Window ShowTheme="True" TitleBarMode="High">
@@ -438,17 +439,13 @@ The sample navigation identifies these implementations and composed effects with
 </wd:Window>
 ```
 
-Supported in `Normal` and `High` title bars. Hovering opens a Follow system / Light mode / Dark mode popup; leaving both the entry and popup dismisses it. The entry icon reflects the selected mode, with a checkmark on the right of the selected row. Keyboard users can focus the entry and press Space to open, use Up/Down to navigate, Space to confirm, and Escape to dismiss. Actual light/dark changes retain the circular reveal animation. `TitleBarLayout` remains available for custom content. This property does not control the accent-color picker, and the button is hidden without a title bar.
+Use `Theme` to select a mode: `System` follows the system, `Light` uses light mode, and `Dark` uses dark mode.
 
-Read or set the user's preference through `ThemeManager.Instance.Resources.ThemeMode` (`System`, `Light`, or `Dark`). `Theme` / `IsDarkTheme` report the effective theme. System changes do not overwrite the System preference; setting the existing `ThemeType.Default` still enables following the system.
-
-Theme preferences are automatically saved to `HKEY_CURRENT_USER\Software\WPFDevelopers\Applications\<entry assembly name>` and restored on the next launch. The `ThemeMode` string value is `System` (follow system), `Light` (light mode), or `Dark` (dark mode). Each application stores its preference separately.
-
-Runtime verification (replace `net48` with `net40` for the .NET 4.0 build):
-
-```powershell
-powershell -NoProfile -STA -File .\tests\Window.Theme.SmokeTests.ps1 -AssemblyPath .\OutPut\net48\WPFDevelopers.dll
+```xml
+<wd:Resources Color="DarkSlateGray" Theme="System" />
 ```
+
+Omitting `Theme` restores the previous choice, or follows the system on first use. Setting it explicitly uses the specified mode.
 
 | Control | Source | Example File | Description |
 |---------|--------|-------------|-------------|

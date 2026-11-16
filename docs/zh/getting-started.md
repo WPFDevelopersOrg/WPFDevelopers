@@ -74,6 +74,7 @@ Install-Package WPFDevelopers
 | 配置方式 | 效果 |
 |----------|------|
 | `<wd:Resources Radius="4" />` | 恢复上次主题模式，首次使用跟随系统，控件圆角 4px |
+| `<wd:Resources Theme="System" Radius="4" />` | 跟随系统主题，控件圆角 4px |
 | `<wd:Resources Theme="Light" Radius="4" />` | 固定浅色主题，控件圆角 4px |
 | `<wd:Resources Theme="Dark" Radius="4" />` | 固定深色主题，控件圆角 4px |
 | `<wd:Resources Color="Fuchsia" Radius="4" />` | 自定义主题色，控件圆角 4px |
@@ -435,7 +436,7 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 
 ### 窗口与导航
 
-`wd:Window` 内置主题模式菜单，通过依赖属性 `ShowTheme` 控制入口显示（默认 `False`）：
+设置 `ShowTheme="True"` 可显示窗口主题切换菜单（默认隐藏），支持“跟随系统 / 浅色 / 深色”，适用于 `Normal` 和 `High` 标题栏：
 
 ```xml
 <wd:Window ShowTheme="True" TitleBarMode="High">
@@ -443,17 +444,13 @@ WD 提供了一套主题资源，可在 XAML 中引用：
 </wd:Window>
 ```
 
-支持 `Normal` 和 `High` 标题栏；鼠标移入主题入口时展开“跟随系统 / 浅色模式 / 深色模式”弹层，移出入口和弹层后收起。入口图标随所选模式变化，选中项右侧显示对勾。键盘可聚焦入口并按空格打开，通过上下方向键选择、空格确认或 Esc 收起。实际明暗变化沿用圆形扩散动画。`TitleBarLayout` 仍可放置自定义内容；该属性不控制主题色调色板，无标题栏时不显示按钮。
+通过 `Theme` 指定主题模式：`System` 跟随系统、`Light` 浅色、`Dark` 深色。
 
-通过 `ThemeManager.Instance.Resources.ThemeMode` 获取或设置用户选择（`System`、`Light`、`Dark`），`Theme` / `IsDarkTheme` 表示实际显示的主题。“跟随系统”模式不会因系统明暗变化而变成固定模式；旧的 `ThemeType.Default` 设置仍可用于开启跟随系统。
-
-主题选择自动保存至 `HKEY_CURRENT_USER\Software\WPFDevelopers\Applications\<入口程序集名称>`，下次启动恢复。`ThemeMode` 字符串值：`System` 表示跟随系统，`Light` 表示浅色模式，`Dark` 表示深色模式；不同应用分别保存。
-
-运行时验证（将 `net48` 替换为 `net40` 可验证 .NET 4.0 版本）：
-
-```powershell
-powershell -NoProfile -STA -File .\tests\Window.Theme.SmokeTests.ps1 -AssemblyPath .\OutPut\net48\WPFDevelopers.dll
+```xml
+<wd:Resources Color="DarkSlateGray" Theme="System" />
 ```
+
+不设置 `Theme` 时恢复上次选择，首次使用默认跟随系统；显式设置则使用指定模式。
 
 | 控件名 | 来源 | 示例文件 | 说明 |
 |--------|------|----------|------|
