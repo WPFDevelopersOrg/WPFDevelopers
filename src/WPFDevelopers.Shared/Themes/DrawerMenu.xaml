@@ -304,6 +304,9 @@
                         </Grid>
                     </controls:WDBorder>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="ShowExpandButton" Value="False">
+                            <Setter TargetName="PART_ToggleButton" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                         <Trigger Property="IsExpanded" Value="False">
                             <Setter TargetName="PART_ToggleButton" Property="Content" Value="{Binding ClosedIcon, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
