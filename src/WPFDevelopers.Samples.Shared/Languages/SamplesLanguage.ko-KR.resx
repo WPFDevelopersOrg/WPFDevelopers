@@ -1674,6 +1674,24 @@
   <data name="抽屉菜单" xml:space="preserve">
     <value>서랍 메뉴</value>
   </data>
+  <data name="侧边面板" xml:space="preserve">
+    <value>사이드 패널</value>
+  </data>
+  <data name="工作区" xml:space="preserve">
+    <value>작업 영역</value>
+  </data>
+  <data name="新建任务" xml:space="preserve">
+    <value>새 작업</value>
+  </data>
+  <data name="最近任务" xml:space="preserve">
+    <value>최근 작업</value>
+  </data>
+  <data name="任务 {number}" xml:space="preserve">
+    <value>작업 {number}</value>
+  </data>
+  <data name="主内容" xml:space="preserve">
+    <value>주 콘텐츠</value>
+  </data>
   <data name="窗口" xml:space="preserve">
     <value>창</value>
   </data>

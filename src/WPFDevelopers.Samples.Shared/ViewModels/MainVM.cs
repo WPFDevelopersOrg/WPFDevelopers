@@ -90,6 +90,7 @@ namespace WPFDevelopers.Samples.ViewModels
 
         private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
         {
+            MenuEnum.SidePanel,
             MenuEnum.Dialog,
             MenuEnum.ScrollNavigation,
             MenuEnum.Timeline,
@@ -354,6 +355,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.CircleMenu:
                 case MenuEnum.DrawerMenu:
+                case MenuEnum.SidePanel:
                 case MenuEnum.Drawer:
                 case MenuEnum.Menu:
                 case MenuEnum.NavScrollPanel:
@@ -797,6 +799,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.DrawerMenu:
                     ControlPanel = new DrawerMenuExample();
+                    break;
+                case MenuEnum.SidePanel:
+                    ControlPanel = new SidePanelExample();
                     break;
                 case MenuEnum.ChartRadar:
                     ControlPanel = new ChartRadarExample();

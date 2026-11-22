@@ -107,6 +107,7 @@
         WaterfallPanel,
         Timeline,
         Dialog,
+        SidePanel,
         VirtualizingWrapPanel,
         AcrylicBlur,
         Theme,

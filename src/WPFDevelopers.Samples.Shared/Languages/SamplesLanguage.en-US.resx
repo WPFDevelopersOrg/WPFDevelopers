@@ -1674,6 +1674,24 @@
   <data name="抽屉菜单" xml:space="preserve">
     <value>Drawer Menu</value>
   </data>
+  <data name="侧边面板" xml:space="preserve">
+    <value>Side Panel</value>
+  </data>
+  <data name="工作区" xml:space="preserve">
+    <value>Workspace</value>
+  </data>
+  <data name="新建任务" xml:space="preserve">
+    <value>New task</value>
+  </data>
+  <data name="最近任务" xml:space="preserve">
+    <value>Recent tasks</value>
+  </data>
+  <data name="任务 {number}" xml:space="preserve">
+    <value>Task {number}</value>
+  </data>
+  <data name="主内容" xml:space="preserve">
+    <value>Main content</value>
+  </data>
   <data name="窗口" xml:space="preserve">
     <value>Window</value>
   </data>

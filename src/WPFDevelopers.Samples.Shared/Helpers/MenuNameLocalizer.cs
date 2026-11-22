@@ -44,6 +44,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.TransitionPanel] = "过渡面板",
             [MenuEnum.SpotLight] = "聚光灯",
             [MenuEnum.DrawerMenu] = "抽屉菜单",
+            [MenuEnum.SidePanel] = "侧边面板",
             [MenuEnum.ChartRadar] = "雷达图",
             [MenuEnum.ChartBar] = "柱状图",
             [MenuEnum.ZooSemy] = "拟物音量调节",

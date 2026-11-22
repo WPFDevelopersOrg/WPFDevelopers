@@ -51,6 +51,7 @@ Pagination.xaml
 ScreenCut.xaml
 SpotLight.xaml
 DrawerMenu.xaml
+SidePanel.xaml
 CropAvatar.xaml
 StarrySky.xaml
 Magnifier.xaml
