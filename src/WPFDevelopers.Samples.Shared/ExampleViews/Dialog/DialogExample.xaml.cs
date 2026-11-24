@@ -21,7 +21,7 @@ namespace WPFDevelopers.Samples.ExampleViews
             diaUser.DataContext = model;
             var dialog = new Dialog
             {
-                Title = "编辑",
+                Title = "Edit",
                 Content = diaUser,
                 Owner = Window.GetWindow(this),
                 DialogWidth = 400
