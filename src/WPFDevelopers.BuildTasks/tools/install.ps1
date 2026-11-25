@@ -64,6 +64,34 @@ if ($null -eq $project) {
     throw 'WPFDevelopers could not access the project. App.xaml was not changed.'
 }
 
+try {
+    $properties = $project.Properties
+    if ($null -eq $properties) {
+        Write-Warning 'WPFDevelopers could not determine the project output type. App.xaml was not changed.'
+        return
+    }
+    $outputProperty = $properties.Item('OutputType')
+    $outputType = if ($null -ne $outputProperty) { [string]$outputProperty.Value } else { '' }
+}
+catch [System.Runtime.InteropServices.COMException] {
+    Write-Warning "WPFDevelopers could not determine the project output type: $($_.Exception.Message). App.xaml was not changed."
+    return
+}
+catch [System.Management.Automation.MethodInvocationException] {
+    Write-Warning "WPFDevelopers could not determine the project output type: $($_.Exception.Message). App.xaml was not changed."
+    return
+}
+
+# Visual Studio's prjOutputType enum uses 0 for WinExe, 1 for Exe, and 2 for Library.
+if (@('2', 'Library', 'prjOutputTypeLibrary') -contains $outputType) {
+    Write-Host 'WPFDevelopers skipped App.xaml configuration for a library project.'
+    return
+}
+if (@('0', '1', 'WinExe', 'Exe', 'prjOutputTypeWinExe', 'prjOutputTypeExe') -notcontains $outputType) {
+    Write-Warning "WPFDevelopers cannot identify project output type '$outputType' as an application. App.xaml was not changed."
+    return
+}
+
 $appItems = @(Find-AppItems $project.ProjectItems)
 if ($appItems.Count -eq 0) {
     Write-Warning 'WPFDevelopers did not find App.xaml in this project; application resources were not configured.'
