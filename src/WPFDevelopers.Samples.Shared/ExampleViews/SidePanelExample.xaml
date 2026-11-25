@@ -130,6 +130,70 @@
                     </Grid>
                 </Grid>
             </TabItem>
+            <TabItem Header="方向">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <wd:Segmented
+                        x:Name="DirectionSegmented"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        SelectedIndex="0">
+                        <wd:SegmentedItem Content="收起" />
+                        <wd:SegmentedItem x:Name="LeftSegment" Content="左侧" />
+                        <wd:SegmentedItem x:Name="RightSegment" Content="右侧" />
+                        <wd:SegmentedItem x:Name="TopSegment" Content="顶部" />
+                        <wd:SegmentedItem x:Name="BottomSegment" Content="底部" />
+                    </wd:Segmented>
+                    <DockPanel Grid.Row="1">
+                        <wd:SidePanel
+                            Background="{DynamicResource WD.BaseMoveBrush}"
+                            BorderBrush="{DynamicResource WD.PrimaryBrush}"
+                            BorderThickness="1"
+                            Dock="Top"
+                            DockPanel.Dock="Top"
+                            ExpandedHeight="60"
+                            IsExpanded="{Binding IsChecked, ElementName=TopSegment, Mode=OneWay}">
+                            <TextBlock Margin="12" Text="顶部" />
+                        </wd:SidePanel>
+                        <wd:SidePanel
+                            Background="{DynamicResource WD.BaseMoveBrush}"
+                            BorderBrush="{DynamicResource WD.PrimaryBrush}"
+                            BorderThickness="1"
+                            Dock="Bottom"
+                            DockPanel.Dock="Bottom"
+                            ExpandedHeight="60"
+                            IsExpanded="{Binding IsChecked, ElementName=BottomSegment, Mode=OneWay}">
+                            <TextBlock Margin="12" Text="底部" />
+                        </wd:SidePanel>
+                        <wd:SidePanel
+                            Background="{DynamicResource WD.BaseMoveBrush}"
+                            BorderBrush="{DynamicResource WD.PrimaryBrush}"
+                            BorderThickness="1"
+                            Dock="Left"
+                            DockPanel.Dock="Left"
+                            ExpandedWidth="120"
+                            IsExpanded="{Binding IsChecked, ElementName=LeftSegment, Mode=OneWay}">
+                            <TextBlock Margin="12" Text="左侧" />
+                        </wd:SidePanel>
+                        <wd:SidePanel
+                            Background="{DynamicResource WD.BaseMoveBrush}"
+                            BorderBrush="{DynamicResource WD.PrimaryBrush}"
+                            BorderThickness="1"
+                            Dock="Right"
+                            DockPanel.Dock="Right"
+                            ExpandedWidth="120"
+                            IsExpanded="{Binding IsChecked, ElementName=RightSegment, Mode=OneWay}">
+                            <TextBlock Margin="12" Text="右侧" />
+                        </wd:SidePanel>
+                        <Border Background="{DynamicResource WD.BackgroundBrush}">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="主内容" />
+                        </Border>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
         </TabControl>
         <controls:CodeViewer.SourceCodes>
             <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SidePanelExample.xaml" CodeType="Xaml" />

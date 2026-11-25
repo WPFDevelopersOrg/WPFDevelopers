@@ -31,6 +31,14 @@
                             ContentSource="Content" />
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="Dock" Value="Top">
+                            <Setter TargetName="PART_Container" Property="Width" Value="Auto" />
+                            <Setter TargetName="PART_Container" Property="Height" Value="{Binding ExpandedHeight, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="Dock" Value="Bottom">
+                            <Setter TargetName="PART_Container" Property="Width" Value="Auto" />
+                            <Setter TargetName="PART_Container" Property="Height" Value="{Binding ExpandedHeight, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
                         <Trigger Property="IsExpanded" Value="False">
                             <Setter TargetName="PART_Container" Property="IsEnabled" Value="False" />
                         </Trigger>
@@ -38,6 +46,19 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="Dock" Value="Right">
+                <Setter Property="HorizontalAlignment" Value="Right" />
+            </Trigger>
+            <Trigger Property="Dock" Value="Top">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+            </Trigger>
+            <Trigger Property="Dock" Value="Bottom">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Bottom" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style BasedOn="{StaticResource WD.SidePanel}" TargetType="{x:Type controls:SidePanel}" />
 </ResourceDictionary>

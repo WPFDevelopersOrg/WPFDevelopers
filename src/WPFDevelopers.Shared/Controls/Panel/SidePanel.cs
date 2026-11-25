@@ -17,7 +17,15 @@ namespace WPFDevelopers.Controls
 
         public static readonly DependencyProperty ExpandedWidthProperty =
             DependencyProperty.Register("ExpandedWidth", typeof(double), typeof(SidePanel),
-                new PropertyMetadata(220.0, OnExpandedWidthChanged), IsValidExpandedWidth);
+                new PropertyMetadata(220.0, OnExpandedSizeChanged), IsValidExpandedSize);
+
+        public static readonly DependencyProperty ExpandedHeightProperty =
+            DependencyProperty.Register("ExpandedHeight", typeof(double), typeof(SidePanel),
+                new PropertyMetadata(220.0, OnExpandedSizeChanged), IsValidExpandedSize);
+
+        public static readonly DependencyProperty DockProperty =
+            DependencyProperty.Register("Dock", typeof(Dock), typeof(SidePanel),
+                new PropertyMetadata(Dock.Left, OnDockChanged), IsValidDock);
 
         static SidePanel()
         {
@@ -36,41 +44,75 @@ namespace WPFDevelopers.Controls
             set => SetValue(ExpandedWidthProperty, value);
         }
 
+        public double ExpandedHeight
+        {
+            get => (double)GetValue(ExpandedHeightProperty);
+            set => SetValue(ExpandedHeightProperty, value);
+        }
+
+        public Dock Dock
+        {
+            get => (Dock)GetValue(DockProperty);
+            set => SetValue(DockProperty, value);
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             _container = GetTemplateChild(ContainerPartName) as Border;
             if (_container != null && !IsExpanded)
-                _container.BeginAnimation(WidthProperty, new DoubleAnimation(0, TimeSpan.Zero));
+                _container.BeginAnimation(SizeProperty, new DoubleAnimation(0, TimeSpan.Zero));
         }
 
-        private static bool IsValidExpandedWidth(object value)
+        private bool IsHorizontal => Dock == Dock.Left || Dock == Dock.Right;
+
+        private DependencyProperty SizeProperty => IsHorizontal ? WidthProperty : HeightProperty;
+
+        private static bool IsValidExpandedSize(object value)
         {
-            var width = (double)value;
-            return width >= 0 && !double.IsInfinity(width);
+            var size = (double)value;
+            return size >= 0 && !double.IsInfinity(size);
+        }
+
+        private static bool IsValidDock(object value)
+        {
+            var dock = (Dock)value;
+            return dock == Dock.Left || dock == Dock.Right || dock == Dock.Top || dock == Dock.Bottom;
         }
 
         private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((SidePanel)d).AnimateWidth();
+            ((SidePanel)d).AnimateSize();
         }
 
-        private static void OnExpandedWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnExpandedSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var panel = (SidePanel)d;
-            if (panel.IsExpanded)
-                panel.AnimateWidth();
+            if (panel.IsExpanded && (e.Property == ExpandedWidthProperty) == panel.IsHorizontal)
+                panel.AnimateSize();
         }
 
-        private void AnimateWidth()
+        private static void OnDockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var panel = (SidePanel)d;
+            if (panel._container == null)
+                return;
+
+            panel._container.BeginAnimation(WidthProperty, null);
+            panel._container.BeginAnimation(HeightProperty, null);
+            if (!panel.IsExpanded)
+                panel._container.BeginAnimation(panel.SizeProperty, new DoubleAnimation(0, TimeSpan.Zero));
+        }
+
+        private void AnimateSize()
         {
             if (_container == null)
                 return;
 
-            _container.BeginAnimation(WidthProperty, new DoubleAnimation
+            _container.BeginAnimation(SizeProperty, new DoubleAnimation
             {
-                From = _container.Width,
-                To = IsExpanded ? ExpandedWidth : 0,
+                From = (double)_container.GetValue(SizeProperty),
+                To = IsExpanded ? (IsHorizontal ? ExpandedWidth : ExpandedHeight) : 0,
                 Duration = TimeSpan.FromSeconds(0.2)
             });
         }
