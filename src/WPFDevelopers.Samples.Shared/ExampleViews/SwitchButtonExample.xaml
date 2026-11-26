@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="WPFDevelopers.Samples.ExampleViews.SwitchButtonExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:WPFDevelopers.Samples.Controls"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Background="{DynamicResource WD.BackgroundBrush}">
+    <controls:CodeViewer Header="{Binding NavigateMenuItem.DisplayName}">
+        <StackPanel Margin="20,10">
+            <TextBlock
+                Margin="0,20,0,0"
+                FontSize="20"
+                Text="WD.SwitchButton" />
+            <wd:SwitchButton
+                Margin="0,10"
+                HorizontalAlignment="Left"
+                CheckedContent="开"
+                UncheckedContent="关" />
+            <TextBlock
+                Margin="0,20,0,0"
+                FontSize="20"
+                Text="WD.DiagonalSwitchButton" />
+            <WrapPanel Margin="0,10">
+                <wd:SwitchButton
+                    Width="80"
+                    Height="25"
+                    Margin="0,0,10,0"
+                    Padding="0"
+                    CheckedContent="开"
+                    Style="{StaticResource WD.DiagonalSwitchButton}"
+                    UncheckedContent="关" />
+                <wd:SwitchButton
+                    Padding="20,4"
+                    Background="{DynamicResource WD.DangerBrush}"
+                    Foreground="{DynamicResource WD.SuccessBrush}"
+                    IsChecked="True"
+                    Style="{StaticResource WD.DiagonalSwitchButton}">
+                    <wd:SwitchButton.UncheckedContent>
+                        <wd:PathIcon
+                            Width="12"
+                            Height="12"
+                            Data="M 0,0 L 16,0 L 16,16 L 0,16 Z" />
+                    </wd:SwitchButton.UncheckedContent>
+                    <wd:SwitchButton.CheckedContent>
+                        <Path
+                            Width="14"
+                            Height="14"
+                            Data="M 0,0 L 12,8 L 0,16 Z"
+                            Stretch="Uniform" />
+
+                    </wd:SwitchButton.CheckedContent>
+                </wd:SwitchButton>
+                <wd:SwitchButton
+                    CheckedContent="开"
+                    IsEnabled="False"
+                    Style="{StaticResource WD.DiagonalSwitchButton}"
+                    UncheckedContent="关" />
+            </WrapPanel>
+        </StackPanel>
+        <controls:CodeViewer.SourceCodes>
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SwitchButtonExample.xaml" CodeType="Xaml" />
+            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/SwitchButtonExample.xaml.cs" CodeType="CSharp" />
+        </controls:CodeViewer.SourceCodes>
+    </controls:CodeViewer>
+</UserControl>

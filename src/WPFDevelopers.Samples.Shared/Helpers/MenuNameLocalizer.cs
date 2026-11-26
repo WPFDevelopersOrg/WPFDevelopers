@@ -106,6 +106,7 @@ namespace WPFDevelopers.Samples.Helpers
             [MenuEnum.OtpBox] = "一次性验证码输入框",
             [MenuEnum.Carousel] = "走马灯",
             [MenuEnum.SplitButton] = "分割按钮",
+            [MenuEnum.SwitchButton] = "开关按钮",
             [MenuEnum.Segmented] = "分段选择器",
             [MenuEnum.MarkdownViewer] = "Markdown 查看器",
             [MenuEnum.MapView] = "地图",

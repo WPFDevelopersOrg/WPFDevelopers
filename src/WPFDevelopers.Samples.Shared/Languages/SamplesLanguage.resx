@@ -1677,6 +1677,12 @@
   <data name="侧边面板" xml:space="preserve">
     <value>侧边面板</value>
   </data>
+  <data name="方向" xml:space="preserve"><value>方向</value></data>
+  <data name="收起" xml:space="preserve"><value>收起</value></data>
+  <data name="左侧" xml:space="preserve"><value>左侧</value></data>
+  <data name="右侧" xml:space="preserve"><value>右侧</value></data>
+  <data name="顶部" xml:space="preserve"><value>顶部</value></data>
+  <data name="底部" xml:space="preserve"><value>底部</value></data>
   <data name="工作区" xml:space="preserve">
     <value>工作区</value>
   </data>
@@ -1730,6 +1736,15 @@
   </data>
   <data name="分割按钮" xml:space="preserve">
     <value>分割按钮</value>
+  </data>
+  <data name="开关按钮" xml:space="preserve">
+    <value>开关按钮</value>
+  </data>
+  <data name="开" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="关" xml:space="preserve">
+    <value>关</value>
   </data>
   <data name="分页" xml:space="preserve">
     <value>分页</value>

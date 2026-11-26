@@ -341,6 +341,7 @@ namespace WPFDevelopers.Samples
         {
             switch (propertyName)
             {
+                case "CheckedContent":
                 case "Content":
                 case "Description":
                 case "Format":
@@ -355,6 +356,7 @@ namespace WPFDevelopers.Samples
                 case "Text":
                 case "Title":
                 case "ToolTip":
+                case "UncheckedContent":
                 case "Watermark":
                     return true;
                 default:
@@ -517,6 +519,12 @@ namespace WPFDevelopers.Samples
 
         private string GetTranslation(string key, CultureInfo culture)
         {
+            // Chinese sample strings are stored in the neutral resource set.
+            if (culture.TwoLetterISOLanguageName == "zh")
+            {
+                culture = CultureInfo.InvariantCulture;
+            }
+
             var resourceKey = _resourceKeys.TryGetValue(key, out var canonicalKey)
                 ? canonicalKey
                 : key;
