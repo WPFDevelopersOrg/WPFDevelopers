@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" MinWidth="30" />
             </Grid.ColumnDefinitions>
-            <wd:SwitchButton x:Name="Part_SwitchButton">
+            <wd:SwitchButton x:Name="SidePanelToggle">
                 <wd:SwitchButton.CheckedContent>
                     <wd:PathIcon Data="M185.625 914.4166666666669C137.875 905.5416666666666 100.5833333333333 870.4166666666667 86.6666666666667 821.25C84.4583333333333 813.4583333333334 84.375 800.0416666666666 84.375 500C84.375 199.9583333333334 84.4583333333333 186.5416666666668 86.6666666666667 178.75C99.7916666666667 132.25 132.25 99.7916666666667 178.75 86.6666666666666C186.5416666666667 84.4583333333334 199.9583333333334 84.375 500 84.375C800.0416666666666 84.375 813.4583333333333 84.4583333333334 821.25 86.6666666666666C867.75 99.7916666666667 900.2083333333333 132.25 913.3333333333334 178.75C915.5416666666666 186.5416666666668 915.625 199.9583333333334 915.625 500C915.625 800.0416666666666 915.5416666666666 813.4583333333334 913.3333333333334 821.25C900.4166666666666 867 868.25 899.625 823.1249999999999 912.7083333333334L813.125 915.625L503.7499999999999 915.8333333333334C254.5833333333334 916 192.6666666666666 915.7083333333334 185.625 914.4166666666669M333.75 500L333.75 166.25L270.7916666666667 166.25C233.3333333333333 166.25 205.125 166.75 201.125 167.5416666666668C187.4166666666667 170.125 176.375 178.7916666666668 170.4166666666667 191.7083333333334L166.875 199.375L166.875 500L166.875 800.625L170.375 808.125C176.625 821.4583333333334 188.2916666666667 830.5416666666666 201.875 832.5C205.2916666666666 833.0416666666667 236.375 833.5 270.9166666666667 833.5833333333334L333.75 833.75L333.75 500M808.1249999999999 829.625C817.875 825.0833333333333 825.2083333333333 817.7916666666666 829.5833333333333 808.2916666666667L833.125 800.625L833.125 500L833.125 199.375L829.5833333333333 191.7083333333334C823.6249999999999 178.7916666666668 812.5833333333333 170.125 798.8749999999999 167.5416666666668C794.5 166.7083333333335 726.375 166.25 604.2083333333333 166.25L416.25 166.25L416.25 500.0416666666667L416.25 833.7916666666667L608.4166666666666 833.4583333333334L800.625 833.125L808.1249999999999 829.625" />
                 </wd:SwitchButton.CheckedContent>
@@ -57,18 +57,17 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <wd:DrawerMenu x:Name="Part_DrawerMenu" IsExpanded="{Binding ElementName=Part_SwitchButton, Path=IsChecked, Mode=TwoWay}">
-                <wd:DrawerMenuItem Text="Class">
-                    <wd:DrawerMenuItem.Icon>
-                        <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/class.svg" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-                <wd:DrawerMenuItem Text="Classroom">
-                    <wd:DrawerMenuItem.Icon>
-                        <wd:SvgViewer Source="pack://application:,,,/WPFDevelopers.Samples;component/Resources/Images/CircleMenu/classroom.svg" />
-                    </wd:DrawerMenuItem.Icon>
-                </wd:DrawerMenuItem>
-            </wd:DrawerMenu>
+            <wd:SidePanel
+                x:Name="EventSidePanel"
+                BorderThickness="0,0,1,0"
+                ExpandedWidth="220"
+                IsExpanded="{Binding ElementName=SidePanelToggle, Path=IsChecked}">
+                <TextBlock
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="SidePanel" />
+            </wd:SidePanel>
 
             <TextBlock
                 Grid.Column="1"
