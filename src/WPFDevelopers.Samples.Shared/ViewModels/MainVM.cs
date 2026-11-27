@@ -1,4 +1,4 @@
-using Microsoft.Expression.Drawing.Core;
+﻿using Microsoft.Expression.Drawing.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -108,6 +108,7 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum.ListBox,
             MenuEnum.ListView,
             MenuEnum.Window,
+            MenuEnum.DrawerMenu,
             MenuEnum.GridSplitter,
             MenuEnum.ScrollViewer,
             MenuEnum.ScreenCut,
@@ -116,6 +117,8 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum.DateRangePicker,
             MenuEnum.VirtualizingWrapPanel,
             MenuEnum.WaterfallPanel,
+            MenuEnum.Drawer,
+            MenuEnum.SwitchButton
         };
 
         private IList<NavigateMenuModel> _navigateMenuModelList;
@@ -465,6 +468,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     iconName = "Selection";
                     break;
                 case MenuEnum.ToggleButton:
+                case MenuEnum.SwitchButton:
                     iconName = "ToggleButton";
                     break;
                 case MenuEnum.RadioButton:
@@ -997,6 +1001,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.SplitButton:
                     ControlPanel = new SplitButtonExample();
+                    break;
+                case MenuEnum.SwitchButton:
+                    ControlPanel = new SwitchButtonExample();
                     break;
                 case MenuEnum.Segmented:
                     ControlPanel = new SegmentedExample();
