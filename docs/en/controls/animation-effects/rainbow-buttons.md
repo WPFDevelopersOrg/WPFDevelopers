@@ -1,0 +1,15 @@
+# RainbowButtons
+
+> Category: [Animation & Effects](../index.md#animation-effects) · Sample-only: this implementation is not included in the NuGet control package.
+
+Rainbow buttons
+
+## Example Source
+
+[RainbowButtonsExample.xaml](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/RainbowButtonsExample.xaml)
+
+## Related Pages
+
+- [Control Catalog](../index.md)
+- [Getting Started](../../getting-started.md)
+
