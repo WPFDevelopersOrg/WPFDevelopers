@@ -29,7 +29,7 @@ namespace WPFDevelopers.Controls
         private RichTextBox _documentHost;
         private readonly DispatcherTimer _themeProbeTimer;
         private Color _lastPrimaryColor;
-        private ThemeType _lastThemeType;
+        private ThemeMode _lastActualTheme;
 
         static MarkdownViewer()
         {
@@ -108,7 +108,7 @@ namespace WPFDevelopers.Controls
                 control.RenderMarkdown();
         }
 
-        private void Resources_ThemeChanged(ThemeType currentTheme)
+        private void Resources_ThemeChanged(ThemeMode currentTheme)
         {
             SyncThemeSnapshot();
             RenderMarkdown();
@@ -120,12 +120,12 @@ namespace WPFDevelopers.Controls
             if (resources == null)
                 return;
 
-            var currentTheme = resources.Theme;
+            var currentTheme = resources.ActualTheme;
             var currentColor = ThemeManager.Instance.PrimaryColor;
 
-            if (currentTheme != _lastThemeType || currentColor != _lastPrimaryColor)
+            if (currentTheme != _lastActualTheme || currentColor != _lastPrimaryColor)
             {
-                _lastThemeType = currentTheme;
+                _lastActualTheme = currentTheme;
                 _lastPrimaryColor = currentColor;
                 RenderMarkdown();
             }
@@ -137,7 +137,7 @@ namespace WPFDevelopers.Controls
             if (resources == null)
                 return;
 
-            _lastThemeType = resources.Theme;
+            _lastActualTheme = resources.ActualTheme;
             _lastPrimaryColor = ThemeManager.Instance.PrimaryColor;
         }
 
@@ -792,7 +792,7 @@ namespace WPFDevelopers.Controls
             if (ThemeManager.Instance.Resources == null)
                 return false;
 
-            return ThemeManager.Instance.Resources.Theme == ThemeType.Dark;
+            return ThemeManager.Instance.Resources.IsDarkTheme;
         }
 
         private Brush ResolveQuoteBackground()

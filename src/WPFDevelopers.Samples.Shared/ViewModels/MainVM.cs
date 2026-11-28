@@ -1,4 +1,4 @@
-using Microsoft.Expression.Drawing.Core;
+﻿using Microsoft.Expression.Drawing.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -90,6 +90,7 @@ namespace WPFDevelopers.Samples.ViewModels
 
         private static readonly HashSet<MenuEnum> NewMenuItems = new HashSet<MenuEnum>
         {
+            MenuEnum.SidePanel,
             MenuEnum.Dialog,
             MenuEnum.ScrollNavigation,
             MenuEnum.Timeline,
@@ -107,6 +108,7 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum.ListBox,
             MenuEnum.ListView,
             MenuEnum.Window,
+            MenuEnum.DrawerMenu,
             MenuEnum.GridSplitter,
             MenuEnum.ScrollViewer,
             MenuEnum.ScreenCut,
@@ -115,6 +117,8 @@ namespace WPFDevelopers.Samples.ViewModels
             MenuEnum.DateRangePicker,
             MenuEnum.VirtualizingWrapPanel,
             MenuEnum.WaterfallPanel,
+            MenuEnum.Drawer,
+            MenuEnum.SwitchButton
         };
 
         private IList<NavigateMenuModel> _navigateMenuModelList;
@@ -354,6 +358,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.CircleMenu:
                 case MenuEnum.DrawerMenu:
+                case MenuEnum.SidePanel:
                 case MenuEnum.Drawer:
                 case MenuEnum.Menu:
                 case MenuEnum.NavScrollPanel:
@@ -463,6 +468,7 @@ namespace WPFDevelopers.Samples.ViewModels
                     iconName = "Selection";
                     break;
                 case MenuEnum.ToggleButton:
+                case MenuEnum.SwitchButton:
                     iconName = "ToggleButton";
                     break;
                 case MenuEnum.RadioButton:
@@ -798,6 +804,9 @@ namespace WPFDevelopers.Samples.ViewModels
                 case MenuEnum.DrawerMenu:
                     ControlPanel = new DrawerMenuExample();
                     break;
+                case MenuEnum.SidePanel:
+                    ControlPanel = new SidePanelExample();
+                    break;
                 case MenuEnum.ChartRadar:
                     ControlPanel = new ChartRadarExample();
                     break;
@@ -992,6 +1001,9 @@ namespace WPFDevelopers.Samples.ViewModels
                     break;
                 case MenuEnum.SplitButton:
                     ControlPanel = new SplitButtonExample();
+                    break;
+                case MenuEnum.SwitchButton:
+                    ControlPanel = new SwitchButtonExample();
                     break;
                 case MenuEnum.Segmented:
                     ControlPanel = new SegmentedExample();

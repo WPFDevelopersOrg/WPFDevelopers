@@ -1674,6 +1674,30 @@
   <data name="抽屉菜单" xml:space="preserve">
     <value>서랍 메뉴</value>
   </data>
+  <data name="侧边面板" xml:space="preserve">
+    <value>사이드 패널</value>
+  </data>
+  <data name="方向" xml:space="preserve"><value>방향</value></data>
+  <data name="收起" xml:space="preserve"><value>접기</value></data>
+  <data name="左侧" xml:space="preserve"><value>왼쪽</value></data>
+  <data name="右侧" xml:space="preserve"><value>오른쪽</value></data>
+  <data name="顶部" xml:space="preserve"><value>위쪽</value></data>
+  <data name="底部" xml:space="preserve"><value>아래쪽</value></data>
+  <data name="工作区" xml:space="preserve">
+    <value>작업 영역</value>
+  </data>
+  <data name="新建任务" xml:space="preserve">
+    <value>새 작업</value>
+  </data>
+  <data name="最近任务" xml:space="preserve">
+    <value>최근 작업</value>
+  </data>
+  <data name="任务 {number}" xml:space="preserve">
+    <value>작업 {number}</value>
+  </data>
+  <data name="主内容" xml:space="preserve">
+    <value>주 콘텐츠</value>
+  </data>
   <data name="窗口" xml:space="preserve">
     <value>창</value>
   </data>
@@ -1712,6 +1736,15 @@
   </data>
   <data name="分割按钮" xml:space="preserve">
     <value>분할 버튼</value>
+  </data>
+  <data name="开关按钮" xml:space="preserve">
+    <value>스위치 버튼</value>
+  </data>
+  <data name="开" xml:space="preserve">
+    <value>켜짐</value>
+  </data>
+  <data name="关" xml:space="preserve">
+    <value>꺼짐</value>
   </data>
   <data name="分页" xml:space="preserve">
     <value>페이지 매김</value>

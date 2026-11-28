@@ -52,7 +52,12 @@ namespace WPFDevelopers.Controls
         internal static Rect GetTargetArea(IntPtr windowHandle)
         {
             if (windowHandle != IntPtr.Zero)
-                return WindowHelpers.GetWindowBounds(windowHandle);
+            {
+                Win32.RECT rect;
+                if (!Win32.GetWindowRect(windowHandle, out rect))
+                    throw new InvalidOperationException("Unable to get the target window bounds.");
+                return new Rect(rect.Left, rect.Top, rect.Right - rect.Left, rect.Bottom - rect.Top);
+            }
 
             var application = Application.Current;
             var mainWindow = application?.MainWindow;
@@ -81,52 +86,57 @@ namespace WPFDevelopers.Controls
                 if (mainWindowHandle != IntPtr.Zero)
                 {
                     var screen = System.Windows.Forms.Screen.FromHandle(mainWindowHandle);
-                    var dpi = Win32.GetDpiForWindow(mainWindowHandle);
-                    var scale = dpi > 0 ? dpi / 96.0 : 1.0;
                     var workArea = screen.WorkingArea;
-                    return new Rect(
-                        workArea.Left / scale,
-                        workArea.Top / scale,
-                        workArea.Width / scale,
-                        workArea.Height / scale);
+                    return new Rect(workArea.Left, workArea.Top, workArea.Width, workArea.Height);
                 }
             }
 
-            return SystemParameters.WorkArea;
+            var primaryScreen = System.Windows.Forms.Screen.PrimaryScreen;
+            if (primaryScreen == null)
+                throw new InvalidOperationException("Unable to find the primary screen.");
+            var primaryWorkArea = primaryScreen.WorkingArea;
+            return new Rect(primaryWorkArea.Left, primaryWorkArea.Top, primaryWorkArea.Width, primaryWorkArea.Height);
         }
 
         private void CalculateAndSetPosition(Rect targetArea, ToastListBoxItem item)
         {
+            // Select the target monitor before converting WPF sizes to device pixels.
+            WindowStartupHelper.SetPosition(this, (int)targetArea.Left, (int)targetArea.Top);
+            var source = PresentationSource.FromVisual(this);
+            if (source == null || source.CompositionTarget == null)
+                throw new InvalidOperationException("Unable to get the Toast window's DPI transform.");
+            var transform = source.CompositionTarget.TransformToDevice;
+            var scaleX = transform.M11;
+            var scaleY = transform.M22;
             double x = 0;
             double y = 0;
 
             switch (Position)
             {
                 case Position.Left:
-                    x = targetArea.Left + item.Margin.Left;
+                    x = targetArea.Left + item.Margin.Left * scaleX;
                     y = targetArea.Top;
                     break;
 
                 case Position.Top:
-                    x = targetArea.Left + (targetArea.Width - item.Width) / 2;
+                    x = targetArea.Left + (targetArea.Width - item.Width * scaleX) / 2;
                     y = targetArea.Top;
                     break;
 
                 case Position.Right:
-                    x = targetArea.Right - (item.Width + item.Margin.Right + item.Padding.Right);
+                    x = targetArea.Right - (item.Width + item.Margin.Right + item.Padding.Right) * scaleX;
                     y = targetArea.Top;
                     break;
 
                 case Position.Bottom:
-                    x = targetArea.Left + (targetArea.Width - item.Width) / 2;
+                    x = targetArea.Left + (targetArea.Width - item.Width * scaleX) / 2;
                     _listBox.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-                    y = targetArea.Bottom - _listBox.DesiredSize.Height;
+                    y = targetArea.Bottom - _listBox.DesiredSize.Height * scaleY;
                     break;
             }
 
-            Height = targetArea.Height;
-            Left = x;
-            Top = y;
+            Height = targetArea.Height / scaleY;
+            WindowStartupHelper.SetPosition(this, (int)Math.Round(x), (int)Math.Round(y));
         }
 
         internal void Clear() 

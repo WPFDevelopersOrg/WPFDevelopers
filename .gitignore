@@ -13,6 +13,7 @@
 /OutPut
 /OutPut/WPFDevelopers.pdb
 /OutPut/WPFDevelopers.Samples.pdb
+/site/
 /src/Microsoft.Windows.Shell/obj
 /OutPut/*.pdb
 /src/packages

@@ -34,7 +34,7 @@ namespace WPFDevelopers.Samples
         {
             get { return Current.MainWindow; }
         }
-        public static ThemeType Theme { get; set; }
+        public static ThemeMode Theme { get; set; }
 
     }
 }

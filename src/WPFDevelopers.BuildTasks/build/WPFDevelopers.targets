@@ -1,0 +1,46 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_WDBuildTasksPath Condition="'$(MSBuildRuntimeType)' == 'Core'">$(MSBuildThisFileDirectory)..\tasks\netstandard2.0\WPFDevelopers.BuildTasks.dll</_WDBuildTasksPath>
+    <_WDBuildTasksPath Condition="'$(MSBuildRuntimeType)' != 'Core'">$(MSBuildThisFileDirectory)..\tasks\net40\WPFDevelopers.BuildTasks.dll</_WDBuildTasksPath>
+  </PropertyGroup>
+
+  <UsingTask TaskName="WPFDevelopers.BuildTasks.ConfigureDpiManifest" AssemblyFile="$(_WDBuildTasksPath)" />
+  <UsingTask TaskName="WPFDevelopers.BuildTasks.ConfigureLayoutRounding" AssemblyFile="$(_WDBuildTasksPath)" />
+
+  <Target Name="WDConfigureApplicationForTest"
+          BeforeTargets="PrepareForBuild"
+          Condition="'$(WDConfigureForTest)' != 'false'
+            and ('$(UseWPF)' == 'true' or '@(ApplicationDefinition)' != '')
+            and ('$(OutputType)' == 'WinExe' or '$(OutputType)' == 'Exe')
+            and '$(DesignTimeBuild)' != 'true'
+            and '$(IsCrossTargetingBuild)' != 'true'
+            and '$(TargetFrameworks)' == ''
+            and !$([System.String]::Copy('$(MSBuildProjectName)').EndsWith('_wpftmp'))">
+    <ConfigureDpiManifest Condition="'$(NoWin32Manifest)' != 'true'"
+                          ProjectDirectory="$(MSBuildProjectDirectory)"
+                          FilePath="$(ApplicationManifest)"
+                          AssemblyName="$(AssemblyName)">
+      <Output TaskParameter="ConfiguredFile" PropertyName="ApplicationManifest" />
+    </ConfigureDpiManifest>
+
+    <PropertyGroup>
+      <_WDExistingAppConfig>$(AppConfig)</_WDExistingAppConfig>
+    </PropertyGroup>
+    <FindAppConfigFile Condition="'$(_WDExistingAppConfig)' == ''"
+                       PrimaryList="@(None)"
+                       SecondaryList="@(Content)"
+                       TargetPath="$(TargetFileName).config">
+      <Output TaskParameter="AppConfigFile" PropertyName="_WDExistingAppConfig" />
+    </FindAppConfigFile>
+    <ConfigureLayoutRounding Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'"
+                             ProjectDirectory="$(MSBuildProjectDirectory)"
+                             FilePath="$(_WDExistingAppConfig)"
+                             TargetFrameworkIdentifier="$(TargetFrameworkIdentifier)"
+                             TargetFrameworkVersion="$(TargetFrameworkVersion)">
+      <Output TaskParameter="ConfiguredFile" PropertyName="_WDConfiguredAppConfig" />
+    </ConfigureLayoutRounding>
+    <PropertyGroup Condition="'$(_WDConfiguredAppConfig)' != ''">
+      <AppConfig>$(_WDConfiguredAppConfig)</AppConfig>
+    </PropertyGroup>
+  </Target>
+</Project>
