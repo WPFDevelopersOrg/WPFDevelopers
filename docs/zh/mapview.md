@@ -108,10 +108,10 @@ MapView 处理的是地理经纬度数据，但真实业务中，来自不同来
 
 如果你的业务数据来自不同厂商或设备，需要先明确来源，再做统一转换。为了避免在 MapView 层混入厂商 SDK 细节，项目中新增了统一地图转换工具类：
 
-- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs)
-- [src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs)
-- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs)
-- [src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs)
 
 典型转换链路是：
 
@@ -522,8 +522,8 @@ MapView 的车辆路径演示是一个很典型的使用例子，尤其适合：
 
 示例代码在：
 
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
 
 它的关键点包括：
 
@@ -643,10 +643,10 @@ mapView.TileSource = new TiandituTileSource("vec_w", 0, tiandituKey);
 
 本仓库中已经有比较完整的示例：
 
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs)
 
 这些示例可以作为快速上手和业务对接参考。
 

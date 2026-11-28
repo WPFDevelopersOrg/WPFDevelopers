@@ -3,6 +3,7 @@
   <h1>WPFDevelopers</h1>
   <p>An open-source control and theme library for building modern WPF desktop applications.</p>
   <p>
+    <a href="https://wpfdevelopersorg.github.io/WPFDevelopers/">Documentation</a> ·
     <a href="docs/en/getting-started.md">Quick start</a> ·
     <a href="docs/en/mapview.md">MapView guide</a> ·
     <a href="https://github.com/WPFDevelopersOrg/WPFDevelopers">GitHub</a> ·
@@ -47,11 +48,21 @@ Then follow the [quick start guide](docs/en/getting-started.md) to configure `Ap
 
 ## Documentation and resources
 
+- [Online documentation](https://wpfdevelopersorg.github.io/WPFDevelopers/)
 - [Quick start and supported .NET versions](docs/en/getting-started.md)
 - [MapView guide](docs/en/mapview.md)
 - [Sample project source](src/WPFDevelopers.Samples.Shared/ExampleViews/)
 - [GitHub](https://github.com/WPFDevelopersOrg/WPFDevelopers) · [AtomGit](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers) · [Gitee](https://gitee.com/WPFDevelopersOrg/WPFDevelopers)
 - [中文 README](README-zh.md)
+
+To preview the documentation locally, run from the repository root:
+
+```powershell
+python -m pip install -r requirements-docs.txt
+python -m mkdocs serve
+```
+
+Open the address printed in the terminal. Do not open `site/index.html` directly: the file protocol restricts site search and some page features.
 
 ## Control preview
 

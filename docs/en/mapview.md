@@ -95,10 +95,10 @@ MapView works with geographic coordinates, but in real business scenarios the sa
 
 If your data comes from different devices or third-party providers, it is important to identify the source first and then normalize it before display. To keep the map control independent from vendor SDK details, the project includes a common coordinate utility set:
 
-- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs)
-- [src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs)
-- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs)
-- [src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs](../../src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateType.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapGeoPoint.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapCoordinateHelper.cs)
+- [src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Shared/Controls/MapView/MapProjectionHelper.cs)
 
 A typical conversion flow looks like this:
 
@@ -495,8 +495,8 @@ A typical route demo in MapView includes:
 
 Sample references:
 
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
 
 ### Heading calculation example
 
@@ -582,10 +582,10 @@ For real projects, it is best to:
 
 ## 11. Example References
 
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml)
-- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs](../../src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewExample.xaml.cs)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/MapViewFeaturesWindow.xaml)
+- [src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs](https://github.com/WPFDevelopersOrg/WPFDevelopers/blob/master/src/WPFDevelopers.Samples.Shared/ExampleViews/Map/TiandituTileSource.cs)
 
 ---
 
