@@ -1,0 +1,336 @@
+site_name: WPFDevelopers
+site_description: WPF controls, themes, and usage guides
+site_url: https://wpfdevelopersorg.github.io/WPFDevelopers/
+repo_url: https://github.com/WPFDevelopersOrg/WPFDevelopers
+edit_uri: edit/master/docs/
+docs_dir: docs
+site_dir: site
+
+extra_css:
+  - assets/stylesheets/wpfdevelopers.css
+
+extra_javascript:
+  - assets/javascripts/control-search.js
+
+extra:
+  alternate:
+    - name: 简体中文
+      link: zh/getting-started/
+      lang: zh
+    - name: English
+      link: en/getting-started/
+      lang: en
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+  logo: assets/wpfdevelopers-logo.png
+  favicon: assets/favicon.ico
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.sections
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - 首页: index.md
+  - 中文:
+      - 快速开始: zh/getting-started.md
+      - 控件文档:
+          - 控件总览: zh/controls/index.md
+          - 窗口与导航:
+              - wd:Window: zh/controls/window-navigation/window.md
+              - wd:NotifyIcon: zh/controls/window-navigation/notify-icon.md
+              - wd:DrawerMenu: zh/controls/window-navigation/drawer-menu.md
+              - wd:SidePanel: zh/controls/window-navigation/side-panel.md
+              - wd:NavMenu3D: zh/controls/window-navigation/nav-menu3-d.md
+              - wd:NavScrollPanel: zh/controls/window-navigation/nav-scroll-panel.md
+              - TransitionPanel: zh/controls/window-navigation/transition-panel.md
+              - wd:Drawer: zh/controls/window-navigation/drawer.md
+              - wd:Mask: zh/controls/window-navigation/mask.md
+              - wd:AcrylicBlur: zh/controls/window-navigation/acrylic-blur.md
+              - TaskbarItemInfo: zh/controls/window-navigation/taskbar-item-info.md
+          - 基础控件与样式:
+              - wd:WDBorder: zh/controls/basic-controls/wd-border.md
+              - wd:SplitButton: zh/controls/basic-controls/split-button.md
+              - wd:Segmented: zh/controls/basic-controls/segmented.md
+          - 输入控件:
+              - wd:ColorPicker: zh/controls/input-controls/color-picker.md
+              - wd:TimePicker: zh/controls/input-controls/time-picker.md
+              - wd:DateRangePicker: zh/controls/input-controls/date-range-picker.md
+              - wd:NumericBox: zh/controls/input-controls/numeric-box.md
+              - wd:IPEditBox: zh/controls/input-controls/ip-edit-box.md
+              - wd:MultiSelectComboBox: zh/controls/input-controls/multi-select-combo-box.md
+              - MultiSelectSearchComboBox: zh/controls/input-controls/multi-select-search-combo-box.md
+              - Password: zh/controls/input-controls/password.md
+              - wd:VerifyCode: zh/controls/input-controls/verify-code.md
+              - RoundPicker: zh/controls/input-controls/round-picker.md
+              - wd:RulerControl: zh/controls/input-controls/ruler-control.md
+              - wd:ScrollIntoView: zh/controls/input-controls/scroll-into-view.md
+              - wd:Dial: zh/controls/input-controls/dial.md
+              - wd:GestureUnlock: zh/controls/input-controls/gesture-unlock.md
+              - wd:SvgViewer: zh/controls/input-controls/svg-viewer.md
+              - wd:OtpBox: zh/controls/input-controls/otp-box.md
+          - 加载动画:
+              - wd:RingLoading: zh/controls/loading-animations/ring-loading.md
+              - wd:BallLoading: zh/controls/loading-animations/ball-loading.md
+              - StreamerLoading: zh/controls/loading-animations/streamer-loading.md
+              - wd:WaitLoading: zh/controls/loading-animations/wait-loading.md
+              - wd:CycleLoading: zh/controls/loading-animations/cycle-loading.md
+              - wd:RollLoading: zh/controls/loading-animations/roll-loading.md
+              - wd:Loading: zh/controls/loading-animations/loading.md
+          - 图表与数据可视化:
+              - wd:ChartRadar: zh/controls/charts-data-visualization/chart-radar.md
+              - wd:ChartBar: zh/controls/charts-data-visualization/chart-bar.md
+              - wd:ChartLine: zh/controls/charts-data-visualization/chart-line.md
+              - wd:ChartPie: zh/controls/charts-data-visualization/chart-pie.md
+              - Dashboard: zh/controls/charts-data-visualization/dashboard.md
+              - PieSegment: zh/controls/charts-data-visualization/pie-segment.md
+              - wd:Gauge: zh/controls/charts-data-visualization/gauge.md
+              - LineChart: zh/controls/charts-data-visualization/line-chart.md
+              - wd:CircleProgressBar: zh/controls/charts-data-visualization/circle-progress-bar.md
+              - wd:Step: zh/controls/charts-data-visualization/step.md
+              - wd:BreadCrumbBar: zh/controls/charts-data-visualization/bread-crumb-bar.md
+              - wd:Pagination: zh/controls/charts-data-visualization/pagination.md
+              - ActivityFeed: zh/controls/charts-data-visualization/activity-feed.md
+              - wd:Thermometer: zh/controls/charts-data-visualization/thermometer.md
+              - wd:DataGridFilter: zh/controls/charts-data-visualization/data-grid-filter.md
+          - 布局与面板:
+              - wd:Carousel: zh/controls/layouts-panels/carousel.md
+              - wd:FocusCarousel: zh/controls/layouts-panels/focus-carousel.md
+              - wd:CardCarousel: zh/controls/layouts-panels/card-carousel.md
+              - wd:CircleMenu: zh/controls/layouts-panels/circle-menu.md
+              - wd:SixGridView: zh/controls/layouts-panels/six-grid-view.md
+              - wd:WaterfallPanel: zh/controls/layouts-panels/waterfall-panel.md
+              - wd:WaterfallItemsControl: zh/controls/layouts-panels/waterfall-items-control.md
+              - wd:VirtualizingWrapPanel: zh/controls/layouts-panels/virtualizing-wrap-panel.md
+              - TransformLayout: zh/controls/layouts-panels/transform-layout.md
+              - wd:DrapView: zh/controls/layouts-panels/drap-view.md
+              - wd:Spacing: zh/controls/layouts-panels/spacing.md
+              - wd:PanningItems: zh/controls/layouts-panels/panning-items.md
+              - wd:WDScrollViewer: zh/controls/layouts-panels/wd-scroll-viewer.md
+              - wd:ScrollViewerBehavior: zh/controls/layouts-panels/scroll-viewer-behavior.md
+              - wd:IconicThumbnail: zh/controls/layouts-panels/iconic-thumbnail.md
+              - GridSplitter: zh/controls/layouts-panels/grid-splitter.md
+          - 动画与特效:
+              - wd:BreatheLight: zh/controls/animation-effects/breathe-light.md
+              - wd:SpotLight: zh/controls/animation-effects/spot-light.md
+              - wd:EdgeLight: zh/controls/animation-effects/edge-light.md
+              - RainbowButtons: zh/controls/animation-effects/rainbow-buttons.md
+              - wd:Shake: zh/controls/animation-effects/shake.md
+              - BubbleSelection: zh/controls/animation-effects/bubble-selection.md
+              - wd:StarrySky: zh/controls/animation-effects/starry-sky.md
+              - SnowCanvas: zh/controls/animation-effects/snow-canvas.md
+              - SpeedRockets: zh/controls/animation-effects/speed-rockets.md
+              - CountdownTimer: zh/controls/animation-effects/countdown-timer.md
+              - NumberCard: zh/controls/animation-effects/number-card.md
+              - wd:AnimationGrid: zh/controls/animation-effects/animation-grid.md
+              - LogoAnimation: zh/controls/animation-effects/logo-animation.md
+              - SongWords: zh/controls/animation-effects/song-words.md
+              - wd:AnimationAudio: zh/controls/animation-effects/animation-audio.md
+              - Barrage: zh/controls/animation-effects/barrage.md
+              - CanvasHandWriting: zh/controls/animation-effects/canvas-hand-writing.md
+              - Drawing: zh/controls/animation-effects/drawing.md
+              - DrawPrize: zh/controls/animation-effects/draw-prize.md
+          - 特效与滤镜:
+              - wd:GrayscaleEffect: zh/controls/effects-filters/grayscale-effect.md
+          - 媒体与图像处理:
+              - wd:ScreenCut: zh/controls/media-image-processing/screen-cut.md
+              - wd:CropImage: zh/controls/media-image-processing/crop-image.md
+              - wd:CropAvatar: zh/controls/media-image-processing/crop-avatar.md
+              - ImageCrop: zh/controls/media-image-processing/image-crop.md
+              - CutImage: zh/controls/media-image-processing/cut-image.md
+              - wd:Magnifier: zh/controls/media-image-processing/magnifier.md
+          - 提示与消息:
+              - wd:Badge: zh/controls/feedback-messages/badge.md
+              - wd:Toast: zh/controls/feedback-messages/toast.md
+              - wd:Tag: zh/controls/feedback-messages/tag.md
+              - wd:PathIcon: zh/controls/feedback-messages/path-icon.md
+              - wd:AllPathIcon: zh/controls/feedback-messages/all-path-icon.md
+              - MessageBox: zh/controls/feedback-messages/message-box.md
+              - Dialog: zh/controls/feedback-messages/dialog.md
+          - 其他控件:
+              - ZooSemy: zh/controls/other-controls/zoo-semy.md
+              - Flame: zh/controls/other-controls/flame.md
+              - Desktop: zh/controls/other-controls/desktop.md
+              - AMap: zh/controls/other-controls/a-map.md
+              - LoginWindow: zh/controls/other-controls/login-window.md
+              - ChatEmoji: zh/controls/other-controls/chat-emoji.md
+              - wd:MarkdownViewer: zh/controls/other-controls/markdown-viewer.md
+      - MapView 地图控件: zh/mapview.md
+  - English:
+      - Getting started: en/getting-started.md
+      - Control Documentation:
+          - Control Catalog: en/controls/index.md
+          - Windows & Navigation:
+              - wd:Window: en/controls/window-navigation/window.md
+              - wd:NotifyIcon: en/controls/window-navigation/notify-icon.md
+              - wd:DrawerMenu: en/controls/window-navigation/drawer-menu.md
+              - wd:SidePanel: en/controls/window-navigation/side-panel.md
+              - wd:NavMenu3D: en/controls/window-navigation/nav-menu3-d.md
+              - wd:NavScrollPanel: en/controls/window-navigation/nav-scroll-panel.md
+              - TransitionPanel: en/controls/window-navigation/transition-panel.md
+              - wd:Drawer: en/controls/window-navigation/drawer.md
+              - wd:Mask: en/controls/window-navigation/mask.md
+              - wd:AcrylicBlur: en/controls/window-navigation/acrylic-blur.md
+              - TaskbarItemInfo: en/controls/window-navigation/taskbar-item-info.md
+          - Basic Controls & Styles:
+              - wd:WDBorder: en/controls/basic-controls/wd-border.md
+              - Theme: en/controls/basic-controls/theme.md
+              - Window (WPF): en/controls/basic-controls/window.md
+              - Loading: en/controls/basic-controls/loading.md
+              - Button: en/controls/basic-controls/button.md
+              - TextBox: en/controls/basic-controls/text-box.md
+              - PasswordBox: en/controls/basic-controls/password-box.md
+              - ComboBox: en/controls/basic-controls/combo-box.md
+              - CheckBox: en/controls/basic-controls/check-box.md
+              - RadioButton: en/controls/basic-controls/radio-button.md
+              - ToggleButton: en/controls/basic-controls/toggle-button.md
+              - DatePicker: en/controls/basic-controls/date-picker.md
+              - DateTimePicker: en/controls/basic-controls/date-time-picker.md
+              - Slider: en/controls/basic-controls/slider.md
+              - ProgressBar: en/controls/basic-controls/progress-bar.md
+              - DataGrid: en/controls/basic-controls/data-grid.md
+              - ListBox: en/controls/basic-controls/list-box.md
+              - ListView: en/controls/basic-controls/list-view.md
+              - TreeView: en/controls/basic-controls/tree-view.md
+              - Expander: en/controls/basic-controls/expander.md
+              - GroupBox: en/controls/basic-controls/group-box.md
+              - TabControl: en/controls/basic-controls/tab-control.md
+              - Menu: en/controls/basic-controls/menu.md
+              - wd:SplitButton: en/controls/basic-controls/split-button.md
+              - Calendar: en/controls/basic-controls/calendar.md
+              - wd:Segmented: en/controls/basic-controls/segmented.md
+          - Input Controls:
+              - wd:ColorPicker: en/controls/input-controls/color-picker.md
+              - wd:TimePicker: en/controls/input-controls/time-picker.md
+              - wd:DateRangePicker: en/controls/input-controls/date-range-picker.md
+              - wd:NumericBox: en/controls/input-controls/numeric-box.md
+              - wd:IPEditBox: en/controls/input-controls/ip-edit-box.md
+              - wd:MultiSelectComboBox: en/controls/input-controls/multi-select-combo-box.md
+              - MultiSelectSearchComboBox: en/controls/input-controls/multi-select-search-combo-box.md
+              - Password: en/controls/input-controls/password.md
+              - wd:VerifyCode: en/controls/input-controls/verify-code.md
+              - RoundPicker: en/controls/input-controls/round-picker.md
+              - wd:RulerControl: en/controls/input-controls/ruler-control.md
+              - wd:ScrollIntoView: en/controls/input-controls/scroll-into-view.md
+              - wd:Dial: en/controls/input-controls/dial.md
+              - wd:GestureUnlock: en/controls/input-controls/gesture-unlock.md
+              - wd:SvgViewer: en/controls/input-controls/svg-viewer.md
+              - wd:OtpBox: en/controls/input-controls/otp-box.md
+          - Loading Animations:
+              - wd:RingLoading: en/controls/loading-animations/ring-loading.md
+              - wd:BallLoading: en/controls/loading-animations/ball-loading.md
+              - StreamerLoading: en/controls/loading-animations/streamer-loading.md
+              - wd:WaitLoading: en/controls/loading-animations/wait-loading.md
+              - wd:CycleLoading: en/controls/loading-animations/cycle-loading.md
+              - wd:RollLoading: en/controls/loading-animations/roll-loading.md
+              - wd:Loading (attached property): en/controls/loading-animations/loading.md
+          - Charts & Data Visualization:
+              - wd:ChartRadar: en/controls/charts-data-visualization/chart-radar.md
+              - wd:ChartBar: en/controls/charts-data-visualization/chart-bar.md
+              - wd:ChartLine: en/controls/charts-data-visualization/chart-line.md
+              - wd:ChartPie: en/controls/charts-data-visualization/chart-pie.md
+              - Dashboard: en/controls/charts-data-visualization/dashboard.md
+              - PieSegment: en/controls/charts-data-visualization/pie-segment.md
+              - wd:Gauge: en/controls/charts-data-visualization/gauge.md
+              - LineChart: en/controls/charts-data-visualization/line-chart.md
+              - wd:CircleProgressBar: en/controls/charts-data-visualization/circle-progress-bar.md
+              - wd:Step: en/controls/charts-data-visualization/step.md
+              - wd:BreadCrumbBar: en/controls/charts-data-visualization/bread-crumb-bar.md
+              - wd:Pagination: en/controls/charts-data-visualization/pagination.md
+              - ActivityFeed: en/controls/charts-data-visualization/activity-feed.md
+              - wd:Thermometer: en/controls/charts-data-visualization/thermometer.md
+              - wd:DataGridFilter: en/controls/charts-data-visualization/data-grid-filter.md
+          - Layout & Panels:
+              - wd:Carousel: en/controls/layouts-panels/carousel.md
+              - wd:FocusCarousel: en/controls/layouts-panels/focus-carousel.md
+              - wd:CardCarousel: en/controls/layouts-panels/card-carousel.md
+              - wd:CircleMenu: en/controls/layouts-panels/circle-menu.md
+              - wd:SixGridView: en/controls/layouts-panels/six-grid-view.md
+              - wd:WaterfallPanel: en/controls/layouts-panels/waterfall-panel.md
+              - wd:WaterfallItemsControl: en/controls/layouts-panels/waterfall-items-control.md
+              - wd:VirtualizingWrapPanel: en/controls/layouts-panels/virtualizing-wrap-panel.md
+              - TransformLayout: en/controls/layouts-panels/transform-layout.md
+              - wd:DrapView: en/controls/layouts-panels/drap-view.md
+              - wd:Spacing (attached property): en/controls/layouts-panels/spacing.md
+              - wd:PanningItems: en/controls/layouts-panels/panning-items.md
+              - wd:WDScrollViewer: en/controls/layouts-panels/wd-scroll-viewer.md
+              - wd:ScrollViewerBehavior: en/controls/layouts-panels/scroll-viewer-behavior.md
+              - wd:IconicThumbnail: en/controls/layouts-panels/iconic-thumbnail.md
+              - GridSplitter: en/controls/layouts-panels/grid-splitter.md
+          - Animation & Effects:
+              - wd:BreatheLight: en/controls/animation-effects/breathe-light.md
+              - wd:SpotLight: en/controls/animation-effects/spot-light.md
+              - wd:EdgeLight: en/controls/animation-effects/edge-light.md
+              - RainbowButtons: en/controls/animation-effects/rainbow-buttons.md
+              - wd:Shake: en/controls/animation-effects/shake.md
+              - BubbleSelection: en/controls/animation-effects/bubble-selection.md
+              - wd:StarrySky: en/controls/animation-effects/starry-sky.md
+              - SnowCanvas: en/controls/animation-effects/snow-canvas.md
+              - SpeedRockets: en/controls/animation-effects/speed-rockets.md
+              - CountdownTimer: en/controls/animation-effects/countdown-timer.md
+              - NumberCard: en/controls/animation-effects/number-card.md
+              - wd:AnimationGrid: en/controls/animation-effects/animation-grid.md
+              - LogoAnimation: en/controls/animation-effects/logo-animation.md
+              - SongWords: en/controls/animation-effects/song-words.md
+              - wd:AnimationAudio: en/controls/animation-effects/animation-audio.md
+              - Barrage: en/controls/animation-effects/barrage.md
+              - CanvasHandWriting: en/controls/animation-effects/canvas-hand-writing.md
+              - Drawing: en/controls/animation-effects/drawing.md
+              - DrawPrize: en/controls/animation-effects/draw-prize.md
+          - Effects & Filters:
+              - wd:GrayscaleEffect: en/controls/effects-filters/grayscale-effect.md
+          - Media & Image Processing:
+              - wd:ScreenCut: en/controls/media-image-processing/screen-cut.md
+              - wd:CropImage: en/controls/media-image-processing/crop-image.md
+              - wd:CropAvatar: en/controls/media-image-processing/crop-avatar.md
+              - ImageCrop: en/controls/media-image-processing/image-crop.md
+              - CutImage: en/controls/media-image-processing/cut-image.md
+              - wd:Magnifier: en/controls/media-image-processing/magnifier.md
+          - Notifications & Messages:
+              - wd:Badge (attached property): en/controls/feedback-messages/badge.md
+              - wd:Toast: en/controls/feedback-messages/toast.md
+              - wd:Tag: en/controls/feedback-messages/tag.md
+              - wd:PathIcon: en/controls/feedback-messages/path-icon.md
+              - wd:AllPathIcon: en/controls/feedback-messages/all-path-icon.md
+              - MessageBox (static class): en/controls/feedback-messages/message-box.md
+              - Dialog: en/controls/feedback-messages/dialog.md
+          - Other Controls:
+              - ZooSemy: en/controls/other-controls/zoo-semy.md
+              - Flame: en/controls/other-controls/flame.md
+              - Desktop: en/controls/other-controls/desktop.md
+              - AMap: en/controls/other-controls/a-map.md
+              - LoginWindow: en/controls/other-controls/login-window.md
+              - ChatEmoji: en/controls/other-controls/chat-emoji.md
+              - wd:MarkdownViewer: en/controls/other-controls/markdown-viewer.md
+      - MapView: en/mapview.md

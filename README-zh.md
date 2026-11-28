@@ -3,6 +3,7 @@
   <h1>WPFDevelopers</h1>
   <p>面向 WPF 应用的开源控件与主题库，帮助你更轻松地构建现代 Windows 桌面界面。</p>
   <p>
+    <a href="https://wpfdevelopersorg.github.io/WPFDevelopers/">在线文档</a> ·
     <a href="docs/zh/getting-started.md">快速开始</a> ·
     <a href="docs/zh/mapview.md">MapView 指南</a> ·
     <a href="https://github.com/WPFDevelopersOrg/WPFDevelopers">GitHub</a> ·
@@ -46,10 +47,20 @@ Install-Package WPFDevelopers -Pre
 
 ## 文档与资源
 
+- [在线文档站](https://wpfdevelopersorg.github.io/WPFDevelopers/)
 - [快速开始与 .NET 支持范围](docs/zh/getting-started.md)
 - [MapView 地图控件指南](docs/zh/mapview.md)
 - [示例项目源码](src/WPFDevelopers.Samples.Shared/ExampleViews/)
 - [GitHub 仓库](https://github.com/WPFDevelopersOrg/WPFDevelopers) · [AtomGit](https://atomgit.com/WPFDevelopersOrg/WPFDevelopers) · [Gitee](https://gitee.com/WPFDevelopersOrg/WPFDevelopers)
+
+本地预览文档站时，请在仓库根目录运行：
+
+```powershell
+python -m pip install -r requirements-docs.txt
+python -m mkdocs serve
+```
+
+然后访问终端显示的地址。不要直接打开 `site/index.html`，浏览器的文件协议会限制全站搜索和部分页面功能。
 
 ## 控件预览
 
