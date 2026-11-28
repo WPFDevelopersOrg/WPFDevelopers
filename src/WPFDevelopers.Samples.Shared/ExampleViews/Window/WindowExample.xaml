@@ -119,17 +119,28 @@
                             HorizontalAlignment="Left"
                             wd:ElementHelper.CornerRadius="3"
                             Click="ButtonNone_Click"
-                            Content="打开自定义标题栏窗口"
-                            Style="{DynamicResource WD.DangerPrimaryButton}" />
+                            Content="打开自定义标题栏窗口" />
                     </StackPanel>
                 </Border>
             </StackPanel>
         </ScrollViewer>
         <controls:CodeViewer.SourceCodes>
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml" CodeType="Xaml" Haader="Normal Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml.cs" CodeType="CSharp" Haader="Normal CSharp" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml" CodeType="Xaml" Haader="HighTitleBar Xaml" />
-            <controls:SourceCodeModel CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml.cs" CodeType="CSharp" Haader="HighTitleBar CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml"
+                CodeType="Xaml"
+                Haader="Normal Xaml" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/NormalWindow.xaml.cs"
+                CodeType="CSharp"
+                Haader="Normal CSharp" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml"
+                CodeType="Xaml"
+                Haader="HighTitleBar Xaml" />
+            <controls:SourceCodeModel
+                CodeSource="/WPFDevelopers.SamplesCode;component/ExampleViews/Window/HighTitleBarWindow.xaml.cs"
+                CodeType="CSharp"
+                Haader="HighTitleBar CSharp" />
         </controls:CodeViewer.SourceCodes>
     </controls:CodeViewer>
 </UserControl>

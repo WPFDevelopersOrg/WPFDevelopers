@@ -49,15 +49,15 @@ namespace WPFDevelopers
 
         }
 
-        public Dictionary<Tuple<ThemeType, Color, double>, SolidColorBrush> PrimaryColorCache = new Dictionary<Tuple<ThemeType, Color, double>, SolidColorBrush>();
+        public Dictionary<Tuple<ThemeMode, Color, double>, SolidColorBrush> PrimaryColorCache = new Dictionary<Tuple<ThemeMode, Color, double>, SolidColorBrush>();
 
-        public Dictionary<Color, Dictionary<Tuple<ThemeType, string>, Color>> ColorCache =
-            new Dictionary<Color, Dictionary<Tuple<ThemeType, string>, Color>>();
+        public Dictionary<Color, Dictionary<Tuple<ThemeMode, string>, Color>> ColorCache =
+            new Dictionary<Color, Dictionary<Tuple<ThemeMode, string>, Color>>();
 
-        public void SetTheme(ThemeType themeType)
+        public void SetTheme(ThemeMode theme)
         {
             if (Resources != null)
-                Resources.Theme = themeType;
+                Resources.Theme = theme;
         }
 
         public void SetColor(Color color)
@@ -68,21 +68,16 @@ namespace WPFDevelopers
 
         private bool _themeAnimating;
 
-        public void SwitchTheme(FrameworkElement source, ThemeType targetTheme)
+        public void SwitchTheme(FrameworkElement source, ThemeMode theme)
         {
-            SwitchThemeCore(source, targetTheme, () => SetTheme(targetTheme));
+            var targetTheme = WPFDevelopers.Resources.ResolveTheme(theme);
+            SwitchThemeCore(source, targetTheme, () => SetTheme(theme));
         }
 
-        public void SwitchThemeMode(FrameworkElement source, ThemeMode mode)
-        {
-            var targetTheme = Resources.ResolveTheme(mode);
-            SwitchThemeCore(source, targetTheme, () => Resources.ThemeMode = mode);
-        }
-
-        private void SwitchThemeCore(FrameworkElement source, ThemeType targetTheme, Action applyTheme)
+        private void SwitchThemeCore(FrameworkElement source, ThemeMode targetTheme, Action applyTheme)
         {
             if (_themeAnimating) return;
-            if (Resources.Theme == targetTheme)
+            if (Resources.ActualTheme == targetTheme)
             {
                 applyTheme();
                 return;

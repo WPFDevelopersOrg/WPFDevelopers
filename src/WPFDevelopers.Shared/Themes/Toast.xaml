@@ -24,7 +24,6 @@
                 <ControlTemplate TargetType="{x:Type controls:ToastListBoxItem}">
                     <Grid
                         x:Name="PART_Grid"
-                        CacheMode="BitmapCache"
                         RenderTransformOrigin=".5,0">
                         <Grid.RenderTransform>
                             <ScaleTransform ScaleY="0" />
@@ -59,6 +58,7 @@
                                         FontSize="{TemplateBinding FontSize}"
                                         Foreground="{TemplateBinding Foreground}"
                                         Text="{TemplateBinding Content}"
+                                        TextOptions.TextFormattingMode="Display"
                                         TextWrapping="Wrap" />
                                 </DockPanel>
                                 <Button

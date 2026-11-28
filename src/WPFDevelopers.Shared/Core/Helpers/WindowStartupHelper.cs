@@ -58,6 +58,14 @@ namespace WPFDevelopers.Helpers
         [DllImport("dwmapi.dll", PreserveSig = false)]
         private static extern void DwmSetWindowAttribute(IntPtr window, int attribute, ref int value, int size);
 
+        internal static void SetPosition(Window window, int x, int y)
+        {
+            var handle = new WindowInteropHelper(window).Handle;
+            if (!SetWindowPos(handle, IntPtr.Zero, x, y, 0, 0,
+                    SwpNoSize | SwpNoZOrder | SwpNoActivate))
+                throw new Win32Exception(Marshal.GetLastWin32Error());
+        }
+
         internal static void CenterOnCursorMonitor(Window window)
         {
             NativePoint cursorPosition;

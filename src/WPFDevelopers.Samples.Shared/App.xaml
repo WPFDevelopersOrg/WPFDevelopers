@@ -12,9 +12,9 @@
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers;component/Themes/Theme.xaml" />
                 <!--  需要注意 wd:Resources 必须在Theme.xaml后  -->
                 <!--
-                    默认情况下，Theme 为 Light（适用于 Windows 10 及以上版本），
-                    并会自动根据系统主题切换 Light 或 Dark 模式。
-                    若设置为 Default，则会跟随系统主题。
+                    不设置 Theme 时恢复上次选择，首次使用默认跟随系统。
+                    设置 Theme="System" 可明确跟随系统主题（适用于 Windows 10 及以上版本），
+                    实际显示的 Light 或 Dark 模式可通过 ActualTheme 获取。
                 -->
 
                 <!--

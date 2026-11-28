@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace WPFDevelopers.Controls
 {
@@ -23,10 +25,44 @@ namespace WPFDevelopers.Controls
         public static readonly DependencyProperty IsExpandedProperty =
            DependencyProperty.Register("IsExpanded", typeof(bool), typeof(DrawerMenu), new PropertyMetadata(false, OnIsExpandedChanged));
 
+        public bool ShowExpandButton
+        {
+            get { return (bool)GetValue(ShowExpandButtonProperty); }
+            set { SetValue(ShowExpandButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowExpandButtonProperty =
+            DependencyProperty.Register("ShowExpandButton", typeof(bool), typeof(DrawerMenu), new PropertyMetadata(true, OnShowExpandButtonChanged));
+
+        private static void OnShowExpandButtonChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctrl = (DrawerMenu)d;
+            if (!(bool)e.NewValue)
+                ctrl.AnimateHiddenMenuWidth();
+            else
+                ctrl.BeginAnimation(WidthProperty, null);
+        }
+
+        private void AnimateHiddenMenuWidth()
+        {
+            var currentWidth = Width;
+            if (double.IsNaN(currentWidth))
+                currentWidth = ActualWidth > 0 ? ActualWidth : 50;
+
+            BeginAnimation(WidthProperty, new DoubleAnimation
+            {
+                From = currentWidth,
+                To = IsExpanded ? 180 : 0,
+                Duration = TimeSpan.FromSeconds(0.2)
+            });
+        }
+
         private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is DrawerMenu ctrl)
             {
+                if (!ctrl.ShowExpandButton)
+                    ctrl.AnimateHiddenMenuWidth();
                 ctrl.RaiseEvent(new RoutedEventArgs(IsExpandedChangedEvent));
                 if (ctrl.IsExpandedCommand?.CanExecute(e.NewValue) == true)
                 {

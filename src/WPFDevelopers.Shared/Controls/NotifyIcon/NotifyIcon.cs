@@ -124,7 +124,7 @@ namespace WPFDevelopers.Controls
             ContextMenuProperty.OverrideMetadata(typeof(NotifyIcon), new FrameworkPropertyMetadata(ContextMenuPropertyChanged));
         }
 
-        private void Resources_ThemeChanged(ThemeType currentTheme)
+        private void Resources_ThemeChanged(ThemeMode currentTheme)
         {
 #if NET40
             UpdateDefaultStyle();

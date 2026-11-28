@@ -93,7 +93,7 @@ namespace WPFDevelopers.Samples.Controls
             WPFDevelopers.Resources.ThemeChanged -= OnThemeChanged;
         }
 
-        private void OnThemeChanged(ThemeType theme)
+        private void OnThemeChanged(ThemeMode theme)
         {
             UpdateHighlighting();
         }

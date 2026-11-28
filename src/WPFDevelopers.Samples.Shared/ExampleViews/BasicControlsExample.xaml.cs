@@ -50,8 +50,8 @@ namespace WPFDevelopers.Samples.ExampleViews
 
         private void MainView_Loaded(object sender, RoutedEventArgs e)
         {
-            App.Theme = ThemeManager.Instance.Resources.Theme;
-            if (App.Theme == ThemeType.Dark)
+            App.Theme = ThemeManager.Instance.Resources.ActualTheme;
+            if (App.Theme == ThemeMode.Dark)
                 tbLightDark.IsChecked = true;
             else
                 tbLightDark.IsChecked = false;
@@ -165,7 +165,7 @@ namespace WPFDevelopers.Samples.ExampleViews
         {
             var lightDark = sender as ToggleButton;
             if (lightDark == null) return;
-            var theme = lightDark.IsChecked.Value ? ThemeType.Dark : ThemeType.Light;
+            var theme = lightDark.IsChecked.Value ? ThemeMode.Dark : ThemeMode.Light;
             if (App.Theme == theme) return;
             App.Theme = theme;
             ThemeManager.Instance.SetTheme(theme);

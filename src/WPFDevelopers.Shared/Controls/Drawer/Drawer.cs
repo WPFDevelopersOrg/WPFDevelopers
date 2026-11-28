@@ -51,6 +51,10 @@ namespace WPFDevelopers.Controls
             set => SetValue(IsOpenProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the maximum header width for left and right drawers.
+        /// Top and bottom drawers span the full available width.
+        /// </summary>
         public double HeaderWidth
         {
             get => (double)GetValue(HeaderWidthProperty);
@@ -74,19 +78,20 @@ namespace WPFDevelopers.Controls
 
         private static void OnHeaderWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var ctrl = d as Drawer;
-            if (ctrl?._headerBorder == null) return;
-            var width = (double)e.NewValue;
-            ctrl._headerBorder.MaxWidth = width > 0 ? width : double.PositiveInfinity;
+            ((Drawer)d).UpdateHeaderMaxWidth();
         }
 
         private static void OnPositionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var ctrl = d as Drawer;
-            if (ctrl == null) return;
-            var pos = (Position)e.NewValue;
-            if (pos == Position.Top || pos == Position.Bottom)
-                ctrl.HeaderWidth = 0;
+            ((Drawer)d).UpdateHeaderMaxWidth();
+        }
+
+        private bool IsSideDrawer => Position == Position.Left || Position == Position.Right;
+
+        private void UpdateHeaderMaxWidth()
+        {
+            if (_headerBorder != null)
+                _headerBorder.MaxWidth = IsSideDrawer && HeaderWidth > 0 ? HeaderWidth : double.PositiveInfinity;
         }
 
         public override void OnApplyTemplate()
@@ -94,7 +99,10 @@ namespace WPFDevelopers.Controls
             base.OnApplyTemplate();
             _headerBorder = GetTemplateChild(BorderHeaderTemplateName) as Border;
             if (_headerBorder != null)
+            {
+                UpdateHeaderMaxWidth();
                 _headerBorder.Loaded += HeaderBorder_Loaded;
+            }
             _markBorder = GetTemplateChild(BorderMarkTemplateName) as Border;
             if (_markBorder != null)
                 _markBorder.MouseDown += MarkBorder_MouseDown;
@@ -108,7 +116,7 @@ namespace WPFDevelopers.Controls
         private void HeaderBorder_Loaded(object sender, RoutedEventArgs e)
         {
             _headerBorder.Loaded -= HeaderBorder_Loaded;
-            if (HeaderWidth <= 0)
+            if (IsSideDrawer && HeaderWidth <= 0)
                 HeaderWidth = _headerBorder.ActualWidth / 3.0 * 2.0;
             BuildStoryboards();
             if (IsOpen)
@@ -125,7 +133,7 @@ namespace WPFDevelopers.Controls
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             base.OnRenderSizeChanged(sizeInfo);
-            if (HeaderWidth <= 0)
+            if (IsSideDrawer && HeaderWidth <= 0)
                 HeaderWidth = ActualWidth / 3.0 * 2.0;
         }
 

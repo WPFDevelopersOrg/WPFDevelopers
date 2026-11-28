@@ -2,5 +2,5 @@
 
 namespace WPFDevelopers.Core
 {
-    public delegate void ThemeChangedEvent(ThemeType currentTheme);
+    public delegate void ThemeChangedEvent(ThemeMode currentTheme);
 }

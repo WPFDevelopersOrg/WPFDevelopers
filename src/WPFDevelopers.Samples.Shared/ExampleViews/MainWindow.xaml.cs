@@ -39,7 +39,7 @@ namespace WPFDevelopers.Samples
             ThemeColorPicker.SelectedColor = ThemeManager.Instance.PrimaryColor;
         }
 
-        private void OnThemeChanged(ThemeType theme)
+        private void OnThemeChanged(ThemeMode theme)
         {
             SetThemeSource();
         }
@@ -78,7 +78,7 @@ namespace WPFDevelopers.Samples
 
         public void ToggleTheme(FrameworkElement source)
         {
-            var targetTheme = ThemeManager.Instance.Resources.Theme == ThemeType.Dark ? ThemeType.Light : ThemeType.Dark;
+            var targetTheme = ThemeManager.Instance.Resources.IsDarkTheme ? ThemeMode.Light : ThemeMode.Dark;
             ThemeManager.Instance.SwitchTheme(source, targetTheme);
             SetThemeSource();
         }
@@ -191,7 +191,7 @@ namespace WPFDevelopers.Samples
                     break;
                 case "Theme":
                     var isDark = ThemeSvg.Source.Contains("Moon");
-                    var theme = isDark ? ThemeType.Dark : ThemeType.Light;
+                    var theme = isDark ? ThemeMode.Dark : ThemeMode.Light;
                     if (App.Theme == theme) return;
                     App.Theme = theme;
                     ThemeManager.Instance.SetTheme(theme);
@@ -210,8 +210,8 @@ namespace WPFDevelopers.Samples
 
         void SetThemeSource()
         {
-            App.Theme = ThemeManager.Instance.Resources.Theme;
-            if (App.Theme == ThemeType.Dark)
+            App.Theme = ThemeManager.Instance.Resources.ActualTheme;
+            if (App.Theme == ThemeMode.Dark)
                 ThemeSvg.Source = "pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Sun.svg";
             else
                 ThemeSvg.Source = "pack://application:,,,/WPFDevelopers.Samples;component/Resources/Svg/Moon.svg";
